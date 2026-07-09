@@ -848,7 +848,7 @@ export default function AdminPage() {
       {/* Product management */}
       <div className="mt-6 grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
         {/* Add product */}
-        <div className="rounded-3xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-white/5">
+        <div className="min-w-0 rounded-3xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-white/5">
           <h2 className="flex items-center gap-2 text-lg font-black text-slate-900 dark:text-white">
             <FaPlus className="text-emerald-600 dark:text-emerald-400" /> {t.admin.addProduct}
           </h2>
@@ -933,7 +933,7 @@ export default function AdminPage() {
         </div>
 
         {/* Product list */}
-        <div className="rounded-3xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-white/5">
+        <div className="min-w-0 rounded-3xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-white/5">
           <div className="flex items-center justify-between">
             <h2 className="text-lg font-black text-slate-900 dark:text-white">{t.admin.manageProducts}</h2>
             <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600 dark:bg-white/10 dark:text-slate-300">
