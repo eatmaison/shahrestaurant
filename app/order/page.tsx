@@ -254,7 +254,7 @@ export default function OrderPage() {
                 </button>
               )}
             </div>
-            <div className="flex flex-1 flex-col py-2 px-1">
+            <div className="flex flex-1 flex-col py-2 px-1.5">
               <div className="flex items-start justify-between gap-2">
                 <h3 className="font-bold text-sm text-slate-900 dark:text-white">{p.name}</h3>
                 {discountPct > 0 && !isDrinkCategory(p.category) ? (

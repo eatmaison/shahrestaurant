@@ -178,7 +178,7 @@ export default function Home() {
       <section className="relative overflow-hidden">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_50%_at_15%_10%,rgba(16,185,129,0.18),transparent_60%),radial-gradient(50%_40%_at_90%_10%,rgba(59,130,246,0.14),transparent_60%)]" />
         <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-4 pb-10 pt-14 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:pt-20">
-          <div className="animate-fade-up">
+          <div className="animate-fade-up min-w-0">
             <span className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-1.5 text-sm font-semibold text-emerald-700 dark:text-emerald-300">
               <FaLeaf /> {t.home.badge}
             </span>
@@ -215,7 +215,7 @@ export default function Home() {
           </div>
 
           {/* Hero card */}
-          <div className="animate-fade-up delay-200 relative">
+          <div className="animate-fade-up delay-200 relative min-w-0">
             <div className="absolute -left-6 top-10 h-28 w-28 animate-float rounded-full bg-emerald-400/30 blur-3xl" />
             <div className="absolute -right-4 bottom-6 h-32 w-32 animate-float rounded-full bg-sky-400/25 blur-3xl" style={{ animationDelay: "1s" }} />
             <div className="relative rounded-[2rem] border border-slate-200 bg-white p-5 shadow-2xl shadow-emerald-900/10 dark:border-white/10 dark:bg-[#0c1420] sm:p-6">
