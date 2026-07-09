@@ -175,7 +175,7 @@ export default function Home() {
   return (
     <div className="overflow-hidden">
       {/* Hero */}
-      <section className="relative">
+      <section className="relative overflow-hidden">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_50%_at_15%_10%,rgba(16,185,129,0.18),transparent_60%),radial-gradient(50%_40%_at_90%_10%,rgba(59,130,246,0.14),transparent_60%)]" />
         <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-4 pb-10 pt-14 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:pt-20">
           <div className="animate-fade-up">
