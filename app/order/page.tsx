@@ -254,9 +254,9 @@ export default function OrderPage() {
                 </button>
               )}
             </div>
-            <div className="flex flex-1 flex-col p-4">
+            <div className="flex flex-1 flex-col py-2 px-1">
               <div className="flex items-start justify-between gap-2">
-                <h3 className="font-bold text-slate-900 dark:text-white">{p.name}</h3>
+                <h3 className="font-bold text-sm text-slate-900 dark:text-white">{p.name}</h3>
                 {discountPct > 0 && !isDrinkCategory(p.category) ? (
                   <span className="flex shrink-0 flex-col items-end">
                     <span className="text-xs text-slate-400 line-through dark:text-slate-500">€{p.price.toFixed(2)}</span>
@@ -276,7 +276,7 @@ export default function OrderPage() {
                   </span>
                 )}
               </div>
-              <p className="mt-1.5 flex-1 text-sm leading-6 text-slate-500 dark:text-slate-400">{p.description}</p>
+              <p className="mt-1.5 flex-1 text-xs leading-6 text-slate-500 dark:text-slate-400">{p.description}</p>
               <div className="mt-3 flex flex-col gap-2">
                 {/* Add/Remove Buttons */}
                 {qty === 0 ? (
