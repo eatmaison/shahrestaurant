@@ -1,0 +1,168 @@
+/** A menu category. Each brand defines its own set of category names. */
+export type Category = string;
+
+/** The restaurant a product belongs to. */
+export type Brand = "eattogo" | "tandoor";
+
+export type Lang = "en" | "nl";
+
+export interface Product {
+  id: string;
+  /** Which restaurant/brand this product belongs to. */
+  brand: Brand;
+  category: Category;
+  name: string;
+  description: string;
+  price: number;
+  /** Optional image as a data URL or public path */
+  image?: string;
+  /** Detailed product description for "read more" modal */
+  detailedDescription?: {
+    en: string;
+    nl: string;
+  };
+  /** Ingredients list */
+  ingredients?: string[];
+  /** Allergen information */
+  allergens?: string[];
+}
+
+export type Role = "user" | "admin";
+
+export type AccountType = "personal" | "company";
+
+export interface User {
+  id: string;
+  name: string;
+  email: string;
+  /** Demo-only plain value stored locally. Never do this in production. */
+  password: string;
+  phone?: string;
+  /** Last used delivery street + house number (auto-filled on the next order). */
+  address?: string;
+  /** Last used delivery postcode (auto-filled on the next order). */
+  postcode?: string;
+  role: Role;
+  createdAt: number;
+  /** Loyalty points earned from orders (1 point = €1, earned per €10 spent) */
+  points: number;
+  /** Number of completed orders */
+  orderCount: number;
+  /** VIP membership: permanent 10% discount on food (personal accounts only) */
+  isVip: boolean;
+  /** Personal customer or business (company) account */
+  accountType: AccountType;
+  /** VAT number - required for company accounts */
+  btw?: string;
+  /** Chamber of Commerce number - required for company accounts */
+  kvk?: string;
+  /** Whether the customer confirmed their email address via the verification link. */
+  emailVerified: boolean;
+  /** Last time the user was active on the site (epoch ms). */
+  lastSeenAt?: number;
+}
+
+export interface OrderItem {
+  productId: string;
+  name: string;
+  price: number;
+  qty: number;
+  /** Restaurant/brand the item belongs to (so the right kitchen prepares it). */
+  brand: Brand;
+  /** Menu category of the item at order time. */
+  category: Category;
+}
+
+export interface OrderSchedule {
+  /** "once" = single scheduled delivery, "workdays" = repeats every working day (Mon–Fri) */
+  type: "once" | "workdays";
+  /** Delivery date for one-time scheduled orders (YYYY-MM-DD) */
+  date?: string;
+  /** Delivery time (HH:mm) */
+  time: string;
+}
+
+/** Fulfilment lifecycle of an order, advanced by the admin. */
+export type OrderStatus = "new" | "preparing" | "delivery" | "delivered";
+
+export interface Order {
+  id: string;
+  /** Human-readable sequential order number shown to the customer and admin. */
+  orderNumber: number;
+  userId?: string;
+  customerName: string;
+  address: string;
+  /** Dutch postcode of the delivery address (e.g. "1032 KL") */
+  postcode: string;
+  phone: string;
+  items: OrderItem[];
+  subtotal: number;
+  discount: number;
+  /** Loyalty points redeemed on this order (1 point = €1) */
+  pointsUsed: number;
+  /** Loyalty points earned with this order */
+  pointsEarned: number;
+  delivery: number;
+  total: number;
+  createdAt: number;
+  /** Current fulfilment status, updated by the admin. */
+  status: OrderStatus;
+  /** Whether the order has been fully paid. Personal orders are paid upfront; company orders are invoiced. */
+  paid: boolean;
+  /** Account type used to place the order (separates personal vs company orders). */
+  accountType: AccountType;
+  /** For company orders: whether the invoice has been sent to the customer. */
+  invoiceSent: boolean;
+  /** Optional customer note (delivery instructions, allergies, etc.). */
+  note?: string;
+  /** Optional planned delivery (company accounts) */
+  schedule?: OrderSchedule;
+}
+
+export interface Review {
+  id: string;
+  orderId: string;
+  userId: string;
+  userName: string;
+  /** Star rating from 1 to 5 */
+  rating: number;
+  text: string;
+  createdAt: number;
+}
+
+export type VipRequestStatus = "pending" | "approved" | "rejected";
+
+/** A customer's request to activate VIP by uploading a photo of their physical VIP card. */
+export interface VipRequest {
+  id: string;
+  userId: string;
+  userName: string;
+  /** Uploaded VIP card photo as a data URL. */
+  image: string;
+  status: VipRequestStatus;
+  createdAt: number;
+}
+
+/** Social media platforms the admin can link from the footer. */
+export type SocialPlatform =
+  | "instagram"
+  | "facebook"
+  | "tiktok"
+  | "youtube"
+  | "snapchat"
+  | "telegram"
+  | "linkedin"
+  | "x"
+  | "pinterest"
+  | "whatsapp"
+  | "googlemaps"
+  | "applemaps"
+  | "tripadvisor"
+  | "yelp";
+
+/** An admin-managed social media link shown in the site footer when enabled. */
+export interface SocialLink {
+  platform: SocialPlatform;
+  url: string;
+  enabled: boolean;
+}

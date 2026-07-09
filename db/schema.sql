@@ -1,0 +1,134 @@
+-- =============================================================================
+-- Eat to go — Neon (PostgreSQL) schema
+-- Run this once against your Neon database to create all tables.
+--   psql "$DATABASE_URL" -f db/schema.sql
+-- or paste it into the Neon Console SQL Editor.
+-- =============================================================================
+
+-- Needed for gen_random_uuid()
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
+
+-- ------------------------------------------------------------------ users
+CREATE TABLE IF NOT EXISTS users (
+  id            uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  name          text        NOT NULL,
+  email         text        NOT NULL UNIQUE,
+  -- Bcrypt/argon hash — never store plaintext passwords.
+  password_hash text        NOT NULL,
+  phone         text,
+  -- Last used delivery details, auto-filled on the customer's next order.
+  address       text,
+  postcode      text,
+  role          text        NOT NULL DEFAULT 'user' CHECK (role IN ('user', 'admin')),
+  points        integer     NOT NULL DEFAULT 0,
+  order_count   integer     NOT NULL DEFAULT 0,
+  is_vip        boolean     NOT NULL DEFAULT false,
+  account_type  text        NOT NULL DEFAULT 'personal' CHECK (account_type IN ('personal', 'company')),
+  btw           text,
+  kvk           text,
+  -- Last activity on the site (updated while signed in).
+  last_seen_at  timestamptz,
+  created_at    timestamptz NOT NULL DEFAULT now()
+);
+
+CREATE INDEX IF NOT EXISTS idx_users_email ON users (email);
+
+-- ------------------------------------------------------------------ products
+CREATE TABLE IF NOT EXISTS products (
+  id                   text        PRIMARY KEY,
+  brand                text        NOT NULL CHECK (brand IN ('eattogo', 'tandoor')),
+  category             text        NOT NULL,
+  name                 text        NOT NULL,
+  description          text        NOT NULL DEFAULT '',
+  price                numeric(10, 2) NOT NULL,
+  image                text,
+  -- { "en": "...", "nl": "..." } for the "Read more" popup
+  detailed_description jsonb,
+  ingredients          text[]      NOT NULL DEFAULT '{}',
+  allergens            text[]      NOT NULL DEFAULT '{}',
+  created_at           timestamptz NOT NULL DEFAULT now()
+);
+
+CREATE INDEX IF NOT EXISTS idx_products_brand ON products (brand);
+CREATE INDEX IF NOT EXISTS idx_products_category ON products (category);
+
+-- ------------------------------------------------------------------ orders
+CREATE TABLE IF NOT EXISTS orders (
+  id           uuid        PRIMARY KEY DEFAULT gen_random_uuid(),
+  -- Human-readable sequential number (shown as ETG-1001, ETG-1002, ...)
+  order_number integer     GENERATED ALWAYS AS IDENTITY (START WITH 1001),
+  user_id      uuid        REFERENCES users (id) ON DELETE SET NULL,
+  customer_name text       NOT NULL,
+  address      text        NOT NULL,
+  postcode     text        NOT NULL DEFAULT '',
+  phone        text        NOT NULL,
+  subtotal     numeric(10, 2) NOT NULL,
+  discount     numeric(10, 2) NOT NULL DEFAULT 0,
+  points_used  integer     NOT NULL DEFAULT 0,
+  points_earned integer    NOT NULL DEFAULT 0,
+  delivery     numeric(10, 2) NOT NULL DEFAULT 0,
+  total        numeric(10, 2) NOT NULL,
+  status       text        NOT NULL DEFAULT 'new' CHECK (status IN ('new', 'preparing', 'delivery', 'delivered')),
+  paid         boolean     NOT NULL DEFAULT false,
+  account_type text        NOT NULL DEFAULT 'personal' CHECK (account_type IN ('personal', 'company')),
+  invoice_sent boolean     NOT NULL DEFAULT false,
+  note         text,
+  -- Company scheduled delivery: { "type": "once|workdays", "date": "YYYY-MM-DD", "time": "HH:mm" }
+  schedule     jsonb,
+  created_at   timestamptz NOT NULL DEFAULT now()
+);
+
+CREATE UNIQUE INDEX IF NOT EXISTS idx_orders_order_number ON orders (order_number);
+CREATE INDEX IF NOT EXISTS idx_orders_user_id ON orders (user_id);
+CREATE INDEX IF NOT EXISTS idx_orders_created_at ON orders (created_at DESC);
+
+-- ------------------------------------------------------------------ order_items
+CREATE TABLE IF NOT EXISTS order_items (
+  id         uuid        PRIMARY KEY DEFAULT gen_random_uuid(),
+  order_id   uuid        NOT NULL REFERENCES orders (id) ON DELETE CASCADE,
+  product_id text        NOT NULL,
+  name       text        NOT NULL,
+  price      numeric(10, 2) NOT NULL,
+  qty        integer     NOT NULL CHECK (qty > 0),
+  brand      text        NOT NULL CHECK (brand IN ('eattogo', 'tandoor')),
+  category   text        NOT NULL DEFAULT ''
+);
+
+CREATE INDEX IF NOT EXISTS idx_order_items_order_id ON order_items (order_id);
+
+-- ------------------------------------------------------------------ reviews
+CREATE TABLE IF NOT EXISTS reviews (
+  id         uuid        PRIMARY KEY DEFAULT gen_random_uuid(),
+  order_id   uuid        NOT NULL REFERENCES orders (id) ON DELETE CASCADE,
+  user_id    uuid        REFERENCES users (id) ON DELETE SET NULL,
+  user_name  text        NOT NULL,
+  rating     integer     NOT NULL CHECK (rating BETWEEN 1 AND 5),
+  text       text        NOT NULL DEFAULT '',
+  created_at timestamptz NOT NULL DEFAULT now(),
+  UNIQUE (order_id)
+);
+
+CREATE INDEX IF NOT EXISTS idx_reviews_created_at ON reviews (created_at DESC);
+
+-- ------------------------------------------------------------------ vip_requests
+CREATE TABLE IF NOT EXISTS vip_requests (
+  id         uuid        PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id    uuid        NOT NULL REFERENCES users (id) ON DELETE CASCADE,
+  user_name  text        NOT NULL,
+  -- Uploaded VIP card photo. For production, store a URL to object storage
+  -- (e.g. Vercel Blob / S3) rather than a base64 data URL.
+  image      text        NOT NULL,
+  status     text        NOT NULL DEFAULT 'pending' CHECK (status IN ('pending', 'approved', 'rejected')),
+  created_at timestamptz NOT NULL DEFAULT now()
+);
+
+CREATE INDEX IF NOT EXISTS idx_vip_requests_status ON vip_requests (status);
+
+-- ------------------------------------------------------------------ social_links
+-- Admin-managed social media links shown in the footer when enabled.
+CREATE TABLE IF NOT EXISTS social_links (
+  platform   text        PRIMARY KEY,
+  url        text        NOT NULL DEFAULT '',
+  enabled    boolean     NOT NULL DEFAULT false,
+  updated_at timestamptz NOT NULL DEFAULT now()
+);
