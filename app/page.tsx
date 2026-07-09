@@ -233,7 +233,7 @@ export default function Home() {
                   return (
                     <div
                       key={p.id}
-                      className="animate-fade-up flex items-center gap-4 rounded-2xl border border-slate-100 bg-slate-50/80 p-3.5 dark:border-white/5 dark:bg-white/5"
+                      className="animate-fade-up flex min-w-0 items-center gap-4 rounded-2xl border border-slate-100 bg-slate-50/80 p-3.5 dark:border-white/5 dark:bg-white/5"
                       style={{ animationDelay: `${0.1 * i + 0.2}s` }}
                     >
                       <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-emerald-500/15 text-lg text-emerald-600 dark:text-emerald-400">
