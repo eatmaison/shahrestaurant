@@ -216,8 +216,8 @@ export default function Home() {
 
           {/* Hero card */}
           <div className="animate-fade-up delay-200 relative min-w-0">
-            <div className="absolute -left-6 top-10 h-28 w-28 animate-float rounded-full bg-emerald-400/30 blur-3xl" />
-            <div className="absolute -right-4 bottom-6 h-32 w-32 animate-float rounded-full bg-sky-400/25 blur-3xl" style={{ animationDelay: "1s" }} />
+            <div className="pointer-events-none absolute -left-6 top-10 hidden h-28 w-28 animate-float rounded-full bg-emerald-400/30 blur-3xl lg:block" />
+            <div className="pointer-events-none absolute -right-4 bottom-6 hidden h-32 w-32 animate-float rounded-full bg-sky-400/25 blur-3xl lg:block" style={{ animationDelay: "1s" }} />
             <div className="relative rounded-[2rem] border border-slate-200 bg-white p-5 shadow-2xl shadow-emerald-900/10 dark:border-white/10 dark:bg-[#0c1420] sm:p-6">
               <div className="flex items-center justify-between">
                 <span className="inline-flex items-center gap-2 rounded-full bg-emerald-500/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-300">
