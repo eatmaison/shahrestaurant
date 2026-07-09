@@ -237,7 +237,11 @@ export function Providers({ children }: { children: ReactNode }) {
     await refresh();
   }, [refresh]);
   const updateProduct = useCallback<StoreCtx["updateProduct"]>(async (pid, patch) => {
-    await fetch("/api/products", { method: "PATCH", headers: JSON_HEADERS, body: JSON.stringify({ id: pid, ...patch }) });
+    // Serialize undefined fields as explicit null so cleared values (e.g. a removed
+    // image or detailed description) are sent — JSON.stringify omits undefined keys,
+    // which would otherwise leave the old value untouched on the server.
+    const body = JSON.stringify({ id: pid, ...patch }, (_key, value) => (value === undefined ? null : value));
+    await fetch("/api/products", { method: "PATCH", headers: JSON_HEADERS, body });
     await refresh();
   }, [refresh]);
 

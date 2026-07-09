@@ -931,8 +931,20 @@ export default function AdminPage() {
                 <FaImage /> {t.admin.productImage}
               </button>
               {draft.image && (
-                <span className="relative h-12 w-12 overflow-hidden rounded-xl border border-slate-200 dark:border-white/10">
+                <span className="relative h-12 w-12 shrink-0 overflow-hidden rounded-xl border border-slate-200 dark:border-white/10">
                   <Image src={draft.image} alt="preview" fill sizes="48px" className="object-cover" />
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setDraft((d) => ({ ...d, image: undefined }));
+                      if (fileRef.current) fileRef.current.value = "";
+                    }}
+                    className="absolute right-0 top-0 grid h-5 w-5 place-items-center rounded-bl-lg bg-black/60 text-[10px] text-white transition hover:bg-red-600"
+                    aria-label={t.common.remove}
+                    title={t.common.remove}
+                  >
+                    <FaXmark />
+                  </button>
                 </span>
               )}
               <input ref={fileRef} type="file" accept="image/*" className="hidden" onChange={(e) => onFile(e.target.files?.[0])} />
@@ -1082,8 +1094,20 @@ export default function AdminPage() {
                   <FaImage /> {t.admin.productImage}
                 </button>
                 {editDraft.image && (
-                  <span className="relative h-12 w-12 overflow-hidden rounded-xl border border-slate-200 dark:border-white/10">
+                  <span className="relative h-12 w-12 shrink-0 overflow-hidden rounded-xl border border-slate-200 dark:border-white/10">
                     <Image src={editDraft.image} alt="preview" fill sizes="48px" className="object-cover" />
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setEditDraft((d) => ({ ...d, image: undefined }));
+                        if (editFileRef.current) editFileRef.current.value = "";
+                      }}
+                      className="absolute right-0 top-0 grid h-5 w-5 place-items-center rounded-bl-lg bg-black/60 text-[10px] text-white transition hover:bg-red-600"
+                      aria-label={t.common.remove}
+                      title={t.common.remove}
+                    >
+                      <FaXmark />
+                    </button>
                   </span>
                 )}
                 <input ref={editFileRef} type="file" accept="image/*" className="hidden" onChange={(e) => onEditFile(e.target.files?.[0])} />
