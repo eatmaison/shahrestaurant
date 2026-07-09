@@ -7,10 +7,8 @@ export async function POST(req: NextRequest) {
     const product = await addProduct(body);
     return NextResponse.json({ ok: true, product });
   } catch (err) {
-    return NextResponse.json(
-      { ok: false, error: err instanceof Error ? err.message : "error" },
-      { status: 500 }
-    );
+    const message = err instanceof Error ? err.message : "error";
+    return NextResponse.json({ ok: false, error: message }, { status: message === "Unauthorized" ? 401 : 500 });
   }
 }
 
@@ -21,10 +19,8 @@ export async function PATCH(req: NextRequest) {
     await updateProduct(id, patch);
     return NextResponse.json({ ok: true });
   } catch (err) {
-    return NextResponse.json(
-      { ok: false, error: err instanceof Error ? err.message : "error" },
-      { status: 500 }
-    );
+    const message = err instanceof Error ? err.message : "error";
+    return NextResponse.json({ ok: false, error: message }, { status: message === "Unauthorized" ? 401 : 500 });
   }
 }
 
@@ -35,9 +31,7 @@ export async function DELETE(req: NextRequest) {
     if (id) await removeProduct(id);
     return NextResponse.json({ ok: true });
   } catch (err) {
-    return NextResponse.json(
-      { ok: false, error: err instanceof Error ? err.message : "error" },
-      { status: 500 }
-    );
+    const message = err instanceof Error ? err.message : "error";
+    return NextResponse.json({ ok: false, error: message }, { status: message === "Unauthorized" ? 401 : 500 });
   }
 }

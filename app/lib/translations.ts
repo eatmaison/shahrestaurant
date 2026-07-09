@@ -207,6 +207,14 @@ export interface Dictionary {
     productDetail: string;
     productDetailHint: string;
     save: string;
+    saving: string;
+    productAdded: string;
+    productUpdated: string;
+    saveFailed: string;
+    nameRequired: string;
+    priceInvalid: string;
+    priceHint: string;
+    imageError: string;
     noOrders: string;
     ordersByCategory: string;
     customerInsights: string;
@@ -572,6 +580,14 @@ const en: Dictionary = {
     productDetail: "Read more text",
     productDetailHint: "Detailed description shown in the product's 'Read more' popup (optional)",
     save: "Save product",
+    saving: "Saving…",
+    productAdded: "Product added successfully!",
+    productUpdated: "Product updated successfully!",
+    saveFailed: "Saving failed",
+    nameRequired: "Enter a product name.",
+    priceInvalid: "Enter a valid price, e.g. 8.73",
+    priceHint: "Use a dot for cents, e.g. 8.73 — a comma is converted automatically.",
+    imageError: "This image could not be read. Please use a JPG or PNG photo.",
     noOrders: "No orders yet.",
     ordersByCategory: "Sales by category",
     customerInsights: "Customer insights",
@@ -939,6 +955,14 @@ const nl: Dictionary = {
     productDetail: "Lees meer-tekst",
     productDetailHint: "Uitgebreide omschrijving in de 'Lees meer'-pop-up van het product (optioneel)",
     save: "Product opslaan",
+    saving: "Opslaan…",
+    productAdded: "Product succesvol toegevoegd!",
+    productUpdated: "Product succesvol bijgewerkt!",
+    saveFailed: "Opslaan mislukt",
+    nameRequired: "Voer een productnaam in.",
+    priceInvalid: "Voer een geldige prijs in, bijv. 8.73",
+    priceHint: "Gebruik een punt voor centen, bijv. 8.73 — een komma wordt automatisch omgezet.",
+    imageError: "Deze afbeelding kon niet worden gelezen. Gebruik een JPG- of PNG-foto.",
     noOrders: "Nog geen bestellingen.",
     ordersByCategory: "Verkoop per categorie",
     customerInsights: "Klantinzichten",

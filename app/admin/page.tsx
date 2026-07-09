@@ -25,7 +25,9 @@ import {
   FaPlus,
   FaReceipt,
   FaCircleCheck,
+  FaCircleExclamation,
   FaShareNodes,
+  FaSpinner,
   FaTrash,
   FaTruck,
   FaUser,
@@ -45,6 +47,54 @@ const statusIcons: Record<OrderStatus, typeof FaClock> = {
   delivery: FaTruck,
   delivered: FaCircleCheck,
 };
+
+/** Feedback state for the add/edit product forms. */
+type SaveState = { status: "idle" | "saving" | "success" | "error"; message?: string };
+
+/** Keeps only digits and a single decimal dot while typing; a comma becomes a dot. */
+const sanitizePrice = (value: string): string => {
+  let s = value.replace(/,/g, ".").replace(/[^0-9.]/g, "");
+  const dot = s.indexOf(".");
+  if (dot !== -1) s = s.slice(0, dot + 1) + s.slice(dot + 1).replace(/\./g, "");
+  return s;
+};
+
+/** Parses a sanitized price string ("8.73"). Returns null when invalid or not positive. */
+const parsePrice = (raw: string): number | null => {
+  const s = raw.trim();
+  if (!/^\d+(\.\d{1,2})?$/.test(s)) return null;
+  const n = parseFloat(s);
+  return n > 0 ? n : null;
+};
+
+/**
+ * Reads an image file and returns a downscaled JPEG data URL (max 1200px).
+ * Large phone photos (10MB+) would otherwise exceed the request size limit and
+ * silently fail to save; this also converts formats like Apple HEIC to JPEG.
+ */
+const processImageFile = (file: File): Promise<string> =>
+  new Promise((resolve, reject) => {
+    const url = URL.createObjectURL(file);
+    const img = new window.Image();
+    img.onload = () => {
+      URL.revokeObjectURL(url);
+      const scale = Math.min(1, 1200 / Math.max(img.naturalWidth, img.naturalHeight));
+      const w = Math.max(1, Math.round(img.naturalWidth * scale));
+      const h = Math.max(1, Math.round(img.naturalHeight * scale));
+      const canvas = document.createElement("canvas");
+      canvas.width = w;
+      canvas.height = h;
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return reject(new Error("canvas"));
+      ctx.drawImage(img, 0, 0, w, h);
+      resolve(canvas.toDataURL("image/jpeg", 0.85));
+    };
+    img.onerror = () => {
+      URL.revokeObjectURL(url);
+      reject(new Error("decode"));
+    };
+    img.src = url;
+  });
 
 export default function AdminPage() {
   const { t, lang } = useLang();
@@ -73,6 +123,10 @@ export default function AdminPage() {
     image: undefined as string | undefined,
     detail: "",
   });
+
+  // Save progress + feedback for the add form and the edit modal.
+  const [addState, setAddState] = useState<SaveState>({ status: "idle" });
+  const [editState, setEditState] = useState<SaveState>({ status: "idle" });
 
   // Order search filters (by customer/company name or order number).
   const [customerSearch, setCustomerSearch] = useState("");
@@ -225,18 +279,32 @@ export default function AdminPage() {
     );
   }
 
-  const onFile = (file?: File) => {
+  const onFile = async (file?: File) => {
     if (!file) return;
-    const reader = new FileReader();
-    reader.onload = () => setDraft((d) => ({ ...d, image: reader.result as string }));
-    reader.readAsDataURL(file);
+    try {
+      const image = await processImageFile(file);
+      setDraft((d) => ({ ...d, image }));
+      setAddState((s) => (s.status === "error" ? { status: "idle" } : s));
+    } catch {
+      if (fileRef.current) fileRef.current.value = "";
+      setAddState({ status: "error", message: t.admin.imageError });
+    }
   };
 
-  const saveProduct = () => {
-    const price = parseFloat(draft.price);
-    if (!draft.name.trim() || Number.isNaN(price)) return;
+  const saveProduct = async () => {
+    if (addState.status === "saving") return;
+    if (!draft.name.trim()) {
+      setAddState({ status: "error", message: t.admin.nameRequired });
+      return;
+    }
+    const price = parsePrice(draft.price);
+    if (price === null) {
+      setAddState({ status: "error", message: t.admin.priceInvalid });
+      return;
+    }
+    setAddState({ status: "saving" });
     const detail = draft.detail.trim();
-    addProduct({
+    const res = await addProduct({
       name: draft.name.trim(),
       description: draft.description.trim(),
       price,
@@ -245,12 +313,19 @@ export default function AdminPage() {
       image: draft.image,
       detailedDescription: detail ? { en: detail, nl: detail } : undefined,
     });
+    if (!res.ok) {
+      setAddState({ status: "error", message: `${t.admin.saveFailed}${res.error ? ` (${res.error})` : ""}` });
+      return;
+    }
     setDraft({ name: "", description: "", price: "", brand: draft.brand, category: draft.category, image: undefined, detail: "" });
     if (fileRef.current) fileRef.current.value = "";
+    setAddState({ status: "success", message: t.admin.productAdded });
+    setTimeout(() => setAddState((s) => (s.status === "success" ? { status: "idle" } : s)), 4000);
   };
 
   const openEditor = (p: Product) => {
     setEditing(p);
+    setEditState({ status: "idle" });
     setEditDraft({
       name: p.name,
       description: p.description,
@@ -262,19 +337,38 @@ export default function AdminPage() {
     });
   };
 
-  const onEditFile = (file?: File) => {
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = () => setEditDraft((d) => ({ ...d, image: reader.result as string }));
-    reader.readAsDataURL(file);
+  const closeEditor = () => {
+    setEditing(null);
+    setEditState({ status: "idle" });
+    if (editFileRef.current) editFileRef.current.value = "";
   };
 
-  const saveEdit = () => {
-    if (!editing) return;
-    const price = parseFloat(editDraft.price);
-    if (!editDraft.name.trim() || Number.isNaN(price)) return;
+  const onEditFile = async (file?: File) => {
+    if (!file) return;
+    try {
+      const image = await processImageFile(file);
+      setEditDraft((d) => ({ ...d, image }));
+      setEditState((s) => (s.status === "error" ? { status: "idle" } : s));
+    } catch {
+      if (editFileRef.current) editFileRef.current.value = "";
+      setEditState({ status: "error", message: t.admin.imageError });
+    }
+  };
+
+  const saveEdit = async () => {
+    if (!editing || editState.status === "saving") return;
+    if (!editDraft.name.trim()) {
+      setEditState({ status: "error", message: t.admin.nameRequired });
+      return;
+    }
+    const price = parsePrice(editDraft.price);
+    if (price === null) {
+      setEditState({ status: "error", message: t.admin.priceInvalid });
+      return;
+    }
+    setEditState({ status: "saving" });
     const detail = editDraft.detail.trim();
-    updateProduct(editing.id, {
+    const res = await updateProduct(editing.id, {
       name: editDraft.name.trim(),
       description: editDraft.description.trim(),
       price,
@@ -283,8 +377,12 @@ export default function AdminPage() {
       image: editDraft.image,
       detailedDescription: detail ? { en: detail, nl: detail } : undefined,
     });
-    setEditing(null);
-    if (editFileRef.current) editFileRef.current.value = "";
+    if (!res.ok) {
+      setEditState({ status: "error", message: `${t.admin.saveFailed}${res.error ? ` (${res.error})` : ""}` });
+      return;
+    }
+    setEditState({ status: "success", message: t.admin.productUpdated });
+    setTimeout(() => closeEditor(), 1500);
   };
 
   const cards = [
@@ -905,17 +1003,20 @@ export default function AdminPage() {
               ))}
             </select>
             <div className="grid grid-cols-2 gap-3">
-              <input
-                value={draft.price}
-                onChange={(e) => setDraft({ ...draft, price: e.target.value })}
-                placeholder={t.admin.productPrice}
-                inputMode="decimal"
-                className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
-              />
+              <div>
+                <input
+                  value={draft.price}
+                  onChange={(e) => setDraft({ ...draft, price: sanitizePrice(e.target.value) })}
+                  placeholder={t.admin.productPrice}
+                  inputMode="decimal"
+                  className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
+                />
+                <p className="mt-1 text-[11px] leading-4 text-slate-400 dark:text-slate-500">{t.admin.priceHint}</p>
+              </div>
               <select
                 value={draft.category}
                 onChange={(e) => setDraft({ ...draft, category: e.target.value as Category })}
-                className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
+                className="w-full self-start rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
               >
                 {brandInfo(draft.brand).categories.map((c) => (
                   <option key={c} value={c}>{c}</option>
@@ -950,11 +1051,29 @@ export default function AdminPage() {
               <input ref={fileRef} type="file" accept="image/*" className="hidden" onChange={(e) => onFile(e.target.files?.[0])} />
             </div>
 
+            {addState.status === "error" && (
+              <p className="flex items-start gap-2 rounded-xl bg-red-500/10 px-3.5 py-2.5 text-xs font-semibold text-red-600 dark:text-red-400">
+                <FaCircleExclamation className="mt-0.5 shrink-0" /> {addState.message}
+              </p>
+            )}
+            {addState.status === "success" && (
+              <p className="flex items-center gap-2 rounded-xl bg-emerald-500/10 px-3.5 py-2.5 text-xs font-semibold text-emerald-700 dark:text-emerald-400">
+                <FaCircleCheck className="shrink-0" /> {addState.message}
+              </p>
+            )}
+
             <button
               onClick={saveProduct}
-              className="w-full rounded-full bg-emerald-600 py-3 text-sm font-bold text-white transition hover:bg-emerald-500"
+              disabled={addState.status === "saving"}
+              className="w-full rounded-full bg-emerald-600 py-3 text-sm font-bold text-white transition hover:bg-emerald-500 disabled:cursor-not-allowed disabled:opacity-60"
             >
-              {t.admin.save}
+              {addState.status === "saving" ? (
+                <span className="inline-flex items-center gap-2">
+                  <FaSpinner className="animate-spin" /> {t.admin.saving}
+                </span>
+              ) : (
+                t.admin.save
+              )}
             </button>
           </div>
         </div>
@@ -1015,14 +1134,14 @@ export default function AdminPage() {
       {/* Edit product modal */}
       {editing && (
         <div className="fixed inset-0 z-50 flex items-end justify-center sm:items-center">
-          <div className="fixed inset-0 bg-black/40" onClick={() => setEditing(null)} />
+          <div className="fixed inset-0 bg-black/40" onClick={closeEditor} />
           <div className="relative w-full max-w-md rounded-t-3xl bg-white shadow-2xl dark:bg-[#0c1420] sm:rounded-3xl">
             <div className="flex items-center justify-between border-b border-slate-200 px-5 py-4 dark:border-white/10">
               <h2 className="flex items-center gap-2 text-lg font-black text-slate-900 dark:text-white">
                 <FaPen className="text-emerald-600 dark:text-emerald-400" /> {t.admin.editProduct}
               </h2>
               <button
-                onClick={() => setEditing(null)}
+                onClick={closeEditor}
                 className="grid h-8 w-8 place-items-center rounded-full text-slate-400 transition hover:bg-slate-100 hover:text-slate-600 dark:hover:bg-white/10"
                 aria-label={t.common.cancel}
               >
@@ -1068,18 +1187,21 @@ export default function AdminPage() {
                 ))}
               </select>
               <div className="grid grid-cols-2 gap-3">
-                <input
-                  value={editDraft.price}
-                  onChange={(e) => setEditDraft({ ...editDraft, price: e.target.value })}
-                  placeholder={t.admin.productPrice}
-                  inputMode="decimal"
-                  className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
-                />
+                <div>
+                  <input
+                    value={editDraft.price}
+                    onChange={(e) => setEditDraft({ ...editDraft, price: sanitizePrice(e.target.value) })}
+                    placeholder={t.admin.productPrice}
+                    inputMode="decimal"
+                    className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
+                  />
+                  <p className="mt-1 text-[11px] leading-4 text-slate-400 dark:text-slate-500">{t.admin.priceHint}</p>
+                </div>
                 <select
                   value={editDraft.category}
                   onChange={(e) => setEditDraft({ ...editDraft, category: e.target.value as Category })}
                   aria-label={t.admin.changeCategory}
-                  className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
+                  className="w-full self-start rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
                 >
                   {brandInfo(editDraft.brand).categories.map((c) => (
                     <option key={c} value={c}>{c}</option>
@@ -1112,18 +1234,35 @@ export default function AdminPage() {
                 )}
                 <input ref={editFileRef} type="file" accept="image/*" className="hidden" onChange={(e) => onEditFile(e.target.files?.[0])} />
               </div>
+              {editState.status === "error" && (
+                <p className="flex items-start gap-2 rounded-xl bg-red-500/10 px-3.5 py-2.5 text-xs font-semibold text-red-600 dark:text-red-400">
+                  <FaCircleExclamation className="mt-0.5 shrink-0" /> {editState.message}
+                </p>
+              )}
+              {editState.status === "success" && (
+                <p className="flex items-center gap-2 rounded-xl bg-emerald-500/10 px-3.5 py-2.5 text-xs font-semibold text-emerald-700 dark:text-emerald-400">
+                  <FaCircleCheck className="shrink-0" /> {editState.message}
+                </p>
+              )}
               <div className="flex gap-3 pt-1">
                 <button
-                  onClick={() => setEditing(null)}
+                  onClick={closeEditor}
                   className="flex-1 rounded-full border border-slate-200 py-3 text-sm font-bold text-slate-600 transition hover:bg-slate-100 dark:border-white/10 dark:text-slate-300 dark:hover:bg-white/10"
                 >
                   {t.common.cancel}
                 </button>
                 <button
                   onClick={saveEdit}
-                  className="flex-1 rounded-full bg-emerald-600 py-3 text-sm font-bold text-white transition hover:bg-emerald-500"
+                  disabled={editState.status === "saving" || editState.status === "success"}
+                  className="flex-1 rounded-full bg-emerald-600 py-3 text-sm font-bold text-white transition hover:bg-emerald-500 disabled:cursor-not-allowed disabled:opacity-60"
                 >
-                  {t.common.saveChanges}
+                  {editState.status === "saving" ? (
+                    <span className="inline-flex items-center gap-2">
+                      <FaSpinner className="animate-spin" /> {t.admin.saving}
+                    </span>
+                  ) : (
+                    t.common.saveChanges
+                  )}
                 </button>
               </div>
             </div>

@@ -58,9 +58,9 @@ export function useLang() {
 
 interface StoreCtx {
   products: Product[];
-  addProduct: (p: Omit<Product, "id">) => Promise<void>;
+  addProduct: (p: Omit<Product, "id">) => Promise<{ ok: boolean; error?: string }>;
   removeProduct: (id: string) => Promise<void>;
-  updateProduct: (id: string, patch: Partial<Omit<Product, "id">>) => Promise<void>;
+  updateProduct: (id: string, patch: Partial<Omit<Product, "id">>) => Promise<{ ok: boolean; error?: string }>;
 
   cart: Record<string, number>;
   addToCart: (id: string) => void;
@@ -224,8 +224,15 @@ export function Providers({ children }: { children: ReactNode }) {
   const setLang = useCallback((l: Lang) => setLangState(l), []);
 
   const addProduct = useCallback<StoreCtx["addProduct"]>(async (p) => {
-    await fetch("/api/products", { method: "POST", headers: JSON_HEADERS, body: JSON.stringify(p) });
-    await refresh();
+    try {
+      const res = await fetch("/api/products", { method: "POST", headers: JSON_HEADERS, body: JSON.stringify(p) });
+      const data = await res.json().catch(() => null);
+      if (!res.ok || !data?.ok) return { ok: false, error: data?.error ?? `HTTP ${res.status}` };
+      await refresh();
+      return { ok: true };
+    } catch (err) {
+      return { ok: false, error: err instanceof Error ? err.message : "network" };
+    }
   }, [refresh]);
   const removeProduct = useCallback<StoreCtx["removeProduct"]>(async (pid) => {
     await fetch(`/api/products?id=${encodeURIComponent(pid)}`, { method: "DELETE" });
@@ -241,8 +248,15 @@ export function Providers({ children }: { children: ReactNode }) {
     // image or detailed description) are sent — JSON.stringify omits undefined keys,
     // which would otherwise leave the old value untouched on the server.
     const body = JSON.stringify({ id: pid, ...patch }, (_key, value) => (value === undefined ? null : value));
-    await fetch("/api/products", { method: "PATCH", headers: JSON_HEADERS, body });
-    await refresh();
+    try {
+      const res = await fetch("/api/products", { method: "PATCH", headers: JSON_HEADERS, body });
+      const data = await res.json().catch(() => null);
+      if (!res.ok || !data?.ok) return { ok: false, error: data?.error ?? `HTTP ${res.status}` };
+      await refresh();
+      return { ok: true };
+    } catch (err) {
+      return { ok: false, error: err instanceof Error ? err.message : "network" };
+    }
   }, [refresh]);
 
   const addToCart = useCallback((pid: string) => {
