@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import {
   FaArrowRight,
+  FaBagShopping,
   FaCalendarDays,
   FaCartShopping,
   FaCircleCheck,
@@ -13,7 +14,9 @@ import {
   FaLocationDot,
   FaMinus,
   FaPlus,
+  FaStore,
   FaTrash,
+  FaTruck,
 } from "react-icons/fa6";
 import { MdMenuBook } from "react-icons/md";
 import { useLang, useStore } from "../providers";
@@ -54,6 +57,8 @@ export default function OrderPage() {
   const [showCartModal, setShowCartModal] = useState(false);
   const [showCheckoutModal, setShowCheckoutModal] = useState(false);
   const [pointsToUse, setPointsToUse] = useState(0);
+  // How the customer wants to receive the order: delivered, or picked up in person.
+  const [fulfillment, setFulfillment] = useState<"delivery" | "pickup">("delivery");
   const [scheduleType, setScheduleType] = useState<"asap" | "once" | "workdays">("asap");
   const [scheduleDate, setScheduleDate] = useState("");
   const [scheduleTime, setScheduleTime] = useState("");
@@ -127,8 +132,9 @@ export default function OrderPage() {
   const payableBeforePoints = +(subtotal - discount).toFixed(2);
   const maxPoints = Math.min(currentUser?.points ?? 0, Math.floor(payableBeforePoints));
   const pointsUsed = Math.min(pointsToUse, maxPoints);
-  // Companies always get free delivery; regular clients only above €30
-  const freeDelivery = isCompany ? true : payableBeforePoints >= FREE_DELIVERY_FROM;
+  const isPickup = fulfillment === "pickup";
+  // Pickup is always free; companies get free delivery; regular clients only above €30.
+  const freeDelivery = isPickup ? true : isCompany ? true : payableBeforePoints >= FREE_DELIVERY_FROM;
   const delivery = cartLines.length > 0 ? (freeDelivery ? 0 : DELIVERY_FEE) : 0;
   const total = cartLines.length > 0 ? +(payableBeforePoints - pointsUsed + delivery).toFixed(2) : 0;
   const itemCount = cartLines.reduce((sum, l) => sum + l.qty, 0);
@@ -163,17 +169,25 @@ export default function OrderPage() {
       setMessage({ type: "error", text: minOrderNote });
       return;
     }
-    if (!form.name.trim() || !form.address.trim() || !form.phone.trim() || !form.postcode.trim()) {
-      setMessage({ type: "error", text: t.auth.fillFields });
-      return;
-    }
-    if (!isValidDutchPostcode(form.postcode)) {
-      setMessage({ type: "error", text: t.order.invalidPostcode });
-      return;
-    }
-    if (!isPostcodeInDeliveryArea(form.postcode)) {
-      setMessage({ type: "error", text: t.order.outsideArea });
-      return;
+    // Pickup only needs a name + phone; delivery also needs a valid in-area address.
+    if (isPickup) {
+      if (!form.name.trim() || !form.phone.trim()) {
+        setMessage({ type: "error", text: t.auth.fillFields });
+        return;
+      }
+    } else {
+      if (!form.name.trim() || !form.address.trim() || !form.phone.trim() || !form.postcode.trim()) {
+        setMessage({ type: "error", text: t.auth.fillFields });
+        return;
+      }
+      if (!isValidDutchPostcode(form.postcode)) {
+        setMessage({ type: "error", text: t.order.invalidPostcode });
+        return;
+      }
+      if (!isPostcodeInDeliveryArea(form.postcode)) {
+        setMessage({ type: "error", text: t.order.outsideArea });
+        return;
+      }
     }
     if (isCompany && scheduleType === "once" && (!scheduleDate || !scheduleTime)) {
       setMessage({ type: "error", text: t.schedule.pickDateTime });
@@ -185,11 +199,12 @@ export default function OrderPage() {
     }
     const res = await placeOrder({
       customerName: form.name,
-      address: form.address,
-      postcode: form.postcode,
+      address: isPickup ? "" : form.address,
+      postcode: isPickup ? "" : form.postcode,
       phone: form.phone,
       note: form.note,
       pointsToUse: pointsUsed,
+      fulfillment,
       schedule:
         isCompany && scheduleType !== "asap"
           ? {
@@ -223,6 +238,49 @@ export default function OrderPage() {
       setMessage({ type: "error", text: t.order.selectItem });
     }
   };
+
+  const fulfillmentToggle = (
+    <div className="space-y-2">
+      <p className="text-sm font-bold text-slate-900 dark:text-white">{t.order.fulfillmentTitle}</p>
+      <div className="grid grid-cols-2 gap-2">
+        <button
+          type="button"
+          onClick={() => setFulfillment("delivery")}
+          aria-pressed={fulfillment === "delivery"}
+          className={`flex min-w-0 flex-col items-start gap-1 rounded-2xl border p-3 text-left transition ${
+            fulfillment === "delivery"
+              ? "border-emerald-500 bg-emerald-500/10 ring-1 ring-emerald-500/40"
+              : "border-slate-200 bg-slate-50 hover:border-emerald-300 dark:border-white/10 dark:bg-white/5"
+          }`}
+        >
+          <span className={`flex items-center gap-1.5 text-sm font-bold ${fulfillment === "delivery" ? "text-emerald-700 dark:text-emerald-300" : "text-slate-700 dark:text-slate-200"}`}>
+            <FaTruck /> {t.order.optionDelivery}
+          </span>
+          <span className="text-[11px] leading-4 text-slate-500 dark:text-slate-400">{t.order.optionDeliverySub}</span>
+        </button>
+        <button
+          type="button"
+          onClick={() => setFulfillment("pickup")}
+          aria-pressed={fulfillment === "pickup"}
+          className={`flex min-w-0 flex-col items-start gap-1 rounded-2xl border p-3 text-left transition ${
+            fulfillment === "pickup"
+              ? "border-emerald-500 bg-emerald-500/10 ring-1 ring-emerald-500/40"
+              : "border-slate-200 bg-slate-50 hover:border-emerald-300 dark:border-white/10 dark:bg-white/5"
+          }`}
+        >
+          <span className={`flex items-center gap-1.5 text-sm font-bold ${fulfillment === "pickup" ? "text-emerald-700 dark:text-emerald-300" : "text-slate-700 dark:text-slate-200"}`}>
+            <FaBagShopping /> {t.order.optionPickup}
+          </span>
+          <span className="text-[11px] leading-4 text-slate-500 dark:text-slate-400">{t.order.optionPickupSub}</span>
+        </button>
+      </div>
+      {isPickup && (
+        <p className="flex items-start gap-2 rounded-xl bg-emerald-500/10 px-3 py-2 text-xs leading-5 text-emerald-700 dark:text-emerald-300">
+          <FaStore className="mt-0.5 shrink-0" /> {t.order.pickupInfo}
+        </p>
+      )}
+    </div>
+  );
 
   const ProductsGrid = () => (
     <div className="grid gap-3 grid-cols-2 sm:grid-cols-4 lg:grid-cols-2">
@@ -497,7 +555,8 @@ export default function OrderPage() {
 
             {/* Delivery details */}
             <div className="mt-5 space-y-3">
-              <p className="text-sm font-bold text-slate-900 dark:text-white">{t.order.deliveryDetails}</p>
+              {fulfillmentToggle}
+              <p className="text-sm font-bold text-slate-900 dark:text-white">{isPickup ? t.order.name : t.order.deliveryDetails}</p>
               <input
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
@@ -510,39 +569,43 @@ export default function OrderPage() {
                 placeholder={t.order.phone}
                 className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/5 dark:text-white"
               />
-              <input
-                value={form.address}
-                onChange={(e) => setForm({ ...form, address: e.target.value })}
-                placeholder={t.order.address}
-                className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/5 dark:text-white"
-              />
-              <div>
-                <input
-                  value={form.postcode}
-                  onChange={(e) => setForm({ ...form, postcode: e.target.value })}
-                  placeholder={`${t.order.postcode} (${t.order.postcodeHint})`}
-                  className={`w-full rounded-xl border bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition dark:bg-white/5 dark:text-white ${
-                    postcodeStatus === "outside"
-                      ? "border-red-400 focus:border-red-500 dark:border-red-500/50"
-                      : postcodeStatus === "ok"
-                        ? "border-emerald-400 focus:border-emerald-500 dark:border-emerald-500/50"
-                        : "border-slate-200 focus:border-emerald-500 dark:border-white/10"
-                  }`}
-                />
-                {postcodeStatus === "ok" ? (
-                  <p className="mt-1.5 flex items-center gap-1.5 text-xs font-medium text-emerald-600 dark:text-emerald-400">
-                    <FaCircleCheck className="shrink-0" /> {t.order.inDeliveryArea}
-                  </p>
-                ) : postcodeStatus === "outside" ? (
-                  <p className="mt-1.5 flex items-center gap-1.5 text-xs font-medium text-red-600 dark:text-red-400">
-                    <FaCircleExclamation className="shrink-0" /> {t.order.outsideArea}
-                  </p>
-                ) : (
-                  <p className="mt-1.5 flex items-center gap-1.5 text-xs text-slate-400 dark:text-slate-500">
-                    <FaLocationDot className="shrink-0" /> {t.order.deliveryAreaNote}
-                  </p>
-                )}
-              </div>
+              {!isPickup && (
+                <>
+                  <input
+                    value={form.address}
+                    onChange={(e) => setForm({ ...form, address: e.target.value })}
+                    placeholder={t.order.address}
+                    className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/5 dark:text-white"
+                  />
+                  <div>
+                    <input
+                      value={form.postcode}
+                      onChange={(e) => setForm({ ...form, postcode: e.target.value })}
+                      placeholder={`${t.order.postcode} (${t.order.postcodeHint})`}
+                      className={`w-full rounded-xl border bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition dark:bg-white/5 dark:text-white ${
+                        postcodeStatus === "outside"
+                          ? "border-red-400 focus:border-red-500 dark:border-red-500/50"
+                          : postcodeStatus === "ok"
+                            ? "border-emerald-400 focus:border-emerald-500 dark:border-emerald-500/50"
+                            : "border-slate-200 focus:border-emerald-500 dark:border-white/10"
+                      }`}
+                    />
+                    {postcodeStatus === "ok" ? (
+                      <p className="mt-1.5 flex items-center gap-1.5 text-xs font-medium text-emerald-600 dark:text-emerald-400">
+                        <FaCircleCheck className="shrink-0" /> {t.order.inDeliveryArea}
+                      </p>
+                    ) : postcodeStatus === "outside" ? (
+                      <p className="mt-1.5 flex items-center gap-1.5 text-xs font-medium text-red-600 dark:text-red-400">
+                        <FaCircleExclamation className="shrink-0" /> {t.order.outsideArea}
+                      </p>
+                    ) : (
+                      <p className="mt-1.5 flex items-center gap-1.5 text-xs text-slate-400 dark:text-slate-500">
+                        <FaLocationDot className="shrink-0" /> {t.order.deliveryAreaNote}
+                      </p>
+                    )}
+                  </div>
+                </>
+              )}
               <textarea
                 value={form.note}
                 onChange={(e) => setForm({ ...form, note: e.target.value })}
@@ -649,8 +712,10 @@ export default function OrderPage() {
                 </div>
               )}
               <div className="flex justify-between text-slate-600 dark:text-slate-300">
-                <span>{t.common.delivery}</span>
-                {freeDelivery && cartLines.length > 0 ? (
+                <span>{isPickup ? t.order.methodPickup : t.common.delivery}</span>
+                {isPickup ? (
+                  <span className="font-bold text-emerald-600 dark:text-emerald-400">€0.00</span>
+                ) : freeDelivery && cartLines.length > 0 ? (
                   <span className="font-bold text-emerald-600 dark:text-emerald-400">€0.00</span>
                 ) : (
                   <span className="font-semibold text-slate-900 dark:text-white">€{DELIVERY_FEE.toFixed(2)}</span>
@@ -806,8 +871,8 @@ export default function OrderPage() {
                   </div>
                 )}
                 <div className="flex justify-between text-slate-600 dark:text-slate-300">
-                  <span>{t.common.delivery}</span>
-                  {freeDelivery ? (
+                  <span>{isPickup ? t.order.methodPickup : t.common.delivery}</span>
+                  {isPickup || freeDelivery ? (
                     <span className="font-bold text-emerald-600 dark:text-emerald-400">€0.00</span>
                   ) : (
                     <span className="font-semibold">€{DELIVERY_FEE.toFixed(2)}</span>
@@ -861,6 +926,7 @@ export default function OrderPage() {
             </div>
 
             <div className="space-y-3 px-5 py-4">
+              {fulfillmentToggle}
               <input
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
@@ -873,39 +939,43 @@ export default function OrderPage() {
                 placeholder={t.order.phone}
                 className="w-full rounded-lg border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/5 dark:text-white"
               />
-              <input
-                value={form.address}
-                onChange={(e) => setForm({ ...form, address: e.target.value })}
-                placeholder={t.order.address}
-                className="w-full rounded-lg border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/5 dark:text-white"
-              />
-              <div>
-                <input
-                  value={form.postcode}
-                  onChange={(e) => setForm({ ...form, postcode: e.target.value })}
-                  placeholder={`${t.order.postcode} (${t.order.postcodeHint})`}
-                  className={`w-full rounded-lg border bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition dark:bg-white/5 dark:text-white ${
-                    postcodeStatus === "outside"
-                      ? "border-red-400 focus:border-red-500 dark:border-red-500/50"
-                      : postcodeStatus === "ok"
-                        ? "border-emerald-400 focus:border-emerald-500 dark:border-emerald-500/50"
-                        : "border-slate-200 focus:border-emerald-500 dark:border-white/10"
-                  }`}
-                />
-                {postcodeStatus === "ok" ? (
-                  <p className="mt-1.5 flex items-center gap-1.5 text-xs font-medium text-emerald-600 dark:text-emerald-400">
-                    <FaCircleCheck className="shrink-0" /> {t.order.inDeliveryArea}
-                  </p>
-                ) : postcodeStatus === "outside" ? (
-                  <p className="mt-1.5 flex items-center gap-1.5 text-xs font-medium text-red-600 dark:text-red-400">
-                    <FaCircleExclamation className="shrink-0" /> {t.order.outsideArea}
-                  </p>
-                ) : (
-                  <p className="mt-1.5 flex items-center gap-1.5 text-xs text-slate-400 dark:text-slate-500">
-                    <FaLocationDot className="shrink-0" /> {t.order.deliveryAreaNote}
-                  </p>
-                )}
-              </div>
+              {!isPickup && (
+                <>
+                  <input
+                    value={form.address}
+                    onChange={(e) => setForm({ ...form, address: e.target.value })}
+                    placeholder={t.order.address}
+                    className="w-full rounded-lg border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/5 dark:text-white"
+                  />
+                  <div>
+                    <input
+                      value={form.postcode}
+                      onChange={(e) => setForm({ ...form, postcode: e.target.value })}
+                      placeholder={`${t.order.postcode} (${t.order.postcodeHint})`}
+                      className={`w-full rounded-lg border bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition dark:bg-white/5 dark:text-white ${
+                        postcodeStatus === "outside"
+                          ? "border-red-400 focus:border-red-500 dark:border-red-500/50"
+                          : postcodeStatus === "ok"
+                            ? "border-emerald-400 focus:border-emerald-500 dark:border-emerald-500/50"
+                            : "border-slate-200 focus:border-emerald-500 dark:border-white/10"
+                      }`}
+                    />
+                    {postcodeStatus === "ok" ? (
+                      <p className="mt-1.5 flex items-center gap-1.5 text-xs font-medium text-emerald-600 dark:text-emerald-400">
+                        <FaCircleCheck className="shrink-0" /> {t.order.inDeliveryArea}
+                      </p>
+                    ) : postcodeStatus === "outside" ? (
+                      <p className="mt-1.5 flex items-center gap-1.5 text-xs font-medium text-red-600 dark:text-red-400">
+                        <FaCircleExclamation className="shrink-0" /> {t.order.outsideArea}
+                      </p>
+                    ) : (
+                      <p className="mt-1.5 flex items-center gap-1.5 text-xs text-slate-400 dark:text-slate-500">
+                        <FaLocationDot className="shrink-0" /> {t.order.deliveryAreaNote}
+                      </p>
+                    )}
+                  </div>
+                </>
+              )}
               <textarea
                 value={form.note}
                 onChange={(e) => setForm({ ...form, note: e.target.value })}

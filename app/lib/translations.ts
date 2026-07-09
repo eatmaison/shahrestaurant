@@ -98,6 +98,14 @@ export interface Dictionary {
     ingredients: string;
     allergens: string;
     contains: string;
+    fulfillmentTitle: string;
+    optionDelivery: string;
+    optionDeliverySub: string;
+    optionPickup: string;
+    optionPickupSub: string;
+    pickupInfo: string;
+    methodDelivery: string;
+    methodPickup: string;
   };
   auth: {
     loginTitle: string;
@@ -453,6 +461,14 @@ const en: Dictionary = {
     ingredients: "Ingredients",
     allergens: "Allergens",
     contains: "Contains:",
+    fulfillmentTitle: "How would you like to receive your order?",
+    optionDelivery: "Delivery",
+    optionDeliverySub: "We bring it to your address",
+    optionPickup: "Pickup",
+    optionPickupSub: "Collect it yourself in-store",
+    pickupInfo: "Pick up your order at Klaprozenweg 36a, 1032 KL Amsterdam.",
+    methodDelivery: "Delivery",
+    methodPickup: "Pickup",
   },
   auth: {
     loginTitle: "Welcome back",
@@ -812,6 +828,14 @@ const nl: Dictionary = {
     ingredients: "Ingrediënten",
     allergens: "Allergenen",
     contains: "Bevat:",
+    fulfillmentTitle: "Hoe wil je je bestelling ontvangen?",
+    optionDelivery: "Bezorgen",
+    optionDeliverySub: "Wij bezorgen op jouw adres",
+    optionPickup: "Afhalen",
+    optionPickupSub: "Zelf ophalen in de winkel",
+    pickupInfo: "Haal je bestelling af op Klaprozenweg 36a, 1032 KL Amsterdam.",
+    methodDelivery: "Bezorgen",
+    methodPickup: "Afhalen",
   },
   auth: {
     loginTitle: "Welkom terug",

@@ -82,6 +82,8 @@ const DDL: string[] = [
   )`,
   `CREATE UNIQUE INDEX IF NOT EXISTS idx_orders_order_number ON orders (order_number)`,
   `CREATE INDEX IF NOT EXISTS idx_orders_user_id ON orders (user_id)`,
+  // Delivery vs. self-pickup choice for databases created before it existed.
+  `ALTER TABLE orders ADD COLUMN IF NOT EXISTS fulfillment text NOT NULL DEFAULT 'delivery' CHECK (fulfillment IN ('delivery','pickup'))`,
   `CREATE TABLE IF NOT EXISTS order_items (
     id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
     order_id uuid NOT NULL REFERENCES orders(id) ON DELETE CASCADE,

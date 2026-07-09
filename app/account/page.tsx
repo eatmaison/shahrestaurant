@@ -331,6 +331,17 @@ export default function AccountPage() {
                       <span className="font-bold text-slate-900 dark:text-white">€{o.total.toFixed(2)}</span>
                     </div>
 
+                    <span
+                      className={`mt-2 inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-bold ${
+                        o.fulfillment === "pickup"
+                          ? "bg-amber-400/15 text-amber-700 dark:text-amber-300"
+                          : "bg-emerald-500/15 text-emerald-700 dark:text-emerald-300"
+                      }`}
+                    >
+                      {o.fulfillment === "pickup" ? "🛍️ " : "🚚 "}
+                      {o.fulfillment === "pickup" ? t.order.methodPickup : t.order.methodDelivery}
+                    </span>
+
                     {/* Live order status tracker */}
                     <div className="mt-3 rounded-xl bg-white p-3 dark:bg-white/5">
                       <div className="flex items-center justify-between">

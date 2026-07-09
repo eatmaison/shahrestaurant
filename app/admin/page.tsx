@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useRef, useState } from "react";
 import {
+  FaBagShopping,
   FaBoxOpen,
   FaBuilding,
   FaChartLine,
@@ -368,6 +369,20 @@ export default function AdminPage() {
               </button>
             )}
           </div>
+        </div>
+
+        {/* Contact & delivery details */}
+        <div className="mt-3 flex flex-wrap items-center gap-2">
+          <span
+            className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-black ${
+              o.fulfillment === "pickup"
+                ? "bg-amber-400/20 text-amber-700 dark:text-amber-300"
+                : "bg-emerald-500/15 text-emerald-700 dark:text-emerald-300"
+            }`}
+          >
+            {o.fulfillment === "pickup" ? <FaBagShopping /> : <FaTruck />}
+            {o.fulfillment === "pickup" ? t.order.methodPickup : t.order.methodDelivery}
+          </span>
         </div>
 
         {/* Contact & delivery details */}

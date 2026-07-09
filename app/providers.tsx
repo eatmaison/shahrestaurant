@@ -11,7 +11,7 @@ import {
 } from "react";
 import { translations, type Dictionary } from "./lib/translations";
 import { SEED_PRODUCTS } from "./lib/data";
-import type { AccountType, Lang, Order, OrderSchedule, OrderStatus, Product, Review, SocialLink, SocialPlatform, User, VipRequest } from "./lib/types";
+import type { AccountType, Lang, Order, OrderFulfillment, OrderSchedule, OrderStatus, Product, Review, SocialLink, SocialPlatform, User, VipRequest } from "./lib/types";
 
 const JSON_HEADERS = { "Content-Type": "application/json" } as const;
 
@@ -95,6 +95,7 @@ interface StoreCtx {
     note?: string;
     pointsToUse?: number;
     schedule?: OrderSchedule;
+    fulfillment?: OrderFulfillment;
   }) => Promise<{ ok: boolean; error?: "minOrder" | "empty" | "outsideArea" | "closed"; order?: Order; checkoutUrl?: string }>;
 
   /** Admin: advance an order's fulfilment status. */

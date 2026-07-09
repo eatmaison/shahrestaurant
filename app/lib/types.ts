@@ -85,6 +85,9 @@ export interface OrderSchedule {
 /** Fulfilment lifecycle of an order, advanced by the admin. */
 export type OrderStatus = "new" | "preparing" | "delivery" | "delivered";
 
+/** How the customer receives the order: delivered to their address, or picked up in person. */
+export type OrderFulfillment = "delivery" | "pickup";
+
 export interface Order {
   id: string;
   /** Human-readable sequential order number shown to the customer and admin. */
@@ -117,6 +120,8 @@ export interface Order {
   note?: string;
   /** Optional planned delivery (company accounts) */
   schedule?: OrderSchedule;
+  /** Whether the customer wants the order delivered or will pick it up themselves. */
+  fulfillment: OrderFulfillment;
 }
 
 export interface Review {

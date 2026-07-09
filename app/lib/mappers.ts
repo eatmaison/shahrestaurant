@@ -84,6 +84,7 @@ export function rowToOrder(r: any, items: OrderItem[]): Order {
     invoiceSent: r.invoice_sent,
     note: r.note ?? undefined,
     schedule: r.schedule ?? undefined,
+    fulfillment: r.fulfillment ?? "delivery",
   };
 }
 

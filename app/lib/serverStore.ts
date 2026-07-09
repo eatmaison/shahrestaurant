@@ -32,6 +32,7 @@ import type {
   AccountType,
   Order,
   OrderItem,
+  OrderFulfillment,
   OrderSchedule,
   Product,
   Review,
@@ -263,11 +264,13 @@ export async function placeOrder(details: {
   cart: Record<string, number>;
   pointsToUse?: number;
   schedule?: OrderSchedule;
+  fulfillment?: OrderFulfillment;
   origin?: string;
 }): Promise<{ ok: boolean; error?: "minOrder" | "empty" | "outsideArea" | "closed"; order?: Order; checkoutUrl?: string }> {
   await ensureReady();
   const currentUser = await getCurrentUser();
   const { customerName, address, postcode, phone, note, cart, pointsToUse = 0, schedule, origin } = details;
+  const fulfillment: OrderFulfillment = details.fulfillment === "pickup" ? "pickup" : "delivery";
 
   // Orders may be placed while closed — the kitchen starts preparing them at
   // the next opening (the customer is informed in the UI). Scheduled (planned)
@@ -279,7 +282,8 @@ export async function placeOrder(details: {
   const productIds = Object.keys(cart).filter((id) => (cart[id] || 0) > 0);
   if (productIds.length === 0) return { ok: false, error: "empty" };
 
-  if (!isPostcodeInDeliveryArea(postcode)) return { ok: false, error: "outsideArea" };
+  // Pickup orders skip the delivery-area check (the customer collects it in person).
+  if (fulfillment === "delivery" && !isPostcodeInDeliveryArea(postcode)) return { ok: false, error: "outsideArea" };
 
   const productRows = (await sql.query(`SELECT * FROM products WHERE id = ANY($1::text[])`, [productIds])) as any[];
   const products = productRows.map(rowToProduct);
@@ -308,7 +312,8 @@ export async function placeOrder(details: {
 
   const payableBeforePoints = +(subtotal - discount).toFixed(2);
   const pointsUsed = Math.min(Math.max(0, Math.floor(pointsToUse)), currentUser?.points ?? 0, Math.floor(payableBeforePoints));
-  const delivery = isCompany ? 0 : payableBeforePoints >= FREE_DELIVERY_FROM ? 0 : DELIVERY_FEE;
+  // Pickup is always free of delivery charge; otherwise companies + large orders ship free.
+  const delivery = fulfillment === "pickup" ? 0 : isCompany ? 0 : payableBeforePoints >= FREE_DELIVERY_FROM ? 0 : DELIVERY_FEE;
   const paidAmount = +(payableBeforePoints - pointsUsed).toFixed(2);
   const total = +(paidAmount + delivery).toFixed(2);
   const pointsEarned = Math.floor(paidAmount / POINTS_EARN_EVERY);
@@ -318,7 +323,7 @@ export async function placeOrder(details: {
     userId: currentUser?.id,
     customerName,
     address,
-    postcode: normalizePostcode(postcode),
+    postcode: fulfillment === "pickup" ? normalizePostcode(postcode || "") : normalizePostcode(postcode),
     phone,
     note: note?.trim() || undefined,
     items,
@@ -330,6 +335,7 @@ export async function placeOrder(details: {
     total,
     accountType,
     schedule,
+    fulfillment,
   };
 
   // Company accounts pay by invoice; personal customers pay online via Mollie.
@@ -383,14 +389,15 @@ interface ComputedOrder {
   total: number;
   accountType: AccountType;
   schedule?: OrderSchedule;
+  fulfillment: OrderFulfillment;
 }
 
 /** Insert an order + its items, and (for logged-in users) update loyalty balance and saved delivery details. */
 async function insertOrder(c: ComputedOrder, paid: boolean): Promise<Order> {
   const orderRows = (await sql.query(
     `INSERT INTO orders
-       (user_id, customer_name, address, postcode, phone, subtotal, discount, points_used, points_earned, delivery, total, status, paid, account_type, invoice_sent, note, schedule)
-     VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,'new',$12,$13,false,$14,$15::jsonb)
+       (user_id, customer_name, address, postcode, phone, subtotal, discount, points_used, points_earned, delivery, total, status, paid, account_type, invoice_sent, note, schedule, fulfillment)
+     VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,'new',$12,$13,false,$14,$15::jsonb,$16)
      RETURNING *`,
     [
       c.userId ?? null,
@@ -408,6 +415,7 @@ async function insertOrder(c: ComputedOrder, paid: boolean): Promise<Order> {
       c.accountType,
       c.note ?? null,
       c.schedule ? JSON.stringify(c.schedule) : null,
+      c.fulfillment,
     ]
   )) as any[];
   const orderRow = orderRows[0];

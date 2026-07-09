@@ -75,6 +75,8 @@ CREATE TABLE IF NOT EXISTS orders (
   note         text,
   -- Company scheduled delivery: { "type": "once|workdays", "date": "YYYY-MM-DD", "time": "HH:mm" }
   schedule     jsonb,
+  -- How the customer receives the order: delivered to their address or self-pickup.
+  fulfillment  text        NOT NULL DEFAULT 'delivery' CHECK (fulfillment IN ('delivery', 'pickup')),
   created_at   timestamptz NOT NULL DEFAULT now()
 );
 
