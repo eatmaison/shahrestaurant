@@ -219,6 +219,7 @@ export interface Dictionary {
     manageMenusSub: string;
     addRestaurant: string;
     restaurantName: string;
+    uploadLogo: string;
     addCategoryBtn: string;
     categoryName: string;
     pickIcon: string;
@@ -610,6 +611,7 @@ const en: Dictionary = {
     manageMenusSub: "Add or remove restaurants and their menu categories.",
     addRestaurant: "Add restaurant",
     restaurantName: "Restaurant name",
+    uploadLogo: "Upload logo",
     addCategoryBtn: "Add category",
     categoryName: "Category name",
     pickIcon: "Icon",
@@ -1003,6 +1005,7 @@ const nl: Dictionary = {
     manageMenusSub: "Voeg restaurants en hun menucategorieën toe of verwijder ze.",
     addRestaurant: "Restaurant toevoegen",
     restaurantName: "Restaurantnaam",
+    uploadLogo: "Logo uploaden",
     addCategoryBtn: "Categorie toevoegen",
     categoryName: "Categorienaam",
     pickIcon: "Icoon",

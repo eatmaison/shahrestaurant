@@ -92,17 +92,19 @@ const parsePrice = (raw: string): number | null => {
 };
 
 /**
- * Reads an image file and returns a downscaled JPEG data URL (max 1200px).
+ * Reads an image file and returns a downscaled data URL (default: max 1200px JPEG).
  * Large phone photos (10MB+) would otherwise exceed the request size limit and
  * silently fail to save; this also converts formats like Apple HEIC to JPEG.
  */
-const processImageFile = (file: File): Promise<string> =>
+const processImageFile = (file: File, opts?: { maxDim?: number; mime?: string }): Promise<string> =>
   new Promise((resolve, reject) => {
+    const maxDim = opts?.maxDim ?? 1200;
+    const mime = opts?.mime ?? "image/jpeg";
     const url = URL.createObjectURL(file);
     const img = new window.Image();
     img.onload = () => {
       URL.revokeObjectURL(url);
-      const scale = Math.min(1, 1200 / Math.max(img.naturalWidth, img.naturalHeight));
+      const scale = Math.min(1, maxDim / Math.max(img.naturalWidth, img.naturalHeight));
       const w = Math.max(1, Math.round(img.naturalWidth * scale));
       const h = Math.max(1, Math.round(img.naturalHeight * scale));
       const canvas = document.createElement("canvas");
@@ -111,7 +113,7 @@ const processImageFile = (file: File): Promise<string> =>
       const ctx = canvas.getContext("2d");
       if (!ctx) return reject(new Error("canvas"));
       ctx.drawImage(img, 0, 0, w, h);
-      resolve(canvas.toDataURL("image/jpeg", 0.85));
+      resolve(canvas.toDataURL(mime, 0.85));
     };
     img.onerror = () => {
       URL.revokeObjectURL(url);
@@ -125,6 +127,9 @@ export default function AdminPage() {
   const { currentUser, products, orders, users, addProduct, removeProduct, updateProduct, brands, manageBrands, updateOrderStatus, setOrderPaid, setInvoiceSent, vipRequests, approveVipRequest, rejectVipRequest, socialLinks, updateSocialLink, hydrated } = useStore();
   const fileRef = useRef<HTMLInputElement>(null);
   const editFileRef = useRef<HTMLInputElement>(null);
+  const logoFileRef = useRef<HTMLInputElement>(null);
+  /** Brand whose logo will receive the next picked file. */
+  const logoBrandIdRef = useRef<string | null>(null);
 
   const [draft, setDraft] = useState({
     name: "",
@@ -241,6 +246,9 @@ export default function AdminPage() {
   const [socialSavedFor, setSocialSavedFor] = useState<string | null>(null);
   // Social links panel is collapsed by default to save space in the admin panel.
   const [socialOpen, setSocialOpen] = useState(false);
+  // Sales-by-category and top-products panels are also collapsed by default.
+  const [salesOpen, setSalesOpen] = useState(false);
+  const [topOpen, setTopOpen] = useState(false);
 
   const socialUrl = (platform: string): string =>
     socialDrafts[platform] ?? socialLinks.find((l) => l.platform === platform)?.url ?? "";
@@ -490,6 +498,25 @@ export default function AdminPage() {
     if (!manageBrandId || !newCatName.trim()) return;
     if (await runManage({ action: "addCategory", brandId: manageBrandId, name: newCatName.trim(), icon: newCatIcon })) {
       setNewCatName("");
+    }
+  };
+
+  /** Pick-a-logo flow: open the file picker targeting a specific restaurant. */
+  const pickLogo = (brandId: string) => {
+    logoBrandIdRef.current = brandId;
+    logoFileRef.current?.click();
+  };
+
+  const onLogoFile = async (file?: File) => {
+    const brandId = logoBrandIdRef.current;
+    if (logoFileRef.current) logoFileRef.current.value = "";
+    if (!file || !brandId) return;
+    try {
+      // Logos stay small (400px) and keep transparency by encoding as PNG.
+      const logo = await processImageFile(file, { maxDim: 400, mime: "image/png" });
+      await runManage({ action: "setLogo", brandId, logo });
+    } catch {
+      setManageState({ status: "error", message: t.admin.imageError });
     }
   };
 
@@ -809,47 +836,71 @@ export default function AdminPage() {
       </div>
 
       <div className="mt-6 grid gap-6 lg:grid-cols-2">
-        {/* Sales by category */}
-        <div className="rounded-3xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-white/5">
-          <h2 className="text-lg font-black text-slate-900 dark:text-white">{t.admin.ordersByCategory}</h2>
-          <div className="mt-4 space-y-3">
-            {allCategories.map((cat) => {
-              const val = stats.byCategory[cat] || 0;
-              const Icon = categoryIconFor(brands, cat);
-              return (
-                <div key={cat}>
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="flex items-center gap-2 font-semibold text-slate-700 dark:text-slate-200">
-                      <Icon className="text-emerald-600 dark:text-emerald-400" /> {cat}
-                    </span>
-                    <span className="font-bold text-slate-900 dark:text-white">€{val.toFixed(2)}</span>
-                  </div>
-                  <div className="mt-1.5 h-2.5 w-full overflow-hidden rounded-full bg-slate-100 dark:bg-white/10">
-                    <div className="h-full rounded-full bg-gradient-to-r from-emerald-500 to-sky-500 transition-all" style={{ width: `${(val / stats.maxCat) * 100}%` }} />
-                  </div>
-                </div>
-              );
-            })}
+        {/* Sales by category (collapsible) */}
+        <div className="self-start rounded-3xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-white/5">
+          <button
+            type="button"
+            onClick={() => setSalesOpen((o) => !o)}
+            aria-expanded={salesOpen}
+            className="flex w-full items-center gap-2 text-left"
+          >
+            <h2 className="flex-1 text-lg font-black text-slate-900 dark:text-white">{t.admin.ordersByCategory}</h2>
+            <FaChevronDown className={`shrink-0 text-slate-400 transition-transform duration-300 ${salesOpen ? "rotate-180" : ""}`} />
+          </button>
+          <div className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${salesOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
+            <div className="overflow-hidden">
+              <div className="mt-4 space-y-3">
+                {allCategories.map((cat) => {
+                  const val = stats.byCategory[cat] || 0;
+                  const Icon = categoryIconFor(brands, cat);
+                  return (
+                    <div key={cat}>
+                      <div className="flex items-center justify-between text-sm">
+                        <span className="flex items-center gap-2 font-semibold text-slate-700 dark:text-slate-200">
+                          <Icon className="text-emerald-600 dark:text-emerald-400" /> {cat}
+                        </span>
+                        <span className="font-bold text-slate-900 dark:text-white">€{val.toFixed(2)}</span>
+                      </div>
+                      <div className="mt-1.5 h-2.5 w-full overflow-hidden rounded-full bg-slate-100 dark:bg-white/10">
+                        <div className="h-full rounded-full bg-gradient-to-r from-emerald-500 to-sky-500 transition-all" style={{ width: `${(val / stats.maxCat) * 100}%` }} />
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Top products */}
-        <div className="rounded-3xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-white/5">
-          <h2 className="text-lg font-black text-slate-900 dark:text-white">{t.admin.topProducts}</h2>
-          {stats.top.length === 0 ? (
-            <p className="mt-3 text-sm text-slate-500 dark:text-slate-400">{t.admin.noOrders}</p>
-          ) : (
-            <ol className="mt-4 space-y-2">
-              {stats.top.map((p, i) => (
-                <li key={p.name} className="flex items-center gap-3 rounded-2xl border border-slate-100 bg-slate-50 px-4 py-3 dark:border-white/5 dark:bg-white/5">
-                  <span className="grid h-7 w-7 place-items-center rounded-full bg-emerald-500/15 text-xs font-black text-emerald-700 dark:text-emerald-300">{i + 1}</span>
-                  <span className="flex-1 truncate text-sm font-semibold text-slate-900 dark:text-white">{p.name}</span>
-                  <span className="text-xs text-slate-500 dark:text-slate-400">×{p.qty}</span>
-                  <span className="text-sm font-bold text-slate-900 dark:text-white">€{p.revenue.toFixed(2)}</span>
-                </li>
-              ))}
-            </ol>
-          )}
+        {/* Top products (collapsible) */}
+        <div className="self-start rounded-3xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-white/5">
+          <button
+            type="button"
+            onClick={() => setTopOpen((o) => !o)}
+            aria-expanded={topOpen}
+            className="flex w-full items-center gap-2 text-left"
+          >
+            <h2 className="flex-1 text-lg font-black text-slate-900 dark:text-white">{t.admin.topProducts}</h2>
+            <FaChevronDown className={`shrink-0 text-slate-400 transition-transform duration-300 ${topOpen ? "rotate-180" : ""}`} />
+          </button>
+          <div className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${topOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
+            <div className="overflow-hidden">
+              {stats.top.length === 0 ? (
+                <p className="mt-3 text-sm text-slate-500 dark:text-slate-400">{t.admin.noOrders}</p>
+              ) : (
+                <ol className="mt-4 space-y-2">
+                  {stats.top.map((p, i) => (
+                    <li key={p.name} className="flex items-center gap-3 rounded-2xl border border-slate-100 bg-slate-50 px-4 py-3 dark:border-white/5 dark:bg-white/5">
+                      <span className="grid h-7 w-7 place-items-center rounded-full bg-emerald-500/15 text-xs font-black text-emerald-700 dark:text-emerald-300">{i + 1}</span>
+                      <span className="flex-1 truncate text-sm font-semibold text-slate-900 dark:text-white">{p.name}</span>
+                      <span className="text-xs text-slate-500 dark:text-slate-400">×{p.qty}</span>
+                      <span className="text-sm font-bold text-slate-900 dark:text-white">€{p.revenue.toFixed(2)}</span>
+                    </li>
+                  ))}
+                </ol>
+              )}
+            </div>
+          </div>
         </div>
       </div>
 
@@ -1355,18 +1406,39 @@ export default function AdminPage() {
                       }`}
                     >
                       <button onClick={() => setManageBrandId(b.id)} className="flex min-w-0 flex-1 items-center gap-3 text-left">
-                        <span className="relative grid h-9 w-9 shrink-0 place-items-center overflow-hidden rounded-xl bg-white ring-1 ring-slate-200 dark:ring-white/10">
-                          {b.logo ? (
-                            <Image src={b.logo} alt={b.name} fill sizes="36px" className="object-contain p-0.5" />
-                          ) : (
-                            <FaStore className="text-slate-400" />
-                          )}
-                        </span>
                         <span className="min-w-0">
                           <span className="block truncate text-sm font-bold text-slate-900 dark:text-white">{b.name}</span>
                           <span className="text-[11px] text-slate-500 dark:text-slate-400">{b.categories.length} {t.admin.productCategory.toLowerCase()}</span>
                         </span>
                       </button>
+                      {/* Logo: click to upload/replace, × to remove */}
+                      <span className="relative shrink-0">
+                        <button
+                          onClick={() => pickLogo(b.id)}
+                          className="group relative grid h-10 w-10 place-items-center overflow-hidden rounded-xl bg-white ring-1 ring-slate-200 transition hover:ring-emerald-400 dark:ring-white/10"
+                          aria-label={`${t.admin.uploadLogo}: ${b.name}`}
+                          title={t.admin.uploadLogo}
+                        >
+                          {b.logo ? (
+                            <Image src={b.logo} alt={b.name} fill sizes="40px" className="object-contain p-0.5" />
+                          ) : (
+                            <FaStore className="text-slate-400" />
+                          )}
+                          <span className="absolute inset-0 grid place-items-center bg-black/45 text-white opacity-0 transition group-hover:opacity-100">
+                            <FaImage className="text-xs" />
+                          </span>
+                        </button>
+                        {b.logo && (
+                          <button
+                            onClick={() => runManage({ action: "setLogo", brandId: b.id, logo: "" })}
+                            className="absolute -right-1.5 -top-1.5 grid h-4.5 w-4.5 place-items-center rounded-full bg-black/60 text-[9px] text-white transition hover:bg-red-600"
+                            aria-label={`${t.common.remove} logo: ${b.name}`}
+                            title={t.common.remove}
+                          >
+                            <FaXmark />
+                          </button>
+                        )}
+                      </span>
                       <button
                         onClick={() => runManage({ action: "removeBrand", id: b.id })}
                         className="grid h-8 w-8 shrink-0 place-items-center rounded-full text-slate-400 transition hover:bg-red-500/10 hover:text-red-600"
@@ -1396,6 +1468,7 @@ export default function AdminPage() {
                     <FaPlus /> {t.admin.addRestaurant}
                   </button>
                 </div>
+                <input ref={logoFileRef} type="file" accept="image/*" className="hidden" onChange={(e) => onLogoFile(e.target.files?.[0])} />
               </div>
 
               {/* Categories of the selected restaurant */}

@@ -71,6 +71,7 @@ interface StoreCtx {
       | { action: "removeBrand"; id: string }
       | { action: "addCategory"; brandId: string; name: string; icon: string }
       | { action: "removeCategory"; brandId: string; name: string }
+      | { action: "setLogo"; brandId: string; logo: string }
   ) => Promise<{ ok: boolean; error?: string }>;
 
   cart: Record<string, number>;

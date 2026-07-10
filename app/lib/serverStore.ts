@@ -590,6 +590,14 @@ export async function removeBrand(id: string): Promise<BrandResult> {
   return { ok: true };
 }
 
+/** Set (or clear, with an empty string) a restaurant's logo image. */
+export async function setBrandLogo(brandId: string, logo: string): Promise<BrandResult> {
+  await requireAdmin();
+  const rows = (await sql.query(`UPDATE brands SET logo = $2 WHERE id = $1 RETURNING id`, [brandId, logo])) as any[];
+  if (!rows[0]) return { ok: false, error: "invalidInput" };
+  return { ok: true };
+}
+
 export async function addBrandCategory(brandId: string, name: string, icon: string): Promise<BrandResult> {
   await requireAdmin();
   const rows = (await sql.query(`SELECT * FROM brands WHERE id = $1`, [brandId])) as any[];

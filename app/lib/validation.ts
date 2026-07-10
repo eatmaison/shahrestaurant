@@ -129,6 +129,15 @@ export const brandsActionSchema = z.discriminatedUnion("action", [
     brandId: z.string().trim().min(1).max(80),
     name: z.string().trim().min(1).max(60),
   }),
+  z.object({
+    action: z.literal("setLogo"),
+    brandId: z.string().trim().min(1).max(80),
+    // Empty clears the logo; otherwise require an image data URL (or public path).
+    logo: z
+      .string()
+      .max(500_000)
+      .refine((v) => v === "" || v.startsWith("data:image/") || v.startsWith("/"), "Logo must be an image"),
+  }),
 ]);
 
 export type BrandsActionInput = z.infer<typeof brandsActionSchema>;
