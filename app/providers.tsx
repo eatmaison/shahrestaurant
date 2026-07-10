@@ -10,8 +10,8 @@ import {
   type ReactNode,
 } from "react";
 import { translations, type Dictionary } from "./lib/translations";
-import { SEED_PRODUCTS } from "./lib/data";
-import type { AccountType, Lang, Order, OrderFulfillment, OrderSchedule, OrderStatus, Product, Review, SocialLink, SocialPlatform, User, VipRequest } from "./lib/types";
+import { DEFAULT_BRAND_CONFIGS, SEED_PRODUCTS } from "./lib/data";
+import type { AccountType, BrandConfig, Lang, Order, OrderFulfillment, OrderSchedule, OrderStatus, Product, Review, SocialLink, SocialPlatform, User, VipRequest } from "./lib/types";
 
 const JSON_HEADERS = { "Content-Type": "application/json" } as const;
 
@@ -61,6 +61,17 @@ interface StoreCtx {
   addProduct: (p: Omit<Product, "id">) => Promise<{ ok: boolean; error?: string }>;
   removeProduct: (id: string) => Promise<void>;
   updateProduct: (id: string, patch: Partial<Omit<Product, "id">>) => Promise<{ ok: boolean; error?: string }>;
+
+  /** Admin-managed restaurants and their menu categories. */
+  brands: BrandConfig[];
+  /** Admin: add/remove restaurants and categories. `error` is a code for translation. */
+  manageBrands: (
+    input:
+      | { action: "addBrand"; name: string }
+      | { action: "removeBrand"; id: string }
+      | { action: "addCategory"; brandId: string; name: string; icon: string }
+      | { action: "removeCategory"; brandId: string; name: string }
+  ) => Promise<{ ok: boolean; error?: string }>;
 
   cart: Record<string, number>;
   addToCart: (id: string) => void;
@@ -166,6 +177,7 @@ export function Providers({ children }: { children: ReactNode }) {
   const [lang, setLangState] = useState<Lang>("en");
 
   const [products, setProducts] = useState<Product[]>(SEED_PRODUCTS);
+  const [brands, setBrands] = useState<BrandConfig[]>(DEFAULT_BRAND_CONFIGS);
   const [cart, setCart] = useState<Record<string, number>>({});
   const [users, setUsers] = useState<User[]>([]);
   const [currentUser, setCurrentUser] = useState<User | null>(null);
@@ -181,6 +193,7 @@ export function Providers({ children }: { children: ReactNode }) {
       if (!res.ok) return;
       const data = await res.json();
       setProducts(data.products ?? []);
+      setBrands(data.brands ?? []);
       setCurrentUser(data.currentUser ?? null);
       setOrders(data.orders ?? []);
       setUsers(data.users ?? []);
@@ -250,6 +263,18 @@ export function Providers({ children }: { children: ReactNode }) {
     const body = JSON.stringify({ id: pid, ...patch }, (_key, value) => (value === undefined ? null : value));
     try {
       const res = await fetch("/api/products", { method: "PATCH", headers: JSON_HEADERS, body });
+      const data = await res.json().catch(() => null);
+      if (!res.ok || !data?.ok) return { ok: false, error: data?.error ?? `HTTP ${res.status}` };
+      await refresh();
+      return { ok: true };
+    } catch (err) {
+      return { ok: false, error: err instanceof Error ? err.message : "network" };
+    }
+  }, [refresh]);
+
+  const manageBrands = useCallback<StoreCtx["manageBrands"]>(async (input) => {
+    try {
+      const res = await fetch("/api/brands", { method: "POST", headers: JSON_HEADERS, body: JSON.stringify(input) });
       const data = await res.json().catch(() => null);
       if (!res.ok || !data?.ok) return { ok: false, error: data?.error ?? `HTTP ${res.status}` };
       await refresh();
@@ -417,6 +442,8 @@ export function Providers({ children }: { children: ReactNode }) {
       addProduct,
       removeProduct,
       updateProduct,
+      brands,
+      manageBrands,
       cart,
       addToCart,
       removeFromCart,
@@ -447,6 +474,8 @@ export function Providers({ children }: { children: ReactNode }) {
       addProduct,
       removeProduct,
       updateProduct,
+      brands,
+      manageBrands,
       cart,
       addToCart,
       removeFromCart,

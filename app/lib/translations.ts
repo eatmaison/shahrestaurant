@@ -215,6 +215,24 @@ export interface Dictionary {
     priceInvalid: string;
     priceHint: string;
     imageError: string;
+    manageMenus: string;
+    manageMenusSub: string;
+    addRestaurant: string;
+    restaurantName: string;
+    addCategoryBtn: string;
+    categoryName: string;
+    pickIcon: string;
+    brandExists: string;
+    categoryExists: string;
+    brandHasProducts: string;
+    categoryHasProducts: string;
+    lastBrand: string;
+    lastCategory: string;
+    filterAll: string;
+    filterToday: string;
+    filterWeek: string;
+    filterMonth: string;
+    filterPickDate: string;
     noOrders: string;
     ordersByCategory: string;
     customerInsights: string;
@@ -588,6 +606,24 @@ const en: Dictionary = {
     priceInvalid: "Enter a valid price, e.g. 8.73",
     priceHint: "Use a dot for cents, e.g. 8.73 — a comma is converted automatically.",
     imageError: "This image could not be read. Please use a JPG or PNG photo.",
+    manageMenus: "Restaurants & categories",
+    manageMenusSub: "Add or remove restaurants and their menu categories.",
+    addRestaurant: "Add restaurant",
+    restaurantName: "Restaurant name",
+    addCategoryBtn: "Add category",
+    categoryName: "Category name",
+    pickIcon: "Icon",
+    brandExists: "A restaurant with this name already exists.",
+    categoryExists: "This category already exists.",
+    brandHasProducts: "This restaurant still has products — delete or move them first.",
+    categoryHasProducts: "This category still has products — delete or move them first.",
+    lastBrand: "At least one restaurant is required.",
+    lastCategory: "A restaurant needs at least one category.",
+    filterAll: "All time",
+    filterToday: "Today",
+    filterWeek: "Last 7 days",
+    filterMonth: "Last 30 days",
+    filterPickDate: "Pick a date",
     noOrders: "No orders yet.",
     ordersByCategory: "Sales by category",
     customerInsights: "Customer insights",
@@ -963,6 +999,24 @@ const nl: Dictionary = {
     priceInvalid: "Voer een geldige prijs in, bijv. 8.73",
     priceHint: "Gebruik een punt voor centen, bijv. 8.73 — een komma wordt automatisch omgezet.",
     imageError: "Deze afbeelding kon niet worden gelezen. Gebruik een JPG- of PNG-foto.",
+    manageMenus: "Restaurants & categorieën",
+    manageMenusSub: "Voeg restaurants en hun menucategorieën toe of verwijder ze.",
+    addRestaurant: "Restaurant toevoegen",
+    restaurantName: "Restaurantnaam",
+    addCategoryBtn: "Categorie toevoegen",
+    categoryName: "Categorienaam",
+    pickIcon: "Icoon",
+    brandExists: "Er bestaat al een restaurant met deze naam.",
+    categoryExists: "Deze categorie bestaat al.",
+    brandHasProducts: "Dit restaurant heeft nog producten — verwijder of verplaats ze eerst.",
+    categoryHasProducts: "Deze categorie heeft nog producten — verwijder of verplaats ze eerst.",
+    lastBrand: "Er is minimaal één restaurant nodig.",
+    lastCategory: "Een restaurant heeft minimaal één categorie nodig.",
+    filterAll: "Alle tijd",
+    filterToday: "Vandaag",
+    filterWeek: "Laatste 7 dagen",
+    filterMonth: "Laatste 30 dagen",
+    filterPickDate: "Kies een datum",
     noOrders: "Nog geen bestellingen.",
     ordersByCategory: "Verkoop per categorie",
     customerInsights: "Klantinzichten",

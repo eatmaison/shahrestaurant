@@ -1,5 +1,5 @@
 import { neon } from "@neondatabase/serverless";
-import { SEED_PRODUCTS } from "./data";
+import { DEFAULT_BRAND_CONFIGS, SEED_PRODUCTS } from "./data";
 
 /**
  * Neon (PostgreSQL) client. Uses the serverless HTTP driver, which works both
@@ -125,6 +125,19 @@ const DDL: string[] = [
     created_at timestamptz NOT NULL DEFAULT now()
   )`,
   `CREATE INDEX IF NOT EXISTS idx_payments_mollie ON payments (mollie_payment_id)`,
+  // Admin-managed restaurants/brands and their menu categories (with icon keys).
+  `CREATE TABLE IF NOT EXISTS brands (
+    id text PRIMARY KEY,
+    name text NOT NULL,
+    logo text NOT NULL DEFAULT '',
+    sort integer NOT NULL DEFAULT 0,
+    categories jsonb NOT NULL DEFAULT '[]',
+    created_at timestamptz NOT NULL DEFAULT now()
+  )`,
+  // Databases created from the original schema constrained brand to the two
+  // built-in restaurants; brands are admin-managed now, so drop those checks.
+  `ALTER TABLE products DROP CONSTRAINT IF EXISTS products_brand_check`,
+  `ALTER TABLE order_items DROP CONSTRAINT IF EXISTS order_items_brand_check`,
 ];
 
 let readyPromise: Promise<void> | null = null;
@@ -140,6 +153,7 @@ export function ensureReady(): Promise<void> {
         await sql.query(stmt);
       }
       await seedProducts();
+      await seedBrands();
     })().catch((err) => {
       // Reset so a later request can retry after a transient failure.
       readyPromise = null;
@@ -171,6 +185,20 @@ async function seedProducts(): Promise<void> {
         p.ingredients ?? [],
         p.allergens ?? [],
       ]
+    );
+  }
+}
+
+/** Insert the built-in restaurants (with their categories) if the brands table is empty. */
+async function seedBrands(): Promise<void> {
+  const rows = (await sql.query(`SELECT count(*)::int AS n FROM brands`)) as { n: number }[];
+  if (rows[0]?.n > 0) return;
+
+  for (const [i, b] of DEFAULT_BRAND_CONFIGS.entries()) {
+    await sql.query(
+      `INSERT INTO brands (id, name, logo, sort, categories) VALUES ($1,$2,$3,$4,$5::jsonb)
+       ON CONFLICT (id) DO NOTHING`,
+      [b.id, b.name, b.logo, i, JSON.stringify(b.categories)]
     );
   }
 }

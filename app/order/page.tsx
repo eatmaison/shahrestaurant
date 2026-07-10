@@ -22,14 +22,12 @@ import { MdMenuBook } from "react-icons/md";
 import { useLang, useStore } from "../providers";
 import ProductDetailsModal from "../components/ProductDetailsModal";
 import {
-  BRANDS,
-  brandInfo,
+  categoryIconFor,
   COMPANY_DISCOUNT_PCT,
   COMPANY_MIN_ORDER,
   DELIVERY_FEE,
   FREE_DELIVERY_FROM,
   formatOrderNumber,
-  getCategoryIcon,
   isDrinkCategory,
   isPostcodeInDeliveryArea,
   isValidDutchPostcode,
@@ -41,7 +39,7 @@ import type { Brand, Category, Product } from "../lib/types";
 
 export default function OrderPage() {
   const { t, lang } = useLang();
-  const { products, cart, addToCart, removeFromCart, currentUser, placeOrder } = useStore();
+  const { products, brands, cart, addToCart, removeFromCart, currentUser, placeOrder } = useStore();
 
   const [activeBrand, setActiveBrand] = useState<Brand>("eattogo");
   const [activeCategory, setActiveCategory] = useState<Category>("Wraps");
@@ -102,11 +100,26 @@ export default function OrderPage() {
 
   const visible = products.filter((p) => p.brand === activeBrand && p.category === activeCategory);
 
+  /** The active restaurant's admin-managed config (safe fallback while loading). */
+  const activeBrandCfg = brands.find((b) => b.id === activeBrand) ?? brands[0];
+
+  // Keep the selected restaurant/category valid when the admin edits menus.
+  useEffect(() => {
+    if (brands.length === 0) return;
+    const brand = brands.find((b) => b.id === activeBrand);
+    if (!brand) {
+      setActiveBrand(brands[0].id);
+      setActiveCategory(brands[0].categories[0]?.name ?? "");
+    } else if (!brand.categories.some((c) => c.name === activeCategory)) {
+      setActiveCategory(brand.categories[0]?.name ?? "");
+    }
+  }, [brands, activeBrand, activeCategory]);
+
   // Switch restaurant/brand and jump to that brand's first category.
   const selectBrand = (brand: Brand) => {
     if (brand === activeBrand) return;
     setActiveBrand(brand);
-    setActiveCategory(brandInfo(brand).categories[0]);
+    setActiveCategory(brands.find((b) => b.id === brand)?.categories[0]?.name ?? "");
   };
 
   const cartLines = useMemo(
@@ -286,7 +299,7 @@ export default function OrderPage() {
     <div className="grid gap-3 grid-cols-2 sm:grid-cols-4 lg:grid-cols-2">
       {visible.map((p) => {
         const qty = cart[p.id] || 0;
-        const Icon = getCategoryIcon(p.category);
+        const Icon = categoryIconFor(brands, p.category);
         return (
           <article
             key={p.id}
@@ -395,7 +408,7 @@ export default function OrderPage() {
       <div className="sticky top-[64px] z-40 border-b border-slate-200 bg-white/90 backdrop-blur dark:border-white/10 dark:bg-[#060b12]/90 lg:hidden">
         {/* Restaurant switcher */}
         <div className="flex gap-2 overflow-x-auto px-3 pt-2">
-          {BRANDS.map((b) => {
+          {brands.map((b) => {
             const active = b.id === activeBrand;
             return (
               <button
@@ -407,8 +420,8 @@ export default function OrderPage() {
                     : "border-slate-200 bg-white text-slate-500 dark:border-white/10 dark:bg-white/5 dark:text-slate-400"
                 }`}
               >
-                <span className="relative h-5 w-5 overflow-hidden rounded-full bg-white">
-                  <Image src={b.logo} alt={b.name} fill sizes="20px" className="object-contain" />
+                <span className="relative grid h-5 w-5 place-items-center overflow-hidden rounded-full bg-white">
+                  {b.logo ? <Image src={b.logo} alt={b.name} fill sizes="20px" className="object-contain" /> : <FaStore className="text-[10px] text-slate-400" />}
                 </span>
                 {b.name}
               </button>
@@ -416,8 +429,9 @@ export default function OrderPage() {
           })}
         </div>
         <div className="flex gap-2 overflow-x-auto px-3 py-2">
-          {brandInfo(activeBrand).categories.map((cat) => {
-            const Icon = getCategoryIcon(cat);
+          {(activeBrandCfg?.categories ?? []).map((c) => {
+            const cat = c.name;
+            const Icon = categoryIconFor(brands, cat);
             const active = cat === activeCategory;
             return (
               <button
@@ -441,7 +455,7 @@ export default function OrderPage() {
         {/* Desktop: Restaurant + Categories Sidebar */}
         <aside className="sticky top-[76px] self-start">
           <div className="space-y-3">
-            {BRANDS.map((b) => {
+            {brands.map((b) => {
               const active = b.id === activeBrand;
               return (
                 <div
@@ -460,7 +474,7 @@ export default function OrderPage() {
                     }`}
                   >
                     <span className="relative grid h-11 w-11 shrink-0 place-items-center overflow-hidden rounded-xl bg-white ring-1 ring-slate-200 dark:ring-white/10">
-                      <Image src={b.logo} alt={b.name} fill sizes="44px" className="object-contain p-1" />
+                      {b.logo ? <Image src={b.logo} alt={b.name} fill sizes="44px" className="object-contain p-1" /> : <FaStore className="text-slate-400" />}
                     </span>
                     <span className="min-w-0">
                       <span className="block truncate text-sm font-black text-slate-900 dark:text-white">{b.name}</span>
@@ -473,8 +487,9 @@ export default function OrderPage() {
                   {/* Category list for the active brand */}
                   {active && (
                     <div className="space-y-1 border-t border-slate-100 p-2 dark:border-white/5">
-                      {b.categories.map((cat) => {
-                        const Icon = getCategoryIcon(cat);
+                      {b.categories.map((c) => {
+                        const cat = c.name;
+                        const Icon = categoryIconFor(brands, cat);
                         const isActive = cat === activeCategory;
                         return (
                           <button
@@ -502,10 +517,14 @@ export default function OrderPage() {
         <section>
           <div className="mb-4 flex items-center gap-3">
             <span className="relative grid h-9 w-9 shrink-0 place-items-center overflow-hidden rounded-lg bg-white ring-1 ring-slate-200 dark:ring-white/10">
-              <Image src={brandInfo(activeBrand).logo} alt={brandInfo(activeBrand).name} fill sizes="36px" className="object-contain p-1" />
+              {activeBrandCfg?.logo ? (
+                <Image src={activeBrandCfg.logo} alt={activeBrandCfg.name} fill sizes="36px" className="object-contain p-1" />
+              ) : (
+                <FaStore className="text-slate-400" />
+              )}
             </span>
             <div>
-              <h2 className="text-lg font-black leading-tight text-slate-900 dark:text-white">{brandInfo(activeBrand).name}</h2>
+              <h2 className="text-lg font-black leading-tight text-slate-900 dark:text-white">{activeBrandCfg?.name ?? ""}</h2>
               <p className="text-xs text-slate-500 dark:text-slate-400">{activeCategory}</p>
             </div>
           </div>

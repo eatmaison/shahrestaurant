@@ -30,6 +30,8 @@ import {
 import { clearSession, createSession, getSessionUserId } from "./session";
 import type {
   AccountType,
+  BrandCategory,
+  BrandConfig,
   Order,
   OrderItem,
   OrderFulfillment,
@@ -189,6 +191,7 @@ export async function logoutUser(): Promise<void> {
 export interface Bootstrap {
   currentUser: User | null;
   products: Product[];
+  brands: BrandConfig[];
   reviews: Review[];
   orders: Order[];
   users: User[];
@@ -208,6 +211,8 @@ export async function bootstrap(): Promise<Bootstrap> {
 
   const productRows = (await sql.query(`SELECT * FROM products ORDER BY created_at ASC`)) as any[];
   const products = productRows.map(rowToProduct);
+
+  const brands = await loadBrands();
 
   const reviewRows = (await sql.query(`SELECT * FROM reviews ORDER BY created_at DESC`)) as any[];
   const reviews = reviewRows.map(rowToReview);
@@ -232,7 +237,7 @@ export async function bootstrap(): Promise<Bootstrap> {
     vipRequests = ((await sql.query(`SELECT * FROM vip_requests WHERE user_id = $1 ORDER BY created_at DESC`, [currentUser.id])) as any[]).map(rowToVipRequest);
   }
 
-  return { currentUser, products, reviews, orders, users, vipRequests, socialLinks };
+  return { currentUser, products, brands, reviews, orders, users, vipRequests, socialLinks };
 }
 
 /** Load orders (optionally for a single user) with their line items. */
@@ -537,6 +542,83 @@ export async function updateProduct(id: string, patch: Partial<Omit<Product, "id
 export async function removeProduct(id: string): Promise<void> {
   await requireAdmin();
   await sql.query(`DELETE FROM products WHERE id = $1`, [id]);
+}
+
+/* ------------------------------------------------------------------ brands & categories (admin) */
+
+function rowToBrand(r: any): BrandConfig {
+  const cats = Array.isArray(r.categories) ? r.categories : JSON.parse(r.categories ?? "[]");
+  return {
+    id: r.id,
+    name: r.name,
+    logo: r.logo ?? "",
+    categories: (cats as BrandCategory[]).map((c) => ({ name: String(c.name), icon: String(c.icon ?? "utensils") })),
+  };
+}
+
+async function loadBrands(): Promise<BrandConfig[]> {
+  const rows = (await sql.query(`SELECT * FROM brands ORDER BY sort ASC, created_at ASC`)) as any[];
+  return rows.map(rowToBrand);
+}
+
+/** Result of a brand/category mutation; `error` is a translation-friendly code. */
+type BrandResult = { ok: boolean; error?: string };
+
+export async function addBrand(name: string): Promise<BrandResult> {
+  await requireAdmin();
+  const trimmed = name.trim();
+  const id = trimmed.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+  if (!id) return { ok: false, error: "invalidInput" };
+  const existing = (await sql.query(`SELECT 1 FROM brands WHERE id = $1`, [id])) as any[];
+  if (existing.length > 0) return { ok: false, error: "brandExists" };
+  const sortRows = (await sql.query(`SELECT coalesce(max(sort), -1) + 1 AS next FROM brands`)) as any[];
+  await sql.query(`INSERT INTO brands (id, name, logo, sort, categories) VALUES ($1,$2,'',$3,'[]'::jsonb)`, [
+    id,
+    trimmed,
+    sortRows[0]?.next ?? 0,
+  ]);
+  return { ok: true };
+}
+
+export async function removeBrand(id: string): Promise<BrandResult> {
+  await requireAdmin();
+  const countRows = (await sql.query(`SELECT count(*)::int AS n FROM brands`)) as { n: number }[];
+  if ((countRows[0]?.n ?? 0) <= 1) return { ok: false, error: "lastBrand" };
+  const productRows = (await sql.query(`SELECT count(*)::int AS n FROM products WHERE brand = $1`, [id])) as { n: number }[];
+  if ((productRows[0]?.n ?? 0) > 0) return { ok: false, error: "brandHasProducts" };
+  await sql.query(`DELETE FROM brands WHERE id = $1`, [id]);
+  return { ok: true };
+}
+
+export async function addBrandCategory(brandId: string, name: string, icon: string): Promise<BrandResult> {
+  await requireAdmin();
+  const rows = (await sql.query(`SELECT * FROM brands WHERE id = $1`, [brandId])) as any[];
+  if (!rows[0]) return { ok: false, error: "invalidInput" };
+  const brand = rowToBrand(rows[0]);
+  const trimmed = name.trim();
+  if (!trimmed) return { ok: false, error: "invalidInput" };
+  if (brand.categories.some((c) => c.name.toLowerCase() === trimmed.toLowerCase())) {
+    return { ok: false, error: "categoryExists" };
+  }
+  const next = [...brand.categories, { name: trimmed, icon }];
+  await sql.query(`UPDATE brands SET categories = $2::jsonb WHERE id = $1`, [brandId, JSON.stringify(next)]);
+  return { ok: true };
+}
+
+export async function removeBrandCategory(brandId: string, name: string): Promise<BrandResult> {
+  await requireAdmin();
+  const rows = (await sql.query(`SELECT * FROM brands WHERE id = $1`, [brandId])) as any[];
+  if (!rows[0]) return { ok: false, error: "invalidInput" };
+  const brand = rowToBrand(rows[0]);
+  if (brand.categories.length <= 1) return { ok: false, error: "lastCategory" };
+  const productRows = (await sql.query(
+    `SELECT count(*)::int AS n FROM products WHERE brand = $1 AND category = $2`,
+    [brandId, name]
+  )) as { n: number }[];
+  if ((productRows[0]?.n ?? 0) > 0) return { ok: false, error: "categoryHasProducts" };
+  const next = brand.categories.filter((c) => c.name !== name);
+  await sql.query(`UPDATE brands SET categories = $2::jsonb WHERE id = $1`, [brandId, JSON.stringify(next)]);
+  return { ok: true };
 }
 
 /* ------------------------------------------------------------------ reviews */

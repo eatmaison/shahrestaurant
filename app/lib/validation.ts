@@ -106,3 +106,29 @@ export const socialLinkSchema = z.object({
 });
 
 export type SocialLinkInput = z.infer<typeof socialLinkSchema>;
+
+/* ------------------------------------------------------------------ brands & categories */
+
+export const brandsActionSchema = z.discriminatedUnion("action", [
+  z.object({
+    action: z.literal("addBrand"),
+    name: z.string().trim().min(1).max(60),
+  }),
+  z.object({
+    action: z.literal("removeBrand"),
+    id: z.string().trim().min(1).max(80),
+  }),
+  z.object({
+    action: z.literal("addCategory"),
+    brandId: z.string().trim().min(1).max(80),
+    name: z.string().trim().min(1).max(60),
+    icon: z.string().trim().min(1).max(40),
+  }),
+  z.object({
+    action: z.literal("removeCategory"),
+    brandId: z.string().trim().min(1).max(80),
+    name: z.string().trim().min(1).max(60),
+  }),
+]);
+
+export type BrandsActionInput = z.infer<typeof brandsActionSchema>;

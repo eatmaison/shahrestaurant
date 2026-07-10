@@ -2,12 +2,13 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   FaBagShopping,
   FaBoxOpen,
   FaBuilding,
   FaChartLine,
+  FaChevronDown,
   FaClock,
   FaCrown,
   FaEnvelope,
@@ -27,7 +28,9 @@ import {
   FaCircleCheck,
   FaCircleExclamation,
   FaShareNodes,
+  FaSliders,
   FaSpinner,
+  FaStore,
   FaTrash,
   FaTruck,
   FaUser,
@@ -37,7 +40,7 @@ import {
   FaXmark,
 } from "react-icons/fa6";
 import { useLang, useStore } from "../providers";
-import { BRANDS, brandInfo, CATEGORY_ORDER, formatOrderNumber, getCategoryIcon, ORDER_STATUS_FLOW } from "../lib/data";
+import { CATEGORY_ICON_CHOICES, categoryIconFor, formatOrderNumber, ORDER_STATUS_FLOW } from "../lib/data";
 import { SOCIAL_PLATFORMS } from "../components/socialIcons";
 import type { Brand, Category, Order, OrderStatus, Product } from "../lib/types";
 
@@ -50,6 +53,27 @@ const statusIcons: Record<OrderStatus, typeof FaClock> = {
 
 /** Feedback state for the add/edit product forms. */
 type SaveState = { status: "idle" | "saving" | "success" | "error"; message?: string };
+
+/** Period filter for stats and order management. */
+type RangeFilter = { preset: "all" | "today" | "7d" | "30d" | "date"; date?: string };
+
+/** Predicate matching timestamps inside the selected period (local time). */
+const makeRangeCheck = (f: RangeFilter): ((ts: number) => boolean) => {
+  if (f.preset === "all") return () => true;
+  if (f.preset === "7d") {
+    const from = Date.now() - 7 * 86_400_000;
+    return (ts) => ts >= from;
+  }
+  if (f.preset === "30d") {
+    const from = Date.now() - 30 * 86_400_000;
+    return (ts) => ts >= from;
+  }
+  // "today" or a specific calendar date — one local-time day window.
+  if (f.preset === "date" && !f.date) return () => true;
+  const start = f.preset === "date" && f.date ? new Date(`${f.date}T00:00:00`).getTime() : new Date().setHours(0, 0, 0, 0);
+  const end = start + 86_400_000;
+  return (ts) => ts >= start && ts < end;
+};
 
 /** Keeps only digits and a single decimal dot while typing; a comma becomes a dot. */
 const sanitizePrice = (value: string): string => {
@@ -98,7 +122,7 @@ const processImageFile = (file: File): Promise<string> =>
 
 export default function AdminPage() {
   const { t, lang } = useLang();
-  const { currentUser, products, orders, users, addProduct, removeProduct, updateProduct, updateOrderStatus, setOrderPaid, setInvoiceSent, vipRequests, approveVipRequest, rejectVipRequest, socialLinks, updateSocialLink, hydrated } = useStore();
+  const { currentUser, products, orders, users, addProduct, removeProduct, updateProduct, brands, manageBrands, updateOrderStatus, setOrderPaid, setInvoiceSent, vipRequests, approveVipRequest, rejectVipRequest, socialLinks, updateSocialLink, hydrated } = useStore();
   const fileRef = useRef<HTMLInputElement>(null);
   const editFileRef = useRef<HTMLInputElement>(null);
 
@@ -128,6 +152,28 @@ export default function AdminPage() {
   const [addState, setAddState] = useState<SaveState>({ status: "idle" });
   const [editState, setEditState] = useState<SaveState>({ status: "idle" });
 
+  // Restaurants & categories manager modal.
+  const [manageOpen, setManageOpen] = useState(false);
+  const [manageBrandId, setManageBrandId] = useState<string | null>(null);
+  const [newBrandName, setNewBrandName] = useState("");
+  const [newCatName, setNewCatName] = useState("");
+  const [newCatIcon, setNewCatIcon] = useState("utensils");
+  const [manageState, setManageState] = useState<SaveState>({ status: "idle" });
+
+  /** Categories of a brand from the admin-managed list. */
+  const categoriesOf = (brandId: string) => brands.find((b) => b.id === brandId)?.categories ?? [];
+
+  // Keep the drafts pointing at an existing brand when brands are added/removed.
+  useEffect(() => {
+    if (brands.length === 0) return;
+    if (!brands.some((b) => b.id === draft.brand)) {
+      setDraft((d) => ({ ...d, brand: brands[0].id, category: brands[0].categories[0]?.name ?? "" }));
+    } else if (!categoriesOf(draft.brand).some((c) => c.name === draft.category)) {
+      setDraft((d) => ({ ...d, category: categoriesOf(d.brand)[0]?.name ?? "" }));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [brands, draft.brand, draft.category]);
+
   // Order search filters (by customer/company name or order number).
   const [customerSearch, setCustomerSearch] = useState("");
   const [companySearch, setCompanySearch] = useState("");
@@ -135,12 +181,19 @@ export default function AdminPage() {
   // Product pending deletion (shown in a confirmation dialog).
   const [deleting, setDeleting] = useState<Product | null>(null);
 
+  // Period filters: one for the statistics block, one for order management.
+  const [statsRange, setStatsRange] = useState<RangeFilter>({ preset: "all" });
+  const [ordersRange, setOrdersRange] = useState<RangeFilter>({ preset: "all" });
+  const statsCheck = useMemo(() => makeRangeCheck(statsRange), [statsRange]);
+  const ordersCheck = useMemo(() => makeRangeCheck(ordersRange), [ordersRange]);
+
   const stats = useMemo(() => {
-    const revenue = orders.reduce((s, o) => s + o.total, 0);
-    const avg = orders.length ? revenue / orders.length : 0;
+    const inPeriod = orders.filter((o) => statsCheck(o.createdAt));
+    const revenue = inPeriod.reduce((s, o) => s + o.total, 0);
+    const avg = inPeriod.length ? revenue / inPeriod.length : 0;
     const byCategory: Record<string, number> = {};
     const byProduct: Record<string, { name: string; qty: number; revenue: number }> = {};
-    for (const o of orders) {
+    for (const o of inPeriod) {
       for (const item of o.items) {
         const product = products.find((p) => p.id === item.productId);
         const cat = product?.category ?? "Other";
@@ -152,8 +205,16 @@ export default function AdminPage() {
     }
     const top = Object.values(byProduct).sort((a, b) => b.qty - a.qty).slice(0, 5);
     const maxCat = Math.max(1, ...Object.values(byCategory));
-    return { revenue, avg, byCategory, top, maxCat };
-  }, [orders, products]);
+    return { revenue, avg, byCategory, top, maxCat, orderCount: inPeriod.length };
+  }, [orders, products, statsCheck]);
+
+  /** All category names across restaurants (plus any legacy ones found in orders). */
+  const allCategories = useMemo(() => {
+    const set = new Set<string>();
+    for (const b of brands) for (const c of b.categories) set.add(c.name);
+    for (const c of Object.keys(stats.byCategory)) set.add(c);
+    return [...set];
+  }, [brands, stats.byCategory]);
 
   /** Last 20 users seen on the site, most recent first. */
   const recentlyOnline = useMemo(
@@ -178,6 +239,8 @@ export default function AdminPage() {
   /** Local drafts for the social link URL inputs (saved on blur / Enter). */
   const [socialDrafts, setSocialDrafts] = useState<Record<string, string>>({});
   const [socialSavedFor, setSocialSavedFor] = useState<string | null>(null);
+  // Social links panel is collapsed by default to save space in the admin panel.
+  const [socialOpen, setSocialOpen] = useState(false);
 
   const socialUrl = (platform: string): string =>
     socialDrafts[platform] ?? socialLinks.find((l) => l.platform === platform)?.url ?? "";
@@ -385,12 +448,95 @@ export default function AdminPage() {
     setTimeout(() => closeEditor(), 1500);
   };
 
+  /** Translate a brand/category management error code to a readable message. */
+  const brandErrorText = (code?: string): string => {
+    switch (code) {
+      case "brandExists":
+        return t.admin.brandExists;
+      case "categoryExists":
+        return t.admin.categoryExists;
+      case "brandHasProducts":
+        return t.admin.brandHasProducts;
+      case "categoryHasProducts":
+        return t.admin.categoryHasProducts;
+      case "lastBrand":
+        return t.admin.lastBrand;
+      case "lastCategory":
+        return t.admin.lastCategory;
+      default:
+        return `${t.admin.saveFailed}${code ? ` (${code})` : ""}`;
+    }
+  };
+
+  /** Run a brand/category mutation with saving + error feedback. Returns success. */
+  const runManage = async (input: Parameters<typeof manageBrands>[0]): Promise<boolean> => {
+    if (manageState.status === "saving") return false;
+    setManageState({ status: "saving" });
+    const res = await manageBrands(input);
+    if (!res.ok) {
+      setManageState({ status: "error", message: brandErrorText(res.error) });
+      return false;
+    }
+    setManageState({ status: "idle" });
+    return true;
+  };
+
+  const submitAddBrand = async () => {
+    if (!newBrandName.trim()) return;
+    if (await runManage({ action: "addBrand", name: newBrandName.trim() })) setNewBrandName("");
+  };
+
+  const submitAddCategory = async () => {
+    if (!manageBrandId || !newCatName.trim()) return;
+    if (await runManage({ action: "addCategory", brandId: manageBrandId, name: newCatName.trim(), icon: newCatIcon })) {
+      setNewCatName("");
+    }
+  };
+
   const cards = [
     { icon: FaEuroSign, label: t.admin.totalRevenue, value: `€${stats.revenue.toFixed(2)}` },
-    { icon: FaReceipt, label: t.admin.totalOrders, value: orders.length },
-    { icon: FaUsers, label: t.admin.totalUsers, value: users.length },
+    { icon: FaReceipt, label: t.admin.totalOrders, value: stats.orderCount },
+    { icon: FaUsers, label: t.admin.totalUsers, value: users.filter((u) => statsCheck(u.createdAt)).length },
     { icon: FaChartLine, label: t.admin.avgOrder, value: `€${stats.avg.toFixed(2)}` },
   ];
+
+  /** Pill buttons + date picker used to filter stats and order management. */
+  const renderRangeFilter = (value: RangeFilter, onChange: (f: RangeFilter) => void) => (
+    <div className="flex flex-wrap items-center gap-1.5">
+      {(
+        [
+          ["all", t.admin.filterAll],
+          ["today", t.admin.filterToday],
+          ["7d", t.admin.filterWeek],
+          ["30d", t.admin.filterMonth],
+        ] as const
+      ).map(([preset, label]) => (
+        <button
+          key={preset}
+          onClick={() => onChange({ preset })}
+          className={`rounded-full px-3 py-1.5 text-xs font-bold transition ${
+            value.preset === preset
+              ? "bg-emerald-600 text-white shadow-md shadow-emerald-600/25"
+              : "bg-slate-100 text-slate-600 hover:bg-emerald-500/10 hover:text-emerald-700 dark:bg-white/10 dark:text-slate-300"
+          }`}
+        >
+          {label}
+        </button>
+      ))}
+      <input
+        type="date"
+        value={value.preset === "date" ? value.date ?? "" : ""}
+        onChange={(e) => onChange(e.target.value ? { preset: "date", date: e.target.value } : { preset: "all" })}
+        aria-label={t.admin.filterPickDate}
+        title={t.admin.filterPickDate}
+        className={`rounded-full border px-3 py-1 text-xs font-semibold outline-none transition focus:border-emerald-500 dark:bg-white/10 dark:text-white ${
+          value.preset === "date"
+            ? "border-emerald-500 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300"
+            : "border-slate-200 bg-slate-50 text-slate-600 dark:border-white/10 dark:text-slate-300"
+        }`}
+      />
+    </div>
+  );
 
   const statusLabel = (s: OrderStatus): string =>
     s === "new"
@@ -423,8 +569,8 @@ export default function AdminPage() {
     );
   };
 
-  const filteredCustomerOrders = customerOrders.filter((o) => matchesOrder(o, customerSearch));
-  const filteredCompanyOrders = companyOrders.filter((o) => matchesOrder(o, companySearch));
+  const filteredCustomerOrders = customerOrders.filter((o) => ordersCheck(o.createdAt) && matchesOrder(o, customerSearch));
+  const filteredCompanyOrders = companyOrders.filter((o) => ordersCheck(o.createdAt) && matchesOrder(o, companySearch));
 
   const renderOrderCard = (o: Order) => {
     const action = nextAction(o.status);
@@ -528,16 +674,21 @@ export default function AdminPage() {
             <FaUtensils /> {t.admin.itemsToPrepare}
           </p>
           <div className="mt-2 space-y-3">
-            {BRANDS.map((b) => {
-              const brandItems = o.items.filter((it) => it.brand === b.id);
+            {[...new Set(o.items.map((it) => it.brand))].map((bid) => {
+              const cfg = brands.find((b) => b.id === bid);
+              const brandItems = o.items.filter((it) => it.brand === bid);
               if (brandItems.length === 0) return null;
               return (
-                <div key={b.id}>
+                <div key={bid}>
                   <p className="mb-1.5 flex items-center gap-1.5 text-xs font-black text-slate-800 dark:text-slate-200">
                     <span className="relative grid h-5 w-5 shrink-0 place-items-center overflow-hidden rounded-full bg-white ring-1 ring-slate-200 dark:ring-white/10">
-                      <Image src={b.logo} alt={b.name} fill sizes="20px" className="object-contain p-0.5" />
+                      {cfg?.logo ? (
+                        <Image src={cfg.logo} alt={cfg.name} fill sizes="20px" className="object-contain p-0.5" />
+                      ) : (
+                        <FaStore className="text-[10px] text-slate-400" />
+                      )}
                     </span>
-                    {b.name}
+                    {cfg?.name ?? bid}
                     <span className="rounded-full bg-slate-100 px-1.5 py-0.5 text-[10px] font-bold text-slate-500 dark:bg-white/10 dark:text-slate-400">
                       {brandItems.reduce((s, i) => s + i.qty, 0)}
                     </span>
@@ -641,6 +792,7 @@ export default function AdminPage() {
       </div>
 
       {/* Stat cards */}
+      <div className="mb-4">{renderRangeFilter(statsRange, setStatsRange)}</div>
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {cards.map((c) => {
           const Icon = c.icon;
@@ -661,9 +813,9 @@ export default function AdminPage() {
         <div className="rounded-3xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-white/5">
           <h2 className="text-lg font-black text-slate-900 dark:text-white">{t.admin.ordersByCategory}</h2>
           <div className="mt-4 space-y-3">
-            {CATEGORY_ORDER.map((cat) => {
+            {allCategories.map((cat) => {
               const val = stats.byCategory[cat] || 0;
-              const Icon = getCategoryIcon(cat);
+              const Icon = categoryIconFor(brands, cat);
               return (
                 <div key={cat}>
                   <div className="flex items-center justify-between text-sm">
@@ -718,7 +870,7 @@ export default function AdminPage() {
         ) : (
           <div className="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
             {customerStats.map((c, i) => {
-              const FavIcon = c.favCategory ? getCategoryIcon(c.favCategory.name) : getCategoryIcon("");
+              const FavIcon = c.favCategory ? categoryIconFor(brands, c.favCategory.name) : categoryIconFor(brands, "");
               return (
                 <div
                   key={c.key}
@@ -804,6 +956,7 @@ export default function AdminPage() {
           <ul className="mt-5 divide-y divide-slate-100 dark:divide-white/5">
             {recentlyOnline.map((u) => {
               const online = Date.now() - (u.lastSeenAt ?? 0) < 5 * 60_000;
+              const orderCount = orders.filter((o) => o.userId === u.id).length;
               return (
                 <li key={u.id} className="flex items-center gap-3 py-3">
                   <span className="relative grid h-10 w-10 shrink-0 place-items-center rounded-full bg-gradient-to-br from-sky-500 to-indigo-500 text-sm font-black text-white">
@@ -824,6 +977,12 @@ export default function AdminPage() {
                     <p className="truncate text-xs text-slate-500 dark:text-slate-400">{u.email}</p>
                   </div>
                   <span
+                    className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-slate-100 px-2.5 py-1 text-xs font-bold text-slate-600 dark:bg-white/10 dark:text-slate-300"
+                    title={t.admin.ordersLabel}
+                  >
+                    <FaReceipt className="text-[10px] text-emerald-600 dark:text-emerald-400" /> {orderCount}
+                  </span>
+                  <span
                     className={`shrink-0 rounded-full px-2.5 py-1 text-xs font-bold ${
                       online
                         ? "bg-emerald-500/10 text-emerald-700 dark:text-emerald-300"
@@ -839,19 +998,33 @@ export default function AdminPage() {
         )}
       </div>
 
-      {/* Social media links */}
+      {/* Social media links (collapsible) */}
       <div className="mt-6 rounded-3xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-white/5">
-        <div className="flex items-center gap-2">
+        <button
+          type="button"
+          onClick={() => setSocialOpen((o) => !o)}
+          aria-expanded={socialOpen}
+          className="flex w-full items-center gap-2 text-left"
+        >
           <span className="grid h-9 w-9 place-items-center rounded-xl bg-violet-500/10 text-violet-600 dark:text-violet-400">
             <FaShareNodes />
           </span>
-          <div>
+          <div className="flex-1">
             <h2 className="text-lg font-black text-slate-900 dark:text-white">{t.admin.socialTitle}</h2>
             <p className="text-xs text-slate-500 dark:text-slate-400">{t.admin.socialSub}</p>
           </div>
-        </div>
+          <FaChevronDown
+            className={`shrink-0 text-slate-400 transition-transform duration-300 ${socialOpen ? "rotate-180" : ""}`}
+          />
+        </button>
 
-        <div className="mt-5 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+        <div
+          className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${
+            socialOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+          }`}
+        >
+          <div className="overflow-hidden">
+            <div className="mt-5 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
           {SOCIAL_PLATFORMS.map((p) => {
             const stored = socialLinks.find((l) => l.platform === p.id);
             const enabled = stored?.enabled ?? false;
@@ -907,6 +1080,8 @@ export default function AdminPage() {
               </div>
             );
           })}
+            </div>
+          </div>
         </div>
       </div>
 
@@ -962,9 +1137,21 @@ export default function AdminPage() {
       <div className="mt-6 grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
         {/* Add product */}
         <div className="min-w-0 rounded-3xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-white/5">
-          <h2 className="flex items-center gap-2 text-lg font-black text-slate-900 dark:text-white">
-            <FaPlus className="text-emerald-600 dark:text-emerald-400" /> {t.admin.addProduct}
-          </h2>
+          <div className="flex items-center justify-between gap-2">
+            <h2 className="flex items-center gap-2 text-lg font-black text-slate-900 dark:text-white">
+              <FaPlus className="text-emerald-600 dark:text-emerald-400" /> {t.admin.addProduct}
+            </h2>
+            <button
+              onClick={() => {
+                setManageOpen(true);
+                setManageBrandId(brands[0]?.id ?? null);
+                setManageState({ status: "idle" });
+              }}
+              className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-slate-200 px-3 py-1.5 text-xs font-bold text-slate-600 transition hover:border-emerald-400 hover:text-emerald-700 dark:border-white/10 dark:text-slate-300"
+            >
+              <FaSliders /> {t.admin.manageMenus}
+            </button>
+          </div>
           <div className="mt-4 space-y-3">
             <input
               value={draft.name}
@@ -993,12 +1180,12 @@ export default function AdminPage() {
               value={draft.brand}
               onChange={(e) => {
                 const brand = e.target.value as Brand;
-                setDraft({ ...draft, brand, category: brandInfo(brand).categories[0] });
+                setDraft({ ...draft, brand, category: categoriesOf(brand)[0]?.name ?? "" });
               }}
               aria-label={t.admin.restaurant}
               className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm font-semibold outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
             >
-              {BRANDS.map((b) => (
+              {brands.map((b) => (
                 <option key={b.id} value={b.id}>{b.name}</option>
               ))}
             </select>
@@ -1018,8 +1205,8 @@ export default function AdminPage() {
                 onChange={(e) => setDraft({ ...draft, category: e.target.value as Category })}
                 className="w-full self-start rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
               >
-                {brandInfo(draft.brand).categories.map((c) => (
-                  <option key={c} value={c}>{c}</option>
+                {categoriesOf(draft.brand).map((c) => (
+                  <option key={c.name} value={c.name}>{c.name}</option>
                 ))}
               </select>
             </div>
@@ -1088,7 +1275,7 @@ export default function AdminPage() {
           </div>
           <div className="mt-4 max-h-[28rem] space-y-2 overflow-y-auto pr-1">
             {products.map((p) => {
-              const Icon = getCategoryIcon(p.category);
+              const Icon = categoryIconFor(brands, p.category);
               return (
                 <div key={p.id} className="flex items-center gap-3 rounded-2xl border border-slate-100 bg-slate-50 p-2.5 dark:border-white/5 dark:bg-white/5">
                   <span className="relative grid h-11 w-11 shrink-0 place-items-center overflow-hidden rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
@@ -1103,8 +1290,9 @@ export default function AdminPage() {
                             ? "bg-sky-500/15 text-sky-700 dark:text-sky-300"
                             : "bg-emerald-500/15 text-emerald-700 dark:text-emerald-300"
                         }`}
+                        title={brands.find((b) => b.id === p.brand)?.name ?? p.brand}
                       >
-                        {p.brand === "tandoor" ? "TDC" : "ETG"}
+                        {(brands.find((b) => b.id === p.brand)?.name ?? p.brand).replace(/[^a-z0-9]/gi, "").slice(0, 3).toUpperCase()}
                       </span>
                     </p>
                     <p className="truncate text-xs text-slate-500 dark:text-slate-400">{p.category} · €{p.price.toFixed(2)}</p>
@@ -1130,6 +1318,168 @@ export default function AdminPage() {
           </div>
         </div>
       </div>
+
+      {/* Restaurants & categories manager */}
+      {manageOpen && (
+        <div className="fixed inset-0 z-50 flex items-end justify-center sm:items-center">
+          <div className="fixed inset-0 bg-black/40" onClick={() => setManageOpen(false)} />
+          <div className="relative flex max-h-[85vh] w-full max-w-lg flex-col rounded-t-3xl bg-white shadow-2xl dark:bg-[#0c1420] sm:rounded-3xl">
+            <div className="flex items-center justify-between border-b border-slate-200 px-5 py-4 dark:border-white/10">
+              <div>
+                <h2 className="flex items-center gap-2 text-lg font-black text-slate-900 dark:text-white">
+                  <FaSliders className="text-emerald-600 dark:text-emerald-400" /> {t.admin.manageMenus}
+                </h2>
+                <p className="mt-0.5 text-xs text-slate-500 dark:text-slate-400">{t.admin.manageMenusSub}</p>
+              </div>
+              <button
+                onClick={() => setManageOpen(false)}
+                className="grid h-8 w-8 shrink-0 place-items-center rounded-full text-slate-400 transition hover:bg-slate-100 hover:text-slate-600 dark:hover:bg-white/10"
+                aria-label={t.common.cancel}
+              >
+                <FaXmark />
+              </button>
+            </div>
+
+            <div className="space-y-4 overflow-y-auto px-5 py-4">
+              {/* Restaurants */}
+              <div className="space-y-2">
+                {brands.map((b) => {
+                  const selected = b.id === manageBrandId;
+                  return (
+                    <div
+                      key={b.id}
+                      className={`flex items-center gap-3 rounded-2xl border p-2.5 transition ${
+                        selected
+                          ? "border-emerald-400 bg-emerald-50/50 dark:border-emerald-500/40 dark:bg-emerald-400/5"
+                          : "border-slate-200 bg-slate-50 dark:border-white/10 dark:bg-white/5"
+                      }`}
+                    >
+                      <button onClick={() => setManageBrandId(b.id)} className="flex min-w-0 flex-1 items-center gap-3 text-left">
+                        <span className="relative grid h-9 w-9 shrink-0 place-items-center overflow-hidden rounded-xl bg-white ring-1 ring-slate-200 dark:ring-white/10">
+                          {b.logo ? (
+                            <Image src={b.logo} alt={b.name} fill sizes="36px" className="object-contain p-0.5" />
+                          ) : (
+                            <FaStore className="text-slate-400" />
+                          )}
+                        </span>
+                        <span className="min-w-0">
+                          <span className="block truncate text-sm font-bold text-slate-900 dark:text-white">{b.name}</span>
+                          <span className="text-[11px] text-slate-500 dark:text-slate-400">{b.categories.length} {t.admin.productCategory.toLowerCase()}</span>
+                        </span>
+                      </button>
+                      <button
+                        onClick={() => runManage({ action: "removeBrand", id: b.id })}
+                        className="grid h-8 w-8 shrink-0 place-items-center rounded-full text-slate-400 transition hover:bg-red-500/10 hover:text-red-600"
+                        aria-label={`${t.common.remove} ${b.name}`}
+                        title={t.common.remove}
+                      >
+                        <FaTrash className="text-sm" />
+                      </button>
+                    </div>
+                  );
+                })}
+
+                {/* Add restaurant */}
+                <div className="flex gap-2">
+                  <input
+                    value={newBrandName}
+                    onChange={(e) => setNewBrandName(e.target.value)}
+                    onKeyDown={(e) => e.key === "Enter" && submitAddBrand()}
+                    placeholder={t.admin.restaurantName}
+                    className="w-full flex-1 rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
+                  />
+                  <button
+                    onClick={submitAddBrand}
+                    disabled={!newBrandName.trim() || manageState.status === "saving"}
+                    className="inline-flex shrink-0 items-center gap-1.5 rounded-xl bg-emerald-600 px-4 py-2.5 text-sm font-bold text-white transition hover:bg-emerald-500 disabled:cursor-not-allowed disabled:opacity-60"
+                  >
+                    <FaPlus /> {t.admin.addRestaurant}
+                  </button>
+                </div>
+              </div>
+
+              {/* Categories of the selected restaurant */}
+              {manageBrandId && brands.some((b) => b.id === manageBrandId) && (
+                <div className="rounded-2xl border border-slate-200 p-3.5 dark:border-white/10">
+                  <p className="text-xs font-black uppercase tracking-wide text-slate-500 dark:text-slate-400">
+                    {brands.find((b) => b.id === manageBrandId)?.name} · {t.admin.productCategory}
+                  </p>
+                  <div className="mt-2.5 flex flex-wrap gap-2">
+                    {categoriesOf(manageBrandId).map((c) => {
+                      const Icon = categoryIconFor(brands, c.name);
+                      return (
+                        <span
+                          key={c.name}
+                          className="inline-flex items-center gap-1.5 rounded-full bg-slate-100 py-1 pl-3 pr-1 text-xs font-bold text-slate-700 dark:bg-white/10 dark:text-slate-200"
+                        >
+                          <Icon className="text-emerald-600 dark:text-emerald-400" /> {c.name}
+                          <button
+                            onClick={() => runManage({ action: "removeCategory", brandId: manageBrandId, name: c.name })}
+                            className="grid h-5 w-5 place-items-center rounded-full text-slate-400 transition hover:bg-red-500/15 hover:text-red-600"
+                            aria-label={`${t.common.remove} ${c.name}`}
+                            title={t.common.remove}
+                          >
+                            <FaXmark className="text-[10px]" />
+                          </button>
+                        </span>
+                      );
+                    })}
+                  </div>
+
+                  {/* Add category */}
+                  <div className="mt-3 space-y-2.5 border-t border-slate-100 pt-3 dark:border-white/5">
+                    <input
+                      value={newCatName}
+                      onChange={(e) => setNewCatName(e.target.value)}
+                      onKeyDown={(e) => e.key === "Enter" && submitAddCategory()}
+                      placeholder={t.admin.categoryName}
+                      className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
+                    />
+                    <div>
+                      <p className="mb-1.5 text-[11px] font-bold uppercase tracking-wide text-slate-400">{t.admin.pickIcon}</p>
+                      <div className="flex flex-wrap gap-1.5">
+                        {CATEGORY_ICON_CHOICES.map(({ id, Icon }) => (
+                          <button
+                            key={id}
+                            onClick={() => setNewCatIcon(id)}
+                            aria-label={id}
+                            title={id}
+                            className={`grid h-9 w-9 place-items-center rounded-xl border text-base transition ${
+                              newCatIcon === id
+                                ? "border-emerald-500 bg-emerald-500/15 text-emerald-700 dark:text-emerald-300"
+                                : "border-slate-200 text-slate-500 hover:border-emerald-400 dark:border-white/10 dark:text-slate-300"
+                            }`}
+                          >
+                            <Icon />
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                    <button
+                      onClick={submitAddCategory}
+                      disabled={!newCatName.trim() || manageState.status === "saving"}
+                      className="inline-flex items-center gap-1.5 rounded-xl bg-emerald-600 px-4 py-2.5 text-sm font-bold text-white transition hover:bg-emerald-500 disabled:cursor-not-allowed disabled:opacity-60"
+                    >
+                      <FaPlus /> {t.admin.addCategoryBtn}
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {manageState.status === "saving" && (
+                <p className="flex items-center gap-2 text-xs font-semibold text-slate-500 dark:text-slate-400">
+                  <FaSpinner className="animate-spin" /> {t.admin.saving}
+                </p>
+              )}
+              {manageState.status === "error" && (
+                <p className="flex items-start gap-2 rounded-xl bg-red-500/10 px-3.5 py-2.5 text-xs font-semibold text-red-600 dark:text-red-400">
+                  <FaCircleExclamation className="mt-0.5 shrink-0" /> {manageState.message}
+                </p>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Edit product modal */}
       {editing && (
@@ -1176,13 +1526,13 @@ export default function AdminPage() {
                 value={editDraft.brand}
                 onChange={(e) => {
                   const brand = e.target.value as Brand;
-                  const cats = brandInfo(brand).categories;
-                  setEditDraft({ ...editDraft, brand, category: cats.includes(editDraft.category) ? editDraft.category : cats[0] });
+                  const cats = categoriesOf(brand).map((c) => c.name);
+                  setEditDraft({ ...editDraft, brand, category: cats.includes(editDraft.category) ? editDraft.category : cats[0] ?? "" });
                 }}
                 aria-label={t.admin.restaurant}
                 className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm font-semibold outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
               >
-                {BRANDS.map((b) => (
+                {brands.map((b) => (
                   <option key={b.id} value={b.id}>{b.name}</option>
                 ))}
               </select>
@@ -1203,8 +1553,8 @@ export default function AdminPage() {
                   aria-label={t.admin.changeCategory}
                   className="w-full self-start rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
                 >
-                  {brandInfo(editDraft.brand).categories.map((c) => (
-                    <option key={c} value={c}>{c}</option>
+                  {categoriesOf(editDraft.brand).map((c) => (
+                    <option key={c.name} value={c.name}>{c.name}</option>
                   ))}
                 </select>
               </div>
@@ -1317,12 +1667,14 @@ export default function AdminPage() {
           </div>
         </div>
 
+        <div className="mt-4">{renderRangeFilter(ordersRange, setOrdersRange)}</div>
+
         {/* Customer orders */}
         <div className="mt-5">
           <h3 className="flex items-center gap-2 text-sm font-black uppercase tracking-wide text-slate-500 dark:text-slate-400">
             <FaUser className="text-emerald-600 dark:text-emerald-400" /> {t.fulfillment.customerOrders}
             <span className="rounded-full bg-slate-100 px-2 py-0.5 text-xs font-bold text-slate-600 dark:bg-white/10 dark:text-slate-300">
-              {customerOrders.length}
+              {filteredCustomerOrders.length}
             </span>
           </h3>
           {customerOrders.length === 0 ? (
@@ -1352,7 +1704,7 @@ export default function AdminPage() {
           <h3 className="flex items-center gap-2 text-sm font-black uppercase tracking-wide text-sky-600 dark:text-sky-400">
             <FaBuilding /> {t.fulfillment.companyOrders}
             <span className="rounded-full bg-sky-100 px-2 py-0.5 text-xs font-bold text-sky-700 dark:bg-sky-500/20 dark:text-sky-300">
-              {companyOrders.length}
+              {filteredCompanyOrders.length}
             </span>
           </h3>
           {companyOrders.length === 0 ? (

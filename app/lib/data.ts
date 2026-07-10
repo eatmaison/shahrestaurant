@@ -17,7 +17,7 @@ import {
   FaUtensils,
   FaWineBottle,
 } from "react-icons/fa6";
-import type { Brand, Category, Product } from "./types";
+import type { Brand, BrandConfig, Category, Product } from "./types";
 import { TANDOOR_CATEGORY_ORDER, TANDOOR_PRODUCTS } from "./tandoorProducts";
 
 export const CATEGORY_ORDER: Category[] = ["Wraps", "Burgers", "Pizzas", "Drinks"];
@@ -85,6 +85,64 @@ const CATEGORY_ICONS: Record<string, IconType> = {
 
 export function getCategoryIcon(category: Category): IconType {
   return CATEGORY_ICONS[category] ?? FaUtensils;
+}
+
+/* ------------------------------------------------------------------ dynamic brands & category icons */
+
+/** Icons an admin can pick for a category (stored by `id` in the database). */
+export const CATEGORY_ICON_CHOICES: { id: string; Icon: IconType }[] = [
+  { id: "utensils", Icon: FaUtensils },
+  { id: "bowl-food", Icon: FaBowlFood },
+  { id: "burger", Icon: FaBurger },
+  { id: "pizza", Icon: FaPizzaSlice },
+  { id: "glass-water", Icon: FaGlassWater },
+  { id: "mug-hot", Icon: FaMugHot },
+  { id: "leaf", Icon: FaLeaf },
+  { id: "drumstick", Icon: FaDrumstickBite },
+  { id: "fire", Icon: FaFire },
+  { id: "bowl-rice", Icon: FaBowlRice },
+  { id: "carrot", Icon: FaCarrot },
+  { id: "plate-wheat", Icon: FaPlateWheat },
+  { id: "bread", Icon: FaBreadSlice },
+  { id: "ice-cream", Icon: FaIceCream },
+  { id: "wine-bottle", Icon: FaWineBottle },
+  { id: "fish", Icon: FaFish },
+];
+
+/** Resolve an icon key (e.g. "burger") to its component, or undefined. */
+export function iconByKey(key?: string): IconType | undefined {
+  return CATEGORY_ICON_CHOICES.find((c) => c.id === key)?.Icon;
+}
+
+/** Icon key used when seeding the built-in category names. */
+function defaultIconKey(category: string): string {
+  const icon = CATEGORY_ICONS[category];
+  return CATEGORY_ICON_CHOICES.find((c) => c.Icon === icon)?.id ?? "utensils";
+}
+
+/** Built-in restaurants used to seed the `brands` table on first run. */
+export const DEFAULT_BRAND_CONFIGS: BrandConfig[] = BRANDS.map((b) => ({
+  id: b.id,
+  name: b.name,
+  logo: b.logo,
+  categories: b.categories.map((name) => ({ name, icon: defaultIconKey(name) })),
+}));
+
+/** Find a brand in the dynamic (admin-managed) list, with a safe fallback. */
+export function brandById(brands: BrandConfig[], id: string): BrandConfig | undefined {
+  return brands.find((b) => b.id === id);
+}
+
+/** Icon for a category using the dynamic brand config, falling back to built-ins. */
+export function categoryIconFor(brands: BrandConfig[], category: string): IconType {
+  for (const b of brands) {
+    const cat = b.categories.find((c) => c.name === category);
+    if (cat) {
+      const Icon = iconByKey(cat.icon);
+      if (Icon) return Icon;
+    }
+  }
+  return getCategoryIcon(category);
 }
 
 /**

@@ -36,7 +36,8 @@ CREATE INDEX IF NOT EXISTS idx_users_email ON users (email);
 -- ------------------------------------------------------------------ products
 CREATE TABLE IF NOT EXISTS products (
   id                   text        PRIMARY KEY,
-  brand                text        NOT NULL CHECK (brand IN ('eattogo', 'tandoor')),
+  -- Brand id from the admin-managed brands table.
+  brand                text        NOT NULL,
   category             text        NOT NULL,
   name                 text        NOT NULL,
   description          text        NOT NULL DEFAULT '',
@@ -92,11 +93,23 @@ CREATE TABLE IF NOT EXISTS order_items (
   name       text        NOT NULL,
   price      numeric(10, 2) NOT NULL,
   qty        integer     NOT NULL CHECK (qty > 0),
-  brand      text        NOT NULL CHECK (brand IN ('eattogo', 'tandoor')),
+  brand      text        NOT NULL,
   category   text        NOT NULL DEFAULT ''
 );
 
 CREATE INDEX IF NOT EXISTS idx_order_items_order_id ON order_items (order_id);
+
+-- ------------------------------------------------------------------ brands
+-- Admin-managed restaurants and their menu categories.
+-- categories: ordered jsonb array of { "name": "Wraps", "icon": "burger" }.
+CREATE TABLE IF NOT EXISTS brands (
+  id         text        PRIMARY KEY,
+  name       text        NOT NULL,
+  logo       text        NOT NULL DEFAULT '',
+  sort       integer     NOT NULL DEFAULT 0,
+  categories jsonb       NOT NULL DEFAULT '[]',
+  created_at timestamptz NOT NULL DEFAULT now()
+);
 
 -- ------------------------------------------------------------------ reviews
 CREATE TABLE IF NOT EXISTS reviews (

@@ -1,8 +1,24 @@
 /** A menu category. Each brand defines its own set of category names. */
 export type Category = string;
 
-/** The restaurant a product belongs to. */
-export type Brand = "eattogo" | "tandoor";
+/** The restaurant a product belongs to (a brand id, e.g. "eattogo"). */
+export type Brand = string;
+
+/** A category inside a brand's menu, with the icon key it is displayed with. */
+export interface BrandCategory {
+  name: string;
+  /** Icon key from CATEGORY_ICON_CHOICES in app/lib/data.ts. */
+  icon: string;
+}
+
+/** Admin-managed restaurant/brand stored in the database. */
+export interface BrandConfig {
+  id: string;
+  name: string;
+  /** Logo path or data URL; empty string when the brand has no logo. */
+  logo: string;
+  categories: BrandCategory[];
+}
 
 export type Lang = "en" | "nl";
 
