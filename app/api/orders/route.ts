@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { placeOrder, setInvoiceSent, setOrderPaid, updateOrderStatus } from "../../lib/serverStore";
+import { placeOrder, publicOrigin, setInvoiceSent, setOrderPaid, updateOrderStatus } from "../../lib/serverStore";
 import { placeOrderSchema, updateOrderSchema } from "../../lib/validation";
 import { enforceRateLimit } from "../../lib/rateLimit";
 
@@ -15,7 +15,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ ok: false, error: "invalidInput" }, { status: 400 });
     }
 
-    const res = await placeOrder({ ...parsed.data, origin: new URL(req.url).origin });
+    const res = await placeOrder({ ...parsed.data, origin: publicOrigin(req) });
     return NextResponse.json(res);
   } catch (err) {
     return NextResponse.json(

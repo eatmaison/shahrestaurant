@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { approveVipRequest, buyVip, rejectVipRequest, requestVip } from "../../lib/serverStore";
+import { approveVipRequest, buyVip, publicOrigin, rejectVipRequest, requestVip } from "../../lib/serverStore";
 
 export async function POST(req: NextRequest) {
   try {
@@ -7,7 +7,7 @@ export async function POST(req: NextRequest) {
     const action = body.action as string;
 
     if (action === "buy") {
-      const res = await buyVip(new URL(req.url).origin);
+      const res = await buyVip(publicOrigin(req));
       return NextResponse.json(res);
     }
     if (action === "request") {

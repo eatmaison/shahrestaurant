@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import {
   loginUser,
   logoutUser,
+  publicOrigin,
   registerUser,
   requestPasswordReset,
   resendVerification,
@@ -29,7 +30,7 @@ export async function POST(req: NextRequest) {
       : enforceRateLimit(req, "auth:general", 60, 10 * 60_000);
     if (limited) return limited;
 
-    const origin = new URL(req.url).origin;
+    const origin = publicOrigin(req);
 
     if (body.action === "register") {
       const res = await registerUser({ ...body, origin });

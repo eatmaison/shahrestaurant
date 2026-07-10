@@ -46,6 +46,32 @@ import type {
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+/* ------------------------------------------------------------------ public site URL */
+
+/**
+ * Base URL used in email links and payment redirects.
+ * APP_URL (the public domain, set in production) always wins — request-derived
+ * origins are only a fallback so a forged Host header can never poison links.
+ */
+function siteBase(origin?: string): string {
+  const appUrl = process.env.APP_URL?.trim().replace(/\/+$/, "");
+  if (appUrl) return appUrl;
+  return origin?.replace(/\/+$/, "") || "http://localhost:3000";
+}
+
+/**
+ * Resolve the public origin of an incoming request. Behind a reverse proxy the
+ * request URL can look like http://localhost:3000, so trust the standard
+ * X-Forwarded-* headers first and fall back to APP_URL via siteBase().
+ */
+export function publicOrigin(req: { url: string; headers: Headers }): string {
+  const host =
+    req.headers.get("x-forwarded-host")?.split(",")[0]?.trim() || req.headers.get("host")?.trim() || "";
+  const proto = req.headers.get("x-forwarded-proto")?.split(",")[0]?.trim();
+  const fromHeaders = host ? `${proto || "https"}://${host}` : new URL(req.url).origin;
+  return siteBase(fromHeaders);
+}
+
 /* ------------------------------------------------------------------ auth */
 
 export async function getCurrentUser(): Promise<User | null> {
@@ -114,7 +140,7 @@ export async function registerUser(data: {
 
 async function sendVerificationEmail(user: User, origin?: string): Promise<void> {
   try {
-    const base = origin || process.env.APP_URL || "http://localhost:3000";
+    const base = siteBase(origin);
     const token = await signToken({ sub: user.id, purpose: "verify" }, "2d");
     const { subject, html } = verificationEmail(user.name, `${base}/verify-email?token=${token}`, base);
     await sendMail({ to: user.email, subject, html });
@@ -148,7 +174,7 @@ export async function requestPasswordReset(email: string, origin?: string): Prom
   if (rows[0]) {
     try {
       const user = rowToUser(rows[0]);
-      const base = origin || process.env.APP_URL || "http://localhost:3000";
+      const base = siteBase(origin);
       const token = await signToken({ sub: user.id, purpose: "reset" }, "1h");
       const { subject, html } = passwordResetEmail(user.name, `${base}/reset-password?token=${token}`, base);
       await sendMail({ to: user.email, subject, html });
@@ -447,7 +473,7 @@ async function insertOrder(c: ComputedOrder, paid: boolean): Promise<Order> {
 
 /** Build the redirect base + webhook URL for a payment. Webhook is omitted on localhost. */
 function paymentUrls(origin?: string): { base: string; webhookUrl?: string } {
-  const base = origin || process.env.APP_URL || "http://localhost:3000";
+  const base = siteBase(origin);
   const isLocal = /localhost|127\.0\.0\.1|\[::1\]/.test(base);
   return { base, webhookUrl: isLocal ? undefined : `${base}/api/mollie/webhook` };
 }
@@ -455,7 +481,7 @@ function paymentUrls(origin?: string): { base: string; webhookUrl?: string } {
 /** Email a company its invoice for a placed order (never blocks the order). */
 async function sendCompanyInvoice(order: Order, user: User, origin?: string): Promise<void> {
   try {
-    const base = origin || process.env.APP_URL || "http://localhost:3000";
+    const base = siteBase(origin);
     const { subject, html } = companyInvoiceEmail({
       base,
       companyName: user.name,
