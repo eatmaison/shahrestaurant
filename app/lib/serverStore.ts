@@ -277,7 +277,7 @@ export async function placeOrder(details: {
   const { customerName, address, postcode, phone, note, cart, pointsToUse = 0, schedule, origin } = details;
   const fulfillment: OrderFulfillment = details.fulfillment === "pickup" ? "pickup" : "delivery";
 
-  // Orders may be placed while closed — the kitchen starts preparing them at
+  // Orders may be placed while closed - the kitchen starts preparing them at
   // the next opening (the customer is informed in the UI). Scheduled (planned)
   // deliveries must still target a slot within opening hours.
   if (schedule && !isScheduleSlotOpen(schedule)) {
@@ -700,7 +700,7 @@ export async function fulfillPaymentByMollieId(mollieId: string): Promise<void> 
 }
 
 async function fulfillPayment(rec: any): Promise<{ kind: "order" | "vip"; status: string; orderNumber?: number }> {
-  // Already fulfilled — return the linked order number if any.
+  // Already fulfilled - return the linked order number if any.
   if (rec.status === "paid") {
     let orderNumber: number | undefined;
     if (rec.order_id) {

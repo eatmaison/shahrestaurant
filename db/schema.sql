@@ -1,5 +1,5 @@
 -- =============================================================================
--- Eat to go — Neon (PostgreSQL) schema
+-- Eat to go - Neon (PostgreSQL) schema
 -- Run this once against your Neon database to create all tables.
 --   psql "$DATABASE_URL" -f db/schema.sql
 -- or paste it into the Neon Console SQL Editor.
@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS users (
   id            uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   name          text        NOT NULL,
   email         text        NOT NULL UNIQUE,
-  -- Bcrypt/argon hash — never store plaintext passwords.
+  -- Bcrypt/argon hash - never store plaintext passwords.
   password_hash text        NOT NULL,
   phone         text,
   -- Last used delivery details, auto-filled on the customer's next order.

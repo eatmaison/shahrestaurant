@@ -3,7 +3,7 @@
 import { useLang } from "../providers";
 
 /**
- * Privacy Policy (GDPR / AVG). Bilingual EN/NL, self-contained content —
+ * Privacy Policy (GDPR / AVG). Bilingual EN/NL, self-contained content -
  * kept out of the main translations dictionary because of its size.
  */
 
@@ -48,7 +48,7 @@ const CONTENT: Record<"en" | "nl", { title: string; updated: string; intro: stri
       {
         title: "4. Where your data is stored",
         body: [
-          "Your data is stored in our own database. Uploaded images (such as VIP card photos) are stored in our own database as well — we do not use external image-hosting services.",
+          "Your data is stored in our own database. Uploaded images (such as VIP card photos) are stored in our own database as well - we do not use external image-hosting services.",
           "E-mails are sent via our own e-mail provider solely for transactional purposes.",
         ],
       },
@@ -125,7 +125,7 @@ const CONTENT: Record<"en" | "nl", { title: string; updated: string; intro: stri
       {
         title: "4. Waar uw gegevens worden opgeslagen",
         body: [
-          "Uw gegevens worden opgeslagen in onze eigen database. Geüploade afbeeldingen (zoals VIP-kaartfoto's) worden eveneens in onze eigen database opgeslagen — wij gebruiken geen externe beeldhostingdiensten.",
+          "Uw gegevens worden opgeslagen in onze eigen database. Geüploade afbeeldingen (zoals VIP-kaartfoto's) worden eveneens in onze eigen database opgeslagen - wij gebruiken geen externe beeldhostingdiensten.",
           "E-mails worden uitsluitend voor transactionele doeleinden verzonden via onze eigen e-mailprovider.",
         ],
       },

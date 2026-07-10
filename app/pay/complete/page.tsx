@@ -29,7 +29,7 @@ function PaymentCompleteInner() {
         const res = await fetch(`/api/mollie/verify?p=${p}`, { cache: "no-store" });
         const data: Result = await res.json();
         if (cancelled) return;
-        // Payment may still be settling right after the redirect — retry a few times.
+        // Payment may still be settling right after the redirect - retry a few times.
         if ((data.status === "open" || data.status === "pending") && attempts < 5) {
           attempts += 1;
           setTimeout(check, 1500);

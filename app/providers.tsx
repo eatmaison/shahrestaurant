@@ -123,7 +123,7 @@ interface StoreCtx {
   vipRequests: VipRequest[];
   /** Customer: submit a photo of an existing VIP card for approval. */
   requestVip: (image: string) => Promise<{ ok: boolean }>;
-  /** Admin: approve a pending VIP request — activates the customer's VIP. */
+  /** Admin: approve a pending VIP request - activates the customer's VIP. */
   approveVipRequest: (requestId: string) => Promise<void>;
   /** Admin: reject a pending VIP request. */
   rejectVipRequest: (requestId: string) => Promise<void>;
@@ -202,7 +202,7 @@ export function Providers({ children }: { children: ReactNode }) {
       setVipRequests(data.vipRequests ?? []);
       setSocialLinks(data.socialLinks ?? []);
     } catch {
-      /* ignore transient network errors — the UI keeps its current state */
+      /* ignore transient network errors - the UI keeps its current state */
     }
   }, []);
 
@@ -259,7 +259,7 @@ export function Providers({ children }: { children: ReactNode }) {
   }, [refresh]);
   const updateProduct = useCallback<StoreCtx["updateProduct"]>(async (pid, patch) => {
     // Serialize undefined fields as explicit null so cleared values (e.g. a removed
-    // image or detailed description) are sent — JSON.stringify omits undefined keys,
+    // image or detailed description) are sent - JSON.stringify omits undefined keys,
     // which would otherwise leave the old value untouched on the server.
     const body = JSON.stringify({ id: pid, ...patch }, (_key, value) => (value === undefined ? null : value));
     try {
@@ -423,7 +423,7 @@ export function Providers({ children }: { children: ReactNode }) {
     });
     const json = await res.json().catch(() => ({ ok: false }));
     if (json.ok) {
-      // Optimistic local update — no full refresh needed for a single link.
+      // Optimistic local update - no full refresh needed for a single link.
       setSocialLinks((prev) => {
         const others = prev.filter((l) => l.platform !== platform);
         return [...others, { platform, url: url.trim(), enabled }];

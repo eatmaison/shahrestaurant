@@ -514,7 +514,7 @@ export const FREE_DELIVERY_FROM = 30;
 export const MIN_ORDER = 20;
 
 /**
- * Delivery area — we only deliver within Amsterdam-Noord.
+ * Delivery area - we only deliver within Amsterdam-Noord.
  * Amsterdam-Noord uses Dutch postcodes with a 4-digit prefix in the 1020–1039 range.
  */
 export const DELIVERY_AREA_MIN = 1020;

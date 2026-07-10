@@ -4,7 +4,7 @@ import { useLang } from "../providers";
 
 /**
  * Terms & Conditions (Algemene Voorwaarden). Bilingual EN/NL, self-contained
- * content — kept out of the main translations dictionary because of its size.
+ * content - kept out of the main translations dictionary because of its size.
  */
 
 interface Section {
@@ -25,7 +25,7 @@ const CONTENT: Record<"en" | "nl", { title: string; updated: string; intro: stri
           "Orders can be placed through our website for delivery within our Amsterdam delivery area or for pickup.",
           "A minimum order value applies; the current minimum is shown during checkout. Delivery is free above the threshold shown at checkout; otherwise a delivery fee applies.",
           "Delivery times are estimates. We always do our best, but delays can occur during busy periods.",
-          "Please check your delivery address and phone number carefully — we may need to contact you about your order.",
+          "Please check your delivery address and phone number carefully - we may need to contact you about your order.",
         ],
       },
       {
@@ -92,7 +92,7 @@ const CONTENT: Record<"en" | "nl", { title: string; updated: string; intro: stri
           "Bestellingen kunnen via onze website worden geplaatst voor bezorging binnen ons bezorggebied in Amsterdam of voor afhalen.",
           "Er geldt een minimale bestelwaarde; het actuele minimum wordt getoond tijdens het afrekenen. Boven de getoonde drempel is bezorging gratis; anders geldt een bezorgtarief.",
           "Bezorgtijden zijn indicatief. Wij doen altijd ons best, maar tijdens drukte kan vertraging optreden.",
-          "Controleer uw bezorgadres en telefoonnummer zorgvuldig — wij moeten u mogelijk kunnen bereiken over uw bestelling.",
+          "Controleer uw bezorgadres en telefoonnummer zorgvuldig - wij moeten u mogelijk kunnen bereiken over uw bestelling.",
         ],
       },
       {

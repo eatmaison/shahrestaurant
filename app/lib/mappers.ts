@@ -2,7 +2,7 @@ import type { Order, OrderItem, Product, Review, User, VipRequest } from "./type
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-/** Postgres `numeric` comes back as a string — convert to a JS number. */
+/** Postgres `numeric` comes back as a string - convert to a JS number. */
 export function toNum(v: unknown): number {
   return typeof v === "string" ? parseFloat(v) : (v as number);
 }

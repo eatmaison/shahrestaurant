@@ -68,7 +68,7 @@ const makeRangeCheck = (f: RangeFilter): ((ts: number) => boolean) => {
     const from = Date.now() - 30 * 86_400_000;
     return (ts) => ts >= from;
   }
-  // "today" or a specific calendar date — one local-time day window.
+  // "today" or a specific calendar date - one local-time day window.
   if (f.preset === "date" && !f.date) return () => true;
   const start = f.preset === "date" && f.date ? new Date(`${f.date}T00:00:00`).getTime() : new Date().setHours(0, 0, 0, 0);
   const end = start + 86_400_000;
@@ -660,10 +660,10 @@ export default function AdminPage() {
         <div className="mt-3 grid gap-1.5 rounded-xl bg-white p-3 text-xs dark:bg-white/5 sm:grid-cols-2">
           <p className="flex items-center gap-2 text-slate-600 dark:text-slate-300">
             <FaLocationDot className="shrink-0 text-emerald-600 dark:text-emerald-400" />
-            <span className="font-semibold text-slate-900 dark:text-white">{o.address || "—"}</span>, {o.postcode || "—"}
+            <span className="font-semibold text-slate-900 dark:text-white">{o.address || "-"}</span>, {o.postcode || "-"}
           </p>
           <p className="flex items-center gap-2 text-slate-600 dark:text-slate-300">
-            <FaPhone className="shrink-0 text-emerald-600 dark:text-emerald-400" /> {o.phone || "—"}
+            <FaPhone className="shrink-0 text-emerald-600 dark:text-emerald-400" /> {o.phone || "-"}
           </p>
           {account?.email && (
             <p className="flex items-center gap-2 text-slate-600 dark:text-slate-300">
@@ -679,8 +679,8 @@ export default function AdminPage() {
               <FaBuilding /> {t.fulfillment.companyDetails}
             </p>
             <div className="mt-1.5 grid gap-1 text-xs text-slate-600 dark:text-slate-300 sm:grid-cols-2">
-              <span>{t.company.btw}: <span className="font-semibold text-slate-900 dark:text-white">{account?.btw || "—"}</span></span>
-              <span>{t.company.kvk}: <span className="font-semibold text-slate-900 dark:text-white">{account?.kvk || "—"}</span></span>
+              <span>{t.company.btw}: <span className="font-semibold text-slate-900 dark:text-white">{account?.btw || "-"}</span></span>
+              <span>{t.company.kvk}: <span className="font-semibold text-slate-900 dark:text-white">{account?.kvk || "-"}</span></span>
             </div>
             <button
               onClick={() => setInvoiceSent(o.id, !o.invoiceSent)}
@@ -695,7 +695,7 @@ export default function AdminPage() {
           </div>
         )}
 
-        {/* Items to prepare — grouped by restaurant/brand */}
+        {/* Items to prepare - grouped by restaurant/brand */}
         <div className="mt-3 rounded-xl border border-slate-200 bg-white p-3 dark:border-white/10 dark:bg-white/5">
           <p className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wide text-slate-500 dark:text-slate-400">
             <FaUtensils /> {t.admin.itemsToPrepare}
@@ -965,14 +965,14 @@ export default function AdminPage() {
                       <FaHeart className="shrink-0 text-rose-500" />
                       <span className="text-slate-500 dark:text-slate-400">{t.admin.favoriteProduct}:</span>
                       <span className="ml-auto truncate font-bold text-slate-900 dark:text-white">
-                        {c.favProduct ? `${c.favProduct.name} ×${c.favProduct.qty}` : "—"}
+                        {c.favProduct ? `${c.favProduct.name} ×${c.favProduct.qty}` : "-"}
                       </span>
                     </div>
                     <div className="flex items-center gap-2">
                       <FavIcon className="shrink-0 text-emerald-600 dark:text-emerald-400" />
                       <span className="text-slate-500 dark:text-slate-400">{t.admin.favoriteCategory}:</span>
                       <span className="ml-auto truncate font-bold text-slate-900 dark:text-white">
-                        {c.favCategory ? `${c.favCategory.name} ×${c.favCategory.qty}` : "—"}
+                        {c.favCategory ? `${c.favCategory.name} ×${c.favCategory.qty}` : "-"}
                       </span>
                     </div>
                   </div>
@@ -989,7 +989,7 @@ export default function AdminPage() {
         )}
       </div>
 
-      {/* Recently online — last 20 signed-in visitors */}
+      {/* Recently online - last 20 signed-in visitors */}
       <div className="mt-6 rounded-3xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-white/5">
         <div className="flex items-center gap-2">
           <span className="grid h-9 w-9 place-items-center rounded-xl bg-sky-500/10 text-sky-600 dark:text-sky-400">

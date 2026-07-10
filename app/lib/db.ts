@@ -144,7 +144,7 @@ let readyPromise: Promise<void> | null = null;
 
 /**
  * Lazily create the schema and seed the product catalogue on first use.
- * Safe to call on every request — the underlying work runs only once per process.
+ * Safe to call on every request - the underlying work runs only once per process.
  */
 export function ensureReady(): Promise<void> {
   if (!readyPromise) {

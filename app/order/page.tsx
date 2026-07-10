@@ -386,7 +386,7 @@ export default function OrderPage() {
 
   return (
     <>
-      {/* Closed notice — ordering stays possible, preparation starts at the next opening */}
+      {/* Closed notice - ordering stays possible, preparation starts at the next opening */}
       {preOrderNote && (
         <div className="mx-auto max-w-7xl px-4 pb-3 pt-4 sm:px-6 lg:px-8">
           <div className="flex items-start gap-3 rounded-2xl border border-sky-300 bg-sky-50 px-4 py-3 text-sm text-sky-800 dark:border-sky-400/30 dark:bg-sky-400/10 dark:text-sky-300">
@@ -466,7 +466,7 @@ export default function OrderPage() {
                       : "border-slate-200 bg-white dark:border-white/10 dark:bg-[#0c1420]"
                   }`}
                 >
-                  {/* Brand header (logo) — click to switch restaurant */}
+                  {/* Brand header (logo) - click to switch restaurant */}
                   <button
                     onClick={() => selectBrand(b.id)}
                     className={`flex w-full items-center gap-3 px-3 py-3 text-left transition ${
@@ -628,7 +628,7 @@ export default function OrderPage() {
               <textarea
                 value={form.note}
                 onChange={(e) => setForm({ ...form, note: e.target.value })}
-                placeholder={`${t.order.note} — ${t.order.notePlaceholder}`}
+                placeholder={`${t.order.note} - ${t.order.notePlaceholder}`}
                 rows={2}
                 className="w-full resize-none rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/5 dark:text-white"
               />
@@ -998,7 +998,7 @@ export default function OrderPage() {
               <textarea
                 value={form.note}
                 onChange={(e) => setForm({ ...form, note: e.target.value })}
-                placeholder={`${t.order.note} — ${t.order.notePlaceholder}`}
+                placeholder={`${t.order.note} - ${t.order.notePlaceholder}`}
                 rows={2}
                 className="w-full resize-none rounded-lg border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/5 dark:text-white"
               />

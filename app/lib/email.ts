@@ -29,7 +29,7 @@ function getTransporter(): Transporter {
 
 export async function sendMail(opts: { to: string; subject: string; html: string }): Promise<void> {
   if (!emailEnabled()) {
-    console.warn(`[email] SMTP not configured — skipped sending "${opts.subject}" to ${opts.to}`);
+    console.warn(`[email] SMTP not configured - skipped sending "${opts.subject}" to ${opts.to}`);
     return;
   }
   const from = process.env.SMTP_FROM || `Eat to go <${process.env.SMTP_USER}>`;
@@ -88,12 +88,12 @@ function layout(opts: {
         <!-- footer -->
         <tr><td style="padding:20px 32px;border-top:1px solid ${BRAND.border};background:#fafafa;">
           <p style="margin:0;font-size:12px;line-height:20px;color:${BRAND.muted};">
-            Eat to go — Klaprozenweg 36a, 1032 KL Amsterdam<br>
+            Eat to go - Klaprozenweg 36a, 1032 KL Amsterdam<br>
             <a href="mailto:info@eattogo.nl" style="color:${BRAND.green};">info@eattogo.nl</a> · <a href="${base}" style="color:${BRAND.green};">eattogo.nl</a>
           </p>
         </td></tr>
       </table>
-      <p style="margin:16px 0 0;font-size:11px;color:#94a3b8;">© ${new Date().getFullYear()} Eat to go — Amsterdam. All rights reserved.</p>
+      <p style="margin:16px 0 0;font-size:11px;color:#94a3b8;">© ${new Date().getFullYear()} Eat to go - Amsterdam. All rights reserved.</p>
     </td></tr>
   </table>
 </body></html>`;
@@ -101,7 +101,7 @@ function layout(opts: {
 
 export function verificationEmail(name: string, url: string, base: string): { subject: string; html: string } {
   return {
-    subject: "Confirm your email — Eat to go",
+    subject: "Confirm your email - Eat to go",
     html: layout({
       base,
       heading: `Welcome, ${name}! 🎉`,
@@ -116,14 +116,14 @@ export function verificationEmail(name: string, url: string, base: string): { su
 
 export function passwordResetEmail(name: string, url: string, base: string): { subject: string; html: string } {
   return {
-    subject: "Reset your password — Eat to go",
+    subject: "Reset your password - Eat to go",
     html: layout({
       base,
       heading: "Reset your password",
       intro: `Hi ${name}, we received a request to reset your Eat to go password. Click the button below to choose a new one.`,
       ctaText: "Choose a new password",
       ctaUrl: url,
-      outro: "This link expires in 1 hour. If you didn't request this, you can ignore this email — your password stays the same.",
+      outro: "This link expires in 1 hour. If you didn't request this, you can ignore this email - your password stays the same.",
     }),
   };
 }
@@ -165,7 +165,7 @@ export function companyInvoiceEmail(data: {
       </table>
     </div>`;
   return {
-    subject: `Invoice ${data.orderNumber} — Eat to go`,
+    subject: `Invoice ${data.orderNumber} - Eat to go`,
     html: layout({
       base: data.base,
       heading: "Your invoice",

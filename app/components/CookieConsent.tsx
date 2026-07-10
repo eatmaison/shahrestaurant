@@ -8,7 +8,7 @@ const STORAGE_KEY = "etg.cookieConsent";
 
 /**
  * EU/NL cookie notice. The site only uses strictly necessary cookies/storage
- * (session, cart, language/theme), so no consent is legally required — this
+ * (session, cart, language/theme), so no consent is legally required - this
  * banner informs the visitor and records their acknowledgement.
  */
 export function CookieConsent() {
@@ -19,7 +19,7 @@ export function CookieConsent() {
     try {
       if (!localStorage.getItem(STORAGE_KEY)) setVisible(true);
     } catch {
-      /* storage unavailable — stay hidden */
+      /* storage unavailable - stay hidden */
     }
   }, []);
 
