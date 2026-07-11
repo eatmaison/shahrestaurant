@@ -315,73 +315,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Signature dishes */}
-      <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <span className="lux-overline text-emerald-600 dark:text-emerald-400">{t.home.popularOverline}</span>
-          <h2 className="font-display mt-3 text-2xl font-semibold text-slate-900 dark:text-white sm:text-3xl">{t.home.popularTitle}</h2>
-          <p className="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-400">{t.home.popularSubtitle}</p>
-        </div>
-        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {featured.map((p, i) => (
-            <div
-              key={p.id}
-              className="group relative overflow-hidden rounded-3xl border border-emerald-500/15 bg-white p-6 transition hover:-translate-y-1 hover:border-emerald-500/40 hover:shadow-xl hover:shadow-emerald-900/10 dark:border-emerald-400/10 dark:bg-white/5"
-            >
-              <span className="font-display absolute -right-1 top-3 text-6xl font-bold text-emerald-500/10 transition group-hover:text-emerald-500/20">
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              <p className="lux-overline text-[0.6rem] text-emerald-600/80 dark:text-emerald-400/80">{p.category}</p>
-              <h3 className="font-display mt-2 text-lg font-bold text-slate-900 dark:text-white">{p.name}</h3>
-              <p className="mt-2 line-clamp-2 text-sm leading-6 text-slate-500 dark:text-slate-400">{p.description}</p>
-              <div className="mt-4 flex items-center justify-between">
-                <span className="font-display text-lg font-bold text-emerald-700 dark:text-emerald-300">€{p.price.toFixed(2)}</span>
-                <Link href="/order" className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest text-slate-500 transition hover:gap-2.5 hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400">
-                  {t.common.viewMenu} <FaArrowRight />
-                </Link>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Ambiance + hours & contact */}
-      <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
-        <div className="overflow-hidden rounded-[2rem] border border-emerald-500/20 bg-gradient-to-br from-[#171208] via-[#221a0c] to-[#2c2110] p-8 text-white sm:p-12">
-          <div className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
-            <div>
-              <span className="lux-overline text-emerald-300/90">{t.home.ambianceOverline}</span>
-              <h2 className="font-display mt-3 text-2xl font-semibold sm:text-3xl">{t.home.ambianceTitle}</h2>
-              <p className="mt-4 max-w-xl text-sm leading-8 text-stone-300">{t.home.ambianceText}</p>
-              <Link href="/reservations" className="mt-7 inline-flex items-center gap-2 rounded-full bg-emerald-500 px-7 py-3.5 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-emerald-400">
-                {t.home.reserveCta} <FaArrowRight />
-              </Link>
-            </div>
-            <div className="grid gap-4">
-              <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
-                <p className="lux-overline flex items-center gap-2 text-emerald-300/90"><FaClock /> {t.home.hoursTitle}</p>
-                <p className="mt-3 text-sm leading-7 text-stone-200">
-                  {t.hours.tueSun}: 14:00 – 20:00
-                  <br />
-                  {t.hours.monday}: {t.hours.closed}
-                </p>
-              </div>
-              <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
-                <p className="lux-overline flex items-center gap-2 text-emerald-300/90"><FaLocationDot /> {t.footer.address}</p>
-                <p className="mt-3 text-sm leading-7 text-stone-200">Klaprozenweg 36a<br />1032 KL Amsterdam</p>
-              </div>
-              <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
-                <p className="lux-overline flex items-center gap-2 text-emerald-300/90"><FaPhone /> {t.footer.contact}</p>
-                <p className="mt-3 text-sm leading-7 text-stone-200">
-                  <a href="tel:+31203412995" className="transition hover:text-emerald-300">+31 20 341 2995</a>
-                  <br />
-                  <a href="mailto:info@themaison.nl" className="transition hover:text-emerald-300">info@themaison.nl</a>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Testimonials / Customer reviews */}
       <section className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
@@ -451,18 +384,6 @@ export default function Home() {
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }} />
       </section>
 
-      {/* CTA */}
-      <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
-        <div className="relative flex flex-col items-center gap-6 overflow-hidden rounded-[2rem] border border-emerald-500/25 bg-emerald-50 px-6 py-14 text-center dark:border-emerald-400/20 dark:bg-emerald-500/10">
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(50%_60%_at_50%_0%,rgba(195,144,61,0.12),transparent_70%)]" />
-          <span className="lux-overline relative text-emerald-600 dark:text-emerald-400">{t.home.reserveOverline}</span>
-          <h2 className="font-display relative max-w-2xl text-2xl font-semibold text-slate-900 dark:text-white sm:text-3xl">{t.home.ctaTitle}</h2>
-          <p className="relative max-w-xl text-sm leading-7 text-slate-600 dark:text-slate-300">{t.home.ctaText}</p>
-          <Link href="/reservations" className="relative inline-flex items-center gap-2 rounded-full bg-emerald-600 px-8 py-4 text-sm font-semibold text-white shadow-lg shadow-emerald-600/25 transition hover:-translate-y-0.5 hover:bg-emerald-500">
-            <FaCalendarCheck /> {t.home.ctaButton} <FaArrowRight />
-          </Link>
-        </div>
-      </section>
     </div>
   );
 }
