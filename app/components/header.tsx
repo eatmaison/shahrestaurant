@@ -25,6 +25,7 @@ export function Header() {
 
   const links = [
     { href: "/", label: t.nav.home },
+    { href: "/reservations", label: t.nav.reservations },
     { href: "/order", label: t.nav.order },
     { href: "/account", label: t.nav.account },
   ];
@@ -34,18 +35,18 @@ export function Header() {
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-200/70 bg-white/80 backdrop-blur-xl dark:border-white/10 dark:bg-[#060b12]/80">
+    <header className="sticky top-0 z-50 border-b border-slate-200/70 bg-white/80 backdrop-blur-xl dark:border-emerald-400/15 dark:bg-[#0d0a07]/85">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-3" onClick={() => setOpen(false)}>
-          <span className="relative h-10 w-10 overflow-hidden rounded-full border border-emerald-500/40 bg-white">
-            <Image src="/eattogo.png" alt="Eat to go logo" fill sizes="40px" className="object-contain p-1" priority />
+          <span className="relative h-10 w-10 overflow-hidden rounded-full border border-emerald-500/50 bg-white shadow-[0_0_14px_rgba(195,144,61,0.25)]">
+            <Image src="/themaison.png" alt="The Maison logo" fill sizes="40px" className="object-contain p-1" priority />
           </span>
           <span className="flex flex-col leading-none">
             <span className="text-[0.6rem] font-semibold uppercase tracking-[0.3em] text-emerald-600 dark:text-emerald-400">
-              Amsterdam
+              Fine Dining · Amsterdam
             </span>
-            <span className="text-base font-black tracking-[0.18em] text-slate-900 dark:text-white">
-              EAT TO GO
+            <span className="font-display text-lg font-bold tracking-[0.22em] text-slate-900 dark:text-white">
+              THE MAISON
             </span>
           </span>
         </Link>
@@ -129,7 +130,7 @@ export function Header() {
       </div>
 
       {open && (
-        <div className="border-t border-slate-200/70 bg-white px-4 py-3 dark:border-white/10 dark:bg-[#060b12] md:hidden">
+        <div className="border-t border-slate-200/70 bg-white px-4 py-3 dark:border-emerald-400/15 dark:bg-[#0d0a07] md:hidden">
           <nav className="flex flex-col gap-1">
             {links.map((link) => (
               <Link

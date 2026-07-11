@@ -7,6 +7,7 @@ import {
   FaBagShopping,
   FaBoxOpen,
   FaBuilding,
+  FaCalendarCheck,
   FaChartLine,
   FaChevronDown,
   FaClock,
@@ -124,7 +125,7 @@ const processImageFile = (file: File, opts?: { maxDim?: number; mime?: string })
 
 export default function AdminPage() {
   const { t, lang } = useLang();
-  const { currentUser, products, orders, users, addProduct, removeProduct, updateProduct, brands, manageBrands, updateOrderStatus, setOrderPaid, setInvoiceSent, vipRequests, approveVipRequest, rejectVipRequest, socialLinks, updateSocialLink, hydrated } = useStore();
+  const { currentUser, products, orders, users, addProduct, removeProduct, updateProduct, brands, manageBrands, updateOrderStatus, setOrderPaid, setInvoiceSent, vipRequests, approveVipRequest, rejectVipRequest, socialLinks, updateSocialLink, reservations, setReservationStatus, cancelReservation, hydrated } = useStore();
   const fileRef = useRef<HTMLInputElement>(null);
   const editFileRef = useRef<HTMLInputElement>(null);
   const logoFileRef = useRef<HTMLInputElement>(null);
@@ -230,6 +231,18 @@ export default function AdminPage() {
         .slice(0, 20),
     [users]
   );
+
+  /** Reservation list filter: upcoming (pending/confirmed, today onwards) or all. */
+  const [resFilter, setResFilter] = useState<"upcoming" | "all">("upcoming");
+  const visibleReservations = useMemo(() => {
+    const d = new Date();
+    const today = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+    const list =
+      resFilter === "upcoming"
+        ? reservations.filter((r) => r.date >= today && (r.status === "pending" || r.status === "confirmed"))
+        : [...reservations].sort((a, b) => (b.date + b.time).localeCompare(a.date + a.time));
+    return list;
+  }, [reservations, resFilter]);
 
   /** "just now" / "5 min ago" / "3 h ago" / "2 d ago" */
   const relativeTime = (ts: number): string => {
@@ -813,9 +826,17 @@ export default function AdminPage() {
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-      <div className="mb-6">
-        <h1 className="text-3xl font-black tracking-tight text-slate-900 dark:text-white">{t.admin.title}</h1>
-        <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">{t.admin.subtitle}</p>
+      <div className="mb-6 flex flex-wrap items-end justify-between gap-3">
+        <div>
+          <h1 className="text-3xl font-black tracking-tight text-slate-900 dark:text-white">{t.admin.title}</h1>
+          <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">{t.admin.subtitle}</p>
+        </div>
+        <Link
+          href="/terminal"
+          className="inline-flex items-center gap-2 rounded-full border border-emerald-500/40 bg-emerald-500/10 px-4 py-2.5 text-sm font-bold text-emerald-700 transition hover:bg-emerald-500/20 dark:text-emerald-300"
+        >
+          <FaReceipt /> {t.terminal.title} →
+        </Link>
       </div>
 
       {/* Stat cards */}
@@ -1013,7 +1034,7 @@ export default function AdminPage() {
                   <span className="relative grid h-10 w-10 shrink-0 place-items-center rounded-full bg-gradient-to-br from-sky-500 to-indigo-500 text-sm font-black text-white">
                     {u.name.charAt(0).toUpperCase()}
                     <span
-                      className={`absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full border-2 border-white dark:border-[#0b1220] ${
+                      className={`absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full border-2 border-white dark:border-[#161006] ${
                         online ? "bg-emerald-500" : "bg-slate-300 dark:bg-slate-600"
                       }`}
                     />
@@ -1183,6 +1204,115 @@ export default function AdminPage() {
           </div>
         </div>
       )}
+
+      {/* Reservations management */}
+      <div className="mt-6 rounded-3xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-white/5">
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="grid h-9 w-9 place-items-center rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
+            <FaCalendarCheck />
+          </span>
+          <div className="flex-1">
+            <h2 className="text-lg font-black text-slate-900 dark:text-white">{t.admin.reservationsTitle}</h2>
+            <p className="text-xs text-slate-500 dark:text-slate-400">{t.admin.reservationsSub}</p>
+          </div>
+          <div className="flex rounded-full border border-slate-200 p-0.5 text-xs font-bold dark:border-white/10">
+            <button
+              onClick={() => setResFilter("upcoming")}
+              className={`rounded-full px-3 py-1.5 transition ${resFilter === "upcoming" ? "bg-emerald-500 text-white" : "text-slate-500 dark:text-slate-400"}`}
+            >
+              {t.admin.resUpcoming}
+            </button>
+            <button
+              onClick={() => setResFilter("all")}
+              className={`rounded-full px-3 py-1.5 transition ${resFilter === "all" ? "bg-emerald-500 text-white" : "text-slate-500 dark:text-slate-400"}`}
+            >
+              {t.admin.resAll}
+            </button>
+          </div>
+        </div>
+
+        {visibleReservations.length === 0 ? (
+          <p className="mt-4 text-sm text-slate-500 dark:text-slate-400">{t.admin.noReservationsAdmin}</p>
+        ) : (
+          <ul className="mt-5 grid gap-3 lg:grid-cols-2">
+            {visibleReservations.map((r) => {
+              const badge =
+                r.status === "confirmed"
+                  ? "border-emerald-500/40 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300"
+                  : r.status === "pending"
+                    ? "border-amber-400/50 bg-amber-400/10 text-amber-600 dark:text-amber-300"
+                    : "border-slate-300/60 bg-slate-400/10 text-slate-500 dark:text-slate-400";
+              const statusLabel =
+                r.status === "pending"
+                  ? t.reservations.statusPending
+                  : r.status === "confirmed"
+                    ? t.reservations.statusConfirmed
+                    : r.status === "declined"
+                      ? t.reservations.statusDeclined
+                      : t.reservations.statusCancelled;
+              return (
+                <li key={r.id} className="rounded-2xl border border-slate-200 p-4 dark:border-white/10">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <p className="text-sm font-black text-slate-900 dark:text-white">
+                      RSV-{r.reservationNumber} ·{" "}
+                      {new Date(`${r.date}T00:00:00`).toLocaleDateString(lang === "nl" ? "nl-NL" : "en-GB", {
+                        weekday: "short",
+                        day: "numeric",
+                        month: "short",
+                      })}{" "}
+                      · {r.time}
+                    </p>
+                    <span className={`rounded-full border px-2.5 py-1 text-[0.65rem] font-bold uppercase tracking-wide ${badge}`}>
+                      {statusLabel}
+                    </span>
+                  </div>
+                  <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-500 dark:text-slate-400">
+                    <span className="inline-flex items-center gap-1.5"><FaUser className="text-emerald-500" /> {r.guestName}</span>
+                    <span className="inline-flex items-center gap-1.5"><FaUserGroup className="text-emerald-500" /> {r.guests}</span>
+                    <a href={`tel:${r.phone}`} className="inline-flex items-center gap-1.5 hover:text-emerald-600"><FaPhone className="text-emerald-500" /> {r.phone}</a>
+                    {r.email && <a href={`mailto:${r.email}`} className="inline-flex items-center gap-1.5 hover:text-emerald-600"><FaEnvelope className="text-emerald-500" /> {r.email}</a>}
+                  </div>
+                  {(r.occasion || r.note) && (
+                    <p className="mt-2 rounded-xl bg-slate-50 px-3 py-2 text-xs leading-5 text-slate-600 dark:bg-white/5 dark:text-slate-300">
+                      {r.occasion && <span className="font-bold uppercase tracking-wide text-emerald-600 dark:text-emerald-400">{r.occasion}</span>}
+                      {r.occasion && r.note && " · "}
+                      {r.note}
+                    </p>
+                  )}
+                  {(r.status === "pending" || r.status === "confirmed") && (
+                    <div className="mt-3 flex gap-2">
+                      {r.status === "pending" && (
+                        <>
+                          <button
+                            onClick={() => setReservationStatus(r.id, "confirm")}
+                            className="flex-1 rounded-full bg-emerald-600 py-2 text-xs font-bold text-white transition hover:bg-emerald-500"
+                          >
+                            {t.admin.resConfirm}
+                          </button>
+                          <button
+                            onClick={() => setReservationStatus(r.id, "decline")}
+                            className="flex-1 rounded-full border border-slate-200 py-2 text-xs font-bold text-slate-600 transition hover:bg-slate-100 dark:border-white/10 dark:text-slate-300 dark:hover:bg-white/10"
+                          >
+                            {t.admin.resDecline}
+                          </button>
+                        </>
+                      )}
+                      {r.status === "confirmed" && (
+                        <button
+                          onClick={() => cancelReservation(r.id)}
+                          className="flex-1 rounded-full border border-red-300/60 py-2 text-xs font-bold text-red-500 transition hover:bg-red-500/10 dark:border-red-400/30"
+                        >
+                          {t.admin.resCancelAdmin}
+                        </button>
+                      )}
+                    </div>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        )}
+      </div>
 
       {/* Product management */}
       <div className="mt-6 grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
@@ -1374,7 +1504,7 @@ export default function AdminPage() {
       {manageOpen && (
         <div className="fixed inset-0 z-50 flex items-end justify-center sm:items-center">
           <div className="fixed inset-0 bg-black/40" onClick={() => setManageOpen(false)} />
-          <div className="relative flex max-h-[85vh] w-full max-w-lg flex-col rounded-t-3xl bg-white shadow-2xl dark:bg-[#0c1420] sm:rounded-3xl">
+          <div className="relative flex max-h-[85vh] w-full max-w-lg flex-col rounded-t-3xl bg-white shadow-2xl dark:bg-[#161006] sm:rounded-3xl">
             <div className="flex items-center justify-between border-b border-slate-200 px-5 py-4 dark:border-white/10">
               <div>
                 <h2 className="flex items-center gap-2 text-lg font-black text-slate-900 dark:text-white">
@@ -1558,7 +1688,7 @@ export default function AdminPage() {
       {editing && (
         <div className="fixed inset-0 z-50 flex items-end justify-center sm:items-center">
           <div className="fixed inset-0 bg-black/40" onClick={closeEditor} />
-          <div className="relative w-full max-w-md rounded-t-3xl bg-white shadow-2xl dark:bg-[#0c1420] sm:rounded-3xl">
+          <div className="relative w-full max-w-md rounded-t-3xl bg-white shadow-2xl dark:bg-[#161006] sm:rounded-3xl">
             <div className="flex items-center justify-between border-b border-slate-200 px-5 py-4 dark:border-white/10">
               <h2 className="flex items-center gap-2 text-lg font-black text-slate-900 dark:text-white">
                 <FaPen className="text-emerald-600 dark:text-emerald-400" /> {t.admin.editProduct}
@@ -1697,7 +1827,7 @@ export default function AdminPage() {
       {deleting && (
         <div className="fixed inset-0 z-50 flex items-end justify-center sm:items-center">
           <div className="fixed inset-0 bg-black/40" onClick={() => setDeleting(null)} />
-          <div className="relative w-full max-w-sm rounded-t-3xl bg-white p-6 shadow-2xl dark:bg-[#0c1420] sm:rounded-3xl">
+          <div className="relative w-full max-w-sm rounded-t-3xl bg-white p-6 shadow-2xl dark:bg-[#161006] sm:rounded-3xl">
             <div className="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-red-500/10 text-2xl text-red-500">
               <FaTrash />
             </div>

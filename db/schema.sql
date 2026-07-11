@@ -1,6 +1,9 @@
 -- =============================================================================
--- Eat to go - Neon (PostgreSQL) schema
--- Run this once against your Neon database to create all tables.
+-- Restaurant group (Eat to go / The Maison / ...) - Neon (PostgreSQL) schema
+-- ONE shared database for all sister websites. This file is documentation;
+-- the app creates/upgrades the schema automatically and idempotently on boot
+-- (see app/lib/db.ts - CREATE TABLE IF NOT EXISTS / ADD COLUMN IF NOT EXISTS),
+-- so running it is optional and never deletes data.
 --   psql "$DATABASE_URL" -f db/schema.sql
 -- or paste it into the Neon Console SQL Editor.
 -- =============================================================================
@@ -119,11 +122,15 @@ CREATE TABLE IF NOT EXISTS reviews (
   user_name  text        NOT NULL,
   rating     integer     NOT NULL CHECK (rating BETWEEN 1 AND 5),
   text       text        NOT NULL DEFAULT '',
+  -- Which website the review was written on ('eattogo', 'themaison', ...).
+  -- Each site's homepage shows only its own reviews.
+  site       text        NOT NULL DEFAULT 'eattogo',
   created_at timestamptz NOT NULL DEFAULT now(),
   UNIQUE (order_id)
 );
 
 CREATE INDEX IF NOT EXISTS idx_reviews_created_at ON reviews (created_at DESC);
+CREATE INDEX IF NOT EXISTS idx_reviews_site ON reviews (site);
 
 -- ------------------------------------------------------------------ vip_requests
 CREATE TABLE IF NOT EXISTS vip_requests (
@@ -147,3 +154,29 @@ CREATE TABLE IF NOT EXISTS social_links (
   enabled    boolean     NOT NULL DEFAULT false,
   updated_at timestamptz NOT NULL DEFAULT now()
 );
+
+-- ------------------------------------------------------------------ reservations
+-- The Maison table reservations (shared database across the restaurant group).
+CREATE TABLE IF NOT EXISTS reservations (
+  id                 uuid        PRIMARY KEY DEFAULT gen_random_uuid(),
+  -- Human-readable sequential number (shown as RSV-501, RSV-502, ...)
+  reservation_number integer     GENERATED ALWAYS AS IDENTITY (START WITH 501),
+  user_id            uuid        REFERENCES users (id) ON DELETE SET NULL,
+  guest_name         text        NOT NULL,
+  email              text        NOT NULL DEFAULT '',
+  phone              text        NOT NULL,
+  -- Reservation calendar date (YYYY-MM-DD) and arrival time (HH:mm).
+  date               text        NOT NULL,
+  time               text        NOT NULL,
+  guests             integer     NOT NULL CHECK (guests BETWEEN 1 AND 40),
+  -- Optional occasion: birthday, business, romantic, family, other.
+  occasion           text        NOT NULL DEFAULT '',
+  note               text,
+  status             text        NOT NULL DEFAULT 'pending' CHECK (status IN ('pending', 'confirmed', 'declined', 'cancelled')),
+  -- Which website the reservation was made on ('themaison', ...).
+  site               text        NOT NULL DEFAULT 'themaison',
+  created_at         timestamptz NOT NULL DEFAULT now()
+);
+
+CREATE INDEX IF NOT EXISTS idx_reservations_date ON reservations (date);
+CREATE INDEX IF NOT EXISTS idx_reservations_user_id ON reservations (user_id);

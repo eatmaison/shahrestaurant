@@ -9,6 +9,7 @@ export interface Dictionary {
     menu: string;
     about: string;
     contact: string;
+    reservations: string;
   };
   common: {
     orderNow: string;
@@ -40,13 +41,19 @@ export interface Dictionary {
   home: {
     badge: string;
     heroTitle: string;
+    heroTitleAccent: string;
     heroSubtitle: string;
-    heroCtaOrder: string;
+    heroCtaReserve: string;
     heroCtaMenu: string;
-    statFlavors: string;
-    statSpecialties: string;
-    statDaily: string;
-    statWait: string;
+    statYears: string;
+    statDishes: string;
+    statGuests: string;
+    statRating: string;
+    aboutOverline: string;
+    aboutTitle: string;
+    aboutText: string;
+    aboutCta: string;
+    featuresOverline: string;
     featuresTitle: string;
     feature1Title: string;
     feature1Text: string;
@@ -54,10 +61,18 @@ export interface Dictionary {
     feature2Text: string;
     feature3Title: string;
     feature3Text: string;
-    aboutTitle: string;
-    aboutText: string;
+    popularOverline: string;
     popularTitle: string;
     popularSubtitle: string;
+    ambianceOverline: string;
+    ambianceTitle: string;
+    ambianceText: string;
+    hoursTitle: string;
+    reserveOverline: string;
+    reserveTitle: string;
+    reserveText: string;
+    reserveCta: string;
+    testimonialsOverline: string;
     testimonialsTitle: string;
     testimonialsSubtitle: string;
     ctaTitle: string;
@@ -185,6 +200,57 @@ export interface Dictionary {
     reviewsWord: string;
     verifiedOrder: string;
   };
+  reservations: {
+    overline: string;
+    title: string;
+    subtitle: string;
+    formTitle: string;
+    name: string;
+    email: string;
+    emailHint: string;
+    phone: string;
+    date: string;
+    time: string;
+    guests: string;
+    guestsSuffix: string;
+    occasion: string;
+    occasionNone: string;
+    occasionBirthday: string;
+    occasionBusiness: string;
+    occasionRomantic: string;
+    occasionFamily: string;
+    occasionOther: string;
+    note: string;
+    notePlaceholder: string;
+    submit: string;
+    submitting: string;
+    successTitle: string;
+    successText: string;
+    successEmailNote: string;
+    makeAnother: string;
+    errorFillFields: string;
+    errorInvalidSlot: string;
+    errorPastDate: string;
+    errorGeneric: string;
+    hoursNote: string;
+    largeGroupNote: string;
+    myReservations: string;
+    noReservations: string;
+    statusPending: string;
+    statusConfirmed: string;
+    statusDeclined: string;
+    statusCancelled: string;
+    cancelBooking: string;
+    signInPrompt: string;
+    infoTitle: string;
+    info1Title: string;
+    info1Text: string;
+    info2Title: string;
+    info2Text: string;
+    info3Title: string;
+    info3Text: string;
+    guestsLabel: string;
+  };
   admin: {
     title: string;
     subtitle: string;
@@ -274,6 +340,14 @@ export interface Dictionary {
     noVipRequests: string;
     vipCardApproved: string;
     vipCardRejected: string;
+    reservationsTitle: string;
+    reservationsSub: string;
+    noReservationsAdmin: string;
+    resConfirm: string;
+    resDecline: string;
+    resCancelAdmin: string;
+    resUpcoming: string;
+    resAll: string;
   };
   fulfillment: {
     paymentTitle: string;
@@ -360,7 +434,7 @@ export interface Dictionary {
     rights: string;
     address: string;
     ourRestaurants: string;
-    theMaison: string;
+    eatToGo: string;
     theTandoor: string;
     legal: string;
     privacy: string;
@@ -384,6 +458,22 @@ export interface Dictionary {
     decline: string;
     learnMore: string;
   };
+  terminal: {
+    title: string;
+    subtitle: string;
+    startShift: string;
+    startShiftHint: string;
+    live: string;
+    autoPrint: string;
+    print: string;
+    noOrders: string;
+    activeOrders: string;
+    doneOrders: string;
+    newOrderAlert: string;
+    printerHelp: string;
+    accessDenied: string;
+    lastUpdate: string;
+  };
 }
 
 const en: Dictionary = {
@@ -395,6 +485,7 @@ const en: Dictionary = {
     menu: "Menu",
     about: "About",
     contact: "Contact",
+    reservations: "Reservations",
   },
   common: {
     orderNow: "Order now",
@@ -424,35 +515,51 @@ const en: Dictionary = {
     saveChanges: "Save changes",
   },
   home: {
-    badge: "Fresh, fast and made for Amsterdam",
-    heroTitle: "Fresh. Fast. Delicious. Eat to go.",
+    badge: "Fine Dining · Amsterdam",
+    heroTitle: "Where luxury, ambiance and",
+    heroTitleAccent: "gastronomy come together",
     heroSubtitle:
-      "Enjoy fresh wraps, burgers, pizzas and drinks - perfect on the go or as a treat. Always freshly prepared, always ready to take away in Amsterdam.",
-    heroCtaOrder: "Order now",
-    heroCtaMenu: "View menu",
-    statFlavors: "Flavors & variations",
-    statSpecialties: "Signature specialties",
-    statDaily: "Fresh daily options",
-    statWait: "Min average wait",
-    featuresTitle: "Why guests choose Eat to go",
-    feature1Title: "Always fresh & high quality",
-    feature1Text: "We use only carefully selected ingredients for every wrap, burger and drink.",
-    feature2Title: "Ready in a few minutes",
-    feature2Text: "Eat to go stands for speed - your order is prepared fresh and fast, ideal on the go.",
-    feature3Title: "Daily freshness & care",
-    feature3Text: "Our kitchen works to strict hygiene standards for a safe and consistent taste experience.",
-    aboutTitle: "About Eat to go",
+      "Enjoy refined dishes, a stylish atmosphere and service at the highest level. The Maison is the place where quality, taste and experience meet for an unforgettable evening.",
+    heroCtaReserve: "Reserve a table",
+    heroCtaMenu: "Explore the menu",
+    statYears: "Years of craftsmanship",
+    statDishes: "Signature dishes",
+    statGuests: "Delighted guests",
+    statRating: "Average rating",
+    aboutOverline: "About The Maison",
+    aboutTitle: "Fine dining with a timeless, elegant character",
     aboutText:
-      "Eat to go is the place in Amsterdam for fast, fresh and delicious to-go food. From wraps and burgers to pizzas and drinks - quality and speed come first. Everything is freshly prepared and ready to take away, perfect on the go or as a light snack.",
-    popularTitle: "Our popular to-go flavors",
+      "The Maison is a place where luxury, ambiance and gastronomy come together in perfect harmony. Our chefs create refined dishes with a focus on quality, taste and elegance. Every plate is prepared with carefully selected ingredients and modern techniques, in an atmosphere designed to radiate calm, comfort and class - ideal for an intimate dinner, a business meeting or a memorable night out.",
+    aboutCta: "Reserve your evening",
+    featuresOverline: "The experience",
+    featuresTitle: "Why guests choose The Maison",
+    feature1Title: "Refined seasonal cuisine",
+    feature1Text: "Carefully selected ingredients, transformed by our chefs into elegant dishes with modern techniques.",
+    feature2Title: "An ambiance of class",
+    feature2Text: "Warm lighting, refined details and a serene setting - designed so every guest feels special.",
+    feature3Title: "Service at the highest level",
+    feature3Text: "Attentive, personal and discreet. Our team anticipates your every wish, from aperitif to dessert.",
+    popularOverline: "From the kitchen",
+    popularTitle: "Signatures of the house",
     popularSubtitle:
-      "Whether you crave something savory, warm or refreshing - at Eat to go you always find a favorite. Here are our bestsellers per category.",
-    testimonialsTitle: "What customers say about us",
-    testimonialsSubtitle: "Our guests love to share their experience with our fresh to-go food.",
-    ctaTitle: "Always hungry? Order fast & easy at Eat to go",
+      "A glimpse of the dishes our guests return for - refined classics and surprising creations, freshly prepared every day.",
+    ambianceOverline: "Atmosphere & experience",
+    ambianceTitle: "A look inside The Maison",
+    ambianceText:
+      "Discover the elegant ambiance, refined details and warm lighting that define The Maison. Style, gastronomy and experience - valued by our guests time and again.",
+    hoursTitle: "Opening hours",
+    reserveOverline: "Reservations",
+    reserveTitle: "Your table awaits",
+    reserveText:
+      "Reserve your table for an intimate dinner, a business meeting or a festive evening. We look forward to welcoming you.",
+    reserveCta: "Book your table",
+    testimonialsOverline: "Guest experiences",
+    testimonialsTitle: "What our guests say",
+    testimonialsSubtitle: "Honest impressions of an evening at The Maison - from the ambiance and service to the quality of the dishes.",
+    ctaTitle: "An unforgettable evening begins with a reservation",
     ctaText:
-      "Place your order for pickup or on the go. Choose your favorite wrap, burger, pizza or drink and we prepare it fresh for you.",
-    ctaButton: "Start your order",
+      "Whether you are planning an intimate dinner, a business meeting or a celebration - our team is ready to make your evening perfect.",
+    ctaButton: "Reserve now",
   },
   order: {
     title: "Build your order",
@@ -577,6 +684,58 @@ const en: Dictionary = {
     reviewsWord: "reviews",
     verifiedOrder: "Verified order",
   },
+  reservations: {
+    overline: "Reservations",
+    title: "Reserve your table",
+    subtitle:
+      "An unforgettable evening begins here. Choose your date, time and party size - our team will confirm your reservation shortly.",
+    formTitle: "Booking details",
+    name: "Full name",
+    email: "Email address",
+    emailHint: "We send your confirmation to this address.",
+    phone: "Phone number",
+    date: "Date",
+    time: "Time",
+    guests: "Guests",
+    guestsSuffix: "guests",
+    occasion: "Occasion (optional)",
+    occasionNone: "No special occasion",
+    occasionBirthday: "Birthday",
+    occasionBusiness: "Business dinner",
+    occasionRomantic: "Romantic dinner",
+    occasionFamily: "Family gathering",
+    occasionOther: "Other celebration",
+    note: "Special requests (optional)",
+    notePlaceholder: "Allergies, seating preference, celebrations, high chair…",
+    submit: "Request reservation",
+    submitting: "Sending…",
+    successTitle: "Reservation received!",
+    successText: "Thank you - we have received your reservation. Our team will review it and confirm shortly.",
+    successEmailNote: "A confirmation email is on its way to",
+    makeAnother: "Make another reservation",
+    errorFillFields: "Please fill in all required fields.",
+    errorInvalidSlot: "We are closed at that time. Please pick a time between 14:00 and 20:00, Tuesday to Sunday.",
+    errorPastDate: "That moment has already passed - please pick a future date and time.",
+    errorGeneric: "Something went wrong. Please try again or call us at +31 20 341 2995.",
+    hoursNote: "We welcome guests Tuesday to Sunday, 14:00 – 20:00. Closed on Mondays.",
+    largeGroupNote: "Party larger than 12? Add a note or call us - we love hosting groups and will arrange the perfect setting.",
+    myReservations: "My reservations",
+    noReservations: "No reservations yet. Your bookings will appear here.",
+    statusPending: "Awaiting confirmation",
+    statusConfirmed: "Confirmed",
+    statusDeclined: "Declined",
+    statusCancelled: "Cancelled",
+    cancelBooking: "Cancel reservation",
+    signInPrompt: "Sign in to manage your reservations and book faster with your saved details.",
+    infoTitle: "Good to know",
+    info1Title: "Flexible until the last moment",
+    info1Text: "Plans changed? Cancel or adjust your reservation free of charge up to 2 hours in advance.",
+    info2Title: "Groups & celebrations",
+    info2Text: "From intimate dinners to festive tables for 40 guests - tell us the occasion and we prepare everything.",
+    info3Title: "Personal confirmation",
+    info3Text: "Every request is personally reviewed by our team. You receive a confirmation by email.",
+    guestsLabel: "guest(s)",
+  },
   admin: {
     title: "Admin dashboard",
     subtitle: "Track performance and manage your menu.",
@@ -666,6 +825,14 @@ const en: Dictionary = {
     noVipRequests: "No pending VIP requests.",
     vipCardApproved: "Approved - VIP activated",
     vipCardRejected: "Rejected",
+    reservationsTitle: "Table reservations",
+    reservationsSub: "Confirm, decline or cancel guest bookings.",
+    noReservationsAdmin: "No reservations in this view.",
+    resConfirm: "Confirm",
+    resDecline: "Decline",
+    resCancelAdmin: "Cancel",
+    resUpcoming: "Upcoming",
+    resAll: "All",
   },
   fulfillment: {
     paymentTitle: "Payment",
@@ -747,13 +914,13 @@ const en: Dictionary = {
   },
   footer: {
     tagline:
-      "Delicious wraps, burgers, pizzas and fresh drinks. Eat to go stands for taste, freshness and convenience - perfect on the go.",
+      "Fine dining where luxury, ambiance and gastronomy come together. The Maison stands for refined dishes, warm service and an unforgettable experience.",
     contact: "Contact",
     followUs: "Follow us",
     rights: "All rights reserved.",
     address: "Address",
     ourRestaurants: "Our Restaurants",
-    theMaison: "The Maison",
+    eatToGo: "Eat to go",
     theTandoor: "The Tandoor Company",
     legal: "Legal",
     privacy: "Privacy Policy",
@@ -778,6 +945,22 @@ const en: Dictionary = {
     decline: "Only necessary",
     learnMore: "Learn more",
   },
+  terminal: {
+    title: "Kitchen terminal",
+    subtitle: "Live order feed for staff — new orders arrive automatically and can be printed as a receipt.",
+    startShift: "Start shift",
+    startShiftHint: "Tap to enable sound alerts and keep the screen awake.",
+    live: "Live — checking for new orders",
+    autoPrint: "Auto-print new orders",
+    print: "Print receipt",
+    noOrders: "No active orders right now. New orders appear here automatically.",
+    activeOrders: "Active orders",
+    doneOrders: "Completed today",
+    newOrderAlert: "NEW",
+    printerHelp: "Printing uses the RawBT app (set it to the built-in printer). If nothing prints, install RawBT from the Play Store and open it once.",
+    accessDenied: "Sign in with a staff (admin) account to use the terminal.",
+    lastUpdate: "Updated",
+  },
 };
 
 const nl: Dictionary = {
@@ -789,6 +972,7 @@ const nl: Dictionary = {
     menu: "Menu",
     about: "Over ons",
     contact: "Contact",
+    reservations: "Reserveren",
   },
   common: {
     orderNow: "Bestel nu",
@@ -818,35 +1002,51 @@ const nl: Dictionary = {
     saveChanges: "Wijzigingen opslaan",
   },
   home: {
-    badge: "Vers, snel en gemaakt voor Amsterdam",
-    heroTitle: "Vers. Snel. Lekker. Eat to go.",
+    badge: "Fine Dining · Amsterdam",
+    heroTitle: "Waar luxe, ambiance en",
+    heroTitleAccent: "gastronomie samenkomen",
     heroSubtitle:
-      "Geniet van verse wraps, burgers, pizza's en dranken - ideaal voor onderweg of als verwenmoment. Altijd vers bereid, altijd direct mee te nemen in Amsterdam.",
-    heroCtaOrder: "Bestel nu",
-    heroCtaMenu: "Bekijk menu",
-    statFlavors: "Smaken & variaties",
-    statSpecialties: "Specialiteiten",
-    statDaily: "Dagelijks vers",
-    statWait: "Min gemiddelde wachttijd",
-    featuresTitle: "Waarom gasten voor Eat to go kiezen",
-    feature1Title: "Altijd vers & hoogwaardig",
-    feature1Text: "Wij gebruiken alleen zorgvuldig geselecteerde ingrediënten voor elke wrap, burger en drankje.",
-    feature2Title: "Klaar binnen enkele minuten",
-    feature2Text: "Eat to go staat voor snelheid - uw bestelling wordt vers en snel bereid, ideaal voor onderweg.",
-    feature3Title: "Dagelijkse versheid & zorg",
-    feature3Text: "Onze keuken werkt volgens strikte hygiënestandaarden voor een veilige en constante smaakervaring.",
-    aboutTitle: "Over Eat to go",
+      "Geniet van verfijnde gerechten, een stijlvolle sfeer en service op topniveau. The Maison is de plek waar kwaliteit, smaak en beleving samenkomen voor een onvergetelijke avond.",
+    heroCtaReserve: "Reserveer een tafel",
+    heroCtaMenu: "Ontdek het menu",
+    statYears: "Jaar vakmanschap",
+    statDishes: "Signatuurgerechten",
+    statGuests: "Tevreden gasten",
+    statRating: "Gemiddelde beoordeling",
+    aboutOverline: "Over The Maison",
+    aboutTitle: "Fine dining met een tijdloze, elegante uitstraling",
     aboutText:
-      "Eat to go is dé plek in Amsterdam voor snelle, verse en heerlijke to-go producten. Van wraps en burgers tot pizza's en dranken - kwaliteit en snelheid staan voorop. Alles wordt vers bereid en direct meegegeven, perfect voor onderweg of als lichte snack.",
-    popularTitle: "Onze populaire to-go smaken",
+      "The Maison is een plek waar luxe, ambiance en gastronomie in perfecte harmonie samenkomen. Onze chefs creëren verfijnde gerechten met een focus op kwaliteit, smaak en elegantie. Elk gerecht wordt bereid met zorgvuldig geselecteerde ingrediënten en moderne kooktechnieken, in een sfeer die rust, comfort en klasse uitstraalt - ideaal voor een intiem diner, een zakelijke ontmoeting of een memorabel avondje uit.",
+    aboutCta: "Reserveer uw avond",
+    featuresOverline: "De beleving",
+    featuresTitle: "Waarom gasten voor The Maison kiezen",
+    feature1Title: "Verfijnde seizoenskeuken",
+    feature1Text: "Zorgvuldig geselecteerde ingrediënten, door onze chefs met moderne technieken omgetoverd tot elegante gerechten.",
+    feature2Title: "Een ambiance met klasse",
+    feature2Text: "Warme verlichting, verfijnde details en een serene setting - ontworpen zodat elke gast zich bijzonder voelt.",
+    feature3Title: "Service op topniveau",
+    feature3Text: "Attent, persoonlijk en discreet. Ons team anticipeert op elke wens, van aperitief tot dessert.",
+    popularOverline: "Uit de keuken",
+    popularTitle: "Signatuur van het huis",
     popularSubtitle:
-      "Of u nu zin heeft in iets hartigs, iets warms of iets verfrissends - bij Eat to go vindt u altijd een favoriet. Hier zijn onze bestsellers per categorie.",
-    testimonialsTitle: "Wat klanten over ons zeggen",
-    testimonialsSubtitle: "Onze gasten delen graag hun ervaring met onze verse to-go producten.",
-    ctaTitle: "Altijd trek? Bestel snel & makkelijk bij Eat to go",
+      "Een voorproefje van de gerechten waarvoor onze gasten terugkomen - verfijnde klassiekers en verrassende creaties, elke dag vers bereid.",
+    ambianceOverline: "Sfeer & beleving",
+    ambianceTitle: "Een kijkje binnen The Maison",
+    ambianceText:
+      "Ontdek de elegante ambiance, verfijnde details en warme verlichting die The Maison vormen. Stijl, gastronomie en beleving - keer op keer gewaardeerd door onze gasten.",
+    hoursTitle: "Openingstijden",
+    reserveOverline: "Reserveringen",
+    reserveTitle: "Uw tafel staat klaar",
+    reserveText:
+      "Reserveer uw tafel voor een intiem diner, een zakelijke ontmoeting of een feestelijke avond. Wij kijken ernaar uit u te verwelkomen.",
+    reserveCta: "Reserveer uw tafel",
+    testimonialsOverline: "Gastervaringen",
+    testimonialsTitle: "Wat onze gasten zeggen",
+    testimonialsSubtitle: "Eerlijke ervaringen van een avond bij The Maison - van de sfeer en service tot de kwaliteit van de gerechten.",
+    ctaTitle: "Een onvergetelijke avond begint met een reservering",
     ctaText:
-      "Plaats direct uw bestelling voor afhalen of onderweg. Kies uw favoriete wrap, burger, pizza of drankje en wij maken het vers voor u klaar.",
-    ctaButton: "Start uw bestelling",
+      "Of u nu een intiem diner, een zakelijk etentje of een feest plant - ons team staat klaar om uw avond perfect te maken.",
+    ctaButton: "Reserveer nu",
   },
   order: {
     title: "Stel je bestelling samen",
@@ -971,6 +1171,58 @@ const nl: Dictionary = {
     reviewsWord: "reviews",
     verifiedOrder: "Geverifieerde bestelling",
   },
+  reservations: {
+    overline: "Reserveringen",
+    title: "Reserveer uw tafel",
+    subtitle:
+      "Een onvergetelijke avond begint hier. Kies uw datum, tijd en gezelschap - ons team bevestigt uw reservering spoedig.",
+    formTitle: "Reserveringsgegevens",
+    name: "Volledige naam",
+    email: "E-mailadres",
+    emailHint: "Wij sturen uw bevestiging naar dit adres.",
+    phone: "Telefoonnummer",
+    date: "Datum",
+    time: "Tijd",
+    guests: "Gasten",
+    guestsSuffix: "gasten",
+    occasion: "Gelegenheid (optioneel)",
+    occasionNone: "Geen speciale gelegenheid",
+    occasionBirthday: "Verjaardag",
+    occasionBusiness: "Zakelijk diner",
+    occasionRomantic: "Romantisch diner",
+    occasionFamily: "Familiebijeenkomst",
+    occasionOther: "Andere viering",
+    note: "Speciale verzoeken (optioneel)",
+    notePlaceholder: "Allergieën, zitvoorkeur, feestelijkheden, kinderstoel…",
+    submit: "Reservering aanvragen",
+    submitting: "Versturen…",
+    successTitle: "Reservering ontvangen!",
+    successText: "Dank u wel - wij hebben uw reservering ontvangen. Ons team bekijkt deze en bevestigt spoedig.",
+    successEmailNote: "Een bevestigingsmail is onderweg naar",
+    makeAnother: "Nog een reservering maken",
+    errorFillFields: "Vul alle verplichte velden in.",
+    errorInvalidSlot: "Wij zijn op dat moment gesloten. Kies een tijd tussen 14:00 en 20:00, dinsdag t/m zondag.",
+    errorPastDate: "Dat moment is al voorbij - kies een datum en tijd in de toekomst.",
+    errorGeneric: "Er ging iets mis. Probeer het opnieuw of bel ons op +31 20 341 2995.",
+    hoursNote: "Wij verwelkomen gasten van dinsdag t/m zondag, 14:00 – 20:00. Maandag gesloten.",
+    largeGroupNote: "Gezelschap groter dan 12? Voeg een notitie toe of bel ons - wij ontvangen graag groepen en regelen de perfecte setting.",
+    myReservations: "Mijn reserveringen",
+    noReservations: "Nog geen reserveringen. Uw boekingen verschijnen hier.",
+    statusPending: "Wacht op bevestiging",
+    statusConfirmed: "Bevestigd",
+    statusDeclined: "Afgewezen",
+    statusCancelled: "Geannuleerd",
+    cancelBooking: "Reservering annuleren",
+    signInPrompt: "Log in om uw reserveringen te beheren en sneller te boeken met uw opgeslagen gegevens.",
+    infoTitle: "Goed om te weten",
+    info1Title: "Flexibel tot het laatste moment",
+    info1Text: "Plannen gewijzigd? Annuleer of wijzig uw reservering kosteloos tot 2 uur van tevoren.",
+    info2Title: "Groepen & vieringen",
+    info2Text: "Van intieme diners tot feestelijke tafels voor 40 gasten - vertel ons de gelegenheid en wij bereiden alles voor.",
+    info3Title: "Persoonlijke bevestiging",
+    info3Text: "Elke aanvraag wordt persoonlijk beoordeeld door ons team. U ontvangt een bevestiging per e-mail.",
+    guestsLabel: "gast(en)",
+  },
   admin: {
     title: "Admin dashboard",
     subtitle: "Volg prestaties en beheer je menu.",
@@ -1060,6 +1312,14 @@ const nl: Dictionary = {
     noVipRequests: "Geen openstaande VIP-aanvragen.",
     vipCardApproved: "Goedgekeurd - VIP geactiveerd",
     vipCardRejected: "Afgewezen",
+    reservationsTitle: "Tafelreserveringen",
+    reservationsSub: "Bevestig, wijs af of annuleer reserveringen van gasten.",
+    noReservationsAdmin: "Geen reserveringen in deze weergave.",
+    resConfirm: "Bevestigen",
+    resDecline: "Afwijzen",
+    resCancelAdmin: "Annuleren",
+    resUpcoming: "Aankomend",
+    resAll: "Alles",
   },
   fulfillment: {
     paymentTitle: "Betaling",
@@ -1141,13 +1401,13 @@ const nl: Dictionary = {
   },
   footer: {
     tagline:
-      "Heerlijke wraps, burgers, pizza's en verse dranken. Eat to go staat voor smaak, versheid en gemak - perfect voor onderweg.",
+      "Fine dining waar luxe, ambiance en gastronomie samenkomen. The Maison staat voor verfijnde gerechten, warme service en een onvergetelijke beleving.",
     contact: "Contact",
     followUs: "Volg ons",
     rights: "Alle rechten voorbehouden.",
     address: "Adres",
     ourRestaurants: "Onze Restaurants",
-    theMaison: "The Maison",
+    eatToGo: "Eat to go",
     theTandoor: "The Tandoor Company",
     legal: "Juridisch",
     privacy: "Privacybeleid",
@@ -1171,6 +1431,22 @@ const nl: Dictionary = {
     accept: "Accepteren",
     decline: "Alleen noodzakelijk",
     learnMore: "Meer informatie",
+  },
+  terminal: {
+    title: "Keukenterminal",
+    subtitle: "Live bestellingenoverzicht voor medewerkers — nieuwe bestellingen verschijnen automatisch en kunnen als bon worden geprint.",
+    startShift: "Dienst starten",
+    startShiftHint: "Tik om geluidsmeldingen in te schakelen en het scherm wakker te houden.",
+    live: "Live — controleren op nieuwe bestellingen",
+    autoPrint: "Nieuwe bestellingen automatisch printen",
+    print: "Bon printen",
+    noOrders: "Momenteel geen actieve bestellingen. Nieuwe bestellingen verschijnen hier automatisch.",
+    activeOrders: "Actieve bestellingen",
+    doneOrders: "Vandaag afgerond",
+    newOrderAlert: "NIEUW",
+    printerHelp: "Printen gebruikt de RawBT-app (ingesteld op de ingebouwde printer). Print er niets? Installeer RawBT via de Play Store en open de app één keer.",
+    accessDenied: "Log in met een medewerkers- (admin-)account om de terminal te gebruiken.",
+    lastUpdate: "Bijgewerkt",
   },
 };
 

@@ -138,6 +138,31 @@ const DDL: string[] = [
   // built-in restaurants; brands are admin-managed now, so drop those checks.
   `ALTER TABLE products DROP CONSTRAINT IF EXISTS products_brand_check`,
   `ALTER TABLE order_items DROP CONSTRAINT IF EXISTS order_items_brand_check`,
+  // The Maison table reservations (shared database with the group's sites).
+  `CREATE TABLE IF NOT EXISTS reservations (
+    id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+    reservation_number integer GENERATED ALWAYS AS IDENTITY (START WITH 501),
+    user_id uuid REFERENCES users(id) ON DELETE SET NULL,
+    guest_name text NOT NULL,
+    email text NOT NULL DEFAULT '',
+    phone text NOT NULL,
+    date text NOT NULL,
+    time text NOT NULL,
+    guests integer NOT NULL CHECK (guests BETWEEN 1 AND 40),
+    occasion text NOT NULL DEFAULT '',
+    note text,
+    status text NOT NULL DEFAULT 'pending' CHECK (status IN ('pending','confirmed','declined','cancelled')),
+    created_at timestamptz NOT NULL DEFAULT now()
+  )`,
+  `CREATE INDEX IF NOT EXISTS idx_reservations_date ON reservations (date)`,
+  `CREATE INDEX IF NOT EXISTS idx_reservations_user_id ON reservations (user_id)`,
+  // Which website a review was written on (shared DB across the restaurant
+  // group). Existing/legacy rows and the eattogo site default to 'eattogo';
+  // this site inserts its own SITE_ID explicitly.
+  `ALTER TABLE reviews ADD COLUMN IF NOT EXISTS site text NOT NULL DEFAULT 'eattogo'`,
+  `CREATE INDEX IF NOT EXISTS idx_reviews_site ON reviews (site)`,
+  // Which website a reservation was made on (future sites may take bookings too).
+  `ALTER TABLE reservations ADD COLUMN IF NOT EXISTS site text NOT NULL DEFAULT 'themaison'`,
 ];
 
 let readyPromise: Promise<void> | null = null;

@@ -17,7 +17,7 @@ const CONTENT: Record<"en" | "nl", { title: string; updated: string; intro: stri
     title: "Terms & Conditions",
     updated: "Last updated: 9 July 2026",
     intro:
-      "These terms and conditions apply to all orders placed through eattogo.nl, operated by Eat to go, Klaprozenweg 36a, 1032 KL Amsterdam, the Netherlands. By placing an order you agree to these terms.",
+      "These terms and conditions apply to all orders and reservations placed through themaison.nl, operated by The Maison, Klaprozenweg 36a, 1032 KL Amsterdam, the Netherlands. By placing an order or reservation you agree to these terms.",
     sections: [
       {
         title: "1. Orders & delivery",
@@ -41,7 +41,7 @@ const CONTENT: Record<"en" | "nl", { title: string; updated: string; intro: stri
         title: "3. Right of withdrawal",
         body: [
           "Under EU consumer law (Directive 2011/83/EU), the right of withdrawal does not apply to freshly prepared food and other perishable goods. Once an order has been prepared, it cannot be cancelled or returned.",
-          "If your order is wrong or unsatisfactory, contact us at info@eattogo.nl or +31 20 341 2995 and we will find a fair solution.",
+          "If your order is wrong or unsatisfactory, contact us at info@themaison.nl or +31 20 341 2995 and we will find a fair solution.",
         ],
       },
       {
@@ -84,7 +84,7 @@ const CONTENT: Record<"en" | "nl", { title: string; updated: string; intro: stri
     title: "Algemene Voorwaarden",
     updated: "Laatst bijgewerkt: 9 juli 2026",
     intro:
-      "Deze algemene voorwaarden zijn van toepassing op alle bestellingen via eattogo.nl, geëxploiteerd door Eat to go, Klaprozenweg 36a, 1032 KL Amsterdam, Nederland. Door een bestelling te plaatsen gaat u akkoord met deze voorwaarden.",
+      "Deze algemene voorwaarden zijn van toepassing op alle bestellingen en reserveringen via themaison.nl, geëxploiteerd door The Maison, Klaprozenweg 36a, 1032 KL Amsterdam, Nederland. Door een bestelling of reservering te plaatsen gaat u akkoord met deze voorwaarden.",
     sections: [
       {
         title: "1. Bestellingen & bezorging",
@@ -108,7 +108,7 @@ const CONTENT: Record<"en" | "nl", { title: string; updated: string; intro: stri
         title: "3. Herroepingsrecht",
         body: [
           "Op grond van het Europese consumentenrecht (Richtlijn 2011/83/EU) geldt het herroepingsrecht niet voor vers bereide maaltijden en andere bederfelijke goederen. Zodra een bestelling is bereid, kan deze niet worden geannuleerd of geretourneerd.",
-          "Is uw bestelling onjuist of niet naar wens? Neem contact op via info@eattogo.nl of +31 20 341 2995 en wij zoeken een passende oplossing.",
+          "Is uw bestelling onjuist of niet naar wens? Neem contact op via info@themaison.nl of +31 20 341 2995 en wij zoeken een passende oplossing.",
         ],
       },
       {

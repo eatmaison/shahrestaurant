@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useLang } from "../providers";
 
-const STORAGE_KEY = "etg.cookieConsent";
+const STORAGE_KEY = "tm.cookieConsent";
 
 /**
  * EU/NL cookie notice. The site only uses strictly necessary cookies/storage
@@ -36,7 +36,7 @@ export function CookieConsent() {
 
   return (
     <div className="fixed inset-x-0 bottom-0 z-50 p-4 sm:p-6">
-      <div className="mx-auto flex max-w-3xl flex-col gap-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-2xl dark:border-white/10 dark:bg-[#0b1220] sm:flex-row sm:items-center">
+      <div className="mx-auto flex max-w-3xl flex-col gap-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-2xl dark:border-white/10 dark:bg-[#161006] sm:flex-row sm:items-center">
         <p className="flex-1 text-sm leading-6 text-slate-600 dark:text-slate-300">
           {t.cookies.message}{" "}
           <Link href="/privacy" className="font-semibold text-emerald-600 underline underline-offset-2 hover:text-emerald-500 dark:text-emerald-400">

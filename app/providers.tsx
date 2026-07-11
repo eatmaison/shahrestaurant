@@ -11,7 +11,7 @@ import {
 } from "react";
 import { translations, type Dictionary } from "./lib/translations";
 import { DEFAULT_BRAND_CONFIGS, SEED_PRODUCTS } from "./lib/data";
-import type { AccountType, BrandConfig, Lang, Order, OrderFulfillment, OrderSchedule, OrderStatus, Product, Review, SocialLink, SocialPlatform, User, VipRequest } from "./lib/types";
+import type { AccountType, BrandConfig, Lang, Order, OrderFulfillment, OrderSchedule, OrderStatus, Product, Reservation, Review, SocialLink, SocialPlatform, User, VipRequest } from "./lib/types";
 
 const JSON_HEADERS = { "Content-Type": "application/json" } as const;
 
@@ -131,10 +131,31 @@ interface StoreCtx {
   reviews: Review[];
   addReview: (data: { orderId: string; rating: number; text: string }) => Promise<{ ok: boolean }>;
 
+  /** Table reservations (own bookings for guests, all bookings for admins). */
+  reservations: Reservation[];
+  /** Book a table. `error` is a code for translation. */
+  createReservation: (data: {
+    guestName: string;
+    email?: string;
+    phone: string;
+    date: string;
+    time: string;
+    guests: number;
+    occasion?: string;
+    note?: string;
+  }) => Promise<{ ok: boolean; error?: "fillFields" | "invalidSlot" | "pastDate" | "invalidInput"; reservation?: Reservation }>;
+  /** Customer: cancel an upcoming reservation. Admin: cancel any. */
+  cancelReservation: (id: string) => Promise<void>;
+  /** Admin: confirm or decline a pending reservation. */
+  setReservationStatus: (id: string, action: "confirm" | "decline") => Promise<void>;
+
   /** Social media links shown in the footer (all platforms, enabled or not). */
   socialLinks: SocialLink[];
   /** Admin: set the URL and visibility of a social media link. */
   updateSocialLink: (platform: SocialPlatform, url: string, enabled: boolean) => Promise<{ ok: boolean }>;
+
+  /** Reload all server-backed data (used by the staff terminal for polling). */
+  refresh: () => Promise<void>;
 
   hydrated: boolean;
 }
@@ -152,9 +173,9 @@ export function useStore() {
 /* ------------------------------------------------------------------ */
 
 const LS = {
-  theme: "etg.theme",
-  lang: "etg.lang",
-  cart: "etg.cart",
+  theme: "tm.theme",
+  lang: "tm.lang",
+  cart: "tm.cart",
 };
 
 function readJSON<T>(key: string, fallback: T): T {
@@ -174,7 +195,7 @@ function readJSON<T>(key: string, fallback: T): T {
 export function Providers({ children }: { children: ReactNode }) {
   const [hydrated, setHydrated] = useState(false);
 
-  const [theme, setTheme] = useState<Theme>("light");
+  const [theme, setTheme] = useState<Theme>("dark");
   const [lang, setLangState] = useState<Lang>("en");
 
   const [products, setProducts] = useState<Product[]>(SEED_PRODUCTS);
@@ -186,6 +207,7 @@ export function Providers({ children }: { children: ReactNode }) {
   const [reviews, setReviews] = useState<Review[]>([]);
   const [vipRequests, setVipRequests] = useState<VipRequest[]>([]);
   const [socialLinks, setSocialLinks] = useState<SocialLink[]>([]);
+  const [reservations, setReservations] = useState<Reservation[]>([]);
 
   // Load server-backed data (products, session user, orders, reviews, VIP requests).
   const refresh = useCallback(async () => {
@@ -201,6 +223,7 @@ export function Providers({ children }: { children: ReactNode }) {
       setReviews(data.reviews ?? []);
       setVipRequests(data.vipRequests ?? []);
       setSocialLinks(data.socialLinks ?? []);
+      setReservations(data.reservations ?? []);
     } catch {
       /* ignore transient network errors - the UI keeps its current state */
     }
@@ -332,6 +355,7 @@ export function Providers({ children }: { children: ReactNode }) {
     setOrders([]);
     setUsers([]);
     setVipRequests([]);
+    setReservations([]);
     await refresh();
   }, [refresh]);
 
@@ -380,6 +404,35 @@ export function Providers({ children }: { children: ReactNode }) {
     },
     [refresh]
   );
+
+  const createReservation: StoreCtx["createReservation"] = useCallback(
+    async (data) => {
+      try {
+        const res = await fetch("/api/reservations", {
+          method: "POST",
+          headers: JSON_HEADERS,
+          body: JSON.stringify({ ...data, email: data.email ?? "" }),
+        });
+        const json = await res.json().catch(() => null);
+        if (!json) return { ok: false, error: "invalidInput" as const };
+        if (json.ok) await refresh();
+        return json;
+      } catch {
+        return { ok: false, error: "invalidInput" as const };
+      }
+    },
+    [refresh]
+  );
+
+  const cancelReservation = useCallback<StoreCtx["cancelReservation"]>(async (id) => {
+    await fetch("/api/reservations", { method: "PATCH", headers: JSON_HEADERS, body: JSON.stringify({ id, action: "cancel" }) });
+    await refresh();
+  }, [refresh]);
+
+  const setReservationStatus = useCallback<StoreCtx["setReservationStatus"]>(async (id, action) => {
+    await fetch("/api/reservations", { method: "PATCH", headers: JSON_HEADERS, body: JSON.stringify({ id, action }) });
+    await refresh();
+  }, [refresh]);
 
   const placeOrder: StoreCtx["placeOrder"] = useCallback(
     async (details) => {
@@ -466,8 +519,13 @@ export function Providers({ children }: { children: ReactNode }) {
       rejectVipRequest,
       reviews,
       addReview,
+      reservations,
+      createReservation,
+      cancelReservation,
+      setReservationStatus,
       socialLinks,
       updateSocialLink,
+      refresh,
       hydrated,
     }),
     [
@@ -498,8 +556,13 @@ export function Providers({ children }: { children: ReactNode }) {
       rejectVipRequest,
       reviews,
       addReview,
+      reservations,
+      createReservation,
+      cancelReservation,
+      setReservationStatus,
       socialLinks,
       updateSocialLink,
+      refresh,
       hydrated,
     ]
   );

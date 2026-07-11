@@ -76,6 +76,28 @@ export const updateOrderSchema = z.object({
 
 export type UpdateOrderInput = z.infer<typeof updateOrderSchema>;
 
+/* ------------------------------------------------------------------ reservations */
+
+export const createReservationSchema = z.object({
+  guestName: z.string().trim().min(1).max(100),
+  email: z.string().trim().toLowerCase().email().max(254).optional().or(z.literal("")),
+  phone: z.string().trim().min(5).max(30),
+  date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+  time: z.string().regex(/^\d{2}:\d{2}$/),
+  guests: z.number().int().min(1).max(40),
+  occasion: z.string().trim().max(40).optional(),
+  note: z.string().trim().max(500).optional(),
+});
+
+export type CreateReservationInput = z.infer<typeof createReservationSchema>;
+
+export const updateReservationSchema = z.object({
+  id: z.string().uuid(),
+  action: z.enum(["confirm", "decline", "cancel"]),
+});
+
+export type UpdateReservationInput = z.infer<typeof updateReservationSchema>;
+
 /* ------------------------------------------------------------------ social links */
 
 export const socialLinkSchema = z.object({

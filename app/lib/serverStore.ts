@@ -12,17 +12,19 @@ import {
   MIN_ORDER,
   normalizePostcode,
   POINTS_EARN_EVERY,
+  SITE_ID,
   VIP_DISCOUNT_PCT,
   VIP_SALE_PRICE,
 } from "./data";
 import { createMolliePayment, getMolliePayment, mollieEnabled } from "./mollie";
 import { isScheduleSlotOpen } from "./openingHours";
-import { companyInvoiceEmail, passwordResetEmail, sendMail, verificationEmail } from "./email";
+import { companyInvoiceEmail, passwordResetEmail, reservationEmail, sendMail, verificationEmail } from "./email";
 import { signToken, verifyToken } from "./tokens";
 import {
   rowToOrder,
   rowToOrderItem,
   rowToProduct,
+  rowToReservation,
   rowToReview,
   rowToUser,
   rowToVipRequest,
@@ -37,6 +39,8 @@ import type {
   OrderFulfillment,
   OrderSchedule,
   Product,
+  Reservation,
+  ReservationStatus,
   Review,
   SocialLink,
   SocialPlatform,
@@ -50,7 +54,7 @@ import type {
 
 /**
  * Base URL used in email links and payment redirects.
- * APP_URL (the public domain, set in production) always wins — request-derived
+ * APP_URL (the public domain, set in production) always wins - request-derived
  * origins are only a fallback so a forged Host header can never poison links.
  */
 function siteBase(origin?: string): string {
@@ -223,6 +227,7 @@ export interface Bootstrap {
   users: User[];
   vipRequests: VipRequest[];
   socialLinks: SocialLink[];
+  reservations: Reservation[];
 }
 
 export async function bootstrap(): Promise<Bootstrap> {
@@ -253,17 +258,20 @@ export async function bootstrap(): Promise<Bootstrap> {
   let orders: Order[] = [];
   let users: User[] = [];
   let vipRequests: VipRequest[] = [];
+  let reservations: Reservation[] = [];
 
   if (isAdmin) {
     orders = await loadOrders();
     users = ((await sql.query(`SELECT * FROM users ORDER BY created_at ASC`)) as any[]).map(rowToUser);
     vipRequests = ((await sql.query(`SELECT * FROM vip_requests ORDER BY created_at DESC`)) as any[]).map(rowToVipRequest);
+    reservations = ((await sql.query(`SELECT * FROM reservations ORDER BY date ASC, time ASC`)) as any[]).map(rowToReservation);
   } else if (currentUser) {
     orders = await loadOrders(currentUser.id);
     vipRequests = ((await sql.query(`SELECT * FROM vip_requests WHERE user_id = $1 ORDER BY created_at DESC`, [currentUser.id])) as any[]).map(rowToVipRequest);
+    reservations = ((await sql.query(`SELECT * FROM reservations WHERE user_id = $1 ORDER BY date DESC, time DESC`, [currentUser.id])) as any[]).map(rowToReservation);
   }
 
-  return { currentUser, products, brands, reviews, orders, users, vipRequests, socialLinks };
+  return { currentUser, products, brands, reviews, orders, users, vipRequests, socialLinks, reservations };
 }
 
 /** Load orders (optionally for a single user) with their line items. */
@@ -394,7 +402,7 @@ export async function placeOrder(details: {
   const { base, webhookUrl } = paymentUrls(origin);
   const payment = await createMolliePayment({
     amount: total,
-    description: "Eat to go order",
+    description: "The Maison order",
     redirectUrl: `${base}/pay/complete?p=${recordId}`,
     webhookUrl,
     metadata: { p: recordId, kind: "order" },
@@ -666,9 +674,119 @@ export async function addReview(data: { orderId: string; rating: number; text: s
   if (existing.length > 0) return { ok: false };
   const rating = Math.min(5, Math.max(1, Math.round(data.rating)));
   await sql.query(
-    `INSERT INTO reviews (order_id, user_id, user_name, rating, text) VALUES ($1,$2,$3,$4,$5)`,
-    [data.orderId, currentUser.id, currentUser.name, rating, data.text.trim()]
+    `INSERT INTO reviews (order_id, user_id, user_name, rating, text, site) VALUES ($1,$2,$3,$4,$5,$6)`,
+    [data.orderId, currentUser.id, currentUser.name, rating, data.text.trim(), SITE_ID]
   );
+  return { ok: true };
+}
+
+/* ------------------------------------------------------------------ reservations */
+
+export type ReservationError = "fillFields" | "invalidSlot" | "pastDate";
+
+/** Format a sequential reservation number for display, e.g. 512 -> "RSV-512". */
+export function formatReservationNumber(n: number): string {
+  return `RSV-${n}`;
+}
+
+/**
+ * Create a table reservation. Works for signed-in users (linked to their
+ * account) and guests alike. Validates that the requested slot falls within
+ * opening hours (Tue-Sun, 14:00-20:00) and is not in the past.
+ */
+export async function createReservation(data: {
+  guestName: string;
+  email?: string;
+  phone: string;
+  date: string;
+  time: string;
+  guests: number;
+  occasion?: string;
+  note?: string;
+  origin?: string;
+}): Promise<{ ok: boolean; error?: ReservationError; reservation?: Reservation }> {
+  await ensureReady();
+  const currentUser = await getCurrentUser();
+
+  const guestName = data.guestName.trim();
+  const phone = data.phone.trim();
+  if (!guestName || !phone || !data.date || !data.time) return { ok: false, error: "fillFields" };
+
+  // The slot must fall inside opening hours (reuses the scheduling rules).
+  if (!isScheduleSlotOpen({ type: "once", date: data.date, time: data.time })) {
+    return { ok: false, error: "invalidSlot" };
+  }
+
+  // No bookings in the past (Amsterdam wall-clock comparison via ISO strings).
+  const now = new Date();
+  const todayIso = now.toISOString().split("T")[0];
+  if (data.date < todayIso) return { ok: false, error: "pastDate" };
+  if (data.date === todayIso) {
+    const hhmm = `${String(now.getHours()).padStart(2, "0")}:${String(now.getMinutes()).padStart(2, "0")}`;
+    if (data.time <= hhmm) return { ok: false, error: "pastDate" };
+  }
+
+  const guests = Math.min(40, Math.max(1, Math.round(data.guests)));
+  const email = (data.email ?? currentUser?.email ?? "").trim().toLowerCase();
+
+  const rows = (await sql.query(
+    `INSERT INTO reservations (user_id, guest_name, email, phone, date, time, guests, occasion, note)
+     VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9) RETURNING *`,
+    [
+      currentUser?.id ?? null,
+      guestName,
+      email,
+      phone,
+      data.date,
+      data.time,
+      guests,
+      data.occasion?.trim() ?? "",
+      data.note?.trim() || null,
+    ]
+  )) as any[];
+
+  const reservation = rowToReservation(rows[0]);
+
+  // Confirmation email (never blocks the booking).
+  if (email) {
+    void (async () => {
+      try {
+        const base = siteBase(data.origin);
+        const { subject, html } = reservationEmail({
+          base,
+          guestName,
+          number: formatReservationNumber(reservation.reservationNumber),
+          date: reservation.date,
+          time: reservation.time,
+          guests: reservation.guests,
+          note: reservation.note,
+        });
+        await sendMail({ to: email, subject, html });
+      } catch (err) {
+        console.error("[email] reservation confirmation failed:", err);
+      }
+    })();
+  }
+
+  return { ok: true, reservation };
+}
+
+/** Admin: confirm or decline a reservation. */
+export async function setReservationStatus(id: string, status: ReservationStatus): Promise<void> {
+  await requireAdmin();
+  await sql.query(`UPDATE reservations SET status = $1 WHERE id = $2`, [status, id]);
+}
+
+/** Customer: cancel their own upcoming reservation (admins can cancel any). */
+export async function cancelReservation(id: string): Promise<{ ok: boolean }> {
+  await ensureReady();
+  const currentUser = await getCurrentUser();
+  if (!currentUser) return { ok: false };
+  if (currentUser.role === "admin") {
+    await sql.query(`UPDATE reservations SET status = 'cancelled' WHERE id = $1`, [id]);
+    return { ok: true };
+  }
+  await sql.query(`UPDATE reservations SET status = 'cancelled' WHERE id = $1 AND user_id = $2`, [id, currentUser.id]);
   return { ok: true };
 }
 
@@ -693,7 +811,7 @@ export async function buyVip(origin?: string): Promise<{ ok: boolean; checkoutUr
   const { base, webhookUrl } = paymentUrls(origin);
   const payment = await createMolliePayment({
     amount: VIP_SALE_PRICE,
-    description: "Eat to go VIP membership",
+    description: "The Maison VIP membership",
     redirectUrl: `${base}/pay/complete?p=${recordId}`,
     webhookUrl,
     metadata: { p: recordId, kind: "vip" },

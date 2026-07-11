@@ -1,4 +1,4 @@
-import type { Order, OrderItem, Product, Review, User, VipRequest } from "./types";
+import type { Order, OrderItem, Product, Reservation, Review, User, VipRequest } from "./types";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -97,6 +97,7 @@ export function rowToReview(r: any): Review {
     rating: r.rating,
     text: r.text ?? "",
     createdAt: toMs(r.created_at),
+    site: r.site ?? "eattogo",
   };
 }
 
@@ -106,6 +107,24 @@ export function rowToVipRequest(r: any): VipRequest {
     userId: r.user_id,
     userName: r.user_name,
     image: r.image,
+    status: r.status,
+    createdAt: toMs(r.created_at),
+  };
+}
+
+export function rowToReservation(r: any): Reservation {
+  return {
+    id: r.id,
+    reservationNumber: r.reservation_number,
+    userId: r.user_id ?? undefined,
+    guestName: r.guest_name,
+    email: r.email ?? "",
+    phone: r.phone,
+    date: r.date,
+    time: r.time,
+    guests: r.guests,
+    occasion: r.occasion || undefined,
+    note: r.note ?? undefined,
     status: r.status,
     createdAt: toMs(r.created_at),
   };

@@ -1,45 +1,44 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Manrope, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
 import { Header } from "./components/header";
 import { Footer } from "./components/footer";
 import { CookieConsent } from "./components/CookieConsent";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const manrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
   subsets: ["latin"],
 });
 
-const siteUrl = "https://eattogo.nl";
+const siteUrl = "https://themaison.nl";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Eat to go Amsterdam | Fresh Wraps, Burgers, Pizza & Drinks to go",
-    template: "%s | Eat to go Amsterdam",
+    default: "The Maison Amsterdam | Fine Dining Restaurant & Table Reservations",
+    template: "%s | The Maison Amsterdam",
   },
   description:
-    "Eat to go Amsterdam - order fresh wraps, burgers, pizzas and drinks online for fast pickup or delivery. Always freshly prepared at Klaprozenweg 36a, 1032 KL Amsterdam.",
+    "The Maison Amsterdam - fine dining where luxury, ambiance and gastronomy meet. Reserve your table online or order refined dishes for delivery. Klaprozenweg 36a, Amsterdam.",
   keywords: [
-    "eat to go",
-    "eattogo",
-    "food Amsterdam",
-    "order food Amsterdam",
-    "wraps Amsterdam",
-    "burgers Amsterdam",
-    "pizza Amsterdam",
-    "takeaway Amsterdam",
-    "food delivery Amsterdam",
-    "to go Amsterdam",
+    "the maison",
+    "themaison",
+    "fine dining Amsterdam",
+    "luxury restaurant Amsterdam",
+    "restaurant reserveren Amsterdam",
+    "table reservation Amsterdam",
+    "romantic dinner Amsterdam",
+    "business dinner Amsterdam",
+    "gourmet Amsterdam",
     "Klaprozenweg",
   ],
-  authors: [{ name: "Eat to go" }],
+  authors: [{ name: "The Maison" }],
   alternates: {
     canonical: siteUrl,
     languages: { en: siteUrl, nl: siteUrl },
@@ -49,38 +48,40 @@ export const metadata: Metadata = {
     locale: "en_NL",
     alternateLocale: "nl_NL",
     url: siteUrl,
-    siteName: "Eat to go Amsterdam",
-    title: "Eat to go Amsterdam | Fresh Wraps, Burgers, Pizza & Drinks",
+    siteName: "The Maison Amsterdam",
+    title: "The Maison Amsterdam | Fine Dining & Table Reservations",
     description:
-      "Order fresh wraps, burgers, pizzas and drinks online in Amsterdam. Freshly prepared, fast and ready to go.",
-    images: [{ url: "/eattogo.png", width: 512, height: 512, alt: "Eat to go Amsterdam" }],
+      "Fine dining with a timeless, elegant atmosphere. Reserve your table at The Maison Amsterdam - where service, style and culinary refinement come together.",
+    images: [{ url: "/themaison.png", width: 512, height: 512, alt: "The Maison Amsterdam" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Eat to go Amsterdam | Fresh food to go",
-    description: "Order fresh wraps, burgers, pizzas and drinks online in Amsterdam.",
-    images: ["/eattogo.png"],
+    title: "The Maison Amsterdam | Fine Dining Restaurant",
+    description: "Reserve your table at The Maison - fine dining with a timeless, elegant atmosphere in Amsterdam.",
+    images: ["/themaison.png"],
   },
   robots: {
     index: true,
     follow: true,
     googleBot: { index: true, follow: true, "max-image-preview": "large" },
   },
-  icons: { icon: "/eattogo.png" },
+  icons: { icon: "/themaison.png" },
 };
 
-const themeScript = `(function(){try{var t=JSON.parse(localStorage.getItem('etg.theme'));if(t==='dark'){document.documentElement.classList.add('dark');}}catch(e){}})();`;
+// Dark is the house default - The Maison is an evening restaurant.
+const themeScript = `(function(){try{var t=JSON.parse(localStorage.getItem('tm.theme'));if(t!=='light'){document.documentElement.classList.add('dark');}}catch(e){document.documentElement.classList.add('dark');}})();`;
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Restaurant",
-  name: "Eat to go",
-  image: `${siteUrl}/eattogo.png`,
+  name: "The Maison",
+  image: `${siteUrl}/themaison.png`,
   "@id": siteUrl,
   url: siteUrl,
   telephone: "+31 20 341 2995",
-  priceRange: "€€",
-  servesCuisine: ["Wraps", "Burgers", "Pizza", "Drinks"],
+  priceRange: "€€€",
+  servesCuisine: ["Fine Dining", "European", "Grill"],
+  acceptsReservations: "True",
   address: {
     "@type": "PostalAddress",
     streetAddress: "Klaprozenweg 36a",
@@ -99,7 +100,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
+    <html lang="en" suppressHydrationWarning data-scroll-behavior="smooth" className={`${manrope.variable} ${playfair.variable} h-full antialiased`}>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />

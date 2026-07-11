@@ -149,6 +149,35 @@ export interface Review {
   rating: number;
   text: string;
   createdAt: number;
+  /** Website the review was written on ("eattogo", "themaison", ...). */
+  site: string;
+}
+
+/** Lifecycle of a table reservation. */
+export type ReservationStatus = "pending" | "confirmed" | "declined" | "cancelled";
+
+/** A table reservation at The Maison. */
+export interface Reservation {
+  id: string;
+  /** Human-readable sequential number shown to the guest and admin (RSV-501...). */
+  reservationNumber: number;
+  /** Account that made the booking (guests can also book while signed out). */
+  userId?: string;
+  guestName: string;
+  email: string;
+  phone: string;
+  /** Reservation date (YYYY-MM-DD). */
+  date: string;
+  /** Arrival time (HH:mm). */
+  time: string;
+  /** Party size. */
+  guests: number;
+  /** Optional occasion (birthday, business, romantic, family, other). */
+  occasion?: string;
+  /** Special requests: allergies, seating preference, celebrations... */
+  note?: string;
+  status: ReservationStatus;
+  createdAt: number;
 }
 
 export type VipRequestStatus = "pending" | "approved" | "rejected";

@@ -477,7 +477,7 @@ export default function AccountPage() {
   /* Auth form */
   return (
     <div className="mx-auto flex max-w-md flex-col px-4 py-12 sm:px-6">
-      <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-xl shadow-slate-900/5 dark:border-white/10 dark:bg-[#0c1420] sm:p-8">
+      <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-xl shadow-slate-900/5 dark:border-white/10 dark:bg-[#161006] sm:p-8">
         <div className="mb-6 flex rounded-full bg-slate-100 p-1 dark:bg-white/5">
           <button
             onClick={() => { setMode("login"); setError(""); }}

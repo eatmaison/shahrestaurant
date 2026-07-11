@@ -16,10 +16,11 @@ export function Footer() {
   }).map((p) => ({ ...p, url: socialLinks.find((l) => l.platform === p.id)!.url }));
 
   return (
-    <footer className="mt-16 border-t border-slate-200/70 bg-white dark:border-white/10 dark:bg-[#080d15]">
+    <footer className="mt-16 border-t border-slate-200/70 bg-white dark:border-emerald-400/15 dark:bg-[#0a0805]">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-2 lg:px-8">
         <div>
-          <p className="text-lg font-black tracking-[0.18em] text-slate-900 dark:text-white">EAT TO GO</p>
+          <p className="text-[0.6rem] font-semibold uppercase tracking-[0.3em] text-emerald-600 dark:text-emerald-400">Fine Dining · Amsterdam</p>
+          <p className="font-display mt-1 text-xl font-bold tracking-[0.22em] text-slate-900 dark:text-white">THE MAISON</p>
           <p className="mt-3 max-w-md text-sm leading-7 text-slate-600 dark:text-slate-400">{t.footer.tagline}</p>
           {activeSocials.length > 0 && (
             <div className="mt-5 flex flex-wrap gap-3">
@@ -47,7 +48,7 @@ export function Footer() {
               <ul className="mt-3 space-y-2 text-sm text-slate-600 dark:text-slate-400">
                 <li className="flex items-center gap-2">
                   <FaEnvelope className="text-emerald-600 dark:text-emerald-400" />
-                  <a href="mailto:info@eattogo.nl" className="transition hover:text-emerald-600 dark:hover:text-emerald-400">info@eattogo.nl</a>
+                  <a href="mailto:info@themaison.nl" className="transition hover:text-emerald-600 dark:hover:text-emerald-400">info@themaison.nl</a>
                 </li>
                 <li className="flex items-center gap-2">
                   <FaPhone className="text-emerald-600 dark:text-emerald-400" />
@@ -74,8 +75,8 @@ export function Footer() {
             <div>
               <p className="text-sm font-bold uppercase tracking-wider text-slate-900 dark:text-white">{t.footer.ourRestaurants}</p>
               <div className="mt-3 flex flex-col gap-2">
-                <a href="https://themaison.nl" target="_blank" rel="noopener noreferrer" className="text-sm text-slate-600 transition hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400">
-                  {t.footer.theMaison} ↗
+                <a href="https://eattogo.nl" target="_blank" rel="noopener noreferrer" className="text-sm text-slate-600 transition hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400">
+                  {t.footer.eatToGo} ↗
                 </a>
                 <a href="https://thetandoorcompany.nl" target="_blank" rel="noopener noreferrer" className="text-sm text-slate-600 transition hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400">
                   {t.footer.theTandoor} ↗
@@ -95,8 +96,8 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-slate-200/70 py-5 text-center text-xs text-slate-500 dark:border-white/10 dark:text-slate-500">
-        © {new Date().getFullYear()} EAT TO GO - Amsterdam. {t.footer.rights}
+      <div className="border-t border-slate-200/70 py-5 text-center text-xs text-slate-500 dark:border-emerald-400/15 dark:text-slate-500">
+        © {new Date().getFullYear()} THE MAISON - Amsterdam. {t.footer.rights}
       </div>
     </footer>
   );

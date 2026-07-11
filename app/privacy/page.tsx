@@ -17,7 +17,7 @@ const CONTENT: Record<"en" | "nl", { title: string; updated: string; intro: stri
     title: "Privacy Policy",
     updated: "Last updated: 9 July 2026",
     intro:
-      "Eat to go, located at Klaprozenweg 36a, 1032 KL Amsterdam, the Netherlands (\"we\", \"us\"), is responsible for the processing of personal data as described in this privacy policy. We process your data in accordance with the General Data Protection Regulation (GDPR / AVG). Contact: info@eattogo.nl, +31 20 341 2995.",
+      "The Maison, located at Klaprozenweg 36a, 1032 KL Amsterdam, the Netherlands (\"we\", \"us\"), is responsible for the processing of personal data as described in this privacy policy. We process your data in accordance with the General Data Protection Regulation (GDPR / AVG). Contact: info@themaison.nl, +31 20 341 2995.",
     sections: [
       {
         title: "1. What data we collect",
@@ -25,6 +25,7 @@ const CONTENT: Record<"en" | "nl", { title: string; updated: string; intro: stri
           "Account data: name, e-mail address, phone number and a securely hashed password when you create an account.",
           "Business data: BTW (VAT) and KvK numbers when you register a company account.",
           "Order data: delivery name, address, postcode, phone number, order contents, optional delivery notes and order history.",
+          "Reservation data: name, e-mail address, phone number, date, time, party size and any special requests when you reserve a table.",
           "VIP card requests: a photo of your physical VIP card, if you choose to upload one. This photo is stored in our own database and is not shared with third parties.",
           "Reviews: your rating, review text and display name.",
         ],
@@ -72,7 +73,7 @@ const CONTENT: Record<"en" | "nl", { title: string; updated: string; intro: stri
         title: "7. Your rights",
         body: [
           "Under the GDPR you have the right to access, rectify, erase, restrict and port your personal data, and the right to object to processing.",
-          "To exercise these rights, e-mail us at info@eattogo.nl. We will respond within one month.",
+          "To exercise these rights, e-mail us at info@themaison.nl. We will respond within one month.",
           "You also have the right to lodge a complaint with the Dutch supervisory authority: Autoriteit Persoonsgegevens (autoriteitpersoonsgegevens.nl).",
         ],
       },
@@ -94,7 +95,7 @@ const CONTENT: Record<"en" | "nl", { title: string; updated: string; intro: stri
     title: "Privacybeleid",
     updated: "Laatst bijgewerkt: 9 juli 2026",
     intro:
-      "Eat to go, gevestigd aan Klaprozenweg 36a, 1032 KL Amsterdam, Nederland (\"wij\", \"ons\"), is verantwoordelijk voor de verwerking van persoonsgegevens zoals beschreven in dit privacybeleid. Wij verwerken uw gegevens in overeenstemming met de Algemene Verordening Gegevensbescherming (AVG). Contact: info@eattogo.nl, +31 20 341 2995.",
+      "The Maison, gevestigd aan Klaprozenweg 36a, 1032 KL Amsterdam, Nederland (\"wij\", \"ons\"), is verantwoordelijk voor de verwerking van persoonsgegevens zoals beschreven in dit privacybeleid. Wij verwerken uw gegevens in overeenstemming met de Algemene Verordening Gegevensbescherming (AVG). Contact: info@themaison.nl, +31 20 341 2995.",
     sections: [
       {
         title: "1. Welke gegevens wij verzamelen",
@@ -102,6 +103,7 @@ const CONTENT: Record<"en" | "nl", { title: string; updated: string; intro: stri
           "Accountgegevens: naam, e-mailadres, telefoonnummer en een veilig gehasht wachtwoord wanneer u een account aanmaakt.",
           "Bedrijfsgegevens: BTW- en KvK-nummer wanneer u een zakelijk account registreert.",
           "Bestelgegevens: naam, bezorgadres, postcode, telefoonnummer, inhoud van de bestelling, eventuele bezorgnotities en bestelgeschiedenis.",
+          "Reserveringsgegevens: naam, e-mailadres, telefoonnummer, datum, tijd, aantal gasten en eventuele speciale verzoeken bij een tafelreservering.",
           "VIP-kaartverzoeken: een foto van uw fysieke VIP-kaart, indien u deze uploadt. Deze foto wordt in onze eigen database opgeslagen en niet gedeeld met derden.",
           "Beoordelingen: uw waardering, tekst en weergavenaam.",
         ],
@@ -149,7 +151,7 @@ const CONTENT: Record<"en" | "nl", { title: string; updated: string; intro: stri
         title: "7. Uw rechten",
         body: [
           "Op grond van de AVG heeft u recht op inzage, rectificatie, verwijdering, beperking en overdraagbaarheid van uw persoonsgegevens, en het recht om bezwaar te maken tegen verwerking.",
-          "Om deze rechten uit te oefenen kunt u mailen naar info@eattogo.nl. Wij reageren binnen één maand.",
+          "Om deze rechten uit te oefenen kunt u mailen naar info@themaison.nl. Wij reageren binnen één maand.",
           "U heeft ook het recht een klacht in te dienen bij de Autoriteit Persoonsgegevens (autoriteitpersoonsgegevens.nl).",
         ],
       },

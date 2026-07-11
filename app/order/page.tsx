@@ -405,7 +405,7 @@ export default function OrderPage() {
       </div>
 
       {/* Mobile & Tablet: Brand switch + Categories Bar (Sticky) */}
-      <div className="sticky top-[64px] z-40 border-b border-slate-200 bg-white/90 backdrop-blur dark:border-white/10 dark:bg-[#060b12]/90 lg:hidden">
+      <div className="sticky top-[64px] z-40 border-b border-slate-200 bg-white/90 backdrop-blur dark:border-white/10 dark:bg-[#0d0a07]/90 lg:hidden">
         {/* Restaurant switcher */}
         <div className="flex gap-2 overflow-x-auto px-3 pt-2">
           {brands.map((b) => {
@@ -462,8 +462,8 @@ export default function OrderPage() {
                   key={b.id}
                   className={`overflow-hidden rounded-2xl border transition ${
                     active
-                      ? "border-emerald-400 bg-white shadow-lg shadow-emerald-600/5 dark:border-emerald-500/40 dark:bg-[#0c1420]"
-                      : "border-slate-200 bg-white dark:border-white/10 dark:bg-[#0c1420]"
+                      ? "border-emerald-400 bg-white shadow-lg shadow-emerald-600/5 dark:border-emerald-500/40 dark:bg-[#161006]"
+                      : "border-slate-200 bg-white dark:border-white/10 dark:bg-[#161006]"
                   }`}
                 >
                   {/* Brand header (logo) - click to switch restaurant */}
@@ -533,7 +533,7 @@ export default function OrderPage() {
 
         {/* Desktop: Cart + Checkout - Right sidebar */}
         <aside className="sticky top-[76px] self-start">
-          <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-xl shadow-slate-900/5 dark:border-white/10 dark:bg-[#0c1420]">
+          <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-xl shadow-slate-900/5 dark:border-white/10 dark:bg-[#161006]">
             <div className="flex items-center justify-between">
               <h2 className="flex items-center gap-2 text-lg font-black text-slate-900 dark:text-white">
                 <FaCartShopping className="text-emerald-600 dark:text-emerald-400" /> {t.common.yourOrder}
@@ -795,7 +795,7 @@ export default function OrderPage() {
 
         {/* Mobile: Cart Footer - Sticky Bottom */}
         {cartLines.length > 0 && (
-          <div className="border-t border-slate-200 bg-white/95 backdrop-blur dark:border-white/10 dark:bg-[#060b12]/95 px-4 py-3 sm:px-6">
+          <div className="border-t border-slate-200 bg-white/95 backdrop-blur dark:border-white/10 dark:bg-[#0d0a07]/95 px-4 py-3 sm:px-6">
             <button
               onClick={() => setShowCartModal(true)}
               className="flex w-full items-center justify-between rounded-full bg-emerald-600 px-4 py-2.5 text-sm font-bold text-white transition hover:bg-emerald-500"
@@ -813,7 +813,7 @@ export default function OrderPage() {
       {showCartModal && (
         <div className="fixed inset-0 z-50 flex items-end sm:items-center lg:hidden">
           <div className="fixed inset-0 bg-black/40" onClick={() => setShowCartModal(false)} />
-          <div className="relative w-full rounded-t-3xl bg-white shadow-2xl dark:bg-[#0c1420] sm:max-w-md sm:rounded-3xl">
+          <div className="relative w-full rounded-t-3xl bg-white shadow-2xl dark:bg-[#161006] sm:max-w-md sm:rounded-3xl">
             <div className="flex items-center justify-between border-b border-slate-200 px-5 py-4 dark:border-white/10">
               <h2 className="text-lg font-black text-slate-900 dark:text-white">{t.common.yourOrder}</h2>
               <button onClick={() => setShowCartModal(false)} className="text-2xl text-slate-400 hover:text-slate-600 dark:text-slate-500 dark:hover:text-slate-300">
@@ -936,7 +936,7 @@ export default function OrderPage() {
       {showCheckoutModal && (
         <div className="fixed inset-0 z-50 flex items-end sm:items-center lg:hidden">
           <div className="fixed inset-0 bg-black/40" onClick={() => setShowCheckoutModal(false)} />
-          <div className="relative w-full rounded-t-3xl bg-white shadow-2xl dark:bg-[#0c1420] sm:max-w-md sm:rounded-3xl">
+          <div className="relative w-full rounded-t-3xl bg-white shadow-2xl dark:bg-[#161006] sm:max-w-md sm:rounded-3xl">
             <div className="flex items-center justify-between border-b border-slate-200 px-5 py-4 dark:border-white/10">
               <h2 className="text-lg font-black text-slate-900 dark:text-white">{t.order.deliveryDetails}</h2>
               <button onClick={() => setShowCheckoutModal(false)} className="text-2xl text-slate-400 hover:text-slate-600 dark:text-slate-500 dark:hover:text-slate-300">

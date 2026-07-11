@@ -4,9 +4,9 @@ import nodemailer, { type Transporter } from "nodemailer";
  * Email sending via SMTP (Strato). Configure in .env.local:
  *   SMTP_HOST=smtp.strato.de
  *   SMTP_PORT=465
- *   SMTP_USER=info@eattogo.nl
+ *   SMTP_USER=info@themaison.nl
  *   SMTP_PASS=<mailbox password>
- *   SMTP_FROM="Eat to go <info@eattogo.nl>"
+ *   SMTP_FROM="The Maison <info@themaison.nl>"
  */
 let transporter: Transporter | null = null;
 
@@ -32,19 +32,19 @@ export async function sendMail(opts: { to: string; subject: string; html: string
     console.warn(`[email] SMTP not configured - skipped sending "${opts.subject}" to ${opts.to}`);
     return;
   }
-  const from = process.env.SMTP_FROM || `Eat to go <${process.env.SMTP_USER}>`;
+  const from = process.env.SMTP_FROM || `The Maison <${process.env.SMTP_USER}>`;
   await getTransporter().sendMail({ from, to: opts.to, subject: opts.subject, html: opts.html });
 }
 
 /* ------------------------------------------------------------------ templates */
 
 const BRAND = {
-  green: "#059669",
-  greenDark: "#047857",
-  ink: "#0f172a",
-  muted: "#64748b",
-  border: "#e2e8f0",
-  bg: "#f1f5f9",
+  green: "#ad7a2f",
+  greenDark: "#8c5f27",
+  ink: "#201b15",
+  muted: "#6a5f4e",
+  border: "#e4ddd1",
+  bg: "#f7f3ea",
 };
 
 /** Shared branded email shell. Inline styles only, for wide client support. */
@@ -66,9 +66,9 @@ function layout(opts: {
     <tr><td align="center">
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:#ffffff;border:1px solid ${BRAND.border};border-radius:20px;overflow:hidden;">
         <!-- header -->
-        <tr><td style="background:linear-gradient(135deg,${BRAND.green},${BRAND.greenDark});padding:28px 32px;">
-          <div style="font-size:12px;letter-spacing:3px;color:#d1fae5;font-weight:600;text-transform:uppercase;">Amsterdam</div>
-          <div style="font-size:26px;font-weight:900;color:#ffffff;letter-spacing:1px;">EAT TO GO</div>
+        <tr><td style="background:linear-gradient(135deg,#1c1712,#38301f);padding:28px 32px;border-bottom:3px solid ${BRAND.green};">
+          <div style="font-size:12px;letter-spacing:3px;color:#d0a556;font-weight:600;text-transform:uppercase;">Amsterdam · Fine Dining</div>
+          <div style="font-size:26px;font-weight:900;color:#ffffff;letter-spacing:2px;font-family:Georgia,'Times New Roman',serif;">THE MAISON</div>
         </td></tr>
         <!-- body -->
         <tr><td style="padding:32px;">
@@ -88,12 +88,12 @@ function layout(opts: {
         <!-- footer -->
         <tr><td style="padding:20px 32px;border-top:1px solid ${BRAND.border};background:#fafafa;">
           <p style="margin:0;font-size:12px;line-height:20px;color:${BRAND.muted};">
-            Eat to go - Klaprozenweg 36a, 1032 KL Amsterdam<br>
-            <a href="mailto:info@eattogo.nl" style="color:${BRAND.green};">info@eattogo.nl</a> · <a href="${base}" style="color:${BRAND.green};">eattogo.nl</a>
+            The Maison - Klaprozenweg 36a, 1032 KL Amsterdam<br>
+            <a href="mailto:info@themaison.nl" style="color:${BRAND.green};">info@themaison.nl</a> · <a href="${base}" style="color:${BRAND.green};">themaison.nl</a>
           </p>
         </td></tr>
       </table>
-      <p style="margin:16px 0 0;font-size:11px;color:#94a3b8;">© ${new Date().getFullYear()} Eat to go - Amsterdam. All rights reserved.</p>
+      <p style="margin:16px 0 0;font-size:11px;color:#a1957f;">© ${new Date().getFullYear()} The Maison - Amsterdam. All rights reserved.</p>
     </td></tr>
   </table>
 </body></html>`;
@@ -101,12 +101,12 @@ function layout(opts: {
 
 export function verificationEmail(name: string, url: string, base: string): { subject: string; html: string } {
   return {
-    subject: "Confirm your email - Eat to go",
+    subject: "Confirm your email - The Maison",
     html: layout({
       base,
-      heading: `Welcome, ${name}! 🎉`,
+      heading: `Welcome, ${name}!`,
       intro:
-        "Thanks for creating your Eat to go account. Please confirm your email address so we can secure your account and send you order updates.",
+        "Thanks for creating your The Maison account. Please confirm your email address so we can secure your account and keep you informed about your reservations and orders.",
       ctaText: "Confirm my email",
       ctaUrl: url,
       outro: "This link expires in 48 hours. If you didn't create an account, you can safely ignore this email.",
@@ -116,14 +116,53 @@ export function verificationEmail(name: string, url: string, base: string): { su
 
 export function passwordResetEmail(name: string, url: string, base: string): { subject: string; html: string } {
   return {
-    subject: "Reset your password - Eat to go",
+    subject: "Reset your password - The Maison",
     html: layout({
       base,
       heading: "Reset your password",
-      intro: `Hi ${name}, we received a request to reset your Eat to go password. Click the button below to choose a new one.`,
+      intro: `Hi ${name}, we received a request to reset your The Maison password. Click the button below to choose a new one.`,
       ctaText: "Choose a new password",
       ctaUrl: url,
       outro: "This link expires in 1 hour. If you didn't request this, you can ignore this email - your password stays the same.",
+    }),
+  };
+}
+
+export function reservationEmail(data: {
+  base: string;
+  guestName: string;
+  number: string;
+  date: string;
+  time: string;
+  guests: number;
+  note?: string;
+}): { subject: string; html: string } {
+  const dateStr = new Date(`${data.date}T00:00:00`).toLocaleDateString("nl-NL", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+  const bodyHtml = `
+    <div style="border:1px solid ${BRAND.border};border-radius:14px;padding:20px;margin:0 0 20px;background:#fdfbf6;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+        <tr><td style="font-size:13px;color:${BRAND.muted};padding:4px 0;">Reservation</td><td style="font-size:13px;text-align:right;font-weight:700;color:${BRAND.ink};">${data.number}</td></tr>
+        <tr><td style="font-size:13px;color:${BRAND.muted};padding:4px 0;">Date</td><td style="font-size:13px;text-align:right;font-weight:700;color:${BRAND.ink};">${dateStr}</td></tr>
+        <tr><td style="font-size:13px;color:${BRAND.muted};padding:4px 0;">Time</td><td style="font-size:13px;text-align:right;font-weight:700;color:${BRAND.ink};">${data.time}</td></tr>
+        <tr><td style="font-size:13px;color:${BRAND.muted};padding:4px 0;">Guests</td><td style="font-size:13px;text-align:right;font-weight:700;color:${BRAND.ink};">${data.guests}</td></tr>
+        ${data.note ? `<tr><td style="font-size:13px;color:${BRAND.muted};padding:4px 0;">Requests</td><td style="font-size:13px;text-align:right;color:${BRAND.ink};">${data.note}</td></tr>` : ""}
+      </table>
+    </div>`;
+  return {
+    subject: `Your reservation at The Maison - ${data.number}`,
+    html: layout({
+      base: data.base,
+      heading: `Thank you, ${data.guestName}!`,
+      intro:
+        "We have received your table reservation. Our team will review it and you will receive a confirmation shortly. We look forward to welcoming you at The Maison.",
+      bodyHtml,
+      outro:
+        "Need to change or cancel your reservation? Call us at +31 20 341 2995 or reply to this email and we will take care of it.",
     }),
   };
 }
@@ -165,7 +204,7 @@ export function companyInvoiceEmail(data: {
       </table>
     </div>`;
   return {
-    subject: `Invoice ${data.orderNumber} - Eat to go`,
+    subject: `Invoice ${data.orderNumber} - The Maison`,
     html: layout({
       base: data.base,
       heading: "Your invoice",
