@@ -182,7 +182,7 @@ export default function ReservationsPage() {
 
                 <div className="mt-6 grid gap-4 sm:grid-cols-2">
                   {/* Date */}
-                  <label className="block">
+                  <label className="block min-w-0">
                     <span className="mb-1.5 flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
                       <FaCalendarCheck className="text-emerald-500" /> {t.reservations.date} *
                     </span>
@@ -192,7 +192,7 @@ export default function ReservationsPage() {
                       min={todayIso()}
                       value={date}
                       onChange={(e) => setDate(e.target.value)}
-                      className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/5 dark:text-white dark:[color-scheme:dark]"
+                      className="block w-full min-w-0 max-w-full appearance-none rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition [-webkit-appearance:none] focus:border-emerald-500 dark:border-white/10 dark:bg-white/5 dark:text-white dark:[color-scheme:dark]"
                     />
                   </label>
 
