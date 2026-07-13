@@ -523,7 +523,7 @@ export default function AccountPage() {
               </div>
               {form.accountType === "company" && (
                 <p className="rounded-xl bg-sky-500/10 px-3 py-2 text-xs font-semibold leading-5 text-sky-700 dark:text-sky-300">
-                  {t.company.badge}: −20% · {t.order.foodOnlyNote}
+                  {t.company.badge}: −20% 
                 </p>
               )}
               <input

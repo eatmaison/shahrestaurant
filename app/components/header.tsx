@@ -27,6 +27,7 @@ export function Header() {
     { href: "/", label: t.nav.home },
     { href: "/reservations", label: t.nav.reservations },
     { href: "/order", label: t.nav.order },
+    { href: "/events", label: t.nav.events },
     { href: "/account", label: t.nav.account },
   ];
   if (currentUser?.role === "admin") links.push({ href: "/admin", label: t.nav.admin });
