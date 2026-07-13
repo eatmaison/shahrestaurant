@@ -256,12 +256,20 @@ export default function Home() {
                   </div>
                 ))}
               </div>
-              <Link
-                href="/reservations"
-                className="mt-5 flex w-full items-center justify-center gap-2 rounded-full bg-slate-900 px-5 py-3.5 text-sm font-semibold text-white transition hover:bg-emerald-600 dark:bg-emerald-600 dark:hover:bg-emerald-500"
-              >
-                {t.home.reserveCta} <FaArrowRight />
-              </Link>
+              <div className="mt-5 grid grid-cols-2 gap-3">
+                <Link
+                  href="/reservations"
+                  className="flex items-center justify-center gap-2 rounded-full bg-emerald-600 px-4 py-3.5 text-sm font-semibold text-white transition hover:bg-emerald-500"
+                >
+                  {t.home.reserveCta} <FaArrowRight />
+                </Link>
+                <Link
+                  href="/order"
+                  className="flex items-center justify-center gap-2 rounded-full border border-emerald-500/40 bg-white/60 px-4 py-3.5 text-sm font-semibold text-slate-800 backdrop-blur transition hover:border-emerald-500 hover:text-emerald-700 dark:bg-white/5 dark:text-slate-200 dark:hover:text-emerald-300"
+                >
+                  {t.home.makeOrder} <FaArrowRight />
+                </Link>
+              </div>
             </div>
           </div>
         </div>

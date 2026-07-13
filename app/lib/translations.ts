@@ -72,6 +72,7 @@ export interface Dictionary {
     reserveTitle: string;
     reserveText: string;
     reserveCta: string;
+    makeOrder: string;
     testimonialsOverline: string;
     testimonialsTitle: string;
     testimonialsSubtitle: string;
@@ -553,6 +554,7 @@ const en: Dictionary = {
     reserveText:
       "Reserve your table for an intimate dinner, a business meeting or a festive evening. We look forward to welcoming you.",
     reserveCta: "Book your table",
+    makeOrder: "Make Order",
     testimonialsOverline: "Guest experiences",
     testimonialsTitle: "What our guests say",
     testimonialsSubtitle: "Honest impressions of an evening at The Maison - from the ambiance and service to the quality of the dishes.",
@@ -1040,6 +1042,7 @@ const nl: Dictionary = {
     reserveText:
       "Reserveer uw tafel voor een intiem diner, een zakelijke ontmoeting of een feestelijke avond. Wij kijken ernaar uit u te verwelkomen.",
     reserveCta: "Reserveer uw tafel",
+    makeOrder: "Bestel nu",
     testimonialsOverline: "Gastervaringen",
     testimonialsTitle: "Wat onze gasten zeggen",
     testimonialsSubtitle: "Eerlijke ervaringen van een avond bij The Maison - van de sfeer en service tot de kwaliteit van de gerechten.",
