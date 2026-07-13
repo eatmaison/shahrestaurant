@@ -66,7 +66,7 @@ export function Footer() {
               <div className="mt-3 flex items-start gap-2 text-sm text-slate-600 dark:text-slate-400">
                 <FaClock className="mt-0.5 flex-shrink-0 text-emerald-600 dark:text-emerald-400" />
                 <span>
-                  {t.hours.tueSun}: 14:00 – 20:00
+                  {t.hours.tueSun}: 17:00 – 22:30
                   <br />
                   {t.hours.monday}: {t.hours.closed}
                 </span>

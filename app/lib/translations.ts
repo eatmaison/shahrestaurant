@@ -236,6 +236,7 @@ export interface Dictionary {
     hoursNote: string;
     largeGroupNote: string;
     myReservations: string;
+    location: string;
     noReservations: string;
     statusPending: string;
     statusConfirmed: string;
@@ -716,12 +717,13 @@ const en: Dictionary = {
     successEmailNote: "A confirmation email is on its way to",
     makeAnother: "Make another reservation",
     errorFillFields: "Please fill in all required fields.",
-    errorInvalidSlot: "We are closed at that time. Please pick a time between 14:00 and 20:00, Tuesday to Sunday.",
+    errorInvalidSlot: "We are closed at that time. Please pick a time between 17:00 and 22:30, Tuesday to Sunday.",
     errorPastDate: "That moment has already passed - please pick a future date and time.",
     errorGeneric: "Something went wrong. Please try again or call us at +31 20 341 2995.",
-    hoursNote: "We welcome guests Tuesday to Sunday, 14:00 – 20:00. Closed on Mondays.",
+    hoursNote: "We welcome guests Tuesday to Sunday, 17:00 – 22:30. Closed on Mondays.",
     largeGroupNote: "Party larger than 12? Add a note or call us - we love hosting groups and will arrange the perfect setting.",
     myReservations: "My reservations",
+    location: "Our location",
     noReservations: "No reservations yet. Your bookings will appear here.",
     statusPending: "Awaiting confirmation",
     statusConfirmed: "Confirmed",
@@ -935,10 +937,10 @@ const en: Dictionary = {
     closed: "Closed",
     openNow: "Open now",
     closedNow: "Closed now",
-    closedNote: "We are currently closed. You can order Tuesday to Sunday between 14:00 and 20:00 (closed on Mondays).",
-    preOrderToday: "We are closed right now, but you can already place your order - we will start preparing it today from 14:00.",
-    preOrderDay: "We are closed right now, but you can already place your order - we will start preparing it on {day} from 14:00.",
-    scheduleClosedNote: "Please pick a delivery slot within our opening hours: Tuesday to Sunday, 14:00–20:00 (closed on Mondays).",
+    closedNote: "We are currently closed. You can order Tuesday to Sunday between 17:00 and 22:30 (closed on Mondays).",
+    preOrderToday: "We are closed right now, but you can already place your order - we will start preparing it today from 17:00.",
+    preOrderDay: "We are closed right now, but you can already place your order - we will start preparing it on {day} from 17:00.",
+    scheduleClosedNote: "Please pick a delivery slot within our opening hours: Tuesday to Sunday, 17:00–22:30 (closed on Mondays).",
   },
   cookies: {
     message:
@@ -1204,12 +1206,13 @@ const nl: Dictionary = {
     successEmailNote: "Een bevestigingsmail is onderweg naar",
     makeAnother: "Nog een reservering maken",
     errorFillFields: "Vul alle verplichte velden in.",
-    errorInvalidSlot: "Wij zijn op dat moment gesloten. Kies een tijd tussen 14:00 en 20:00, dinsdag t/m zondag.",
+    errorInvalidSlot: "Wij zijn op dat moment gesloten. Kies een tijd tussen 17:00 en 22:30, dinsdag t/m zondag.",
     errorPastDate: "Dat moment is al voorbij - kies een datum en tijd in de toekomst.",
     errorGeneric: "Er ging iets mis. Probeer het opnieuw of bel ons op +31 20 341 2995.",
-    hoursNote: "Wij verwelkomen gasten van dinsdag t/m zondag, 14:00 – 20:00. Maandag gesloten.",
+    hoursNote: "Wij verwelkomen gasten van dinsdag t/m zondag, 17:00 – 22:30. Maandag gesloten.",
     largeGroupNote: "Gezelschap groter dan 12? Voeg een notitie toe of bel ons - wij ontvangen graag groepen en regelen de perfecte setting.",
     myReservations: "Mijn reserveringen",
+    location: "Onze locatie",
     noReservations: "Nog geen reserveringen. Uw boekingen verschijnen hier.",
     statusPending: "Wacht op bevestiging",
     statusConfirmed: "Bevestigd",
@@ -1423,10 +1426,10 @@ const nl: Dictionary = {
     closed: "Gesloten",
     openNow: "Nu geopend",
     closedNow: "Nu gesloten",
-    closedNote: "Wij zijn momenteel gesloten. U kunt bestellen van dinsdag t/m zondag tussen 14:00 en 20:00 (maandag gesloten).",
-    preOrderToday: "Wij zijn nu gesloten, maar u kunt uw bestelling al plaatsen - wij beginnen vandaag vanaf 14:00 met bereiden.",
-    preOrderDay: "Wij zijn nu gesloten, maar u kunt uw bestelling al plaatsen - wij beginnen op {day} vanaf 14:00 met bereiden.",
-    scheduleClosedNote: "Kies een bezorgmoment binnen onze openingstijden: dinsdag t/m zondag, 14:00–20:00 (maandag gesloten).",
+    closedNote: "Wij zijn momenteel gesloten. U kunt bestellen van dinsdag t/m zondag tussen 17:00 en 22:30 (maandag gesloten).",
+    preOrderToday: "Wij zijn nu gesloten, maar u kunt uw bestelling al plaatsen - wij beginnen vandaag vanaf 17:00 met bereiden.",
+    preOrderDay: "Wij zijn nu gesloten, maar u kunt uw bestelling al plaatsen - wij beginnen op {day} vanaf 17:00 met bereiden.",
+    scheduleClosedNote: "Kies een bezorgmoment binnen onze openingstijden: dinsdag t/m zondag, 17:00–22:30 (maandag gesloten).",
   },
   cookies: {
     message:

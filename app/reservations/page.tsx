@@ -225,20 +225,7 @@ export default function ReservationsPage() {
                     <FaUserGroup className="text-emerald-500" /> {t.reservations.guests} *
                   </span>
                   <div className="flex flex-wrap gap-2">
-                    {[1, 2, 3, 4, 5, 6, 7, 8, 10, 12].map((n) => (
-                      <button
-                        key={n}
-                        type="button"
-                        onClick={() => setGuests(n)}
-                        className={`h-10 min-w-10 rounded-full border px-3 text-sm font-bold transition ${
-                          guests === n
-                            ? "border-emerald-500 bg-emerald-600 text-white shadow-lg shadow-emerald-600/25"
-                            : "border-slate-200 bg-white text-slate-600 hover:border-emerald-400 dark:border-white/10 dark:bg-white/5 dark:text-slate-300"
-                        }`}
-                      >
-                        {n}
-                      </button>
-                    ))}
+                    
                     <input
                       type="number"
                       min={1}
@@ -429,6 +416,23 @@ export default function ReservationsPage() {
               </ul>
             )}
           </div>
+        </div>
+      </section>
+
+      {/* Google Maps Location */}
+      <section className="mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:px-6 lg:px-8">
+        <div className="rounded-[2rem] border border-emerald-500/20 bg-white p-5 shadow-2xl shadow-emerald-900/10 dark:border-emerald-400/15 dark:bg-[#161006] sm:p-6 overflow-hidden">
+          <h2 className="font-display text-lg font-semibold text-slate-900 dark:text-white mb-4">{t.reservations.location || "Our Location"}</h2>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2436.6236159783234!2d4.895563!3d52.357847!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c609c3e3c3c3c3%3A0x1234567890abcdef!2sKlaprozenweg%2036a%2C%201032%20KL%20Amsterdam!5e0!3m2!1sen!2snl!4v1234567890"
+            width="100%"
+            height="400"
+            style={{ border: 0 }}
+            allowFullScreen={true}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            className="rounded-xl"
+          />
         </div>
       </section>
     </div>

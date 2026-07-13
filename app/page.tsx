@@ -8,8 +8,6 @@ import {
   FaCalendarCheck,
   FaChampagneGlasses,
   FaClock,
-  FaLocationDot,
-  FaPhone,
   FaQuoteLeft,
   FaStar,
   FaUtensils,
@@ -161,10 +159,10 @@ export default function Home() {
   }, []);
 
   const stats = [
-    { value: "15+", label: t.home.statYears },
-    { value: "30+", label: t.home.statDishes },
-    { value: "5000+", label: t.home.statGuests },
-    { value: siteReviews.length > 0 ? avgRating.toFixed(1) : "5.0", label: t.home.statRating },
+    { value: "3+", label: t.home.statYears },
+    { value: "9+", label: t.home.statDishes },
+    { value: "1000+", label: t.home.statGuests },
+    { value: siteReviews.length > 0 ? avgRating.toFixed(1) : "4.7", label: t.home.statRating },
   ];
 
   const features = [
@@ -233,7 +231,7 @@ export default function Home() {
                   <FaStar className="text-xs" /> {t.home.popularTitle}
                 </span>
                 <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-slate-500 dark:text-slate-400">
-                  <FaClock className="text-emerald-500" /> 14:00–20:00
+                  <FaClock className="text-emerald-500" /> 17:00–22:30
                 </span>
               </div>
               <div className="mt-4 grid gap-3">

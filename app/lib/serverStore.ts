@@ -692,7 +692,7 @@ export function formatReservationNumber(n: number): string {
 /**
  * Create a table reservation. Works for signed-in users (linked to their
  * account) and guests alike. Validates that the requested slot falls within
- * opening hours (Tue-Sun, 14:00-20:00) and is not in the past.
+ * opening hours (Tue-Sun, 17:00-22:30) and is not in the past.
  */
 export async function createReservation(data: {
   guestName: string;

@@ -72,7 +72,7 @@ export default function OrderPage() {
     return () => clearInterval(id);
   }, []);
 
-  // "We will start preparing your order today / on Tuesday from 14:00."
+  // "We will start preparing your order today / on Tuesday from 17:00."
   const preOrderNote = useMemo(() => {
     if (!nextOpen) return null;
     if (nextOpen.daysAhead === 0) return t.hours.preOrderToday;

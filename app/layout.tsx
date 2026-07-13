@@ -91,7 +91,7 @@ const jsonLd = {
   },
   geo: { "@type": "GeoCoordinates", latitude: 52.4045, longitude: 4.9009 },
   areaServed: "Amsterdam",
-  openingHours: "Tu-Su 14:00-20:00",
+  openingHours: "Tu-Su 17:00-22:30",
 };
 
 export default function RootLayout({
