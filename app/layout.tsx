@@ -68,8 +68,8 @@ export const metadata: Metadata = {
   icons: { icon: "/themaison.png" },
 };
 
-// Dark is the house default - The Maison is an evening restaurant.
-const themeScript = `(function(){try{var t=JSON.parse(localStorage.getItem('tm.theme'));if(t!=='light'){document.documentElement.classList.add('dark');}}catch(e){document.documentElement.classList.add('dark');}})();`;
+// Light is the house default; users can opt into dark mode.
+const themeScript = `(function(){try{var t=JSON.parse(localStorage.getItem('tm.theme'));if(t==='dark'){document.documentElement.classList.add('dark');}}catch(e){}})();`;
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -100,7 +100,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning data-scroll-behavior="smooth" className={`${manrope.variable} ${playfair.variable} h-full antialiased`}>
+    <html lang="nl" suppressHydrationWarning data-scroll-behavior="smooth" className={`${manrope.variable} ${playfair.variable} h-full antialiased`}>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />

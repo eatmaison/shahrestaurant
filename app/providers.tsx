@@ -197,8 +197,8 @@ function readJSON<T>(key: string, fallback: T): T {
 export function Providers({ children }: { children: ReactNode }) {
   const [hydrated, setHydrated] = useState(false);
 
-  const [theme, setTheme] = useState<Theme>("dark");
-  const [lang, setLangState] = useState<Lang>("en");
+  const [theme, setTheme] = useState<Theme>("light");
+  const [lang, setLangState] = useState<Lang>("nl");
 
   const [products, setProducts] = useState<Product[]>(SEED_PRODUCTS);
   const [brands, setBrands] = useState<BrandConfig[]>(DEFAULT_BRAND_CONFIGS);
@@ -234,7 +234,7 @@ export function Providers({ children }: { children: ReactNode }) {
   // Hydrate client-only preferences from localStorage, then load server data.
   useEffect(() => {
     setTheme(readJSON<Theme>(LS.theme, document.documentElement.classList.contains("dark") ? "dark" : "light"));
-    setLangState(readJSON<Lang>(LS.lang, "en"));
+    setLangState(readJSON<Lang>(LS.lang, "nl"));
     setCart(readJSON<Record<string, number>>(LS.cart, {}));
     refresh().finally(() => setHydrated(true));
   }, [refresh]);
