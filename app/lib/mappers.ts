@@ -91,7 +91,8 @@ export function rowToOrder(r: any, items: OrderItem[]): Order {
 export function rowToReview(r: any): Review {
   return {
     id: r.id,
-    orderId: r.order_id,
+    orderId: r.order_id ?? undefined,
+    reservationId: r.reservation_id ?? undefined,
     userId: r.user_id ?? "",
     userName: r.user_name,
     rating: r.rating,

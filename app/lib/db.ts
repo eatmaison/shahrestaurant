@@ -163,6 +163,11 @@ const DDL: string[] = [
   `CREATE INDEX IF NOT EXISTS idx_reviews_site ON reviews (site)`,
   // Which website a reservation was made on (future sites may take bookings too).
   `ALTER TABLE reservations ADD COLUMN IF NOT EXISTS site text NOT NULL DEFAULT 'themaison'`,
+  // The Maison accepts reviews from both orders (eattogo) and reservations
+  // (themaison). A review is tied to one of them, never both.
+  `ALTER TABLE reviews ALTER COLUMN order_id DROP NOT NULL`,
+  `ALTER TABLE reviews ADD COLUMN IF NOT EXISTS reservation_id uuid REFERENCES reservations(id) ON DELETE CASCADE`,
+  `CREATE UNIQUE INDEX IF NOT EXISTS idx_reviews_reservation_unique ON reviews (reservation_id) WHERE reservation_id IS NOT NULL`,
 ];
 
 let readyPromise: Promise<void> | null = null;

@@ -680,6 +680,41 @@ export async function addReview(data: { orderId: string; rating: number; text: s
   return { ok: true };
 }
 
+/**
+ * Add a review tied to a table reservation. Only allowed when:
+ *  - the reservation belongs to the signed-in user,
+ *  - its status is `confirmed`,
+ *  - the reservation date+time is in the past (so the guest actually visited),
+ *  - no review for that reservation exists yet.
+ */
+export async function addReservationReview(data: {
+  reservationId: string;
+  rating: number;
+  text: string;
+}): Promise<{ ok: boolean; error?: "notFound" | "notConfirmed" | "notPast" | "alreadyReviewed" }> {
+  const currentUser = await getCurrentUser();
+  if (!currentUser) return { ok: false, error: "notFound" };
+  const rows = (await sql.query(
+    `SELECT id, status, date, time FROM reservations WHERE id = $1 AND user_id = $2`,
+    [data.reservationId, currentUser.id]
+  )) as any[];
+  const r = rows[0];
+  if (!r) return { ok: false, error: "notFound" };
+  if (r.status !== "confirmed") return { ok: false, error: "notConfirmed" };
+  // Reservation must be in the past (Amsterdam wall-clock).
+  const slot = `${r.date}T${r.time}:00`;
+  const nowLocal = new Date().toLocaleString("sv-SE", { timeZone: "Europe/Amsterdam" }).replace(" ", "T");
+  if (slot >= nowLocal) return { ok: false, error: "notPast" };
+  const existing = (await sql.query(`SELECT 1 FROM reviews WHERE reservation_id = $1`, [data.reservationId])) as any[];
+  if (existing.length > 0) return { ok: false, error: "alreadyReviewed" };
+  const rating = Math.min(5, Math.max(1, Math.round(data.rating)));
+  await sql.query(
+    `INSERT INTO reviews (reservation_id, user_id, user_name, rating, text, site) VALUES ($1,$2,$3,$4,$5,$6)`,
+    [data.reservationId, currentUser.id, currentUser.name, rating, data.text.trim(), SITE_ID]
+  );
+  return { ok: true };
+}
+
 /* ------------------------------------------------------------------ reservations */
 
 export type ReservationError = "fillFields" | "invalidSlot" | "pastDate";

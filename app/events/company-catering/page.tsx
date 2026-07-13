@@ -106,13 +106,6 @@ export default function CompanyCateringPage() {
         ? "Ontworpen wijnkeuze afgestemd op menu, gasten en doel van het evenement - met optie voor alcoholvrije pairings."
         : "Curated wine pairings matched to the menu, audience and purpose - with alcohol-free pairing options.",
     },
-    {
-      Icon: FaBriefcase,
-      title: nl ? "Volledige AV & branding" : "Full AV & branding",
-      text: nl
-        ? "Presentatiescherm, geluid, microfoons, gebrande menu's en welkomstborden met uw logo - op aanvraag."
-        : "Presentation screen, sound, mics, branded menu cards and welcome signage with your logo - on request.",
-    },
   ];
 
   const menuOptions = [
@@ -160,8 +153,8 @@ export default function CompanyCateringPage() {
           </span>
           <h1 className="font-display mt-5 text-4xl font-semibold tracking-tight text-slate-900 dark:text-white sm:text-5xl">
             {nl
-              ? "Bedrijfscatering & zakelijke diners in Amsterdam"
-              : "Corporate catering & business dinners in Amsterdam"}
+              ? "Bedrijfscatering"
+              : "Corporate catering"}
           </h1>
           <p className="mt-5 text-base leading-8 text-slate-600 dark:text-slate-300">
             {nl

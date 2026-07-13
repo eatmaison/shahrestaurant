@@ -1,6 +1,7 @@
 "use client";
 
-import { FaChampagneGlasses, FaCheck, FaGem, FaHandshake, FaHeart, FaMusic, FaRing, FaStar } from "react-icons/fa6";
+import Link from "next/link";
+import { FaArrowRight, FaChampagneGlasses, FaCheck, FaGem, FaHandshake, FaHeart, FaMusic, FaRing, FaStar } from "react-icons/fa6";
 import { useLang } from "../../providers";
 import { EventsContactCta } from "../../components/EventsContactCta";
 
@@ -164,13 +165,19 @@ export default function CelebrationsPage() {
           {services.map(({ Icon, title, text }) => (
             <article
               key={title}
-              className="animate-fade-up group rounded-3xl border border-emerald-500/15 bg-white p-7 transition hover:-translate-y-1 hover:border-emerald-500/40 hover:shadow-xl hover:shadow-emerald-900/10 dark:border-emerald-400/10 dark:bg-white/5"
+              className="animate-fade-up group flex flex-col rounded-3xl border border-emerald-500/15 bg-white p-7 transition hover:-translate-y-1 hover:border-emerald-500/40 hover:shadow-xl hover:shadow-emerald-900/10 dark:border-emerald-400/10 dark:bg-white/5"
             >
               <span className="grid h-12 w-12 place-items-center rounded-full border border-emerald-500/30 bg-emerald-500/10 text-lg text-emerald-600 transition group-hover:scale-110 dark:text-emerald-400">
                 <Icon />
               </span>
               <h2 className="font-display mt-5 text-lg font-bold text-slate-900 dark:text-white">{title}</h2>
-              <p className="mt-2 text-sm leading-7 text-slate-600 dark:text-slate-400">{text}</p>
+              <p className="mt-2 flex-1 text-sm leading-7 text-slate-600 dark:text-slate-400">{text}</p>
+              <Link
+                href="/reservations"
+                className="mt-5 inline-flex items-center justify-center gap-2 rounded-full bg-emerald-600 px-4 py-2.5 text-xs font-semibold text-white shadow-md shadow-emerald-600/20 transition hover:-translate-y-0.5 hover:bg-emerald-500"
+              >
+                {nl ? "Reserveer nu" : "Book now"} <FaArrowRight className="text-[0.6rem]" />
+              </Link>
             </article>
           ))}
         </div>

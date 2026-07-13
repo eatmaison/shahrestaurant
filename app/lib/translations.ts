@@ -208,6 +208,8 @@ export interface Dictionary {
     basedOn: string;
     reviewsWord: string;
     verifiedOrder: string;
+    verifiedVisit: string;
+    reservationPlaceholder: string;
   };
   reservations: {
     overline: string;
@@ -702,6 +704,8 @@ const en: Dictionary = {
     basedOn: "Based on",
     reviewsWord: "reviews",
     verifiedOrder: "Verified order",
+    verifiedVisit: "Verified visit",
+    reservationPlaceholder: "How was your visit? Share your experience…",
   },
   reservations: {
     overline: "Reservations",
@@ -1199,6 +1203,8 @@ const nl: Dictionary = {
     basedOn: "Gebaseerd op",
     reviewsWord: "reviews",
     verifiedOrder: "Geverifieerde bestelling",
+    verifiedVisit: "Geverifieerd bezoek",
+    reservationPlaceholder: "Hoe was uw bezoek? Deel uw ervaring…",
   },
   reservations: {
     overline: "Reserveringen",

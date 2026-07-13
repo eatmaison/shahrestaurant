@@ -13,6 +13,7 @@ import {
   FaHourglassHalf,
   FaLocationDot,
   FaPhone,
+  FaStar,
   FaUser,
   FaUserGroup,
   FaWandMagicSparkles,
@@ -39,7 +40,7 @@ function todayIso(): string {
 
 export default function ReservationsPage() {
   const { t, lang } = useLang();
-  const { currentUser, reservations, createReservation, cancelReservation, hydrated } = useStore();
+  const { currentUser, reservations, reviews, createReservation, cancelReservation, addReservationReview, hydrated } = useStore();
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -53,6 +54,11 @@ export default function ReservationsPage() {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [done, setDone] = useState<Reservation | null>(null);
+
+  // Per-reservation review state (only one open at a time).
+  const [reviewingId, setReviewingId] = useState<string | null>(null);
+  const [reviewRating, setReviewRating] = useState(5);
+  const [reviewText, setReviewText] = useState("");
 
   // Pre-fill contact details from the signed-in profile (once, after hydration).
   if (hydrated && currentUser && !prefilled) {
@@ -82,6 +88,13 @@ export default function ReservationsPage() {
     () => [...reservations].sort((a, b) => (b.date + b.time).localeCompare(a.date + a.time)),
     [reservations]
   );
+
+  // Map reservationId → existing review so we can show "Your review" instead of the form.
+  const reviewsByReservationId = useMemo(() => {
+    const m = new Map<string, (typeof reviews)[number]>();
+    for (const r of reviews) if (r.reservationId) m.set(r.reservationId, r);
+    return m;
+  }, [reviews]);
 
   const infoCards = [
     { Icon: FaWandMagicSparkles, title: t.reservations.info1Title, text: t.reservations.info1Text },
@@ -389,7 +402,13 @@ export default function ReservationsPage() {
               <ul className="mt-4 space-y-3">
                 {myReservations.map((r) => {
                   const meta = statusMeta[r.status];
-                  const isUpcoming = r.date >= todayIso() && (r.status === "pending" || r.status === "confirmed");
+                  const today = todayIso();
+                  const isUpcoming = r.date >= today && (r.status === "pending" || r.status === "confirmed");
+                  // Reviewable when confirmed AND already took place (past date, or today after the seating time).
+                  const nowLocal = new Date().toLocaleString("sv-SE", { timeZone: "Europe/Amsterdam" }).replace(" ", "T");
+                  const slot = `${r.date}T${r.time}:00`;
+                  const isReviewable = r.status === "confirmed" && slot < nowLocal;
+                  const existingReview = reviewsByReservationId.get(r.id);
                   return (
                     <li key={r.id} className="rounded-2xl border border-slate-200 p-4 dark:border-white/10">
                       <div className="flex flex-wrap items-center justify-between gap-2">
@@ -409,6 +428,94 @@ export default function ReservationsPage() {
                         >
                           {t.reservations.cancelBooking}
                         </button>
+                      )}
+
+                      {/* Existing review shown as read-only */}
+                      {existingReview && (
+                        <div className="mt-3 rounded-xl bg-emerald-500/5 p-3 dark:bg-emerald-400/10">
+                          <div className="flex items-center gap-2">
+                            <span className="flex text-amber-400">
+                              {[1, 2, 3, 4, 5].map((s) => (
+                                <FaStar key={s} className={`text-xs ${s <= existingReview.rating ? "" : "opacity-25"}`} />
+                              ))}
+                            </span>
+                            <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/10 px-2 py-0.5 text-[0.6rem] font-bold uppercase tracking-wide text-emerald-700 dark:text-emerald-300">
+                              ✓ {t.reviews.verifiedVisit}
+                            </span>
+                          </div>
+                          {existingReview.text && (
+                            <p className="mt-1.5 text-xs leading-6 text-slate-600 dark:text-slate-300">{existingReview.text}</p>
+                          )}
+                        </div>
+                      )}
+
+                      {/* Review form for a completed, confirmed visit */}
+                      {isReviewable && !existingReview && reviewingId !== r.id && (
+                        <button
+                          onClick={() => {
+                            setReviewingId(r.id);
+                            setReviewRating(5);
+                            setReviewText("");
+                          }}
+                          className="mt-3 inline-flex items-center gap-1.5 rounded-full border border-amber-300/60 bg-amber-400/10 px-3 py-1.5 text-xs font-bold text-amber-700 transition hover:bg-amber-400/20 dark:text-amber-300"
+                        >
+                          <FaStar /> {t.reviews.leaveReview}
+                        </button>
+                      )}
+                      {isReviewable && !existingReview && reviewingId === r.id && (
+                        <div className="mt-3 space-y-2 rounded-xl border border-amber-300/40 bg-amber-400/5 p-3">
+                          <p className="text-xs font-semibold text-slate-500 dark:text-slate-400">{t.reviews.yourRating}</p>
+                          <div className="flex gap-1">
+                            {[1, 2, 3, 4, 5].map((s) => (
+                              <button
+                                key={s}
+                                type="button"
+                                onClick={() => setReviewRating(s)}
+                                className={`text-2xl transition hover:scale-110 ${
+                                  s <= reviewRating ? "text-amber-400" : "text-slate-300 dark:text-slate-600"
+                                }`}
+                                aria-label={`${s}/5`}
+                              >
+                                <FaStar />
+                              </button>
+                            ))}
+                          </div>
+                          <textarea
+                            value={reviewText}
+                            onChange={(e) => setReviewText(e.target.value)}
+                            placeholder={t.reviews.reservationPlaceholder}
+                            rows={3}
+                            maxLength={500}
+                            className="w-full resize-none rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/5 dark:text-white"
+                          />
+                          <div className="flex gap-2">
+                            <button
+                              type="button"
+                              onClick={async () => {
+                                const res = await addReservationReview({
+                                  reservationId: r.id,
+                                  rating: reviewRating,
+                                  text: reviewText,
+                                });
+                                if (res.ok) {
+                                  setReviewingId(null);
+                                  setReviewText("");
+                                  setReviewRating(5);
+                                }
+                              }}
+                              className="rounded-full bg-emerald-600 px-4 py-2 text-xs font-bold text-white transition hover:bg-emerald-500"
+                            >
+                              {t.reviews.submit}
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => setReviewingId(null)}
+                              className="rounded-full border border-slate-200 px-4 py-2 text-xs font-semibold text-slate-500 transition hover:text-slate-700 dark:border-white/10 dark:text-slate-400"
+                            >
+                              {t.common.cancel}
+                            </button>
+                          </div>
+                        </div>
                       )}
                     </li>
                   );

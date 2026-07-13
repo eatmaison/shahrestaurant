@@ -42,7 +42,7 @@ export default function CompanyLunchesPage() {
     {
       Icon: FaBreadSlice,
       title: nl ? "Standaard lunch" : "Everyday lunch",
-      price: nl ? "€15–20 p.p." : "€15–20 p.p.",
+      price: nl ? "€20 p.p." : "€20 p.p.",
       description: nl
         ? "Rijke belegde broodjes, verse salades, soep van de dag en fruit. Ideaal voor dagelijkse teamlunches."
         : "Rich filled sandwiches, fresh salads, soup of the day and fruit. Ideal for daily team lunches.",
@@ -55,20 +55,20 @@ export default function CompanyLunchesPage() {
     {
       Icon: FaCarrot,
       title: nl ? "Gezond & plantaardig" : "Healthy & plant-forward",
-      price: nl ? "€18–24 p.p." : "€18–24 p.p.",
+      price: nl ? "€24 p.p." : "€24 p.p.",
       description: nl
         ? "Grain bowls, groentenrijke salades, veganistische opties en cold-pressed sappen - voor teams die energiek willen blijven."
         : "Grain bowls, vegetable-forward salads, vegan options and cold-pressed juices - for teams that want to stay sharp.",
       features: [
         nl ? "Volledig vegetarisch/veganistisch mogelijk" : "Fully vegetarian/vegan available",
         nl ? "Glutenvrije en suikervrije opties" : "Gluten-free and no-added-sugar options",
-        nl ? "Cold-pressed sap of kombucha" : "Cold-pressed juice or kombucha",
+        nl ? "Matcha-, bubble tea- en smoothies" : "Matcha, bubble teas & smoothies",
       ],
     },
     {
       Icon: FaMugSaucer,
       title: nl ? "Meeting lunch" : "Meeting lunch",
-      price: nl ? "€22–30 p.p." : "€22–30 p.p.",
+      price: nl ? "€38 p.p." : "€38 p.p.",
       description: nl
         ? "Warme en koude opties op één opstelling - inclusief koffiestation en zoetigheid. Perfect voor lange sessies."
         : "Hot and cold options in one setup - including coffee station and sweets. Perfect for longer sessions.",
@@ -81,14 +81,14 @@ export default function CompanyLunchesPage() {
     {
       Icon: FaLeaf,
       title: nl ? "Executive plated lunch" : "Executive plated lunch",
-      price: nl ? "€35–48 p.p." : "€35–48 p.p.",
+      price: nl ? "€48 p.p." : "€48 p.p.",
       description: nl
         ? "Verfijnde tweegangen op bord geserveerd door onze staff - voor board meetings, klantvergaderingen of bestuurslunches."
         : "Refined two-course plated lunch served by our staff - for board meetings, client conferences or leadership lunches.",
       features: [
-        nl ? "Twee gangen op bord" : "Two-course plated service",
+        nl ? "Drie gangen op bord" : "Three-course plated service",
         nl ? "Serveerstaff inbegrepen" : "Service staff included",
-        nl ? "Wijnkaart optioneel" : "Wine list optional",
+        nl ? "Inclusief één glas wijn" : "Includes one glass of wine",
       ],
     },
   ];
@@ -164,7 +164,7 @@ export default function CompanyLunchesPage() {
           <div className="mt-6 flex flex-wrap justify-center gap-2">
             {[
               { Icon: FaClock, label: nl ? "Aankomst voor 12:00" : "Arrives before 12:00" },
-              { Icon: FaBoxesStacked, label: nl ? "Vanaf 5 personen" : "From 5 people" },
+              { Icon: FaBoxesStacked, label: nl ? "Vanaf 10 personen" : "From 10 people" },
               { Icon: FaFileInvoice, label: nl ? "Maandelijkse facturatie" : "Monthly invoicing" },
             ].map(({ Icon, label }) => (
               <span

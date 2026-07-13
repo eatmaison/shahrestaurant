@@ -130,6 +130,8 @@ interface StoreCtx {
 
   reviews: Review[];
   addReview: (data: { orderId: string; rating: number; text: string }) => Promise<{ ok: boolean }>;
+  /** Leave a review for a confirmed reservation that already took place. */
+  addReservationReview: (data: { reservationId: string; rating: number; text: string }) => Promise<{ ok: boolean; error?: string }>;
 
   /** Table reservations (own bookings for guests, all bookings for admins). */
   reservations: Reservation[];
@@ -405,6 +407,20 @@ export function Providers({ children }: { children: ReactNode }) {
     [refresh]
   );
 
+  const addReservationReview: StoreCtx["addReservationReview"] = useCallback(
+    async ({ reservationId, rating, text }) => {
+      const res = await fetch("/api/reviews", {
+        method: "POST",
+        headers: JSON_HEADERS,
+        body: JSON.stringify({ reservationId, rating, text }),
+      });
+      const json = await res.json();
+      if (json.ok) await refresh();
+      return json;
+    },
+    [refresh]
+  );
+
   const createReservation: StoreCtx["createReservation"] = useCallback(
     async (data) => {
       try {
@@ -519,6 +535,7 @@ export function Providers({ children }: { children: ReactNode }) {
       rejectVipRequest,
       reviews,
       addReview,
+      addReservationReview,
       reservations,
       createReservation,
       cancelReservation,
@@ -556,6 +573,7 @@ export function Providers({ children }: { children: ReactNode }) {
       rejectVipRequest,
       reviews,
       addReview,
+      addReservationReview,
       reservations,
       createReservation,
       cancelReservation,

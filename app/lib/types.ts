@@ -142,7 +142,10 @@ export interface Order {
 
 export interface Review {
   id: string;
-  orderId: string;
+  /** Set when the review is tied to a delivered order. */
+  orderId?: string;
+  /** Set when the review is tied to a table reservation that already took place. */
+  reservationId?: string;
   userId: string;
   userName: string;
   /** Star rating from 1 to 5 */
