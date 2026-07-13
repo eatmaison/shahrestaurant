@@ -11,6 +11,13 @@ export interface Dictionary {
     contact: string;
     reservations: string;
     events: string;
+    eventsOverview: string;
+    eventsAbout: string;
+    eventsGallery: string;
+    eventsBirthdays: string;
+    eventsCelebrations: string;
+    eventsCompanyCatering: string;
+    eventsCompanyLunches: string;
   };
   common: {
     orderNow: string;
@@ -80,28 +87,6 @@ export interface Dictionary {
     ctaTitle: string;
     ctaText: string;
     ctaButton: string;
-  };
-  events: {
-    overline: string;
-    title: string;
-    subtitle: string;
-    aboutTitle: string;
-    aboutText: string;
-    cateringTitle: string;
-    cateringText: string;
-    companyCateringTitle: string;
-    companyCateringText: string;
-    birthdayTitle: string;
-    birthdayText: string;
-    meetingsTitle: string;
-    meetingsText: string;
-    otherTitle: string;
-    otherText: string;
-    capacity: string;
-    ctaTitle: string;
-    ctaText: string;
-    ctaContact: string;
-    ctaReserve: string;
   };
   order: {
     title: string;
@@ -512,6 +497,13 @@ const en: Dictionary = {
     contact: "Contact",
     reservations: "Reservations",
     events: "Events",
+    eventsOverview: "Events overview",
+    eventsAbout: "About us",
+    eventsGallery: "Gallery",
+    eventsBirthdays: "Birthdays & parties",
+    eventsCelebrations: "Celebrations & weddings",
+    eventsCompanyCatering: "Company catering",
+    eventsCompanyLunches: "Company lunches",
   },
   common: {
     orderNow: "Order now",
@@ -587,28 +579,6 @@ const en: Dictionary = {
     ctaText:
       "Whether you are planning an intimate dinner, a business meeting or a celebration - our team is ready to make your evening perfect.",
     ctaButton: "Reserve now",
-  },
-  events: {
-    overline: "Events & Catering",
-    title: "Occasions worth celebrating",
-    subtitle: "From intimate birthdays and business meetings to full-scale receptions - our team creates memorable experiences at The Maison or wherever you need us.",
-    aboutTitle: "About The Maison",
-    aboutText: "The Maison is an intimate fine-dining restaurant in Amsterdam-Noord where classical European cuisine meets refined seasonal cooking. Our chefs, sommelier and hosts share a single obsession: making every guest feel like the evening was designed just for them. Whether you visit us in the dining room or invite us to your venue, expect impeccable service, thoughtfully sourced ingredients and dishes plated like art.",
-    cateringTitle: "Private catering",
-    cateringText: "Bring The Maison to your home, boat, garden or event space. Our team designs a menu around your occasion - from a plated three-course dinner to elegant grazing tables and canapés. We handle everything: staff, tableware, drinks pairing and setup.",
-    companyCateringTitle: "Company & corporate catering",
-    companyCateringText: "Elevated lunches, board dinners, client receptions and quarterly celebrations - delivered fresh or served on-site. We work with weekly repeat menus for offices, or bespoke one-off menus for major moments. Ask about our corporate account with monthly invoicing.",
-    birthdayTitle: "Birthdays & celebrations",
-    birthdayText: "Milestone birthdays, anniversaries, graduations and engagements - we set the stage with candlelight, personalised menus, dedicated service and optional live music. Private and semi-private sections available.",
-    meetingsTitle: "Business meetings & dinners",
-    meetingsText: "Discreet, quiet and elegant - our salon and private table settings are ideal for board meetings, negotiations, client dinners and small conferences. Presentation screens, printed menus with your logo and full audio setup available on request.",
-    otherTitle: "Weddings, receptions & other events",
-    otherText: "Rehearsal dinners, wedding receptions, product launches, gala evenings, seasonal parties - if it deserves an extraordinary setting, we can host or cater it. Tell us what you dream of and we will build the evening around it.",
-    capacity: "Up to 100 guests",
-    ctaTitle: "Ready to plan your event?",
-    ctaText: "Share a few details and our events team will get back to you within one working day with a tailored proposal.",
-    ctaContact: "Contact our events team",
-    ctaReserve: "Reserve a table",
   },
   order: {
     title: "Build your order",
@@ -1024,6 +994,13 @@ const nl: Dictionary = {
     contact: "Contact",
     reservations: "Reserveren",
     events: "Evenementen",
+    eventsOverview: "Evenementen overzicht",
+    eventsAbout: "Over ons",
+    eventsGallery: "Galerij",
+    eventsBirthdays: "Verjaardagen & feesten",
+    eventsCelebrations: "Vieringen & bruiloften",
+    eventsCompanyCatering: "Bedrijfscatering",
+    eventsCompanyLunches: "Bedrijfslunches",
   },
   common: {
     orderNow: "Bestel nu",
@@ -1099,28 +1076,6 @@ const nl: Dictionary = {
     ctaText:
       "Of u nu een intiem diner, een zakelijk etentje of een feest plant - ons team staat klaar om uw avond perfect te maken.",
     ctaButton: "Reserveer nu",
-  },
-  events: {
-    overline: "Evenementen & Catering",
-    title: "Momenten die het vieren waard zijn",
-    subtitle: "Van intieme verjaardagen en zakelijke meetings tot volledige recepties - ons team creëert onvergetelijke ervaringen bij The Maison of op de locatie van uw keuze.",
-    aboutTitle: "Over The Maison",
-    aboutText: "The Maison is een intiem fine-dining restaurant in Amsterdam-Noord waar klassieke Europese keuken samensmelt met verfijnde seizoensgerechten. Onze chefs, sommelier en gastheren delen één obsessie: elke gast het gevoel geven dat de avond speciaal voor hen is ontworpen. Of u ons nu in de eetzaal bezoekt of ons uitnodigt op uw locatie, verwacht onberispelijke service, zorgvuldig geselecteerde ingrediënten en gerechten die als kunstwerken worden opgediend.",
-    cateringTitle: "Privé-catering",
-    cateringText: "Breng The Maison naar uw huis, boot, tuin of eventlocatie. Ons team ontwerpt een menu rond uw gelegenheid - van een driegangenmenu tot elegante grazing-tafels en canapés. Wij regelen alles: personeel, servies, wijnarrangement en opbouw.",
-    companyCateringTitle: "Bedrijfscatering",
-    companyCateringText: "Verfijnde lunches, bestuursdiners, klantrecepties en kwartaalvieringen - vers bezorgd of ter plaatse geserveerd. Wij werken met wekelijkse terugkerende menu's voor kantoren, of maatwerk voor bijzondere momenten. Vraag naar onze zakelijke rekening met maandelijkse facturatie.",
-    birthdayTitle: "Verjaardagen & vieringen",
-    birthdayText: "Bijzondere verjaardagen, jubilea, diploma-uitreikingen en verlovingen - wij zorgen voor kaarslicht, gepersonaliseerde menu's, toegewijde service en optioneel live muziek. Privé en semi-privé ruimtes beschikbaar.",
-    meetingsTitle: "Zakelijke meetings & diners",
-    meetingsText: "Discreet, rustig en elegant - onze salon en privé-tafels zijn ideaal voor bestuursvergaderingen, onderhandelingen, klantendiners en kleine conferenties. Presentatieschermen, gepersonaliseerde menu's met uw logo en volledige audio-installatie op aanvraag beschikbaar.",
-    otherTitle: "Bruiloften, recepties & andere evenementen",
-    otherText: "Repetitiediners, bruiloftsrecepties, productlanceringen, gala-avonden, seizoensfeesten - als het een buitengewone setting verdient, kunnen wij het hosten of cateren. Vertel ons uw droom en wij bouwen de avond eromheen.",
-    capacity: "Tot 100 gasten",
-    ctaTitle: "Klaar om uw evenement te plannen?",
-    ctaText: "Deel een paar details en ons events-team neemt binnen één werkdag contact met u op met een voorstel op maat.",
-    ctaContact: "Neem contact op met ons events-team",
-    ctaReserve: "Reserveer een tafel",
   },
   order: {
     title: "Stel je bestelling samen",
