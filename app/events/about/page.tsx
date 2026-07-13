@@ -53,15 +53,15 @@ export default function AboutPage() {
       Icon: FaHeart,
       title: nl ? "Gastvrijheid als kunstvorm" : "Hospitality as an art form",
       text: nl
-        ? "Van een warm welkom tot het laatste glaasje digestief — elk contactmoment is bedoeld om onze gasten thuis te laten voelen."
+        ? "Van een warm welkom tot het laatste glaasje digestief - elk contactmoment is bedoeld om onze gasten thuis te laten voelen."
         : "From a warm welcome to the last digestif, every touchpoint is designed to make our guests feel at home.",
     },
     {
       Icon: FaAward,
       title: nl ? "Detail dat verschil maakt" : "Detail that makes the difference",
       text: nl
-        ? "Gepolijste glazen, versgestreken linnen, bloemen op elke tafel — omdat het detail bepaalt wat de avond onvergetelijk maakt."
-        : "Polished glassware, freshly pressed linen, flowers on every table — because it is the detail that makes an evening unforgettable.",
+        ? "Gepolijste glazen, versgestreken linnen, bloemen op elke tafel - omdat het detail bepaalt wat de avond onvergetelijk maakt."
+        : "Polished glassware, freshly pressed linen, flowers on every table - because it is the detail that makes an evening unforgettable.",
     },
   ];
 
@@ -82,8 +82,8 @@ export default function AboutPage() {
           </h1>
           <p className="mt-5 text-base leading-8 text-slate-600 dark:text-slate-300">
             {nl
-              ? "Een intiem fine-dining restaurant in Amsterdam-Noord waar klassieke Europese keuken en verfijnde seizoensgerechten samenkomen — met impeccabele service en avondambiance."
-              : "An intimate fine-dining restaurant in Amsterdam-Noord where classical European cuisine and refined seasonal cooking come together — with impeccable service and evening ambiance."}
+              ? "Een intiem fine-dining restaurant in Amsterdam-Noord waar klassieke Europese keuken en verfijnde seizoensgerechten samenkomen - met impeccabele service en avondambiance."
+              : "An intimate fine-dining restaurant in Amsterdam-Noord where classical European cuisine and refined seasonal cooking come together - with impeccable service and evening ambiance."}
           </p>
         </div>
       </section>
@@ -98,17 +98,17 @@ export default function AboutPage() {
             <p className="mt-5 text-sm leading-8 text-slate-600 dark:text-slate-300 sm:text-base">
               {nl
                 ? "The Maison is opgericht met één missie: elke gast het gevoel geven dat de avond speciaal voor hen is ontworpen. In onze intieme eetzaal, verlicht door kaarsen en gedimd goud, komen klassieke Europese technieken samen met seizoensgebonden ingrediënten die dagelijks door onze chefs worden geselecteerd."
-                : "The Maison was founded with a single mission: to make every guest feel that the evening was designed just for them. In our intimate dining room — lit by candles and dimmed gold — classical European technique meets seasonal ingredients hand-selected by our chefs each day."}
+                : "The Maison was founded with a single mission: to make every guest feel that the evening was designed just for them. In our intimate dining room - lit by candles and dimmed gold - classical European technique meets seasonal ingredients hand-selected by our chefs each day."}
             </p>
             <p className="mt-4 text-sm leading-8 text-slate-600 dark:text-slate-300 sm:text-base">
               {nl
-                ? "Onze sommelier begeleidt elke gang met een zorgvuldig samengestelde wijnkeuze — van Bourgogne tot Rioja, van champagne tot Nederlandse mousserende wijn. Het menu verandert mee met de seizoenen, maar de aandacht voor detail blijft altijd hetzelfde."
-                : "Our sommelier pairs each course with a carefully considered wine — from Burgundy to Rioja, from champagne to Dutch sparkling. The menu shifts with the seasons, but the attention to detail never wavers."}
+                ? "Onze sommelier begeleidt elke gang met een zorgvuldig samengestelde wijnkeuze - van Bourgogne tot Rioja, van champagne tot Nederlandse mousserende wijn. Het menu verandert mee met de seizoenen, maar de aandacht voor detail blijft altijd hetzelfde."
+                : "Our sommelier pairs each course with a carefully considered wine - from Burgundy to Rioja, from champagne to Dutch sparkling. The menu shifts with the seasons, but the attention to detail never wavers."}
             </p>
             <p className="mt-4 text-sm leading-8 text-slate-600 dark:text-slate-300 sm:text-base">
               {nl
-                ? "Naast onze dagelijkse gasten organiseren wij privé-evenementen, bruiloftsrecepties, zakelijke diners en bedrijfscatering — omdat gastvrijheid volgens ons overal thuishoort waar mensen iets bijzonders willen vieren."
-                : "Beyond nightly diners, we host private events, wedding receptions, corporate dinners and daily company catering — because hospitality, we believe, belongs wherever people want to celebrate something meaningful."}
+                ? "Naast onze dagelijkse gasten organiseren wij privé-evenementen, bruiloftsrecepties, zakelijke diners en bedrijfscatering - omdat gastvrijheid volgens ons overal thuishoort waar mensen iets bijzonders willen vieren."
+                : "Beyond nightly diners, we host private events, wedding receptions, corporate dinners and daily company catering - because hospitality, we believe, belongs wherever people want to celebrate something meaningful."}
             </p>
           </div>
         </article>
@@ -145,10 +145,10 @@ export default function AboutPage() {
           <blockquote className="font-display mt-4 text-lg italic leading-8 text-stone-100 sm:text-xl">
             {nl
               ? "“Elke gast is een uitgenodigde vriend. Onze taak is niet alleen om ze te voeden, maar om ze het gevoel te geven dat de avond helemaal om hen draait.”"
-              : "“Every guest is an invited friend. Our job isn't just to feed them — it's to make them feel the whole evening was built around them.”"}
+              : "“Every guest is an invited friend. Our job isn't just to feed them - it's to make them feel the whole evening was built around them.”"}
           </blockquote>
           <figcaption className="mt-5 text-xs uppercase tracking-[0.3em] text-emerald-300/90">
-            — The Maison
+            - The Maison
           </figcaption>
         </figure>
       </section>

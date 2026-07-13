@@ -38,22 +38,22 @@ export default function CelebrationsPage() {
       Icon: FaRing,
       title: nl ? "Bruiloftsrecepties" : "Wedding receptions",
       text: nl
-        ? "Volledig verzorgde bruiloftsrecepties met chef's menu, sommelier, dansvloer en gepersonaliseerd decor — een avond die uw dag onvergetelijk maakt."
-        : "Fully coordinated wedding receptions with chef's menu, sommelier, dance floor and personalised decor — an evening that seals the day.",
+        ? "Volledig verzorgde bruiloftsrecepties met chef's menu, sommelier, dansvloer en gepersonaliseerd decor - een avond die uw dag onvergetelijk maakt."
+        : "Fully coordinated wedding receptions with chef's menu, sommelier, dance floor and personalised decor - an evening that seals the day.",
     },
     {
       Icon: FaHeart,
       title: nl ? "Verlovingsdiners" : "Engagement dinners",
       text: nl
-        ? "Intieme verlovingsdiners voor 2 tot 30 gasten — kaarslicht, gepersonaliseerd menu en de perfecte plek voor de belangrijkste 'ja' van uw leven."
-        : "Intimate engagement dinners for 2 to 30 guests — candlelight, custom menu and the perfect setting for the most important 'yes' of your life.",
+        ? "Intieme verlovingsdiners voor 20 tot 200 gasten - kaarslicht, gepersonaliseerd menu en de perfecte plek voor de belangrijkste 'ja' van uw leven."
+        : "Intimate engagement dinners for 20 to 200 guests - candlelight, custom menu and the perfect setting for the most important 'yes' of your life."
     },
     {
       Icon: FaChampagneGlasses,
       title: nl ? "Jubilea" : "Anniversaries",
       text: nl
-        ? "Van 25e trouwdag tot bedrijfsjubileum — wij creëren een avond die de mijlpaal met stijl viert."
-        : "From silver wedding anniversaries to milestone corporate jubilees — we build an evening that honours the milestone in style.",
+        ? "Van 25e trouwdag tot bedrijfsjubileum - wij creëren een avond die de mijlpaal met stijl viert."
+        : "From silver wedding anniversaries to milestone corporate jubilees - we build an evening that honours the milestone in style.",
     },
     {
       Icon: FaGem,
@@ -66,15 +66,15 @@ export default function CelebrationsPage() {
       Icon: FaHandshake,
       title: nl ? "Repetitiediners" : "Rehearsal dinners",
       text: nl
-        ? "Rustige repetitiediners in halfprivé setting — ideaal om familie en getuigen samen te brengen de avond vóór de grote dag."
-        : "Relaxed rehearsal dinners in a semi-private setting — perfect for bringing family and witnesses together the night before the big day.",
+        ? "Rustige repetitiediners in halfprivé setting - ideaal om familie en getuigen samen te brengen de avond vóór de grote dag."
+        : "Relaxed rehearsal dinners in a semi-private setting - perfect for bringing family and witnesses together the night before the big day.",
     },
     {
       Icon: FaMusic,
       title: nl ? "Themafeesten & seizoensvieringen" : "Themed parties & seasonal celebrations",
       text: nl
-        ? "Kerstmis, oudejaarsavond, valentijn, midzomer — themafeesten met bijpassend menu, styling en muziek."
-        : "Christmas, New Year's Eve, Valentine's, midsummer — themed parties with matching menu, styling and music.",
+        ? "Kerstmis, oudejaarsavond, valentijn, midzomer - themafeesten met bijpassend menu, styling en muziek."
+        : "Christmas, New Year's Eve, Valentine's, midsummer - themed parties with matching menu, styling and music.",
     },
   ];
 
@@ -97,23 +97,23 @@ export default function CelebrationsPage() {
       step: "03",
       title: nl ? "Proefdiner" : "Tasting session",
       text: nl
-        ? "Wij organiseren een privéproeverij voor u en (indien gewenst) uw partner of ouders — zodat elk detail vaststaat."
-        : "We arrange a private tasting for you and (if you wish) your partner or parents — so every detail is confirmed.",
+        ? "Wij organiseren een privéproeverij voor u en (indien gewenst) uw partner of ouders - zodat elk detail vaststaat."
+        : "We arrange a private tasting for you and (if you wish) your partner or parents - so every detail is confirmed.",
     },
     {
       step: "04",
       title: nl ? "Uitvoering" : "Execution",
       text: nl
-        ? "Op de avond zelf zorgt ons event-team voor alles: opbouw, service, muziek, timing en afbouw — u geniet."
-        : "On the night itself, our event team handles everything: setup, service, music, timing and breakdown — you enjoy.",
+        ? "Op de avond zelf zorgt ons event-team voor alles: opbouw, service, muziek, timing en afbouw - u geniet."
+        : "On the night itself, our event team handles everything: setup, service, music, timing and breakdown - you enjoy.",
     },
   ];
 
   const testimonials = [
     {
       quote: nl
-        ? "De perfecte bruiloftsreceptie — elk detail was verzorgd en het menu was ongelooflijk. Onze gasten praten er nog steeds over."
-        : "The perfect wedding reception — every detail was taken care of and the menu was extraordinary. Our guests still talk about it.",
+        ? "De perfecte bruiloftsreceptie - elk detail was verzorgd en het menu was ongelooflijk. Onze gasten praten er nog steeds over."
+        : "The perfect wedding reception - every detail was taken care of and the menu was extraordinary. Our guests still talk about it.",
       name: "Marc & Julie",
       event: nl ? "Bruiloft, 82 gasten" : "Wedding, 82 guests",
     },
@@ -126,8 +126,8 @@ export default function CelebrationsPage() {
     },
     {
       quote: nl
-        ? "Verloving in stijl — kaarsen, bloemen, een gepersonaliseerd menu. Ze zei ja."
-        : "Engagement in style — candles, flowers, a personalised menu. She said yes.",
+        ? "Verloving in stijl - kaarsen, bloemen, een gepersonaliseerd menu. Ze zei ja."
+        : "Engagement in style - candles, flowers, a personalised menu. She said yes.",
       name: "Alexander",
       event: nl ? "Verloving, 2 gasten" : "Engagement, 2 guests",
     },
@@ -152,8 +152,8 @@ export default function CelebrationsPage() {
           </h1>
           <p className="mt-5 text-base leading-8 text-slate-600 dark:text-slate-300">
             {nl
-              ? "Bruiloftsrecepties, verlovingsdiners, gala-avonden en jubilea — elegant, plechtig en persoonlijk. Voor 2 tot 100 gasten in Amsterdam-Noord of op uw locatie."
-              : "Wedding receptions, engagement dinners, gala evenings and anniversaries — elegant, poised and personal. For 2 to 100 guests in Amsterdam-Noord or at your venue."}
+              ? "Bruiloftsrecepties, verlovingsdiners, gala-avonden en jubilea - elegant, plechtig en persoonlijk. Voor 60 tot 200 gasten in Amsterdam-Noord of op uw locatie."
+              : "Wedding receptions, engagement dinners, gala evenings and anniversaries - elegant, poised and personal. For 60 to 200 guests in Amsterdam-Noord or at your venue."}
           </p>
         </div>
       </section>
@@ -210,10 +210,8 @@ export default function CelebrationsPage() {
           <div className="mt-6 grid gap-3 sm:grid-cols-2">
             {[
               nl ? "Dedicated event manager" : "Dedicated event manager",
-              nl ? "Wijnadvies door onze sommelier" : "Wine advice by our sommelier",
               nl ? "Menu-ontwerp op maat" : "Custom-designed menu card",
               nl ? "Bloemstukken op elke tafel" : "Fresh flowers on every table",
-              nl ? "Volledig gedekt met linnen en glaswerk" : "Full linen, glassware and silverware",
               nl ? "Toespraken & timing coördinatie" : "Speech and timing coordination",
               nl ? "Muziek/DJ setup indien gewenst" : "Music/DJ setup if requested",
               nl ? "Parkeer- en garderobe-assistentie" : "Parking and cloakroom assistance",

@@ -54,8 +54,8 @@ export default function CompanyCateringPage() {
       Icon: FaRocket,
       title: nl ? "Productlanceringen" : "Product launches",
       text: nl
-        ? "Volledige productie voor productlanceringen: podium, AV, foto/video, styling en catering — één contactpersoon."
-        : "Full production for product launches: stage, AV, photo/video, styling and catering — with one dedicated contact.",
+        ? "Volledige productie voor productlanceringen: podium, AV, foto/video, styling en catering - één contactpersoon."
+        : "Full production for product launches: stage, AV, photo/video, styling and catering - with one dedicated contact.",
       capacity: nl ? "30–100 gasten" : "30–100 guests",
     },
     {
@@ -78,8 +78,8 @@ export default function CompanyCateringPage() {
       Icon: FaEarthEurope,
       title: nl ? "Internationale delegaties" : "International delegations",
       text: nl
-        ? "Meertalige service, cultureel bewust menu-ontwerp en aandacht voor dieetwensen — ideaal voor internationale gasten."
-        : "Multilingual service, culturally aware menu design and dietary attention — ideal for international visitors.",
+        ? "Meertalige service, cultureel bewust menu-ontwerp en aandacht voor dieetwensen - ideaal voor internationale gasten."
+        : "Multilingual service, culturally aware menu design and dietary attention - ideal for international visitors.",
       capacity: nl ? "6–60 gasten" : "6–60 guests",
     },
   ];
@@ -89,8 +89,8 @@ export default function CompanyCateringPage() {
       Icon: FaReceipt,
       title: nl ? "Maandelijkse facturatie" : "Monthly invoicing",
       text: nl
-        ? "Zakelijke rekening met maandelijkse gebundelde facturen — geen administratieve rompslomp per evenement."
-        : "Business account with consolidated monthly invoicing — no per-event administrative overhead.",
+        ? "Zakelijke rekening met maandelijkse gebundelde facturen - geen administratieve rompslomp per evenement."
+        : "Business account with consolidated monthly invoicing - no per-event administrative overhead.",
     },
     {
       Icon: FaHandshake,
@@ -103,42 +103,42 @@ export default function CompanyCateringPage() {
       Icon: FaWineGlass,
       title: nl ? "Sommelier en drankarrangement" : "Sommelier and drinks pairing",
       text: nl
-        ? "Ontworpen wijnkeuze afgestemd op menu, gasten en doel van het evenement — met optie voor alcoholvrije pairings."
-        : "Curated wine pairings matched to the menu, audience and purpose — with alcohol-free pairing options.",
+        ? "Ontworpen wijnkeuze afgestemd op menu, gasten en doel van het evenement - met optie voor alcoholvrije pairings."
+        : "Curated wine pairings matched to the menu, audience and purpose - with alcohol-free pairing options.",
     },
     {
       Icon: FaBriefcase,
       title: nl ? "Volledige AV & branding" : "Full AV & branding",
       text: nl
-        ? "Presentatiescherm, geluid, microfoons, gebrande menu's en welkomstborden met uw logo — op aanvraag."
-        : "Presentation screen, sound, mics, branded menu cards and welcome signage with your logo — on request.",
+        ? "Presentatiescherm, geluid, microfoons, gebrande menu's en welkomstborden met uw logo - op aanvraag."
+        : "Presentation screen, sound, mics, branded menu cards and welcome signage with your logo - on request.",
     },
   ];
 
   const menuOptions = [
     {
-      title: nl ? "Zakelijke lunch — 2 gangen" : "Business lunch — 2 courses",
+      title: nl ? "Zakelijke lunch - 2 gangen" : "Business lunch - 2 courses",
       price: nl ? "vanaf €38 p.p." : "from €38 p.p.",
       description: nl
-        ? "Snel, verfijnd en efficiënt — ideaal voor tussenzittingen en werklunches met een aankomstuur binnen 90 minuten."
-        : "Quick, refined and efficient — ideal for mid-meeting sessions with a 90-minute in/out target.",
+        ? "Snel, verfijnd en efficiënt - ideaal voor tussenzittingen en werklunches met een aankomstuur binnen 90 minuten."
+        : "Quick, refined and efficient - ideal for mid-meeting sessions with a 90-minute in/out target.",
     },
     {
       title: nl ? "Klantreceptie met walking dinner" : "Client reception with walking dinner",
       price: nl ? "vanaf €65 p.p." : "from €65 p.p.",
       description: nl
-        ? "Welkomstcocktail plus 6 tot 8 elegante bites, geserveerd al lopend — perfect voor netwerken en gesprekken."
-        : "Welcome cocktail plus 6–8 elegant bites served while mingling — perfect for networking and conversation.",
+        ? "Welkomstcocktail plus 6 tot 8 elegante bites, geserveerd al lopend - perfect voor netwerken en gesprekken."
+        : "Welcome cocktail plus 6–8 elegant bites served while mingling - perfect for networking and conversation.",
     },
     {
-      title: nl ? "Executive dinner — 4 gangen" : "Executive dinner — 4 courses",
+      title: nl ? "Executive dinner - 4 gangen" : "Executive dinner - 4 courses",
       price: nl ? "vanaf €95 p.p." : "from €95 p.p.",
       description: nl
-        ? "Klassiek meergangenmenu met wijnarrangement — voor bestuurs- of directie-diners waarbij het gesprek centraal staat."
-        : "Classic multi-course menu with wine pairing — for board or leadership dinners where conversation leads.",
+        ? "Klassiek meergangenmenu met wijnarrangement - voor bestuurs- of directie-diners waarbij het gesprek centraal staat."
+        : "Classic multi-course menu with wine pairing - for board or leadership dinners where conversation leads.",
     },
     {
-      title: nl ? "Gala tastingmenu — 6 gangen" : "Gala tasting menu — 6 courses",
+      title: nl ? "Gala tastingmenu - 6 gangen" : "Gala tasting menu - 6 courses",
       price: nl ? "vanaf €135 p.p." : "from €135 p.p.",
       description: nl
         ? "Signature tastingmenu, sommelier-pairing, personeelsverhouding 1:8. De hoogste standaard voor cruciale avonden."
@@ -165,8 +165,8 @@ export default function CompanyCateringPage() {
           </h1>
           <p className="mt-5 text-base leading-8 text-slate-600 dark:text-slate-300">
             {nl
-              ? "Klantrecepties, board-diners, productlanceringen en team-vieringen — verzorgd bij The Maison of op uw locatie. Maandelijkse facturatie, één contactpersoon en volledige productie inbegrepen."
-              : "Client receptions, board dinners, product launches and team celebrations — hosted at The Maison or delivered on-site. Monthly invoicing, single point of contact and full production included."}
+              ? "Klantrecepties, board-diners, productlanceringen en team-vieringen - verzorgd bij The Maison of op uw locatie. Maandelijkse facturatie, één contactpersoon en volledige productie inbegrepen."
+              : "Client receptions, board dinners, product launches and team celebrations - hosted at The Maison or delivered on-site. Monthly invoicing, single point of contact and full production included."}
           </p>
         </div>
       </section>

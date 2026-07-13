@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 const url = "/events/gallery";
 
 export const metadata: Metadata = {
-  title: "Gallery — The Maison Amsterdam | Interior, Dishes & Events",
+  title: "Gallery - The Maison Amsterdam | Interior, Dishes & Events",
   description:
     "Explore The Maison Amsterdam in pictures: our elegant dining room, plated dishes, private events, birthdays, weddings and corporate catering setups.",
   keywords: [
@@ -18,11 +18,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Gallery | The Maison Amsterdam",
     description:
-      "Interior, plated dishes and past events at The Maison Amsterdam — a fine dining restaurant in Amsterdam-Noord.",
+      "Interior, plated dishes and past events at The Maison Amsterdam - a fine dining restaurant in Amsterdam-Noord.",
     url,
     type: "website",
   },
-  twitter: { card: "summary_large_image", title: "Gallery — The Maison Amsterdam" },
+  twitter: { card: "summary_large_image", title: "Gallery - The Maison Amsterdam" },
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {

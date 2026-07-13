@@ -11,10 +11,10 @@ export default function CompanyLunchesPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "FoodEstablishment",
-    name: "The Maison — Company Lunches Amsterdam",
+    name: "The Maison - Company Lunches Amsterdam",
     description: nl
-      ? "Vers bezorgde bedrijfslunches in Amsterdam — dagelijkse of wekelijkse levering, maandelijkse facturatie."
-      : "Fresh delivered company lunches across Amsterdam — daily or weekly delivery, monthly invoicing.",
+      ? "Vers bezorgde bedrijfslunches in Amsterdam - dagelijkse of wekelijkse levering, maandelijkse facturatie."
+      : "Fresh delivered company lunches across Amsterdam - daily or weekly delivery, monthly invoicing.",
     servesCuisine: ["European", "Healthy", "Vegan-friendly"],
     address: {
       "@type": "PostalAddress",
@@ -57,8 +57,8 @@ export default function CompanyLunchesPage() {
       title: nl ? "Gezond & plantaardig" : "Healthy & plant-forward",
       price: nl ? "€18–24 p.p." : "€18–24 p.p.",
       description: nl
-        ? "Grain bowls, groentenrijke salades, veganistische opties en cold-pressed sappen — voor teams die energiek willen blijven."
-        : "Grain bowls, vegetable-forward salads, vegan options and cold-pressed juices — for teams that want to stay sharp.",
+        ? "Grain bowls, groentenrijke salades, veganistische opties en cold-pressed sappen - voor teams die energiek willen blijven."
+        : "Grain bowls, vegetable-forward salads, vegan options and cold-pressed juices - for teams that want to stay sharp.",
       features: [
         nl ? "Volledig vegetarisch/veganistisch mogelijk" : "Fully vegetarian/vegan available",
         nl ? "Glutenvrije en suikervrije opties" : "Gluten-free and no-added-sugar options",
@@ -70,8 +70,8 @@ export default function CompanyLunchesPage() {
       title: nl ? "Meeting lunch" : "Meeting lunch",
       price: nl ? "€22–30 p.p." : "€22–30 p.p.",
       description: nl
-        ? "Warme en koude opties op één opstelling — inclusief koffiestation en zoetigheid. Perfect voor lange sessies."
-        : "Hot and cold options in one setup — including coffee station and sweets. Perfect for longer sessions.",
+        ? "Warme en koude opties op één opstelling - inclusief koffiestation en zoetigheid. Perfect voor lange sessies."
+        : "Hot and cold options in one setup - including coffee station and sweets. Perfect for longer sessions.",
       features: [
         nl ? "Warme hoofdgangen inbegrepen" : "Hot mains included",
         nl ? "Koffiestation + gebak" : "Coffee station + pastries",
@@ -83,8 +83,8 @@ export default function CompanyLunchesPage() {
       title: nl ? "Executive plated lunch" : "Executive plated lunch",
       price: nl ? "€35–48 p.p." : "€35–48 p.p.",
       description: nl
-        ? "Verfijnde tweegangen op bord geserveerd door onze staff — voor board meetings, klantvergaderingen of bestuurslunches."
-        : "Refined two-course plated lunch served by our staff — for board meetings, client conferences or leadership lunches.",
+        ? "Verfijnde tweegangen op bord geserveerd door onze staff - voor board meetings, klantvergaderingen of bestuurslunches."
+        : "Refined two-course plated lunch served by our staff - for board meetings, client conferences or leadership lunches.",
       features: [
         nl ? "Twee gangen op bord" : "Two-course plated service",
         nl ? "Serveerstaff inbegrepen" : "Service staff included",
@@ -99,8 +99,8 @@ export default function CompanyLunchesPage() {
       Icon: FaCalendarDays,
       title: nl ? "Kies uw ritme" : "Choose your rhythm",
       text: nl
-        ? "Dagelijks, 2 dagen per week, wekelijks of maandelijks — u bepaalt het schema. Pauzeren tijdens vakanties is standaard."
-        : "Daily, twice a week, weekly or monthly — you set the schedule. Pausing during holidays is standard.",
+        ? "Dagelijks, 2 dagen per week, wekelijks of maandelijks - u bepaalt het schema. Pauzeren tijdens vakanties is standaard."
+        : "Daily, twice a week, weekly or monthly - you set the schedule. Pausing during holidays is standard.",
     },
     {
       step: "02",
@@ -113,18 +113,18 @@ export default function CompanyLunchesPage() {
     {
       step: "03",
       Icon: FaTruck,
-      title: nl ? "Vers bezorgd — op tijd" : "Delivered fresh — on time",
+      title: nl ? "Vers bezorgd - op tijd" : "Delivered fresh - on time",
       text: nl
-        ? "Elke dag rond 11:45 (of eerder op verzoek) staat de lunch klaar in uw pantry — koel, gedecoreerd en dienklaar."
-        : "Every day around 11:45 (earlier on request) your lunch is set in your pantry — chilled, styled and ready to serve.",
+        ? "Elke dag rond 11:45 (of eerder op verzoek) staat de lunch klaar in uw pantry - koel, gedecoreerd en dienklaar."
+        : "Every day around 11:45 (earlier on request) your lunch is set in your pantry - chilled, styled and ready to serve.",
     },
     {
       step: "04",
       Icon: FaFileInvoice,
       title: nl ? "Één factuur per maand" : "One invoice per month",
       text: nl
-        ? "Al uw lunches worden verzameld in één maandelijkse factuur met btw-detail — geen bonnetjes verzamelen."
-        : "All your lunches are consolidated into one monthly invoice with VAT details — no receipt chasing.",
+        ? "Al uw lunches worden verzameld in één maandelijkse factuur met btw-detail - geen bonnetjes verzamelen."
+        : "All your lunches are consolidated into one monthly invoice with VAT details - no receipt chasing.",
     },
   ];
 
@@ -133,7 +133,7 @@ export default function CompanyLunchesPage() {
     nl ? "Vegetarische, veganistische, glutenvrije en halal-varianten" : "Vegetarian, vegan, gluten-free and halal variants",
     nl ? "Geleverd in gestylde biologisch afbreekbare verpakking" : "Delivered in styled biodegradable packaging",
     nl ? "Volledige opstelling en opruiming (bij plated lunches)" : "Full setup and clear-away (plated lunches)",
-    nl ? "Geen minimum contractduur — maandelijks opzegbaar" : "No minimum contract length — cancel monthly",
+    nl ? "Geen minimum contractduur - maandelijks opzegbaar" : "No minimum contract length - cancel monthly",
     nl ? "Prioritair contact bij ad-hoc bestellingen" : "Priority contact for ad-hoc orders",
     nl ? "Rapportage van teamvoorkeuren en dieetdata" : "Reports on team preferences and dietary data",
     nl ? "Optioneel: espresso-station en versgeperst sap" : "Optional: espresso station and cold-pressed juice",
@@ -158,8 +158,8 @@ export default function CompanyLunchesPage() {
           </h1>
           <p className="mt-5 text-base leading-8 text-slate-600 dark:text-slate-300">
             {nl
-              ? "Dagelijkse, wekelijkse of maandelijkse lunches bezorgd bij uw kantoor in Amsterdam. Verfijnd, gezond en aangepast aan het dieet van uw team — met maandelijkse facturatie."
-              : "Daily, weekly or monthly lunches delivered to your Amsterdam office. Refined, wholesome and adapted to your team's dietary needs — with monthly invoicing."}
+              ? "Dagelijkse, wekelijkse of maandelijkse lunches bezorgd bij uw kantoor in Amsterdam. Verfijnd, gezond en aangepast aan het dieet van uw team - met maandelijkse facturatie."
+              : "Daily, weekly or monthly lunches delivered to your Amsterdam office. Refined, wholesome and adapted to your team's dietary needs - with monthly invoicing."}
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-2">
             {[

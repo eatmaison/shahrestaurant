@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 const url = "/events/about";
 
 export const metadata: Metadata = {
-  title: "About The Maison Amsterdam — Fine Dining Restaurant Story",
+  title: "About The Maison Amsterdam - Fine Dining Restaurant Story",
   description:
     "Meet the team behind The Maison Amsterdam: a fine dining restaurant in Amsterdam-Noord where classical European cuisine meets refined seasonal cooking, impeccable service and evening ambiance.",
   keywords: [

@@ -23,8 +23,8 @@ export default function EventsHubPage() {
   const overline = nl ? "Evenementen & Catering" : "Events & Catering";
   const title = nl ? "Momenten die het vieren waard zijn" : "Occasions worth celebrating";
   const subtitle = nl
-    ? "Van intieme verjaardagen en zakelijke lunches tot volledige bruiloftsrecepties — The Maison verzorgt onvergetelijke ervaringen bij ons of op uw locatie in Amsterdam."
-    : "From intimate birthdays and executive lunches to full wedding receptions — The Maison creates memorable experiences at our venue or yours in Amsterdam.";
+    ? "Van intieme verjaardagen en zakelijke lunches tot volledige bruiloftsrecepties - The Maison verzorgt onvergetelijke ervaringen bij ons of op uw locatie in Amsterdam."
+    : "From intimate birthdays and executive lunches to full wedding receptions - The Maison creates memorable experiences at our venue or yours in Amsterdam.";
   const capacity = nl ? "Tot 100 gasten" : "Up to 100 guests";
   const ctaTitle = nl ? "Klaar om te plannen?" : "Ready to plan your event?";
   const ctaText = nl
@@ -63,8 +63,8 @@ export default function EventsHubPage() {
       Icon: FaChampagneGlasses,
       title: nl ? "Vieringen & bruiloften" : "Celebrations & weddings",
       text: nl
-        ? "Bruiloftsdiners, recepties, gala-avonden en verlovingen — plechtig, elegant, onvergetelijk."
-        : "Wedding dinners, receptions, gala evenings and engagements — poised, elegant, unforgettable.",
+        ? "Bruiloftsdiners, recepties, gala-avonden en verlovingen - plechtig, elegant, onvergetelijk."
+        : "Wedding dinners, receptions, gala evenings and engagements - poised, elegant, unforgettable.",
     },
     {
       href: "/events/company-catering",
@@ -72,7 +72,7 @@ export default function EventsHubPage() {
       title: nl ? "Bedrijfscatering" : "Company catering",
       text: nl
         ? "Zakelijke diners, klantrecepties, productlanceringen en kwartaalvieringen op locatie of bij ons."
-        : "Corporate dinners, client receptions, product launches and quarterly celebrations — on-site or at our venue.",
+        : "Corporate dinners, client receptions, product launches and quarterly celebrations - on-site or at our venue.",
     },
     {
       href: "/events/company-lunches",

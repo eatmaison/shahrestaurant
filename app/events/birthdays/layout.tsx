@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 const url = "/events/birthdays";
 
 export const metadata: Metadata = {
-  title: "Birthday & Party Catering Amsterdam — The Maison",
+  title: "Birthday & Party Catering Amsterdam - The Maison",
   description:
     "Celebrate your birthday, anniversary or private party at The Maison Amsterdam. Personalised menus, candlelit ambiance, dedicated service and private dining for up to 100 guests.",
   keywords: [
@@ -21,11 +21,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Birthday & Party Catering Amsterdam | The Maison",
     description:
-      "Personalised birthday parties and private celebrations at The Maison Amsterdam — up to 100 guests.",
+      "Personalised birthday parties and private celebrations at The Maison Amsterdam - up to 100 guests.",
     url,
     type: "article",
   },
-  twitter: { card: "summary_large_image", title: "Birthday Catering Amsterdam — The Maison" },
+  twitter: { card: "summary_large_image", title: "Birthday Catering Amsterdam - The Maison" },
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {

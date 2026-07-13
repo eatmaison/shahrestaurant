@@ -29,8 +29,8 @@ export default function BirthdaysPage() {
     audience: { "@type": "PeopleAudience", audienceType: "Private groups up to 100 guests" },
     url: "https://themaison.nl/events/birthdays",
     description: nl
-      ? "Verjaardagen, jubilea en privéfeesten bij The Maison Amsterdam — gepersonaliseerd menu, kaarslicht en toegewijde service."
-      : "Birthdays, anniversaries and private parties at The Maison Amsterdam — personalised menus, candlelight and dedicated service.",
+      ? "Verjaardagen, jubilea en privéfeesten bij The Maison Amsterdam - gepersonaliseerd menu, kaarslicht en toegewijde service."
+      : "Birthdays, anniversaries and private parties at The Maison Amsterdam - personalised menus, candlelight and dedicated service.",
     offers: {
       "@type": "AggregateOffer",
       priceCurrency: "EUR",
@@ -44,34 +44,31 @@ export default function BirthdaysPage() {
   const packages = [
     {
       Icon: FaCakeCandles,
-      title: nl ? "Intieme verjaardag (2–12)" : "Intimate birthday (2–12)",
-      price: nl ? "vanaf €55 p.p." : "from €55 p.p.",
+      title: nl ? "Intieme verjaardag (4–20)" : "Intimate birthday (4–20)",
+      price: nl ? "vanaf €42 p.p." : "from €42 p.p.",
       features: [
         nl ? "Driegangenmenu met keuze" : "Three-course tasting menu with choice",
         nl ? "Wijnarrangement optioneel" : "Optional wine pairing",
         nl ? "Persoonlijke welkomstkaart" : "Personal welcome card",
-        nl ? "Kaarslicht en bloemstuk" : "Candlelight and floral centrepiece",
       ],
     },
     {
       Icon: FaGift,
-      title: nl ? "Middelgroot feest (12–40)" : "Mid-size party (12–40)",
-      price: nl ? "vanaf €75 p.p." : "from €75 p.p.",
+      title: nl ? "Middelgroot feest (20–60)" : "Mid-size party (20–60)",
+      price: nl ? "vanaf €62 p.p." : "from €62 p.p.",
       features: [
         nl ? "Half-privé sectie in de zaal" : "Semi-private section of the dining room",
         nl ? "Meergangen chef's menu" : "Multi-course chef's menu",
-        nl ? "Optionele DJ of live muziek" : "Optional DJ or live music",
         nl ? "Gepersonaliseerd menu met naam" : "Custom menu card with the guest's name",
       ],
     },
     {
       Icon: FaUsers,
-      title: nl ? "Groot privéfeest (40–100)" : "Large private event (40–100)",
-      price: nl ? "vanaf €95 p.p." : "from €95 p.p.",
+      title: nl ? "Groot privéfeest (60–100)" : "Large private event (60–100)",
+      price: nl ? "vanaf €72 p.p." : "from €72 p.p.",
       features: [
         nl ? "Volledige zaal exclusief voor u" : "Full venue buyout",
         nl ? "Vijfgangen tastingmenu" : "Five-course tasting menu",
-        nl ? "Sommelier ter plaatse" : "Sommelier on site",
         nl ? "Toespraakregeling en podium" : "Speech coordination and stage setup",
       ],
     },
@@ -81,9 +78,9 @@ export default function BirthdaysPage() {
       price: nl ? "op maat" : "custom quote",
       features: [
         nl ? "Themasetting en decor" : "Themed styling and decor",
-        nl ? "Live band of DJ met licht" : "Live band or DJ with lighting rig",
+        nl ? "DJ met licht" : "DJ with lighting rig",
         nl ? "Cocktailbar en signature drink" : "Cocktail bar with signature drink",
-        nl ? "Fotograaf op aanvraag" : "Photographer on request",
+        nl ? "Fotograaf" : "Photographer",
       ],
     },
   ];
@@ -93,15 +90,15 @@ export default function BirthdaysPage() {
       Icon: FaUtensils,
       title: nl ? "Menu op maat" : "Bespoke menu",
       text: nl
-        ? "We stemmen elk gerecht af op de gastenlijst — allergieën, diëten en favorieten worden persoonlijk uitgewerkt."
-        : "We tailor every dish to your guest list — allergies, diets and favourite flavours worked into the menu personally.",
+        ? "We stemmen elk gerecht af op de gastenlijst - allergieën, diëten en favorieten worden persoonlijk uitgewerkt."
+        : "We tailor every dish to your guest list - allergies, diets and favourite flavours worked into the menu personally.",
     },
     {
       Icon: FaMusic,
       title: nl ? "Sfeer die past" : "Atmosphere that fits",
       text: nl
-        ? "Van rustige achtergrondmuziek tot een volledige band — de sfeer wordt afgestemd op de leeftijd, cultuur en stijl van uw groep."
-        : "From soft background music to a full band — the atmosphere is calibrated to the age, culture and style of your group.",
+        ? "Van rustige achtergrondmuziek tot een volledige band - de sfeer wordt afgestemd op de leeftijd, cultuur en stijl van uw groep."
+        : "From soft background music to a full band - the atmosphere is calibrated to the age, culture and style of your group.",
     },
     {
       Icon: FaHeart,
@@ -114,8 +111,8 @@ export default function BirthdaysPage() {
       Icon: FaStar,
       title: nl ? "Details die worden onthouden" : "Details that get remembered",
       text: nl
-        ? "Persoonlijke naamkaartjes, favoriete bloemen, een gesigneerd menu als aandenken — dat maakt het verschil."
-        : "Personal place cards, favourite flowers, a signed menu as a keepsake — that is what makes the difference.",
+        ? "Persoonlijke naamkaartjes, favoriete bloemen, een gesigneerd menu als aandenken - dat maakt het verschil."
+        : "Personal place cards, favourite flowers, a signed menu as a keepsake - that is what makes the difference.",
     },
   ];
 
@@ -135,8 +132,8 @@ export default function BirthdaysPage() {
     {
       q: nl ? "Is het restaurant afsluitbaar voor privégebruik?" : "Can the restaurant be booked exclusively?",
       a: nl
-        ? "Ja, wij bieden volledige exclusiviteit voor groepen vanaf 40 personen. Neem contact op voor beschikbaarheid en tarieven."
-        : "Yes — full venue exclusivity is available for groups of 40 or more. Contact us for availability and pricing.",
+        ? "Ja, wij bieden volledige exclusiviteit voor groepen vanaf 60 personen. Neem contact op voor beschikbaarheid en tarieven."
+        : "Yes - full venue exclusivity is available for groups of 60 or more. Contact us for availability and pricing.",
     },
     {
       q: nl ? "Hoe ver van tevoren moet ik boeken?" : "How far in advance should I book?",
@@ -165,8 +162,8 @@ export default function BirthdaysPage() {
           </h1>
           <p className="mt-5 text-base leading-8 text-slate-600 dark:text-slate-300">
             {nl
-              ? "Mijlpaal-verjaardagen, jubilea, diploma-uitreikingen en privéfeesten — met een gepersonaliseerd menu, kaarslicht en service die uw gasten nog jaren zullen onthouden. Groepen van 2 tot 100 personen."
-              : "Milestone birthdays, anniversaries, graduations and private parties — with personalised menus, candlelight and service your guests will remember for years. Groups from 2 to 100."}
+              ? "Mijlpaal-verjaardagen, jubilea, diploma-uitreikingen en privéfeesten - met een gepersonaliseerd menu, kaarslicht en service die uw gasten nog jaren zullen onthouden. Groepen van 2 tot 100 personen."
+              : "Milestone birthdays, anniversaries, graduations and private parties - with personalised menus, candlelight and service your guests will remember for years. Groups from 2 to 100."}
           </p>
         </div>
       </section>

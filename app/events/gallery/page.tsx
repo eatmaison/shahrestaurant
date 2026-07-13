@@ -16,7 +16,7 @@ export default function GalleryPage() {
   const { lang } = useLang();
   const nl = lang === "nl";
 
-  // Placeholder items — replace src with real photos in /public/gallery/*.
+  // Placeholder items - replace src with real photos in /public/gallery/*.
   // Descriptive alt text is critical for SEO and accessibility.
   const items: GalleryItem[] = [
     { src: "/food/burger.png", alt: nl ? "Signatuur gerecht bij The Maison Amsterdam" : "Signature dish at The Maison Amsterdam", category: nl ? "Gerechten" : "Dishes" },
@@ -30,7 +30,7 @@ export default function GalleryPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ImageGallery",
-    name: "The Maison Amsterdam — Gallery",
+    name: "The Maison Amsterdam - Gallery",
     description: nl
       ? "Foto's van The Maison Amsterdam: interieur, gerechten en evenementen."
       : "Photos of The Maison Amsterdam: interior, dishes and events.",
@@ -55,8 +55,8 @@ export default function GalleryPage() {
           </h1>
           <p className="mt-5 text-base leading-8 text-slate-600 dark:text-slate-300">
             {nl
-              ? "Een blik binnen The Maison Amsterdam — onze eetzaal, gedekte tafels, verse gerechten en eerdere evenementen."
-              : "A look inside The Maison Amsterdam — our dining room, table settings, plated dishes and past events."}
+              ? "Een blik binnen The Maison Amsterdam - onze eetzaal, gedekte tafels, verse gerechten en eerdere evenementen."
+              : "A look inside The Maison Amsterdam - our dining room, table settings, plated dishes and past events."}
           </p>
         </div>
       </section>
@@ -90,8 +90,8 @@ export default function GalleryPage() {
         <p className="mt-8 flex items-center justify-center gap-2 text-center text-xs text-slate-400 dark:text-slate-500">
           <FaCamera />{" "}
           {nl
-            ? "Meer beelden en portfolio op aanvraag — neem contact op voor een uitgebreide selectie."
-            : "More imagery and full portfolio on request — contact us for an extended selection."}
+            ? "Meer beelden en portfolio op aanvraag - neem contact op voor een uitgebreide selectie."
+            : "More imagery and full portfolio on request - contact us for an extended selection."}
         </p>
       </section>
 

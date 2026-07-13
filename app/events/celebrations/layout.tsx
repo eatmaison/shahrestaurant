@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 const url = "/events/celebrations";
 
 export const metadata: Metadata = {
-  title: "Wedding & Celebration Catering Amsterdam — The Maison",
+  title: "Wedding & Celebration Catering Amsterdam - The Maison",
   description:
-    "Wedding receptions, engagement dinners, anniversaries, gala evenings and rehearsal dinners at The Maison Amsterdam. Elegant, elevated and unforgettable — up to 100 guests.",
+    "Wedding receptions, engagement dinners, anniversaries, gala evenings and rehearsal dinners at The Maison Amsterdam. Elegant, elevated and unforgettable - up to 100 guests.",
   keywords: [
     "wedding catering Amsterdam",
     "wedding venue Amsterdam Noord",
@@ -22,11 +22,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Wedding & Celebration Catering Amsterdam | The Maison",
     description:
-      "Wedding receptions and gala evenings at The Maison Amsterdam — elegant, elevated, unforgettable.",
+      "Wedding receptions and gala evenings at The Maison Amsterdam - elegant, elevated, unforgettable.",
     url,
     type: "article",
   },
-  twitter: { card: "summary_large_image", title: "Wedding Catering Amsterdam — The Maison" },
+  twitter: { card: "summary_large_image", title: "Wedding Catering Amsterdam - The Maison" },
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {

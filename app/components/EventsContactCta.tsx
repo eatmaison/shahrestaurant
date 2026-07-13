@@ -4,7 +4,7 @@ import Link from "next/link";
 import { FaArrowRight, FaEnvelope, FaLocationDot, FaPhone } from "react-icons/fa6";
 import { useLang } from "../providers";
 
-/** Shared CTA block for all Events sub-pages — dark card with contact + reservation. */
+/** Shared CTA block for all Events sub-pages - dark card with contact + reservation. */
 export function EventsContactCta() {
   const { lang } = useLang();
   const nl = lang === "nl";
