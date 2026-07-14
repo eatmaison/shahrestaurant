@@ -279,9 +279,9 @@ export default function ReservationsPage() {
                     <input
                       type="number"
                       min={1}
-                      max={40}
+                      max={200}
                       value={guests}
-                      onChange={(e) => setGuests(Math.min(40, Math.max(1, parseInt(e.target.value, 10) || 1)))}
+                      onChange={(e) => setGuests(Math.min(200, Math.max(1, parseInt(e.target.value, 10) || 1)))}
                       aria-label={t.reservations.guests}
                       className="h-10 w-20 rounded-full border border-slate-200 bg-white px-4 text-center text-sm font-bold text-slate-900 outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/5 dark:text-white"
                     />

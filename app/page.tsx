@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
@@ -100,6 +101,39 @@ const EMBERS = [
   { left: "68%", delay: "0.4s", duration: "5.4s" },
   { left: "82%", delay: "1.9s", duration: "6.1s" },
   { left: "93%", delay: "3.1s", duration: "5.6s" },
+];
+
+/**
+ * Homepage photo collage - real photography from /public/photos/.
+ * Cells in the same row share the same height on lg screens because the
+ * aspect ratio denominator (4) is constant: height = 4u for both col-span-7
+ * (aspect 7/4) and col-span-5 (aspect 5/4).
+ */
+const AMBIANCE_PHOTOS = [
+  {
+    src: "/photos/687A0402.jpeg",
+    altEn: "Curry served in a copper pot with sides and spices at The Tandoor Company Amsterdam",
+    altNl: "Curry geserveerd in een koperen pan met bijgerechten en kruiden bij The Tandoor Company Amsterdam",
+    wide: true,
+  },
+  {
+    src: "/photos/687A0387.jpeg",
+    altEn: "Signature cocktail with fresh naan in the background",
+    altNl: "Signatuurcocktail met verse naan op de achtergrond",
+    wide: false,
+  },
+  {
+    src: "/photos/687A0210.jpeg",
+    altEn: "Fresh tandoori chicken with lime, straight from the tandoor",
+    altNl: "Verse tandoori kip met limoen, net uit de tandoor",
+    wide: false,
+  },
+  {
+    src: "/photos/687A0343.jpeg",
+    altEn: "Modern dining room of The Tandoor Company in Amsterdam-Noord",
+    altNl: "Moderne eetzaal van The Tandoor Company in Amsterdam-Noord",
+    wide: true,
+  },
 ];
 
 export default function Home() {
@@ -494,6 +528,56 @@ export default function Home() {
               className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-emerald-700 transition hover:gap-3.5 dark:text-emerald-400"
             >
               {t.home.aboutCta} <FaArrowRight />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================================ Ambiance gallery */}
+      <section className="relative overflow-hidden py-16">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(55%_60%_at_15%_30%,rgba(217,126,38,0.10),transparent_65%)]" />
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="reveal mx-auto max-w-2xl text-center">
+            <span className="lux-overline text-emerald-600 dark:text-emerald-400">{t.home.ambianceOverline}</span>
+            <h2 className="font-display mt-3 text-2xl font-semibold text-slate-900 dark:text-white sm:text-3xl">
+              {t.home.ambianceTitle}
+            </h2>
+            <p className="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-400">{t.home.ambianceText}</p>
+            <div className="ornament mx-auto mt-6 max-w-[260px]">
+              <span className="ornament-gem" />
+            </div>
+          </div>
+
+          <div className="reveal-stagger mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-12">
+            {AMBIANCE_PHOTOS.map((photo) => (
+              <Link
+                key={photo.src}
+                href="/events/gallery"
+                className={`group relative overflow-hidden rounded-3xl border border-emerald-500/15 shadow-lg shadow-emerald-900/10 transition duration-300 hover:-translate-y-1 hover:border-emerald-500/40 hover:shadow-2xl hover:shadow-emerald-600/20 dark:border-emerald-400/10 ${
+                  photo.wide ? "aspect-[4/3] lg:col-span-7 lg:aspect-[7/4]" : "aspect-[4/3] lg:col-span-5 lg:aspect-[5/4]"
+                }`}
+              >
+                <Image
+                  src={photo.src}
+                  alt={lang === "nl" ? photo.altNl : photo.altEn}
+                  fill
+                  sizes="(min-width: 1024px) 50vw, (min-width: 640px) 50vw, 100vw"
+                  className="object-cover transition duration-700 group-hover:scale-105"
+                />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-emerald-950/40 via-transparent to-transparent opacity-60 transition duration-500 group-hover:opacity-80" />
+                <span className="absolute bottom-4 left-4 inline-flex translate-y-2 items-center gap-2 rounded-full bg-black/40 px-3.5 py-1.5 text-xs font-semibold text-white opacity-0 backdrop-blur transition duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+                  {lang === "nl" ? photo.altNl : photo.altEn}
+                </span>
+              </Link>
+            ))}
+          </div>
+
+          <div className="reveal mt-9 text-center">
+            <Link
+              href="/events/gallery"
+              className="group inline-flex items-center gap-2 rounded-full border border-emerald-500/40 px-7 py-3.5 text-sm font-semibold text-emerald-700 transition hover:-translate-y-0.5 hover:bg-emerald-500/10 hover:shadow-lg hover:shadow-emerald-600/15 dark:text-emerald-300"
+            >
+              {t.home.ambianceCta} <FaArrowRight className="transition group-hover:translate-x-1" />
             </Link>
           </div>
         </div>

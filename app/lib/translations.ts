@@ -83,6 +83,7 @@ export interface Dictionary {
     ambianceOverline: string;
     ambianceTitle: string;
     ambianceText: string;
+    ambianceCta: string;
     hoursTitle: string;
     reserveOverline: string;
     reserveTitle: string;
@@ -597,6 +598,7 @@ const en: Dictionary = {
     ambianceTitle: "A look inside The Tandoor Company",
     ambianceText:
       "Discover the warm ambiance, the scent of fresh spices and the glow of the tandoor that define our restaurant. Flavour, warmth and experience - valued by our guests time and again.",
+    ambianceCta: "View the full gallery",
     hoursTitle: "Opening hours",
     reserveOverline: "Reservations",
     reserveTitle: "Your table awaits",
@@ -1118,6 +1120,7 @@ const nl: Dictionary = {
     ambianceTitle: "Een kijkje binnen The Tandoor Company",
     ambianceText:
       "Ontdek de warme ambiance, de geur van verse kruiden en de gloed van de tandoor die ons restaurant vormen. Smaak, warmte en beleving - keer op keer gewaardeerd door onze gasten.",
+    ambianceCta: "Bekijk de volledige galerij",
     hoursTitle: "Openingstijden",
     reserveOverline: "Reserveringen",
     reserveTitle: "Uw tafel staat klaar",
