@@ -132,7 +132,7 @@ export default function EventsHubPage() {
           <p className="mx-auto mt-4 max-w-xl text-sm leading-7 text-stone-200">{ctaText}</p>
           <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <a
-              href="mailto:events@thetandoorcompany.nl"
+              href="mailto:info@thetandoorcompany.nl"
               className="inline-flex items-center gap-2 rounded-full bg-emerald-600 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-emerald-600/25 transition hover:-translate-y-0.5 hover:bg-emerald-500"
             >
               <FaEnvelope /> {ctaContact} <FaArrowRight />

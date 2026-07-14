@@ -22,7 +22,7 @@ export function EventsContactCta() {
         </p>
         <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <a
-            href="mailto:events@thetandoorcompany.nl"
+            href="mailto:info@thetandoorcompany.nl"
             className="inline-flex items-center gap-2 rounded-full bg-emerald-600 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-emerald-600/25 transition hover:-translate-y-0.5 hover:bg-emerald-500"
           >
             <FaEnvelope /> {nl ? "Neem contact op" : "Contact our events team"} <FaArrowRight />
@@ -45,8 +45,8 @@ export function EventsContactCta() {
             </a>
           </p>
           <p className="mt-1.5">
-            <a href="mailto:events@thetandoorcompany.nl" className="transition hover:text-emerald-300">
-              events@thetandoorcompany.nl
+            <a href="mailto:info@thetandoorcompany.nl" className="transition hover:text-emerald-300">
+              info@thetandoorcompany.nl
             </a>
           </p>
         </div>
