@@ -58,6 +58,10 @@ const DDL: string[] = [
     allergens text[] NOT NULL DEFAULT '{}',
     created_at timestamptz NOT NULL DEFAULT now()
   )`,
+  // Dutch product content for databases created before bilingual menus existed.
+  `ALTER TABLE products ADD COLUMN IF NOT EXISTS description_nl text NOT NULL DEFAULT ''`,
+  `ALTER TABLE products ADD COLUMN IF NOT EXISTS ingredients_nl text[] NOT NULL DEFAULT '{}'`,
+  `ALTER TABLE products ADD COLUMN IF NOT EXISTS allergens_nl text[] NOT NULL DEFAULT '{}'`,
   `CREATE TABLE IF NOT EXISTS orders (
     id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
     order_number integer GENERATED ALWAYS AS IDENTITY (START WITH 1001),

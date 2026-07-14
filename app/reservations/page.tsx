@@ -140,41 +140,62 @@ export default function ReservationsPage() {
 
   return (
     <div className="overflow-hidden">
-      {/* Heading */}
-      <section className="relative overflow-hidden">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_60%_at_50%_0%,rgba(195,144,61,0.14),transparent_65%)]" />
-        <div className="relative mx-auto max-w-3xl px-4 pb-4 pt-14 text-center sm:px-6 lg:pt-20">
-          <span className="lux-overline inline-flex items-center gap-3 text-emerald-600 dark:text-emerald-400">
-            <span className="h-px w-10 bg-emerald-500/60" /> {t.reservations.overline} <span className="h-px w-10 bg-emerald-500/60" />
+      {/* Heading - candlelit evening hero, intentionally darker & moodier than the homepage */}
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#160b03] via-[#201005] to-[#2a1608]">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(70%_90%_at_50%_110%,rgba(217,126,38,0.30),transparent_70%)]" />
+        <div className="pointer-events-none absolute inset-0 spice-dots opacity-20 [mask-image:radial-gradient(70%_70%_at_50%_30%,#000,transparent)]" />
+        {/* Rising embers drifting up from the tandoor */}
+        <div className="pointer-events-none absolute inset-0" aria-hidden>
+          {[8, 24, 41, 58, 73, 88].map((left, i) => (
+            <span
+              key={left}
+              className="ember"
+              style={{ left: `${left}%`, animationDelay: `${i * 1.1}s`, animationDuration: `${5 + (i % 3)}s` }}
+            />
+          ))}
+        </div>
+        <div className="relative mx-auto max-w-3xl px-4 pb-16 pt-14 text-center sm:px-6 lg:pt-20">
+          <span className="lux-overline inline-flex items-center gap-3 text-emerald-300">
+            <span className="h-px w-10 bg-emerald-400/60" /> <span className="ornament-gem" aria-hidden /> {t.reservations.overline} <span className="ornament-gem" aria-hidden /> <span className="h-px w-10 bg-emerald-400/60" />
           </span>
-          <h1 className="font-display mt-5 text-4xl font-semibold tracking-tight text-slate-900 dark:text-white sm:text-5xl">
-            {t.reservations.title}
+          <h1 className="font-display mt-5 text-4xl font-semibold tracking-tight sm:text-6xl">
+            <span className="ember-text">{t.reservations.title}</span>
           </h1>
-          <p className="mt-5 text-base leading-8 text-slate-600 dark:text-slate-300">{t.reservations.subtitle}</p>
-          <p className="mt-4 inline-flex items-center gap-2 rounded-full border border-emerald-500/25 bg-emerald-500/10 px-4 py-2 text-xs font-semibold text-emerald-700 dark:text-emerald-300">
-            <FaClock /> {t.reservations.hoursNote}
+          <p className="mt-5 text-base leading-8 text-stone-300">{t.reservations.subtitle}</p>
+          <p className="mt-5 inline-flex items-center gap-2.5 rounded-full border border-emerald-400/25 bg-white/5 px-5 py-2.5 text-xs font-semibold text-emerald-200 backdrop-blur">
+            <span className="glow-dot" aria-hidden /> <FaClock className="opacity-80" /> {t.reservations.hoursNote}
           </p>
         </div>
+        {/* Soft fade into the page background */}
+        <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-b from-transparent to-[#fbf5eb] dark:to-[#0c0703]" />
       </section>
 
       <section className="mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
         {/* Booking form */}
         <div className="animate-fade-up min-w-0">
-          <div className="rounded-[2rem] border border-emerald-500/20 bg-white p-6 shadow-2xl shadow-emerald-900/10 dark:border-emerald-400/15 dark:bg-[#161006] sm:p-8">
+          <div className="card-lux frame-ornate texture-linen rounded-[2rem] p-6 shadow-2xl shadow-emerald-900/10 sm:p-8">
             {done ? (
               <div className="flex flex-col items-center py-8 text-center">
-                <span className="grid h-16 w-16 place-items-center rounded-full border border-emerald-500/40 bg-emerald-500/10 text-2xl text-emerald-600 dark:text-emerald-400">
+                <span className="animate-pop grid h-16 w-16 place-items-center rounded-full border border-emerald-500/40 bg-emerald-500/10 text-2xl text-emerald-600 dark:text-emerald-400">
                   <FaCalendarCheck />
                 </span>
                 <h2 className="font-display mt-5 text-2xl font-semibold text-slate-900 dark:text-white">
                   {t.reservations.successTitle}
                 </h2>
                 <p className="mt-3 max-w-md text-sm leading-7 text-slate-600 dark:text-slate-300">{t.reservations.successText}</p>
-                <div className="mt-6 w-full max-w-sm rounded-2xl border border-emerald-500/20 bg-slate-50/80 p-5 text-left dark:bg-white/5">
-                  <p className="lux-overline text-[0.6rem] text-emerald-600 dark:text-emerald-400">RSV-{done.reservationNumber}</p>
+                {/* Reservation "ticket" with a torn scalloped edge */}
+                <div className="ticket-edge mt-6 w-full max-w-sm rounded-t-2xl border border-emerald-500/25 bg-gradient-to-b from-emerald-500/10 to-slate-50/80 p-5 pb-8 text-left shadow-lg shadow-emerald-900/10 dark:to-white/5">
+                  <div className="flex items-center justify-between">
+                    <p className="lux-overline text-[0.6rem] text-emerald-600 dark:text-emerald-400">RSV-{done.reservationNumber}</p>
+                    <span className="ornament-gem" aria-hidden />
+                  </div>
                   <p className="font-display mt-2 text-lg font-bold text-slate-900 dark:text-white">{fmtDate(done.date)}</p>
                   <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">
                     {done.time} · {done.guests} {t.reservations.guestsSuffix}
+                  </p>
+                  <div className="gold-rule mt-4" />
+                  <p className="mt-3 flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
+                    <FaLocationDot className="text-emerald-500" /> Klaprozenweg 36a, Amsterdam
                   </p>
                 </div>
                 {done.email && (
@@ -184,14 +205,16 @@ export default function ReservationsPage() {
                 )}
                 <button
                   onClick={() => setDone(null)}
-                  className="mt-7 inline-flex items-center gap-2 rounded-full bg-emerald-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-emerald-500"
+                  className="btn-ember btn-shine mt-7 inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-bold text-white"
                 >
                   {t.reservations.makeAnother}
                 </button>
               </div>
             ) : (
-              <form onSubmit={submit} noValidate>
-                <h2 className="font-display text-xl font-semibold text-slate-900 dark:text-white">{t.reservations.formTitle}</h2>
+              <form onSubmit={submit} noValidate className="form-lux">
+                <div className="ornament">
+                  <h2 className="font-display text-xl font-semibold text-slate-900 dark:text-white">{t.reservations.formTitle}</h2>
+                </div>
 
                 <div className="mt-6 grid gap-4 sm:grid-cols-2">
                   {/* Date */}
@@ -224,7 +247,7 @@ export default function ReservationsPage() {
                         --:--
                       </option>
                       {TIME_SLOTS.map((s) => (
-                        <option key={s} value={s} className="dark:bg-[#161006]">
+                        <option key={s} value={s} className="dark:bg-[#170d04]">
                           {s}
                         </option>
                       ))}
@@ -237,8 +260,22 @@ export default function ReservationsPage() {
                   <span className="mb-1.5 flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
                     <FaUserGroup className="text-emerald-500" /> {t.reservations.guests} *
                   </span>
-                  <div className="flex flex-wrap gap-2">
-                    
+                  <div className="flex flex-wrap items-center gap-2">
+                    {[2, 3, 4, 5, 6, 8].map((n) => (
+                      <button
+                        key={n}
+                        type="button"
+                        onClick={() => setGuests(n)}
+                        aria-pressed={guests === n}
+                        className={`h-10 w-10 rounded-full border text-sm font-bold transition duration-200 hover:-translate-y-0.5 ${
+                          guests === n
+                            ? "border-emerald-500 bg-emerald-500/15 text-emerald-700 shadow-md shadow-emerald-600/15 dark:text-emerald-300"
+                            : "border-slate-200 bg-white text-slate-500 hover:border-emerald-400 dark:border-white/10 dark:bg-white/5 dark:text-slate-400"
+                        }`}
+                      >
+                        {n}
+                      </button>
+                    ))}
                     <input
                       type="number"
                       min={1}
@@ -311,9 +348,9 @@ export default function ReservationsPage() {
                         key={o || "none"}
                         type="button"
                         onClick={() => setOccasion(o)}
-                        className={`rounded-full border px-4 py-2 text-xs font-semibold transition ${
+                        className={`rounded-full border px-4 py-2 text-xs font-semibold transition duration-200 hover:-translate-y-0.5 ${
                           occasion === o
-                            ? "border-emerald-500 bg-emerald-500/15 text-emerald-700 dark:text-emerald-300"
+                            ? "border-emerald-500 bg-emerald-500/15 text-emerald-700 shadow-md shadow-emerald-600/10 dark:text-emerald-300"
                             : "border-slate-200 bg-white text-slate-500 hover:border-emerald-400 dark:border-white/10 dark:bg-white/5 dark:text-slate-400"
                         }`}
                       >
@@ -347,7 +384,7 @@ export default function ReservationsPage() {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-emerald-600 px-6 py-4 text-sm font-semibold text-white shadow-lg shadow-emerald-600/25 transition hover:-translate-y-0.5 hover:bg-emerald-500 disabled:cursor-not-allowed disabled:opacity-60"
+                  className="btn-ember btn-shine mt-6 flex w-full items-center justify-center gap-2 rounded-full px-6 py-4 text-sm font-bold text-white disabled:cursor-not-allowed disabled:opacity-60"
                 >
                   <FaCalendarCheck />
                   {submitting ? t.reservations.submitting : t.reservations.submit}
@@ -360,9 +397,13 @@ export default function ReservationsPage() {
         {/* Right column: info + my reservations */}
         <div className="animate-fade-up delay-200 min-w-0 space-y-6">
           {/* Good to know */}
-          <div className="rounded-[2rem] border border-emerald-500/20 bg-gradient-to-br from-[#171208] via-[#221a0c] to-[#2c2110] p-7 text-white sm:p-8">
-            <span className="lux-overline text-emerald-300/90">{t.reservations.infoTitle}</span>
-            <div className="mt-5 space-y-5">
+          <div className="relative overflow-hidden rounded-[2rem] border border-emerald-500/20 bg-gradient-to-br from-emerald-950 via-[#241204] to-[#170d04] p-7 text-white shadow-2xl shadow-emerald-900/30 sm:p-8">
+            <div className="spice-dots pointer-events-none absolute inset-0 opacity-25" />
+            <div className="pointer-events-none absolute -right-12 -top-12 h-40 w-40 animate-float rounded-full bg-emerald-500/15 blur-3xl" />
+            <span className="ember" style={{ left: "16%", animationDelay: "0.8s" }} aria-hidden />
+            <span className="ember" style={{ left: "74%", animationDelay: "2.4s" }} aria-hidden />
+            <span className="lux-overline relative text-emerald-300/90">{t.reservations.infoTitle}</span>
+            <div className="relative mt-5 space-y-5">
               {infoCards.map(({ Icon, title, text }) => (
                 <div key={title} className="flex gap-4">
                   <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-emerald-400/30 bg-emerald-400/10 text-emerald-300">
@@ -375,7 +416,7 @@ export default function ReservationsPage() {
                 </div>
               ))}
             </div>
-            <div className="mt-6 border-t border-white/10 pt-5 text-xs leading-6 text-stone-300">
+            <div className="relative mt-6 border-t border-white/10 pt-5 text-xs leading-6 text-stone-300">
               <p className="flex items-center gap-2">
                 <FaLocationDot className="text-emerald-300" /> Klaprozenweg 36a, 1032 KL Amsterdam
               </p>
@@ -387,7 +428,7 @@ export default function ReservationsPage() {
           </div>
 
           {/* My reservations */}
-          <div className="rounded-[2rem] border border-emerald-500/15 bg-white p-6 dark:border-emerald-400/10 dark:bg-white/5 sm:p-7">
+          <div className="texture-linen rounded-[2rem] border border-emerald-500/15 bg-white p-6 dark:border-emerald-400/10 dark:bg-white/5 sm:p-7">
             <h2 className="font-display text-lg font-semibold text-slate-900 dark:text-white">{t.reservations.myReservations}</h2>
             {!currentUser ? (
               <p className="mt-3 text-sm leading-7 text-slate-500 dark:text-slate-400">
@@ -526,20 +567,71 @@ export default function ReservationsPage() {
         </div>
       </section>
 
-      {/* Google Maps Location */}
-      <section className="mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:px-6 lg:px-8">
-        <div className="rounded-[2rem] border border-emerald-500/20 bg-white p-5 shadow-2xl shadow-emerald-900/10 dark:border-emerald-400/15 dark:bg-[#161006] sm:p-6 overflow-hidden">
-          <h2 className="font-display text-lg font-semibold text-slate-900 dark:text-white mb-4">{t.reservations.location || "Our Location"}</h2>
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2436.6236159783234!2d4.895563!3d52.357847!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c609c3e3c3c3c3%3A0x1234567890abcdef!2sKlaprozenweg%2036a%2C%201032%20KL%20Amsterdam!5e0!3m2!1sen!2snl!4v1234567890"
-            width="100%"
-            height="400"
-            style={{ border: 0 }}
-            allowFullScreen={true}
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            className="rounded-xl"
-          />
+      {/* Location - candlelit info panel + arch-framed map */}
+      <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+        <div className="relative overflow-hidden rounded-[2rem] border border-emerald-500/20 bg-gradient-to-br from-[#1c0e04] via-[#241204] to-emerald-950 text-white shadow-2xl shadow-emerald-900/30">
+          <div className="spice-dots pointer-events-none absolute inset-0 opacity-20" />
+          <div className="pointer-events-none absolute -left-16 -top-16 h-48 w-48 animate-float rounded-full bg-emerald-500/15 blur-3xl" />
+          <div className="pointer-events-none absolute -bottom-20 -right-16 h-56 w-56 rounded-full bg-[#d97e26]/15 blur-3xl" />
+          <span className="ember" style={{ left: "12%", animationDelay: "0.6s" }} aria-hidden />
+          <span className="ember" style={{ left: "38%", animationDelay: "2.2s" }} aria-hidden />
+
+          <div className="relative grid gap-8 p-6 sm:p-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-12">
+            {/* Info column */}
+            <div>
+              <span className="lux-overline inline-flex items-center gap-3 text-emerald-300/90">
+                <span className="h-px w-8 bg-emerald-400/60" /> <span className="ornament-gem" aria-hidden /> {t.reservations.location || "Our Location"}
+              </span>
+              <h2 className="font-display mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">
+                <span className="ember-text">Klaprozenweg 36a</span>
+                <span className="mt-1 block text-lg font-medium text-stone-300 sm:text-xl">1032 KL Amsterdam</span>
+              </h2>
+              <p className="mt-4 max-w-md text-sm leading-7 text-stone-300">{t.reservations.locationSubtitle}</p>
+
+              <div className="gold-rule mt-6 max-w-md" />
+
+              <div className="mt-6 space-y-4 text-sm">
+                <p className="flex items-center gap-4">
+                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-emerald-400/30 bg-emerald-400/10 text-emerald-300">
+                    <FaPhone />
+                  </span>
+                  <a href="tel:+31203412995" className="font-semibold tracking-wide transition hover:text-emerald-300">
+                    +31 20 341 2995
+                  </a>
+                </p>
+                <p className="flex items-center gap-4">
+                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-emerald-400/30 bg-emerald-400/10 text-emerald-300">
+                    <FaClock />
+                  </span>
+                  <span className="leading-6 text-stone-300">{t.reservations.hoursNote}</span>
+                </p>
+              </div>
+
+              <a
+                href="https://www.google.com/maps/dir/?api=1&destination=Klaprozenweg+36a,+1032+KL+Amsterdam"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-ember btn-shine mt-8 inline-flex items-center gap-2.5 rounded-full px-7 py-3.5 text-sm font-bold text-white"
+              >
+                <FaLocationDot /> {t.reservations.getDirections}
+              </a>
+            </div>
+
+            {/* Mughal arch window framing the map */}
+            <div className="arch-window overflow-hidden border border-emerald-400/25 bg-emerald-950/40 shadow-2xl shadow-black/40">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2436.6236159783234!2d4.895563!3d52.357847!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c609c3e3c3c3c3%3A0x1234567890abcdef!2sKlaprozenweg%2036a%2C%201032%20KL%20Amsterdam!5e0!3m2!1sen!2snl!4v1234567890"
+                width="100%"
+                height="480"
+                style={{ border: 0, filter: "sepia(0.22) saturate(1.1)" }}
+                allowFullScreen={true}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="block"
+                title={t.reservations.location}
+              />
+            </div>
+          </div>
         </div>
       </section>
     </div>

@@ -17,10 +17,14 @@ export default function ProductDetailsModal({
 
   if (!product) return null;
 
+  // Prefer the visitor's language, fall back to English, then to the card description.
+  const cardDesc = (lang === "nl" && product.descriptionNl) || product.description || "";
   const detailedDesc =
-    product.detailedDescription?.[lang] || product.detailedDescription?.en || product.description || "";
-  const ingredients = product.ingredients || [];
-  const allergens = product.allergens || [];
+    product.detailedDescription?.[lang] || product.detailedDescription?.en || cardDesc;
+  const ingredients =
+    (lang === "nl" && product.ingredientsNl?.length ? product.ingredientsNl : product.ingredients) || [];
+  const allergens =
+    (lang === "nl" && product.allergensNl?.length ? product.allergensNl : product.allergens) || [];
 
   return (
     <div

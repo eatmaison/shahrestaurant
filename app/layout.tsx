@@ -16,29 +16,30 @@ const playfair = Playfair_Display({
   subsets: ["latin"],
 });
 
-const siteUrl = "https://themaison.nl";
+const siteUrl = "https://thetandoorcompany.nl";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "The Maison Amsterdam | Fine Dining Restaurant & Table Reservations",
-    template: "%s | The Maison Amsterdam",
+    default: "The Tandoor Company Amsterdam | Authentic Indian Restaurant & Tandoori Grill",
+    template: "%s | The Tandoor Company Amsterdam",
   },
   description:
-    "The Maison Amsterdam - fine dining where luxury, ambiance and gastronomy meet. Reserve your table online or order refined dishes for delivery. Klaprozenweg 36a, Amsterdam.",
+    "The Tandoor Company Amsterdam-Noord - authentic Indian cuisine with tandoori grills, rich curries, biryani and fresh naan. Reserve your table online or order for delivery and pickup. Klaprozenweg 36a, Amsterdam.",
   keywords: [
-    "the maison",
-    "themaison",
-    "fine dining Amsterdam",
-    "luxury restaurant Amsterdam",
+    "the tandoor company",
+    "thetandoorcompany",
+    "Indian restaurant Amsterdam",
+    "Indiaas restaurant Amsterdam",
+    "tandoori Amsterdam",
+    "curry Amsterdam",
+    "biryani Amsterdam",
+    "butter chicken Amsterdam",
+    "Indian food delivery Amsterdam Noord",
     "restaurant reserveren Amsterdam",
-    "table reservation Amsterdam",
-    "romantic dinner Amsterdam",
-    "business dinner Amsterdam",
-    "gourmet Amsterdam",
     "Klaprozenweg",
   ],
-  authors: [{ name: "The Maison" }],
+  authors: [{ name: "The Tandoor Company" }],
   alternates: {
     canonical: siteUrl,
     languages: { en: siteUrl, nl: siteUrl },
@@ -48,39 +49,40 @@ export const metadata: Metadata = {
     locale: "en_NL",
     alternateLocale: "nl_NL",
     url: siteUrl,
-    siteName: "The Maison Amsterdam",
-    title: "The Maison Amsterdam | Fine Dining & Table Reservations",
+    siteName: "The Tandoor Company Amsterdam",
+    title: "The Tandoor Company Amsterdam | Authentic Indian Cuisine & Tandoori Grill",
     description:
-      "Fine dining with a timeless, elegant atmosphere. Reserve your table at The Maison Amsterdam - where service, style and culinary refinement come together.",
-    images: [{ url: "/themaison.png", width: 512, height: 512, alt: "The Maison Amsterdam" }],
+      "Authentic Indian flavours from a traditional tandoor - curries, grills, biryani and naan. Reserve your table or order online at The Tandoor Company, Amsterdam-Noord.",
+    images: [{ url: "/tandoorcompany.png", width: 512, height: 512, alt: "The Tandoor Company Amsterdam" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "The Maison Amsterdam | Fine Dining Restaurant",
-    description: "Reserve your table at The Maison - fine dining with a timeless, elegant atmosphere in Amsterdam.",
-    images: ["/themaison.png"],
+    title: "The Tandoor Company Amsterdam | Authentic Indian Restaurant",
+    description: "Tandoori grills, rich curries and fresh naan in Amsterdam-Noord. Reserve your table or order online.",
+    images: ["/tandoorcompany.png"],
   },
   robots: {
     index: true,
     follow: true,
     googleBot: { index: true, follow: true, "max-image-preview": "large" },
   },
-  icons: { icon: "/themaison.png" },
+  icons: { icon: "/tandoorcompany.png" },
 };
 
-// Light is the house default; users can opt into dark mode.
-const themeScript = `(function(){try{var t=JSON.parse(localStorage.getItem('tm.theme'));if(t==='dark'){document.documentElement.classList.add('dark');}}catch(e){}})();`;
+// Warm ember dark is the house default; users can opt into light mode.
+const themeScript = `(function(){try{var t=JSON.parse(localStorage.getItem('tm.theme'));if(t!=='light'){document.documentElement.classList.add('dark');}}catch(e){document.documentElement.classList.add('dark');}})();`;
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Restaurant",
-  name: "The Maison",
-  image: `${siteUrl}/themaison.png`,
+  name: "The Tandoor Company",
+  image: `${siteUrl}/tandoorcompany.png`,
   "@id": siteUrl,
   url: siteUrl,
   telephone: "+31 20 341 2995",
-  priceRange: "€€€",
-  servesCuisine: ["Fine Dining", "European", "Grill"],
+  email: "info@thetandoorcompany.nl",
+  priceRange: "€€",
+  servesCuisine: ["Indian", "Tandoori", "Curry", "Biryani"],
   acceptsReservations: "True",
   address: {
     "@type": "PostalAddress",

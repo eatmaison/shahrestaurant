@@ -14,8 +14,8 @@ export default function CompanyCateringPage() {
     serviceType: nl ? "Zakelijke catering en bedrijfsdiners" : "Corporate catering and business dinners",
     provider: {
       "@type": "Restaurant",
-      name: "The Maison",
-      "@id": "https://themaison.nl/#restaurant",
+      name: "The Tandoor Company",
+      "@id": "https://thetandoorcompany.nl/#restaurant",
       address: {
         "@type": "PostalAddress",
         streetAddress: "Klaprozenweg 36a",
@@ -27,7 +27,7 @@ export default function CompanyCateringPage() {
     },
     areaServed: { "@type": "City", name: "Amsterdam" },
     audience: { "@type": "BusinessAudience", audienceType: "Corporate clients and business teams up to 100 attendees" },
-    url: "https://themaison.nl/events/company-catering",
+    url: "https://thetandoorcompany.nl/events/company-catering",
     description: nl
       ? "Zakelijke diners, klantrecepties, productlanceringen en board-diners in Amsterdam. Maandelijkse facturatie beschikbaar."
       : "Corporate dinners, client receptions, product launches and board dinners in Amsterdam. Monthly invoicing available.",
@@ -145,7 +145,7 @@ export default function CompanyCateringPage() {
 
       {/* Hero */}
       <section className="relative overflow-hidden">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_60%_at_50%_0%,rgba(195,144,61,0.14),transparent_65%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_60%_at_50%_0%,rgba(217,126,38,0.16),transparent_65%)]" />
         <div className="relative mx-auto max-w-3xl px-4 pb-4 pt-14 text-center sm:px-6 lg:pt-20">
           <span className="lux-overline inline-flex items-center gap-3 text-emerald-600 dark:text-emerald-400">
             <span className="h-px w-10 bg-emerald-500/60" /> {nl ? "Bedrijfscatering" : "Corporate catering"}{" "}
@@ -158,8 +158,8 @@ export default function CompanyCateringPage() {
           </h1>
           <p className="mt-5 text-base leading-8 text-slate-600 dark:text-slate-300">
             {nl
-              ? "Klantrecepties, board-diners, productlanceringen en team-vieringen - verzorgd bij The Maison of op uw locatie. Maandelijkse facturatie, één contactpersoon en volledige productie inbegrepen."
-              : "Client receptions, board dinners, product launches and team celebrations - hosted at The Maison or delivered on-site. Monthly invoicing, single point of contact and full production included."}
+              ? "Klantrecepties, board-diners, productlanceringen en team-vieringen - verzorgd bij The Tandoor Company of op uw locatie. Maandelijkse facturatie, één contactpersoon en volledige productie inbegrepen."
+              : "Client receptions, board dinners, product launches and team celebrations - hosted at The Tandoor Company or delivered on-site. Monthly invoicing, single point of contact and full production included."}
           </p>
         </div>
       </section>
@@ -219,7 +219,7 @@ export default function CompanyCateringPage() {
 
       {/* Menu options */}
       <section className="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8">
-        <div className="rounded-[2rem] border border-emerald-500/20 bg-gradient-to-br from-[#171208] via-[#221a0c] to-[#2c2110] p-8 text-white sm:p-10">
+        <div className="relative overflow-hidden rounded-[2rem] border border-emerald-500/20 bg-gradient-to-br from-emerald-950 via-[#241204] to-[#170d04] p-8 text-white shadow-2xl shadow-emerald-900/30 sm:p-10">
           <span className="lux-overline text-emerald-300/90">{nl ? "Menu-opties" : "Menu formats"}</span>
           <h2 className="font-display mt-3 text-2xl font-semibold sm:text-3xl">
             {nl ? "Formats voor elk doel" : "Formats for every objective"}

@@ -15,8 +15,8 @@ export default function CelebrationsPage() {
     serviceType: nl ? "Bruiloftscatering en vieringen" : "Wedding and celebration catering",
     provider: {
       "@type": "Restaurant",
-      name: "The Maison",
-      "@id": "https://themaison.nl/#restaurant",
+      name: "The Tandoor Company",
+      "@id": "https://thetandoorcompany.nl/#restaurant",
       address: {
         "@type": "PostalAddress",
         streetAddress: "Klaprozenweg 36a",
@@ -28,10 +28,10 @@ export default function CelebrationsPage() {
     },
     areaServed: { "@type": "City", name: "Amsterdam" },
     audience: { "@type": "PeopleAudience", audienceType: "Wedding parties and celebrations up to 100 guests" },
-    url: "https://themaison.nl/events/celebrations",
+    url: "https://thetandoorcompany.nl/events/celebrations",
     description: nl
-      ? "Bruiloftsrecepties, gala-avonden, jubilea en verlovingsdiners bij The Maison Amsterdam."
-      : "Wedding receptions, gala evenings, anniversaries and engagement dinners at The Maison Amsterdam.",
+      ? "Bruiloftsrecepties, gala-avonden, jubilea en verlovingsdiners bij The Tandoor Company Amsterdam."
+      : "Wedding receptions, gala evenings, anniversaries and engagement dinners at The Tandoor Company Amsterdam.",
   };
 
   const services = [
@@ -39,8 +39,8 @@ export default function CelebrationsPage() {
       Icon: FaRing,
       title: nl ? "Bruiloftsrecepties" : "Wedding receptions",
       text: nl
-        ? "Volledig verzorgde bruiloftsrecepties met chef's menu, sommelier, dansvloer en gepersonaliseerd decor - een avond die uw dag onvergetelijk maakt."
-        : "Fully coordinated wedding receptions with chef's menu, sommelier, dance floor and personalised decor - an evening that seals the day.",
+        ? "Volledig verzorgde bruiloftsrecepties met Indiaas feestmenu, tandoori live-grill, dansvloer en gepersonaliseerd decor - een avond die uw dag onvergetelijk maakt."
+        : "Fully coordinated wedding receptions with an Indian feast menu, live tandoori grill, dance floor and personalised decor - an evening that seals the day.",
     },
     {
       Icon: FaHeart,
@@ -120,8 +120,8 @@ export default function CelebrationsPage() {
     },
     {
       quote: nl
-        ? "Ons 25-jarig jubileum werd magisch. De sommelier stelde een wijnkaart samen die ons huwelijksjaar weerspiegelde."
-        : "Our 25-year anniversary was made magical. The sommelier created a wine list that reflected our marriage year.",
+        ? "Ons 25-jarig jubileum werd magisch. Het Indiase buffet met live tandoori-grill was het gesprek van de avond."
+        : "Our 25-year anniversary was made magical. The Indian buffet with live tandoori grill was the talk of the evening.",
       name: "Sophie & Robert",
       event: nl ? "Zilveren jubileum, 40 gasten" : "Silver anniversary, 40 guests",
     },
@@ -140,7 +140,7 @@ export default function CelebrationsPage() {
 
       {/* Hero */}
       <section className="relative overflow-hidden">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_60%_at_50%_0%,rgba(195,144,61,0.14),transparent_65%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_60%_at_50%_0%,rgba(217,126,38,0.16),transparent_65%)]" />
         <div className="relative mx-auto max-w-3xl px-4 pb-4 pt-14 text-center sm:px-6 lg:pt-20">
           <span className="lux-overline inline-flex items-center gap-3 text-emerald-600 dark:text-emerald-400">
             <span className="h-px w-10 bg-emerald-500/60" /> {nl ? "Vieringen & bruiloften" : "Celebrations & weddings"}{" "}
@@ -148,8 +148,8 @@ export default function CelebrationsPage() {
           </span>
           <h1 className="font-display mt-5 text-4xl font-semibold tracking-tight text-slate-900 dark:text-white sm:text-5xl">
             {nl
-              ? "Bruiloften & vieringen bij The Maison Amsterdam"
-              : "Weddings & celebrations at The Maison Amsterdam"}
+              ? "Bruiloften & vieringen bij The Tandoor Company"
+              : "Weddings & celebrations at The Tandoor Company"}
           </h1>
           <p className="mt-5 text-base leading-8 text-slate-600 dark:text-slate-300">
             {nl
@@ -209,7 +209,7 @@ export default function CelebrationsPage() {
 
       {/* What's included */}
       <section className="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8">
-        <div className="rounded-[2rem] border border-emerald-500/20 bg-gradient-to-br from-[#171208] via-[#221a0c] to-[#2c2110] p-8 text-white sm:p-10">
+        <div className="relative overflow-hidden rounded-[2rem] border border-emerald-500/20 bg-gradient-to-br from-emerald-950 via-[#241204] to-[#170d04] p-8 text-white shadow-2xl shadow-emerald-900/30 sm:p-10">
           <span className="lux-overline text-emerald-300/90">{nl ? "Standaard inbegrepen" : "Standard inclusions"}</span>
           <h2 className="font-display mt-3 text-2xl font-semibold sm:text-3xl">
             {nl ? "Alles wat u nodig heeft, in één handdruk" : "Everything you need, in one handshake"}

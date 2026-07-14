@@ -23,8 +23,8 @@ export default function EventsHubPage() {
   const overline = nl ? "Evenementen & Catering" : "Events & Catering";
   const title = nl ? "Momenten die het vieren waard zijn" : "Occasions worth celebrating";
   const subtitle = nl
-    ? "Van intieme verjaardagen en zakelijke lunches tot volledige bruiloftsrecepties - The Maison verzorgt onvergetelijke ervaringen bij ons of op uw locatie in Amsterdam."
-    : "From intimate birthdays and executive lunches to full wedding receptions - The Maison creates memorable experiences at our venue or yours in Amsterdam.";
+    ? "Van intieme verjaardagen en zakelijke lunches tot volledige bruiloftsrecepties - The Tandoor Company verzorgt onvergetelijke Indiase feesten bij ons of op uw locatie in Amsterdam."
+    : "From intimate birthdays and executive lunches to full wedding receptions - The Tandoor Company creates memorable Indian feasts at our venue or yours in Amsterdam.";
   const capacity = nl ? "Tot 100 gasten" : "Up to 100 guests";
   const ctaTitle = nl ? "Klaar om te plannen?" : "Ready to plan your event?";
   const ctaText = nl
@@ -37,18 +37,18 @@ export default function EventsHubPage() {
     {
       href: "/events/about",
       Icon: FaWandMagicSparkles,
-      title: nl ? "Over The Maison" : "About The Maison",
+      title: nl ? "Over The Tandoor Company" : "About The Tandoor Company",
       text: nl
-        ? "Ontdek onze filosofie, ons team en waarom Amsterdam ons kiest voor bijzondere avonden."
-        : "Discover our philosophy, our team and why Amsterdam chooses us for special occasions.",
+        ? "Ontdek ons familieverhaal, onze keuken en waarom Amsterdam ons kiest voor bijzondere avonden."
+        : "Discover our family story, our kitchen and why Amsterdam chooses us for special occasions.",
     },
     {
       href: "/events/gallery",
       Icon: FaImages,
       title: nl ? "Galerij" : "Gallery",
       text: nl
-        ? "Sfeerbeelden van onze zaal, gedekte tafels, gerechten en eerdere evenementen."
-        : "Atmospheric images of our dining room, table settings, dishes and past events.",
+        ? "Sfeerbeelden van onze zaal, gedekte tafels, tandoori gerechten en eerdere evenementen."
+        : "Atmospheric images of our dining room, table settings, tandoori dishes and past events.",
     },
     {
       href: "/events/birthdays",
@@ -79,8 +79,8 @@ export default function EventsHubPage() {
       Icon: FaMugSaucer,
       title: nl ? "Bedrijfslunches" : "Company lunches",
       text: nl
-        ? "Wekelijkse bezorgde lunches voor kantoren in Amsterdam. Verfijnd, gezond en maatwerk."
-        : "Weekly delivered lunches for Amsterdam offices. Refined, wholesome and tailored to your team.",
+        ? "Wekelijkse bezorgde lunches voor kantoren in Amsterdam. Vers, aromatisch en maatwerk."
+        : "Weekly delivered lunches for Amsterdam offices. Fresh, aromatic and tailored to your team.",
     },
   ];
 
@@ -88,7 +88,7 @@ export default function EventsHubPage() {
     <div className="overflow-hidden">
       {/* Hero */}
       <section className="relative overflow-hidden">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_60%_at_50%_0%,rgba(195,144,61,0.14),transparent_65%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_60%_at_50%_0%,rgba(217,126,38,0.16),transparent_65%)]" />
         <div className="relative mx-auto max-w-3xl px-4 pb-4 pt-14 text-center sm:px-6 lg:pt-20">
           <span className="lux-overline inline-flex items-center gap-3 text-emerald-600 dark:text-emerald-400">
             <span className="h-px w-10 bg-emerald-500/60" /> {overline} <span className="h-px w-10 bg-emerald-500/60" />
@@ -127,12 +127,12 @@ export default function EventsHubPage() {
 
       {/* CTA */}
       <section className="mx-auto max-w-5xl px-4 py-14 sm:px-6 lg:px-8">
-        <div className="rounded-[2rem] border border-emerald-500/20 bg-gradient-to-br from-[#171208] via-[#221a0c] to-[#2c2110] p-8 text-center text-white sm:p-12">
+        <div className="relative overflow-hidden rounded-[2rem] border border-emerald-500/20 bg-gradient-to-br from-emerald-950 via-[#241204] to-[#170d04] p-8 text-center text-white shadow-2xl shadow-emerald-900/30 sm:p-12">
           <h2 className="font-display text-2xl font-semibold sm:text-3xl">{ctaTitle}</h2>
           <p className="mx-auto mt-4 max-w-xl text-sm leading-7 text-stone-200">{ctaText}</p>
           <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <a
-              href="mailto:events@themaison.nl"
+              href="mailto:events@thetandoorcompany.nl"
               className="inline-flex items-center gap-2 rounded-full bg-emerald-600 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-emerald-600/25 transition hover:-translate-y-0.5 hover:bg-emerald-500"
             >
               <FaEnvelope /> {ctaContact} <FaArrowRight />

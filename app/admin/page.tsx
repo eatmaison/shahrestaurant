@@ -92,6 +92,10 @@ const parsePrice = (raw: string): number | null => {
   return n > 0 ? n : null;
 };
 
+/** Splits a comma-separated admin input into a clean list ("a, b," → ["a","b"]). */
+const parseList = (value: string): string[] =>
+  value.split(",").map((s) => s.trim()).filter(Boolean);
+
 /**
  * Reads an image file and returns a downscaled data URL (default: max 1200px JPEG).
  * Large phone photos (10MB+) would otherwise exceed the request size limit and
@@ -135,11 +139,17 @@ export default function AdminPage() {
   const [draft, setDraft] = useState({
     name: "",
     description: "",
+    descriptionNl: "",
     price: "",
     brand: "eattogo" as Brand,
     category: "Wraps" as Category,
     image: "" as string | undefined,
-    detail: "",
+    detailEn: "",
+    detailNl: "",
+    ingredientsEn: "",
+    ingredientsNl: "",
+    allergensEn: "",
+    allergensNl: "",
   });
 
   // Product currently being edited (null = editor closed).
@@ -147,11 +157,17 @@ export default function AdminPage() {
   const [editDraft, setEditDraft] = useState({
     name: "",
     description: "",
+    descriptionNl: "",
     price: "",
     brand: "eattogo" as Brand,
     category: "Wraps" as Category,
     image: undefined as string | undefined,
-    detail: "",
+    detailEn: "",
+    detailNl: "",
+    ingredientsEn: "",
+    ingredientsNl: "",
+    allergensEn: "",
+    allergensNl: "",
   });
 
   // Save progress + feedback for the add form and the edit modal.
@@ -387,21 +403,41 @@ export default function AdminPage() {
       return;
     }
     setAddState({ status: "saving" });
-    const detail = draft.detail.trim();
+    const detailEn = draft.detailEn.trim();
+    const detailNl = draft.detailNl.trim();
     const res = await addProduct({
       name: draft.name.trim(),
       description: draft.description.trim(),
+      descriptionNl: draft.descriptionNl.trim(),
       price,
       brand: draft.brand,
       category: draft.category,
       image: draft.image,
-      detailedDescription: detail ? { en: detail, nl: detail } : undefined,
+      detailedDescription: detailEn || detailNl ? { en: detailEn, nl: detailNl } : undefined,
+      ingredients: parseList(draft.ingredientsEn),
+      ingredientsNl: parseList(draft.ingredientsNl),
+      allergens: parseList(draft.allergensEn),
+      allergensNl: parseList(draft.allergensNl),
     });
     if (!res.ok) {
       setAddState({ status: "error", message: `${t.admin.saveFailed}${res.error ? ` (${res.error})` : ""}` });
       return;
     }
-    setDraft({ name: "", description: "", price: "", brand: draft.brand, category: draft.category, image: undefined, detail: "" });
+    setDraft({
+      name: "",
+      description: "",
+      descriptionNl: "",
+      price: "",
+      brand: draft.brand,
+      category: draft.category,
+      image: undefined,
+      detailEn: "",
+      detailNl: "",
+      ingredientsEn: "",
+      ingredientsNl: "",
+      allergensEn: "",
+      allergensNl: "",
+    });
     if (fileRef.current) fileRef.current.value = "";
     setAddState({ status: "success", message: t.admin.productAdded });
     setTimeout(() => setAddState((s) => (s.status === "success" ? { status: "idle" } : s)), 4000);
@@ -413,11 +449,17 @@ export default function AdminPage() {
     setEditDraft({
       name: p.name,
       description: p.description,
+      descriptionNl: p.descriptionNl ?? "",
       price: String(p.price),
       brand: p.brand,
       category: p.category,
       image: p.image,
-      detail: p.detailedDescription?.[lang] ?? p.detailedDescription?.en ?? "",
+      detailEn: p.detailedDescription?.en ?? "",
+      detailNl: p.detailedDescription?.nl ?? "",
+      ingredientsEn: (p.ingredients ?? []).join(", "),
+      ingredientsNl: (p.ingredientsNl ?? []).join(", "),
+      allergensEn: (p.allergens ?? []).join(", "),
+      allergensNl: (p.allergensNl ?? []).join(", "),
     });
   };
 
@@ -451,15 +493,24 @@ export default function AdminPage() {
       return;
     }
     setEditState({ status: "saving" });
-    const detail = editDraft.detail.trim();
+    const detailEn = editDraft.detailEn.trim();
+    const detailNl = editDraft.detailNl.trim();
     const res = await updateProduct(editing.id, {
       name: editDraft.name.trim(),
       description: editDraft.description.trim(),
+      descriptionNl: editDraft.descriptionNl.trim(),
       price,
       brand: editDraft.brand,
       category: editDraft.category,
       image: editDraft.image,
-      detailedDescription: detail ? { en: detail, nl: detail } : undefined,
+      // null (not undefined) so clearing both fields also clears it in the database.
+      detailedDescription: (detailEn || detailNl
+        ? { en: detailEn, nl: detailNl }
+        : null) as unknown as Product["detailedDescription"],
+      ingredients: parseList(editDraft.ingredientsEn),
+      ingredientsNl: parseList(editDraft.ingredientsNl),
+      allergens: parseList(editDraft.allergensEn),
+      allergensNl: parseList(editDraft.allergensNl),
     });
     if (!res.ok) {
       setEditState({ status: "error", message: `${t.admin.saveFailed}${res.error ? ` (${res.error})` : ""}` });
@@ -1034,7 +1085,7 @@ export default function AdminPage() {
                   <span className="relative grid h-10 w-10 shrink-0 place-items-center rounded-full bg-gradient-to-br from-sky-500 to-indigo-500 text-sm font-black text-white">
                     {u.name.charAt(0).toUpperCase()}
                     <span
-                      className={`absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full border-2 border-white dark:border-[#161006] ${
+                      className={`absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full border-2 border-white dark:border-[#170d04] ${
                         online ? "bg-emerald-500" : "bg-slate-300 dark:bg-slate-600"
                       }`}
                     />
@@ -1347,15 +1398,56 @@ export default function AdminPage() {
               rows={2}
               className="w-full resize-none rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
             />
+            <textarea
+              value={draft.descriptionNl}
+              onChange={(e) => setDraft({ ...draft, descriptionNl: e.target.value })}
+              placeholder={t.admin.productDescNl}
+              rows={2}
+              className="w-full resize-none rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
+            />
             <div>
               <textarea
-                value={draft.detail}
-                onChange={(e) => setDraft({ ...draft, detail: e.target.value })}
+                value={draft.detailEn}
+                onChange={(e) => setDraft({ ...draft, detailEn: e.target.value })}
                 placeholder={t.admin.productDetail}
-                rows={4}
+                rows={3}
                 className="w-full resize-none rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
               />
+              <textarea
+                value={draft.detailNl}
+                onChange={(e) => setDraft({ ...draft, detailNl: e.target.value })}
+                placeholder={t.admin.productDetailNl}
+                rows={3}
+                className="mt-2 w-full resize-none rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
+              />
               <p className="mt-1 text-[11px] leading-4 text-slate-400 dark:text-slate-500">{t.admin.productDetailHint}</p>
+            </div>
+            <div>
+              <input
+                value={draft.ingredientsEn}
+                onChange={(e) => setDraft({ ...draft, ingredientsEn: e.target.value })}
+                placeholder={t.admin.productIngredients}
+                className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
+              />
+              <input
+                value={draft.ingredientsNl}
+                onChange={(e) => setDraft({ ...draft, ingredientsNl: e.target.value })}
+                placeholder={t.admin.productIngredientsNl}
+                className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
+              />
+              <input
+                value={draft.allergensEn}
+                onChange={(e) => setDraft({ ...draft, allergensEn: e.target.value })}
+                placeholder={t.admin.productAllergens}
+                className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
+              />
+              <input
+                value={draft.allergensNl}
+                onChange={(e) => setDraft({ ...draft, allergensNl: e.target.value })}
+                placeholder={t.admin.productAllergensNl}
+                className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
+              />
+              <p className="mt-1 text-[11px] leading-4 text-slate-400 dark:text-slate-500">{t.admin.listHint}</p>
             </div>
             <select
               value={draft.brand}
@@ -1504,7 +1596,7 @@ export default function AdminPage() {
       {manageOpen && (
         <div className="fixed inset-0 z-50 flex items-end justify-center sm:items-center">
           <div className="fixed inset-0 bg-black/40" onClick={() => setManageOpen(false)} />
-          <div className="relative flex max-h-[85vh] w-full max-w-lg flex-col rounded-t-3xl bg-white shadow-2xl dark:bg-[#161006] sm:rounded-3xl">
+          <div className="relative flex max-h-[85vh] w-full max-w-lg flex-col rounded-t-3xl bg-white shadow-2xl dark:bg-[#170d04] sm:rounded-3xl">
             <div className="flex items-center justify-between border-b border-slate-200 px-5 py-4 dark:border-white/10">
               <div>
                 <h2 className="flex items-center gap-2 text-lg font-black text-slate-900 dark:text-white">
@@ -1688,7 +1780,7 @@ export default function AdminPage() {
       {editing && (
         <div className="fixed inset-0 z-50 flex items-end justify-center sm:items-center">
           <div className="fixed inset-0 bg-black/40" onClick={closeEditor} />
-          <div className="relative w-full max-w-md rounded-t-3xl bg-white shadow-2xl dark:bg-[#161006] sm:rounded-3xl">
+          <div className="relative flex max-h-[90vh] w-full max-w-md flex-col rounded-t-3xl bg-white shadow-2xl dark:bg-[#170d04] sm:rounded-3xl">
             <div className="flex items-center justify-between border-b border-slate-200 px-5 py-4 dark:border-white/10">
               <h2 className="flex items-center gap-2 text-lg font-black text-slate-900 dark:text-white">
                 <FaPen className="text-emerald-600 dark:text-emerald-400" /> {t.admin.editProduct}
@@ -1701,7 +1793,7 @@ export default function AdminPage() {
                 <FaXmark />
               </button>
             </div>
-            <div className="space-y-3 px-5 py-4">
+            <div className="space-y-3 overflow-y-auto px-5 py-4">
               <input
                 value={editDraft.name}
                 onChange={(e) => setEditDraft({ ...editDraft, name: e.target.value })}
@@ -1715,15 +1807,56 @@ export default function AdminPage() {
                 rows={2}
                 className="w-full resize-none rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
               />
+              <textarea
+                value={editDraft.descriptionNl}
+                onChange={(e) => setEditDraft({ ...editDraft, descriptionNl: e.target.value })}
+                placeholder={t.admin.productDescNl}
+                rows={2}
+                className="w-full resize-none rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
+              />
               <div>
                 <textarea
-                  value={editDraft.detail}
-                  onChange={(e) => setEditDraft({ ...editDraft, detail: e.target.value })}
+                  value={editDraft.detailEn}
+                  onChange={(e) => setEditDraft({ ...editDraft, detailEn: e.target.value })}
                   placeholder={t.admin.productDetail}
-                  rows={4}
+                  rows={3}
                   className="w-full resize-none rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
                 />
+                <textarea
+                  value={editDraft.detailNl}
+                  onChange={(e) => setEditDraft({ ...editDraft, detailNl: e.target.value })}
+                  placeholder={t.admin.productDetailNl}
+                  rows={3}
+                  className="mt-2 w-full resize-none rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
+                />
                 <p className="mt-1 text-[11px] leading-4 text-slate-400 dark:text-slate-500">{t.admin.productDetailHint}</p>
+              </div>
+              <div>
+                <input
+                  value={editDraft.ingredientsEn}
+                  onChange={(e) => setEditDraft({ ...editDraft, ingredientsEn: e.target.value })}
+                  placeholder={t.admin.productIngredients}
+                  className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
+                />
+                <input
+                  value={editDraft.ingredientsNl}
+                  onChange={(e) => setEditDraft({ ...editDraft, ingredientsNl: e.target.value })}
+                  placeholder={t.admin.productIngredientsNl}
+                  className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
+                />
+                <input
+                  value={editDraft.allergensEn}
+                  onChange={(e) => setEditDraft({ ...editDraft, allergensEn: e.target.value })}
+                  placeholder={t.admin.productAllergens}
+                  className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
+                />
+                <input
+                  value={editDraft.allergensNl}
+                  onChange={(e) => setEditDraft({ ...editDraft, allergensNl: e.target.value })}
+                  placeholder={t.admin.productAllergensNl}
+                  className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
+                />
+                <p className="mt-1 text-[11px] leading-4 text-slate-400 dark:text-slate-500">{t.admin.listHint}</p>
               </div>
               <select
                 value={editDraft.brand}
@@ -1827,7 +1960,7 @@ export default function AdminPage() {
       {deleting && (
         <div className="fixed inset-0 z-50 flex items-end justify-center sm:items-center">
           <div className="fixed inset-0 bg-black/40" onClick={() => setDeleting(null)} />
-          <div className="relative w-full max-w-sm rounded-t-3xl bg-white p-6 shadow-2xl dark:bg-[#161006] sm:rounded-3xl">
+          <div className="relative w-full max-w-sm rounded-t-3xl bg-white p-6 shadow-2xl dark:bg-[#170d04] sm:rounded-3xl">
             <div className="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-red-500/10 text-2xl text-red-500">
               <FaTrash />
             </div>

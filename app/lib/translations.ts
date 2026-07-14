@@ -61,6 +61,14 @@ export interface Dictionary {
     aboutTitle: string;
     aboutText: string;
     aboutCta: string;
+    storyOverline: string;
+    storyTitle: string;
+    storyText: string;
+    storyText2: string;
+    storyQuote: string;
+    storyPoint1: string;
+    storyPoint2: string;
+    storyPoint3: string;
     featuresOverline: string;
     featuresTitle: string;
     feature1Title: string;
@@ -113,9 +121,12 @@ export interface Dictionary {
     minOrderNote: string;
     minOrderCompanyNote: string;
     freeDeliveryNote: string;
+    freeDeliveryUnlocked: string;
+    securePayment: string;
     usePoints: string;
     pointsAvailable: string;
     pointsHint: string;
+    willEarnPoints: string;
     foodOnlyNote: string;
     vipPriceLabel: string;
     readMore: string;
@@ -247,6 +258,8 @@ export interface Dictionary {
     largeGroupNote: string;
     myReservations: string;
     location: string;
+    locationSubtitle: string;
+    getDirections: string;
     noReservations: string;
     statusPending: string;
     statusConfirmed: string;
@@ -279,11 +292,18 @@ export interface Dictionary {
     addProduct: string;
     productName: string;
     productDesc: string;
+    productDescNl: string;
     productPrice: string;
     productCategory: string;
     productImage: string;
     productDetail: string;
+    productDetailNl: string;
     productDetailHint: string;
+    productIngredients: string;
+    productIngredientsNl: string;
+    productAllergens: string;
+    productAllergensNl: string;
+    listHint: string;
     save: string;
     saving: string;
     productAdded: string;
@@ -535,51 +555,61 @@ const en: Dictionary = {
     saveChanges: "Save changes",
   },
   home: {
-    badge: "Fine Dining · Amsterdam",
-    heroTitle: "Where luxury, ambiance and",
-    heroTitleAccent: "gastronomy come together",
+    badge: "Authentic Indian · Amsterdam-Noord",
+    heroTitle: "Where the fire of the tandoor meets",
+    heroTitleAccent: "the soul of India",
     heroSubtitle:
-      "Enjoy refined dishes, a stylish atmosphere and service at the highest level. The Maison is the place where quality, taste and experience meet for an unforgettable evening.",
+      "Discover the rich flavours of India - freshly prepared curries, tandoori grills, biryani and naan, straight from our traditional clay oven. For dining in, pickup and delivery in Amsterdam-Noord.",
     heroCtaReserve: "Reserve a table",
     heroCtaMenu: "Explore the menu",
-    statYears: "Years of craftsmanship",
-    statDishes: "Signature dishes",
-    statGuests: "Delighted guests",
+    statYears: "Years of experience",
+    statDishes: "Famous dishes",
+    statGuests: "Happy guests",
     statRating: "Average rating",
-    aboutOverline: "About The Maison",
-    aboutTitle: "Fine dining with a timeless, elegant character",
+    aboutOverline: "About The Tandoor Company",
+    aboutTitle: "Passion for flavour and tradition",
     aboutText:
-      "The Maison is a place where luxury, ambiance and gastronomy come together in perfect harmony. Our chefs create refined dishes with a focus on quality, taste and elegance. Every plate is prepared with carefully selected ingredients and modern techniques, in an atmosphere designed to radiate calm, comfort and class - ideal for an intimate dinner, a business meeting or a memorable night out.",
+      "At The Tandoor Company we bring the authentic flavours of India to your table. Our chefs prepare fresh curries, tandoori grills and traditional dishes every day, with high-quality ingredients, aromatic spices and time-honoured recipes. Locally sourced produce, vegetarian and diet-friendly options, and exquisite combinations - every plate is made with care and love.",
     aboutCta: "Reserve your evening",
-    featuresOverline: "The experience",
-    featuresTitle: "Why guests choose The Maison",
-    feature1Title: "Refined seasonal cuisine",
-    feature1Text: "Carefully selected ingredients, transformed by our chefs into elegant dishes with modern techniques.",
-    feature2Title: "An ambiance of class",
-    feature2Text: "Warm lighting, refined details and a serene setting - designed so every guest feels special.",
-    feature3Title: "Service at the highest level",
-    feature3Text: "Attentive, personal and discreet. Our team anticipates your every wish, from aperitif to dessert.",
-    popularOverline: "From the kitchen",
-    popularTitle: "Signatures of the house",
+    storyOverline: "A family story",
+    storyTitle: "Three generations of flavour, one family dream",
+    storyText:
+      "Behind our kitchen lies a remarkable story. Our father has more than 32 years of hospitality experience in the Netherlands, and before that spent 8 years in the kitchens of five-star hotels in India. Throughout his career he opened more than 28 restaurants for others and trained over 40 chefs in the art of Indian cooking - his dishes even reached the kitchens of Bollywood stars such as Amitabh Bachchan.",
+    storyText2:
+      "Today, together with his sons, it is finally time for something of our own: The Tandoor Company - a restaurant where decades of experience, family tradition and love for authentic Indian flavours come together.",
+    storyQuote: "Good food begins with passion, tradition and attention to detail.",
+    storyPoint1: "32+ years of hospitality craftsmanship",
+    storyPoint2: "28+ restaurants opened, 40+ chefs trained",
+    storyPoint3: "Chef to Bollywood stars",
+    featuresOverline: "Our promises",
+    featuresTitle: "Our promises to every guest",
+    feature1Title: "Traditional tandoor",
+    feature1Text: "Authentic and pure - marinated overnight and grilled in our traditional clay oven for that unmistakable smoky flavour.",
+    feature2Title: "Fresh ingredients",
+    feature2Text: "Prepared fresh every day with locally sourced produce, hand-ground spices and vegetarian and diet-friendly options.",
+    feature3Title: "Warm hospitality",
+    feature3Text: "Always with care. From a spontaneous dinner to a festive evening - our family welcomes you as one of our own.",
+    popularOverline: "From the tandoor",
+    popularTitle: "The most beloved flavours",
     popularSubtitle:
-      "A glimpse of the dishes our guests return for - refined classics and surprising creations, freshly prepared every day.",
+      "From tandoori specialties to creamy curries - a taste of the dishes our guests return for, freshly prepared every day.",
     ambianceOverline: "Atmosphere & experience",
-    ambianceTitle: "A look inside The Maison",
+    ambianceTitle: "A look inside The Tandoor Company",
     ambianceText:
-      "Discover the elegant ambiance, refined details and warm lighting that define The Maison. Style, gastronomy and experience - valued by our guests time and again.",
+      "Discover the warm ambiance, the scent of fresh spices and the glow of the tandoor that define our restaurant. Flavour, warmth and experience - valued by our guests time and again.",
     hoursTitle: "Opening hours",
     reserveOverline: "Reservations",
     reserveTitle: "Your table awaits",
     reserveText:
-      "Reserve your table for an intimate dinner, a business meeting or a festive evening. We look forward to welcoming you.",
+      "Reserve your table for a cosy dinner, a family celebration or an evening full of Indian flavours. We look forward to welcoming you.",
     reserveCta: "Book your table",
-    makeOrder: "Make Order",
+    makeOrder: "Order now",
     testimonialsOverline: "Guest experiences",
     testimonialsTitle: "What our guests say",
-    testimonialsSubtitle: "Honest impressions of an evening at The Maison - from the ambiance and service to the quality of the dishes.",
-    ctaTitle: "An unforgettable evening begins with a reservation",
+    testimonialsSubtitle: "Honest impressions of an evening at The Tandoor Company - from the tandoori grills and curries to the warmth of our service.",
+    ctaTitle: "Join us for a delicious meal",
     ctaText:
-      "Whether you are planning an intimate dinner, a business meeting or a celebration - our team is ready to make your evening perfect.",
+      "Whether you crave a smoky tandoori grill, a rich curry or a festive dinner with family and friends - our kitchen is fired up and ready for you.",
     ctaButton: "Reserve now",
   },
   order: {
@@ -607,9 +637,12 @@ const en: Dictionary = {
     minOrderNote: "Minimum order is €20 (before discounts and points).",
     minOrderCompanyNote: "Minimum order for company accounts is €100 (before discounts and points).",
     freeDeliveryNote: "Free delivery on orders over €30 (always free for company accounts).",
+    freeDeliveryUnlocked: "Free delivery unlocked!",
+    securePayment: "Secure payment via Mollie · iDEAL",
     usePoints: "Use loyalty points",
     pointsAvailable: "points available",
     pointsHint: "1 point = €1. Redeem points to pay for your food.",
+    willEarnPoints: "You'll earn {points} loyalty point(s) with this order",
     foodOnlyNote: "Discounts apply to food only - not drinks.",
     vipPriceLabel: "VIP",
     readMore: "Read more",
@@ -744,6 +777,8 @@ const en: Dictionary = {
     largeGroupNote: "Party larger than 12? Add a note or call us - we love hosting groups and will arrange the perfect setting.",
     myReservations: "My reservations",
     location: "Our location",
+    locationSubtitle: "You'll find us on Klaprozenweg in Amsterdam-Noord - easy to reach by car, bike or public transport. Step inside and let the warmth of the tandoor welcome you.",
+    getDirections: "Get directions",
     noReservations: "No reservations yet. Your bookings will appear here.",
     statusPending: "Awaiting confirmation",
     statusConfirmed: "Confirmed",
@@ -775,12 +810,19 @@ const en: Dictionary = {
     manageProducts: "Manage products",
     addProduct: "Add product",
     productName: "Name",
-    productDesc: "Description",
+    productDesc: "Description (English)",
+    productDescNl: "Description (Dutch)",
     productPrice: "Price (€)",
     productCategory: "Category",
     productImage: "Image",
-    productDetail: "Read more text",
+    productDetail: "Read more text (English)",
+    productDetailNl: "Read more text (Dutch)",
     productDetailHint: "Detailed description shown in the product's 'Read more' popup (optional)",
+    productIngredients: "Ingredients (English)",
+    productIngredientsNl: "Ingredients (Dutch)",
+    productAllergens: "Allergens (English)",
+    productAllergensNl: "Allergens (Dutch)",
+    listHint: "Separate items with commas, e.g. Paneer cheese, Spinach, Cream",
     save: "Save product",
     saving: "Saving…",
     productAdded: "Product added successfully!",
@@ -938,14 +980,14 @@ const en: Dictionary = {
   },
   footer: {
     tagline:
-      "Fine dining where luxury, ambiance and gastronomy come together. The Maison stands for refined dishes, warm service and an unforgettable experience.",
+      "Authentic Indian cuisine with classic tandoori grills, rich curries and fresh flavours - prepared with passion by our family, for yours.",
     contact: "Contact",
     followUs: "Follow us",
     rights: "All rights reserved.",
     address: "Address",
     ourRestaurants: "Our Restaurants",
     eatToGo: "Eat to go",
-    theTandoor: "The Tandoor Company",
+    theTandoor: "The Maison",
     legal: "Legal",
     privacy: "Privacy Policy",
     terms: "Terms & Conditions",
@@ -1034,51 +1076,61 @@ const nl: Dictionary = {
     saveChanges: "Wijzigingen opslaan",
   },
   home: {
-    badge: "Fine Dining · Amsterdam",
-    heroTitle: "Waar luxe, ambiance en",
-    heroTitleAccent: "gastronomie samenkomen",
+    badge: "Authentiek Indiaas · Amsterdam-Noord",
+    heroTitle: "Waar het vuur van de tandoor",
+    heroTitleAccent: "de ziel van India ontmoet",
     heroSubtitle:
-      "Geniet van verfijnde gerechten, een stijlvolle sfeer en service op topniveau. The Maison is de plek waar kwaliteit, smaak en beleving samenkomen voor een onvergetelijke avond.",
+      "Ontdek de rijke smaken van India - vers bereide curry's, tandoori grills, biryani en naan, rechtstreeks uit onze traditionele kleioven. Voor dine-in, afhalen en bezorgen in Amsterdam-Noord.",
     heroCtaReserve: "Reserveer een tafel",
     heroCtaMenu: "Ontdek het menu",
-    statYears: "Jaar vakmanschap",
-    statDishes: "Signatuurgerechten",
+    statYears: "Jaar ervaring",
+    statDishes: "Beroemde gerechten",
     statGuests: "Tevreden gasten",
     statRating: "Gemiddelde beoordeling",
-    aboutOverline: "Over The Maison",
-    aboutTitle: "Fine dining met een tijdloze, elegante uitstraling",
+    aboutOverline: "Over The Tandoor Company",
+    aboutTitle: "Passie voor smaak en traditie",
     aboutText:
-      "The Maison is een plek waar luxe, ambiance en gastronomie in perfecte harmonie samenkomen. Onze chefs creëren verfijnde gerechten met een focus op kwaliteit, smaak en elegantie. Elk gerecht wordt bereid met zorgvuldig geselecteerde ingrediënten en moderne kooktechnieken, in een sfeer die rust, comfort en klasse uitstraalt - ideaal voor een intiem diner, een zakelijke ontmoeting of een memorabel avondje uit.",
+      "Bij The Tandoor Company brengen we de authentieke smaken van India naar uw tafel. Onze chefs bereiden elke dag verse curry's, tandoori grills en traditionele gerechten met hoogwaardige ingrediënten, aromatische kruiden en beproefde recepten. Lokaal geproduceerde ingrediënten, vegetarische en dieetvriendelijke opties en exquise combinaties - elk gerecht wordt met zorg en liefde gemaakt.",
     aboutCta: "Reserveer uw avond",
-    featuresOverline: "De beleving",
-    featuresTitle: "Waarom gasten voor The Maison kiezen",
-    feature1Title: "Verfijnde seizoenskeuken",
-    feature1Text: "Zorgvuldig geselecteerde ingrediënten, door onze chefs met moderne technieken omgetoverd tot elegante gerechten.",
-    feature2Title: "Een ambiance met klasse",
-    feature2Text: "Warme verlichting, verfijnde details en een serene setting - ontworpen zodat elke gast zich bijzonder voelt.",
-    feature3Title: "Service op topniveau",
-    feature3Text: "Attent, persoonlijk en discreet. Ons team anticipeert op elke wens, van aperitief tot dessert.",
-    popularOverline: "Uit de keuken",
-    popularTitle: "Signatuur van het huis",
+    storyOverline: "Een familieverhaal",
+    storyTitle: "Drie generaties smaak, één familiedroom",
+    storyText:
+      "Achter onze keuken schuilt een bijzonder verhaal. Onze vader heeft meer dan 32 jaar ervaring in de horeca in Nederland en werkte daarvoor 8 jaar in de keukens van vijfsterrenhotels in India. Gedurende zijn carrière heeft hij meer dan 28 restaurants voor anderen opgezet en meer dan 40 koks opgeleid in de kunst van de Indiase keuken - zijn gerechten brachten hem zelfs in de keukens van Bollywoodsterren zoals Amitabh Bachchan.",
+    storyText2:
+      "Vandaag zetten wij zijn passie voort. Samen met zijn zonen is het eindelijk tijd voor iets van onszelf: The Tandoor Company - een restaurant waar jarenlange ervaring, familietraditie en liefde voor authentieke Indiase smaken samenkomen.",
+    storyQuote: "Goed eten begint met passie, traditie en aandacht voor detail.",
+    storyPoint1: "32+ jaar horeca-vakmanschap",
+    storyPoint2: "28+ restaurants opgezet, 40+ koks opgeleid",
+    storyPoint3: "Chef van Bollywoodsterren",
+    featuresOverline: "Onze beloftes",
+    featuresTitle: "Onze beloftes aan elke gast",
+    feature1Title: "Traditionele tandoor",
+    feature1Text: "Authentiek en puur - een nacht gemarineerd en gegrild in onze traditionele kleioven voor die onmiskenbare rokerige smaak.",
+    feature2Title: "Verse ingrediënten",
+    feature2Text: "Dagelijks vers bereid met lokaal geproduceerde ingrediënten, handgemalen kruiden en vegetarische en dieetvriendelijke opties.",
+    feature3Title: "Warme gastvrijheid",
+    feature3Text: "Altijd met zorg. Van een spontaan diner tot een feestelijke avond - onze familie verwelkomt u als één van ons.",
+    popularOverline: "Uit de tandoor",
+    popularTitle: "De meest geliefde smaken",
     popularSubtitle:
-      "Een voorproefje van de gerechten waarvoor onze gasten terugkomen - verfijnde klassiekers en verrassende creaties, elke dag vers bereid.",
+      "Van tandoori specialiteiten tot romige curry's - een voorproefje van de gerechten waarvoor onze gasten terugkomen, elke dag vers bereid.",
     ambianceOverline: "Sfeer & beleving",
-    ambianceTitle: "Een kijkje binnen The Maison",
+    ambianceTitle: "Een kijkje binnen The Tandoor Company",
     ambianceText:
-      "Ontdek de elegante ambiance, verfijnde details en warme verlichting die The Maison vormen. Stijl, gastronomie en beleving - keer op keer gewaardeerd door onze gasten.",
+      "Ontdek de warme ambiance, de geur van verse kruiden en de gloed van de tandoor die ons restaurant vormen. Smaak, warmte en beleving - keer op keer gewaardeerd door onze gasten.",
     hoursTitle: "Openingstijden",
     reserveOverline: "Reserveringen",
     reserveTitle: "Uw tafel staat klaar",
     reserveText:
-      "Reserveer uw tafel voor een intiem diner, een zakelijke ontmoeting of een feestelijke avond. Wij kijken ernaar uit u te verwelkomen.",
+      "Reserveer uw tafel voor een gezellig diner, een familiefeest of een avond vol Indiase smaken. Wij kijken ernaar uit u te verwelkomen.",
     reserveCta: "Reserveer uw tafel",
     makeOrder: "Bestel nu",
     testimonialsOverline: "Gastervaringen",
     testimonialsTitle: "Wat onze gasten zeggen",
-    testimonialsSubtitle: "Eerlijke ervaringen van een avond bij The Maison - van de sfeer en service tot de kwaliteit van de gerechten.",
-    ctaTitle: "Een onvergetelijke avond begint met een reservering",
+    testimonialsSubtitle: "Eerlijke ervaringen van een avond bij The Tandoor Company - van de tandoori grills en curry's tot de warmte van onze service.",
+    ctaTitle: "Kom bij ons voor een heerlijke maaltijd",
     ctaText:
-      "Of u nu een intiem diner, een zakelijk etentje of een feest plant - ons team staat klaar om uw avond perfect te maken.",
+      "Of u nu zin heeft in een rokerige tandoori grill, een rijke curry of een feestelijk diner met familie en vrienden - onze keuken staat voor u klaar.",
     ctaButton: "Reserveer nu",
   },
   order: {
@@ -1106,9 +1158,12 @@ const nl: Dictionary = {
     minOrderNote: "Minimale bestelling is €20 (vóór kortingen en punten).",
     minOrderCompanyNote: "Minimale bestelling voor bedrijfsaccounts is €100 (vóór kortingen en punten).",
     freeDeliveryNote: "Gratis bezorging bij bestellingen boven €30 (altijd gratis voor bedrijfsaccounts).",
+    freeDeliveryUnlocked: "Gratis bezorging ontgrendeld!",
+    securePayment: "Veilig betalen via Mollie · iDEAL",
     usePoints: "Loyaliteitspunten gebruiken",
     pointsAvailable: "punten beschikbaar",
     pointsHint: "1 punt = €1. Wissel punten in om je eten te betalen.",
+    willEarnPoints: "U verdient {points} loyaliteitspunt(en) met deze bestelling",
     foodOnlyNote: "Kortingen gelden alleen voor eten - niet voor dranken.",
     vipPriceLabel: "VIP",
     readMore: "Meer informatie",
@@ -1243,6 +1298,8 @@ const nl: Dictionary = {
     largeGroupNote: "Gezelschap groter dan 12? Voeg een notitie toe of bel ons - wij ontvangen graag groepen en regelen de perfecte setting.",
     myReservations: "Mijn reserveringen",
     location: "Onze locatie",
+    locationSubtitle: "U vindt ons aan de Klaprozenweg in Amsterdam-Noord - goed bereikbaar met auto, fiets en openbaar vervoer. Stap binnen en laat de warmte van de tandoor u verwelkomen.",
+    getDirections: "Routebeschrijving",
     noReservations: "Nog geen reserveringen. Uw boekingen verschijnen hier.",
     statusPending: "Wacht op bevestiging",
     statusConfirmed: "Bevestigd",
@@ -1274,12 +1331,19 @@ const nl: Dictionary = {
     manageProducts: "Producten beheren",
     addProduct: "Product toevoegen",
     productName: "Naam",
-    productDesc: "Omschrijving",
+    productDesc: "Omschrijving (Engels)",
+    productDescNl: "Omschrijving (Nederlands)",
     productPrice: "Prijs (€)",
     productCategory: "Categorie",
     productImage: "Afbeelding",
-    productDetail: "Lees meer-tekst",
+    productDetail: "Lees meer-tekst (Engels)",
+    productDetailNl: "Lees meer-tekst (Nederlands)",
     productDetailHint: "Uitgebreide omschrijving in de 'Lees meer'-pop-up van het product (optioneel)",
+    productIngredients: "Ingrediënten (Engels)",
+    productIngredientsNl: "Ingrediënten (Nederlands)",
+    productAllergens: "Allergenen (Engels)",
+    productAllergensNl: "Allergenen (Nederlands)",
+    listHint: "Scheid items met komma's, bijv. Paneer kaas, Spinazie, Room",
     save: "Product opslaan",
     saving: "Opslaan…",
     productAdded: "Product succesvol toegevoegd!",
@@ -1437,14 +1501,14 @@ const nl: Dictionary = {
   },
   footer: {
     tagline:
-      "Fine dining waar luxe, ambiance en gastronomie samenkomen. The Maison staat voor verfijnde gerechten, warme service en een onvergetelijke beleving.",
+      "Authentieke Indiase keuken met klassieke tandoori-grills, rijke curry's en verse smaken - met passie bereid door onze familie, voor de uwe.",
     contact: "Contact",
     followUs: "Volg ons",
     rights: "Alle rechten voorbehouden.",
     address: "Adres",
     ourRestaurants: "Onze Restaurants",
     eatToGo: "Eat to go",
-    theTandoor: "The Tandoor Company",
+    theTandoor: "The Maison",
     legal: "Juridisch",
     privacy: "Privacybeleid",
     terms: "Algemene Voorwaarden",

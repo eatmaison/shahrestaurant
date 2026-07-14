@@ -12,16 +12,16 @@ export default function AboutPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Restaurant",
-    "@id": "https://themaison.nl/#restaurant",
-    name: "The Maison",
+    "@id": "https://thetandoorcompany.nl/#restaurant",
+    name: "The Tandoor Company",
     description: nl
-      ? "The Maison is een intiem fine-dining restaurant in Amsterdam-Noord met Europese keuken en zorgvuldig geselecteerde wijnen."
-      : "The Maison is an intimate fine-dining restaurant in Amsterdam-Noord serving refined European cuisine with a carefully curated wine list.",
-    url: "https://themaison.nl/events/about",
-    image: "https://themaison.nl/themaison.png",
+      ? "The Tandoor Company is een authentiek Indiaas familierestaurant in Amsterdam-Noord met tandoori grills, rijke curry's en verse naan."
+      : "The Tandoor Company is an authentic family-run Indian restaurant in Amsterdam-Noord serving tandoori grills, rich curries and fresh naan.",
+    url: "https://thetandoorcompany.nl/events/about",
+    image: "https://thetandoorcompany.nl/tandoorcompany.png",
     telephone: "+31 20 341 2995",
-    priceRange: "€€€",
-    servesCuisine: ["European", "Fine Dining", "Grill"],
+    priceRange: "€€",
+    servesCuisine: ["Indian", "Tandoori", "Curry", "Biryani"],
     address: {
       "@type": "PostalAddress",
       streetAddress: "Klaprozenweg 36a",
@@ -29,7 +29,7 @@ export default function AboutPage() {
       addressLocality: "Amsterdam",
       addressCountry: "NL",
     },
-    hasMenu: "https://themaison.nl/order",
+    hasMenu: "https://thetandoorcompany.nl/order",
     acceptsReservations: "True",
     openingHours: "Tu-Su 17:00-22:30",
   };
@@ -37,31 +37,31 @@ export default function AboutPage() {
   const pillars = [
     {
       Icon: FaLeaf,
-      title: nl ? "Verse, seizoensgebonden ingrediënten" : "Fresh, seasonal ingredients",
+      title: nl ? "Verse, aromatische ingrediënten" : "Fresh, aromatic ingredients",
       text: nl
-        ? "Onze menukaart verandert mee met de seizoenen. Groenten, vis en vlees worden dagelijks geselecteerd bij vertrouwde leveranciers uit Nederland en Europa."
-        : "Our menu evolves with the seasons. Vegetables, fish and meats are hand-selected daily from trusted Dutch and European producers.",
+        ? "Onze kruiden worden dagelijks vers gemalen en onze groenten, vlees en vis zorgvuldig geselecteerd bij vertrouwde leveranciers - de basis van elke authentieke curry."
+        : "Our spices are ground fresh daily and our vegetables, meat and fish hand-selected from trusted suppliers - the foundation of every authentic curry.",
     },
     {
       Icon: FaUtensils,
-      title: nl ? "Klassieke techniek, moderne uitvoering" : "Classical technique, modern plating",
+      title: nl ? "Traditionele tandoor, eerlijke techniek" : "Traditional tandoor, honest technique",
       text: nl
-        ? "Onze chefs zijn opgeleid in de klassieke Europese keuken en brengen die technieken samen met eigentijdse presentatie."
-        : "Our chefs are trained in classical European cuisine and pair those techniques with contemporary plating and presentation.",
+        ? "Onze chefs zijn opgeleid in de klassieke Indiase keuken - van vijfsterrenhotels in India tot meer dan 32 jaar horeca-ervaring in Nederland."
+        : "Our chefs are trained in classical Indian cooking - from five-star hotel kitchens in India to more than 32 years of hospitality experience in the Netherlands.",
     },
     {
       Icon: FaHeart,
-      title: nl ? "Gastvrijheid als kunstvorm" : "Hospitality as an art form",
+      title: nl ? "Gastvrijheid als familietraditie" : "Hospitality as a family tradition",
       text: nl
-        ? "Van een warm welkom tot het laatste glaasje digestief - elk contactmoment is bedoeld om onze gasten thuis te laten voelen."
-        : "From a warm welcome to the last digestif, every touchpoint is designed to make our guests feel at home.",
+        ? "Van een warm welkom tot de laatste chai - elk contactmoment is bedoeld om onze gasten als familie te laten voelen."
+        : "From a warm welcome to the last chai, every touchpoint is designed to make our guests feel like family.",
     },
     {
       Icon: FaAward,
-      title: nl ? "Detail dat verschil maakt" : "Detail that makes the difference",
+      title: nl ? "Bewezen vakmanschap" : "Proven craftsmanship",
       text: nl
-        ? "Gepolijste glazen, versgestreken linnen, bloemen op elke tafel - omdat het detail bepaalt wat de avond onvergetelijk maakt."
-        : "Polished glassware, freshly pressed linen, flowers on every table - because it is the detail that makes an evening unforgettable.",
+        ? "Meer dan 28 restaurants opgezet, 40+ koks opgeleid en gerechten geserveerd aan Bollywoodsterren - dat vakmanschap proeft u op uw bord."
+        : "More than 28 restaurants opened, 40+ chefs trained and dishes served to Bollywood stars - craftsmanship you can taste on every plate.",
     },
   ];
 
@@ -71,19 +71,19 @@ export default function AboutPage() {
 
       {/* Hero */}
       <section className="relative overflow-hidden">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_60%_at_50%_0%,rgba(195,144,61,0.14),transparent_65%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_60%_at_50%_0%,rgba(217,126,38,0.16),transparent_65%)]" />
         <div className="relative mx-auto max-w-3xl px-4 pb-4 pt-14 text-center sm:px-6 lg:pt-20">
           <span className="lux-overline inline-flex items-center gap-3 text-emerald-600 dark:text-emerald-400">
             <span className="h-px w-10 bg-emerald-500/60" /> {nl ? "Ons verhaal" : "Our story"}{" "}
             <span className="h-px w-10 bg-emerald-500/60" />
           </span>
           <h1 className="font-display mt-5 text-4xl font-semibold tracking-tight text-slate-900 dark:text-white sm:text-5xl">
-            {nl ? "Over The Maison Amsterdam" : "About The Maison Amsterdam"}
+            {nl ? "Over The Tandoor Company Amsterdam" : "About The Tandoor Company Amsterdam"}
           </h1>
           <p className="mt-5 text-base leading-8 text-slate-600 dark:text-slate-300">
             {nl
-              ? "Een intiem fine-dining restaurant in Amsterdam-Noord waar klassieke Europese keuken en verfijnde seizoensgerechten samenkomen - met impeccabele service en avondambiance."
-              : "An intimate fine-dining restaurant in Amsterdam-Noord where classical European cuisine and refined seasonal cooking come together - with impeccable service and evening ambiance."}
+              ? "Een authentiek Indiaas familierestaurant in Amsterdam-Noord waar traditionele tandoori-technieken en aromatische kruiden samenkomen - met warme gastvrijheid en een bijzonder familieverhaal."
+              : "An authentic family-run Indian restaurant in Amsterdam-Noord where traditional tandoori techniques and aromatic spices come together - with warm hospitality and a remarkable family story."}
           </p>
         </div>
       </section>
@@ -91,24 +91,24 @@ export default function AboutPage() {
       {/* Story */}
       <section className="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
         <article className="prose prose-slate mx-auto max-w-none dark:prose-invert">
-          <div className="rounded-[2rem] border border-emerald-500/20 bg-white p-8 shadow-2xl shadow-emerald-900/10 dark:border-emerald-400/15 dark:bg-[#161006] sm:p-10">
+          <div className="rounded-[2rem] border border-emerald-500/20 bg-white p-8 shadow-2xl shadow-emerald-900/10 dark:border-emerald-400/15 dark:bg-[#170d04] sm:p-10">
             <h2 className="font-display text-2xl font-semibold text-slate-900 dark:text-white sm:text-3xl">
-              {nl ? "De filosofie" : "The philosophy"}
+              {nl ? "Een familieverhaal van passie voor smaak" : "A family story of passion for flavour"}
             </h2>
             <p className="mt-5 text-sm leading-8 text-slate-600 dark:text-slate-300 sm:text-base">
               {nl
-                ? "The Maison is opgericht met één missie: elke gast het gevoel geven dat de avond speciaal voor hen is ontworpen. In onze intieme eetzaal, verlicht door kaarsen en gedimd goud, komen klassieke Europese technieken samen met seizoensgebonden ingrediënten die dagelijks door onze chefs worden geselecteerd."
-                : "The Maison was founded with a single mission: to make every guest feel that the evening was designed just for them. In our intimate dining room - lit by candles and dimmed gold - classical European technique meets seasonal ingredients hand-selected by our chefs each day."}
+                ? "Achter onze keuken schuilt een bijzonder verhaal. Onze vader heeft meer dan 32 jaar ervaring in de horeca in Nederland en werkte daarvoor 8 jaar in de keukens van vijfsterrenhotels in India. Gedurende zijn carrière heeft hij meer dan 28 restaurants voor anderen opgezet en meer dan 40 koks opgeleid in de kunst van de Indiase keuken."
+                : "Behind our kitchen lies a remarkable story. Our father has more than 32 years of hospitality experience in the Netherlands, and before that spent 8 years in the kitchens of five-star hotels in India. Throughout his career he opened more than 28 restaurants for others and trained over 40 chefs in the art of Indian cooking."}
             </p>
             <p className="mt-4 text-sm leading-8 text-slate-600 dark:text-slate-300 sm:text-base">
               {nl
-                ? "Onze sommelier begeleidt elke gang met een zorgvuldig samengestelde wijnkeuze - van Bourgogne tot Rioja, van champagne tot Nederlandse mousserende wijn. Het menu verandert mee met de seizoenen, maar de aandacht voor detail blijft altijd hetzelfde."
-                : "Our sommelier pairs each course with a carefully considered wine - from Burgundy to Rioja, from champagne to Dutch sparkling. The menu shifts with the seasons, but the attention to detail never wavers."}
+                ? "Zijn gerechten brachten hem zelfs in de keukens van Bollywoodsterren zoals Amitabh Bachchan. Vandaag zetten wij zijn passie voort - samen met zijn zonen is het eindelijk tijd voor iets van onszelf: The Tandoor Company."
+                : "His dishes even carried him into the kitchens of Bollywood stars such as Amitabh Bachchan. Today we continue his passion - together with his sons, it is finally time for something of our own: The Tandoor Company."}
             </p>
             <p className="mt-4 text-sm leading-8 text-slate-600 dark:text-slate-300 sm:text-base">
               {nl
-                ? "Naast onze dagelijkse gasten organiseren wij privé-evenementen, bruiloftsrecepties, zakelijke diners en bedrijfscatering - omdat gastvrijheid volgens ons overal thuishoort waar mensen iets bijzonders willen vieren."
-                : "Beyond nightly diners, we host private events, wedding receptions, corporate dinners and daily company catering - because hospitality, we believe, belongs wherever people want to celebrate something meaningful."}
+                ? "Naast onze dagelijkse gasten organiseren wij privé-evenementen, bruiloftsrecepties, zakelijke diners en bedrijfscatering - omdat de rijke smaken van India volgens ons overal thuishoren waar mensen iets bijzonders willen vieren."
+                : "Beyond nightly diners, we host private events, wedding receptions, corporate dinners and daily company catering - because the rich flavours of India, we believe, belong wherever people want to celebrate something meaningful."}
             </p>
           </div>
         </article>
@@ -136,7 +136,8 @@ export default function AboutPage() {
 
       {/* Quote */}
       <section className="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
-        <figure className="rounded-[2rem] border border-emerald-500/20 bg-gradient-to-br from-[#171208] via-[#221a0c] to-[#2c2110] p-8 text-center text-white sm:p-12">
+        <figure className="relative overflow-hidden rounded-[2rem] border border-emerald-500/20 bg-gradient-to-br from-emerald-950 via-[#241204] to-[#170d04] p-8 text-center text-white shadow-2xl shadow-emerald-900/30 sm:p-12">
+          <div className="spice-dots pointer-events-none absolute inset-0 opacity-25" />
           <span className="mx-auto flex justify-center text-amber-300">
             {[1, 2, 3, 4, 5].map((s) => (
               <FaStar key={s} className="text-sm" />
@@ -144,11 +145,11 @@ export default function AboutPage() {
           </span>
           <blockquote className="font-display mt-4 text-lg italic leading-8 text-stone-100 sm:text-xl">
             {nl
-              ? "“Elke gast is een uitgenodigde vriend. Onze taak is niet alleen om ze te voeden, maar om ze het gevoel te geven dat de avond helemaal om hen draait.”"
-              : "“Every guest is an invited friend. Our job isn't just to feed them - it's to make them feel the whole evening was built around them.”"}
+              ? "“Goed eten begint met passie, traditie en aandacht voor detail. Elke gast is een uitgenodigde vriend aan onze familietafel.”"
+              : "“Good food begins with passion, tradition and attention to detail. Every guest is an invited friend at our family table.”"}
           </blockquote>
           <figcaption className="mt-5 text-xs uppercase tracking-[0.3em] text-emerald-300/90">
-            - The Maison
+            - The Tandoor Company
           </figcaption>
         </figure>
       </section>

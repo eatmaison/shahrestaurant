@@ -29,22 +29,22 @@ export default function ForgotPasswordPage() {
   return (
     <div className="mx-auto flex min-h-[60vh] max-w-md flex-col justify-center px-4 py-16">
       {sent ? (
-        <div className="rounded-3xl border border-slate-200 bg-white p-8 text-center dark:border-white/10 dark:bg-white/5">
-          <span className="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-emerald-500/15 text-2xl text-emerald-600 dark:text-emerald-400">
+        <div className="card-lux animate-fade-up rounded-3xl p-8 text-center shadow-xl shadow-emerald-900/10">
+          <span className="animate-pop mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-emerald-500/15 text-2xl text-emerald-600 dark:text-emerald-400">
             <FaCircleCheck />
           </span>
-          <h1 className="mt-5 text-xl font-black text-slate-900 dark:text-white">{t.email.forgotTitle}</h1>
+          <h1 className="font-display mt-5 text-xl font-bold text-slate-900 dark:text-white">{t.email.forgotTitle}</h1>
           <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">{t.email.forgotSent}</p>
           <Link href="/account" className="mt-6 inline-flex rounded-full bg-emerald-600 px-6 py-3 text-sm font-bold text-white transition hover:bg-emerald-500">
             {t.email.backToSignIn}
           </Link>
         </div>
       ) : (
-        <div className="rounded-3xl border border-slate-200 bg-white p-8 dark:border-white/10 dark:bg-white/5">
+        <div className="card-lux animate-fade-up rounded-3xl p-8 shadow-xl shadow-emerald-900/10">
           <span className="grid h-12 w-12 place-items-center rounded-2xl bg-emerald-500/10 text-xl text-emerald-600 dark:text-emerald-400">
             <FaEnvelope />
           </span>
-          <h1 className="mt-4 text-xl font-black text-slate-900 dark:text-white">{t.email.forgotTitle}</h1>
+          <h1 className="font-display mt-4 text-xl font-bold text-slate-900 dark:text-white">{t.email.forgotTitle}</h1>
           <p className="mt-1.5 text-sm text-slate-600 dark:text-slate-400">{t.email.forgotText}</p>
           <input
             type="email"
@@ -57,7 +57,7 @@ export default function ForgotPasswordPage() {
           <button
             onClick={submit}
             disabled={loading}
-            className="mt-4 w-full rounded-full bg-emerald-600 py-3 text-sm font-bold text-white transition hover:bg-emerald-500 disabled:opacity-60"
+            className="btn-shine mt-4 w-full rounded-full bg-gradient-to-r from-emerald-600 via-emerald-500 to-emerald-600 bg-[length:200%_auto] py-3 text-sm font-bold text-white shadow-lg shadow-emerald-600/25 transition-all duration-300 hover:bg-right disabled:opacity-60"
           >
             {t.email.forgotSubmit}
           </button>

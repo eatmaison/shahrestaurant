@@ -14,8 +14,8 @@ export default function BirthdaysPage() {
     serviceType: nl ? "Verjaardagscatering en privéfeesten" : "Birthday & private party catering",
     provider: {
       "@type": "Restaurant",
-      name: "The Maison",
-      "@id": "https://themaison.nl/#restaurant",
+      name: "The Tandoor Company",
+      "@id": "https://thetandoorcompany.nl/#restaurant",
       address: {
         "@type": "PostalAddress",
         streetAddress: "Klaprozenweg 36a",
@@ -27,10 +27,10 @@ export default function BirthdaysPage() {
     },
     areaServed: { "@type": "City", name: "Amsterdam" },
     audience: { "@type": "PeopleAudience", audienceType: "Private groups up to 100 guests" },
-    url: "https://themaison.nl/events/birthdays",
+    url: "https://thetandoorcompany.nl/events/birthdays",
     description: nl
-      ? "Verjaardagen, jubilea en privéfeesten bij The Maison Amsterdam - gepersonaliseerd menu, kaarslicht en toegewijde service."
-      : "Birthdays, anniversaries and private parties at The Maison Amsterdam - personalised menus, candlelight and dedicated service.",
+      ? "Verjaardagen, jubilea en privéfeesten bij The Tandoor Company Amsterdam - gepersonaliseerd Indiaas menu, warme sfeer en toegewijde service."
+      : "Birthdays, anniversaries and private parties at The Tandoor Company Amsterdam - personalised Indian menus, warm ambiance and dedicated service.",
     offers: {
       "@type": "AggregateOffer",
       priceCurrency: "EUR",
@@ -47,8 +47,8 @@ export default function BirthdaysPage() {
       title: nl ? "Intieme verjaardag (4–20)" : "Intimate birthday (4–20)",
       price: nl ? "vanaf €42 p.p." : "from €42 p.p.",
       features: [
-        nl ? "Driegangenmenu met keuze" : "Three-course tasting menu with choice",
-        nl ? "Wijnarrangement optioneel" : "Optional wine pairing",
+        nl ? "Driegangen Indiaas menu met keuze" : "Three-course Indian menu with choice",
+        nl ? "Wijn- of lassi-arrangement optioneel" : "Optional wine or lassi pairing",
         nl ? "Persoonlijke welkomstkaart" : "Personal welcome card",
       ],
     },
@@ -58,7 +58,7 @@ export default function BirthdaysPage() {
       price: nl ? "vanaf €62 p.p." : "from €62 p.p.",
       features: [
         nl ? "Half-privé sectie in de zaal" : "Semi-private section of the dining room",
-        nl ? "Meergangen chef's menu" : "Multi-course chef's menu",
+        nl ? "Meergangen tandoori feestmenu" : "Multi-course tandoori feast menu",
         nl ? "Gepersonaliseerd menu met naam" : "Custom menu card with the guest's name",
       ],
     },
@@ -68,7 +68,7 @@ export default function BirthdaysPage() {
       price: nl ? "vanaf €72 p.p." : "from €72 p.p.",
       features: [
         nl ? "Volledige zaal exclusief voor u" : "Full venue buyout",
-        nl ? "Vijfgangen tastingmenu" : "Five-course tasting menu",
+        nl ? "Uitgebreid Indiaas buffet of vijfgangenmenu" : "Extensive Indian buffet or five-course menu",
         nl ? "Toespraakregeling en podium" : "Speech coordination and stage setup",
       ],
     },
@@ -149,7 +149,7 @@ export default function BirthdaysPage() {
 
       {/* Hero */}
       <section className="relative overflow-hidden">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_60%_at_50%_0%,rgba(195,144,61,0.14),transparent_65%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_60%_at_50%_0%,rgba(217,126,38,0.16),transparent_65%)]" />
         <div className="relative mx-auto max-w-3xl px-4 pb-4 pt-14 text-center sm:px-6 lg:pt-20">
           <span className="lux-overline inline-flex items-center gap-3 text-emerald-600 dark:text-emerald-400">
             <span className="h-px w-10 bg-emerald-500/60" /> {nl ? "Verjaardagen & feesten" : "Birthdays & parties"}{" "}
@@ -157,13 +157,13 @@ export default function BirthdaysPage() {
           </span>
           <h1 className="font-display mt-5 text-4xl font-semibold tracking-tight text-slate-900 dark:text-white sm:text-5xl">
             {nl
-              ? "Vier uw verjaardag bij The Maison Amsterdam"
-              : "Celebrate your birthday at The Maison Amsterdam"}
+              ? "Vier uw verjaardag bij The Tandoor Company"
+              : "Celebrate your birthday at The Tandoor Company"}
           </h1>
           <p className="mt-5 text-base leading-8 text-slate-600 dark:text-slate-300">
             {nl
-              ? "Mijlpaal-verjaardagen, jubilea, diploma-uitreikingen en privéfeesten - met een gepersonaliseerd menu, kaarslicht en service die uw gasten nog jaren zullen onthouden. Groepen van 2 tot 100 personen."
-              : "Milestone birthdays, anniversaries, graduations and private parties - with personalised menus, candlelight and service your guests will remember for years. Groups from 2 to 100."}
+              ? "Mijlpaal-verjaardagen, jubilea, diploma-uitreikingen en privéfeesten - met een gepersonaliseerd Indiaas menu, de gloed van de tandoor en service die uw gasten nog jaren zullen onthouden. Groepen van 4 tot 100 personen."
+              : "Milestone birthdays, anniversaries, graduations and private parties - with personalised Indian menus, the glow of the tandoor and service your guests will remember for years. Groups from 4 to 100."}
           </p>
         </div>
       </section>
@@ -209,7 +209,7 @@ export default function BirthdaysPage() {
       <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <span className="lux-overline text-emerald-600 dark:text-emerald-400">
-            {nl ? "Waarom The Maison" : "Why The Maison"}
+            {nl ? "Waarom The Tandoor Company" : "Why The Tandoor Company"}
           </span>
           <h2 className="font-display mt-3 text-2xl font-semibold text-slate-900 dark:text-white sm:text-3xl">
             {nl ? "Uw feest, tot in de kleinste details" : "Your celebration, down to the smallest detail"}

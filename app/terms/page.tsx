@@ -17,7 +17,7 @@ const CONTENT: Record<"en" | "nl", { title: string; updated: string; intro: stri
     title: "Terms & Conditions",
     updated: "Last updated: 9 July 2026",
     intro:
-      "These terms and conditions apply to all orders and reservations placed through themaison.nl, operated by The Maison, Klaprozenweg 36a, 1032 KL Amsterdam, the Netherlands. By placing an order or reservation you agree to these terms.",
+      "These terms and conditions apply to all orders and reservations placed through thetandoorcompany.nl, operated by The Tandoor Company, Klaprozenweg 36a, 1032 KL Amsterdam, the Netherlands. By placing an order or reservation you agree to these terms.",
     sections: [
       {
         title: "1. Orders & delivery",
@@ -41,7 +41,7 @@ const CONTENT: Record<"en" | "nl", { title: string; updated: string; intro: stri
         title: "3. Right of withdrawal",
         body: [
           "Under EU consumer law (Directive 2011/83/EU), the right of withdrawal does not apply to freshly prepared food and other perishable goods. Once an order has been prepared, it cannot be cancelled or returned.",
-          "If your order is wrong or unsatisfactory, contact us at info@themaison.nl or +31 20 341 2995 and we will find a fair solution.",
+          "If your order is wrong or unsatisfactory, contact us at info@thetandoorcompany.nl or +31 20 341 2995 and we will find a fair solution.",
         ],
       },
       {
@@ -84,7 +84,7 @@ const CONTENT: Record<"en" | "nl", { title: string; updated: string; intro: stri
     title: "Algemene Voorwaarden",
     updated: "Laatst bijgewerkt: 9 juli 2026",
     intro:
-      "Deze algemene voorwaarden zijn van toepassing op alle bestellingen en reserveringen via themaison.nl, geëxploiteerd door The Maison, Klaprozenweg 36a, 1032 KL Amsterdam, Nederland. Door een bestelling of reservering te plaatsen gaat u akkoord met deze voorwaarden.",
+      "Deze algemene voorwaarden zijn van toepassing op alle bestellingen en reserveringen via thetandoorcompany.nl, geëxploiteerd door The Tandoor Company, Klaprozenweg 36a, 1032 KL Amsterdam, Nederland. Door een bestelling of reservering te plaatsen gaat u akkoord met deze voorwaarden.",
     sections: [
       {
         title: "1. Bestellingen & bezorging",
@@ -108,7 +108,7 @@ const CONTENT: Record<"en" | "nl", { title: string; updated: string; intro: stri
         title: "3. Herroepingsrecht",
         body: [
           "Op grond van het Europese consumentenrecht (Richtlijn 2011/83/EU) geldt het herroepingsrecht niet voor vers bereide maaltijden en andere bederfelijke goederen. Zodra een bestelling is bereid, kan deze niet worden geannuleerd of geretourneerd.",
-          "Is uw bestelling onjuist of niet naar wens? Neem contact op via info@themaison.nl of +31 20 341 2995 en wij zoeken een passende oplossing.",
+          "Is uw bestelling onjuist of niet naar wens? Neem contact op via info@thetandoorcompany.nl of +31 20 341 2995 en wij zoeken een passende oplossing.",
         ],
       },
       {
@@ -154,10 +154,14 @@ export default function TermsPage() {
   const c = CONTENT[lang];
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
-      <h1 className="text-3xl font-black text-slate-900 dark:text-white">{c.title}</h1>
-      <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">{c.updated}</p>
-      <p className="mt-6 text-sm leading-7 text-slate-600 dark:text-slate-300">{c.intro}</p>
+    <div className="relative mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-64 bg-[radial-gradient(60%_100%_at_50%_0%,rgba(217,126,38,0.10),transparent_70%)]" />
+      <span className="lux-overline relative inline-flex items-center gap-2 text-emerald-600 dark:text-emerald-400">
+        <span className="ornament-gem" aria-hidden /> The Tandoor Company
+      </span>
+      <h1 className="font-display relative mt-3 text-3xl font-semibold text-slate-900 dark:text-white">{c.title}</h1>
+      <p className="relative mt-2 text-sm text-slate-500 dark:text-slate-400">{c.updated}</p>
+      <p className="relative mt-6 text-sm leading-7 text-slate-600 dark:text-slate-300">{c.intro}</p>
       {c.sections.map((s) => (
         <section key={s.title} className="mt-8">
           <h2 className="text-lg font-bold text-slate-900 dark:text-white">{s.title}</h2>

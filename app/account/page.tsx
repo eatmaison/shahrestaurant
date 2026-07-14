@@ -477,7 +477,7 @@ export default function AccountPage() {
   /* Auth form */
   return (
     <div className="mx-auto flex max-w-md flex-col px-4 py-12 sm:px-6">
-      <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-xl shadow-slate-900/5 dark:border-white/10 dark:bg-[#161006] sm:p-8">
+      <div className="card-lux rounded-3xl p-6 shadow-xl shadow-emerald-900/10 sm:p-8">
         <div className="mb-6 flex rounded-full bg-slate-100 p-1 dark:bg-white/5">
           <button
             onClick={() => { setMode("login"); setError(""); }}
@@ -493,7 +493,7 @@ export default function AccountPage() {
           </button>
         </div>
 
-        <h1 className="text-xl font-black text-slate-900 dark:text-white">
+        <h1 className="font-display text-xl font-bold text-slate-900 dark:text-white">
           {mode === "login" ? t.auth.loginTitle : t.auth.registerTitle}
         </h1>
 
@@ -598,7 +598,7 @@ export default function AccountPage() {
 
         <button
           onClick={submit}
-          className="mt-5 w-full rounded-full bg-emerald-600 py-3 text-sm font-bold text-white transition hover:bg-emerald-500"
+          className="btn-shine mt-5 w-full rounded-full bg-gradient-to-r from-emerald-600 via-emerald-500 to-emerald-600 bg-[length:200%_auto] py-3 text-sm font-bold text-white shadow-lg shadow-emerald-600/25 transition-all duration-300 hover:bg-right"
         >
           {mode === "login" ? t.auth.loginButton : t.auth.registerButton}
         </button>

@@ -44,12 +44,15 @@ CREATE TABLE IF NOT EXISTS products (
   category             text        NOT NULL,
   name                 text        NOT NULL,
   description          text        NOT NULL DEFAULT '',
+  description_nl       text        NOT NULL DEFAULT '',
   price                numeric(10, 2) NOT NULL,
   image                text,
   -- { "en": "...", "nl": "..." } for the "Read more" popup
   detailed_description jsonb,
   ingredients          text[]      NOT NULL DEFAULT '{}',
+  ingredients_nl       text[]      NOT NULL DEFAULT '{}',
   allergens            text[]      NOT NULL DEFAULT '{}',
+  allergens_nl         text[]      NOT NULL DEFAULT '{}',
   created_at           timestamptz NOT NULL DEFAULT now()
 );
 

@@ -66,10 +66,10 @@ function PaymentCompleteInner() {
         </>
       ) : paid ? (
         <>
-          <span className="grid h-16 w-16 place-items-center rounded-2xl bg-emerald-500/15 text-3xl text-emerald-600 dark:text-emerald-400">
+          <span className="animate-pop grid h-16 w-16 place-items-center rounded-2xl bg-emerald-500/15 text-3xl text-emerald-600 shadow-[0_0_30px_rgba(217,126,38,0.3)] dark:text-emerald-400">
             {isVip ? <FaCrown /> : <FaCircleCheck />}
           </span>
-          <h1 className="mt-6 text-2xl font-black text-slate-900 dark:text-white">{t.pay.success}</h1>
+          <h1 className="font-display mt-6 text-2xl font-bold text-slate-900 dark:text-white">{t.pay.success}</h1>
           <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
             {isVip ? t.pay.vipActivated : t.pay.orderConfirmed}
           </p>
@@ -79,7 +79,7 @@ function PaymentCompleteInner() {
             </p>
           )}
           <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <Link href="/account" className="rounded-full bg-emerald-600 px-6 py-3 text-sm font-bold text-white transition hover:bg-emerald-500">
+            <Link href="/account" className="btn-shine rounded-full bg-gradient-to-r from-emerald-600 via-emerald-500 to-emerald-600 bg-[length:200%_auto] px-6 py-3 text-sm font-bold text-white shadow-lg shadow-emerald-600/25 transition-all duration-300 hover:bg-right">
               {isVip ? t.pay.goToAccount : t.pay.viewOrders}
             </Link>
             <Link href="/order" className="rounded-full border border-slate-200 px-6 py-3 text-sm font-bold text-slate-700 transition hover:bg-slate-100 dark:border-white/10 dark:text-slate-200 dark:hover:bg-white/10">

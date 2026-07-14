@@ -17,7 +17,7 @@ const CONTENT: Record<"en" | "nl", { title: string; updated: string; intro: stri
     title: "Privacy Policy",
     updated: "Last updated: 9 July 2026",
     intro:
-      "The Maison, located at Klaprozenweg 36a, 1032 KL Amsterdam, the Netherlands (\"we\", \"us\"), is responsible for the processing of personal data as described in this privacy policy. We process your data in accordance with the General Data Protection Regulation (GDPR / AVG). Contact: info@themaison.nl, +31 20 341 2995.",
+      "The Tandoor Company, located at Klaprozenweg 36a, 1032 KL Amsterdam, the Netherlands (\"we\", \"us\"), is responsible for the processing of personal data as described in this privacy policy. We process your data in accordance with the General Data Protection Regulation (GDPR / AVG). Contact: info@thetandoorcompany.nl, +31 20 341 2995.",
     sections: [
       {
         title: "1. What data we collect",
@@ -73,7 +73,7 @@ const CONTENT: Record<"en" | "nl", { title: string; updated: string; intro: stri
         title: "7. Your rights",
         body: [
           "Under the GDPR you have the right to access, rectify, erase, restrict and port your personal data, and the right to object to processing.",
-          "To exercise these rights, e-mail us at info@themaison.nl. We will respond within one month.",
+          "To exercise these rights, e-mail us at info@thetandoorcompany.nl. We will respond within one month.",
           "You also have the right to lodge a complaint with the Dutch supervisory authority: Autoriteit Persoonsgegevens (autoriteitpersoonsgegevens.nl).",
         ],
       },
@@ -95,7 +95,7 @@ const CONTENT: Record<"en" | "nl", { title: string; updated: string; intro: stri
     title: "Privacybeleid",
     updated: "Laatst bijgewerkt: 9 juli 2026",
     intro:
-      "The Maison, gevestigd aan Klaprozenweg 36a, 1032 KL Amsterdam, Nederland (\"wij\", \"ons\"), is verantwoordelijk voor de verwerking van persoonsgegevens zoals beschreven in dit privacybeleid. Wij verwerken uw gegevens in overeenstemming met de Algemene Verordening Gegevensbescherming (AVG). Contact: info@themaison.nl, +31 20 341 2995.",
+      "The Tandoor Company, gevestigd aan Klaprozenweg 36a, 1032 KL Amsterdam, Nederland (\"wij\", \"ons\"), is verantwoordelijk voor de verwerking van persoonsgegevens zoals beschreven in dit privacybeleid. Wij verwerken uw gegevens in overeenstemming met de Algemene Verordening Gegevensbescherming (AVG). Contact: info@thetandoorcompany.nl, +31 20 341 2995.",
     sections: [
       {
         title: "1. Welke gegevens wij verzamelen",
@@ -151,7 +151,7 @@ const CONTENT: Record<"en" | "nl", { title: string; updated: string; intro: stri
         title: "7. Uw rechten",
         body: [
           "Op grond van de AVG heeft u recht op inzage, rectificatie, verwijdering, beperking en overdraagbaarheid van uw persoonsgegevens, en het recht om bezwaar te maken tegen verwerking.",
-          "Om deze rechten uit te oefenen kunt u mailen naar info@themaison.nl. Wij reageren binnen één maand.",
+          "Om deze rechten uit te oefenen kunt u mailen naar info@thetandoorcompany.nl. Wij reageren binnen één maand.",
           "U heeft ook het recht een klacht in te dienen bij de Autoriteit Persoonsgegevens (autoriteitpersoonsgegevens.nl).",
         ],
       },
@@ -176,10 +176,14 @@ export default function PrivacyPage() {
   const c = CONTENT[lang];
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
-      <h1 className="text-3xl font-black text-slate-900 dark:text-white">{c.title}</h1>
-      <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">{c.updated}</p>
-      <p className="mt-6 text-sm leading-7 text-slate-600 dark:text-slate-300">{c.intro}</p>
+    <div className="relative mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-64 bg-[radial-gradient(60%_100%_at_50%_0%,rgba(217,126,38,0.10),transparent_70%)]" />
+      <span className="lux-overline relative inline-flex items-center gap-2 text-emerald-600 dark:text-emerald-400">
+        <span className="ornament-gem" aria-hidden /> The Tandoor Company
+      </span>
+      <h1 className="font-display relative mt-3 text-3xl font-semibold text-slate-900 dark:text-white">{c.title}</h1>
+      <p className="relative mt-2 text-sm text-slate-500 dark:text-slate-400">{c.updated}</p>
+      <p className="relative mt-6 text-sm leading-7 text-slate-600 dark:text-slate-300">{c.intro}</p>
       {c.sections.map((s) => (
         <section key={s.title} className="mt-8">
           <h2 className="text-lg font-bold text-slate-900 dark:text-white">{s.title}</h2>

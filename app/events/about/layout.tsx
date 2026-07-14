@@ -3,30 +3,30 @@ import type { Metadata } from "next";
 const url = "/events/about";
 
 export const metadata: Metadata = {
-  title: "About The Maison Amsterdam - Fine Dining Restaurant Story",
+  title: "About The Tandoor Company Amsterdam - A Family Story of Indian Cuisine",
   description:
-    "Meet the team behind The Maison Amsterdam: a fine dining restaurant in Amsterdam-Noord where classical European cuisine meets refined seasonal cooking, impeccable service and evening ambiance.",
+    "Meet the family behind The Tandoor Company Amsterdam: 32+ years of hospitality experience, five-star hotel kitchens in India and a passion for authentic tandoori cooking in Amsterdam-Noord.",
   keywords: [
-    "about The Maison",
-    "restaurant Amsterdam Noord",
-    "fine dining Klaprozenweg",
-    "chef Amsterdam",
+    "about The Tandoor Company",
+    "Indian restaurant Amsterdam Noord",
+    "tandoori Klaprozenweg",
+    "Indian chef Amsterdam",
     "restaurant story Amsterdam",
-    "The Maison team",
-    "elegant restaurant Amsterdam",
+    "The Tandoor Company family",
+    "authentic Indian restaurant Amsterdam",
   ],
   alternates: { canonical: url },
   openGraph: {
-    title: "About The Maison Amsterdam",
+    title: "About The Tandoor Company Amsterdam",
     description:
-      "The story, the team and the philosophy behind fine dining at The Maison, Amsterdam-Noord.",
+      "The family story, the kitchen and the passion behind authentic Indian cuisine at The Tandoor Company, Amsterdam-Noord.",
     url,
     type: "article",
   },
   twitter: {
     card: "summary_large_image",
-    title: "About The Maison Amsterdam",
-    description: "The story behind our fine dining restaurant in Amsterdam-Noord.",
+    title: "About The Tandoor Company Amsterdam",
+    description: "The family story behind our authentic Indian restaurant in Amsterdam-Noord.",
   },
 };
 

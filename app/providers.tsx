@@ -197,7 +197,7 @@ function readJSON<T>(key: string, fallback: T): T {
 export function Providers({ children }: { children: ReactNode }) {
   const [hydrated, setHydrated] = useState(false);
 
-  const [theme, setTheme] = useState<Theme>("light");
+  const [theme, setTheme] = useState<Theme>("dark");
   const [lang, setLangState] = useState<Lang>("nl");
 
   const [products, setProducts] = useState<Product[]>(SEED_PRODUCTS);
@@ -238,7 +238,6 @@ export function Providers({ children }: { children: ReactNode }) {
     setCart(readJSON<Record<string, number>>(LS.cart, {}));
     refresh().finally(() => setHydrated(true));
   }, [refresh]);
-
   // Apply + persist theme.
   useEffect(() => {
     if (!hydrated) return;

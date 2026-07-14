@@ -28,7 +28,10 @@ export interface Product {
   brand: Brand;
   category: Category;
   name: string;
+  /** Short card description (English / default). */
   description: string;
+  /** Short card description in Dutch (falls back to `description` when empty). */
+  descriptionNl?: string;
   price: number;
   /** Optional image as a data URL or public path */
   image?: string;
@@ -37,10 +40,14 @@ export interface Product {
     en: string;
     nl: string;
   };
-  /** Ingredients list */
+  /** Ingredients list (English / default) */
   ingredients?: string[];
-  /** Allergen information */
+  /** Ingredients list in Dutch (falls back to `ingredients` when empty) */
+  ingredientsNl?: string[];
+  /** Allergen information (English / default) */
   allergens?: string[];
+  /** Allergen information in Dutch (falls back to `allergens` when empty) */
+  allergensNl?: string[];
 }
 
 export type Role = "user" | "admin";
@@ -159,7 +166,7 @@ export interface Review {
 /** Lifecycle of a table reservation. */
 export type ReservationStatus = "pending" | "confirmed" | "declined" | "cancelled";
 
-/** A table reservation at The Maison. */
+/** A table reservation at the restaurant. */
 export interface Reservation {
   id: string;
   /** Human-readable sequential number shown to the guest and admin (RSV-501...). */

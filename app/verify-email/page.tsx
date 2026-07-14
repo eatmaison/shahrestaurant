@@ -43,12 +43,12 @@ function VerifyEmailInner() {
         </>
       ) : status === "ok" ? (
         <>
-          <span className="grid h-16 w-16 place-items-center rounded-2xl bg-emerald-500/15 text-3xl text-emerald-600 dark:text-emerald-400">
+          <span className="animate-pop grid h-16 w-16 place-items-center rounded-2xl bg-emerald-500/15 text-3xl text-emerald-600 shadow-[0_0_30px_rgba(217,126,38,0.3)] dark:text-emerald-400">
             <FaCircleCheck />
           </span>
-          <h1 className="mt-6 text-2xl font-black text-slate-900 dark:text-white">{t.email.verifySuccess}</h1>
+          <h1 className="font-display mt-6 text-2xl font-bold text-slate-900 dark:text-white">{t.email.verifySuccess}</h1>
           <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">{t.email.verifySuccessText}</p>
-          <Link href="/account" className="mt-8 rounded-full bg-emerald-600 px-6 py-3 text-sm font-bold text-white transition hover:bg-emerald-500">
+          <Link href="/account" className="btn-shine mt-8 rounded-full bg-gradient-to-r from-emerald-600 via-emerald-500 to-emerald-600 bg-[length:200%_auto] px-6 py-3 text-sm font-bold text-white shadow-lg shadow-emerald-600/25 transition-all duration-300 hover:bg-right">
             {t.email.goToAccount}
           </Link>
         </>

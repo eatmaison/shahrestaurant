@@ -402,7 +402,7 @@ export async function placeOrder(details: {
   const { base, webhookUrl } = paymentUrls(origin);
   const payment = await createMolliePayment({
     amount: total,
-    description: "The Maison order",
+    description: "The Tandoor Company order",
     redirectUrl: `${base}/pay/complete?p=${recordId}`,
     webhookUrl,
     metadata: { p: recordId, kind: "order" },
@@ -531,19 +531,22 @@ export async function addProduct(p: Omit<Product, "id">): Promise<Product> {
   await requireAdmin();
   const id = `p-${Math.random().toString(36).slice(2, 10)}${Date.now().toString(36)}`;
   const rows = (await sql.query(
-    `INSERT INTO products (id, brand, category, name, description, price, image, detailed_description, ingredients, allergens)
-     VALUES ($1,$2,$3,$4,$5,$6,$7,$8::jsonb,$9::text[],$10::text[]) RETURNING *`,
+    `INSERT INTO products (id, brand, category, name, description, description_nl, price, image, detailed_description, ingredients, ingredients_nl, allergens, allergens_nl)
+     VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9::jsonb,$10::text[],$11::text[],$12::text[],$13::text[]) RETURNING *`,
     [
       id,
       p.brand,
       p.category,
       p.name,
       p.description,
+      p.descriptionNl ?? "",
       p.price,
       p.image ?? null,
       p.detailedDescription ? JSON.stringify(p.detailedDescription) : null,
       p.ingredients ?? [],
+      p.ingredientsNl ?? [],
       p.allergens ?? [],
+      p.allergensNl ?? [],
     ]
   )) as any[];
   return rowToProduct(rows[0]);
@@ -556,19 +559,22 @@ export async function updateProduct(id: string, patch: Partial<Omit<Product, "id
   const cur = rowToProduct(rows[0]);
   const next = { ...cur, ...patch };
   await sql.query(
-    `UPDATE products SET brand=$2, category=$3, name=$4, description=$5, price=$6, image=$7,
-       detailed_description=$8::jsonb, ingredients=$9::text[], allergens=$10::text[] WHERE id=$1`,
+    `UPDATE products SET brand=$2, category=$3, name=$4, description=$5, description_nl=$6, price=$7, image=$8,
+       detailed_description=$9::jsonb, ingredients=$10::text[], ingredients_nl=$11::text[], allergens=$12::text[], allergens_nl=$13::text[] WHERE id=$1`,
     [
       id,
       next.brand,
       next.category,
       next.name,
       next.description,
+      next.descriptionNl ?? "",
       next.price,
       next.image ?? null,
       next.detailedDescription ? JSON.stringify(next.detailedDescription) : null,
       next.ingredients ?? [],
+      next.ingredientsNl ?? [],
       next.allergens ?? [],
+      next.allergensNl ?? [],
     ]
   );
 }
@@ -765,8 +771,8 @@ export async function createReservation(data: {
   const email = (data.email ?? currentUser?.email ?? "").trim().toLowerCase();
 
   const rows = (await sql.query(
-    `INSERT INTO reservations (user_id, guest_name, email, phone, date, time, guests, occasion, note)
-     VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9) RETURNING *`,
+    `INSERT INTO reservations (user_id, guest_name, email, phone, date, time, guests, occasion, note, site)
+     VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) RETURNING *`,
     [
       currentUser?.id ?? null,
       guestName,
@@ -777,6 +783,7 @@ export async function createReservation(data: {
       guests,
       data.occasion?.trim() ?? "",
       data.note?.trim() || null,
+      SITE_ID,
     ]
   )) as any[];
 
@@ -846,7 +853,7 @@ export async function buyVip(origin?: string): Promise<{ ok: boolean; checkoutUr
   const { base, webhookUrl } = paymentUrls(origin);
   const payment = await createMolliePayment({
     amount: VIP_SALE_PRICE,
-    description: "The Maison VIP membership",
+    description: "The Tandoor Company VIP membership",
     redirectUrl: `${base}/pay/complete?p=${recordId}`,
     webhookUrl,
     metadata: { p: recordId, kind: "vip" },

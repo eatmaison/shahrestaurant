@@ -24,11 +24,11 @@ export const CATEGORY_ORDER: Category[] = ["Wraps", "Burgers", "Pizzas", "Drinks
 
 /**
  * Which website this deployment is. The database is shared across the whole
- * restaurant group (eattogo / themaison / future sites), so rows created here
+ * restaurant group (eattogo / themaison / tandoor), so rows created here
  * are tagged with this id - e.g. reviews are shown only on the site they were
  * written on. Each sister site sets its own value.
  */
-export const SITE_ID = "themaison";
+export const SITE_ID = "tandoor";
 
 /** Ordered fulfilment lifecycle used to advance and display order status. */
 export const ORDER_STATUS_FLOW = ["new", "preparing", "delivery", "delivered"] as const;

@@ -12,8 +12,10 @@ import {
   FaCircleExclamation,
   FaClock,
   FaLocationDot,
+  FaLock,
   FaMinus,
   FaPlus,
+  FaStar,
   FaStore,
   FaTrash,
   FaTruck,
@@ -32,6 +34,7 @@ import {
   isPostcodeInDeliveryArea,
   isValidDutchPostcode,
   MIN_ORDER,
+  POINTS_EARN_EVERY,
   VIP_DISCOUNT_PCT,
 } from "../lib/data";
 import { nextOpening } from "../lib/openingHours";
@@ -41,8 +44,8 @@ export default function OrderPage() {
   const { t, lang } = useLang();
   const { products, brands, cart, addToCart, removeFromCart, currentUser, placeOrder } = useStore();
 
-  const [activeBrand, setActiveBrand] = useState<Brand>("eattogo");
-  const [activeCategory, setActiveCategory] = useState<Category>("Wraps");
+  const [activeBrand, setActiveBrand] = useState<Brand>("tandoor");
+  const [activeCategory, setActiveCategory] = useState<Category>("Soups");
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [form, setForm] = useState({
     name: currentUser?.name ?? "",
@@ -103,6 +106,12 @@ export default function OrderPage() {
   /** The active restaurant's admin-managed config (safe fallback while loading). */
   const activeBrandCfg = brands.find((b) => b.id === activeBrand) ?? brands[0];
 
+  /** House brand (this website's restaurant) always listed first in the switcher. */
+  const sortedBrands = useMemo(
+    () => [...brands].sort((a, b) => (a.id === "tandoor" ? -1 : b.id === "tandoor" ? 1 : 0)),
+    [brands]
+  );
+
   // Keep the selected restaurant/category valid when the admin edits menus.
   useEffect(() => {
     if (brands.length === 0) return;
@@ -152,6 +161,8 @@ export default function OrderPage() {
   const total = cartLines.length > 0 ? +(payableBeforePoints - pointsUsed + delivery).toFixed(2) : 0;
   const itemCount = cartLines.reduce((sum, l) => sum + l.qty, 0);
   const belowMinOrder = cartLines.length > 0 && subtotal < minOrder;
+  // Loyalty points this order will earn (1 point per €10 actually paid, matching the server).
+  const pointsToEarn = Math.floor(Math.max(0, payableBeforePoints - pointsUsed) / POINTS_EARN_EVERY);
 
   // Live delivery-area status for the postcode field.
   // "empty" while the user hasn't entered enough, "ok" when inside our area,
@@ -296,21 +307,40 @@ export default function OrderPage() {
   );
 
   const ProductsGrid = () => (
-    <div className="grid gap-3 grid-cols-2 sm:grid-cols-4 lg:grid-cols-2">
+    <div key={`${activeBrand}-${activeCategory}`} className="grid gap-3 grid-cols-2 sm:grid-cols-4 lg:grid-cols-2">
       {visible.map((p) => {
         const qty = cart[p.id] || 0;
         const Icon = categoryIconFor(brands, p.category);
         return (
           <article
             key={p.id}
-            className="animate-fade-up flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white transition hover:-translate-y-0.5 hover:shadow-lg dark:border-white/10 dark:bg-white/5"
+            className={`glow-card animate-fade-up group flex flex-col overflow-hidden rounded-2xl border bg-white dark:bg-white/5 ${
+              qty > 0
+                ? "border-emerald-500/60 ring-1 ring-emerald-500/40 shadow-lg shadow-emerald-600/10"
+                : "border-slate-200 dark:border-white/10"
+            }`}
           >
-            <div className="relative aspect-[4/3] w-full overflow-hidden bg-gradient-to-br from-emerald-500/10 to-sky-500/10">
+            <div className="dish-img relative aspect-[4/3] w-full overflow-hidden bg-gradient-to-br from-emerald-500/15 via-emerald-400/5 to-emerald-600/10">
               {p.image ? (
-                <img src={p.image} alt={p.name} className="h-full w-full object-cover" />
+                <img src={p.image} alt={p.name} loading="lazy" decoding="async" className="h-full w-full object-cover" />
               ) : (
                 <span className="grid h-full w-full place-items-center text-4xl text-emerald-500/50">
                   <Icon />
+                </span>
+              )}
+              {/* Steam wisps rising off the dish on hover - fresh from the tandoor */}
+              <span className="pointer-events-none absolute left-1/2 top-[55%] z-10 opacity-0 transition-opacity duration-500 group-hover:opacity-100" aria-hidden>
+                <span className="steam" style={{ left: "-14px" }} />
+                <span className="steam" style={{ animationDelay: "1.2s" }} />
+                <span className="steam" style={{ left: "12px", animationDelay: "0.6s" }} />
+              </span>
+              {/* In-cart quantity badge */}
+              {qty > 0 && (
+                <span
+                  key={qty}
+                  className="animate-pop absolute left-2 top-2 z-10 grid h-7 min-w-7 place-items-center rounded-full bg-emerald-600 px-2 text-xs font-black text-white shadow-lg shadow-emerald-600/40"
+                >
+                  ×{qty}
                 </span>
               )}
               {/* Read More Button (top-right on image) */}
@@ -327,7 +357,7 @@ export default function OrderPage() {
             </div>
             <div className="flex flex-1 flex-col py-2 px-1.5">
               <div className="flex items-start justify-between gap-2">
-                <h3 className="font-bold text-sm text-slate-900 dark:text-white">{p.name}</h3>
+                <h3 className="font-display font-bold text-sm text-slate-900 dark:text-white">{p.name}</h3>
                 {discountPct > 0 && !isDrinkCategory(p.category) ? (
                   <span className="flex shrink-0 flex-col items-end">
                     <span className="text-xs text-slate-400 line-through dark:text-slate-500">€{p.price.toFixed(2)}</span>
@@ -347,13 +377,15 @@ export default function OrderPage() {
                   </span>
                 )}
               </div>
-              <p className="mt-1.5 flex-1 text-xs leading-6 text-slate-500 dark:text-slate-400">{p.description}</p>
+              <p className="mt-1.5 flex-1 text-xs leading-6 text-slate-500 dark:text-slate-400">
+                {(lang === "nl" && p.descriptionNl) || p.description}
+              </p>
               <div className="mt-3 flex flex-col gap-2">
                 {/* Add/Remove Buttons */}
                 {qty === 0 ? (
                   <button
                     onClick={() => addToCart(p.id)}
-                    className="inline-flex items-center justify-center gap-2 rounded-full bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-emerald-600 dark:bg-emerald-600 dark:hover:bg-emerald-500"
+                    className="btn-shine inline-flex items-center justify-center gap-2 rounded-full bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-emerald-600 hover:shadow-lg hover:shadow-emerald-600/30 dark:bg-emerald-600 dark:hover:bg-emerald-500"
                   >
                     <FaPlus className="text-xs" /> {t.common.add}
                   </button>
@@ -399,16 +431,24 @@ export default function OrderPage() {
       )}
 
       {/* Header - Desktop only */}
-      <div className="hidden px-4 py-8 sm:px-6 lg:block lg:mx-auto lg:max-w-7xl lg:px-8">
-        <h1 className="text-3xl font-black tracking-tight text-slate-900 dark:text-white">{t.order.title}</h1>
-        <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">{t.order.subtitle}</p>
+      <div className="relative hidden overflow-hidden px-4 py-8 sm:px-6 lg:block lg:mx-auto lg:max-w-7xl lg:px-8">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(45%_80%_at_30%_0%,rgba(217,126,38,0.14),transparent_65%)]" />
+        <div className="pointer-events-none absolute -right-10 top-0 h-36 w-36 animate-float rounded-full bg-emerald-500/10 blur-3xl" />
+        <span className="lux-overline relative inline-flex items-center gap-2 text-emerald-600 dark:text-emerald-400">
+          <span className="ornament-gem" aria-hidden /> {t.order.categoryHint}
+        </span>
+        <h1 className="font-display relative mt-2 text-4xl font-semibold tracking-tight text-slate-900 dark:text-white">
+          <span className="ember-text">{t.order.title}</span>
+        </h1>
+        <p className="relative mt-2 text-sm text-slate-600 dark:text-slate-400">{t.order.subtitle}</p>
+        <div className="gold-rule relative mt-5" />
       </div>
 
       {/* Mobile & Tablet: Brand switch + Categories Bar (Sticky) */}
-      <div className="sticky top-[64px] z-40 border-b border-slate-200 bg-white/90 backdrop-blur dark:border-white/10 dark:bg-[#0d0a07]/90 lg:hidden">
+      <div className="sticky top-[64px] z-40 border-b border-slate-200 bg-white/90 backdrop-blur dark:border-white/10 dark:bg-[#0c0703]/90 lg:hidden">
         {/* Restaurant switcher */}
         <div className="flex gap-2 overflow-x-auto px-3 pt-2">
-          {brands.map((b) => {
+          {sortedBrands.map((b) => {
             const active = b.id === activeBrand;
             return (
               <button
@@ -439,7 +479,7 @@ export default function OrderPage() {
                 onClick={() => setActiveCategory(cat)}
                 className={`flex shrink-0 items-center gap-1.5 rounded-full px-2.5 py-1 text-[10px] font-semibold transition ${
                   active
-                    ? "bg-emerald-600 text-white shadow-md shadow-emerald-600/25"
+                    ? "bg-gradient-to-r from-emerald-600 to-emerald-500 text-white shadow-md shadow-emerald-600/30"
                     : "border border-slate-100 bg-white text-slate-600 hover:border-emerald-400 hover:bg-emerald-50 dark:border-white/5 dark:bg-white/5 dark:text-slate-300"
                 }`}
               >
@@ -455,15 +495,15 @@ export default function OrderPage() {
         {/* Desktop: Restaurant + Categories Sidebar */}
         <aside className="sticky top-[76px] self-start">
           <div className="space-y-3">
-            {brands.map((b) => {
+            {sortedBrands.map((b) => {
               const active = b.id === activeBrand;
               return (
                 <div
                   key={b.id}
                   className={`overflow-hidden rounded-2xl border transition ${
                     active
-                      ? "border-emerald-400 bg-white shadow-lg shadow-emerald-600/5 dark:border-emerald-500/40 dark:bg-[#161006]"
-                      : "border-slate-200 bg-white dark:border-white/10 dark:bg-[#161006]"
+                      ? "border-emerald-400 bg-white shadow-lg shadow-emerald-600/10 dark:border-emerald-500/40 dark:bg-[#170d04]"
+                      : "border-slate-200 bg-white dark:border-white/10 dark:bg-[#170d04]"
                   }`}
                 >
                   {/* Brand header (logo) - click to switch restaurant */}
@@ -495,10 +535,10 @@ export default function OrderPage() {
                           <button
                             key={cat}
                             onClick={() => setActiveCategory(cat)}
-                            className={`flex w-full items-center gap-3 rounded-xl px-3 py-2 text-sm font-semibold transition ${
+                            className={`flex w-full items-center gap-3 rounded-xl px-3 py-2 text-sm font-semibold transition duration-200 ${
                               isActive
-                                ? "bg-emerald-600 text-white shadow-md shadow-emerald-600/25"
-                                : "text-slate-600 hover:bg-emerald-50 hover:text-emerald-700 dark:text-slate-300 dark:hover:bg-white/10"
+                                ? "bg-gradient-to-r from-emerald-600 to-emerald-500 text-white shadow-md shadow-emerald-600/30"
+                                : "text-slate-600 hover:translate-x-1 hover:bg-emerald-50 hover:text-emerald-700 dark:text-slate-300 dark:hover:bg-white/10"
                             }`}
                           >
                             <Icon className="shrink-0 text-base" /> <span className="truncate">{cat}</span>
@@ -524,30 +564,37 @@ export default function OrderPage() {
               )}
             </span>
             <div>
-              <h2 className="text-lg font-black leading-tight text-slate-900 dark:text-white">{activeBrandCfg?.name ?? ""}</h2>
-              <p className="text-xs text-slate-500 dark:text-slate-400">{activeCategory}</p>
+              <h2 className="font-display text-lg font-bold leading-tight text-slate-900 dark:text-white">{activeBrandCfg?.name ?? ""}</h2>
+              <p className="text-xs font-semibold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
+                {activeCategory} · {visible.length} {t.common.items}
+              </p>
             </div>
+            <div className="gold-rule ml-2 flex-1" />
           </div>
           <ProductsGrid />
         </section>
 
         {/* Desktop: Cart + Checkout - Right sidebar */}
         <aside className="sticky top-[76px] self-start">
-          <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-xl shadow-slate-900/5 dark:border-white/10 dark:bg-[#161006]">
+          <div className="card-lux texture-linen rounded-3xl p-5 shadow-xl shadow-emerald-900/10">
             <div className="flex items-center justify-between">
-              <h2 className="flex items-center gap-2 text-lg font-black text-slate-900 dark:text-white">
+              <h2 className="font-display flex items-center gap-2 text-lg font-bold text-slate-900 dark:text-white">
                 <FaCartShopping className="text-emerald-600 dark:text-emerald-400" /> {t.common.yourOrder}
               </h2>
-              <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600 dark:bg-white/10 dark:text-slate-300">
+              <span className={`rounded-full bg-emerald-500/10 px-3 py-1 text-xs font-bold text-emerald-700 dark:text-emerald-300 ${itemCount > 0 ? "animate-pop" : ""}`} key={itemCount}>
                 {itemCount} {t.common.items}
               </span>
             </div>
+            <div className="gold-rule mt-3" />
 
             <div className="mt-4 max-h-72 space-y-2 overflow-y-auto pr-1">
               {cartLines.length === 0 ? (
-                <p className="rounded-2xl border border-dashed border-slate-300 bg-slate-50 p-4 text-sm leading-6 text-slate-500 dark:border-white/10 dark:bg-white/5 dark:text-slate-400">
-                  {t.common.emptyCart}
-                </p>
+                <div className="rounded-2xl border border-dashed border-emerald-500/30 bg-emerald-500/5 p-6 text-center dark:bg-white/5">
+                  <span className="mx-auto grid h-12 w-12 place-items-center rounded-full bg-emerald-500/10 text-xl text-emerald-500/70">
+                    <FaCartShopping />
+                  </span>
+                  <p className="mt-3 text-sm leading-6 text-slate-500 dark:text-slate-400">{t.common.emptyCart}</p>
+                </div>
               ) : (
                 cartLines.map(({ product, qty }) => (
                   <div key={product.id} className="flex items-center gap-3 rounded-2xl border border-slate-100 bg-slate-50 p-2.5 dark:border-white/5 dark:bg-white/5">
@@ -572,8 +619,30 @@ export default function OrderPage() {
               )}
             </div>
 
+            {/* Free-delivery progress - nudges the guest towards €0 delivery */}
+            {!isPickup && !isCompany && cartLines.length > 0 && (
+              freeDelivery ? (
+                <p className="animate-pop mt-4 flex items-center justify-center gap-2 rounded-2xl border border-emerald-500/30 bg-emerald-500/10 px-3 py-2.5 text-xs font-bold text-emerald-700 dark:text-emerald-300">
+                  <FaCircleCheck /> {t.order.freeDeliveryUnlocked}
+                </p>
+              ) : (
+                <div className="mt-4 rounded-2xl border border-emerald-500/25 bg-emerald-500/5 p-3">
+                  <div className="flex items-center justify-between text-xs font-semibold text-emerald-700 dark:text-emerald-300">
+                    <span className="flex items-center gap-1.5"><FaTruck /> {t.common.delivery} €0.00</span>
+                    <span>+€{(FREE_DELIVERY_FROM - payableBeforePoints).toFixed(2)}</span>
+                  </div>
+                  <div className="mt-2 h-2 overflow-hidden rounded-full bg-emerald-900/10 dark:bg-white/10">
+                    <div
+                      className="progress-ember h-full rounded-full transition-all duration-500"
+                      style={{ width: `${Math.min(100, (payableBeforePoints / FREE_DELIVERY_FROM) * 100)}%` }}
+                    />
+                  </div>
+                </div>
+              )
+            )}
+
             {/* Delivery details */}
-            <div className="mt-5 space-y-3">
+            <div className="form-lux mt-5 space-y-3">
               {fulfillmentToggle}
               <p className="text-sm font-bold text-slate-900 dark:text-white">{isPickup ? t.order.name : t.order.deliveryDetails}</p>
               <input
@@ -712,8 +781,8 @@ export default function OrderPage() {
               </div>
             )}
 
-            {/* Totals */}
-            <div className="mt-5 space-y-2 rounded-2xl bg-slate-50 p-4 text-sm dark:bg-white/5">
+            {/* Totals - receipt style */}
+            <div className="mt-5 space-y-2 rounded-2xl border border-dashed border-emerald-500/25 bg-slate-50 p-4 text-sm dark:bg-white/5">
               <div className="flex justify-between text-slate-600 dark:text-slate-300">
                 <span>{t.common.subtotal}</span>
                 <span className="font-semibold text-slate-900 dark:text-white">€{subtotal.toFixed(2)}</span>
@@ -740,11 +809,19 @@ export default function OrderPage() {
                   <span className="font-semibold text-slate-900 dark:text-white">€{DELIVERY_FEE.toFixed(2)}</span>
                 )}
               </div>
-              <div className="mt-1 flex justify-between border-t border-slate-200 pt-2 text-base font-black text-slate-900 dark:border-white/10 dark:text-white">
+              <div className="mt-1 flex justify-between border-t border-dashed border-emerald-500/30 pt-2 text-base font-black text-slate-900 dark:text-white">
                 <span>{t.common.total}</span>
-                <span>€{total.toFixed(2)}</span>
+                <span className="text-emerald-700 dark:text-emerald-300">€{total.toFixed(2)}</span>
               </div>
             </div>
+
+            {/* Loyalty points this order earns (1 point per €10) */}
+            {currentUser && cartLines.length > 0 && pointsToEarn > 0 && (
+              <p className="mt-3 flex items-center justify-center gap-2 rounded-2xl border border-amber-300/50 bg-gradient-to-r from-amber-400/15 via-amber-300/10 to-amber-400/15 px-3 py-2.5 text-xs font-bold text-amber-700 dark:text-amber-300">
+                <FaStar className="animate-pulse-soft text-amber-400" />
+                {t.order.willEarnPoints.replace("{points}", String(pointsToEarn))}
+              </p>
+            )}
 
             {belowMinOrder && (
               <p className="mt-3 rounded-xl bg-red-500/10 px-3 py-2 text-center text-xs font-medium text-red-600 dark:text-red-400">
@@ -766,10 +843,13 @@ export default function OrderPage() {
 
             <button
               onClick={handleCheckout}
-              className="mt-4 flex w-full items-center justify-center gap-2 rounded-full bg-emerald-600 px-5 py-3.5 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-emerald-500"
+              className="btn-ember btn-shine wiggle-hover mt-4 flex w-full items-center justify-center gap-2 rounded-full px-5 py-3.5 text-sm font-bold text-white"
             >
-              {t.common.placeOrder} <FaArrowRight />
+              {t.common.placeOrder} <FaArrowRight className="wiggle-target" />
             </button>
+            <p className="mt-3 flex items-center justify-center gap-1.5 text-[11px] text-slate-400 dark:text-slate-500">
+              <FaLock className="text-emerald-500/70" /> {t.order.securePayment}
+            </p>
 
             {message && (
               <p
@@ -795,15 +875,15 @@ export default function OrderPage() {
 
         {/* Mobile: Cart Footer - Sticky Bottom */}
         {cartLines.length > 0 && (
-          <div className="border-t border-slate-200 bg-white/95 backdrop-blur dark:border-white/10 dark:bg-[#0d0a07]/95 px-4 py-3 sm:px-6">
+          <div className="border-t border-emerald-500/20 bg-white/95 backdrop-blur dark:border-white/10 dark:bg-[#0c0703]/95 px-4 py-3 sm:px-6">
             <button
               onClick={() => setShowCartModal(true)}
-              className="flex w-full items-center justify-between rounded-full bg-emerald-600 px-4 py-2.5 text-sm font-bold text-white transition hover:bg-emerald-500"
+              className="btn-ember btn-shine wiggle-hover flex w-full items-center justify-between rounded-full px-4 py-3 text-sm font-bold text-white"
             >
               <span className="flex items-center gap-2">
-                <FaCartShopping /> {itemCount} {t.common.items}
+                <FaCartShopping className="wiggle-target" /> {itemCount} {t.common.items}
               </span>
-              <span>€{total.toFixed(2)}</span>
+              <span className="rounded-full bg-white/20 px-3 py-0.5">€{total.toFixed(2)}</span>
             </button>
           </div>
         )}
@@ -813,9 +893,9 @@ export default function OrderPage() {
       {showCartModal && (
         <div className="fixed inset-0 z-50 flex items-end sm:items-center lg:hidden">
           <div className="fixed inset-0 bg-black/40" onClick={() => setShowCartModal(false)} />
-          <div className="relative w-full rounded-t-3xl bg-white shadow-2xl dark:bg-[#161006] sm:max-w-md sm:rounded-3xl">
+          <div className="relative w-full rounded-t-3xl border-t border-emerald-500/25 bg-white shadow-2xl dark:bg-[#170d04] sm:max-w-md sm:rounded-3xl sm:border">
             <div className="flex items-center justify-between border-b border-slate-200 px-5 py-4 dark:border-white/10">
-              <h2 className="text-lg font-black text-slate-900 dark:text-white">{t.common.yourOrder}</h2>
+              <h2 className="font-display text-lg font-bold text-slate-900 dark:text-white">{t.common.yourOrder}</h2>
               <button onClick={() => setShowCartModal(false)} className="text-2xl text-slate-400 hover:text-slate-600 dark:text-slate-500 dark:hover:text-slate-300">
                 ✕
               </button>
@@ -852,6 +932,26 @@ export default function OrderPage() {
 
             {/* Totals */}
             <div className="border-t border-slate-200 px-5 py-3 dark:border-white/10">
+              {!isPickup && !isCompany && (
+                freeDelivery ? (
+                  <p className="animate-pop mb-3 flex items-center justify-center gap-2 rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-3 py-2.5 text-xs font-bold text-emerald-700 dark:text-emerald-300">
+                    <FaCircleCheck /> {t.order.freeDeliveryUnlocked}
+                  </p>
+                ) : (
+                  <div className="mb-3 rounded-xl border border-emerald-500/25 bg-emerald-500/5 p-3">
+                    <div className="flex items-center justify-between text-xs font-semibold text-emerald-700 dark:text-emerald-300">
+                      <span className="flex items-center gap-1.5"><FaTruck /> {t.common.delivery} €0.00</span>
+                      <span>+€{(FREE_DELIVERY_FROM - payableBeforePoints).toFixed(2)}</span>
+                    </div>
+                    <div className="mt-2 h-2 overflow-hidden rounded-full bg-emerald-900/10 dark:bg-white/10">
+                      <div
+                        className="progress-ember h-full rounded-full transition-all duration-500"
+                        style={{ width: `${Math.min(100, (payableBeforePoints / FREE_DELIVERY_FROM) * 100)}%` }}
+                      />
+                    </div>
+                  </div>
+                )
+              )}
               {currentUser && maxPoints > 0 && (
                 <div className="mb-3 rounded-lg border border-amber-300/50 bg-amber-400/10 p-3">
                   <div className="flex items-center justify-between text-xs font-semibold text-amber-700 dark:text-amber-300">
@@ -872,7 +972,7 @@ export default function OrderPage() {
                   </div>
                 </div>
               )}
-              <div className="space-y-2 rounded-lg bg-slate-50 p-3 text-sm dark:bg-white/5">
+              <div className="space-y-2 rounded-lg border border-dashed border-emerald-500/25 bg-slate-50 p-3 text-sm dark:bg-white/5">
                 <div className="flex justify-between text-slate-600 dark:text-slate-300">
                   <span>{t.common.subtotal}</span>
                   <span className="font-semibold">€{subtotal.toFixed(2)}</span>
@@ -897,11 +997,18 @@ export default function OrderPage() {
                     <span className="font-semibold">€{DELIVERY_FEE.toFixed(2)}</span>
                   )}
                 </div>
-                <div className="flex justify-between border-t border-slate-200 pt-2 text-base font-black text-slate-900 dark:border-white/10 dark:text-white">
+                <div className="flex justify-between border-t border-dashed border-emerald-500/30 pt-2 text-base font-black text-slate-900 dark:text-white">
                   <span>{t.common.total}</span>
-                  <span>€{total.toFixed(2)}</span>
+                  <span className="text-emerald-700 dark:text-emerald-300">€{total.toFixed(2)}</span>
                 </div>
               </div>
+
+              {currentUser && pointsToEarn > 0 && (
+                <p className="mt-2 flex items-center justify-center gap-2 rounded-xl border border-amber-300/50 bg-gradient-to-r from-amber-400/15 via-amber-300/10 to-amber-400/15 px-3 py-2 text-xs font-bold text-amber-700 dark:text-amber-300">
+                  <FaStar className="animate-pulse-soft text-amber-400" />
+                  {t.order.willEarnPoints.replace("{points}", String(pointsToEarn))}
+                </p>
+              )}
 
               {belowMinOrder && (
                 <p className="mt-2 rounded-lg bg-red-500/10 px-3 py-2 text-center text-xs font-medium text-red-600 dark:text-red-400">
@@ -923,10 +1030,13 @@ export default function OrderPage() {
 
               <button
                 onClick={handleProceedToCheckout}
-                className="mt-3 flex w-full items-center justify-center gap-2 rounded-full bg-emerald-600 px-4 py-3 text-sm font-bold text-white transition hover:bg-emerald-500"
+                className="btn-ember btn-shine mt-3 flex w-full items-center justify-center gap-2 rounded-full px-4 py-3 text-sm font-bold text-white"
               >
                 {t.common.placeOrder} <FaArrowRight className="text-xs" />
               </button>
+              <p className="mt-2.5 flex items-center justify-center gap-1.5 pb-1 text-[11px] text-slate-400 dark:text-slate-500">
+                <FaLock className="text-emerald-500/70" /> {t.order.securePayment}
+              </p>
             </div>
           </div>
         </div>
@@ -936,15 +1046,15 @@ export default function OrderPage() {
       {showCheckoutModal && (
         <div className="fixed inset-0 z-50 flex items-end sm:items-center lg:hidden">
           <div className="fixed inset-0 bg-black/40" onClick={() => setShowCheckoutModal(false)} />
-          <div className="relative w-full rounded-t-3xl bg-white shadow-2xl dark:bg-[#161006] sm:max-w-md sm:rounded-3xl">
+          <div className="relative w-full rounded-t-3xl border-t border-emerald-500/25 bg-white shadow-2xl dark:bg-[#170d04] sm:max-w-md sm:rounded-3xl sm:border">
             <div className="flex items-center justify-between border-b border-slate-200 px-5 py-4 dark:border-white/10">
-              <h2 className="text-lg font-black text-slate-900 dark:text-white">{t.order.deliveryDetails}</h2>
+              <h2 className="font-display text-lg font-bold text-slate-900 dark:text-white">{t.order.deliveryDetails}</h2>
               <button onClick={() => setShowCheckoutModal(false)} className="text-2xl text-slate-400 hover:text-slate-600 dark:text-slate-500 dark:hover:text-slate-300">
                 ✕
               </button>
             </div>
 
-            <div className="space-y-3 px-5 py-4">
+            <div className="form-lux space-y-3 px-5 py-4">
               {fulfillmentToggle}
               <input
                 value={form.name}
@@ -1079,10 +1189,13 @@ export default function OrderPage() {
 
               <button
                 onClick={handleCheckout}
-                className="flex w-full items-center justify-center gap-2 rounded-lg bg-emerald-600 px-4 py-3 text-sm font-bold text-white transition hover:bg-emerald-500"
+                className="btn-ember btn-shine flex w-full items-center justify-center gap-2 rounded-full px-4 py-3 text-sm font-bold text-white"
               >
                 {t.common.placeOrder} <FaArrowRight className="text-xs" />
               </button>
+              <p className="flex items-center justify-center gap-1.5 text-[11px] text-slate-400 dark:text-slate-500">
+                <FaLock className="text-emerald-500/70" /> {t.order.securePayment}
+              </p>
             </div>
           </div>
         </div>

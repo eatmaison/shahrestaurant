@@ -4,9 +4,9 @@ import nodemailer, { type Transporter } from "nodemailer";
  * Email sending via SMTP (Strato). Configure in .env.local:
  *   SMTP_HOST=smtp.strato.de
  *   SMTP_PORT=465
- *   SMTP_USER=info@themaison.nl
+ *   SMTP_USER=info@thetandoorcompany.nl
  *   SMTP_PASS=<mailbox password>
- *   SMTP_FROM="The Maison <info@themaison.nl>"
+ *   SMTP_FROM="The Tandoor Company <info@thetandoorcompany.nl>"
  */
 let transporter: Transporter | null = null;
 
@@ -32,19 +32,19 @@ export async function sendMail(opts: { to: string; subject: string; html: string
     console.warn(`[email] SMTP not configured - skipped sending "${opts.subject}" to ${opts.to}`);
     return;
   }
-  const from = process.env.SMTP_FROM || `The Maison <${process.env.SMTP_USER}>`;
+  const from = process.env.SMTP_FROM || `The Tandoor Company <${process.env.SMTP_USER}>`;
   await getTransporter().sendMail({ from, to: opts.to, subject: opts.subject, html: opts.html });
 }
 
 /* ------------------------------------------------------------------ templates */
 
 const BRAND = {
-  green: "#ad7a2f",
-  greenDark: "#8c5f27",
-  ink: "#201b15",
-  muted: "#6a5f4e",
-  border: "#e4ddd1",
-  bg: "#f7f3ea",
+  green: "#c4661c",
+  greenDark: "#a34e1a",
+  ink: "#221a11",
+  muted: "#6b5944",
+  border: "#e6d9c6",
+  bg: "#faf3e7",
 };
 
 /** Shared branded email shell. Inline styles only, for wide client support. */
@@ -66,9 +66,9 @@ function layout(opts: {
     <tr><td align="center">
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:#ffffff;border:1px solid ${BRAND.border};border-radius:20px;overflow:hidden;">
         <!-- header -->
-        <tr><td style="background:linear-gradient(135deg,#1c1712,#38301f);padding:28px 32px;border-bottom:3px solid ${BRAND.green};">
-          <div style="font-size:12px;letter-spacing:3px;color:#d0a556;font-weight:600;text-transform:uppercase;">Amsterdam · Fine Dining</div>
-          <div style="font-size:26px;font-weight:900;color:#ffffff;letter-spacing:2px;font-family:Georgia,'Times New Roman',serif;">THE MAISON</div>
+        <tr><td style="background:linear-gradient(135deg,#1c0f04,#3a1a0b);padding:28px 32px;border-bottom:3px solid ${BRAND.green};">
+          <div style="font-size:12px;letter-spacing:3px;color:#e39440;font-weight:600;text-transform:uppercase;">Amsterdam · Authentic Indian Cuisine</div>
+          <div style="font-size:24px;font-weight:900;color:#ffffff;letter-spacing:2px;font-family:Georgia,'Times New Roman',serif;">THE TANDOOR COMPANY</div>
         </td></tr>
         <!-- body -->
         <tr><td style="padding:32px;">
@@ -88,12 +88,12 @@ function layout(opts: {
         <!-- footer -->
         <tr><td style="padding:20px 32px;border-top:1px solid ${BRAND.border};background:#fafafa;">
           <p style="margin:0;font-size:12px;line-height:20px;color:${BRAND.muted};">
-            The Maison - Klaprozenweg 36a, 1032 KL Amsterdam<br>
-            <a href="mailto:info@themaison.nl" style="color:${BRAND.green};">info@themaison.nl</a> · <a href="${base}" style="color:${BRAND.green};">themaison.nl</a>
+            The Tandoor Company - Klaprozenweg 36a, 1032 KL Amsterdam<br>
+            <a href="mailto:info@thetandoorcompany.nl" style="color:${BRAND.green};">info@thetandoorcompany.nl</a> · <a href="${base}" style="color:${BRAND.green};">thetandoorcompany.nl</a>
           </p>
         </td></tr>
       </table>
-      <p style="margin:16px 0 0;font-size:11px;color:#a1957f;">© ${new Date().getFullYear()} The Maison - Amsterdam. All rights reserved.</p>
+      <p style="margin:16px 0 0;font-size:11px;color:#a28d6f;">© ${new Date().getFullYear()} The Tandoor Company - Amsterdam. All rights reserved.</p>
     </td></tr>
   </table>
 </body></html>`;
@@ -101,12 +101,12 @@ function layout(opts: {
 
 export function verificationEmail(name: string, url: string, base: string): { subject: string; html: string } {
   return {
-    subject: "Confirm your email - The Maison",
+    subject: "Confirm your email - The Tandoor Company",
     html: layout({
       base,
       heading: `Welcome, ${name}!`,
       intro:
-        "Thanks for creating your The Maison account. Please confirm your email address so we can secure your account and keep you informed about your reservations and orders.",
+        "Thanks for creating your The Tandoor Company account. Please confirm your email address so we can secure your account and keep you informed about your reservations and orders.",
       ctaText: "Confirm my email",
       ctaUrl: url,
       outro: "This link expires in 48 hours. If you didn't create an account, you can safely ignore this email.",
@@ -116,11 +116,11 @@ export function verificationEmail(name: string, url: string, base: string): { su
 
 export function passwordResetEmail(name: string, url: string, base: string): { subject: string; html: string } {
   return {
-    subject: "Reset your password - The Maison",
+    subject: "Reset your password - The Tandoor Company",
     html: layout({
       base,
       heading: "Reset your password",
-      intro: `Hi ${name}, we received a request to reset your The Maison password. Click the button below to choose a new one.`,
+      intro: `Hi ${name}, we received a request to reset your The Tandoor Company password. Click the button below to choose a new one.`,
       ctaText: "Choose a new password",
       ctaUrl: url,
       outro: "This link expires in 1 hour. If you didn't request this, you can ignore this email - your password stays the same.",
@@ -154,12 +154,12 @@ export function reservationEmail(data: {
       </table>
     </div>`;
   return {
-    subject: `Your reservation at The Maison - ${data.number}`,
+    subject: `Your reservation at The Tandoor Company - ${data.number}`,
     html: layout({
       base: data.base,
       heading: `Thank you, ${data.guestName}!`,
       intro:
-        "We have received your table reservation. Our team will review it and you will receive a confirmation shortly. We look forward to welcoming you at The Maison.",
+        "We have received your table reservation. Our team will review it and you will receive a confirmation shortly. We look forward to welcoming you at The Tandoor Company.",
       bodyHtml,
       outro:
         "Need to change or cancel your reservation? Call us at +31 20 341 2995 or reply to this email and we will take care of it.",
@@ -204,7 +204,7 @@ export function companyInvoiceEmail(data: {
       </table>
     </div>`;
   return {
-    subject: `Invoice ${data.orderNumber} - The Maison`,
+    subject: `Invoice ${data.orderNumber} - The Tandoor Company`,
     html: layout({
       base: data.base,
       heading: "Your invoice",

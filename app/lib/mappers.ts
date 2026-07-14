@@ -42,11 +42,14 @@ export function rowToProduct(r: any): Product {
     category: r.category,
     name: r.name,
     description: r.description,
+    descriptionNl: r.description_nl || undefined,
     price: toNum(r.price),
     image: r.image ?? undefined,
     detailedDescription: r.detailed_description ?? undefined,
     ingredients: r.ingredients ?? [],
+    ingredientsNl: r.ingredients_nl ?? [],
     allergens: r.allergens ?? [],
+    allergensNl: r.allergens_nl ?? [],
   };
 }
 

@@ -11,11 +11,11 @@ export default function CompanyLunchesPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "FoodEstablishment",
-    name: "The Maison - Company Lunches Amsterdam",
+    name: "The Tandoor Company - Company Lunches Amsterdam",
     description: nl
       ? "Vers bezorgde bedrijfslunches in Amsterdam - dagelijkse of wekelijkse levering, maandelijkse facturatie."
       : "Fresh delivered company lunches across Amsterdam - daily or weekly delivery, monthly invoicing.",
-    servesCuisine: ["European", "Healthy", "Vegan-friendly"],
+    servesCuisine: ["Indian", "Healthy", "Vegan-friendly"],
     address: {
       "@type": "PostalAddress",
       streetAddress: "Klaprozenweg 36a",
@@ -25,7 +25,7 @@ export default function CompanyLunchesPage() {
     },
     telephone: "+31 20 341 2995",
     areaServed: { "@type": "City", name: "Amsterdam" },
-    url: "https://themaison.nl/events/company-lunches",
+    url: "https://thetandoorcompany.nl/events/company-lunches",
     priceRange: "€€",
     hasOfferCatalog: {
       "@type": "OfferCatalog",
@@ -145,7 +145,7 @@ export default function CompanyLunchesPage() {
 
       {/* Hero */}
       <section className="relative overflow-hidden">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_60%_at_50%_0%,rgba(195,144,61,0.14),transparent_65%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_60%_at_50%_0%,rgba(217,126,38,0.16),transparent_65%)]" />
         <div className="relative mx-auto max-w-3xl px-4 pb-4 pt-14 text-center sm:px-6 lg:pt-20">
           <span className="lux-overline inline-flex items-center gap-3 text-emerald-600 dark:text-emerald-400">
             <span className="h-px w-10 bg-emerald-500/60" /> {nl ? "Bedrijfslunches" : "Company lunches"}{" "}
@@ -243,7 +243,7 @@ export default function CompanyLunchesPage() {
 
       {/* Inclusions */}
       <section className="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8">
-        <div className="rounded-[2rem] border border-emerald-500/20 bg-gradient-to-br from-[#171208] via-[#221a0c] to-[#2c2110] p-8 text-white sm:p-10">
+        <div className="relative overflow-hidden rounded-[2rem] border border-emerald-500/20 bg-gradient-to-br from-emerald-950 via-[#241204] to-[#170d04] p-8 text-white shadow-2xl shadow-emerald-900/30 sm:p-10">
           <span className="lux-overline text-emerald-300/90">{nl ? "Inbegrepen" : "What's included"}</span>
           <h2 className="font-display mt-3 text-2xl font-semibold sm:text-3xl">
             {nl ? "Meer dan alleen eten" : "More than just food"}

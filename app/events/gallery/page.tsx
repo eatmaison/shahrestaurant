@@ -19,23 +19,23 @@ export default function GalleryPage() {
   // Placeholder items - replace src with real photos in /public/gallery/*.
   // Descriptive alt text is critical for SEO and accessibility.
   const items: GalleryItem[] = [
-    { src: "/food/burger.png", alt: nl ? "Signatuur gerecht bij The Maison Amsterdam" : "Signature dish at The Maison Amsterdam", category: nl ? "Gerechten" : "Dishes" },
+    { src: "/food/burger.png", alt: nl ? "Signatuur tandoori gerecht bij The Tandoor Company Amsterdam" : "Signature tandoori dish at The Tandoor Company Amsterdam", category: nl ? "Gerechten" : "Dishes" },
     { src: "/food/pizza.png", alt: nl ? "Chef presenteert gerecht in Amsterdam-Noord" : "Chef presenting a dish in Amsterdam-Noord", category: nl ? "Gerechten" : "Dishes" },
-    { src: "/food/wrap.png", alt: nl ? "Verfijnde lunch catering Amsterdam" : "Refined lunch catering Amsterdam", category: nl ? "Lunch" : "Lunch" },
-    { src: "/food/coffee.png", alt: nl ? "Espresso en dessert bij The Maison" : "Espresso and dessert at The Maison", category: nl ? "Sfeer" : "Ambiance" },
-    { src: "/themaison.png", alt: nl ? "The Maison Amsterdam logo en interieur" : "The Maison Amsterdam logo and interior", category: nl ? "Interieur" : "Interior" },
-    { src: "/food/burger.png", alt: nl ? "Verjaardagsdiner opstelling met kaarslicht" : "Birthday dinner setup with candlelight", category: nl ? "Feesten" : "Parties" },
+    { src: "/food/wrap.png", alt: nl ? "Verse Indiase lunch catering Amsterdam" : "Fresh Indian lunch catering Amsterdam", category: nl ? "Lunch" : "Lunch" },
+    { src: "/food/coffee.png", alt: nl ? "Chai en dessert bij The Tandoor Company" : "Chai and dessert at The Tandoor Company", category: nl ? "Sfeer" : "Ambiance" },
+    { src: "/tandoorcompany.png", alt: nl ? "The Tandoor Company Amsterdam logo en interieur" : "The Tandoor Company Amsterdam logo and interior", category: nl ? "Interieur" : "Interior" },
+    { src: "/food/burger.png", alt: nl ? "Verjaardagsdiner opstelling met warme verlichting" : "Birthday dinner setup with warm lighting", category: nl ? "Feesten" : "Parties" },
   ];
 
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ImageGallery",
-    name: "The Maison Amsterdam - Gallery",
+    name: "The Tandoor Company Amsterdam - Gallery",
     description: nl
-      ? "Foto's van The Maison Amsterdam: interieur, gerechten en evenementen."
-      : "Photos of The Maison Amsterdam: interior, dishes and events.",
-    url: "https://themaison.nl/events/gallery",
-    image: items.map((i) => `https://themaison.nl${i.src}`),
+      ? "Foto's van The Tandoor Company Amsterdam: interieur, gerechten en evenementen."
+      : "Photos of The Tandoor Company Amsterdam: interior, dishes and events.",
+    url: "https://thetandoorcompany.nl/events/gallery",
+    image: items.map((i) => `https://thetandoorcompany.nl${i.src}`),
   };
 
   return (
@@ -44,7 +44,7 @@ export default function GalleryPage() {
 
       {/* Hero */}
       <section className="relative overflow-hidden">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_60%_at_50%_0%,rgba(195,144,61,0.14),transparent_65%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_60%_at_50%_0%,rgba(217,126,38,0.16),transparent_65%)]" />
         <div className="relative mx-auto max-w-3xl px-4 pb-4 pt-14 text-center sm:px-6 lg:pt-20">
           <span className="lux-overline inline-flex items-center gap-3 text-emerald-600 dark:text-emerald-400">
             <span className="h-px w-10 bg-emerald-500/60" /> {nl ? "Galerij" : "Gallery"}{" "}
@@ -55,8 +55,8 @@ export default function GalleryPage() {
           </h1>
           <p className="mt-5 text-base leading-8 text-slate-600 dark:text-slate-300">
             {nl
-              ? "Een blik binnen The Maison Amsterdam - onze eetzaal, gedekte tafels, verse gerechten en eerdere evenementen."
-              : "A look inside The Maison Amsterdam - our dining room, table settings, plated dishes and past events."}
+              ? "Een blik binnen The Tandoor Company Amsterdam - onze eetzaal, gedekte tafels, verse tandoori gerechten en eerdere evenementen."
+              : "A look inside The Tandoor Company Amsterdam - our dining room, table settings, fresh tandoori dishes and past events."}
           </p>
         </div>
       </section>
