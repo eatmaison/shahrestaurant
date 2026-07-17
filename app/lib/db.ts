@@ -172,6 +172,20 @@ const DDL: string[] = [
   `ALTER TABLE reviews ALTER COLUMN order_id DROP NOT NULL`,
   `ALTER TABLE reviews ADD COLUMN IF NOT EXISTS reservation_id uuid REFERENCES reservations(id) ON DELETE CASCADE`,
   `CREATE UNIQUE INDEX IF NOT EXISTS idx_reviews_reservation_unique ON reviews (reservation_id) WHERE reservation_id IS NOT NULL`,
+  // Admin-managed gallery photos (files live in DigitalOcean Spaces; only the
+  // public URL is stored). Shared table - each site keeps its own rows via `site`.
+  `CREATE TABLE IF NOT EXISTS gallery_images (
+    id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+    site text NOT NULL,
+    url text NOT NULL,
+    alt text NOT NULL DEFAULT '',
+    alt_nl text NOT NULL DEFAULT '',
+    category text NOT NULL DEFAULT '',
+    portrait boolean NOT NULL DEFAULT false,
+    sort integer NOT NULL DEFAULT 0,
+    created_at timestamptz NOT NULL DEFAULT now()
+  )`,
+  `CREATE INDEX IF NOT EXISTS idx_gallery_images_site ON gallery_images (site)`,
 ];
 
 let readyPromise: Promise<void> | null = null;

@@ -1592,6 +1592,9 @@ export default function AdminPage() {
         </div>
       </div>
 
+      {/* Gallery photos (public /events/gallery page) */}
+      <GalleryManager />
+
       {/* Restaurants & categories manager */}
       {manageOpen && (
         <div className="fixed inset-0 z-50 flex items-end justify-center sm:items-center">
@@ -2065,6 +2068,231 @@ export default function AdminPage() {
           )}
         </div>
       </div>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ gallery manager */
+
+/** Admin-managed photo on the public gallery page (file stored in DigitalOcean Spaces). */
+type AdminGalleryImage = {
+  id: string;
+  url: string;
+  alt: string;
+  altNl: string;
+  category: string;
+  portrait: boolean;
+  createdAt: number;
+};
+
+/** Upload, list and delete the photos shown on /events/gallery. */
+function GalleryManager() {
+  const { lang } = useLang();
+  const nl = lang === "nl";
+  const [images, setImages] = useState<AdminGalleryImage[]>([]);
+  const [draft, setDraft] = useState({ image: "", alt: "", altNl: "", category: "ambiance", portrait: false });
+  const [state, setState] = useState<SaveState>({ status: "idle" });
+  const [deletingId, setDeletingId] = useState<string | null>(null);
+  const pickRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    fetch("/api/gallery", { cache: "no-store" })
+      .then((r) => r.json())
+      .then((d) => {
+        if (d?.ok && Array.isArray(d.images)) setImages(d.images);
+      })
+      .catch(() => {});
+  }, []);
+
+  const catLabel = (key: string): string =>
+    (
+      {
+        dishes: nl ? "Gerechten" : "Dishes",
+        interior: nl ? "Interieur" : "Interior",
+        bar: nl ? "Bar & Drankjes" : "Bar & Drinks",
+        ambiance: nl ? "Sfeer" : "Ambiance",
+      } as Record<string, string>
+    )[key] ?? key;
+
+  const onPick = async (file?: File) => {
+    if (!file) return;
+    try {
+      const image = await processImageFile(file, { maxDim: 1600 });
+      setDraft((d) => ({ ...d, image }));
+      setState({ status: "idle" });
+    } catch {
+      if (pickRef.current) pickRef.current.value = "";
+      setState({ status: "error", message: nl ? "Kon de foto niet lezen." : "Could not read the photo." });
+    }
+  };
+
+  const upload = async () => {
+    if (!draft.image || state.status === "saving") return;
+    setState({ status: "saving" });
+    try {
+      const res = await fetch("/api/gallery", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(draft),
+      });
+      const data = await res.json();
+      if (!data.ok || !data.image) throw new Error(data.error || "error");
+      setImages((list) => [data.image, ...list]);
+      setDraft({ image: "", alt: "", altNl: "", category: "ambiance", portrait: false });
+      if (pickRef.current) pickRef.current.value = "";
+      setState({ status: "success", message: nl ? "Foto toegevoegd aan de galerij." : "Photo added to the gallery." });
+      setTimeout(() => setState((s) => (s.status === "success" ? { status: "idle" } : s)), 4000);
+    } catch {
+      setState({ status: "error", message: nl ? "Uploaden mislukt. Probeer het opnieuw." : "Upload failed. Please try again." });
+    }
+  };
+
+  const remove = async (id: string) => {
+    if (deletingId) return;
+    setDeletingId(id);
+    try {
+      await fetch(`/api/gallery?id=${encodeURIComponent(id)}`, { method: "DELETE" });
+      setImages((list) => list.filter((i) => i.id !== id));
+    } finally {
+      setDeletingId(null);
+    }
+  };
+
+  return (
+    <div className="mt-10 rounded-3xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-white/5">
+      <div className="flex items-center justify-between gap-3">
+        <div>
+          <h2 className="flex items-center gap-2 text-lg font-black text-slate-900 dark:text-white">
+            <FaImage className="text-emerald-600 dark:text-emerald-400" /> {nl ? "Galerij" : "Gallery"}
+          </h2>
+          <p className="mt-0.5 text-xs text-slate-500 dark:text-slate-400">
+            {nl
+              ? "Beheer de foto's op de openbare galerijpagina. Foto's worden opgeslagen in DigitalOcean Spaces."
+              : "Manage the photos on the public gallery page. Photos are stored in DigitalOcean Spaces."}
+          </p>
+        </div>
+        <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600 dark:bg-white/10 dark:text-slate-300">
+          {images.length}
+        </span>
+      </div>
+
+      {/* Upload form */}
+      <div className="mt-4 space-y-3">
+        <div className="flex items-center gap-3">
+          <button
+            onClick={() => pickRef.current?.click()}
+            className="inline-flex items-center gap-2 rounded-xl border border-dashed border-slate-300 px-4 py-2.5 text-sm font-semibold text-slate-600 transition hover:border-emerald-400 hover:text-emerald-700 dark:border-white/15 dark:text-slate-300"
+          >
+            <FaPlus /> {nl ? "Foto kiezen" : "Choose photo"}
+          </button>
+          {draft.image && (
+            <span className="relative h-12 w-12 shrink-0 overflow-hidden rounded-xl border border-slate-200 dark:border-white/10">
+              <Image src={draft.image} alt="preview" fill sizes="48px" className="object-cover" />
+              <button
+                type="button"
+                onClick={() => {
+                  setDraft((d) => ({ ...d, image: "" }));
+                  if (pickRef.current) pickRef.current.value = "";
+                }}
+                className="absolute right-0 top-0 grid h-5 w-5 place-items-center rounded-bl-lg bg-black/60 text-[10px] text-white transition hover:bg-red-600"
+                aria-label="remove"
+              >
+                <FaXmark />
+              </button>
+            </span>
+          )}
+          <input ref={pickRef} type="file" accept="image/*" className="hidden" onChange={(e) => onPick(e.target.files?.[0])} />
+        </div>
+        <div className="grid gap-3 sm:grid-cols-2">
+          <input
+            value={draft.alt}
+            onChange={(e) => setDraft({ ...draft, alt: e.target.value })}
+            placeholder={nl ? "Beschrijving (Engels)" : "Description (English)"}
+            className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
+          />
+          <input
+            value={draft.altNl}
+            onChange={(e) => setDraft({ ...draft, altNl: e.target.value })}
+            placeholder={nl ? "Beschrijving (Nederlands)" : "Description (Dutch)"}
+            className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
+          />
+        </div>
+        <div className="flex flex-wrap items-center gap-3">
+          <select
+            value={draft.category}
+            onChange={(e) => setDraft({ ...draft, category: e.target.value })}
+            aria-label={nl ? "Categorie" : "Category"}
+            className="rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm font-semibold outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
+          >
+            {["ambiance", "dishes", "interior", "bar"].map((c) => (
+              <option key={c} value={c}>
+                {catLabel(c)}
+              </option>
+            ))}
+          </select>
+          <label className="inline-flex cursor-pointer items-center gap-2 text-sm font-semibold text-slate-600 dark:text-slate-300">
+            <input
+              type="checkbox"
+              checked={draft.portrait}
+              onChange={(e) => setDraft({ ...draft, portrait: e.target.checked })}
+              className="h-4 w-4 accent-emerald-600"
+            />
+            {nl ? "Staande foto (portret)" : "Portrait photo (tall)"}
+          </label>
+        </div>
+
+        {state.status === "error" && (
+          <p className="flex items-start gap-2 rounded-xl bg-red-500/10 px-3.5 py-2.5 text-xs font-semibold text-red-600 dark:text-red-400">
+            <FaCircleExclamation className="mt-0.5 shrink-0" /> {state.message}
+          </p>
+        )}
+        {state.status === "success" && (
+          <p className="flex items-center gap-2 rounded-xl bg-emerald-500/10 px-3.5 py-2.5 text-xs font-semibold text-emerald-700 dark:text-emerald-400">
+            <FaCircleCheck className="shrink-0" /> {state.message}
+          </p>
+        )}
+
+        <button
+          onClick={upload}
+          disabled={!draft.image || state.status === "saving"}
+          className="rounded-full bg-emerald-600 px-6 py-2.5 text-sm font-bold text-white transition hover:bg-emerald-500 disabled:cursor-not-allowed disabled:opacity-60"
+        >
+          {state.status === "saving" ? (
+            <span className="inline-flex items-center gap-2">
+              <FaSpinner className="animate-spin" /> {nl ? "Uploaden…" : "Uploading…"}
+            </span>
+          ) : nl ? (
+            "Toevoegen aan galerij"
+          ) : (
+            "Add to gallery"
+          )}
+        </button>
+      </div>
+
+      {/* Existing photos */}
+      {images.length > 0 && (
+        <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+          {images.map((img) => (
+            <div key={img.id} className="group relative overflow-hidden rounded-2xl border border-slate-200 dark:border-white/10">
+              <div className="relative aspect-[4/3] w-full bg-slate-100 dark:bg-black/20">
+                <Image src={img.url} alt={img.alt || "gallery"} fill sizes="200px" className="object-cover" />
+              </div>
+              <span className="absolute left-2 top-2 rounded-full bg-black/50 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white backdrop-blur">
+                {catLabel(img.category)}
+              </span>
+              <button
+                onClick={() => remove(img.id)}
+                disabled={deletingId === img.id}
+                className="absolute right-2 top-2 grid h-7 w-7 place-items-center rounded-full bg-black/50 text-xs text-white backdrop-blur transition hover:bg-red-600 disabled:opacity-60"
+                aria-label={nl ? "Verwijderen" : "Delete"}
+                title={nl ? "Verwijderen" : "Delete"}
+              >
+                {deletingId === img.id ? <FaSpinner className="animate-spin" /> : <FaTrash />}
+              </button>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

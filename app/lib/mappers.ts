@@ -1,4 +1,4 @@
-import type { Order, OrderItem, Product, Reservation, Review, User, VipRequest } from "./types";
+import type { GalleryImage, Order, OrderItem, Product, Reservation, Review, User, VipRequest } from "./types";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -130,6 +130,18 @@ export function rowToReservation(r: any): Reservation {
     occasion: r.occasion || undefined,
     note: r.note ?? undefined,
     status: r.status,
+    createdAt: toMs(r.created_at),
+  };
+}
+
+export function rowToGalleryImage(r: any): GalleryImage {
+  return {
+    id: r.id,
+    url: r.url,
+    alt: r.alt ?? "",
+    altNl: r.alt_nl ?? "",
+    category: r.category ?? "",
+    portrait: r.portrait ?? false,
     createdAt: toMs(r.created_at),
   };
 }

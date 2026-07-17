@@ -226,3 +226,19 @@ export interface SocialLink {
   url: string;
   enabled: boolean;
 }
+
+/** An admin-uploaded photo shown on the public gallery page (stored in DigitalOcean Spaces). */
+export interface GalleryImage {
+  id: string;
+  /** Public URL of the stored photo (Spaces/CDN) or a data URL fallback. */
+  url: string;
+  /** Descriptive alt text (English). */
+  alt: string;
+  /** Descriptive alt text (Dutch). */
+  altNl: string;
+  /** Category key: "dishes" | "interior" | "bar" | "ambiance" (free text allowed). */
+  category: string;
+  /** True for tall (portrait) photos. */
+  portrait: boolean;
+  createdAt: number;
+}

@@ -1,9 +1,11 @@
 "use client";
 
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import { FaCamera, FaImage } from "react-icons/fa6";
 import { useLang } from "../../providers";
 import { EventsContactCta } from "../../components/EventsContactCta";
+import type { GalleryImage } from "../../lib/types";
 
 /**
  * Gallery lives on its own URL so images get indexed for image search
@@ -17,6 +19,17 @@ export default function GalleryPage() {
   const { lang } = useLang();
   const nl = lang === "nl";
 
+  // Admin-uploaded photos (stored in DigitalOcean Spaces, managed in /admin).
+  const [uploaded, setUploaded] = useState<GalleryImage[]>([]);
+  useEffect(() => {
+    fetch("/api/gallery", { cache: "no-store" })
+      .then((r) => r.json())
+      .then((d) => {
+        if (d?.ok && Array.isArray(d.images)) setUploaded(d.images);
+      })
+      .catch(() => {});
+  }, []);
+
   const cat = {
     dishes: nl ? "Gerechten" : "Dishes",
     interior: nl ? "Interieur" : "Interior",
@@ -25,6 +38,19 @@ export default function GalleryPage() {
   };
 
   const items: GalleryItem[] = [
+    // Newest admin uploads first, then the built-in photography.
+    ...uploaded.map((g): GalleryItem => {
+      const label =
+        ({ dishes: cat.dishes, interior: cat.interior, bar: cat.bar, ambiance: cat.ambiance } as Record<string, string>)[
+          g.category
+        ] ?? (g.category || cat.ambiance);
+      return {
+        src: g.url,
+        alt: (nl ? g.altNl || g.alt : g.alt) || (nl ? "Foto van The Tandoor Company Amsterdam" : "Photo of The Tandoor Company Amsterdam"),
+        category: label,
+        portrait: g.portrait,
+      };
+    }),
     { src: "/photos/687A0402.jpeg", alt: nl ? "Curry in koperen pan met bijgerechten en kruiden bij The Tandoor Company Amsterdam" : "Curry in a copper pot with sides and spices at The Tandoor Company Amsterdam", category: cat.ambiance },
     { src: "/photos/687A0341.jpeg", alt: nl ? "Interieur met fluwelen zitjes en messing details in Amsterdam-Noord" : "Interior with velvet seating and brass details in Amsterdam-Noord", category: cat.interior, portrait: true },
     { src: "/photos/687A0210.jpeg", alt: nl ? "Verse tandoori kip met limoen, net uit de tandoor" : "Fresh tandoori chicken with lime, straight from the tandoor", category: cat.dishes },
@@ -53,7 +79,7 @@ export default function GalleryPage() {
       ? "Foto's van The Tandoor Company Amsterdam: interieur, gerechten en evenementen."
       : "Photos of The Tandoor Company Amsterdam: interior, dishes and events.",
     url: "https://thetandoorcompany.nl/events/gallery",
-    image: items.map((i) => `https://thetandoorcompany.nl${i.src}`),
+    image: items.map((i) => (i.src.startsWith("http") ? i.src : `https://thetandoorcompany.nl${i.src}`)),
   };
 
   return (

@@ -183,3 +183,24 @@ CREATE TABLE IF NOT EXISTS reservations (
 
 CREATE INDEX IF NOT EXISTS idx_reservations_date ON reservations (date);
 CREATE INDEX IF NOT EXISTS idx_reservations_user_id ON reservations (user_id);
+
+-- ------------------------------------------------------------------ gallery_images
+-- Admin-managed photos shown on the public /events/gallery page. The image
+-- files themselves live in DigitalOcean Spaces (shared bucket for the whole
+-- restaurant group); only the public URL is stored here. Each site keeps its
+-- own rows via the `site` column ('themaison', 'tandoor', ...).
+CREATE TABLE IF NOT EXISTS gallery_images (
+  id         uuid        PRIMARY KEY DEFAULT gen_random_uuid(),
+  site       text        NOT NULL,
+  url        text        NOT NULL,
+  alt        text        NOT NULL DEFAULT '',
+  alt_nl     text        NOT NULL DEFAULT '',
+  -- Category key shown as a badge: 'dishes' | 'interior' | 'bar' | 'ambiance'.
+  category   text        NOT NULL DEFAULT '',
+  -- True for tall (portrait) photos in the masonry layout.
+  portrait   boolean     NOT NULL DEFAULT false,
+  sort       integer     NOT NULL DEFAULT 0,
+  created_at timestamptz NOT NULL DEFAULT now()
+);
+
+CREATE INDEX IF NOT EXISTS idx_gallery_images_site ON gallery_images (site);

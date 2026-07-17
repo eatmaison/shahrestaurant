@@ -20,7 +20,9 @@ import { createMolliePayment, getMolliePayment, mollieEnabled } from "./mollie";
 import { isScheduleSlotOpen } from "./openingHours";
 import { companyInvoiceEmail, passwordResetEmail, reservationEmail, sendMail, verificationEmail } from "./email";
 import { signToken, verifyToken } from "./tokens";
+import { deleteStoredImage, storeImage } from "./spaces";
 import {
+  rowToGalleryImage,
   rowToOrder,
   rowToOrderItem,
   rowToProduct,
@@ -34,6 +36,7 @@ import type {
   AccountType,
   BrandCategory,
   BrandConfig,
+  GalleryImage,
   Order,
   OrderItem,
   OrderFulfillment,
@@ -530,6 +533,8 @@ export async function setInvoiceSent(orderId: string, sent: boolean): Promise<vo
 export async function addProduct(p: Omit<Product, "id">): Promise<Product> {
   await requireAdmin();
   const id = `p-${Math.random().toString(36).slice(2, 10)}${Date.now().toString(36)}`;
+  // Store the uploaded photo in DigitalOcean Spaces; only the URL goes in the DB.
+  const image = (await storeImage(p.image ?? null, "products")) ?? null;
   const rows = (await sql.query(
     `INSERT INTO products (id, brand, category, name, description, description_nl, price, image, detailed_description, ingredients, ingredients_nl, allergens, allergens_nl)
      VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9::jsonb,$10::text[],$11::text[],$12::text[],$13::text[]) RETURNING *`,
@@ -541,7 +546,7 @@ export async function addProduct(p: Omit<Product, "id">): Promise<Product> {
       p.description,
       p.descriptionNl ?? "",
       p.price,
-      p.image ?? null,
+      image,
       p.detailedDescription ? JSON.stringify(p.detailedDescription) : null,
       p.ingredients ?? [],
       p.ingredientsNl ?? [],
@@ -558,6 +563,11 @@ export async function updateProduct(id: string, patch: Partial<Omit<Product, "id
   if (!rows[0]) return;
   const cur = rowToProduct(rows[0]);
   const next = { ...cur, ...patch };
+  // A newly picked photo arrives as a data URL: upload it to Spaces and remove the old file.
+  if (patch.image !== undefined && patch.image !== cur.image) {
+    next.image = (await storeImage(patch.image, "products")) ?? undefined;
+    if (cur.image && cur.image !== next.image) await deleteStoredImage(cur.image);
+  }
   await sql.query(
     `UPDATE products SET brand=$2, category=$3, name=$4, description=$5, description_nl=$6, price=$7, image=$8,
        detailed_description=$9::jsonb, ingredients=$10::text[], ingredients_nl=$11::text[], allergens=$12::text[], allergens_nl=$13::text[] WHERE id=$1`,
@@ -581,7 +591,10 @@ export async function updateProduct(id: string, patch: Partial<Omit<Product, "id
 
 export async function removeProduct(id: string): Promise<void> {
   await requireAdmin();
+  const rows = (await sql.query(`SELECT image FROM products WHERE id = $1`, [id])) as any[];
   await sql.query(`DELETE FROM products WHERE id = $1`, [id]);
+  // Clean up the product photo in Spaces (no-op for data URLs / public paths).
+  await deleteStoredImage(rows[0]?.image);
 }
 
 /* ------------------------------------------------------------------ brands & categories (admin) */
@@ -633,8 +646,12 @@ export async function removeBrand(id: string): Promise<BrandResult> {
 /** Set (or clear, with an empty string) a restaurant's logo image. */
 export async function setBrandLogo(brandId: string, logo: string): Promise<BrandResult> {
   await requireAdmin();
-  const rows = (await sql.query(`UPDATE brands SET logo = $2 WHERE id = $1 RETURNING id`, [brandId, logo])) as any[];
-  if (!rows[0]) return { ok: false, error: "invalidInput" };
+  const prevRows = (await sql.query(`SELECT logo FROM brands WHERE id = $1`, [brandId])) as any[];
+  if (!prevRows[0]) return { ok: false, error: "invalidInput" };
+  const stored = (await storeImage(logo, "brands")) || "";
+  await sql.query(`UPDATE brands SET logo = $2 WHERE id = $1`, [brandId, stored]);
+  const prev = (prevRows[0].logo as string) ?? "";
+  if (prev && prev !== stored) await deleteStoredImage(prev);
   return { ok: true };
 }
 
@@ -965,6 +982,50 @@ export async function updateSocialLink(platform: SocialPlatform, url: string, en
      ON CONFLICT (platform) DO UPDATE SET url = $2, enabled = $3, updated_at = now()`,
     [platform, url.trim(), enabled]
   );
+}
+
+/* ------------------------------------------------------------------ gallery */
+
+/** Public: all gallery photos of THIS site, newest first. */
+export async function listGalleryImages(): Promise<GalleryImage[]> {
+  await ensureReady();
+  const rows = (await sql.query(
+    `SELECT * FROM gallery_images WHERE site = $1 ORDER BY sort ASC, created_at DESC`,
+    [SITE_ID]
+  )) as any[];
+  return rows.map(rowToGalleryImage);
+}
+
+/** Admin: upload a photo (data URL) to DigitalOcean Spaces and add it to the gallery. */
+export async function addGalleryImage(data: {
+  image: string;
+  alt?: string;
+  altNl?: string;
+  category?: string;
+  portrait?: boolean;
+}): Promise<{ ok: boolean; image?: GalleryImage; error?: string }> {
+  await ensureReady();
+  await requireAdmin();
+  if (!data.image?.startsWith("data:image/")) return { ok: false, error: "invalidInput" };
+  // Upload to Spaces (falls back to storing the data URL when Spaces is not configured).
+  const url = (await storeImage(data.image, `gallery/${SITE_ID}`)) as string;
+  const rows = (await sql.query(
+    `INSERT INTO gallery_images (site, url, alt, alt_nl, category, portrait) VALUES ($1,$2,$3,$4,$5,$6) RETURNING *`,
+    [SITE_ID, url, data.alt?.trim() ?? "", data.altNl?.trim() ?? "", data.category?.trim() ?? "", !!data.portrait]
+  )) as any[];
+  return { ok: true, image: rowToGalleryImage(rows[0]) };
+}
+
+/** Admin: remove a gallery photo (also deletes the stored file in Spaces). */
+export async function removeGalleryImage(id: string): Promise<{ ok: boolean }> {
+  await ensureReady();
+  await requireAdmin();
+  const rows = (await sql.query(`DELETE FROM gallery_images WHERE id = $1 AND site = $2 RETURNING url`, [
+    id,
+    SITE_ID,
+  ])) as any[];
+  await deleteStoredImage(rows[0]?.url);
+  return { ok: true };
 }
 
 /* ------------------------------------------------------------------ helpers */
