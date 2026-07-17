@@ -71,7 +71,10 @@ export default function AccountPage() {
       case "fillFields": return t.auth.fillFields;
       case "companyFields": return t.company.fillCompanyFields;
       case "agreement": return t.company.acceptAgreement;
-      default: return "";
+      default:
+        return lang === "nl"
+          ? "Er is iets misgegaan. Probeer het opnieuw."
+          : "Something went wrong. Please try again.";
     }
   };
 

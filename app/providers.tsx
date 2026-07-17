@@ -324,28 +324,38 @@ export function Providers({ children }: { children: ReactNode }) {
 
   const register: StoreCtx["register"] = useCallback(
     async (data) => {
-      const res = await fetch("/api/auth", {
-        method: "POST",
-        headers: JSON_HEADERS,
-        body: JSON.stringify({ action: "register", ...data }),
-      });
-      const json = await res.json();
-      if (json.ok) await refresh();
-      return json;
+      try {
+        const res = await fetch("/api/auth", {
+          method: "POST",
+          headers: JSON_HEADERS,
+          body: JSON.stringify({ action: "register", ...data }),
+        });
+        const json = await res.json().catch(() => null);
+        if (!json) return { ok: false, error: "server" };
+        if (json.ok) await refresh();
+        return json;
+      } catch {
+        return { ok: false, error: "server" };
+      }
     },
     [refresh]
   );
 
   const login: StoreCtx["login"] = useCallback(
     async (email, password) => {
-      const res = await fetch("/api/auth", {
-        method: "POST",
-        headers: JSON_HEADERS,
-        body: JSON.stringify({ action: "login", email, password }),
-      });
-      const json = await res.json();
-      if (json.ok) await refresh();
-      return json;
+      try {
+        const res = await fetch("/api/auth", {
+          method: "POST",
+          headers: JSON_HEADERS,
+          body: JSON.stringify({ action: "login", email, password }),
+        });
+        const json = await res.json().catch(() => null);
+        if (!json) return { ok: false, error: "server" };
+        if (json.ok) await refresh();
+        return json;
+      } catch {
+        return { ok: false, error: "server" };
+      }
     },
     [refresh]
   );

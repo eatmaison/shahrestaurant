@@ -1,5 +1,5 @@
-import { DeleteObjectCommand, PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
 import { randomUUID } from "node:crypto";
+import type { S3Client } from "@aws-sdk/client-s3";
 
 /**
  * DigitalOcean Spaces (S3-compatible) object storage shared by ALL sister
@@ -34,17 +34,27 @@ export function spacesEnabled(): boolean {
   return Boolean(REGION && BUCKET && KEY && SECRET);
 }
 
-let client: S3Client | null = null;
-function getClient(): S3Client {
-  if (!client) {
-    client = new S3Client({
-      region: REGION,
-      endpoint: `https://${REGION}.digitaloceanspaces.com`,
-      forcePathStyle: false,
-      credentials: { accessKeyId: KEY, secretAccessKey: SECRET },
+// The AWS SDK is imported lazily (only when an image is actually uploaded or
+// deleted) so that merely loading this module - which happens on EVERY API
+// route via serverStore, including /api/auth and /api/bootstrap - can never
+// crash when @aws-sdk/client-s3 is missing or broken on the server.
+let clientPromise: Promise<S3Client> | null = null;
+function getClient(): Promise<S3Client> {
+  if (!clientPromise) {
+    clientPromise = import("@aws-sdk/client-s3").then(
+      ({ S3Client }) =>
+        new S3Client({
+          region: REGION,
+          endpoint: `https://${REGION}.digitaloceanspaces.com`,
+          forcePathStyle: false,
+          credentials: { accessKeyId: KEY, secretAccessKey: SECRET },
+        })
+    );
+    clientPromise.catch(() => {
+      clientPromise = null; // allow a retry on the next call
     });
   }
-  return client;
+  return clientPromise;
 }
 
 const MIME_EXT: Record<string, string> = {
@@ -74,7 +84,8 @@ export async function uploadDataUrl(dataUrl: string, folder: string): Promise<st
   const mime = match[1].toLowerCase();
   const body = Buffer.from(match[2], "base64");
   const key = `${folder}/${randomUUID()}.${MIME_EXT[mime] ?? "bin"}`;
-  await getClient().send(
+  const { PutObjectCommand } = await import("@aws-sdk/client-s3");
+  await (await getClient()).send(
     new PutObjectCommand({
       Bucket: BUCKET,
       Key: key,
@@ -110,8 +121,9 @@ export async function storeImage(
 export async function deleteStoredImage(url: string | undefined | null): Promise<void> {
   if (!url || !spacesEnabled() || !isSpacesUrl(url)) return;
   try {
+    const { DeleteObjectCommand } = await import("@aws-sdk/client-s3");
     const key = decodeURIComponent(new URL(url).pathname.replace(/^\/+/, ""));
-    await getClient().send(new DeleteObjectCommand({ Bucket: BUCKET, Key: key }));
+    await (await getClient()).send(new DeleteObjectCommand({ Bucket: BUCKET, Key: key }));
   } catch (err) {
     // Never fail the caller because of storage cleanup.
     console.error("[spaces] delete failed:", err);
