@@ -43,6 +43,7 @@ import {
 import { useLang, useStore } from "../providers";
 import { CATEGORY_ICON_CHOICES, categoryIconFor, formatOrderNumber, ORDER_STATUS_FLOW } from "../lib/data";
 import { SOCIAL_PLATFORMS } from "../components/socialIcons";
+import RichTextEditor from "../components/RichTextEditor";
 import type { Brand, Category, Order, OrderStatus, Product } from "../lib/types";
 
 const statusIcons: Record<OrderStatus, typeof FaClock> = {
@@ -1406,19 +1407,21 @@ export default function AdminPage() {
               className="w-full resize-none rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
             />
             <div>
-              <textarea
+              <label className="block text-sm font-semibold text-slate-900 dark:text-white mb-2">
+                {t.admin.productDetail}
+              </label>
+              <RichTextEditor
                 value={draft.detailEn}
-                onChange={(e) => setDraft({ ...draft, detailEn: e.target.value })}
+                onChange={(html) => setDraft({ ...draft, detailEn: html })}
                 placeholder={t.admin.productDetail}
-                rows={3}
-                className="w-full resize-none rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
               />
-              <textarea
+              <label className="block text-sm font-semibold text-slate-900 dark:text-white mb-2 mt-4">
+                {t.admin.productDetailNl}
+              </label>
+              <RichTextEditor
                 value={draft.detailNl}
-                onChange={(e) => setDraft({ ...draft, detailNl: e.target.value })}
+                onChange={(html) => setDraft({ ...draft, detailNl: html })}
                 placeholder={t.admin.productDetailNl}
-                rows={3}
-                className="mt-2 w-full resize-none rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
               />
               <p className="mt-1 text-[11px] leading-4 text-slate-400 dark:text-slate-500">{t.admin.productDetailHint}</p>
             </div>
@@ -1818,19 +1821,21 @@ export default function AdminPage() {
                 className="w-full resize-none rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
               />
               <div>
-                <textarea
+                <label className="block text-sm font-semibold text-slate-900 dark:text-white mb-2">
+                  {t.admin.productDetail}
+                </label>
+                <RichTextEditor
                   value={editDraft.detailEn}
-                  onChange={(e) => setEditDraft({ ...editDraft, detailEn: e.target.value })}
+                  onChange={(html) => setEditDraft({ ...editDraft, detailEn: html })}
                   placeholder={t.admin.productDetail}
-                  rows={3}
-                  className="w-full resize-none rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
                 />
-                <textarea
+                <label className="block text-sm font-semibold text-slate-900 dark:text-white mb-2 mt-4">
+                  {t.admin.productDetailNl}
+                </label>
+                <RichTextEditor
                   value={editDraft.detailNl}
-                  onChange={(e) => setEditDraft({ ...editDraft, detailNl: e.target.value })}
+                  onChange={(html) => setEditDraft({ ...editDraft, detailNl: html })}
                   placeholder={t.admin.productDetailNl}
-                  rows={3}
-                  className="mt-2 w-full resize-none rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
                 />
                 <p className="mt-1 text-[11px] leading-4 text-slate-400 dark:text-slate-500">{t.admin.productDetailHint}</p>
               </div>

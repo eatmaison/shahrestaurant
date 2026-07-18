@@ -55,10 +55,11 @@ export default function ProductDetailsModal({
         </div>
 
         {/* Detailed Description */}
-        <div className="mb-6">
-          <p className="text-base leading-relaxed text-slate-700 dark:text-slate-300">
-            {detailedDesc}
-          </p>
+        <div className="mb-6 prose prose-sm dark:prose-invert max-w-none">
+          <div 
+            dangerouslySetInnerHTML={{ __html: detailedDesc }}
+            className="text-base leading-relaxed text-slate-700 dark:text-slate-300 [&_h2]:text-lg [&_h2]:font-bold [&_h2]:mt-4 [&_h2]:mb-2 [&_h3]:text-base [&_h3]:font-semibold [&_h3]:mt-3 [&_h3]:mb-1 [&_strong]:font-bold [&_em]:italic [&_ul]:list-disc [&_ul]:ml-5 [&_ol]:list-decimal [&_ol]:ml-5 [&_li]:mb-1 [&_blockquote]:border-l-4 [&_blockquote]:border-emerald-500 [&_blockquote]:pl-4 [&_blockquote]:italic"
+          />
         </div>
 
         {/* Ingredients */}
