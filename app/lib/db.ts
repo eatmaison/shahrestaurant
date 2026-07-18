@@ -1,5 +1,5 @@
 import { neon } from "@neondatabase/serverless";
-import { DEFAULT_BRAND_CONFIGS, SEED_PRODUCTS } from "./data";
+import { DEFAULT_BRAND_CONFIGS } from "./data";
 
 /**
  * Neon (PostgreSQL) client. Uses the serverless HTTP driver, which works both
@@ -211,30 +211,16 @@ export function ensureReady(): Promise<void> {
   return readyPromise;
 }
 
-/** Insert the built-in catalogue if the products table is empty. */
+/** Product catalogue is now admin-managed in the database.
+ * The initial bootstrap only ensures the built-in brands exist; product rows
+ * are created through the authenticated admin flow instead of a hardcoded
+ * in-repo seed list.
+ */
 async function seedProducts(): Promise<void> {
   const rows = (await sql.query(`SELECT count(*)::int AS n FROM products`)) as { n: number }[];
   if (rows[0]?.n > 0) return;
 
-  for (const p of SEED_PRODUCTS) {
-    await sql.query(
-      `INSERT INTO products (id, brand, category, name, description, price, image, detailed_description, ingredients, allergens)
-       VALUES ($1,$2,$3,$4,$5,$6,$7,$8::jsonb,$9::text[],$10::text[])
-       ON CONFLICT (id) DO NOTHING`,
-      [
-        p.id,
-        p.brand,
-        p.category,
-        p.name,
-        p.description,
-        p.price,
-        p.image ?? null,
-        p.detailedDescription ? JSON.stringify(p.detailedDescription) : null,
-        p.ingredients ?? [],
-        p.allergens ?? [],
-      ]
-    );
-  }
+  // Intentionally no-op: the product catalogue is dynamically managed in DB.
 }
 
 /** Insert the built-in restaurants (with their categories) if the brands table is empty. */

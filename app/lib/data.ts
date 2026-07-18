@@ -158,6 +158,7 @@ export function categoryIconFor(brands: BrandConfig[], category: string): IconTy
  * No hardcoded product catalogue is used anymore.
  * Products are queried directly from the database and cached in app state.
  */
+export const SEED_PRODUCTS: Product[] = [];
 
 /** Secret code required to create an admin account during registration. */
 export const ADMIN_CODE = "EATTOGO-ADMIN";

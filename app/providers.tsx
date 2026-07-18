@@ -10,7 +10,7 @@ import {
   type ReactNode,
 } from "react";
 import { translations, type Dictionary } from "./lib/translations";
-import { DEFAULT_BRAND_CONFIGS, SEED_PRODUCTS } from "./lib/data";
+import { DEFAULT_BRAND_CONFIGS } from "./lib/data";
 import type { AccountType, BrandConfig, Lang, Order, OrderFulfillment, OrderSchedule, OrderStatus, Product, Reservation, Review, SocialLink, SocialPlatform, User, VipRequest } from "./lib/types";
 
 const JSON_HEADERS = { "Content-Type": "application/json" } as const;
@@ -200,7 +200,7 @@ export function Providers({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState<Theme>("dark");
   const [lang, setLangState] = useState<Lang>("nl");
 
-  const [products, setProducts] = useState<Product[]>(SEED_PRODUCTS);
+  const [products, setProducts] = useState<Product[]>([]);
   const [brands, setBrands] = useState<BrandConfig[]>(DEFAULT_BRAND_CONFIGS);
   const [cart, setCart] = useState<Record<string, number>>({});
   const [users, setUsers] = useState<User[]>([]);
