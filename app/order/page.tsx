@@ -322,14 +322,7 @@ export default function OrderPage() {
           >
             <div className="dish-img relative aspect-[4/3] w-full overflow-hidden bg-gradient-to-br from-emerald-500/15 via-emerald-400/5 to-emerald-600/10">
               {p.image ? (
-                <img
-                  src={p.image}
-                  alt={p.name}
-                  loading="lazy"
-                  decoding="async"
-                  className="h-full w-full object-contain p-2 sm:p-3"
-                  style={{ objectPosition: "center" }}
-                />
+                <img src={p.image} alt={p.name} loading="lazy" decoding="async" className="h-full w-full object-cover" />
               ) : (
                 <span className="grid h-full w-full place-items-center text-4xl text-emerald-500/50">
                   <Icon />
