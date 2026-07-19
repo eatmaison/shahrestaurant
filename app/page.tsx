@@ -35,7 +35,7 @@ function CountUp({ value, suffix = "", duration = 1400 }: { value: number; suffi
     const el = ref.current;
     if (!el) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setDisplay(value);
+      queueMicrotask(() => setDisplay(value));
       return;
     }
     const io = new IntersectionObserver(
@@ -317,9 +317,9 @@ export default function Home() {
   ];
 
   return (
-    <div className="overflow-hidden">
+    <div className="page-stage overflow-hidden">
       {/* ============================================================ Hero */}
-      <section className="relative overflow-hidden">
+      <section className="cinematic-hero relative overflow-hidden">
         {/* Warm ember atmosphere */}
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(70%_60%_at_18%_0%,rgba(217,126,38,0.18),transparent_60%),radial-gradient(50%_45%_at_92%_12%,rgba(163,78,26,0.16),transparent_62%),radial-gradient(40%_35%_at_60%_100%,rgba(217,126,38,0.10),transparent_70%)]" />
         <div className="pointer-events-none absolute inset-0 spice-dots opacity-40 [mask-image:radial-gradient(70%_60%_at_50%_20%,#000,transparent)]" />
@@ -360,13 +360,13 @@ export default function Home() {
               </Link>
             </div>
 
-            <dl className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-4">
+            <dl className="stagger-rise mt-12 grid grid-cols-2 gap-4 sm:grid-cols-4">
               {stats.map((s, i) => {
                 const StatIcon = s.icon;
                 return (
                   <div
                     key={s.label}
-                    className="animate-fade-up group rounded-2xl border border-emerald-500/15 bg-white/70 p-4 backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-emerald-500/40 hover:shadow-lg hover:shadow-emerald-600/15 dark:border-emerald-400/15 dark:bg-white/5"
+                    className="premium-panel magnetic-card lux-sweep animate-fade-up group rounded-2xl p-4 transition duration-300"
                     style={{ animationDelay: `${0.15 * i + 0.3}s` }}
                   >
                     <dt className="flex items-center gap-2 font-display text-2xl font-bold text-emerald-600 dark:text-emerald-400">
@@ -392,7 +392,7 @@ export default function Home() {
               </span>
               <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">/ 5</span>
             </div>
-            <div className="relative rounded-[2rem] border border-emerald-500/25 bg-white/90 p-5 shadow-2xl shadow-emerald-900/20 backdrop-blur dark:border-emerald-400/20 dark:bg-[#170d04]/90 sm:p-6">
+            <div className="premium-panel ember-border lux-sweep relative rounded-[2rem] p-5 sm:p-6">
               <div className="flex items-center justify-between gap-3">
                 <span className="lux-overline inline-flex items-center gap-2 text-emerald-700 dark:text-emerald-300">
                   <span className="relative inline-flex">
@@ -646,16 +646,15 @@ export default function Home() {
             <span className="ornament-gem" />
           </div>
         </div>
-        <div className="reveal-stagger mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="reveal-stagger stagger-rise mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {featured.map((p, idx) => {
             const Icon = getCategoryIcon(p.category);
             return (
               <Link
                 key={p.id}
                 href="/order"
-                className="glow-card card-lux group relative flex min-w-0 flex-col overflow-hidden rounded-3xl p-6"
+                className="premium-panel magnetic-card lux-sweep group relative flex min-w-0 flex-col overflow-hidden rounded-3xl p-6"
               >
-                <div className="pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full bg-emerald-500/10 blur-2xl transition duration-500 group-hover:scale-150 group-hover:bg-emerald-500/25" />
                 {idx === 0 && (
                   <span className="absolute right-4 top-1 inline-flex rotate-3 items-center gap-1 rounded-full bg-gradient-to-r from-emerald-600 to-emerald-500 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-white shadow-md shadow-emerald-600/30">
                     <FaStar className="text-[0.6rem]" /> Chef&apos;s choice
@@ -697,13 +696,13 @@ export default function Home() {
           <span className="lux-overline text-emerald-600 dark:text-emerald-400">{t.home.featuresOverline}</span>
           <h2 className="font-display mt-3 text-2xl font-semibold text-slate-900 dark:text-white sm:text-3xl">{t.home.featuresTitle}</h2>
         </div>
-        <div className="reveal-stagger mt-10 grid gap-5 md:grid-cols-3">
+        <div className="reveal-stagger stagger-rise mt-10 grid gap-5 md:grid-cols-3">
           {features.map((f, i) => {
             const Icon = f.icon;
             return (
               <div
                 key={f.title}
-                className="glow-card group relative overflow-hidden rounded-3xl border border-emerald-500/15 bg-white p-7 dark:border-emerald-400/10 dark:bg-white/5"
+                className="premium-panel magnetic-card lux-sweep group relative overflow-hidden rounded-3xl p-7"
               >
                 <span className="font-display pointer-events-none absolute -right-2 -top-5 text-[5rem] font-bold text-emerald-500/10 transition duration-500 group-hover:text-emerald-500/20" aria-hidden>
                   0{i + 1}
@@ -722,7 +721,7 @@ export default function Home() {
 
       {/* ============================================================ Visit us */}
       <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="reveal relative overflow-hidden rounded-[2rem] border border-emerald-500/20 bg-gradient-to-br from-emerald-950 via-[#241204] to-[#170d04] px-6 py-10 shadow-2xl shadow-emerald-900/30 sm:px-10">
+        <div className="reveal premium-panel ember-border relative overflow-hidden rounded-[2rem] px-6 py-10 sm:px-10">
           <div className="spice-dots pointer-events-none absolute inset-0 opacity-25" />
           <div className="pointer-events-none absolute -left-16 top-0 h-56 w-56 animate-float rounded-full bg-emerald-500/15 blur-3xl" />
           <div className="pointer-events-none absolute -bottom-20 -right-10 h-64 w-64 rounded-full bg-emerald-600/10 blur-3xl" />
@@ -801,10 +800,10 @@ export default function Home() {
             </div>
           )}
         </div>
-        <div className="reveal-stagger mt-8 grid gap-5 md:grid-cols-3">
+        <div className="reveal-stagger stagger-rise mt-8 grid gap-5 md:grid-cols-3">
           {userReviews.length > 0
             ? userReviews.map((r) => (
-                <figure key={r.id} className="glow-card relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 dark:border-white/10 dark:bg-white/5">
+                <figure key={r.id} className="premium-panel magnetic-card lux-sweep relative overflow-hidden rounded-3xl p-6">
                   <FaQuoteLeft className="pointer-events-none absolute -right-2 -top-2 text-6xl text-emerald-500/5" aria-hidden />
                   <div className="flex items-center justify-between">
                     <span className="flex text-amber-400">
@@ -831,7 +830,7 @@ export default function Home() {
                 </figure>
               ))
             : testimonials.map((r) => (
-                <figure key={r.name} className="glow-card relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 dark:border-white/10 dark:bg-white/5">
+                <figure key={r.name} className="premium-panel magnetic-card lux-sweep relative overflow-hidden rounded-3xl p-6">
                   <FaQuoteLeft className="pointer-events-none absolute -right-2 -top-2 text-6xl text-emerald-500/5" aria-hidden />
                   <div className="flex items-center justify-between">
                     <FaQuoteLeft className="text-2xl text-emerald-500/40" />
@@ -863,7 +862,7 @@ export default function Home() {
 
       {/* ============================================================ Final CTA */}
       <section className="mx-auto max-w-7xl px-4 pb-4 pt-8 sm:px-6 lg:px-8">
-        <div className="reveal card-lux relative overflow-hidden rounded-[2rem] px-6 py-14 text-center sm:px-10">
+        <div className="reveal premium-panel ember-border lux-sweep relative overflow-hidden rounded-[2rem] px-6 py-14 text-center sm:px-10">
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_120%_at_50%_100%,rgba(217,126,38,0.22),transparent_70%)]" />
           <div className="spice-dots pointer-events-none absolute inset-0 opacity-20 [mask-image:radial-gradient(60%_80%_at_50%_100%,#000,transparent)]" />
           <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40" aria-hidden>

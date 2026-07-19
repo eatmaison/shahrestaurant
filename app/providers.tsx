@@ -190,6 +190,11 @@ function readJSON<T>(key: string, fallback: T): T {
   }
 }
 
+function readThemePreference(fallback: Theme): Theme {
+  const value = readJSON<unknown>(LS.theme, fallback);
+  return value === "light" || value === "dark" ? value : fallback;
+}
+
 /* ------------------------------------------------------------------ */
 /* Provider                                                            */
 /* ------------------------------------------------------------------ */
@@ -233,10 +238,13 @@ export function Providers({ children }: { children: ReactNode }) {
 
   // Hydrate client-only preferences from localStorage, then load server data.
   useEffect(() => {
-    setTheme(readJSON<Theme>(LS.theme, document.documentElement.classList.contains("dark") ? "dark" : "light"));
-    setLangState(readJSON<Lang>(LS.lang, "nl"));
-    setCart(readJSON<Record<string, number>>(LS.cart, {}));
-    refresh().finally(() => setHydrated(true));
+    queueMicrotask(() => {
+      const initialTheme = readThemePreference(document.documentElement.classList.contains("dark") ? "dark" : "light");
+      setTheme((currentTheme) => (currentTheme === initialTheme ? currentTheme : initialTheme));
+      setLangState(readJSON<Lang>(LS.lang, "nl"));
+      setCart(readJSON<Record<string, number>>(LS.cart, {}));
+      refresh().finally(() => setHydrated(true));
+    });
   }, [refresh]);
   // Apply + persist theme.
   useEffect(() => {

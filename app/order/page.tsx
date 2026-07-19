@@ -63,6 +63,7 @@ export default function OrderPage() {
   const [scheduleType, setScheduleType] = useState<"asap" | "once" | "workdays">("asap");
   const [scheduleDate, setScheduleDate] = useState("");
   const [scheduleTime, setScheduleTime] = useState("");
+  const [fallbackProducts, setFallbackProducts] = useState<Product[]>([]);
   const today = new Date().toISOString().split("T")[0];
 
   // Live open/closed status (Amsterdam time), refreshed every minute.
@@ -79,11 +80,11 @@ export default function OrderPage() {
   const preOrderNote = useMemo(() => {
     if (!nextOpen) return null;
     if (nextOpen.daysAhead === 0) return t.hours.preOrderToday;
-    const date = new Date(Date.now() + nextOpen.daysAhead * 86_400_000);
-    const dayName = new Intl.DateTimeFormat(lang === "nl" ? "nl-NL" : "en-GB", {
-      weekday: "long",
-      timeZone: "Europe/Amsterdam",
-    }).format(date);
+    const dayNames =
+      lang === "nl"
+        ? ["zondag", "maandag", "dinsdag", "woensdag", "donderdag", "vrijdag", "zaterdag"]
+        : ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const dayName = dayNames[nextOpen.weekday] ?? "";
     return t.hours.preOrderDay.replace("{day}", dayName);
   }, [nextOpen, t, lang]);
 
@@ -92,16 +93,37 @@ export default function OrderPage() {
   // edit or clear them to deliver somewhere else.
   useEffect(() => {
     if (!currentUser) return;
-    setForm((f) => ({
-      ...f,
-      name: f.name || currentUser.name || "",
-      phone: f.phone || currentUser.phone || "",
-      address: f.address || currentUser.address || "",
-      postcode: f.postcode || currentUser.postcode || "",
-    }));
+    queueMicrotask(() => {
+      setForm((f) => ({
+        ...f,
+        name: f.name || currentUser.name || "",
+        phone: f.phone || currentUser.phone || "",
+        address: f.address || currentUser.address || "",
+        postcode: f.postcode || currentUser.postcode || "",
+      }));
+    });
   }, [currentUser]);
 
-  const visible = products.filter((p) => p.brand === activeBrand && p.category === activeCategory);
+  useEffect(() => {
+    if (products.length > 0 || fallbackProducts.length > 0) return;
+    let cancelled = false;
+    queueMicrotask(() => {
+      fetch("/api/bootstrap", { cache: "no-store" })
+        .then((res) => (res.ok ? res.json() : null))
+        .then((data) => {
+          if (!cancelled) setFallbackProducts(data?.products ?? []);
+        })
+        .catch(() => {
+          if (!cancelled) setFallbackProducts([]);
+        });
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [products.length, fallbackProducts.length]);
+
+  const menuProducts = products.length > 0 ? products : fallbackProducts;
+  const visible = menuProducts.filter((p) => p.brand === activeBrand && p.category === activeCategory);
 
   /** The active restaurant's admin-managed config (safe fallback while loading). */
   const activeBrandCfg = brands.find((b) => b.id === activeBrand) ?? brands[0];
@@ -116,13 +138,22 @@ export default function OrderPage() {
   useEffect(() => {
     if (brands.length === 0) return;
     const brand = brands.find((b) => b.id === activeBrand);
+    const firstCategoryWithProducts = (targetBrand: Brand) => {
+      const config = brands.find((b) => b.id === targetBrand);
+      return config?.categories.find((category) => menuProducts.some((product) => product.brand === targetBrand && product.category === category.name))?.name;
+    };
     if (!brand) {
-      setActiveBrand(brands[0].id);
-      setActiveCategory(brands[0].categories[0]?.name ?? "");
+      queueMicrotask(() => {
+        setActiveBrand(brands[0].id);
+        setActiveCategory(firstCategoryWithProducts(brands[0].id) ?? brands[0].categories[0]?.name ?? "");
+      });
     } else if (!brand.categories.some((c) => c.name === activeCategory)) {
-      setActiveCategory(brand.categories[0]?.name ?? "");
+      queueMicrotask(() => setActiveCategory(firstCategoryWithProducts(activeBrand) ?? brand.categories[0]?.name ?? ""));
+    } else if (menuProducts.length > 0 && !menuProducts.some((product) => product.brand === activeBrand && product.category === activeCategory)) {
+      const nextCategory = firstCategoryWithProducts(activeBrand);
+      if (nextCategory && nextCategory !== activeCategory) queueMicrotask(() => setActiveCategory(nextCategory));
     }
-  }, [brands, activeBrand, activeCategory]);
+  }, [brands, menuProducts, activeBrand, activeCategory]);
 
   // Switch restaurant/brand and jump to that brand's first category.
   const selectBrand = (brand: Brand) => {
@@ -134,9 +165,10 @@ export default function OrderPage() {
   const cartLines = useMemo(
     () =>
       products
+        .concat(fallbackProducts.filter((fallbackProduct) => !products.some((product) => product.id === fallbackProduct.id)))
         .filter((p) => (cart[p.id] || 0) > 0)
         .map((p) => ({ product: p, qty: cart[p.id] })),
-    [products, cart]
+    [products, fallbackProducts, cart]
   );
 
   const subtotal = cartLines.reduce((sum, l) => sum + l.product.price * l.qty, 0);
@@ -188,7 +220,6 @@ export default function OrderPage() {
   };
 
   const handleCheckout = async () => {
-    const isScheduled = isCompany && scheduleType !== "asap";
     if (belowMinOrder) {
       setMessage({ type: "error", text: minOrderNote });
       return;
@@ -307,17 +338,40 @@ export default function OrderPage() {
   );
 
   const ProductsGrid = () => (
-    <div key={`${activeBrand}-${activeCategory}`} className="grid gap-3 grid-cols-2 sm:grid-cols-4 lg:grid-cols-2">
+    <div key={`${activeBrand}-${activeCategory}`} className="stagger-rise grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-2">
+      {menuProducts.length === 0 && (
+        [0, 1, 2, 3].map((index) => (
+          <div key={index} className="premium-panel ember-border lux-sweep rounded-2xl p-3">
+            <div className="skeleton aspect-[4/3] rounded-xl" />
+            <div className="mt-3 space-y-2">
+              <span className="skeleton block h-4 w-3/4 rounded-full" />
+              <span className="skeleton block h-3 w-full rounded-full" />
+              <span className="skeleton block h-9 w-full rounded-full" />
+            </div>
+          </div>
+        ))
+      )}
+      {menuProducts.length > 0 && visible.length === 0 && (
+        <div className="premium-panel ember-border lux-sweep col-span-full rounded-3xl p-8 text-center">
+          <span className="mx-auto grid h-14 w-14 place-items-center rounded-2xl border border-emerald-500/25 bg-emerald-500/10 text-2xl text-emerald-600 dark:text-emerald-400">
+            <FaStore />
+          </span>
+          <p className="font-display mt-4 text-lg font-bold text-slate-900 dark:text-white">{activeCategory}</p>
+          <p className="mt-2 text-sm leading-6 text-slate-500 dark:text-slate-400">
+            {lang === "nl" ? "Deze categorie wordt binnenkort aangevuld." : "This category is being refreshed soon."}
+          </p>
+        </div>
+      )}
       {visible.map((p) => {
         const qty = cart[p.id] || 0;
         const Icon = categoryIconFor(brands, p.category);
         return (
           <article
             key={p.id}
-            className={`glow-card animate-fade-up group flex flex-col overflow-hidden rounded-2xl border bg-white dark:bg-white/5 ${
+            className={`premium-panel magnetic-card lux-sweep animate-fade-up group flex flex-col overflow-hidden rounded-2xl ${
               qty > 0
-                ? "border-emerald-500/60 ring-1 ring-emerald-500/40 shadow-lg shadow-emerald-600/10"
-                : "border-slate-200 dark:border-white/10"
+                ? "ring-1 ring-emerald-500/40 shadow-lg shadow-emerald-600/10"
+                : ""
             }`}
           >
             <div className="dish-img relative aspect-[4/3] w-full overflow-hidden bg-gradient-to-br from-emerald-500/15 via-emerald-400/5 to-emerald-600/10">
@@ -417,11 +471,11 @@ export default function OrderPage() {
   );
 
   return (
-    <>
+    <div className="page-stage min-h-screen">
       {/* Closed notice - ordering stays possible, preparation starts at the next opening */}
       {preOrderNote && (
         <div className="mx-auto max-w-7xl px-4 pb-3 pt-4 sm:px-6 lg:px-8">
-          <div className="flex items-start gap-3 rounded-2xl border border-sky-300 bg-sky-50 px-4 py-3 text-sm text-sky-800 dark:border-sky-400/30 dark:bg-sky-400/10 dark:text-sky-300">
+          <div className="premium-panel lux-sweep flex items-start gap-3 rounded-2xl px-4 py-3 text-sm text-sky-800 dark:text-sky-300">
             <FaClock className="mt-0.5 flex-shrink-0" />
             <p>
               <span className="font-bold">{t.hours.closedNow}.</span> {preOrderNote}
@@ -431,7 +485,7 @@ export default function OrderPage() {
       )}
 
       {/* Header - Desktop only */}
-      <div className="relative hidden overflow-hidden px-4 py-8 sm:px-6 lg:block lg:mx-auto lg:max-w-7xl lg:px-8">
+      <div className="order-hero-strip relative hidden overflow-hidden px-4 py-6 sm:px-6 lg:block lg:mx-auto lg:max-w-7xl lg:px-8">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(45%_80%_at_30%_0%,rgba(217,126,38,0.14),transparent_65%)]" />
         <div className="pointer-events-none absolute -right-10 top-0 h-36 w-36 animate-float rounded-full bg-emerald-500/10 blur-3xl" />
         <span className="lux-overline relative inline-flex items-center gap-2 text-emerald-600 dark:text-emerald-400">
@@ -445,7 +499,7 @@ export default function OrderPage() {
       </div>
 
       {/* Mobile & Tablet: Brand switch + Categories Bar (Sticky) */}
-      <div className="sticky top-[64px] z-40 border-b border-slate-200 bg-white/90 backdrop-blur dark:border-white/10 dark:bg-[#0c0703]/90 lg:hidden">
+      <div className="sticky top-[64px] z-40 border-b border-emerald-500/20 bg-white/90 shadow-lg shadow-emerald-900/5 backdrop-blur-xl dark:border-white/10 dark:bg-[#0c0703]/90 lg:hidden">
         {/* Restaurant switcher */}
         <div className="flex gap-2 overflow-x-auto px-3 pt-2">
           {sortedBrands.map((b) => {
@@ -500,10 +554,10 @@ export default function OrderPage() {
               return (
                 <div
                   key={b.id}
-                  className={`overflow-hidden rounded-2xl border transition ${
+                  className={`lux-sweep overflow-hidden rounded-2xl border transition ${
                     active
-                      ? "border-emerald-400 bg-white shadow-lg shadow-emerald-600/10 dark:border-emerald-500/40 dark:bg-[#170d04]"
-                      : "border-slate-200 bg-white dark:border-white/10 dark:bg-[#170d04]"
+                      ? "premium-panel shadow-lg shadow-emerald-600/10 dark:border-emerald-500/40"
+                      : "border-slate-200 bg-white/80 backdrop-blur dark:border-white/10 dark:bg-[#170d04]/80"
                   }`}
                 >
                   {/* Brand header (logo) - click to switch restaurant */}
@@ -571,12 +625,12 @@ export default function OrderPage() {
             </div>
             <div className="gold-rule ml-2 flex-1" />
           </div>
-          <ProductsGrid />
+          {ProductsGrid()}
         </section>
 
         {/* Desktop: Cart + Checkout - Right sidebar */}
         <aside className="sticky top-[76px] self-start">
-          <div className="card-lux texture-linen rounded-3xl p-5 shadow-xl shadow-emerald-900/10">
+          <div className="premium-panel ember-border lux-sweep texture-linen rounded-3xl p-5">
             <div className="flex items-center justify-between">
               <h2 className="font-display flex items-center gap-2 text-lg font-bold text-slate-900 dark:text-white">
                 <FaCartShopping className="text-emerald-600 dark:text-emerald-400" /> {t.common.yourOrder}
@@ -597,7 +651,7 @@ export default function OrderPage() {
                 </div>
               ) : (
                 cartLines.map(({ product, qty }) => (
-                  <div key={product.id} className="flex items-center gap-3 rounded-2xl border border-slate-100 bg-slate-50 p-2.5 dark:border-white/5 dark:bg-white/5">
+                  <div key={product.id} className="magnetic-card flex items-center gap-3 rounded-2xl border border-emerald-500/10 bg-white/70 p-2.5 backdrop-blur dark:border-white/5 dark:bg-white/5">
                     <div className="min-w-0 flex-1">
                       <p className="truncate text-sm font-semibold text-slate-900 dark:text-white">{product.name}</p>
                       <p className="text-xs text-slate-500 dark:text-slate-400">€{product.price.toFixed(2)} {t.common.each}</p>
@@ -870,7 +924,7 @@ export default function OrderPage() {
       <div className="flex h-[calc(100vh-136px)] flex-col lg:hidden">
         {/* Products - Scrollable */}
         <div className="flex-1 overflow-y-auto px-4 py-3 sm:px-6">
-          <ProductsGrid />
+          {ProductsGrid()}
         </div>
 
         {/* Mobile: Cart Footer - Sticky Bottom */}
@@ -1206,6 +1260,6 @@ export default function OrderPage() {
         product={selectedProduct}
         onClose={() => setSelectedProduct(null)}
       />
-    </>
+    </div>
   );
 }

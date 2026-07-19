@@ -5,6 +5,7 @@ import { Providers } from "./providers";
 import { Header } from "./components/header";
 import { Footer } from "./components/footer";
 import { CookieConsent } from "./components/CookieConsent";
+import { Atmosphere } from "./components/Atmosphere";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -110,6 +111,7 @@ export default function RootLayout({
       <body className="flex min-h-full flex-col">
         <Providers>
           <Header />
+          <Atmosphere />
           <main className="flex-1">{children}</main>
           <Footer />
           <CookieConsent />

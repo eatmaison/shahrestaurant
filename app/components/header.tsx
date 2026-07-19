@@ -61,6 +61,7 @@ export function Header() {
 
   return (
     <header
+      data-site-header
       className={`sticky top-0 z-50 border-b border-slate-200/70 bg-white/80 backdrop-blur-xl transition-shadow duration-300 dark:border-emerald-400/15 dark:bg-[#0c0703]/85 ${
         scrolled ? "shadow-lg shadow-emerald-900/10 dark:shadow-black/40" : ""
       }`}
@@ -158,12 +159,15 @@ export function Header() {
           </div>
 
           <button
+            type="button"
             onClick={toggleTheme}
             className="grid h-9 w-9 place-items-center rounded-full border border-slate-200 bg-white text-slate-700 transition hover:rotate-12 hover:border-emerald-400/60 hover:text-emerald-600 dark:border-white/10 dark:bg-white/5 dark:text-slate-200 dark:hover:text-emerald-300"
             aria-label={theme === "light" ? t.common.darkMode : t.common.lightMode}
+            aria-pressed={theme === "dark"}
             title={theme === "light" ? t.common.darkMode : t.common.lightMode}
+            suppressHydrationWarning
           >
-            <span key={theme} className="animate-spin-in grid place-items-center">
+            <span className="grid place-items-center" suppressHydrationWarning>
               {theme === "light" ? <FaMoon /> : <FaSun />}
             </span>
           </button>

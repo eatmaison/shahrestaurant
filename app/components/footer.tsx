@@ -26,7 +26,7 @@ export function Footer() {
   }).map((p) => ({ ...p, url: socialLinks.find((l) => l.platform === p.id)!.url }));
 
   return (
-    <footer className="relative mt-16 overflow-hidden border-t border-slate-200/70 bg-white dark:border-emerald-400/15 dark:bg-[#0a0602]">
+    <footer data-site-footer className="relative mt-16 overflow-hidden border-t border-slate-200/70 bg-white dark:border-emerald-400/15 dark:bg-[#0a0602]">
       <div className="gold-rule absolute inset-x-0 top-0" />
       <div className="pointer-events-none absolute -top-24 left-1/2 h-48 w-[36rem] -translate-x-1/2 rounded-full bg-emerald-500/10 blur-3xl" />
       <div className="relative mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-2 lg:px-8">

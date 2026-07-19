@@ -110,7 +110,18 @@ export default function AccountPage() {
   };
 
   if (!hydrated) {
-    return <div className="mx-auto max-w-md px-4 py-20 text-center text-sm text-slate-500">…</div>;
+    return (
+      <div className="page-stage cinematic-hero mx-auto flex max-w-md flex-col justify-center px-4 py-12 sm:px-6">
+        <div className="premium-panel ember-border lux-sweep rounded-3xl p-8 text-center">
+          <span className="mx-auto grid h-14 w-14 place-items-center rounded-2xl border border-emerald-500/25 bg-emerald-500/10 text-2xl text-emerald-600 dark:text-emerald-400">
+            <FaUser />
+          </span>
+          <div className="mx-auto mt-6 h-2 w-40 overflow-hidden rounded-full bg-emerald-500/10">
+            <span className="progress-ember block h-full w-2/3 rounded-full" />
+          </div>
+        </div>
+      </div>
+    );
   }
 
   /* Logged-in dashboard */
@@ -121,8 +132,8 @@ export default function AccountPage() {
     const pendingVipRequest = vipRequests.find((r) => r.userId === currentUser.id && r.status === "pending");
 
     return (
-      <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
-        <div className="flex flex-wrap items-center justify-between gap-4">
+      <div className="page-stage mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
+        <div className="premium-panel ember-border lux-sweep flex flex-wrap items-center justify-between gap-4 rounded-[2rem] p-5 sm:p-7">
           <div className="flex items-center gap-4">
             <span
               className={`grid h-14 w-14 place-items-center rounded-2xl text-2xl ${
@@ -196,18 +207,18 @@ export default function AccountPage() {
           </div>
         )}
 
-        <div className="mt-8 grid gap-4 sm:grid-cols-3">
-          <div className="rounded-3xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-white/5">
+        <div className="stagger-rise mt-8 grid gap-4 sm:grid-cols-3">
+          <div className="premium-panel magnetic-card lux-sweep rounded-3xl p-5">
             <FaReceipt className="text-xl text-emerald-600 dark:text-emerald-400" />
             <p className="mt-3 text-3xl font-black text-slate-900 dark:text-white">{currentUser.orderCount}</p>
             <p className="text-sm text-slate-500 dark:text-slate-400">{t.auth.ordersPlaced}</p>
           </div>
-          <div className="rounded-3xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-white/5">
+          <div className="premium-panel magnetic-card lux-sweep rounded-3xl p-5">
             <FaAward className="text-xl text-emerald-600 dark:text-emerald-400" />
             <p className="mt-3 text-3xl font-black text-slate-900 dark:text-white">{currentUser.points}</p>
             <p className="text-sm text-slate-500 dark:text-slate-400">{t.auth.loyaltyPoints}</p>
           </div>
-          <div className="rounded-3xl border border-emerald-200 bg-emerald-50 p-5 dark:border-emerald-500/20 dark:bg-emerald-500/10">
+          <div className="premium-panel magnetic-card lux-sweep rounded-3xl p-5">
             <FaGift className="text-xl text-emerald-600 dark:text-emerald-400" />
             <p className="mt-3 text-3xl font-black text-emerald-700 dark:text-emerald-300">{discount}%</p>
             <p className="text-sm text-emerald-700/80 dark:text-emerald-300/80">{t.auth.currentDiscount}</p>
@@ -216,7 +227,7 @@ export default function AccountPage() {
 
         {/* VIP / Company membership */}
         {isCompany ? (
-          <div className="mt-4 overflow-hidden rounded-3xl border border-sky-300/60 bg-gradient-to-r from-sky-500/15 via-indigo-500/10 to-sky-500/15 p-5 dark:border-sky-400/30">
+          <div className="premium-panel lux-sweep mt-4 overflow-hidden rounded-3xl p-5">
             <div className="flex items-center gap-3">
               <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-sky-500 to-indigo-600 text-xl text-white shadow-lg shadow-sky-500/30">
                 <FaBuilding />
@@ -228,7 +239,7 @@ export default function AccountPage() {
             </div>
           </div>
         ) : currentUser.isVip ? (
-          <div className="mt-4 overflow-hidden rounded-3xl border border-amber-300/60 bg-gradient-to-r from-amber-400/15 via-yellow-400/10 to-amber-400/15 p-5 dark:border-amber-400/30">
+          <div className="premium-panel lux-sweep mt-4 overflow-hidden rounded-3xl p-5">
             <div className="flex items-center gap-3">
               <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-amber-400 to-yellow-600 text-xl text-white shadow-lg shadow-amber-500/30">
                 <FaCrown />
@@ -240,7 +251,7 @@ export default function AccountPage() {
             </div>
           </div>
         ) : pendingVipRequest ? (
-          <div className="mt-4 overflow-hidden rounded-3xl border border-amber-300/60 bg-white p-5 dark:border-amber-400/30 dark:bg-white/5">
+          <div className="premium-panel lux-sweep mt-4 overflow-hidden rounded-3xl p-5">
             <div className="flex items-center gap-3">
               <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-amber-400/20 text-xl text-amber-600 dark:text-amber-400">
                 <FaHourglassHalf />
@@ -252,7 +263,7 @@ export default function AccountPage() {
             </div>
           </div>
         ) : (
-          <div className="mt-4 overflow-hidden rounded-3xl border border-amber-300/60 bg-white p-5 dark:border-amber-400/30 dark:bg-white/5">
+          <div className="premium-panel ember-border lux-sweep mt-4 overflow-hidden rounded-3xl p-5">
             <div className="flex flex-wrap items-center justify-between gap-4">
               <div className="flex items-center gap-3">
                 <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-amber-400 to-yellow-600 text-xl text-white shadow-lg shadow-amber-500/30">
@@ -309,12 +320,12 @@ export default function AccountPage() {
           </div>
         )}
 
-        <div className="mt-4 rounded-3xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-white/5">
+        <div className="premium-panel lux-sweep mt-4 rounded-3xl p-5">
           <p className="text-sm font-semibold text-slate-900 dark:text-white">{t.auth.loyaltyPoints}</p>
           <p className="mt-1 text-sm leading-7 text-slate-600 dark:text-slate-400">{t.auth.loyaltyExplain}</p>
         </div>
 
-        <div className="mt-4 rounded-3xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-white/5">
+        <div className="premium-panel lux-sweep mt-4 rounded-3xl p-5">
           <h2 className="text-lg font-black text-slate-900 dark:text-white">{t.admin.recentOrders}</h2>
           {myOrders.length === 0 ? (
             <p className="mt-3 text-sm text-slate-500 dark:text-slate-400">{t.admin.noOrders}</p>
@@ -323,7 +334,7 @@ export default function AccountPage() {
               {myOrders.slice(0, 8).map((o) => {
                 const existing = reviews.find((r) => r.orderId === o.id);
                 return (
-                  <li key={o.id} className="rounded-2xl border border-slate-100 bg-slate-50 px-4 py-3 dark:border-white/5 dark:bg-white/5">
+                  <li key={o.id} className="magnetic-card rounded-2xl border border-emerald-500/10 bg-white/65 px-4 py-3 backdrop-blur dark:border-white/5 dark:bg-white/5">
                     <div className="flex items-center justify-between gap-3 text-sm">
                       <span className="flex flex-col text-slate-600 dark:text-slate-300">
                         <span className="font-black text-slate-900 dark:text-white">{formatOrderNumber(o.orderNumber)}</span>
@@ -479,8 +490,35 @@ export default function AccountPage() {
 
   /* Auth form */
   return (
-    <div className="mx-auto flex max-w-md flex-col px-4 py-12 sm:px-6">
-      <div className="card-lux rounded-3xl p-6 shadow-xl shadow-emerald-900/10 sm:p-8">
+    <div className="page-stage cinematic-hero mx-auto grid max-w-5xl items-center gap-6 px-4 py-12 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:px-8">
+      <aside className="premium-panel ember-border lux-sweep relative hidden min-h-[520px] overflow-hidden rounded-[2rem] p-8 text-white lg:block">
+        <div className="spice-dots pointer-events-none absolute inset-0 opacity-25" />
+        <div className="flame-glow pointer-events-none absolute -inset-20 opacity-80" />
+        <div className="relative flex h-full flex-col justify-between">
+          <div>
+            <span className="lux-overline text-emerald-300">The Tandoor Company</span>
+            <h1 className="font-display mt-5 text-4xl font-semibold leading-tight">
+              <span className="ember-text">{mode === "login" ? t.auth.loginTitle : t.auth.registerTitle}</span>
+            </h1>
+          </div>
+          <div className="grid gap-3">
+            {[
+              { Icon: FaGift, text: t.auth.loyaltyPoints },
+              { Icon: FaCrown, text: t.vip.badge },
+              { Icon: FaTruck, text: t.common.delivery },
+            ].map(({ Icon, text }) => (
+              <div key={text} className="magnetic-card flex items-center gap-3 rounded-2xl border border-emerald-400/15 bg-white/5 p-4 backdrop-blur">
+                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-emerald-400/30 bg-emerald-500/15 text-emerald-300">
+                  <Icon />
+                </span>
+                <span className="text-sm font-bold text-emerald-50">{text}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </aside>
+
+      <div className="premium-panel ember-border lux-sweep rounded-3xl p-6 sm:p-8">
         <div className="mb-6 flex rounded-full bg-slate-100 p-1 dark:bg-white/5">
           <button
             onClick={() => { setMode("login"); setError(""); }}
