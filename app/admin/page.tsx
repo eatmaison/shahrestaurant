@@ -41,7 +41,7 @@ import {
   FaXmark,
 } from "react-icons/fa6";
 import { useLang, useStore } from "../providers";
-import { CATEGORY_ICON_CHOICES, categoryIconFor, formatOrderNumber, ORDER_STATUS_FLOW } from "../lib/data";
+import { CATEGORY_ICON_CHOICES, categoryIconFor, formatOrderNumber, isDrinkCategory, ORDER_STATUS_FLOW } from "../lib/data";
 import { SOCIAL_PLATFORMS } from "../components/socialIcons";
 import RichTextEditor from "../components/RichTextEditor";
 import type { Brand, Category, Order, OrderStatus, Product } from "../lib/types";
@@ -144,6 +144,7 @@ export default function AdminPage() {
     price: "",
     brand: "eattogo" as Brand,
     category: "Wraps" as Category,
+    subcategory: "" as Category,
     image: "" as string | undefined,
     detailEn: "",
     detailNl: "",
@@ -162,6 +163,7 @@ export default function AdminPage() {
     price: "",
     brand: "eattogo" as Brand,
     category: "Wraps" as Category,
+    subcategory: "" as Category,
     image: undefined as string | undefined,
     detailEn: "",
     detailNl: "",
@@ -181,18 +183,28 @@ export default function AdminPage() {
   const [newBrandName, setNewBrandName] = useState("");
   const [newCatName, setNewCatName] = useState("");
   const [newCatIcon, setNewCatIcon] = useState("utensils");
+  const [newSubcatName, setNewSubcatName] = useState("");
   const [manageState, setManageState] = useState<SaveState>({ status: "idle" });
 
   /** Categories of a brand from the admin-managed list. */
   const categoriesOf = (brandId: string) => brands.find((b) => b.id === brandId)?.categories ?? [];
+  const subcategoriesOf = (brandId: string, categoryName: string) =>
+    categoriesOf(brandId).find((c) => c.name === categoryName)?.subcategories ?? [];
+  const firstSubcategoryOf = (brandId: string, categoryName: string) => subcategoriesOf(brandId, categoryName)[0]?.name ?? "";
 
   // Keep the drafts pointing at an existing brand when brands are added/removed.
   useEffect(() => {
     if (brands.length === 0) return;
     if (!brands.some((b) => b.id === draft.brand)) {
-      setDraft((d) => ({ ...d, brand: brands[0].id, category: brands[0].categories[0]?.name ?? "" }));
+      const category = brands[0].categories[0]?.name ?? "";
+      setDraft((d) => ({ ...d, brand: brands[0].id, category, subcategory: category === "Drinks" ? firstSubcategoryOf(brands[0].id, category) : "" }));
     } else if (!categoriesOf(draft.brand).some((c) => c.name === draft.category)) {
-      setDraft((d) => ({ ...d, category: categoriesOf(d.brand)[0]?.name ?? "" }));
+      setDraft((d) => {
+        const category = categoriesOf(d.brand)[0]?.name ?? "";
+        return { ...d, category, subcategory: category === "Drinks" ? firstSubcategoryOf(d.brand, category) : "" };
+      });
+    } else if (draft.category === "Drinks" && draft.subcategory && !subcategoriesOf(draft.brand, draft.category).some((s) => s.name === draft.subcategory)) {
+      setDraft((d) => ({ ...d, subcategory: firstSubcategoryOf(d.brand, d.category) }));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [brands, draft.brand, draft.category]);
@@ -203,6 +215,10 @@ export default function AdminPage() {
 
   // Product pending deletion (shown in a confirmation dialog).
   const [deleting, setDeleting] = useState<Product | null>(null);
+  const [productSearch, setProductSearch] = useState("");
+  const [productBrandFilter, setProductBrandFilter] = useState<Brand | "all">("all");
+  const [productCategoryFilter, setProductCategoryFilter] = useState<Category | "all">("all");
+  const [productSubcategoryFilter, setProductSubcategoryFilter] = useState<Category | "all">("all");
 
   // Period filters: one for the statistics block, one for order management.
   const [statsRange, setStatsRange] = useState<RangeFilter>({ preset: "all" });
@@ -238,6 +254,61 @@ export default function AdminPage() {
     for (const c of Object.keys(stats.byCategory)) set.add(c);
     return [...set];
   }, [brands, stats.byCategory]);
+
+  const productFilterCategories = useMemo(() => {
+    const set = new Set<string>();
+    for (const b of brands) {
+      if (productBrandFilter !== "all" && b.id !== productBrandFilter) continue;
+      for (const c of b.categories) set.add(c.name);
+    }
+    for (const p of products) {
+      if (productBrandFilter === "all" || p.brand === productBrandFilter) set.add(p.category);
+    }
+    return [...set];
+  }, [brands, products, productBrandFilter]);
+
+  const activeProductCategoryFilter =
+    productCategoryFilter !== "all" && productFilterCategories.includes(productCategoryFilter)
+      ? productCategoryFilter
+      : "all";
+
+  const productFilterSubcategories = useMemo(() => {
+    const set = new Set<string>();
+    for (const b of brands) {
+      if (productBrandFilter !== "all" && b.id !== productBrandFilter) continue;
+      for (const sub of b.categories.find((c) => c.name === "Drinks")?.subcategories ?? []) set.add(sub.name);
+    }
+    for (const p of products) {
+      if ((productBrandFilter === "all" || p.brand === productBrandFilter) && p.category === "Drinks" && p.subcategory) set.add(p.subcategory);
+    }
+    return [...set];
+  }, [brands, productBrandFilter, products]);
+
+  const activeProductSubcategoryFilter =
+    productSubcategoryFilter !== "all" && productFilterSubcategories.includes(productSubcategoryFilter)
+      ? productSubcategoryFilter
+      : "all";
+
+  const filteredProducts = useMemo(() => {
+    const q = productSearch.trim().toLowerCase();
+    return products.filter((p) => {
+      if (productBrandFilter !== "all" && p.brand !== productBrandFilter) return false;
+      if (activeProductCategoryFilter !== "all") {
+        if (activeProductCategoryFilter === "Drinks") {
+          if (!isDrinkCategory(p.category)) return false;
+          if (activeProductSubcategoryFilter !== "all" && p.subcategory !== activeProductSubcategoryFilter) return false;
+        } else if (p.category !== activeProductCategoryFilter) {
+          return false;
+        }
+      }
+      if (!q) return true;
+      const brandName = brands.find((b) => b.id === p.brand)?.name ?? p.brand;
+      return [p.name, p.description, p.descriptionNl ?? "", p.category, p.subcategory ?? "", brandName, p.price.toFixed(2)]
+        .join(" ")
+        .toLowerCase()
+        .includes(q);
+    });
+  }, [activeProductCategoryFilter, activeProductSubcategoryFilter, brands, productBrandFilter, productSearch, products]);
 
   /** Last 20 users seen on the site, most recent first. */
   const recentlyOnline = useMemo(
@@ -413,6 +484,7 @@ export default function AdminPage() {
       price,
       brand: draft.brand,
       category: draft.category,
+      subcategory: draft.category === "Drinks" ? draft.subcategory || firstSubcategoryOf(draft.brand, draft.category) : undefined,
       image: draft.image,
       detailedDescription: detailEn || detailNl ? { en: detailEn, nl: detailNl } : undefined,
       ingredients: parseList(draft.ingredientsEn),
@@ -431,6 +503,7 @@ export default function AdminPage() {
       price: "",
       brand: draft.brand,
       category: draft.category,
+      subcategory: draft.category === "Drinks" ? draft.subcategory : "",
       image: undefined,
       detailEn: "",
       detailNl: "",
@@ -454,6 +527,7 @@ export default function AdminPage() {
       price: String(p.price),
       brand: p.brand,
       category: p.category,
+      subcategory: p.subcategory ?? "",
       image: p.image,
       detailEn: p.detailedDescription?.en ?? "",
       detailNl: p.detailedDescription?.nl ?? "",
@@ -503,6 +577,7 @@ export default function AdminPage() {
       price,
       brand: editDraft.brand,
       category: editDraft.category,
+      subcategory: editDraft.category === "Drinks" ? editDraft.subcategory || firstSubcategoryOf(editDraft.brand, editDraft.category) : undefined,
       image: editDraft.image,
       // null (not undefined) so clearing both fields also clears it in the database.
       detailedDescription: (detailEn || detailNl
@@ -563,6 +638,13 @@ export default function AdminPage() {
     if (!manageBrandId || !newCatName.trim()) return;
     if (await runManage({ action: "addCategory", brandId: manageBrandId, name: newCatName.trim(), icon: newCatIcon })) {
       setNewCatName("");
+    }
+  };
+
+  const submitAddSubcategory = async () => {
+    if (!manageBrandId || !newSubcatName.trim()) return;
+    if (await runManage({ action: "addSubcategory", brandId: manageBrandId, categoryName: "Drinks", name: newSubcatName.trim(), icon: "glass-water" })) {
+      setNewSubcatName("");
     }
   };
 
@@ -1456,7 +1538,8 @@ export default function AdminPage() {
               value={draft.brand}
               onChange={(e) => {
                 const brand = e.target.value as Brand;
-                setDraft({ ...draft, brand, category: categoriesOf(brand)[0]?.name ?? "" });
+                const category = categoriesOf(brand)[0]?.name ?? "";
+                setDraft({ ...draft, brand, category, subcategory: category === "Drinks" ? firstSubcategoryOf(brand, category) : "" });
               }}
               aria-label={t.admin.restaurant}
               className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm font-semibold outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
@@ -1478,7 +1561,10 @@ export default function AdminPage() {
               </div>
               <select
                 value={draft.category}
-                onChange={(e) => setDraft({ ...draft, category: e.target.value as Category })}
+                onChange={(e) => {
+                  const category = e.target.value as Category;
+                  setDraft({ ...draft, category, subcategory: category === "Drinks" ? firstSubcategoryOf(draft.brand, category) : "" });
+                }}
                 className="w-full self-start rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
               >
                 {categoriesOf(draft.brand).map((c) => (
@@ -1486,6 +1572,18 @@ export default function AdminPage() {
                 ))}
               </select>
             </div>
+            {draft.category === "Drinks" && (
+              <select
+                value={draft.subcategory}
+                onChange={(e) => setDraft({ ...draft, subcategory: e.target.value as Category })}
+                aria-label="Drink subcategory"
+                className="w-full rounded-xl border border-emerald-200 bg-emerald-50/60 px-3.5 py-2.5 text-sm font-semibold text-emerald-800 outline-none transition focus:border-emerald-500 dark:border-emerald-400/30 dark:bg-emerald-400/10 dark:text-emerald-200"
+              >
+                {subcategoriesOf(draft.brand, "Drinks").map((sub) => (
+                  <option key={sub.name} value={sub.name}>{sub.name}</option>
+                ))}
+              </select>
+            )}
 
             <div className="flex items-center gap-3">
               <button
@@ -1546,11 +1644,121 @@ export default function AdminPage() {
           <div className="flex items-center justify-between">
             <h2 className="text-lg font-black text-slate-900 dark:text-white">{t.admin.manageProducts}</h2>
             <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600 dark:bg-white/10 dark:text-slate-300">
-              {products.length}
+              {filteredProducts.length}/{products.length}
             </span>
           </div>
+          <div className="mt-4 rounded-2xl border border-slate-200 bg-slate-50/70 p-3 dark:border-white/10 dark:bg-white/5">
+            <div className="grid gap-2 md:grid-cols-[1fr_0.7fr_0.7fr]">
+              <label className="relative block">
+                <FaMagnifyingGlass className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-xs text-slate-400" />
+                <input
+                  value={productSearch}
+                  onChange={(e) => setProductSearch(e.target.value)}
+                  placeholder={t.admin.productSearch}
+                  className="w-full rounded-xl border border-slate-200 bg-white py-2.5 pl-9 pr-3 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
+                />
+              </label>
+              <select
+                value={productBrandFilter}
+                onChange={(e) => {
+                  setProductBrandFilter(e.target.value as Brand | "all");
+                  setProductCategoryFilter("all");
+                  setProductSubcategoryFilter("all");
+                }}
+                aria-label={t.admin.restaurant}
+                className="rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm font-semibold outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
+              >
+                <option value="all">{t.admin.allRestaurants}</option>
+                {brands.map((b) => (
+                  <option key={b.id} value={b.id}>{b.name}</option>
+                ))}
+              </select>
+              <select
+                value={activeProductCategoryFilter}
+                onChange={(e) => setProductCategoryFilter(e.target.value as Category | "all")}
+                aria-label={t.admin.productCategory}
+                className="rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm font-semibold outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
+              >
+                <option value="all">{t.admin.allCategories}</option>
+                {productFilterCategories.map((cat) => (
+                  <option key={cat} value={cat}>{cat}</option>
+                ))}
+              </select>
+            </div>
+            <div className="mt-3 flex gap-2 overflow-x-auto pb-1">
+              <button
+                type="button"
+                onClick={() => setProductCategoryFilter("all")}
+                className={`shrink-0 rounded-full px-3 py-1.5 text-xs font-bold transition ${
+                  activeProductCategoryFilter === "all"
+                    ? "bg-emerald-600 text-white shadow-md shadow-emerald-600/25"
+                    : "bg-white text-slate-600 ring-1 ring-slate-200 hover:text-emerald-700 dark:bg-white/10 dark:text-slate-300 dark:ring-white/10"
+                }`}
+              >
+                {t.admin.allCategories}
+              </button>
+              {productFilterCategories.map((cat) => {
+                const Icon = categoryIconFor(brands, cat);
+                const active = activeProductCategoryFilter === cat;
+                return (
+                  <button
+                    key={cat}
+                    type="button"
+                    onClick={() => {
+                      setProductCategoryFilter(cat);
+                      setProductSubcategoryFilter("all");
+                    }}
+                    className={`inline-flex shrink-0 items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-bold transition ${
+                      active
+                        ? "bg-emerald-600 text-white shadow-md shadow-emerald-600/25"
+                        : "bg-white text-slate-600 ring-1 ring-slate-200 hover:text-emerald-700 dark:bg-white/10 dark:text-slate-300 dark:ring-white/10"
+                    }`}
+                  >
+                    <Icon className="text-[11px]" /> {cat}
+                  </button>
+                );
+              })}
+            </div>
+            {activeProductCategoryFilter === "Drinks" && productFilterSubcategories.length > 0 && (
+              <div className="mt-2 flex gap-2 overflow-x-auto pb-1">
+                <button
+                  type="button"
+                  onClick={() => setProductSubcategoryFilter("all")}
+                  className={`shrink-0 rounded-full px-3 py-1.5 text-xs font-bold transition ${
+                    activeProductSubcategoryFilter === "all"
+                      ? "bg-sky-600 text-white shadow-md shadow-sky-600/25"
+                      : "bg-white text-slate-600 ring-1 ring-slate-200 hover:text-sky-700 dark:bg-white/10 dark:text-slate-300 dark:ring-white/10"
+                  }`}
+                >
+                  All drinks
+                </button>
+                {productFilterSubcategories.map((sub) => {
+                  const Icon = categoryIconFor(brands, sub);
+                  const active = activeProductSubcategoryFilter === sub;
+                  return (
+                    <button
+                      key={sub}
+                      type="button"
+                      onClick={() => setProductSubcategoryFilter(sub)}
+                      className={`inline-flex shrink-0 items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-bold transition ${
+                        active
+                          ? "bg-sky-600 text-white shadow-md shadow-sky-600/25"
+                          : "bg-white text-slate-600 ring-1 ring-slate-200 hover:text-sky-700 dark:bg-white/10 dark:text-slate-300 dark:ring-white/10"
+                      }`}
+                    >
+                      <Icon className="text-[11px]" /> {sub}
+                    </button>
+                  );
+                })}
+              </div>
+            )}
+          </div>
           <div className="mt-4 max-h-[28rem] space-y-2 overflow-y-auto pr-1">
-            {products.map((p) => {
+            {filteredProducts.length === 0 ? (
+              <p className="rounded-2xl border border-dashed border-slate-300 bg-slate-50 p-4 text-sm leading-6 text-slate-500 dark:border-white/10 dark:bg-white/5 dark:text-slate-400">
+                {t.admin.noProductMatches}
+              </p>
+            ) : filteredProducts.map((p) => {
               const Icon = categoryIconFor(brands, p.category);
               return (
                 <div key={p.id} className="flex items-center gap-3 rounded-2xl border border-slate-100 bg-slate-50 p-2.5 dark:border-white/5 dark:bg-white/5">
@@ -1571,7 +1779,9 @@ export default function AdminPage() {
                         {(brands.find((b) => b.id === p.brand)?.name ?? p.brand).replace(/[^a-z0-9]/gi, "").slice(0, 3).toUpperCase()}
                       </span>
                     </p>
-                    <p className="truncate text-xs text-slate-500 dark:text-slate-400">{p.category} · €{p.price.toFixed(2)}</p>
+                    <p className="truncate text-xs text-slate-500 dark:text-slate-400">
+                      {p.category}{p.subcategory ? ` -> ${p.subcategory}` : ""} · €{p.price.toFixed(2)}
+                    </p>
                   </div>
                   <button
                     onClick={() => openEditor(p)}
@@ -1709,23 +1919,67 @@ export default function AdminPage() {
                     {categoriesOf(manageBrandId).map((c) => {
                       const Icon = categoryIconFor(brands, c.name);
                       return (
-                        <span
+                        <div
                           key={c.name}
-                          className="inline-flex items-center gap-1.5 rounded-full bg-slate-100 py-1 pl-3 pr-1 text-xs font-bold text-slate-700 dark:bg-white/10 dark:text-slate-200"
+                          className="rounded-2xl bg-slate-100 p-2 text-xs font-bold text-slate-700 dark:bg-white/10 dark:text-slate-200"
                         >
-                          <Icon className="text-emerald-600 dark:text-emerald-400" /> {c.name}
-                          <button
-                            onClick={() => runManage({ action: "removeCategory", brandId: manageBrandId, name: c.name })}
-                            className="grid h-5 w-5 place-items-center rounded-full text-slate-400 transition hover:bg-red-500/15 hover:text-red-600"
-                            aria-label={`${t.common.remove} ${c.name}`}
-                            title={t.common.remove}
-                          >
-                            <FaXmark className="text-[10px]" />
-                          </button>
-                        </span>
+                          <span className="inline-flex items-center gap-1.5">
+                            <Icon className="text-emerald-600 dark:text-emerald-400" /> {c.name}
+                            <button
+                              onClick={() => runManage({ action: "removeCategory", brandId: manageBrandId, name: c.name })}
+                              className="grid h-5 w-5 place-items-center rounded-full text-slate-400 transition hover:bg-red-500/15 hover:text-red-600"
+                              aria-label={`${t.common.remove} ${c.name}`}
+                              title={t.common.remove}
+                            >
+                              <FaXmark className="text-[10px]" />
+                            </button>
+                          </span>
+                          {c.name === "Drinks" && (
+                            <div className="mt-2 flex max-w-full flex-wrap gap-1.5 border-t border-white/60 pt-2 dark:border-white/10">
+                              {(c.subcategories ?? []).map((sub) => {
+                                const SubIcon = categoryIconFor(brands, sub.name);
+                                return (
+                                  <span key={sub.name} className="inline-flex items-center gap-1 rounded-full bg-white py-1 pl-2 pr-1 text-[11px] text-slate-600 ring-1 ring-slate-200 dark:bg-white/10 dark:text-slate-300 dark:ring-white/10">
+                                    <SubIcon className="text-sky-600 dark:text-sky-300" /> {sub.name}
+                                    <button
+                                      onClick={() => runManage({ action: "removeSubcategory", brandId: manageBrandId, categoryName: "Drinks", name: sub.name })}
+                                      className="grid h-4 w-4 place-items-center rounded-full text-slate-400 transition hover:bg-red-500/15 hover:text-red-600"
+                                      aria-label={`${t.common.remove} ${sub.name}`}
+                                      title={t.common.remove}
+                                    >
+                                      <FaXmark className="text-[9px]" />
+                                    </button>
+                                  </span>
+                                );
+                              })}
+                            </div>
+                          )}
+                        </div>
                       );
                     })}
                   </div>
+
+                  {categoriesOf(manageBrandId).some((c) => c.name === "Drinks") && (
+                    <div className="mt-3 rounded-2xl border border-sky-200 bg-sky-50/60 p-3 dark:border-sky-400/20 dark:bg-sky-400/10">
+                      <p className="mb-2 text-[11px] font-black uppercase tracking-wide text-sky-700 dark:text-sky-300">Drinks subcategories</p>
+                      <div className="flex gap-2">
+                        <input
+                          value={newSubcatName}
+                          onChange={(e) => setNewSubcatName(e.target.value)}
+                          onKeyDown={(e) => e.key === "Enter" && submitAddSubcategory()}
+                          placeholder="Soft Drinks, Indian Lassi..."
+                          className="w-full flex-1 rounded-xl border border-sky-200 bg-white px-3.5 py-2.5 text-sm outline-none transition focus:border-sky-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
+                        />
+                        <button
+                          onClick={submitAddSubcategory}
+                          disabled={!newSubcatName.trim() || manageState.status === "saving"}
+                          className="inline-flex shrink-0 items-center gap-1.5 rounded-xl bg-sky-600 px-4 py-2.5 text-sm font-bold text-white transition hover:bg-sky-500 disabled:cursor-not-allowed disabled:opacity-60"
+                        >
+                          <FaPlus /> Add
+                        </button>
+                      </div>
+                    </div>
+                  )}
 
                   {/* Add category */}
                   <div className="mt-3 space-y-2.5 border-t border-slate-100 pt-3 dark:border-white/5">
@@ -1871,7 +2125,8 @@ export default function AdminPage() {
                 onChange={(e) => {
                   const brand = e.target.value as Brand;
                   const cats = categoriesOf(brand).map((c) => c.name);
-                  setEditDraft({ ...editDraft, brand, category: cats.includes(editDraft.category) ? editDraft.category : cats[0] ?? "" });
+                  const category = cats.includes(editDraft.category) ? editDraft.category : cats[0] ?? "";
+                  setEditDraft({ ...editDraft, brand, category, subcategory: category === "Drinks" ? firstSubcategoryOf(brand, category) : "" });
                 }}
                 aria-label={t.admin.restaurant}
                 className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm font-semibold outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
@@ -1893,7 +2148,10 @@ export default function AdminPage() {
                 </div>
                 <select
                   value={editDraft.category}
-                  onChange={(e) => setEditDraft({ ...editDraft, category: e.target.value as Category })}
+                  onChange={(e) => {
+                    const category = e.target.value as Category;
+                    setEditDraft({ ...editDraft, category, subcategory: category === "Drinks" ? firstSubcategoryOf(editDraft.brand, category) : "" });
+                  }}
                   aria-label={t.admin.changeCategory}
                   className="w-full self-start rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
                 >
@@ -1902,6 +2160,18 @@ export default function AdminPage() {
                   ))}
                 </select>
               </div>
+              {editDraft.category === "Drinks" && (
+                <select
+                  value={editDraft.subcategory}
+                  onChange={(e) => setEditDraft({ ...editDraft, subcategory: e.target.value as Category })}
+                  aria-label="Drink subcategory"
+                  className="w-full rounded-xl border border-emerald-200 bg-emerald-50/60 px-3.5 py-2.5 text-sm font-semibold text-emerald-800 outline-none transition focus:border-emerald-500 dark:border-emerald-400/30 dark:bg-emerald-400/10 dark:text-emerald-200"
+                >
+                  {subcategoriesOf(editDraft.brand, "Drinks").map((sub) => (
+                    <option key={sub.name} value={sub.name}>{sub.name}</option>
+                  ))}
+                </select>
+              )}
               <div className="flex items-center gap-3">
                 <button
                   onClick={() => editFileRef.current?.click()}

@@ -46,6 +46,7 @@ export default function OrderPage() {
 
   const [activeBrand, setActiveBrand] = useState<Brand>("tandoor");
   const [activeCategory, setActiveCategory] = useState<Category>("Soups");
+  const [activeSubcategory, setActiveSubcategory] = useState<Category | "all">("all");
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [form, setForm] = useState({
     name: currentUser?.name ?? "",
@@ -123,7 +124,16 @@ export default function OrderPage() {
   }, [products.length, fallbackProducts.length]);
 
   const menuProducts = products.length > 0 ? products : fallbackProducts;
-  const visible = menuProducts.filter((p) => p.brand === activeBrand && p.category === activeCategory);
+  const subcategoriesOf = (brandId: string, categoryName: string) =>
+    brands.find((b) => b.id === brandId)?.categories.find((c) => c.name === categoryName)?.subcategories ?? [];
+
+  const categoryMatchesProduct = (product: Product, category: Category) => {
+    if (category !== "Drinks") return product.category === category;
+    if (!isDrinkCategory(product.category)) return false;
+    return activeSubcategory === "all" || product.subcategory === activeSubcategory;
+  };
+
+  const visible = menuProducts.filter((p) => p.brand === activeBrand && categoryMatchesProduct(p, activeCategory));
 
   /** The active restaurant's admin-managed config (safe fallback while loading). */
   const activeBrandCfg = brands.find((b) => b.id === activeBrand) ?? brands[0];
@@ -140,26 +150,43 @@ export default function OrderPage() {
     const brand = brands.find((b) => b.id === activeBrand);
     const firstCategoryWithProducts = (targetBrand: Brand) => {
       const config = brands.find((b) => b.id === targetBrand);
-      return config?.categories.find((category) => menuProducts.some((product) => product.brand === targetBrand && product.category === category.name))?.name;
+      return config?.categories.find((category) => menuProducts.some((product) => product.brand === targetBrand && categoryMatchesProduct(product, category.name)))?.name;
     };
     if (!brand) {
       queueMicrotask(() => {
         setActiveBrand(brands[0].id);
         setActiveCategory(firstCategoryWithProducts(brands[0].id) ?? brands[0].categories[0]?.name ?? "");
+        setActiveSubcategory("all");
       });
     } else if (!brand.categories.some((c) => c.name === activeCategory)) {
-      queueMicrotask(() => setActiveCategory(firstCategoryWithProducts(activeBrand) ?? brand.categories[0]?.name ?? ""));
-    } else if (menuProducts.length > 0 && !menuProducts.some((product) => product.brand === activeBrand && product.category === activeCategory)) {
+      queueMicrotask(() => {
+        setActiveCategory(firstCategoryWithProducts(activeBrand) ?? brand.categories[0]?.name ?? "");
+        setActiveSubcategory("all");
+      });
+    } else if (activeCategory !== "Drinks" && activeSubcategory !== "all") {
+      queueMicrotask(() => setActiveSubcategory("all"));
+    } else if (activeCategory === "Drinks" && activeSubcategory !== "all" && !subcategoriesOf(activeBrand, "Drinks").some((s) => s.name === activeSubcategory)) {
+      queueMicrotask(() => setActiveSubcategory("all"));
+    } else if (menuProducts.length > 0 && !menuProducts.some((product) => product.brand === activeBrand && categoryMatchesProduct(product, activeCategory))) {
       const nextCategory = firstCategoryWithProducts(activeBrand);
-      if (nextCategory && nextCategory !== activeCategory) queueMicrotask(() => setActiveCategory(nextCategory));
+      if (nextCategory && nextCategory !== activeCategory) queueMicrotask(() => {
+        setActiveCategory(nextCategory);
+        setActiveSubcategory("all");
+      });
     }
-  }, [brands, menuProducts, activeBrand, activeCategory]);
+  }, [brands, menuProducts, activeBrand, activeCategory, activeSubcategory]);
 
   // Switch restaurant/brand and jump to that brand's first category.
   const selectBrand = (brand: Brand) => {
     if (brand === activeBrand) return;
     setActiveBrand(brand);
     setActiveCategory(brands.find((b) => b.id === brand)?.categories[0]?.name ?? "");
+    setActiveSubcategory("all");
+  };
+
+  const selectCategory = (category: Category) => {
+    setActiveCategory(category);
+    setActiveSubcategory("all");
   };
 
   const cartLines = useMemo(
@@ -364,7 +391,7 @@ export default function OrderPage() {
       )}
       {visible.map((p) => {
         const qty = cart[p.id] || 0;
-        const Icon = categoryIconFor(brands, p.category);
+        const Icon = categoryIconFor(brands, p.subcategory ?? p.category);
         return (
           <article
             key={p.id}
@@ -530,7 +557,7 @@ export default function OrderPage() {
             return (
               <button
                 key={cat}
-                onClick={() => setActiveCategory(cat)}
+                onClick={() => selectCategory(cat)}
                 className={`flex shrink-0 items-center gap-1.5 rounded-full px-2.5 py-1 text-[10px] font-semibold transition ${
                   active
                     ? "bg-gradient-to-r from-emerald-600 to-emerald-500 text-white shadow-md shadow-emerald-600/30"
@@ -542,6 +569,37 @@ export default function OrderPage() {
             );
           })}
         </div>
+        {activeCategory === "Drinks" && subcategoriesOf(activeBrand, "Drinks").length > 0 && (
+          <div className="flex gap-2 overflow-x-auto px-3 pb-2">
+            <button
+              onClick={() => setActiveSubcategory("all")}
+              className={`flex shrink-0 items-center gap-1.5 rounded-full px-2.5 py-1 text-[10px] font-semibold transition ${
+                activeSubcategory === "all"
+                  ? "bg-sky-600 text-white shadow-md shadow-sky-600/25"
+                  : "border border-slate-100 bg-white text-slate-600 hover:border-sky-400 hover:bg-sky-50 dark:border-white/5 dark:bg-white/5 dark:text-slate-300"
+              }`}
+            >
+              All drinks
+            </button>
+            {subcategoriesOf(activeBrand, "Drinks").map((sub) => {
+              const Icon = categoryIconFor(brands, sub.name);
+              const active = activeSubcategory === sub.name;
+              return (
+                <button
+                  key={sub.name}
+                  onClick={() => setActiveSubcategory(sub.name)}
+                  className={`flex shrink-0 items-center gap-1.5 rounded-full px-2.5 py-1 text-[10px] font-semibold transition ${
+                    active
+                      ? "bg-sky-600 text-white shadow-md shadow-sky-600/25"
+                      : "border border-slate-100 bg-white text-slate-600 hover:border-sky-400 hover:bg-sky-50 dark:border-white/5 dark:bg-white/5 dark:text-slate-300"
+                  }`}
+                >
+                  <Icon className="text-xs" /> <span className="whitespace-nowrap">{sub.name}</span>
+                </button>
+              );
+            })}
+          </div>
+        )}
       </div>
 
       {/* Desktop Layout (Hidden on mobile) */}
@@ -586,9 +644,9 @@ export default function OrderPage() {
                         const Icon = categoryIconFor(brands, cat);
                         const isActive = cat === activeCategory;
                         return (
+                          <div key={cat}>
                           <button
-                            key={cat}
-                            onClick={() => setActiveCategory(cat)}
+                            onClick={() => selectCategory(cat)}
                             className={`flex w-full items-center gap-3 rounded-xl px-3 py-2 text-sm font-semibold transition duration-200 ${
                               isActive
                                 ? "bg-gradient-to-r from-emerald-600 to-emerald-500 text-white shadow-md shadow-emerald-600/30"
@@ -597,6 +655,38 @@ export default function OrderPage() {
                           >
                             <Icon className="shrink-0 text-base" /> <span className="truncate">{cat}</span>
                           </button>
+                          {cat === "Drinks" && isActive && subcategoriesOf(activeBrand, "Drinks").length > 0 && (
+                            <div className="ml-6 mt-1 space-y-1 border-l border-slate-200 pl-2 dark:border-white/10">
+                              <button
+                                onClick={() => setActiveSubcategory("all")}
+                                className={`flex w-full items-center rounded-lg px-2 py-1.5 text-left text-xs font-semibold transition ${
+                                  activeSubcategory === "all"
+                                    ? "bg-sky-600 text-white"
+                                    : "text-slate-500 hover:bg-sky-50 hover:text-sky-700 dark:text-slate-400 dark:hover:bg-white/10"
+                                }`}
+                              >
+                                All drinks
+                              </button>
+                              {subcategoriesOf(activeBrand, "Drinks").map((sub) => {
+                                const SubIcon = categoryIconFor(brands, sub.name);
+                                const subActive = activeSubcategory === sub.name;
+                                return (
+                                  <button
+                                    key={sub.name}
+                                    onClick={() => setActiveSubcategory(sub.name)}
+                                    className={`flex w-full items-center gap-2 rounded-lg px-2 py-1.5 text-left text-xs font-semibold transition ${
+                                      subActive
+                                        ? "bg-sky-600 text-white"
+                                        : "text-slate-500 hover:bg-sky-50 hover:text-sky-700 dark:text-slate-400 dark:hover:bg-white/10"
+                                    }`}
+                                  >
+                                    <SubIcon className="shrink-0" /> <span className="truncate">{sub.name}</span>
+                                  </button>
+                                );
+                              })}
+                            </div>
+                          )}
+                          </div>
                         );
                       })}
                     </div>
@@ -620,7 +710,7 @@ export default function OrderPage() {
             <div>
               <h2 className="font-display text-lg font-bold leading-tight text-slate-900 dark:text-white">{activeBrandCfg?.name ?? ""}</h2>
               <p className="text-xs font-semibold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
-                {activeCategory} · {visible.length} {t.common.items}
+                {activeCategory}{activeCategory === "Drinks" && activeSubcategory !== "all" ? ` -> ${activeSubcategory}` : ""} · {visible.length} {t.common.items}
               </p>
             </div>
             <div className="gold-rule ml-2 flex-1" />

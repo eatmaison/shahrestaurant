@@ -42,6 +42,7 @@ CREATE TABLE IF NOT EXISTS products (
   -- Brand id from the admin-managed brands table.
   brand                text        NOT NULL,
   category             text        NOT NULL,
+  subcategory          text        NOT NULL DEFAULT '',
   name                 text        NOT NULL,
   description          text        NOT NULL DEFAULT '',
   description_nl       text        NOT NULL DEFAULT '',
@@ -58,6 +59,7 @@ CREATE TABLE IF NOT EXISTS products (
 
 CREATE INDEX IF NOT EXISTS idx_products_brand ON products (brand);
 CREATE INDEX IF NOT EXISTS idx_products_category ON products (category);
+CREATE INDEX IF NOT EXISTS idx_products_subcategory ON products (subcategory);
 
 -- ------------------------------------------------------------------ orders
 CREATE TABLE IF NOT EXISTS orders (

@@ -4,11 +4,18 @@ export type Category = string;
 /** The restaurant a product belongs to (a brand id, e.g. "eattogo"). */
 export type Brand = string;
 
+export interface BrandSubcategory {
+  name: string;
+  /** Icon key from CATEGORY_ICON_CHOICES in app/lib/data.ts. */
+  icon: string;
+}
+
 /** A category inside a brand's menu, with the icon key it is displayed with. */
 export interface BrandCategory {
   name: string;
   /** Icon key from CATEGORY_ICON_CHOICES in app/lib/data.ts. */
   icon: string;
+  subcategories?: BrandSubcategory[];
 }
 
 /** Admin-managed restaurant/brand stored in the database. */
@@ -27,6 +34,7 @@ export interface Product {
   /** Which restaurant/brand this product belongs to. */
   brand: Brand;
   category: Category;
+  subcategory?: Category;
   name: string;
   /** Short card description (English / default). */
   description: string;

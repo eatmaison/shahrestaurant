@@ -60,6 +60,7 @@ const DDL: string[] = [
   )`,
   // Dutch product content for databases created before bilingual menus existed.
   `ALTER TABLE products ADD COLUMN IF NOT EXISTS description_nl text NOT NULL DEFAULT ''`,
+  `ALTER TABLE products ADD COLUMN IF NOT EXISTS subcategory text NOT NULL DEFAULT ''`,
   `ALTER TABLE products ADD COLUMN IF NOT EXISTS ingredients_nl text[] NOT NULL DEFAULT '{}'`,
   `ALTER TABLE products ADD COLUMN IF NOT EXISTS allergens_nl text[] NOT NULL DEFAULT '{}'`,
   `CREATE TABLE IF NOT EXISTS orders (

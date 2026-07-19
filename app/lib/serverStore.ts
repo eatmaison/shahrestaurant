@@ -5,6 +5,8 @@ import {
   COMPANY_DISCOUNT_PCT,
   COMPANY_MIN_ORDER,
   DELIVERY_FEE,
+  DEFAULT_BRAND_CONFIGS,
+  DRINK_SUBCATEGORIES,
   FREE_DELIVERY_FROM,
   formatOrderNumber,
   isDrinkCategory,
@@ -36,6 +38,7 @@ import type {
   AccountType,
   BrandCategory,
   BrandConfig,
+  BrandSubcategory,
   GalleryImage,
   Order,
   OrderItem,
@@ -536,12 +539,13 @@ export async function addProduct(p: Omit<Product, "id">): Promise<Product> {
   // Store the uploaded photo in DigitalOcean Spaces; only the URL goes in the DB.
   const image = (await storeImage(p.image ?? null, "products")) ?? null;
   const rows = (await sql.query(
-    `INSERT INTO products (id, brand, category, name, description, description_nl, price, image, detailed_description, ingredients, ingredients_nl, allergens, allergens_nl)
-     VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9::jsonb,$10::text[],$11::text[],$12::text[],$13::text[]) RETURNING *`,
+    `INSERT INTO products (id, brand, category, subcategory, name, description, description_nl, price, image, detailed_description, ingredients, ingredients_nl, allergens, allergens_nl)
+     VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10::jsonb,$11::text[],$12::text[],$13::text[],$14::text[]) RETURNING *`,
     [
       id,
       p.brand,
       p.category,
+      p.category === "Drinks" ? p.subcategory ?? "" : "",
       p.name,
       p.description,
       p.descriptionNl ?? "",
@@ -569,12 +573,13 @@ export async function updateProduct(id: string, patch: Partial<Omit<Product, "id
     if (cur.image && cur.image !== next.image) await deleteStoredImage(cur.image);
   }
   await sql.query(
-    `UPDATE products SET brand=$2, category=$3, name=$4, description=$5, description_nl=$6, price=$7, image=$8,
-       detailed_description=$9::jsonb, ingredients=$10::text[], ingredients_nl=$11::text[], allergens=$12::text[], allergens_nl=$13::text[] WHERE id=$1`,
+     `UPDATE products SET brand=$2, category=$3, subcategory=$4, name=$5, description=$6, description_nl=$7, price=$8, image=$9,
+       detailed_description=$10::jsonb, ingredients=$11::text[], ingredients_nl=$12::text[], allergens=$13::text[], allergens_nl=$14::text[] WHERE id=$1`,
     [
       id,
       next.brand,
       next.category,
+      next.category === "Drinks" ? next.subcategory ?? "" : "",
       next.name,
       next.description,
       next.descriptionNl ?? "",
@@ -605,13 +610,61 @@ function rowToBrand(r: any): BrandConfig {
     id: r.id,
     name: r.name,
     logo: r.logo ?? "",
-    categories: (cats as BrandCategory[]).map((c) => ({ name: String(c.name), icon: String(c.icon ?? "utensils") })),
+    categories: (cats as BrandCategory[]).map((c) => ({
+      name: String(c.name),
+      icon: String(c.icon ?? "utensils"),
+      subcategories: Array.isArray(c.subcategories)
+        ? c.subcategories.map((s) => ({ name: String(s.name), icon: String(s.icon ?? "glass-water") }))
+        : undefined,
+    })),
   };
+}
+
+function normalizeDrinkSubcategories(categories: BrandCategory[], defaults?: BrandCategory[]): { categories: BrandCategory[]; changed: boolean } {
+  const defaultDrinks = defaults?.find((c) => c.name === "Drinks");
+  const defaultSubcategories = defaultDrinks?.subcategories ?? DRINK_SUBCATEGORIES.map((name) => ({ name, icon: "glass-water" }));
+  const drinkSubcategoryNames = new Set([...DRINK_SUBCATEGORIES.map((c) => c.toLowerCase()), "lassi"]);
+  let changed = false;
+  let drinks = categories.find((c) => c.name === "Drinks") ?? defaultDrinks ?? { name: "Drinks", icon: "glass-water", subcategories: [] };
+  const subcategories = new Map<string, BrandSubcategory>();
+  for (const sub of [...(drinks.subcategories ?? []), ...defaultSubcategories]) {
+    const name = sub.name === "Lassi" ? "Indian Lassi" : sub.name;
+    subcategories.set(name.toLowerCase(), { name, icon: sub.icon ?? "glass-water" });
+  }
+  const nextCategories: BrandCategory[] = [];
+  for (const category of categories) {
+    if (category.name === "Drinks") continue;
+    if (drinkSubcategoryNames.has(category.name.toLowerCase())) {
+      const name = category.name === "Lassi" ? "Indian Lassi" : category.name;
+      subcategories.set(name.toLowerCase(), { name, icon: category.icon ?? "glass-water" });
+      changed = true;
+      continue;
+    }
+    nextCategories.push(category);
+  }
+  const normalizedDrinks = { ...drinks, subcategories: Array.from(subcategories.values()) };
+  const hadDrinks = categories.some((c) => c.name === "Drinks");
+  const drinksIndex = categories.findIndex((c) => c.name === "Drinks");
+  if (hadDrinks && drinksIndex >= 0) nextCategories.splice(Math.min(drinksIndex, nextCategories.length), 0, normalizedDrinks);
+  else {
+    nextCategories.push(normalizedDrinks);
+    changed = true;
+  }
+  changed ||= JSON.stringify(nextCategories) !== JSON.stringify(categories);
+  return { categories: nextCategories, changed };
 }
 
 async function loadBrands(): Promise<BrandConfig[]> {
   const rows = (await sql.query(`SELECT * FROM brands ORDER BY sort ASC, created_at ASC`)) as any[];
-  return rows.map(rowToBrand);
+  const brands = rows.map(rowToBrand);
+  for (const brand of brands) {
+    const defaults = DEFAULT_BRAND_CONFIGS.find((b) => b.id === brand.id);
+    const normalized = normalizeDrinkSubcategories(brand.categories, defaults?.categories);
+    if (!normalized.changed) continue;
+    brand.categories = normalized.categories;
+    await sql.query(`UPDATE brands SET categories = $2::jsonb WHERE id = $1`, [brand.id, JSON.stringify(normalized.categories)]);
+  }
+  return brands;
 }
 
 /** Result of a brand/category mutation; `error` is a translation-friendly code. */
@@ -677,12 +730,55 @@ export async function removeBrandCategory(brandId: string, name: string): Promis
   const brand = rowToBrand(rows[0]);
   if (brand.categories.length <= 1) return { ok: false, error: "lastCategory" };
   const productRows = (await sql.query(
-    `SELECT count(*)::int AS n FROM products WHERE brand = $1 AND category = $2`,
-    [brandId, name]
+    name === "Drinks"
+      ? `SELECT count(*)::int AS n FROM products WHERE brand = $1 AND (category = $2 OR category = ANY($3::text[]))`
+      : `SELECT count(*)::int AS n FROM products WHERE brand = $1 AND category = $2`,
+    name === "Drinks" ? [brandId, name, [...DRINK_SUBCATEGORIES, "Lassi"]] : [brandId, name]
   )) as { n: number }[];
   if ((productRows[0]?.n ?? 0) > 0) return { ok: false, error: "categoryHasProducts" };
   const next = brand.categories.filter((c) => c.name !== name);
   await sql.query(`UPDATE brands SET categories = $2::jsonb WHERE id = $1`, [brandId, JSON.stringify(next)]);
+  return { ok: true };
+}
+
+export async function addBrandSubcategory(brandId: string, categoryName: string, name: string, icon: string): Promise<BrandResult> {
+  await requireAdmin();
+  const rows = (await sql.query(`SELECT * FROM brands WHERE id = $1`, [brandId])) as any[];
+  if (!rows[0]) return { ok: false, error: "invalidInput" };
+  const brand = rowToBrand(rows[0]);
+  const trimmed = name.trim();
+  if (!trimmed) return { ok: false, error: "invalidInput" };
+  const current = brand.categories.find((category) => category.name === categoryName);
+  if (!current) return { ok: false, error: "invalidInput" };
+  if ((current.subcategories ?? []).some((s) => s.name.toLowerCase() === trimmed.toLowerCase())) return { ok: false, error: "categoryExists" };
+  const categories = brand.categories.map((category) => {
+    if (category.name !== categoryName) return category;
+    const subcategories = category.subcategories ?? [];
+    if (subcategories.some((s) => s.name.toLowerCase() === trimmed.toLowerCase())) return category;
+    return { ...category, subcategories: [...subcategories, { name: trimmed, icon }] };
+  });
+  await sql.query(`UPDATE brands SET categories = $2::jsonb WHERE id = $1`, [brandId, JSON.stringify(categories)]);
+  return { ok: true };
+}
+
+export async function removeBrandSubcategory(brandId: string, categoryName: string, name: string): Promise<BrandResult> {
+  await requireAdmin();
+  const rows = (await sql.query(`SELECT * FROM brands WHERE id = $1`, [brandId])) as any[];
+  if (!rows[0]) return { ok: false, error: "invalidInput" };
+  const brand = rowToBrand(rows[0]);
+  const category = brand.categories.find((c) => c.name === categoryName);
+  if (!category) return { ok: false, error: "invalidInput" };
+  const subcategories = category.subcategories ?? [];
+  if (subcategories.length <= 1) return { ok: false, error: "lastCategory" };
+  const productRows = (await sql.query(
+    `SELECT count(*)::int AS n FROM products WHERE brand = $1 AND ((category = $2 AND subcategory = $3) OR category = $3)`,
+    [brandId, categoryName, name]
+  )) as { n: number }[];
+  if ((productRows[0]?.n ?? 0) > 0) return { ok: false, error: "categoryHasProducts" };
+  const categories = brand.categories.map((c) =>
+    c.name === categoryName ? { ...c, subcategories: subcategories.filter((s) => s.name !== name) } : c
+  );
+  await sql.query(`UPDATE brands SET categories = $2::jsonb WHERE id = $1`, [brandId, JSON.stringify(categories)]);
   return { ok: true };
 }
 

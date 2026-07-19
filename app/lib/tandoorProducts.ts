@@ -154,7 +154,5 @@ export const TANDOOR_CATEGORY_ORDER: string[] = [
   "Sides",
   "Bread",
   "Desserts",
-  "Lassi",
-  "Soft Drinks",
-  "Wine Bottles",
+  "Drinks",
 ];

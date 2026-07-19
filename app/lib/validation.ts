@@ -152,6 +152,19 @@ export const brandsActionSchema = z.discriminatedUnion("action", [
     name: z.string().trim().min(1).max(60),
   }),
   z.object({
+    action: z.literal("addSubcategory"),
+    brandId: z.string().trim().min(1).max(80),
+    categoryName: z.string().trim().min(1).max(60),
+    name: z.string().trim().min(1).max(60),
+    icon: z.string().trim().min(1).max(40),
+  }),
+  z.object({
+    action: z.literal("removeSubcategory"),
+    brandId: z.string().trim().min(1).max(80),
+    categoryName: z.string().trim().min(1).max(60),
+    name: z.string().trim().min(1).max(60),
+  }),
+  z.object({
     action: z.literal("setLogo"),
     brandId: z.string().trim().min(1).max(80),
     // Empty clears the logo; otherwise require an image data URL (or public path).

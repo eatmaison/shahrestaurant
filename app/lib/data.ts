@@ -20,6 +20,8 @@ import {
 import type { Brand, BrandConfig, Category, Product } from "./types";
 import { TANDOOR_CATEGORY_ORDER } from "./tandoorProducts";
 
+export const DRINK_SUBCATEGORIES: Category[] = ["Soft Drinks", "Indian Lassi", "Matcha's", "Smoothies", "Bubble Tea's", "Wine Bottles"];
+
 export const CATEGORY_ORDER: Category[] = ["Wraps", "Burgers", "Pizzas", "Drinks"];
 
 /**
@@ -50,7 +52,7 @@ export interface BrandInfo {
 }
 
 export const BRANDS: BrandInfo[] = [
-  { id: "eattogo", name: "Eat to go", logo: "/eattogo.png", categories: ["Wraps", "Burgers", "Pizzas", "Drinks"] },
+  { id: "eattogo", name: "Eat to go", logo: "/eattogo.png", categories: CATEGORY_ORDER },
   { id: "tandoor", name: "The Tandoor Company", logo: "/tandoorcompany.png", categories: TANDOOR_CATEGORY_ORDER },
 ];
 
@@ -59,10 +61,25 @@ export function brandInfo(id: Brand): BrandInfo {
 }
 
 /** Drink categories (across all brands) never receive loyalty/company discounts. */
-export const DRINK_CATEGORIES: Category[] = ["Drinks", "Soft Drinks", "Lassi", "Wine Bottles"];
+export const DRINK_CATEGORIES: Category[] = ["Drinks", ...DRINK_SUBCATEGORIES, "Soft Drinks", "Lassi", "Wine Bottles"];
 
 export function isDrinkCategory(category: Category): boolean {
-  return DRINK_CATEGORIES.includes(category);
+  const normalized = category.trim().toLowerCase();
+  return (
+    DRINK_CATEGORIES.some((c) => c.toLowerCase() === normalized) ||
+    normalized.includes("drink") ||
+    normalized.includes("lassi") ||
+    normalized.includes("matcha") ||
+    normalized.includes("smoothie") ||
+    normalized.includes("bubble tea")
+  );
+}
+
+export function normalizeDrinkSubcategory(category?: Category): Category | undefined {
+  const normalized = (category ?? "").trim().toLowerCase();
+  if (!normalized || normalized === "drinks") return undefined;
+  if (normalized === "lassi") return "Indian Lassi";
+  return DRINK_SUBCATEGORIES.find((c) => c.toLowerCase() === normalized) ?? category;
 }
 
 /** Icon shown for a menu category, with a sensible fallback. */
@@ -72,6 +89,10 @@ const CATEGORY_ICONS: Record<string, IconType> = {
   Burgers: FaBurger,
   Pizzas: FaPizzaSlice,
   Drinks: FaGlassWater,
+  "Indian Lassi": FaMugHot,
+  "Matcha's": FaLeaf,
+  Smoothies: FaGlassWater,
+  "Bubble Tea's": FaMugHot,
   // The Tandoor Company
   Soups: FaMugHot,
   "Vegetarian Starters": FaLeaf,
@@ -133,7 +154,13 @@ export const DEFAULT_BRAND_CONFIGS: BrandConfig[] = BRANDS.map((b) => ({
   id: b.id,
   name: b.name,
   logo: b.logo,
-  categories: b.categories.map((name) => ({ name, icon: defaultIconKey(name) })),
+  categories: b.categories.map((name) => ({
+    name,
+    icon: defaultIconKey(name),
+    ...(name === "Drinks"
+      ? { subcategories: DRINK_SUBCATEGORIES.map((sub) => ({ name: sub, icon: defaultIconKey(sub) })) }
+      : {}),
+  })),
 }));
 
 /** Find a brand in the dynamic (admin-managed) list, with a safe fallback. */

@@ -292,6 +292,10 @@ export interface Dictionary {
     manageProducts: string;
     addProduct: string;
     productName: string;
+    productSearch: string;
+    allRestaurants: string;
+    allCategories: string;
+    noProductMatches: string;
     productDesc: string;
     productDescNl: string;
     productPrice: string;
@@ -812,6 +816,10 @@ const en: Dictionary = {
     manageProducts: "Manage products",
     addProduct: "Add product",
     productName: "Name",
+    productSearch: "Search products",
+    allRestaurants: "All restaurants",
+    allCategories: "All categories",
+    noProductMatches: "No products match these filters.",
     productDesc: "Description (English)",
     productDescNl: "Description (Dutch)",
     productPrice: "Price (€)",
@@ -1334,6 +1342,10 @@ const nl: Dictionary = {
     manageProducts: "Producten beheren",
     addProduct: "Product toevoegen",
     productName: "Naam",
+    productSearch: "Producten zoeken",
+    allRestaurants: "Alle restaurants",
+    allCategories: "Alle categorieën",
+    noProductMatches: "Geen producten gevonden met deze filters.",
     productDesc: "Omschrijving (Engels)",
     productDescNl: "Omschrijving (Nederlands)",
     productPrice: "Prijs (€)",

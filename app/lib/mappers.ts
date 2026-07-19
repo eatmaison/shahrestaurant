@@ -1,3 +1,4 @@
+import { isDrinkCategory, normalizeDrinkSubcategory } from "./data";
 import type { GalleryImage, Order, OrderItem, Product, Reservation, Review, User, VipRequest } from "./types";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -11,6 +12,18 @@ export function toNum(v: unknown): number {
 export function toMs(v: unknown): number {
   if (v instanceof Date) return v.getTime();
   return new Date(v as string).getTime();
+}
+
+function inferDrinkSubcategory(r: any): string | undefined {
+  const explicit = r.subcategory || normalizeDrinkSubcategory(r.category);
+  if (explicit) return explicit;
+  const text = `${r.name ?? ""} ${r.description ?? ""}`.toLowerCase();
+  if (text.includes("lassi")) return "Indian Lassi";
+  if (text.includes("matcha")) return "Matcha's";
+  if (text.includes("smoothie")) return "Smoothies";
+  if (text.includes("bubble tea")) return "Bubble Tea's";
+  if (/(cola|coca|fanta|sprite|fernandes|fuze|tea|water|spa|gingerale|ice tea)/.test(text)) return "Soft Drinks";
+  return undefined;
 }
 
 export function rowToUser(r: any): User {
@@ -36,10 +49,13 @@ export function rowToUser(r: any): User {
 }
 
 export function rowToProduct(r: any): Product {
+  const category = isDrinkCategory(r.category) ? "Drinks" : r.category;
+  const subcategory = category === "Drinks" ? inferDrinkSubcategory(r) : undefined;
   return {
     id: r.id,
     brand: r.brand,
-    category: r.category,
+    category,
+    subcategory: subcategory || undefined,
     name: r.name,
     description: r.description,
     descriptionNl: r.description_nl || undefined,

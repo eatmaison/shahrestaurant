@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { addBrand, addBrandCategory, removeBrand, removeBrandCategory, setBrandLogo } from "../../lib/serverStore";
+import { addBrand, addBrandCategory, addBrandSubcategory, removeBrand, removeBrandCategory, removeBrandSubcategory, setBrandLogo } from "../../lib/serverStore";
 import { brandsActionSchema } from "../../lib/validation";
 import { enforceRateLimit } from "../../lib/rateLimit";
 
@@ -24,7 +24,11 @@ export async function POST(req: NextRequest) {
             ? await addBrandCategory(input.brandId, input.name, input.icon)
             : input.action === "removeCategory"
               ? await removeBrandCategory(input.brandId, input.name)
-              : await setBrandLogo(input.brandId, input.logo);
+              : input.action === "addSubcategory"
+                ? await addBrandSubcategory(input.brandId, input.categoryName, input.name, input.icon)
+                : input.action === "removeSubcategory"
+                  ? await removeBrandSubcategory(input.brandId, input.categoryName, input.name)
+                  : await setBrandLogo(input.brandId, input.logo);
 
     return NextResponse.json(result, { status: result.ok ? 200 : 400 });
   } catch (err) {
