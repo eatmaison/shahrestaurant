@@ -183,6 +183,7 @@ export default function AdminPage() {
   const [newBrandName, setNewBrandName] = useState("");
   const [newCatName, setNewCatName] = useState("");
   const [newCatIcon, setNewCatIcon] = useState("utensils");
+  const [newSubcatCategory, setNewSubcatCategory] = useState("");
   const [newSubcatName, setNewSubcatName] = useState("");
   const [manageState, setManageState] = useState<SaveState>({ status: "idle" });
 
@@ -191,20 +192,29 @@ export default function AdminPage() {
   const subcategoriesOf = (brandId: string, categoryName: string) =>
     categoriesOf(brandId).find((c) => c.name === categoryName)?.subcategories ?? [];
   const firstSubcategoryOf = (brandId: string, categoryName: string) => subcategoriesOf(brandId, categoryName)[0]?.name ?? "";
+  const hasSubcategories = (brandId: string, categoryName: string) => subcategoriesOf(brandId, categoryName).length > 0;
+  const draftSubcategory = (brandId: string, categoryName: string, current = "") =>
+    hasSubcategories(brandId, categoryName) ? current || firstSubcategoryOf(brandId, categoryName) : "";
+  const subcategoryManageCategories = manageBrandId ? categoriesOf(manageBrandId) : [];
+  const activeNewSubcatCategory = subcategoryManageCategories.some((c) => c.name === newSubcatCategory)
+    ? newSubcatCategory
+    : subcategoryManageCategories[0]?.name ?? "";
 
   // Keep the drafts pointing at an existing brand when brands are added/removed.
   useEffect(() => {
     if (brands.length === 0) return;
     if (!brands.some((b) => b.id === draft.brand)) {
       const category = brands[0].categories[0]?.name ?? "";
-      setDraft((d) => ({ ...d, brand: brands[0].id, category, subcategory: category === "Drinks" ? firstSubcategoryOf(brands[0].id, category) : "" }));
+      queueMicrotask(() => setDraft((d) => ({ ...d, brand: brands[0].id, category, subcategory: draftSubcategory(brands[0].id, category) })));
     } else if (!categoriesOf(draft.brand).some((c) => c.name === draft.category)) {
-      setDraft((d) => {
+      queueMicrotask(() => setDraft((d) => {
         const category = categoriesOf(d.brand)[0]?.name ?? "";
-        return { ...d, category, subcategory: category === "Drinks" ? firstSubcategoryOf(d.brand, category) : "" };
-      });
-    } else if (draft.category === "Drinks" && draft.subcategory && !subcategoriesOf(draft.brand, draft.category).some((s) => s.name === draft.subcategory)) {
-      setDraft((d) => ({ ...d, subcategory: firstSubcategoryOf(d.brand, d.category) }));
+        return { ...d, category, subcategory: draftSubcategory(d.brand, category) };
+      }));
+    } else if (draft.subcategory && !subcategoriesOf(draft.brand, draft.category).some((s) => s.name === draft.subcategory)) {
+      queueMicrotask(() => setDraft((d) => ({ ...d, subcategory: draftSubcategory(d.brand, d.category) })));
+    } else if (!hasSubcategories(draft.brand, draft.category) && draft.subcategory) {
+      queueMicrotask(() => setDraft((d) => ({ ...d, subcategory: "" })));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [brands, draft.brand, draft.category]);
@@ -276,13 +286,15 @@ export default function AdminPage() {
     const set = new Set<string>();
     for (const b of brands) {
       if (productBrandFilter !== "all" && b.id !== productBrandFilter) continue;
-      for (const sub of b.categories.find((c) => c.name === "Drinks")?.subcategories ?? []) set.add(sub.name);
+      if (activeProductCategoryFilter === "all") continue;
+      for (const sub of b.categories.find((c) => c.name === activeProductCategoryFilter)?.subcategories ?? []) set.add(sub.name);
     }
     for (const p of products) {
-      if ((productBrandFilter === "all" || p.brand === productBrandFilter) && p.category === "Drinks" && p.subcategory) set.add(p.subcategory);
+      const categoryMatches = activeProductCategoryFilter === "Drinks" ? isDrinkCategory(p.category) : p.category === activeProductCategoryFilter;
+      if (activeProductCategoryFilter !== "all" && (productBrandFilter === "all" || p.brand === productBrandFilter) && categoryMatches && p.subcategory) set.add(p.subcategory);
     }
     return [...set];
-  }, [brands, productBrandFilter, products]);
+  }, [activeProductCategoryFilter, brands, productBrandFilter, products]);
 
   const activeProductSubcategoryFilter =
     productSubcategoryFilter !== "all" && productFilterSubcategories.includes(productSubcategoryFilter)
@@ -296,10 +308,10 @@ export default function AdminPage() {
       if (activeProductCategoryFilter !== "all") {
         if (activeProductCategoryFilter === "Drinks") {
           if (!isDrinkCategory(p.category)) return false;
-          if (activeProductSubcategoryFilter !== "all" && p.subcategory !== activeProductSubcategoryFilter) return false;
         } else if (p.category !== activeProductCategoryFilter) {
           return false;
         }
+        if (activeProductSubcategoryFilter !== "all" && p.subcategory !== activeProductSubcategoryFilter) return false;
       }
       if (!q) return true;
       const brandName = brands.find((b) => b.id === p.brand)?.name ?? p.brand;
@@ -484,7 +496,7 @@ export default function AdminPage() {
       price,
       brand: draft.brand,
       category: draft.category,
-      subcategory: draft.category === "Drinks" ? draft.subcategory || firstSubcategoryOf(draft.brand, draft.category) : undefined,
+      subcategory: draftSubcategory(draft.brand, draft.category, draft.subcategory) || undefined,
       image: draft.image,
       detailedDescription: detailEn || detailNl ? { en: detailEn, nl: detailNl } : undefined,
       ingredients: parseList(draft.ingredientsEn),
@@ -503,7 +515,7 @@ export default function AdminPage() {
       price: "",
       brand: draft.brand,
       category: draft.category,
-      subcategory: draft.category === "Drinks" ? draft.subcategory : "",
+      subcategory: draftSubcategory(draft.brand, draft.category, draft.subcategory),
       image: undefined,
       detailEn: "",
       detailNl: "",
@@ -577,7 +589,7 @@ export default function AdminPage() {
       price,
       brand: editDraft.brand,
       category: editDraft.category,
-      subcategory: editDraft.category === "Drinks" ? editDraft.subcategory || firstSubcategoryOf(editDraft.brand, editDraft.category) : undefined,
+      subcategory: draftSubcategory(editDraft.brand, editDraft.category, editDraft.subcategory) || undefined,
       image: editDraft.image,
       // null (not undefined) so clearing both fields also clears it in the database.
       detailedDescription: (detailEn || detailNl
@@ -642,8 +654,8 @@ export default function AdminPage() {
   };
 
   const submitAddSubcategory = async () => {
-    if (!manageBrandId || !newSubcatName.trim()) return;
-    if (await runManage({ action: "addSubcategory", brandId: manageBrandId, categoryName: "Drinks", name: newSubcatName.trim(), icon: "glass-water" })) {
+    if (!manageBrandId || !activeNewSubcatCategory || !newSubcatName.trim()) return;
+    if (await runManage({ action: "addSubcategory", brandId: manageBrandId, categoryName: activeNewSubcatCategory, name: newSubcatName.trim(), icon: "utensils" })) {
       setNewSubcatName("");
     }
   };
@@ -1539,7 +1551,7 @@ export default function AdminPage() {
               onChange={(e) => {
                 const brand = e.target.value as Brand;
                 const category = categoriesOf(brand)[0]?.name ?? "";
-                setDraft({ ...draft, brand, category, subcategory: category === "Drinks" ? firstSubcategoryOf(brand, category) : "" });
+                setDraft({ ...draft, brand, category, subcategory: draftSubcategory(brand, category) });
               }}
               aria-label={t.admin.restaurant}
               className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm font-semibold outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
@@ -1563,7 +1575,7 @@ export default function AdminPage() {
                 value={draft.category}
                 onChange={(e) => {
                   const category = e.target.value as Category;
-                  setDraft({ ...draft, category, subcategory: category === "Drinks" ? firstSubcategoryOf(draft.brand, category) : "" });
+                  setDraft({ ...draft, category, subcategory: draftSubcategory(draft.brand, category) });
                 }}
                 className="w-full self-start rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
               >
@@ -1572,14 +1584,14 @@ export default function AdminPage() {
                 ))}
               </select>
             </div>
-            {draft.category === "Drinks" && (
+            {hasSubcategories(draft.brand, draft.category) && (
               <select
                 value={draft.subcategory}
                 onChange={(e) => setDraft({ ...draft, subcategory: e.target.value as Category })}
-                aria-label="Drink subcategory"
+                aria-label={`${draft.category} subcategory`}
                 className="w-full rounded-xl border border-emerald-200 bg-emerald-50/60 px-3.5 py-2.5 text-sm font-semibold text-emerald-800 outline-none transition focus:border-emerald-500 dark:border-emerald-400/30 dark:bg-emerald-400/10 dark:text-emerald-200"
               >
-                {subcategoriesOf(draft.brand, "Drinks").map((sub) => (
+                {subcategoriesOf(draft.brand, draft.category).map((sub) => (
                   <option key={sub.name} value={sub.name}>{sub.name}</option>
                 ))}
               </select>
@@ -1719,7 +1731,7 @@ export default function AdminPage() {
                 );
               })}
             </div>
-            {activeProductCategoryFilter === "Drinks" && productFilterSubcategories.length > 0 && (
+            {activeProductCategoryFilter !== "all" && productFilterSubcategories.length > 0 && (
               <div className="mt-2 flex gap-2 overflow-x-auto pb-1">
                 <button
                   type="button"
@@ -1730,7 +1742,7 @@ export default function AdminPage() {
                       : "bg-white text-slate-600 ring-1 ring-slate-200 hover:text-sky-700 dark:bg-white/10 dark:text-slate-300 dark:ring-white/10"
                   }`}
                 >
-                  All drinks
+                  All {activeProductCategoryFilter.toLowerCase()}
                 </button>
                 {productFilterSubcategories.map((sub) => {
                   const Icon = categoryIconFor(brands, sub);
@@ -1934,7 +1946,7 @@ export default function AdminPage() {
                               <FaXmark className="text-[10px]" />
                             </button>
                           </span>
-                          {c.name === "Drinks" && (
+                          {(c.subcategories ?? []).length > 0 && (
                             <div className="mt-2 flex max-w-full flex-wrap gap-1.5 border-t border-white/60 pt-2 dark:border-white/10">
                               {(c.subcategories ?? []).map((sub) => {
                                 const SubIcon = categoryIconFor(brands, sub.name);
@@ -1942,7 +1954,7 @@ export default function AdminPage() {
                                   <span key={sub.name} className="inline-flex items-center gap-1 rounded-full bg-white py-1 pl-2 pr-1 text-[11px] text-slate-600 ring-1 ring-slate-200 dark:bg-white/10 dark:text-slate-300 dark:ring-white/10">
                                     <SubIcon className="text-sky-600 dark:text-sky-300" /> {sub.name}
                                     <button
-                                      onClick={() => runManage({ action: "removeSubcategory", brandId: manageBrandId, categoryName: "Drinks", name: sub.name })}
+                                      onClick={() => runManage({ action: "removeSubcategory", brandId: manageBrandId, categoryName: c.name, name: sub.name })}
                                       className="grid h-4 w-4 place-items-center rounded-full text-slate-400 transition hover:bg-red-500/15 hover:text-red-600"
                                       aria-label={`${t.common.remove} ${sub.name}`}
                                       title={t.common.remove}
@@ -1959,15 +1971,24 @@ export default function AdminPage() {
                     })}
                   </div>
 
-                  {categoriesOf(manageBrandId).some((c) => c.name === "Drinks") && (
+                  {subcategoryManageCategories.length > 0 && (
                     <div className="mt-3 rounded-2xl border border-sky-200 bg-sky-50/60 p-3 dark:border-sky-400/20 dark:bg-sky-400/10">
-                      <p className="mb-2 text-[11px] font-black uppercase tracking-wide text-sky-700 dark:text-sky-300">Drinks subcategories</p>
-                      <div className="flex gap-2">
+                      <p className="mb-2 text-[11px] font-black uppercase tracking-wide text-sky-700 dark:text-sky-300">Subcategories</p>
+                      <div className="grid gap-2 sm:grid-cols-[0.8fr_1fr_auto]">
+                        <select
+                          value={activeNewSubcatCategory}
+                          onChange={(e) => setNewSubcatCategory(e.target.value)}
+                          className="rounded-xl border border-sky-200 bg-white px-3.5 py-2.5 text-sm font-semibold outline-none transition focus:border-sky-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
+                        >
+                          {subcategoryManageCategories.map((category) => (
+                            <option key={category.name} value={category.name}>{category.name}</option>
+                          ))}
+                        </select>
                         <input
                           value={newSubcatName}
                           onChange={(e) => setNewSubcatName(e.target.value)}
                           onKeyDown={(e) => e.key === "Enter" && submitAddSubcategory()}
-                          placeholder="Soft Drinks, Indian Lassi..."
+                          placeholder="Indian fusion pizzas, Classic pizzas..."
                           className="w-full flex-1 rounded-xl border border-sky-200 bg-white px-3.5 py-2.5 text-sm outline-none transition focus:border-sky-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
                         />
                         <button
@@ -2126,7 +2147,7 @@ export default function AdminPage() {
                   const brand = e.target.value as Brand;
                   const cats = categoriesOf(brand).map((c) => c.name);
                   const category = cats.includes(editDraft.category) ? editDraft.category : cats[0] ?? "";
-                  setEditDraft({ ...editDraft, brand, category, subcategory: category === "Drinks" ? firstSubcategoryOf(brand, category) : "" });
+                  setEditDraft({ ...editDraft, brand, category, subcategory: draftSubcategory(brand, category, editDraft.subcategory) });
                 }}
                 aria-label={t.admin.restaurant}
                 className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm font-semibold outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
@@ -2150,7 +2171,7 @@ export default function AdminPage() {
                   value={editDraft.category}
                   onChange={(e) => {
                     const category = e.target.value as Category;
-                    setEditDraft({ ...editDraft, category, subcategory: category === "Drinks" ? firstSubcategoryOf(editDraft.brand, category) : "" });
+                    setEditDraft({ ...editDraft, category, subcategory: draftSubcategory(editDraft.brand, category) });
                   }}
                   aria-label={t.admin.changeCategory}
                   className="w-full self-start rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
@@ -2160,14 +2181,14 @@ export default function AdminPage() {
                   ))}
                 </select>
               </div>
-              {editDraft.category === "Drinks" && (
+              {hasSubcategories(editDraft.brand, editDraft.category) && (
                 <select
                   value={editDraft.subcategory}
                   onChange={(e) => setEditDraft({ ...editDraft, subcategory: e.target.value as Category })}
-                  aria-label="Drink subcategory"
+                  aria-label={`${editDraft.category} subcategory`}
                   className="w-full rounded-xl border border-emerald-200 bg-emerald-50/60 px-3.5 py-2.5 text-sm font-semibold text-emerald-800 outline-none transition focus:border-emerald-500 dark:border-emerald-400/30 dark:bg-emerald-400/10 dark:text-emerald-200"
                 >
-                  {subcategoriesOf(editDraft.brand, "Drinks").map((sub) => (
+                  {subcategoriesOf(editDraft.brand, editDraft.category).map((sub) => (
                     <option key={sub.name} value={sub.name}>{sub.name}</option>
                   ))}
                 </select>

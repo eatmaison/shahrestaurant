@@ -22,6 +22,12 @@ import { TANDOOR_CATEGORY_ORDER } from "./tandoorProducts";
 
 export const DRINK_SUBCATEGORIES: Category[] = ["Soft Drinks", "Indian Lassi", "Matcha's", "Smoothies", "Bubble Tea's", "Wine Bottles"];
 
+export const PIZZA_SUBCATEGORIES: Category[] = ["Indian fusion pizzas", "Classic pizzas"];
+
+export const MENU_ELIGIBLE_CATEGORIES: Category[] = ["Wraps", "Pizzas", "Burgers"];
+export const MENU_UPGRADE_PRICE = 4;
+export const MENU_UPGRADE_CATEGORY = "Menu upgrades";
+
 export const CATEGORY_ORDER: Category[] = ["Wraps", "Burgers", "Pizzas", "Drinks"];
 
 /**
@@ -75,6 +81,17 @@ export function isDrinkCategory(category: Category): boolean {
   );
 }
 
+export function isMenuEligibleCategory(category: Category): boolean {
+  const normalized = category.trim().toLowerCase();
+  return MENU_ELIGIBLE_CATEGORIES.some((c) => c.toLowerCase() === normalized);
+}
+
+export function isSoftDrinkProduct(product: Pick<Product, "category" | "subcategory" | "name">): boolean {
+  const subcategory = product.subcategory?.trim().toLowerCase() ?? "";
+  const name = product.name.trim().toLowerCase();
+  return isDrinkCategory(product.category) && (subcategory === "soft drinks" || /cola|fanta|sprite|water|spa|fernandes|ice tea|ginger/.test(name));
+}
+
 export function normalizeDrinkSubcategory(category?: Category): Category | undefined {
   const normalized = (category ?? "").trim().toLowerCase();
   if (!normalized || normalized === "drinks") return undefined;
@@ -88,6 +105,8 @@ const CATEGORY_ICONS: Record<string, IconType> = {
   Wraps: FaBowlFood,
   Burgers: FaBurger,
   Pizzas: FaPizzaSlice,
+  "Indian fusion pizzas": FaPizzaSlice,
+  "Classic pizzas": FaPizzaSlice,
   Drinks: FaGlassWater,
   "Indian Lassi": FaMugHot,
   "Matcha's": FaLeaf,
@@ -157,6 +176,9 @@ export const DEFAULT_BRAND_CONFIGS: BrandConfig[] = BRANDS.map((b) => ({
   categories: b.categories.map((name) => ({
     name,
     icon: defaultIconKey(name),
+    ...(name === "Pizzas"
+      ? { subcategories: PIZZA_SUBCATEGORIES.map((sub) => ({ name: sub, icon: defaultIconKey(sub) })) }
+      : {}),
     ...(name === "Drinks"
       ? { subcategories: DRINK_SUBCATEGORIES.map((sub) => ({ name: sub, icon: defaultIconKey(sub) })) }
       : {}),

@@ -31,14 +31,17 @@ import {
   FREE_DELIVERY_FROM,
   formatOrderNumber,
   isDrinkCategory,
+  isMenuEligibleCategory,
   isPostcodeInDeliveryArea,
+  isSoftDrinkProduct,
   isValidDutchPostcode,
+  MENU_UPGRADE_PRICE,
   MIN_ORDER,
   POINTS_EARN_EVERY,
   VIP_DISCOUNT_PCT,
 } from "../lib/data";
 import { nextOpening } from "../lib/openingHours";
-import type { Brand, Category, Product } from "../lib/types";
+import type { Brand, Category, MenuUpgrades, Product } from "../lib/types";
 
 export default function OrderPage() {
   const { t, lang } = useLang();
@@ -58,6 +61,7 @@ export default function OrderPage() {
   const [message, setMessage] = useState<{ type: "error" | "success"; text: string } | null>(null);
   const [showCartModal, setShowCartModal] = useState(false);
   const [showCheckoutModal, setShowCheckoutModal] = useState(false);
+  const [menuUpgrades, setMenuUpgrades] = useState<MenuUpgrades>({});
   const [pointsToUse, setPointsToUse] = useState(0);
   // How the customer wants to receive the order: delivered, or picked up in person.
   const [fulfillment, setFulfillment] = useState<"delivery" | "pickup">("delivery");
@@ -128,8 +132,12 @@ export default function OrderPage() {
     brands.find((b) => b.id === brandId)?.categories.find((c) => c.name === categoryName)?.subcategories ?? [];
 
   const categoryMatchesProduct = (product: Product, category: Category) => {
-    if (category !== "Drinks") return product.category === category;
-    if (!isDrinkCategory(product.category)) return false;
+    if (category === "Drinks") {
+      if (!isDrinkCategory(product.category)) return false;
+    } else if (product.category !== category) {
+      return false;
+    }
+    if (subcategoriesOf(activeBrand, category).length === 0) return true;
     return activeSubcategory === "all" || product.subcategory === activeSubcategory;
   };
 
@@ -163,9 +171,9 @@ export default function OrderPage() {
         setActiveCategory(firstCategoryWithProducts(activeBrand) ?? brand.categories[0]?.name ?? "");
         setActiveSubcategory("all");
       });
-    } else if (activeCategory !== "Drinks" && activeSubcategory !== "all") {
+    } else if (subcategoriesOf(activeBrand, activeCategory).length === 0 && activeSubcategory !== "all") {
       queueMicrotask(() => setActiveSubcategory("all"));
-    } else if (activeCategory === "Drinks" && activeSubcategory !== "all" && !subcategoriesOf(activeBrand, "Drinks").some((s) => s.name === activeSubcategory)) {
+    } else if (activeSubcategory !== "all" && !subcategoriesOf(activeBrand, activeCategory).some((s) => s.name === activeSubcategory)) {
       queueMicrotask(() => setActiveSubcategory("all"));
     } else if (menuProducts.length > 0 && !menuProducts.some((product) => product.brand === activeBrand && categoryMatchesProduct(product, activeCategory))) {
       const nextCategory = firstCategoryWithProducts(activeBrand);
@@ -198,7 +206,22 @@ export default function OrderPage() {
     [products, fallbackProducts, cart]
   );
 
-  const subtotal = cartLines.reduce((sum, l) => sum + l.product.price * l.qty, 0);
+  const softDrinkProducts = useMemo(() => menuProducts.filter(isSoftDrinkProduct), [menuProducts]);
+  const softDrinksFor = (product: Product) => {
+    const sameBrand = softDrinkProducts.filter((drink) => drink.brand === product.brand);
+    return sameBrand.length > 0 ? sameBrand : softDrinkProducts;
+  };
+  const selectedMenuUpgrades = useMemo(() => {
+    const selected: MenuUpgrades = {};
+    for (const line of cartLines) {
+      if (!isMenuEligibleCategory(line.product.category)) continue;
+      const drinkId = menuUpgrades[line.product.id];
+      if (drinkId && softDrinksFor(line.product).some((drink) => drink.id === drinkId)) selected[line.product.id] = drinkId;
+    }
+    return selected;
+  }, [cartLines, menuUpgrades, softDrinkProducts]);
+  const menuUpgradeSubtotal = cartLines.reduce((sum, line) => (selectedMenuUpgrades[line.product.id] ? sum + MENU_UPGRADE_PRICE * line.qty : sum), 0);
+  const subtotal = cartLines.reduce((sum, l) => sum + l.product.price * l.qty, 0) + menuUpgradeSubtotal;
   const foodSubtotal = cartLines.reduce(
     (sum, l) => (isDrinkCategory(l.product.category) ? sum : sum + l.product.price * l.qty),
     0
@@ -286,6 +309,7 @@ export default function OrderPage() {
       phone: form.phone,
       note: form.note,
       pointsToUse: pointsUsed,
+      menuUpgrades: selectedMenuUpgrades,
       fulfillment,
       schedule:
         isCompany && scheduleType !== "asap"
@@ -309,6 +333,7 @@ export default function OrderPage() {
       setScheduleType("asap");
       setScheduleDate("");
       setScheduleTime("");
+      setMenuUpgrades({});
       setShowCheckoutModal(false);
     } else if (res.error === "minOrder") {
       setMessage({ type: "error", text: minOrderNote });
@@ -497,6 +522,39 @@ export default function OrderPage() {
     </div>
   );
 
+  const renderMenuUpgradeControls = (product: Product) => {
+    if (!isMenuEligibleCategory(product.category)) return null;
+    const drinks = softDrinksFor(product);
+    const selectedDrinkId = selectedMenuUpgrades[product.id] ?? "";
+    const enabled = !!selectedDrinkId;
+    return (
+      <div className="mt-2 rounded-xl border border-emerald-500/20 bg-emerald-500/10 p-2.5">
+        <div className="flex items-start justify-between gap-3">
+          <div className="min-w-0">
+            <p className="flex items-center gap-1.5 text-xs font-black text-emerald-800 dark:text-emerald-200"><FaCircleCheck className="shrink-0" /> {t.order.menuUpgradeTitle}</p>
+            <p className="mt-0.5 text-[11px] leading-4 text-emerald-700/80 dark:text-emerald-200/75">{t.order.menuUpgradeHint}</p>
+          </div>
+          <button type="button" disabled={drinks.length === 0} onClick={() => setMenuUpgrades((current) => {
+            const next = { ...current };
+            if (next[product.id]) delete next[product.id];
+            else if (drinks[0]) next[product.id] = drinks[0].id;
+            return next;
+          })} aria-pressed={enabled} className={`shrink-0 rounded-full px-3 py-1.5 text-xs font-bold transition disabled:cursor-not-allowed disabled:opacity-50 ${enabled ? "bg-emerald-600 text-white" : "bg-white text-emerald-700 ring-1 ring-emerald-200 dark:bg-white/10 dark:text-emerald-200 dark:ring-emerald-400/20"}`}>
+            +€{MENU_UPGRADE_PRICE.toFixed(2)}
+          </button>
+        </div>
+        {drinks.length === 0 ? <p className="mt-2 text-[11px] font-semibold text-amber-700 dark:text-amber-300">{t.order.menuUpgradeNoDrinks}</p> : enabled ? (
+          <label className="mt-2 block text-[11px] font-bold uppercase tracking-wide text-emerald-800 dark:text-emerald-200">
+            {t.order.menuUpgradeDrink}
+            <select value={selectedDrinkId} onChange={(e) => setMenuUpgrades((current) => ({ ...current, [product.id]: e.target.value }))} className="mt-1 w-full rounded-lg border border-emerald-200 bg-white px-2.5 py-2 text-xs normal-case tracking-normal text-slate-800 outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white">
+              {drinks.map((drink) => <option key={drink.id} value={drink.id}>{drink.name}</option>)}
+            </select>
+          </label>
+        ) : null}
+      </div>
+    );
+  };
+
   return (
     <div className="page-stage min-h-screen">
       {/* Closed notice - ordering stays possible, preparation starts at the next opening */}
@@ -569,7 +627,7 @@ export default function OrderPage() {
             );
           })}
         </div>
-        {activeCategory === "Drinks" && subcategoriesOf(activeBrand, "Drinks").length > 0 && (
+        {subcategoriesOf(activeBrand, activeCategory).length > 0 && (
           <div className="flex gap-2 overflow-x-auto px-3 pb-2">
             <button
               onClick={() => setActiveSubcategory("all")}
@@ -579,9 +637,9 @@ export default function OrderPage() {
                   : "border border-slate-100 bg-white text-slate-600 hover:border-sky-400 hover:bg-sky-50 dark:border-white/5 dark:bg-white/5 dark:text-slate-300"
               }`}
             >
-              All drinks
+              All {activeCategory.toLowerCase()}
             </button>
-            {subcategoriesOf(activeBrand, "Drinks").map((sub) => {
+            {subcategoriesOf(activeBrand, activeCategory).map((sub) => {
               const Icon = categoryIconFor(brands, sub.name);
               const active = activeSubcategory === sub.name;
               return (
@@ -655,7 +713,7 @@ export default function OrderPage() {
                           >
                             <Icon className="shrink-0 text-base" /> <span className="truncate">{cat}</span>
                           </button>
-                          {cat === "Drinks" && isActive && subcategoriesOf(activeBrand, "Drinks").length > 0 && (
+                          {isActive && subcategoriesOf(activeBrand, cat).length > 0 && (
                             <div className="ml-6 mt-1 space-y-1 border-l border-slate-200 pl-2 dark:border-white/10">
                               <button
                                 onClick={() => setActiveSubcategory("all")}
@@ -665,9 +723,9 @@ export default function OrderPage() {
                                     : "text-slate-500 hover:bg-sky-50 hover:text-sky-700 dark:text-slate-400 dark:hover:bg-white/10"
                                 }`}
                               >
-                                All drinks
+                                All {cat.toLowerCase()}
                               </button>
-                              {subcategoriesOf(activeBrand, "Drinks").map((sub) => {
+                              {subcategoriesOf(activeBrand, cat).map((sub) => {
                                 const SubIcon = categoryIconFor(brands, sub.name);
                                 const subActive = activeSubcategory === sub.name;
                                 return (
@@ -710,7 +768,7 @@ export default function OrderPage() {
             <div>
               <h2 className="font-display text-lg font-bold leading-tight text-slate-900 dark:text-white">{activeBrandCfg?.name ?? ""}</h2>
               <p className="text-xs font-semibold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
-                {activeCategory}{activeCategory === "Drinks" && activeSubcategory !== "all" ? ` -> ${activeSubcategory}` : ""} · {visible.length} {t.common.items}
+                {activeCategory}{activeSubcategory !== "all" ? ` -> ${activeSubcategory}` : ""} · {visible.length} {t.common.items}
               </p>
             </div>
             <div className="gold-rule ml-2 flex-1" />
@@ -741,23 +799,24 @@ export default function OrderPage() {
                 </div>
               ) : (
                 cartLines.map(({ product, qty }) => (
-                  <div key={product.id} className="magnetic-card flex items-center gap-3 rounded-2xl border border-emerald-500/10 bg-white/70 p-2.5 backdrop-blur dark:border-white/5 dark:bg-white/5">
-                    <div className="min-w-0 flex-1">
-                      <p className="truncate text-sm font-semibold text-slate-900 dark:text-white">{product.name}</p>
-                      <p className="text-xs text-slate-500 dark:text-slate-400">€{product.price.toFixed(2)} {t.common.each}</p>
+                  <div key={product.id} className="magnetic-card rounded-2xl border border-emerald-500/10 bg-white/70 p-2.5 backdrop-blur dark:border-white/5 dark:bg-white/5">
+                    <div className="flex items-center gap-3">
+                      <div className="min-w-0 flex-1">
+                        <p className="truncate text-sm font-semibold text-slate-900 dark:text-white">{product.name}</p>
+                        <p className="text-xs text-slate-500 dark:text-slate-400">€{product.price.toFixed(2)} {t.common.each}</p>
+                      </div>
+                      <div className="flex items-center gap-1.5">
+                        <button onClick={() => removeFromCart(product.id)} className="grid h-7 w-7 place-items-center rounded-full bg-white text-slate-600 transition hover:text-red-600 dark:bg-white/10 dark:text-slate-300" aria-label={t.common.remove}>
+                          {qty <= 1 ? <FaTrash className="text-[0.65rem]" /> : <FaMinus className="text-[0.65rem]" />}
+                        </button>
+                        <span className="w-5 text-center text-sm font-bold text-slate-900 dark:text-white">{qty}</span>
+                        <button onClick={() => addToCart(product.id)} className="grid h-7 w-7 place-items-center rounded-full bg-emerald-600 text-white transition hover:bg-emerald-500" aria-label={t.common.add}>
+                          <FaPlus className="text-[0.65rem]" />
+                        </button>
+                      </div>
+                      <span className="w-14 text-right text-sm font-bold text-slate-900 dark:text-white">€{(product.price * qty).toFixed(2)}</span>
                     </div>
-                    <div className="flex items-center gap-1.5">
-                      <button onClick={() => removeFromCart(product.id)} className="grid h-7 w-7 place-items-center rounded-full bg-white text-slate-600 transition hover:text-red-600 dark:bg-white/10 dark:text-slate-300" aria-label={t.common.remove}>
-                        {qty <= 1 ? <FaTrash className="text-[0.65rem]" /> : <FaMinus className="text-[0.65rem]" />}
-                      </button>
-                      <span className="w-5 text-center text-sm font-bold text-slate-900 dark:text-white">{qty}</span>
-                      <button onClick={() => addToCart(product.id)} className="grid h-7 w-7 place-items-center rounded-full bg-emerald-600 text-white transition hover:bg-emerald-500" aria-label={t.common.add}>
-                        <FaPlus className="text-[0.65rem]" />
-                      </button>
-                    </div>
-                    <span className="w-14 text-right text-sm font-bold text-slate-900 dark:text-white">
-                      €{(product.price * qty).toFixed(2)}
-                    </span>
+                    {renderMenuUpgradeControls(product)}
                   </div>
                 ))
               )}
@@ -1047,29 +1106,24 @@ export default function OrderPage() {
 
             <div className="max-h-72 space-y-2 overflow-y-auto px-5 py-4 pr-3">
               {cartLines.map(({ product, qty }) => (
-                <div key={product.id} className="flex items-center gap-3 rounded-xl border border-slate-100 bg-slate-50 p-2.5 dark:border-white/5 dark:bg-white/5">
-                  <div className="min-w-0 flex-1">
-                    <p className="truncate text-sm font-semibold text-slate-900 dark:text-white">{product.name}</p>
-                    <p className="text-xs text-slate-500 dark:text-slate-400">€{product.price.toFixed(2)} {t.common.each}</p>
+                <div key={product.id} className="rounded-xl border border-slate-100 bg-slate-50 p-2.5 dark:border-white/5 dark:bg-white/5">
+                  <div className="flex items-center gap-3">
+                    <div className="min-w-0 flex-1">
+                      <p className="truncate text-sm font-semibold text-slate-900 dark:text-white">{product.name}</p>
+                      <p className="text-xs text-slate-500 dark:text-slate-400">€{product.price.toFixed(2)} {t.common.each}</p>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <button onClick={() => removeFromCart(product.id)} className="grid h-6 w-6 place-items-center rounded-full bg-white text-slate-600 transition hover:text-red-600 dark:bg-white/10 dark:text-slate-300" aria-label={t.common.remove}>
+                        {qty <= 1 ? <FaTrash className="text-[0.6rem]" /> : <FaMinus className="text-[0.6rem]" />}
+                      </button>
+                      <span className="w-5 text-center text-sm font-bold text-slate-900 dark:text-white">{qty}</span>
+                      <button onClick={() => addToCart(product.id)} className="grid h-6 w-6 place-items-center rounded-full bg-emerald-600 text-white transition hover:bg-emerald-500" aria-label={t.common.add}>
+                        <FaPlus className="text-[0.6rem]" />
+                      </button>
+                    </div>
+                    <span className="w-12 text-right text-sm font-bold text-slate-900 dark:text-white">€{(product.price * qty).toFixed(2)}</span>
                   </div>
-                  <div className="flex items-center gap-1.5">
-                    <button
-                      onClick={() => removeFromCart(product.id)}
-                      className="grid h-6 w-6 place-items-center rounded-full bg-white text-slate-600 transition hover:text-red-600 dark:bg-white/10 dark:text-slate-300"
-                      aria-label={t.common.remove}
-                    >
-                      {qty <= 1 ? <FaTrash className="text-[0.6rem]" /> : <FaMinus className="text-[0.6rem]" />}
-                    </button>
-                    <span className="w-5 text-center text-sm font-bold text-slate-900 dark:text-white">{qty}</span>
-                    <button
-                      onClick={() => addToCart(product.id)}
-                      className="grid h-6 w-6 place-items-center rounded-full bg-emerald-600 text-white transition hover:bg-emerald-500"
-                      aria-label={t.common.add}
-                    >
-                      <FaPlus className="text-[0.6rem]" />
-                    </button>
-                  </div>
-                  <span className="w-12 text-right text-sm font-bold text-slate-900 dark:text-white">€{(product.price * qty).toFixed(2)}</span>
+                  {renderMenuUpgradeControls(product)}
                 </div>
               ))}
             </div>

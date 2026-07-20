@@ -104,6 +104,9 @@ export interface OrderItem {
   category: Category;
 }
 
+/** Full-menu upgrades keyed by the food product id, with the chosen free soft-drink product id as the value. */
+export type MenuUpgrades = Record<string, string>;
+
 export interface OrderSchedule {
   /** "once" = single scheduled delivery, "workdays" = repeats every working day (Mon–Fri) */
   type: "once" | "workdays";

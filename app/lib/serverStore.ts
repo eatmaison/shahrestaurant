@@ -10,7 +10,11 @@ import {
   FREE_DELIVERY_FROM,
   formatOrderNumber,
   isDrinkCategory,
+  isMenuEligibleCategory,
   isPostcodeInDeliveryArea,
+  isSoftDrinkProduct,
+  MENU_UPGRADE_CATEGORY,
+  MENU_UPGRADE_PRICE,
   MIN_ORDER,
   normalizePostcode,
   POINTS_EARN_EVERY,
@@ -44,6 +48,7 @@ import type {
   OrderItem,
   OrderFulfillment,
   OrderSchedule,
+  MenuUpgrades,
   Product,
   Reservation,
   ReservationStatus,
@@ -308,13 +313,14 @@ export async function placeOrder(details: {
   note?: string;
   cart: Record<string, number>;
   pointsToUse?: number;
+  menuUpgrades?: MenuUpgrades;
   schedule?: OrderSchedule;
   fulfillment?: OrderFulfillment;
   origin?: string;
 }): Promise<{ ok: boolean; error?: "minOrder" | "empty" | "outsideArea" | "closed"; order?: Order; checkoutUrl?: string }> {
   await ensureReady();
   const currentUser = await getCurrentUser();
-  const { customerName, address, postcode, phone, note, cart, pointsToUse = 0, schedule, origin } = details;
+  const { customerName, address, postcode, phone, note, cart, pointsToUse = 0, menuUpgrades = {}, schedule, origin } = details;
   const fulfillment: OrderFulfillment = details.fulfillment === "pickup" ? "pickup" : "delivery";
 
   // Orders may be placed while closed - the kitchen starts preparing them at
@@ -330,10 +336,13 @@ export async function placeOrder(details: {
   // Pickup orders skip the delivery-area check (the customer collects it in person).
   if (fulfillment === "delivery" && !isPostcodeInDeliveryArea(postcode)) return { ok: false, error: "outsideArea" };
 
-  const productRows = (await sql.query(`SELECT * FROM products WHERE id = ANY($1::text[])`, [productIds])) as any[];
+  const drinkIds = [...new Set(Object.values(menuUpgrades).filter(Boolean))];
+  const productRows = (await sql.query(`SELECT * FROM products WHERE id = ANY($1::text[])`, [[...new Set([...productIds, ...drinkIds])]])) as any[];
   const products = productRows.map(rowToProduct);
+  const productById = new Map(products.map((product) => [product.id, product]));
 
   const items: OrderItem[] = products
+    .filter((p) => productIds.includes(p.id))
     .map((p) => ({
       productId: p.id,
       name: p.name,
@@ -344,6 +353,18 @@ export async function placeOrder(details: {
     }))
     .filter((i) => i.qty > 0);
   if (items.length === 0) return { ok: false, error: "empty" };
+
+  for (const productId of productIds) {
+    const food = productById.get(productId);
+    const drink = productById.get(menuUpgrades[productId]);
+    const qty = cart[productId] || 0;
+    if (!food || qty <= 0 || !isMenuEligibleCategory(food.category) || !drink || !isSoftDrinkProduct(drink)) continue;
+    items.push(
+      { productId: `menu-upgrade:${food.id}`, name: `Full menu upgrade for ${food.name}`, price: MENU_UPGRADE_PRICE, qty, brand: food.brand, category: MENU_UPGRADE_CATEGORY },
+      { productId: `menu-fries:${food.id}`, name: `Fries included with ${food.name}`, price: 0, qty, brand: food.brand, category: MENU_UPGRADE_CATEGORY },
+      { productId: `menu-drink:${food.id}:${drink.id}`, name: `Free soft drink: ${drink.name}`, price: 0, qty, brand: drink.brand, category: "Drinks" }
+    );
+  }
 
   const subtotal = +items.reduce((s, i) => s + i.price * i.qty, 0).toFixed(2);
 
@@ -545,7 +566,7 @@ export async function addProduct(p: Omit<Product, "id">): Promise<Product> {
       id,
       p.brand,
       p.category,
-      p.category === "Drinks" ? p.subcategory ?? "" : "",
+      p.subcategory ?? "",
       p.name,
       p.description,
       p.descriptionNl ?? "",
@@ -579,7 +600,7 @@ export async function updateProduct(id: string, patch: Partial<Omit<Product, "id
       id,
       next.brand,
       next.category,
-      next.category === "Drinks" ? next.subcategory ?? "" : "",
+      next.subcategory ?? "",
       next.name,
       next.description,
       next.descriptionNl ?? "",

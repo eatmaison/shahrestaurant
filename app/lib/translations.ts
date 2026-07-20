@@ -142,6 +142,10 @@ export interface Dictionary {
     pickupInfo: string;
     methodDelivery: string;
     methodPickup: string;
+    menuUpgradeTitle: string;
+    menuUpgradeHint: string;
+    menuUpgradeDrink: string;
+    menuUpgradeNoDrinks: string;
   };
   auth: {
     loginTitle: string;
@@ -663,6 +667,10 @@ const en: Dictionary = {
     pickupInfo: "Pick up your order at Klaprozenweg 36a, 1032 KL Amsterdam.",
     methodDelivery: "Delivery",
     methodPickup: "Pickup",
+    menuUpgradeTitle: "Make it a full menu",
+    menuUpgradeHint: "+€4 includes fries and one free soft drink.",
+    menuUpgradeDrink: "Free soft drink",
+    menuUpgradeNoDrinks: "Add a soft drink in admin to enable menu upgrades.",
   },
   auth: {
     loginTitle: "Welcome back",
@@ -1189,6 +1197,10 @@ const nl: Dictionary = {
     pickupInfo: "Haal je bestelling af op Klaprozenweg 36a, 1032 KL Amsterdam.",
     methodDelivery: "Bezorgen",
     methodPickup: "Afhalen",
+    menuUpgradeTitle: "Maak er een volledig menu van",
+    menuUpgradeHint: "+€4 inclusief friet en één gratis frisdrank.",
+    menuUpgradeDrink: "Gratis frisdrank",
+    menuUpgradeNoDrinks: "Voeg in admin een frisdrank toe om menu-upgrades te activeren.",
   },
   auth: {
     loginTitle: "Welkom terug",

@@ -11,7 +11,7 @@ import {
 } from "react";
 import { translations, type Dictionary } from "./lib/translations";
 import { DEFAULT_BRAND_CONFIGS } from "./lib/data";
-import type { AccountType, BrandConfig, Lang, Order, OrderFulfillment, OrderSchedule, OrderStatus, Product, Reservation, Review, SocialLink, SocialPlatform, User, VipRequest } from "./lib/types";
+import type { AccountType, BrandConfig, Lang, MenuUpgrades, Order, OrderFulfillment, OrderSchedule, OrderStatus, Product, Reservation, Review, SocialLink, SocialPlatform, User, VipRequest } from "./lib/types";
 
 const JSON_HEADERS = { "Content-Type": "application/json" } as const;
 
@@ -108,6 +108,7 @@ interface StoreCtx {
     phone: string;
     note?: string;
     pointsToUse?: number;
+    menuUpgrades?: MenuUpgrades;
     schedule?: OrderSchedule;
     fulfillment?: OrderFulfillment;
   }) => Promise<{ ok: boolean; error?: "minOrder" | "empty" | "outsideArea" | "closed"; order?: Order; checkoutUrl?: string }>;

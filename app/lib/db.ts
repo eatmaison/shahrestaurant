@@ -1,5 +1,6 @@
 import { neon } from "@neondatabase/serverless";
-import { DEFAULT_BRAND_CONFIGS } from "./data";
+import { DEFAULT_BRAND_CONFIGS, PIZZA_SUBCATEGORIES } from "./data";
+import type { BrandCategory } from "./types";
 
 /**
  * Neon (PostgreSQL) client. Uses the serverless HTTP driver, which works both
@@ -130,6 +131,10 @@ const DDL: string[] = [
     created_at timestamptz NOT NULL DEFAULT now()
   )`,
   `CREATE INDEX IF NOT EXISTS idx_payments_mollie ON payments (mollie_payment_id)`,
+  `CREATE TABLE IF NOT EXISTS app_migrations (
+    id text PRIMARY KEY,
+    applied_at timestamptz NOT NULL DEFAULT now()
+  )`,
   // Admin-managed restaurants/brands and their menu categories (with icon keys).
   `CREATE TABLE IF NOT EXISTS brands (
     id text PRIMARY KEY,
@@ -190,6 +195,7 @@ const DDL: string[] = [
 ];
 
 let readyPromise: Promise<void> | null = null;
+      await seedPizzaSubcategories();
 
 /**
  * Lazily create the schema and seed the product catalogue on first use.
@@ -210,6 +216,37 @@ export function ensureReady(): Promise<void> {
     });
   }
   return readyPromise;
+}
+
+async function seedPizzaSubcategories(): Promise<void> {
+  const migrationId = "20260720_pizza_subcategories";
+  const done = (await sql.query(`SELECT 1 FROM app_migrations WHERE id = $1`, [migrationId])) as unknown[];
+  if (done.length > 0) return;
+
+  const rows = (await sql.query(`SELECT id, categories FROM brands`)) as { id: string; categories: BrandCategory[] }[];
+  for (const row of rows) {
+    let changed = false;
+    const categories = row.categories.map((category) => {
+      if (category.name !== "Pizzas") return category;
+      const subcategories = [...(category.subcategories ?? [])];
+      const existing = new Set(subcategories.map((sub) => sub.name.toLowerCase()));
+      for (const name of PIZZA_SUBCATEGORIES) {
+        if (existing.has(name.toLowerCase())) continue;
+        subcategories.push({ name, icon: "pizza" });
+        changed = true;
+      }
+      return { ...category, subcategories };
+    });
+    if (changed) {
+      await sql.query(`UPDATE brands SET categories = $2::jsonb WHERE id = $1`, [row.id, JSON.stringify(categories)]);
+    }
+  }
+
+  await sql.query(`UPDATE products SET subcategory = $1 WHERE category = $2 AND coalesce(subcategory, '') = ''`, [
+    PIZZA_SUBCATEGORIES[0],
+    "Pizzas",
+  ]);
+  await sql.query(`INSERT INTO app_migrations (id) VALUES ($1) ON CONFLICT (id) DO NOTHING`, [migrationId]);
 }
 
 /** Product catalogue is now admin-managed in the database.

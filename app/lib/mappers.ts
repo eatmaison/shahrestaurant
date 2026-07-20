@@ -50,7 +50,7 @@ export function rowToUser(r: any): User {
 
 export function rowToProduct(r: any): Product {
   const category = isDrinkCategory(r.category) ? "Drinks" : r.category;
-  const subcategory = category === "Drinks" ? inferDrinkSubcategory(r) : undefined;
+  const subcategory = r.subcategory || (category === "Drinks" ? inferDrinkSubcategory(r) : undefined);
   return {
     id: r.id,
     brand: r.brand,

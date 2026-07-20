@@ -63,6 +63,7 @@ export const placeOrderSchema = z.object({
   pointsToUse: z.number().int().min(0).max(100000).optional(),
   schedule: orderSchedule.optional(),
   fulfillment: z.enum(["delivery", "pickup"]).optional(),
+  menuUpgrades: z.record(z.string().max(100), z.string().max(100)).optional(),
 });
 
 export type PlaceOrderInput = z.infer<typeof placeOrderSchema>;
