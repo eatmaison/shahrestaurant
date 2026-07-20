@@ -195,7 +195,6 @@ const DDL: string[] = [
 ];
 
 let readyPromise: Promise<void> | null = null;
-      await seedPizzaSubcategories();
 
 /**
  * Lazily create the schema and seed the product catalogue on first use.
@@ -209,6 +208,7 @@ export function ensureReady(): Promise<void> {
       }
       await seedProducts();
       await seedBrands();
+      await seedPizzaSubcategories();
     })().catch((err) => {
       // Reset so a later request can retry after a transient failure.
       readyPromise = null;
