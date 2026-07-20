@@ -546,8 +546,8 @@ export default function OrderPage() {
         {drinks.length === 0 ? <p className="mt-2 text-[11px] font-semibold text-amber-700 dark:text-amber-300">{t.order.menuUpgradeNoDrinks}</p> : enabled ? (
           <label className="mt-2 block text-[11px] font-bold uppercase tracking-wide text-emerald-800 dark:text-emerald-200">
             {t.order.menuUpgradeDrink}
-            <select value={selectedDrinkId} onChange={(e) => setMenuUpgrades((current) => ({ ...current, [product.id]: e.target.value }))} className="mt-1 w-full rounded-lg border border-emerald-200 bg-white px-2.5 py-2 text-xs normal-case tracking-normal text-slate-800 outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white">
-              {drinks.map((drink) => <option key={drink.id} value={drink.id}>{drink.name}</option>)}
+            <select value={selectedDrinkId} onChange={(e) => setMenuUpgrades((current) => ({ ...current, [product.id]: e.target.value }))} className="mt-1 w-full rounded-lg border border-emerald-200 bg-white px-2.5 py-2 text-xs normal-case tracking-normal text-slate-800 outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-slate-950 dark:text-white dark:[color-scheme:dark]">
+              {drinks.map((drink) => <option key={drink.id} value={drink.id} className="bg-white text-slate-900 dark:bg-slate-950 dark:text-white">{drink.name}</option>)}
             </select>
           </label>
         ) : null}

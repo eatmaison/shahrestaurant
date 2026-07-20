@@ -78,6 +78,29 @@ body::before {
   color: #f0e6d6;
 }
 
+select {
+  color-scheme: light;
+}
+
+select option {
+  background: #ffffff;
+  color: #221a11;
+}
+
+.dark select {
+  color-scheme: dark;
+}
+
+.dark select option {
+  background: #140d07;
+  color: #fdf6ec;
+}
+
+.dark select option:checked {
+  background: #a34e1a;
+  color: #ffffff;
+}
+
 .dark body::before {
   background:
     linear-gradient(115deg, rgba(12, 7, 3, 0.96), rgba(34, 20, 8, 0.92) 42%, rgba(58, 26, 11, 0.7) 72%, rgba(12, 7, 3, 0.96)),
