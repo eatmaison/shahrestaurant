@@ -55,8 +55,8 @@ const orderSchedule = z.object({
 
 export const placeOrderSchema = z.object({
   customerName: z.string().trim().min(1).max(100),
-  address: z.string().trim().min(1).max(300),
-  postcode: z.string().trim().min(4).max(10),
+  address: z.string().trim().max(300),
+  postcode: z.string().trim().max(10),
   phone: z.string().trim().min(5).max(30),
   note: z.string().trim().max(500).optional(),
   cart: z.record(z.string().max(100), z.number().int().min(0).max(99)),
@@ -64,6 +64,14 @@ export const placeOrderSchema = z.object({
   schedule: orderSchedule.optional(),
   fulfillment: z.enum(["delivery", "pickup"]).optional(),
   menuUpgrades: z.record(z.string().max(100), z.string().max(100)).optional(),
+}).superRefine((order, ctx) => {
+  if (order.fulfillment === "pickup") return;
+  if (!order.address) {
+    ctx.addIssue({ code: "custom", path: ["address"], message: "Address is required for delivery" });
+  }
+  if (order.postcode.length < 4) {
+    ctx.addIssue({ code: "custom", path: ["postcode"], message: "Postcode is required for delivery" });
+  }
 });
 
 export type PlaceOrderInput = z.infer<typeof placeOrderSchema>;

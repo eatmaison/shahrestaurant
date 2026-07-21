@@ -370,7 +370,7 @@ export async function placeOrder(details: {
 
   const isCompany = currentUser?.accountType === "company";
   const minOrder = isCompany ? COMPANY_MIN_ORDER : MIN_ORDER;
-  if (subtotal < minOrder) return { ok: false, error: "minOrder" };
+  if (fulfillment === "delivery" && subtotal < minOrder) return { ok: false, error: "minOrder" };
 
   const foodSubtotal = items.reduce((s, i) => (isDrinkCategory(i.category) ? s : s + i.price * i.qty), 0);
   const discountPct = isCompany ? COMPANY_DISCOUNT_PCT : currentUser?.isVip ? VIP_DISCOUNT_PCT : 0;

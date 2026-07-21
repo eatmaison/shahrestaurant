@@ -242,7 +242,7 @@ export default function OrderPage() {
   const delivery = cartLines.length > 0 ? (freeDelivery ? 0 : DELIVERY_FEE) : 0;
   const total = cartLines.length > 0 ? +(payableBeforePoints - pointsUsed + delivery).toFixed(2) : 0;
   const itemCount = cartLines.reduce((sum, l) => sum + l.qty, 0);
-  const belowMinOrder = cartLines.length > 0 && subtotal < minOrder;
+  const belowMinOrder = cartLines.length > 0 && !isPickup && subtotal < minOrder;
   // Loyalty points this order will earn (1 point per €10 actually paid, matching the server).
   const pointsToEarn = Math.floor(Math.max(0, payableBeforePoints - pointsUsed) / POINTS_EARN_EVERY);
 
@@ -1183,6 +1183,9 @@ export default function OrderPage() {
                 </div>
               )}
               <div className="space-y-2 rounded-lg border border-dashed border-emerald-500/25 bg-slate-50 p-3 text-sm dark:bg-white/5">
+                <div className="pb-2">
+                  {fulfillmentToggle}
+                </div>
                 <div className="flex justify-between text-slate-600 dark:text-slate-300">
                   <span>{t.common.subtotal}</span>
                   <span className="font-semibold">€{subtotal.toFixed(2)}</span>
