@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type MouseEvent } from "react";
 import {
   FaBars,
   FaCartShopping,
@@ -58,6 +58,17 @@ export function Header() {
 
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
+
+  const handleCartClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    setOpen(false);
+    if (cartCount <= 0) return;
+
+    window.sessionStorage.setItem("openCartModal", "1");
+    if (pathname === "/order") {
+      event.preventDefault();
+      window.dispatchEvent(new Event("open-cart-modal"));
+    }
+  };
 
   return (
     <header
@@ -174,6 +185,7 @@ export function Header() {
 
           <Link
             href="/order"
+            onClick={handleCartClick}
             className="relative grid h-9 w-9 place-items-center rounded-full border border-slate-200 bg-white text-slate-700 transition hover:-translate-y-0.5 hover:border-emerald-400/60 hover:text-emerald-600 dark:border-white/10 dark:bg-white/5 dark:text-slate-200 dark:hover:text-emerald-300"
             aria-label={t.common.yourOrder}
           >

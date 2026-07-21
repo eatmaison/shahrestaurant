@@ -246,6 +246,18 @@ export default function OrderPage() {
   // Loyalty points this order will earn (1 point per €10 actually paid, matching the server).
   const pointsToEarn = Math.floor(Math.max(0, payableBeforePoints - pointsUsed) / POINTS_EARN_EVERY);
 
+  useEffect(() => {
+    const openCartModal = () => {
+      if (cartLines.length === 0) return;
+      window.sessionStorage.removeItem("openCartModal");
+      setShowCartModal(true);
+    };
+
+    window.addEventListener("open-cart-modal", openCartModal);
+    if (window.sessionStorage.getItem("openCartModal") === "1") openCartModal();
+    return () => window.removeEventListener("open-cart-modal", openCartModal);
+  }, [cartLines.length]);
+
   // Live delivery-area status for the postcode field.
   // "empty" while the user hasn't entered enough, "ok" when inside our area,
   // "outside" when a valid postcode falls outside Amsterdam-Noord.
