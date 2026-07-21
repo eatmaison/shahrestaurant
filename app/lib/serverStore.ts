@@ -643,12 +643,19 @@ function rowToBrand(r: any): BrandConfig {
 
 function normalizeDrinkSubcategories(categories: BrandCategory[], defaults?: BrandCategory[]): { categories: BrandCategory[]; changed: boolean } {
   const defaultDrinks = defaults?.find((c) => c.name === "Drinks");
-  const defaultSubcategories = defaultDrinks?.subcategories ?? DRINK_SUBCATEGORIES.map((name) => ({ name, icon: "glass-water" }));
   const drinkSubcategoryNames = new Set([...DRINK_SUBCATEGORIES.map((c) => c.toLowerCase()), "lassi"]);
   let changed = false;
-  let drinks = categories.find((c) => c.name === "Drinks") ?? defaultDrinks ?? { name: "Drinks", icon: "glass-water", subcategories: [] };
+  const existingDrinks = categories.find((c) => c.name === "Drinks");
+  const flatDrinkCategories = categories.filter((c) => drinkSubcategoryNames.has(c.name.toLowerCase()));
+  if (!existingDrinks && flatDrinkCategories.length === 0) return { categories, changed };
+  const drinks = existingDrinks
+    ? {
+        ...existingDrinks,
+        subcategories: existingDrinks.subcategories ?? defaultDrinks?.subcategories ?? [],
+      }
+    : defaultDrinks ?? { name: "Drinks", icon: "glass-water", subcategories: [] };
   const subcategories = new Map<string, BrandSubcategory>();
-  for (const sub of [...(drinks.subcategories ?? []), ...defaultSubcategories]) {
+  for (const sub of drinks.subcategories ?? []) {
     const name = sub.name === "Lassi" ? "Indian Lassi" : sub.name;
     subcategories.set(name.toLowerCase(), { name, icon: sub.icon ?? "glass-water" });
   }
@@ -744,6 +751,29 @@ export async function addBrandCategory(brandId: string, name: string, icon: stri
   return { ok: true };
 }
 
+export async function updateBrandCategory(brandId: string, name: string, nextName: string, icon: string): Promise<BrandResult> {
+  await requireAdmin();
+  const rows = (await sql.query(`SELECT * FROM brands WHERE id = $1`, [brandId])) as any[];
+  if (!rows[0]) return { ok: false, error: "invalidInput" };
+  const brand = rowToBrand(rows[0]);
+  const trimmedName = name.trim();
+  const trimmedNextName = nextName.trim();
+  if (!trimmedName || !trimmedNextName || !icon.trim()) return { ok: false, error: "invalidInput" };
+  const current = brand.categories.find((c) => c.name === trimmedName);
+  if (!current) return { ok: false, error: "invalidInput" };
+  if (brand.categories.some((c) => c.name.toLowerCase() === trimmedNextName.toLowerCase() && c.name !== trimmedName)) {
+    return { ok: false, error: "categoryExists" };
+  }
+  const categories = brand.categories.map((category) =>
+    category.name === trimmedName ? { ...category, name: trimmedNextName, icon: icon.trim() } : category
+  );
+  await sql.query(`UPDATE brands SET categories = $2::jsonb WHERE id = $1`, [brandId, JSON.stringify(categories)]);
+  if (trimmedNextName !== trimmedName) {
+    await sql.query(`UPDATE products SET category = $3 WHERE brand = $1 AND category = $2`, [brandId, trimmedName, trimmedNextName]);
+  }
+  return { ok: true };
+}
+
 export async function removeBrandCategory(brandId: string, name: string): Promise<BrandResult> {
   await requireAdmin();
   const rows = (await sql.query(`SELECT * FROM brands WHERE id = $1`, [brandId])) as any[];
@@ -779,6 +809,42 @@ export async function addBrandSubcategory(brandId: string, categoryName: string,
     return { ...category, subcategories: [...subcategories, { name: trimmed, icon }] };
   });
   await sql.query(`UPDATE brands SET categories = $2::jsonb WHERE id = $1`, [brandId, JSON.stringify(categories)]);
+  return { ok: true };
+}
+
+export async function updateBrandSubcategory(brandId: string, categoryName: string, name: string, nextName: string, icon: string): Promise<BrandResult> {
+  await requireAdmin();
+  const rows = (await sql.query(`SELECT * FROM brands WHERE id = $1`, [brandId])) as any[];
+  if (!rows[0]) return { ok: false, error: "invalidInput" };
+  const brand = rowToBrand(rows[0]);
+  const trimmedName = name.trim();
+  const trimmedNextName = nextName.trim();
+  if (!categoryName.trim() || !trimmedName || !trimmedNextName || !icon.trim()) return { ok: false, error: "invalidInput" };
+  const category = brand.categories.find((c) => c.name === categoryName);
+  if (!category) return { ok: false, error: "invalidInput" };
+  const subcategories = category.subcategories ?? [];
+  const current = subcategories.find((s) => s.name === trimmedName);
+  if (!current) return { ok: false, error: "invalidInput" };
+  if (subcategories.some((s) => s.name.toLowerCase() === trimmedNextName.toLowerCase() && s.name !== trimmedName)) {
+    return { ok: false, error: "categoryExists" };
+  }
+  const categories = brand.categories.map((category) => {
+    if (category.name !== categoryName) return category;
+    return {
+      ...category,
+      subcategories: subcategories.map((subcategory) =>
+        subcategory.name === trimmedName ? { ...subcategory, name: trimmedNextName, icon: icon.trim() } : subcategory
+      ),
+    };
+  });
+  await sql.query(`UPDATE brands SET categories = $2::jsonb WHERE id = $1`, [brandId, JSON.stringify(categories)]);
+  if (trimmedNextName !== trimmedName) {
+    await sql.query(
+      `UPDATE products SET subcategory = $4 WHERE brand = $1 AND category = $2 AND subcategory = $3`,
+      [brandId, categoryName, trimmedName, trimmedNextName]
+    );
+    await sql.query(`UPDATE products SET category = $3 WHERE brand = $1 AND category = $2`, [brandId, trimmedName, trimmedNextName]);
+  }
   return { ok: true };
 }
 

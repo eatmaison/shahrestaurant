@@ -156,6 +156,13 @@ export const brandsActionSchema = z.discriminatedUnion("action", [
     icon: z.string().trim().min(1).max(40),
   }),
   z.object({
+    action: z.literal("updateCategory"),
+    brandId: z.string().trim().min(1).max(80),
+    name: z.string().trim().min(1).max(60),
+    nextName: z.string().trim().min(1).max(60),
+    icon: z.string().trim().min(1).max(40),
+  }),
+  z.object({
     action: z.literal("removeCategory"),
     brandId: z.string().trim().min(1).max(80),
     name: z.string().trim().min(1).max(60),
@@ -165,6 +172,14 @@ export const brandsActionSchema = z.discriminatedUnion("action", [
     brandId: z.string().trim().min(1).max(80),
     categoryName: z.string().trim().min(1).max(60),
     name: z.string().trim().min(1).max(60),
+    icon: z.string().trim().min(1).max(40),
+  }),
+  z.object({
+    action: z.literal("updateSubcategory"),
+    brandId: z.string().trim().min(1).max(80),
+    categoryName: z.string().trim().min(1).max(60),
+    name: z.string().trim().min(1).max(60),
+    nextName: z.string().trim().min(1).max(60),
     icon: z.string().trim().min(1).max(40),
   }),
   z.object({

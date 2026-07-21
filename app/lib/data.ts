@@ -231,6 +231,11 @@ export function categoryIconFor(brands: BrandConfig[], category: string): IconTy
       const Icon = iconByKey(cat.icon);
       if (Icon) return Icon;
     }
+    for (const parent of b.categories) {
+      const subcategory = parent.subcategories?.find((s) => s.name === category);
+      const Icon = iconByKey(subcategory?.icon);
+      if (Icon) return Icon;
+    }
   }
   return getCategoryIcon(category);
 }

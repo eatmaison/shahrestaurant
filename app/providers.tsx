@@ -70,9 +70,11 @@ interface StoreCtx {
       | { action: "addBrand"; name: string }
       | { action: "removeBrand"; id: string }
       | { action: "addCategory"; brandId: string; name: string; icon: string }
+      | { action: "updateCategory"; brandId: string; name: string; nextName: string; icon: string }
       | { action: "removeCategory"; brandId: string; name: string }
-        | { action: "addSubcategory"; brandId: string; categoryName: string; name: string; icon: string }
-        | { action: "removeSubcategory"; brandId: string; categoryName: string; name: string }
+      | { action: "addSubcategory"; brandId: string; categoryName: string; name: string; icon: string }
+      | { action: "updateSubcategory"; brandId: string; categoryName: string; name: string; nextName: string; icon: string }
+      | { action: "removeSubcategory"; brandId: string; categoryName: string; name: string }
       | { action: "setLogo"; brandId: string; logo: string }
   ) => Promise<{ ok: boolean; error?: string }>;
 

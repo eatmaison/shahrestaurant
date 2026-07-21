@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { addBrand, addBrandCategory, addBrandSubcategory, removeBrand, removeBrandCategory, removeBrandSubcategory, setBrandLogo } from "../../lib/serverStore";
+import { addBrand, addBrandCategory, addBrandSubcategory, removeBrand, removeBrandCategory, removeBrandSubcategory, setBrandLogo, updateBrandCategory, updateBrandSubcategory } from "../../lib/serverStore";
 import { brandsActionSchema } from "../../lib/validation";
 import { enforceRateLimit } from "../../lib/rateLimit";
 
@@ -24,11 +24,15 @@ export async function POST(req: NextRequest) {
             ? await addBrandCategory(input.brandId, input.name, input.icon)
             : input.action === "removeCategory"
               ? await removeBrandCategory(input.brandId, input.name)
-              : input.action === "addSubcategory"
-                ? await addBrandSubcategory(input.brandId, input.categoryName, input.name, input.icon)
-                : input.action === "removeSubcategory"
-                  ? await removeBrandSubcategory(input.brandId, input.categoryName, input.name)
-                  : await setBrandLogo(input.brandId, input.logo);
+              : input.action === "updateCategory"
+                ? await updateBrandCategory(input.brandId, input.name, input.nextName, input.icon)
+                : input.action === "addSubcategory"
+                  ? await addBrandSubcategory(input.brandId, input.categoryName, input.name, input.icon)
+                  : input.action === "removeSubcategory"
+                    ? await removeBrandSubcategory(input.brandId, input.categoryName, input.name)
+                    : input.action === "updateSubcategory"
+                      ? await updateBrandSubcategory(input.brandId, input.categoryName, input.name, input.nextName, input.icon)
+                      : await setBrandLogo(input.brandId, input.logo);
 
     return NextResponse.json(result, { status: result.ok ? 200 : 400 });
   } catch (err) {

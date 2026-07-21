@@ -56,6 +56,10 @@ const statusIcons: Record<OrderStatus, typeof FaClock> = {
 /** Feedback state for the add/edit product forms. */
 type SaveState = { status: "idle" | "saving" | "success" | "error"; message?: string };
 
+type CategoryEditDraft =
+  | { kind: "category"; brandId: string; name: string; nextName: string; icon: string }
+  | { kind: "subcategory"; brandId: string; categoryName: string; name: string; nextName: string; icon: string };
+
 /** Period filter for stats and order management. */
 type RangeFilter = { preset: "all" | "today" | "7d" | "30d" | "date"; date?: string };
 
@@ -185,6 +189,7 @@ export default function AdminPage() {
   const [newCatIcon, setNewCatIcon] = useState("utensils");
   const [newSubcatCategory, setNewSubcatCategory] = useState("");
   const [newSubcatName, setNewSubcatName] = useState("");
+  const [categoryEdit, setCategoryEdit] = useState<CategoryEditDraft | null>(null);
   const [manageState, setManageState] = useState<SaveState>({ status: "idle" });
 
   /** Categories of a brand from the admin-managed list. */
@@ -658,6 +663,25 @@ export default function AdminPage() {
     if (await runManage({ action: "addSubcategory", brandId: manageBrandId, categoryName: activeNewSubcatCategory, name: newSubcatName.trim(), icon: "utensils" })) {
       setNewSubcatName("");
     }
+  };
+
+  const startEditCategory = (brandId: string, category: { name: string; icon: string }) => {
+    setCategoryEdit({ kind: "category", brandId, name: category.name, nextName: category.name, icon: category.icon || "utensils" });
+    setManageState({ status: "idle" });
+  };
+
+  const startEditSubcategory = (brandId: string, categoryName: string, subcategory: { name: string; icon: string }) => {
+    setCategoryEdit({ kind: "subcategory", brandId, categoryName, name: subcategory.name, nextName: subcategory.name, icon: subcategory.icon || "utensils" });
+    setManageState({ status: "idle" });
+  };
+
+  const submitCategoryEdit = async () => {
+    if (!categoryEdit || !categoryEdit.nextName.trim()) return;
+    const ok =
+      categoryEdit.kind === "category"
+        ? await runManage({ action: "updateCategory", brandId: categoryEdit.brandId, name: categoryEdit.name, nextName: categoryEdit.nextName.trim(), icon: categoryEdit.icon })
+        : await runManage({ action: "updateSubcategory", brandId: categoryEdit.brandId, categoryName: categoryEdit.categoryName, name: categoryEdit.name, nextName: categoryEdit.nextName.trim(), icon: categoryEdit.icon });
+    if (ok) setCategoryEdit(null);
   };
 
   /** Pick-a-logo flow: open the file picker targeting a specific restaurant. */
@@ -1930,38 +1954,145 @@ export default function AdminPage() {
                   <div className="mt-2.5 flex flex-wrap gap-2">
                     {categoriesOf(manageBrandId).map((c) => {
                       const Icon = categoryIconFor(brands, c.name);
+                      const categoryDraft = categoryEdit?.kind === "category" && categoryEdit.brandId === manageBrandId && categoryEdit.name === c.name ? categoryEdit : null;
                       return (
                         <div
                           key={c.name}
                           className="rounded-2xl bg-slate-100 p-2 text-xs font-bold text-slate-700 dark:bg-white/10 dark:text-slate-200"
                         >
-                          <span className="inline-flex items-center gap-1.5">
-                            <Icon className="text-emerald-600 dark:text-emerald-400" /> {c.name}
-                            <button
-                              onClick={() => runManage({ action: "removeCategory", brandId: manageBrandId, name: c.name })}
-                              className="grid h-5 w-5 place-items-center rounded-full text-slate-400 transition hover:bg-red-500/15 hover:text-red-600"
-                              aria-label={`${t.common.remove} ${c.name}`}
-                              title={t.common.remove}
-                            >
-                              <FaXmark className="text-[10px]" />
-                            </button>
-                          </span>
+                          {categoryDraft ? (
+                            <div className="space-y-2">
+                              <input
+                                value={categoryDraft.nextName}
+                                onChange={(e) => setCategoryEdit((d) => (d?.kind === "category" ? { ...d, nextName: e.target.value } : d))}
+                                onKeyDown={(e) => e.key === "Enter" && submitCategoryEdit()}
+                                className="w-full rounded-lg border border-emerald-200 bg-white px-2.5 py-1.5 text-xs outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
+                              />
+                              <div className="flex max-w-[18rem] flex-wrap gap-1">
+                                {CATEGORY_ICON_CHOICES.map(({ id, Icon: ChoiceIcon }) => (
+                                  <button
+                                    key={id}
+                                    onClick={() => setCategoryEdit((d) => (d?.kind === "category" ? { ...d, icon: id } : d))}
+                                    aria-label={id}
+                                    title={id}
+                                    className={`grid h-7 w-7 place-items-center rounded-lg border text-[13px] transition ${
+                                      categoryDraft.icon === id
+                                        ? "border-emerald-500 bg-emerald-500/15 text-emerald-700 dark:text-emerald-300"
+                                        : "border-slate-200 bg-white text-slate-500 hover:border-emerald-400 dark:border-white/10 dark:bg-white/5 dark:text-slate-300"
+                                    }`}
+                                  >
+                                    <ChoiceIcon />
+                                  </button>
+                                ))}
+                              </div>
+                              <div className="flex flex-wrap gap-1.5">
+                                <button
+                                  onClick={submitCategoryEdit}
+                                  disabled={!categoryDraft.nextName.trim() || manageState.status === "saving"}
+                                  className="inline-flex items-center gap-1 rounded-lg bg-emerald-600 px-2.5 py-1.5 text-[11px] font-black text-white transition hover:bg-emerald-500 disabled:cursor-not-allowed disabled:opacity-60"
+                                >
+                                  <FaCircleCheck /> {t.common.saveChanges}
+                                </button>
+                                <button
+                                  onClick={() => setCategoryEdit(null)}
+                                  className="inline-flex items-center gap-1 rounded-lg bg-white px-2.5 py-1.5 text-[11px] font-black text-slate-500 ring-1 ring-slate-200 transition hover:text-slate-700 dark:bg-white/10 dark:text-slate-300 dark:ring-white/10"
+                                >
+                                  <FaXmark /> {t.common.cancel}
+                                </button>
+                              </div>
+                            </div>
+                          ) : (
+                            <span className="inline-flex items-center gap-1.5">
+                              <Icon className="text-emerald-600 dark:text-emerald-400" /> {c.name}
+                              <button
+                                onClick={() => startEditCategory(manageBrandId, c)}
+                                className="grid h-5 w-5 place-items-center rounded-full text-slate-400 transition hover:bg-emerald-500/15 hover:text-emerald-600"
+                                aria-label={`${t.common.edit} ${c.name}`}
+                                title={t.common.edit}
+                              >
+                                <FaPen className="text-[10px]" />
+                              </button>
+                              <button
+                                onClick={() => runManage({ action: "removeCategory", brandId: manageBrandId, name: c.name })}
+                                className="grid h-5 w-5 place-items-center rounded-full text-slate-400 transition hover:bg-red-500/15 hover:text-red-600"
+                                aria-label={`${t.common.remove} ${c.name}`}
+                                title={t.common.remove}
+                              >
+                                <FaXmark className="text-[10px]" />
+                              </button>
+                            </span>
+                          )}
                           {(c.subcategories ?? []).length > 0 && (
                             <div className="mt-2 flex max-w-full flex-wrap gap-1.5 border-t border-white/60 pt-2 dark:border-white/10">
                               {(c.subcategories ?? []).map((sub) => {
                                 const SubIcon = categoryIconFor(brands, sub.name);
+                                const subcategoryDraft =
+                                  categoryEdit?.kind === "subcategory" && categoryEdit.brandId === manageBrandId && categoryEdit.categoryName === c.name && categoryEdit.name === sub.name
+                                    ? categoryEdit
+                                    : null;
                                 return (
-                                  <span key={sub.name} className="inline-flex items-center gap-1 rounded-full bg-white py-1 pl-2 pr-1 text-[11px] text-slate-600 ring-1 ring-slate-200 dark:bg-white/10 dark:text-slate-300 dark:ring-white/10">
-                                    <SubIcon className="text-sky-600 dark:text-sky-300" /> {sub.name}
-                                    <button
-                                      onClick={() => runManage({ action: "removeSubcategory", brandId: manageBrandId, categoryName: c.name, name: sub.name })}
-                                      className="grid h-4 w-4 place-items-center rounded-full text-slate-400 transition hover:bg-red-500/15 hover:text-red-600"
-                                      aria-label={`${t.common.remove} ${sub.name}`}
-                                      title={t.common.remove}
-                                    >
-                                      <FaXmark className="text-[9px]" />
-                                    </button>
-                                  </span>
+                                  subcategoryDraft ? (
+                                    <div key={sub.name} className="space-y-2 rounded-2xl bg-white p-2 text-[11px] text-slate-600 ring-1 ring-slate-200 dark:bg-white/10 dark:text-slate-300 dark:ring-white/10">
+                                      <input
+                                        value={subcategoryDraft.nextName}
+                                        onChange={(e) => setCategoryEdit((d) => (d?.kind === "subcategory" ? { ...d, nextName: e.target.value } : d))}
+                                        onKeyDown={(e) => e.key === "Enter" && submitCategoryEdit()}
+                                        className="w-48 rounded-lg border border-sky-200 bg-white px-2.5 py-1.5 text-xs outline-none transition focus:border-sky-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
+                                      />
+                                      <div className="flex max-w-[18rem] flex-wrap gap-1">
+                                        {CATEGORY_ICON_CHOICES.map(({ id, Icon: ChoiceIcon }) => (
+                                          <button
+                                            key={id}
+                                            onClick={() => setCategoryEdit((d) => (d?.kind === "subcategory" ? { ...d, icon: id } : d))}
+                                            aria-label={id}
+                                            title={id}
+                                            className={`grid h-7 w-7 place-items-center rounded-lg border text-[13px] transition ${
+                                              subcategoryDraft.icon === id
+                                                ? "border-sky-500 bg-sky-500/15 text-sky-700 dark:text-sky-300"
+                                                : "border-slate-200 bg-white text-slate-500 hover:border-sky-400 dark:border-white/10 dark:bg-white/5 dark:text-slate-300"
+                                            }`}
+                                          >
+                                            <ChoiceIcon />
+                                          </button>
+                                        ))}
+                                      </div>
+                                      <div className="flex flex-wrap gap-1.5">
+                                        <button
+                                          onClick={submitCategoryEdit}
+                                          disabled={!subcategoryDraft.nextName.trim() || manageState.status === "saving"}
+                                          className="inline-flex items-center gap-1 rounded-lg bg-sky-600 px-2.5 py-1.5 text-[11px] font-black text-white transition hover:bg-sky-500 disabled:cursor-not-allowed disabled:opacity-60"
+                                        >
+                                          <FaCircleCheck /> {t.common.saveChanges}
+                                        </button>
+                                        <button
+                                          onClick={() => setCategoryEdit(null)}
+                                          className="inline-flex items-center gap-1 rounded-lg bg-white px-2.5 py-1.5 text-[11px] font-black text-slate-500 ring-1 ring-slate-200 transition hover:text-slate-700 dark:bg-white/10 dark:text-slate-300 dark:ring-white/10"
+                                        >
+                                          <FaXmark /> {t.common.cancel}
+                                        </button>
+                                      </div>
+                                    </div>
+                                  ) : (
+                                    <span key={sub.name} className="inline-flex items-center gap-1 rounded-full bg-white py-1 pl-2 pr-1 text-[11px] text-slate-600 ring-1 ring-slate-200 dark:bg-white/10 dark:text-slate-300 dark:ring-white/10">
+                                      <SubIcon className="text-sky-600 dark:text-sky-300" /> {sub.name}
+                                      <button
+                                        onClick={() => startEditSubcategory(manageBrandId, c.name, sub)}
+                                        className="grid h-4 w-4 place-items-center rounded-full text-slate-400 transition hover:bg-sky-500/15 hover:text-sky-600"
+                                        aria-label={`${t.common.edit} ${sub.name}`}
+                                        title={t.common.edit}
+                                      >
+                                        <FaPen className="text-[8px]" />
+                                      </button>
+                                      <button
+                                        onClick={() => runManage({ action: "removeSubcategory", brandId: manageBrandId, categoryName: c.name, name: sub.name })}
+                                        className="grid h-4 w-4 place-items-center rounded-full text-slate-400 transition hover:bg-red-500/15 hover:text-red-600"
+                                        aria-label={`${t.common.remove} ${sub.name}`}
+                                        title={t.common.remove}
+                                      >
+                                        <FaXmark className="text-[9px]" />
+                                      </button>
+                                    </span>
+                                  )
                                 );
                               })}
                             </div>
