@@ -39,6 +39,7 @@ const DDL: string[] = [
   `ALTER TABLE users ADD COLUMN IF NOT EXISTS email_verified boolean NOT NULL DEFAULT false`,
   // Last activity on the site (updated on every bootstrap while signed in).
   `ALTER TABLE users ADD COLUMN IF NOT EXISTS last_seen_at timestamptz`,
+  `ALTER TABLE users ADD COLUMN IF NOT EXISTS last_seen_site text`,
   // Admin-managed social media links shown in the footer when enabled.
   `CREATE TABLE IF NOT EXISTS social_links (
     platform text PRIMARY KEY,

@@ -248,7 +248,7 @@ export async function bootstrap(): Promise<Bootstrap> {
 
   // Track when the user was last active on the site (shown to admins).
   if (currentUser) {
-    await sql.query(`UPDATE users SET last_seen_at = now() WHERE id = $1`, [currentUser.id]);
+    await sql.query(`UPDATE users SET last_seen_at = now(), last_seen_site = $2 WHERE id = $1`, [currentUser.id, SITE_ID]);
   }
 
   const productRows = (await sql.query(`SELECT * FROM products ORDER BY created_at ASC`)) as any[];

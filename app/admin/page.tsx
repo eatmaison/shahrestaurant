@@ -132,6 +132,9 @@ const processImageFile = (file: File, opts?: { maxDim?: number; mime?: string })
     img.src = url;
   });
 
+const ADMIN_ONLINE_WINDOW_MS = 5 * 60_000;
+const ADMIN_INITIAL_NOW = Date.now();
+
 export default function AdminPage() {
   const { t, lang } = useLang();
   const { currentUser, products, orders, users, addProduct, removeProduct, updateProduct, brands, manageBrands, updateOrderStatus, setOrderPaid, setInvoiceSent, vipRequests, approveVipRequest, rejectVipRequest, socialLinks, updateSocialLink, reservations, setReservationStatus, cancelReservation, hydrated } = useStore();
@@ -140,6 +143,12 @@ export default function AdminPage() {
   const logoFileRef = useRef<HTMLInputElement>(null);
   /** Brand whose logo will receive the next picked file. */
   const logoBrandIdRef = useRef<string | null>(null);
+  const [now, setNow] = useState(ADMIN_INITIAL_NOW);
+
+  useEffect(() => {
+    const intervalId = window.setInterval(() => setNow(Date.now()), 60_000);
+    return () => window.clearInterval(intervalId);
+  }, []);
 
   const [draft, setDraft] = useState({
     name: "",
@@ -351,12 +360,23 @@ export default function AdminPage() {
 
   /** "just now" / "5 min ago" / "3 h ago" / "2 d ago" */
   const relativeTime = (ts: number): string => {
-    const diffMin = Math.floor((Date.now() - ts) / 60_000);
+    const diffMin = Math.max(0, Math.floor((now - ts) / 60_000));
     if (diffMin < 1) return t.admin.justNow;
     if (diffMin < 60) return t.admin.minutesAgo.replace("{n}", String(diffMin));
     const diffH = Math.floor(diffMin / 60);
     if (diffH < 24) return t.admin.hoursAgo.replace("{n}", String(diffH));
     return t.admin.daysAgo.replace("{n}", String(Math.floor(diffH / 24)));
+  };
+
+  const lastSeenSiteLabel = (site?: string): string | null => {
+    if (!site) return null;
+    return (
+      {
+        eattogo: "Eat to go",
+        themaison: "The Maison",
+        tandoor: "The Tandoor Company",
+      }[site] ?? site
+    );
   };
 
   /** Local drafts for the social link URL inputs (saved on blur / Enter). */
@@ -1197,8 +1217,9 @@ export default function AdminPage() {
         ) : (
           <ul className="mt-5 divide-y divide-slate-100 dark:divide-white/5">
             {recentlyOnline.map((u) => {
-              const online = Date.now() - (u.lastSeenAt ?? 0) < 5 * 60_000;
+              const online = now - (u.lastSeenAt ?? 0) < ADMIN_ONLINE_WINDOW_MS;
               const orderCount = orders.filter((o) => o.userId === u.id).length;
+              const lastSeenSite = lastSeenSiteLabel(u.lastSeenSite);
               return (
                 <li key={u.id} className="flex items-center gap-3 py-3">
                   <span className="relative grid h-10 w-10 shrink-0 place-items-center rounded-full bg-gradient-to-br from-sky-500 to-indigo-500 text-sm font-black text-white">
@@ -1217,6 +1238,11 @@ export default function AdminPage() {
                       {u.accountType === "company" && <FaBuilding className="shrink-0 text-xs text-sky-500" title="B2B" />}
                     </p>
                     <p className="truncate text-xs text-slate-500 dark:text-slate-400">{u.email}</p>
+                    {u.phone && (
+                      <p className="mt-0.5 flex items-center gap-1.5 truncate text-xs font-semibold text-slate-600 dark:text-slate-300">
+                        <FaPhone className="shrink-0 text-[10px] text-slate-400" /> {u.phone}
+                      </p>
+                    )}
                   </div>
                   <span
                     className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-slate-100 px-2.5 py-1 text-xs font-bold text-slate-600 dark:bg-white/10 dark:text-slate-300"
@@ -1224,6 +1250,14 @@ export default function AdminPage() {
                   >
                     <FaReceipt className="text-[10px] text-emerald-600 dark:text-emerald-400" /> {orderCount}
                   </span>
+                  {lastSeenSite && (
+                    <span
+                      className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-sky-500/10 px-2.5 py-1 text-xs font-bold text-sky-700 dark:text-sky-300"
+                      title="Website"
+                    >
+                      <FaStore className="text-[10px]" /> {lastSeenSite}
+                    </span>
+                  )}
                   <span
                     className={`shrink-0 rounded-full px-2.5 py-1 text-xs font-bold ${
                       online

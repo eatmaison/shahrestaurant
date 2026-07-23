@@ -31,6 +31,7 @@ CREATE TABLE IF NOT EXISTS users (
   kvk           text,
   -- Last activity on the site (updated while signed in).
   last_seen_at  timestamptz,
+  last_seen_site text,
   created_at    timestamptz NOT NULL DEFAULT now()
 );
 

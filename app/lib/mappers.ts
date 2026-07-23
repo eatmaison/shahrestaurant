@@ -45,6 +45,7 @@ export function rowToUser(r: any): User {
     kvk: r.kvk ?? undefined,
     emailVerified: r.email_verified ?? false,
     lastSeenAt: r.last_seen_at ? toMs(r.last_seen_at) : undefined,
+    lastSeenSite: r.last_seen_site ?? undefined,
   };
 }
 

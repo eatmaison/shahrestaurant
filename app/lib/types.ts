@@ -91,6 +91,8 @@ export interface User {
   emailVerified: boolean;
   /** Last time the user was active on the site (epoch ms). */
   lastSeenAt?: number;
+  /** Website where the user was last active. */
+  lastSeenSite?: string;
 }
 
 export interface OrderItem {
