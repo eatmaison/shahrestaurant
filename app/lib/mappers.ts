@@ -55,6 +55,7 @@ export function rowToProduct(r: any): Product {
   return {
     id: r.id,
     brand: r.brand,
+    groupId: r.group_id ?? undefined,
     category,
     subcategory: subcategory || undefined,
     name: r.name,

@@ -137,7 +137,7 @@ const ADMIN_INITIAL_NOW = Date.now();
 
 export default function AdminPage() {
   const { t, lang } = useLang();
-  const { currentUser, products, orders, users, addProduct, removeProduct, updateProduct, brands, manageBrands, updateOrderStatus, setOrderPaid, setInvoiceSent, vipRequests, approveVipRequest, rejectVipRequest, socialLinks, updateSocialLink, reservations, setReservationStatus, cancelReservation, hydrated } = useStore();
+  const { currentUser, products, orders, users, addProductGroup, removeProduct, updateProductGroup, brands, manageBrands, updateOrderStatus, setOrderPaid, setInvoiceSent, vipRequests, approveVipRequest, rejectVipRequest, socialLinks, updateSocialLink, reservations, setReservationStatus, cancelReservation, hydrated } = useStore();
   const fileRef = useRef<HTMLInputElement>(null);
   const editFileRef = useRef<HTMLInputElement>(null);
   const logoFileRef = useRef<HTMLInputElement>(null);
@@ -155,7 +155,7 @@ export default function AdminPage() {
     description: "",
     descriptionNl: "",
     price: "",
-    brand: "eattogo" as Brand,
+    brands: [] as Brand[],
     category: "Wraps" as Category,
     subcategory: "" as Category,
     image: "" as string | undefined,
@@ -174,7 +174,7 @@ export default function AdminPage() {
     description: "",
     descriptionNl: "",
     price: "",
-    brand: "eattogo" as Brand,
+    brands: [] as Brand[],
     category: "Wraps" as Category,
     subcategory: "" as Category,
     image: undefined as string | undefined,
@@ -214,24 +214,57 @@ export default function AdminPage() {
     ? newSubcatCategory
     : subcategoryManageCategories[0]?.name ?? "";
 
-  // Keep the drafts pointing at an existing brand when brands are added/removed.
+  /** Every category name offered by any restaurant (a product can be sold wherever its category exists). */
+  const allBrandCategories = useMemo(() => {
+    const set = new Set<string>();
+    for (const b of brands) for (const c of b.categories) set.add(c.name);
+    return [...set];
+  }, [brands]);
+
+  /** Restaurant ids that offer a category with this name. */
+  const brandsWithCategory = (categoryName: string) =>
+    brands.filter((b) => b.categories.some((c) => c.name === categoryName)).map((b) => b.id);
+
+  /** Subcategory names offered for a category across the given restaurants (deduped). */
+  const subcategoriesForBrands = (brandIds: string[], categoryName: string) => {
+    const set = new Set<string>();
+    for (const b of brands) {
+      if (!brandIds.includes(b.id)) continue;
+      for (const s of b.categories.find((c) => c.name === categoryName)?.subcategories ?? []) set.add(s.name);
+    }
+    return [...set];
+  };
+
+  /** Build the per-restaurant publish targets for the selected brands + category. */
+  const buildTargets = (brandIds: Brand[], category: Category, subcategory: Category) =>
+    brandIds
+      .filter((id) => brands.find((b) => b.id === id)?.categories.some((c) => c.name === category))
+      .map((id) => ({ brand: id, category, subcategory: draftSubcategory(id, category, subcategory) || undefined }));
+
+  // Keep the add form's category valid and its selected restaurants limited to
+  // the ones that actually offer that category (defaulting to all of them).
+  const brandsInitRef = useRef(false);
   useEffect(() => {
     if (brands.length === 0) return;
-    if (!brands.some((b) => b.id === draft.brand)) {
-      const category = brands[0].categories[0]?.name ?? "";
-      queueMicrotask(() => setDraft((d) => ({ ...d, brand: brands[0].id, category, subcategory: draftSubcategory(brands[0].id, category) })));
-    } else if (!categoriesOf(draft.brand).some((c) => c.name === draft.category)) {
-      queueMicrotask(() => setDraft((d) => {
-        const category = categoriesOf(d.brand)[0]?.name ?? "";
-        return { ...d, category, subcategory: draftSubcategory(d.brand, category) };
-      }));
-    } else if (draft.subcategory && !subcategoriesOf(draft.brand, draft.category).some((s) => s.name === draft.subcategory)) {
-      queueMicrotask(() => setDraft((d) => ({ ...d, subcategory: draftSubcategory(d.brand, d.category) })));
-    } else if (!hasSubcategories(draft.brand, draft.category) && draft.subcategory) {
-      queueMicrotask(() => setDraft((d) => ({ ...d, subcategory: "" })));
+    const validCategory = allBrandCategories.includes(draft.category) ? draft.category : allBrandCategories[0] ?? "";
+    const eligible = brandsWithCategory(validCategory);
+    if (!brandsInitRef.current) {
+      // First load: sell the product at every restaurant that offers this category.
+      brandsInitRef.current = true;
+      queueMicrotask(() => setDraft((d) => ({ ...d, category: validCategory, brands: eligible })));
+      return;
+    }
+    if (validCategory !== draft.category) {
+      queueMicrotask(() => setDraft((d) => ({ ...d, category: validCategory, brands: eligible, subcategory: "" })));
+      return;
+    }
+    // Drop restaurants that no longer offer the category (never silently re-add).
+    const pruned = draft.brands.filter((id) => eligible.includes(id));
+    if (pruned.length !== draft.brands.length) {
+      queueMicrotask(() => setDraft((d) => ({ ...d, brands: pruned })));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [brands, draft.brand, draft.category]);
+  }, [brands, draft.brands, draft.category, allBrandCategories]);
 
   // Order search filters (by customer/company name or order number).
   const [customerSearch, setCustomerSearch] = useState("");
@@ -514,21 +547,26 @@ export default function AdminPage() {
     setAddState({ status: "saving" });
     const detailEn = draft.detailEn.trim();
     const detailNl = draft.detailNl.trim();
-    const res = await addProduct({
-      name: draft.name.trim(),
-      description: draft.description.trim(),
-      descriptionNl: draft.descriptionNl.trim(),
-      price,
-      brand: draft.brand,
-      category: draft.category,
-      subcategory: draftSubcategory(draft.brand, draft.category, draft.subcategory) || undefined,
-      image: draft.image,
-      detailedDescription: detailEn || detailNl ? { en: detailEn, nl: detailNl } : undefined,
-      ingredients: parseList(draft.ingredientsEn),
-      ingredientsNl: parseList(draft.ingredientsNl),
-      allergens: parseList(draft.allergensEn),
-      allergensNl: parseList(draft.allergensNl),
-    });
+    const targets = buildTargets(draft.brands, draft.category, draft.subcategory);
+    if (targets.length === 0) {
+      setAddState({ status: "error", message: t.admin.atLeastOneRestaurant });
+      return;
+    }
+    const res = await addProductGroup(
+      {
+        name: draft.name.trim(),
+        description: draft.description.trim(),
+        descriptionNl: draft.descriptionNl.trim(),
+        price,
+        image: draft.image,
+        detailedDescription: detailEn || detailNl ? { en: detailEn, nl: detailNl } : undefined,
+        ingredients: parseList(draft.ingredientsEn),
+        ingredientsNl: parseList(draft.ingredientsNl),
+        allergens: parseList(draft.allergensEn),
+        allergensNl: parseList(draft.allergensNl),
+      },
+      targets
+    );
     if (!res.ok) {
       setAddState({ status: "error", message: `${t.admin.saveFailed}${res.error ? ` (${res.error})` : ""}` });
       return;
@@ -538,9 +576,9 @@ export default function AdminPage() {
       description: "",
       descriptionNl: "",
       price: "",
-      brand: draft.brand,
+      brands: draft.brands,
       category: draft.category,
-      subcategory: draftSubcategory(draft.brand, draft.category, draft.subcategory),
+      subcategory: draft.subcategory,
       image: undefined,
       detailEn: "",
       detailNl: "",
@@ -557,12 +595,14 @@ export default function AdminPage() {
   const openEditor = (p: Product) => {
     setEditing(p);
     setEditState({ status: "idle" });
+    // Preselect every restaurant this product is already sold at (its group).
+    const groupBrands = [...new Set((p.groupId ? products.filter((x) => x.groupId === p.groupId) : [p]).map((x) => x.brand))];
     setEditDraft({
       name: p.name,
       description: p.description,
       descriptionNl: p.descriptionNl ?? "",
       price: String(p.price),
-      brand: p.brand,
+      brands: groupBrands,
       category: p.category,
       subcategory: p.subcategory ?? "",
       image: p.image,
@@ -607,24 +647,30 @@ export default function AdminPage() {
     setEditState({ status: "saving" });
     const detailEn = editDraft.detailEn.trim();
     const detailNl = editDraft.detailNl.trim();
-    const res = await updateProduct(editing.id, {
-      name: editDraft.name.trim(),
-      description: editDraft.description.trim(),
-      descriptionNl: editDraft.descriptionNl.trim(),
-      price,
-      brand: editDraft.brand,
-      category: editDraft.category,
-      subcategory: draftSubcategory(editDraft.brand, editDraft.category, editDraft.subcategory) || undefined,
-      image: editDraft.image,
-      // null (not undefined) so clearing both fields also clears it in the database.
-      detailedDescription: (detailEn || detailNl
-        ? { en: detailEn, nl: detailNl }
-        : null) as unknown as Product["detailedDescription"],
-      ingredients: parseList(editDraft.ingredientsEn),
-      ingredientsNl: parseList(editDraft.ingredientsNl),
-      allergens: parseList(editDraft.allergensEn),
-      allergensNl: parseList(editDraft.allergensNl),
-    });
+    const targets = buildTargets(editDraft.brands, editDraft.category, editDraft.subcategory);
+    if (targets.length === 0) {
+      setEditState({ status: "error", message: t.admin.atLeastOneRestaurant });
+      return;
+    }
+    const res = await updateProductGroup(
+      editing.id,
+      {
+        name: editDraft.name.trim(),
+        description: editDraft.description.trim(),
+        descriptionNl: editDraft.descriptionNl.trim(),
+        price,
+        image: editDraft.image,
+        // null (not undefined) so clearing both fields also clears it in the database.
+        detailedDescription: (detailEn || detailNl
+          ? { en: detailEn, nl: detailNl }
+          : null) as unknown as Product["detailedDescription"],
+        ingredients: parseList(editDraft.ingredientsEn),
+        ingredientsNl: parseList(editDraft.ingredientsNl),
+        allergens: parseList(editDraft.allergensEn),
+        allergensNl: parseList(editDraft.allergensNl),
+      },
+      targets
+    );
     if (!res.ok) {
       setEditState({ status: "error", message: `${t.admin.saveFailed}${res.error ? ` (${res.error})` : ""}` });
       return;
@@ -1604,20 +1650,42 @@ export default function AdminPage() {
               />
               <p className="mt-1 text-[11px] leading-4 text-slate-400 dark:text-slate-500">{t.admin.listHint}</p>
             </div>
-            <select
-              value={draft.brand}
-              onChange={(e) => {
-                const brand = e.target.value as Brand;
-                const category = categoriesOf(brand)[0]?.name ?? "";
-                setDraft({ ...draft, brand, category, subcategory: draftSubcategory(brand, category) });
-              }}
-              aria-label={t.admin.restaurant}
-              className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm font-semibold outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
-            >
-              {brands.map((b) => (
-                <option key={b.id} value={b.id}>{b.name}</option>
-              ))}
-            </select>
+            <div>
+              <p className="mb-2 text-xs font-bold uppercase tracking-wide text-slate-500 dark:text-slate-400">{t.admin.sellAtRestaurants}</p>
+              <div className="flex flex-wrap gap-2">
+                {brands.map((b) => {
+                  const has = b.categories.some((c) => c.name === draft.category);
+                  const checked = has && draft.brands.includes(b.id);
+                  return (
+                    <label
+                      key={b.id}
+                      title={has ? b.name : `${b.name} — ${draft.category}?`}
+                      className={`inline-flex items-center gap-2 rounded-xl border px-3 py-2 text-sm font-semibold transition ${
+                        !has
+                          ? "cursor-not-allowed border-slate-200 bg-slate-50 text-slate-400 opacity-50 dark:border-white/10 dark:bg-white/5 dark:text-slate-500"
+                          : checked
+                          ? "cursor-pointer border-emerald-500 bg-emerald-50 text-emerald-700 dark:border-emerald-400/40 dark:bg-emerald-400/10 dark:text-emerald-200"
+                          : "cursor-pointer border-slate-200 bg-slate-50 text-slate-600 dark:border-white/10 dark:bg-white/10 dark:text-slate-300"
+                      }`}
+                    >
+                      <input
+                        type="checkbox"
+                        className="accent-emerald-600"
+                        disabled={!has}
+                        checked={checked}
+                        onChange={(e) =>
+                          setDraft((d) => ({
+                            ...d,
+                            brands: e.target.checked ? [...d.brands.filter((id) => id !== b.id), b.id] : d.brands.filter((id) => id !== b.id),
+                          }))
+                        }
+                      />
+                      {b.name}
+                    </label>
+                  );
+                })}
+              </div>
+            </div>
             <div className="grid grid-cols-2 gap-3">
               <div>
                 <input
@@ -1633,24 +1701,25 @@ export default function AdminPage() {
                 value={draft.category}
                 onChange={(e) => {
                   const category = e.target.value as Category;
-                  setDraft({ ...draft, category, subcategory: draftSubcategory(draft.brand, category) });
+                  setDraft({ ...draft, category, brands: brandsWithCategory(category), subcategory: "" });
                 }}
                 className="w-full self-start rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
               >
-                {categoriesOf(draft.brand).map((c) => (
-                  <option key={c.name} value={c.name}>{c.name}</option>
+                {allBrandCategories.map((cat) => (
+                  <option key={cat} value={cat}>{cat}</option>
                 ))}
               </select>
             </div>
-            {hasSubcategories(draft.brand, draft.category) && (
+            {subcategoriesForBrands(draft.brands, draft.category).length > 0 && (
               <select
                 value={draft.subcategory}
                 onChange={(e) => setDraft({ ...draft, subcategory: e.target.value as Category })}
                 aria-label={`${draft.category} subcategory`}
                 className="w-full rounded-xl border border-emerald-200 bg-emerald-50/60 px-3.5 py-2.5 text-sm font-semibold text-emerald-800 outline-none transition focus:border-emerald-500 dark:border-emerald-400/30 dark:bg-emerald-400/10 dark:text-emerald-200"
               >
-                {subcategoriesOf(draft.brand, draft.category).map((sub) => (
-                  <option key={sub.name} value={sub.name}>{sub.name}</option>
+                <option value="">—</option>
+                {subcategoriesForBrands(draft.brands, draft.category).map((sub) => (
+                  <option key={sub} value={sub}>{sub}</option>
                 ))}
               </select>
             )}
@@ -2306,21 +2375,42 @@ export default function AdminPage() {
                 />
                 <p className="mt-1 text-[11px] leading-4 text-slate-400 dark:text-slate-500">{t.admin.listHint}</p>
               </div>
-              <select
-                value={editDraft.brand}
-                onChange={(e) => {
-                  const brand = e.target.value as Brand;
-                  const cats = categoriesOf(brand).map((c) => c.name);
-                  const category = cats.includes(editDraft.category) ? editDraft.category : cats[0] ?? "";
-                  setEditDraft({ ...editDraft, brand, category, subcategory: draftSubcategory(brand, category, editDraft.subcategory) });
-                }}
-                aria-label={t.admin.restaurant}
-                className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm font-semibold outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
-              >
-                {brands.map((b) => (
-                  <option key={b.id} value={b.id}>{b.name}</option>
-                ))}
-              </select>
+              <div>
+                <p className="mb-2 text-xs font-bold uppercase tracking-wide text-slate-500 dark:text-slate-400">{t.admin.sellAtRestaurants}</p>
+                <div className="flex flex-wrap gap-2">
+                  {brands.map((b) => {
+                    const has = b.categories.some((c) => c.name === editDraft.category);
+                    const checked = has && editDraft.brands.includes(b.id);
+                    return (
+                      <label
+                        key={b.id}
+                        title={has ? b.name : `${b.name} — ${editDraft.category}?`}
+                        className={`inline-flex items-center gap-2 rounded-xl border px-3 py-2 text-sm font-semibold transition ${
+                          !has
+                            ? "cursor-not-allowed border-slate-200 bg-slate-50 text-slate-400 opacity-50 dark:border-white/10 dark:bg-white/5 dark:text-slate-500"
+                            : checked
+                            ? "cursor-pointer border-emerald-500 bg-emerald-50 text-emerald-700 dark:border-emerald-400/40 dark:bg-emerald-400/10 dark:text-emerald-200"
+                            : "cursor-pointer border-slate-200 bg-slate-50 text-slate-600 dark:border-white/10 dark:bg-white/10 dark:text-slate-300"
+                        }`}
+                      >
+                        <input
+                          type="checkbox"
+                          className="accent-emerald-600"
+                          disabled={!has}
+                          checked={checked}
+                          onChange={(e) =>
+                            setEditDraft((d) => ({
+                              ...d,
+                              brands: e.target.checked ? [...d.brands.filter((id) => id !== b.id), b.id] : d.brands.filter((id) => id !== b.id),
+                            }))
+                          }
+                        />
+                        {b.name}
+                      </label>
+                    );
+                  })}
+                </div>
+              </div>
               <div className="grid grid-cols-2 gap-3">
                 <div>
                   <input
@@ -2336,25 +2426,26 @@ export default function AdminPage() {
                   value={editDraft.category}
                   onChange={(e) => {
                     const category = e.target.value as Category;
-                    setEditDraft({ ...editDraft, category, subcategory: draftSubcategory(editDraft.brand, category) });
+                    setEditDraft({ ...editDraft, category, brands: brandsWithCategory(category), subcategory: "" });
                   }}
                   aria-label={t.admin.changeCategory}
                   className="w-full self-start rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
                 >
-                  {categoriesOf(editDraft.brand).map((c) => (
-                    <option key={c.name} value={c.name}>{c.name}</option>
+                  {allBrandCategories.map((cat) => (
+                    <option key={cat} value={cat}>{cat}</option>
                   ))}
                 </select>
               </div>
-              {hasSubcategories(editDraft.brand, editDraft.category) && (
+              {subcategoriesForBrands(editDraft.brands, editDraft.category).length > 0 && (
                 <select
                   value={editDraft.subcategory}
                   onChange={(e) => setEditDraft({ ...editDraft, subcategory: e.target.value as Category })}
                   aria-label={`${editDraft.category} subcategory`}
                   className="w-full rounded-xl border border-emerald-200 bg-emerald-50/60 px-3.5 py-2.5 text-sm font-semibold text-emerald-800 outline-none transition focus:border-emerald-500 dark:border-emerald-400/30 dark:bg-emerald-400/10 dark:text-emerald-200"
                 >
-                  {subcategoriesOf(editDraft.brand, editDraft.category).map((sub) => (
-                    <option key={sub.name} value={sub.name}>{sub.name}</option>
+                  <option value="">—</option>
+                  {subcategoriesForBrands(editDraft.brands, editDraft.category).map((sub) => (
+                    <option key={sub} value={sub}>{sub}</option>
                   ))}
                 </select>
               )}

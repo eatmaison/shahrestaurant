@@ -42,6 +42,8 @@ CREATE TABLE IF NOT EXISTS products (
   id                   text        PRIMARY KEY,
   -- Brand id from the admin-managed brands table.
   brand                text        NOT NULL,
+  -- Same product sold at several restaurants shares a group id (create/edit once).
+  group_id             text,
   category             text        NOT NULL,
   subcategory          text        NOT NULL DEFAULT '',
   name                 text        NOT NULL,
@@ -59,6 +61,7 @@ CREATE TABLE IF NOT EXISTS products (
 );
 
 CREATE INDEX IF NOT EXISTS idx_products_brand ON products (brand);
+CREATE INDEX IF NOT EXISTS idx_products_group ON products (group_id);
 CREATE INDEX IF NOT EXISTS idx_products_category ON products (category);
 CREATE INDEX IF NOT EXISTS idx_products_subcategory ON products (subcategory);
 

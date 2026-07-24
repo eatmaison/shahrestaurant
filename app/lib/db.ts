@@ -65,6 +65,10 @@ const DDL: string[] = [
   `ALTER TABLE products ADD COLUMN IF NOT EXISTS subcategory text NOT NULL DEFAULT ''`,
   `ALTER TABLE products ADD COLUMN IF NOT EXISTS ingredients_nl text[] NOT NULL DEFAULT '{}'`,
   `ALTER TABLE products ADD COLUMN IF NOT EXISTS allergens_nl text[] NOT NULL DEFAULT '{}'`,
+  // The same product sold at several restaurants shares a group id, so it can be
+  // created and edited once for all of them from any admin panel.
+  `ALTER TABLE products ADD COLUMN IF NOT EXISTS group_id text`,
+  `CREATE INDEX IF NOT EXISTS idx_products_group ON products (group_id)`,
   `CREATE TABLE IF NOT EXISTS orders (
     id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
     order_number integer GENERATED ALWAYS AS IDENTITY (START WITH 1001),

@@ -50,6 +50,8 @@ import type {
   OrderSchedule,
   MenuUpgrades,
   Product,
+  ProductContent,
+  ProductTarget,
   Reservation,
   ReservationStatus,
   Review,
@@ -554,32 +556,65 @@ export async function setInvoiceSent(orderId: string, sent: boolean): Promise<vo
 
 /* ------------------------------------------------------------------ products (admin) */
 
-export async function addProduct(p: Omit<Product, "id">): Promise<Product> {
-  await requireAdmin();
-  const id = `p-${Math.random().toString(36).slice(2, 10)}${Date.now().toString(36)}`;
-  // Store the uploaded photo in DigitalOcean Spaces; only the URL goes in the DB.
-  const image = (await storeImage(p.image ?? null, "products")) ?? null;
+function genId(prefix: string): string {
+  return `${prefix}-${Math.random().toString(36).slice(2, 10)}${Date.now().toString(36)}`;
+}
+
+/** Insert a single product row. Assumes the image has already been resolved to a stored value. */
+async function insertProductRow(
+  id: string,
+  groupId: string,
+  brand: string,
+  target: { category: string; subcategory?: string },
+  content: ProductContent,
+  image: string | null
+): Promise<Product> {
   const rows = (await sql.query(
-    `INSERT INTO products (id, brand, category, subcategory, name, description, description_nl, price, image, detailed_description, ingredients, ingredients_nl, allergens, allergens_nl)
-     VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10::jsonb,$11::text[],$12::text[],$13::text[],$14::text[]) RETURNING *`,
+    `INSERT INTO products (id, group_id, brand, category, subcategory, name, description, description_nl, price, image, detailed_description, ingredients, ingredients_nl, allergens, allergens_nl)
+     VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11::jsonb,$12::text[],$13::text[],$14::text[],$15::text[]) RETURNING *`,
     [
       id,
-      p.brand,
-      p.category,
-      p.subcategory ?? "",
-      p.name,
-      p.description,
-      p.descriptionNl ?? "",
-      p.price,
+      groupId,
+      brand,
+      target.category,
+      target.subcategory ?? "",
+      content.name,
+      content.description,
+      content.descriptionNl ?? "",
+      content.price,
       image,
-      p.detailedDescription ? JSON.stringify(p.detailedDescription) : null,
-      p.ingredients ?? [],
-      p.ingredientsNl ?? [],
-      p.allergens ?? [],
-      p.allergensNl ?? [],
+      content.detailedDescription ? JSON.stringify(content.detailedDescription) : null,
+      content.ingredients ?? [],
+      content.ingredientsNl ?? [],
+      content.allergens ?? [],
+      content.allergensNl ?? [],
     ]
   )) as any[];
   return rowToProduct(rows[0]);
+}
+
+export async function addProduct(p: Omit<Product, "id">): Promise<Product> {
+  await requireAdmin();
+  const image = (await storeImage(p.image ?? null, "products")) ?? null;
+  const { brand, category, subcategory, groupId, ...content } = p;
+  return insertProductRow(genId("p"), groupId ?? genId("g"), brand, { category, subcategory }, content, image);
+}
+
+/**
+ * Create the same product at several restaurants at once. Every created row
+ * shares one group id so it can later be edited (or removed) as a single unit.
+ */
+export async function createProductGroup(content: ProductContent, targets: ProductTarget[]): Promise<Product[]> {
+  await requireAdmin();
+  if (targets.length === 0) throw new Error("No restaurants selected");
+  // Upload the photo once and reuse the resulting URL for every restaurant's row.
+  const image = (await storeImage(content.image ?? null, "products")) ?? null;
+  const groupId = genId("g");
+  const created: Product[] = [];
+  for (const target of targets) {
+    created.push(await insertProductRow(genId("p"), groupId, target.brand, target, content, image));
+  }
+  return created;
 }
 
 export async function updateProduct(id: string, patch: Partial<Omit<Product, "id">>): Promise<void> {
@@ -615,12 +650,84 @@ export async function updateProduct(id: string, patch: Partial<Omit<Product, "id
   );
 }
 
+/**
+ * Edit a product across all the restaurants it should be sold at. Starting from
+ * `anchorId`, the whole group is updated: restaurants in `targets` are added or
+ * updated with the shared `content`, and restaurants no longer listed are removed.
+ */
+export async function syncProductGroup(anchorId: string, content: ProductContent, targets: ProductTarget[]): Promise<void> {
+  await requireAdmin();
+  if (targets.length === 0) throw new Error("No restaurants selected");
+  const anchorRows = (await sql.query(`SELECT * FROM products WHERE id = $1`, [anchorId])) as any[];
+  if (!anchorRows[0]) return;
+  const anchor = rowToProduct(anchorRows[0]);
+  const groupId = anchor.groupId ?? genId("g");
+  // All rows currently belonging to this product (the group, plus the anchor itself
+  // in case it predates group ids).
+  const currentRows = (await sql.query(`SELECT * FROM products WHERE group_id = $1 OR id = $2`, [groupId, anchorId])) as any[];
+  const current = currentRows.map(rowToProduct);
+  const oldImages = new Set(current.map((p) => p.image).filter((v): v is string => Boolean(v)));
+
+  // Resolve the shared photo once (a freshly picked photo arrives as a data URL).
+  let image: string | null = content.image ?? null;
+  if (image && image.startsWith("data:")) image = (await storeImage(image, "products")) ?? null;
+  const sharedContent: ProductContent = { ...content, image: image ?? undefined };
+
+  const targetBrands = new Set(targets.map((t) => t.brand));
+
+  for (const target of targets) {
+    const existing = current.find((p) => p.brand === target.brand);
+    if (existing) {
+      await sql.query(
+        `UPDATE products SET group_id=$2, category=$3, subcategory=$4, name=$5, description=$6, description_nl=$7, price=$8, image=$9,
+           detailed_description=$10::jsonb, ingredients=$11::text[], ingredients_nl=$12::text[], allergens=$13::text[], allergens_nl=$14::text[] WHERE id=$1`,
+        [
+          existing.id,
+          groupId,
+          target.category,
+          target.subcategory ?? "",
+          sharedContent.name,
+          sharedContent.description,
+          sharedContent.descriptionNl ?? "",
+          sharedContent.price,
+          image,
+          sharedContent.detailedDescription ? JSON.stringify(sharedContent.detailedDescription) : null,
+          sharedContent.ingredients ?? [],
+          sharedContent.ingredientsNl ?? [],
+          sharedContent.allergens ?? [],
+          sharedContent.allergensNl ?? [],
+        ]
+      );
+    } else {
+      await insertProductRow(genId("p"), groupId, target.brand, target, sharedContent, image);
+    }
+  }
+
+  // Remove the product from restaurants that are no longer selected.
+  const toRemove = current.filter((p) => !targetBrands.has(p.brand));
+  for (const p of toRemove) {
+    await sql.query(`DELETE FROM products WHERE id = $1`, [p.id]);
+  }
+
+  // Delete replaced/orphaned photos from Spaces, but keep the shared one if it is still in use.
+  for (const old of oldImages) {
+    if (old !== image) {
+      const stillUsed = (await sql.query(`SELECT 1 FROM products WHERE image = $1 LIMIT 1`, [old])) as any[];
+      if (stillUsed.length === 0) await deleteStoredImage(old);
+    }
+  }
+}
+
 export async function removeProduct(id: string): Promise<void> {
   await requireAdmin();
   const rows = (await sql.query(`SELECT image FROM products WHERE id = $1`, [id])) as any[];
   await sql.query(`DELETE FROM products WHERE id = $1`, [id]);
-  // Clean up the product photo in Spaces (no-op for data URLs / public paths).
-  await deleteStoredImage(rows[0]?.image);
+  // Clean up the product photo in Spaces, unless a sister restaurant's row still uses it.
+  const image = rows[0]?.image as string | undefined;
+  if (image) {
+    const stillUsed = (await sql.query(`SELECT 1 FROM products WHERE image = $1 LIMIT 1`, [image])) as any[];
+    if (stillUsed.length === 0) await deleteStoredImage(image);
+  }
 }
 
 /* ------------------------------------------------------------------ brands & categories (admin) */

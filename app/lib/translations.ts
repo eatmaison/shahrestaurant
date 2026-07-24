@@ -359,6 +359,8 @@ export interface Dictionary {
     editProduct: string;
     changeCategory: string;
     restaurant: string;
+    sellAtRestaurants: string;
+    atLeastOneRestaurant: string;
     itemsToPrepare: string;
     deleteConfirmTitle: string;
     deleteConfirmText: string;
@@ -887,6 +889,8 @@ const en: Dictionary = {
     editProduct: "Edit product",
     changeCategory: "Category",
     restaurant: "Restaurant",
+    sellAtRestaurants: "Sold at these restaurants",
+    atLeastOneRestaurant: "Select at least one restaurant",
     itemsToPrepare: "Items to prepare",
     deleteConfirmTitle: "Delete product?",
     deleteConfirmText: "Are you sure you want to delete this product? This cannot be undone.",
@@ -1417,6 +1421,8 @@ const nl: Dictionary = {
     editProduct: "Product bewerken",
     changeCategory: "Categorie",
     restaurant: "Restaurant",
+    sellAtRestaurants: "Verkocht bij deze restaurants",
+    atLeastOneRestaurant: "Selecteer minstens \u00e9\u00e9n restaurant",
     itemsToPrepare: "Te bereiden items",
     deleteConfirmTitle: "Product verwijderen?",
     deleteConfirmText: "Weet je zeker dat je dit product wilt verwijderen? Dit kan niet ongedaan worden gemaakt.",

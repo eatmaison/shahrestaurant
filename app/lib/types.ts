@@ -33,6 +33,11 @@ export interface Product {
   id: string;
   /** Which restaurant/brand this product belongs to. */
   brand: Brand;
+  /**
+   * The same product sold at several restaurants shares a group id, so it can be
+   * created and edited once for all of them (each restaurant still has its own row).
+   */
+  groupId?: string;
   category: Category;
   subcategory?: Category;
   name: string;
@@ -57,6 +62,16 @@ export interface Product {
   /** Allergen information in Dutch (falls back to `allergens` when empty) */
   allergensNl?: string[];
 }
+
+/** One restaurant a product is published to, with its category inside that restaurant. */
+export interface ProductTarget {
+  brand: Brand;
+  category: Category;
+  subcategory?: Category;
+}
+
+/** Shared product content, without the fields that vary per restaurant. */
+export type ProductContent = Omit<Product, "id" | "brand" | "groupId" | "category" | "subcategory">;
 
 export type Role = "user" | "admin";
 
