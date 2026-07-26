@@ -284,7 +284,7 @@ export default function AdminPage() {
   const ordersCheck = useMemo(() => makeRangeCheck(ordersRange), [ordersRange]);
 
   const stats = useMemo(() => {
-    const inPeriod = orders.filter((o) => statsCheck(o.createdAt));
+    const inPeriod = orders.filter((o) => (o.paid || o.accountType === "company") && statsCheck(o.createdAt));
     const revenue = inPeriod.reduce((s, o) => s + o.total, 0);
     const avg = inPeriod.length ? revenue / inPeriod.length : 0;
     const byCategory: Record<string, number> = {};
@@ -829,6 +829,25 @@ export default function AdminPage() {
           ? t.fulfillment.statusDelivery
           : t.fulfillment.statusDelivered;
 
+  const paymentLabel = (o: Order): string => {
+    if (o.paid) return t.fulfillment.paid;
+    if (o.accountType === "company") return t.fulfillment.invoiced;
+    if (o.paymentStatus === "failed") return t.fulfillment.paymentFailed;
+    if (o.paymentStatus === "canceled") return t.fulfillment.paymentCanceled;
+    if (o.paymentStatus === "expired") return t.fulfillment.paymentExpired;
+    if (o.paymentStatus === "pending" || o.paymentStatus === "authorized") return t.fulfillment.paymentPending;
+    return t.fulfillment.paymentOpen;
+  };
+
+  const paymentClass = (o: Order): string => {
+    if (o.paid) return "bg-emerald-500/15 text-emerald-700 dark:text-emerald-300";
+    if (o.accountType === "company") return "bg-sky-500/15 text-sky-700 dark:text-sky-300";
+    if (o.paymentStatus === "failed" || o.paymentStatus === "canceled" || o.paymentStatus === "expired") {
+      return "bg-red-500/10 text-red-700 dark:text-red-300";
+    }
+    return "bg-amber-400/15 text-amber-700 dark:text-amber-300";
+  };
+
   // The button that advances an order to its next status, or null when delivered.
   const nextAction = (s: OrderStatus): { next: OrderStatus; label: string } | null => {
     if (s === "new") return { next: "preparing", label: t.fulfillment.startPreparing };
@@ -886,16 +905,27 @@ export default function AdminPage() {
                 <FaCircleCheck /> {t.fulfillment.paid}
               </span>
             ) : (
-              <button
-                onClick={() => setOrderPaid(o.id, true)}
-                className="inline-flex items-center gap-1.5 rounded-full bg-amber-400/15 px-2.5 py-1 text-xs font-bold text-amber-700 transition hover:bg-amber-400/30 dark:text-amber-300"
-                title={t.fulfillment.markPaid}
-              >
-                <FaMoneyBillWave /> {t.fulfillment.unpaid} · {t.fulfillment.markPaid}
-              </button>
+              <div className="flex flex-wrap justify-end gap-2">
+                <span className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-bold ${paymentClass(o)}`}>
+                  <FaMoneyBillWave /> {paymentLabel(o)}
+                </span>
+                <button
+                  onClick={() => setOrderPaid(o.id, true)}
+                  className="inline-flex items-center gap-1.5 rounded-full bg-slate-900 px-2.5 py-1 text-xs font-bold text-white transition hover:bg-slate-700 dark:bg-white/15 dark:hover:bg-white/25"
+                  title={t.fulfillment.markPaid}
+                >
+                  {t.fulfillment.markPaid}
+                </button>
+              </div>
             )}
           </div>
         </div>
+        {(!o.paid && (o.paymentFailureReason || o.molliePaymentId)) && (
+          <div className="mt-2 flex flex-wrap gap-2 text-[11px] font-semibold text-slate-500 dark:text-slate-400">
+            {o.paymentFailureReason && <span>{t.fulfillment.paymentReason}: {o.paymentFailureReason}</span>}
+            {o.molliePaymentId && <span>{t.fulfillment.molliePaymentId}: {o.molliePaymentId}</span>}
+          </div>
+        )}
 
         {/* Contact & delivery details */}
         <div className="mt-3 flex flex-wrap items-center gap-2">
@@ -1285,7 +1315,7 @@ export default function AdminPage() {
           <ul className="mt-5 divide-y divide-slate-100 dark:divide-white/5">
             {recentlyOnline.map((u) => {
               const online = now - (u.lastSeenAt ?? 0) < ADMIN_ONLINE_WINDOW_MS;
-              const orderCount = orders.filter((o) => o.userId === u.id).length;
+              const orderCount = orders.filter((o) => o.userId === u.id && (o.paid || o.accountType === "company")).length;
               const lastSeenSite = lastSeenSiteLabel(u.lastSeenSite);
               return (
                 <li key={u.id} className="flex items-center gap-3 py-3">

@@ -87,6 +87,16 @@ export default function AccountPage() {
           ? t.fulfillment.statusDelivery
           : t.fulfillment.statusDelivered;
 
+  const paymentLabel = (o: { accountType: AccountType; paid: boolean; paymentStatus?: string }): string => {
+    if (o.paid) return t.fulfillment.paid;
+    if (o.accountType === "company") return t.fulfillment.invoiced;
+    if (o.paymentStatus === "failed") return t.fulfillment.paymentFailed;
+    if (o.paymentStatus === "canceled") return t.fulfillment.paymentCanceled;
+    if (o.paymentStatus === "expired") return t.fulfillment.paymentExpired;
+    if (o.paymentStatus === "pending" || o.paymentStatus === "authorized") return t.fulfillment.paymentPending;
+    return t.fulfillment.paymentOpen;
+  };
+
   // Upload a photo of an existing physical VIP card for admin approval.
   const onVipCardFile = (file?: File) => {
     if (!file) return;
@@ -366,7 +376,7 @@ export default function AccountPage() {
                           </span>
                         ) : (
                           <span className="inline-flex items-center gap-1 rounded-full bg-amber-400/15 px-2 py-0.5 text-[11px] font-bold text-amber-700 dark:text-amber-300">
-                            <FaMoneyBillWave /> {t.fulfillment.invoiced}
+                            <FaMoneyBillWave /> {paymentLabel(o)}
                           </span>
                         )}
                       </div>

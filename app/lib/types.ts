@@ -136,6 +136,9 @@ export interface OrderSchedule {
 /** Fulfilment lifecycle of an order, advanced by the admin. */
 export type OrderStatus = "new" | "preparing" | "delivery" | "delivered";
 
+/** Mollie payment lifecycle shown to admins for online order attempts. */
+export type PaymentStatus = "not_required" | "open" | "pending" | "authorized" | "paid" | "canceled" | "expired" | "failed";
+
 /** How the customer receives the order: delivered to their address, or picked up in person. */
 export type OrderFulfillment = "delivery" | "pickup";
 
@@ -163,6 +166,12 @@ export interface Order {
   status: OrderStatus;
   /** Whether the order has been fully paid. Personal orders are paid upfront; company orders are invoiced. */
   paid: boolean;
+  /** Raw online payment status, if this order came through Mollie. */
+  paymentStatus?: PaymentStatus;
+  /** Mollie failure/cancellation detail, when Mollie provides one. */
+  paymentFailureReason?: string;
+  /** Mollie payment id for support lookups. */
+  molliePaymentId?: string;
   /** Account type used to place the order (separates personal vs company orders). */
   accountType: AccountType;
   /** For company orders: whether the invoice has been sent to the customer. */

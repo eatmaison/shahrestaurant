@@ -94,6 +94,7 @@ CREATE TABLE IF NOT EXISTS orders (
   total        numeric(10, 2) NOT NULL,
   status       text        NOT NULL DEFAULT 'new' CHECK (status IN ('new', 'preparing', 'delivery', 'delivered')),
   paid         boolean     NOT NULL DEFAULT false,
+  customer_effects_applied boolean NOT NULL DEFAULT true,
   account_type text        NOT NULL DEFAULT 'personal' CHECK (account_type IN ('personal', 'company')),
   invoice_sent boolean     NOT NULL DEFAULT false,
   note         text,
@@ -121,6 +122,26 @@ CREATE TABLE IF NOT EXISTS order_items (
 );
 
 CREATE INDEX IF NOT EXISTS idx_order_items_order_id ON order_items (order_id);
+
+-- ------------------------------------------------------------------ payments
+-- Mollie payment records. Online food orders are inserted before payment so
+-- failed/cancelled/expired attempts stay visible to admins and support.
+CREATE TABLE IF NOT EXISTS payments (
+  id                uuid        PRIMARY KEY DEFAULT gen_random_uuid(),
+  mollie_payment_id text        UNIQUE,
+  kind              text        NOT NULL CHECK (kind IN ('order', 'vip')),
+  user_id           uuid        REFERENCES users (id) ON DELETE SET NULL,
+  order_id          uuid        REFERENCES orders (id) ON DELETE SET NULL,
+  amount            numeric(10, 2) NOT NULL,
+  status            text        NOT NULL DEFAULT 'open',
+  failure_reason    text,
+  payload           jsonb,
+  updated_at        timestamptz NOT NULL DEFAULT now(),
+  created_at        timestamptz NOT NULL DEFAULT now()
+);
+
+CREATE INDEX IF NOT EXISTS idx_payments_mollie ON payments (mollie_payment_id);
+CREATE INDEX IF NOT EXISTS idx_payments_order ON payments (order_id);
 
 -- ------------------------------------------------------------------ brands
 -- Admin-managed restaurants and their menu categories.

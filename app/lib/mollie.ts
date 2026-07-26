@@ -47,7 +47,7 @@ export async function createMolliePayment(
 
 export type MollieStatus = "open" | "pending" | "authorized" | "paid" | "canceled" | "expired" | "failed";
 
-export async function getMolliePayment(id: string): Promise<{ status: MollieStatus }> {
+export async function getMolliePayment(id: string): Promise<{ status: MollieStatus; failureReason?: string }> {
   const res = await fetch(`${MOLLIE_API}/payments/${id}`, {
     headers: { Authorization: `Bearer ${process.env.MOLLIE_API_KEY}` },
   });
@@ -55,5 +55,12 @@ export async function getMolliePayment(id: string): Promise<{ status: MollieStat
     throw new Error(`Mollie get payment failed: ${res.status} ${await res.text()}`);
   }
   const data = await res.json();
-  return { status: data.status };
+  const details = data.details && typeof data.details === "object" ? data.details : {};
+  const failureReason =
+    typeof details.failureReason === "string" ? details.failureReason :
+    typeof details.failureMessage === "string" ? details.failureMessage :
+    typeof details.reason === "string" ? details.reason :
+    typeof data.statusReason === "string" ? data.statusReason :
+    undefined;
+  return { status: data.status, failureReason };
 }

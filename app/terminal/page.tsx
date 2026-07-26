@@ -191,7 +191,7 @@ export default function TerminalPage() {
   /* Detect newly arrived orders -> beep, flash, optionally print. */
   useEffect(() => {
     if (!shiftStarted || !isStaff) return;
-    const fresh = orders.filter((o) => !seenRef.current.has(o.id));
+    const fresh = orders.filter((o) => (o.paid || o.accountType === "company") && !seenRef.current.has(o.id));
     if (fresh.length === 0) return;
     for (const o of fresh) seenRef.current.add(o.id);
     try {
@@ -220,12 +220,12 @@ export default function TerminalPage() {
   }, []);
 
   const active = useMemo(
-    () => orders.filter((o) => o.status !== "delivered").sort((a, b) => a.createdAt - b.createdAt),
+    () => orders.filter((o) => (o.paid || o.accountType === "company") && o.status !== "delivered").sort((a, b) => a.createdAt - b.createdAt),
     [orders]
   );
   const doneToday = useMemo(() => {
     const start = new Date().setHours(0, 0, 0, 0);
-    return orders.filter((o) => o.status === "delivered" && o.createdAt >= start).length;
+    return orders.filter((o) => (o.paid || o.accountType === "company") && o.status === "delivered" && o.createdAt >= start).length;
   }, [orders]);
 
   const statusLabels: Record<OrderStatus, string> = {

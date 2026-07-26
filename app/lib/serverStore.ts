@@ -247,6 +247,7 @@ export interface Bootstrap {
 
 export async function bootstrap(): Promise<Bootstrap> {
   await ensureReady();
+  await backfillPaymentAttemptOrders();
   const currentUser = await getCurrentUser();
   const isAdmin = currentUser?.role === "admin";
 
@@ -309,8 +310,32 @@ export async function bootstrap(): Promise<Bootstrap> {
 /** Load orders (optionally for a single user) with their line items. */
 async function loadOrders(userId?: string): Promise<Order[]> {
   const orderRows = userId
-    ? ((await sql.query(`SELECT * FROM orders WHERE user_id = $1 ORDER BY created_at DESC`, [userId])) as any[])
-    : ((await sql.query(`SELECT * FROM orders ORDER BY created_at DESC`)) as any[]);
+    ? ((await sql.query(
+        `SELECT o.*, p.status AS payment_status, p.failure_reason AS payment_failure_reason, p.mollie_payment_id
+         FROM orders o
+         LEFT JOIN LATERAL (
+           SELECT status, failure_reason, mollie_payment_id
+           FROM payments
+           WHERE payments.order_id = o.id AND payments.kind = 'order'
+           ORDER BY created_at DESC
+           LIMIT 1
+         ) p ON true
+         WHERE o.user_id = $1
+         ORDER BY o.created_at DESC`,
+        [userId]
+      )) as any[])
+    : ((await sql.query(
+        `SELECT o.*, p.status AS payment_status, p.failure_reason AS payment_failure_reason, p.mollie_payment_id
+         FROM orders o
+         LEFT JOIN LATERAL (
+           SELECT status, failure_reason, mollie_payment_id
+           FROM payments
+           WHERE payments.order_id = o.id AND payments.kind = 'order'
+           ORDER BY created_at DESC
+           LIMIT 1
+         ) p ON true
+         ORDER BY o.created_at DESC`
+      )) as any[]);
   if (orderRows.length === 0) return [];
 
   const ids = orderRows.map((o) => o.id);
@@ -427,8 +452,8 @@ export async function placeOrder(details: {
 
   // Company accounts pay by invoice; personal customers pay online via Mollie.
   // When Mollie isn't configured, fall back to the previous "instant paid" behaviour.
-  if (isCompany || !mollieEnabled()) {
-    const paid = !mollieEnabled() && accountType !== "company";
+  if (isCompany || !mollieEnabled() || total <= 0) {
+    const paid = accountType !== "company" && (!mollieEnabled() || total <= 0);
     const order = await insertOrder(computed, paid);
     if (isCompany && currentUser) {
       // Email the invoice automatically and record that it was sent.
@@ -439,25 +464,35 @@ export async function placeOrder(details: {
     return { ok: true, order };
   }
 
-  // Personal + Mollie enabled → create a pending payment and hand back the checkout URL.
+  // Personal + Mollie enabled: store the attempt immediately so failed or
+  // cancelled payments remain visible in admin, but defer loyalty effects until paid.
+  const order = await insertOrder(computed, false, { applyCustomerEffects: false });
   const recRows = (await sql.query(
-    `INSERT INTO payments (kind, user_id, amount, status, payload)
-     VALUES ('order', $1, $2, 'open', $3::jsonb) RETURNING id`,
-    [computed.userId ?? null, total, JSON.stringify(computed)]
+    `INSERT INTO payments (kind, user_id, order_id, amount, status, payload)
+     VALUES ('order', $1, $2, $3, 'open', $4::jsonb) RETURNING id`,
+    [computed.userId ?? null, order.id, total, JSON.stringify(computed)]
   )) as any[];
   const recordId = recRows[0].id as string;
 
   const { base, webhookUrl } = paymentUrls(origin);
-  const payment = await createMolliePayment({
-    amount: total,
-    description: "The Tandoor Company order",
-    redirectUrl: `${base}/pay/complete?p=${recordId}`,
-    webhookUrl,
-    metadata: { p: recordId, kind: "order" },
-  });
-  await sql.query(`UPDATE payments SET mollie_payment_id = $1 WHERE id = $2`, [payment.id, recordId]);
+  let checkoutUrl = "";
+  try {
+    const payment = await createMolliePayment({
+      amount: total,
+      description: `The Tandoor Company order ${formatOrderNumber(order.orderNumber)}`,
+      redirectUrl: `${base}/pay/complete?p=${recordId}`,
+      webhookUrl,
+      metadata: { p: recordId, kind: "order", orderId: order.id },
+    });
+    checkoutUrl = payment.checkoutUrl;
+    await sql.query(`UPDATE payments SET mollie_payment_id = $1, updated_at = now() WHERE id = $2`, [payment.id, recordId]);
+  } catch (err) {
+    const reason = err instanceof Error ? err.message : "Mollie create payment failed";
+    await sql.query(`UPDATE payments SET status = 'failed', failure_reason = $1, updated_at = now() WHERE id = $2`, [reason, recordId]);
+    throw err;
+  }
 
-  return { ok: true, checkoutUrl: payment.checkoutUrl };
+  return { ok: true, checkoutUrl };
 }
 
 interface ComputedOrder {
@@ -480,11 +515,11 @@ interface ComputedOrder {
 }
 
 /** Insert an order + its items, and (for logged-in users) update loyalty balance and saved delivery details. */
-async function insertOrder(c: ComputedOrder, paid: boolean): Promise<Order> {
+async function insertOrder(c: ComputedOrder, paid: boolean, options: { applyCustomerEffects?: boolean } = {}): Promise<Order> {
   const orderRows = (await sql.query(
     `INSERT INTO orders
-       (user_id, customer_name, address, postcode, phone, subtotal, discount, points_used, points_earned, delivery, total, status, paid, account_type, invoice_sent, note, schedule, fulfillment)
-     VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,'new',$12,$13,false,$14,$15::jsonb,$16)
+       (user_id, customer_name, address, postcode, phone, subtotal, discount, points_used, points_earned, delivery, total, status, paid, account_type, invoice_sent, customer_effects_applied, note, schedule, fulfillment)
+     VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,'new',$12,$13,false,false,$14,$15::jsonb,$16)
      RETURNING *`,
     [
       c.userId ?? null,
@@ -515,16 +550,47 @@ async function insertOrder(c: ComputedOrder, paid: boolean): Promise<Order> {
     );
   }
 
-  if (c.userId) {
-    await sql.query(
-      `UPDATE users
-         SET points = points - $1 + $2, order_count = order_count + 1, phone = $4, address = $5, postcode = $6
-       WHERE id = $3`,
-      [c.pointsUsed, c.pointsEarned, c.userId, c.phone, c.address, c.postcode]
-    );
+  const order = rowToOrder(orderRow, c.items);
+  if (options.applyCustomerEffects ?? true) await applyOrderCustomerEffects(order);
+
+  return order;
+}
+
+async function applyOrderCustomerEffects(order: Order): Promise<void> {
+  if (!order.userId) return;
+  const claimed = (await sql.query(
+    `UPDATE orders SET customer_effects_applied = true WHERE id = $1 AND customer_effects_applied = false RETURNING id`,
+    [order.id]
+  )) as any[];
+  if (claimed.length === 0) return;
+  await sql.query(
+    `UPDATE users
+       SET points = points - $1 + $2, order_count = order_count + 1, phone = $4, address = $5, postcode = $6
+     WHERE id = $3`,
+    [order.pointsUsed, order.pointsEarned, order.userId, order.phone, order.address, order.postcode]
+  );
+}
+
+async function backfillPaymentAttemptOrders(): Promise<void> {
+  const migrationId = "20260726_payment_attempt_orders";
+  const done = (await sql.query(`SELECT 1 FROM app_migrations WHERE id = $1`, [migrationId])) as unknown[];
+  if (done.length > 0) return;
+
+  const rows = (await sql.query(
+    `SELECT id, payload
+     FROM payments
+     WHERE kind = 'order' AND order_id IS NULL AND status <> 'paid' AND payload IS NOT NULL
+     ORDER BY created_at ASC`
+  )) as { id: string; payload: ComputedOrder | null }[];
+
+  for (const row of rows) {
+    const computed = row.payload;
+    if (!computed?.items?.length) continue;
+    const order = await insertOrder(computed, false, { applyCustomerEffects: false });
+    await sql.query(`UPDATE payments SET order_id = $1, updated_at = now() WHERE id = $2 AND order_id IS NULL`, [order.id, row.id]);
   }
 
-  return rowToOrder(orderRow, c.items);
+  await sql.query(`INSERT INTO app_migrations (id) VALUES ($1) ON CONFLICT (id) DO NOTHING`, [migrationId]);
 }
 
 /** Build the redirect base + webhook URL for a payment. Webhook is omitted on localhost. */
@@ -566,6 +632,16 @@ export async function updateOrderStatus(orderId: string, status: string): Promis
 export async function setOrderPaid(orderId: string, paid: boolean): Promise<void> {
   await requireAdmin();
   await sql.query(`UPDATE orders SET paid = $1 WHERE id = $2`, [paid, orderId]);
+  if (paid) {
+    await sql.query(`UPDATE payments SET status = 'paid', updated_at = now() WHERE order_id = $1 AND kind = 'order' AND status <> 'paid'`, [orderId]);
+    const orderRows = (await sql.query(`SELECT * FROM orders WHERE id = $1`, [orderId])) as any[];
+    if (orderRows[0]) {
+      const itemRows = (await sql.query(`SELECT * FROM order_items WHERE order_id = $1`, [orderId])) as any[];
+      await applyOrderCustomerEffects(rowToOrder(orderRows[0], itemRows.map(rowToOrderItem)));
+    }
+  } else {
+    await sql.query(`UPDATE payments SET status = 'open', updated_at = now() WHERE order_id = $1 AND kind = 'order' AND status = 'paid'`, [orderId]);
+  }
 }
 
 export async function setInvoiceSent(orderId: string, sent: boolean): Promise<void> {
@@ -1216,18 +1292,20 @@ async function fulfillPayment(rec: any): Promise<{ kind: "order" | "vip"; status
   if (rec.status === "paid") {
     let orderNumber: number | undefined;
     if (rec.order_id) {
-      const o = (await sql.query(`SELECT order_number FROM orders WHERE id = $1`, [rec.order_id])) as any[];
-      orderNumber = o[0]?.order_number;
+      const orderRows = (await sql.query(`SELECT * FROM orders WHERE id = $1`, [rec.order_id])) as any[];
+      if (orderRows[0]) {
+        const itemRows = (await sql.query(`SELECT * FROM order_items WHERE order_id = $1`, [rec.order_id])) as any[];
+        const order = rowToOrder(orderRows[0], itemRows.map(rowToOrderItem));
+        await applyOrderCustomerEffects(order);
+        orderNumber = order.orderNumber;
+      }
     }
     return { kind: rec.kind, status: "paid", orderNumber };
   }
 
-  const { status } = await getMolliePayment(rec.mollie_payment_id);
+  const { status, failureReason } = await getMolliePayment(rec.mollie_payment_id);
   if (status !== "paid") {
-    // Record the terminal non-paid status for visibility.
-    if (["failed", "canceled", "expired"].includes(status)) {
-      await sql.query(`UPDATE payments SET status = $1 WHERE id = $2 AND status = 'open'`, [status, rec.id]);
-    }
+    await sql.query(`UPDATE payments SET status = $1, failure_reason = $2, updated_at = now() WHERE id = $3 AND status <> 'paid'`, [status, failureReason ?? null, rec.id]);
     return { kind: rec.kind, status };
   }
 
@@ -1246,7 +1324,16 @@ async function fulfillPayment(rec: any): Promise<{ kind: "order" | "vip"; status
     return { kind: "vip", status: "paid" };
   }
 
-  // kind === 'order' → create the real order from the stored payload.
+  if (rec.order_id) {
+    await sql.query(`UPDATE orders SET paid = true WHERE id = $1`, [rec.order_id]);
+    const orderRows = (await sql.query(`SELECT * FROM orders WHERE id = $1`, [rec.order_id])) as any[];
+    const itemRows = (await sql.query(`SELECT * FROM order_items WHERE order_id = $1`, [rec.order_id])) as any[];
+    const order = rowToOrder(orderRows[0], itemRows.map(rowToOrderItem));
+    await applyOrderCustomerEffects(order);
+    return { kind: "order", status: "paid", orderNumber: order.orderNumber };
+  }
+
+  // Legacy order payment records stored only the payload; create the order now.
   const computed = rec.payload as ComputedOrder;
   const order = await insertOrder(computed, true);
   await sql.query(`UPDATE payments SET order_id = $1 WHERE id = $2`, [order.id, rec.id]);

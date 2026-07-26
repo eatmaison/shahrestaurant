@@ -400,6 +400,13 @@ export interface Dictionary {
     paymentTitle: string;
     paid: string;
     unpaid: string;
+    paymentOpen: string;
+    paymentPending: string;
+    paymentFailed: string;
+    paymentCanceled: string;
+    paymentExpired: string;
+    paymentReason: string;
+    molliePaymentId: string;
     markPaid: string;
     markUnpaid: string;
     statusTitle: string;
@@ -934,6 +941,13 @@ const en: Dictionary = {
     paymentTitle: "Payment",
     paid: "Paid",
     unpaid: "Unpaid",
+    paymentOpen: "Payment started",
+    paymentPending: "Payment pending",
+    paymentFailed: "Payment failed",
+    paymentCanceled: "Payment cancelled",
+    paymentExpired: "Payment expired",
+    paymentReason: "Reason",
+    molliePaymentId: "Mollie ID",
     markPaid: "Mark as paid",
     markUnpaid: "Mark as unpaid",
     statusTitle: "Status",
@@ -1470,6 +1484,13 @@ const nl: Dictionary = {
     paymentTitle: "Betaling",
     paid: "Betaald",
     unpaid: "Niet betaald",
+    paymentOpen: "Betaling gestart",
+    paymentPending: "Betaling in behandeling",
+    paymentFailed: "Betaling mislukt",
+    paymentCanceled: "Betaling geannuleerd",
+    paymentExpired: "Betaling verlopen",
+    paymentReason: "Reden",
+    molliePaymentId: "Mollie ID",
     markPaid: "Markeer als betaald",
     markUnpaid: "Markeer als niet betaald",
     statusTitle: "Status",

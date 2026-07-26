@@ -95,6 +95,7 @@ const DDL: string[] = [
     paid boolean NOT NULL DEFAULT false,
     account_type text NOT NULL DEFAULT 'personal' CHECK (account_type IN ('personal','company')),
     invoice_sent boolean NOT NULL DEFAULT false,
+    customer_effects_applied boolean NOT NULL DEFAULT true,
     note text,
     schedule jsonb,
     created_at timestamptz NOT NULL DEFAULT now()
@@ -103,6 +104,7 @@ const DDL: string[] = [
   `CREATE INDEX IF NOT EXISTS idx_orders_user_id ON orders (user_id)`,
   // Delivery vs. self-pickup choice for databases created before it existed.
   `ALTER TABLE orders ADD COLUMN IF NOT EXISTS fulfillment text NOT NULL DEFAULT 'delivery' CHECK (fulfillment IN ('delivery','pickup'))`,
+  `ALTER TABLE orders ADD COLUMN IF NOT EXISTS customer_effects_applied boolean NOT NULL DEFAULT true`,
   `CREATE TABLE IF NOT EXISTS order_items (
     id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
     order_id uuid NOT NULL REFERENCES orders(id) ON DELETE CASCADE,
@@ -140,10 +142,15 @@ const DDL: string[] = [
     order_id uuid REFERENCES orders(id) ON DELETE SET NULL,
     amount numeric(10,2) NOT NULL,
     status text NOT NULL DEFAULT 'open',
+    failure_reason text,
     payload jsonb,
+    updated_at timestamptz NOT NULL DEFAULT now(),
     created_at timestamptz NOT NULL DEFAULT now()
   )`,
+  `ALTER TABLE payments ADD COLUMN IF NOT EXISTS failure_reason text`,
+  `ALTER TABLE payments ADD COLUMN IF NOT EXISTS updated_at timestamptz NOT NULL DEFAULT now()`,
   `CREATE INDEX IF NOT EXISTS idx_payments_mollie ON payments (mollie_payment_id)`,
+  `CREATE INDEX IF NOT EXISTS idx_payments_order ON payments (order_id)`,
   `CREATE TABLE IF NOT EXISTS app_migrations (
     id text PRIMARY KEY,
     applied_at timestamptz NOT NULL DEFAULT now()
