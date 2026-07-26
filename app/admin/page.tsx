@@ -137,7 +137,7 @@ const ADMIN_INITIAL_NOW = Date.now();
 
 export default function AdminPage() {
   const { t, lang } = useLang();
-  const { currentUser, products, orders, users, addProductGroup, removeProduct, updateProductGroup, brands, manageBrands, updateOrderStatus, setOrderPaid, setInvoiceSent, vipRequests, approveVipRequest, rejectVipRequest, socialLinks, updateSocialLink, reservations, setReservationStatus, cancelReservation, onlineVisitors, hydrated } = useStore();
+  const { currentUser, products, orders, users, addProductGroup, removeProduct, updateProductGroup, brands, manageBrands, updateOrderStatus, setOrderPaid, setInvoiceSent, deleteOrder, vipRequests, approveVipRequest, rejectVipRequest, socialLinks, updateSocialLink, reservations, setReservationStatus, cancelReservation, onlineVisitors, hydrated } = useStore();
   const fileRef = useRef<HTMLInputElement>(null);
   const editFileRef = useRef<HTMLInputElement>(null);
   const logoFileRef = useRef<HTMLInputElement>(null);
@@ -269,6 +269,7 @@ export default function AdminPage() {
   // Order search filters (by customer/company name or order number).
   const [customerSearch, setCustomerSearch] = useState("");
   const [companySearch, setCompanySearch] = useState("");
+  const [expandedOrders, setExpandedOrders] = useState<Set<string>>(() => new Set());
 
   // Product pending deletion (shown in a confirmation dialog).
   const [deleting, setDeleting] = useState<Product | null>(null);
@@ -873,11 +874,22 @@ export default function AdminPage() {
   const filteredCustomerOrders = customerOrders.filter((o) => ordersCheck(o.createdAt) && matchesOrder(o, customerSearch));
   const filteredCompanyOrders = companyOrders.filter((o) => ordersCheck(o.createdAt) && matchesOrder(o, companySearch));
 
+  const toggleOrderExpanded = (orderId: string) => {
+    setExpandedOrders((prev) => {
+      const next = new Set(prev);
+      if (next.has(orderId)) next.delete(orderId);
+      else next.add(orderId);
+      return next;
+    });
+  };
+
   const renderOrderCard = (o: Order) => {
     const action = nextAction(o.status);
     const currentStep = ORDER_STATUS_FLOW.indexOf(o.status);
     const account = o.userId ? users.find((u) => u.id === o.userId) : undefined;
     const isCompany = o.accountType === "company";
+    const isExpanded = expandedOrders.has(o.id);
+    const canDeleteExpiredOrder = !o.paid && (o.paymentStatus === "expired" || o.paymentStatus === "canceled" || o.paymentStatus === "failed");
     return (
       <div
         key={o.id}
@@ -898,7 +910,7 @@ export default function AdminPage() {
               {o.items.reduce((s, i) => s + i.qty, 0)} {t.common.items}
             </p>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center justify-end gap-2">
             <span className="text-sm font-black text-slate-900 dark:text-white">€{o.total.toFixed(2)}</span>
             {o.paid ? (
               <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/15 px-2.5 py-1 text-xs font-bold text-emerald-700 dark:text-emerald-300">
@@ -916,10 +928,28 @@ export default function AdminPage() {
                 >
                   {t.fulfillment.markPaid}
                 </button>
+                {canDeleteExpiredOrder && (
+                  <button
+                    onClick={() => deleteOrder(o.id)}
+                    className="inline-flex items-center gap-1.5 rounded-full bg-red-600 px-2.5 py-1 text-xs font-bold text-white transition hover:bg-red-500"
+                    title={t.fulfillment.deleteExpiredOrder}
+                  >
+                    <FaTrash /> {t.fulfillment.deleteExpiredOrder}
+                  </button>
+                )}
               </div>
             )}
+            <button
+              onClick={() => toggleOrderExpanded(o.id)}
+              aria-expanded={isExpanded}
+              className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 px-2.5 py-1 text-xs font-bold text-slate-600 transition hover:border-emerald-400 hover:text-emerald-700 dark:border-white/10 dark:text-slate-300 dark:hover:border-emerald-400 dark:hover:text-emerald-300"
+            >
+              {isExpanded ? t.fulfillment.hideOrderDetails : t.fulfillment.showOrderDetails}
+              <FaChevronDown className={`transition-transform ${isExpanded ? "rotate-180" : ""}`} />
+            </button>
           </div>
         </div>
+        <div className={isExpanded ? "" : "hidden"}>
         {(!o.paid && (o.paymentFailureReason || o.molliePaymentId)) && (
           <div className="mt-2 flex flex-wrap gap-2 text-[11px] font-semibold text-slate-500 dark:text-slate-400">
             {o.paymentFailureReason && <span>{t.fulfillment.paymentReason}: {o.paymentFailureReason}</span>}
@@ -1091,6 +1121,7 @@ export default function AdminPage() {
               <FaCircleCheck /> {t.fulfillment.completed}
             </span>
           )}
+        </div>
         </div>
       </div>
     );

@@ -629,6 +629,25 @@ export async function updateOrderStatus(orderId: string, status: string): Promis
   await sql.query(`UPDATE orders SET status = $1 WHERE id = $2`, [status, orderId]);
 }
 
+export async function deleteExpiredOrder(orderId: string): Promise<boolean> {
+  await requireAdmin();
+  const rows = (await sql.query(
+    `DELETE FROM orders o
+     WHERE o.id = $1
+       AND o.paid = false
+       AND EXISTS (
+         SELECT 1
+         FROM payments p
+         WHERE p.order_id = o.id
+           AND p.kind = 'order'
+           AND p.status IN ('expired', 'canceled', 'failed')
+       )
+     RETURNING o.id`,
+    [orderId]
+  )) as any[];
+  return rows.length > 0;
+}
+
 export async function setOrderPaid(orderId: string, paid: boolean): Promise<void> {
   await requireAdmin();
   await sql.query(`UPDATE orders SET paid = $1 WHERE id = $2`, [paid, orderId]);

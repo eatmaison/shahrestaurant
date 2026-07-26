@@ -409,6 +409,9 @@ export interface Dictionary {
     molliePaymentId: string;
     markPaid: string;
     markUnpaid: string;
+    showOrderDetails: string;
+    hideOrderDetails: string;
+    deleteExpiredOrder: string;
     statusTitle: string;
     statusNew: string;
     statusPreparing: string;
@@ -950,6 +953,9 @@ const en: Dictionary = {
     molliePaymentId: "Mollie ID",
     markPaid: "Mark as paid",
     markUnpaid: "Mark as unpaid",
+    showOrderDetails: "Show details",
+    hideOrderDetails: "Hide details",
+    deleteExpiredOrder: "Cancel expired order",
     statusTitle: "Status",
     statusNew: "Order received",
     statusPreparing: "Preparing",
@@ -1493,6 +1499,9 @@ const nl: Dictionary = {
     molliePaymentId: "Mollie ID",
     markPaid: "Markeer als betaald",
     markUnpaid: "Markeer als niet betaald",
+    showOrderDetails: "Details tonen",
+    hideOrderDetails: "Details verbergen",
+    deleteExpiredOrder: "Verlopen bestelling annuleren",
     statusTitle: "Status",
     statusNew: "Bestelling ontvangen",
     statusPreparing: "In bereiding",

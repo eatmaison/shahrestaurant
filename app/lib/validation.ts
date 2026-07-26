@@ -85,6 +85,12 @@ export const updateOrderSchema = z.object({
 
 export type UpdateOrderInput = z.infer<typeof updateOrderSchema>;
 
+export const deleteOrderSchema = z.object({
+  id: z.string().uuid(),
+});
+
+export type DeleteOrderInput = z.infer<typeof deleteOrderSchema>;
+
 /* ------------------------------------------------------------------ reservations */
 
 export const createReservationSchema = z.object({

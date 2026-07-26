@@ -125,6 +125,8 @@ interface StoreCtx {
   setOrderPaid: (orderId: string, paid: boolean) => Promise<void>;
   /** Admin: mark a company order's invoice as sent (or revert). */
   setInvoiceSent: (orderId: string, sent: boolean) => Promise<void>;
+  /** Admin: delete an unpaid expired/canceled/failed order attempt. */
+  deleteOrder: (orderId: string) => Promise<void>;
 
   buyVip: () => Promise<{ ok: boolean; checkoutUrl?: string }>;
 
@@ -540,6 +542,11 @@ export function Providers({ children }: { children: ReactNode }) {
     await refresh();
   }, [refresh]);
 
+  const deleteOrder = useCallback<StoreCtx["deleteOrder"]>(async (orderId) => {
+    await fetch("/api/orders", { method: "DELETE", headers: JSON_HEADERS, body: JSON.stringify({ id: orderId }) });
+    await refresh();
+  }, [refresh]);
+
   const updateSocialLink = useCallback<StoreCtx["updateSocialLink"]>(async (platform, url, enabled) => {
     const res = await fetch("/api/social", {
       method: "POST",
@@ -586,6 +593,7 @@ export function Providers({ children }: { children: ReactNode }) {
       updateOrderStatus,
       setOrderPaid,
       setInvoiceSent,
+      deleteOrder,
       buyVip,
       vipRequests,
       requestVip,
@@ -627,6 +635,7 @@ export function Providers({ children }: { children: ReactNode }) {
       updateOrderStatus,
       setOrderPaid,
       setInvoiceSent,
+      deleteOrder,
       buyVip,
       vipRequests,
       requestVip,
