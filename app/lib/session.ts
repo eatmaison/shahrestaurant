@@ -41,3 +41,27 @@ export async function clearSession(): Promise<void> {
   const jar = await cookies();
   jar.delete(COOKIE);
 }
+
+/* ------------------------------------------------------------------ anonymous visitors */
+
+const VISITOR_COOKIE = "etg_vid";
+
+/**
+ * Return a stable anonymous visitor id, creating and persisting one in a
+ * cookie on the first visit. Used to count guests who are not signed in.
+ * Must be called from a Route Handler / Server Action so the cookie can be set.
+ */
+export async function getOrCreateVisitorId(): Promise<string> {
+  const jar = await cookies();
+  const existing = jar.get(VISITOR_COOKIE)?.value;
+  if (existing) return existing;
+  const id = crypto.randomUUID();
+  jar.set(VISITOR_COOKIE, id, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "lax",
+    path: "/",
+    maxAge: 60 * 60 * 24 * 365,
+  });
+  return id;
+}

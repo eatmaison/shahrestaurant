@@ -37,6 +37,17 @@ CREATE TABLE IF NOT EXISTS users (
 
 CREATE INDEX IF NOT EXISTS idx_users_email ON users (email);
 
+-- ------------------------------------------------------------------ visitor_sessions
+-- Anonymous (not-signed-in) visitors, tracked by a browser cookie id so the
+-- admin "Recently online" panel can show active guests next to signed-in users.
+CREATE TABLE IF NOT EXISTS visitor_sessions (
+  id             text        PRIMARY KEY,
+  last_seen_at   timestamptz NOT NULL DEFAULT now(),
+  last_seen_site text
+);
+
+CREATE INDEX IF NOT EXISTS idx_visitor_sessions_seen ON visitor_sessions (last_seen_at);
+
 -- ------------------------------------------------------------------ products
 CREATE TABLE IF NOT EXISTS products (
   id                   text        PRIMARY KEY,

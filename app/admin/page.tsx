@@ -137,7 +137,7 @@ const ADMIN_INITIAL_NOW = Date.now();
 
 export default function AdminPage() {
   const { t, lang } = useLang();
-  const { currentUser, products, orders, users, addProductGroup, removeProduct, updateProductGroup, brands, manageBrands, updateOrderStatus, setOrderPaid, setInvoiceSent, vipRequests, approveVipRequest, rejectVipRequest, socialLinks, updateSocialLink, reservations, setReservationStatus, cancelReservation, hydrated } = useStore();
+  const { currentUser, products, orders, users, addProductGroup, removeProduct, updateProductGroup, brands, manageBrands, updateOrderStatus, setOrderPaid, setInvoiceSent, vipRequests, approveVipRequest, rejectVipRequest, socialLinks, updateSocialLink, reservations, setReservationStatus, cancelReservation, onlineVisitors, hydrated } = useStore();
   const fileRef = useRef<HTMLInputElement>(null);
   const editFileRef = useRef<HTMLInputElement>(null);
   const logoFileRef = useRef<HTMLInputElement>(null);
@@ -377,6 +377,12 @@ export default function AdminPage() {
         .sort((a, b) => (b.lastSeenAt ?? 0) - (a.lastSeenAt ?? 0))
         .slice(0, 20),
     [users]
+  );
+
+  /** Number of signed-in users seen within the online window (green-dot users). */
+  const registeredOnlineCount = useMemo(
+    () => users.filter((u) => u.lastSeenAt && now - u.lastSeenAt < ADMIN_ONLINE_WINDOW_MS).length,
+    [users, now]
   );
 
   /** Reservation list filter: upcoming (pending/confirmed, today onwards) or all. */
@@ -1256,6 +1262,21 @@ export default function AdminPage() {
             <h2 className="text-lg font-black text-slate-900 dark:text-white">{t.admin.recentlyOnline}</h2>
             <p className="text-xs text-slate-500 dark:text-slate-400">{t.admin.recentlyOnlineSub}</p>
           </div>
+          <div className="ml-auto flex flex-wrap items-center justify-end gap-2">
+            <span
+              className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-2.5 py-1 text-xs font-bold text-emerald-700 dark:text-emerald-300"
+              title={t.admin.onlineNow}
+            >
+              <span className="h-2 w-2 rounded-full bg-emerald-500" />
+              {registeredOnlineCount} {t.admin.signedInLabel}
+            </span>
+            <span
+              className="inline-flex items-center gap-1.5 rounded-full bg-sky-500/10 px-2.5 py-1 text-xs font-bold text-sky-700 dark:text-sky-300"
+              title={t.admin.onlineNow}
+            >
+              <FaUsers className="text-[10px]" /> {onlineVisitors} {t.admin.guestsLabel}
+            </span>
+          </div>
         </div>
 
         {recentlyOnline.length === 0 ? (
@@ -1522,6 +1543,16 @@ export default function AdminPage() {
                     <a href={`tel:${r.phone}`} className="inline-flex items-center gap-1.5 hover:text-emerald-600"><FaPhone className="text-emerald-500" /> {r.phone}</a>
                     {r.email && <a href={`mailto:${r.email}`} className="inline-flex items-center gap-1.5 hover:text-emerald-600"><FaEnvelope className="text-emerald-500" /> {r.email}</a>}
                   </div>
+                  <p className="mt-1.5 flex items-center gap-1.5 text-[0.7rem] text-slate-400 dark:text-slate-500">
+                    <FaClock className="text-slate-400 dark:text-slate-500" />
+                    {t.admin.bookedOn}:{" "}
+                    {new Date(r.createdAt).toLocaleDateString(lang === "nl" ? "nl-NL" : "en-GB", {
+                      day: "numeric",
+                      month: "short",
+                      year: "numeric",
+                    })}{" "}
+                    · {new Date(r.createdAt).toLocaleTimeString(lang === "nl" ? "nl-NL" : "en-GB", { hour: "2-digit", minute: "2-digit" })}
+                  </p>
                   {(r.occasion || r.note) && (
                     <p className="mt-2 rounded-xl bg-slate-50 px-3 py-2 text-xs leading-5 text-slate-600 dark:bg-white/5 dark:text-slate-300">
                       {r.occasion && <span className="font-bold uppercase tracking-wide text-emerald-600 dark:text-emerald-400">{r.occasion}</span>}

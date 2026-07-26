@@ -166,6 +166,9 @@ interface StoreCtx {
   updateSocialLink: (platform: SocialPlatform, url: string, enabled: boolean) => Promise<{ ok: boolean }>;
 
   /** Reload all server-backed data (used by the staff terminal for polling). */
+  /** Number of anonymous guests active on the site in the last few minutes (admin only). */
+  onlineVisitors: number;
+
   refresh: () => Promise<void>;
 
   hydrated: boolean;
@@ -223,6 +226,7 @@ export function Providers({ children }: { children: ReactNode }) {
   const [reviews, setReviews] = useState<Review[]>([]);
   const [vipRequests, setVipRequests] = useState<VipRequest[]>([]);
   const [socialLinks, setSocialLinks] = useState<SocialLink[]>([]);
+  const [onlineVisitors, setOnlineVisitors] = useState(0);
   const [reservations, setReservations] = useState<Reservation[]>([]);
 
   // Load server-backed data (products, session user, orders, reviews, VIP requests).
@@ -239,6 +243,7 @@ export function Providers({ children }: { children: ReactNode }) {
       setReviews(data.reviews ?? []);
       setVipRequests(data.vipRequests ?? []);
       setSocialLinks(data.socialLinks ?? []);
+      setOnlineVisitors(data.onlineVisitors ?? 0);
       setReservations(data.reservations ?? []);
     } catch {
       /* ignore transient network errors - the UI keeps its current state */
@@ -595,6 +600,7 @@ export function Providers({ children }: { children: ReactNode }) {
       setReservationStatus,
       socialLinks,
       updateSocialLink,
+      onlineVisitors,
       refresh,
       hydrated,
     }),
@@ -635,6 +641,7 @@ export function Providers({ children }: { children: ReactNode }) {
       setReservationStatus,
       socialLinks,
       updateSocialLink,
+      onlineVisitors,
       refresh,
       hydrated,
     ]

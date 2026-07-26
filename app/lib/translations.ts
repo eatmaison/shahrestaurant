@@ -372,6 +372,10 @@ export interface Dictionary {
     minutesAgo: string;
     hoursAgo: string;
     daysAgo: string;
+    onlineNow: string;
+    signedInLabel: string;
+    guestsLabel: string;
+    bookedOn: string;
     socialTitle: string;
     socialSub: string;
     socialUrlPlaceholder: string;
@@ -902,6 +906,10 @@ const en: Dictionary = {
     minutesAgo: "{n} min ago",
     hoursAgo: "{n} h ago",
     daysAgo: "{n} d ago",
+    onlineNow: "Online now",
+    signedInLabel: "signed in",
+    guestsLabel: "guests",
+    bookedOn: "Booked",
     socialTitle: "Social media links",
     socialSub: "Add your profile links and switch on the icons you want to show in the website footer.",
     socialUrlPlaceholder: "https://…",
@@ -1434,6 +1442,10 @@ const nl: Dictionary = {
     minutesAgo: "{n} min geleden",
     hoursAgo: "{n} u geleden",
     daysAgo: "{n} d geleden",
+    onlineNow: "Nu online",
+    signedInLabel: "ingelogd",
+    guestsLabel: "gasten",
+    bookedOn: "Geboekt",
     socialTitle: "Social media links",
     socialSub: "Voeg je profiellinks toe en zet de iconen aan die je in de footer van de website wilt tonen.",
     socialUrlPlaceholder: "https://…",

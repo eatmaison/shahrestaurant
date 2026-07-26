@@ -37,7 +37,7 @@ import {
   rowToUser,
   rowToVipRequest,
 } from "./mappers";
-import { clearSession, createSession, getSessionUserId } from "./session";
+import { clearSession, createSession, getSessionUserId, getOrCreateVisitorId } from "./session";
 import type {
   AccountType,
   BrandCategory,
@@ -241,6 +241,8 @@ export interface Bootstrap {
   vipRequests: VipRequest[];
   socialLinks: SocialLink[];
   reservations: Reservation[];
+  /** Anonymous guests active within the last 5 minutes (admin only, else 0). */
+  onlineVisitors: number;
 }
 
 export async function bootstrap(): Promise<Bootstrap> {
@@ -248,9 +250,20 @@ export async function bootstrap(): Promise<Bootstrap> {
   const currentUser = await getCurrentUser();
   const isAdmin = currentUser?.role === "admin";
 
-  // Track when the user was last active on the site (shown to admins).
+  // Track when the user was last active on the site (shown to admins). Signed-in
+  // users are tracked on the users table; anonymous guests get a cookie-based id
+  // recorded in visitor_sessions so admins can see live guest activity too.
+  const visitorId = await getOrCreateVisitorId();
   if (currentUser) {
     await sql.query(`UPDATE users SET last_seen_at = now(), last_seen_site = $2 WHERE id = $1`, [currentUser.id, SITE_ID]);
+    // A signed-in visitor should not also be counted as an anonymous guest.
+    await sql.query(`DELETE FROM visitor_sessions WHERE id = $1`, [visitorId]);
+  } else {
+    await sql.query(
+      `INSERT INTO visitor_sessions (id, last_seen_at, last_seen_site) VALUES ($1, now(), $2)
+       ON CONFLICT (id) DO UPDATE SET last_seen_at = now(), last_seen_site = $2`,
+      [visitorId, SITE_ID]
+    );
   }
 
   const productRows = (await sql.query(`SELECT * FROM products ORDER BY created_at ASC`)) as any[];
@@ -272,19 +285,25 @@ export async function bootstrap(): Promise<Bootstrap> {
   let users: User[] = [];
   let vipRequests: VipRequest[] = [];
   let reservations: Reservation[] = [];
+  let onlineVisitors = 0;
 
   if (isAdmin) {
     orders = await loadOrders();
     users = ((await sql.query(`SELECT * FROM users ORDER BY created_at ASC`)) as any[]).map(rowToUser);
     vipRequests = ((await sql.query(`SELECT * FROM vip_requests ORDER BY created_at DESC`)) as any[]).map(rowToVipRequest);
     reservations = ((await sql.query(`SELECT * FROM reservations ORDER BY date ASC, time ASC`)) as any[]).map(rowToReservation);
+    const visitorRows = (await sql.query(
+      `SELECT count(*)::int AS n FROM visitor_sessions WHERE last_seen_site = $1 AND last_seen_at > now() - interval '5 minutes'`,
+      [SITE_ID]
+    )) as any[];
+    onlineVisitors = visitorRows[0]?.n ?? 0;
   } else if (currentUser) {
     orders = await loadOrders(currentUser.id);
     vipRequests = ((await sql.query(`SELECT * FROM vip_requests WHERE user_id = $1 ORDER BY created_at DESC`, [currentUser.id])) as any[]).map(rowToVipRequest);
     reservations = ((await sql.query(`SELECT * FROM reservations WHERE user_id = $1 ORDER BY date DESC, time DESC`, [currentUser.id])) as any[]).map(rowToReservation);
   }
 
-  return { currentUser, products, brands, reviews, orders, users, vipRequests, socialLinks, reservations };
+  return { currentUser, products, brands, reviews, orders, users, vipRequests, socialLinks, reservations, onlineVisitors };
 }
 
 /** Load orders (optionally for a single user) with their line items. */

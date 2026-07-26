@@ -40,6 +40,14 @@ const DDL: string[] = [
   // Last activity on the site (updated on every bootstrap while signed in).
   `ALTER TABLE users ADD COLUMN IF NOT EXISTS last_seen_at timestamptz`,
   `ALTER TABLE users ADD COLUMN IF NOT EXISTS last_seen_site text`,
+  // Anonymous (not-signed-in) visitors, tracked by a browser cookie id so the
+  // admin can see how many guests are currently active alongside signed-in users.
+  `CREATE TABLE IF NOT EXISTS visitor_sessions (
+    id text PRIMARY KEY,
+    last_seen_at timestamptz NOT NULL DEFAULT now(),
+    last_seen_site text
+  )`,
+  `CREATE INDEX IF NOT EXISTS idx_visitor_sessions_seen ON visitor_sessions (last_seen_at)`,
   // Admin-managed social media links shown in the footer when enabled.
   `CREATE TABLE IF NOT EXISTS social_links (
     platform text PRIMARY KEY,
