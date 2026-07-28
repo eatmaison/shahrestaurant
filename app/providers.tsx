@@ -11,7 +11,7 @@ import {
 } from "react";
 import { translations, type Dictionary } from "./lib/translations";
 import { DEFAULT_BRAND_CONFIGS } from "./lib/data";
-import type { AccountType, BrandConfig, Lang, MenuUpgrades, Order, OrderFulfillment, OrderSchedule, OrderStatus, Product, ProductContent, ProductTarget, RecentVisitor, Review, SocialLink, SocialPlatform, User, VipRequest } from "./lib/types";
+import type { AccountType, BrandConfig, Lang, MenuUpgrades, Order, OrderFulfillment, OrderSchedule, OrderStatus, Product, ProductContent, ProductTarget, RecentVisitor, Reservation, Review, SocialLink, SocialPlatform, User, VipRequest } from "./lib/types";
 
 const JSON_HEADERS = { "Content-Type": "application/json" } as const;
 
@@ -170,6 +170,8 @@ interface StoreCtx {
   /** Reload all server-backed data (used by the staff terminal for polling). */
   /** Number of anonymous guests active on the site in the last few minutes (admin only). */
   onlineVisitors: number;
+  /** Recent signed-in and guest visitors shown in the admin visitor overview. */
+  recentVisitors: RecentVisitor[];
 
   refresh: () => Promise<void>;
 
