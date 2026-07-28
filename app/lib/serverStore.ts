@@ -45,6 +45,7 @@ import type {
   BrandSubcategory,
   GalleryImage,
   Order,
+  RecentVisitor,
   OrderItem,
   OrderFulfillment,
   OrderSchedule,
@@ -243,6 +244,8 @@ export interface Bootstrap {
   reservations: Reservation[];
   /** Anonymous guests active within the last 5 minutes (admin only, else 0). */
   onlineVisitors: number;
+  /** Signed-in users and anonymous guest sessions seen recently by the admin. */
+  recentVisitors: RecentVisitor[];
 }
 
 export async function bootstrap(): Promise<Bootstrap> {
@@ -261,8 +264,9 @@ export async function bootstrap(): Promise<Bootstrap> {
     await sql.query(`DELETE FROM visitor_sessions WHERE id = $1`, [visitorId]);
   } else {
     await sql.query(
-      `INSERT INTO visitor_sessions (id, last_seen_at, last_seen_site) VALUES ($1, now(), $2)
-       ON CONFLICT (id) DO UPDATE SET last_seen_at = now(), last_seen_site = $2`,
+      `INSERT INTO visitor_sessions (id, last_seen_at, last_seen_site, created_at, visit_count)
+       VALUES ($1, now(), $2, now(), 1)
+       ON CONFLICT (id) DO UPDATE SET last_seen_at = now(), last_seen_site = $2, visit_count = visitor_sessions.visit_count + 1`,
       [visitorId, SITE_ID]
     );
   }
@@ -287,6 +291,7 @@ export async function bootstrap(): Promise<Bootstrap> {
   let vipRequests: VipRequest[] = [];
   let reservations: Reservation[] = [];
   let onlineVisitors = 0;
+  let recentVisitors: RecentVisitor[] = [];
 
   if (isAdmin) {
     orders = await loadOrders();
@@ -298,13 +303,62 @@ export async function bootstrap(): Promise<Bootstrap> {
       [SITE_ID]
     )) as any[];
     onlineVisitors = visitorRows[0]?.n ?? 0;
+
+    const recentGuestRows = (await sql.query(
+      `SELECT id, created_at, last_seen_at, last_seen_site, visit_count
+       FROM visitor_sessions
+       WHERE last_seen_site = $1 AND last_seen_at > now() - interval '24 hours'
+       ORDER BY last_seen_at DESC
+       LIMIT 80`,
+      [SITE_ID]
+    )) as any[];
+
+    const nowMs = Date.now();
+    const signedInVisitors: RecentVisitor[] = users
+      .filter((u) => u.lastSeenAt && nowMs - u.lastSeenAt < 86_400_000)
+      .map((u) => ({
+        id: u.id,
+        kind: "user",
+        name: u.name,
+        email: u.email,
+        phone: u.phone,
+        role: u.role,
+        accountType: u.accountType,
+        isVip: u.isVip,
+        lastSeenAt: u.lastSeenAt!,
+        lastSeenSite: u.lastSeenSite,
+        isOnline: nowMs - (u.lastSeenAt ?? 0) < 5 * 60_000,
+        orderCount: u.orderCount,
+      }));
+
+    const guestVisitors: RecentVisitor[] = recentGuestRows.map((row) => {
+      const lastSeenAt = new Date(row.last_seen_at).getTime();
+      return {
+        id: row.id,
+        kind: "guest",
+        name: "Guest",
+        email: `Guest session ${String(row.id).slice(0, 8)}`,
+        role: "guest",
+        accountType: "guest",
+        lastSeenAt,
+        lastSeenSite: row.last_seen_site ?? undefined,
+        isOnline: nowMs - lastSeenAt < 5 * 60_000,
+        sessionId: row.id,
+        visitCount: Number(row.visit_count ?? 1),
+        firstSeenAt: row.created_at ? new Date(row.created_at).getTime() : undefined,
+      };
+    });
+
+    recentVisitors = [...signedInVisitors, ...guestVisitors]
+      .sort((a, b) => b.lastSeenAt - a.lastSeenAt)
+      .slice(0, 80);
   } else if (currentUser) {
     orders = await loadOrders(currentUser.id);
     vipRequests = ((await sql.query(`SELECT * FROM vip_requests WHERE user_id = $1 ORDER BY created_at DESC`, [currentUser.id])) as any[]).map(rowToVipRequest);
     reservations = ((await sql.query(`SELECT * FROM reservations WHERE user_id = $1 ORDER BY date DESC, time DESC`, [currentUser.id])) as any[]).map(rowToReservation);
   }
 
-  return { currentUser, products, brands, reviews, orders, users, vipRequests, socialLinks, reservations, onlineVisitors };
+  return { currentUser, products, brands, reviews, orders, users, vipRequests, socialLinks, reservations, onlineVisitors, recentVisitors };
 }
 
 /** Load orders (optionally for a single user) with their line items. */

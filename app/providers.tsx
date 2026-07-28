@@ -11,7 +11,7 @@ import {
 } from "react";
 import { translations, type Dictionary } from "./lib/translations";
 import { DEFAULT_BRAND_CONFIGS } from "./lib/data";
-import type { AccountType, BrandConfig, Lang, MenuUpgrades, Order, OrderFulfillment, OrderSchedule, OrderStatus, Product, ProductContent, ProductTarget, Reservation, Review, SocialLink, SocialPlatform, User, VipRequest } from "./lib/types";
+import type { AccountType, BrandConfig, Lang, MenuUpgrades, Order, OrderFulfillment, OrderSchedule, OrderStatus, Product, ProductContent, ProductTarget, RecentVisitor, Review, SocialLink, SocialPlatform, User, VipRequest } from "./lib/types";
 
 const JSON_HEADERS = { "Content-Type": "application/json" } as const;
 
@@ -229,6 +229,7 @@ export function Providers({ children }: { children: ReactNode }) {
   const [vipRequests, setVipRequests] = useState<VipRequest[]>([]);
   const [socialLinks, setSocialLinks] = useState<SocialLink[]>([]);
   const [onlineVisitors, setOnlineVisitors] = useState(0);
+  const [recentVisitors, setRecentVisitors] = useState<RecentVisitor[]>([]);
   const [reservations, setReservations] = useState<Reservation[]>([]);
 
   // Load server-backed data (products, session user, orders, reviews, VIP requests).
@@ -246,6 +247,7 @@ export function Providers({ children }: { children: ReactNode }) {
       setVipRequests(data.vipRequests ?? []);
       setSocialLinks(data.socialLinks ?? []);
       setOnlineVisitors(data.onlineVisitors ?? 0);
+      setRecentVisitors(data.recentVisitors ?? []);
       setReservations(data.reservations ?? []);
     } catch {
       /* ignore transient network errors - the UI keeps its current state */
@@ -609,6 +611,7 @@ export function Providers({ children }: { children: ReactNode }) {
       socialLinks,
       updateSocialLink,
       onlineVisitors,
+      recentVisitors,
       refresh,
       hydrated,
     }),
@@ -651,6 +654,7 @@ export function Providers({ children }: { children: ReactNode }) {
       socialLinks,
       updateSocialLink,
       onlineVisitors,
+      recentVisitors,
       refresh,
       hydrated,
     ]

@@ -110,6 +110,24 @@ export interface User {
   lastSeenSite?: string;
 }
 
+export interface RecentVisitor {
+  id: string;
+  kind: "user" | "guest";
+  name: string;
+  email?: string;
+  phone?: string;
+  role?: Role | "guest";
+  accountType?: AccountType | "guest";
+  isVip?: boolean;
+  lastSeenAt: number;
+  lastSeenSite?: string;
+  isOnline: boolean;
+  orderCount?: number;
+  sessionId?: string;
+  visitCount?: number;
+  firstSeenAt?: number;
+}
+
 export interface OrderItem {
   productId: string;
   name: string;

@@ -137,7 +137,7 @@ const ADMIN_INITIAL_NOW = Date.now();
 
 export default function AdminPage() {
   const { t, lang } = useLang();
-  const { currentUser, products, orders, users, addProductGroup, removeProduct, updateProductGroup, brands, manageBrands, updateOrderStatus, setOrderPaid, setInvoiceSent, deleteOrder, vipRequests, approveVipRequest, rejectVipRequest, socialLinks, updateSocialLink, reservations, setReservationStatus, cancelReservation, onlineVisitors, hydrated } = useStore();
+  const { currentUser, products, orders, users, addProductGroup, removeProduct, updateProductGroup, brands, manageBrands, updateOrderStatus, setOrderPaid, setInvoiceSent, deleteOrder, vipRequests, approveVipRequest, rejectVipRequest, socialLinks, updateSocialLink, reservations, setReservationStatus, cancelReservation, onlineVisitors, recentVisitors, hydrated } = useStore();
   const fileRef = useRef<HTMLInputElement>(null);
   const editFileRef = useRef<HTMLInputElement>(null);
   const logoFileRef = useRef<HTMLInputElement>(null);
@@ -370,20 +370,22 @@ export default function AdminPage() {
     });
   }, [activeProductCategoryFilter, activeProductSubcategoryFilter, brands, productBrandFilter, productSearch, products]);
 
-  /** Last 20 users seen on the site, most recent first. */
+  /** Signed-in users and guest sessions seen recently, most recent first. */
   const recentlyOnline = useMemo(
-    () =>
-      users
-        .filter((u) => u.lastSeenAt)
-        .sort((a, b) => (b.lastSeenAt ?? 0) - (a.lastSeenAt ?? 0))
-        .slice(0, 20),
-    [users]
+    () => [...recentVisitors].sort((a, b) => b.lastSeenAt - a.lastSeenAt).slice(0, 50),
+    [recentVisitors]
   );
 
   /** Number of signed-in users seen within the online window (green-dot users). */
   const registeredOnlineCount = useMemo(
-    () => users.filter((u) => u.lastSeenAt && now - u.lastSeenAt < ADMIN_ONLINE_WINDOW_MS).length,
-    [users, now]
+    () => recentVisitors.filter((entry) => entry.kind === "user" && entry.isOnline).length,
+    [recentVisitors]
+  );
+
+  /** Number of guest sessions seen within the online window. */
+  const guestOnlineCount = useMemo(
+    () => recentVisitors.filter((entry) => entry.kind === "guest" && entry.isOnline).length,
+    [recentVisitors]
   );
 
   /** Reservation list filter: upcoming (pending/confirmed, today onwards) or all. */
@@ -1313,7 +1315,7 @@ export default function AdminPage() {
         )}
       </div>
 
-      {/* Recently online - last 20 signed-in visitors */}
+      {/* Recently online - signed-in users and guest sessions */}
       <div className="mt-6 rounded-3xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-white/5">
         <div className="flex items-center gap-2">
           <span className="grid h-9 w-9 place-items-center rounded-xl bg-sky-500/10 text-sky-600 dark:text-sky-400">
@@ -1335,7 +1337,7 @@ export default function AdminPage() {
               className="inline-flex items-center gap-1.5 rounded-full bg-sky-500/10 px-2.5 py-1 text-xs font-bold text-sky-700 dark:text-sky-300"
               title={t.admin.onlineNow}
             >
-              <FaUsers className="text-[10px]" /> {onlineVisitors} {t.admin.guestsLabel}
+              <FaUsers className="text-[10px]" /> {guestOnlineCount} {t.admin.guestsLabel}
             </span>
           </div>
         </div>

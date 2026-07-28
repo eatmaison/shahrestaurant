@@ -45,8 +45,12 @@ const DDL: string[] = [
   `CREATE TABLE IF NOT EXISTS visitor_sessions (
     id text PRIMARY KEY,
     last_seen_at timestamptz NOT NULL DEFAULT now(),
-    last_seen_site text
+    last_seen_site text,
+    created_at timestamptz NOT NULL DEFAULT now(),
+    visit_count integer NOT NULL DEFAULT 1
   )`,
+  `ALTER TABLE visitor_sessions ADD COLUMN IF NOT EXISTS created_at timestamptz NOT NULL DEFAULT now()`,
+  `ALTER TABLE visitor_sessions ADD COLUMN IF NOT EXISTS visit_count integer NOT NULL DEFAULT 1`,
   `CREATE INDEX IF NOT EXISTS idx_visitor_sessions_seen ON visitor_sessions (last_seen_at)`,
   // Admin-managed social media links shown in the footer when enabled.
   `CREATE TABLE IF NOT EXISTS social_links (
