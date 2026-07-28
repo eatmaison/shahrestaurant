@@ -728,6 +728,16 @@ function genId(prefix: string): string {
   return `${prefix}-${Math.random().toString(36).slice(2, 10)}${Date.now().toString(36)}`;
 }
 
+function productGroupKey(product: Product): string {
+  return `${product.name.trim().toLowerCase().replace(/\s+/g, " ")}|${Number(product.price).toFixed(2)}`;
+}
+
+async function loadMatchingProductRows(anchor: Product): Promise<Product[]> {
+  const rows = (await sql.query(`SELECT * FROM products`)) as any[];
+  const key = productGroupKey(anchor);
+  return rows.map(rowToProduct).filter((product) => productGroupKey(product) === key);
+}
+
 /** Insert a single product row. Assumes the image has already been resolved to a stored value. */
 async function insertProductRow(
   id: string,
@@ -830,10 +840,7 @@ export async function syncProductGroup(anchorId: string, content: ProductContent
   if (!anchorRows[0]) return;
   const anchor = rowToProduct(anchorRows[0]);
   const groupId = anchor.groupId ?? genId("g");
-  // All rows currently belonging to this product (the group, plus the anchor itself
-  // in case it predates group ids).
-  const currentRows = (await sql.query(`SELECT * FROM products WHERE group_id = $1 OR id = $2`, [groupId, anchorId])) as any[];
-  const current = currentRows.map(rowToProduct);
+  const current = await loadMatchingProductRows(anchor);
   const oldImages = new Set(current.map((p) => p.image).filter((v): v is string => Boolean(v)));
 
   // Resolve the shared photo once (a freshly picked photo arrives as a data URL).
@@ -888,11 +895,14 @@ export async function syncProductGroup(anchorId: string, content: ProductContent
 
 export async function removeProduct(id: string): Promise<void> {
   await requireAdmin();
-  const rows = (await sql.query(`SELECT image FROM products WHERE id = $1`, [id])) as any[];
-  await sql.query(`DELETE FROM products WHERE id = $1`, [id]);
+  const anchorRows = (await sql.query(`SELECT * FROM products WHERE id = $1`, [id])) as any[];
+  if (!anchorRows[0]) return;
+  const products = await loadMatchingProductRows(rowToProduct(anchorRows[0]));
+  const ids = products.map((product) => product.id);
+  const images = new Set(products.map((product) => product.image).filter((image): image is string => Boolean(image)));
+  await sql.query(`DELETE FROM products WHERE id = ANY($1::text[])`, [ids]);
   // Clean up the product photo in Spaces, unless a sister restaurant's row still uses it.
-  const image = rows[0]?.image as string | undefined;
-  if (image) {
+  for (const image of images) {
     const stillUsed = (await sql.query(`SELECT 1 FROM products WHERE image = $1 LIMIT 1`, [image])) as any[];
     if (stillUsed.length === 0) await deleteStoredImage(image);
   }

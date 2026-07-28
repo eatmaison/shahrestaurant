@@ -57,6 +57,8 @@ const statusIcons: Record<OrderStatus, typeof FaClock> = {
 /** Feedback state for the add/edit product forms. */
 type SaveState = { status: "idle" | "saving" | "success" | "error"; message?: string };
 
+type ProductGroup = { key: string; product: Product; products: Product[] };
+
 type CategoryEditDraft =
   | { kind: "category"; brandId: string; name: string; nextName: string; icon: string }
   | { kind: "subcategory"; brandId: string; categoryName: string; name: string; nextName: string; icon: string };
@@ -97,6 +99,11 @@ const parsePrice = (raw: string): number | null => {
   const n = parseFloat(s);
   return n > 0 ? n : null;
 };
+
+const normalizeProductName = (value: string): string => value.trim().toLowerCase().replace(/\s+/g, " ");
+
+const productGroupKey = (product: Product): string =>
+  `${normalizeProductName(product.name)}|${Number(product.price).toFixed(2)}`;
 
 /** Splits a comma-separated admin input into a clean list ("a, b," → ["a","b"]). */
 const parseList = (value: string): string[] =>
@@ -349,26 +356,40 @@ export default function AdminPage() {
       ? productSubcategoryFilter
       : "all";
 
-  const filteredProducts = useMemo(() => {
+  const productGroups = useMemo<ProductGroup[]>(() => {
+    const map = new Map<string, ProductGroup>();
+    for (const product of products) {
+      const key = productGroupKey(product);
+      const group = map.get(key);
+      if (group) group.products.push(product);
+      else map.set(key, { key, product, products: [product] });
+    }
+    return [...map.values()];
+  }, [products]);
+
+  const filteredProductGroups = useMemo<ProductGroup[]>(() => {
     const q = productSearch.trim().toLowerCase();
-    return products.filter((p) => {
-      if (productBrandFilter !== "all" && p.brand !== productBrandFilter) return false;
-      if (activeProductCategoryFilter !== "all") {
-        if (activeProductCategoryFilter === "Drinks") {
-          if (!isDrinkCategory(p.category)) return false;
-        } else if (p.category !== activeProductCategoryFilter) {
-          return false;
+    return productGroups.flatMap((group) => {
+      const matches = group.products.filter((p) => {
+        if (productBrandFilter !== "all" && p.brand !== productBrandFilter) return false;
+        if (activeProductCategoryFilter !== "all") {
+          if (activeProductCategoryFilter === "Drinks") {
+            if (!isDrinkCategory(p.category)) return false;
+          } else if (p.category !== activeProductCategoryFilter) {
+            return false;
+          }
+          if (activeProductSubcategoryFilter !== "all" && p.subcategory !== activeProductSubcategoryFilter) return false;
         }
-        if (activeProductSubcategoryFilter !== "all" && p.subcategory !== activeProductSubcategoryFilter) return false;
-      }
-      if (!q) return true;
-      const brandName = brands.find((b) => b.id === p.brand)?.name ?? p.brand;
-      return [p.name, p.description, p.descriptionNl ?? "", p.category, p.subcategory ?? "", brandName, p.price.toFixed(2)]
-        .join(" ")
-        .toLowerCase()
-        .includes(q);
+        if (!q) return true;
+        const brandName = brands.find((b) => b.id === p.brand)?.name ?? p.brand;
+        return [p.name, p.description, p.descriptionNl ?? "", p.category, p.subcategory ?? "", brandName, p.price.toFixed(2)]
+          .join(" ")
+          .toLowerCase()
+          .includes(q);
+      });
+      return matches.length > 0 ? [{ ...group, product: matches[0] }] : [];
     });
-  }, [activeProductCategoryFilter, activeProductSubcategoryFilter, brands, productBrandFilter, productSearch, products]);
+  }, [activeProductCategoryFilter, activeProductSubcategoryFilter, brands, productBrandFilter, productGroups, productSearch]);
 
   /** Total counts per category, independent of any active filters (used for the filter-tab badges). */
   const allVisitorsCount = recentVisitors.length;
@@ -695,7 +716,7 @@ export default function AdminPage() {
     setEditing(p);
     setEditState({ status: "idle" });
     // Preselect every restaurant this product is already sold at (its group).
-    const groupBrands = [...new Set((p.groupId ? products.filter((x) => x.groupId === p.groupId) : [p]).map((x) => x.brand))];
+    const groupBrands = [...new Set(products.filter((x) => productGroupKey(x) === productGroupKey(p)).map((x) => x.brand))];
     setEditDraft({
       name: p.name,
       description: p.description,
@@ -2126,7 +2147,7 @@ export default function AdminPage() {
           <div className="flex items-center justify-between">
             <h2 className="text-lg font-black text-slate-900 dark:text-white">{t.admin.manageProducts}</h2>
             <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600 dark:bg-white/10 dark:text-slate-300">
-              {filteredProducts.length}/{products.length}
+              {filteredProductGroups.length}/{productGroups.length}
             </span>
           </div>
           <div className="mt-4 rounded-2xl border border-slate-200 bg-slate-50/70 p-3 dark:border-white/10 dark:bg-white/5">
@@ -2236,30 +2257,34 @@ export default function AdminPage() {
             )}
           </div>
           <div className="mt-4 max-h-[28rem] space-y-2 overflow-y-auto pr-1">
-            {filteredProducts.length === 0 ? (
+            {filteredProductGroups.length === 0 ? (
               <p className="rounded-2xl border border-dashed border-slate-300 bg-slate-50 p-4 text-sm leading-6 text-slate-500 dark:border-white/10 dark:bg-white/5 dark:text-slate-400">
                 {t.admin.noProductMatches}
               </p>
-            ) : filteredProducts.map((p) => {
+            ) : filteredProductGroups.map((group) => {
+              const p = group.product;
               const Icon = categoryIconFor(brands, p.category);
+              const groupBrands = [...new Set(group.products.map((item) => item.brand))];
               return (
-                <div key={p.id} className="flex items-center gap-3 rounded-2xl border border-slate-100 bg-slate-50 p-2.5 dark:border-white/5 dark:bg-white/5">
+                <div key={group.key} className="flex items-center gap-3 rounded-2xl border border-slate-100 bg-slate-50 p-2.5 dark:border-white/5 dark:bg-white/5">
                   <span className="relative grid h-11 w-11 shrink-0 place-items-center overflow-hidden rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
                     {p.image ? <Image src={p.image} alt={p.name} fill sizes="44px" className="object-cover" /> : <Icon />}
                   </span>
                   <div className="min-w-0 flex-1">
-                    <p className="flex items-center gap-1.5 truncate text-sm font-bold text-slate-900 dark:text-white">
-                      {p.name}
-                      <span
-                        className={`shrink-0 rounded-full px-1.5 py-0.5 text-[9px] font-black uppercase tracking-wide ${
-                          p.brand === "tandoor"
-                            ? "bg-sky-500/15 text-sky-700 dark:text-sky-300"
-                            : "bg-emerald-500/15 text-emerald-700 dark:text-emerald-300"
-                        }`}
-                        title={brands.find((b) => b.id === p.brand)?.name ?? p.brand}
-                      >
-                        {(brands.find((b) => b.id === p.brand)?.name ?? p.brand).replace(/[^a-z0-9]/gi, "").slice(0, 3).toUpperCase()}
-                      </span>
+                    <p className="flex flex-wrap items-center gap-1.5 text-sm font-bold text-slate-900 dark:text-white">
+                      <span className="truncate">{p.name}</span>
+                      {groupBrands.map((brandId) => {
+                        const brandName = brands.find((b) => b.id === brandId)?.name ?? brandId;
+                        return (
+                          <span
+                            key={brandId}
+                            className="shrink-0 rounded-full bg-emerald-500/15 px-1.5 py-0.5 text-[9px] font-black uppercase tracking-wide text-emerald-700 dark:text-emerald-300"
+                            title={brandName}
+                          >
+                            {brandName.replace(/[^a-z0-9]/gi, "").slice(0, 3).toUpperCase()}
+                          </span>
+                        );
+                      })}
                     </p>
                     <p className="truncate text-xs text-slate-500 dark:text-slate-400">
                       {p.category}{p.subcategory ? ` -> ${p.subcategory}` : ""} · €{p.price.toFixed(2)}
