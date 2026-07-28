@@ -309,7 +309,7 @@ export async function bootstrap(): Promise<Bootstrap> {
        FROM visitor_sessions
        WHERE last_seen_site = $1 AND last_seen_at > now() - interval '24 hours'
        ORDER BY last_seen_at DESC
-       LIMIT 80`,
+       LIMIT 150`,
       [SITE_ID]
     )) as any[];
 
@@ -351,7 +351,7 @@ export async function bootstrap(): Promise<Bootstrap> {
 
     recentVisitors = [...signedInVisitors, ...guestVisitors]
       .sort((a, b) => b.lastSeenAt - a.lastSeenAt)
-      .slice(0, 80);
+      .slice(0, 150);
   } else if (currentUser) {
     orders = await loadOrders(currentUser.id);
     vipRequests = ((await sql.query(`SELECT * FROM vip_requests WHERE user_id = $1 ORDER BY created_at DESC`, [currentUser.id])) as any[]).map(rowToVipRequest);

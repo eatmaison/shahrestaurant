@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
+  FaArrowsRotate,
   FaBagShopping,
   FaBoxOpen,
   FaBuilding,
@@ -44,7 +45,7 @@ import { useLang, useStore } from "../providers";
 import { CATEGORY_ICON_CHOICES, categoryIconFor, formatOrderNumber, isDrinkCategory, ORDER_STATUS_FLOW } from "../lib/data";
 import { SOCIAL_PLATFORMS } from "../components/socialIcons";
 import RichTextEditor from "../components/RichTextEditor";
-import type { Brand, Category, Order, OrderStatus, Product } from "../lib/types";
+import type { Brand, Category, Order, OrderStatus, Product, RecentVisitor } from "../lib/types";
 
 const statusIcons: Record<OrderStatus, typeof FaClock> = {
   new: FaClock,
@@ -132,12 +133,11 @@ const processImageFile = (file: File, opts?: { maxDim?: number; mime?: string })
     img.src = url;
   });
 
-const ADMIN_ONLINE_WINDOW_MS = 5 * 60_000;
 const ADMIN_INITIAL_NOW = Date.now();
 
 export default function AdminPage() {
   const { t, lang } = useLang();
-  const { currentUser, products, orders, users, addProductGroup, removeProduct, updateProductGroup, brands, manageBrands, updateOrderStatus, setOrderPaid, setInvoiceSent, deleteOrder, vipRequests, approveVipRequest, rejectVipRequest, socialLinks, updateSocialLink, reservations, setReservationStatus, cancelReservation, onlineVisitors, recentVisitors, hydrated } = useStore();
+  const { currentUser, products, orders, users, addProductGroup, removeProduct, updateProductGroup, brands, manageBrands, updateOrderStatus, setOrderPaid, setInvoiceSent, deleteOrder, vipRequests, approveVipRequest, rejectVipRequest, socialLinks, updateSocialLink, reservations, setReservationStatus, cancelReservation, onlineVisitors, recentVisitors, refresh, hydrated } = useStore();
   const fileRef = useRef<HTMLInputElement>(null);
   const editFileRef = useRef<HTMLInputElement>(null);
   const logoFileRef = useRef<HTMLInputElement>(null);
@@ -370,11 +370,10 @@ export default function AdminPage() {
     });
   }, [activeProductCategoryFilter, activeProductSubcategoryFilter, brands, productBrandFilter, productSearch, products]);
 
-  /** Signed-in users and guest sessions seen recently, most recent first. */
-  const recentlyOnline = useMemo(
-    () => [...recentVisitors].sort((a, b) => b.lastSeenAt - a.lastSeenAt).slice(0, 50),
-    [recentVisitors]
-  );
+  /** Total counts per category, independent of any active filters (used for the filter-tab badges). */
+  const allVisitorsCount = recentVisitors.length;
+  const registeredVisitorsCount = useMemo(() => recentVisitors.filter((v) => v.kind === "user").length, [recentVisitors]);
+  const guestVisitorsCount = useMemo(() => recentVisitors.filter((v) => v.kind === "guest").length, [recentVisitors]);
 
   /** Number of signed-in users seen within the online window (green-dot users). */
   const registeredOnlineCount = useMemo(
@@ -387,6 +386,93 @@ export default function AdminPage() {
     () => recentVisitors.filter((entry) => entry.kind === "guest" && entry.isOnline).length,
     [recentVisitors]
   );
+
+  // Recently-online filters: registered vs guest, free-text search, online-only toggle, and sort order.
+  const [visitorFilter, setVisitorFilter] = useState<"all" | "user" | "guest">("all");
+  const [visitorSearch, setVisitorSearch] = useState("");
+  const [visitorOnlineOnly, setVisitorOnlineOnly] = useState(false);
+  const [visitorSort, setVisitorSort] = useState<"recent" | "online" | "visits" | "firstSeen">("recent");
+  /** Session id just copied to the clipboard (briefly shows a "Copied!" confirmation). */
+  const [copiedSessionId, setCopiedSessionId] = useState<string | null>(null);
+  /** Timestamp of the last successful visitor-data refresh (auto or manual). */
+  const [visitorsUpdatedAt, setVisitorsUpdatedAt] = useState(ADMIN_INITIAL_NOW);
+  const [visitorsRefreshing, setVisitorsRefreshing] = useState(false);
+
+  /** Signed-in users and guest sessions, filtered/searched/sorted per the admin's selection. */
+  const filteredVisitors = useMemo(() => {
+    const q = visitorSearch.trim().toLowerCase();
+    const list = recentVisitors.filter((entry) => {
+      if (visitorFilter !== "all" && entry.kind !== visitorFilter) return false;
+      if (visitorOnlineOnly && !entry.isOnline) return false;
+      if (!q) return true;
+      const haystack = [entry.name, entry.email ?? "", entry.phone ?? "", entry.sessionId ?? ""].join(" ").toLowerCase();
+      return haystack.includes(q);
+    });
+    const sorted = [...list];
+    if (visitorSort === "online") {
+      sorted.sort((a, b) => Number(b.isOnline) - Number(a.isOnline) || b.lastSeenAt - a.lastSeenAt);
+    } else if (visitorSort === "visits") {
+      const visits = (v: RecentVisitor) => v.visitCount ?? (v.kind === "user" ? v.orderCount ?? 0 : 1);
+      sorted.sort((a, b) => visits(b) - visits(a) || b.lastSeenAt - a.lastSeenAt);
+    } else if (visitorSort === "firstSeen") {
+      sorted.sort((a, b) => (a.firstSeenAt ?? a.lastSeenAt) - (b.firstSeenAt ?? b.lastSeenAt));
+    } else {
+      sorted.sort((a, b) => b.lastSeenAt - a.lastSeenAt);
+    }
+    return sorted;
+  }, [recentVisitors, visitorFilter, visitorOnlineOnly, visitorSearch, visitorSort]);
+
+  /** Signed-in users and guest sessions seen recently, filtered and capped for display. */
+  const recentlyOnline = useMemo(() => filteredVisitors.slice(0, 50), [filteredVisitors]);
+
+  /** Whether any non-default filter/search/sort is currently applied. */
+  const visitorFiltersActive =
+    visitorFilter !== "all" || visitorOnlineOnly || visitorSearch.trim() !== "" || visitorSort !== "recent";
+
+  const clearVisitorFilters = () => {
+    setVisitorFilter("all");
+    setVisitorSearch("");
+    setVisitorOnlineOnly(false);
+    setVisitorSort("recent");
+  };
+
+  const copySessionId = async (id: string) => {
+    try {
+      await navigator.clipboard.writeText(id);
+      setCopiedSessionId(id);
+      window.setTimeout(() => setCopiedSessionId((cur) => (cur === id ? null : cur)), 1500);
+    } catch {
+      /* clipboard unavailable in this browser/context - ignore */
+    }
+  };
+
+  /** Re-fetch visitor + admin data periodically so the recently-online list stays accurate without a manual reload. */
+  useEffect(() => {
+    if (!hydrated) return;
+    const intervalId = window.setInterval(() => {
+      refresh().then(() => setVisitorsUpdatedAt(Date.now()));
+    }, 30_000);
+    return () => window.clearInterval(intervalId);
+  }, [hydrated, refresh]);
+
+  const handleVisitorsRefresh = async () => {
+    setVisitorsRefreshing(true);
+    try {
+      await refresh();
+      setVisitorsUpdatedAt(Date.now());
+    } finally {
+      setVisitorsRefreshing(false);
+    }
+  };
+
+  /** How long a guest session has been active, e.g. "2h 15m". */
+  const formatDuration = (ms: number): string => {
+    const totalMin = Math.max(0, Math.floor(ms / 60_000));
+    if (totalMin < 60) return `${totalMin}m`;
+    const h = Math.floor(totalMin / 60);
+    const m = totalMin % 60;
+    return m ? `${h}h ${m}m` : `${h}h`;
+  };
 
   /** Reservation list filter: upcoming (pending/confirmed, today onwards) or all. */
   const [resFilter, setResFilter] = useState<"upcoming" | "all">("upcoming");
@@ -409,6 +495,10 @@ export default function AdminPage() {
     if (diffH < 24) return t.admin.hoursAgo.replace("{n}", String(diffH));
     return t.admin.daysAgo.replace("{n}", String(Math.floor(diffH / 24)));
   };
+
+  /** Full local date/time shown as a tooltip on each visitor's last-seen badge. */
+  const absoluteTime = (ts: number): string =>
+    new Date(ts).toLocaleString(lang === "nl" ? "nl-NL" : "en-GB", { dateStyle: "medium", timeStyle: "short" });
 
   const lastSeenSiteLabel = (site?: string): string | null => {
     if (!site) return null;
@@ -1315,7 +1405,7 @@ export default function AdminPage() {
         )}
       </div>
 
-      {/* Recently online - signed-in users and guest sessions */}
+      {/* Recently online - signed-in users and guest sessions, with filtering, search and sorting */}
       <div className="mt-6 rounded-3xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-white/5">
         <div className="flex items-center gap-2">
           <span className="grid h-9 w-9 place-items-center rounded-xl bg-sky-500/10 text-sky-600 dark:text-sky-400">
@@ -1330,7 +1420,7 @@ export default function AdminPage() {
               className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-2.5 py-1 text-xs font-bold text-emerald-700 dark:text-emerald-300"
               title={t.admin.onlineNow}
             >
-              <span className="h-2 w-2 rounded-full bg-emerald-500" />
+              <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-500" />
               {registeredOnlineCount} {t.admin.signedInLabel}
             </span>
             <span
@@ -1339,64 +1429,223 @@ export default function AdminPage() {
             >
               <FaUsers className="text-[10px]" /> {guestOnlineCount} {t.admin.guestsLabel}
             </span>
+            <button
+              type="button"
+              onClick={handleVisitorsRefresh}
+              disabled={visitorsRefreshing}
+              title={t.admin.recentlyOnlineRefresh}
+              className="inline-flex items-center gap-1.5 rounded-full bg-slate-100 px-2.5 py-1 text-xs font-bold text-slate-600 transition hover:bg-slate-200 disabled:opacity-60 dark:bg-white/10 dark:text-slate-300 dark:hover:bg-white/20"
+            >
+              <FaArrowsRotate className={visitorsRefreshing ? "animate-spin" : ""} /> {t.admin.recentlyOnlineRefresh}
+            </button>
           </div>
         </div>
+        <p className="mt-1.5 text-[11px] text-slate-400 dark:text-slate-500">
+          {t.admin.recentlyOnlineLastUpdated.replace("{time}", relativeTime(visitorsUpdatedAt))}
+        </p>
+
+        {/* Filter tabs, search, online-only toggle and sort order */}
+        <div className="mt-4 flex flex-wrap items-center gap-2">
+          <div className="inline-flex rounded-full bg-slate-100 p-1 text-xs font-bold dark:bg-white/5">
+            {([
+              ["all", t.admin.recentlyOnlineFilterAll, allVisitorsCount],
+              ["user", t.admin.recentlyOnlineFilterUsers, registeredVisitorsCount],
+              ["guest", t.admin.recentlyOnlineFilterGuests, guestVisitorsCount],
+            ] as const).map(([value, label, count]) => (
+              <button
+                key={value}
+                type="button"
+                onClick={() => setVisitorFilter(value)}
+                className={`rounded-full px-3 py-1.5 transition ${
+                  visitorFilter === value
+                    ? "bg-white text-slate-900 shadow dark:bg-white/20 dark:text-white"
+                    : "text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200"
+                }`}
+              >
+                {label} <span className="opacity-60">({count})</span>
+              </button>
+            ))}
+          </div>
+
+          <label className="relative min-w-[180px] flex-1">
+            <FaMagnifyingGlass className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-xs text-slate-400" />
+            <input
+              type="text"
+              value={visitorSearch}
+              onChange={(e) => setVisitorSearch(e.target.value)}
+              placeholder={t.admin.recentlyOnlineSearchPlaceholder}
+              className="w-full rounded-full border border-slate-200 bg-white py-1.5 pl-8 pr-8 text-xs font-semibold text-slate-700 outline-none focus:border-sky-400 dark:border-white/10 dark:bg-white/5 dark:text-slate-200"
+            />
+            {visitorSearch && (
+              <button
+                type="button"
+                onClick={() => setVisitorSearch("")}
+                className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"
+              >
+                <FaXmark className="text-xs" />
+              </button>
+            )}
+          </label>
+
+          <label className="inline-flex items-center gap-1.5 rounded-full bg-slate-100 px-3 py-1.5 text-xs font-bold text-slate-600 dark:bg-white/5 dark:text-slate-300">
+            <input
+              type="checkbox"
+              checked={visitorOnlineOnly}
+              onChange={(e) => setVisitorOnlineOnly(e.target.checked)}
+              className="h-3.5 w-3.5 accent-emerald-500"
+            />
+            {t.admin.recentlyOnlineOnlineOnly}
+          </label>
+
+          <select
+            value={visitorSort}
+            onChange={(e) => setVisitorSort(e.target.value as typeof visitorSort)}
+            aria-label={t.admin.recentlyOnlineSortLabel}
+            className="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-bold text-slate-600 outline-none focus:border-sky-400 dark:border-white/10 dark:bg-white/5 dark:text-slate-300"
+          >
+            <option value="recent">{t.admin.recentlyOnlineSortRecent}</option>
+            <option value="online">{t.admin.recentlyOnlineSortOnlineFirst}</option>
+            <option value="visits">{t.admin.recentlyOnlineSortVisits}</option>
+            <option value="firstSeen">{t.admin.recentlyOnlineSortFirstSeen}</option>
+          </select>
+
+          {visitorFiltersActive && (
+            <button
+              type="button"
+              onClick={clearVisitorFilters}
+              className="inline-flex items-center gap-1 rounded-full px-3 py-1.5 text-xs font-bold text-rose-600 hover:bg-rose-50 dark:text-rose-400 dark:hover:bg-rose-500/10"
+            >
+              <FaXmark className="text-[10px]" /> {t.admin.recentlyOnlineClearFilters}
+            </button>
+          )}
+        </div>
+
+        <p className="mt-3 text-[11px] font-semibold text-slate-400 dark:text-slate-500">
+          {t.admin.recentlyOnlineShowingCount
+            .replace("{shown}", String(recentlyOnline.length))
+            .replace("{total}", String(filteredVisitors.length))}
+        </p>
 
         {recentlyOnline.length === 0 ? (
-          <p className="mt-4 text-sm text-slate-500 dark:text-slate-400">{t.admin.noCustomers}</p>
+          <p className="mt-4 text-sm text-slate-500 dark:text-slate-400">
+            {recentVisitors.length === 0 ? t.admin.noCustomers : t.admin.recentlyOnlineNoResults}
+          </p>
         ) : (
-          <ul className="mt-5 divide-y divide-slate-100 dark:divide-white/5">
-            {recentlyOnline.map((u) => {
-              const online = now - (u.lastSeenAt ?? 0) < ADMIN_ONLINE_WINDOW_MS;
-              const orderCount = orders.filter((o) => o.userId === u.id && (o.paid || o.accountType === "company")).length;
-              const lastSeenSite = lastSeenSiteLabel(u.lastSeenSite);
+          <ul className="mt-3 space-y-2">
+            {recentlyOnline.map((entry) => {
+              const online = entry.isOnline;
+              const orderCount = entry.kind === "user" ? (entry.orderCount ?? 0) : 0;
+              const lastSeenSite = lastSeenSiteLabel(entry.lastSeenSite);
+              const avatarLetter = entry.kind === "guest" ? "G" : entry.name.charAt(0).toUpperCase();
+              const isNewGuest = entry.kind === "guest" && entry.firstSeenAt != null && now - entry.firstSeenAt < 60 * 60_000;
+              const badgeLabel = entry.kind === "guest"
+                ? "Guest"
+                : entry.role === "admin"
+                  ? "Admin"
+                  : entry.accountType === "company"
+                    ? "B2B"
+                    : "Signed in";
               return (
-                <li key={u.id} className="flex items-center gap-3 py-3">
-                  <span className="relative grid h-10 w-10 shrink-0 place-items-center rounded-full bg-gradient-to-br from-sky-500 to-indigo-500 text-sm font-black text-white">
-                    {u.name.charAt(0).toUpperCase()}
-                    <span
-                      className={`absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full border-2 border-white dark:border-[#170d04] ${
-                        online ? "bg-emerald-500" : "bg-slate-300 dark:bg-slate-600"
-                      }`}
-                    />
-                  </span>
-                  <div className="min-w-0 flex-1">
-                    <p className="flex items-center gap-1.5 truncate text-sm font-bold text-slate-900 dark:text-white">
-                      {u.name}
-                      {u.role === "admin" && <FaLock className="shrink-0 text-[10px] text-slate-400" title="Admin" />}
-                      {u.isVip && <FaCrown className="shrink-0 text-xs text-amber-500" title="VIP" />}
-                      {u.accountType === "company" && <FaBuilding className="shrink-0 text-xs text-sky-500" title="B2B" />}
-                    </p>
-                    <p className="truncate text-xs text-slate-500 dark:text-slate-400">{u.email}</p>
-                    {u.phone && (
-                      <p className="mt-0.5 flex items-center gap-1.5 truncate text-xs font-semibold text-slate-600 dark:text-slate-300">
-                        <FaPhone className="shrink-0 text-[10px] text-slate-400" /> {u.phone}
+                <li key={`${entry.kind}-${entry.id}`} className="flex flex-col gap-3 rounded-2xl border border-slate-100 bg-slate-50/70 p-3 md:flex-row md:items-center md:gap-3 dark:border-white/5 dark:bg-white/5">
+                  <div className="flex min-w-0 flex-1 items-start gap-3">
+                    <span className={`relative grid h-11 w-11 shrink-0 place-items-center rounded-full bg-gradient-to-br ${entry.kind === "guest" ? "from-amber-500 to-orange-500" : "from-sky-500 to-indigo-500"} text-sm font-black text-white`}>
+                      {avatarLetter}
+                      <span
+                        className={`absolute -bottom-0.5 -right-0.5 h-3.5 w-3.5 rounded-full border-2 border-white dark:border-[#170d04] ${
+                          online ? "bg-emerald-500" : "bg-slate-300 dark:bg-slate-600"
+                        }`}
+                      />
+                    </span>
+                    <div className="min-w-0 flex-1">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <p className="truncate text-sm font-black text-slate-900 dark:text-white">
+                          {entry.kind === "guest" ? `${t.admin.guest} • ${String(entry.sessionId ?? entry.id).slice(0, 8)}` : entry.name}
+                        </p>
+                        <span
+                          className={`inline-flex items-center rounded-full px-2.5 py-1 text-[10px] font-black uppercase tracking-wide ${
+                            entry.kind === "guest"
+                              ? "bg-amber-500/10 text-amber-700 dark:text-amber-300"
+                              : "bg-slate-100 text-slate-600 dark:bg-white/10 dark:text-slate-300"
+                          }`}
+                        >
+                          {badgeLabel}
+                        </span>
+                        {isNewGuest && (
+                          <span className="inline-flex items-center rounded-full bg-emerald-500/10 px-2.5 py-1 text-[10px] font-black uppercase tracking-wide text-emerald-700 dark:text-emerald-300">
+                            {t.admin.recentlyOnlineNewBadge}
+                          </span>
+                        )}
+                        {entry.kind === "user" && entry.role === "admin" && <FaLock className="shrink-0 text-[10px] text-slate-400" title="Admin" />}
+                        {entry.kind === "user" && entry.isVip && <FaCrown className="shrink-0 text-xs text-amber-500" title="VIP" />}
+                        {entry.kind === "user" && entry.accountType === "company" && <FaBuilding className="shrink-0 text-xs text-sky-500" title="B2B" />}
+                      </div>
+                      <p className="truncate text-xs text-slate-500 dark:text-slate-400">
+                        {entry.kind === "guest" ? entry.email ?? `Session ${String(entry.id).slice(0, 8)}` : entry.email}
                       </p>
+                      {entry.kind === "user" && entry.phone && (
+                        <p className="mt-0.5 flex items-center gap-1.5 truncate text-xs font-semibold text-slate-600 dark:text-slate-300">
+                          <FaPhone className="shrink-0 text-[10px] text-slate-400" /> {entry.phone}
+                        </p>
+                      )}
+                      <div className="mt-2 flex flex-wrap items-center gap-2 text-[11px]">
+                        {entry.kind === "guest" ? (
+                          <>
+                            <span className="rounded-full bg-amber-500/10 px-2 py-0.5 font-semibold text-amber-700 dark:text-amber-300">
+                              {entry.visitCount && entry.visitCount > 1 ? `${entry.visitCount} visits` : "1 visit"}
+                            </span>
+                            <span className="rounded-full bg-slate-100 px-2 py-0.5 text-slate-600 dark:bg-white/10 dark:text-slate-300">
+                              {entry.firstSeenAt ? `First seen ${relativeTime(entry.firstSeenAt)}` : "New session"}
+                            </span>
+                            {entry.firstSeenAt != null && (
+                              <span className="rounded-full bg-slate-100 px-2 py-0.5 text-slate-600 dark:bg-white/10 dark:text-slate-300">
+                                {t.admin.recentlyOnlineActiveFor.replace("{duration}", formatDuration(now - entry.firstSeenAt))}
+                              </span>
+                            )}
+                            {entry.sessionId && (
+                              <button
+                                type="button"
+                                onClick={() => copySessionId(entry.sessionId!)}
+                                title={t.admin.recentlyOnlineCopySession}
+                                className="rounded-full bg-slate-100 px-2 py-0.5 font-semibold text-slate-600 transition hover:bg-slate-200 dark:bg-white/10 dark:text-slate-300 dark:hover:bg-white/20"
+                              >
+                                {copiedSessionId === entry.sessionId ? t.admin.recentlyOnlineCopied : t.admin.recentlyOnlineCopySession}
+                              </button>
+                            )}
+                          </>
+                        ) : (
+                          <>
+                            {orderCount > 0 && (
+                              <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-2 py-0.5 font-semibold text-emerald-700 dark:text-emerald-300">
+                                <FaReceipt className="text-[10px]" /> {orderCount} {t.admin.ordersLabel.toLowerCase()}
+                              </span>
+                            )}
+                            {lastSeenSite && (
+                              <span className="inline-flex items-center gap-1.5 rounded-full bg-sky-500/10 px-2 py-0.5 font-semibold text-sky-700 dark:text-sky-300">
+                                <FaStore className="text-[10px]" /> {lastSeenSite}
+                              </span>
+                            )}
+                          </>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex shrink-0 items-center gap-2 md:flex-col md:items-end">
+                    <span
+                      title={absoluteTime(entry.lastSeenAt)}
+                      className={`rounded-full px-2.5 py-1 text-xs font-bold ${
+                        online
+                          ? "bg-emerald-500/10 text-emerald-700 dark:text-emerald-300"
+                          : "bg-slate-100 text-slate-500 dark:bg-white/5 dark:text-slate-400"
+                      }`}
+                    >
+                      {online ? t.admin.onlineNow : relativeTime(entry.lastSeenAt)}
+                    </span>
+                    {entry.kind === "guest" && lastSeenSite && (
+                      <span className="inline-flex items-center gap-1.5 rounded-full bg-sky-500/10 px-2 py-0.5 text-[11px] font-semibold text-sky-700 dark:text-sky-300">
+                        <FaStore className="text-[10px]" /> {lastSeenSite}
+                      </span>
                     )}
                   </div>
-                  <span
-                    className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-slate-100 px-2.5 py-1 text-xs font-bold text-slate-600 dark:bg-white/10 dark:text-slate-300"
-                    title={t.admin.ordersLabel}
-                  >
-                    <FaReceipt className="text-[10px] text-emerald-600 dark:text-emerald-400" /> {orderCount}
-                  </span>
-                  {lastSeenSite && (
-                    <span
-                      className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-sky-500/10 px-2.5 py-1 text-xs font-bold text-sky-700 dark:text-sky-300"
-                      title="Website"
-                    >
-                      <FaStore className="text-[10px]" /> {lastSeenSite}
-                    </span>
-                  )}
-                  <span
-                    className={`shrink-0 rounded-full px-2.5 py-1 text-xs font-bold ${
-                      online
-                        ? "bg-emerald-500/10 text-emerald-700 dark:text-emerald-300"
-                        : "bg-slate-100 text-slate-500 dark:bg-white/5 dark:text-slate-400"
-                    }`}
-                  >
-                    {relativeTime(u.lastSeenAt!)}
-                  </span>
                 </li>
               );
             })}

@@ -375,6 +375,25 @@ export interface Dictionary {
     onlineNow: string;
     signedInLabel: string;
     guestsLabel: string;
+    recentlyOnlineFilterAll: string;
+    recentlyOnlineFilterUsers: string;
+    recentlyOnlineFilterGuests: string;
+    recentlyOnlineSearchPlaceholder: string;
+    recentlyOnlineOnlineOnly: string;
+    recentlyOnlineSortLabel: string;
+    recentlyOnlineSortRecent: string;
+    recentlyOnlineSortOnlineFirst: string;
+    recentlyOnlineSortVisits: string;
+    recentlyOnlineSortFirstSeen: string;
+    recentlyOnlineNoResults: string;
+    recentlyOnlineShowingCount: string;
+    recentlyOnlineNewBadge: string;
+    recentlyOnlineRefresh: string;
+    recentlyOnlineLastUpdated: string;
+    recentlyOnlineCopySession: string;
+    recentlyOnlineCopied: string;
+    recentlyOnlineClearFilters: string;
+    recentlyOnlineActiveFor: string;
     bookedOn: string;
     socialTitle: string;
     socialSub: string;
@@ -919,6 +938,25 @@ const en: Dictionary = {
     onlineNow: "Online now",
     signedInLabel: "signed in",
     guestsLabel: "guests",
+    recentlyOnlineFilterAll: "All",
+    recentlyOnlineFilterUsers: "Registered",
+    recentlyOnlineFilterGuests: "Guests",
+    recentlyOnlineSearchPlaceholder: "Search by name, email or session…",
+    recentlyOnlineOnlineOnly: "Online only",
+    recentlyOnlineSortLabel: "Sort by",
+    recentlyOnlineSortRecent: "Most recent",
+    recentlyOnlineSortOnlineFirst: "Online first",
+    recentlyOnlineSortVisits: "Most visits",
+    recentlyOnlineSortFirstSeen: "First seen",
+    recentlyOnlineNoResults: "No visitors match these filters.",
+    recentlyOnlineShowingCount: "Showing {shown} of {total}",
+    recentlyOnlineNewBadge: "New",
+    recentlyOnlineRefresh: "Refresh",
+    recentlyOnlineLastUpdated: "Updated {time}",
+    recentlyOnlineCopySession: "Copy session ID",
+    recentlyOnlineCopied: "Copied!",
+    recentlyOnlineClearFilters: "Clear filters",
+    recentlyOnlineActiveFor: "Active for {duration}",
     bookedOn: "Booked",
     socialTitle: "Social media links",
     socialSub: "Add your profile links and switch on the icons you want to show in the website footer.",
@@ -1465,6 +1503,25 @@ const nl: Dictionary = {
     onlineNow: "Nu online",
     signedInLabel: "ingelogd",
     guestsLabel: "gasten",
+    recentlyOnlineFilterAll: "Alle",
+    recentlyOnlineFilterUsers: "Geregistreerd",
+    recentlyOnlineFilterGuests: "Gasten",
+    recentlyOnlineSearchPlaceholder: "Zoek op naam, e-mail of sessie…",
+    recentlyOnlineOnlineOnly: "Alleen online",
+    recentlyOnlineSortLabel: "Sorteren op",
+    recentlyOnlineSortRecent: "Meest recent",
+    recentlyOnlineSortOnlineFirst: "Eerst online",
+    recentlyOnlineSortVisits: "Meeste bezoeken",
+    recentlyOnlineSortFirstSeen: "Eerst gezien",
+    recentlyOnlineNoResults: "Geen bezoekers komen overeen met deze filters.",
+    recentlyOnlineShowingCount: "{shown} van {total} getoond",
+    recentlyOnlineNewBadge: "Nieuw",
+    recentlyOnlineRefresh: "Vernieuwen",
+    recentlyOnlineLastUpdated: "Bijgewerkt {time}",
+    recentlyOnlineCopySession: "Sessie-ID kopiëren",
+    recentlyOnlineCopied: "Gekopieerd!",
+    recentlyOnlineClearFilters: "Filters wissen",
+    recentlyOnlineActiveFor: "Actief sinds {duration}",
     bookedOn: "Geboekt",
     socialTitle: "Social media links",
     socialSub: "Voeg je profiellinks toe en zet de iconen aan die je in de footer van de website wilt tonen.",
