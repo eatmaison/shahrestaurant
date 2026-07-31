@@ -499,6 +499,21 @@ select option {
   display: none;
 }
 
+.mobile-menu-scroll {
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+  touch-action: pan-x;
+  -webkit-overflow-scrolling: touch;
+}
+
+.mobile-menu-scroll::-webkit-scrollbar {
+  display: none;
+}
+
 .page-stage [class*="fixed inset-0"] > [class*="bg-black"] {
   backdrop-filter: blur(10px);
   background: rgba(12, 7, 3, 0.54);

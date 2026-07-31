@@ -598,14 +598,14 @@ export default function OrderPage() {
       {/* Mobile & Tablet: Brand switch + Categories Bar (Sticky) */}
       <div className="sticky top-[64px] z-40 border-b border-emerald-500/20 bg-white/90 shadow-lg shadow-emerald-900/5 backdrop-blur-xl dark:border-white/10 dark:bg-[#0c0703]/90 lg:hidden">
         {/* Restaurant switcher */}
-        <div className="flex gap-2 overflow-x-auto px-3 pt-2">
+        <div className="mobile-menu-scroll flex gap-2 px-3 pt-2">
           {sortedBrands.map((b) => {
             const active = b.id === activeBrand;
             return (
               <button
                 key={b.id}
                 onClick={() => selectBrand(b.id)}
-                className={`flex shrink-0 items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-bold transition ${
+                className={`flex shrink-0 snap-start items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-bold transition ${
                   active
                     ? "border-emerald-500 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300"
                     : "border-slate-200 bg-white text-slate-500 dark:border-white/10 dark:bg-white/5 dark:text-slate-400"
@@ -619,7 +619,7 @@ export default function OrderPage() {
             );
           })}
         </div>
-        <div className="flex gap-2 overflow-x-auto px-3 py-2">
+        <div className="mobile-menu-scroll flex gap-2 px-3 py-2">
           {(activeBrandCfg?.categories ?? []).map((c) => {
             const cat = c.name;
             const Icon = categoryIconFor(brands, cat);
@@ -628,7 +628,7 @@ export default function OrderPage() {
               <button
                 key={cat}
                 onClick={() => selectCategory(cat)}
-                className={`flex shrink-0 items-center gap-1.5 rounded-full px-2.5 py-1 text-[10px] font-semibold transition ${
+                className={`flex shrink-0 snap-start items-center gap-1.5 rounded-full px-2.5 py-1 text-[10px] font-semibold transition ${
                   active
                     ? "bg-gradient-to-r from-emerald-600 to-emerald-500 text-white shadow-md shadow-emerald-600/30"
                     : "border border-slate-100 bg-white text-slate-600 hover:border-emerald-400 hover:bg-emerald-50 dark:border-white/5 dark:bg-white/5 dark:text-slate-300"
@@ -640,10 +640,10 @@ export default function OrderPage() {
           })}
         </div>
         {subcategoriesOf(activeBrand, activeCategory).length > 0 && (
-          <div className="flex gap-2 overflow-x-auto px-3 pb-2">
+          <div className="mobile-menu-scroll flex gap-2 px-3 pb-2">
             <button
               onClick={() => setActiveSubcategory("all")}
-              className={`flex shrink-0 items-center gap-1.5 rounded-full px-2.5 py-1 text-[10px] font-semibold transition ${
+              className={`flex shrink-0 snap-start items-center gap-1.5 rounded-full px-2.5 py-1 text-[10px] font-semibold transition ${
                 activeSubcategory === "all"
                   ? "bg-sky-600 text-white shadow-md shadow-sky-600/25"
                   : "border border-slate-100 bg-white text-slate-600 hover:border-sky-400 hover:bg-sky-50 dark:border-white/5 dark:bg-white/5 dark:text-slate-300"
@@ -658,7 +658,7 @@ export default function OrderPage() {
                 <button
                   key={sub.name}
                   onClick={() => setActiveSubcategory(sub.name)}
-                  className={`flex shrink-0 items-center gap-1.5 rounded-full px-2.5 py-1 text-[10px] font-semibold transition ${
+                  className={`flex shrink-0 snap-start items-center gap-1.5 rounded-full px-2.5 py-1 text-[10px] font-semibold transition ${
                     active
                       ? "bg-sky-600 text-white shadow-md shadow-sky-600/25"
                       : "border border-slate-100 bg-white text-slate-600 hover:border-sky-400 hover:bg-sky-50 dark:border-white/5 dark:bg-white/5 dark:text-slate-300"

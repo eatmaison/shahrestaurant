@@ -261,7 +261,8 @@ export function Providers({ children }: { children: ReactNode }) {
     queueMicrotask(() => {
       const initialTheme = readThemePreference(document.documentElement.classList.contains("dark") ? "dark" : "light");
       setTheme((currentTheme) => (currentTheme === initialTheme ? currentTheme : initialTheme));
-      setLangState(readJSON<Lang>(LS.lang, "nl"));
+      setLangState("nl");
+      window.localStorage.removeItem(LS.lang);
       setCart(readJSON<Record<string, number>>(LS.cart, {}));
       refresh().finally(() => setHydrated(true));
     });
@@ -278,7 +279,6 @@ export function Providers({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (!hydrated) return;
     document.documentElement.setAttribute("lang", lang);
-    window.localStorage.setItem(LS.lang, JSON.stringify(lang));
   }, [lang, hydrated]);
 
   // Persist the cart (client-only; users/orders/etc. live in the database).
