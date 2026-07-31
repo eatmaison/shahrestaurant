@@ -500,18 +500,41 @@ select option {
 }
 
 .mobile-menu-scroll {
+  width: 100%;
   max-width: 100%;
   min-width: 0;
-  overflow-x: auto;
+  overflow-x: scroll;
+  overflow-y: hidden;
   overscroll-behavior-x: contain;
   scroll-snap-type: x proximity;
-  scrollbar-width: none;
-  touch-action: pan-x;
+  scrollbar-color: rgba(217, 126, 38, 0.72) transparent;
+  scrollbar-width: thin;
+  touch-action: pan-x pan-y;
+  cursor: grab;
+  user-select: none;
   -webkit-overflow-scrolling: touch;
 }
 
 .mobile-menu-scroll::-webkit-scrollbar {
-  display: none;
+  display: block;
+  height: 6px;
+}
+
+.mobile-menu-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.mobile-menu-scroll::-webkit-scrollbar-thumb {
+  border-radius: 9999px;
+  background: rgba(217, 126, 38, 0.72);
+}
+
+.mobile-menu-scroll.is-dragging {
+  cursor: grabbing;
+}
+
+.mobile-menu-scroll > * {
+  flex: 0 0 auto;
 }
 
 .page-stage [class*="fixed inset-0"] > [class*="bg-black"] {

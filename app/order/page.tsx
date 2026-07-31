@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import {
   FaArrowRight,
   FaBagShopping,
@@ -42,6 +42,54 @@ import {
 } from "../lib/data";
 import { nextOpening } from "../lib/openingHours";
 import type { Brand, Category, MenuUpgrades, Product } from "../lib/types";
+
+function MobileMenuScrollRow({ children, className = "" }: { children: ReactNode; className?: string }) {
+  const rowRef = useRef<HTMLDivElement>(null);
+  const dragRef = useRef({ active: false, moved: false, startX: 0, scrollLeft: 0 });
+  const suppressClickRef = useRef(false);
+
+  const stopDragging = (pointerId: number) => {
+    const row = rowRef.current;
+    if (!row || !dragRef.current.active) return;
+    dragRef.current.active = false;
+    suppressClickRef.current = dragRef.current.moved;
+    row.classList.remove("is-dragging");
+    if (row.hasPointerCapture(pointerId)) row.releasePointerCapture(pointerId);
+  };
+
+  return (
+    <div
+      ref={rowRef}
+      className={`mobile-menu-scroll flex gap-2 ${className}`}
+      onPointerDown={(event) => {
+        if (event.pointerType === "mouse" && event.button !== 0) return;
+        const row = rowRef.current;
+        if (!row || row.scrollWidth <= row.clientWidth) return;
+        dragRef.current = { active: true, moved: false, startX: event.clientX, scrollLeft: row.scrollLeft };
+        row.classList.add("is-dragging");
+        row.setPointerCapture(event.pointerId);
+      }}
+      onPointerMove={(event) => {
+        const row = rowRef.current;
+        const drag = dragRef.current;
+        if (!row || !drag.active) return;
+        const distance = event.clientX - drag.startX;
+        if (Math.abs(distance) > 4) drag.moved = true;
+        row.scrollLeft = drag.scrollLeft - distance;
+      }}
+      onPointerUp={(event) => stopDragging(event.pointerId)}
+      onPointerCancel={(event) => stopDragging(event.pointerId)}
+      onClickCapture={(event) => {
+        if (!suppressClickRef.current) return;
+        suppressClickRef.current = false;
+        event.preventDefault();
+        event.stopPropagation();
+      }}
+    >
+      {children}
+    </div>
+  );
+}
 
 export default function OrderPage() {
   const { t, lang } = useLang();
@@ -598,7 +646,7 @@ export default function OrderPage() {
       {/* Mobile & Tablet: Brand switch + Categories Bar (Sticky) */}
       <div className="sticky top-[64px] z-40 border-b border-emerald-500/20 bg-white/90 shadow-lg shadow-emerald-900/5 backdrop-blur-xl dark:border-white/10 dark:bg-[#0c0703]/90 lg:hidden">
         {/* Restaurant switcher */}
-        <div className="mobile-menu-scroll flex gap-2 px-3 pt-2">
+        <MobileMenuScrollRow className="px-3 pt-2">
           {sortedBrands.map((b) => {
             const active = b.id === activeBrand;
             return (
@@ -618,8 +666,8 @@ export default function OrderPage() {
               </button>
             );
           })}
-        </div>
-        <div className="mobile-menu-scroll flex gap-2 px-3 py-2">
+        </MobileMenuScrollRow>
+        <MobileMenuScrollRow className="px-3 py-2">
           {(activeBrandCfg?.categories ?? []).map((c) => {
             const cat = c.name;
             const Icon = categoryIconFor(brands, cat);
@@ -638,9 +686,9 @@ export default function OrderPage() {
               </button>
             );
           })}
-        </div>
+        </MobileMenuScrollRow>
         {subcategoriesOf(activeBrand, activeCategory).length > 0 && (
-          <div className="mobile-menu-scroll flex gap-2 px-3 pb-2">
+          <MobileMenuScrollRow className="px-3 pb-2">
             <button
               onClick={() => setActiveSubcategory("all")}
               className={`flex shrink-0 snap-start items-center gap-1.5 rounded-full px-2.5 py-1 text-[10px] font-semibold transition ${
@@ -668,7 +716,7 @@ export default function OrderPage() {
                 </button>
               );
             })}
-          </div>
+          </MobileMenuScrollRow>
         )}
       </div>
 
