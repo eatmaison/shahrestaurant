@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { addProduct, createProductGroup, removeProduct, syncProductGroup, updateProduct } from "../../lib/serverStore";
+import { addProduct, createProductGroup, moveProductGroup, removeProduct, syncProductGroup, updateProduct } from "../../lib/serverStore";
 
 export async function POST(req: NextRequest) {
   try {
@@ -21,6 +21,10 @@ export async function POST(req: NextRequest) {
 export async function PATCH(req: NextRequest) {
   try {
     const body = await req.json();
+    if (body.action === "moveProductGroup") {
+      await moveProductGroup(body.id, body.targetId, body.placement);
+      return NextResponse.json({ ok: true });
+    }
     // A `targets` array edits the product across every restaurant it is sold at.
     if (Array.isArray(body.targets)) {
       const { id, targets, ...content } = body;

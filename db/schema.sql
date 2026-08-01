@@ -64,6 +64,7 @@ CREATE TABLE IF NOT EXISTS products (
   description_nl       text        NOT NULL DEFAULT '',
   price                numeric(10, 2) NOT NULL,
   image                text,
+  sort_order           integer     NOT NULL DEFAULT 0,
   -- { "en": "...", "nl": "..." } for the "Read more" popup
   detailed_description jsonb,
   ingredients          text[]      NOT NULL DEFAULT '{}',
@@ -75,6 +76,7 @@ CREATE TABLE IF NOT EXISTS products (
 
 CREATE INDEX IF NOT EXISTS idx_products_brand ON products (brand);
 CREATE INDEX IF NOT EXISTS idx_products_group ON products (group_id);
+CREATE INDEX IF NOT EXISTS idx_products_sort_order ON products (sort_order);
 CREATE INDEX IF NOT EXISTS idx_products_category ON products (category);
 CREATE INDEX IF NOT EXISTS idx_products_subcategory ON products (subcategory);
 

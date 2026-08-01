@@ -62,6 +62,8 @@ interface StoreCtx {
   addProduct: (p: Omit<Product, "id">) => Promise<{ ok: boolean; error?: string }>;
   removeProduct: (id: string) => Promise<void>;
   updateProduct: (id: string, patch: Partial<Omit<Product, "id">>) => Promise<{ ok: boolean; error?: string }>;
+  /** Admin: move one grouped product before/after another in the menu order. */
+  moveProduct: (id: string, targetId: string, placement: "before" | "after") => Promise<{ ok: boolean; error?: string }>;
   /** Admin: create the same product at several restaurants at once. */
   addProductGroup: (content: ProductContent, targets: ProductTarget[]) => Promise<{ ok: boolean; error?: string }>;
   /** Admin: edit a product across every restaurant it is sold at (adds/removes restaurants as needed). */
@@ -327,6 +329,21 @@ export function Providers({ children }: { children: ReactNode }) {
       return { ok: false, error: err instanceof Error ? err.message : "network" };
     }
   }, [refresh]);
+  const moveProduct = useCallback<StoreCtx["moveProduct"]>(async (pid, targetId, placement) => {
+    try {
+      const res = await fetch("/api/products", {
+        method: "PATCH",
+        headers: JSON_HEADERS,
+        body: JSON.stringify({ action: "moveProductGroup", id: pid, targetId, placement }),
+      });
+      const data = await res.json().catch(() => null);
+      if (!res.ok || !data?.ok) return { ok: false, error: data?.error ?? `HTTP ${res.status}` };
+      await refresh();
+      return { ok: true };
+    } catch (err) {
+      return { ok: false, error: err instanceof Error ? err.message : "network" };
+    }
+  }, [refresh]);
   const addProductGroup = useCallback<StoreCtx["addProductGroup"]>(async (content, targets) => {
     try {
       const res = await fetch("/api/products", { method: "POST", headers: JSON_HEADERS, body: JSON.stringify({ ...content, targets }) });
@@ -584,6 +601,7 @@ export function Providers({ children }: { children: ReactNode }) {
       addProduct,
       removeProduct,
       updateProduct,
+      moveProduct,
       addProductGroup,
       updateProductGroup,
       brands,
@@ -627,6 +645,7 @@ export function Providers({ children }: { children: ReactNode }) {
       addProduct,
       removeProduct,
       updateProduct,
+      moveProduct,
       addProductGroup,
       updateProductGroup,
       brands,

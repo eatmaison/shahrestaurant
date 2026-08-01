@@ -67,6 +67,7 @@ const DDL: string[] = [
     description text NOT NULL DEFAULT '',
     price numeric(10,2) NOT NULL,
     image text,
+    sort_order integer NOT NULL DEFAULT 0,
     detailed_description jsonb,
     ingredients text[] NOT NULL DEFAULT '{}',
     allergens text[] NOT NULL DEFAULT '{}',
@@ -80,7 +81,18 @@ const DDL: string[] = [
   // The same product sold at several restaurants shares a group id, so it can be
   // created and edited once for all of them from any admin panel.
   `ALTER TABLE products ADD COLUMN IF NOT EXISTS group_id text`,
+  `ALTER TABLE products ADD COLUMN IF NOT EXISTS sort_order integer`,
+  `UPDATE products
+     SET sort_order = ranked.sort_order
+    FROM (
+      SELECT id, row_number() OVER (ORDER BY created_at ASC, id ASC) - 1 AS sort_order
+      FROM products
+    ) ranked
+    WHERE products.id = ranked.id AND products.sort_order IS NULL`,
+  `ALTER TABLE products ALTER COLUMN sort_order SET DEFAULT 0`,
+  `ALTER TABLE products ALTER COLUMN sort_order SET NOT NULL`,
   `CREATE INDEX IF NOT EXISTS idx_products_group ON products (group_id)`,
+  `CREATE INDEX IF NOT EXISTS idx_products_sort_order ON products (sort_order)`,
   `CREATE TABLE IF NOT EXISTS orders (
     id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
     order_number integer GENERATED ALWAYS AS IDENTITY (START WITH 1001),

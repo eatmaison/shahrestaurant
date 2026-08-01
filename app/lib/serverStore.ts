@@ -272,7 +272,7 @@ export async function bootstrap(): Promise<Bootstrap> {
     );
   }
 
-  const productRows = (await sql.query(`SELECT * FROM products ORDER BY created_at ASC`)) as any[];
+  const productRows = (await sql.query(`SELECT * FROM products ORDER BY sort_order ASC, created_at ASC, id ASC`)) as any[];
   const products = productRows.map(rowToProduct);
 
   const brands = await loadBrands();
@@ -743,9 +743,14 @@ function productGroupKey(product: Product): string {
 }
 
 async function loadMatchingProductRows(anchor: Product): Promise<Product[]> {
-  const rows = (await sql.query(`SELECT * FROM products`)) as any[];
+  const rows = (await sql.query(`SELECT * FROM products ORDER BY sort_order ASC, created_at ASC, id ASC`)) as any[];
   const key = productGroupKey(anchor);
   return rows.map(rowToProduct).filter((product) => productGroupKey(product) === key);
+}
+
+async function nextProductSortOrder(): Promise<number> {
+  const rows = (await sql.query(`SELECT coalesce(max(sort_order), -1) + 1 AS next FROM products`)) as any[];
+  return Number(rows[0]?.next ?? 0);
 }
 
 /** Insert a single product row. Assumes the image has already been resolved to a stored value. */
@@ -755,11 +760,12 @@ async function insertProductRow(
   brand: string,
   target: { category: string; subcategory?: string },
   content: ProductContent,
-  image: string | null
+  image: string | null,
+  sortOrder: number
 ): Promise<Product> {
   const rows = (await sql.query(
-    `INSERT INTO products (id, group_id, brand, category, subcategory, name, description, description_nl, price, image, detailed_description, ingredients, ingredients_nl, allergens, allergens_nl)
-     VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11::jsonb,$12::text[],$13::text[],$14::text[],$15::text[]) RETURNING *`,
+    `INSERT INTO products (id, group_id, brand, category, subcategory, name, description, description_nl, price, image, sort_order, detailed_description, ingredients, ingredients_nl, allergens, allergens_nl)
+     VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12::jsonb,$13::text[],$14::text[],$15::text[],$16::text[]) RETURNING *`,
     [
       id,
       groupId,
@@ -771,6 +777,7 @@ async function insertProductRow(
       content.descriptionNl ?? "",
       content.price,
       image,
+      sortOrder,
       content.detailedDescription ? JSON.stringify(content.detailedDescription) : null,
       content.ingredients ?? [],
       content.ingredientsNl ?? [],
@@ -785,7 +792,7 @@ export async function addProduct(p: Omit<Product, "id">): Promise<Product> {
   await requireAdmin();
   const image = (await storeImage(p.image ?? null, "products")) ?? null;
   const { brand, category, subcategory, groupId, ...content } = p;
-  return insertProductRow(genId("p"), groupId ?? genId("g"), brand, { category, subcategory }, content, image);
+  return insertProductRow(genId("p"), groupId ?? genId("g"), brand, { category, subcategory }, content, image, await nextProductSortOrder());
 }
 
 /**
@@ -798,9 +805,10 @@ export async function createProductGroup(content: ProductContent, targets: Produ
   // Upload the photo once and reuse the resulting URL for every restaurant's row.
   const image = (await storeImage(content.image ?? null, "products")) ?? null;
   const groupId = genId("g");
+  const sortOrder = await nextProductSortOrder();
   const created: Product[] = [];
   for (const target of targets) {
-    created.push(await insertProductRow(genId("p"), groupId, target.brand, target, content, image));
+    created.push(await insertProductRow(genId("p"), groupId, target.brand, target, content, image, sortOrder));
   }
   return created;
 }
@@ -884,7 +892,7 @@ export async function syncProductGroup(anchorId: string, content: ProductContent
         ]
       );
     } else {
-      await insertProductRow(genId("p"), groupId, target.brand, target, sharedContent, image);
+      await insertProductRow(genId("p"), groupId, target.brand, target, sharedContent, image, anchor.sortOrder ?? await nextProductSortOrder());
     }
   }
 
@@ -915,6 +923,38 @@ export async function removeProduct(id: string): Promise<void> {
   for (const image of images) {
     const stillUsed = (await sql.query(`SELECT 1 FROM products WHERE image = $1 LIMIT 1`, [image])) as any[];
     if (stillUsed.length === 0) await deleteStoredImage(image);
+  }
+}
+
+export async function moveProductGroup(id: string, targetId: string, placement: "before" | "after"): Promise<void> {
+  await requireAdmin();
+  const rows = (await sql.query(`SELECT * FROM products ORDER BY sort_order ASC, created_at ASC, id ASC`)) as any[];
+  const groups: { key: string; products: Product[] }[] = [];
+  const byKey = new Map<string, { key: string; products: Product[] }>();
+  for (const product of rows.map(rowToProduct)) {
+    const key = productGroupKey(product);
+    const group = byKey.get(key);
+    if (group) group.products.push(product);
+    else {
+      const next = { key, products: [product] };
+      byKey.set(key, next);
+      groups.push(next);
+    }
+  }
+
+  const sourceIndex = groups.findIndex((group) => group.products.some((product) => product.id === id));
+  const targetIndex = groups.findIndex((group) => group.products.some((product) => product.id === targetId));
+  if (sourceIndex < 0 || targetIndex < 0 || sourceIndex === targetIndex) return;
+
+  const [source] = groups.splice(sourceIndex, 1);
+  const nextTargetIndex = groups.findIndex((group) => group.products.some((product) => product.id === targetId));
+  groups.splice(placement === "before" ? nextTargetIndex : nextTargetIndex + 1, 0, source);
+
+  for (const [sortOrder, group] of groups.entries()) {
+    await sql.query(`UPDATE products SET sort_order = $1 WHERE id = ANY($2::text[])`, [
+      sortOrder,
+      group.products.map((product) => product.id),
+    ]);
   }
 }
 

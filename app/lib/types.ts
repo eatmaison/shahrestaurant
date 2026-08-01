@@ -48,6 +48,8 @@ export interface Product {
   price: number;
   /** Optional image as a data URL or public path */
   image?: string;
+  /** Manual admin ordering; lower numbers appear first. Server rows always provide it. */
+  sortOrder?: number;
   /** Detailed product description for "read more" modal */
   detailedDescription?: {
     en: string;
@@ -71,7 +73,7 @@ export interface ProductTarget {
 }
 
 /** Shared product content, without the fields that vary per restaurant. */
-export type ProductContent = Omit<Product, "id" | "brand" | "groupId" | "category" | "subcategory">;
+export type ProductContent = Omit<Product, "id" | "brand" | "groupId" | "category" | "subcategory" | "sortOrder">;
 
 export type Role = "user" | "admin";
 

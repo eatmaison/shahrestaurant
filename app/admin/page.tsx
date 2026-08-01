@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
+  FaArrowDown,
+  FaArrowUp,
   FaArrowsRotate,
   FaBagShopping,
   FaBoxOpen,
@@ -144,7 +146,7 @@ const ADMIN_INITIAL_NOW = Date.now();
 
 export default function AdminPage() {
   const { t, lang } = useLang();
-  const { currentUser, products, orders, users, addProductGroup, removeProduct, updateProductGroup, brands, manageBrands, updateOrderStatus, setOrderPaid, setInvoiceSent, deleteOrder, vipRequests, approveVipRequest, rejectVipRequest, socialLinks, updateSocialLink, reservations, setReservationStatus, cancelReservation, onlineVisitors, recentVisitors, refresh, hydrated } = useStore();
+  const { currentUser, products, orders, users, addProductGroup, removeProduct, updateProductGroup, moveProduct, brands, manageBrands, updateOrderStatus, setOrderPaid, setInvoiceSent, deleteOrder, vipRequests, approveVipRequest, rejectVipRequest, socialLinks, updateSocialLink, reservations, setReservationStatus, cancelReservation, onlineVisitors, recentVisitors, refresh, hydrated } = useStore();
   const fileRef = useRef<HTMLInputElement>(null);
   const editFileRef = useRef<HTMLInputElement>(null);
   const logoFileRef = useRef<HTMLInputElement>(null);
@@ -284,6 +286,7 @@ export default function AdminPage() {
   const [productBrandFilter, setProductBrandFilter] = useState<Brand | "all">("all");
   const [productCategoryFilter, setProductCategoryFilter] = useState<Category | "all">("all");
   const [productSubcategoryFilter, setProductSubcategoryFilter] = useState<Category | "all">("all");
+  const [movingProductKey, setMovingProductKey] = useState<string | null>(null);
 
   // Period filters: one for the statistics block, one for order management.
   const [statsRange, setStatsRange] = useState<RangeFilter>({ preset: "all" });
@@ -390,6 +393,14 @@ export default function AdminPage() {
       return matches.length > 0 ? [{ ...group, product: matches[0] }] : [];
     });
   }, [activeProductCategoryFilter, activeProductSubcategoryFilter, brands, productBrandFilter, productGroups, productSearch]);
+
+  const moveVisibleProduct = async (group: ProductGroup, index: number, direction: "up" | "down") => {
+    const target = filteredProductGroups[direction === "up" ? index - 1 : index + 1];
+    if (!target || movingProductKey) return;
+    setMovingProductKey(group.key);
+    await moveProduct(group.product.id, target.product.id, direction === "up" ? "before" : "after");
+    setMovingProductKey(null);
+  };
 
   /** Total counts per category, independent of any active filters (used for the filter-tab badges). */
   const allVisitorsCount = recentVisitors.length;
@@ -2268,10 +2279,11 @@ export default function AdminPage() {
               <p className="rounded-2xl border border-dashed border-slate-300 bg-slate-50 p-4 text-sm leading-6 text-slate-500 dark:border-white/10 dark:bg-white/5 dark:text-slate-400">
                 {t.admin.noProductMatches}
               </p>
-            ) : filteredProductGroups.map((group) => {
+            ) : filteredProductGroups.map((group, index) => {
               const p = group.product;
               const Icon = categoryIconFor(brands, p.category);
               const groupBrands = [...new Set(group.products.map((item) => item.brand))];
+              const isMoving = movingProductKey === group.key;
               return (
                 <div key={group.key} className="flex items-center gap-3 rounded-2xl border border-slate-100 bg-slate-50 p-2.5 dark:border-white/5 dark:bg-white/5">
                   <span className="relative grid h-11 w-11 shrink-0 place-items-center overflow-hidden rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
@@ -2297,6 +2309,24 @@ export default function AdminPage() {
                       {p.category}{p.subcategory ? ` -> ${p.subcategory}` : ""} · €{p.price.toFixed(2)}
                     </p>
                   </div>
+                  <button
+                    onClick={() => moveVisibleProduct(group, index, "up")}
+                    disabled={index === 0 || Boolean(movingProductKey)}
+                    className="grid h-8 w-8 shrink-0 place-items-center rounded-full text-slate-400 transition hover:bg-sky-500/10 hover:text-sky-600 disabled:cursor-not-allowed disabled:opacity-30"
+                    aria-label="Move product up"
+                    title="Move product up"
+                  >
+                    {isMoving ? <FaSpinner className="animate-spin text-sm" /> : <FaArrowUp className="text-sm" />}
+                  </button>
+                  <button
+                    onClick={() => moveVisibleProduct(group, index, "down")}
+                    disabled={index === filteredProductGroups.length - 1 || Boolean(movingProductKey)}
+                    className="grid h-8 w-8 shrink-0 place-items-center rounded-full text-slate-400 transition hover:bg-sky-500/10 hover:text-sky-600 disabled:cursor-not-allowed disabled:opacity-30"
+                    aria-label="Move product down"
+                    title="Move product down"
+                  >
+                    {isMoving ? <FaSpinner className="animate-spin text-sm" /> : <FaArrowDown className="text-sm" />}
+                  </button>
                   <button
                     onClick={() => openEditor(p)}
                     className="grid h-8 w-8 shrink-0 place-items-center rounded-full text-slate-400 transition hover:bg-emerald-500/10 hover:text-emerald-600"
