@@ -45,6 +45,7 @@ import type {
   BrandConfig,
   BrandSubcategory,
   GalleryImage,
+  Lang,
   Order,
   RecentVisitor,
   OrderItem,
@@ -1279,6 +1280,7 @@ export async function createReservation(data: {
   guests: number;
   occasion?: string;
   note?: string;
+  lang?: Lang;
   origin?: string;
 }): Promise<{ ok: boolean; error?: ReservationError; reservation?: Reservation }> {
   await ensureReady();
@@ -1337,6 +1339,7 @@ export async function createReservation(data: {
           time: reservation.time,
           guests: reservation.guests,
           note: reservation.note,
+          lang: data.lang,
         });
         await sendMail({ to: email, subject, html });
       } catch (err) {

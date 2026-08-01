@@ -102,6 +102,7 @@ export const createReservationSchema = z.object({
   guests: z.number().int().min(1).max(40),
   occasion: z.string().trim().max(40).optional(),
   note: z.string().trim().max(500).optional(),
+  lang: z.enum(["en", "nl"]).optional(),
 });
 
 export type CreateReservationInput = z.infer<typeof createReservationSchema>;

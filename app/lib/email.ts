@@ -47,6 +47,12 @@ const BRAND = {
   bg: "#faf3e7",
 };
 
+type EmailLang = "en" | "nl";
+
+function escapeHtml(value: string): string {
+  return value.replace(/[&<>"]/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[char] ?? char));
+}
+
 /** Shared branded email shell. Inline styles only, for wide client support. */
 function layout(opts: {
   base: string;
@@ -56,34 +62,35 @@ function layout(opts: {
   ctaUrl?: string;
   bodyHtml?: string;
   outro?: string;
+  lang?: EmailLang;
 }): string {
-  const { base, heading, intro, ctaText, ctaUrl, bodyHtml, outro } = opts;
+  const { base, heading, intro, ctaText, ctaUrl, bodyHtml, outro, lang = "en" } = opts;
   return `<!doctype html>
-<html lang="en">
+<html lang="${lang}">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
-<body style="margin:0;padding:0;background:${BRAND.bg};font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:${BRAND.ink};">
+<body style="margin:0;padding:0;background:${BRAND.bg};font-family:Georgia,'Times New Roman',serif;color:${BRAND.ink};">
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${BRAND.bg};padding:24px 12px;">
     <tr><td align="center">
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:#ffffff;border:1px solid ${BRAND.border};border-radius:20px;overflow:hidden;">
         <!-- header -->
-        <tr><td style="background:linear-gradient(135deg,#1c0f04,#3a1a0b);padding:28px 32px;border-bottom:3px solid ${BRAND.green};">
+        <tr><td style="background:linear-gradient(135deg,#1c0f04,#3a1a0b);padding:30px 32px;border-bottom:3px solid ${BRAND.green};">
           <div style="font-size:12px;letter-spacing:3px;color:#e39440;font-weight:600;text-transform:uppercase;">Amsterdam · Authentic Indian Cuisine</div>
-          <div style="font-size:24px;font-weight:900;color:#ffffff;letter-spacing:2px;font-family:Georgia,'Times New Roman',serif;">THE TANDOOR COMPANY</div>
+          <div style="font-size:24px;font-weight:900;color:#ffffff;letter-spacing:2px;">THE TANDOOR COMPANY</div>
         </td></tr>
         <!-- body -->
         <tr><td style="padding:32px;">
           <h1 style="margin:0 0 12px;font-size:22px;font-weight:800;color:${BRAND.ink};">${heading}</h1>
-          <p style="margin:0 0 20px;font-size:15px;line-height:24px;color:${BRAND.muted};">${intro}</p>
+          <p style="margin:0 0 20px;font-size:15px;line-height:24px;color:${BRAND.muted};font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;">${intro}</p>
           ${bodyHtml || ""}
           ${
             ctaText && ctaUrl
               ? `<table role="presentation" cellpadding="0" cellspacing="0" style="margin:8px 0 20px;"><tr><td style="border-radius:999px;background:${BRAND.green};">
                   <a href="${ctaUrl}" style="display:inline-block;padding:14px 30px;font-size:15px;font-weight:700;color:#ffffff;text-decoration:none;border-radius:999px;">${ctaText}</a>
                 </td></tr></table>
-                <p style="margin:0 0 8px;font-size:12px;line-height:20px;color:${BRAND.muted};">Or copy this link into your browser:<br><a href="${ctaUrl}" style="color:${BRAND.green};word-break:break-all;">${ctaUrl}</a></p>`
+                <p style="margin:0 0 8px;font-size:12px;line-height:20px;color:${BRAND.muted};font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;">Or copy this link into your browser:<br><a href="${ctaUrl}" style="color:${BRAND.green};word-break:break-all;">${ctaUrl}</a></p>`
               : ""
           }
-          ${outro ? `<p style="margin:20px 0 0;font-size:13px;line-height:22px;color:${BRAND.muted};">${outro}</p>` : ""}
+          ${outro ? `<p style="margin:20px 0 0;font-size:13px;line-height:22px;color:${BRAND.muted};font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;">${outro}</p>` : ""}
         </td></tr>
         <!-- footer -->
         <tr><td style="padding:20px 32px;border-top:1px solid ${BRAND.border};background:#fafafa;">
@@ -136,33 +143,59 @@ export function reservationEmail(data: {
   time: string;
   guests: number;
   note?: string;
+  lang?: EmailLang;
 }): { subject: string; html: string } {
-  const dateStr = new Date(`${data.date}T00:00:00`).toLocaleDateString("nl-NL", {
+  const lang = data.lang ?? "en";
+  const copy = lang === "nl"
+    ? {
+        locale: "nl-NL",
+        subject: `Bedankt voor uw reservering bij The Tandoor Company - ${data.number}`,
+        heading: `Bedankt, ${escapeHtml(data.guestName)}!`,
+        intro: "Wat fijn dat u voor The Tandoor Company heeft gekozen. We hebben uw reserveringsaanvraag ontvangen en ons team kijkt deze met zorg na. U ontvangt binnenkort de definitieve bevestiging.",
+        reservation: "Reservering",
+        date: "Datum",
+        time: "Tijd",
+        guests: "Gasten",
+        requests: "Wensen",
+        outro: "Wilt u iets wijzigen of annuleren? Bel ons via +31 20 341 2995 of beantwoord deze e-mail, dan regelen wij het graag voor u.",
+      }
+    : {
+        locale: "en-GB",
+        subject: `Thank you for your reservation at The Tandoor Company - ${data.number}`,
+        heading: `Thank you, ${escapeHtml(data.guestName)}!`,
+        intro: "Thank you for choosing The Tandoor Company. We have received your reservation request and our team will review it with care. You will receive the final confirmation shortly.",
+        reservation: "Reservation",
+        date: "Date",
+        time: "Time",
+        guests: "Guests",
+        requests: "Requests",
+        outro: "Would you like to change or cancel anything? Call us at +31 20 341 2995 or reply to this email and we will gladly take care of it.",
+      };
+  const dateStr = new Date(`${data.date}T00:00:00`).toLocaleDateString(copy.locale, {
     weekday: "long",
     day: "numeric",
     month: "long",
     year: "numeric",
   });
   const bodyHtml = `
-    <div style="border:1px solid ${BRAND.border};border-radius:14px;padding:20px;margin:0 0 20px;background:#fdfbf6;">
+    <div style="border:1px solid ${BRAND.border};border-radius:14px;padding:20px;margin:0 0 20px;background:#fff9ef;font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;">
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
-        <tr><td style="font-size:13px;color:${BRAND.muted};padding:4px 0;">Reservation</td><td style="font-size:13px;text-align:right;font-weight:700;color:${BRAND.ink};">${data.number}</td></tr>
-        <tr><td style="font-size:13px;color:${BRAND.muted};padding:4px 0;">Date</td><td style="font-size:13px;text-align:right;font-weight:700;color:${BRAND.ink};">${dateStr}</td></tr>
-        <tr><td style="font-size:13px;color:${BRAND.muted};padding:4px 0;">Time</td><td style="font-size:13px;text-align:right;font-weight:700;color:${BRAND.ink};">${data.time}</td></tr>
-        <tr><td style="font-size:13px;color:${BRAND.muted};padding:4px 0;">Guests</td><td style="font-size:13px;text-align:right;font-weight:700;color:${BRAND.ink};">${data.guests}</td></tr>
-        ${data.note ? `<tr><td style="font-size:13px;color:${BRAND.muted};padding:4px 0;">Requests</td><td style="font-size:13px;text-align:right;color:${BRAND.ink};">${data.note}</td></tr>` : ""}
+        <tr><td style="font-size:13px;color:${BRAND.muted};padding:4px 0;">${copy.reservation}</td><td style="font-size:13px;text-align:right;font-weight:700;color:${BRAND.ink};">${data.number}</td></tr>
+        <tr><td style="font-size:13px;color:${BRAND.muted};padding:4px 0;">${copy.date}</td><td style="font-size:13px;text-align:right;font-weight:700;color:${BRAND.ink};">${dateStr}</td></tr>
+        <tr><td style="font-size:13px;color:${BRAND.muted};padding:4px 0;">${copy.time}</td><td style="font-size:13px;text-align:right;font-weight:700;color:${BRAND.ink};">${data.time}</td></tr>
+        <tr><td style="font-size:13px;color:${BRAND.muted};padding:4px 0;">${copy.guests}</td><td style="font-size:13px;text-align:right;font-weight:700;color:${BRAND.ink};">${data.guests}</td></tr>
+        ${data.note ? `<tr><td style="font-size:13px;color:${BRAND.muted};padding:4px 0;">${copy.requests}</td><td style="font-size:13px;text-align:right;color:${BRAND.ink};">${escapeHtml(data.note)}</td></tr>` : ""}
       </table>
     </div>`;
   return {
-    subject: `Your reservation at The Tandoor Company - ${data.number}`,
+    subject: copy.subject,
     html: layout({
       base: data.base,
-      heading: `Thank you, ${data.guestName}!`,
-      intro:
-        "We have received your table reservation. Our team will review it and you will receive a confirmation shortly. We look forward to welcoming you at The Tandoor Company.",
+      heading: copy.heading,
+      intro: copy.intro,
       bodyHtml,
-      outro:
-        "Need to change or cancel your reservation? Call us at +31 20 341 2995 or reply to this email and we will take care of it.",
+      outro: copy.outro,
+      lang,
     }),
   };
 }

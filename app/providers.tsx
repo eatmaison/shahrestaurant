@@ -159,6 +159,7 @@ interface StoreCtx {
     guests: number;
     occasion?: string;
     note?: string;
+    lang?: Lang;
   }) => Promise<{ ok: boolean; error?: "fillFields" | "invalidSlot" | "pastDate" | "invalidInput"; reservation?: Reservation }>;
   /** Customer: cancel an upcoming reservation. Admin: cancel any. */
   cancelReservation: (id: string) => Promise<void>;
@@ -511,7 +512,7 @@ export function Providers({ children }: { children: ReactNode }) {
         const res = await fetch("/api/reservations", {
           method: "POST",
           headers: JSON_HEADERS,
-          body: JSON.stringify({ ...data, email: data.email ?? "" }),
+          body: JSON.stringify({ ...data, email: data.email ?? "", lang: data.lang ?? lang }),
         });
         const json = await res.json().catch(() => null);
         if (!json) return { ok: false, error: "invalidInput" as const };
@@ -521,7 +522,7 @@ export function Providers({ children }: { children: ReactNode }) {
         return { ok: false, error: "invalidInput" as const };
       }
     },
-    [refresh]
+    [lang, refresh]
   );
 
   const cancelReservation = useCallback<StoreCtx["cancelReservation"]>(async (id) => {
