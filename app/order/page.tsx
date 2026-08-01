@@ -8,6 +8,8 @@ import {
   FaBagShopping,
   FaCalendarDays,
   FaCartShopping,
+  FaChevronLeft,
+  FaChevronRight,
   FaCircleCheck,
   FaCircleExclamation,
   FaClock,
@@ -45,48 +47,91 @@ import type { Brand, Category, MenuUpgrades, Product } from "../lib/types";
 
 function MobileMenuScrollRow({ children, className = "" }: { children: ReactNode; className?: string }) {
   const rowRef = useRef<HTMLDivElement>(null);
-  const dragRef = useRef({ active: false, moved: false, startX: 0, scrollLeft: 0 });
   const suppressClickRef = useRef(false);
 
-  const stopDragging = (pointerId: number) => {
+  const scrollByAmount = (amount: number) => {
     const row = rowRef.current;
-    if (!row || !dragRef.current.active) return;
-    dragRef.current.active = false;
-    suppressClickRef.current = dragRef.current.moved;
-    row.classList.remove("is-dragging");
-    if (row.hasPointerCapture(pointerId)) row.releasePointerCapture(pointerId);
+    if (!row) return;
+    row.scrollLeft += amount;
   };
 
+  useEffect(() => {
+    let dragging = false;
+    let moved = false;
+    let startX = 0;
+    let startScrollLeft = 0;
+
+    const startDrag = (event: MouseEvent) => {
+      const row = rowRef.current;
+      if (!row || !row.contains(event.target as Node)) return;
+      if (event.button !== 0 || row.scrollWidth <= row.clientWidth) return;
+      event.preventDefault();
+      dragging = true;
+      moved = false;
+      startX = event.clientX;
+      startScrollLeft = row.scrollLeft;
+      row.classList.add("is-dragging");
+    };
+
+    const drag = (event: MouseEvent) => {
+      const row = rowRef.current;
+      if (!dragging) return;
+      if (!row) return;
+      event.preventDefault();
+      const distance = event.clientX - startX;
+      if (Math.abs(distance) > 4) moved = true;
+      row.scrollLeft = startScrollLeft - distance;
+    };
+
+    const stopDrag = () => {
+      if (!dragging) return;
+      dragging = false;
+      suppressClickRef.current = moved;
+      rowRef.current?.classList.remove("is-dragging");
+    };
+
+    document.addEventListener("mousedown", startDrag, true);
+    window.addEventListener("mousemove", drag, { passive: false });
+    window.addEventListener("mouseup", stopDrag);
+
+    return () => {
+      document.removeEventListener("mousedown", startDrag, true);
+      window.removeEventListener("mousemove", drag);
+      window.removeEventListener("mouseup", stopDrag);
+    };
+  }, []);
+
   return (
-    <div
-      ref={rowRef}
-      className={`mobile-menu-scroll flex gap-2 ${className}`}
-      onPointerDown={(event) => {
-        if (event.pointerType === "mouse" && event.button !== 0) return;
-        const row = rowRef.current;
-        if (!row || row.scrollWidth <= row.clientWidth) return;
-        dragRef.current = { active: true, moved: false, startX: event.clientX, scrollLeft: row.scrollLeft };
-        row.classList.add("is-dragging");
-        row.setPointerCapture(event.pointerId);
-      }}
-      onPointerMove={(event) => {
-        const row = rowRef.current;
-        const drag = dragRef.current;
-        if (!row || !drag.active) return;
-        const distance = event.clientX - drag.startX;
-        if (Math.abs(distance) > 4) drag.moved = true;
-        row.scrollLeft = drag.scrollLeft - distance;
-      }}
-      onPointerUp={(event) => stopDragging(event.pointerId)}
-      onPointerCancel={(event) => stopDragging(event.pointerId)}
-      onClickCapture={(event) => {
-        if (!suppressClickRef.current) return;
-        suppressClickRef.current = false;
-        event.preventDefault();
-        event.stopPropagation();
-      }}
-    >
-      {children}
+    <div className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-1">
+      <button
+        type="button"
+        aria-label="Scroll links"
+        onClick={() => scrollByAmount(-260)}
+        className="mobile-menu-scroll-button"
+      >
+        <FaChevronLeft />
+      </button>
+      <div
+        ref={rowRef}
+        className={`mobile-menu-scroll flex gap-2 ${className}`}
+        onDragStart={(event) => event.preventDefault()}
+        onClickCapture={(event) => {
+          if (!suppressClickRef.current) return;
+          suppressClickRef.current = false;
+          event.preventDefault();
+          event.stopPropagation();
+        }}
+      >
+        {children}
+      </div>
+      <button
+        type="button"
+        aria-label="Scroll rechts"
+        onClick={() => scrollByAmount(260)}
+        className="mobile-menu-scroll-button"
+      >
+        <FaChevronRight />
+      </button>
     </div>
   );
 }

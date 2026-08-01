@@ -533,8 +533,29 @@ select option {
   cursor: grabbing;
 }
 
+.mobile-menu-scroll-button {
+  display: grid;
+  width: 1.75rem;
+  height: 1.75rem;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid rgba(217, 126, 38, 0.34);
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.94);
+  color: #a34e1a;
+  box-shadow: 0 10px 24px -16px rgba(58, 26, 11, 0.7);
+}
+
+.dark .mobile-menu-scroll-button {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(20, 13, 7, 0.92);
+  color: #f4d09f;
+}
+
 .mobile-menu-scroll > * {
   flex: 0 0 auto;
+  cursor: inherit;
+  -webkit-user-drag: none;
 }
 
 .page-stage [class*="fixed inset-0"] > [class*="bg-black"] {
