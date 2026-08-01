@@ -79,6 +79,8 @@ export function rowToOrderItem(r: any): OrderItem {
     qty: r.qty,
     brand: r.brand,
     category: r.category ?? "",
+    sideChoice: r.side_choice ?? undefined,
+    sideLabel: r.side_label ?? undefined,
   };
 }
 

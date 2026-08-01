@@ -27,6 +27,7 @@ import { isScheduleSlotOpen } from "./openingHours";
 import { companyInvoiceEmail, passwordResetEmail, reservationEmail, sendMail, verificationEmail } from "./email";
 import { signToken, verifyToken } from "./tokens";
 import { deleteStoredImage, storeImage } from "./spaces";
+import { grillSideLabel, isGrillSideRequired, parseCartKey } from "./cart";
 import {
   rowToGalleryImage,
   rowToOrder,
@@ -430,7 +431,10 @@ export async function placeOrder(details: {
     return { ok: false, error: "closed" };
   }
 
-  const productIds = Object.keys(cart).filter((id) => (cart[id] || 0) > 0);
+  const cartEntries = Object.entries(cart)
+    .map(([key, qty]) => ({ key, qty, ...parseCartKey(key) }))
+    .filter((entry) => entry.qty > 0);
+  const productIds = [...new Set(cartEntries.map((entry) => entry.productId))];
   if (productIds.length === 0) return { ok: false, error: "empty" };
 
   // Pickup orders skip the delivery-area check (the customer collects it in person).
@@ -441,23 +445,29 @@ export async function placeOrder(details: {
   const products = productRows.map(rowToProduct);
   const productById = new Map(products.map((product) => [product.id, product]));
 
-  const items: OrderItem[] = products
-    .filter((p) => productIds.includes(p.id))
-    .map((p) => ({
-      productId: p.id,
-      name: p.name,
-      price: p.price,
-      qty: cart[p.id],
-      brand: p.brand,
-      category: p.category,
-    }))
-    .filter((i) => i.qty > 0);
+  const items: OrderItem[] = cartEntries
+    .flatMap((entry) => {
+      const product = productById.get(entry.productId);
+      if (!product) return [];
+      const sideChoice = isGrillSideRequired(product) ? entry.sideChoice : undefined;
+      if (isGrillSideRequired(product) && !sideChoice) return [];
+      return [{
+        productId: product.id,
+        name: product.name,
+        price: product.price,
+        qty: entry.qty,
+        brand: product.brand,
+        category: product.category,
+        sideChoice,
+        sideLabel: grillSideLabel(sideChoice),
+      }];
+    });
   if (items.length === 0) return { ok: false, error: "empty" };
 
   for (const productId of productIds) {
     const food = productById.get(productId);
     const drink = productById.get(menuUpgrades[productId]);
-    const qty = cart[productId] || 0;
+    const qty = cartEntries.filter((entry) => entry.productId === productId).reduce((sum, entry) => sum + entry.qty, 0);
     if (!food || qty <= 0 || !isMenuEligibleCategory(food.category) || !drink || !isSoftDrinkProduct(drink)) continue;
     items.push(
       { productId: `menu-upgrade:${food.id}`, name: `Full menu upgrade for ${food.name}`, price: MENU_UPGRADE_PRICE, qty, brand: food.brand, category: MENU_UPGRADE_CATEGORY },
@@ -598,9 +608,9 @@ async function insertOrder(c: ComputedOrder, paid: boolean, options: { applyCust
 
   for (const it of c.items) {
     await sql.query(
-      `INSERT INTO order_items (order_id, product_id, name, price, qty, brand, category)
-       VALUES ($1,$2,$3,$4,$5,$6,$7)`,
-      [orderRow.id, it.productId, it.name, it.price, it.qty, it.brand, it.category]
+      `INSERT INTO order_items (order_id, product_id, name, price, qty, brand, category, side_choice, side_label)
+       VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9)`,
+      [orderRow.id, it.productId, it.name, it.price, it.qty, it.brand, it.category, it.sideChoice ?? null, it.sideLabel ?? null]
     );
   }
 

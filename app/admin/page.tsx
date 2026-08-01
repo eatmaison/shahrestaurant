@@ -1151,13 +1151,20 @@ export default function AdminPage() {
                   <ul className="space-y-1">
                     {brandItems.map((it) => (
                       <li
-                        key={it.productId}
+                        key={`${it.productId}:${it.sideChoice ?? ""}`}
                         className="flex items-center gap-2 rounded-lg bg-slate-50 px-2.5 py-1.5 text-xs dark:bg-white/5"
                       >
                         <span className="grid h-5 min-w-5 place-items-center rounded-md bg-emerald-600 px-1 text-[11px] font-black text-white">
                           {it.qty}×
                         </span>
-                        <span className="flex-1 truncate font-semibold text-slate-900 dark:text-white">{it.name}</span>
+                        <span className="min-w-0 flex-1">
+                          <span className="block truncate font-semibold text-slate-900 dark:text-white">{it.name}</span>
+                          {it.sideChoice && (
+                            <span className="mt-0.5 block text-[11px] font-bold text-emerald-700 dark:text-emerald-300">
+                              Side: {it.sideLabel ?? it.sideChoice}
+                            </span>
+                          )}
+                        </span>
                         <span className="text-slate-400">{it.category}</span>
                         <span className="font-bold text-slate-700 dark:text-slate-300">€{(it.price * it.qty).toFixed(2)}</span>
                       </li>

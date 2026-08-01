@@ -11,7 +11,8 @@ import {
 } from "react";
 import { translations, type Dictionary } from "./lib/translations";
 import { DEFAULT_BRAND_CONFIGS } from "./lib/data";
-import type { AccountType, BrandConfig, Lang, MenuUpgrades, Order, OrderFulfillment, OrderSchedule, OrderStatus, Product, ProductContent, ProductTarget, RecentVisitor, Reservation, Review, SocialLink, SocialPlatform, User, VipRequest } from "./lib/types";
+import { cartKeyForProduct, parseCartKey } from "./lib/cart";
+import type { AccountType, BrandConfig, GrillSideChoice, Lang, MenuUpgrades, Order, OrderFulfillment, OrderSchedule, OrderStatus, Product, ProductContent, ProductTarget, RecentVisitor, Reservation, Review, SocialLink, SocialPlatform, User, VipRequest } from "./lib/types";
 
 const JSON_HEADERS = { "Content-Type": "application/json" } as const;
 
@@ -83,8 +84,8 @@ interface StoreCtx {
   ) => Promise<{ ok: boolean; error?: string }>;
 
   cart: Record<string, number>;
-  addToCart: (id: string) => void;
-  removeFromCart: (id: string) => void;
+  addToCart: (id: string, sideChoice?: GrillSideChoice) => void;
+  removeFromCart: (id: string, sideChoice?: GrillSideChoice) => void;
   clearCart: () => void;
 
   users: User[];
@@ -304,7 +305,9 @@ export function Providers({ children }: { children: ReactNode }) {
     await fetch(`/api/products?id=${encodeURIComponent(pid)}`, { method: "DELETE" });
     setCart((prev) => {
       const next = { ...prev };
-      delete next[pid];
+      for (const key of Object.keys(next)) {
+        if (parseCartKey(key).productId === pid) delete next[key];
+      }
       return next;
     });
     await refresh();
@@ -362,14 +365,16 @@ export function Providers({ children }: { children: ReactNode }) {
     }
   }, [refresh]);
 
-  const addToCart = useCallback((pid: string) => {
-    setCart((prev) => ({ ...prev, [pid]: (prev[pid] || 0) + 1 }));
+  const addToCart = useCallback((pid: string, sideChoice?: GrillSideChoice) => {
+    const key = cartKeyForProduct(pid, sideChoice);
+    setCart((prev) => ({ ...prev, [key]: (prev[key] || 0) + 1 }));
   }, []);
-  const removeFromCart = useCallback((pid: string) => {
+  const removeFromCart = useCallback((pid: string, sideChoice?: GrillSideChoice) => {
+    const key = cartKeyForProduct(pid, sideChoice);
     setCart((prev) => {
       const next = { ...prev };
-      if ((next[pid] || 0) <= 1) delete next[pid];
-      else next[pid] = next[pid] - 1;
+      if ((next[key] || 0) <= 1) delete next[key];
+      else next[key] = next[key] - 1;
       return next;
     });
   }, []);

@@ -59,7 +59,7 @@ export const placeOrderSchema = z.object({
   postcode: z.string().trim().max(10),
   phone: z.string().trim().min(5).max(30),
   note: z.string().trim().max(500).optional(),
-  cart: z.record(z.string().max(100), z.number().int().min(0).max(99)),
+  cart: z.record(z.string().max(150), z.number().int().min(0).max(99)),
   pointsToUse: z.number().int().min(0).max(100000).optional(),
   schedule: orderSchedule.optional(),
   fulfillment: z.enum(["delivery", "pickup"]).optional(),

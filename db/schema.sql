@@ -120,7 +120,10 @@ CREATE TABLE IF NOT EXISTS order_items (
   price      numeric(10, 2) NOT NULL,
   qty        integer     NOT NULL CHECK (qty > 0),
   brand      text        NOT NULL,
-  category   text        NOT NULL DEFAULT ''
+  category   text        NOT NULL DEFAULT '',
+  -- Required side choice for Grill dishes (rice/fries), captured at order time.
+  side_choice text,
+  side_label  text
 );
 
 CREATE INDEX IF NOT EXISTS idx_order_items_order_id ON order_items (order_id);

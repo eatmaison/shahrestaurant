@@ -128,6 +128,8 @@ export interface RecentVisitor {
   firstSeenAt?: number;
 }
 
+export type GrillSideChoice = "rice" | "fries";
+
 export interface OrderItem {
   productId: string;
   name: string;
@@ -137,6 +139,10 @@ export interface OrderItem {
   brand: Brand;
   /** Menu category of the item at order time. */
   category: Category;
+  /** Required side choice for Grill dishes. */
+  sideChoice?: GrillSideChoice;
+  /** Display label captured at order time, e.g. Rice or Fries. */
+  sideLabel?: string;
 }
 
 /** Full-menu upgrades keyed by the food product id, with the chosen free soft-drink product id as the value. */

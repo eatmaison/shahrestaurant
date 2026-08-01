@@ -81,8 +81,9 @@ function buildReceipt(order: Order, lang: string): string {
   }
   r += "--------------------------------\n";
   for (const it of order.items) {
+    const side = it.sideLabel ? ` (Side: ${it.sideLabel})` : "";
     r += ESC + "!" + "\x08";
-    r += line(`${it.qty}x ${it.name}`, (it.price * it.qty).toFixed(2));
+    r += line(`${it.qty}x ${it.name}${side}`, (it.price * it.qty).toFixed(2));
     r += ESC + "!" + "\x00";
   }
   r += "--------------------------------\n";
@@ -369,7 +370,10 @@ export default function TerminalPage() {
                     <ul className="mt-3 space-y-1 border-t border-slate-100 pt-3 text-sm dark:border-white/10">
                       {o.items.map((it, i) => (
                         <li key={i} className="flex justify-between gap-3">
-                          <span className="font-semibold text-slate-800 dark:text-slate-200">{it.qty}× {it.name}</span>
+                          <span className="font-semibold text-slate-800 dark:text-slate-200">
+                            {it.qty}× {it.name}
+                            {it.sideLabel && <span className="block text-xs text-emerald-700 dark:text-emerald-300">Side: {it.sideLabel}</span>}
+                          </span>
                           <span className="text-slate-500 dark:text-slate-400">€{(it.price * it.qty).toFixed(2)}</span>
                         </li>
                       ))}

@@ -42,8 +42,11 @@ import {
   POINTS_EARN_EVERY,
   VIP_DISCOUNT_PCT,
 } from "../lib/data";
+import { cartKeyForProduct, grillSideLabel, GRILL_SIDE_OPTIONS, isGrillSideRequired, parseCartKey } from "../lib/cart";
 import { nextOpening } from "../lib/openingHours";
-import type { Brand, Category, MenuUpgrades, Product } from "../lib/types";
+import type { Brand, Category, GrillSideChoice, MenuUpgrades, Product } from "../lib/types";
+
+type CartLine = { key: string; product: Product; qty: number; sideChoice?: GrillSideChoice };
 
 function MobileMenuScrollRow({ children, className = "" }: { children: ReactNode; className?: string }) {
   const rowRef = useRef<HTMLDivElement>(null);
@@ -291,11 +294,17 @@ export default function OrderPage() {
   };
 
   const cartLines = useMemo(
-    () =>
-      products
-        .concat(fallbackProducts.filter((fallbackProduct) => !products.some((product) => product.id === fallbackProduct.id)))
-        .filter((p) => (cart[p.id] || 0) > 0)
-        .map((p) => ({ product: p, qty: cart[p.id] })),
+    () => {
+      const availableProducts = products.concat(fallbackProducts.filter((fallbackProduct) => !products.some((product) => product.id === fallbackProduct.id)));
+      const productById = new Map(availableProducts.map((product) => [product.id, product]));
+      return Object.entries(cart).flatMap(([key, qty]): CartLine[] => {
+        const { productId, sideChoice } = parseCartKey(key);
+        const product = productById.get(productId);
+        if (!product || qty <= 0) return [];
+        if (isGrillSideRequired(product) && !sideChoice) return [];
+        return [{ key, product, qty, sideChoice: isGrillSideRequired(product) ? sideChoice : undefined }];
+      });
+    },
     [products, fallbackProducts, cart]
   );
 
@@ -520,7 +529,10 @@ export default function OrderPage() {
         </div>
       )}
       {visible.map((p) => {
-        const qty = cart[p.id] || 0;
+        const needsSideChoice = isGrillSideRequired(p);
+        const qty = needsSideChoice
+          ? GRILL_SIDE_OPTIONS.reduce((sum, option) => sum + (cart[cartKeyForProduct(p.id, option.id)] || 0), 0)
+          : cart[p.id] || 0;
         const Icon = categoryIconFor(brands, p.subcategory ?? p.category);
         return (
           <article
@@ -593,7 +605,49 @@ export default function OrderPage() {
               </p>
               <div className="mt-3 flex flex-col gap-2">
                 {/* Add/Remove Buttons */}
-                {qty === 0 ? (
+                {needsSideChoice ? (
+                  <div className="space-y-1.5 rounded-2xl bg-slate-50 p-2 dark:bg-white/5">
+                    <p className="text-[11px] font-black uppercase tracking-wide text-slate-500 dark:text-slate-400">
+                      {lang === "nl" ? "Kies bijgerecht" : "Choose side"}
+                    </p>
+                    {GRILL_SIDE_OPTIONS.map((option) => {
+                      const optionQty = cart[cartKeyForProduct(p.id, option.id)] || 0;
+                      return optionQty === 0 ? (
+                        <button
+                          key={option.id}
+                          onClick={() => addToCart(p.id, option.id)}
+                          className="flex w-full items-center justify-between rounded-full bg-white px-3 py-2 text-xs font-bold text-slate-700 ring-1 ring-slate-200 transition hover:bg-emerald-50 hover:text-emerald-700 dark:bg-white/10 dark:text-slate-200 dark:ring-white/10 dark:hover:bg-emerald-500/15"
+                        >
+                          <span>{grillSideLabel(option.id, lang)}</span>
+                          <FaPlus className="text-[0.65rem]" />
+                        </button>
+                      ) : (
+                        <div key={option.id} className="flex items-center justify-between rounded-full bg-emerald-500/10 p-1">
+                          <span className="ml-2 min-w-0 truncate text-xs font-bold text-emerald-800 dark:text-emerald-200">
+                            {grillSideLabel(option.id, lang)}
+                          </span>
+                          <span className="flex items-center gap-1.5">
+                            <button
+                              onClick={() => removeFromCart(p.id, option.id)}
+                              className="grid h-7 w-7 place-items-center rounded-full bg-white text-slate-700 transition hover:text-red-600 dark:bg-white/10 dark:text-slate-200"
+                              aria-label={t.common.remove}
+                            >
+                              {optionQty <= 1 ? <FaTrash className="text-[0.6rem]" /> : <FaMinus className="text-[0.6rem]" />}
+                            </button>
+                            <span className="w-4 text-center text-xs font-bold text-emerald-700 dark:text-emerald-300">{optionQty}</span>
+                            <button
+                              onClick={() => addToCart(p.id, option.id)}
+                              className="grid h-7 w-7 place-items-center rounded-full bg-emerald-600 text-white transition hover:bg-emerald-500"
+                              aria-label={t.common.add}
+                            >
+                              <FaPlus className="text-[0.6rem]" />
+                            </button>
+                          </span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                ) : qty === 0 ? (
                   <button
                     onClick={() => addToCart(p.id)}
                     className="btn-shine inline-flex items-center justify-center gap-2 rounded-full bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-emerald-600 hover:shadow-lg hover:shadow-emerald-600/30 dark:bg-emerald-600 dark:hover:bg-emerald-500"
@@ -903,19 +957,24 @@ export default function OrderPage() {
                   <p className="mt-3 text-sm leading-6 text-slate-500 dark:text-slate-400">{t.common.emptyCart}</p>
                 </div>
               ) : (
-                cartLines.map(({ product, qty }) => (
-                  <div key={product.id} className="magnetic-card rounded-2xl border border-emerald-500/10 bg-white/70 p-2.5 backdrop-blur dark:border-white/5 dark:bg-white/5">
+                cartLines.map(({ key, product, qty, sideChoice }) => (
+                  <div key={key} className="magnetic-card rounded-2xl border border-emerald-500/10 bg-white/70 p-2.5 backdrop-blur dark:border-white/5 dark:bg-white/5">
                     <div className="flex items-center gap-3">
                       <div className="min-w-0 flex-1">
                         <p className="truncate text-sm font-semibold text-slate-900 dark:text-white">{product.name}</p>
                         <p className="text-xs text-slate-500 dark:text-slate-400">€{product.price.toFixed(2)} {t.common.each}</p>
+                        {sideChoice && (
+                          <p className="mt-0.5 text-[11px] font-bold text-emerald-700 dark:text-emerald-300">
+                            {lang === "nl" ? "Bijgerecht" : "Side"}: {grillSideLabel(sideChoice, lang)}
+                          </p>
+                        )}
                       </div>
                       <div className="flex items-center gap-1.5">
-                        <button onClick={() => removeFromCart(product.id)} className="grid h-7 w-7 place-items-center rounded-full bg-white text-slate-600 transition hover:text-red-600 dark:bg-white/10 dark:text-slate-300" aria-label={t.common.remove}>
+                        <button onClick={() => removeFromCart(product.id, sideChoice)} className="grid h-7 w-7 place-items-center rounded-full bg-white text-slate-600 transition hover:text-red-600 dark:bg-white/10 dark:text-slate-300" aria-label={t.common.remove}>
                           {qty <= 1 ? <FaTrash className="text-[0.65rem]" /> : <FaMinus className="text-[0.65rem]" />}
                         </button>
                         <span className="w-5 text-center text-sm font-bold text-slate-900 dark:text-white">{qty}</span>
-                        <button onClick={() => addToCart(product.id)} className="grid h-7 w-7 place-items-center rounded-full bg-emerald-600 text-white transition hover:bg-emerald-500" aria-label={t.common.add}>
+                        <button onClick={() => addToCart(product.id, sideChoice)} className="grid h-7 w-7 place-items-center rounded-full bg-emerald-600 text-white transition hover:bg-emerald-500" aria-label={t.common.add}>
                           <FaPlus className="text-[0.65rem]" />
                         </button>
                       </div>
@@ -1210,19 +1269,24 @@ export default function OrderPage() {
             </div>
 
             <div className="max-h-72 space-y-2 overflow-y-auto px-5 py-4 pr-3">
-              {cartLines.map(({ product, qty }) => (
-                <div key={product.id} className="rounded-xl border border-slate-100 bg-slate-50 p-2.5 dark:border-white/5 dark:bg-white/5">
+              {cartLines.map(({ key, product, qty, sideChoice }) => (
+                <div key={key} className="rounded-xl border border-slate-100 bg-slate-50 p-2.5 dark:border-white/5 dark:bg-white/5">
                   <div className="flex items-center gap-3">
                     <div className="min-w-0 flex-1">
                       <p className="truncate text-sm font-semibold text-slate-900 dark:text-white">{product.name}</p>
                       <p className="text-xs text-slate-500 dark:text-slate-400">€{product.price.toFixed(2)} {t.common.each}</p>
+                      {sideChoice && (
+                        <p className="mt-0.5 text-[11px] font-bold text-emerald-700 dark:text-emerald-300">
+                          {lang === "nl" ? "Bijgerecht" : "Side"}: {grillSideLabel(sideChoice, lang)}
+                        </p>
+                      )}
                     </div>
                     <div className="flex items-center gap-1.5">
-                      <button onClick={() => removeFromCart(product.id)} className="grid h-6 w-6 place-items-center rounded-full bg-white text-slate-600 transition hover:text-red-600 dark:bg-white/10 dark:text-slate-300" aria-label={t.common.remove}>
+                      <button onClick={() => removeFromCart(product.id, sideChoice)} className="grid h-6 w-6 place-items-center rounded-full bg-white text-slate-600 transition hover:text-red-600 dark:bg-white/10 dark:text-slate-300" aria-label={t.common.remove}>
                         {qty <= 1 ? <FaTrash className="text-[0.6rem]" /> : <FaMinus className="text-[0.6rem]" />}
                       </button>
                       <span className="w-5 text-center text-sm font-bold text-slate-900 dark:text-white">{qty}</span>
-                      <button onClick={() => addToCart(product.id)} className="grid h-6 w-6 place-items-center rounded-full bg-emerald-600 text-white transition hover:bg-emerald-500" aria-label={t.common.add}>
+                      <button onClick={() => addToCart(product.id, sideChoice)} className="grid h-6 w-6 place-items-center rounded-full bg-emerald-600 text-white transition hover:bg-emerald-500" aria-label={t.common.add}>
                         <FaPlus className="text-[0.6rem]" />
                       </button>
                     </div>

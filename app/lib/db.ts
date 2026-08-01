@@ -117,8 +117,12 @@ const DDL: string[] = [
     price numeric(10,2) NOT NULL,
     qty integer NOT NULL CHECK (qty > 0),
     brand text NOT NULL,
-    category text NOT NULL DEFAULT ''
+    category text NOT NULL DEFAULT '',
+    side_choice text,
+    side_label text
   )`,
+  `ALTER TABLE order_items ADD COLUMN IF NOT EXISTS side_choice text`,
+  `ALTER TABLE order_items ADD COLUMN IF NOT EXISTS side_label text`,
   `CREATE INDEX IF NOT EXISTS idx_order_items_order_id ON order_items (order_id)`,
   `CREATE TABLE IF NOT EXISTS reviews (
     id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
