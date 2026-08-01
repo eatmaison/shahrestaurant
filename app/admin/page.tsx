@@ -3,9 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
+import type { DragEvent } from "react";
 import {
-  FaArrowDown,
-  FaArrowUp,
   FaArrowsRotate,
   FaBagShopping,
   FaBoxOpen,
@@ -18,6 +17,7 @@ import {
   FaEnvelope,
   FaEuroSign,
   FaFileInvoice,
+  FaGripVertical,
   FaHeart,
   FaImage,
   FaLocationDot,
@@ -286,6 +286,8 @@ export default function AdminPage() {
   const [productBrandFilter, setProductBrandFilter] = useState<Brand | "all">("all");
   const [productCategoryFilter, setProductCategoryFilter] = useState<Category | "all">("all");
   const [productSubcategoryFilter, setProductSubcategoryFilter] = useState<Category | "all">("all");
+  const [draggingProductKey, setDraggingProductKey] = useState<string | null>(null);
+  const [dropProductKey, setDropProductKey] = useState<string | null>(null);
   const [movingProductKey, setMovingProductKey] = useState<string | null>(null);
 
   // Period filters: one for the statistics block, one for order management.
@@ -394,12 +396,44 @@ export default function AdminPage() {
     });
   }, [activeProductCategoryFilter, activeProductSubcategoryFilter, brands, productBrandFilter, productGroups, productSearch]);
 
-  const moveVisibleProduct = async (group: ProductGroup, index: number, direction: "up" | "down") => {
-    const target = filteredProductGroups[direction === "up" ? index - 1 : index + 1];
-    if (!target || movingProductKey) return;
-    setMovingProductKey(group.key);
-    await moveProduct(group.product.id, target.product.id, direction === "up" ? "before" : "after");
+  const handleProductDragStart = (event: DragEvent<HTMLDivElement>, group: ProductGroup) => {
+    event.dataTransfer.effectAllowed = "move";
+    event.dataTransfer.setData("text/plain", group.key);
+    setDraggingProductKey(group.key);
+  };
+
+  const handleProductDragOver = (event: DragEvent<HTMLDivElement>, group: ProductGroup) => {
+    if (!draggingProductKey || draggingProductKey === group.key || movingProductKey) return;
+    event.preventDefault();
+    event.dataTransfer.dropEffect = "move";
+    setDropProductKey(group.key);
+  };
+
+  const handleProductDragLeave = (event: DragEvent<HTMLDivElement>, group: ProductGroup) => {
+    const nextTarget = event.relatedTarget instanceof Node ? event.relatedTarget : null;
+    if (!nextTarget || !event.currentTarget.contains(nextTarget)) {
+      setDropProductKey((key) => (key === group.key ? null : key));
+    }
+  };
+
+  const handleProductDrop = async (event: DragEvent<HTMLDivElement>, target: ProductGroup) => {
+    event.preventDefault();
+    const sourceKey = event.dataTransfer.getData("text/plain") || draggingProductKey;
+    const source = filteredProductGroups.find((group) => group.key === sourceKey);
+    setDropProductKey(null);
+    if (!source || source.key === target.key || movingProductKey) return;
+
+    const rect = event.currentTarget.getBoundingClientRect();
+    const placement = event.clientY < rect.top + rect.height / 2 ? "before" : "after";
+    setMovingProductKey(source.key);
+    await moveProduct(source.product.id, target.product.id, placement);
+    setDraggingProductKey(null);
     setMovingProductKey(null);
+  };
+
+  const handleProductDragEnd = () => {
+    setDraggingProductKey(null);
+    setDropProductKey(null);
   };
 
   /** Total counts per category, independent of any active filters (used for the filter-tab badges). */
@@ -1570,7 +1604,7 @@ export default function AdminPage() {
             {recentVisitors.length === 0 ? t.admin.noCustomers : t.admin.recentlyOnlineNoResults}
           </p>
         ) : (
-          <ul className="mt-3 space-y-2">
+          <ul className="mt-3 max-h-[28rem] space-y-2 overflow-y-auto pr-1">
             {recentlyOnline.map((entry) => {
               const online = entry.isOnline;
               const orderCount = entry.kind === "user" ? (entry.orderCount ?? 0) : 0;
@@ -2284,8 +2318,27 @@ export default function AdminPage() {
               const Icon = categoryIconFor(brands, p.category);
               const groupBrands = [...new Set(group.products.map((item) => item.brand))];
               const isMoving = movingProductKey === group.key;
+              const isDragging = draggingProductKey === group.key;
+              const isDropTarget = dropProductKey === group.key && draggingProductKey !== group.key;
               return (
-                <div key={group.key} className="flex items-center gap-3 rounded-2xl border border-slate-100 bg-slate-50 p-2.5 dark:border-white/5 dark:bg-white/5">
+                <div
+                  key={group.key}
+                  draggable={!movingProductKey}
+                  onDragStart={(event) => handleProductDragStart(event, group)}
+                  onDragOver={(event) => handleProductDragOver(event, group)}
+                  onDragLeave={(event) => handleProductDragLeave(event, group)}
+                  onDrop={(event) => handleProductDrop(event, group)}
+                  onDragEnd={handleProductDragEnd}
+                  className={`flex cursor-grab items-center gap-3 rounded-2xl border border-slate-100 bg-slate-50 p-2.5 transition active:cursor-grabbing dark:border-white/5 dark:bg-white/5 ${
+                    isDragging ? "opacity-50 ring-2 ring-sky-400" : ""
+                  } ${isDropTarget ? "border-sky-300 bg-sky-50 ring-2 ring-sky-300 dark:border-sky-500/40 dark:bg-sky-500/10" : ""} ${
+                    isMoving ? "opacity-70" : ""
+                  }`}
+                  title="Drag to reorder"
+                >
+                  <span className="grid h-8 w-4 shrink-0 place-items-center text-slate-300 dark:text-slate-600" aria-hidden="true">
+                    {isMoving ? <FaSpinner className="animate-spin text-xs" /> : <FaGripVertical className="text-xs" />}
+                  </span>
                   <span className="relative grid h-11 w-11 shrink-0 place-items-center overflow-hidden rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
                     {p.image ? <Image src={p.image} alt={p.name} fill sizes="44px" className="object-cover" /> : <Icon />}
                   </span>
@@ -2309,24 +2362,6 @@ export default function AdminPage() {
                       {p.category}{p.subcategory ? ` -> ${p.subcategory}` : ""} · €{p.price.toFixed(2)}
                     </p>
                   </div>
-                  <button
-                    onClick={() => moveVisibleProduct(group, index, "up")}
-                    disabled={index === 0 || Boolean(movingProductKey)}
-                    className="grid h-8 w-8 shrink-0 place-items-center rounded-full text-slate-400 transition hover:bg-sky-500/10 hover:text-sky-600 disabled:cursor-not-allowed disabled:opacity-30"
-                    aria-label="Move product up"
-                    title="Move product up"
-                  >
-                    {isMoving ? <FaSpinner className="animate-spin text-sm" /> : <FaArrowUp className="text-sm" />}
-                  </button>
-                  <button
-                    onClick={() => moveVisibleProduct(group, index, "down")}
-                    disabled={index === filteredProductGroups.length - 1 || Boolean(movingProductKey)}
-                    className="grid h-8 w-8 shrink-0 place-items-center rounded-full text-slate-400 transition hover:bg-sky-500/10 hover:text-sky-600 disabled:cursor-not-allowed disabled:opacity-30"
-                    aria-label="Move product down"
-                    title="Move product down"
-                  >
-                    {isMoving ? <FaSpinner className="animate-spin text-sm" /> : <FaArrowDown className="text-sm" />}
-                  </button>
                   <button
                     onClick={() => openEditor(p)}
                     className="grid h-8 w-8 shrink-0 place-items-center rounded-full text-slate-400 transition hover:bg-emerald-500/10 hover:text-emerald-600"
