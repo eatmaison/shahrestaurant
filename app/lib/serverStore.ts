@@ -1362,26 +1362,24 @@ export async function createReservation(data: {
 
   const reservation = rowToReservation(rows[0]);
 
-  // Confirmation email (never blocks the booking).
+  // Confirmation email. Failures are logged, but the confirmed booking remains saved.
   if (email) {
-    void (async () => {
-      try {
-        const base = siteBase(data.origin);
-        const { subject, html } = reservationEmail({
-          base,
-          guestName,
-          number: formatReservationNumber(reservation.reservationNumber),
-          date: reservation.date,
-          time: reservation.time,
-          guests: reservation.guests,
-          note: reservation.note,
-          lang: data.lang,
-        });
-        await sendMail({ to: email, subject, html });
-      } catch (err) {
-        console.error("[email] reservation confirmation failed:", err);
-      }
-    })();
+    try {
+      const base = siteBase(data.origin);
+      const { subject, html } = reservationEmail({
+        base,
+        guestName,
+        number: formatReservationNumber(reservation.reservationNumber),
+        date: reservation.date,
+        time: reservation.time,
+        guests: reservation.guests,
+        note: reservation.note,
+        lang: data.lang,
+      });
+      await sendMail({ to: email, subject, html });
+    } catch (err) {
+      console.error("[email] reservation confirmation failed:", err);
+    }
   }
 
   return { ok: true, reservation };

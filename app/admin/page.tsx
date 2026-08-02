@@ -1956,6 +1956,7 @@ export default function AdminPage() {
                     : r.status === "declined"
                       ? t.reservations.statusDeclined
                       : t.reservations.statusCancelled;
+              const reservationSite = lastSeenSiteLabel(r.site) ?? r.site;
               return (
                 <li key={r.id} className="rounded-2xl border border-slate-200 p-4 dark:border-white/10">
                   <div className="flex flex-wrap items-center justify-between gap-2">
@@ -1973,6 +1974,7 @@ export default function AdminPage() {
                     </span>
                   </div>
                   <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-500 dark:text-slate-400">
+                    <span className="inline-flex items-center gap-1.5"><FaStore className="text-emerald-500" /> {reservationSite}</span>
                     <span className="inline-flex items-center gap-1.5"><FaUser className="text-emerald-500" /> {r.guestName}</span>
                     <span className="inline-flex items-center gap-1.5"><FaUserGroup className="text-emerald-500" /> {r.guests}</span>
                     <a href={`tel:${r.phone}`} className="inline-flex items-center gap-1.5 hover:text-emerald-600"><FaPhone className="text-emerald-500" /> {r.phone}</a>

@@ -250,6 +250,8 @@ export interface Reservation {
   /** Special requests: allergies, seating preference, celebrations... */
   note?: string;
   status: ReservationStatus;
+  /** Website where the reservation was made ("themaison", "tandoor", ...). */
+  site: string;
   createdAt: number;
 }
 

@@ -3,7 +3,6 @@ import nodemailer, { type Transporter } from "nodemailer";
 /**
  * Email sending via SMTP (Strato). Configure in .env.local:
  *   SMTP_HOST=smtp.strato.de
- *   SMTP_PORT=465
  *   SMTP_USER=info@thetandoorcompany.nl
  *   SMTP_PASS=<mailbox password>
  *   SMTP_FROM="The Tandoor Company <info@thetandoorcompany.nl>"
@@ -13,7 +12,6 @@ let transporter: Transporter | null = null;
 export function emailEnabled(): boolean {
   return !!(process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS);
 }
-
 function getTransporter(): Transporter {
   if (!transporter) {
     const port = Number(process.env.SMTP_PORT || 465);
@@ -151,7 +149,7 @@ export function reservationEmail(data: {
         locale: "nl-NL",
         subject: `Bedankt voor uw reservering bij The Tandoor Company - ${data.number}`,
         heading: `Bedankt, ${escapeHtml(data.guestName)}!`,
-        intro: "Wat fijn dat u voor The Tandoor Company heeft gekozen. We hebben uw reserveringsaanvraag ontvangen en ons team kijkt deze met zorg na. U ontvangt binnenkort de definitieve bevestiging.",
+        intro: "Wat fijn dat u voor The Tandoor Company heeft gekozen. Uw reservering is bevestigd. Als dit tijdstip toch niet mogelijk is, neemt ons team contact met u op met alternatieven.",
         reservation: "Reservering",
         date: "Datum",
         time: "Tijd",
@@ -163,7 +161,7 @@ export function reservationEmail(data: {
         locale: "en-GB",
         subject: `Thank you for your reservation at The Tandoor Company - ${data.number}`,
         heading: `Thank you, ${escapeHtml(data.guestName)}!`,
-        intro: "Thank you for choosing The Tandoor Company. We have received your reservation request and our team will review it with care. You will receive the final confirmation shortly.",
+        intro: "Thank you for choosing The Tandoor Company. Your reservation is confirmed. If this time cannot be arranged, our team will contact you with alternatives.",
         reservation: "Reservation",
         date: "Date",
         time: "Time",

@@ -154,6 +154,7 @@ export function rowToReservation(r: any): Reservation {
     occasion: r.occasion || undefined,
     note: r.note ?? undefined,
     status: r.status,
+    site: r.site ?? "tandoor",
     createdAt: toMs(r.created_at),
   };
 }
