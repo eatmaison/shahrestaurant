@@ -51,19 +51,15 @@ export default function GalleryPage() {
         portrait: g.portrait,
       };
     }),
-    { src: "/photos/687A0402.jpeg", alt: nl ? "Curry in koperen pan met bijgerechten en kruiden bij The Tandoor Company Amsterdam" : "Curry in a copper pot with sides and spices at The Tandoor Company Amsterdam", category: cat.ambiance },
-    { src: "/photos/687A0210.jpeg", alt: nl ? "Verse tandoori kip met limoen, net uit de tandoor" : "Fresh tandoori chicken with lime, straight from the tandoor", category: cat.dishes },
-    { src: "/photos/687A0387.jpeg", alt: nl ? "Signatuurcocktail met verse naan op de achtergrond" : "Signature cocktail with fresh naan in the background", category: cat.bar, portrait: true },
+    { src: "/photos/687A0402.jpeg", alt: nl ? "Gedekte tafel met naan, gouden bestek en dipsauzen" : "Table setting with naan, golden cutlery and dipping sauces", category: cat.dishes },
+    { src: "/photos/687A0210.jpeg", alt: nl ? "Modern restaurantinterieur met een warme sfeer" : "Modern restaurant interior with a warm atmosphere", category: cat.interior },
     { src: "/photos/687A0211.jpeg", alt: nl ? "Seekh kebab van lamsvlees met yoghurtsaus en verse kruiden" : "Lamb seekh kebab with yogurt sauce and fresh herbs", category: cat.dishes },
-    { src: "/photos/687A0410.jpeg", alt: nl ? "Gedekte tafel met naan, gouden bestek en dipsauzen" : "Table setting with naan, golden cutlery and dipping sauces", category: cat.ambiance },
     { src: "/photos/687A0260.jpeg", alt: nl ? "Gelaagde signatuurcocktail met granaatappel" : "Layered signature cocktail with pomegranate", category: cat.bar, portrait: true },
     { src: "/photos/687A0216.jpeg", alt: nl ? "Goudgeroosterde paneer tikka met limoen" : "Golden-charred paneer tikka with lime", category: cat.dishes },
-    { src: "/photos/687A0218.jpeg", alt: nl ? "Tandoori vis, elegant geserveerd met garnering" : "Tandoori fish, elegantly plated with garnish", category: cat.dishes },
     { src: "/photos/687A0321.jpeg", alt: nl ? "Verfijnd geplateerd tandoori gerecht" : "Refined plated tandoori dish", category: cat.dishes },
     { src: "/photos/687A0090.jpeg", alt: nl ? "Zwevende wijnfles aan de bar van The Tandoor Company" : "Floating wine bottle at the bar of The Tandoor Company", category: cat.bar },
-    { src: "/photos/687A0336.jpeg", alt: nl ? "Tandoori hoofdgerecht, vers bereid door onze chefs" : "Tandoori main course, freshly prepared by our chefs", category: cat.dishes },
-    { src: "/photos/687A0225.jpeg", alt: nl ? "Gegrilde tandoori specialiteit met saus en garnering" : "Charred tandoori specialty with sauce and garnish", category: cat.dishes },
-    { src: "/photos/687A0343.jpeg", alt: nl ? "Modern restaurantinterieur met warme sfeer" : "Modern restaurant interior with a warm atmosphere", category: cat.interior },
+    { src: "/photos/687A0336.jpeg", alt: nl ? "Een stijlvolle en gastvrije sfeer om samen te genieten" : "A stylish and welcoming atmosphere to enjoy together", category: cat.dishes },
+    { src: "/photos/687A0343.jpeg", alt: nl ? "Stijlvolle bar waar cocktails en gastvrijheid samenkomen" : "Stylish bar where cocktails and hospitality come together", category: cat.bar },
     { src: "/photos/687A0412.jpeg", alt: nl ? "Samen genieten van curry, rijst en tandoori gerechten" : "Sharing curry, rice and tandoori dishes together", category: cat.ambiance },
   ];
 
