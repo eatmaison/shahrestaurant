@@ -23,7 +23,7 @@ import {
   VIP_SALE_PRICE,
 } from "./data";
 import { createMolliePayment, getMolliePayment, mollieEnabled } from "./mollie";
-import { isScheduleSlotOpen } from "./openingHours";
+import { amsterdamNow, isOpenAt, isScheduleSlotOpen, restaurantStatus as getRestaurantStatus, timeToMinutes, type RestaurantOpenOverride, type RestaurantStatus } from "./openingHours";
 import { companyInvoiceEmail, passwordResetEmail, reservationEmail, sendMail, verificationEmail } from "./email";
 import { signToken, verifyToken } from "./tokens";
 import { deleteStoredImage, storeImage } from "./spaces";
@@ -244,10 +244,46 @@ export interface Bootstrap {
   vipRequests: VipRequest[];
   socialLinks: SocialLink[];
   reservations: Reservation[];
+  restaurantStatus: RestaurantStatus;
   /** Anonymous guests active within the last 5 minutes (admin only, else 0). */
   onlineVisitors: number;
   /** Signed-in users and anonymous guest sessions seen recently by the admin. */
   recentVisitors: RecentVisitor[];
+}
+
+export async function loadRestaurantStatus(): Promise<RestaurantStatus> {
+  await ensureReady();
+  const { localDate } = amsterdamNow();
+  const rows = (await sql.query(`SELECT mode, local_date FROM restaurant_open_overrides WHERE site = $1`, [SITE_ID])) as any[];
+  const override = (rows[0]?.mode ?? "auto") as RestaurantOpenOverride;
+  const overrideDate = rows[0]?.local_date || undefined;
+  const status = getRestaurantStatus(override, overrideDate);
+
+  if (override !== "auto" && (overrideDate !== localDate || !status.canOverride)) {
+    await sql.query(
+      `INSERT INTO restaurant_open_overrides (site, mode, local_date, updated_at)
+       VALUES ($1, 'auto', $2, now())
+       ON CONFLICT (site) DO UPDATE SET mode = 'auto', local_date = $2, updated_at = now()`,
+      [SITE_ID, localDate]
+    );
+    return getRestaurantStatus("auto", localDate);
+  }
+
+  return status;
+}
+
+export async function setRestaurantOpenOverride(override: RestaurantOpenOverride): Promise<RestaurantStatus> {
+  await requireAdmin();
+  const { localDate } = amsterdamNow();
+  const status = getRestaurantStatus(override, localDate);
+  const mode = status.canOverride ? override : "auto";
+  await sql.query(
+    `INSERT INTO restaurant_open_overrides (site, mode, local_date, updated_at)
+     VALUES ($1, $2, $3, now())
+     ON CONFLICT (site) DO UPDATE SET mode = $2, local_date = $3, updated_at = now()`,
+    [SITE_ID, mode, localDate]
+  );
+  return loadRestaurantStatus();
 }
 
 export async function bootstrap(): Promise<Bootstrap> {
@@ -277,6 +313,7 @@ export async function bootstrap(): Promise<Bootstrap> {
   const products = productRows.map(rowToProduct);
 
   const brands = await loadBrands();
+  const restaurantStatus = await loadRestaurantStatus();
 
   const reviewRows = (await sql.query(`SELECT * FROM reviews ORDER BY created_at DESC`)) as any[];
   const reviews = reviewRows.map(rowToReview);
@@ -360,7 +397,7 @@ export async function bootstrap(): Promise<Bootstrap> {
     reservations = ((await sql.query(`SELECT * FROM reservations WHERE user_id = $1 ORDER BY date DESC, time DESC`, [currentUser.id])) as any[]).map(rowToReservation);
   }
 
-  return { currentUser, products, brands, reviews, orders, users, vipRequests, socialLinks, reservations, onlineVisitors, recentVisitors };
+  return { currentUser, products, brands, reviews, orders, users, vipRequests, socialLinks, reservations, restaurantStatus, onlineVisitors, recentVisitors };
 }
 
 /** Load orders (optionally for a single user) with their line items. */
@@ -1290,26 +1327,25 @@ export async function createReservation(data: {
   const phone = data.phone.trim();
   if (!guestName || !phone || !data.date || !data.time) return { ok: false, error: "fillFields" };
 
-  // The slot must fall inside opening hours (reuses the scheduling rules).
-  if (!isScheduleSlotOpen({ type: "once", date: data.date, time: data.time })) {
+  const slotMinutes = timeToMinutes(data.time);
+  const slotDay = new Date(`${data.date}T00:00:00Z`).getUTCDay();
+  if (Number.isNaN(slotMinutes) || !isOpenAt(slotDay, slotMinutes)) {
     return { ok: false, error: "invalidSlot" };
   }
 
   // No bookings in the past (Amsterdam wall-clock comparison via ISO strings).
-  const now = new Date();
-  const todayIso = now.toISOString().split("T")[0];
-  if (data.date < todayIso) return { ok: false, error: "pastDate" };
-  if (data.date === todayIso) {
-    const hhmm = `${String(now.getHours()).padStart(2, "0")}:${String(now.getMinutes()).padStart(2, "0")}`;
-    if (data.time <= hhmm) return { ok: false, error: "pastDate" };
+  const now = amsterdamNow();
+  if (data.date < now.localDate) return { ok: false, error: "pastDate" };
+  if (data.date === now.localDate) {
+    if (timeToMinutes(data.time) <= now.minutes) return { ok: false, error: "pastDate" };
   }
 
   const guests = Math.min(40, Math.max(1, Math.round(data.guests)));
   const email = (data.email ?? currentUser?.email ?? "").trim().toLowerCase();
 
   const rows = (await sql.query(
-    `INSERT INTO reservations (user_id, guest_name, email, phone, date, time, guests, occasion, note, site)
-     VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) RETURNING *`,
+    `INSERT INTO reservations (user_id, guest_name, email, phone, date, time, guests, occasion, note, status, site)
+     VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,'confirmed',$10) RETURNING *`,
     [
       currentUser?.id ?? null,
       guestName,

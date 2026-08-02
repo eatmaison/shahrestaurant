@@ -48,6 +48,7 @@ import { CATEGORY_ICON_CHOICES, categoryIconFor, formatOrderNumber, isDrinkCateg
 import { SOCIAL_PLATFORMS } from "../components/socialIcons";
 import RichTextEditor from "../components/RichTextEditor";
 import type { Brand, Category, Order, OrderStatus, Product, RecentVisitor } from "../lib/types";
+import type { RestaurantOpenOverride } from "../lib/openingHours";
 
 const statusIcons: Record<OrderStatus, typeof FaClock> = {
   new: FaClock,
@@ -146,13 +147,14 @@ const ADMIN_INITIAL_NOW = Date.now();
 
 export default function AdminPage() {
   const { t, lang } = useLang();
-  const { currentUser, products, orders, users, addProductGroup, removeProduct, updateProductGroup, moveProduct, brands, manageBrands, updateOrderStatus, setOrderPaid, setInvoiceSent, deleteOrder, vipRequests, approveVipRequest, rejectVipRequest, socialLinks, updateSocialLink, reservations, setReservationStatus, cancelReservation, onlineVisitors, recentVisitors, refresh, hydrated } = useStore();
+  const { currentUser, products, orders, users, addProductGroup, removeProduct, updateProductGroup, moveProduct, brands, manageBrands, updateOrderStatus, setOrderPaid, setInvoiceSent, deleteOrder, vipRequests, approveVipRequest, rejectVipRequest, socialLinks, updateSocialLink, reservations, restaurantStatus, updateRestaurantOpenOverride, setReservationStatus, cancelReservation, onlineVisitors, recentVisitors, refresh, hydrated } = useStore();
   const fileRef = useRef<HTMLInputElement>(null);
   const editFileRef = useRef<HTMLInputElement>(null);
   const logoFileRef = useRef<HTMLInputElement>(null);
   /** Brand whose logo will receive the next picked file. */
   const logoBrandIdRef = useRef<string | null>(null);
   const [now, setNow] = useState(ADMIN_INITIAL_NOW);
+  const [restaurantStatusSaving, setRestaurantStatusSaving] = useState<RestaurantOpenOverride | null>(null);
 
   useEffect(() => {
     const intervalId = window.setInterval(() => setNow(Date.now()), 60_000);
@@ -528,6 +530,15 @@ export default function AdminPage() {
       setVisitorsUpdatedAt(Date.now());
     } finally {
       setVisitorsRefreshing(false);
+    }
+  };
+
+  const changeRestaurantStatus = async (override: RestaurantOpenOverride) => {
+    setRestaurantStatusSaving(override);
+    try {
+      await updateRestaurantOpenOverride(override);
+    } finally {
+      setRestaurantStatusSaving(null);
     }
   };
 
@@ -1306,6 +1317,45 @@ export default function AdminPage() {
           <FaReceipt /> {t.terminal.title} →
         </Link>
       </div>
+
+      <section className="mb-4 rounded-3xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-white/5">
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-400">{t.admin.restaurantStatusTitle}</p>
+            <div className="mt-2 flex items-center gap-2">
+              <span className={`grid h-9 w-9 place-items-center rounded-full ${restaurantStatus.isOpen ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-300" : "bg-red-500/10 text-red-600 dark:text-red-400"}`}>
+                {restaurantStatus.isOpen ? <FaCircleCheck /> : <FaCircleExclamation />}
+              </span>
+              <div>
+                <h2 className="text-lg font-black text-slate-900 dark:text-white">{restaurantStatus.isOpen ? t.admin.restaurantStatusOpen : t.admin.restaurantStatusClosed}</h2>
+                <p className="text-xs text-slate-500 dark:text-slate-400">{restaurantStatus.canOverride ? t.admin.restaurantStatusSub : t.admin.restaurantStatusAfterHours}</p>
+              </div>
+            </div>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {(["auto", "open", "closed"] as RestaurantOpenOverride[]).map((override) => {
+              const active = restaurantStatus.activeOverride === override;
+              const disabled = restaurantStatusSaving !== null || (override !== "auto" && !restaurantStatus.canOverride);
+              return (
+                <button
+                  key={override}
+                  type="button"
+                  disabled={disabled}
+                  onClick={() => void changeRestaurantStatus(override)}
+                  className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-bold transition disabled:cursor-not-allowed disabled:opacity-50 ${
+                    active
+                      ? "border-emerald-500 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300"
+                      : "border-slate-200 bg-slate-50 text-slate-600 hover:border-emerald-300 dark:border-white/10 dark:bg-white/5 dark:text-slate-300"
+                  }`}
+                >
+                  {restaurantStatusSaving === override ? <FaSpinner className="animate-spin" /> : override === "open" ? <FaCircleCheck /> : override === "closed" ? <FaCircleExclamation /> : <FaClock />}
+                  {override === "open" ? t.admin.restaurantStatusSetOpen : override === "closed" ? t.admin.restaurantStatusSetClosed : t.admin.restaurantStatusAuto}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      </section>
 
       {/* Stat cards */}
       <div className="mb-4">{renderRangeFilter(statsRange, setStatsRange)}</div>

@@ -12,6 +12,7 @@ import {
 import { translations, type Dictionary } from "./lib/translations";
 import { DEFAULT_BRAND_CONFIGS } from "./lib/data";
 import { cartKeyForProduct, parseCartKey } from "./lib/cart";
+import { restaurantStatus as getRestaurantStatus, type RestaurantOpenOverride, type RestaurantStatus } from "./lib/openingHours";
 import type { AccountType, BrandConfig, GrillSideChoice, Lang, MenuUpgrades, Order, OrderFulfillment, OrderSchedule, OrderStatus, Product, ProductContent, ProductTarget, RecentVisitor, Reservation, Review, SocialLink, SocialPlatform, User, VipRequest } from "./lib/types";
 
 const JSON_HEADERS = { "Content-Type": "application/json" } as const;
@@ -149,6 +150,10 @@ interface StoreCtx {
 
   /** Table reservations (own bookings for guests, all bookings for admins). */
   reservations: Reservation[];
+  /** Customer-facing restaurant status, computed in Europe/Amsterdam time. */
+  restaurantStatus: RestaurantStatus;
+  /** Admin: override today's customer-facing open/closed status. */
+  updateRestaurantOpenOverride: (override: RestaurantOpenOverride) => Promise<{ ok: boolean }>;
   /** Book a table. `error` is a code for translation. */
   createReservation: (data: {
     guestName: string;
@@ -237,6 +242,7 @@ export function Providers({ children }: { children: ReactNode }) {
   const [onlineVisitors, setOnlineVisitors] = useState(0);
   const [recentVisitors, setRecentVisitors] = useState<RecentVisitor[]>([]);
   const [reservations, setReservations] = useState<Reservation[]>([]);
+  const [restaurantStatus, setRestaurantStatus] = useState<RestaurantStatus>(() => getRestaurantStatus());
 
   // Load server-backed data (products, session user, orders, reviews, VIP requests).
   const refresh = useCallback(async () => {
@@ -255,8 +261,23 @@ export function Providers({ children }: { children: ReactNode }) {
       setOnlineVisitors(data.onlineVisitors ?? 0);
       setRecentVisitors(data.recentVisitors ?? []);
       setReservations(data.reservations ?? []);
+      const status = data.restaurantStatus;
+      setRestaurantStatus(getRestaurantStatus(status?.override ?? "auto", status?.overrideDate));
     } catch {
       /* ignore transient network errors - the UI keeps its current state */
+    }
+  }, []);
+
+  const refreshRestaurantStatus = useCallback(async () => {
+    try {
+      const res = await fetch("/api/restaurant-status", { cache: "no-store" });
+      const data = await res.json().catch(() => null);
+      if (res.ok && data?.restaurantStatus) {
+        const status = data.restaurantStatus;
+        setRestaurantStatus(getRestaurantStatus(status.override ?? "auto", status.overrideDate));
+      }
+    } catch {
+      setRestaurantStatus((status) => getRestaurantStatus(status.override, status.overrideDate));
     }
   }, []);
 
@@ -271,6 +292,13 @@ export function Providers({ children }: { children: ReactNode }) {
       refresh().finally(() => setHydrated(true));
     });
   }, [refresh]);
+
+  useEffect(() => {
+    const update = () => setRestaurantStatus((status) => getRestaurantStatus(status.override, status.overrideDate));
+    update();
+    const id = window.setInterval(() => void refreshRestaurantStatus(), 60_000);
+    return () => window.clearInterval(id);
+  }, [refreshRestaurantStatus]);
   // Apply + persist theme.
   useEffect(() => {
     if (!hydrated) return;
@@ -535,6 +563,17 @@ export function Providers({ children }: { children: ReactNode }) {
     await refresh();
   }, [refresh]);
 
+  const updateRestaurantOpenOverride = useCallback<StoreCtx["updateRestaurantOpenOverride"]>(async (override) => {
+    const res = await fetch("/api/restaurant-status", { method: "POST", headers: JSON_HEADERS, body: JSON.stringify({ override }) });
+    const json = await res.json().catch(() => null);
+    if (res.ok && json?.restaurantStatus) {
+      const status = json.restaurantStatus;
+      setRestaurantStatus(getRestaurantStatus(status.override ?? "auto", status.overrideDate));
+      return { ok: true };
+    }
+    return { ok: false };
+  }, []);
+
   const placeOrder: StoreCtx["placeOrder"] = useCallback(
     async (details) => {
       const res = await fetch("/api/orders", {
@@ -631,6 +670,8 @@ export function Providers({ children }: { children: ReactNode }) {
       addReview,
       addReservationReview,
       reservations,
+      restaurantStatus,
+      updateRestaurantOpenOverride,
       createReservation,
       cancelReservation,
       setReservationStatus,
@@ -675,6 +716,8 @@ export function Providers({ children }: { children: ReactNode }) {
       addReview,
       addReservationReview,
       reservations,
+      restaurantStatus,
+      updateRestaurantOpenOverride,
       createReservation,
       cancelReservation,
       setReservationStatus,

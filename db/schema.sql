@@ -203,6 +203,15 @@ CREATE TABLE IF NOT EXISTS social_links (
   updated_at timestamptz NOT NULL DEFAULT now()
 );
 
+-- ------------------------------------------------------------------ restaurant_open_overrides
+-- Per-site manual open/closed override for today's customer-facing order status.
+CREATE TABLE IF NOT EXISTS restaurant_open_overrides (
+  site       text        PRIMARY KEY,
+  mode       text        NOT NULL DEFAULT 'auto' CHECK (mode IN ('auto', 'open', 'closed')),
+  local_date text        NOT NULL DEFAULT '',
+  updated_at timestamptz NOT NULL DEFAULT now()
+);
+
 -- ------------------------------------------------------------------ reservations
 -- The Maison table reservations (shared database across the restaurant group).
 CREATE TABLE IF NOT EXISTS reservations (

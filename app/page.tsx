@@ -23,7 +23,6 @@ import {
 } from "react-icons/fa6";
 import { useLang, useStore } from "./providers";
 import { SITE_ID, getCategoryIcon } from "./lib/data";
-import { isOpenNow } from "./lib/openingHours";
 
 /** Animated counter that counts up once it scrolls into view. */
 function CountUp({ value, suffix = "", duration = 1400 }: { value: number; suffix?: string; duration?: number }) {
@@ -138,16 +137,8 @@ const AMBIANCE_PHOTOS = [
 
 export default function Home() {
   const { t, lang } = useLang();
-  const { products, reviews } = useStore();
-
-  // "Open now" indicator - computed client-side only to avoid hydration drift.
-  const [openNow, setOpenNow] = useState<boolean | null>(null);
-  useEffect(() => {
-    const update = () => setOpenNow(isOpenNow());
-    update();
-    const id = setInterval(update, 60_000);
-    return () => clearInterval(id);
-  }, []);
+  const { products, reviews, restaurantStatus } = useStore();
+  const openNow = restaurantStatus.isOpen;
 
   // Only reviews written on this website (the database is shared across the
   // restaurant group; each site shows its own guest reviews).

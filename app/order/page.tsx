@@ -43,7 +43,6 @@ import {
   VIP_DISCOUNT_PCT,
 } from "../lib/data";
 import { cartKeyForProduct, grillSideLabel, GRILL_SIDE_OPTIONS, isGrillSideRequired, parseCartKey } from "../lib/cart";
-import { nextOpening } from "../lib/openingHours";
 import type { Brand, Category, GrillSideChoice, MenuUpgrades, Product } from "../lib/types";
 
 type CartLine = { key: string; product: Product; qty: number; sideChoice?: GrillSideChoice };
@@ -141,7 +140,7 @@ function MobileMenuScrollRow({ children, className = "" }: { children: ReactNode
 
 export default function OrderPage() {
   const { t, lang } = useLang();
-  const { products, brands, cart, addToCart, removeFromCart, currentUser, placeOrder } = useStore();
+  const { products, brands, cart, addToCart, removeFromCart, currentUser, placeOrder, restaurantStatus } = useStore();
 
   const [activeBrand, setActiveBrand] = useState<Brand>("tandoor");
   const [activeCategory, setActiveCategory] = useState<Category>("Soups");
@@ -167,15 +166,7 @@ export default function OrderPage() {
   const [fallbackProducts, setFallbackProducts] = useState<Product[]>([]);
   const today = new Date().toISOString().split("T")[0];
 
-  // Live open/closed status (Amsterdam time), refreshed every minute.
-  // Set in an effect (not initial state) to avoid SSR hydration mismatches.
-  const [nextOpen, setNextOpen] = useState<{ daysAhead: number; weekday: number } | null>(null);
-  useEffect(() => {
-    const update = () => setNextOpen(nextOpening());
-    update();
-    const id = setInterval(update, 60_000);
-    return () => clearInterval(id);
-  }, []);
+  const nextOpen = restaurantStatus.nextOpening;
 
   // "We will start preparing your order today / on Tuesday from 17:00."
   const preOrderNote = useMemo(() => {

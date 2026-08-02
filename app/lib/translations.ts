@@ -290,6 +290,14 @@ export interface Dictionary {
     totalOrders: string;
     totalUsers: string;
     totalProducts: string;
+    restaurantStatusTitle: string;
+    restaurantStatusOpen: string;
+    restaurantStatusClosed: string;
+    restaurantStatusSub: string;
+    restaurantStatusAfterHours: string;
+    restaurantStatusAuto: string;
+    restaurantStatusSetOpen: string;
+    restaurantStatusSetClosed: string;
     avgOrder: string;
     topProducts: string;
     recentOrders: string;
@@ -793,7 +801,7 @@ const en: Dictionary = {
     overline: "Reservations",
     title: "Reserve your table",
     subtitle:
-      "An unforgettable evening begins here. Choose your date, time and party size - our team will confirm your reservation shortly.",
+      "An unforgettable evening begins here. Choose your date, time and party size - your reservation is confirmed immediately.",
     formTitle: "Booking details",
     name: "Full name",
     email: "Email address",
@@ -812,10 +820,10 @@ const en: Dictionary = {
     occasionOther: "Other celebration",
     note: "Special requests (optional)",
     notePlaceholder: "Allergies, seating preference, celebrations, high chair…",
-    submit: "Request reservation",
+    submit: "Confirm reservation",
     submitting: "Sending…",
-    successTitle: "Reservation received!",
-    successText: "Thank you - we have received your reservation. Our team will review it and confirm shortly.",
+    successTitle: "Reservation confirmed!",
+    successText: "Thank you - your reservation is confirmed. If this time cannot be arranged, our team will contact you with alternatives.",
     successEmailNote: "A confirmation email is on its way to",
     makeAnother: "Make another reservation",
     errorFillFields: "Please fill in all required fields.",
@@ -840,8 +848,8 @@ const en: Dictionary = {
     info1Text: "Plans changed? Cancel or adjust your reservation free of charge up to 2 hours in advance.",
     info2Title: "Groups & celebrations",
     info2Text: "From intimate dinners to festive tables for 40 guests - tell us the occasion and we prepare everything.",
-    info3Title: "Personal confirmation",
-    info3Text: "Every request is personally reviewed by our team. You receive a confirmation by email.",
+    info3Title: "Instant confirmation",
+    info3Text: "Your reservation is confirmed automatically, and our team will contact you only if another time is needed.",
     guestsLabel: "guest(s)",
   },
   admin: {
@@ -853,6 +861,14 @@ const en: Dictionary = {
     totalOrders: "Total orders",
     totalUsers: "Registered users",
     totalProducts: "Products",
+    restaurantStatusTitle: "Restaurant status",
+    restaurantStatusOpen: "Open for orders",
+    restaurantStatusClosed: "Closed now",
+    restaurantStatusSub: "Manual changes apply today and automatically return to schedule after closing time.",
+    restaurantStatusAfterHours: "Outside opening hours the restaurant is closed automatically.",
+    restaurantStatusAuto: "Auto",
+    restaurantStatusSetOpen: "Open now",
+    restaurantStatusSetClosed: "Close now",
     avgOrder: "Average order",
     topProducts: "Top products",
     recentOrders: "Recent orders",
@@ -1087,10 +1103,10 @@ const en: Dictionary = {
     closed: "Closed",
     openNow: "Open now",
     closedNow: "Closed now",
-    closedNote: "We are currently closed. You can order Tuesday to Sunday between 17:00 and 22:30 (closed on Mondays).",
+    closedNote: "We are currently closed. You can order Tuesday to Sunday between 17:00 and 21:30 (closed on Mondays).",
     preOrderToday: "We are closed right now, but you can already place your order - we will start preparing it today from 17:00.",
     preOrderDay: "We are closed right now, but you can already place your order - we will start preparing it on {day} from 17:00.",
-    scheduleClosedNote: "Please pick a delivery slot within our opening hours: Tuesday to Sunday, 17:00–22:30 (closed on Mondays).",
+    scheduleClosedNote: "Please pick a delivery slot within our order hours: Tuesday to Sunday, 17:00-21:30 (closed on Mondays).",
   },
   cookies: {
     message:
@@ -1358,7 +1374,7 @@ const nl: Dictionary = {
     overline: "Reserveringen",
     title: "Reserveer uw tafel",
     subtitle:
-      "Een onvergetelijke avond begint hier. Kies uw datum, tijd en gezelschap - ons team bevestigt uw reservering spoedig.",
+      "Een onvergetelijke avond begint hier. Kies uw datum, tijd en gezelschap - uw reservering is direct bevestigd.",
     formTitle: "Reserveringsgegevens",
     name: "Volledige naam",
     email: "E-mailadres",
@@ -1377,10 +1393,10 @@ const nl: Dictionary = {
     occasionOther: "Andere viering",
     note: "Speciale verzoeken (optioneel)",
     notePlaceholder: "Allergieën, zitvoorkeur, feestelijkheden, kinderstoel…",
-    submit: "Reservering aanvragen",
+    submit: "Reservering bevestigen",
     submitting: "Versturen…",
-    successTitle: "Reservering ontvangen!",
-    successText: "Dank u wel - wij hebben uw reservering ontvangen. Ons team bekijkt deze en bevestigt spoedig.",
+    successTitle: "Reservering bevestigd!",
+    successText: "Dank u wel - uw reservering is bevestigd. Als dit tijdstip niet mogelijk is, neemt ons team contact met u op met alternatieven.",
     successEmailNote: "Een bevestigingsmail is onderweg naar",
     makeAnother: "Nog een reservering maken",
     errorFillFields: "Vul alle verplichte velden in.",
@@ -1405,8 +1421,8 @@ const nl: Dictionary = {
     info1Text: "Plannen gewijzigd? Annuleer of wijzig uw reservering kosteloos tot 2 uur van tevoren.",
     info2Title: "Groepen & vieringen",
     info2Text: "Van intieme diners tot feestelijke tafels voor 40 gasten - vertel ons de gelegenheid en wij bereiden alles voor.",
-    info3Title: "Persoonlijke bevestiging",
-    info3Text: "Elke aanvraag wordt persoonlijk beoordeeld door ons team. U ontvangt een bevestiging per e-mail.",
+    info3Title: "Direct bevestigd",
+    info3Text: "Uw reservering wordt automatisch bevestigd. Alleen als een ander tijdstip nodig is, nemen wij contact met u op.",
     guestsLabel: "gast(en)",
   },
   admin: {
@@ -1418,6 +1434,14 @@ const nl: Dictionary = {
     totalOrders: "Totaal bestellingen",
     totalUsers: "Geregistreerde gebruikers",
     totalProducts: "Producten",
+    restaurantStatusTitle: "Restaurantstatus",
+    restaurantStatusOpen: "Open voor bestellingen",
+    restaurantStatusClosed: "Nu gesloten",
+    restaurantStatusSub: "Handmatige wijzigingen gelden vandaag en gaan na sluitingstijd automatisch terug naar het schema.",
+    restaurantStatusAfterHours: "Buiten openingstijden is het restaurant automatisch gesloten.",
+    restaurantStatusAuto: "Auto",
+    restaurantStatusSetOpen: "Nu openen",
+    restaurantStatusSetClosed: "Nu sluiten",
     avgOrder: "Gemiddelde bestelling",
     topProducts: "Topproducten",
     recentOrders: "Recente bestellingen",
@@ -1652,10 +1676,10 @@ const nl: Dictionary = {
     closed: "Gesloten",
     openNow: "Nu geopend",
     closedNow: "Nu gesloten",
-    closedNote: "Wij zijn momenteel gesloten. U kunt bestellen van dinsdag t/m zondag tussen 17:00 en 22:30 (maandag gesloten).",
+    closedNote: "Wij zijn momenteel gesloten. U kunt bestellen van dinsdag t/m zondag tussen 17:00 en 21:30 (maandag gesloten).",
     preOrderToday: "Wij zijn nu gesloten, maar u kunt uw bestelling al plaatsen - wij beginnen vandaag vanaf 17:00 met bereiden.",
     preOrderDay: "Wij zijn nu gesloten, maar u kunt uw bestelling al plaatsen - wij beginnen op {day} vanaf 17:00 met bereiden.",
-    scheduleClosedNote: "Kies een bezorgmoment binnen onze openingstijden: dinsdag t/m zondag, 17:00–22:30 (maandag gesloten).",
+    scheduleClosedNote: "Kies een bezorgmoment binnen onze besteltijden: dinsdag t/m zondag, 17:00-21:30 (maandag gesloten).",
   },
   cookies: {
     message:

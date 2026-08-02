@@ -59,6 +59,12 @@ const DDL: string[] = [
     enabled boolean NOT NULL DEFAULT false,
     updated_at timestamptz NOT NULL DEFAULT now()
   )`,
+  `CREATE TABLE IF NOT EXISTS restaurant_open_overrides (
+    site text PRIMARY KEY,
+    mode text NOT NULL DEFAULT 'auto' CHECK (mode IN ('auto','open','closed')),
+    local_date text NOT NULL DEFAULT '',
+    updated_at timestamptz NOT NULL DEFAULT now()
+  )`,
   `CREATE TABLE IF NOT EXISTS products (
     id text PRIMARY KEY,
     brand text NOT NULL,
