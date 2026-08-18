@@ -1362,7 +1362,8 @@ export async function createReservation(data: {
 
   const reservation = rowToReservation(rows[0]);
 
-  // Confirmation email. Failures are logged, but the confirmed booking remains saved.
+  // Confirmation email is sent in the background so a slow or unavailable SMTP
+  // server never delays or fails the booking response (the row is already saved).
   if (email) {
     try {
       const base = siteBase(data.origin);
@@ -1376,7 +1377,9 @@ export async function createReservation(data: {
         note: reservation.note,
         lang: data.lang,
       });
-      await sendMail({ to: email, subject, html });
+      void sendMail({ to: email, subject, html }).catch((err) => {
+        console.error("[email] reservation confirmation failed:", err);
+      });
     } catch (err) {
       console.error("[email] reservation confirmation failed:", err);
     }
