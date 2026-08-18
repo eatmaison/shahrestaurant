@@ -1404,6 +1404,13 @@ export async function cancelReservation(id: string): Promise<{ ok: boolean }> {
   return { ok: true };
 }
 
+/** Admin: permanently delete a reservation (e.g. duplicate bookings). */
+export async function deleteReservation(id: string): Promise<{ ok: boolean }> {
+  await requireAdmin();
+  await sql.query(`DELETE FROM reservations WHERE id = $1`, [id]);
+  return { ok: true };
+}
+
 /* ------------------------------------------------------------------ VIP */
 
 export async function buyVip(origin?: string): Promise<{ ok: boolean; checkoutUrl?: string }> {

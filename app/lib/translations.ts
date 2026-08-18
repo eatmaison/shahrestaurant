@@ -427,6 +427,8 @@ export interface Dictionary {
     resConfirm: string;
     resDecline: string;
     resCancelAdmin: string;
+    resDelete: string;
+    resDeleteConfirm: string;
     resUpcoming: string;
     resAll: string;
   };
@@ -1007,6 +1009,8 @@ const en: Dictionary = {
     resConfirm: "Confirm",
     resDecline: "Decline",
     resCancelAdmin: "Cancel",
+    resDelete: "Delete",
+    resDeleteConfirm: "Permanently delete this reservation? This cannot be undone.",
     resUpcoming: "Upcoming",
     resAll: "All",
   },
@@ -1589,6 +1593,8 @@ const nl: Dictionary = {
     resConfirm: "Bevestigen",
     resDecline: "Afwijzen",
     resCancelAdmin: "Annuleren",
+    resDelete: "Verwijderen",
+    resDeleteConfirm: "Deze reservering definitief verwijderen? Dit kan niet ongedaan worden gemaakt.",
     resUpcoming: "Aankomend",
     resAll: "Alles",
   },

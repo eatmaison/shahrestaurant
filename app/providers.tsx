@@ -170,6 +170,8 @@ interface StoreCtx {
   cancelReservation: (id: string) => Promise<void>;
   /** Admin: confirm or decline a pending reservation. */
   setReservationStatus: (id: string, action: "confirm" | "decline") => Promise<void>;
+  /** Admin: permanently delete a reservation (e.g. duplicates). */
+  deleteReservation: (id: string) => Promise<void>;
 
   /** Social media links shown in the footer (all platforms, enabled or not). */
   socialLinks: SocialLink[];
@@ -563,6 +565,11 @@ export function Providers({ children }: { children: ReactNode }) {
     await refresh();
   }, [refresh]);
 
+  const deleteReservation = useCallback<StoreCtx["deleteReservation"]>(async (id) => {
+    await fetch("/api/reservations", { method: "DELETE", headers: JSON_HEADERS, body: JSON.stringify({ id }) });
+    await refresh();
+  }, [refresh]);
+
   const updateRestaurantOpenOverride = useCallback<StoreCtx["updateRestaurantOpenOverride"]>(async (override) => {
     const res = await fetch("/api/restaurant-status", { method: "POST", headers: JSON_HEADERS, body: JSON.stringify({ override }) });
     const json = await res.json().catch(() => null);
@@ -675,6 +682,7 @@ export function Providers({ children }: { children: ReactNode }) {
       createReservation,
       cancelReservation,
       setReservationStatus,
+      deleteReservation,
       socialLinks,
       updateSocialLink,
       onlineVisitors,
@@ -721,6 +729,7 @@ export function Providers({ children }: { children: ReactNode }) {
       createReservation,
       cancelReservation,
       setReservationStatus,
+      deleteReservation,
       socialLinks,
       updateSocialLink,
       onlineVisitors,

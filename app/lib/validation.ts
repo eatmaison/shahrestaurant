@@ -114,6 +114,12 @@ export const updateReservationSchema = z.object({
 
 export type UpdateReservationInput = z.infer<typeof updateReservationSchema>;
 
+export const deleteReservationSchema = z.object({
+  id: z.string().uuid(),
+});
+
+export type DeleteReservationInput = z.infer<typeof deleteReservationSchema>;
+
 /* ------------------------------------------------------------------ social links */
 
 export const socialLinkSchema = z.object({

@@ -147,7 +147,7 @@ const ADMIN_INITIAL_NOW = Date.now();
 
 export default function AdminPage() {
   const { t, lang } = useLang();
-  const { currentUser, products, orders, users, addProductGroup, removeProduct, updateProductGroup, moveProduct, brands, manageBrands, updateOrderStatus, setOrderPaid, setInvoiceSent, deleteOrder, vipRequests, approveVipRequest, rejectVipRequest, socialLinks, updateSocialLink, reservations, restaurantStatus, updateRestaurantOpenOverride, setReservationStatus, cancelReservation, onlineVisitors, recentVisitors, refresh, hydrated } = useStore();
+  const { currentUser, products, orders, users, addProductGroup, removeProduct, updateProductGroup, moveProduct, brands, manageBrands, updateOrderStatus, setOrderPaid, setInvoiceSent, deleteOrder, vipRequests, approveVipRequest, rejectVipRequest, socialLinks, updateSocialLink, reservations, restaurantStatus, updateRestaurantOpenOverride, setReservationStatus, cancelReservation, deleteReservation, onlineVisitors, recentVisitors, refresh, hydrated } = useStore();
   const fileRef = useRef<HTMLInputElement>(null);
   const editFileRef = useRef<HTMLInputElement>(null);
   const logoFileRef = useRef<HTMLInputElement>(null);
@@ -1476,7 +1476,7 @@ export default function AdminPage() {
         {customerStats.length === 0 ? (
           <p className="mt-4 text-sm text-slate-500 dark:text-slate-400">{t.admin.noCustomers}</p>
         ) : (
-          <div className="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          <div className="mt-5 grid max-h-[34rem] gap-4 overflow-y-auto pr-1 md:grid-cols-2 xl:grid-cols-3">
             {customerStats.map((c, i) => {
               const FavIcon = c.favCategory ? categoryIconFor(brands, c.favCategory.name) : categoryIconFor(brands, "");
               return (
@@ -2081,7 +2081,7 @@ export default function AdminPage() {
         {visibleReservations.length === 0 ? (
           <p className="mt-4 text-sm text-slate-500 dark:text-slate-400">{t.admin.noReservationsAdmin}</p>
         ) : (
-          <ul className="mt-5 grid gap-3 lg:grid-cols-2">
+          <ul className="mt-5 grid max-h-[34rem] gap-3 overflow-y-auto pr-1 lg:grid-cols-2">
             {visibleReservations.map((r) => {
               const badge =
                 r.status === "confirmed"
@@ -2166,6 +2166,16 @@ export default function AdminPage() {
                       )}
                     </div>
                   )}
+                  <div className="mt-3 flex justify-end border-t border-slate-100 pt-3 dark:border-white/10">
+                    <button
+                      onClick={() => {
+                        if (window.confirm(t.admin.resDeleteConfirm)) deleteReservation(r.id);
+                      }}
+                      className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-bold text-red-500 transition hover:bg-red-500/10"
+                    >
+                      <FaTrash className="text-[0.7rem]" /> {t.admin.resDelete}
+                    </button>
+                  </div>
                 </li>
               );
             })}

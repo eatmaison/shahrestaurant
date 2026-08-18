@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { cancelReservation, createReservation, publicOrigin, setReservationStatus } from "../../lib/serverStore";
-import { createReservationSchema, updateReservationSchema } from "../../lib/validation";
+import { cancelReservation, createReservation, deleteReservation, publicOrigin, setReservationStatus } from "../../lib/serverStore";
+import { createReservationSchema, deleteReservationSchema, updateReservationSchema } from "../../lib/validation";
 import { enforceRateLimit } from "../../lib/rateLimit";
 
 export async function POST(req: NextRequest) {
@@ -43,6 +43,27 @@ export async function PATCH(req: NextRequest) {
     }
     await setReservationStatus(id, action === "confirm" ? "confirmed" : "declined");
     return NextResponse.json({ ok: true });
+  } catch (err) {
+    return NextResponse.json(
+      { ok: false, error: err instanceof Error ? err.message : "error" },
+      { status: 500 }
+    );
+  }
+}
+
+export async function DELETE(req: NextRequest) {
+  try {
+    const limited = enforceRateLimit(req, "reservations:delete", 60, 10 * 60_000);
+    if (limited) return limited;
+
+    const raw = await req.json().catch(() => null);
+    const parsed = deleteReservationSchema.safeParse(raw);
+    if (!parsed.success) {
+      return NextResponse.json({ ok: false, error: "invalidInput" }, { status: 400 });
+    }
+
+    const res = await deleteReservation(parsed.data.id);
+    return NextResponse.json(res);
   } catch (err) {
     return NextResponse.json(
       { ok: false, error: err instanceof Error ? err.message : "error" },
