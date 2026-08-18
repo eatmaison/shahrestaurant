@@ -402,6 +402,13 @@ export interface Dictionary {
     recentlyOnlineCopied: string;
     recentlyOnlineClearFilters: string;
     recentlyOnlineActiveFor: string;
+    registeredUsers: string;
+    registeredUsersSub: string;
+    registeredUsersNone: string;
+    registeredVerified: string;
+    registeredUnverified: string;
+    registeredPoints: string;
+    registeredJoined: string;
     bookedOn: string;
     socialTitle: string;
     socialSub: string;
@@ -973,6 +980,13 @@ const en: Dictionary = {
     recentlyOnlineCopied: "Copied!",
     recentlyOnlineClearFilters: "Clear filters",
     recentlyOnlineActiveFor: "Active for {duration}",
+    registeredUsers: "Registered users",
+    registeredUsersSub: "Everyone with an account - full profile details.",
+    registeredUsersNone: "No registered users yet.",
+    registeredVerified: "Verified",
+    registeredUnverified: "Unverified",
+    registeredPoints: "points",
+    registeredJoined: "Joined",
     bookedOn: "Booked",
     socialTitle: "Social media links",
     socialSub: "Add your profile links and switch on the icons you want to show in the website footer.",
@@ -1546,6 +1560,13 @@ const nl: Dictionary = {
     recentlyOnlineCopied: "Gekopieerd!",
     recentlyOnlineClearFilters: "Filters wissen",
     recentlyOnlineActiveFor: "Actief sinds {duration}",
+    registeredUsers: "Geregistreerde gebruikers",
+    registeredUsersSub: "Iedereen met een account - volledige profielgegevens.",
+    registeredUsersNone: "Nog geen geregistreerde gebruikers.",
+    registeredVerified: "Geverifieerd",
+    registeredUnverified: "Niet geverifieerd",
+    registeredPoints: "punten",
+    registeredJoined: "Lid sinds",
     bookedOn: "Geboekt",
     socialTitle: "Social media links",
     socialSub: "Voeg je profiellinks toe en zet de iconen aan die je in de footer van de website wilt tonen.",

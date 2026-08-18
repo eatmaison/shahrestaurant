@@ -596,6 +596,10 @@ export default function AdminPage() {
   // Sales-by-category and top-products panels are also collapsed by default.
   const [salesOpen, setSalesOpen] = useState(false);
   const [topOpen, setTopOpen] = useState(false);
+  // Customer insights, recently-online and registered-users panels are collapsed by default to save vertical space.
+  const [insightsOpen, setInsightsOpen] = useState(false);
+  const [recentlyOnlineOpen, setRecentlyOnlineOpen] = useState(false);
+  const [registeredUsersOpen, setRegisteredUsersOpen] = useState(false);
 
   const socialUrl = (platform: string): string =>
     socialDrafts[platform] ?? socialLinks.find((l) => l.platform === platform)?.url ?? "";
@@ -677,6 +681,12 @@ export default function AdminPage() {
       })
       .sort((a, b) => b.totalSpent - a.totalSpent);
   }, [orders, users, products]);
+
+  /** All registered accounts, newest first, for the collapsible directory. */
+  const registeredUsers = useMemo(
+    () => [...users].sort((a, b) => b.createdAt - a.createdAt),
+    [users]
+  );
 
   if (!hydrated) {
     return <div className="mx-auto max-w-md px-4 py-20 text-center text-sm text-slate-500">…</div>;
@@ -1443,18 +1453,26 @@ export default function AdminPage() {
         </div>
       </div>
 
-      {/* Customer insights */}
+      {/* Customer insights (collapsible) */}
       <div className="mt-6 rounded-3xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-white/5">
-        <div className="flex items-center gap-2">
+        <button
+          type="button"
+          onClick={() => setInsightsOpen((o) => !o)}
+          aria-expanded={insightsOpen}
+          className="flex w-full items-center gap-2 text-left"
+        >
           <span className="grid h-9 w-9 place-items-center rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
             <FaUserGroup />
           </span>
-          <div>
+          <div className="flex-1">
             <h2 className="text-lg font-black text-slate-900 dark:text-white">{t.admin.customerInsights}</h2>
             <p className="text-xs text-slate-500 dark:text-slate-400">{t.admin.customerInsightsSub}</p>
           </div>
-        </div>
+          <FaChevronDown className={`shrink-0 text-slate-400 transition-transform duration-300 ${insightsOpen ? "rotate-180" : ""}`} />
+        </button>
 
+        <div className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${insightsOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
+          <div className="overflow-hidden">
         {customerStats.length === 0 ? (
           <p className="mt-4 text-sm text-slate-500 dark:text-slate-400">{t.admin.noCustomers}</p>
         ) : (
@@ -1526,19 +1544,29 @@ export default function AdminPage() {
             })}
           </div>
         )}
+          </div>
+        </div>
       </div>
 
       {/* Recently online - signed-in users and guest sessions, with filtering, search and sorting */}
       <div className="mt-6 rounded-3xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-white/5">
         <div className="flex items-center gap-2">
-          <span className="grid h-9 w-9 place-items-center rounded-xl bg-sky-500/10 text-sky-600 dark:text-sky-400">
-            <FaUsers />
-          </span>
-          <div>
-            <h2 className="text-lg font-black text-slate-900 dark:text-white">{t.admin.recentlyOnline}</h2>
-            <p className="text-xs text-slate-500 dark:text-slate-400">{t.admin.recentlyOnlineSub}</p>
-          </div>
-          <div className="ml-auto flex flex-wrap items-center justify-end gap-2">
+          <button
+            type="button"
+            onClick={() => setRecentlyOnlineOpen((o) => !o)}
+            aria-expanded={recentlyOnlineOpen}
+            className="flex flex-1 items-center gap-2 text-left"
+          >
+            <span className="grid h-9 w-9 place-items-center rounded-xl bg-sky-500/10 text-sky-600 dark:text-sky-400">
+              <FaUsers />
+            </span>
+            <div className="flex-1">
+              <h2 className="text-lg font-black text-slate-900 dark:text-white">{t.admin.recentlyOnline}</h2>
+              <p className="text-xs text-slate-500 dark:text-slate-400">{t.admin.recentlyOnlineSub}</p>
+            </div>
+            <FaChevronDown className={`shrink-0 text-slate-400 transition-transform duration-300 ${recentlyOnlineOpen ? "rotate-180" : ""}`} />
+          </button>
+          <div className="flex flex-wrap items-center justify-end gap-2">
             <span
               className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-2.5 py-1 text-xs font-bold text-emerald-700 dark:text-emerald-300"
               title={t.admin.onlineNow}
@@ -1563,6 +1591,8 @@ export default function AdminPage() {
             </button>
           </div>
         </div>
+        <div className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${recentlyOnlineOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
+          <div className="overflow-hidden">
         <p className="mt-1.5 text-[11px] text-slate-400 dark:text-slate-500">
           {t.admin.recentlyOnlineLastUpdated.replace("{time}", relativeTime(visitorsUpdatedAt))}
         </p>
@@ -1774,6 +1804,117 @@ export default function AdminPage() {
             })}
           </ul>
         )}
+          </div>
+        </div>
+      </div>
+
+      {/* Registered users (collapsible) - full account details for everyone who signed up */}
+      <div className="mt-6 rounded-3xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-white/5">
+        <button
+          type="button"
+          onClick={() => setRegisteredUsersOpen((o) => !o)}
+          aria-expanded={registeredUsersOpen}
+          className="flex w-full items-center gap-2 text-left"
+        >
+          <span className="grid h-9 w-9 place-items-center rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400">
+            <FaUserGroup />
+          </span>
+          <div className="flex-1">
+            <h2 className="text-lg font-black text-slate-900 dark:text-white">{t.admin.registeredUsers}</h2>
+            <p className="text-xs text-slate-500 dark:text-slate-400">{t.admin.registeredUsersSub}</p>
+          </div>
+          <span className="rounded-full bg-slate-100 px-2.5 py-1 text-xs font-bold text-slate-600 dark:bg-white/10 dark:text-slate-300">
+            {registeredUsers.length}
+          </span>
+          <FaChevronDown className={`shrink-0 text-slate-400 transition-transform duration-300 ${registeredUsersOpen ? "rotate-180" : ""}`} />
+        </button>
+
+        <div className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${registeredUsersOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
+          <div className="overflow-hidden">
+            {registeredUsers.length === 0 ? (
+              <p className="mt-4 text-sm text-slate-500 dark:text-slate-400">{t.admin.registeredUsersNone}</p>
+            ) : (
+              <ul className="mt-4 max-h-[32rem] space-y-3 overflow-y-auto pr-1">
+                {registeredUsers.map((u) => {
+                  const isCompany = u.accountType === "company";
+                  return (
+                    <li key={u.id} className="flex flex-col gap-3 rounded-2xl border border-slate-100 bg-slate-50/70 p-4 dark:border-white/5 dark:bg-white/5">
+                      <div className="flex items-start gap-3">
+                        <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-gradient-to-br from-indigo-500 to-sky-500 text-sm font-black text-white">
+                          {u.name.charAt(0).toUpperCase()}
+                        </span>
+                        <div className="min-w-0 flex-1">
+                          <div className="flex flex-wrap items-center gap-2">
+                            <p className="truncate text-sm font-black text-slate-900 dark:text-white">{u.name}</p>
+                            {u.role === "admin" && (
+                              <span className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-black uppercase tracking-wide text-slate-600 dark:bg-white/10 dark:text-slate-300">
+                                <FaLock className="text-[9px]" /> Admin
+                              </span>
+                            )}
+                            {u.isVip && (
+                              <span className="inline-flex items-center gap-1 rounded-full bg-amber-500/10 px-2 py-0.5 text-[10px] font-black uppercase tracking-wide text-amber-700 dark:text-amber-300">
+                                <FaCrown className="text-[9px]" /> VIP
+                              </span>
+                            )}
+                            {isCompany && (
+                              <span className="inline-flex items-center gap-1 rounded-full bg-sky-500/10 px-2 py-0.5 text-[10px] font-black uppercase tracking-wide text-sky-700 dark:text-sky-300">
+                                <FaBuilding className="text-[9px]" /> B2B
+                              </span>
+                            )}
+                            <span
+                              className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-black uppercase tracking-wide ${
+                                u.emailVerified
+                                  ? "bg-emerald-500/10 text-emerald-700 dark:text-emerald-300"
+                                  : "bg-rose-500/10 text-rose-700 dark:text-rose-300"
+                              }`}
+                            >
+                              <FaCircleCheck className="text-[9px]" /> {u.emailVerified ? t.admin.registeredVerified : t.admin.registeredUnverified}
+                            </span>
+                          </div>
+                          <p className="mt-1 flex items-center gap-1.5 truncate text-xs text-slate-500 dark:text-slate-400">
+                            <FaEnvelope className="shrink-0 text-[10px] text-slate-400" /> {u.email}
+                          </p>
+                          {u.phone && (
+                            <p className="mt-0.5 flex items-center gap-1.5 truncate text-xs font-semibold text-slate-600 dark:text-slate-300">
+                              <FaPhone className="shrink-0 text-[10px] text-slate-400" /> {u.phone}
+                            </p>
+                          )}
+                          {(u.address || u.postcode) && (
+                            <p className="mt-0.5 flex items-center gap-1.5 truncate text-xs text-slate-600 dark:text-slate-300">
+                              <FaLocationDot className="shrink-0 text-[10px] text-slate-400" /> {[u.address, u.postcode].filter(Boolean).join(", ")}
+                            </p>
+                          )}
+                          {isCompany && (u.btw || u.kvk) && (
+                            <p className="mt-0.5 flex flex-wrap items-center gap-x-3 gap-y-0.5 text-xs text-slate-600 dark:text-slate-300">
+                              {u.btw && <span className="inline-flex items-center gap-1.5"><FaBuilding className="shrink-0 text-[10px] text-slate-400" /> BTW: {u.btw}</span>}
+                              {u.kvk && <span>KVK: {u.kvk}</span>}
+                            </p>
+                          )}
+                        </div>
+                      </div>
+                      <div className="flex flex-wrap items-center gap-2 border-t border-slate-200 pt-3 text-[11px] dark:border-white/10">
+                        <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-2 py-0.5 font-semibold text-emerald-700 dark:text-emerald-300">
+                          <FaReceipt className="text-[10px]" /> {u.orderCount} {t.admin.ordersLabel.toLowerCase()}
+                        </span>
+                        <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-500/10 px-2 py-0.5 font-semibold text-amber-700 dark:text-amber-300">
+                          <FaCrown className="text-[10px]" /> {u.points} {t.admin.registeredPoints}
+                        </span>
+                        <span className="inline-flex items-center gap-1.5 rounded-full bg-slate-100 px-2 py-0.5 font-semibold text-slate-600 dark:bg-white/10 dark:text-slate-300">
+                          <FaClock className="text-[10px]" /> {t.admin.registeredJoined}: {new Date(u.createdAt).toLocaleDateString(lang === "nl" ? "nl-NL" : "en-GB")}
+                        </span>
+                        {u.lastSeenAt && (
+                          <span className="inline-flex items-center gap-1.5 rounded-full bg-slate-100 px-2 py-0.5 font-semibold text-slate-600 dark:bg-white/10 dark:text-slate-300">
+                            {relativeTime(u.lastSeenAt)}
+                          </span>
+                        )}
+                      </div>
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
+          </div>
+        </div>
       </div>
 
       {/* Social media links (collapsible) */}
