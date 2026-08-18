@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   FaBellConcierge,
+  FaCashRegister,
   FaCircleCheck,
   FaClock,
   FaLocationDot,
@@ -114,6 +115,129 @@ function printViaRawBT(payload: string): void {
   const b64 = btoa(bin);
   // RawBT deep link: opens the print service with raw ESC/POS data.
   window.location.href = `rawbt:base64,${b64}`;
+}
+
+/* ------------------------------------------------------------------ */
+/* "Print from Kassa" - printing from a Windows POS whose Epson        */
+/* TM-T20III is installed as the default Windows printer. The browser  */
+/* cannot push raw ESC/POS to a USB printer, so we render an 80mm      */
+/* HTML receipt in a hidden iframe and call the browser's print(),     */
+/* which routes to the Epson via its Windows driver. Launch the        */
+/* browser with --kiosk-printing (Epson as default printer) to skip    */
+/* the print dialog and print silently.                                */
+/* ------------------------------------------------------------------ */
+
+const SHOP_NAME = "THE TANDOOR CO.";
+const SHOP_ADDRESS = "Klaprozenweg 36a, Amsterdam";
+const SHOP_SITE = "thetandoorcompany.nl";
+
+/** Escape text for safe HTML interpolation. */
+function esc(s: string): string {
+  return s
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+/** Build an 80mm HTML receipt matching the ESC/POS layout. */
+function buildReceiptHTML(order: Order, lang: string): string {
+  const d = new Date(order.createdAt);
+  const when = d.toLocaleString(lang === "nl" ? "nl-NL" : "en-GB", {
+    day: "2-digit",
+    month: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+  const items = order.items
+    .map((it) => {
+      const side = it.sideLabel ? `<div class="side">Side: ${esc(it.sideLabel)}</div>` : "";
+      return `<div class="row bold"><span>${it.qty}x ${esc(it.name)}${side}</span><span>${(it.price * it.qty).toFixed(2)}</span></div>`;
+    })
+    .join("");
+  const planned = order.schedule
+    ? `<div class="bold">PLANNED: ${esc(order.schedule.date ?? "workdays")} ${esc(order.schedule.time)}</div>`
+    : "";
+  const address = order.fulfillment !== "pickup" ? `<div>${esc(`${order.address} ${order.postcode}`)}</div>` : "";
+  const discount = order.discount > 0 ? `<div class="row"><span>Discount</span><span>-${order.discount.toFixed(2)}</span></div>` : "";
+  const delivery = order.delivery > 0 ? `<div class="row"><span>Delivery</span><span>${order.delivery.toFixed(2)}</span></div>` : "";
+  const note = order.note
+    ? `<div class="hr"></div><div class="bold">NOTE:</div><div>${esc(order.note)}</div>`
+    : "";
+  return `<!doctype html><html><head><meta charset="utf-8"><title>${esc(formatOrderNumber(order.orderNumber))}</title><style>
+@page { size: 80mm auto; margin: 0; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 80mm; }
+body { padding: 3mm 4mm; font-family: 'Courier New', ui-monospace, monospace; font-size: 12px; line-height: 1.35; color: #000; }
+.center { text-align: center; }
+.bold { font-weight: 700; }
+.shop { font-size: 22px; font-weight: 800; letter-spacing: 1px; }
+.num { font-size: 26px; font-weight: 800; }
+.when { font-size: 13px; }
+.hr { border-top: 1px dashed #000; margin: 5px 0; }
+.row { display: flex; justify-content: space-between; gap: 8px; }
+.row span:last-child { white-space: nowrap; }
+.side { font-size: 11px; font-weight: 400; }
+.total { font-size: 16px; font-weight: 800; }
+.tag { font-weight: 700; }
+</style></head><body>
+<div class="center shop">${esc(SHOP_NAME)}</div>
+<div class="center">${esc(SHOP_ADDRESS)}</div>
+<div class="hr"></div>
+<div class="center num">${esc(formatOrderNumber(order.orderNumber))}</div>
+<div class="center when">${esc(when)}</div>
+<div class="hr"></div>
+<div class="tag">${order.fulfillment === "pickup" ? "** PICKUP **" : "** DELIVERY **"}</div>
+<div>${esc(order.customerName)}</div>
+${address}
+<div>Tel: ${esc(order.phone)}</div>
+${planned}
+<div class="hr"></div>
+${items}
+<div class="hr"></div>
+<div class="row"><span>Subtotal</span><span>${order.subtotal.toFixed(2)}</span></div>
+${discount}
+${delivery}
+<div class="row total"><span>TOTAL</span><span>EUR ${order.total.toFixed(2)}</span></div>
+<div class="row"><span>Paid</span><span>${order.paid ? "YES" : "NO (invoice)"}</span></div>
+${note}
+<div class="hr"></div>
+<div class="center">${esc(SHOP_SITE)}</div>
+</body></html>`;
+}
+
+/** Render the receipt in a hidden iframe and print via the Windows driver. */
+function printFromKassa(order: Order, lang: string): void {
+  const iframe = document.createElement("iframe");
+  iframe.setAttribute("aria-hidden", "true");
+  iframe.style.cssText = "position:fixed;right:0;bottom:0;width:0;height:0;border:0;";
+  document.body.appendChild(iframe);
+  const doc = iframe.contentWindow?.document;
+  if (!doc) {
+    iframe.remove();
+    return;
+  }
+  doc.open();
+  doc.write(buildReceiptHTML(order, lang));
+  doc.close();
+  const win = iframe.contentWindow!;
+  let removed = false;
+  const cleanup = () => {
+    if (removed) return;
+    removed = true;
+    setTimeout(() => iframe.remove(), 500);
+  };
+  win.onafterprint = cleanup;
+  // Give the browser a tick to lay out the receipt before printing.
+  setTimeout(() => {
+    try {
+      win.focus();
+      win.print();
+    } catch {
+      /* ignore */
+    }
+    cleanup();
+  }, 250);
 }
 
 const LS_SEEN = "tm.terminal.seen";
@@ -396,6 +520,12 @@ export default function TerminalPage() {
                       >
                         <FaPrint /> {t.terminal.print}
                       </button>
+                      <button
+                        onClick={() => printFromKassa(o, lang)}
+                        className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border-2 border-slate-400 px-4 py-3 text-sm font-bold text-slate-700 transition active:bg-slate-500/15 dark:border-white/25 dark:text-slate-200"
+                      >
+                        <FaCashRegister /> {t.terminal.printKassa}
+                      </button>
                       {next && (
                         <button
                           onClick={() => updateOrderStatus(o.id, next)}
@@ -416,6 +546,9 @@ export default function TerminalPage() {
 
           <p className="mt-8 rounded-2xl border border-slate-200 px-4 py-3 text-center text-xs leading-5 text-slate-400 dark:border-white/10">
             {t.terminal.printerHelp}
+          </p>
+          <p className="mt-2 rounded-2xl border border-slate-200 px-4 py-3 text-center text-xs leading-5 text-slate-400 dark:border-white/10">
+            {t.terminal.printKassaHelp}
           </p>
         </>
       )}

@@ -557,11 +557,13 @@ export interface Dictionary {
     live: string;
     autoPrint: string;
     print: string;
+    printKassa: string;
     noOrders: string;
     activeOrders: string;
     doneOrders: string;
     newOrderAlert: string;
     printerHelp: string;
+    printKassaHelp: string;
     accessDenied: string;
     lastUpdate: string;
   };
@@ -1137,11 +1139,13 @@ const en: Dictionary = {
     live: "Live - checking for new orders",
     autoPrint: "Auto-print new orders",
     print: "Print receipt",
+    printKassa: "Print from Kassa",
     noOrders: "No active orders right now. New orders appear here automatically.",
     activeOrders: "Active orders",
     doneOrders: "Completed today",
     newOrderAlert: "NEW",
     printerHelp: "Printing uses the RawBT app (set it to the built-in printer). If nothing prints, install RawBT from the Play Store and open it once.",
+    printKassaHelp: "Print from Kassa sends the receipt to the Windows cash register's printer (Epson TM-T20III). Set the Epson as the default printer. To skip the print dialog, start Chrome/Edge with the --kiosk-printing flag.",
     accessDenied: "Sign in with a staff (admin) account to use the terminal.",
     lastUpdate: "Updated",
   },
@@ -1717,11 +1721,13 @@ const nl: Dictionary = {
     live: "Live - controleren op nieuwe bestellingen",
     autoPrint: "Nieuwe bestellingen automatisch printen",
     print: "Bon printen",
+    printKassa: "Printen via kassa",
     noOrders: "Momenteel geen actieve bestellingen. Nieuwe bestellingen verschijnen hier automatisch.",
     activeOrders: "Actieve bestellingen",
     doneOrders: "Vandaag afgerond",
     newOrderAlert: "NIEUW",
     printerHelp: "Printen gebruikt de RawBT-app (ingesteld op de ingebouwde printer). Print er niets? Installeer RawBT via de Play Store en open de app één keer.",
+    printKassaHelp: "Printen via kassa stuurt de bon naar de printer van de Windows-kassa (Epson TM-T20III). Stel de Epson in als standaardprinter. Start Chrome/Edge met de vlag --kiosk-printing om het printvenster over te slaan.",
     accessDenied: "Log in met een medewerkers- (admin-)account om de terminal te gebruiken.",
     lastUpdate: "Bijgewerkt",
   },
