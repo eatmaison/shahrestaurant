@@ -268,6 +268,15 @@ export interface VipRequest {
   createdAt: number;
 }
 
+export interface VipPurchase {
+  id: string;
+  userId: string;
+  amount: number;
+  status: string;
+  createdAt: number;
+  updatedAt: number;
+}
+
 /** Social media platforms the admin can link from the footer. */
 export type SocialPlatform =
   | "instagram"

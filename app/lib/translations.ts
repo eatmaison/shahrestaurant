@@ -391,6 +391,14 @@ export interface Dictionary {
     deleteConfirmText: string;
     vipRequests: string;
     vipRequestsSub: string;
+    vipPurchases: string;
+    vipPurchasesSub: string;
+    vipPurchased: string;
+    vipCardApprovedSource: string;
+    vipManualSource: string;
+    vipActive: string;
+    vipInactive: string;
+    vipNoPurchases: string;
     recentlyOnline: string;
     recentlyOnlineSub: string;
     justNow: string;
@@ -990,6 +998,14 @@ const en: Dictionary = {
     deleteConfirmText: "Are you sure you want to delete this product? This cannot be undone.",
     vipRequests: "VIP card requests",
     vipRequestsSub: "Approve customers who uploaded a photo of their physical VIP card.",
+    vipPurchases: "VIP purchases",
+    vipPurchasesSub: "Every paid VIP membership and how the customer's active VIP was obtained.",
+    vipPurchased: "Purchased VIP",
+    vipCardApprovedSource: "Approved card photo",
+    vipManualSource: "Active, source not recorded/manual",
+    vipActive: "VIP active",
+    vipInactive: "VIP inactive",
+    vipNoPurchases: "No paid VIP purchases recorded.",
     recentlyOnline: "Recently online",
     recentlyOnlineSub: "The latest recent visitors and guests, including how long ago they were active.",
     justNow: "just now",
@@ -1591,6 +1607,14 @@ const nl: Dictionary = {
     deleteConfirmText: "Weet je zeker dat je dit product wilt verwijderen? Dit kan niet ongedaan worden gemaakt.",
     vipRequests: "VIP-kaart aanvragen",
     vipRequestsSub: "Keur klanten goed die een foto van hun fysieke VIP-kaart hebben geüpload.",
+    vipPurchases: "VIP-aankopen",
+    vipPurchasesSub: "Elke betaalde VIP-lidmaatschap en hoe de actieve VIP van de klant is verkregen.",
+    vipPurchased: "VIP gekocht",
+    vipCardApprovedSource: "Goedgekeurde kaartfoto",
+    vipManualSource: "Actief, bron niet geregistreerd/handmatig",
+    vipActive: "VIP actief",
+    vipInactive: "VIP inactief",
+    vipNoPurchases: "Geen betaalde VIP-aankopen geregistreerd.",
     recentlyOnline: "Recent online",
     recentlyOnlineSub: "De nieuwste recente bezoekers en gasten, inclusief hoe lang geleden ze actief waren.",
     justNow: "zojuist",

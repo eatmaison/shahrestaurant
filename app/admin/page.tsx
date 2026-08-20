@@ -77,6 +77,7 @@ const makeRangeCheck = (f: RangeFilter): ((ts: number) => boolean) => {
     const from = Date.now() - 7 * 86_400_000;
     return (ts) => ts >= from;
   }
+
   if (f.preset === "30d") {
     const from = Date.now() - 30 * 86_400_000;
     return (ts) => ts >= from;
@@ -148,7 +149,7 @@ const ADMIN_INITIAL_NOW = Date.now();
 
 export default function AdminPage() {
   const { t, lang } = useLang();
-  const { currentUser, products, orders, users, addProductGroup, removeProduct, updateProductGroup, moveProduct, brands, manageBrands, updateOrderStatus, setOrderPaid, setInvoiceSent, deleteOrder, vipRequests, approveVipRequest, rejectVipRequest, socialLinks, updateSocialLink, reservations, restaurantStatus, updateRestaurantOpenOverride, setReservationStatus, cancelReservation, deleteReservation, onlineVisitors, recentVisitors, refresh, hydrated } = useStore();
+  const { currentUser, products, orders, users, addProductGroup, removeProduct, updateProductGroup, moveProduct, brands, manageBrands, updateOrderStatus, setOrderPaid, setInvoiceSent, deleteOrder, vipRequests, vipPurchases, approveVipRequest, rejectVipRequest, socialLinks, updateSocialLink, reservations, restaurantStatus, updateRestaurantOpenOverride, setReservationStatus, cancelReservation, deleteReservation, onlineVisitors, recentVisitors, refresh, hydrated } = useStore();
   const fileRef = useRef<HTMLInputElement>(null);
   const editFileRef = useRef<HTMLInputElement>(null);
   const logoFileRef = useRef<HTMLInputElement>(null);
@@ -2023,6 +2024,15 @@ export default function AdminPage() {
                             >
                               <FaCircleCheck className="text-[9px]" /> {u.emailVerified ? t.admin.registeredVerified : t.admin.registeredUnverified}
                             </span>
+                            {u.isVip && (
+                              <span className="inline-flex items-center gap-1 rounded-full bg-violet-500/10 px-2 py-0.5 text-[10px] font-black uppercase tracking-wide text-violet-700 dark:text-violet-300">
+                                {vipPurchases.some((p) => p.userId === u.id && p.status === "paid")
+                                  ? t.admin.vipPurchased
+                                  : vipRequests.some((r) => r.userId === u.id && r.status === "approved")
+                                    ? t.admin.vipCardApprovedSource
+                                    : t.admin.vipManualSource}
+                              </span>
+                            )}
                           </div>
                           <p className="mt-1 flex items-center gap-1.5 truncate text-xs text-slate-500 dark:text-slate-400">
                             <FaEnvelope className="shrink-0 text-[10px] text-slate-400" />
@@ -2354,6 +2364,12 @@ export default function AdminPage() {
             })}
           </ul>
         )}
+      </div>
+
+      {/* VIP purchase and activation audit */}
+      <div className="mt-6 rounded-3xl border border-violet-200 bg-violet-50/60 p-5 dark:border-violet-400/20 dark:bg-violet-500/5">
+        <div className="flex items-center gap-2"><span className="grid h-9 w-9 place-items-center rounded-xl bg-violet-500/10 text-violet-600 dark:text-violet-300"><FaCrown /></span><div className="flex-1"><h2 className="text-lg font-black text-slate-900 dark:text-white">{t.admin.vipPurchases}</h2><p className="text-xs text-slate-500 dark:text-slate-400">{t.admin.vipPurchasesSub}</p></div><span className="rounded-full bg-violet-500/10 px-2.5 py-1 text-xs font-bold text-violet-700 dark:text-violet-300">{vipPurchases.filter((p) => p.status === "paid").length}</span></div>
+        {vipPurchases.filter((p) => p.status === "paid").length === 0 ? <p className="mt-4 text-sm text-slate-500 dark:text-slate-400">{t.admin.vipNoPurchases}</p> : <ul className="mt-4 max-h-[30rem] space-y-2 overflow-y-auto pr-1">{vipPurchases.filter((p) => p.status === "paid").map((purchase) => { const user = users.find((u) => u.id === purchase.userId); const approvedCard = vipRequests.some((r) => r.userId === purchase.userId && r.status === "approved"); return <li key={purchase.id} className="flex flex-col gap-2 rounded-2xl border border-violet-100 bg-white p-3 dark:border-white/10 dark:bg-white/5 sm:flex-row sm:items-center"><span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-amber-500/10 text-amber-500"><FaCrown /></span><div className="min-w-0 flex-1"><p className="truncate text-sm font-black text-slate-900 dark:text-white">{user?.name ?? purchase.userId}</p><p className="truncate text-xs text-slate-500 dark:text-slate-400">{user?.email ?? ""}</p></div><div className="flex flex-wrap items-center gap-2 text-xs"><span className="rounded-full bg-emerald-500/10 px-2.5 py-1 font-bold text-emerald-700 dark:text-emerald-300">{approvedCard ? t.admin.vipCardApprovedSource : t.admin.vipPurchased}</span><span className="rounded-full bg-slate-100 px-2.5 py-1 font-bold text-slate-600 dark:bg-white/10 dark:text-slate-300">€{purchase.amount.toFixed(2)}</span><span className={`rounded-full px-2.5 py-1 font-bold ${user?.isVip ? "bg-emerald-500/10 text-emerald-700 dark:text-emerald-300" : "bg-red-500/10 text-red-700 dark:text-red-300"}`}>{user?.isVip ? t.admin.vipActive : t.admin.vipInactive}</span><time className="text-slate-400" dateTime={new Date(purchase.createdAt).toISOString()}>{new Date(purchase.createdAt).toLocaleDateString(lang === "nl" ? "nl-NL" : "en-GB")}</time></div></li>; })}</ul>}
       </div>
 
       {/* Product management */}

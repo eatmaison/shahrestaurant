@@ -13,7 +13,7 @@ import { translations, type Dictionary } from "./lib/translations";
 import { DEFAULT_BRAND_CONFIGS } from "./lib/data";
 import { cartKeyForProduct, parseCartKey } from "./lib/cart";
 import { restaurantStatus as getRestaurantStatus, type RestaurantOpenOverride, type RestaurantStatus } from "./lib/openingHours";
-import type { AccountType, BrandConfig, GrillSideChoice, Lang, MenuUpgrades, Order, OrderFulfillment, OrderSchedule, OrderStatus, Product, ProductContent, ProductTarget, RecentVisitor, Reservation, Review, SocialLink, SocialPlatform, User, VipRequest } from "./lib/types";
+import type { AccountType, BrandConfig, GrillSideChoice, Lang, MenuUpgrades, Order, OrderFulfillment, OrderSchedule, OrderStatus, Product, ProductContent, ProductTarget, RecentVisitor, Reservation, Review, SocialLink, SocialPlatform, User, VipPurchase, VipRequest } from "./lib/types";
 
 const JSON_HEADERS = { "Content-Type": "application/json" } as const;
 
@@ -136,6 +136,7 @@ interface StoreCtx {
 
   /** VIP card requests (photo of a physical card awaiting admin approval). */
   vipRequests: VipRequest[];
+  vipPurchases: VipPurchase[];
   /** Customer: submit a photo of an existing VIP card for approval. */
   requestVip: (image: string) => Promise<{ ok: boolean }>;
   /** Admin: approve a pending VIP request - activates the customer's VIP. */
@@ -240,6 +241,7 @@ export function Providers({ children }: { children: ReactNode }) {
   const [orders, setOrders] = useState<Order[]>([]);
   const [reviews, setReviews] = useState<Review[]>([]);
   const [vipRequests, setVipRequests] = useState<VipRequest[]>([]);
+  const [vipPurchases, setVipPurchases] = useState<VipPurchase[]>([]);
   const [socialLinks, setSocialLinks] = useState<SocialLink[]>([]);
   const [onlineVisitors, setOnlineVisitors] = useState(0);
   const [recentVisitors, setRecentVisitors] = useState<RecentVisitor[]>([]);
@@ -259,6 +261,7 @@ export function Providers({ children }: { children: ReactNode }) {
       setUsers(data.users ?? []);
       setReviews(data.reviews ?? []);
       setVipRequests(data.vipRequests ?? []);
+      setVipPurchases(data.vipPurchases ?? []);
       setSocialLinks(data.socialLinks ?? []);
       setOnlineVisitors(data.onlineVisitors ?? 0);
       setRecentVisitors(data.recentVisitors ?? []);
@@ -472,6 +475,7 @@ export function Providers({ children }: { children: ReactNode }) {
     setOrders([]);
     setUsers([]);
     setVipRequests([]);
+    setVipPurchases([]);
     setReservations([]);
     await refresh();
   }, [refresh]);
@@ -670,6 +674,7 @@ export function Providers({ children }: { children: ReactNode }) {
       deleteOrder,
       buyVip,
       vipRequests,
+      vipPurchases,
       requestVip,
       approveVipRequest,
       rejectVipRequest,
@@ -717,6 +722,7 @@ export function Providers({ children }: { children: ReactNode }) {
       deleteOrder,
       buyVip,
       vipRequests,
+      vipPurchases,
       requestVip,
       approveVipRequest,
       rejectVipRequest,

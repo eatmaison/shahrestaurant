@@ -61,6 +61,7 @@ import type {
   SocialLink,
   SocialPlatform,
   User,
+  VipPurchase,
   VipRequest,
 } from "./types";
 
@@ -242,6 +243,7 @@ export interface Bootstrap {
   orders: Order[];
   users: User[];
   vipRequests: VipRequest[];
+  vipPurchases: VipPurchase[];
   socialLinks: SocialLink[];
   reservations: Reservation[];
   restaurantStatus: RestaurantStatus;
@@ -328,6 +330,7 @@ export async function bootstrap(): Promise<Bootstrap> {
   let orders: Order[] = [];
   let users: User[] = [];
   let vipRequests: VipRequest[] = [];
+  let vipPurchases: VipPurchase[] = [];
   let reservations: Reservation[] = [];
   let onlineVisitors = 0;
   let recentVisitors: RecentVisitor[] = [];
@@ -336,6 +339,14 @@ export async function bootstrap(): Promise<Bootstrap> {
     orders = await loadOrders();
     users = ((await sql.query(`SELECT * FROM users ORDER BY created_at ASC`)) as any[]).map(rowToUser);
     vipRequests = ((await sql.query(`SELECT * FROM vip_requests ORDER BY created_at DESC`)) as any[]).map(rowToVipRequest);
+    vipPurchases = ((await sql.query(`SELECT id, user_id, amount, status, created_at, updated_at FROM payments WHERE kind = 'vip' ORDER BY created_at DESC`)) as any[]).map((r) => ({
+      id: r.id,
+      userId: r.user_id,
+      amount: Number(r.amount),
+      status: r.status,
+      createdAt: new Date(r.created_at).getTime(),
+      updatedAt: new Date(r.updated_at ?? r.created_at).getTime(),
+    }));
     reservations = ((await sql.query(`SELECT * FROM reservations ORDER BY date ASC, time ASC`)) as any[]).map(rowToReservation);
     const visitorRows = (await sql.query(
       `SELECT count(*)::int AS n FROM visitor_sessions WHERE last_seen_site = $1 AND last_seen_at > now() - interval '5 minutes'`,
@@ -397,7 +408,7 @@ export async function bootstrap(): Promise<Bootstrap> {
     reservations = ((await sql.query(`SELECT * FROM reservations WHERE user_id = $1 ORDER BY date DESC, time DESC`, [currentUser.id])) as any[]).map(rowToReservation);
   }
 
-  return { currentUser, products, brands, reviews, orders, users, vipRequests, socialLinks, reservations, restaurantStatus, onlineVisitors, recentVisitors };
+  return { currentUser, products, brands, reviews, orders, users, vipRequests, vipPurchases, socialLinks, reservations, restaurantStatus, onlineVisitors, recentVisitors };
 }
 
 /** Load orders (optionally for a single user) with their line items. */
