@@ -285,6 +285,21 @@ export interface Dictionary {
     title: string;
     subtitle: string;
     accessDenied: string;
+    refreshDashboard: string;
+    exportOrders: string;
+    exportCustomers: string;
+    lastDashboardUpdate: string;
+    deleteOrderConfirm: string;
+    copyOrderNumber: string;
+    showMore: string;
+    exportProducts: string;
+    exportUsers: string;
+    clearProductFilters: string;
+    searchUsers: string;
+    vipEnlargeImage: string;
+    sortBySpend: string;
+    sortByOrders: string;
+    testLink: string;
     accessDeniedText: string;
     totalRevenue: string;
     totalOrders: string;
@@ -316,6 +331,8 @@ export interface Dictionary {
     productDetail: string;
     productDetailNl: string;
     productDetailHint: string;
+    addMoreTexts: string;
+    hideMoreTexts: string;
     productIngredients: string;
     productIngredientsNl: string;
     productAllergens: string;
@@ -866,6 +883,21 @@ const en: Dictionary = {
   admin: {
     title: "Admin dashboard",
     subtitle: "Track performance and manage your menu.",
+    refreshDashboard: "Refresh dashboard",
+    exportOrders: "Export orders",
+    exportCustomers: "Export customers",
+    lastDashboardUpdate: "Updated",
+    deleteOrderConfirm: "Permanently delete this order? This cannot be undone.",
+    copyOrderNumber: "Copy order number",
+    showMore: "Show more",
+    exportProducts: "Export products",
+    exportUsers: "Export users",
+    clearProductFilters: "Clear filters",
+    searchUsers: "Search by name, email or phone",
+    vipEnlargeImage: "Open full image",
+    sortBySpend: "Top spenders",
+    sortByOrders: "Most orders",
+    testLink: "Open link",
     accessDenied: "Admins only",
     accessDeniedText: "You need an admin account to view this page.",
     totalRevenue: "Total revenue",
@@ -898,6 +930,8 @@ const en: Dictionary = {
     productDetail: "Read more text (English)",
     productDetailNl: "Read more text (Dutch)",
     productDetailHint: "Detailed description shown in the product's 'Read more' popup (optional)",
+    addMoreTexts: "Add more texts",
+    hideMoreTexts: "Hide more texts",
     productIngredients: "Ingredients (English)",
     productIngredientsNl: "Ingredients (Dutch)",
     productAllergens: "Allergens (English)",
@@ -1450,6 +1484,21 @@ const nl: Dictionary = {
   admin: {
     title: "Admin dashboard",
     subtitle: "Volg prestaties en beheer je menu.",
+    refreshDashboard: "Dashboard vernieuwen",
+    exportOrders: "Bestellingen exporteren",
+    exportCustomers: "Klanten exporteren",
+    lastDashboardUpdate: "Bijgewerkt",
+    deleteOrderConfirm: "Deze bestelling definitief verwijderen? Dit kan niet ongedaan worden gemaakt.",
+    copyOrderNumber: "Bestelnummer kopiëren",
+    showMore: "Meer tonen",
+    exportProducts: "Producten exporteren",
+    exportUsers: "Gebruikers exporteren",
+    clearProductFilters: "Filters wissen",
+    searchUsers: "Zoek op naam, e-mail of telefoon",
+    vipEnlargeImage: "Volledige afbeelding openen",
+    sortBySpend: "Meeste besteed",
+    sortByOrders: "Meeste bestellingen",
+    testLink: "Link openen",
     accessDenied: "Alleen admins",
     accessDeniedText: "Je hebt een admin-account nodig voor deze pagina.",
     totalRevenue: "Totale omzet",
@@ -1482,6 +1531,8 @@ const nl: Dictionary = {
     productDetail: "Lees meer-tekst (Engels)",
     productDetailNl: "Lees meer-tekst (Nederlands)",
     productDetailHint: "Uitgebreide omschrijving in de 'Lees meer'-pop-up van het product (optioneel)",
+    addMoreTexts: "Meer teksten toevoegen",
+    hideMoreTexts: "Meer teksten verbergen",
     productIngredients: "Ingrediënten (Engels)",
     productIngredientsNl: "Ingrediënten (Nederlands)",
     productAllergens: "Allergenen (Engels)",

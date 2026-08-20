@@ -11,7 +11,6 @@ import {
   FaLock,
   FaMotorcycle,
   FaPhone,
-  FaPlay,
   FaPrint,
   FaStore,
 } from "react-icons/fa6";
@@ -247,7 +246,6 @@ export default function TerminalPage() {
   const { t, lang } = useLang();
   const { currentUser, orders, updateOrderStatus, refresh, hydrated } = useStore();
 
-  const [shiftStarted, setShiftStarted] = useState(false);
   const [autoPrint, setAutoPrint] = useState(false);
   const [lastUpdate, setLastUpdate] = useState<Date | null>(null);
   const [flash, setFlash] = useState<string[]>([]);
@@ -285,37 +283,53 @@ export default function TerminalPage() {
     }
   }, []);
 
-  /* Start shift: unlock audio (needs a user gesture) + keep the screen on. */
-  const startShift = useCallback(async () => {
-    try {
-      audioRef.current = audioRef.current ?? new AudioContext();
-      await audioRef.current.resume();
-    } catch {
-      /* audio stays off */
-    }
-    try {
-      // Keep the terminal screen awake while the feed is open.
-      const nav = navigator as Navigator & { wakeLock?: { request: (t: "screen") => Promise<unknown> } };
-      await nav.wakeLock?.request("screen");
-    } catch {
-      /* not supported - staff can raise the screen timeout instead */
-    }
-    setShiftStarted(true);
+  /* Best-effort: unlock audio + keep the screen on as soon as the terminal opens (no tap needed). */
+  useEffect(() => {
+    const unlockAudio = async () => {
+      try {
+        audioRef.current = audioRef.current ?? new AudioContext();
+        await audioRef.current.resume();
+      } catch {
+        /* audio stays off until a user gesture allows it */
+      }
+    };
+    const requestWakeLock = async () => {
+      try {
+        // Keep the terminal screen awake while the feed is open.
+        const nav = navigator as Navigator & { wakeLock?: { request: (t: "screen") => Promise<unknown> } };
+        await nav.wakeLock?.request("screen");
+      } catch {
+        /* not supported - staff can raise the screen timeout instead */
+      }
+    };
+    unlockAudio();
+    requestWakeLock();
+    // Autoplay policies block audio until a real gesture - silently retry on the first tap.
+    const retryUnlock = () => {
+      unlockAudio();
+      window.removeEventListener("pointerdown", retryUnlock);
+      window.removeEventListener("keydown", retryUnlock);
+    };
+    window.addEventListener("pointerdown", retryUnlock);
+    window.addEventListener("keydown", retryUnlock);
+    return () => {
+      window.removeEventListener("pointerdown", retryUnlock);
+      window.removeEventListener("keydown", retryUnlock);
+    };
   }, []);
 
-  /* Poll for new orders every 15 seconds while the shift is running. */
+  /* Poll for new orders every 15 seconds. */
   useEffect(() => {
-    if (!shiftStarted) return;
     const id = setInterval(() => {
       refresh().then(() => setLastUpdate(new Date()));
     }, 15_000);
     refresh().then(() => setLastUpdate(new Date()));
     return () => clearInterval(id);
-  }, [shiftStarted, refresh]);
+  }, [refresh]);
 
   /* Detect newly arrived orders -> beep, flash, optionally print. */
   useEffect(() => {
-    if (!shiftStarted || !isStaff) return;
+    if (!isStaff) return;
     const fresh = orders.filter((o) => (o.paid || o.accountType === "company") && !seenRef.current.has(o.id));
     if (fresh.length === 0) return;
     for (const o of fresh) seenRef.current.add(o.id);
@@ -335,7 +349,7 @@ export default function TerminalPage() {
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [orders, shiftStarted, isStaff]);
+  }, [orders, isStaff]);
 
   const toggleAutoPrint = useCallback(() => {
     setAutoPrint((v) => {
@@ -393,50 +407,32 @@ export default function TerminalPage() {
           <h1 className="font-display flex items-center gap-2.5 text-2xl font-semibold text-slate-900 dark:text-white">
             <FaBellConcierge className="text-emerald-600 dark:text-emerald-400" /> {t.terminal.title}
           </h1>
-          {shiftStarted && (
-            <p className="mt-1 flex items-center gap-2 text-xs font-semibold text-emerald-700 dark:text-emerald-400">
-              <span className="relative flex h-2.5 w-2.5">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-60" />
-                <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500" />
+          <p className="mt-1 flex items-center gap-2 text-xs font-semibold text-emerald-700 dark:text-emerald-400">
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-60" />
+              <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500" />
+            </span>
+            {t.terminal.live}
+            {lastUpdate && (
+              <span className="font-normal text-slate-400">
+                · {t.terminal.lastUpdate} {lastUpdate.toLocaleTimeString()}
               </span>
-              {t.terminal.live}
-              {lastUpdate && (
-                <span className="font-normal text-slate-400">
-                  · {t.terminal.lastUpdate} {lastUpdate.toLocaleTimeString()}
-                </span>
-              )}
-            </p>
-          )}
+            )}
+          </p>
         </div>
-        {shiftStarted && (
-          <button
-            onClick={toggleAutoPrint}
-            className={`inline-flex items-center gap-2 rounded-full border px-4 py-2.5 text-xs font-bold transition ${
-              autoPrint
-                ? "border-emerald-500 bg-emerald-500/15 text-emerald-700 dark:text-emerald-300"
-                : "border-slate-300 text-slate-500 dark:border-white/15 dark:text-slate-400"
-            }`}
-          >
-            <FaPrint /> {t.terminal.autoPrint} {autoPrint ? "✓" : ""}
-          </button>
-        )}
+        <button
+          onClick={toggleAutoPrint}
+          className={`inline-flex items-center gap-2 rounded-full border px-4 py-2.5 text-xs font-bold transition ${
+            autoPrint
+              ? "border-emerald-500 bg-emerald-500/15 text-emerald-700 dark:text-emerald-300"
+              : "border-slate-300 text-slate-500 dark:border-white/15 dark:text-slate-400"
+          }`}
+        >
+          <FaPrint /> {t.terminal.autoPrint} {autoPrint ? "✓" : ""}
+        </button>
       </div>
 
-      {!shiftStarted ? (
-        /* Start screen - one big tap unlocks sound + wake lock */
-        <div className="mt-10 flex flex-col items-center rounded-[2rem] border border-emerald-500/20 bg-white p-10 text-center dark:border-emerald-400/15 dark:bg-white/5">
-          <p className="max-w-sm text-sm leading-7 text-slate-600 dark:text-slate-400">{t.terminal.subtitle}</p>
-          <button
-            onClick={startShift}
-            className="mt-8 inline-flex items-center gap-3 rounded-full bg-emerald-600 px-10 py-5 text-lg font-bold text-white shadow-lg shadow-emerald-600/25 transition hover:bg-emerald-500"
-          >
-            <FaPlay /> {t.terminal.startShift}
-          </button>
-          <p className="mt-4 text-xs text-slate-400">{t.terminal.startShiftHint}</p>
-        </div>
-      ) : (
-        <>
-          {/* Counters */}
+      {/* Counters */}
           <div className="mt-5 grid grid-cols-2 gap-3">
             <div className="rounded-2xl border border-emerald-500/20 bg-white p-4 text-center dark:border-emerald-400/15 dark:bg-white/5">
               <p className="font-display text-3xl font-bold text-emerald-600 dark:text-emerald-400">{active.length}</p>
@@ -550,8 +546,6 @@ export default function TerminalPage() {
           <p className="mt-2 rounded-2xl border border-slate-200 px-4 py-3 text-center text-xs leading-5 text-slate-400 dark:border-white/10">
             {t.terminal.printKassaHelp}
           </p>
-        </>
-      )}
     </div>
   );
 }

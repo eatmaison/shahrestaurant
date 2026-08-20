@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Manrope, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
@@ -70,6 +70,13 @@ export const metadata: Metadata = {
   icons: { icon: "/tandoorcompany.png" },
 };
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: "#059669",
+};
+
 // Warm ember dark is the house default; users can opt into light mode.
 const themeScript = `(function(){try{var t=JSON.parse(localStorage.getItem('tm.theme'));if(t!=='light'){document.documentElement.classList.add('dark');}}catch(e){document.documentElement.classList.add('dark');}})();`;
 
@@ -112,7 +119,7 @@ export default function RootLayout({
         <Providers>
           <Header />
           <Atmosphere />
-          <main className="flex-1">{children}</main>
+          <main id="main-content" className="flex-1">{children}</main>
           <Footer />
           <CookieConsent />
         </Providers>

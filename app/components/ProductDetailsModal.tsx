@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { useLang } from "../providers";
 import type { Product } from "../lib/types";
 import { FaX } from "react-icons/fa6";
@@ -15,6 +16,20 @@ export default function ProductDetailsModal({
 }: ProductDetailsModalProps) {
   const { t, lang } = useLang();
 
+  useEffect(() => {
+    if (!product) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") onClose();
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [onClose, product]);
+
   if (!product) return null;
 
   // Prefer the visitor's language, fall back to English, then to the card description.
@@ -28,6 +43,9 @@ export default function ProductDetailsModal({
 
   return (
     <div
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="product-details-title"
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-sm"
       onClick={onClose}
     >
@@ -38,7 +56,7 @@ export default function ProductDetailsModal({
         {/* Header */}
         <div className="mb-6 flex items-start justify-between">
           <div>
-            <h2 className="text-3xl font-black text-slate-900 dark:text-white">
+            <h2 id="product-details-title" className="text-3xl font-black text-slate-900 dark:text-white">
               {product.name}
             </h2>
             <p className="mt-2 text-lg font-semibold text-emerald-600 dark:text-emerald-400">

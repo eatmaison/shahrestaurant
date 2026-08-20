@@ -10,7 +10,7 @@ import nodemailer, { type Transporter } from "nodemailer";
 let transporter: Transporter | null = null;
 
 export function emailEnabled(): boolean {
-  return !!(process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS);
+  return !!(process.env.RESEND_API_KEY || (process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS));
 }
 function getTransporter(): Transporter {
   if (!transporter) {
@@ -29,11 +29,27 @@ function getTransporter(): Transporter {
 }
 
 export async function sendMail(opts: { to: string; subject: string; html: string }): Promise<void> {
-  if (!emailEnabled()) {
-    console.warn(`[email] SMTP not configured - skipped sending "${opts.subject}" to ${opts.to}`);
+  const from = process.env.EMAIL_FROM || process.env.SMTP_FROM || `The Tandoor Company <${process.env.SMTP_USER}>`;
+  // Prefer the Resend HTTPS API - it works even when the host blocks outbound SMTP ports.
+  if (process.env.RESEND_API_KEY) {
+    const res = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ from, to: opts.to, subject: opts.subject, html: opts.html }),
+    });
+    if (!res.ok) {
+      const detail = await res.text().catch(() => "");
+      throw new Error(`Resend send failed (${res.status}): ${detail}`);
+    }
     return;
   }
-  const from = process.env.SMTP_FROM || `The Tandoor Company <${process.env.SMTP_USER}>`;
+  if (!emailEnabled()) {
+    console.warn(`[email] not configured - skipped sending "${opts.subject}" to ${opts.to}`);
+    return;
+  }
   await getTransporter().sendMail({ from, to: opts.to, subject: opts.subject, html: opts.html });
 }
 

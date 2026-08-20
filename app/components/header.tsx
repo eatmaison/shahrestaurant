@@ -27,6 +27,15 @@ export function Header() {
   const [eventsOpen, setEventsOpen] = useState(false); // mobile submenu
   const [scrolled, setScrolled] = useState(false);
 
+  useEffect(() => {
+    if (!open) return;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+    document.addEventListener("keydown", closeOnEscape);
+    return () => document.removeEventListener("keydown", closeOnEscape);
+  }, [open]);
+
   // Elevate the header with a warm shadow once the page is scrolled.
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -77,6 +86,7 @@ export function Header() {
         scrolled ? "shadow-lg shadow-emerald-900/10 dark:shadow-black/40" : ""
       }`}
     >
+      <a href="#main-content" className="skip-link">Skip to content</a>
       <div className="gold-rule absolute inset-x-0 top-0" aria-hidden />
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
         <Link href="/" className="group flex items-center gap-3" onClick={() => setOpen(false)}>
@@ -93,7 +103,7 @@ export function Header() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-1 md:flex">
+        <nav aria-label="Primary navigation" className="hidden items-center gap-1 md:flex">
           {links.map((link) =>
             link.children ? (
               <div key={link.href} className="group relative">
@@ -212,6 +222,8 @@ export function Header() {
             onClick={() => setOpen((o) => !o)}
             className="grid h-9 w-9 place-items-center rounded-full border border-slate-200 bg-white text-slate-700 dark:border-white/10 dark:bg-white/5 dark:text-slate-200 md:hidden"
             aria-label="Menu"
+            aria-expanded={open}
+            aria-controls="mobile-navigation"
           >
             {open ? <FaXmark /> : <FaBars />}
           </button>
@@ -220,7 +232,7 @@ export function Header() {
 
       {open && (
         <div className="animate-fade-up border-t border-slate-200/70 bg-white px-4 py-3 [animation-duration:0.25s] dark:border-emerald-400/15 dark:bg-[#0c0703] md:hidden">
-          <nav className="flex flex-col gap-1">
+          <nav id="mobile-navigation" aria-label="Mobile navigation" className="flex flex-col gap-1">
             {links.map((link) =>
               link.children ? (
                 <div key={link.href} className="flex flex-col">

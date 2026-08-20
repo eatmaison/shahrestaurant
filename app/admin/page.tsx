@@ -31,6 +31,7 @@ import {
   FaReceipt,
   FaCircleCheck,
   FaCircleExclamation,
+  FaDownload,
   FaShareNodes,
   FaSliders,
   FaSpinner,
@@ -154,6 +155,8 @@ export default function AdminPage() {
   /** Brand whose logo will receive the next picked file. */
   const logoBrandIdRef = useRef<string | null>(null);
   const [now, setNow] = useState(ADMIN_INITIAL_NOW);
+  const [adminRefreshing, setAdminRefreshing] = useState(false);
+  const [adminUpdatedAt, setAdminUpdatedAt] = useState(ADMIN_INITIAL_NOW);
   const [restaurantStatusSaving, setRestaurantStatusSaving] = useState<RestaurantOpenOverride | null>(null);
 
   useEffect(() => {
@@ -200,6 +203,9 @@ export default function AdminPage() {
   // Save progress + feedback for the add form and the edit modal.
   const [addState, setAddState] = useState<SaveState>({ status: "idle" });
   const [editState, setEditState] = useState<SaveState>({ status: "idle" });
+  // The rich-text/ingredients/allergens fields are hidden by default to keep the form compact.
+  const [addMoreTextsOpen, setAddMoreTextsOpen] = useState(false);
+  const [editMoreTextsOpen, setEditMoreTextsOpen] = useState(false);
 
   // Restaurants & categories manager modal.
   const [manageOpen, setManageOpen] = useState(false);
@@ -281,9 +287,31 @@ export default function AdminPage() {
   const [customerSearch, setCustomerSearch] = useState("");
   const [companySearch, setCompanySearch] = useState("");
   const [expandedOrders, setExpandedOrders] = useState<Set<string>>(() => new Set());
+  const [copiedOrderId, setCopiedOrderId] = useState<string | null>(null);
+  const [customerOrdersLimit, setCustomerOrdersLimit] = useState(20);
+  const [companyOrdersLimit, setCompanyOrdersLimit] = useState(20);
 
   // Product pending deletion (shown in a confirmation dialog).
   const [deleting, setDeleting] = useState<Product | null>(null);
+
+  /** Escape closes whichever admin modal/dialog is open, and locks background scroll while any is open. */
+  useEffect(() => {
+    const anyOpen = !!editing || manageOpen || !!deleting;
+    if (!anyOpen) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key !== "Escape") return;
+      if (deleting) setDeleting(null);
+      else if (editing) setEditing(null);
+      else if (manageOpen) setManageOpen(false);
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [editing, manageOpen, deleting]);
   const [productSearch, setProductSearch] = useState("");
   const [productBrandFilter, setProductBrandFilter] = useState<Brand | "all">("all");
   const [productCategoryFilter, setProductCategoryFilter] = useState<Category | "all">("all");
@@ -533,6 +561,29 @@ export default function AdminPage() {
     }
   };
 
+  const handleAdminRefresh = async () => {
+    if (adminRefreshing) return;
+    setAdminRefreshing(true);
+    try {
+      await refresh();
+      setAdminUpdatedAt(Date.now());
+    } finally {
+      setAdminRefreshing(false);
+    }
+  };
+
+  const downloadCsv = (filename: string, rows: string[][]) => {
+    const csv = rows.map((row) => row.map((cell) => `"${String(cell).replace(/"/g, '""')}"`).join(",")).join("\r\n");
+    const url = URL.createObjectURL(new Blob([csv], { type: "text/csv;charset=utf-8" }));
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = filename;
+    link.click();
+    URL.revokeObjectURL(url);
+  };
+
+  const exportOrders = () => downloadCsv("orders.csv", [["Order", "Customer", "Created", "Status", "Total", "Paid"], ...orders.map((o) => [formatOrderNumber(o.orderNumber), o.customerName, new Date(o.createdAt).toISOString(), o.status, o.total.toFixed(2), o.paid ? "yes" : "no"])]);
+
   const changeRestaurantStatus = async (override: RestaurantOpenOverride) => {
     setRestaurantStatusSaving(override);
     try {
@@ -598,6 +649,7 @@ export default function AdminPage() {
   const [topOpen, setTopOpen] = useState(false);
   // Customer insights, recently-online and registered-users panels are collapsed by default to save vertical space.
   const [insightsOpen, setInsightsOpen] = useState(false);
+  const [customerSortBy, setCustomerSortBy] = useState<"spend" | "orders">("spend");
   const [recentlyOnlineOpen, setRecentlyOnlineOpen] = useState(false);
   const [registeredUsersOpen, setRegisteredUsersOpen] = useState(false);
 
@@ -682,11 +734,32 @@ export default function AdminPage() {
       .sort((a, b) => b.totalSpent - a.totalSpent);
   }, [orders, users, products]);
 
+  const sortedCustomerStats = useMemo(
+    () =>
+      customerSortBy === "orders"
+        ? [...customerStats].sort((a, b) => b.orderCount - a.orderCount)
+        : customerStats,
+    [customerStats, customerSortBy]
+  );
+
   /** All registered accounts, newest first, for the collapsible directory. */
   const registeredUsers = useMemo(
     () => [...users].sort((a, b) => b.createdAt - a.createdAt),
     [users]
   );
+
+  const [userSearch, setUserSearch] = useState("");
+  const filteredRegisteredUsers = useMemo(() => {
+    const q = userSearch.trim().toLowerCase();
+    if (!q) return registeredUsers;
+    return registeredUsers.filter((u) =>
+      [u.name, u.email, u.phone ?? ""].join(" ").toLowerCase().includes(q)
+    );
+  }, [registeredUsers, userSearch]);
+
+  const exportCustomers = () => downloadCsv("customers.csv", [["Customer", "Email", "Orders", "Total spent", "Last order"], ...customerStats.map((c) => [c.name, c.email ?? "", String(c.orderCount), c.totalSpent.toFixed(2), new Date(c.lastOrder).toISOString()])]);
+  const exportProducts = () => downloadCsv("products.csv", [["Name", "Brand", "Category", "Subcategory", "Price"], ...products.map((p) => [p.name, brands.find((b) => b.id === p.brand)?.name ?? p.brand, p.category, p.subcategory ?? "", p.price.toFixed(2)])]);
+  const exportUsers = () => downloadCsv("users.csv", [["Name", "Email", "Phone", "Account type", "Joined"], ...registeredUsers.map((u) => [u.name, u.email, u.phone ?? "", u.accountType ?? "personal", new Date(u.createdAt).toISOString()])]);
 
   if (!hydrated) {
     return <div className="mx-auto max-w-md px-4 py-20 text-center text-sm text-slate-500">…</div>;
@@ -775,6 +848,7 @@ export default function AdminPage() {
     });
     if (fileRef.current) fileRef.current.value = "";
     setAddState({ status: "success", message: t.admin.productAdded });
+    setAddMoreTextsOpen(false);
     setTimeout(() => setAddState((s) => (s.status === "success" ? { status: "idle" } : s)), 4000);
   };
 
@@ -799,6 +873,7 @@ export default function AdminPage() {
       allergensEn: (p.allergens ?? []).join(", "),
       allergensNl: (p.allergensNl ?? []).join(", "),
     });
+    setEditMoreTextsOpen(!!(p.detailedDescription?.en || p.detailedDescription?.nl || p.ingredients?.length || p.ingredientsNl?.length || p.allergens?.length || p.allergensNl?.length));
   };
 
   const closeEditor = () => {
@@ -1062,6 +1137,20 @@ export default function AdminPage() {
     });
   };
 
+  const copyOrderNumber = async (o: Order) => {
+    try {
+      await navigator.clipboard.writeText(formatOrderNumber(o.orderNumber));
+      setCopiedOrderId(o.id);
+      window.setTimeout(() => setCopiedOrderId((cur) => (cur === o.id ? null : cur)), 1500);
+    } catch {
+      /* clipboard unavailable - ignore */
+    }
+  };
+
+  const confirmDeleteOrder = (o: Order) => {
+    if (window.confirm(t.admin.deleteOrderConfirm)) deleteOrder(o.id);
+  };
+
   const renderOrderCard = (o: Order) => {
     const action = nextAction(o.status);
     const currentStep = ORDER_STATUS_FLOW.indexOf(o.status);
@@ -1083,6 +1172,14 @@ export default function AdminPage() {
               <span className="shrink-0 rounded-full bg-slate-900/90 px-2 py-0.5 text-[11px] font-bold text-white dark:bg-white/15">
                 {formatOrderNumber(o.orderNumber)}
               </span>
+              <button
+                type="button"
+                onClick={() => copyOrderNumber(o)}
+                title={t.admin.copyOrderNumber}
+                className="shrink-0 text-slate-400 transition hover:text-emerald-600 dark:hover:text-emerald-400"
+              >
+                {copiedOrderId === o.id ? <FaCircleCheck className="text-emerald-500" /> : <FaReceipt />}
+              </button>
             </p>
             <p className="mt-0.5 text-xs text-slate-500 dark:text-slate-400">
               {new Date(o.createdAt).toLocaleString(lang === "nl" ? "nl-NL" : "en-GB")} ·{" "}
@@ -1109,7 +1206,7 @@ export default function AdminPage() {
                 </button>
                 {canDeleteExpiredOrder && (
                   <button
-                    onClick={() => deleteOrder(o.id)}
+                    onClick={() => confirmDeleteOrder(o)}
                     className="inline-flex items-center gap-1.5 rounded-full bg-red-600 px-2.5 py-1 text-xs font-bold text-white transition hover:bg-red-500"
                     title={t.fulfillment.deleteExpiredOrder}
                   >
@@ -1154,10 +1251,23 @@ export default function AdminPage() {
         <div className="mt-3 grid gap-1.5 rounded-xl bg-white p-3 text-xs dark:bg-white/5 sm:grid-cols-2">
           <p className="flex items-center gap-2 text-slate-600 dark:text-slate-300">
             <FaLocationDot className="shrink-0 text-emerald-600 dark:text-emerald-400" />
-            <span className="font-semibold text-slate-900 dark:text-white">{o.address || "-"}</span>, {o.postcode || "-"}
+            {o.address ? (
+              <a
+                href={`https://maps.google.com/?q=${encodeURIComponent(`${o.address} ${o.postcode}`)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-slate-900 underline decoration-dotted hover:text-emerald-600 dark:text-white dark:hover:text-emerald-400"
+              >
+                {o.address}
+              </a>
+            ) : (
+              <span className="font-semibold text-slate-900 dark:text-white">-</span>
+            )}
+            , {o.postcode || "-"}
           </p>
           <p className="flex items-center gap-2 text-slate-600 dark:text-slate-300">
-            <FaPhone className="shrink-0 text-emerald-600 dark:text-emerald-400" /> {o.phone || "-"}
+            <FaPhone className="shrink-0 text-emerald-600 dark:text-emerald-400" />
+            {o.phone ? <a href={`tel:${o.phone}`} className="hover:text-emerald-600 dark:hover:text-emerald-400">{o.phone}</a> : "-"}
           </p>
           {account?.email && (
             <p className="flex items-center gap-2 text-slate-600 dark:text-slate-300">
@@ -1319,6 +1429,12 @@ export default function AdminPage() {
         <div>
           <h1 className="text-3xl font-black tracking-tight text-slate-900 dark:text-white">{t.admin.title}</h1>
           <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">{t.admin.subtitle}</p>
+          <div className="mt-4 flex flex-wrap items-center gap-2" aria-label="Admin tools">
+            <button type="button" onClick={() => void handleAdminRefresh()} disabled={adminRefreshing} className="inline-flex items-center gap-2 rounded-full border border-slate-200 px-3 py-2 text-xs font-bold text-slate-700 transition hover:border-emerald-400 disabled:opacity-50 dark:border-white/10 dark:text-slate-200"><FaArrowsRotate className={adminRefreshing ? "animate-spin" : ""} /> {t.admin.refreshDashboard}</button>
+            <button type="button" onClick={exportOrders} className="inline-flex items-center gap-2 rounded-full border border-slate-200 px-3 py-2 text-xs font-bold text-slate-700 transition hover:border-emerald-400 dark:border-white/10 dark:text-slate-200"><FaDownload /> {t.admin.exportOrders}</button>
+            <button type="button" onClick={exportCustomers} className="inline-flex items-center gap-2 rounded-full border border-slate-200 px-3 py-2 text-xs font-bold text-slate-700 transition hover:border-emerald-400 dark:border-white/10 dark:text-slate-200"><FaDownload /> {t.admin.exportCustomers}</button>
+            <span aria-live="polite" className="text-xs text-slate-400">{t.admin.lastDashboardUpdate}: {new Date(adminUpdatedAt).toLocaleTimeString()}</span>
+          </div>
         </div>
         <Link
           href="/terminal"
@@ -1476,8 +1592,25 @@ export default function AdminPage() {
         {customerStats.length === 0 ? (
           <p className="mt-4 text-sm text-slate-500 dark:text-slate-400">{t.admin.noCustomers}</p>
         ) : (
+          <>
+            <div className="mt-4 flex rounded-full border border-slate-200 p-0.5 text-xs font-bold dark:border-white/10">
+              <button
+                type="button"
+                onClick={() => setCustomerSortBy("spend")}
+                className={`flex-1 rounded-full px-3 py-1.5 transition ${customerSortBy === "spend" ? "bg-emerald-500 text-white" : "text-slate-500 dark:text-slate-400"}`}
+              >
+                {t.admin.sortBySpend}
+              </button>
+              <button
+                type="button"
+                onClick={() => setCustomerSortBy("orders")}
+                className={`flex-1 rounded-full px-3 py-1.5 transition ${customerSortBy === "orders" ? "bg-emerald-500 text-white" : "text-slate-500 dark:text-slate-400"}`}
+              >
+                {t.admin.sortByOrders}
+              </button>
+            </div>
           <div className="mt-5 grid max-h-[34rem] gap-4 overflow-y-auto pr-1 md:grid-cols-2 xl:grid-cols-3">
-            {customerStats.map((c, i) => {
+            {sortedCustomerStats.map((c, i) => {
               const FavIcon = c.favCategory ? categoryIconFor(brands, c.favCategory.name) : categoryIconFor(brands, "");
               return (
                 <div
@@ -1543,6 +1676,7 @@ export default function AdminPage() {
               );
             })}
           </div>
+          </>
         )}
           </div>
         </div>
@@ -1831,11 +1965,30 @@ export default function AdminPage() {
 
         <div className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${registeredUsersOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
           <div className="overflow-hidden">
+            {registeredUsers.length > 0 && (
+              <div className="mt-4 flex flex-wrap items-center gap-2">
+                <label className="relative min-w-[14rem] flex-1">
+                  <FaMagnifyingGlass className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-xs text-slate-400" />
+                  <input
+                    type="search"
+                    value={userSearch}
+                    onChange={(e) => setUserSearch(e.target.value)}
+                    placeholder={t.admin.searchUsers}
+                    aria-label={t.admin.searchUsers}
+                    className="w-full rounded-xl border border-slate-200 bg-slate-50 py-2 pl-9 pr-9 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
+                  />
+                  {userSearch && <button type="button" onClick={() => setUserSearch("")} aria-label="Clear user search" className="absolute right-2 top-1/2 -translate-y-1/2 p-1 text-slate-400 hover:text-emerald-600"><FaXmark /></button>}
+                </label>
+                <button type="button" onClick={exportUsers} className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 px-3 py-2 text-xs font-bold text-slate-600 transition hover:border-emerald-400 dark:border-white/10 dark:text-slate-300"><FaDownload /> {t.admin.exportUsers}</button>
+              </div>
+            )}
             {registeredUsers.length === 0 ? (
               <p className="mt-4 text-sm text-slate-500 dark:text-slate-400">{t.admin.registeredUsersNone}</p>
+            ) : filteredRegisteredUsers.length === 0 ? (
+              <p className="mt-4 text-sm text-slate-500 dark:text-slate-400">{t.fulfillment.noMatches}</p>
             ) : (
               <ul className="mt-4 max-h-[32rem] space-y-3 overflow-y-auto pr-1">
-                {registeredUsers.map((u) => {
+                {filteredRegisteredUsers.map((u) => {
                   const isCompany = u.accountType === "company";
                   return (
                     <li key={u.id} className="flex flex-col gap-3 rounded-2xl border border-slate-100 bg-slate-50/70 p-4 dark:border-white/5 dark:bg-white/5">
@@ -1872,11 +2025,13 @@ export default function AdminPage() {
                             </span>
                           </div>
                           <p className="mt-1 flex items-center gap-1.5 truncate text-xs text-slate-500 dark:text-slate-400">
-                            <FaEnvelope className="shrink-0 text-[10px] text-slate-400" /> {u.email}
+                            <FaEnvelope className="shrink-0 text-[10px] text-slate-400" />
+                            <a href={`mailto:${u.email}`} className="truncate hover:text-emerald-600 dark:hover:text-emerald-400">{u.email}</a>
                           </p>
                           {u.phone && (
                             <p className="mt-0.5 flex items-center gap-1.5 truncate text-xs font-semibold text-slate-600 dark:text-slate-300">
-                              <FaPhone className="shrink-0 text-[10px] text-slate-400" /> {u.phone}
+                              <FaPhone className="shrink-0 text-[10px] text-slate-400" />
+                              <a href={`tel:${u.phone}`} className="hover:text-emerald-600 dark:hover:text-emerald-400">{u.phone}</a>
                             </p>
                           )}
                           {(u.address || u.postcode) && (
@@ -1987,15 +2142,28 @@ export default function AdminPage() {
                     />
                   </button>
                 </div>
-                <input
-                  value={socialUrl(p.id)}
-                  onChange={(e) => setSocialDrafts((d) => ({ ...d, [p.id]: e.target.value }))}
-                  onBlur={() => saveSocialUrl(p.id)}
-                  onKeyDown={(e) => e.key === "Enter" && (e.target as HTMLInputElement).blur()}
-                  placeholder={t.admin.socialUrlPlaceholder}
-                  type="url"
-                  className="mt-3 w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs outline-none transition placeholder:text-slate-400 focus:border-emerald-500 dark:border-white/10 dark:bg-white/5 dark:text-white"
-                />
+                <div className="mt-3 flex items-center gap-2">
+                  <input
+                    value={socialUrl(p.id)}
+                    onChange={(e) => setSocialDrafts((d) => ({ ...d, [p.id]: e.target.value }))}
+                    onBlur={() => saveSocialUrl(p.id)}
+                    onKeyDown={(e) => e.key === "Enter" && (e.target as HTMLInputElement).blur()}
+                    placeholder={t.admin.socialUrlPlaceholder}
+                    type="url"
+                    className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs outline-none transition placeholder:text-slate-400 focus:border-emerald-500 dark:border-white/10 dark:bg-white/5 dark:text-white"
+                  />
+                  {socialUrl(p.id) && (
+                    <a
+                      href={socialUrl(p.id)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title={t.admin.testLink}
+                      className="shrink-0 rounded-lg border border-slate-200 p-2 text-slate-500 transition hover:border-emerald-400 hover:text-emerald-600 dark:border-white/10 dark:text-slate-400"
+                    >
+                      <FaShareNodes className="text-xs" />
+                    </a>
+                  )}
+                </div>
               </div>
             );
           })}
@@ -2015,6 +2183,9 @@ export default function AdminPage() {
               <h2 className="text-lg font-black text-slate-900 dark:text-white">{t.admin.vipRequests}</h2>
               <p className="text-xs text-slate-500 dark:text-slate-400">{t.admin.vipRequestsSub}</p>
             </div>
+            <span className="rounded-full bg-amber-400/20 px-2.5 py-1 text-xs font-bold text-amber-700 dark:text-amber-300">
+              {vipRequests.filter((r) => r.status === "pending").length}
+            </span>
           </div>
 
           <div className="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
@@ -2022,8 +2193,10 @@ export default function AdminPage() {
               .filter((r) => r.status === "pending")
               .map((r) => (
                 <div key={r.id} className="overflow-hidden rounded-2xl border border-slate-200 bg-white dark:border-white/10 dark:bg-white/5">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={r.image} alt={r.userName} className="h-40 w-full bg-slate-100 object-contain dark:bg-black/20" />
+                  <a href={r.image} target="_blank" rel="noopener noreferrer" title={t.admin.vipEnlargeImage} className="block">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={r.image} alt={r.userName} loading="lazy" decoding="async" className="h-40 w-full bg-slate-100 object-contain transition hover:opacity-80 dark:bg-black/20" />
+                  </a>
                   <div className="p-3">
                     <p className="flex items-center gap-1.5 text-sm font-black text-slate-900 dark:text-white">
                       <FaUser className="text-amber-500" /> {r.userName}
@@ -2223,6 +2396,17 @@ export default function AdminPage() {
               rows={2}
               className="w-full resize-none rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
             />
+            <button
+              type="button"
+              onClick={() => setAddMoreTextsOpen((o) => !o)}
+              aria-expanded={addMoreTextsOpen}
+              className="flex w-full items-center justify-between rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm font-bold text-slate-700 transition hover:border-emerald-400 dark:border-white/10 dark:bg-white/10 dark:text-slate-200"
+            >
+              {addMoreTextsOpen ? t.admin.hideMoreTexts : t.admin.addMoreTexts}
+              <FaChevronDown className={`transition-transform duration-300 ${addMoreTextsOpen ? "rotate-180" : ""}`} />
+            </button>
+            <div className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${addMoreTextsOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
+              <div className="space-y-3 overflow-hidden">
             <div>
               <label className="block text-sm font-semibold text-slate-900 dark:text-white mb-2">
                 {t.admin.productDetail}
@@ -2268,6 +2452,8 @@ export default function AdminPage() {
                 className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
               />
               <p className="mt-1 text-[11px] leading-4 text-slate-400 dark:text-slate-500">{t.admin.listHint}</p>
+            </div>
+              </div>
             </div>
             <div>
               <p className="mb-2 text-xs font-bold uppercase tracking-wide text-slate-500 dark:text-slate-400">{t.admin.sellAtRestaurants}</p>
@@ -2401,20 +2587,40 @@ export default function AdminPage() {
         <div className="min-w-0 rounded-3xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-white/5">
           <div className="flex items-center justify-between">
             <h2 className="text-lg font-black text-slate-900 dark:text-white">{t.admin.manageProducts}</h2>
-            <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600 dark:bg-white/10 dark:text-slate-300">
-              {filteredProductGroups.length}/{productGroups.length}
-            </span>
+            <div className="flex items-center gap-2">
+              <button type="button" onClick={exportProducts} className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 px-2.5 py-1 text-xs font-bold text-slate-600 transition hover:border-emerald-400 dark:border-white/10 dark:text-slate-300"><FaDownload /> {t.admin.exportProducts}</button>
+              <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600 dark:bg-white/10 dark:text-slate-300">
+                {filteredProductGroups.length}/{productGroups.length}
+              </span>
+            </div>
           </div>
+          {(productSearch || productBrandFilter !== "all" || productCategoryFilter !== "all" || productSubcategoryFilter !== "all") && (
+            <button
+              type="button"
+              onClick={() => {
+                setProductSearch("");
+                setProductBrandFilter("all");
+                setProductCategoryFilter("all");
+                setProductSubcategoryFilter("all");
+              }}
+              className="mt-2 inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-bold text-rose-600 hover:bg-rose-50 dark:text-rose-400 dark:hover:bg-rose-500/10"
+            >
+              <FaXmark className="text-[10px]" /> {t.admin.clearProductFilters}
+            </button>
+          )}
           <div className="mt-4 rounded-2xl border border-slate-200 bg-slate-50/70 p-3 dark:border-white/10 dark:bg-white/5">
             <div className="grid gap-2 md:grid-cols-[1fr_0.7fr_0.7fr]">
               <label className="relative block">
                 <FaMagnifyingGlass className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-xs text-slate-400" />
                 <input
+                  type="search"
                   value={productSearch}
                   onChange={(e) => setProductSearch(e.target.value)}
                   placeholder={t.admin.productSearch}
-                  className="w-full rounded-xl border border-slate-200 bg-white py-2.5 pl-9 pr-3 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
+                  aria-label={t.admin.productSearch}
+                  className="w-full rounded-xl border border-slate-200 bg-white py-2.5 pl-9 pr-10 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
                 />
+                {productSearch && <button type="button" onClick={() => setProductSearch("")} aria-label="Clear product search" className="absolute right-2 top-1/2 -translate-y-1/2 p-1 text-slate-400 hover:text-emerald-600"><FaXmark /></button>}
               </label>
               <select
                 value={productBrandFilter}
@@ -2592,7 +2798,7 @@ export default function AdminPage() {
 
       {/* Restaurants & categories manager */}
       {manageOpen && (
-        <div className="fixed inset-0 z-50 flex items-end justify-center sm:items-center">
+        <div role="dialog" aria-modal="true" className="fixed inset-0 z-50 flex items-end justify-center sm:items-center">
           <div className="fixed inset-0 bg-black/40" onClick={() => setManageOpen(false)} />
           <div className="relative flex max-h-[85vh] w-full max-w-lg flex-col rounded-t-3xl bg-white shadow-2xl dark:bg-[#170d04] sm:rounded-3xl">
             <div className="flex items-center justify-between border-b border-slate-200 px-5 py-4 dark:border-white/10">
@@ -2936,7 +3142,7 @@ export default function AdminPage() {
 
       {/* Edit product modal */}
       {editing && (
-        <div className="fixed inset-0 z-50 flex items-end justify-center sm:items-center">
+        <div role="dialog" aria-modal="true" className="fixed inset-0 z-50 flex items-end justify-center sm:items-center">
           <div className="fixed inset-0 bg-black/40" onClick={closeEditor} />
           <div className="relative flex max-h-[90vh] w-full max-w-md flex-col rounded-t-3xl bg-white shadow-2xl dark:bg-[#170d04] sm:rounded-3xl">
             <div className="flex items-center justify-between border-b border-slate-200 px-5 py-4 dark:border-white/10">
@@ -2972,6 +3178,17 @@ export default function AdminPage() {
                 rows={2}
                 className="w-full resize-none rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
               />
+              <button
+                type="button"
+                onClick={() => setEditMoreTextsOpen((o) => !o)}
+                aria-expanded={editMoreTextsOpen}
+                className="flex w-full items-center justify-between rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm font-bold text-slate-700 transition hover:border-emerald-400 dark:border-white/10 dark:bg-white/10 dark:text-slate-200"
+              >
+                {editMoreTextsOpen ? t.admin.hideMoreTexts : t.admin.addMoreTexts}
+                <FaChevronDown className={`transition-transform duration-300 ${editMoreTextsOpen ? "rotate-180" : ""}`} />
+              </button>
+              <div className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${editMoreTextsOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
+                <div className="space-y-3 overflow-hidden">
               <div>
                 <label className="block text-sm font-semibold text-slate-900 dark:text-white mb-2">
                   {t.admin.productDetail}
@@ -3017,6 +3234,8 @@ export default function AdminPage() {
                   className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
                 />
                 <p className="mt-1 text-[11px] leading-4 text-slate-400 dark:text-slate-500">{t.admin.listHint}</p>
+              </div>
+                </div>
               </div>
               <div>
                 <p className="mb-2 text-xs font-bold uppercase tracking-wide text-slate-500 dark:text-slate-400">{t.admin.sellAtRestaurants}</p>
@@ -3156,7 +3375,7 @@ export default function AdminPage() {
 
       {/* Delete product confirmation */}
       {deleting && (
-        <div className="fixed inset-0 z-50 flex items-end justify-center sm:items-center">
+        <div role="dialog" aria-modal="true" className="fixed inset-0 z-50 flex items-end justify-center sm:items-center">
           <div className="fixed inset-0 bg-black/40" onClick={() => setDeleting(null)} />
           <div className="relative w-full max-w-sm rounded-t-3xl bg-white p-6 shadow-2xl dark:bg-[#170d04] sm:rounded-3xl">
             <div className="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-red-500/10 text-2xl text-red-500">
@@ -3218,16 +3437,30 @@ export default function AdminPage() {
               <div className="relative mt-3">
                 <FaMagnifyingGlass className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-sm text-slate-400" />
                 <input
+                  type="search"
                   value={customerSearch}
                   onChange={(e) => setCustomerSearch(e.target.value)}
                   placeholder={t.fulfillment.searchCustomers}
-                  className="w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 pl-10 pr-3.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/5 dark:text-white"
+                  aria-label={t.fulfillment.searchCustomers}
+                  className="w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 pl-10 pr-10 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/5 dark:text-white"
                 />
+                {customerSearch && <button type="button" onClick={() => setCustomerSearch("")} aria-label="Clear customer search" className="absolute right-2 top-1/2 -translate-y-1/2 p-1 text-slate-400 hover:text-emerald-600"><FaXmark /></button>}
               </div>
               {filteredCustomerOrders.length === 0 ? (
                 <p className="mt-3 text-sm text-slate-500 dark:text-slate-400">{t.fulfillment.noMatches}</p>
               ) : (
-                <div className="mt-3 space-y-3">{filteredCustomerOrders.slice(0, 20).map(renderOrderCard)}</div>
+                <>
+                  <div className="mt-3 space-y-3">{filteredCustomerOrders.slice(0, customerOrdersLimit).map(renderOrderCard)}</div>
+                  {filteredCustomerOrders.length > customerOrdersLimit && (
+                    <button
+                      type="button"
+                      onClick={() => setCustomerOrdersLimit((n) => n + 20)}
+                      className="mt-3 w-full rounded-xl border border-slate-200 py-2 text-xs font-bold text-slate-600 transition hover:border-emerald-400 hover:text-emerald-700 dark:border-white/10 dark:text-slate-300"
+                    >
+                      {t.admin.showMore}
+                    </button>
+                  )}
+                </>
               )}
             </>
           )}
@@ -3248,16 +3481,30 @@ export default function AdminPage() {
               <div className="relative mt-3">
                 <FaMagnifyingGlass className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-sm text-slate-400" />
                 <input
+                  type="search"
                   value={companySearch}
                   onChange={(e) => setCompanySearch(e.target.value)}
                   placeholder={t.fulfillment.searchCompanies}
-                  className="w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 pl-10 pr-3.5 text-sm outline-none transition focus:border-sky-500 dark:border-white/10 dark:bg-white/5 dark:text-white"
+                  aria-label={t.fulfillment.searchCompanies}
+                  className="w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 pl-10 pr-10 text-sm outline-none transition focus:border-sky-500 dark:border-white/10 dark:bg-white/5 dark:text-white"
                 />
+                {companySearch && <button type="button" onClick={() => setCompanySearch("")} aria-label="Clear company search" className="absolute right-2 top-1/2 -translate-y-1/2 p-1 text-slate-400 hover:text-sky-600"><FaXmark /></button>}
               </div>
               {filteredCompanyOrders.length === 0 ? (
                 <p className="mt-3 text-sm text-slate-500 dark:text-slate-400">{t.fulfillment.noMatches}</p>
               ) : (
-                <div className="mt-3 space-y-3">{filteredCompanyOrders.slice(0, 20).map(renderOrderCard)}</div>
+                <>
+                  <div className="mt-3 space-y-3">{filteredCompanyOrders.slice(0, companyOrdersLimit).map(renderOrderCard)}</div>
+                  {filteredCompanyOrders.length > companyOrdersLimit && (
+                    <button
+                      type="button"
+                      onClick={() => setCompanyOrdersLimit((n) => n + 20)}
+                      className="mt-3 w-full rounded-xl border border-slate-200 py-2 text-xs font-bold text-slate-600 transition hover:border-emerald-400 hover:text-emerald-700 dark:border-white/10 dark:text-slate-300"
+                    >
+                      {t.admin.showMore}
+                    </button>
+                  )}
+                </>
               )}
             </>
           )}

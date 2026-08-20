@@ -20,13 +20,40 @@ if (fs.existsSync(envPath)) {
 }
 
 const to = process.argv[2] || "aff.davis@gmail.com";
+const from = process.env.EMAIL_FROM || process.env.SMTP_FROM || `Test <${process.env.SMTP_USER}>`;
+
+// --- Resend HTTPS API (preferred; works even when the host blocks outbound SMTP) ---
+if (process.env.RESEND_API_KEY) {
+  console.log("Provider: Resend (HTTPS API)");
+  console.log("  from:", from);
+  console.log("  to  :", to);
+  fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: { Authorization: `Bearer ${process.env.RESEND_API_KEY}`, "Content-Type": "application/json" },
+    body: JSON.stringify({ from, to, subject: "Test email — reservation check", html: "<p>Test email from your server via <b>Resend</b>. It works ✅</p>" }),
+  })
+    .then(async (res) => {
+      const body = await res.text();
+      if (res.ok) {
+        console.log("✅ Sent via Resend:", body);
+      } else {
+        console.error(`❌ Resend FAILED (${res.status}):`, body);
+        process.exit(1);
+      }
+    })
+    .catch((err) => {
+      console.error("❌ Resend request FAILED:", err && err.message ? err.message : err);
+      process.exit(1);
+    });
+  return;
+}
+
 const host = process.env.SMTP_HOST;
 const port = Number(process.env.SMTP_PORT || 465);
 const user = process.env.SMTP_USER;
 const pass = process.env.SMTP_PASS;
-const from = process.env.SMTP_FROM || `Test <${user}>`;
 
-console.log("SMTP config:");
+console.log("Provider: SMTP");
 console.log("  host:", host);
 console.log("  port:", port, "secure:", port === 465);
 console.log("  user:", user);
