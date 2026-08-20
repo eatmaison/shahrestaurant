@@ -86,7 +86,6 @@ export function Header() {
         scrolled ? "shadow-lg shadow-emerald-900/10 dark:shadow-black/40" : ""
       }`}
     >
-      <a href="#main-content" className="skip-link">Skip to content</a>
       <div className="gold-rule absolute inset-x-0 top-0" aria-hidden />
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
         <Link href="/" className="group flex items-center gap-3" onClick={() => setOpen(false)}>
