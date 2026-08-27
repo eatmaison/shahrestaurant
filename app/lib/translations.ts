@@ -314,6 +314,10 @@ export interface Dictionary {
     restaurantStatusSetOpen: string;
     restaurantStatusSetClosed: string;
     avgOrder: string;
+    dailyProgress: string;
+    dailyRevenue: string;
+    dailyOrders: string;
+    noDailyData: string;
     topProducts: string;
     recentOrders: string;
     manageProducts: string;
@@ -371,6 +375,12 @@ export interface Dictionary {
     customerInsights: string;
     customerInsightsSub: string;
     customer: string;
+    customerHistory: string;
+    registeredCustomer: string;
+    guestCustomer: string;
+    addressMatch: string;
+    reservationsSummary: string;
+    closeCustomerHistory: string;
     favoriteProduct: string;
     favoriteCategory: string;
     ordersLabel: string;
@@ -427,6 +437,12 @@ export interface Dictionary {
     recentlyOnlineCopied: string;
     recentlyOnlineClearFilters: string;
     recentlyOnlineActiveFor: string;
+    recentlyOnlineOrders: string;
+    recentlyOnlineViewOrders: string;
+    recentlyOnlineHideOrders: string;
+    recentlyOnlineReservationsMaison: string;
+    recentlyOnlineReservationsTandoor: string;
+    recentlyOnlineArrived: string;
     registeredUsers: string;
     registeredUsersSub: string;
     registeredUsersNone: string;
@@ -454,6 +470,10 @@ export interface Dictionary {
     resCancelAdmin: string;
     resDelete: string;
     resDeleteConfirm: string;
+    resArrived: string;
+    resNoShow: string;
+    resArrivedStatus: string;
+    resNoShowStatus: string;
     resUpcoming: string;
     resAll: string;
   };
@@ -921,6 +941,10 @@ const en: Dictionary = {
     restaurantStatusSetOpen: "Open now",
     restaurantStatusSetClosed: "Close now",
     avgOrder: "Average order",
+    dailyProgress: "Daily progress",
+    dailyRevenue: "Revenue per day",
+    dailyOrders: "Orders per day",
+    noDailyData: "No daily data for this period.",
     topProducts: "Top products",
     recentOrders: "Recent orders",
     manageProducts: "Manage products",
@@ -978,6 +1002,12 @@ const en: Dictionary = {
     customerInsights: "Customer insights",
     customerInsightsSub: "How each customer orders - favourites, spend and activity.",
     customer: "Customer",
+    customerHistory: "Customer order history",
+    registeredCustomer: "Registered customer",
+    guestCustomer: "Guest customer",
+    addressMatch: "Grouped by matching address",
+    reservationsSummary: "Reservations: Maison {maison}, Tandoor {tandoor} (arrived: {arrived})",
+    closeCustomerHistory: "Close history",
     favoriteProduct: "Favourite product",
     favoriteCategory: "Favourite category",
     ordersLabel: "Orders",
@@ -1034,6 +1064,12 @@ const en: Dictionary = {
     recentlyOnlineCopied: "Copied!",
     recentlyOnlineClearFilters: "Clear filters",
     recentlyOnlineActiveFor: "Active for {duration}",
+    recentlyOnlineOrders: "orders",
+    recentlyOnlineViewOrders: "View orders",
+    recentlyOnlineHideOrders: "Hide orders",
+    recentlyOnlineReservationsMaison: "Maison reservations",
+    recentlyOnlineReservationsTandoor: "Tandoor reservations",
+    recentlyOnlineArrived: "arrived",
     registeredUsers: "Registered users",
     registeredUsersSub: "Everyone with an account - full profile details.",
     registeredUsersNone: "No registered users yet.",
@@ -1061,6 +1097,10 @@ const en: Dictionary = {
     resCancelAdmin: "Cancel",
     resDelete: "Delete",
     resDeleteConfirm: "Permanently delete this reservation? This cannot be undone.",
+    resArrived: "Arrived",
+    resNoShow: "No-show",
+    resArrivedStatus: "Arrived",
+    resNoShowStatus: "No-show",
     resUpcoming: "Upcoming",
     resAll: "All",
   },
@@ -1530,6 +1570,10 @@ const nl: Dictionary = {
     restaurantStatusSetOpen: "Nu openen",
     restaurantStatusSetClosed: "Nu sluiten",
     avgOrder: "Gemiddelde bestelling",
+    dailyProgress: "Dagelijkse voortgang",
+    dailyRevenue: "Omzet per dag",
+    dailyOrders: "Bestellingen per dag",
+    noDailyData: "Geen dagelijkse gegevens voor deze periode.",
     topProducts: "Topproducten",
     recentOrders: "Recente bestellingen",
     manageProducts: "Producten beheren",
@@ -1587,6 +1631,12 @@ const nl: Dictionary = {
     customerInsights: "Klantinzichten",
     customerInsightsSub: "Hoe elke klant bestelt - favorieten, uitgaven en activiteit.",
     customer: "Klant",
+    customerHistory: "Bestelgeschiedenis van klant",
+    registeredCustomer: "Geregistreerde klant",
+    guestCustomer: "Gastklant",
+    addressMatch: "Gegroepeerd op overeenkomend adres",
+    reservationsSummary: "Reserveringen: Maison {maison}, Tandoor {tandoor} (aanwezig: {arrived})",
+    closeCustomerHistory: "Geschiedenis sluiten",
     favoriteProduct: "Favoriete product",
     favoriteCategory: "Favoriete categorie",
     ordersLabel: "Bestellingen",
@@ -1643,6 +1693,12 @@ const nl: Dictionary = {
     recentlyOnlineCopied: "Gekopieerd!",
     recentlyOnlineClearFilters: "Filters wissen",
     recentlyOnlineActiveFor: "Actief sinds {duration}",
+    recentlyOnlineOrders: "bestellingen",
+    recentlyOnlineViewOrders: "Bestellingen bekijken",
+    recentlyOnlineHideOrders: "Bestellingen verbergen",
+    recentlyOnlineReservationsMaison: "Maison-reserveringen",
+    recentlyOnlineReservationsTandoor: "Tandoor-reserveringen",
+    recentlyOnlineArrived: "aanwezig",
     registeredUsers: "Geregistreerde gebruikers",
     registeredUsersSub: "Iedereen met een account - volledige profielgegevens.",
     registeredUsersNone: "Nog geen geregistreerde gebruikers.",
@@ -1670,6 +1726,10 @@ const nl: Dictionary = {
     resCancelAdmin: "Annuleren",
     resDelete: "Verwijderen",
     resDeleteConfirm: "Deze reservering definitief verwijderen? Dit kan niet ongedaan worden gemaakt.",
+    resArrived: "Aanwezig",
+    resNoShow: "Niet verschenen",
+    resArrivedStatus: "Aanwezig",
+    resNoShowStatus: "Niet verschenen",
     resUpcoming: "Aankomend",
     resAll: "Alles",
   },

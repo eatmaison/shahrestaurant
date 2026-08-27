@@ -41,7 +41,7 @@ export async function PATCH(req: NextRequest) {
       const res = await cancelReservation(id);
       return NextResponse.json(res);
     }
-    await setReservationStatus(id, action === "confirm" ? "confirmed" : "declined");
+    await setReservationStatus(id, action === "confirm" ? "confirmed" : action === "arrived" ? "arrived" : action === "no_show" ? "no_show" : "declined");
     return NextResponse.json({ ok: true });
   } catch (err) {
     return NextResponse.json(

@@ -46,6 +46,7 @@ export function rowToUser(r: any): User {
     emailVerified: r.email_verified ?? false,
     lastSeenAt: r.last_seen_at ? toMs(r.last_seen_at) : undefined,
     lastSeenSite: r.last_seen_site ?? undefined,
+    activeSeconds: Number(r.active_seconds ?? 0),
   };
 }
 
@@ -90,6 +91,7 @@ export function rowToOrder(r: any, items: OrderItem[]): Order {
     id: r.id,
     orderNumber: r.order_number,
     userId: r.user_id ?? undefined,
+    visitorSessionId: r.visitor_session_id ?? undefined,
     customerName: r.customer_name,
     address: r.address,
     postcode: r.postcode ?? "",

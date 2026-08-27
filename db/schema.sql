@@ -32,6 +32,7 @@ CREATE TABLE IF NOT EXISTS users (
   -- Last activity on the site (updated while signed in).
   last_seen_at  timestamptz,
   last_seen_site text,
+  active_seconds integer NOT NULL DEFAULT 0,
   created_at    timestamptz NOT NULL DEFAULT now()
 );
 
@@ -45,7 +46,9 @@ CREATE TABLE IF NOT EXISTS visitor_sessions (
   last_seen_at   timestamptz NOT NULL DEFAULT now(),
   last_seen_site text,
   created_at     timestamptz NOT NULL DEFAULT now(),
-  visit_count    integer     NOT NULL DEFAULT 1
+  visit_count    integer     NOT NULL DEFAULT 1,
+  active_seconds integer     NOT NULL DEFAULT 0,
+  last_heartbeat_at timestamptz NOT NULL DEFAULT now()
 );
 
 CREATE INDEX IF NOT EXISTS idx_visitor_sessions_seen ON visitor_sessions (last_seen_at);
@@ -86,6 +89,7 @@ CREATE TABLE IF NOT EXISTS orders (
   -- Human-readable sequential number (shown as ETG-1001, ETG-1002, ...)
   order_number integer     GENERATED ALWAYS AS IDENTITY (START WITH 1001),
   user_id      uuid        REFERENCES users (id) ON DELETE SET NULL,
+  visitor_session_id text,
   customer_name text       NOT NULL,
   address      text        NOT NULL,
   postcode     text        NOT NULL DEFAULT '',
@@ -229,7 +233,7 @@ CREATE TABLE IF NOT EXISTS reservations (
   -- Optional occasion: birthday, business, romantic, family, other.
   occasion           text        NOT NULL DEFAULT '',
   note               text,
-  status             text        NOT NULL DEFAULT 'pending' CHECK (status IN ('pending', 'confirmed', 'declined', 'cancelled')),
+  status             text        NOT NULL DEFAULT 'pending' CHECK (status IN ('pending', 'confirmed', 'declined', 'cancelled', 'arrived', 'no_show')),
   -- Which website the reservation was made on ('themaison', ...).
   site               text        NOT NULL DEFAULT 'themaison',
   created_at         timestamptz NOT NULL DEFAULT now()

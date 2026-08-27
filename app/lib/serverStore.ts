@@ -256,7 +256,14 @@ export interface Bootstrap {
 export async function loadRestaurantStatus(): Promise<RestaurantStatus> {
   await ensureReady();
   const { localDate } = amsterdamNow();
-  const rows = (await sql.query(`SELECT mode, local_date FROM restaurant_open_overrides WHERE site = $1`, [SITE_ID])) as any[];
+  const rows = (await sql.query(`SELECT mode, local_date FROM restaurant_open_overrides WHERE site = 'all-restaurants'`)) as any[];
+  if (rows.length === 0) {
+    const legacyRows = (await sql.query(`SELECT mode, local_date FROM restaurant_open_overrides WHERE site = $1 ORDER BY updated_at DESC LIMIT 1`, [SITE_ID])) as any[];
+    if (legacyRows[0]) {
+      await sql.query(`INSERT INTO restaurant_open_overrides (site, mode, local_date, updated_at) VALUES ('all-restaurants', $1, $2, now()) ON CONFLICT (site) DO NOTHING`, [legacyRows[0].mode, legacyRows[0].local_date]);
+      rows.push(legacyRows[0]);
+    }
+  }
   const override = (rows[0]?.mode ?? "auto") as RestaurantOpenOverride;
   const overrideDate = rows[0]?.local_date || undefined;
   const status = getRestaurantStatus(override, overrideDate);
@@ -264,9 +271,9 @@ export async function loadRestaurantStatus(): Promise<RestaurantStatus> {
   if (override !== "auto" && (overrideDate !== localDate || !status.canOverride)) {
     await sql.query(
       `INSERT INTO restaurant_open_overrides (site, mode, local_date, updated_at)
-       VALUES ($1, 'auto', $2, now())
-       ON CONFLICT (site) DO UPDATE SET mode = 'auto', local_date = $2, updated_at = now()`,
-      [SITE_ID, localDate]
+       VALUES ('all-restaurants', 'auto', $1, now())
+       ON CONFLICT (site) DO UPDATE SET mode = 'auto', local_date = $1, updated_at = now()`,
+      [localDate]
     );
     return getRestaurantStatus("auto", localDate);
   }
@@ -278,12 +285,12 @@ export async function setRestaurantOpenOverride(override: RestaurantOpenOverride
   await requireAdmin();
   const { localDate } = amsterdamNow();
   const status = getRestaurantStatus(override, localDate);
-  const mode = status.canOverride ? override : "auto";
+  const mode = override;
   await sql.query(
     `INSERT INTO restaurant_open_overrides (site, mode, local_date, updated_at)
-     VALUES ($1, $2, $3, now())
-     ON CONFLICT (site) DO UPDATE SET mode = $2, local_date = $3, updated_at = now()`,
-    [SITE_ID, mode, localDate]
+     VALUES ('all-restaurants', $1, $2, now())
+     ON CONFLICT (site) DO UPDATE SET mode = $1, local_date = $2, updated_at = now()`,
+    [mode, localDate]
   );
   return loadRestaurantStatus();
 }
@@ -299,14 +306,14 @@ export async function bootstrap(): Promise<Bootstrap> {
   // recorded in visitor_sessions so admins can see live guest activity too.
   const visitorId = await getOrCreateVisitorId();
   if (currentUser) {
-    await sql.query(`UPDATE users SET last_seen_at = now(), last_seen_site = $2 WHERE id = $1`, [currentUser.id, SITE_ID]);
+    await sql.query(`UPDATE users SET active_seconds = active_seconds + LEAST(300, GREATEST(0, EXTRACT(EPOCH FROM (now() - COALESCE(last_seen_at, now())))::int)), last_seen_at = now(), last_seen_site = $2 WHERE id = $1`, [currentUser.id, SITE_ID]);
     // A signed-in visitor should not also be counted as an anonymous guest.
     await sql.query(`DELETE FROM visitor_sessions WHERE id = $1`, [visitorId]);
   } else {
     await sql.query(
-      `INSERT INTO visitor_sessions (id, last_seen_at, last_seen_site, created_at, visit_count)
-       VALUES ($1, now(), $2, now(), 1)
-       ON CONFLICT (id) DO UPDATE SET last_seen_at = now(), last_seen_site = $2, visit_count = visitor_sessions.visit_count + 1`,
+      `INSERT INTO visitor_sessions (id, last_seen_at, last_seen_site, created_at, visit_count, active_seconds, last_heartbeat_at)
+       VALUES ($1, now(), $2, now(), 1, 0, now())
+       ON CONFLICT (id) DO UPDATE SET active_seconds = visitor_sessions.active_seconds + LEAST(300, GREATEST(0, EXTRACT(EPOCH FROM (now() - visitor_sessions.last_heartbeat_at))::int)), last_heartbeat_at = now(), last_seen_at = now(), last_seen_site = $2, visit_count = visitor_sessions.visit_count + 1`,
       [visitorId, SITE_ID]
     );
   }
@@ -339,6 +346,20 @@ export async function bootstrap(): Promise<Bootstrap> {
     orders = await loadOrders();
     users = ((await sql.query(`SELECT * FROM users ORDER BY created_at ASC`)) as any[]).map(rowToUser);
     vipRequests = ((await sql.query(`SELECT * FROM vip_requests ORDER BY created_at DESC`)) as any[]).map(rowToVipRequest);
+    const reservationCounts = new Map<string, { maison: number; tandoor: number; maisonArrived: number; tandoorArrived: number }>();
+    try {
+      const reservationRows = (await sql.query(`SELECT user_id, site, count(*)::int AS count, count(*) FILTER (WHERE status = 'arrived')::int AS arrived FROM reservations WHERE user_id IS NOT NULL GROUP BY user_id, site`)) as any[];
+      for (const row of reservationRows) {
+        const current = reservationCounts.get(row.user_id) ?? { maison: 0, tandoor: 0, maisonArrived: 0, tandoorArrived: 0 };
+        if (row.site === "themaison") current.maison = Number(row.count);
+        if (row.site === "themaison") current.maisonArrived = Number(row.arrived);
+        if (row.site === "tandoor" || row.site === "tandoorcompany" || row.site === "thetandoorcompany") current.tandoor = Number(row.count);
+        if (row.site === "tandoor" || row.site === "tandoorcompany" || row.site === "thetandoorcompany") current.tandoorArrived = Number(row.arrived);
+        reservationCounts.set(row.user_id, current);
+      }
+    } catch {
+      /* Reservations table may not exist in a standalone database. */
+    }
     vipPurchases = ((await sql.query(`SELECT id, user_id, amount, status, created_at, updated_at FROM payments WHERE kind = 'vip' ORDER BY created_at DESC`)) as any[]).map((r) => ({
       id: r.id,
       userId: r.user_id,
@@ -355,7 +376,8 @@ export async function bootstrap(): Promise<Bootstrap> {
     onlineVisitors = visitorRows[0]?.n ?? 0;
 
     const recentGuestRows = (await sql.query(
-      `SELECT id, created_at, last_seen_at, last_seen_site, visit_count
+            `SELECT id, created_at, last_seen_at, last_seen_site, visit_count, active_seconds,
+              (SELECT count(*)::int FROM orders o WHERE o.visitor_session_id = visitor_sessions.id) AS order_count
        FROM visitor_sessions
        WHERE last_seen_site = $1 AND last_seen_at > now() - interval '24 hours'
        ORDER BY last_seen_at DESC
@@ -377,6 +399,11 @@ export async function bootstrap(): Promise<Bootstrap> {
         isVip: u.isVip,
         lastSeenAt: u.lastSeenAt!,
         lastSeenSite: u.lastSeenSite,
+        activeSeconds: u.activeSeconds,
+        maisonReservationCount: reservationCounts.get(u.id)?.maison ?? 0,
+        tandoorReservationCount: reservationCounts.get(u.id)?.tandoor ?? 0,
+        maisonArrivedCount: reservationCounts.get(u.id)?.maisonArrived ?? 0,
+        tandoorArrivedCount: reservationCounts.get(u.id)?.tandoorArrived ?? 0,
         isOnline: nowMs - (u.lastSeenAt ?? 0) < 5 * 60_000,
         orderCount: u.orderCount,
       }));
@@ -395,6 +422,8 @@ export async function bootstrap(): Promise<Bootstrap> {
         isOnline: nowMs - lastSeenAt < 5 * 60_000,
         sessionId: row.id,
         visitCount: Number(row.visit_count ?? 1),
+        orderCount: Number(row.order_count ?? 0),
+        activeSeconds: Number(row.active_seconds ?? 0),
         firstSeenAt: row.created_at ? new Date(row.created_at).getTime() : undefined,
       };
     });
@@ -470,6 +499,7 @@ export async function placeOrder(details: {
 }): Promise<{ ok: boolean; error?: "minOrder" | "empty" | "outsideArea" | "closed"; order?: Order; checkoutUrl?: string }> {
   await ensureReady();
   const currentUser = await getCurrentUser();
+  const visitorSessionId = currentUser ? undefined : await getOrCreateVisitorId();
   const { customerName, address, postcode, phone, note, cart, pointsToUse = 0, menuUpgrades = {}, schedule, origin } = details;
   const fulfillment: OrderFulfillment = details.fulfillment === "pickup" ? "pickup" : "delivery";
 
@@ -546,6 +576,7 @@ export async function placeOrder(details: {
 
   const computed: ComputedOrder = {
     userId: currentUser?.id,
+    visitorSessionId,
     customerName,
     address,
     postcode: fulfillment === "pickup" ? normalizePostcode(postcode || "") : normalizePostcode(postcode),
@@ -610,6 +641,7 @@ export async function placeOrder(details: {
 
 interface ComputedOrder {
   userId?: string;
+  visitorSessionId?: string;
   customerName: string;
   address: string;
   postcode: string;
@@ -631,11 +663,12 @@ interface ComputedOrder {
 async function insertOrder(c: ComputedOrder, paid: boolean, options: { applyCustomerEffects?: boolean } = {}): Promise<Order> {
   const orderRows = (await sql.query(
     `INSERT INTO orders
-       (user_id, customer_name, address, postcode, phone, subtotal, discount, points_used, points_earned, delivery, total, status, paid, account_type, invoice_sent, customer_effects_applied, note, schedule, fulfillment)
-     VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,'new',$12,$13,false,false,$14,$15::jsonb,$16)
+       (user_id, visitor_session_id, customer_name, address, postcode, phone, subtotal, discount, points_used, points_earned, delivery, total, status, paid, account_type, invoice_sent, customer_effects_applied, note, schedule, fulfillment)
+     VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,'new',$13,$14,false,false,$15,$16::jsonb,$17)
      RETURNING *`,
     [
       c.userId ?? null,
+      c.visitorSessionId ?? null,
       c.customerName,
       c.address,
       c.postcode,

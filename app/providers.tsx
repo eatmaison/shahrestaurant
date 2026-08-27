@@ -170,7 +170,7 @@ interface StoreCtx {
   /** Customer: cancel an upcoming reservation. Admin: cancel any. */
   cancelReservation: (id: string) => Promise<void>;
   /** Admin: confirm or decline a pending reservation. */
-  setReservationStatus: (id: string, action: "confirm" | "decline") => Promise<void>;
+  setReservationStatus: (id: string, action: "confirm" | "decline" | "arrived" | "no_show") => Promise<void>;
   /** Admin: permanently delete a reservation (e.g. duplicates). */
   deleteReservation: (id: string) => Promise<void>;
 
@@ -301,7 +301,7 @@ export function Providers({ children }: { children: ReactNode }) {
   useEffect(() => {
     const update = () => setRestaurantStatus((status) => getRestaurantStatus(status.override, status.overrideDate));
     update();
-    const id = window.setInterval(() => void refreshRestaurantStatus(), 60_000);
+    const id = window.setInterval(() => void refreshRestaurantStatus(), 15_000);
     return () => window.clearInterval(id);
   }, [refreshRestaurantStatus]);
   // Apply + persist theme.

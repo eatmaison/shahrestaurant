@@ -40,6 +40,7 @@ const DDL: string[] = [
   // Last activity on the site (updated on every bootstrap while signed in).
   `ALTER TABLE users ADD COLUMN IF NOT EXISTS last_seen_at timestamptz`,
   `ALTER TABLE users ADD COLUMN IF NOT EXISTS last_seen_site text`,
+  `ALTER TABLE users ADD COLUMN IF NOT EXISTS active_seconds integer NOT NULL DEFAULT 0`,
   // Anonymous (not-signed-in) visitors, tracked by a browser cookie id so the
   // admin can see how many guests are currently active alongside signed-in users.
   `CREATE TABLE IF NOT EXISTS visitor_sessions (
@@ -49,6 +50,8 @@ const DDL: string[] = [
     created_at timestamptz NOT NULL DEFAULT now(),
     visit_count integer NOT NULL DEFAULT 1
   )`,
+  `ALTER TABLE visitor_sessions ADD COLUMN IF NOT EXISTS active_seconds integer NOT NULL DEFAULT 0`,
+  `ALTER TABLE visitor_sessions ADD COLUMN IF NOT EXISTS last_heartbeat_at timestamptz NOT NULL DEFAULT now()`,
   `ALTER TABLE visitor_sessions ADD COLUMN IF NOT EXISTS created_at timestamptz NOT NULL DEFAULT now()`,
   `ALTER TABLE visitor_sessions ADD COLUMN IF NOT EXISTS visit_count integer NOT NULL DEFAULT 1`,
   `CREATE INDEX IF NOT EXISTS idx_visitor_sessions_seen ON visitor_sessions (last_seen_at)`,
@@ -123,6 +126,7 @@ const DDL: string[] = [
     created_at timestamptz NOT NULL DEFAULT now()
   )`,
   `CREATE UNIQUE INDEX IF NOT EXISTS idx_orders_order_number ON orders (order_number)`,
+  `ALTER TABLE orders ADD COLUMN IF NOT EXISTS visitor_session_id text`,
   `CREATE INDEX IF NOT EXISTS idx_orders_user_id ON orders (user_id)`,
   // Delivery vs. self-pickup choice for databases created before it existed.
   `ALTER TABLE orders ADD COLUMN IF NOT EXISTS fulfillment text NOT NULL DEFAULT 'delivery' CHECK (fulfillment IN ('delivery','pickup'))`,
@@ -219,6 +223,8 @@ const DDL: string[] = [
   `CREATE INDEX IF NOT EXISTS idx_reviews_site ON reviews (site)`,
   // Which website a reservation was made on (future sites may take bookings too).
   `ALTER TABLE reservations ADD COLUMN IF NOT EXISTS site text NOT NULL DEFAULT 'themaison'`,
+  `ALTER TABLE reservations DROP CONSTRAINT IF EXISTS reservations_status_check`,
+  `ALTER TABLE reservations ADD CONSTRAINT reservations_status_check CHECK (status IN ('pending','confirmed','declined','cancelled','arrived','no_show'))`,
   // The Maison accepts reviews from both orders (eattogo) and reservations
   // (themaison). A review is tied to one of them, never both.
   `ALTER TABLE reviews ALTER COLUMN order_id DROP NOT NULL`,

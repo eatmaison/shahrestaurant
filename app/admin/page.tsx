@@ -110,6 +110,9 @@ const normalizeProductName = (value: string): string => value.trim().toLowerCase
 const productGroupKey = (product: Product): string =>
   `${normalizeProductName(product.name)}|${Number(product.price).toFixed(2)}`;
 
+const normalizeCustomerAddress = (address: string, postcode: string): string =>
+  `${address} ${postcode}`.trim().toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+
 /** Splits a comma-separated admin input into a clean list ("a, b," → ["a","b"]). */
 const parseList = (value: string): string[] =>
   value.split(",").map((s) => s.trim()).filter(Boolean);
@@ -146,6 +149,81 @@ const processImageFile = (file: File, opts?: { maxDim?: number; mime?: string })
   });
 
 const ADMIN_INITIAL_NOW = Date.now();
+
+type DailyMetric = { date: string; revenue: number; orders: number };
+
+const amsterdamDateKey = (date: Date): string => {
+  const parts = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Europe/Amsterdam",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).formatToParts(date);
+  const get = (type: string) => parts.find((part) => part.type === type)?.value ?? "";
+  return `${get("year")}-${get("month")}-${get("day")}`;
+};
+
+function smoothPath(points: Array<{ x: number; y: number }>): string {
+  if (points.length === 0) return "";
+  if (points.length === 1) return `M ${points[0].x} ${points[0].y}`;
+  return points.reduce((path, point, index) => {
+    if (index === 0) return `M ${point.x} ${point.y}`;
+    const previous = points[index - 1];
+    const midX = (previous.x + point.x) / 2;
+    return `${path} C ${midX} ${previous.y}, ${midX} ${point.y}, ${point.x} ${point.y}`;
+  }, "");
+}
+
+function DailySalesChart({ data, revenueLabel, ordersLabel, title, noData }: { data: DailyMetric[]; revenueLabel: string; ordersLabel: string; title: string; noData: string }) {
+  const width = 760;
+  const height = 250;
+  const pad = { top: 24, right: 22, bottom: 42, left: 42 };
+  const plotWidth = width - pad.left - pad.right;
+  const plotHeight = height - pad.top - pad.bottom;
+  const maxRevenue = Math.max(100, ...data.map((item) => item.revenue));
+  const maxOrders = Math.max(1, ...data.map((item) => item.orders));
+  const xFor = (index: number) => pad.left + (data.length <= 1 ? plotWidth / 2 : (index / (data.length - 1)) * plotWidth);
+  const yRevenue = (value: number) => pad.top + plotHeight - (value / maxRevenue) * plotHeight;
+  const yOrders = (value: number) => pad.top + plotHeight - (value / maxOrders) * plotHeight;
+  const revenuePoints = data.map((item, index) => ({ x: xFor(index), y: yRevenue(item.revenue) }));
+  const orderPoints = data.map((item, index) => ({ x: xFor(index), y: yOrders(item.orders) }));
+  const revenueColor = (value: number) => value < 100 ? "#ef4444" : value <= 300 ? "#d97706" : "#059669";
+  const dateLabel = (date: string) => new Date(`${date}T00:00:00`).toLocaleDateString(undefined, { day: "numeric", month: "short" });
+
+  return (
+    <section className="mt-6 rounded-3xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-white/5" aria-label={title}>
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <h2 className="text-lg font-black text-slate-900 dark:text-white">{title}</h2>
+        <div className="flex flex-wrap items-center gap-3 text-xs font-bold text-slate-500 dark:text-slate-400">
+          <span className="inline-flex items-center gap-1.5"><i className="h-2.5 w-2.5 rounded-full bg-emerald-600" />{revenueLabel}</span>
+          <span className="inline-flex items-center gap-1.5"><i className="h-0.5 w-4 border-t-2 border-dashed border-sky-500" />{ordersLabel}</span>
+        </div>
+      </div>
+      {data.length === 0 ? <p className="mt-8 text-center text-sm text-slate-500 dark:text-slate-400">{noData}</p> : (
+        <div className="mt-4 overflow-x-auto">
+          <svg viewBox={`0 0 ${width} ${height}`} role="img" aria-label={title} className="min-w-[560px] w-full overflow-visible">
+            {[0, 0.5, 1].map((ratio) => {
+              const y = pad.top + plotHeight * ratio;
+              return <line key={ratio} x1={pad.left} x2={width - pad.right} y1={y} y2={y} stroke="currentColor" className="text-slate-200 dark:text-white/10" strokeDasharray="3 6" />;
+            })}
+            <path d={smoothPath(orderPoints)} fill="none" stroke="#0ea5e9" strokeWidth="3" strokeDasharray="7 6" strokeLinecap="round" />
+            <path d={smoothPath(revenuePoints)} fill="none" stroke="#059669" strokeWidth="4" strokeLinecap="round" />
+            {data.map((item, index) => (
+              <g key={item.date}>
+                <circle cx={revenuePoints[index].x} cy={revenuePoints[index].y} r="5" fill={revenueColor(item.revenue)} stroke="white" strokeWidth="2" className="dark:stroke-slate-900" />
+                <circle cx={orderPoints[index].x} cy={orderPoints[index].y} r="3.5" fill="#0ea5e9" stroke="white" strokeWidth="2" className="dark:stroke-slate-900" />
+                <title>{`${dateLabel(item.date)}: EUR ${item.revenue.toFixed(2)}, ${item.orders} ${ordersLabel}`}</title>
+                {(index === 0 || index === data.length - 1 || index % Math.max(1, Math.ceil(data.length / 6)) === 0) && <text x={xFor(index)} y={height - 14} textAnchor="middle" className="fill-slate-400 text-[11px]">{dateLabel(item.date)}</text>}
+              </g>
+            ))}
+            <text x="8" y={pad.top + 4} className="fill-slate-400 text-[10px]">EUR {Math.round(maxRevenue)}</text>
+            <text x="14" y={pad.top + plotHeight + 4} className="fill-slate-400 text-[10px]">EUR 0</text>
+          </svg>
+        </div>
+      )}
+    </section>
+  );
+}
 
 export default function AdminPage() {
   const { t, lang } = useLang();
@@ -291,6 +369,7 @@ export default function AdminPage() {
   const [copiedOrderId, setCopiedOrderId] = useState<string | null>(null);
   const [customerOrdersLimit, setCustomerOrdersLimit] = useState(20);
   const [companyOrdersLimit, setCompanyOrdersLimit] = useState(20);
+  const [selectedCustomer, setSelectedCustomer] = useState<{ key: string; name: string; address: string; userId?: string } | null>(null);
 
   // Product pending deletion (shown in a confirmation dialog).
   const [deleting, setDeleting] = useState<Product | null>(null);
@@ -347,6 +426,25 @@ export default function AdminPage() {
     const maxCat = Math.max(1, ...Object.values(byCategory));
     return { revenue, avg, byCategory, top, maxCat, orderCount: inPeriod.length };
   }, [orders, products, statsCheck]);
+
+  const dailyMetrics = useMemo<DailyMetric[]>(() => {
+    const dayCount = statsRange.preset === "today" || statsRange.preset === "date" ? 1 : statsRange.preset === "7d" ? 7 : 30;
+    const end = statsRange.preset === "date" && statsRange.date ? new Date(`${statsRange.date}T00:00:00`) : new Date(now);
+    const days = Array.from({ length: dayCount }, (_, index) => {
+      const day = new Date(end);
+      day.setHours(0, 0, 0, 0);
+      day.setDate(day.getDate() - (dayCount - 1 - index));
+      return amsterdamDateKey(day);
+    });
+    const totals = new Map(days.map((date) => [date, { date, revenue: 0, orders: 0 }]));
+    for (const order of orders) {
+      if (!(order.paid || order.accountType === "company") || !statsCheck(order.createdAt)) continue;
+      const date = amsterdamDateKey(new Date(order.createdAt));
+      const metric = totals.get(date);
+      if (metric) { metric.revenue += order.total; metric.orders += 1; }
+    }
+    return days.map((date) => totals.get(date)!);
+  }, [now, orders, statsCheck, statsRange]);
 
   /** All category names across restaurants (plus any legacy ones found in orders). */
   const allCategories = useMemo(() => {
@@ -491,6 +589,7 @@ export default function AdminPage() {
   const [visitorSort, setVisitorSort] = useState<"recent" | "online" | "visits" | "firstSeen">("recent");
   /** Session id just copied to the clipboard (briefly shows a "Copied!" confirmation). */
   const [copiedSessionId, setCopiedSessionId] = useState<string | null>(null);
+  const [expandedVisitorOrders, setExpandedVisitorOrders] = useState<Set<string>>(() => new Set());
   /** Timestamp of the last successful visitor-data refresh (auto or manual). */
   const [visitorsUpdatedAt, setVisitorsUpdatedAt] = useState(ADMIN_INITIAL_NOW);
   const [visitorsRefreshing, setVisitorsRefreshing] = useState(false);
@@ -541,6 +640,15 @@ export default function AdminPage() {
     } catch {
       /* clipboard unavailable in this browser/context - ignore */
     }
+  };
+
+  const toggleVisitorOrders = (visitorKey: string) => {
+    setExpandedVisitorOrders((current) => {
+      const next = new Set(current);
+      if (next.has(visitorKey)) next.delete(visitorKey);
+      else next.add(visitorKey);
+      return next;
+    });
   };
 
   /** Re-fetch visitor + admin data periodically so the recently-online list stays accurate without a manual reload. */
@@ -1129,6 +1237,24 @@ export default function AdminPage() {
   const filteredCustomerOrders = customerOrders.filter((o) => ordersCheck(o.createdAt) && matchesOrder(o, customerSearch));
   const filteredCompanyOrders = companyOrders.filter((o) => ordersCheck(o.createdAt) && matchesOrder(o, companySearch));
 
+  const customerOrdersForSelection = useMemo(() => {
+    if (!selectedCustomer) return [];
+    return orders.filter((order) => selectedCustomer.userId
+      ? order.userId === selectedCustomer.userId
+      : !order.userId && normalizeCustomerAddress(order.address, order.postcode) === selectedCustomer.key.slice(8));
+  }, [orders, selectedCustomer]);
+
+  const selectedCustomerVisitor = useMemo(
+    () => selectedCustomer?.userId ? recentVisitors.find((visitor) => visitor.kind === "user" && visitor.id === selectedCustomer.userId) : undefined,
+    [recentVisitors, selectedCustomer]
+  );
+
+  const openCustomerProfile = (order: Order) => {
+    const user = order.userId ? users.find((item) => item.id === order.userId) : undefined;
+    const key = order.userId ? `user:${order.userId}` : `address:${normalizeCustomerAddress(order.address, order.postcode)}`;
+    setSelectedCustomer({ key, name: user?.name ?? order.customerName, address: `${order.address}, ${order.postcode}`.replace(/^, |, $/g, ""), userId: order.userId });
+  };
+
   const toggleOrderExpanded = (orderId: string) => {
     setExpandedOrders((prev) => {
       const next = new Set(prev);
@@ -1169,7 +1295,10 @@ export default function AdminPage() {
           <div className="min-w-0">
             <p className="flex items-center gap-2 truncate text-sm font-black text-slate-900 dark:text-white">
               {isCompany && <FaBuilding className="shrink-0 text-sky-500" />}
-              {o.customerName}
+              <button type="button" onClick={() => openCustomerProfile(o)} className="truncate text-left hover:text-emerald-600 hover:underline dark:hover:text-emerald-400">{o.customerName}</button>
+              <span className={`shrink-0 rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide ${o.userId ? "bg-sky-500/10 text-sky-700 dark:text-sky-300" : "bg-amber-500/10 text-amber-700 dark:text-amber-300"}`}>
+                {o.userId ? t.admin.registeredCustomer : t.admin.guestCustomer}
+              </span>
               <span className="shrink-0 rounded-full bg-slate-900/90 px-2 py-0.5 text-[11px] font-bold text-white dark:bg-white/15">
                 {formatOrderNumber(o.orderNumber)}
               </span>
@@ -1462,7 +1591,7 @@ export default function AdminPage() {
           <div className="flex flex-wrap gap-2">
             {(["auto", "open", "closed"] as RestaurantOpenOverride[]).map((override) => {
               const active = restaurantStatus.activeOverride === override;
-              const disabled = restaurantStatusSaving !== null || (override !== "auto" && !restaurantStatus.canOverride);
+              const disabled = restaurantStatusSaving !== null;
               return (
                 <button
                   key={override}
@@ -1500,6 +1629,14 @@ export default function AdminPage() {
           );
         })}
       </div>
+
+      <DailySalesChart
+        data={dailyMetrics}
+        title={t.admin.dailyProgress}
+        revenueLabel={t.admin.dailyRevenue}
+        ordersLabel={t.admin.dailyOrders}
+        noData={t.admin.noDailyData}
+      />
 
       <div className="mt-6 grid gap-6 lg:grid-cols-2">
         {/* Sales by category (collapsible) */}
@@ -1822,7 +1959,7 @@ export default function AdminPage() {
           <ul className="mt-3 max-h-[28rem] space-y-2 overflow-y-auto pr-1">
             {recentlyOnline.map((entry) => {
               const online = entry.isOnline;
-              const orderCount = entry.kind === "user" ? (entry.orderCount ?? 0) : 0;
+              const orderCount = entry.orderCount ?? 0;
               const lastSeenSite = lastSeenSiteLabel(entry.lastSeenSite);
               const avatarLetter = entry.kind === "guest" ? "G" : entry.name.charAt(0).toUpperCase();
               const isNewGuest = entry.kind === "guest" && entry.firstSeenAt != null && now - entry.firstSeenAt < 60 * 60_000;
@@ -1881,12 +2018,13 @@ export default function AdminPage() {
                             <span className="rounded-full bg-amber-500/10 px-2 py-0.5 font-semibold text-amber-700 dark:text-amber-300">
                               {entry.visitCount && entry.visitCount > 1 ? `${entry.visitCount} visits` : "1 visit"}
                             </span>
+                            {orderCount > 0 && <span className="rounded-full bg-emerald-500/10 px-2 py-0.5 font-semibold text-emerald-700 dark:text-emerald-300"><FaReceipt className="mr-1 inline text-[10px]" />{orderCount} {t.admin.recentlyOnlineOrders}</span>}
                             <span className="rounded-full bg-slate-100 px-2 py-0.5 text-slate-600 dark:bg-white/10 dark:text-slate-300">
                               {entry.firstSeenAt ? `First seen ${relativeTime(entry.firstSeenAt)}` : "New session"}
                             </span>
                             {entry.firstSeenAt != null && (
                               <span className="rounded-full bg-slate-100 px-2 py-0.5 text-slate-600 dark:bg-white/10 dark:text-slate-300">
-                                {t.admin.recentlyOnlineActiveFor.replace("{duration}", formatDuration(now - entry.firstSeenAt))}
+                                {t.admin.recentlyOnlineActiveFor.replace("{duration}", formatDuration((entry.activeSeconds ?? 0) * 1000))}
                               </span>
                             )}
                             {entry.sessionId && (
@@ -1907,6 +2045,8 @@ export default function AdminPage() {
                                 <FaReceipt className="text-[10px]" /> {orderCount} {t.admin.ordersLabel.toLowerCase()}
                               </span>
                             )}
+                            {entry.maisonReservationCount ? <span className="rounded-full bg-rose-500/10 px-2 py-0.5 font-semibold text-rose-700 dark:text-rose-300">{entry.maisonReservationCount} {t.admin.recentlyOnlineReservationsMaison} ({entry.maisonArrivedCount ?? 0} {t.admin.recentlyOnlineArrived})</span> : null}
+                            {entry.tandoorReservationCount ? <span className="rounded-full bg-orange-500/10 px-2 py-0.5 font-semibold text-orange-700 dark:text-orange-300">{entry.tandoorReservationCount} {t.admin.recentlyOnlineReservationsTandoor} ({entry.tandoorArrivedCount ?? 0} {t.admin.recentlyOnlineArrived})</span> : null}
                             {lastSeenSite && (
                               <span className="inline-flex items-center gap-1.5 rounded-full bg-sky-500/10 px-2 py-0.5 font-semibold text-sky-700 dark:text-sky-300">
                                 <FaStore className="text-[10px]" /> {lastSeenSite}
@@ -1916,6 +2056,22 @@ export default function AdminPage() {
                         )}
                       </div>
                     </div>
+                    {orderCount > 0 && (
+                      <div className="mt-2">
+                        <button type="button" onClick={() => toggleVisitorOrders(`${entry.kind}-${entry.id}`)} className="text-xs font-bold text-emerald-700 hover:underline dark:text-emerald-300">
+                          {expandedVisitorOrders.has(`${entry.kind}-${entry.id}`) ? t.admin.recentlyOnlineHideOrders : t.admin.recentlyOnlineViewOrders}
+                        </button>
+                        {expandedVisitorOrders.has(`${entry.kind}-${entry.id}`) && (
+                          <ul className="mt-2 max-h-64 space-y-1 overflow-y-auto rounded-xl border border-slate-200 bg-white p-2 dark:border-white/10 dark:bg-white/5">
+                            {orders.filter((order) => entry.kind === "user" ? order.userId === entry.id : order.visitorSessionId === entry.sessionId).map((order) => (
+                              <li key={order.id} className="rounded-lg bg-slate-50 px-2 py-1.5 text-xs dark:bg-white/5">
+                                <span className="font-bold">{formatOrderNumber(order.orderNumber)}</span> · €{order.total.toFixed(2)} · {order.items.map((item) => `${item.qty}x ${item.name}`).join(", ")}
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </div>
+                    )}
                   </div>
                   <div className="flex shrink-0 items-center gap-2 md:flex-col md:items-end">
                     <span
@@ -2269,6 +2425,10 @@ export default function AdminPage() {
               const badge =
                 r.status === "confirmed"
                   ? "border-emerald-500/40 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300"
+                  : r.status === "arrived"
+                    ? "border-sky-500/40 bg-sky-500/10 text-sky-700 dark:text-sky-300"
+                    : r.status === "no_show"
+                      ? "border-red-500/40 bg-red-500/10 text-red-700 dark:text-red-300"
                   : r.status === "pending"
                     ? "border-amber-400/50 bg-amber-400/10 text-amber-600 dark:text-amber-300"
                     : "border-slate-300/60 bg-slate-400/10 text-slate-500 dark:text-slate-400";
@@ -2277,6 +2437,10 @@ export default function AdminPage() {
                   ? t.reservations.statusPending
                   : r.status === "confirmed"
                     ? t.reservations.statusConfirmed
+                    : r.status === "arrived"
+                      ? t.admin.resArrivedStatus
+                      : r.status === "no_show"
+                        ? t.admin.resNoShowStatus
                     : r.status === "declined"
                       ? t.reservations.statusDeclined
                       : t.reservations.statusCancelled;
@@ -2321,7 +2485,7 @@ export default function AdminPage() {
                       {r.note}
                     </p>
                   )}
-                  {(r.status === "pending" || r.status === "confirmed") && (
+                  {(r.status === "pending" || r.status === "confirmed" || r.status === "arrived" || r.status === "no_show") && (
                     <div className="mt-3 flex gap-2">
                       {r.status === "pending" && (
                         <>
@@ -2340,13 +2504,13 @@ export default function AdminPage() {
                         </>
                       )}
                       {r.status === "confirmed" && (
-                        <button
-                          onClick={() => cancelReservation(r.id)}
-                          className="flex-1 rounded-full border border-red-300/60 py-2 text-xs font-bold text-red-500 transition hover:bg-red-500/10 dark:border-red-400/30"
-                        >
-                          {t.admin.resCancelAdmin}
-                        </button>
+                        <>
+                          <button onClick={() => setReservationStatus(r.id, "arrived")} className="flex-1 rounded-full bg-sky-600 py-2 text-xs font-bold text-white transition hover:bg-sky-500">{t.admin.resArrived}</button>
+                          <button onClick={() => setReservationStatus(r.id, "no_show")} className="flex-1 rounded-full border border-red-300/60 py-2 text-xs font-bold text-red-500 transition hover:bg-red-500/10 dark:border-red-400/30">{t.admin.resNoShow}</button>
+                          <button onClick={() => cancelReservation(r.id)} className="flex-1 rounded-full border border-slate-300 py-2 text-xs font-bold text-slate-500 transition hover:bg-slate-100 dark:border-white/20">{t.admin.resCancelAdmin}</button>
+                        </>
                       )}
+                      {(r.status === "arrived" || r.status === "no_show") && <button onClick={() => setReservationStatus(r.id, "confirm")} className="flex-1 rounded-full border border-emerald-300 py-2 text-xs font-bold text-emerald-600 transition hover:bg-emerald-50 dark:border-emerald-400/30">{t.admin.resConfirm}</button>}
                     </div>
                   )}
                   <div className="mt-3 flex justify-end border-t border-slate-100 pt-3 dark:border-white/10">
@@ -3466,7 +3630,7 @@ export default function AdminPage() {
                 <p className="mt-3 text-sm text-slate-500 dark:text-slate-400">{t.fulfillment.noMatches}</p>
               ) : (
                 <>
-                  <div className="mt-3 space-y-3">{filteredCustomerOrders.slice(0, customerOrdersLimit).map(renderOrderCard)}</div>
+                  <div className="mt-3 max-h-[42rem] space-y-3 overflow-y-auto pr-1">{filteredCustomerOrders.slice(0, customerOrdersLimit).map(renderOrderCard)}</div>
                   {filteredCustomerOrders.length > customerOrdersLimit && (
                     <button
                       type="button"
@@ -3510,7 +3674,7 @@ export default function AdminPage() {
                 <p className="mt-3 text-sm text-slate-500 dark:text-slate-400">{t.fulfillment.noMatches}</p>
               ) : (
                 <>
-                  <div className="mt-3 space-y-3">{filteredCompanyOrders.slice(0, companyOrdersLimit).map(renderOrderCard)}</div>
+                  <div className="mt-3 max-h-[42rem] space-y-3 overflow-y-auto pr-1">{filteredCompanyOrders.slice(0, companyOrdersLimit).map(renderOrderCard)}</div>
                   {filteredCompanyOrders.length > companyOrdersLimit && (
                     <button
                       type="button"
@@ -3526,6 +3690,17 @@ export default function AdminPage() {
           )}
         </div>
       </div>
+
+      {selectedCustomer && (
+        <div role="dialog" aria-modal="true" className="fixed inset-0 z-50 flex items-end justify-center bg-black/40 sm:items-center" onClick={() => setSelectedCustomer(null)}>
+          <div className="relative flex max-h-[85vh] w-full max-w-2xl flex-col rounded-t-3xl bg-white p-5 shadow-2xl dark:bg-[#0c1420] sm:rounded-3xl" onClick={(event) => event.stopPropagation()}>
+            <div className="flex items-start justify-between gap-3"><div className="min-w-0"><h2 className="truncate text-xl font-black text-slate-900 dark:text-white">{selectedCustomer.name}</h2><p className="mt-1 text-xs text-slate-500 dark:text-slate-400">{selectedCustomer.userId ? t.admin.registeredCustomer : `${t.admin.guestCustomer} · ${t.admin.addressMatch}`}</p><p className="mt-1 truncate text-xs text-slate-500 dark:text-slate-400">{selectedCustomer.address || "-"}</p></div><button type="button" onClick={() => setSelectedCustomer(null)} aria-label={t.admin.closeCustomerHistory} className="grid h-9 w-9 shrink-0 place-items-center rounded-full text-slate-400 hover:bg-slate-100 dark:hover:bg-white/10"><FaXmark /></button></div>
+            <p className="mt-3 rounded-xl bg-emerald-500/10 px-3 py-2 text-sm font-bold text-emerald-700 dark:text-emerald-300">{customerOrdersForSelection.length} {t.admin.ordersLabel} · {t.admin.reservationsSummary.replace("{maison}", String(selectedCustomerVisitor?.maisonReservationCount ?? 0)).replace("{tandoor}", String(selectedCustomerVisitor?.tandoorReservationCount ?? 0)).replace("{arrived}", String((selectedCustomerVisitor?.maisonArrivedCount ?? 0) + (selectedCustomerVisitor?.tandoorArrivedCount ?? 0)))}</p>
+            <ul className="mt-4 space-y-2 overflow-y-auto pr-1">{customerOrdersForSelection.map((order) => <li key={order.id} className="rounded-xl border border-slate-200 bg-slate-50 p-3 dark:border-white/10 dark:bg-white/5"><div className="flex flex-wrap items-center justify-between gap-2 text-sm"><span className="font-black">{formatOrderNumber(order.orderNumber)}</span><span className="font-bold">€{order.total.toFixed(2)}</span><span className="text-xs text-slate-500">{new Date(order.createdAt).toLocaleString()}</span></div><p className="mt-1 text-xs text-slate-600 dark:text-slate-300">{order.items.map((item) => `${item.qty}x ${item.name}`).join(", ")}</p></li>)}</ul>
+            <button type="button" onClick={() => setSelectedCustomer(null)} className="mt-4 rounded-full bg-emerald-600 py-2.5 text-sm font-bold text-white hover:bg-emerald-500">{t.admin.closeCustomerHistory}</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

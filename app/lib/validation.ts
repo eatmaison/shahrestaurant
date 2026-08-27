@@ -109,7 +109,7 @@ export type CreateReservationInput = z.infer<typeof createReservationSchema>;
 
 export const updateReservationSchema = z.object({
   id: z.string().uuid(),
-  action: z.enum(["confirm", "decline", "cancel"]),
+  action: z.enum(["confirm", "decline", "cancel", "arrived", "no_show"]),
 });
 
 export type UpdateReservationInput = z.infer<typeof updateReservationSchema>;

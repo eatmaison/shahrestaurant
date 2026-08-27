@@ -110,6 +110,11 @@ export interface User {
   lastSeenAt?: number;
   /** Website where the user was last active. */
   lastSeenSite?: string;
+  activeSeconds?: number;
+  maisonReservationCount?: number;
+  tandoorReservationCount?: number;
+  maisonArrivedCount?: number;
+  tandoorArrivedCount?: number;
 }
 
 export interface RecentVisitor {
@@ -128,6 +133,11 @@ export interface RecentVisitor {
   sessionId?: string;
   visitCount?: number;
   firstSeenAt?: number;
+  activeSeconds?: number;
+  maisonReservationCount?: number;
+  tandoorReservationCount?: number;
+  maisonArrivedCount?: number;
+  tandoorArrivedCount?: number;
 }
 
 export type GrillSideChoice = "rice" | "fries";
@@ -173,6 +183,7 @@ export interface Order {
   /** Human-readable sequential order number shown to the customer and admin. */
   orderNumber: number;
   userId?: string;
+  visitorSessionId?: string;
   customerName: string;
   address: string;
   /** Dutch postcode of the delivery address (e.g. "1032 KL") */
@@ -227,7 +238,7 @@ export interface Review {
 }
 
 /** Lifecycle of a table reservation. */
-export type ReservationStatus = "pending" | "confirmed" | "declined" | "cancelled";
+export type ReservationStatus = "pending" | "confirmed" | "declined" | "cancelled" | "arrived" | "no_show";
 
 /** A table reservation at the restaurant. */
 export interface Reservation {

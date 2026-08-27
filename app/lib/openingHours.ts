@@ -104,7 +104,7 @@ export function restaurantStatus(override: RestaurantOpenOverride = "auto", over
   const canOverride = day !== CLOSED_DAY && minutes < ORDER_UNTIL_MIN;
   const activeOverride = overrideDate === localDate ? override : "auto";
   const scheduledOpen = isTakingOrdersAt(day, minutes);
-  const isOpen = canOverride && (activeOverride === "open" || (activeOverride !== "closed" && scheduledOpen));
+  const isOpen = activeOverride === "open" || (activeOverride !== "closed" && scheduledOpen);
   return {
     isOpen,
     override,

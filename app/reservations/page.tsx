@@ -91,6 +91,8 @@ export default function ReservationsPage() {
   const statusMeta: Record<ReservationStatus, { label: string; cls: string; Icon: typeof FaClock }> = {
     pending: { label: t.reservations.statusPending, cls: "border-amber-400/40 bg-amber-400/10 text-amber-600 dark:text-amber-300", Icon: FaHourglassHalf },
     confirmed: { label: t.reservations.statusConfirmed, cls: "border-emerald-500/40 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300", Icon: FaCircleCheck },
+    arrived: { label: t.admin.resArrivedStatus, cls: "border-sky-500/40 bg-sky-500/10 text-sky-700 dark:text-sky-300", Icon: FaCircleCheck },
+    no_show: { label: t.admin.resNoShowStatus, cls: "border-red-400/40 bg-red-400/10 text-red-600 dark:text-red-400", Icon: FaCircleXmark },
     declined: { label: t.reservations.statusDeclined, cls: "border-red-400/40 bg-red-400/10 text-red-600 dark:text-red-400", Icon: FaCircleXmark },
     cancelled: { label: t.reservations.statusCancelled, cls: "border-slate-400/40 bg-slate-400/10 text-slate-500 dark:text-slate-400", Icon: FaCircleXmark },
   };
