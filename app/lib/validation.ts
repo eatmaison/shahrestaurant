@@ -28,6 +28,11 @@ export const authSchema = z.discriminatedUnion("action", [
     action: z.literal("verifyEmail"),
     token: z.string().min(1).max(2048),
   }),
+  z.object({
+    action: z.literal("setUserEmailVerified"),
+    userId: z.string().uuid(),
+    verified: z.boolean(),
+  }),
   z.object({ action: z.literal("resendVerification") }),
   z.object({
     action: z.literal("requestReset"),

@@ -448,8 +448,15 @@ export interface Dictionary {
     registeredUsersNone: string;
     registeredVerified: string;
     registeredUnverified: string;
+    verifyEmail: string;
+    unverifyEmail: string;
     registeredPoints: string;
     registeredJoined: string;
+    dashboardSignals: string;
+    attentionItems: string;
+    onlineVisitors: string;
+    unpaidOrders: string;
+    unverifiedAccounts: string;
     bookedOn: string;
     socialTitle: string;
     socialSub: string;
@@ -1075,8 +1082,15 @@ const en: Dictionary = {
     registeredUsersNone: "No registered users yet.",
     registeredVerified: "Verified",
     registeredUnverified: "Unverified",
+    verifyEmail: "Verify email",
+    unverifyEmail: "Revoke verification",
     registeredPoints: "points",
     registeredJoined: "Joined",
+    dashboardSignals: "Operational overview",
+    attentionItems: "items need attention",
+    onlineVisitors: "Visitors online",
+    unpaidOrders: "Unpaid orders",
+    unverifiedAccounts: "Unverified accounts",
     bookedOn: "Booked",
     socialTitle: "Social media links",
     socialSub: "Add your profile links and switch on the icons you want to show in the website footer.",
@@ -1704,8 +1718,15 @@ const nl: Dictionary = {
     registeredUsersNone: "Nog geen geregistreerde gebruikers.",
     registeredVerified: "Geverifieerd",
     registeredUnverified: "Niet geverifieerd",
+    verifyEmail: "E-mail verifiëren",
+    unverifyEmail: "Verificatie intrekken",
     registeredPoints: "punten",
     registeredJoined: "Lid sinds",
+    dashboardSignals: "Operationeel overzicht",
+    attentionItems: "items hebben aandacht nodig",
+    onlineVisitors: "Online bezoekers",
+    unpaidOrders: "Onbetaalde bestellingen",
+    unverifiedAccounts: "Niet-geverifieerde accounts",
     bookedOn: "Geboekt",
     socialTitle: "Social media links",
     socialSub: "Voeg je profiellinks toe en zet de iconen aan die je in de footer van de website wilt tonen.",

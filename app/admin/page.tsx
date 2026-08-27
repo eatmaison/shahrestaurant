@@ -14,6 +14,7 @@ import {
   FaChevronDown,
   FaClock,
   FaCrown,
+  FaCopy,
   FaEnvelope,
   FaEuroSign,
   FaFileInvoice,
@@ -227,7 +228,7 @@ function DailySalesChart({ data, revenueLabel, ordersLabel, title, noData }: { d
 
 export default function AdminPage() {
   const { t, lang } = useLang();
-  const { currentUser, products, orders, users, addProductGroup, removeProduct, updateProductGroup, moveProduct, brands, manageBrands, updateOrderStatus, setOrderPaid, setInvoiceSent, deleteOrder, vipRequests, vipPurchases, approveVipRequest, rejectVipRequest, socialLinks, updateSocialLink, reservations, restaurantStatus, updateRestaurantOpenOverride, setReservationStatus, cancelReservation, deleteReservation, onlineVisitors, recentVisitors, refresh, hydrated } = useStore();
+  const { currentUser, products, orders, users, addProductGroup, removeProduct, updateProductGroup, moveProduct, brands, manageBrands, updateOrderStatus, setOrderPaid, setInvoiceSent, deleteOrder, vipRequests, vipPurchases, approveVipRequest, rejectVipRequest, socialLinks, updateSocialLink, reservations, restaurantStatus, updateRestaurantOpenOverride, setReservationStatus, cancelReservation, deleteReservation, onlineVisitors, recentVisitors, setUserEmailVerified, refresh, hydrated } = useStore();
   const fileRef = useRef<HTMLInputElement>(null);
   const editFileRef = useRef<HTMLInputElement>(null);
   const logoFileRef = useRef<HTMLInputElement>(null);
@@ -858,17 +859,63 @@ export default function AdminPage() {
   );
 
   const [userSearch, setUserSearch] = useState("");
+  const [userFilter, setUserFilter] = useState<"all" | "online" | "unverified" | "vip" | "company">("all");
+  const [userSort, setUserSort] = useState<"newest" | "activity" | "orders" | "points">("newest");
+  const [copiedUserContact, setCopiedUserContact] = useState<string | null>(null);
+  const onlineUserIds = useMemo(
+    () => new Set(recentVisitors.filter((entry) => entry.kind === "user" && entry.isOnline).map((entry) => entry.id)),
+    [recentVisitors]
+  );
+  const userDirectoryCounts = useMemo(
+    () => ({
+      all: registeredUsers.length,
+      online: registeredUsers.filter((user) => onlineUserIds.has(user.id)).length,
+      unverified: registeredUsers.filter((user) => !user.emailVerified).length,
+      vip: registeredUsers.filter((user) => user.isVip).length,
+      company: registeredUsers.filter((user) => user.accountType === "company").length,
+    }),
+    [onlineUserIds, registeredUsers]
+  );
   const filteredRegisteredUsers = useMemo(() => {
     const q = userSearch.trim().toLowerCase();
-    if (!q) return registeredUsers;
-    return registeredUsers.filter((u) =>
-      [u.name, u.email, u.phone ?? ""].join(" ").toLowerCase().includes(q)
-    );
-  }, [registeredUsers, userSearch]);
+    const filtered = registeredUsers.filter((user) => {
+      if (userFilter === "online" && !onlineUserIds.has(user.id)) return false;
+      if (userFilter === "unverified" && user.emailVerified) return false;
+      if (userFilter === "vip" && !user.isVip) return false;
+      if (userFilter === "company" && user.accountType !== "company") return false;
+      return !q || [user.name, user.email, user.phone ?? "", user.address ?? "", user.postcode ?? ""].join(" ").toLowerCase().includes(q);
+    });
+    return filtered.sort((a, b) => {
+      if (userSort === "activity") return (b.lastSeenAt ?? 0) - (a.lastSeenAt ?? 0);
+      if (userSort === "orders") return b.orderCount - a.orderCount || b.createdAt - a.createdAt;
+      if (userSort === "points") return b.points - a.points || b.createdAt - a.createdAt;
+      return b.createdAt - a.createdAt;
+    });
+  }, [onlineUserIds, registeredUsers, userFilter, userSearch, userSort]);
+  const userFiltersActive = userFilter !== "all" || userSort !== "newest" || userSearch.trim() !== "";
+  const clearUserFilters = () => {
+    setUserFilter("all");
+    setUserSort("newest");
+    setUserSearch("");
+  };
+  const copyUserContact = async (value: string) => {
+    try {
+      await navigator.clipboard.writeText(value);
+      setCopiedUserContact(value);
+      window.setTimeout(() => setCopiedUserContact((current) => current === value ? null : current), 1500);
+    } catch {
+      // Clipboard access may be unavailable in a non-secure browser context.
+    }
+  };
 
   const exportCustomers = () => downloadCsv("customers.csv", [["Customer", "Email", "Orders", "Total spent", "Last order"], ...customerStats.map((c) => [c.name, c.email ?? "", String(c.orderCount), c.totalSpent.toFixed(2), new Date(c.lastOrder).toISOString()])]);
   const exportProducts = () => downloadCsv("products.csv", [["Name", "Brand", "Category", "Subcategory", "Price"], ...products.map((p) => [p.name, brands.find((b) => b.id === p.brand)?.name ?? p.brand, p.category, p.subcategory ?? "", p.price.toFixed(2)])]);
   const exportUsers = () => downloadCsv("users.csv", [["Name", "Email", "Phone", "Account type", "Joined"], ...registeredUsers.map((u) => [u.name, u.email, u.phone ?? "", u.accountType ?? "personal", new Date(u.createdAt).toISOString()])]);
+
+  const toggleUserEmailVerification = async (userId: string, verified: boolean) => {
+    const res = await setUserEmailVerified(userId, verified);
+    if (res.ok) await refresh();
+  };
 
   if (!hydrated) {
     return <div className="mx-auto max-w-md px-4 py-20 text-center text-sm text-slate-500">…</div>;
@@ -1145,6 +1192,13 @@ export default function AdminPage() {
     { icon: FaUsers, label: t.admin.totalUsers, value: users.filter((u) => statsCheck(u.createdAt)).length },
     { icon: FaChartLine, label: t.admin.avgOrder, value: `€${stats.avg.toFixed(2)}` },
   ];
+  const dashboardSignals = [
+    { icon: FaUsers, label: t.admin.onlineVisitors, value: onlineVisitors, tone: "text-sky-600 dark:text-sky-300", surface: "bg-sky-500/10" },
+    { icon: FaMoneyBillWave, label: t.admin.unpaidOrders, value: orders.filter((order) => !order.paid && order.accountType !== "company").length, tone: "text-amber-700 dark:text-amber-300", surface: "bg-amber-500/10" },
+    { icon: FaCircleExclamation, label: t.admin.unverifiedAccounts, value: users.filter((user) => !user.emailVerified).length, tone: "text-rose-700 dark:text-rose-300", surface: "bg-rose-500/10" },
+    { icon: FaCrown, label: t.admin.vipRequests, value: vipRequests.filter((request) => request.status === "pending").length, tone: "text-violet-700 dark:text-violet-300", surface: "bg-violet-500/10" },
+  ];
+  const attentionCount = dashboardSignals.slice(1).reduce((total, signal) => total + signal.value, 0);
 
   /** Pill buttons + date picker used to filter stats and order management. */
   const renderRangeFilter = (value: RangeFilter, onChange: (f: RangeFilter) => void) => (
@@ -1629,6 +1683,24 @@ export default function AdminPage() {
           );
         })}
       </div>
+
+      <section className="mt-4 border-y border-slate-200 py-4 dark:border-white/10" aria-label={t.admin.dashboardSignals}>
+        <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
+          <h2 className="text-sm font-black text-slate-900 dark:text-white">{t.admin.dashboardSignals}</h2>
+          <span className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-bold ${attentionCount > 0 ? "bg-rose-500/10 text-rose-700 dark:text-rose-300" : "bg-emerald-500/10 text-emerald-700 dark:text-emerald-300"}`}>
+            <FaCircleExclamation /> {attentionCount} {t.admin.attentionItems}
+          </span>
+        </div>
+        <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
+          {dashboardSignals.map((signal) => {
+            const Icon = signal.icon;
+            return <div key={signal.label} className="flex min-w-0 items-center gap-3 border-l-2 border-slate-200 pl-3 dark:border-white/10">
+              <span className={`grid h-9 w-9 shrink-0 place-items-center rounded-lg ${signal.surface} ${signal.tone}`}><Icon /></span>
+              <div className="min-w-0"><p className={`text-xl font-black ${signal.tone}`}>{signal.value}</p><p className="truncate text-xs font-semibold text-slate-500 dark:text-slate-400">{signal.label}</p></div>
+            </div>;
+          })}
+        </div>
+      </section>
 
       <DailySalesChart
         data={dailyMetrics}
@@ -2139,6 +2211,35 @@ export default function AdminPage() {
                 <button type="button" onClick={exportUsers} className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 px-3 py-2 text-xs font-bold text-slate-600 transition hover:border-emerald-400 dark:border-white/10 dark:text-slate-300"><FaDownload /> {t.admin.exportUsers}</button>
               </div>
             )}
+            {registeredUsers.length > 0 && (
+              <>
+                <div className="mt-3 flex flex-wrap items-center gap-2">
+                  <div className="inline-flex max-w-full overflow-x-auto rounded-full bg-slate-100 p-1 text-xs font-bold dark:bg-white/5">
+                    {([
+                      ["all", t.admin.recentlyOnlineFilterAll, userDirectoryCounts.all],
+                      ["online", t.admin.onlineNow, userDirectoryCounts.online],
+                      ["unverified", t.admin.registeredUnverified, userDirectoryCounts.unverified],
+                      ["vip", "VIP", userDirectoryCounts.vip],
+                      ["company", "B2B", userDirectoryCounts.company],
+                    ] as const).map(([value, label, count]) => (
+                      <button key={value} type="button" onClick={() => setUserFilter(value)} className={`shrink-0 rounded-full px-3 py-1.5 transition ${userFilter === value ? "bg-white text-slate-900 shadow dark:bg-white/20 dark:text-white" : "text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200"}`}>
+                        {label} <span className="opacity-60">({count})</span>
+                      </button>
+                    ))}
+                  </div>
+                  <select value={userSort} onChange={(event) => setUserSort(event.target.value as typeof userSort)} aria-label="Sort registered users" className="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-bold text-slate-600 outline-none focus:border-emerald-500 dark:border-white/10 dark:bg-white/5 dark:text-slate-300">
+                    <option value="newest">{t.admin.recentlyOnlineSortRecent}</option>
+                    <option value="activity">{t.admin.onlineNow}</option>
+                    <option value="orders">{t.admin.sortByOrders}</option>
+                    <option value="points">{t.admin.registeredPoints}</option>
+                  </select>
+                  {userFiltersActive && <button type="button" onClick={clearUserFilters} className="inline-flex items-center gap-1 rounded-full px-3 py-1.5 text-xs font-bold text-rose-600 hover:bg-rose-50 dark:text-rose-400 dark:hover:bg-rose-500/10"><FaXmark className="text-[10px]" /> {t.admin.recentlyOnlineClearFilters}</button>}
+                </div>
+                <p className="mt-3 text-[11px] font-semibold text-slate-400 dark:text-slate-500">
+                  {t.admin.recentlyOnlineShowingCount.replace("{shown}", String(filteredRegisteredUsers.length)).replace("{total}", String(registeredUsers.length))}
+                </p>
+              </>
+            )}
             {registeredUsers.length === 0 ? (
               <p className="mt-4 text-sm text-slate-500 dark:text-slate-400">{t.admin.registeredUsersNone}</p>
             ) : filteredRegisteredUsers.length === 0 ? (
@@ -2147,6 +2248,7 @@ export default function AdminPage() {
               <ul className="mt-4 max-h-[32rem] space-y-3 overflow-y-auto pr-1">
                 {filteredRegisteredUsers.map((u) => {
                   const isCompany = u.accountType === "company";
+                  const isOnline = onlineUserIds.has(u.id);
                   return (
                     <li key={u.id} className="flex flex-col gap-3 rounded-2xl border border-slate-100 bg-slate-50/70 p-4 dark:border-white/5 dark:bg-white/5">
                       <div className="flex items-start gap-3">
@@ -2156,6 +2258,9 @@ export default function AdminPage() {
                         <div className="min-w-0 flex-1">
                           <div className="flex flex-wrap items-center gap-2">
                             <p className="truncate text-sm font-black text-slate-900 dark:text-white">{u.name}</p>
+                            <span className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-black uppercase tracking-wide ${isOnline ? "bg-emerald-500/10 text-emerald-700 dark:text-emerald-300" : "bg-slate-100 text-slate-500 dark:bg-white/10 dark:text-slate-400"}`}>
+                              <span className={`h-1.5 w-1.5 rounded-full ${isOnline ? "bg-emerald-500" : "bg-slate-400"}`} /> {isOnline ? t.admin.onlineNow : relativeTime(u.lastSeenAt ?? u.createdAt)}
+                            </span>
                             {u.role === "admin" && (
                               <span className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-black uppercase tracking-wide text-slate-600 dark:bg-white/10 dark:text-slate-300">
                                 <FaLock className="text-[9px]" /> Admin
@@ -2180,6 +2285,18 @@ export default function AdminPage() {
                             >
                               <FaCircleCheck className="text-[9px]" /> {u.emailVerified ? t.admin.registeredVerified : t.admin.registeredUnverified}
                             </span>
+                            <button
+                              type="button"
+                              onClick={() => toggleUserEmailVerification(u.id, !u.emailVerified)}
+                              className={`inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[10px] font-black uppercase tracking-wide transition ${
+                                u.emailVerified
+                                  ? "border-emerald-200 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 dark:border-emerald-500/30 dark:bg-emerald-500/10 dark:text-emerald-300"
+                                  : "border-amber-200 bg-amber-50 text-amber-700 hover:bg-amber-100 dark:border-amber-500/30 dark:bg-amber-500/10 dark:text-amber-300"
+                              }`}
+                            >
+                              {u.emailVerified ? <FaCircleExclamation className="text-[9px]" /> : <FaCircleCheck className="text-[9px]" />}
+                              {u.emailVerified ? t.admin.unverifyEmail : t.admin.verifyEmail}
+                            </button>
                             {u.isVip && (
                               <span className="inline-flex items-center gap-1 rounded-full bg-violet-500/10 px-2 py-0.5 text-[10px] font-black uppercase tracking-wide text-violet-700 dark:text-violet-300">
                                 {vipPurchases.some((p) => p.userId === u.id && p.status === "paid")
@@ -2193,11 +2310,13 @@ export default function AdminPage() {
                           <p className="mt-1 flex items-center gap-1.5 truncate text-xs text-slate-500 dark:text-slate-400">
                             <FaEnvelope className="shrink-0 text-[10px] text-slate-400" />
                             <a href={`mailto:${u.email}`} className="truncate hover:text-emerald-600 dark:hover:text-emerald-400">{u.email}</a>
+                            <button type="button" onClick={() => copyUserContact(u.email)} title={copiedUserContact === u.email ? t.admin.recentlyOnlineCopied : "Copy email"} aria-label="Copy email" className="shrink-0 p-1 text-slate-400 transition hover:text-emerald-600 dark:hover:text-emerald-400"><FaCopy className="text-[10px]" /></button>
                           </p>
                           {u.phone && (
                             <p className="mt-0.5 flex items-center gap-1.5 truncate text-xs font-semibold text-slate-600 dark:text-slate-300">
                               <FaPhone className="shrink-0 text-[10px] text-slate-400" />
                               <a href={`tel:${u.phone}`} className="hover:text-emerald-600 dark:hover:text-emerald-400">{u.phone}</a>
+                              <button type="button" onClick={() => copyUserContact(u.phone!)} title={copiedUserContact === u.phone ? t.admin.recentlyOnlineCopied : "Copy phone number"} aria-label="Copy phone number" className="shrink-0 p-1 text-slate-400 transition hover:text-emerald-600 dark:hover:text-emerald-400"><FaCopy className="text-[10px]" /></button>
                             </p>
                           )}
                           {(u.address || u.postcode) && (
@@ -2220,11 +2339,13 @@ export default function AdminPage() {
                         <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-500/10 px-2 py-0.5 font-semibold text-amber-700 dark:text-amber-300">
                           <FaCrown className="text-[10px]" /> {u.points} {t.admin.registeredPoints}
                         </span>
+                        {u.maisonReservationCount ? <span className="rounded-full bg-rose-500/10 px-2 py-0.5 font-semibold text-rose-700 dark:text-rose-300">{u.maisonReservationCount} {t.admin.recentlyOnlineReservationsMaison} ({u.maisonArrivedCount ?? 0} {t.admin.recentlyOnlineArrived})</span> : null}
+                        {u.tandoorReservationCount ? <span className="rounded-full bg-orange-500/10 px-2 py-0.5 font-semibold text-orange-700 dark:text-orange-300">{u.tandoorReservationCount} {t.admin.recentlyOnlineReservationsTandoor} ({u.tandoorArrivedCount ?? 0} {t.admin.recentlyOnlineArrived})</span> : null}
                         <span className="inline-flex items-center gap-1.5 rounded-full bg-slate-100 px-2 py-0.5 font-semibold text-slate-600 dark:bg-white/10 dark:text-slate-300">
                           <FaClock className="text-[10px]" /> {t.admin.registeredJoined}: {new Date(u.createdAt).toLocaleDateString(lang === "nl" ? "nl-NL" : "en-GB")}
                         </span>
                         {u.lastSeenAt && (
-                          <span className="inline-flex items-center gap-1.5 rounded-full bg-slate-100 px-2 py-0.5 font-semibold text-slate-600 dark:bg-white/10 dark:text-slate-300">
+                          <span title={absoluteTime(u.lastSeenAt)} className="inline-flex items-center gap-1.5 rounded-full bg-slate-100 px-2 py-0.5 font-semibold text-slate-600 dark:bg-white/10 dark:text-slate-300">
                             {relativeTime(u.lastSeenAt)}
                           </span>
                         )}
@@ -2510,7 +2631,7 @@ export default function AdminPage() {
                           <button onClick={() => cancelReservation(r.id)} className="flex-1 rounded-full border border-slate-300 py-2 text-xs font-bold text-slate-500 transition hover:bg-slate-100 dark:border-white/20">{t.admin.resCancelAdmin}</button>
                         </>
                       )}
-                      {(r.status === "arrived" || r.status === "no_show") && <button onClick={() => setReservationStatus(r.id, "confirm")} className="flex-1 rounded-full border border-emerald-300 py-2 text-xs font-bold text-emerald-600 transition hover:bg-emerald-50 dark:border-emerald-400/30">{t.admin.resConfirm}</button>}
+                      {r.status === "no_show" && <button onClick={() => setReservationStatus(r.id, "confirm")} className="flex-1 rounded-full border border-emerald-300 py-2 text-xs font-bold text-emerald-600 transition hover:bg-emerald-50 dark:border-emerald-400/30">{t.admin.resConfirm}</button>}
                     </div>
                   )}
                   <div className="mt-3 flex justify-end border-t border-slate-100 pt-3 dark:border-white/10">

@@ -109,6 +109,7 @@ interface StoreCtx {
   }>;
   login: (email: string, password: string) => Promise<{ ok: boolean; error?: "invalidLogin" }>;
   logout: () => Promise<void>;
+  setUserEmailVerified: (userId: string, verified: boolean) => Promise<{ ok: boolean }>;
 
   orders: Order[];
   placeOrder: (details: {
@@ -480,6 +481,17 @@ export function Providers({ children }: { children: ReactNode }) {
     await refresh();
   }, [refresh]);
 
+  const setUserEmailVerified = useCallback<StoreCtx["setUserEmailVerified"]>(async (userId, verified) => {
+    const res = await fetch("/api/auth", {
+      method: "POST",
+      headers: JSON_HEADERS,
+      body: JSON.stringify({ action: "setUserEmailVerified", userId, verified }),
+    });
+    const json = await res.json().catch(() => null);
+    if (json?.ok) await refresh();
+    return { ok: !!json?.ok };
+  }, [refresh]);
+
   const buyVip = useCallback<StoreCtx["buyVip"]>(async () => {
     const res = await fetch("/api/vip", { method: "POST", headers: JSON_HEADERS, body: JSON.stringify({ action: "buy" }) });
     const json = await res.json();
@@ -666,6 +678,7 @@ export function Providers({ children }: { children: ReactNode }) {
       register,
       login,
       logout,
+      setUserEmailVerified,
       orders,
       placeOrder,
       updateOrderStatus,
@@ -714,6 +727,7 @@ export function Providers({ children }: { children: ReactNode }) {
       register,
       login,
       logout,
+      setUserEmailVerified,
       orders,
       placeOrder,
       updateOrderStatus,

@@ -179,6 +179,14 @@ export async function verifyEmail(token: string): Promise<{ ok: boolean }> {
   return { ok: true };
 }
 
+/** Admin-only override for manually registered users whose email cannot be confirmed via token. */
+export async function setUserEmailVerified(userId: string, verified: boolean): Promise<{ ok: boolean }> {
+  await ensureReady();
+  await requireAdmin();
+  await sql.query(`UPDATE users SET email_verified = $1 WHERE id = $2`, [verified, userId]);
+  return { ok: true };
+}
+
 /** Resend the verification email to the logged-in user. */
 export async function resendVerification(origin?: string): Promise<{ ok: boolean }> {
   const user = await getCurrentUser();

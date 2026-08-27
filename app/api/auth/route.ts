@@ -7,6 +7,7 @@ import {
   requestPasswordReset,
   resendVerification,
   resetPassword,
+  setUserEmailVerified,
   verifyEmail,
 } from "../../lib/serverStore";
 import { authSchema } from "../../lib/validation";
@@ -46,6 +47,10 @@ export async function POST(req: NextRequest) {
     }
     if (body.action === "verifyEmail") {
       const res = await verifyEmail(body.token);
+      return NextResponse.json(res);
+    }
+    if (body.action === "setUserEmailVerified") {
+      const res = await setUserEmailVerified(body.userId, body.verified);
       return NextResponse.json(res);
     }
     if (body.action === "resendVerification") {
