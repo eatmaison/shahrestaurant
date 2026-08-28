@@ -50,6 +50,8 @@ export interface Product {
   image?: string;
   /** Manual admin ordering; lower numbers appear first. Server rows always provide it. */
   sortOrder?: number;
+  isPopular?: boolean;
+  isNew?: boolean;
   /** Detailed product description for "read more" modal */
   detailedDescription?: {
     en: string;

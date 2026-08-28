@@ -854,8 +854,8 @@ async function insertProductRow(
   sortOrder: number
 ): Promise<Product> {
   const rows = (await sql.query(
-    `INSERT INTO products (id, group_id, brand, category, subcategory, name, description, description_nl, price, image, sort_order, detailed_description, ingredients, ingredients_nl, allergens, allergens_nl)
-     VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12::jsonb,$13::text[],$14::text[],$15::text[],$16::text[]) RETURNING *`,
+    `INSERT INTO products (id, group_id, brand, category, subcategory, name, description, description_nl, price, image, sort_order, is_popular, is_new, detailed_description, ingredients, ingredients_nl, allergens, allergens_nl)
+     VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14::jsonb,$15::text[],$16::text[],$17::text[],$18::text[]) RETURNING *`,
     [
       id,
       groupId,
@@ -868,6 +868,8 @@ async function insertProductRow(
       content.price,
       image,
       sortOrder,
+      content.isPopular ?? false,
+      content.isNew ?? false,
       content.detailedDescription ? JSON.stringify(content.detailedDescription) : null,
       content.ingredients ?? [],
       content.ingredientsNl ?? [],
@@ -916,7 +918,7 @@ export async function updateProduct(id: string, patch: Partial<Omit<Product, "id
   }
   await sql.query(
      `UPDATE products SET brand=$2, category=$3, subcategory=$4, name=$5, description=$6, description_nl=$7, price=$8, image=$9,
-       detailed_description=$10::jsonb, ingredients=$11::text[], ingredients_nl=$12::text[], allergens=$13::text[], allergens_nl=$14::text[] WHERE id=$1`,
+       is_popular=$10, is_new=$11, detailed_description=$12::jsonb, ingredients=$13::text[], ingredients_nl=$14::text[], allergens=$15::text[], allergens_nl=$16::text[] WHERE id=$1`,
     [
       id,
       next.brand,
@@ -927,6 +929,8 @@ export async function updateProduct(id: string, patch: Partial<Omit<Product, "id
       next.descriptionNl ?? "",
       next.price,
       next.image ?? null,
+      next.isPopular ?? false,
+      next.isNew ?? false,
       next.detailedDescription ? JSON.stringify(next.detailedDescription) : null,
       next.ingredients ?? [],
       next.ingredientsNl ?? [],
@@ -962,8 +966,8 @@ export async function syncProductGroup(anchorId: string, content: ProductContent
     const existing = current.find((p) => p.brand === target.brand);
     if (existing) {
       await sql.query(
-        `UPDATE products SET group_id=$2, category=$3, subcategory=$4, name=$5, description=$6, description_nl=$7, price=$8, image=$9,
-           detailed_description=$10::jsonb, ingredients=$11::text[], ingredients_nl=$12::text[], allergens=$13::text[], allergens_nl=$14::text[] WHERE id=$1`,
+          `UPDATE products SET group_id=$2, category=$3, subcategory=$4, name=$5, description=$6, description_nl=$7, price=$8, image=$9,
+            is_popular=$10, is_new=$11, detailed_description=$12::jsonb, ingredients=$13::text[], ingredients_nl=$14::text[], allergens=$15::text[], allergens_nl=$16::text[] WHERE id=$1`,
         [
           existing.id,
           groupId,
@@ -974,6 +978,8 @@ export async function syncProductGroup(anchorId: string, content: ProductContent
           sharedContent.descriptionNl ?? "",
           sharedContent.price,
           image,
+          sharedContent.isPopular ?? false,
+          sharedContent.isNew ?? false,
           sharedContent.detailedDescription ? JSON.stringify(sharedContent.detailedDescription) : null,
           sharedContent.ingredients ?? [],
           sharedContent.ingredientsNl ?? [],

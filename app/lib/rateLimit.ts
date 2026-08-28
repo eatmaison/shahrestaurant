@@ -24,8 +24,8 @@ function sweep(now: number): void {
 /** Best-effort client IP (behind a proxy/Vercel, x-forwarded-for is set). */
 export function clientIp(req: NextRequest): string {
   const fwd = req.headers.get("x-forwarded-for");
-  if (fwd) return fwd.split(",")[0].trim();
-  return req.headers.get("x-real-ip") ?? "unknown";
+  const candidate = fwd?.split(",")[0].trim() || req.headers.get("x-real-ip")?.trim();
+  return candidate && candidate.length <= 100 ? candidate : "unknown";
 }
 
 export interface RateLimitResult {

@@ -65,6 +65,8 @@ export function rowToProduct(r: any): Product {
     price: toNum(r.price),
     image: r.image ?? undefined,
     sortOrder: Number(r.sort_order ?? 0),
+    isPopular: r.is_popular ?? false,
+    isNew: r.is_new ?? false,
     detailedDescription: r.detailed_description ?? undefined,
     ingredients: r.ingredients ?? [],
     ingredientsNl: r.ingredients_nl ?? [],

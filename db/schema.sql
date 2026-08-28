@@ -68,6 +68,8 @@ CREATE TABLE IF NOT EXISTS products (
   price                numeric(10, 2) NOT NULL,
   image                text,
   sort_order           integer     NOT NULL DEFAULT 0,
+  is_popular           boolean     NOT NULL DEFAULT false,
+  is_new               boolean     NOT NULL DEFAULT false,
   -- { "en": "...", "nl": "..." } for the "Read more" popup
   detailed_description jsonb,
   ingredients          text[]      NOT NULL DEFAULT '{}',

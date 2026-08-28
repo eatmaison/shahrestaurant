@@ -571,7 +571,7 @@ export default function OrderPage() {
             </div>
             <div className="flex flex-1 flex-col py-2 px-1.5">
               <div className="flex items-start justify-between gap-2">
-                <h3 className="font-display font-bold text-sm text-slate-900 dark:text-white">{p.name}</h3>
+                        <div className="flex flex-wrap items-center gap-2"><h3 className="font-display font-bold text-sm text-slate-900 dark:text-white">{p.name}</h3>{p.isPopular && <span className="rounded-full bg-amber-500/10 px-2 py-0.5 text-[10px] font-black uppercase text-amber-700">Popular</span>}{p.isNew && <span className="rounded-full bg-emerald-500/10 px-2 py-0.5 text-[10px] font-black uppercase text-emerald-700">New</span>}</div>
                 {discountPct > 0 && !isDrinkCategory(p.category) ? (
                   <span className="flex shrink-0 flex-col items-end">
                     <span className="text-xs text-slate-400 line-through dark:text-slate-500">€{p.price.toFixed(2)}</span>

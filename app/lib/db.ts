@@ -91,6 +91,8 @@ const DDL: string[] = [
   // created and edited once for all of them from any admin panel.
   `ALTER TABLE products ADD COLUMN IF NOT EXISTS group_id text`,
   `ALTER TABLE products ADD COLUMN IF NOT EXISTS sort_order integer`,
+  `ALTER TABLE products ADD COLUMN IF NOT EXISTS is_popular boolean NOT NULL DEFAULT false`,
+  `ALTER TABLE products ADD COLUMN IF NOT EXISTS is_new boolean NOT NULL DEFAULT false`,
   `UPDATE products
      SET sort_order = ranked.sort_order
     FROM (

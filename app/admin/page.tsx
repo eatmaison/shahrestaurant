@@ -249,6 +249,8 @@ export default function AdminPage() {
     description: "",
     descriptionNl: "",
     price: "",
+    isPopular: false,
+    isNew: false,
     brands: [] as Brand[],
     category: "Wraps" as Category,
     subcategory: "" as Category,
@@ -268,6 +270,8 @@ export default function AdminPage() {
     description: "",
     descriptionNl: "",
     price: "",
+    isPopular: false,
+    isNew: false,
     brands: [] as Brand[],
     category: "Wraps" as Category,
     subcategory: "" as Category,
@@ -714,6 +718,8 @@ export default function AdminPage() {
 
   /** Reservation list filter: upcoming (pending/confirmed, today onwards) or all. */
   const [resFilter, setResFilter] = useState<"upcoming" | "all">("upcoming");
+  const [resView, setResView] = useState<"list" | "calendar">("list");
+  const [calendarMonth, setCalendarMonth] = useState(() => new Date().toISOString().slice(0, 7));
   const visibleReservations = useMemo(() => {
     const d = new Date();
     const today = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
@@ -723,6 +729,11 @@ export default function AdminPage() {
         : [...reservations].sort((a, b) => (b.date + b.time).localeCompare(a.date + a.time));
     return list;
   }, [reservations, resFilter]);
+  const calendarReservations = useMemo(() => reservations.filter((reservation) => reservation.date.startsWith(calendarMonth)).sort((a, b) => `${a.date}${a.time}`.localeCompare(`${b.date}${b.time}`)), [calendarMonth, reservations]);
+  const calendarDays = useMemo(() => Array.from({ length: new Date(Number(calendarMonth.slice(0, 4)), Number(calendarMonth.slice(5, 7)), 0).getDate() }, (_, index) => {
+    const date = `${calendarMonth}-${String(index + 1).padStart(2, "0")}`;
+    return { date, reservations: calendarReservations.filter((reservation) => reservation.date === date) };
+  }), [calendarMonth, calendarReservations]);
 
   /** "just now" / "5 min ago" / "3 h ago" / "2 d ago" */
   const relativeTime = (ts: number): string => {
@@ -973,6 +984,8 @@ export default function AdminPage() {
         description: draft.description.trim(),
         descriptionNl: draft.descriptionNl.trim(),
         price,
+        isPopular: draft.isPopular,
+        isNew: draft.isNew,
         image: draft.image,
         detailedDescription: detailEn || detailNl ? { en: detailEn, nl: detailNl } : undefined,
         ingredients: parseList(draft.ingredientsEn),
@@ -991,6 +1004,8 @@ export default function AdminPage() {
       description: "",
       descriptionNl: "",
       price: "",
+      isPopular: false,
+      isNew: false,
       brands: draft.brands,
       category: draft.category,
       subcategory: draft.subcategory,
@@ -1018,6 +1033,8 @@ export default function AdminPage() {
       description: p.description,
       descriptionNl: p.descriptionNl ?? "",
       price: String(p.price),
+      isPopular: p.isPopular ?? false,
+      isNew: p.isNew ?? false,
       brands: groupBrands,
       category: p.category,
       subcategory: p.subcategory ?? "",
@@ -1076,6 +1093,8 @@ export default function AdminPage() {
         description: editDraft.description.trim(),
         descriptionNl: editDraft.descriptionNl.trim(),
         price,
+        isPopular: editDraft.isPopular,
+        isNew: editDraft.isNew,
         image: editDraft.image,
         // null (not undefined) so clearing both fields also clears it in the database.
         detailedDescription: (detailEn || detailNl
@@ -2536,9 +2555,24 @@ export default function AdminPage() {
               {t.admin.resAll}
             </button>
           </div>
+          <div className="flex rounded-full border border-slate-200 p-0.5 text-xs font-bold dark:border-white/10">
+            <button type="button" onClick={() => setResView("list")} className={`rounded-full px-3 py-1.5 ${resView === "list" ? "bg-emerald-500 text-white" : "text-slate-500 dark:text-slate-400"}`}>List</button>
+            <button type="button" onClick={() => setResView("calendar")} className={`rounded-full px-3 py-1.5 ${resView === "calendar" ? "bg-emerald-500 text-white" : "text-slate-500 dark:text-slate-400"}`}>Calendar</button>
+          </div>
         </div>
 
-        {visibleReservations.length === 0 ? (
+        {resView === "calendar" ? (
+          <div className="mt-5">
+            <div className="mb-3 flex items-center justify-between gap-2">
+              <button type="button" onClick={() => setCalendarMonth((month) => { const date = new Date(`${month}-01T00:00:00`); date.setMonth(date.getMonth() - 1); return date.toISOString().slice(0, 7); })} className="rounded-full border border-slate-200 px-3 py-1 text-xs font-bold text-slate-600 dark:border-white/10 dark:text-slate-300">←</button>
+              <p className="text-sm font-black text-slate-900 dark:text-white">{new Date(`${calendarMonth}-01T00:00:00`).toLocaleDateString(lang === "nl" ? "nl-NL" : "en-GB", { month: "long", year: "numeric" })}</p>
+              <button type="button" onClick={() => setCalendarMonth((month) => { const date = new Date(`${month}-01T00:00:00`); date.setMonth(date.getMonth() + 1); return date.toISOString().slice(0, 7); })} className="rounded-full border border-slate-200 px-3 py-1 text-xs font-bold text-slate-600 dark:border-white/10 dark:text-slate-300">→</button>
+            </div>
+            <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 lg:grid-cols-7">
+              {calendarDays.map((day) => <div key={day.date} className={`min-h-24 rounded-xl border p-2 ${day.reservations.length ? "border-emerald-300 bg-emerald-50/50 dark:border-emerald-400/30 dark:bg-emerald-500/5" : "border-slate-100 bg-slate-50/50 dark:border-white/5 dark:bg-white/5"}`}><p className="text-xs font-black text-slate-500">{Number(day.date.slice(-2))}</p><div className="mt-1 space-y-1">{day.reservations.slice(0, 3).map((reservation) => <p key={reservation.id} className="truncate rounded bg-white px-1.5 py-1 text-[10px] font-bold text-slate-700 dark:bg-white/10 dark:text-slate-200">{reservation.time} · {reservation.guestName}</p>)}{day.reservations.length > 3 && <p className="text-[10px] font-bold text-emerald-600">+{day.reservations.length - 3} more</p>}</div></div>)}
+            </div>
+          </div>
+        ) : visibleReservations.length === 0 ? (
           <p className="mt-4 text-sm text-slate-500 dark:text-slate-400">{t.admin.noReservationsAdmin}</p>
         ) : (
           <ul className="mt-5 grid max-h-[34rem] gap-3 overflow-y-auto pr-1 lg:grid-cols-2">
@@ -2802,6 +2836,14 @@ export default function AdminPage() {
                   className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
                 />
                 <p className="mt-1 text-[11px] leading-4 text-slate-400 dark:text-slate-500">{t.admin.priceHint}</p>
+                <div className="mt-2 flex flex-wrap gap-2">
+                  <label className="inline-flex items-center gap-2 text-xs font-bold text-amber-700"><input type="checkbox" checked={draft.isPopular} onChange={(e) => setDraft({ ...draft, isPopular: e.target.checked })} /> Popular</label>
+                  <label className="inline-flex items-center gap-2 text-xs font-bold text-emerald-700"><input type="checkbox" checked={draft.isNew} onChange={(e) => setDraft({ ...draft, isNew: e.target.checked })} /> New</label>
+                </div>
+              </div>
+              <div className="col-span-2 flex flex-wrap gap-2">
+                <label className="inline-flex items-center gap-2 rounded-full bg-amber-500/10 px-3 py-2 text-xs font-bold text-amber-700"><input type="checkbox" checked={draft.isPopular} onChange={(e) => setDraft({ ...draft, isPopular: e.target.checked })} /> Popular</label>
+                <label className="inline-flex items-center gap-2 rounded-full bg-emerald-500/10 px-3 py-2 text-xs font-bold text-emerald-700"><input type="checkbox" checked={draft.isNew} onChange={(e) => setDraft({ ...draft, isNew: e.target.checked })} /> New</label>
               </div>
               <select
                 value={draft.category}
@@ -3584,6 +3626,14 @@ export default function AdminPage() {
                     className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
                   />
                   <p className="mt-1 text-[11px] leading-4 text-slate-400 dark:text-slate-500">{t.admin.priceHint}</p>
+                  <div className="mt-2 flex flex-wrap gap-2">
+                    <label className="inline-flex items-center gap-2 text-xs font-bold text-amber-700"><input type="checkbox" checked={editDraft.isPopular} onChange={(e) => setEditDraft({ ...editDraft, isPopular: e.target.checked })} /> Popular</label>
+                    <label className="inline-flex items-center gap-2 text-xs font-bold text-emerald-700"><input type="checkbox" checked={editDraft.isNew} onChange={(e) => setEditDraft({ ...editDraft, isNew: e.target.checked })} /> New</label>
+                  </div>
+                </div>
+                <div className="col-span-2 flex flex-wrap gap-2">
+                  <label className="inline-flex items-center gap-2 rounded-full bg-amber-500/10 px-3 py-2 text-xs font-bold text-amber-700"><input type="checkbox" checked={editDraft.isPopular} onChange={(e) => setEditDraft({ ...editDraft, isPopular: e.target.checked })} /> Popular</label>
+                  <label className="inline-flex items-center gap-2 rounded-full bg-emerald-500/10 px-3 py-2 text-xs font-bold text-emerald-700"><input type="checkbox" checked={editDraft.isNew} onChange={(e) => setEditDraft({ ...editDraft, isNew: e.target.checked })} /> New</label>
                 </div>
                 <select
                   value={editDraft.category}
