@@ -90,14 +90,20 @@ export function Footer() {
             </div>
             <div>
               <p className="text-sm font-bold uppercase tracking-wider text-slate-900 dark:text-white">{t.footer.ourRestaurants}</p>
-              <div className="mt-3 flex flex-col gap-2">
+              <nav aria-label={t.footer.ourRestaurants} className="mt-3 flex min-w-0 flex-col gap-3 break-words">
                 <a href="https://eattogo.nl" target="_blank" rel="noopener noreferrer" className="text-xs text-slate-600 transition hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400">
-                  {t.footer.eatToGo} ↗
+                  <span className="font-semibold">Eat to Go ↗</span>
+                  <span className="mt-1 block text-xs leading-5">{lang === "nl" ? "Wraps, burgers en pizza om mee te nemen" : "Wraps, burgers and pizza to go"}</span>
                 </a>
                 <a href="https://themaison.nl" target="_blank" rel="noopener noreferrer" className="text-xs text-slate-600 transition hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400">
-                  {t.footer.theTandoor} ↗
+                  <span className="font-semibold">The Maison ↗</span>
+                  <span className="mt-1 block text-xs leading-5">{lang === "nl" ? "Fine dining en tafelreserveringen" : "Fine dining and table reservations"}</span>
                 </a>
-              </div>
+                <a href="https://thetandoorcompany.nl" target="_blank" rel="noopener noreferrer" className="text-xs text-slate-600 transition hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400">
+                  <span className="font-semibold">The Tandoor Company ↗</span>
+                  <span className="mt-1 block text-xs leading-5">{lang === "nl" ? "Indiase curry's en tandoori" : "Indian curries and tandoori"}</span>
+                </a>
+              </nav>
               <p className="mt-6 text-sm font-bold uppercase tracking-wider text-slate-900 dark:text-white">{t.footer.legal}</p>
               <div className="mt-3 flex flex-col gap-2">
                 <Link href="/privacy" className="text-xs text-slate-600 transition hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400">

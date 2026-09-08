@@ -44,14 +44,13 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Shah Restaurant" }],
   alternates: {
-    canonical: siteUrl,
-    languages: { en: siteUrl, nl: siteUrl },
+    canonical: "./",
   },
   openGraph: {
     type: "website",
     locale: "en_NL",
     alternateLocale: "nl_NL",
-    url: siteUrl,
+    url: "./",
     siteName: "Shah Restaurant Amsterdam",
     title: "Shah Restaurant Amsterdam | Fine Indian Dining & Tandoori Grill",
     description:
