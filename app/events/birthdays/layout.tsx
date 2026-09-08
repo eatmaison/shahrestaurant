@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 const url = "/events/birthdays";
 
 export const metadata: Metadata = {
-  title: "Birthday & Party Catering Amsterdam - The Tandoor Company",
+  title: "Birthday & Party Catering Amsterdam - Shah Restaurant",
   description:
-    "Celebrate your birthday, anniversary or private party at The Tandoor Company Amsterdam. Personalised Indian menus, warm ambiance, dedicated service and private dining for up to 100 guests.",
+    "Celebrate your birthday, anniversary or private party at Shah Restaurant Amsterdam. Personalised Indian menus, warm ambiance, dedicated service and private dining for up to 100 guests.",
   keywords: [
     "birthday catering Amsterdam",
     "party catering Amsterdam",
@@ -19,13 +19,13 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: url },
   openGraph: {
-    title: "Birthday & Party Catering Amsterdam | The Tandoor Company",
+    title: "Birthday & Party Catering Amsterdam | Shah Restaurant",
     description:
-      "Personalised birthday parties and private celebrations at The Tandoor Company Amsterdam - up to 100 guests.",
+      "Personalised birthday parties and private celebrations at Shah Restaurant Amsterdam - up to 100 guests.",
     url,
     type: "article",
   },
-  twitter: { card: "summary_large_image", title: "Birthday Catering Amsterdam - The Tandoor Company" },
+  twitter: { card: "summary_large_image", title: "Birthday Catering Amsterdam - Shah Restaurant" },
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {

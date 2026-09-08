@@ -7,7 +7,7 @@ import { useLang, useStore } from "../providers";
 import { SOCIAL_PLATFORMS } from "./socialIcons";
 
 export function Footer() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const { socialLinks } = useStore();
   const [showTop, setShowTop] = useState(false);
 
@@ -26,14 +26,18 @@ export function Footer() {
   }).map((p) => ({ ...p, url: socialLinks.find((l) => l.platform === p.id)!.url }));
 
   return (
-    <footer data-site-footer className="relative mt-16 overflow-hidden border-t border-slate-200/70 bg-white dark:border-emerald-400/15 dark:bg-[#0a0602]">
+    <footer data-site-footer className="relative overflow-hidden border-t border-slate-200/70 bg-white dark:border-emerald-400/15 dark:bg-[#0a0602]">
       <div className="gold-rule absolute inset-x-0 top-0" />
-      <div className="pointer-events-none absolute -top-24 left-1/2 h-48 w-[36rem] -translate-x-1/2 rounded-full bg-emerald-500/10 blur-3xl" />
       <div className="relative mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-2 lg:px-8">
         <div>
-          <p className="text-[0.6rem] font-semibold uppercase tracking-[0.3em] text-emerald-600 dark:text-emerald-400">Authentiek Indiaas · Amsterdam-Noord</p>
-          <p className="font-display mt-1 text-xl font-bold tracking-[0.14em] text-slate-900 dark:text-white">THE TANDOOR COMPANY</p>
+          <p className="text-[0.6rem] font-semibold uppercase tracking-[0.3em] text-emerald-600 dark:text-emerald-400">Fine Indian Dining · Amsterdam-Noord</p>
+          <p className="font-display mt-1 text-2xl font-semibold tracking-[0.22em] text-slate-900 dark:text-white">SHAH RESTAURANT</p>
           <p className="mt-3 max-w-md text-sm leading-7 text-slate-600 dark:text-slate-400">{t.footer.tagline}</p>
+          <nav className="footer-quick-links" aria-label={lang === "nl" ? "Snelle links" : "Quick links"}>
+            <Link href="/order">{lang === "nl" ? "Menukaart" : "Menu"}</Link>
+            <Link href="/reservations">{t.nav.reservations}</Link>
+            <Link href="/events/gallery">{t.nav.eventsGallery}</Link>
+          </nav>
           {activeSocials.length > 0 && (
             <div className="mt-5 flex flex-wrap gap-3">
               {activeSocials.map((s) => (
@@ -60,7 +64,7 @@ export function Footer() {
               <ul className="mt-3 space-y-2 text-xs text-slate-600 dark:text-slate-400">
                 <li className="flex items-center gap-2">
                   <FaEnvelope className="text-emerald-600 dark:text-emerald-400" />
-                  <a href="mailto:info@thetandoorcompany.nl" className="transition hover:text-emerald-600 dark:hover:text-emerald-400">info@thetandoorcompany.nl</a>
+                  <a href="mailto:info@shahrestaurant.nl" className="transition hover:text-emerald-600 dark:hover:text-emerald-400">info@shahrestaurant.nl</a>
                 </li>
                 <li className="flex items-center gap-2">
                   <FaPhone className="text-emerald-600 dark:text-emerald-400" />
@@ -72,7 +76,7 @@ export function Footer() {
               <p className="text-sm font-bold uppercase tracking-wider text-slate-900 dark:text-white">{t.footer.address}</p>
               <p className="mt-3 flex items-start gap-2 text-xs text-slate-600 dark:text-slate-400">
                 <FaLocationDot className="mt-0.5 flex-shrink-0 text-emerald-600 dark:text-emerald-400" />
-                <span>Klaprozenweg 36a<br />1032 KL Amsterdam</span>
+                <a href="https://www.google.com/maps/dir/?api=1&destination=Klaprozenweg+36a+1032+KL+Amsterdam" target="_blank" rel="noopener noreferrer">Klaprozenweg 36a<br />1032 KL Amsterdam</a>
               </p>
               <p className="mt-6 text-sm font-bold uppercase tracking-wider text-slate-900 dark:text-white">{t.hours.title}</p>
               <div className="mt-3 flex items-start gap-2 text-xs text-slate-600 dark:text-slate-400">
@@ -109,14 +113,24 @@ export function Footer() {
       </div>
 
       <div className="border-t border-slate-200/70 py-5 text-center text-xs text-slate-500 dark:border-emerald-400/15 dark:text-slate-500">
-        © {new Date().getFullYear()} THE TANDOOR COMPANY - Amsterdam. {t.footer.rights}
+        © {new Date().getFullYear()} SHAH RESTAURANT - Amsterdam. {t.footer.rights}
+        <p className="mt-2 px-4 text-[11px]">
+          {lang === "nl" ? "Botanisch achtergrondbeeld" : "Botanical background"}: {" "}
+          <a href="https://commons.wikimedia.org/wiki/File:Green_Wall_Harmony_of_the_Seas_2025.jpg" className="underline underline-offset-2">Larry D. Moore</a>, {" "}
+          <a href="https://creativecommons.org/licenses/by/4.0/" className="underline underline-offset-2">CC BY 4.0</a>
+          {lang === "nl" ? " (uitsnede)." : " (cropped)."}
+        </p>
       </div>
 
       {/* Floating back-to-top */}
       <button
         type="button"
-        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        aria-label="Back to top"
+        onClick={() => window.scrollTo({ top: 0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" })}
+        aria-label={lang === "nl" ? "Terug naar boven" : "Back to top"}
+        title={lang === "nl" ? "Terug naar boven" : "Back to top"}
+        tabIndex={showTop ? 0 : -1}
+        aria-hidden={!showTop}
+        data-back-top
         className={`fixed bottom-6 right-6 z-40 grid h-11 w-11 place-items-center rounded-full border border-emerald-500/40 bg-emerald-600 text-white shadow-lg shadow-emerald-600/30 transition-all duration-300 hover:-translate-y-1 hover:bg-emerald-500 hover:shadow-xl hover:shadow-emerald-500/40 ${
           showTop ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-4 opacity-0"
         }`}

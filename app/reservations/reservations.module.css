@@ -1,0 +1,64 @@
+.page {
+  --booking-ink: var(--shah-ink);
+  --booking-muted: var(--shah-muted);
+  --booking-surface: var(--shah-surface);
+  --booking-border: var(--shah-line);
+  --booking-gold: var(--shah-gold);
+  background: var(--shah-page);
+  color: var(--booking-ink);
+}
+.page::before { display: none; }
+.page :is(h1, h2, h3, label, p, span, button, a) { letter-spacing: 0; }
+.page .hero { background: var(--booking-surface); border-bottom: 1px solid var(--booking-border); }
+.page .hero::after, .hero > :global(.pointer-events-none), .hero > :last-child { display: none; }
+.hero h1 > span { background: none; -webkit-text-fill-color: currentColor; color: var(--booking-ink); }
+.hero p { color: var(--booking-muted); }
+.hero :global(.lux-overline) { color: var(--booking-gold); }
+.hero p:last-child { border-color: var(--booking-border); background: var(--shah-soft); color: var(--booking-ink); }
+.page :global(.premium-panel) { border-radius: 8px; background: var(--booking-surface); border: 1px solid var(--booking-border); box-shadow: 0 12px 36px #22301608; backdrop-filter: none; }
+.page :global(.premium-panel)::before, .page :global(.premium-panel)::after { display: none; }
+.page :global(.form-lux) :is(input, select, textarea) { color: var(--booking-ink); background: var(--booking-surface); border: 1px solid var(--booking-border); border-radius: 5px; min-height: 46px; font-size: 16px; }
+.page :global(.form-lux) :is(input, textarea)::placeholder { color: var(--booking-muted); opacity: 1; }
+.page :global(.form-lux) :is(input, select, textarea):focus-visible { outline: 2px solid var(--shah-gold); outline-offset: 2px; border-color: var(--shah-gold); }
+.page :global(.form-lux) label > span, .page :global(.form-lux) div > span { color: var(--booking-muted); }
+.page :global(.form-lux) button { min-height: 44px; min-width: 44px; border-radius: 5px; }
+.page :global(.form-lux) button[aria-pressed="true"] { background: var(--shah-button); color: var(--shah-button-ink); border-color: #b89a55; }
+.page :global(.btn-ember) { background: #e6ce92; color: #282416; box-shadow: none; animation: none; border: 1px solid #bea35f; }
+.page :global(.btn-ember):hover { background: #f2dfa9; }
+.page :global(.text-slate-400), .page :global(.text-slate-500) { color: var(--booking-muted); }
+.page .info { color: var(--booking-ink); border-top: 3px solid #b89a55; }
+.info > :global(.pointer-events-none), .info > :global(.ember) { display: none; }
+.info :global(.text-stone-300) { color: var(--booking-muted); }
+.info :global(.lux-overline), .info svg { color: var(--booking-gold); }
+.info :global(.font-display) { font-size: 21px; line-height: 1.35; color: var(--booking-ink); }
+.info :global(.text-xs) { font-size: 14px; }
+.info > :last-child { border-color: var(--booking-border); }
+.page :global(.reservation-location) { background: linear-gradient(90deg, #141411ed, #14141194), url('/photos/plant-wall.webp') center / cover; box-shadow: none; border-radius: 0; }
+.page :global(.reservation-location__glow) { display: none; }
+.page :global(.reservation-location) :global(.ember) { display: none; }
+.page :global(.reservation-location) :is(:global(.text-stone-300), :global(.text-stone-400)) { color: #f1f8e9; }
+.page :global(.reservation-location) :global(.ember-text) { color: #fff1b8; background: none; -webkit-text-fill-color: currentColor; }
+.page :global(.reservation-arrival-note) { color: #f1f8e9; }
+.page :global(.reservation-location__info) { border: 0; background: transparent; backdrop-filter: none; }
+.page :global(.reservation-contact-card) { border-radius: 5px; }
+.page :global(.reservation-map-shell) { border-radius: 6px; }
+.page :global(.reservation-map-frame)::before, .page :global(.reservation-map-frame)::after { display: none; }
+.page :global(.reservation-map-frame) iframe { filter: none; transform: none; }
+.page .hero { background: linear-gradient(150deg, var(--booking-surface), var(--shah-soft)); box-shadow: inset 0 -1px 0 var(--shah-edge); }
+.hero h1 { text-shadow: 0 1px 0 var(--shah-edge); }
+.page :global(.form-lux) :is(input, select, textarea) { box-shadow: inset 0 2px 4px #191d2208, 0 1px 0 var(--shah-edge); transition: border-color .2s, box-shadow .2s; }
+.page :global(.form-lux) :is(input, select, textarea):focus { box-shadow: 0 0 0 3px color-mix(in srgb, var(--booking-gold) 12%, transparent); }
+.page :global(.form-lux) button[aria-pressed] { box-shadow: inset 0 1px 0 var(--shah-edge), 0 2px 0 var(--booking-border); }
+.page :global(.form-lux) button[aria-pressed="true"] { background: var(--shah-metal); box-shadow: inset 0 2px 4px #80601f21, 0 1px 0 var(--shah-edge); }
+.page :global(.btn-ember), .page :global(.btn-ember):hover { background: var(--shah-metal); box-shadow: inset 0 1px 0 #fff8, 0 3px 0 #ad8b47, 0 8px 16px #191d2214; }
+.page :global(.btn-ember):active { box-shadow: var(--shah-press-shadow); }
+.page .info { box-shadow: inset 0 1px 0 var(--shah-edge); }
+.page :global(.reservation-map-shell) { border: 1px solid #ffffff4a; box-shadow: 0 3px 0 #ffffff26, 0 20px 45px #0003; }
+@media (max-width: 640px) {
+  .hero h1 { font-size: 38px; }
+  .hero p { font-size: 14px; line-height: 1.8; }
+  .page :global(.premium-panel) { padding: 22px 18px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .page *, .page *::before, .page *::after { animation: none !important; transition: none !important; }
+}

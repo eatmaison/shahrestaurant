@@ -1,37 +1,39 @@
 import type { Metadata, Viewport } from "next";
-import { Manrope, Playfair_Display } from "next/font/google";
-import "./globals.css";
+import { Jost, Cormorant_Garamond } from "next/font/google";
+import "./design-system.css";
 import { Providers } from "./providers";
 import { Header } from "./components/header";
 import { Footer } from "./components/footer";
 import { CookieConsent } from "./components/CookieConsent";
 import { Atmosphere } from "./components/Atmosphere";
 
-const manrope = Manrope({
-  variable: "--font-manrope",
+const jost = Jost({
+  variable: "--font-jost",
   subsets: ["latin"],
 });
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
+const cormorant = Cormorant_Garamond({
+  variable: "--font-cormorant",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
-const siteUrl = "https://thetandoorcompany.nl";
+const siteUrl = "https://shahrestaurant.nl";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "The Tandoor Company Amsterdam | Authentic Indian Restaurant & Tandoori Grill",
-    template: "%s | The Tandoor Company Amsterdam",
+    default: "Shah Restaurant Amsterdam | Fine Indian Dining & Tandoori Grill",
+    template: "%s | Shah Restaurant Amsterdam",
   },
   description:
-    "The Tandoor Company Amsterdam-Noord - authentic Indian cuisine with tandoori grills, rich curries, biryani and fresh naan. Reserve your table online or order for delivery and pickup. Klaprozenweg 36a, Amsterdam.",
+    "Shah Restaurant Amsterdam-Noord - refined Indian fine dining with tandoori grills, rich curries, biryani and fresh naan. Reserve your table online or order for delivery and pickup. Klaprozenweg 36a, Amsterdam.",
   keywords: [
-    "the tandoor company",
-    "thetandoorcompany",
+    "shah restaurant",
+    "shahrestaurant",
     "Indian restaurant Amsterdam",
     "Indiaas restaurant Amsterdam",
+    "fine dining Amsterdam",
     "tandoori Amsterdam",
     "curry Amsterdam",
     "biryani Amsterdam",
@@ -40,7 +42,7 @@ export const metadata: Metadata = {
     "restaurant reserveren Amsterdam",
     "Klaprozenweg",
   ],
-  authors: [{ name: "The Tandoor Company" }],
+  authors: [{ name: "Shah Restaurant" }],
   alternates: {
     canonical: siteUrl,
     languages: { en: siteUrl, nl: siteUrl },
@@ -50,46 +52,45 @@ export const metadata: Metadata = {
     locale: "en_NL",
     alternateLocale: "nl_NL",
     url: siteUrl,
-    siteName: "The Tandoor Company Amsterdam",
-    title: "The Tandoor Company Amsterdam | Authentic Indian Cuisine & Tandoori Grill",
+    siteName: "Shah Restaurant Amsterdam",
+    title: "Shah Restaurant Amsterdam | Fine Indian Dining & Tandoori Grill",
     description:
-      "Authentic Indian flavours from a traditional tandoor - curries, grills, biryani and naan. Reserve your table or order online at The Tandoor Company, Amsterdam-Noord.",
-    images: [{ url: "/tandoorcompany.png", width: 512, height: 512, alt: "The Tandoor Company Amsterdam" }],
+      "Refined Indian dining - curries, tandoori grills, biryani and naan, served with understated luxury. Reserve your table or order online at Shah Restaurant, Amsterdam-Noord.",
+    images: [{ url: "/shahrestaurant.png", width: 512, height: 512, alt: "Shah Restaurant Amsterdam" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "The Tandoor Company Amsterdam | Authentic Indian Restaurant",
+    title: "Shah Restaurant Amsterdam | Fine Indian Dining",
     description: "Tandoori grills, rich curries and fresh naan in Amsterdam-Noord. Reserve your table or order online.",
-    images: ["/tandoorcompany.png"],
+    images: ["/shahrestaurant.png"],
   },
   robots: {
     index: true,
     follow: true,
     googleBot: { index: true, follow: true, "max-image-preview": "large" },
   },
-  icons: { icon: "/tandoorcompany.png" },
+  icons: { icon: "/shahrestaurant.png" },
 };
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
-  themeColor: "#059669",
+  themeColor: "#c49a3a",
 };
 
-// Warm ember dark is the house default; users can opt into light mode.
-const themeScript = `(function(){try{var t=JSON.parse(localStorage.getItem('tm.theme'));if(t!=='light'){document.documentElement.classList.add('dark');}}catch(e){document.documentElement.classList.add('dark');}})();`;
+const themeScript = `(function(){try{var t=JSON.parse(localStorage.getItem('tm.theme'));document.documentElement.classList.toggle('dark',t==='dark');}catch(e){}})();`;
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Restaurant",
-  name: "The Tandoor Company",
-  image: `${siteUrl}/tandoorcompany.png`,
+  name: "Shah Restaurant",
+  image: `${siteUrl}/shahrestaurant.png`,
   "@id": siteUrl,
   url: siteUrl,
   telephone: "+31 20 341 2995",
-  email: "info@thetandoorcompany.nl",
-  priceRange: "€€",
+  email: "info@shahrestaurant.nl",
+  priceRange: "€€€",
   servesCuisine: ["Indian", "Tandoori", "Curry", "Biryani"],
   acceptsReservations: "True",
   address: {
@@ -110,7 +111,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="nl" suppressHydrationWarning data-scroll-behavior="smooth" className={`${manrope.variable} ${playfair.variable} h-full antialiased`}>
+    <html lang="nl" suppressHydrationWarning data-scroll-behavior="smooth" className={`${jost.variable} ${cormorant.variable} h-full antialiased`}>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
@@ -119,7 +120,7 @@ export default function RootLayout({
         <Providers>
           <Header />
           <Atmosphere />
-          <main id="main-content" className="flex-1">{children}</main>
+          <main id="main-content" tabIndex={-1} className="flex-1">{children}</main>
           <Footer />
           <CookieConsent />
         </Providers>

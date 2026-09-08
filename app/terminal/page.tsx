@@ -56,7 +56,7 @@ function buildReceipt(order: Order, lang: string): string {
   r += ESC + "@"; // init
   r += ESC + "a" + "\x01"; // center
   r += ESC + "!" + "\x38"; // double width+height, bold
-  r += "THE TANDOOR CO.\n";
+  r += "SHAH RESTAURANT\n";
   r += ESC + "!" + "\x00"; // normal
   r += "Klaprozenweg 36a, Amsterdam\n";
   r += "--------------------------------\n";
@@ -101,7 +101,7 @@ function buildReceipt(order: Order, lang: string): string {
   }
   r += "--------------------------------\n";
   r += ESC + "a" + "\x01";
-  r += "thetandoorcompany.nl\n\n\n";
+  r += "shahrestaurant.nl\n\n\n";
   r += GS + "V" + "\x42" + "\x00"; // partial cut
   return r;
 }
@@ -126,9 +126,9 @@ function printViaRawBT(payload: string): void {
 /* the print dialog and print silently.                                */
 /* ------------------------------------------------------------------ */
 
-const SHOP_NAME = "THE TANDOOR CO.";
+const SHOP_NAME = "SHAH RESTAURANT";
 const SHOP_ADDRESS = "Klaprozenweg 36a, Amsterdam";
-const SHOP_SITE = "thetandoorcompany.nl";
+const SHOP_SITE = "shahrestaurant.nl";
 
 /** Escape text for safe HTML interpolation. */
 function esc(s: string): string {

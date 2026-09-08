@@ -670,28 +670,28 @@ const en: Dictionary = {
     saveChanges: "Save changes",
   },
   home: {
-    badge: "Authentic Indian · Amsterdam-Noord",
-    heroTitle: "Where the fire of the tandoor meets",
-    heroTitleAccent: "the soul of India",
+    badge: "Fine Indian Dining · Amsterdam-Noord",
+    heroTitle: "Where royal Indian flavour meets",
+    heroTitleAccent: "timeless elegance",
     heroSubtitle:
-      "Discover the rich flavours of India - freshly prepared curries, tandoori grills, biryani and naan, straight from our traditional clay oven. For dining in, pickup and delivery in Amsterdam-Noord.",
+      "Rich curries, tandoori grills, biryani and fresh naan - prepared with devotion and served with understated luxury. For dining in, pickup and delivery in Amsterdam-Noord.",
     heroCtaReserve: "Reserve a table",
     heroCtaMenu: "Explore the menu",
     statYears: "Years of experience",
     statDishes: "Famous dishes",
     statGuests: "Happy guests",
     statRating: "Average rating",
-    aboutOverline: "About The Tandoor Company",
+    aboutOverline: "About Shah Restaurant",
     aboutTitle: "Passion for flavour and tradition",
     aboutText:
-      "At The Tandoor Company we bring the authentic flavours of India to your table. Our chefs prepare fresh curries, tandoori grills and traditional dishes every day, with high-quality ingredients, aromatic spices and time-honoured recipes. Locally sourced produce, vegetarian and diet-friendly options, and exquisite combinations - every plate is made with care and love.",
+      "At Shah Restaurant we bring the refined flavours of India to your table. Our chefs prepare fresh curries, tandoori grills and traditional dishes every day, with high-quality ingredients, aromatic spices and time-honoured recipes. Locally sourced produce, vegetarian and diet-friendly options, and exquisite combinations - every plate is made with care and love.",
     aboutCta: "Reserve your evening",
     storyOverline: "A family story",
     storyTitle: "Three generations of flavour, one family dream",
     storyText:
       "Behind our kitchen lies a remarkable story. Our father has more than 32 years of hospitality experience in the Netherlands, and before that spent 8 years in the kitchens of five-star hotels in India. Throughout his career he opened more than 28 restaurants for others and trained over 40 chefs in the art of Indian cooking - his dishes even reached the kitchens of Bollywood stars such as Amitabh Bachchan.",
     storyText2:
-      "Today, together with his sons, it is finally time for something of our own: The Tandoor Company - a restaurant where decades of experience, family tradition and love for authentic Indian flavours come together.",
+      "Today, together with his sons, it is finally time for something of our own: Shah Restaurant - a restaurant where decades of experience, family tradition and love for refined Indian flavours come together.",
     storyQuote: "Good food begins with passion, tradition and attention to detail.",
     storyPoint1: "32+ years of hospitality craftsmanship",
     storyPoint2: "28+ restaurants opened, 40+ chefs trained",
@@ -709,9 +709,9 @@ const en: Dictionary = {
     popularSubtitle:
       "From tandoori specialties to creamy curries - a taste of the dishes our guests return for, freshly prepared every day.",
     ambianceOverline: "Atmosphere & experience",
-    ambianceTitle: "A look inside The Tandoor Company",
+    ambianceTitle: "A look inside Shah Restaurant",
     ambianceText:
-      "Discover the warm ambiance, the scent of fresh spices and the glow of the tandoor that define our restaurant. Flavour, warmth and experience - valued by our guests time and again.",
+      "Discover the serene ambiance, the scent of fresh spices and the golden glow that define our restaurant. Flavour, warmth and experience - valued by our guests time and again.",
     ambianceCta: "View the full gallery",
     hoursTitle: "Opening hours",
     reserveOverline: "Reservations",
@@ -722,7 +722,7 @@ const en: Dictionary = {
     makeOrder: "Order now",
     testimonialsOverline: "Guest experiences",
     testimonialsTitle: "What our guests say",
-    testimonialsSubtitle: "Honest impressions of an evening at The Tandoor Company - from the tandoori grills and curries to the warmth of our service.",
+    testimonialsSubtitle: "Honest impressions of an evening at Shah Restaurant - from the tandoori grills and curries to the warmth of our service.",
     ctaTitle: "Join us for a delicious meal",
     ctaText:
       "Whether you crave a smoky tandoori grill, a rich curry or a festive dinner with family and friends - our kitchen is fired up and ready for you.",
@@ -1208,7 +1208,7 @@ const en: Dictionary = {
   },
   footer: {
     tagline:
-      "Authentic Indian cuisine with classic tandoori grills, rich curries and fresh flavours - prepared with passion by our family, for yours.",
+      "Refined Indian cuisine with classic tandoori grills, rich curries and fresh flavours - prepared with passion by our family, for yours.",
     contact: "Contact",
     followUs: "Follow us",
     rights: "All rights reserved.",
@@ -1306,28 +1306,28 @@ const nl: Dictionary = {
     saveChanges: "Wijzigingen opslaan",
   },
   home: {
-    badge: "Authentiek Indiaas · Amsterdam-Noord",
-    heroTitle: "Waar het vuur van de tandoor",
-    heroTitleAccent: "de ziel van India ontmoet",
+    badge: "Fine Indian Dining · Amsterdam-Noord",
+    heroTitle: "Waar koninklijke Indiase smaak",
+    heroTitleAccent: "tijdloze elegantie ontmoet",
     heroSubtitle:
-      "Ontdek de rijke smaken van India - vers bereide curry's, tandoori grills, biryani en naan, rechtstreeks uit onze traditionele kleioven. Voor dine-in, afhalen en bezorgen in Amsterdam-Noord.",
+      "Rijke curry's, tandoori grills, biryani en verse naan - met toewijding bereid en met ingetogen luxe geserveerd. Voor dine-in, afhalen en bezorgen in Amsterdam-Noord.",
     heroCtaReserve: "Reserveer een tafel",
     heroCtaMenu: "Ontdek het menu",
     statYears: "Jaar ervaring",
     statDishes: "Beroemde gerechten",
     statGuests: "Tevreden gasten",
     statRating: "Gemiddelde beoordeling",
-    aboutOverline: "Over The Tandoor Company",
+    aboutOverline: "Over Shah Restaurant",
     aboutTitle: "Passie voor smaak en traditie",
     aboutText:
-      "Bij The Tandoor Company brengen we de authentieke smaken van India naar uw tafel. Onze chefs bereiden elke dag verse curry's, tandoori grills en traditionele gerechten met hoogwaardige ingrediënten, aromatische kruiden en beproefde recepten. Lokaal geproduceerde ingrediënten, vegetarische en dieetvriendelijke opties en exquise combinaties - elk gerecht wordt met zorg en liefde gemaakt.",
+      "Bij Shah Restaurant brengen we de verfijnde smaken van India naar uw tafel. Onze chefs bereiden elke dag verse curry's, tandoori grills en traditionele gerechten met hoogwaardige ingrediënten, aromatische kruiden en beproefde recepten. Lokaal geproduceerde ingrediënten, vegetarische en dieetvriendelijke opties en exquise combinaties - elk gerecht wordt met zorg en liefde gemaakt.",
     aboutCta: "Reserveer uw avond",
     storyOverline: "Een familieverhaal",
     storyTitle: "Drie generaties smaak, één familiedroom",
     storyText:
       "Achter onze keuken schuilt een bijzonder verhaal. Onze vader heeft meer dan 32 jaar ervaring in de horeca in Nederland en werkte daarvoor 8 jaar in de keukens van vijfsterrenhotels in India. Gedurende zijn carrière heeft hij meer dan 28 restaurants voor anderen opgezet en meer dan 40 koks opgeleid in de kunst van de Indiase keuken - zijn gerechten brachten hem zelfs in de keukens van Bollywoodsterren zoals Amitabh Bachchan.",
     storyText2:
-      "Vandaag zetten wij zijn passie voort. Samen met zijn zonen is het eindelijk tijd voor iets van onszelf: The Tandoor Company - een restaurant waar jarenlange ervaring, familietraditie en liefde voor authentieke Indiase smaken samenkomen.",
+      "Vandaag zetten wij zijn passie voort. Samen met zijn zonen is het eindelijk tijd voor iets van onszelf: Shah Restaurant - een restaurant waar jarenlange ervaring, familietraditie en liefde voor verfijnde Indiase smaken samenkomen.",
     storyQuote: "Goed eten begint met passie, traditie en aandacht voor detail.",
     storyPoint1: "32+ jaar horeca-vakmanschap",
     storyPoint2: "28+ restaurants opgezet, 40+ koks opgeleid",
@@ -1345,9 +1345,9 @@ const nl: Dictionary = {
     popularSubtitle:
       "Van tandoori specialiteiten tot romige curry's - een voorproefje van de gerechten waarvoor onze gasten terugkomen, elke dag vers bereid.",
     ambianceOverline: "Sfeer & beleving",
-    ambianceTitle: "Een kijkje binnen The Tandoor Company",
+    ambianceTitle: "Een kijkje binnen Shah Restaurant",
     ambianceText:
-      "Ontdek de warme ambiance, de geur van verse kruiden en de gloed van de tandoor die ons restaurant vormen. Smaak, warmte en beleving - keer op keer gewaardeerd door onze gasten.",
+      "Ontdek de serene ambiance, de geur van verse kruiden en de gouden gloed die ons restaurant vormen. Smaak, warmte en beleving - keer op keer gewaardeerd door onze gasten.",
     ambianceCta: "Bekijk de volledige galerij",
     hoursTitle: "Openingstijden",
     reserveOverline: "Reserveringen",
@@ -1358,7 +1358,7 @@ const nl: Dictionary = {
     makeOrder: "Bestel nu",
     testimonialsOverline: "Gastervaringen",
     testimonialsTitle: "Wat onze gasten zeggen",
-    testimonialsSubtitle: "Eerlijke ervaringen van een avond bij The Tandoor Company - van de tandoori grills en curry's tot de warmte van onze service.",
+    testimonialsSubtitle: "Eerlijke ervaringen van een avond bij Shah Restaurant - van de tandoori grills en curry's tot de warmte van onze service.",
     ctaTitle: "Kom bij ons voor een heerlijke maaltijd",
     ctaText:
       "Of u nu zin heeft in een rokerige tandoori grill, een rijke curry of een feestelijk diner met familie en vrienden - onze keuken staat voor u klaar.",
@@ -1844,7 +1844,7 @@ const nl: Dictionary = {
   },
   footer: {
     tagline:
-      "Authentieke Indiase keuken met klassieke tandoori-grills, rijke curry's en verse smaken - met passie bereid door onze familie, voor de uwe.",
+      "Verfijnde Indiase keuken met klassieke tandoori-grills, rijke curry's en verse smaken - met passie bereid door onze familie, voor de uwe.",
     contact: "Contact",
     followUs: "Volg ons",
     rights: "Alle rechten voorbehouden.",

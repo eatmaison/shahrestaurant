@@ -231,7 +231,7 @@ function readThemePreference(fallback: Theme): Theme {
 export function Providers({ children }: { children: ReactNode }) {
   const [hydrated, setHydrated] = useState(false);
 
-  const [theme, setTheme] = useState<Theme>("dark");
+  const [theme, setTheme] = useState<Theme>("light");
   const [lang, setLangState] = useState<Lang>("nl");
 
   const [products, setProducts] = useState<Product[]>([]);

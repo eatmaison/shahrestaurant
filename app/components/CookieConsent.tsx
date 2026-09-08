@@ -16,11 +16,13 @@ export function CookieConsent() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    try {
-      if (!localStorage.getItem(STORAGE_KEY)) setVisible(true);
-    } catch {
-      /* storage unavailable - stay hidden */
-    }
+    queueMicrotask(() => {
+      try {
+        if (!localStorage.getItem(STORAGE_KEY)) setVisible(true);
+      } catch {
+        setVisible(true);
+      }
+    });
   }, []);
 
   const choose = (value: "accepted" | "necessary") => {
@@ -35,7 +37,7 @@ export function CookieConsent() {
   if (!visible) return null;
 
   return (
-    <div className="fixed inset-x-0 bottom-0 z-50 p-4 sm:p-6">
+    <div data-cookie-notice role="region" aria-label="Cookies" className="fixed inset-x-0 bottom-0 z-50 p-4 sm:p-6">
       <div className="card-lux mx-auto flex max-w-3xl flex-col gap-4 rounded-2xl p-5 shadow-2xl sm:flex-row sm:items-center">
         <p className="flex-1 text-sm leading-6 text-slate-600 dark:text-slate-300">
           {t.cookies.message}{" "}

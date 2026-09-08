@@ -3,29 +3,29 @@ import type { Metadata } from "next";
 const url = "/events/about";
 
 export const metadata: Metadata = {
-  title: "About The Tandoor Company Amsterdam - A Family Story of Indian Cuisine",
+  title: "About Shah Restaurant Amsterdam - A Family Story of Indian Cuisine",
   description:
-    "Meet the family behind The Tandoor Company Amsterdam: 32+ years of hospitality experience, five-star hotel kitchens in India and a passion for authentic tandoori cooking in Amsterdam-Noord.",
+    "Meet the family behind Shah Restaurant Amsterdam: 32+ years of hospitality experience, five-star hotel kitchens in India and a passion for authentic tandoori cooking in Amsterdam-Noord.",
   keywords: [
-    "about The Tandoor Company",
+    "about Shah Restaurant",
     "Indian restaurant Amsterdam Noord",
     "tandoori Klaprozenweg",
     "Indian chef Amsterdam",
     "restaurant story Amsterdam",
-    "The Tandoor Company family",
+    "Shah Restaurant family",
     "authentic Indian restaurant Amsterdam",
   ],
   alternates: { canonical: url },
   openGraph: {
-    title: "About The Tandoor Company Amsterdam",
+    title: "About Shah Restaurant Amsterdam",
     description:
-      "The family story, the kitchen and the passion behind authentic Indian cuisine at The Tandoor Company, Amsterdam-Noord.",
+      "The family story, the kitchen and the passion behind refined Indian cuisine at Shah Restaurant, Amsterdam-Noord.",
     url,
     type: "article",
   },
   twitter: {
     card: "summary_large_image",
-    title: "About The Tandoor Company Amsterdam",
+    title: "About Shah Restaurant Amsterdam",
     description: "The family story behind our authentic Indian restaurant in Amsterdam-Noord.",
   },
 };

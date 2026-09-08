@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 const url = "/events/celebrations";
 
 export const metadata: Metadata = {
-  title: "Wedding & Celebration Catering Amsterdam - The Tandoor Company",
+  title: "Wedding & Celebration Catering Amsterdam - Shah Restaurant",
   description:
-    "Wedding receptions, engagement dinners, anniversaries, gala evenings and rehearsal dinners at The Tandoor Company Amsterdam. Authentic Indian feasts, warm and unforgettable - up to 100 guests.",
+    "Wedding receptions, engagement dinners, anniversaries, gala evenings and rehearsal dinners at Shah Restaurant Amsterdam. Refined Indian feasts, warm and unforgettable - up to 100 guests.",
   keywords: [
     "wedding catering Amsterdam",
     "Indian wedding catering Amsterdam",
@@ -21,13 +21,13 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: url },
   openGraph: {
-    title: "Wedding & Celebration Catering Amsterdam | The Tandoor Company",
+    title: "Wedding & Celebration Catering Amsterdam | Shah Restaurant",
     description:
-      "Wedding receptions and gala evenings at The Tandoor Company Amsterdam - authentic, warm, unforgettable.",
+      "Wedding receptions and gala evenings at Shah Restaurant Amsterdam - refined, warm, unforgettable.",
     url,
     type: "article",
   },
-  twitter: { card: "summary_large_image", title: "Wedding Catering Amsterdam - The Tandoor Company" },
+  twitter: { card: "summary_large_image", title: "Wedding Catering Amsterdam - Shah Restaurant" },
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {

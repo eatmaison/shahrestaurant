@@ -12,15 +12,15 @@ export default function AboutPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Restaurant",
-    "@id": "https://thetandoorcompany.nl/#restaurant",
-    name: "The Tandoor Company",
+    "@id": "https://shahrestaurant.nl/#restaurant",
+    name: "Shah Restaurant",
     description: nl
-      ? "The Tandoor Company is een authentiek Indiaas familierestaurant in Amsterdam-Noord met tandoori grills, rijke curry's en verse naan."
-      : "The Tandoor Company is an authentic family-run Indian restaurant in Amsterdam-Noord serving tandoori grills, rich curries and fresh naan.",
-    url: "https://thetandoorcompany.nl/events/about",
-    image: "https://thetandoorcompany.nl/tandoorcompany.png",
+      ? "Shah Restaurant is een verfijnd Indiaas familierestaurant in Amsterdam-Noord met tandoori grills, rijke curry's en verse naan."
+      : "Shah Restaurant is a refined family-run Indian restaurant in Amsterdam-Noord serving tandoori grills, rich curries and fresh naan.",
+    url: "https://shahrestaurant.nl/events/about",
+    image: "https://shahrestaurant.nl/shahrestaurant.png",
     telephone: "+31 20 341 2995",
-    priceRange: "€€",
+    priceRange: "€€€",
     servesCuisine: ["Indian", "Tandoori", "Curry", "Biryani"],
     address: {
       "@type": "PostalAddress",
@@ -29,7 +29,7 @@ export default function AboutPage() {
       addressLocality: "Amsterdam",
       addressCountry: "NL",
     },
-    hasMenu: "https://thetandoorcompany.nl/order",
+    hasMenu: "https://shahrestaurant.nl/order",
     acceptsReservations: "True",
     openingHours: "Tu-Su 17:00-22:30",
   };
@@ -78,7 +78,7 @@ export default function AboutPage() {
             <span className="h-px w-10 bg-emerald-500/60" />
           </span>
           <h1 className="font-display mt-5 text-4xl font-semibold tracking-tight text-slate-900 dark:text-white sm:text-5xl">
-            {nl ? "Over The Tandoor Company Amsterdam" : "About The Tandoor Company Amsterdam"}
+            {nl ? "Over Shah Restaurant Amsterdam" : "About Shah Restaurant Amsterdam"}
           </h1>
           <p className="mt-5 text-base leading-8 text-slate-600 dark:text-slate-300">
             {nl
@@ -91,7 +91,7 @@ export default function AboutPage() {
       {/* Story */}
       <section className="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
         <article className="prose prose-slate mx-auto max-w-none dark:prose-invert">
-          <div className="rounded-[2rem] border border-emerald-500/20 bg-white p-8 shadow-2xl shadow-emerald-900/10 dark:border-emerald-400/15 dark:bg-[#170d04] sm:p-10">
+          <div className="rounded-[2rem] border border-emerald-500/20 bg-white p-8 shadow-2xl shadow-emerald-900/10 dark:border-emerald-400/15 dark:bg-[#16140f] sm:p-10">
             <h2 className="font-display text-2xl font-semibold text-slate-900 dark:text-white sm:text-3xl">
               {nl ? "Een familieverhaal van passie voor smaak" : "A family story of passion for flavour"}
             </h2>
@@ -102,8 +102,8 @@ export default function AboutPage() {
             </p>
             <p className="mt-4 text-sm leading-8 text-slate-600 dark:text-slate-300 sm:text-base">
               {nl
-                ? "Zijn gerechten brachten hem zelfs in de keukens van Bollywoodsterren zoals Amitabh Bachchan. Vandaag zetten wij zijn passie voort - samen met zijn zonen is het eindelijk tijd voor iets van onszelf: The Tandoor Company."
-                : "His dishes even carried him into the kitchens of Bollywood stars such as Amitabh Bachchan. Today we continue his passion - together with his sons, it is finally time for something of our own: The Tandoor Company."}
+                ? "Zijn gerechten brachten hem zelfs in de keukens van Bollywoodsterren zoals Amitabh Bachchan. Vandaag zetten wij zijn passie voort - samen met zijn zonen is het eindelijk tijd voor iets van onszelf: Shah Restaurant."
+                : "His dishes even carried him into the kitchens of Bollywood stars such as Amitabh Bachchan. Today we continue his passion - together with his sons, it is finally time for something of our own: Shah Restaurant."}
             </p>
             <p className="mt-4 text-sm leading-8 text-slate-600 dark:text-slate-300 sm:text-base">
               {nl
@@ -136,7 +136,7 @@ export default function AboutPage() {
 
       {/* Quote */}
       <section className="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
-        <figure className="relative overflow-hidden rounded-[2rem] border border-emerald-500/20 bg-gradient-to-br from-emerald-950 via-[#241204] to-[#170d04] p-8 text-center text-white shadow-2xl shadow-emerald-900/30 sm:p-12">
+        <figure className="relative overflow-hidden rounded-[2rem] border border-emerald-500/20 bg-gradient-to-br from-emerald-950 via-[#1a160e] to-[#12100c] p-8 text-center text-white shadow-2xl shadow-emerald-900/30 sm:p-12">
           <div className="spice-dots pointer-events-none absolute inset-0 opacity-25" />
           <span className="mx-auto flex justify-center text-amber-300">
             {[1, 2, 3, 4, 5].map((s) => (
@@ -149,7 +149,7 @@ export default function AboutPage() {
               : "“Good food begins with passion, tradition and attention to detail. Every guest is an invited friend at our family table.”"}
           </blockquote>
           <figcaption className="mt-5 text-xs uppercase tracking-[0.3em] text-emerald-300/90">
-            - The Tandoor Company
+            - Shah Restaurant
           </figcaption>
         </figure>
       </section>

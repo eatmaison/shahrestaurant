@@ -74,6 +74,8 @@ export interface BrandInfo {
 
 export const BRANDS: BrandInfo[] = [
   { id: "eattogo", name: "Eat to go", logo: "/eattogo.png", categories: CATEGORY_ORDER },
+  // Order-system brand stays "The Tandoor Company" for now (shared DB); a
+  // separate "Shah Restaurant" brand will be added later by the owner.
   { id: "tandoor", name: "The Tandoor Company", logo: "/tandoorcompany.png", categories: TANDOOR_CATEGORY_ORDER },
 ];
 

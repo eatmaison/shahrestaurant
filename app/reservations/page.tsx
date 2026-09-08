@@ -21,6 +21,7 @@ import {
 import { useLang, useStore } from "../providers";
 import type { Reservation, ReservationStatus } from "../lib/types";
 import { OPEN_FROM_MIN, OPEN_UNTIL_MIN } from "../lib/openingHours";
+import styles from "./reservations.module.css";
 
 /** Selectable arrival times: every 30 min within opening hours (last seating 30 min before close). */
 const TIME_SLOTS: string[] = (() => {
@@ -152,9 +153,9 @@ export default function ReservationsPage() {
     new Date(`${iso}T00:00:00`).toLocaleDateString(dateLocale, { weekday: "long", day: "numeric", month: "long", year: "numeric" });
 
   return (
-    <div className="page-stage overflow-hidden">
+    <div className={`${styles.page} page-stage overflow-hidden`}>
       {/* Heading - candlelit evening hero, intentionally darker & moodier than the homepage */}
-      <section className="reservation-hero-strip relative overflow-hidden bg-gradient-to-b from-[#160b03] via-[#201005] to-[#2a1608]">
+      <section className={`${styles.hero} reservation-hero-strip relative overflow-hidden`}>
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(70%_90%_at_50%_110%,rgba(217,126,38,0.30),transparent_70%)]" />
         <div className="pointer-events-none absolute inset-0 spice-dots opacity-20 [mask-image:radial-gradient(70%_70%_at_50%_30%,#000,transparent)]" />
         {/* Rising embers drifting up from the tandoor */}
@@ -224,7 +225,7 @@ export default function ReservationsPage() {
                 </button>
               </div>
             ) : (
-              <form onSubmit={submit} noValidate className="form-lux">
+              <form onSubmit={submit} className="form-lux" aria-busy={submitting}>
                 <div className="ornament">
                   <h2 className="font-display text-xl font-semibold text-slate-900 dark:text-white">{t.reservations.formTitle}</h2>
                 </div>
@@ -361,6 +362,7 @@ export default function ReservationsPage() {
                         key={o || "none"}
                         type="button"
                         onClick={() => setOccasion(o)}
+                        aria-pressed={occasion === o}
                         className={`rounded-full border px-4 py-2 text-xs font-semibold transition duration-200 hover:-translate-y-0.5 ${
                           occasion === o
                             ? "border-emerald-500 bg-emerald-500/15 text-emerald-700 shadow-md shadow-emerald-600/10 dark:text-emerald-300"
@@ -389,7 +391,7 @@ export default function ReservationsPage() {
                 </label>
 
                 {error && (
-                  <p className="mt-4 rounded-xl border border-red-400/40 bg-red-400/10 px-4 py-3 text-sm font-semibold text-red-600 dark:text-red-400">
+                  <p role="alert" className="mt-4 rounded-xl border border-red-400/40 bg-red-400/10 px-4 py-3 text-sm font-semibold text-red-600 dark:text-red-400">
                     {error}
                   </p>
                 )}
@@ -410,7 +412,7 @@ export default function ReservationsPage() {
         {/* Right column: info + my reservations */}
         <div className="animate-fade-up delay-200 min-w-0 space-y-6">
           {/* Good to know */}
-          <div className="premium-panel ember-border relative overflow-hidden rounded-[2rem] p-7 text-white sm:p-8">
+          <div className={`${styles.info} premium-panel ember-border relative overflow-hidden rounded-[2rem] p-7 sm:p-8`}>
             <div className="spice-dots pointer-events-none absolute inset-0 opacity-25" />
             <div className="pointer-events-none absolute -right-12 -top-12 h-40 w-40 animate-float rounded-full bg-emerald-500/15 blur-3xl" />
             <span className="ember" style={{ left: "16%", animationDelay: "0.8s" }} aria-hidden />
@@ -600,23 +602,23 @@ export default function ReservationsPage() {
               <p className="mt-4 max-w-lg text-sm leading-7 text-stone-300">{t.reservations.locationSubtitle}</p>
 
               <div className="reservation-location__route-grid mt-6">
-                <span>Car</span>
-                <span>Bike</span>
-                <span>Public transport</span>
+                <span>{lang === "nl" ? "Auto" : "Car"}</span>
+                <span>{lang === "nl" ? "Fiets" : "Bike"}</span>
+                <span>{lang === "nl" ? "Openbaar vervoer" : "Public transport"}</span>
               </div>
 
               <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
                 <a href="tel:+31203412995" className="reservation-contact-card group">
                   <span className="reservation-contact-card__icon"><FaPhone /></span>
                   <span>
-                    <span className="block text-[0.68rem] font-bold uppercase tracking-[0.22em] text-stone-400">Call us</span>
+                    <span className="block text-[0.68rem] font-bold uppercase tracking-[0.22em] text-stone-400">{lang === "nl" ? "Bel ons" : "Call us"}</span>
                     <span className="mt-1 block font-semibold tracking-wide transition group-hover:text-[#f7c878]">+31 20 341 2995</span>
                   </span>
                 </a>
                 <div className="reservation-contact-card">
                   <span className="reservation-contact-card__icon"><FaClock /></span>
                   <span>
-                    <span className="block text-[0.68rem] font-bold uppercase tracking-[0.22em] text-stone-400">Opening hours</span>
+                    <span className="block text-[0.68rem] font-bold uppercase tracking-[0.22em] text-stone-400">{t.hours.title}</span>
                     <span className="mt-1 block leading-6 text-stone-300">{t.reservations.hoursNote}</span>
                   </span>
                 </div>
@@ -624,7 +626,7 @@ export default function ReservationsPage() {
 
               <div className="reservation-arrival-note mt-6">
                 <span className="reservation-arrival-note__dot" aria-hidden />
-                <span>Amsterdam-Noord arrival point, tucked close to the water and easy to reach before dinner.</span>
+                <span>{lang === "nl" ? "U vindt ons aan de Klaprozenweg 36a in Amsterdam-Noord." : "Find us at Klaprozenweg 36a in Amsterdam-Noord."}</span>
               </div>
             </div>
 
@@ -645,7 +647,7 @@ export default function ReservationsPage() {
                   src="https://www.google.com/maps?q=Klaprozenweg%2036a%2C%201032%20KL%20Amsterdam&output=embed"
                   width="100%"
                   height="520"
-                  style={{ border: 0, filter: "sepia(0.58) saturate(0.24) contrast(1.14) brightness(0.92)" }}
+                  style={{ border: 0 }}
                   allowFullScreen={true}
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
@@ -654,14 +656,14 @@ export default function ReservationsPage() {
                 />
                 <div className="reservation-map-pin-card" aria-hidden>
                   <span><FaLocationDot /></span>
-                  <strong>The Tandoor Company</strong>
+                  <strong>Shah Restaurant</strong>
                   <small>Klaprozenweg 36a</small>
                 </div>
               </div>
               <div className="reservation-map-caption">
                 <span>Amsterdam-Noord</span>
                 <span>17:00 - 22:30</span>
-                <span>Tue - Sun</span>
+                <span>{t.hours.tueSun}</span>
               </div>
             </div>
           </div>

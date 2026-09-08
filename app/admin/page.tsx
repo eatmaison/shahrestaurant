@@ -755,7 +755,7 @@ export default function AdminPage() {
       {
         eattogo: "Eat to go",
         themaison: "The Maison",
-        tandoor: "The Tandoor Company",
+        tandoor: "Shah Restaurant",
       }[site] ?? site
     );
   };

@@ -14,8 +14,8 @@ export default function BirthdaysPage() {
     serviceType: nl ? "Verjaardagscatering en privéfeesten" : "Birthday & private party catering",
     provider: {
       "@type": "Restaurant",
-      name: "The Tandoor Company",
-      "@id": "https://thetandoorcompany.nl/#restaurant",
+      name: "Shah Restaurant",
+      "@id": "https://shahrestaurant.nl/#restaurant",
       address: {
         "@type": "PostalAddress",
         streetAddress: "Klaprozenweg 36a",
@@ -27,10 +27,10 @@ export default function BirthdaysPage() {
     },
     areaServed: { "@type": "City", name: "Amsterdam" },
     audience: { "@type": "PeopleAudience", audienceType: "Private groups up to 100 guests" },
-    url: "https://thetandoorcompany.nl/events/birthdays",
+    url: "https://shahrestaurant.nl/events/birthdays",
     description: nl
-      ? "Verjaardagen, jubilea en privéfeesten bij The Tandoor Company Amsterdam - gepersonaliseerd Indiaas menu, warme sfeer en toegewijde service."
-      : "Birthdays, anniversaries and private parties at The Tandoor Company Amsterdam - personalised Indian menus, warm ambiance and dedicated service.",
+      ? "Verjaardagen, jubilea en privéfeesten bij Shah Restaurant Amsterdam - gepersonaliseerd Indiaas menu, warme sfeer en toegewijde service."
+      : "Birthdays, anniversaries and private parties at Shah Restaurant Amsterdam - personalised Indian menus, warm ambiance and dedicated service.",
     offers: {
       "@type": "AggregateOffer",
       priceCurrency: "EUR",
@@ -157,8 +157,8 @@ export default function BirthdaysPage() {
           </span>
           <h1 className="font-display mt-5 text-4xl font-semibold tracking-tight text-slate-900 dark:text-white sm:text-5xl">
             {nl
-              ? "Vier uw verjaardag bij The Tandoor Company"
-              : "Celebrate your birthday at The Tandoor Company"}
+              ? "Vier uw verjaardag bij Shah Restaurant"
+              : "Celebrate your birthday at Shah Restaurant"}
           </h1>
           <p className="mt-5 text-base leading-8 text-slate-600 dark:text-slate-300">
             {nl
@@ -209,7 +209,7 @@ export default function BirthdaysPage() {
       <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <span className="lux-overline text-emerald-600 dark:text-emerald-400">
-            {nl ? "Waarom The Tandoor Company" : "Why The Tandoor Company"}
+            {nl ? "Waarom Shah Restaurant" : "Why Shah Restaurant"}
           </span>
           <h2 className="font-display mt-3 text-2xl font-semibold text-slate-900 dark:text-white sm:text-3xl">
             {nl ? "Uw feest, tot in de kleinste details" : "Your celebration, down to the smallest detail"}

@@ -11,7 +11,7 @@ export default function CompanyLunchesPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "FoodEstablishment",
-    name: "The Tandoor Company - Company Lunches Amsterdam",
+    name: "Shah Restaurant - Company Lunches Amsterdam",
     description: nl
       ? "Vers bezorgde bedrijfslunches in Amsterdam - dagelijkse of wekelijkse levering, maandelijkse facturatie."
       : "Fresh delivered company lunches across Amsterdam - daily or weekly delivery, monthly invoicing.",
@@ -25,8 +25,8 @@ export default function CompanyLunchesPage() {
     },
     telephone: "+31 20 341 2995",
     areaServed: { "@type": "City", name: "Amsterdam" },
-    url: "https://thetandoorcompany.nl/events/company-lunches",
-    priceRange: "€€",
+    url: "https://shahrestaurant.nl/events/company-lunches",
+    priceRange: "€€€",
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "Company Lunch Formats",

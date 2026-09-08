@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   FaArrowRightFromBracket,
   FaAward,
@@ -36,6 +36,17 @@ export default function AccountPage() {
   const { currentUser, orders, register, login, logout, buyVip, vipRequests, requestVip, reviews, addReview, hydrated } = useStore();
 
   const [mode, setMode] = useState<"login" | "register">("login");
+  useEffect(() => {
+    const selectRegistration = () => {
+      if (window.location.hash === "#register") setMode("register");
+    };
+    window.addEventListener("hashchange", selectRegistration);
+    const initialSelection = window.requestAnimationFrame(selectRegistration);
+    return () => {
+      window.cancelAnimationFrame(initialSelection);
+      window.removeEventListener("hashchange", selectRegistration);
+    };
+  }, []);
   const vipCardRef = useRef<HTMLInputElement>(null);
   const [form, setForm] = useState({
     name: "",
@@ -501,12 +512,12 @@ export default function AccountPage() {
   /* Auth form */
   return (
     <div className="page-stage cinematic-hero mx-auto grid max-w-5xl items-center gap-6 px-4 py-12 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:px-8">
-      <aside className="premium-panel ember-border lux-sweep relative hidden min-h-[520px] overflow-hidden rounded-[2rem] p-8 text-white lg:block">
+      <aside className="account-intro premium-panel relative hidden min-h-[520px] overflow-hidden p-8 lg:block">
         <div className="spice-dots pointer-events-none absolute inset-0 opacity-25" />
         <div className="flame-glow pointer-events-none absolute -inset-20 opacity-80" />
         <div className="relative flex h-full flex-col justify-between">
           <div>
-            <span className="lux-overline text-emerald-300">The Tandoor Company</span>
+            <span className="lux-overline text-emerald-300">Shah Restaurant</span>
             <h1 className="font-display mt-5 text-4xl font-semibold leading-tight">
               <span className="ember-text">{mode === "login" ? t.auth.loginTitle : t.auth.registerTitle}</span>
             </h1>

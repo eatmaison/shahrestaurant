@@ -14,8 +14,8 @@ export default function CompanyCateringPage() {
     serviceType: nl ? "Zakelijke catering en bedrijfsdiners" : "Corporate catering and business dinners",
     provider: {
       "@type": "Restaurant",
-      name: "The Tandoor Company",
-      "@id": "https://thetandoorcompany.nl/#restaurant",
+      name: "Shah Restaurant",
+      "@id": "https://shahrestaurant.nl/#restaurant",
       address: {
         "@type": "PostalAddress",
         streetAddress: "Klaprozenweg 36a",
@@ -27,7 +27,7 @@ export default function CompanyCateringPage() {
     },
     areaServed: { "@type": "City", name: "Amsterdam" },
     audience: { "@type": "BusinessAudience", audienceType: "Corporate clients and business teams up to 100 attendees" },
-    url: "https://thetandoorcompany.nl/events/company-catering",
+    url: "https://shahrestaurant.nl/events/company-catering",
     description: nl
       ? "Zakelijke diners, klantrecepties, productlanceringen en board-diners in Amsterdam. Maandelijkse facturatie beschikbaar."
       : "Corporate dinners, client receptions, product launches and board dinners in Amsterdam. Monthly invoicing available.",
@@ -158,8 +158,8 @@ export default function CompanyCateringPage() {
           </h1>
           <p className="mt-5 text-base leading-8 text-slate-600 dark:text-slate-300">
             {nl
-              ? "Klantrecepties, board-diners, productlanceringen en team-vieringen - verzorgd bij The Tandoor Company of op uw locatie. Maandelijkse facturatie, één contactpersoon en volledige productie inbegrepen."
-              : "Client receptions, board dinners, product launches and team celebrations - hosted at The Tandoor Company or delivered on-site. Monthly invoicing, single point of contact and full production included."}
+              ? "Klantrecepties, board-diners, productlanceringen en team-vieringen - verzorgd bij Shah Restaurant of op uw locatie. Maandelijkse facturatie, één contactpersoon en volledige productie inbegrepen."
+              : "Client receptions, board dinners, product launches and team celebrations - hosted at Shah Restaurant or delivered on-site. Monthly invoicing, single point of contact and full production included."}
           </p>
         </div>
       </section>

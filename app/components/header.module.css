@@ -1,0 +1,51 @@
+.header[data-site-header] { background: color-mix(in srgb, var(--shah-surface) 94%, transparent); border-bottom: 1px solid var(--shah-line); }
+:global(.dark) .header[data-site-header] { background: color-mix(in srgb, var(--shah-surface) 94%, transparent); }
+.header :is(a, button, span, summary) { letter-spacing: 0; }
+.bar { min-height: 76px; }
+.brand { min-width: 0; flex-shrink: 0; }
+.brand > span:first-child { width: 42px; height: 42px; flex-shrink: 0; box-shadow: none; border-radius: 2px; font-size: 27px; }
+.brand > span:last-child > span:first-child { font-size: 9px; margin-bottom: 5px; }
+.brand > span:last-child > span:last-child { font-size: 19px; }
+.header button { cursor: pointer; }
+.header :is(button, a[title]) { min-width: 44px; min-height: 44px; }
+.desktopNav :is(a, summary) { font-weight: 500; font-size: 13px; border-radius: 3px; padding-inline: 11px; min-height: 44px; }
+.dropdown summary { cursor: pointer; list-style: none; }
+.dropdown summary::-webkit-details-marker { display: none; }
+.dropdown[open] > summary svg { transform: rotate(180deg); }
+.dropdown > div > div { border-radius: 6px; }
+:global(.dark) .dropdown > div > div { background: var(--shah-surface); }
+.header .skipLink { position: fixed; left: 16px; top: 8px; transform: translateY(-160%); padding: 12px 20px; background: #fff; border: 2px solid #896620; color: #252823; z-index: 100; }
+.header .skipLink:focus { transform: none; }
+.mobilePanel { position: absolute; inset-inline: 0; top: 100%; max-height: calc(100dvh - var(--site-header-height, 76px)); overflow-y: auto; overscroll-behavior: contain; box-shadow: 0 16px 25px #00000014; }
+.mobilePanel :is(a, button) { min-height: 46px; border-radius: 3px; }
+:global(.dark) .mobilePanel { background: var(--shah-surface); }
+.header [aria-pressed="true"] { color: #282416; }
+.header button[title][aria-pressed="true"] { color: inherit; }
+.header[data-site-header] { box-shadow: inset 0 1px 0 var(--shah-edge), 0 1px 0 #191d2208, 0 8px 22px #191d2206; }
+.header .brand > span:first-child { background: linear-gradient(135deg, var(--shah-surface), var(--shah-soft)); border-color: color-mix(in srgb, var(--shah-gold) 40%, var(--shah-line)); box-shadow: inset 0 1px 0 var(--shah-edge), 0 2px 0 var(--shah-line), 0 5px 12px #191d220a; text-shadow: 0 1px 0 var(--shah-edge); }
+.brand > span:last-child > span:last-child { text-shadow: 0 1px 0 var(--shah-edge); }
+.desktopNav > a[data-active="true"], .dropdown > summary[data-active="true"] { background: var(--shah-soft); box-shadow: inset 0 1px 3px #191d220d, 0 1px 0 var(--shah-edge); }
+.desktopNav > a:not([data-active="true"]):hover, .dropdown > summary:hover { background: var(--shah-soft); }
+.dropdown > div { perspective: 1000px; }
+.dropdown > div > div { border-color: color-mix(in srgb, var(--shah-gold) 25%, var(--shah-line)); box-shadow: inset 0 1px 0 var(--shah-edge), 0 3px 0 var(--shah-line), 0 24px 48px #191d2226; }
+.dropdown[open] > div > div { transform-origin: top center; animation: menu-unfold .28s cubic-bezier(.16, 1, .3, 1) both; }
+.header .dropdown a[aria-current="page"] { border-left: 2px solid var(--shah-gold); }
+.header button[title], .header a[title] { box-shadow: inset 0 1px 0 var(--shah-edge), 0 2px 0 var(--shah-line); }
+.header button[title]:active, .header a[title]:active { box-shadow: var(--shah-press-shadow); }
+.header .bar button[aria-pressed="true"]:not([title]) { background: var(--shah-metal); border: 1px solid #c4a760; box-shadow: inset 0 1px 0 #fff8, 0 1px 0 #ad8b47; }
+.header :is(a, button, summary):focus-visible { outline: 2px solid var(--shah-gold); outline-offset: 4px; }
+.mobilePanel { background: var(--shah-surface); border-bottom: 1px solid var(--shah-line); box-shadow: inset 0 1px 0 var(--shah-edge), 0 18px 32px #191d2221; }
+.mobilePanel a[aria-current="page"] { border-left: 2px solid var(--shah-gold); box-shadow: inset 0 1px 3px #191d220a; }
+@keyframes menu-unfold { from { opacity: 0; transform: rotateX(-6deg) translateY(-6px); } to { opacity: 1; transform: none; } }
+@media (max-width: 420px) {
+  .bar { gap: 8px; padding-inline: 12px; }
+  .brand { gap: 8px; }
+  .brand > span:first-child { display: none; }
+  .brand > span:last-child > span:last-child { font-size: 17px; }
+  .brand > span:last-child > span:first-child { max-width: 142px; font-size: 8px; }
+  .bar > div:last-child { gap: 3px; }
+  .header :is(button, a[title]) { min-width: 40px; min-height: 44px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .header *, .header *::after { animation: none !important; transition: none !important; }
+}

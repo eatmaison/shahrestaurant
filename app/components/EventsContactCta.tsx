@@ -10,7 +10,7 @@ export function EventsContactCta() {
   const nl = lang === "nl";
   return (
     <section className="mx-auto max-w-5xl px-4 py-14 sm:px-6 lg:px-8">
-      <div className="relative overflow-hidden rounded-[2rem] border border-emerald-500/20 bg-gradient-to-br from-emerald-950 via-[#241204] to-[#170d04] p-8 text-center text-white shadow-2xl shadow-emerald-900/30 sm:p-12">
+      <div className="botanical-band relative overflow-hidden p-8 text-center sm:p-12">
         <div className="spice-dots pointer-events-none absolute inset-0 opacity-25" />
         <h2 className="font-display text-2xl font-semibold sm:text-3xl">
           {nl ? "Klaar om te plannen?" : "Ready to plan your event?"}
@@ -22,7 +22,7 @@ export function EventsContactCta() {
         </p>
         <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <a
-            href="mailto:info@thetandoorcompany.nl"
+            href="mailto:info@shahrestaurant.nl"
             className="inline-flex items-center gap-2 rounded-full bg-emerald-600 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-emerald-600/25 transition hover:-translate-y-0.5 hover:bg-emerald-500"
           >
             <FaEnvelope /> {nl ? "Neem contact op" : "Contact our events team"} <FaArrowRight />
@@ -45,8 +45,8 @@ export function EventsContactCta() {
             </a>
           </p>
           <p className="mt-1.5">
-            <a href="mailto:info@thetandoorcompany.nl" className="transition hover:text-emerald-300">
-              info@thetandoorcompany.nl
+            <a href="mailto:info@shahrestaurant.nl" className="transition hover:text-emerald-300">
+              info@shahrestaurant.nl
             </a>
           </p>
         </div>

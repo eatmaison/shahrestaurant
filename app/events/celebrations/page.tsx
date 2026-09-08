@@ -15,8 +15,8 @@ export default function CelebrationsPage() {
     serviceType: nl ? "Bruiloftscatering en vieringen" : "Wedding and celebration catering",
     provider: {
       "@type": "Restaurant",
-      name: "The Tandoor Company",
-      "@id": "https://thetandoorcompany.nl/#restaurant",
+      name: "Shah Restaurant",
+      "@id": "https://shahrestaurant.nl/#restaurant",
       address: {
         "@type": "PostalAddress",
         streetAddress: "Klaprozenweg 36a",
@@ -28,10 +28,10 @@ export default function CelebrationsPage() {
     },
     areaServed: { "@type": "City", name: "Amsterdam" },
     audience: { "@type": "PeopleAudience", audienceType: "Wedding parties and celebrations up to 100 guests" },
-    url: "https://thetandoorcompany.nl/events/celebrations",
+    url: "https://shahrestaurant.nl/events/celebrations",
     description: nl
-      ? "Bruiloftsrecepties, gala-avonden, jubilea en verlovingsdiners bij The Tandoor Company Amsterdam."
-      : "Wedding receptions, gala evenings, anniversaries and engagement dinners at The Tandoor Company Amsterdam.",
+      ? "Bruiloftsrecepties, gala-avonden, jubilea en verlovingsdiners bij Shah Restaurant Amsterdam."
+      : "Wedding receptions, gala evenings, anniversaries and engagement dinners at Shah Restaurant Amsterdam.",
   };
 
   const services = [
@@ -148,8 +148,8 @@ export default function CelebrationsPage() {
           </span>
           <h1 className="font-display mt-5 text-4xl font-semibold tracking-tight text-slate-900 dark:text-white sm:text-5xl">
             {nl
-              ? "Bruiloften & vieringen bij The Tandoor Company"
-              : "Weddings & celebrations at The Tandoor Company"}
+              ? "Bruiloften & vieringen bij Shah Restaurant"
+              : "Weddings & celebrations at Shah Restaurant"}
           </h1>
           <p className="mt-5 text-base leading-8 text-slate-600 dark:text-slate-300">
             {nl

@@ -631,7 +631,7 @@ export async function placeOrder(details: {
   try {
     const payment = await createMolliePayment({
       amount: total,
-      description: `The Tandoor Company order ${formatOrderNumber(order.orderNumber)}`,
+      description: `Shah Restaurant order ${formatOrderNumber(order.orderNumber)}`,
       redirectUrl: `${base}/pay/complete?p=${recordId}`,
       webhookUrl,
       metadata: { p: recordId, kind: "order", orderId: order.id },
@@ -1493,7 +1493,7 @@ export async function buyVip(origin?: string): Promise<{ ok: boolean; checkoutUr
   const { base, webhookUrl } = paymentUrls(origin);
   const payment = await createMolliePayment({
     amount: VIP_SALE_PRICE,
-    description: "The Tandoor Company VIP membership",
+    description: "Shah Restaurant VIP membership",
     redirectUrl: `${base}/pay/complete?p=${recordId}`,
     webhookUrl,
     metadata: { p: recordId, kind: "vip" },

@@ -23,8 +23,8 @@ export default function EventsHubPage() {
   const overline = nl ? "Evenementen & Catering" : "Events & Catering";
   const title = nl ? "Momenten die het vieren waard zijn" : "Occasions worth celebrating";
   const subtitle = nl
-    ? "Van intieme verjaardagen en zakelijke lunches tot volledige bruiloftsrecepties - The Tandoor Company verzorgt onvergetelijke Indiase feesten bij ons of op uw locatie in Amsterdam."
-    : "From intimate birthdays and executive lunches to full wedding receptions - The Tandoor Company creates memorable Indian feasts at our venue or yours in Amsterdam.";
+    ? "Van intieme verjaardagen en zakelijke lunches tot volledige bruiloftsrecepties - Shah Restaurant verzorgt onvergetelijke Indiase feesten bij ons of op uw locatie in Amsterdam."
+    : "From intimate birthdays and executive lunches to full wedding receptions - Shah Restaurant creates memorable Indian feasts at our venue or yours in Amsterdam.";
   const capacity = nl ? "Tot 100 gasten" : "Up to 100 guests";
   const ctaTitle = nl ? "Klaar om te plannen?" : "Ready to plan your event?";
   const ctaText = nl
@@ -37,7 +37,7 @@ export default function EventsHubPage() {
     {
       href: "/events/about",
       Icon: FaWandMagicSparkles,
-      title: nl ? "Over The Tandoor Company" : "About The Tandoor Company",
+      title: nl ? "Over Shah Restaurant" : "About Shah Restaurant",
       text: nl
         ? "Ontdek ons familieverhaal, onze keuken en waarom Amsterdam ons kiest voor bijzondere avonden."
         : "Discover our family story, our kitchen and why Amsterdam chooses us for special occasions.",
@@ -127,12 +127,12 @@ export default function EventsHubPage() {
 
       {/* CTA */}
       <section className="mx-auto max-w-5xl px-4 py-14 sm:px-6 lg:px-8">
-        <div className="relative overflow-hidden rounded-[2rem] border border-emerald-500/20 bg-gradient-to-br from-emerald-950 via-[#241204] to-[#170d04] p-8 text-center text-white shadow-2xl shadow-emerald-900/30 sm:p-12">
+        <div className="relative overflow-hidden rounded-[2rem] border border-emerald-500/20 bg-gradient-to-br from-emerald-950 via-[#1a160e] to-[#12100c] p-8 text-center text-white shadow-2xl shadow-emerald-900/30 sm:p-12">
           <h2 className="font-display text-2xl font-semibold sm:text-3xl">{ctaTitle}</h2>
           <p className="mx-auto mt-4 max-w-xl text-sm leading-7 text-stone-200">{ctaText}</p>
           <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <a
-              href="mailto:info@thetandoorcompany.nl"
+              href="mailto:info@shahrestaurant.nl"
               className="inline-flex items-center gap-2 rounded-full bg-emerald-600 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-emerald-600/25 transition hover:-translate-y-0.5 hover:bg-emerald-500"
             >
               <FaEnvelope /> {ctaContact} <FaArrowRight />

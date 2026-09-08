@@ -3,9 +3,9 @@ import nodemailer, { type Transporter } from "nodemailer";
 /**
  * Email sending via SMTP (Strato). Configure in .env.local:
  *   SMTP_HOST=smtp.strato.de
- *   SMTP_USER=info@thetandoorcompany.nl
+ *   SMTP_USER=info@shahrestaurant.nl
  *   SMTP_PASS=<mailbox password>
- *   SMTP_FROM="The Tandoor Company <info@thetandoorcompany.nl>"
+ *   SMTP_FROM="Shah Restaurant <info@shahrestaurant.nl>"
  */
 let transporter: Transporter | null = null;
 
@@ -29,7 +29,7 @@ function getTransporter(): Transporter {
 }
 
 export async function sendMail(opts: { to: string; subject: string; html: string }): Promise<void> {
-  const from = process.env.EMAIL_FROM || process.env.SMTP_FROM || `The Tandoor Company <${process.env.SMTP_USER}>`;
+  const from = process.env.EMAIL_FROM || process.env.SMTP_FROM || `Shah Restaurant <${process.env.SMTP_USER}>`;
   // Prefer the Resend HTTPS API - it works even when the host blocks outbound SMTP ports.
   if (process.env.RESEND_API_KEY) {
     const res = await fetch("https://api.resend.com/emails", {
@@ -56,12 +56,12 @@ export async function sendMail(opts: { to: string; subject: string; html: string
 /* ------------------------------------------------------------------ templates */
 
 const BRAND = {
-  green: "#c4661c",
-  greenDark: "#a34e1a",
-  ink: "#221a11",
-  muted: "#6b5944",
-  border: "#e6d9c6",
-  bg: "#faf3e7",
+  green: "#a87f24",
+  greenDark: "#8a661d",
+  ink: "#201d17",
+  muted: "#6e675a",
+  border: "#e7e5dd",
+  bg: "#fdfcf8",
 };
 
 type EmailLang = "en" | "nl";
@@ -90,9 +90,9 @@ function layout(opts: {
     <tr><td align="center">
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:#ffffff;border:1px solid ${BRAND.border};border-radius:20px;overflow:hidden;">
         <!-- header -->
-        <tr><td style="background:linear-gradient(135deg,#1c0f04,#3a1a0b);padding:30px 32px;border-bottom:3px solid ${BRAND.green};">
-          <div style="font-size:12px;letter-spacing:3px;color:#e39440;font-weight:600;text-transform:uppercase;">Amsterdam · Authentic Indian Cuisine</div>
-          <div style="font-size:24px;font-weight:900;color:#ffffff;letter-spacing:2px;">THE TANDOOR COMPANY</div>
+        <tr><td style="background:linear-gradient(135deg,#12100c,#31220a);padding:30px 32px;border-bottom:3px solid ${BRAND.green};">
+          <div style="font-size:12px;letter-spacing:3px;color:#d4b05c;font-weight:600;text-transform:uppercase;">Amsterdam · Fine Indian Dining</div>
+          <div style="font-size:24px;font-weight:900;color:#ffffff;letter-spacing:2px;">SHAH RESTAURANT</div>
         </td></tr>
         <!-- body -->
         <tr><td style="padding:32px;">
@@ -112,12 +112,12 @@ function layout(opts: {
         <!-- footer -->
         <tr><td style="padding:20px 32px;border-top:1px solid ${BRAND.border};background:#fafafa;">
           <p style="margin:0;font-size:12px;line-height:20px;color:${BRAND.muted};">
-            The Tandoor Company - Klaprozenweg 36a, 1032 KL Amsterdam<br>
-            <a href="mailto:info@thetandoorcompany.nl" style="color:${BRAND.green};">info@thetandoorcompany.nl</a> · <a href="${base}" style="color:${BRAND.green};">thetandoorcompany.nl</a>
+            Shah Restaurant - Klaprozenweg 36a, 1032 KL Amsterdam<br>
+            <a href="mailto:info@shahrestaurant.nl" style="color:${BRAND.green};">info@shahrestaurant.nl</a> · <a href="${base}" style="color:${BRAND.green};">shahrestaurant.nl</a>
           </p>
         </td></tr>
       </table>
-      <p style="margin:16px 0 0;font-size:11px;color:#a28d6f;">© ${new Date().getFullYear()} The Tandoor Company - Amsterdam. All rights reserved.</p>
+      <p style="margin:16px 0 0;font-size:11px;color:#a8a294;">© ${new Date().getFullYear()} Shah Restaurant - Amsterdam. All rights reserved.</p>
     </td></tr>
   </table>
 </body></html>`;
@@ -125,12 +125,12 @@ function layout(opts: {
 
 export function verificationEmail(name: string, url: string, base: string): { subject: string; html: string } {
   return {
-    subject: "Confirm your email - The Tandoor Company",
+    subject: "Confirm your email - Shah Restaurant",
     html: layout({
       base,
       heading: `Welcome, ${name}!`,
       intro:
-        "Thanks for creating your The Tandoor Company account. Please confirm your email address so we can secure your account and keep you informed about your reservations and orders.",
+        "Thanks for creating your Shah Restaurant account. Please confirm your email address so we can secure your account and keep you informed about your reservations and orders.",
       ctaText: "Confirm my email",
       ctaUrl: url,
       outro: "This link expires in 48 hours. If you didn't create an account, you can safely ignore this email.",
@@ -140,11 +140,11 @@ export function verificationEmail(name: string, url: string, base: string): { su
 
 export function passwordResetEmail(name: string, url: string, base: string): { subject: string; html: string } {
   return {
-    subject: "Reset your password - The Tandoor Company",
+    subject: "Reset your password - Shah Restaurant",
     html: layout({
       base,
       heading: "Reset your password",
-      intro: `Hi ${name}, we received a request to reset your The Tandoor Company password. Click the button below to choose a new one.`,
+      intro: `Hi ${name}, we received a request to reset your Shah Restaurant password. Click the button below to choose a new one.`,
       ctaText: "Choose a new password",
       ctaUrl: url,
       outro: "This link expires in 1 hour. If you didn't request this, you can ignore this email - your password stays the same.",
@@ -166,9 +166,9 @@ export function reservationEmail(data: {
   const copy = lang === "nl"
     ? {
         locale: "nl-NL",
-        subject: `Bedankt voor uw reservering bij The Tandoor Company - ${data.number}`,
+        subject: `Bedankt voor uw reservering bij Shah Restaurant - ${data.number}`,
         heading: `Bedankt, ${escapeHtml(data.guestName)}!`,
-        intro: "Wat fijn dat u voor The Tandoor Company heeft gekozen. Uw reservering is bevestigd. Als dit tijdstip toch niet mogelijk is, neemt ons team contact met u op met alternatieven.",
+        intro: "Wat fijn dat u voor Shah Restaurant heeft gekozen. Uw reservering is bevestigd. Als dit tijdstip toch niet mogelijk is, neemt ons team contact met u op met alternatieven.",
         reservation: "Reservering",
         date: "Datum",
         time: "Tijd",
@@ -178,9 +178,9 @@ export function reservationEmail(data: {
       }
     : {
         locale: "en-GB",
-        subject: `Thank you for your reservation at The Tandoor Company - ${data.number}`,
+        subject: `Thank you for your reservation at Shah Restaurant - ${data.number}`,
         heading: `Thank you, ${escapeHtml(data.guestName)}!`,
-        intro: "Thank you for choosing The Tandoor Company. Your reservation is confirmed. If this time cannot be arranged, our team will contact you with alternatives.",
+        intro: "Thank you for choosing Shah Restaurant. Your reservation is confirmed. If this time cannot be arranged, our team will contact you with alternatives.",
         reservation: "Reservation",
         date: "Date",
         time: "Time",
@@ -254,7 +254,7 @@ export function companyInvoiceEmail(data: {
       </table>
     </div>`;
   return {
-    subject: `Invoice ${data.orderNumber} - The Tandoor Company`,
+    subject: `Invoice ${data.orderNumber} - Shah Restaurant`,
     html: layout({
       base: data.base,
       heading: "Your invoice",

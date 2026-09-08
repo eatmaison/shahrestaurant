@@ -46,7 +46,7 @@ export default function GalleryPage() {
         ] ?? (g.category || cat.ambiance);
       return {
         src: g.url,
-        alt: (nl ? g.altNl || g.alt : g.alt) || (nl ? "Foto van The Tandoor Company Amsterdam" : "Photo of The Tandoor Company Amsterdam"),
+        alt: (nl ? g.altNl || g.alt : g.alt) || (nl ? "Foto van Shah Restaurant Amsterdam" : "Photo of Shah Restaurant Amsterdam"),
         category: label,
         portrait: g.portrait,
       };
@@ -57,7 +57,7 @@ export default function GalleryPage() {
     { src: "/photos/687A0260.jpeg", alt: nl ? "Gelaagde signatuurcocktail met granaatappel" : "Layered signature cocktail with pomegranate", category: cat.bar, portrait: true },
     { src: "/photos/687A0216.jpeg", alt: nl ? "Goudgeroosterde paneer tikka met limoen" : "Golden-charred paneer tikka with lime", category: cat.dishes },
     { src: "/photos/687A0321.jpeg", alt: nl ? "Verfijnd geplateerd tandoori gerecht" : "Refined plated tandoori dish", category: cat.dishes },
-    { src: "/photos/687A0090.jpeg", alt: nl ? "Zwevende wijnfles aan de bar van The Tandoor Company" : "Floating wine bottle at the bar of The Tandoor Company", category: cat.bar },
+    { src: "/photos/687A0090.jpeg", alt: nl ? "Zwevende wijnfles aan de bar van Shah Restaurant" : "Floating wine bottle at the bar of Shah Restaurant", category: cat.bar },
     { src: "/photos/687A0336.jpeg", alt: nl ? "Een stijlvolle en gastvrije sfeer om samen te genieten" : "A stylish and welcoming atmosphere to enjoy together", category: cat.dishes },
     { src: "/photos/687A0343.jpeg", alt: nl ? "Stijlvolle bar waar cocktails en gastvrijheid samenkomen" : "Stylish bar where cocktails and hospitality come together", category: cat.bar },
     { src: "/photos/687A0412.jpeg", alt: nl ? "Samen genieten van curry, rijst en tandoori gerechten" : "Sharing curry, rice and tandoori dishes together", category: cat.ambiance },
@@ -66,12 +66,12 @@ export default function GalleryPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ImageGallery",
-    name: "The Tandoor Company Amsterdam - Gallery",
+    name: "Shah Restaurant Amsterdam - Gallery",
     description: nl
-      ? "Foto's van The Tandoor Company Amsterdam: interieur, gerechten en evenementen."
-      : "Photos of The Tandoor Company Amsterdam: interior, dishes and events.",
-    url: "https://thetandoorcompany.nl/events/gallery",
-    image: items.map((i) => (i.src.startsWith("http") ? i.src : `https://thetandoorcompany.nl${i.src}`)),
+      ? "Foto's van Shah Restaurant Amsterdam: interieur, gerechten en evenementen."
+      : "Photos of Shah Restaurant Amsterdam: interior, dishes and events.",
+    url: "https://shahrestaurant.nl/events/gallery",
+    image: items.map((i) => (i.src.startsWith("http") ? i.src : `https://shahrestaurant.nl${i.src}`)),
   };
 
   return (
@@ -80,7 +80,7 @@ export default function GalleryPage() {
 
       {/* Hero */}
       <section className="relative overflow-hidden">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_60%_at_50%_0%,rgba(217,126,38,0.16),transparent_65%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_60%_at_50%_0%,rgba(196,154,58,0.12),transparent_65%)]" />
         <div className="relative mx-auto max-w-3xl px-4 pb-4 pt-14 text-center sm:px-6 lg:pt-20">
           <span className="lux-overline inline-flex items-center gap-3 text-emerald-600 dark:text-emerald-400">
             <span className="h-px w-10 bg-emerald-500/60" /> {nl ? "Galerij" : "Gallery"}{" "}
@@ -91,8 +91,8 @@ export default function GalleryPage() {
           </h1>
           <p className="mt-5 text-base leading-8 text-slate-600 dark:text-slate-300">
             {nl
-              ? "Een blik binnen The Tandoor Company Amsterdam - onze eetzaal, gedekte tafels, verse tandoori gerechten en eerdere evenementen."
-              : "A look inside The Tandoor Company Amsterdam - our dining room, table settings, fresh tandoori dishes and past events."}
+              ? "Een blik binnen Shah Restaurant Amsterdam - onze eetzaal, gedekte tafels, verse tandoori gerechten en eerdere evenementen."
+              : "A look inside Shah Restaurant Amsterdam - our dining room, table settings, fresh tandoori dishes and past events."}
           </p>
         </div>
       </section>

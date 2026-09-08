@@ -15,12 +15,14 @@ import {
   FaClock,
   FaLocationDot,
   FaLock,
+  FaMagnifyingGlass,
   FaMinus,
   FaPlus,
   FaStar,
   FaStore,
   FaTrash,
   FaTruck,
+  FaXmark,
 } from "react-icons/fa6";
 import { MdMenuBook } from "react-icons/md";
 import { useLang, useStore } from "../providers";
@@ -44,6 +46,8 @@ import {
 } from "../lib/data";
 import { cartKeyForProduct, grillSideLabel, GRILL_SIDE_OPTIONS, isGrillSideRequired, parseCartKey } from "../lib/cart";
 import type { Brand, Category, GrillSideChoice, MenuUpgrades, Product } from "../lib/types";
+import styles from "./order.module.css";
+import { OrderSheet } from "./OrderSheet";
 
 type CartLine = { key: string; product: Product; qty: number; sideChoice?: GrillSideChoice };
 
@@ -140,7 +144,9 @@ function MobileMenuScrollRow({ children, className = "" }: { children: ReactNode
 
 export default function OrderPage() {
   const { t, lang } = useLang();
-  const { products, brands, cart, addToCart, removeFromCart, currentUser, placeOrder, restaurantStatus } = useStore();
+  const { products, brands, cart, addToCart, removeFromCart, currentUser, placeOrder, restaurantStatus, hydrated } = useStore();
+  const [search, setSearch] = useState("");
+  const searchRef = useRef<HTMLInputElement>(null);
 
   const [activeBrand, setActiveBrand] = useState<Brand>("tandoor");
   const [activeCategory, setActiveCategory] = useState<Category>("Soups");
@@ -228,7 +234,12 @@ export default function OrderPage() {
     return activeSubcategory === "all" || product.subcategory === activeSubcategory;
   };
 
-  const visible = menuProducts.filter((p) => p.brand === activeBrand && categoryMatchesProduct(p, activeCategory));
+  const searchTerms = search.trim().toLocaleLowerCase(lang).split(/\s+/).filter(Boolean);
+  const visible = menuProducts.filter((product) => {
+    if (!searchTerms.length) return product.brand === activeBrand && categoryMatchesProduct(product, activeCategory);
+    const searchableText = `${product.name} ${product.description} ${product.descriptionNl ?? ""} ${product.category}`.toLocaleLowerCase(lang);
+    return searchTerms.every((term) => searchableText.includes(term));
+  });
 
   /** The active restaurant's admin-managed config (safe fallback while loading). */
   const activeBrandCfg = brands.find((b) => b.id === activeBrand) ?? brands[0];
@@ -273,6 +284,7 @@ export default function OrderPage() {
 
   // Switch restaurant/brand and jump to that brand's first category.
   const selectBrand = (brand: Brand) => {
+    setSearch("");
     if (brand === activeBrand) return;
     setActiveBrand(brand);
     setActiveCategory(brands.find((b) => b.id === brand)?.categories[0]?.name ?? "");
@@ -280,6 +292,7 @@ export default function OrderPage() {
   };
 
   const selectCategory = (category: Category) => {
+    setSearch("");
     setActiveCategory(category);
     setActiveSubcategory("all");
   };
@@ -495,8 +508,8 @@ export default function OrderPage() {
   );
 
   const ProductsGrid = () => (
-    <div key={`${activeBrand}-${activeCategory}`} className="stagger-rise grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-2">
-      {menuProducts.length === 0 && (
+    <div key={`${activeBrand}-${activeCategory}`} className={`${styles.products} grid grid-cols-2 gap-4 lg:grid-cols-2`}>
+      {!hydrated && menuProducts.length === 0 && (
         [0, 1, 2, 3].map((index) => (
           <div key={index} className="premium-panel ember-border lux-sweep rounded-2xl p-3">
             <div className="skeleton aspect-[4/3] rounded-xl" />
@@ -508,15 +521,16 @@ export default function OrderPage() {
           </div>
         ))
       )}
-      {menuProducts.length > 0 && visible.length === 0 && (
+      {hydrated && visible.length === 0 && (
         <div className="premium-panel ember-border lux-sweep col-span-full rounded-3xl p-8 text-center">
           <span className="mx-auto grid h-14 w-14 place-items-center rounded-2xl border border-emerald-500/25 bg-emerald-500/10 text-2xl text-emerald-600 dark:text-emerald-400">
             <FaStore />
           </span>
-          <p className="font-display mt-4 text-lg font-bold text-slate-900 dark:text-white">{activeCategory}</p>
+          <p className="font-display mt-4 text-lg font-bold text-slate-900 dark:text-white">{searchTerms.length ? (lang === "nl" ? "Geen gerechten gevonden" : "No dishes found") : activeCategory}</p>
           <p className="mt-2 text-sm leading-6 text-slate-500 dark:text-slate-400">
-            {lang === "nl" ? "Deze categorie wordt binnenkort aangevuld." : "This category is being refreshed soon."}
+            {searchTerms.length ? (lang === "nl" ? "Probeer een andere naam of wis uw zoekopdracht." : "Try another name or clear your search.") : (lang === "nl" ? "Deze categorie wordt binnenkort aangevuld." : "This category is being refreshed soon.")}
           </p>
+          {searchTerms.length > 0 && <button type="button" className={styles.resetSearch} onClick={() => { setSearch(""); searchRef.current?.focus(); }}><FaXmark aria-hidden="true" />{lang === "nl" ? "Zoekopdracht wissen" : "Clear search"}</button>}
         </div>
       )}
       {visible.map((p) => {
@@ -570,6 +584,7 @@ export default function OrderPage() {
               )}
             </div>
             <div className="flex flex-1 flex-col py-2 px-1.5">
+              {searchTerms.length > 0 && <p className={styles.productBrand}><FaStore aria-hidden="true" />{brands.find((brand) => brand.id === p.brand)?.name ?? p.brand}</p>}
               <div className="flex items-start justify-between gap-2">
                         <div className="flex flex-wrap items-center gap-2"><h3 className="font-display font-bold text-sm text-slate-900 dark:text-white">{p.name}</h3>{p.isPopular && <span className="rounded-full bg-amber-500/10 px-2 py-0.5 text-[10px] font-black uppercase text-amber-700">Popular</span>}{p.isNew && <span className="rounded-full bg-emerald-500/10 px-2 py-0.5 text-[10px] font-black uppercase text-emerald-700">New</span>}</div>
                 {discountPct > 0 && !isDrinkCategory(p.category) ? (
@@ -706,7 +721,7 @@ export default function OrderPage() {
   };
 
   return (
-    <div className="page-stage min-h-screen">
+    <div className={`${styles.page} page-stage min-h-screen`}>
       {/* Closed notice - ordering stays possible, preparation starts at the next opening */}
       {preOrderNote && (
         <div className="mx-auto max-w-7xl px-4 pb-3 pt-4 sm:px-6 lg:px-8">
@@ -720,7 +735,7 @@ export default function OrderPage() {
       )}
 
       {/* Header - Desktop only */}
-      <div className="order-hero-strip relative hidden overflow-hidden px-4 py-6 sm:px-6 lg:block lg:mx-auto lg:max-w-7xl lg:px-8">
+      <div className="order-hero-strip relative overflow-hidden px-4 py-6 sm:px-6 lg:mx-auto lg:max-w-7xl lg:px-8">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(45%_80%_at_30%_0%,rgba(217,126,38,0.14),transparent_65%)]" />
         <div className="pointer-events-none absolute -right-10 top-0 h-36 w-36 animate-float rounded-full bg-emerald-500/10 blur-3xl" />
         <span className="lux-overline relative inline-flex items-center gap-2 text-emerald-600 dark:text-emerald-400">
@@ -733,8 +748,21 @@ export default function OrderPage() {
         <div className="gold-rule relative mt-5" />
       </div>
 
+      <div className={styles.searchArea}>
+        <div className={styles.searchControls}>
+        <div className={styles.searchBox}>
+          <FaMagnifyingGlass aria-hidden="true" />
+          <label htmlFor="order-search" className="sr-only">{lang === "nl" ? "Zoek gerechten" : "Search dishes"}</label>
+          <input id="order-search" ref={searchRef} type="search" value={search} onChange={(event) => setSearch(event.target.value)} placeholder={lang === "nl" ? "Zoek in alle restaurants" : "Search all restaurants"} aria-describedby="order-search-results" />
+          {search && <button type="button" onClick={() => { setSearch(""); searchRef.current?.focus(); }} aria-label={lang === "nl" ? "Zoekopdracht wissen" : "Clear search"} title={lang === "nl" ? "Zoekopdracht wissen" : "Clear search"}><FaXmark aria-hidden="true" /></button>}
+        </div>
+        <p id="order-search-results" role="status" aria-live="polite">{searchTerms.length ? (lang === "nl" ? "Alle restaurants" : "All restaurants") : activeBrandCfg?.name} · {hydrated ? `${visible.length} ${t.common.items}` : (lang === "nl" ? "Menukaart laden" : "Loading menu")}</p>
+        </div>
+        {hydrated && !currentUser && <div className={styles.loyaltyNotice}><FaStar aria-hidden="true" /><div><strong>{lang === "nl" ? "Maak een account en spaar punten" : "Register and start earning loyalty points"}</strong><p>{lang === "nl" ? "Spaar bij uw bestellingen en gebruik uw punten voor korting." : "Earn points with your orders and redeem them for discounts."}</p></div><Link href="/account#register">{lang === "nl" ? "Registreren" : "Register"}<FaArrowRight aria-hidden="true" /></Link></div>}
+      </div>
+
       {/* Mobile & Tablet: Brand switch + Categories Bar (Sticky) */}
-      <div className="sticky top-[64px] z-40 border-b border-emerald-500/20 bg-white/90 shadow-lg shadow-emerald-900/5 backdrop-blur-xl dark:border-white/10 dark:bg-[#0c0703]/90 lg:hidden">
+      <div className={`${styles.categoryBar} sticky z-40 border-b border-emerald-500/20 bg-white/90 shadow-lg shadow-emerald-900/5 backdrop-blur-xl dark:border-white/10 dark:bg-[#0c0703]/90 lg:hidden`}>
         {/* Restaurant switcher */}
         <MobileMenuScrollRow className="px-3 pt-2">
           {sortedBrands.map((b) => {
@@ -909,16 +937,16 @@ export default function OrderPage() {
         <section>
           <div className="mb-4 flex items-center gap-3">
             <span className="relative grid h-9 w-9 shrink-0 place-items-center overflow-hidden rounded-lg bg-white ring-1 ring-slate-200 dark:ring-white/10">
-              {activeBrandCfg?.logo ? (
+              {searchTerms.length > 0 ? <FaMagnifyingGlass className="text-emerald-600" aria-hidden="true" /> : activeBrandCfg?.logo ? (
                 <Image src={activeBrandCfg.logo} alt={activeBrandCfg.name} fill sizes="36px" className="object-contain p-1" />
               ) : (
                 <FaStore className="text-slate-400" />
               )}
             </span>
             <div>
-              <h2 className="font-display text-lg font-bold leading-tight text-slate-900 dark:text-white">{activeBrandCfg?.name ?? ""}</h2>
+              <h2 className="font-display text-lg font-bold leading-tight text-slate-900 dark:text-white">{searchTerms.length ? (lang === "nl" ? "Alle restaurants" : "All restaurants") : activeBrandCfg?.name ?? ""}</h2>
               <p className="text-xs font-semibold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
-                {activeCategory}{activeSubcategory !== "all" ? ` -> ${activeSubcategory}` : ""} · {visible.length} {t.common.items}
+                {searchTerms.length ? (lang === "nl" ? "Zoekresultaten" : "Search results") : activeCategory}{!searchTerms.length && activeSubcategory !== "all" ? ` -> ${activeSubcategory}` : ""} · {visible.length} {t.common.items}
               </p>
             </div>
             <div className="gold-rule ml-2 flex-1" />
@@ -1249,17 +1277,16 @@ export default function OrderPage() {
 
       {/* Cart Modal - Mobile */}
       {showCartModal && (
-        <div className="fixed inset-0 z-50 flex items-end sm:items-center lg:hidden">
-          <div className="fixed inset-0 bg-black/40" onClick={() => setShowCartModal(false)} />
+        <OrderSheet titleId="cart-sheet-title" onClose={() => setShowCartModal(false)}>
           <div className="relative w-full rounded-t-3xl border-t border-emerald-500/25 bg-white shadow-2xl dark:bg-[#170d04] sm:max-w-md sm:rounded-3xl sm:border">
             <div className="flex items-center justify-between border-b border-slate-200 px-5 py-4 dark:border-white/10">
-              <h2 className="font-display text-lg font-bold text-slate-900 dark:text-white">{t.common.yourOrder}</h2>
-              <button onClick={() => setShowCartModal(false)} className="text-2xl text-slate-400 hover:text-slate-600 dark:text-slate-500 dark:hover:text-slate-300">
-                ✕
+              <h2 id="cart-sheet-title" className="font-display text-lg font-bold text-slate-900 dark:text-white">{t.common.yourOrder}</h2>
+              <button type="button" autoFocus aria-label={lang === "nl" ? "Sluiten" : "Close"} title={lang === "nl" ? "Sluiten" : "Close"} onClick={() => setShowCartModal(false)} className={styles.sheetClose}>
+                <FaXmark aria-hidden="true" />
               </button>
             </div>
 
-            <div className="max-h-72 space-y-2 overflow-y-auto px-5 py-4 pr-3">
+            <div className="space-y-2 px-5 py-4 pr-3">
               {cartLines.map(({ key, product, qty, sideChoice }) => (
                 <div key={key} className="rounded-xl border border-slate-100 bg-slate-50 p-2.5 dark:border-white/5 dark:bg-white/5">
                   <div className="flex items-center gap-3">
@@ -1400,18 +1427,17 @@ export default function OrderPage() {
               </p>
             </div>
           </div>
-        </div>
+        </OrderSheet>
       )}
 
       {/* Checkout Modal - Mobile */}
       {showCheckoutModal && (
-        <div className="fixed inset-0 z-50 flex items-end sm:items-center lg:hidden">
-          <div className="fixed inset-0 bg-black/40" onClick={() => setShowCheckoutModal(false)} />
+        <OrderSheet titleId="checkout-sheet-title" onClose={() => setShowCheckoutModal(false)}>
           <div className="relative w-full rounded-t-3xl border-t border-emerald-500/25 bg-white shadow-2xl dark:bg-[#170d04] sm:max-w-md sm:rounded-3xl sm:border">
             <div className="flex items-center justify-between border-b border-slate-200 px-5 py-4 dark:border-white/10">
-              <h2 className="font-display text-lg font-bold text-slate-900 dark:text-white">{t.order.deliveryDetails}</h2>
-              <button onClick={() => setShowCheckoutModal(false)} className="text-2xl text-slate-400 hover:text-slate-600 dark:text-slate-500 dark:hover:text-slate-300">
-                ✕
+              <h2 id="checkout-sheet-title" className="font-display text-lg font-bold text-slate-900 dark:text-white">{t.order.deliveryDetails}</h2>
+              <button type="button" autoFocus aria-label={lang === "nl" ? "Sluiten" : "Close"} title={lang === "nl" ? "Sluiten" : "Close"} onClick={() => setShowCheckoutModal(false)} className={styles.sheetClose}>
+                <FaXmark aria-hidden="true" />
               </button>
             </div>
 
@@ -1559,7 +1585,7 @@ export default function OrderPage() {
               </p>
             </div>
           </div>
-        </div>
+        </OrderSheet>
       )}
 
       {/* Product Details Modal */}

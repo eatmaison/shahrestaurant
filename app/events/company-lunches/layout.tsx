@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 const url = "/events/company-lunches";
 
 export const metadata: Metadata = {
-  title: "Company Lunches & Office Catering Amsterdam - The Tandoor Company",
+  title: "Company Lunches & Office Catering Amsterdam - Shah Restaurant",
   description:
     "Fresh daily and weekly office lunches delivered across Amsterdam. Aromatic Indian lunches, healthy options, hot mains and dietary choices - invoiced monthly, delivered on time.",
   keywords: [
@@ -21,13 +21,13 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: url },
   openGraph: {
-    title: "Company Lunches & Office Catering Amsterdam | The Tandoor Company",
+    title: "Company Lunches & Office Catering Amsterdam | Shah Restaurant",
     description:
       "Weekly delivered office lunches across Amsterdam - fresh, aromatic, invoiced monthly.",
     url,
     type: "article",
   },
-  twitter: { card: "summary_large_image", title: "Office Lunches Amsterdam - The Tandoor Company" },
+  twitter: { card: "summary_large_image", title: "Office Lunches Amsterdam - Shah Restaurant" },
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {
