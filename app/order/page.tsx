@@ -327,11 +327,10 @@ export default function OrderPage() {
     return selected;
   }, [cartLines, menuUpgrades, softDrinkProducts]);
   const menuUpgradeSubtotal = cartLines.reduce((sum, line) => (selectedMenuUpgrades[line.product.id] ? sum + MENU_UPGRADE_PRICE * line.qty : sum), 0);
-  const bogoSavings = cartLines.reduce((sum, line) => sum + (line.product.bogoEnabled ? Math.floor(line.qty / 2) * line.product.price : 0), 0);
-  const bogoProducts = menuProducts.filter((product) => product.bogoEnabled);
-  const subtotal = cartLines.reduce((sum, l) => sum + l.product.price * l.qty, 0) - bogoSavings + menuUpgradeSubtotal;
+  const bogoProducts = [...new Map(menuProducts.filter((product) => product.bogoEnabled).map((product) => [product.name, product])).values()];
+  const subtotal = cartLines.reduce((sum, l) => sum + l.product.price * l.qty, 0) + menuUpgradeSubtotal;
   const foodSubtotal = cartLines.reduce(
-    (sum, l) => (isDrinkCategory(l.product.category) ? sum : sum + l.product.price * (l.qty - (l.product.bogoEnabled ? Math.floor(l.qty / 2) : 0))),
+    (sum, l) => (isDrinkCategory(l.product.category) ? sum : sum + l.product.price * l.qty),
     0
   );
   const isCompany = currentUser?.accountType === "company";
@@ -349,7 +348,7 @@ export default function OrderPage() {
   const freeDelivery = isPickup ? true : isCompany ? true : payableBeforePoints >= FREE_DELIVERY_FROM;
   const delivery = cartLines.length > 0 ? (freeDelivery ? 0 : DELIVERY_FEE) : 0;
   const total = cartLines.length > 0 ? +(payableBeforePoints - pointsUsed + delivery).toFixed(2) : 0;
-  const itemCount = cartLines.reduce((sum, l) => sum + l.qty, 0);
+  const itemCount = cartLines.reduce((sum, l) => sum + l.qty * (l.product.bogoEnabled ? 2 : 1), 0);
   const belowMinOrder = cartLines.length > 0 && !isPickup && subtotal < minOrder;
   // Loyalty points this order will earn (1 point per €10 actually paid, matching the server).
   const pointsToEarn = Math.floor(Math.max(0, payableBeforePoints - pointsUsed) / POINTS_EARN_EVERY);
@@ -989,7 +988,7 @@ export default function OrderPage() {
                     <div className="flex items-center gap-3">
                       <div className="min-w-0 flex-1">
                         <p className="truncate text-sm font-semibold text-slate-900 dark:text-white">{product.name}</p>
-                        <p className="text-xs text-slate-500 dark:text-slate-400">€{product.price.toFixed(2)} {t.common.each}</p>
+                        <p className="text-xs text-slate-500 dark:text-slate-400">€{product.price.toFixed(2)} {t.common.each} · {qty * (product.bogoEnabled ? 2 : 1)} drinks</p>
                         {sideChoice && (
                           <p className="mt-0.5 text-[11px] font-bold text-emerald-700 dark:text-emerald-300">
                             {lang === "nl" ? "Bijgerecht" : "Side"}: {grillSideLabel(sideChoice, lang)}
@@ -1000,7 +999,7 @@ export default function OrderPage() {
                         <button onClick={() => removeFromCart(product.id, sideChoice)} className="grid h-7 w-7 place-items-center rounded-full bg-white text-slate-600 transition hover:text-red-600 dark:bg-white/10 dark:text-slate-300" aria-label={t.common.remove}>
                           {qty <= 1 ? <FaTrash className="text-[0.65rem]" /> : <FaMinus className="text-[0.65rem]" />}
                         </button>
-                        <span className="w-5 text-center text-sm font-bold text-slate-900 dark:text-white">{qty}</span>
+                        <span className="w-5 text-center text-sm font-bold text-slate-900 dark:text-white">{qty * (product.bogoEnabled ? 2 : 1)}</span>
                         <button onClick={() => addToCart(product.id, sideChoice)} className="grid h-7 w-7 place-items-center rounded-full bg-emerald-600 text-white transition hover:bg-emerald-500" aria-label={t.common.add}>
                           <FaPlus className="text-[0.65rem]" />
                         </button>
@@ -1300,7 +1299,7 @@ export default function OrderPage() {
                   <div className="flex items-center gap-3">
                     <div className="min-w-0 flex-1">
                       <p className="truncate text-sm font-semibold text-slate-900 dark:text-white">{product.name}</p>
-                      <p className="text-xs text-slate-500 dark:text-slate-400">€{product.price.toFixed(2)} {t.common.each}</p>
+                      <p className="text-xs text-slate-500 dark:text-slate-400">€{product.price.toFixed(2)} {t.common.each} · {qty * (product.bogoEnabled ? 2 : 1)} drinks</p>
                       {sideChoice && (
                         <p className="mt-0.5 text-[11px] font-bold text-emerald-700 dark:text-emerald-300">
                           {lang === "nl" ? "Bijgerecht" : "Side"}: {grillSideLabel(sideChoice, lang)}
@@ -1311,7 +1310,7 @@ export default function OrderPage() {
                       <button onClick={() => removeFromCart(product.id, sideChoice)} className="grid h-6 w-6 place-items-center rounded-full bg-white text-slate-600 transition hover:text-red-600 dark:bg-white/10 dark:text-slate-300" aria-label={t.common.remove}>
                         {qty <= 1 ? <FaTrash className="text-[0.6rem]" /> : <FaMinus className="text-[0.6rem]" />}
                       </button>
-                      <span className="w-5 text-center text-sm font-bold text-slate-900 dark:text-white">{qty}</span>
+                      <span className="w-5 text-center text-sm font-bold text-slate-900 dark:text-white">{qty * (product.bogoEnabled ? 2 : 1)}</span>
                       <button onClick={() => addToCart(product.id, sideChoice)} className="grid h-6 w-6 place-items-center rounded-full bg-emerald-600 text-white transition hover:bg-emerald-500" aria-label={t.common.add}>
                         <FaPlus className="text-[0.6rem]" />
                       </button>

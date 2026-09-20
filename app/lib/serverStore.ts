@@ -553,9 +553,9 @@ export async function placeOrder(details: {
 
   const pricedItems = items.flatMap((item) => {
     const product = productById.get(item.productId);
-    const freeQty = product?.bogoEnabled ? Math.floor(item.qty / 2) : 0;
+    const freeQty = product?.bogoEnabled ? item.qty : 0;
     if (freeQty === 0) return [item];
-    return [{ ...item, qty: item.qty - freeQty }, { ...item, productId: `bogo-free:${item.productId}`, name: `Free: ${item.name}`, price: 0, qty: freeQty }];
+    return [{ ...item, qty: item.qty }, { ...item, productId: `bogo-free:${item.productId}`, name: `${item.name} (FREE)`, price: 0, qty: freeQty }];
   });
   items.splice(0, items.length, ...pricedItems);
 

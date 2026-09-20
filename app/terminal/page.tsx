@@ -87,6 +87,7 @@ function buildReceipt(order: Order, lang: string): string {
     r += ESC + "!" + "\x00";
   }
   r += "--------------------------------\n";
+  r += line("ITEMS", String(order.items.reduce((sum, item) => sum + item.qty, 0)));
   r += line("Subtotal", order.subtotal.toFixed(2));
   if (order.discount > 0) r += line("Discount", "-" + order.discount.toFixed(2));
   if (order.delivery > 0) r += line("Delivery", order.delivery.toFixed(2));
@@ -488,6 +489,7 @@ export default function TerminalPage() {
                     </div>
 
                     <ul className="mt-3 space-y-1 border-t border-slate-100 pt-3 text-sm dark:border-white/10">
+                      <li className="font-black text-emerald-700 dark:text-emerald-300">Items: {o.items.reduce((sum, item) => sum + item.qty, 0)}</li>
                       {o.items.map((it, i) => (
                         <li key={i} className="flex justify-between gap-3">
                           <span className="font-semibold text-slate-800 dark:text-slate-200">
