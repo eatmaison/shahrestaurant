@@ -52,6 +52,7 @@ export interface Product {
   sortOrder?: number;
   isPopular?: boolean;
   isNew?: boolean;
+  bogoEnabled?: boolean;
   /** Detailed product description for "read more" modal */
   detailedDescription?: {
     en: string;

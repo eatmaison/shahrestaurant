@@ -327,9 +327,11 @@ export default function OrderPage() {
     return selected;
   }, [cartLines, menuUpgrades, softDrinkProducts]);
   const menuUpgradeSubtotal = cartLines.reduce((sum, line) => (selectedMenuUpgrades[line.product.id] ? sum + MENU_UPGRADE_PRICE * line.qty : sum), 0);
-  const subtotal = cartLines.reduce((sum, l) => sum + l.product.price * l.qty, 0) + menuUpgradeSubtotal;
+  const bogoSavings = cartLines.reduce((sum, line) => sum + (line.product.bogoEnabled ? Math.floor(line.qty / 2) * line.product.price : 0), 0);
+  const bogoProducts = menuProducts.filter((product) => product.bogoEnabled);
+  const subtotal = cartLines.reduce((sum, l) => sum + l.product.price * l.qty, 0) - bogoSavings + menuUpgradeSubtotal;
   const foodSubtotal = cartLines.reduce(
-    (sum, l) => (isDrinkCategory(l.product.category) ? sum : sum + l.product.price * l.qty),
+    (sum, l) => (isDrinkCategory(l.product.category) ? sum : sum + l.product.price * (l.qty - (l.product.bogoEnabled ? Math.floor(l.qty / 2) : 0))),
     0
   );
   const isCompany = currentUser?.accountType === "company";
@@ -839,6 +841,12 @@ export default function OrderPage() {
       </div>
 
       {/* Desktop Layout (Hidden on mobile) */}
+      {bogoProducts.length > 0 && (
+        <div className="mx-auto mb-5 max-w-7xl animate-pop rounded-2xl border-2 border-rose-400 bg-rose-50 px-5 py-4 text-center shadow-lg shadow-rose-500/20 dark:border-rose-400/70 dark:bg-rose-950/40">
+          <p className="text-lg font-black uppercase tracking-wide text-rose-700 dark:text-rose-200">BUY 1 GET 1 FREE</p>
+          <p className="mt-1 text-sm font-bold text-rose-600 dark:text-rose-300">Buy one, get the second one free: {bogoProducts.map((product) => product.name).join(", ")}</p>
+        </div>
+      )}
       <div className="mx-auto hidden max-w-7xl gap-6 px-4 py-8 sm:px-6 lg:grid lg:grid-cols-[210px_1fr_300px] lg:px-8">
         {/* Desktop: Restaurant + Categories Sidebar */}
         <aside className="sticky top-[76px] self-start">

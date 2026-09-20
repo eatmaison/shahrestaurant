@@ -93,6 +93,13 @@ const DDL: string[] = [
   `ALTER TABLE products ADD COLUMN IF NOT EXISTS sort_order integer`,
   `ALTER TABLE products ADD COLUMN IF NOT EXISTS is_popular boolean NOT NULL DEFAULT false`,
   `ALTER TABLE products ADD COLUMN IF NOT EXISTS is_new boolean NOT NULL DEFAULT false`,
+  `ALTER TABLE products ADD COLUMN IF NOT EXISTS bogo_enabled boolean NOT NULL DEFAULT false`,
+  `CREATE TABLE IF NOT EXISTS promotion_migrations (key text PRIMARY KEY, applied_at timestamptz NOT NULL DEFAULT now())`,
+  `WITH inserted AS (
+    INSERT INTO promotion_migrations (key) VALUES ('lassi_bogo_v1') ON CONFLICT DO NOTHING RETURNING key
+  ) UPDATE products SET bogo_enabled = true
+    WHERE EXISTS (SELECT 1 FROM inserted)
+      AND (lower(coalesce(subcategory, '')) LIKE '%lassi%' OR lower(name) LIKE '%lassi%')`,
   `UPDATE products
      SET sort_order = ranked.sort_order
     FROM (

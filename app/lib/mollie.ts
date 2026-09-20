@@ -16,6 +16,7 @@ interface CreatePaymentArgs {
   redirectUrl: string;
   webhookUrl?: string;
   metadata?: Record<string, unknown>;
+  idempotencyKey?: string;
 }
 
 export async function createMolliePayment(
@@ -35,6 +36,7 @@ export async function createMolliePayment(
     headers: {
       Authorization: `Bearer ${process.env.MOLLIE_API_KEY}`,
       "Content-Type": "application/json",
+      ...(args.idempotencyKey ? { "Idempotency-Key": args.idempotencyKey } : {}),
     },
     body: JSON.stringify(body),
   });
@@ -47,7 +49,7 @@ export async function createMolliePayment(
 
 export type MollieStatus = "open" | "pending" | "authorized" | "paid" | "canceled" | "expired" | "failed";
 
-export async function getMolliePayment(id: string): Promise<{ status: MollieStatus; failureReason?: string }> {
+export async function getMolliePayment(id: string): Promise<{ status: MollieStatus; failureReason?: string; amount: { currency: string; value: string }; metadata: Record<string, unknown> }> {
   const res = await fetch(`${MOLLIE_API}/payments/${id}`, {
     headers: { Authorization: `Bearer ${process.env.MOLLIE_API_KEY}` },
   });
@@ -62,5 +64,26 @@ export async function getMolliePayment(id: string): Promise<{ status: MollieStat
     typeof details.reason === "string" ? details.reason :
     typeof data.statusReason === "string" ? data.statusReason :
     undefined;
-  return { status: data.status, failureReason };
+  return { status: data.status, failureReason, amount: data.amount, metadata: data.metadata ?? {} };
+}
+
+export async function refundMolliePayment(paymentId: string, bookingId: string, amount: number): Promise<{ id: string; status: string }> {
+  const url = `${MOLLIE_API}/payments/${encodeURIComponent(paymentId)}/refunds`;
+  const headers = { Authorization: `Bearer ${process.env.MOLLIE_API_KEY}`, "Content-Type": "application/json" };
+  const previous = await fetch(url, { headers, cache: "no-store" });
+  if (!previous.ok) throw new Error("Unable to check refund status");
+  const data = await previous.json() as { _embedded: { refunds: { id: string; status: string; description: string }[] } };
+  const description = `Party booking ${bookingId}: no places available`;
+  const existing = data._embedded.refunds.find(refund => refund.description === description);
+  if (existing) {
+    if (["failed", "canceled"].includes(existing.status)) throw new Error("Refund needs administrator attention");
+    return existing;
+  }
+  const response = await fetch(url, {
+    method: "POST",
+    headers: { ...headers, "Idempotency-Key": bookingId },
+    body: JSON.stringify({ amount: { currency: "EUR", value: amount.toFixed(2) }, description }),
+  });
+  if (!response.ok) throw new Error("Unable to issue party refund; retry required");
+  return response.json();
 }

@@ -551,6 +551,14 @@ export async function placeOrder(details: {
     });
   if (items.length === 0) return { ok: false, error: "empty" };
 
+  const pricedItems = items.flatMap((item) => {
+    const product = productById.get(item.productId);
+    const freeQty = product?.bogoEnabled ? Math.floor(item.qty / 2) : 0;
+    if (freeQty === 0) return [item];
+    return [{ ...item, qty: item.qty - freeQty }, { ...item, productId: `bogo-free:${item.productId}`, name: `Free: ${item.name}`, price: 0, qty: freeQty }];
+  });
+  items.splice(0, items.length, ...pricedItems);
+
   for (const productId of productIds) {
     const food = productById.get(productId);
     const drink = productById.get(menuUpgrades[productId]);
@@ -854,8 +862,8 @@ async function insertProductRow(
   sortOrder: number
 ): Promise<Product> {
   const rows = (await sql.query(
-    `INSERT INTO products (id, group_id, brand, category, subcategory, name, description, description_nl, price, image, sort_order, is_popular, is_new, detailed_description, ingredients, ingredients_nl, allergens, allergens_nl)
-     VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14::jsonb,$15::text[],$16::text[],$17::text[],$18::text[]) RETURNING *`,
+    `INSERT INTO products (id, group_id, brand, category, subcategory, name, description, description_nl, price, image, sort_order, is_popular, is_new, bogo_enabled, detailed_description, ingredients, ingredients_nl, allergens, allergens_nl)
+     VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15::jsonb,$16::text[],$17::text[],$18::text[],$19::text[]) RETURNING *`,
     [
       id,
       groupId,
@@ -870,6 +878,7 @@ async function insertProductRow(
       sortOrder,
       content.isPopular ?? false,
       content.isNew ?? false,
+      content.bogoEnabled ?? false,
       content.detailedDescription ? JSON.stringify(content.detailedDescription) : null,
       content.ingredients ?? [],
       content.ingredientsNl ?? [],
@@ -918,7 +927,7 @@ export async function updateProduct(id: string, patch: Partial<Omit<Product, "id
   }
   await sql.query(
      `UPDATE products SET brand=$2, category=$3, subcategory=$4, name=$5, description=$6, description_nl=$7, price=$8, image=$9,
-       is_popular=$10, is_new=$11, detailed_description=$12::jsonb, ingredients=$13::text[], ingredients_nl=$14::text[], allergens=$15::text[], allergens_nl=$16::text[] WHERE id=$1`,
+       is_popular=$10, is_new=$11, bogo_enabled=$12, detailed_description=$13::jsonb, ingredients=$14::text[], ingredients_nl=$15::text[], allergens=$16::text[], allergens_nl=$17::text[] WHERE id=$1`,
     [
       id,
       next.brand,
@@ -931,6 +940,7 @@ export async function updateProduct(id: string, patch: Partial<Omit<Product, "id
       next.image ?? null,
       next.isPopular ?? false,
       next.isNew ?? false,
+      next.bogoEnabled ?? false,
       next.detailedDescription ? JSON.stringify(next.detailedDescription) : null,
       next.ingredients ?? [],
       next.ingredientsNl ?? [],
@@ -967,7 +977,7 @@ export async function syncProductGroup(anchorId: string, content: ProductContent
     if (existing) {
       await sql.query(
           `UPDATE products SET group_id=$2, category=$3, subcategory=$4, name=$5, description=$6, description_nl=$7, price=$8, image=$9,
-            is_popular=$10, is_new=$11, detailed_description=$12::jsonb, ingredients=$13::text[], ingredients_nl=$14::text[], allergens=$15::text[], allergens_nl=$16::text[] WHERE id=$1`,
+            is_popular=$10, is_new=$11, bogo_enabled=$12, detailed_description=$13::jsonb, ingredients=$14::text[], ingredients_nl=$15::text[], allergens=$16::text[], allergens_nl=$17::text[] WHERE id=$1`,
         [
           existing.id,
           groupId,
@@ -980,6 +990,7 @@ export async function syncProductGroup(anchorId: string, content: ProductContent
           image,
           sharedContent.isPopular ?? false,
           sharedContent.isNew ?? false,
+          sharedContent.bogoEnabled ?? false,
           sharedContent.detailedDescription ? JSON.stringify(sharedContent.detailedDescription) : null,
           sharedContent.ingredients ?? [],
           sharedContent.ingredientsNl ?? [],

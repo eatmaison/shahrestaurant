@@ -15,9 +15,9 @@ interface Section {
 const CONTENT: Record<"en" | "nl", { title: string; updated: string; intro: string; sections: Section[] }> = {
   en: {
     title: "Terms & Conditions",
-    updated: "Last updated: 9 July 2026",
+    updated: "Last updated: 10 September 2026",
     intro:
-      "These terms and conditions apply to all orders and reservations placed through shahrestaurant.nl, operated by Shah Restaurant, Klaprozenweg 36a, 1032 KL Amsterdam, the Netherlands. By placing an order or reservation you agree to these terms.",
+      "These terms and conditions apply to all orders, reservations and event ticket bookings placed through shahrestaurant.nl, operated by Shah Restaurant, Klaprozenweg 36a, 1032 KL Amsterdam, the Netherlands. By placing an order, reservation or ticket booking you agree to these terms.",
     sections: [
       {
         title: "1. Orders & delivery",
@@ -78,11 +78,19 @@ const CONTENT: Record<"en" | "nl", { title: string; updated: string; intro: stri
           "EU consumers may also use the European Online Dispute Resolution platform: ec.europa.eu/consumers/odr.",
         ],
       },
+      {
+        title: "9. Party and event tickets",
+        body: [
+          "Your booking is confirmed only after successful payment and ticket confirmation. Starting checkout does not hold places. If the final places sell before your payment completes, no ticket is issued and we initiate a full refund to the original payment method. Bank processing times may vary.",
+          "The event, date, times, quantity, included items and total shown at checkout apply to your purchase. Times are Amsterdam local time; overnight events finish the next day. Bring your confirmation; group bookings are listed under the purchaser's name.",
+          "Contact info@shahrestaurant.nl or +31 20 341 2995 about cancellations, changes or refunds. Your statutory consumer rights are unaffected.",
+        ],
+      },
     ],
   },
   nl: {
     title: "Algemene Voorwaarden",
-    updated: "Laatst bijgewerkt: 9 juli 2026",
+    updated: "Laatst bijgewerkt: 10 september 2026",
     intro:
       "Deze algemene voorwaarden zijn van toepassing op alle bestellingen en reserveringen via shahrestaurant.nl, geëxploiteerd door Shah Restaurant, Klaprozenweg 36a, 1032 KL Amsterdam, Nederland. Door een bestelling of reservering te plaatsen gaat u akkoord met deze voorwaarden.",
     sections: [
@@ -143,6 +151,14 @@ const CONTENT: Record<"en" | "nl", { title: string; updated: string; intro: stri
         body: [
           "Op deze voorwaarden is Nederlands recht van toepassing. Geschillen worden voorgelegd aan de bevoegde rechter te Amsterdam, onverminderd uw rechten als consument.",
           "EU-consumenten kunnen ook gebruikmaken van het Europese platform voor onlinegeschillenbeslechting: ec.europa.eu/consumers/odr.",
+        ],
+      },
+      {
+        title: "9. Party- en evenementtickets",
+        body: [
+          "Uw boeking is pas bevestigd na succesvolle betaling en ticketbevestiging. Het starten van de betaling reserveert geen plaatsen. Als de laatste plaatsen verkocht zijn voordat uw betaling is afgerond, worden geen tickets uitgegeven en starten wij een volledige terugbetaling via de oorspronkelijke betaalmethode. De verwerkingstijd van banken kan verschillen.",
+          "Het evenement, de datum, tijden, het aantal tickets, inbegrepen onderdelen en totaalbedrag bij het afrekenen gelden voor uw aankoop. Tijden zijn lokale Amsterdamse tijden; nachtevenementen eindigen de volgende dag. Neem uw bevestiging mee; groepsboekingen staan op naam van de koper.",
+          "Neem voor annuleringen, wijzigingen of terugbetalingen contact op via info@shahrestaurant.nl of +31 20 341 2995. Uw wettelijke consumentenrechten blijven gelden.",
         ],
       },
     ],

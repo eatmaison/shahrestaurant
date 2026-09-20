@@ -70,6 +70,7 @@ CREATE TABLE IF NOT EXISTS products (
   sort_order           integer     NOT NULL DEFAULT 0,
   is_popular           boolean     NOT NULL DEFAULT false,
   is_new               boolean     NOT NULL DEFAULT false,
+  bogo_enabled         boolean     NOT NULL DEFAULT false,
   -- { "en": "...", "nl": "..." } for the "Read more" popup
   detailed_description jsonb,
   ingredients          text[]      NOT NULL DEFAULT '{}',

@@ -15,7 +15,7 @@ interface Section {
 const CONTENT: Record<"en" | "nl", { title: string; updated: string; intro: string; sections: Section[] }> = {
   en: {
     title: "Privacy Policy",
-    updated: "Last updated: 9 July 2026",
+    updated: "Last updated: 10 September 2026",
     intro:
       "Shah Restaurant, located at Klaprozenweg 36a, 1032 KL Amsterdam, the Netherlands (\"we\", \"us\"), is responsible for the processing of personal data as described in this privacy policy. We process your data in accordance with the General Data Protection Regulation (GDPR / AVG). Contact: info@shahrestaurant.nl, +31 20 341 2995.",
     sections: [
@@ -26,6 +26,7 @@ const CONTENT: Record<"en" | "nl", { title: string; updated: string; intro: stri
           "Business data: BTW (VAT) and KvK numbers when you register a company account.",
           "Order data: delivery name, address, postcode, phone number, order contents, optional delivery notes and order history.",
           "Reservation data: name, e-mail address, phone number, date, time, party size and any special requests when you reserve a table.",
+          "Event ticket data: first and last name, e-mail address, phone number, event and date, ticket quantity, price, payment status and booking/payment references. We use these to fulfil your booking, manage admission and send transactional confirmations or booking updates (performance of a contract). Financial records follow our order and invoice retention policy; guest contact data is retained only as needed for the booking and applicable obligations.",
           "VIP card requests: a photo of your physical VIP card, if you choose to upload one. This photo is stored in our own database and is not shared with third parties.",
           "Reviews: your rating, review text and display name.",
         ],
@@ -66,6 +67,7 @@ const CONTENT: Record<"en" | "nl", { title: string; updated: string; intro: stri
         title: "6. Cookies",
         body: [
           "We only use functional cookies and local storage that are strictly necessary for the website to work: your login session, your shopping cart, and your language/theme preferences.",
+          "For event bookings, session storage keeps a private access token so you can return to your confirmation in the same browser tab. Keep your confirmation link private.",
           "We do not use analytics, tracking or advertising cookies. Under EU/Dutch law (Telecommunicatiewet), strictly necessary cookies do not require consent.",
         ],
       },
@@ -93,7 +95,7 @@ const CONTENT: Record<"en" | "nl", { title: string; updated: string; intro: stri
   },
   nl: {
     title: "Privacybeleid",
-    updated: "Laatst bijgewerkt: 9 juli 2026",
+    updated: "Laatst bijgewerkt: 10 september 2026",
     intro:
       "Shah Restaurant, gevestigd aan Klaprozenweg 36a, 1032 KL Amsterdam, Nederland (\"wij\", \"ons\"), is verantwoordelijk voor de verwerking van persoonsgegevens zoals beschreven in dit privacybeleid. Wij verwerken uw gegevens in overeenstemming met de Algemene Verordening Gegevensbescherming (AVG). Contact: info@shahrestaurant.nl, +31 20 341 2995.",
     sections: [
@@ -104,6 +106,7 @@ const CONTENT: Record<"en" | "nl", { title: string; updated: string; intro: stri
           "Bedrijfsgegevens: BTW- en KvK-nummer wanneer u een zakelijk account registreert.",
           "Bestelgegevens: naam, bezorgadres, postcode, telefoonnummer, inhoud van de bestelling, eventuele bezorgnotities en bestelgeschiedenis.",
           "Reserveringsgegevens: naam, e-mailadres, telefoonnummer, datum, tijd, aantal gasten en eventuele speciale verzoeken bij een tafelreservering.",
+          "Evenementtickets: voor- en achternaam, e-mailadres, telefoonnummer, evenement en datum, aantal tickets, prijs, betaalstatus en boekings-/betaalreferenties. Wij gebruiken deze voor uw boeking, toegangsbeheer en transactionele bevestigingen of boekingsupdates (uitvoering van een overeenkomst). Financiele gegevens volgen ons bewaarbeleid voor bestellingen en facturen; contactgegevens bewaren wij alleen zolang nodig voor de boeking en toepasselijke verplichtingen.",
           "VIP-kaartverzoeken: een foto van uw fysieke VIP-kaart, indien u deze uploadt. Deze foto wordt in onze eigen database opgeslagen en niet gedeeld met derden.",
           "Beoordelingen: uw waardering, tekst en weergavenaam.",
         ],

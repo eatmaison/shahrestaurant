@@ -49,6 +49,7 @@ import { useLang, useStore } from "../providers";
 import { CATEGORY_ICON_CHOICES, categoryIconFor, formatOrderNumber, isDrinkCategory, ORDER_STATUS_FLOW } from "../lib/data";
 import { SOCIAL_PLATFORMS } from "../components/socialIcons";
 import RichTextEditor from "../components/RichTextEditor";
+import PartyAdmin from "./PartyAdmin";
 import type { Brand, Category, Order, OrderStatus, Product, RecentVisitor } from "../lib/types";
 import type { RestaurantOpenOverride } from "../lib/openingHours";
 
@@ -251,6 +252,7 @@ export default function AdminPage() {
     price: "",
     isPopular: false,
     isNew: false,
+    bogoEnabled: false,
     brands: [] as Brand[],
     category: "Wraps" as Category,
     subcategory: "" as Category,
@@ -272,6 +274,7 @@ export default function AdminPage() {
     price: "",
     isPopular: false,
     isNew: false,
+    bogoEnabled: false,
     brands: [] as Brand[],
     category: "Wraps" as Category,
     subcategory: "" as Category,
@@ -986,6 +989,7 @@ export default function AdminPage() {
         price,
         isPopular: draft.isPopular,
         isNew: draft.isNew,
+        bogoEnabled: draft.bogoEnabled,
         image: draft.image,
         detailedDescription: detailEn || detailNl ? { en: detailEn, nl: detailNl } : undefined,
         ingredients: parseList(draft.ingredientsEn),
@@ -1006,6 +1010,7 @@ export default function AdminPage() {
       price: "",
       isPopular: false,
       isNew: false,
+      bogoEnabled: false,
       brands: draft.brands,
       category: draft.category,
       subcategory: draft.subcategory,
@@ -1035,6 +1040,7 @@ export default function AdminPage() {
       price: String(p.price),
       isPopular: p.isPopular ?? false,
       isNew: p.isNew ?? false,
+      bogoEnabled: p.bogoEnabled ?? false,
       brands: groupBrands,
       category: p.category,
       subcategory: p.subcategory ?? "",
@@ -1095,6 +1101,7 @@ export default function AdminPage() {
         price,
         isPopular: editDraft.isPopular,
         isNew: editDraft.isNew,
+        bogoEnabled: editDraft.bogoEnabled,
         image: editDraft.image,
         // null (not undefined) so clearing both fields also clears it in the database.
         detailedDescription: (detailEn || detailNl
@@ -1631,6 +1638,7 @@ export default function AdminPage() {
       <div className="mb-6 flex flex-wrap items-end justify-between gap-3">
         <div>
           <h1 className="text-3xl font-black tracking-tight text-slate-900 dark:text-white">{t.admin.title}</h1>
+          <a href="#party-admin" className="mt-2 inline-flex items-center gap-2 py-2 text-sm font-semibold text-emerald-700 dark:text-emerald-300"><FaCalendarCheck /> PARTIES / EVENTS</a>
           <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">{t.admin.subtitle}</p>
           <div className="mt-4 flex flex-wrap items-center gap-2" aria-label="Admin tools">
             <button type="button" onClick={() => void handleAdminRefresh()} disabled={adminRefreshing} className="inline-flex items-center gap-2 rounded-full border border-slate-200 px-3 py-2 text-xs font-bold text-slate-700 transition hover:border-emerald-400 disabled:opacity-50 dark:border-white/10 dark:text-slate-200"><FaArrowsRotate className={adminRefreshing ? "animate-spin" : ""} /> {t.admin.refreshDashboard}</button>
@@ -2531,6 +2539,8 @@ export default function AdminPage() {
         </div>
       )}
 
+      <PartyAdmin processImageFile={processImageFile} />
+
       {/* Reservations management */}
       <div className="mt-6 rounded-3xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-white/5">
         <div className="flex flex-wrap items-center gap-2">
@@ -2839,6 +2849,7 @@ export default function AdminPage() {
                 <div className="mt-2 flex flex-wrap gap-2">
                   <label className="inline-flex items-center gap-2 text-xs font-bold text-amber-700"><input type="checkbox" checked={draft.isPopular} onChange={(e) => setDraft({ ...draft, isPopular: e.target.checked })} /> Popular</label>
                   <label className="inline-flex items-center gap-2 text-xs font-bold text-emerald-700"><input type="checkbox" checked={draft.isNew} onChange={(e) => setDraft({ ...draft, isNew: e.target.checked })} /> New</label>
+                  <label className="inline-flex items-center gap-2 text-xs font-black text-rose-700"><input type="checkbox" checked={draft.bogoEnabled} onChange={(e) => setDraft({ ...draft, bogoEnabled: e.target.checked })} /> BUY 1 GET 1 FREE</label>
                 </div>
               </div>
               <div className="col-span-2 flex flex-wrap gap-2">
@@ -3629,6 +3640,7 @@ export default function AdminPage() {
                   <div className="mt-2 flex flex-wrap gap-2">
                     <label className="inline-flex items-center gap-2 text-xs font-bold text-amber-700"><input type="checkbox" checked={editDraft.isPopular} onChange={(e) => setEditDraft({ ...editDraft, isPopular: e.target.checked })} /> Popular</label>
                     <label className="inline-flex items-center gap-2 text-xs font-bold text-emerald-700"><input type="checkbox" checked={editDraft.isNew} onChange={(e) => setEditDraft({ ...editDraft, isNew: e.target.checked })} /> New</label>
+                    <label className="inline-flex items-center gap-2 text-xs font-black text-rose-700"><input type="checkbox" checked={editDraft.bogoEnabled} onChange={(e) => setEditDraft({ ...editDraft, bogoEnabled: e.target.checked })} /> BUY 1 GET 1 FREE</label>
                   </div>
                 </div>
                 <div className="col-span-2 flex flex-wrap gap-2">
