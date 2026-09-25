@@ -3,13 +3,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useDeferredValue, useEffect, useRef, useState } from "react";
-import { FaArrowDown, FaArrowLeft, FaArrowRight, FaBagShopping, FaCalendarCheck, FaChevronDown, FaClock, FaEnvelope, FaExpand, FaFireBurner, FaLocationDot, FaMagnifyingGlass, FaPause, FaPhone, FaPlay, FaStar, FaUtensils, FaUsers, FaXmark } from "react-icons/fa6";
-import { useLang, useStore } from "./providers";
+import { FaArrowDown, FaArrowLeft, FaArrowRight, FaBagShopping, FaCalendarCheck, FaChevronDown, FaClock, FaEnvelope, FaExpand, FaFireBurner, FaLocationDot, FaMagnifyingGlass, FaPhone, FaStar, FaUtensils, FaUsers, FaXmark } from "react-icons/fa6";
+import { useLang, useStore, useTheme } from "./providers";
 import { SITE_ID } from "./lib/data";
 import type { Product } from "./lib/types";
 import { homeContent } from "./lib/homeContent";
 import { HomeDialog } from "./components/HomeDialog";
-import { HomeDepth, useHomeMotion, useHomeTilt } from "./components/HomeDepth";
+import { useHomeMotion, useHomeTilt } from "./components/HomeDepth";
 import styles from "./home.module.css";
 
 const SIGNATURE_IDS = ["tdc-butter-chicken", "tdc-tandoori-mixed-grill", "tdc-tandoori-lamb-chops", "tdc-biryani-lamb", "tdc-tandoori-chicken-tikka", "tdc-samosa-chaat"];
@@ -24,12 +24,15 @@ function DishPhoto({ product, large = false }: { product: Product; large?: boole
 
 export default function Home() {
   const { t, lang } = useLang();
+  const { theme } = useTheme();
   const { products, reviews, restaurantStatus, hydrated } = useStore();
   const copy = homeContent[lang];
   const rootRef = useRef<HTMLDivElement>(null);
+  const heroVideoRef = useRef<HTMLVideoElement>(null);
+  const heroScrollRef = useRef<HTMLDivElement>(null);
   const searchRef = useRef<HTMLInputElement>(null);
   const swipeStart = useRef<{ horizontal: number; vertical: number } | null>(null);
-  const { enabled: motionEnabled, reduced: reducedMotion, toggleMotion } = useHomeMotion();
+  const { enabled: motionEnabled } = useHomeMotion();
   useHomeTilt(rootRef, motionEnabled);
   const [category, setCategory] = useState("");
   const [search, setSearch] = useState("");
@@ -91,6 +94,45 @@ export default function Home() {
     return () => { revealObserver.disconnect(); sectionObserver.disconnect(); motionQuery.removeEventListener("change", revealAll); };
   }, []);
 
+  useEffect(() => {
+    const video = heroVideoRef.current;
+    const track = heroScrollRef.current;
+    if (!video || !track) return;
+    let frame = 0;
+    const syncFrame = () => {
+      frame = 0;
+      video.pause();
+      if (!Number.isFinite(video.duration) || !video.duration || video.seeking) return;
+      const stage = video.parentElement!;
+      const pinTop = parseFloat(getComputedStyle(stage).top) || 0;
+      const distance = track.offsetHeight - stage.offsetHeight;
+      const progress = Math.max(0, Math.min(1, (pinTop - track.getBoundingClientRect().top) / Math.max(1, distance)));
+      // Stay just inside the media duration so the final decoded frame remains visible.
+      const time = progress * Math.max(0, video.duration - 0.001);
+      if (Math.abs(video.currentTime - time) > 0.008) video.currentTime = time;
+    };
+    const schedule = () => { if (!frame) frame = requestAnimationFrame(syncFrame); };
+    const observer = new ResizeObserver(schedule);
+    observer.observe(track);
+    observer.observe(video);
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    video.addEventListener("loadedmetadata", schedule);
+    video.addEventListener("loadeddata", schedule);
+    video.addEventListener("seeked", schedule);
+    schedule();
+    return () => {
+      cancelAnimationFrame(frame);
+      observer.disconnect();
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
+      video.removeEventListener("loadedmetadata", schedule);
+      video.removeEventListener("loadeddata", schedule);
+      video.removeEventListener("seeked", schedule);
+      video.pause();
+    };
+  }, [theme, hydrated]);
+
   function resetMenu() {
     setSearch("");
     setCategory("");
@@ -119,12 +161,23 @@ export default function Home() {
   return (
     <div ref={rootRef} className={styles.home} data-motion={motionEnabled ? "on" : "off"}>
       <div className={styles.scrollProgress} aria-hidden="true" />
+      <div ref={heroScrollRef} className={styles.heroScroll}>
       <section className={styles.hero} aria-labelledby="home-title">
-        <Image src="/photos/687A0343.jpeg" alt={copy.barAlt} fill loading="eager" fetchPriority="high" sizes="100vw" className={styles.heroImage} />
-        <HomeDepth enabled={motionEnabled} rootRef={rootRef} />
+        <Image key={"hero-" + theme} src={theme === "dark" ? "/photos/shah-hero-night.webp" : "/photos/shah-hero-day.webp"} alt={lang === "nl" ? "Shah Restaurant met terras en geopende parasols" : "Shah Restaurant with its terrace and open parasols"} fill loading="eager" fetchPriority="high" sizes="100vw" className={styles.heroImage} />
+        {hydrated && <video
+          key={theme}
+          ref={heroVideoRef}
+          className={styles.heroVideo}
+          src={theme === "dark" ? "/photos/shah-hero-night-walkthrough.mp4" : "/photos/shah-hero-day-walkthrough.mp4"}
+          poster={theme === "dark" ? "/photos/shah-hero-night.webp" : "/photos/shah-hero-day.webp"}
+          muted
+          playsInline
+          preload="auto"
+          aria-hidden="true"
+          tabIndex={-1}
+        />}
         <div className={styles.heroShade} />
         <div className={styles.heroTopline}><span>Amsterdam-Noord</span><span>Indian kitchen & hospitality</span></div>
-        <button type="button" className={styles.motionToggle} onClick={toggleMotion} aria-pressed={motionEnabled} disabled={reducedMotion} aria-label={reducedMotion ? copy.reducedMotion : motionEnabled ? copy.pauseMotion : copy.resumeMotion} title={reducedMotion ? copy.reducedMotion : motionEnabled ? copy.pauseMotion : copy.resumeMotion}>{motionEnabled ? <FaPause aria-hidden="true" /> : <FaPlay aria-hidden="true" />}</button>
         <div className={styles.heroContent}>
           <p className={styles.heroEyebrow}>Fine Indian Dining</p>
           <h1 id="home-title" className={styles.heroTitle}><span>Shah</span><span>Restaurant</span></h1>
@@ -141,6 +194,8 @@ export default function Home() {
           <span><FaClock aria-hidden="true" />{t.hours.tueSun} · 17:00–22:30</span>
         </div>
       </section>
+
+      </div>
 
       <nav className={styles.sectionNav} aria-label={copy.explore}>
         <div className={styles.sectionNavInner}>
