@@ -30,7 +30,10 @@ function getTransporter(): Transporter {
 
 export async function sendMail(opts: { to: string; subject: string; html: string }): Promise<void> {
   const from = process.env.EMAIL_FROM || process.env.SMTP_FROM || `Shah Restaurant <${process.env.SMTP_USER}>`;
-  // Prefer the Resend HTTPS API - it works even when the host blocks outbound SMTP ports.
+  // DigitalOcean blocks SMTP ports; the Resend HTTPS API is used when configured.
+  if (!from || from.includes("<undefined>")) {
+    throw new Error("Email sender is not configured (set EMAIL_FROM)");
+  }
   if (process.env.RESEND_API_KEY) {
     const res = await fetch("https://api.resend.com/emails", {
       method: "POST",
@@ -39,6 +42,7 @@ export async function sendMail(opts: { to: string; subject: string; html: string
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ from, to: opts.to, subject: opts.subject, html: opts.html }),
+      signal: AbortSignal.timeout(15_000),
     });
     if (!res.ok) {
       const detail = await res.text().catch(() => "");
@@ -47,8 +51,7 @@ export async function sendMail(opts: { to: string; subject: string; html: string
     return;
   }
   if (!emailEnabled()) {
-    console.warn(`[email] not configured - skipped sending "${opts.subject}" to ${opts.to}`);
-    return;
+    throw new Error("Email delivery is not configured (set RESEND_API_KEY or SMTP credentials)");
   }
   await getTransporter().sendMail({ from, to: opts.to, subject: opts.subject, html: opts.html });
 }

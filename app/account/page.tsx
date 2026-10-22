@@ -64,14 +64,27 @@ export default function AccountPage() {
   const [submitting, setSubmitting] = useState(false);
   const authLock = useRef(false);
   const [verifyResent, setVerifyResent] = useState(false);
+  const [verifySending, setVerifySending] = useState(false);
+  const [verifyError, setVerifyError] = useState(false);
 
   const resendVerification = async () => {
-    await fetch("/api/auth", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ action: "resendVerification" }),
-    });
-    setVerifyResent(true);
+    if (verifySending) return;
+    setVerifySending(true);
+    setVerifyError(false);
+    try {
+      const response = await fetch("/api/auth", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "resendVerification" }),
+      });
+      const result = await response.json().catch(() => null);
+      if (!response.ok || !result?.ok) throw new Error("Verification email was not sent");
+      setVerifyResent(true);
+    } catch {
+      setVerifyError(true);
+    } finally {
+      setVerifySending(false);
+    }
   };
   const [reviewingId, setReviewingId] = useState<string | null>(null);
   const [rating, setRating] = useState(5);
@@ -231,12 +244,20 @@ export default function AccountPage() {
                 <FaCircleCheck /> {t.email.resendSent}
               </span>
             ) : (
-              <button
-                onClick={resendVerification}
-                className="rounded-full border border-amber-400 bg-white px-4 py-2 text-sm font-bold text-amber-700 transition hover:bg-amber-50 dark:bg-white/5 dark:text-amber-300 dark:hover:bg-white/10"
-              >
-                {t.email.resend}
-              </button>
+              <div className="flex flex-col items-end gap-1">
+                {verifyError && (
+                  <p role="alert" className="text-xs font-semibold text-red-700 dark:text-red-300">
+                    {lang === "nl" ? "E-mail versturen mislukt. Probeer het opnieuw." : "Could not send the email. Please try again."}
+                  </p>
+                )}
+                <button
+                  onClick={resendVerification}
+                  disabled={verifySending}
+                  className="rounded-full border border-amber-400 bg-white px-4 py-2 text-sm font-bold text-amber-700 transition hover:bg-amber-50 disabled:opacity-50 dark:bg-white/5 dark:text-amber-300 dark:hover:bg-white/10"
+                >
+                  {verifySending ? (lang === "nl" ? "Versturen..." : "Sending...") : t.email.resend}
+                </button>
+              </div>
             )}
           </div>
         )}

@@ -163,14 +163,16 @@ export async function registerUser(data: {
   return { ok: true, user };
 }
 
-async function sendVerificationEmail(user: User, origin?: string): Promise<void> {
+async function sendVerificationEmail(user: User, origin?: string): Promise<boolean> {
   try {
     const base = siteBase(origin);
     const token = await signToken({ sub: user.id, purpose: "verify" }, "2d");
     const { subject, html } = verificationEmail(user.name, `${base}/verify-email?token=${token}`, base);
     await sendMail({ to: user.email, subject, html });
+    return true;
   } catch (err) {
     console.error("[email] verification send failed:", err);
+    return false;
   }
 }
 
@@ -223,8 +225,7 @@ export async function setUserAccountType(
 export async function resendVerification(origin?: string): Promise<{ ok: boolean }> {
   const user = await getCurrentUser();
   if (!user || user.emailVerified) return { ok: false };
-  await sendVerificationEmail(user, origin);
-  return { ok: true };
+  return { ok: await sendVerificationEmail(user, origin) };
 }
 
 /** Start a password reset. Always returns ok so we don't reveal which emails exist. */
@@ -1428,8 +1429,7 @@ export async function createReservation(data: {
 
   const reservation = rowToReservation(rows[0]);
 
-  // Confirmation email is sent in the background so a slow or unavailable SMTP
-  // server never delays or fails the booking response (the row is already saved).
+  // Keep sending alive after the response; the reservation itself is already saved.
   if (email) {
     try {
       const base = siteBase(data.origin);
@@ -1443,8 +1443,12 @@ export async function createReservation(data: {
         note: reservation.note,
         lang: data.lang,
       });
-      void sendMail({ to: email, subject, html }).catch((err) => {
-        console.error("[email] reservation confirmation failed:", err);
+      after(async () => {
+        try {
+          await sendMail({ to: email, subject, html });
+        } catch (err) {
+          console.error("[email] reservation confirmation failed:", err);
+        }
       });
     } catch (err) {
       console.error("[email] reservation confirmation failed:", err);
