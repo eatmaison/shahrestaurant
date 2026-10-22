@@ -1694,7 +1694,7 @@ export default function AdminPage() {
               </span>
               <div>
                 <h2 className="text-lg font-black text-slate-900 dark:text-white">{restaurantStatus.isOpen ? t.admin.restaurantStatusOpen : t.admin.restaurantStatusClosed}</h2>
-                <p className="text-xs text-slate-500 dark:text-slate-400">{restaurantStatus.canOverride ? t.admin.restaurantStatusSub : t.admin.restaurantStatusAfterHours}</p>
+                <p className="text-xs text-slate-500 dark:text-slate-400">{t.admin.restaurantStatusSub}</p>
               </div>
             </div>
           </div>

@@ -179,7 +179,7 @@ export default function OrderPage() {
 
   const nextOpen = restaurantStatus.nextOpening;
 
-  // "We will start preparing your order today / on Tuesday from 17:00."
+  // "We will start preparing your order today / on Tuesday from 15:00."
   const preOrderNote = useMemo(() => {
     if (!nextOpen) return null;
     if (nextOpen.daysAhead === 0) return t.hours.preOrderToday;

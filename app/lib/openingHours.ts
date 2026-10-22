@@ -1,20 +1,20 @@
 /**
  * Opening hours (Europe/Amsterdam time):
  * - Monday: closed (nobody works)
- * - Tuesday–Sunday: 17:00–22:30
+ * - Tuesday–Sunday: 15:00–22:30
  * Order/status cutoff is 21:30; table reservations can still use the full window.
  */
 
 /** Day the shop is fully closed. 0 = Sunday … 1 = Monday … 6 = Saturday. */
 export const CLOSED_DAY = 1;
 
-/** Daily opening window in minutes since midnight (17:00–22:30). */
-export const OPEN_FROM_MIN = 17 * 60;
+/** Daily opening window in minutes since midnight (15:00–22:30). */
+export const OPEN_FROM_MIN = 15 * 60;
 export const OPEN_UNTIL_MIN = 22 * 60 + 30;
 export const ORDER_UNTIL_MIN = 21 * 60 + 30;
 
 /** Human-readable strings for display. */
-export const OPEN_FROM = "17:00";
+export const OPEN_FROM = "15:00";
 export const OPEN_UNTIL = "22:30";
 
 export type RestaurantOpenOverride = "auto" | "open" | "closed";
@@ -70,7 +70,7 @@ export function isOpenNow(date: Date = new Date()): boolean {
 /**
  * When the kitchen next starts preparing orders (Amsterdam time).
  * Returns null while open; otherwise the number of days ahead (0 = later
- * today) and the weekday (0-6, Sunday = 0) of the next opening at 17:00.
+ * today) and the weekday (0-6, Sunday = 0) of the next opening at 15:00.
  */
 export function nextOpening(date: Date = new Date()): { daysAhead: number; weekday: number } | null {
   const { day, minutes } = amsterdamNow(date);
@@ -101,7 +101,8 @@ function nextOrderOpening(date: Date = new Date()): { daysAhead: number; weekday
 /** Effective customer-facing status, including today's admin override. */
 export function restaurantStatus(override: RestaurantOpenOverride = "auto", overrideDate?: string, date: Date = new Date()): RestaurantStatus {
   const { day, minutes, localDate } = amsterdamNow(date);
-  const canOverride = day !== CLOSED_DAY && minutes < ORDER_UNTIL_MIN;
+  // Admins may open or close immediately, including before opening and on normally closed days.
+  const canOverride = true;
   const activeOverride = overrideDate === localDate ? override : "auto";
   const scheduledOpen = isTakingOrdersAt(day, minutes);
   const isOpen = activeOverride === "open" || (activeOverride !== "closed" && scheduledOpen);

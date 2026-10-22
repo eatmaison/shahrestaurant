@@ -308,7 +308,7 @@ export async function loadRestaurantStatus(): Promise<RestaurantStatus> {
   const overrideDate = rows[0]?.local_date || undefined;
   const status = getRestaurantStatus(override, overrideDate);
 
-  if (override !== "auto" && (overrideDate !== localDate || !status.canOverride)) {
+  if (override !== "auto" && overrideDate !== localDate) {
     await sql.query(
       `INSERT INTO restaurant_open_overrides (site, mode, local_date, updated_at)
        VALUES ('all-restaurants', 'auto', $1, now())
@@ -1372,7 +1372,7 @@ export function formatReservationNumber(n: number): string {
 /**
  * Create a table reservation. Works for signed-in users (linked to their
  * account) and guests alike. Validates that the requested slot falls within
- * opening hours (Tue-Sun, 17:00-22:30) and is not in the past.
+ * opening hours (Tue-Sun, 15:00-22:30) and is not in the past.
  */
 export async function createReservation(data: {
   guestName: string;

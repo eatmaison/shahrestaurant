@@ -662,7 +662,7 @@ export default function ReservationsPage() {
               </div>
               <div className="reservation-map-caption">
                 <span>Amsterdam-Noord</span>
-                <span>17:00 - 22:30</span>
+                <span>15:00 - 22:30</span>
                 <span>{t.hours.tueSun}</span>
               </div>
             </div>
