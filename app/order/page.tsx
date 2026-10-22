@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { OrderConfirmation } from "../components/OrderConfirmation";
+import type { Order } from "../lib/types";
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import {
   FaArrowRight,
@@ -161,6 +163,9 @@ export default function OrderPage() {
   });
   const [message, setMessage] = useState<{ type: "error" | "success"; text: string } | null>(null);
   const [showCartModal, setShowCartModal] = useState(false);
+  const [confirmedOrder, setConfirmedOrder] = useState<Order | null>(null);
+  const [submitting, setSubmitting] = useState(false);
+  const submitLock = useRef(false);
   const [showCheckoutModal, setShowCheckoutModal] = useState(false);
   const [menuUpgrades, setMenuUpgrades] = useState<MenuUpgrades>({});
   const [pointsToUse, setPointsToUse] = useState(0);
@@ -389,6 +394,7 @@ export default function OrderPage() {
   };
 
   const handleCheckout = async () => {
+    if (submitLock.current) return;
     if (belowMinOrder) {
       setMessage({ type: "error", text: minOrderNote });
       return;
@@ -421,6 +427,9 @@ export default function OrderPage() {
       setMessage({ type: "error", text: t.schedule.pickDateTime });
       return;
     }
+    submitLock.current = true;
+    setSubmitting(true);
+    try {
     const res = await placeOrder({
       customerName: form.name,
       address: isPickup ? "" : form.address,
@@ -445,7 +454,9 @@ export default function OrderPage() {
       window.location.href = res.checkoutUrl;
       return;
     }
-    if (res.ok) {
+    if (res.ok && res.order) {
+      setConfirmedOrder(res.order);
+      setShowCartModal(false);
       setMessage({ type: "success", text: `${t.order.orderPlaced} ${t.order.orderNumber} ${formatOrderNumber(res.order!.orderNumber)}` });
       setForm((f) => ({ ...f, address: "", postcode: "", note: "" }));
       setPointsToUse(0);
@@ -460,8 +471,18 @@ export default function OrderPage() {
       setMessage({ type: "error", text: t.order.outsideArea });
     } else if (res.error === "closed") {
       setMessage({ type: "error", text: t.hours.scheduleClosedNote });
-    } else {
+    } else if (res.error === "empty") {
       setMessage({ type: "error", text: t.order.selectItem });
+    } else {
+      setMessage({ type: "error", text: lang === "nl"
+        ? "We konden de bevestiging nog niet ophalen. Controleer Mijn bestellingen of probeer opnieuw; dezelfde aanvraag wordt niet dubbel verwerkt."
+        : "We could not retrieve the confirmation yet. Check My orders or retry; the same request will not be processed twice." });
+    }
+    } catch {
+      setMessage({ type: "error", text: lang === "nl" ? "Controleer Mijn bestellingen en probeer opnieuw." : "Check My orders and try again." });
+    } finally {
+      submitLock.current = false;
+      setSubmitting(false);
     }
   };
 
@@ -1236,9 +1257,11 @@ export default function OrderPage() {
 
             <button
               onClick={handleCheckout}
+              disabled={submitting || cartLines.length === 0}
+              aria-busy={submitting}
               className="btn-ember btn-shine wiggle-hover mt-4 flex w-full items-center justify-center gap-2 rounded-full px-5 py-3.5 text-sm font-bold text-white"
             >
-              {t.common.placeOrder} <FaArrowRight className="wiggle-target" />
+              {submitting ? (lang === "nl" ? "Bestelling versturen…" : "Placing order…") : t.common.placeOrder} <FaArrowRight className="wiggle-target" />
             </button>
             <p className="mt-3 flex items-center justify-center gap-1.5 text-[11px] text-slate-400 dark:text-slate-500">
               <FaLock className="text-emerald-500/70" /> {t.order.securePayment}
@@ -1583,9 +1606,11 @@ export default function OrderPage() {
 
               <button
                 onClick={handleCheckout}
+              disabled={submitting || cartLines.length === 0}
+              aria-busy={submitting}
                 className="btn-ember btn-shine flex w-full items-center justify-center gap-2 rounded-full px-4 py-3 text-sm font-bold text-white"
               >
-                {t.common.placeOrder} <FaArrowRight className="text-xs" />
+                {submitting ? (lang === "nl" ? "Bestelling versturen…" : "Placing order…") : t.common.placeOrder} <FaArrowRight className="text-xs" />
               </button>
               <p className="flex items-center justify-center gap-1.5 text-[11px] text-slate-400 dark:text-slate-500">
                 <FaLock className="text-emerald-500/70" /> {t.order.securePayment}
@@ -1594,6 +1619,8 @@ export default function OrderPage() {
           </div>
         </OrderSheet>
       )}
+
+      {confirmedOrder && <OrderConfirmation order={confirmedOrder} onClose={() => setConfirmedOrder(null)} />}
 
       {/* Product Details Modal */}
       <ProductDetailsModal

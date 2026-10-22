@@ -1,3 +1,6 @@
+import { after } from "next/server";
+import { checkoutIdentity } from "./checkoutFingerprint";
+import { persistOrder, type ComputedOrder } from "./orderPersistence";
 import bcrypt from "bcryptjs";
 import { ensureReady, sql } from "./db";
 import {
@@ -24,7 +27,7 @@ import {
 } from "./data";
 import { createMolliePayment, getMolliePayment, mollieEnabled } from "./mollie";
 import { amsterdamNow, isOpenAt, isScheduleSlotOpen, restaurantStatus as getRestaurantStatus, timeToMinutes, type RestaurantOpenOverride, type RestaurantStatus } from "./openingHours";
-import { companyInvoiceEmail, passwordResetEmail, reservationEmail, sendMail, verificationEmail } from "./email";
+import { companyInvoiceEmail, emailEnabled, passwordResetEmail, reservationEmail, sendMail, verificationEmail } from "./email";
 import { signToken, verifyToken } from "./tokens";
 import { deleteStoredImage, storeImage } from "./spaces";
 import { grillSideLabel, isGrillSideRequired, parseCartKey } from "./cart";
@@ -139,7 +142,7 @@ export async function registerUser(data: {
   const hash = await bcrypt.hash(password, 10);
   const rows = (await sql.query(
     `INSERT INTO users (name, email, password_hash, phone, role, account_type, btw, kvk)
-     VALUES ($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *`,
+     VALUES ($1,$2,$3,$4,$5,$6,$7,$8) ON CONFLICT (email) DO NOTHING RETURNING *`,
     [
       name.trim(),
       normalized,
@@ -152,10 +155,11 @@ export async function registerUser(data: {
     ]
   )) as any[];
 
+  if (!rows[0]) return { ok: false, error: "emailTaken" };
   const user = rowToUser(rows[0]);
   await createSession(user.id);
   // Send the branded email-verification message (never block registration on it).
-  void sendVerificationEmail(user, origin);
+  after(() => sendVerificationEmail(user, origin));
   return { ok: true, user };
 }
 
@@ -185,6 +189,34 @@ export async function setUserEmailVerified(userId: string, verified: boolean): P
   await requireAdmin();
   await sql.query(`UPDATE users SET email_verified = $1 WHERE id = $2`, [verified, userId]);
   return { ok: true };
+}
+
+/** Change a customer's account type for future orders without altering historical order snapshots. */
+export async function setUserAccountType(
+  userId: string,
+  expectedAccountType: AccountType,
+  accountType: AccountType,
+): Promise<{ ok: boolean; error?: "notFound" | "stale" | "companyDetailsRequired" | "notAllowed"; user?: User }> {
+  await ensureReady();
+  await requireAdmin();
+  const updated = (await sql.query(
+    `UPDATE users SET account_type = $1
+       WHERE id = $2 AND role = 'user' AND account_type = $3
+         AND ($1 = 'personal' OR (NULLIF(BTRIM(btw), '') IS NOT NULL AND NULLIF(BTRIM(kvk), '') IS NOT NULL))
+       RETURNING *`,
+    [accountType, userId, expectedAccountType],
+  )) as any[];
+  if (updated[0]) return { ok: true, user: rowToUser(updated[0]) };
+
+  const existing = (await sql.query(
+    `SELECT role, account_type, btw, kvk FROM users WHERE id = $1`,
+    [userId],
+  )) as any[];
+  const row = existing[0];
+  if (!row) return { ok: false, error: "notFound" };
+  if (row.role !== "user") return { ok: false, error: "notAllowed" };
+  if (row.account_type !== expectedAccountType) return { ok: false, error: "stale" };
+  return { ok: false, error: "companyDetailsRequired" };
 }
 
 /** Resend the verification email to the logged-in user. */
@@ -493,6 +525,7 @@ async function loadOrders(userId?: string): Promise<Order[]> {
 /* ------------------------------------------------------------------ orders */
 
 export async function placeOrder(details: {
+  idempotencyKey?: string;
   customerName: string;
   address: string;
   postcode: string;
@@ -504,10 +537,19 @@ export async function placeOrder(details: {
   schedule?: OrderSchedule;
   fulfillment?: OrderFulfillment;
   origin?: string;
-}): Promise<{ ok: boolean; error?: "minOrder" | "empty" | "outsideArea" | "closed"; order?: Order; checkoutUrl?: string }> {
+}): Promise<{ ok: boolean; error?: "minOrder" | "empty" | "outsideArea" | "closed" | "processing" | "checkoutFailed" | "checkoutChanged"; order?: Order; checkoutUrl?: string }> {
   await ensureReady();
   const currentUser = await getCurrentUser();
   const visitorSessionId = currentUser ? undefined : await getOrCreateVisitorId();
+  const identity = checkoutIdentity(currentUser?.id ?? visitorSessionId!, details);
+  if (identity.requestKey) {
+    const previous = (await sql.query(`SELECT * FROM orders WHERE request_key=$1`, [identity.requestKey])) as any[];
+    if (previous[0]) {
+      if (previous[0].request_fingerprint !== identity.requestFingerprint) return { ok: false, error: "checkoutChanged" };
+      const items = (await sql.query(`SELECT * FROM order_items WHERE order_id=$1`, [previous[0].id])) as any[];
+      return resumeOrder(rowToOrder(previous[0], items.map(rowToOrderItem)));
+    }
+  }
   const { customerName, address, postcode, phone, note, cart, pointsToUse = 0, menuUpgrades = {}, schedule, origin } = details;
   const fulfillment: OrderFulfillment = details.fulfillment === "pickup" ? "pickup" : "delivery";
 
@@ -591,6 +633,7 @@ export async function placeOrder(details: {
   const accountType: AccountType = currentUser?.accountType ?? "personal";
 
   const computed: ComputedOrder = {
+    ...identity,
     userId: currentUser?.id,
     visitorSessionId,
     customerName,
@@ -615,11 +658,9 @@ export async function placeOrder(details: {
   if (isCompany || !mollieEnabled() || total <= 0) {
     const paid = accountType !== "company" && (!mollieEnabled() || total <= 0);
     const order = await insertOrder(computed, paid);
-    if (isCompany && currentUser) {
-      // Email the invoice automatically and record that it was sent.
-      await sendCompanyInvoice(order, currentUser, origin);
-      await sql.query(`UPDATE orders SET invoice_sent = true WHERE id = $1`, [order.id]);
-      order.invoiceSent = true;
+    if (isCompany && currentUser && order.newlyCreated) {
+      // Sending email must not delay or turn a committed order into an error.
+      after(() => sendCompanyInvoice(order, currentUser, origin));
     }
     return { ok: true, order };
   }
@@ -627,6 +668,7 @@ export async function placeOrder(details: {
   // Personal + Mollie enabled: store the attempt immediately so failed or
   // cancelled payments remain visible in admin, but defer loyalty effects until paid.
   const order = await insertOrder(computed, false, { applyCustomerEffects: false });
+  if (!order.newlyCreated) return resumeOrder(order);
   const recRows = (await sql.query(
     `INSERT INTO payments (kind, user_id, order_id, amount, status, payload)
      VALUES ('order', $1, $2, $3, 'open', $4::jsonb) RETURNING id`,
@@ -645,7 +687,7 @@ export async function placeOrder(details: {
       metadata: { p: recordId, kind: "order", orderId: order.id },
     });
     checkoutUrl = payment.checkoutUrl;
-    await sql.query(`UPDATE payments SET mollie_payment_id = $1, updated_at = now() WHERE id = $2`, [payment.id, recordId]);
+    await sql.query(`UPDATE payments SET mollie_payment_id = $1, checkout_url = $3, updated_at = now() WHERE id = $2`, [payment.id, recordId, checkoutUrl]);
   } catch (err) {
     const reason = err instanceof Error ? err.message : "Mollie create payment failed";
     await sql.query(`UPDATE payments SET status = 'failed', failure_reason = $1, updated_at = now() WHERE id = $2`, [reason, recordId]);
@@ -655,68 +697,21 @@ export async function placeOrder(details: {
   return { ok: true, checkoutUrl };
 }
 
-interface ComputedOrder {
-  userId?: string;
-  visitorSessionId?: string;
-  customerName: string;
-  address: string;
-  postcode: string;
-  phone: string;
-  note?: string;
-  items: OrderItem[];
-  subtotal: number;
-  discount: number;
-  pointsUsed: number;
-  pointsEarned: number;
-  delivery: number;
-  total: number;
-  accountType: AccountType;
-  schedule?: OrderSchedule;
-  fulfillment: OrderFulfillment;
-}
-
-/** Insert an order + its items, and (for logged-in users) update loyalty balance and saved delivery details. */
-async function insertOrder(c: ComputedOrder, paid: boolean, options: { applyCustomerEffects?: boolean } = {}): Promise<Order> {
-  const orderRows = (await sql.query(
-    `INSERT INTO orders
-       (user_id, visitor_session_id, customer_name, address, postcode, phone, subtotal, discount, points_used, points_earned, delivery, total, status, paid, account_type, invoice_sent, customer_effects_applied, note, schedule, fulfillment)
-     VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,'new',$13,$14,false,false,$15,$16::jsonb,$17)
-     RETURNING *`,
-    [
-      c.userId ?? null,
-      c.visitorSessionId ?? null,
-      c.customerName,
-      c.address,
-      c.postcode,
-      c.phone,
-      c.subtotal,
-      c.discount,
-      c.pointsUsed,
-      c.pointsEarned,
-      c.delivery,
-      c.total,
-      paid,
-      c.accountType,
-      c.note ?? null,
-      c.schedule ? JSON.stringify(c.schedule) : null,
-      c.fulfillment,
-    ]
+/** Reuse a saved order after a lost response, including its original payment. */
+async function resumeOrder(order: Order): ReturnType<typeof placeOrder> {
+  if (order.accountType === "company" || order.paid) return { ok: true, order };
+  const payments = (await sql.query(
+    `SELECT id,status,checkout_url FROM payments WHERE order_id=$1 AND kind='order' ORDER BY created_at DESC LIMIT 1`,
+    [order.id],
   )) as any[];
-  const orderRow = orderRows[0];
-
-  for (const it of c.items) {
-    await sql.query(
-      `INSERT INTO order_items (order_id, product_id, name, price, qty, brand, category, side_choice, side_label)
-       VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9)`,
-      [orderRow.id, it.productId, it.name, it.price, it.qty, it.brand, it.category, it.sideChoice ?? null, it.sideLabel ?? null]
-    );
-  }
-
-  const order = rowToOrder(orderRow, c.items);
-  if (options.applyCustomerEffects ?? true) await applyOrderCustomerEffects(order);
-
-  return order;
+  const payment = payments[0];
+  if (!payment) return { ok: false, error: "processing" };
+  if (["failed", "expired", "canceled"].includes(payment.status)) return { ok: false, error: "checkoutFailed" };
+  if (["paid", "pending", "authorized"].includes(payment.status)) return { ok: true, checkoutUrl: `/pay/complete?p=${payment.id}` };
+  return payment.checkout_url ? { ok: true, checkoutUrl: payment.checkout_url } : { ok: false, error: "processing" };
 }
+
+const insertOrder = persistOrder;
 
 async function applyOrderCustomerEffects(order: Order): Promise<void> {
   if (!order.userId) return;
@@ -764,6 +759,7 @@ function paymentUrls(origin?: string): { base: string; webhookUrl?: string } {
 
 /** Email a company its invoice for a placed order (never blocks the order). */
 async function sendCompanyInvoice(order: Order, user: User, origin?: string): Promise<void> {
+  if (!emailEnabled()) return;
   try {
     const base = siteBase(origin);
     const { subject, html } = companyInvoiceEmail({
@@ -781,6 +777,7 @@ async function sendCompanyInvoice(order: Order, user: User, origin?: string): Pr
       kvk: user.kvk,
     });
     await sendMail({ to: user.email, subject, html });
+    await sql.query(`UPDATE orders SET invoice_sent = true WHERE id = $1`, [order.id]);
   } catch (err) {
     console.error("[email] invoice send failed:", err);
   }

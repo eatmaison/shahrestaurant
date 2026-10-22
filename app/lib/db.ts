@@ -1,3 +1,4 @@
+import { CHECKOUT_DDL } from "./checkoutSchema";
 import { neon } from "@neondatabase/serverless";
 import { DEFAULT_BRAND_CONFIGS, PIZZA_SUBCATEGORIES } from "./data";
 import type { BrandCategory } from "./types";
@@ -253,6 +254,7 @@ const DDL: string[] = [
     created_at timestamptz NOT NULL DEFAULT now()
   )`,
   `CREATE INDEX IF NOT EXISTS idx_gallery_images_site ON gallery_images (site)`,
+  ...CHECKOUT_DDL,
 ];
 
 let readyPromise: Promise<void> | null = null;

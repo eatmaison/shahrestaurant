@@ -265,3 +265,11 @@ CREATE TABLE IF NOT EXISTS gallery_images (
 );
 
 CREATE INDEX IF NOT EXISTS idx_gallery_images_site ON gallery_images (site);
+
+
+-- Retry-safe checkout (shared by all sites).
+ALTER TABLE orders ADD COLUMN IF NOT EXISTS request_key text;
+ALTER TABLE orders ADD COLUMN IF NOT EXISTS request_fingerprint text;
+CREATE UNIQUE INDEX IF NOT EXISTS idx_orders_request_key ON orders (request_key);
+CREATE INDEX IF NOT EXISTS idx_orders_request_fingerprint ON orders (request_fingerprint, created_at);
+ALTER TABLE payments ADD COLUMN IF NOT EXISTS checkout_url text;

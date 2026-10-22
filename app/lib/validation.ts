@@ -33,6 +33,12 @@ export const authSchema = z.discriminatedUnion("action", [
     userId: z.string().uuid(),
     verified: z.boolean(),
   }),
+  z.object({
+    action: z.literal("setUserAccountType"),
+    userId: z.string().uuid(),
+    expectedAccountType: z.enum(["personal", "company"]),
+    accountType: z.enum(["personal", "company"]),
+  }),
   z.object({ action: z.literal("resendVerification") }),
   z.object({
     action: z.literal("requestReset"),
@@ -59,6 +65,7 @@ const orderSchedule = z.object({
 });
 
 export const placeOrderSchema = z.object({
+  idempotencyKey: z.string().uuid().optional(),
   customerName: z.string().trim().min(1).max(100),
   address: z.string().trim().max(300),
   postcode: z.string().trim().max(10),

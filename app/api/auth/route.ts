@@ -8,6 +8,7 @@ import {
   resendVerification,
   resetPassword,
   setUserEmailVerified,
+  setUserAccountType,
   verifyEmail,
 } from "../../lib/serverStore";
 import { authSchema } from "../../lib/validation";
@@ -21,7 +22,11 @@ export async function POST(req: NextRequest) {
     const raw = await req.json().catch(() => null);
     const parsed = authSchema.safeParse(raw);
     if (!parsed.success) {
-      return NextResponse.json({ ok: false, error: "invalidInput" }, { status: 400 });
+      const paths = parsed.error.issues.map(issue => issue.path.join("."));
+      const error = paths.includes("email") ? "invalidEmail"
+        : paths.includes("password") && raw?.action === "register" ? "weakPassword"
+        : "fillFields";
+      return NextResponse.json({ ok: false, error }, { status: 400 });
     }
     const body = parsed.data;
 
@@ -52,6 +57,10 @@ export async function POST(req: NextRequest) {
     if (body.action === "setUserEmailVerified") {
       const res = await setUserEmailVerified(body.userId, body.verified);
       return NextResponse.json(res);
+    }
+    if (body.action === "setUserAccountType") {
+      const res = await setUserAccountType(body.userId, body.expectedAccountType, body.accountType);
+      return NextResponse.json(res, { status: res.ok ? 200 : res.error === "stale" ? 409 : 400 });
     }
     if (body.action === "resendVerification") {
       const res = await resendVerification(origin);

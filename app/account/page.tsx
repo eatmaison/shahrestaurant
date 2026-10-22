@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { OrderTotals } from "../components/OrderTotals";
 import { useEffect, useRef, useState } from "react";
 import {
   FaArrowRightFromBracket,
@@ -60,6 +61,8 @@ export default function AccountPage() {
     agreement: false,
   });
   const [error, setError] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const authLock = useRef(false);
   const [verifyResent, setVerifyResent] = useState(false);
 
   const resendVerification = async () => {
@@ -77,6 +80,9 @@ export default function AccountPage() {
   const errorText = (code?: string) => {
     switch (code) {
       case "emailTaken": return t.auth.emailTaken;
+      case "invalidEmail": return lang === "nl" ? "Vul een geldig e-mailadres in." : "Enter a valid email address.";
+      case "weakPassword": return lang === "nl" ? "Gebruik een wachtwoord van 6 tot 200 tekens." : "Use a password of 6 to 200 characters.";
+      case "tooManyRequests": return lang === "nl" ? "Te veel pogingen. Wacht enkele minuten en probeer opnieuw." : "Too many attempts. Wait a few minutes and try again.";
       case "wrongAdminCode": return t.auth.wrongAdminCode;
       case "invalidLogin": return t.auth.invalidLogin;
       case "fillFields": return t.auth.fillFields;
@@ -120,13 +126,20 @@ export default function AccountPage() {
   };
 
   const submit = async () => {
+    if (authLock.current) return;
+    authLock.current = true;
+    setSubmitting(true);
     setError("");
-    if (mode === "register") {
-      const res = await register({ ...form, agreementAccepted: form.agreement });
+    try {
+      const res = mode === "register"
+        ? await register({ ...form, agreementAccepted: form.agreement })
+        : await login(form.email, form.password);
       if (!res.ok) setError(errorText(res.error));
-    } else {
-      const res = await login(form.email, form.password);
-      if (!res.ok) setError(errorText(res.error));
+    } catch {
+      setError(errorText("server"));
+    } finally {
+      authLock.current = false;
+      setSubmitting(false);
     }
   };
 
@@ -377,6 +390,8 @@ export default function AccountPage() {
                       {o.fulfillment === "pickup" ? t.order.methodPickup : t.order.methodDelivery}
                     </span>
 
+                    <OrderTotals order={o} />
+
                     {/* Live order status tracker */}
                     <div className="mt-3 rounded-xl bg-white p-3 dark:bg-white/5">
                       <div className="flex items-center justify-between">
@@ -559,7 +574,7 @@ export default function AccountPage() {
           {mode === "login" ? t.auth.loginTitle : t.auth.registerTitle}
         </h1>
 
-        <div className="mt-5 space-y-3">
+        <form id="account-auth" onSubmit={(event) => { event.preventDefault(); void submit(); }} className="mt-5 space-y-3">
           {mode === "register" && (
             <>
               <p className="text-xs font-bold uppercase tracking-wide text-slate-500 dark:text-slate-400">{t.company.registerAs}</p>
@@ -589,6 +604,9 @@ export default function AccountPage() {
                 </p>
               )}
               <input
+                required
+                maxLength={100}
+                autoComplete="name"
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
                 placeholder={t.auth.name}
@@ -598,6 +616,9 @@ export default function AccountPage() {
           )}
           <input
             type="email"
+            required
+            maxLength={254}
+            autoComplete="email"
             value={form.email}
             onChange={(e) => setForm({ ...form, email: e.target.value })}
             placeholder={t.auth.email}
@@ -605,6 +626,10 @@ export default function AccountPage() {
           />
           <input
             type="password"
+            required
+            minLength={mode === "register" ? 6 : 1}
+            maxLength={200}
+            autoComplete={mode === "register" ? "new-password" : "current-password"}
             value={form.password}
             onChange={(e) => setForm({ ...form, password: e.target.value })}
             placeholder={t.auth.password}
@@ -654,15 +679,27 @@ export default function AccountPage() {
               </p>
             </>
           )}
-        </div>
+        </form>
 
+        {error === t.auth.emailTaken && (
+          <div className="mt-3 rounded-xl bg-amber-50 p-3 text-sm text-slate-800 dark:bg-amber-500/10 dark:text-slate-200">
+            <p>{lang === "nl" ? "Dit e-mailadres hoort al bij een account in onze gezamenlijke restaurantgroep. Log in of herstel je wachtwoord." : "This email already belongs to an account in our shared restaurant group. Sign in or reset your password."}</p>
+            <div className="mt-2 flex flex-wrap gap-4">
+              <button type="button" onClick={() => { setMode("login"); setError(""); }} className="font-bold underline">{t.common.signIn}</button>
+              <Link href="/forgot-password" className="font-bold underline">{t.email.forgotLink}</Link>
+            </div>
+          </div>
+        )}
         {error && <p className="mt-3 rounded-xl bg-red-500/10 px-3 py-2 text-sm font-medium text-red-600 dark:text-red-400">{error}</p>}
 
         <button
-          onClick={submit}
+          type="submit"
+          form="account-auth"
+          disabled={submitting}
+          aria-busy={submitting}
           className="btn-shine mt-5 w-full rounded-full bg-gradient-to-r from-emerald-600 via-emerald-500 to-emerald-600 bg-[length:200%_auto] py-3 text-sm font-bold text-white shadow-lg shadow-emerald-600/25 transition-all duration-300 hover:bg-right"
         >
-          {mode === "login" ? t.auth.loginButton : t.auth.registerButton}
+          {submitting ? (lang === "nl" ? "Even geduld…" : "Please wait…") : mode === "login" ? t.auth.loginButton : t.auth.registerButton}
         </button>
 
         {mode === "login" && (

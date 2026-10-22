@@ -1,5 +1,7 @@
 "use client";
 
+import { OrderTotals } from "../components/OrderTotals";
+
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -50,7 +52,7 @@ import { CATEGORY_ICON_CHOICES, categoryIconFor, formatOrderNumber, isDrinkCateg
 import { SOCIAL_PLATFORMS } from "../components/socialIcons";
 import RichTextEditor from "../components/RichTextEditor";
 import PartyAdmin from "./PartyAdmin";
-import type { Brand, Category, Order, OrderStatus, Product, RecentVisitor } from "../lib/types";
+import type { AccountType, Brand, Category, Order, OrderStatus, Product, RecentVisitor, User } from "../lib/types";
 import type { RestaurantOpenOverride } from "../lib/openingHours";
 
 const statusIcons: Record<OrderStatus, typeof FaClock> = {
@@ -229,7 +231,7 @@ function DailySalesChart({ data, revenueLabel, ordersLabel, title, noData }: { d
 
 export default function AdminPage() {
   const { t, lang } = useLang();
-  const { currentUser, products, orders, users, addProductGroup, removeProduct, updateProductGroup, moveProduct, brands, manageBrands, updateOrderStatus, setOrderPaid, setInvoiceSent, deleteOrder, vipRequests, vipPurchases, approveVipRequest, rejectVipRequest, socialLinks, updateSocialLink, reservations, restaurantStatus, updateRestaurantOpenOverride, setReservationStatus, cancelReservation, deleteReservation, onlineVisitors, recentVisitors, setUserEmailVerified, refresh, hydrated } = useStore();
+  const { currentUser, products, orders, users, addProductGroup, removeProduct, updateProductGroup, moveProduct, brands, manageBrands, updateOrderStatus, setOrderPaid, setInvoiceSent, deleteOrder, vipRequests, vipPurchases, approveVipRequest, rejectVipRequest, socialLinks, updateSocialLink, reservations, restaurantStatus, updateRestaurantOpenOverride, setReservationStatus, cancelReservation, deleteReservation, onlineVisitors, recentVisitors, setUserEmailVerified, setUserAccountType, refresh, hydrated } = useStore();
   const fileRef = useRef<HTMLInputElement>(null);
   const editFileRef = useRef<HTMLInputElement>(null);
   const logoFileRef = useRef<HTMLInputElement>(null);
@@ -876,6 +878,8 @@ export default function AdminPage() {
   const [userFilter, setUserFilter] = useState<"all" | "online" | "unverified" | "vip" | "company">("all");
   const [userSort, setUserSort] = useState<"newest" | "activity" | "orders" | "points">("newest");
   const [copiedUserContact, setCopiedUserContact] = useState<string | null>(null);
+  const [accountTypeSavingId, setAccountTypeSavingId] = useState<string | null>(null);
+  const [accountTypeFeedback, setAccountTypeFeedback] = useState<{ userId: string; error: boolean; message: string } | null>(null);
   const onlineUserIds = useMemo(
     () => new Set(recentVisitors.filter((entry) => entry.kind === "user" && entry.isOnline).map((entry) => entry.id)),
     [recentVisitors]
@@ -929,6 +933,29 @@ export default function AdminPage() {
   const toggleUserEmailVerification = async (userId: string, verified: boolean) => {
     const res = await setUserEmailVerified(userId, verified);
     if (res.ok) await refresh();
+  };
+
+  const changeUserAccountType = async (user: User, accountType: AccountType) => {
+    if (user.accountType === accountType || accountTypeSavingId) return;
+    setAccountTypeSavingId(user.id);
+    setAccountTypeFeedback(null);
+    try {
+      const result = await setUserAccountType(user.id, user.accountType, accountType);
+      if (result.ok) {
+        if (userFilter === "company" && accountType === "personal") setUserFilter("all");
+        setAccountTypeFeedback({ userId: user.id, error: false, message: lang === "nl" ? "Accounttype opgeslagen." : "Account type saved." });
+      } else {
+        if (result.error === "stale") await refresh();
+        const message = result.error === "stale"
+          ? (lang === "nl" ? "Dit profiel is intussen gewijzigd. Probeer opnieuw." : "This profile changed elsewhere. Please try again.")
+          : result.error === "companyDetailsRequired"
+            ? (lang === "nl" ? "BTW-nummer en KVK-nummer zijn vereist voor een zakelijk account." : "VAT and KVK numbers are required for a business account.")
+            : (lang === "nl" ? "Accounttype kon niet worden opgeslagen." : "Could not save the account type.");
+        setAccountTypeFeedback({ userId: user.id, error: true, message });
+      }
+    } finally {
+      setAccountTypeSavingId(null);
+    }
   };
 
   if (!hydrated) {
@@ -1561,6 +1588,8 @@ export default function AdminPage() {
             })}
           </div>
         </div>
+
+        <OrderTotals order={o} />
 
         {/* Customer note */}
         {o.note && (
@@ -2359,7 +2388,31 @@ export default function AdminPage() {
                           )}
                         </div>
                       </div>
-                      <div className="flex flex-wrap items-center gap-2 border-t border-slate-200 pt-3 text-[11px] dark:border-white/10">
+                      <div className="border-t border-slate-200 pt-3 dark:border-white/10">
+                        <label htmlFor={`account-type-${u.id}`} className="block text-xs font-bold text-slate-700 dark:text-slate-200">
+                          {lang === "nl" ? "Accounttype" : "Account type"}
+                        </label>
+                        <select
+                          id={`account-type-${u.id}`}
+                          value={u.accountType}
+                          onChange={(event) => void changeUserAccountType(u, event.target.value as AccountType)}
+                          disabled={accountTypeSavingId !== null || u.role !== "user"}
+                          className="mt-1 rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs font-semibold text-slate-900 disabled:opacity-50 dark:border-white/15 dark:bg-slate-900 dark:text-white"
+                        >
+                          <option value="personal">{lang === "nl" ? "Particulier" : "Personal"}</option>
+                          <option value="company" disabled={!u.btw?.trim() || !u.kvk?.trim()}>{lang === "nl" ? "Zakelijk" : "Business"}</option>
+                        </select>
+                        {accountTypeSavingId === u.id && <span className="ml-2 text-xs text-slate-500">{lang === "nl" ? "Opslaan…" : "Saving…"}</span>}
+                        <p className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">
+                          {lang === "nl" ? "Wijzigingen gelden voor nieuwe bestellingen." : "Changes apply to new orders."}
+                        </p>
+                        {accountTypeFeedback?.userId === u.id && (
+                          <p role={accountTypeFeedback.error ? "alert" : "status"} className={`mt-1 text-xs font-semibold ${accountTypeFeedback.error ? "text-rose-600" : "text-emerald-600"}`}>
+                            {accountTypeFeedback.message}
+                          </p>
+                        )}
+                      </div>
+                      <div className="flex flex-wrap items-center gap-2 text-[11px]">
                         <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-2 py-0.5 font-semibold text-emerald-700 dark:text-emerald-300">
                           <FaReceipt className="text-[10px]" /> {u.orderCount} {t.admin.ordersLabel.toLowerCase()}
                         </span>

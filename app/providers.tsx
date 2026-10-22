@@ -7,8 +7,10 @@ import {
   useEffect,
   useMemo,
   useState,
+  useRef,
   type ReactNode,
 } from "react";
+import { checkoutRequestKey, clearCheckoutRequest } from "./lib/checkoutRequest";
 import { translations, type Dictionary } from "./lib/translations";
 import { DEFAULT_BRAND_CONFIGS } from "./lib/data";
 import { cartKeyForProduct, parseCartKey } from "./lib/cart";
@@ -105,11 +107,12 @@ interface StoreCtx {
     agreementAccepted?: boolean;
   }) => Promise<{
     ok: boolean;
-    error?: "emailTaken" | "wrongAdminCode" | "fillFields" | "companyFields" | "agreement";
+    error?: string;
   }>;
-  login: (email: string, password: string) => Promise<{ ok: boolean; error?: "invalidLogin" }>;
+  login: (email: string, password: string) => Promise<{ ok: boolean; error?: string }>;
   logout: () => Promise<void>;
   setUserEmailVerified: (userId: string, verified: boolean) => Promise<{ ok: boolean }>;
+  setUserAccountType: (userId: string, expectedAccountType: AccountType, accountType: AccountType) => Promise<{ ok: boolean; error?: string }>;
 
   orders: Order[];
   placeOrder: (details: {
@@ -122,7 +125,7 @@ interface StoreCtx {
     menuUpgrades?: MenuUpgrades;
     schedule?: OrderSchedule;
     fulfillment?: OrderFulfillment;
-  }) => Promise<{ ok: boolean; error?: "minOrder" | "empty" | "outsideArea" | "closed"; order?: Order; checkoutUrl?: string }>;
+  }) => Promise<{ ok: boolean; error?: string; order?: Order; checkoutUrl?: string }>;
 
   /** Admin: advance an order's fulfilment status. */
   updateOrderStatus: (orderId: string, status: OrderStatus) => Promise<void>;
@@ -230,6 +233,7 @@ function readThemePreference(fallback: Theme): Theme {
 
 export function Providers({ children }: { children: ReactNode }) {
   const [hydrated, setHydrated] = useState(false);
+  const checkoutBusy = useRef(false);
 
   const [theme, setTheme] = useState<Theme>("light");
   const [lang, setLangState] = useState<Lang>("nl");
@@ -442,7 +446,10 @@ export function Providers({ children }: { children: ReactNode }) {
         });
         const json = await res.json().catch(() => null);
         if (!json) return { ok: false, error: "server" };
-        if (json.ok) await refresh();
+        if (json.ok && json.user) {
+          setCurrentUser(json.user);
+          void refresh();
+        }
         return json;
       } catch {
         return { ok: false, error: "server" };
@@ -461,7 +468,10 @@ export function Providers({ children }: { children: ReactNode }) {
         });
         const json = await res.json().catch(() => null);
         if (!json) return { ok: false, error: "server" };
-        if (json.ok) await refresh();
+        if (json.ok && json.user) {
+          setCurrentUser(json.user);
+          void refresh();
+        }
         return json;
       } catch {
         return { ok: false, error: "server" };
@@ -490,6 +500,24 @@ export function Providers({ children }: { children: ReactNode }) {
     const json = await res.json().catch(() => null);
     if (json?.ok) await refresh();
     return { ok: !!json?.ok };
+  }, [refresh]);
+
+  const setUserAccountType = useCallback<StoreCtx["setUserAccountType"]>(async (userId, expectedAccountType, accountType) => {
+    try {
+      const res = await fetch("/api/auth", {
+        method: "POST",
+        headers: JSON_HEADERS,
+        body: JSON.stringify({ action: "setUserAccountType", userId, expectedAccountType, accountType }),
+      });
+      const json = await res.json().catch(() => null);
+      if (json?.ok && json.user) {
+        setUsers((previous) => previous.map((user) => user.id === userId ? json.user : user));
+        await refresh();
+      }
+      return { ok: !!json?.ok, error: json?.error };
+    } catch {
+      return { ok: false, error: "server" };
+    }
   }, [refresh]);
 
   const buyVip = useCallback<StoreCtx["buyVip"]>(async () => {
@@ -599,21 +627,38 @@ export function Providers({ children }: { children: ReactNode }) {
 
   const placeOrder: StoreCtx["placeOrder"] = useCallback(
     async (details) => {
-      const res = await fetch("/api/orders", {
-        method: "POST",
-        headers: JSON_HEADERS,
-        body: JSON.stringify({ ...details, cart }),
-      });
-      const json = await res.json();
-      // Company orders come back immediately; personal orders return a Mollie
-      // checkout URL and the cart is cleared only after payment succeeds.
-      if (json.ok && json.order) {
-        setCart({});
-        await refresh();
+      if (checkoutBusy.current) return { ok: false, error: "processing" };
+      checkoutBusy.current = true;
+      const payload = { ...details, cart };
+      const identity = { userId: currentUser?.id ?? "guest", ...payload };
+      try {
+        const idempotencyKey = await checkoutRequestKey(identity);
+        const res = await fetch("/api/orders", {
+          method: "POST",
+          headers: JSON_HEADERS,
+          body: JSON.stringify({ ...payload, idempotencyKey }),
+        });
+        const json = await res.json().catch(() => null);
+        if (!json) return { ok: false, error: "network" };
+        if (json.ok && json.order) {
+          setCart({});
+          try { window.localStorage.setItem(LS.cart, "{}"); } catch { /* Optional storage. */ }
+          setOrders(previous => [json.order, ...previous.filter(order => order.id !== json.order.id)]);
+          void refresh();
+          // Confirmation must not depend on bootstrap or browser storage.
+          void clearCheckoutRequest(identity).catch(() => {});
+        } else if (json.error === "checkoutFailed") {
+          await clearCheckoutRequest(identity);
+        }
+        return json;
+      } catch {
+        // Keep the key: the server may already have committed the order.
+        return { ok: false, error: "network" };
+      } finally {
+        checkoutBusy.current = false;
       }
-      return json;
     },
-    [cart, refresh]
+    [cart, currentUser?.id, refresh]
   );
 
   const updateOrderStatus = useCallback<StoreCtx["updateOrderStatus"]>(async (orderId, status) => {
@@ -679,6 +724,7 @@ export function Providers({ children }: { children: ReactNode }) {
       login,
       logout,
       setUserEmailVerified,
+      setUserAccountType,
       orders,
       placeOrder,
       updateOrderStatus,
@@ -728,6 +774,7 @@ export function Providers({ children }: { children: ReactNode }) {
       login,
       logout,
       setUserEmailVerified,
+      setUserAccountType,
       orders,
       placeOrder,
       updateOrderStatus,
