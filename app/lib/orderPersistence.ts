@@ -7,6 +7,7 @@ export interface ComputedOrder {
   userId?: string;
   visitorSessionId?: string;
   customerName: string;
+  customerEmail: string;
   address: string;
   postcode: string;
   phone: string;
@@ -42,8 +43,8 @@ export async function persistOrder(
       `INSERT INTO orders
         (id,user_id,visitor_session_id,customer_name,address,postcode,phone,subtotal,discount,
          points_used,points_earned,delivery,total,status,paid,account_type,invoice_sent,
-         customer_effects_applied,note,schedule,fulfillment,request_key,request_fingerprint)
-       SELECT $1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,'new',$14,$15,false,false,$16,$17::jsonb,$18,$19,$20
+         customer_effects_applied,note,schedule,fulfillment,request_key,request_fingerprint,customer_email)
+       SELECT $1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,'new',$14,$15,false,false,$16,$17::jsonb,$18,$19,$20,$21
        WHERE NOT EXISTS (
          SELECT 1 FROM orders WHERE request_key = $19
            OR ($15 = 'company' AND request_fingerprint = $20
@@ -53,7 +54,7 @@ export async function persistOrder(
       [id,c.userId ?? null,c.visitorSessionId ?? null,c.customerName,c.address,c.postcode,c.phone,
         c.subtotal,c.discount,c.pointsUsed,c.pointsEarned,c.delivery,c.total,paid,c.accountType,
         c.note ?? null,c.schedule ? JSON.stringify(c.schedule) : null,c.fulfillment,
-        c.requestKey ?? null,c.requestFingerprint ?? null],
+        c.requestKey ?? null,c.requestFingerprint ?? null,c.customerEmail],
     ),
     sql.query(
       `INSERT INTO order_items (order_id,product_id,name,price,qty,brand,category,side_choice,side_label)

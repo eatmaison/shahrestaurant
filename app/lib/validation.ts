@@ -67,6 +67,7 @@ const orderSchedule = z.object({
 export const placeOrderSchema = z.object({
   idempotencyKey: z.string().uuid().optional(),
   customerName: z.string().trim().min(1).max(100),
+  email: z.email().trim().max(254).optional(),
   address: z.string().trim().max(300),
   postcode: z.string().trim().max(10),
   phone: z.string().trim().min(5).max(30),

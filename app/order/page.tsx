@@ -156,6 +156,7 @@ export default function OrderPage() {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [form, setForm] = useState({
     name: currentUser?.name ?? "",
+    email: currentUser?.email ?? "",
     phone: currentUser?.phone ?? "",
     address: "",
     postcode: "",
@@ -200,6 +201,7 @@ export default function OrderPage() {
       setForm((f) => ({
         ...f,
         name: f.name || currentUser.name || "",
+        email: currentUser.email || f.email,
         phone: f.phone || currentUser.phone || "",
         address: f.address || currentUser.address || "",
         postcode: f.postcode || currentUser.postcode || "",
@@ -399,7 +401,11 @@ export default function OrderPage() {
       setMessage({ type: "error", text: minOrderNote });
       return;
     }
-    // Pickup only needs a name + phone; delivery also needs a valid in-area address.
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(currentUser?.email || form.email.trim())) {
+      setMessage({ type: "error", text: lang === "nl" ? "Vul een geldig e-mailadres in voor de bestelbevestiging." : "Enter a valid email address for your order confirmation." });
+      return;
+    }
+    // Pickup needs contact details; delivery also needs a valid in-area address.
     if (isPickup) {
       if (!form.name.trim() || !form.phone.trim()) {
         setMessage({ type: "error", text: t.auth.fillFields });
@@ -432,6 +438,7 @@ export default function OrderPage() {
     try {
     const res = await placeOrder({
       customerName: form.name,
+      email: currentUser?.email || form.email.trim(),
       address: isPickup ? "" : form.address,
       postcode: isPickup ? "" : form.postcode,
       phone: form.phone,
@@ -1066,6 +1073,16 @@ export default function OrderPage() {
                 className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/5 dark:text-white"
               />
               <input
+                type="email"
+                autoComplete="email"
+                required
+                value={currentUser?.email || form.email}
+                onChange={(e) => setForm({ ...form, email: e.target.value })}
+                readOnly={!!currentUser}
+                placeholder={lang === "nl" ? "E-mailadres voor bestelbevestiging" : "Email address for order confirmation"}
+                className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/5 dark:text-white"
+              />
+              <input
                 value={form.phone}
                 onChange={(e) => setForm({ ...form, phone: e.target.value })}
                 placeholder={t.order.phone}
@@ -1477,6 +1494,16 @@ export default function OrderPage() {
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
                 placeholder={t.order.name}
+                className="w-full rounded-lg border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/5 dark:text-white"
+              />
+              <input
+                type="email"
+                autoComplete="email"
+                required
+                value={currentUser?.email || form.email}
+                onChange={(e) => setForm({ ...form, email: e.target.value })}
+                readOnly={!!currentUser}
+                placeholder={lang === "nl" ? "E-mailadres voor bestelbevestiging" : "Email address for order confirmation"}
                 className="w-full rounded-lg border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/5 dark:text-white"
               />
               <input

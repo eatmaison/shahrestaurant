@@ -117,6 +117,7 @@ interface StoreCtx {
   orders: Order[];
   placeOrder: (details: {
     customerName: string;
+    email: string;
     address: string;
     postcode: string;
     phone: string;

@@ -28,7 +28,7 @@ function getTransporter(): Transporter {
   return transporter;
 }
 
-export async function sendMail(opts: { to: string; subject: string; html: string }): Promise<void> {
+export async function sendMail(opts: { to: string; subject: string; html: string; idempotencyKey?: string }): Promise<void> {
   const from = process.env.EMAIL_FROM || process.env.SMTP_FROM || `Shah Restaurant <${process.env.SMTP_USER}>`;
   // DigitalOcean blocks SMTP ports; the Resend HTTPS API is used when configured.
   if (!from || from.includes("<undefined>")) {
@@ -40,6 +40,7 @@ export async function sendMail(opts: { to: string; subject: string; html: string
       headers: {
         Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
         "Content-Type": "application/json",
+        ...(opts.idempotencyKey ? { "Idempotency-Key": opts.idempotencyKey } : {}),
       },
       body: JSON.stringify({ from, to: opts.to, subject: opts.subject, html: opts.html }),
       signal: AbortSignal.timeout(15_000),
@@ -264,6 +265,37 @@ export function companyInvoiceEmail(data: {
       intro: `Thank you for your order, ${data.companyName}. Please find your invoice below. Per our agreement, the amount is due within 7 days of receiving your order.`,
       bodyHtml,
       outro: "Questions about this invoice? Just reply to this email and we'll help you out.",
+    }),
+  };
+}
+
+/** Sent once when a personal order is confirmed paid. */
+export function paidOrderEmail(data: {
+  base: string;
+  customerName: string;
+  orderNumber: string;
+  items: { name: string; qty: number; price: number }[];
+  total: number;
+  fulfillment: "delivery" | "pickup";
+}): { subject: string; html: string } {
+  const rows = data.items.map((item) =>
+    `<tr><td style="padding:5px 0;font-size:14px;">${item.qty}× ${escapeHtml(item.name)}</td><td style="padding:5px 0;text-align:right;font-size:14px;">€${(item.qty * item.price).toFixed(2)}</td></tr>`
+  ).join("");
+  const bodyHtml = `<div style="border:1px solid ${BRAND.border};border-radius:14px;padding:18px;margin:0 0 20px;font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;">
+    <p style="margin:0 0 12px;font-weight:700;">Bestelling ${escapeHtml(data.orderNumber)}</p>
+    <table role="presentation" width="100%">${rows}
+      <tr><td style="border-top:1px solid ${BRAND.border};padding-top:9px;font-weight:700;">Totaal betaald</td><td style="border-top:1px solid ${BRAND.border};padding-top:9px;text-align:right;font-weight:700;">€${data.total.toFixed(2)}</td></tr>
+    </table><p style="margin:12px 0 0;font-size:13px;">${data.fulfillment === "pickup" ? "Afhalen" : "Bezorging"}</p>
+  </div>`;
+  return {
+    subject: `Bestelling ${data.orderNumber} ontvangen en betaald - Shah Restaurant`,
+    html: layout({
+      base: data.base,
+      heading: `Bedankt, ${escapeHtml(data.customerName)}!`,
+      intro: "Je betaling is gelukt en we hebben je bestelling ontvangen. We gaan deze voor je bereiden. Bewaar dit e-mailbericht als bevestiging.",
+      bodyHtml,
+      outro: "Heb je een vraag over je bestelling? Beantwoord deze e-mail of bel het restaurant.",
+      lang: "nl",
     }),
   };
 }

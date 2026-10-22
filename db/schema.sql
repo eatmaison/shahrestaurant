@@ -270,6 +270,9 @@ CREATE INDEX IF NOT EXISTS idx_gallery_images_site ON gallery_images (site);
 -- Retry-safe checkout (shared by all sites).
 ALTER TABLE orders ADD COLUMN IF NOT EXISTS request_key text;
 ALTER TABLE orders ADD COLUMN IF NOT EXISTS request_fingerprint text;
+ALTER TABLE orders ADD COLUMN IF NOT EXISTS customer_email text;
+ALTER TABLE orders ADD COLUMN IF NOT EXISTS confirmation_email_claimed_at timestamptz;
+ALTER TABLE orders ADD COLUMN IF NOT EXISTS confirmation_email_sent_at timestamptz;
 CREATE UNIQUE INDEX IF NOT EXISTS idx_orders_request_key ON orders (request_key);
 CREATE INDEX IF NOT EXISTS idx_orders_request_fingerprint ON orders (request_fingerprint, created_at);
 ALTER TABLE payments ADD COLUMN IF NOT EXISTS checkout_url text;

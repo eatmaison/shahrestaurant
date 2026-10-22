@@ -27,7 +27,7 @@ import {
 } from "./data";
 import { createMolliePayment, getMolliePayment, mollieEnabled } from "./mollie";
 import { amsterdamNow, isOpenAt, isScheduleSlotOpen, restaurantStatus as getRestaurantStatus, timeToMinutes, type RestaurantOpenOverride, type RestaurantStatus } from "./openingHours";
-import { companyInvoiceEmail, emailEnabled, passwordResetEmail, reservationEmail, sendMail, verificationEmail } from "./email";
+import { companyInvoiceEmail, emailEnabled, paidOrderEmail, passwordResetEmail, reservationEmail, sendMail, verificationEmail } from "./email";
 import { signToken, verifyToken } from "./tokens";
 import { deleteStoredImage, storeImage } from "./spaces";
 import { grillSideLabel, isGrillSideRequired, parseCartKey } from "./cart";
@@ -528,6 +528,7 @@ async function loadOrders(userId?: string): Promise<Order[]> {
 export async function placeOrder(details: {
   idempotencyKey?: string;
   customerName: string;
+  email?: string;
   address: string;
   postcode: string;
   phone: string;
@@ -538,9 +539,11 @@ export async function placeOrder(details: {
   schedule?: OrderSchedule;
   fulfillment?: OrderFulfillment;
   origin?: string;
-}): Promise<{ ok: boolean; error?: "minOrder" | "empty" | "outsideArea" | "closed" | "processing" | "checkoutFailed" | "checkoutChanged"; order?: Order; checkoutUrl?: string }> {
+}): Promise<{ ok: boolean; error?: "minOrder" | "empty" | "outsideArea" | "closed" | "processing" | "checkoutFailed" | "checkoutChanged" | "invalidInput"; order?: Order; checkoutUrl?: string }> {
   await ensureReady();
   const currentUser = await getCurrentUser();
+  const customerEmail = currentUser?.email || details.email?.trim().toLowerCase();
+  if (!customerEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(customerEmail)) return { ok: false, error: "invalidInput" };
   const visitorSessionId = currentUser ? undefined : await getOrCreateVisitorId();
   const identity = checkoutIdentity(currentUser?.id ?? visitorSessionId!, details);
   if (identity.requestKey) {
@@ -638,6 +641,7 @@ export async function placeOrder(details: {
     userId: currentUser?.id,
     visitorSessionId,
     customerName,
+    customerEmail,
     address,
     postcode: fulfillment === "pickup" ? normalizePostcode(postcode || "") : normalizePostcode(postcode),
     phone,
@@ -659,6 +663,9 @@ export async function placeOrder(details: {
   if (isCompany || !mollieEnabled() || total <= 0) {
     const paid = accountType !== "company" && (!mollieEnabled() || total <= 0);
     const order = await insertOrder(computed, paid);
+    if (paid && order.newlyCreated) {
+      after(() => sendPaidOrderConfirmation(order.id).catch((err) => console.error("[email] order confirmation failed:", err)));
+    }
     if (isCompany && currentUser && order.newlyCreated) {
       // Sending email must not delay or turn a committed order into an error.
       after(() => sendCompanyInvoice(order, currentUser, origin));
@@ -784,6 +791,40 @@ async function sendCompanyInvoice(order: Order, user: User, origin?: string): Pr
   }
 }
 
+/** Claim and email a paid order once, even if Mollie retries its webhook. */
+async function sendPaidOrderConfirmation(orderId: string): Promise<void> {
+  const rows = (await sql.query(
+    `UPDATE orders o SET confirmation_email_claimed_at = now()
+     WHERE o.id = $1 AND o.paid = true
+       AND o.confirmation_email_sent_at IS NULL
+       AND (o.confirmation_email_claimed_at IS NULL OR o.confirmation_email_claimed_at < now() - interval '2 minutes')
+       AND COALESCE(NULLIF(o.customer_email, ''), (SELECT u.email FROM users u WHERE u.id = o.user_id)) IS NOT NULL
+     RETURNING o.*`, [orderId]
+  )) as any[];
+  const row = rows[0];
+  if (!row) return;
+  try {
+    const userRows = row.customer_email ? [] : (await sql.query(`SELECT email FROM users WHERE id = $1`, [row.user_id])) as any[];
+    const to = row.customer_email || userRows[0]?.email;
+    if (!to) throw new Error("Paid order has no customer email");
+    const itemRows = (await sql.query(`SELECT * FROM order_items WHERE order_id = $1 ORDER BY id`, [orderId])) as any[];
+    const order = rowToOrder(row, itemRows.map(rowToOrderItem));
+    const message = paidOrderEmail({
+      base: siteBase(),
+      customerName: order.customerName,
+      orderNumber: formatOrderNumber(order.orderNumber),
+      items: order.items.map((item) => ({ name: item.name, qty: item.qty, price: item.price })),
+      total: order.total,
+      fulfillment: order.fulfillment,
+    });
+    await sendMail({ to, ...message, idempotencyKey: `paid-order-${order.id}` });
+    await sql.query(`UPDATE orders SET confirmation_email_sent_at = now(), confirmation_email_claimed_at = NULL WHERE id = $1`, [orderId]);
+  } catch (err) {
+    await sql.query(`UPDATE orders SET confirmation_email_claimed_at = NULL WHERE id = $1 AND confirmation_email_sent_at IS NULL`, [orderId]);
+    throw err;
+  }
+}
+
 export async function updateOrderStatus(orderId: string, status: string): Promise<void> {
   await requireAdmin();
   await sql.query(`UPDATE orders SET status = $1 WHERE id = $2`, [status, orderId]);
@@ -817,6 +858,7 @@ export async function setOrderPaid(orderId: string, paid: boolean): Promise<void
     if (orderRows[0]) {
       const itemRows = (await sql.query(`SELECT * FROM order_items WHERE order_id = $1`, [orderId])) as any[];
       await applyOrderCustomerEffects(rowToOrder(orderRows[0], itemRows.map(rowToOrderItem)));
+      await sendPaidOrderConfirmation(orderId);
     }
   } else {
     await sql.query(`UPDATE payments SET status = 'open', updated_at = now() WHERE order_id = $1 AND kind = 'order' AND status = 'paid'`, [orderId]);
@@ -1528,13 +1570,27 @@ export async function fulfillPaymentByRecord(recordId: string): Promise<{
   const rows = (await sql.query(`SELECT * FROM payments WHERE id = $1`, [recordId])) as any[];
   const rec = rows[0];
   if (!rec) return { kind: null, status: "not_found" };
-  return fulfillPayment(rec);
+  const result = await fulfillPayment(rec);
+  if (result.kind === "order" && result.status === "paid") {
+    const paymentRows = (await sql.query(`SELECT order_id FROM payments WHERE id = $1`, [recordId])) as any[];
+    if (paymentRows[0]?.order_id) {
+      try { await sendPaidOrderConfirmation(paymentRows[0].order_id); }
+      catch (err) { console.error("[email] order confirmation failed:", err); }
+    }
+  }
+  return result;
 }
 
 export async function fulfillPaymentByMollieId(mollieId: string): Promise<void> {
   await ensureReady();
   const rows = (await sql.query(`SELECT * FROM payments WHERE mollie_payment_id = $1`, [mollieId])) as any[];
-  if (rows[0]) await fulfillPayment(rows[0]);
+  if (rows[0]) {
+    const result = await fulfillPayment(rows[0]);
+    if (result.kind === "order" && result.status === "paid") {
+      const paymentRows = (await sql.query(`SELECT order_id FROM payments WHERE id = $1`, [rows[0].id])) as any[];
+      if (paymentRows[0]?.order_id) await sendPaidOrderConfirmation(paymentRows[0].order_id);
+    }
+  }
 }
 
 async function fulfillPayment(rec: any): Promise<{ kind: "order" | "vip"; status: string; orderNumber?: number }> {

@@ -7,8 +7,9 @@ export async function POST(req: NextRequest) {
     const form = await req.formData();
     const id = form.get("id");
     if (typeof id === "string") await fulfillPaymentByMollieId(id);
-  } catch {
-    // Always return 200 so Mollie doesn't retry forever on our internal errors.
+  } catch (err) {
+    console.error("[mollie] webhook fulfillment failed:", err);
+    return NextResponse.json({ received: false }, { status: 503 });
   }
   return NextResponse.json({ received: true });
 }

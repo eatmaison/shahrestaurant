@@ -136,6 +136,9 @@ const DDL: string[] = [
     created_at timestamptz NOT NULL DEFAULT now()
   )`,
   `CREATE UNIQUE INDEX IF NOT EXISTS idx_orders_order_number ON orders (order_number)`,
+  `ALTER TABLE orders ADD COLUMN IF NOT EXISTS customer_email text`,
+  `ALTER TABLE orders ADD COLUMN IF NOT EXISTS confirmation_email_claimed_at timestamptz`,
+  `ALTER TABLE orders ADD COLUMN IF NOT EXISTS confirmation_email_sent_at timestamptz`,
   `ALTER TABLE orders ADD COLUMN IF NOT EXISTS visitor_session_id text`,
   `CREATE INDEX IF NOT EXISTS idx_orders_user_id ON orders (user_id)`,
   // Delivery vs. self-pickup choice for databases created before it existed.
