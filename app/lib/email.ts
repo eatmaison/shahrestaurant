@@ -292,7 +292,9 @@ export function paidOrderEmail(data: {
     html: layout({
       base: data.base,
       heading: `Bedankt, ${escapeHtml(data.customerName)}!`,
-      intro: "Je betaling is gelukt en we hebben je bestelling ontvangen. We gaan deze voor je bereiden. Bewaar dit e-mailbericht als bevestiging.",
+      intro: data.fulfillment === "delivery"
+        ? "Je bestelling is ontvangen en betaald. We gaan deze bereiden en daarna zo snel mogelijk bezorgen. Bestel je buiten openingstijden, dan beginnen we zodra we weer open zijn."
+        : "Je bestelling is ontvangen en betaald. We gaan deze bereiden zodat je hem kunt afhalen. Bestel je buiten openingstijden, dan beginnen we zodra we weer open zijn.",
       bodyHtml,
       outro: "Heb je een vraag over je bestelling? Beantwoord deze e-mail of bel het restaurant.",
       lang: "nl",
