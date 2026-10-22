@@ -31,7 +31,7 @@ export default function AboutPage() {
     },
     hasMenu: "https://shahrestaurant.nl/order",
     acceptsReservations: "True",
-    openingHours: "Tu-Su 15:00-22:30",
+    openingHours: "Tu-Su 15:00-22:00",
   };
 
   const pillars = [

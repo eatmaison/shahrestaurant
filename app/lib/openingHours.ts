@@ -1,21 +1,21 @@
 /**
  * Opening hours (Europe/Amsterdam time):
  * - Monday: closed (nobody works)
- * - Tuesday–Sunday: 15:00–22:30
+ * - Tuesday–Sunday: 15:00–22:00
  * Order/status cutoff is 21:30; table reservations can still use the full window.
  */
 
 /** Day the shop is fully closed. 0 = Sunday … 1 = Monday … 6 = Saturday. */
 export const CLOSED_DAY = 1;
 
-/** Daily opening window in minutes since midnight (15:00–22:30). */
+/** Daily opening window in minutes since midnight (15:00–22:00). */
 export const OPEN_FROM_MIN = 15 * 60;
-export const OPEN_UNTIL_MIN = 22 * 60 + 30;
+export const OPEN_UNTIL_MIN = 22 * 60;
 export const ORDER_UNTIL_MIN = 21 * 60 + 30;
 
 /** Human-readable strings for display. */
 export const OPEN_FROM = "15:00";
-export const OPEN_UNTIL = "22:30";
+export const OPEN_UNTIL = "22:00";
 
 export type RestaurantOpenOverride = "auto" | "open" | "closed";
 

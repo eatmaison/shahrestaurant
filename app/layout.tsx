@@ -23,11 +23,11 @@ const siteUrl = "https://shahrestaurant.nl";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Shah Restaurant Amsterdam | Fine Indian Dining & Tandoori Grill",
+    default: "Indiaas restaurant Amsterdam-Noord | Shah Restaurant",
     template: "%s | Shah Restaurant Amsterdam",
   },
   description:
-    "Shah Restaurant Amsterdam-Noord - refined Indian fine dining with tandoori grills, rich curries, biryani and fresh naan. Reserve your table online or order for delivery and pickup. Klaprozenweg 36a, Amsterdam.",
+    "Reserveer een tafel bij Shah Restaurant aan de Klaprozenweg 36a in Amsterdam-Noord. Indiase gerechten, tandoori, curry en verse naan. Dinsdag t/m zondag vanaf 15:00.",
   keywords: [
     "shah restaurant",
     "shahrestaurant",
@@ -48,19 +48,19 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    locale: "en_NL",
-    alternateLocale: "nl_NL",
+    locale: "nl_NL",
+    alternateLocale: "en_GB",
     url: "./",
     siteName: "Shah Restaurant Amsterdam",
-    title: "Shah Restaurant Amsterdam | Fine Indian Dining & Tandoori Grill",
+    title: "Indiaas restaurant Amsterdam-Noord | Shah Restaurant",
     description:
-      "Refined Indian dining - curries, tandoori grills, biryani and naan, served with understated luxury. Reserve your table or order online at Shah Restaurant, Amsterdam-Noord.",
+      "Reserveer online een tafel bij Shah Restaurant in Amsterdam-Noord. Indiase gerechten, tandoori en curry aan de Klaprozenweg 36a.",
     images: [{ url: "/shahrestaurant.png", width: 512, height: 512, alt: "Shah Restaurant Amsterdam" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Shah Restaurant Amsterdam | Fine Indian Dining",
-    description: "Tandoori grills, rich curries and fresh naan in Amsterdam-Noord. Reserve your table or order online.",
+    title: "Indiaas restaurant Amsterdam-Noord | Shah Restaurant",
+    description: "Reserveer een tafel voor Indiaas eten bij Shah Restaurant in Amsterdam-Noord.",
     images: ["/shahrestaurant.png"],
   },
   robots: {
@@ -91,7 +91,7 @@ const jsonLd = {
   email: "info@shahrestaurant.nl",
   priceRange: "€€€",
   servesCuisine: ["Indian", "Tandoori", "Curry", "Biryani"],
-  acceptsReservations: "True",
+  acceptsReservations: true,
   address: {
     "@type": "PostalAddress",
     streetAddress: "Klaprozenweg 36a",
@@ -101,7 +101,13 @@ const jsonLd = {
   },
   geo: { "@type": "GeoCoordinates", latitude: 52.4045, longitude: 4.9009 },
   areaServed: "Amsterdam",
-  openingHours: "Tu-Su 15:00-22:30",
+  menu: `${siteUrl}/order`,
+  openingHoursSpecification: {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+    opens: "15:00",
+    closes: "22:00",
+  },
 };
 
 export default function RootLayout({
