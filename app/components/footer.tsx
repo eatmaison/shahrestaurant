@@ -8,7 +8,7 @@ import { SOCIAL_PLATFORMS } from "./socialIcons";
 
 export function Footer() {
   const { t, lang } = useLang();
-  const { socialLinks } = useStore();
+  const { socialLinks, currentUser } = useStore();
   const [showTop, setShowTop] = useState(false);
 
   // Floating "back to top" appears after scrolling past the first screen.
@@ -36,7 +36,7 @@ export function Footer() {
           <nav className="footer-quick-links" aria-label={lang === "nl" ? "Snelle links" : "Quick links"}>
             <Link href="/order">{lang === "nl" ? "Menukaart" : "Menu"}</Link>
             <Link href="/reservations">{t.nav.reservations}</Link>
-            <Link href="/events/gallery">{t.nav.eventsGallery}</Link>
+            {currentUser?.role === "admin" && <Link href="/events/gallery">{t.nav.eventsGallery}</Link>}
           </nav>
           {activeSocials.length > 0 && (
             <div className="mt-5 flex flex-wrap gap-3">
@@ -94,10 +94,6 @@ export function Footer() {
                 <a href="https://eattogo.nl" target="_blank" rel="noopener noreferrer" className="text-xs text-slate-600 transition hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400">
                   <span className="font-semibold">Eat to Go ↗</span>
                   <span className="mt-1 block text-xs leading-5">{lang === "nl" ? "Wraps, burgers en pizza om mee te nemen" : "Wraps, burgers and pizza to go"}</span>
-                </a>
-                <a href="https://themaison.nl" target="_blank" rel="noopener noreferrer" className="text-xs text-slate-600 transition hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400">
-                  <span className="font-semibold">The Maison ↗</span>
-                  <span className="mt-1 block text-xs leading-5">{lang === "nl" ? "Fine dining en tafelreserveringen" : "Fine dining and table reservations"}</span>
                 </a>
                 <a href="https://thetandoorcompany.nl" target="_blank" rel="noopener noreferrer" className="text-xs text-slate-600 transition hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400">
                   <span className="font-semibold">The Tandoor Company ↗</span>

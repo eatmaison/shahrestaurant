@@ -282,7 +282,7 @@
 .galleryItem figcaption > :last-child { padding-top: 5px; }
 .storyPhotoMark { position: absolute; bottom: 18px; right: 24px; color: white; font-family: var(--font-cormorant), Georgia, serif; font-size: 64px; font-style: italic; text-shadow: 0 2px 20px #0008; }
 .eveningSection { padding-bottom: 80px; }
-.eveningGrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
+.eveningGrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 32px; }
 .eveningItem { min-width: 0; }
 .eveningItem:nth-child(2) { transition-delay: 90ms; }
 .eveningItem:nth-child(3) { transition-delay: 180ms; }

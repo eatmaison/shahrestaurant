@@ -25,7 +25,8 @@ function DishPhoto({ product, large = false }: { product: Product; large?: boole
 export default function Home() {
   const { t, lang } = useLang();
   const { theme } = useTheme();
-  const { products, reviews, restaurantStatus, hydrated } = useStore();
+  const { products, reviews, restaurantStatus, hydrated, currentUser } = useStore();
+  const isAdmin = currentUser?.role === "admin";
   const copy = homeContent[lang];
   const rootRef = useRef<HTMLDivElement>(null);
   const heroVideoRef = useRef<HTMLVideoElement>(null);
@@ -155,7 +156,7 @@ export default function Home() {
   };
   const organizationJsonLd = {
     "@context": "https://schema.org", "@type": "Organization", name: "Amsterdam Restaurant Group", url: "https://shahrestaurant.nl",
-    subOrganization: [{ "@type": "Restaurant", name: "Shah Restaurant", url: "https://shahrestaurant.nl" }, { "@type": "Restaurant", name: "The Maison", url: "https://themaison.nl" }, { "@type": "Restaurant", name: "Eat to go", url: "https://eattogo.nl" }],
+    subOrganization: [{ "@type": "Restaurant", name: "Shah Restaurant", url: "https://shahrestaurant.nl" }, { "@type": "Restaurant", name: "Eat to go", url: "https://eattogo.nl" }],
   };
 
   return (
@@ -246,12 +247,12 @@ export default function Home() {
         <div className={styles.galleryGrid}>
           {photos.slice(0, 3).map((photo, index) => <figure key={photo.src} className={styles.galleryItem} data-reveal="visible"><button type="button" data-tilt onClick={() => setPhotoIndex(index)} aria-label={`${copy.enlarge}: ${photo.title}`} title={`${copy.enlarge}: ${photo.title}`}><Image src={photo.src} alt={photo.alt} fill sizes={index === 0 ? "(min-width: 800px) 50vw, 100vw" : "(min-width: 800px) 25vw, 50vw"} /><span className={styles.galleryPhotoNumber}>0{index + 1}</span><span className={styles.expandIcon}><FaExpand aria-hidden="true" /></span></button><figcaption><span>{photo.title}</span><span>0{index + 1}</span></figcaption></figure>)}
         </div>
-        <div className={styles.galleryFooter}><Link href="/events/gallery" className={styles.textLink}>{copy.fullGallery}<FaArrowRight aria-hidden="true" /></Link></div>
+        {isAdmin && <div className={styles.galleryFooter}><Link href="/events/gallery" className={styles.textLink}>{copy.fullGallery}<FaArrowRight aria-hidden="true" /></Link></div>}
       </section>
 
       <section id="story" data-section className={styles.storySection} aria-labelledby="story-title">
         <div className={styles.storyInner}>
-          <div className={styles.storyContent} data-reveal="visible"><p className={styles.eyebrow}>03 / {copy.story}</p><h2 id="story-title">{t.home.storyTitle}</h2><p>{t.home.storyText}</p><blockquote>{t.home.storyQuote}</blockquote><Link href="/events/about" className={styles.textLink}>{copy.storyLink}<FaArrowRight aria-hidden="true" /></Link></div>
+          <div className={styles.storyContent} data-reveal="visible"><p className={styles.eyebrow}>03 / {copy.story}</p><h2 id="story-title">{t.home.storyTitle}</h2><p>{t.home.storyText}</p><blockquote>{t.home.storyQuote}</blockquote>{isAdmin && <Link href="/events/about" className={styles.textLink}>{copy.storyLink}<FaArrowRight aria-hidden="true" /></Link>}</div>
           <figure className={styles.storyPhoto} data-reveal="visible"><div data-tilt><Image src="/photos/687A0210.jpeg" alt={copy.interiorAlt} fill sizes="(min-width: 900px) 45vw, 100vw" /><span className={styles.storyPhotoMark} aria-hidden="true">Shah</span></div><figcaption><span>{copy.storyAside}</span><FaFireBurner aria-hidden="true" /></figcaption></figure>
         </div>
       </section>
@@ -262,13 +263,13 @@ export default function Home() {
           { href: "/reservations", title: copy.dine, text: copy.dineText, action: copy.reserve, image: photos[0], Icon: FaCalendarCheck },
           { href: "/order", title: copy.takeaway, text: copy.takeawayText, action: copy.order, image: photos[1], Icon: FaBagShopping },
           { href: "/events", title: copy.gather, text: copy.gatherText, action: copy.exploreEvents, image: photos[4], Icon: FaUsers },
-        ].map(({ href, title, text, action, image, Icon }, index) => <article key={href} className={styles.eveningItem} data-reveal="visible"><Link href={href} className={styles.eveningPhoto} data-tilt aria-label={action}><Image src={image.src} alt={image.alt} fill sizes="(min-width: 701px) 30vw, 100vw" /><span><Icon aria-hidden="true" /></span><span className={styles.eveningNumber}>0{index + 1}</span></Link><h3>{title}</h3><p>{text}</p><Link href={href} className={styles.textLink}>{action}<FaArrowRight aria-hidden="true" /></Link></article>)}</div>
+        ].filter(({ href }) => isAdmin || !href.startsWith("/events")).map(({ href, title, text, action, image, Icon }, index) => <article key={href} className={styles.eveningItem} data-reveal="visible"><Link href={href} className={styles.eveningPhoto} data-tilt aria-label={action}><Image src={image.src} alt={image.alt} fill sizes="(min-width: 701px) 30vw, 100vw" /><span><Icon aria-hidden="true" /></span><span className={styles.eveningNumber}>0{index + 1}</span></Link><h3>{title}</h3><p>{text}</p><Link href={href} className={styles.textLink}>{action}<FaArrowRight aria-hidden="true" /></Link></article>)}</div>
       </section>
 
-      <section className={`${styles.section} ${styles.occasions}`} aria-labelledby="occasions-title">
+      {isAdmin && <section className={`${styles.section} ${styles.occasions}`} aria-labelledby="occasions-title">
         <div data-reveal="visible"><p className={styles.eyebrow}>{copy.occasions}</p><h2 id="occasions-title">{copy.occasionsTitle}</h2><p className={styles.sectionDescription}>{copy.occasionsText}</p></div>
         <div className={styles.occasionLinks} data-reveal="visible">{[{ href: "/events/birthdays", label: copy.birthdays }, { href: "/events/celebrations", label: copy.celebrations }, { href: "/events/company-catering", label: copy.company }].map((occasion, index) => <Link key={occasion.href} href={occasion.href}><span className={styles.occasionNumber}>0{index + 1}</span><span>{occasion.label}</span><FaArrowRight aria-hidden="true" /></Link>)}</div>
-      </section>
+      </section>}
 
       {userReviews.length > 0 && <section className={styles.reviewsSection} aria-labelledby="reviews-title"><div className={styles.sectionHeading}><div><p className={styles.eyebrow}>{t.home.testimonialsOverline}</p><h2 id="reviews-title">{copy.guestTitle}</h2></div><p className={styles.rating}><FaStar aria-hidden="true" /><strong>{avgRating.toFixed(1)} / 5</strong><span>{siteReviews.length} {copy.guestCount}</span></p></div><div className={styles.reviewsGrid}>{userReviews.map((review) => <figure key={review.id}><div className={styles.stars} aria-label={`${review.rating} ${copy.outOf}`}>{[1, 2, 3, 4, 5].map((star) => <FaStar key={star} aria-hidden="true" style={{ opacity: star <= Math.round(review.rating) ? 1 : 0.2 }} />)}</div><blockquote>{review.text}</blockquote><figcaption><strong>{review.userName}</strong><time dateTime={new Date(review.createdAt).toISOString()}>{dateFormat.format(new Date(review.createdAt))}</time></figcaption></figure>)}</div></section>}
 
@@ -277,7 +278,7 @@ export default function Home() {
         <div className={styles.visitDetails} data-reveal="visible"><div className={styles.hoursHeading}><h3><FaClock aria-hidden="true" />{copy.hours}</h3>{typeof restaurantStatus.isOpen === "boolean" && <span className={styles.openStatus} data-open={restaurantStatus.isOpen}>{restaurantStatus.isOpen ? t.hours.openNow : t.hours.closedNow}</span>}</div><dl className={styles.hours}><div><dt>{t.hours.tueSun}</dt><dd>15:00–22:00</dd></div><div><dt>{t.hours.monday}</dt><dd>{t.hours.closed}</dd></div></dl><h3>{copy.contact}</h3><a href="tel:+31203412995" className={styles.contactLink}><FaPhone aria-hidden="true" />+31 20 341 2995</a><a href="mailto:info@shahrestaurant.nl" className={styles.contactLink}><FaEnvelope aria-hidden="true" />info@shahrestaurant.nl</a><Link href="/reservations" className={styles.primaryButton}><FaCalendarCheck aria-hidden="true" />{copy.reserve}<FaArrowRight aria-hidden="true" /></Link></div>
       </section>
 
-      <section className={`${styles.section} ${styles.faq}`} aria-labelledby="faq-title"><div data-reveal="visible"><p className={styles.eyebrow}>{copy.faq}</p><h2 id="faq-title">{copy.faqTitle}</h2><a className={styles.faqContact} href="mailto:info@shahrestaurant.nl"><FaEnvelope aria-hidden="true" />{copy.email}<FaArrowRight aria-hidden="true" /></a></div><div className={styles.faqList}>{copy.questions.map((item, index) => <details key={item.question} name="visit-questions"><summary><span className={styles.faqNumber}>0{index + 1}</span><span>{item.question}</span><FaChevronDown aria-hidden="true" /></summary><p>{item.answer}</p></details>)}</div></section>
+      <section className={`${styles.section} ${styles.faq}`} aria-labelledby="faq-title"><div data-reveal="visible"><p className={styles.eyebrow}>{copy.faq}</p><h2 id="faq-title">{copy.faqTitle}</h2><a className={styles.faqContact} href="mailto:info@shahrestaurant.nl"><FaEnvelope aria-hidden="true" />{copy.email}<FaArrowRight aria-hidden="true" /></a></div><div className={styles.faqList}>{copy.questions.filter(item => !("adminOnly" in item) || !item.adminOnly || isAdmin).map((item, index) => <details key={item.question} name="visit-questions"><summary><span className={styles.faqNumber}>0{index + 1}</span><span>{item.question}</span><FaChevronDown aria-hidden="true" /></summary><p>{item.answer}</p></details>)}</div></section>
 
       <section className={styles.closing} aria-labelledby="closing-title"><Image src="/photos/687A0402.jpeg" alt="" fill sizes="100vw" className={styles.closingImage} /><div className={styles.closingShade} /><div className={styles.closingContent} data-reveal="visible"><p className={styles.heroEyebrow}>Shah Restaurant</p><h2 id="closing-title">{copy.closing}</h2><p>{copy.closingText}</p><div className={styles.actions}><Link href="/reservations" className={styles.primaryButton}><FaCalendarCheck aria-hidden="true" />{copy.reserve}</Link><a href="tel:+31203412995" className={styles.heroSecondary}><FaPhone aria-hidden="true" />{copy.call}</a></div></div></section>
 

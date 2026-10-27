@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { getCurrentUser } from "../lib/serverStore";
 
 export const metadata: Metadata = {
+  robots: { index: false, follow: false },
   title: "Events, Catering & Private Dining Amsterdam",
   description:
     "Host your birthday, wedding, corporate dinner or company lunch with Shah Restaurant Amsterdam. Indian private dining, on-site catering and daily office lunches - up to 100 guests.",
@@ -23,6 +26,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function EventsLayout({ children }: { children: React.ReactNode }) {
+export default async function EventsLayout({ children }: { children: React.ReactNode }) {
+  if ((await getCurrentUser())?.role !== "admin") notFound();
   return <div className="events-pages">{children}</div>;
 }

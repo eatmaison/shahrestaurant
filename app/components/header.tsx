@@ -85,8 +85,10 @@ export function Header() {
     { href: "/", label: t.nav.home },
     { href: "/reservations", label: t.nav.reservations },
     { href: "/order", label: lang === "nl" ? "Menukaart" : "Menu" },
-    { href: "/parties", label: "PARTY / EVENTS" },
-    { href: "/events", label: t.nav.events, children: eventsChildren },
+    ...(currentUser?.role === "admin" ? [
+      { href: "/parties", label: "PARTY / EVENTS" },
+      { href: "/events", label: t.nav.events, children: eventsChildren },
+    ] : []),
     { href: "/account", label: t.nav.account },
   ];
   if (currentUser?.role === "admin") links.push({ href: "/admin", label: t.nav.admin });
