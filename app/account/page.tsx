@@ -624,7 +624,7 @@ export default function AccountPage() {
                   {t.company.badge}: −20% 
                 </p>
               )}
-              <input
+              <input aria-label={t.auth.name}
                 required
                 maxLength={100}
                 autoComplete="name"
@@ -635,7 +635,7 @@ export default function AccountPage() {
               />
             </>
           )}
-          <input
+          <input aria-label={t.auth.email} inputMode="email" autoCapitalize="none" spellCheck={false}
             type="email"
             required
             maxLength={254}
@@ -645,7 +645,7 @@ export default function AccountPage() {
             placeholder={t.auth.email}
             className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-3 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/5 dark:text-white"
           />
-          <input
+          <input aria-label={t.auth.password}
             type="password"
             required
             minLength={mode === "register" ? 6 : 1}
@@ -658,7 +658,7 @@ export default function AccountPage() {
           />
           {mode === "register" && (
             <>
-              <input
+              <input aria-label={t.auth.phone} type="tel" inputMode="tel" autoComplete="tel" maxLength={30}
                 value={form.phone}
                 onChange={(e) => setForm({ ...form, phone: e.target.value })}
                 placeholder={t.auth.phone}
@@ -666,13 +666,13 @@ export default function AccountPage() {
               />
               {form.accountType === "company" && (
                 <>
-                  <input
+                  <input aria-label={t.company.btw} required maxLength={30}
                     value={form.btw}
                     onChange={(e) => setForm({ ...form, btw: e.target.value })}
                     placeholder={t.company.btw}
                     className="w-full rounded-xl border border-sky-300/60 bg-sky-500/5 px-3.5 py-3 text-sm outline-none transition focus:border-sky-500 dark:border-sky-400/30 dark:bg-white/5 dark:text-white"
                   />
-                  <input
+                  <input aria-label={t.company.kvk} required maxLength={30} inputMode="numeric"
                     value={form.kvk}
                     onChange={(e) => setForm({ ...form, kvk: e.target.value })}
                     placeholder={t.company.kvk}
@@ -689,7 +689,7 @@ export default function AccountPage() {
                   </label>
                 </>
               )}
-              <input
+              <input aria-label={t.auth.adminCode} maxLength={100} autoComplete="off" spellCheck={false}
                 value={form.adminCode}
                 onChange={(e) => setForm({ ...form, adminCode: e.target.value })}
                 placeholder={t.auth.adminCode}
@@ -711,7 +711,7 @@ export default function AccountPage() {
             </div>
           </div>
         )}
-        {error && <p className="mt-3 rounded-xl bg-red-500/10 px-3 py-2 text-sm font-medium text-red-600 dark:text-red-400">{error}</p>}
+        {error && <p role="alert" className="mt-3 rounded-xl bg-red-500/10 px-3 py-2 text-sm font-medium text-red-600 dark:text-red-400">{error}</p>}
 
         <button
           type="submit"

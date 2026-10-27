@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect } from "react";
+import DOMPurify from "dompurify";
+import { OrderSheet } from "../order/OrderSheet";
 import { useLang } from "../providers";
 import type { Product } from "../lib/types";
 import { FaX } from "react-icons/fa6";
@@ -16,19 +17,6 @@ export default function ProductDetailsModal({
 }: ProductDetailsModalProps) {
   const { t, lang } = useLang();
 
-  useEffect(() => {
-    if (!product) return;
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") onClose();
-    };
-    document.addEventListener("keydown", handleKeyDown);
-    return () => {
-      document.body.style.overflow = previousOverflow;
-      document.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [onClose, product]);
 
   if (!product) return null;
 
@@ -42,13 +30,7 @@ export default function ProductDetailsModal({
     (lang === "nl" && product.allergensNl?.length ? product.allergensNl : product.allergens) || [];
 
   return (
-    <div
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="product-details-title"
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-sm"
-      onClick={onClose}
-    >
+    <OrderSheet wide titleId="product-details-title" onClose={onClose}>
       <div
         className="max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl bg-white p-6 shadow-2xl dark:bg-slate-900 dark:text-white sm:p-8"
         onClick={(e) => e.stopPropagation()}
@@ -65,8 +47,8 @@ export default function ProductDetailsModal({
           </div>
           <button
             onClick={onClose}
-            className="rounded-full bg-slate-100 p-2 text-slate-600 transition hover:bg-red-500 hover:text-white dark:bg-slate-800 dark:text-slate-300"
-            aria-label="Close"
+            className="min-h-11 min-w-11 rounded-full bg-slate-100 p-2 text-slate-600 transition hover:bg-red-500 hover:text-white dark:bg-slate-800 dark:text-slate-300"
+            type="button" aria-label={lang === "nl" ? "Sluiten" : "Close"}
           >
             <FaX size={20} />
           </button>
@@ -75,7 +57,7 @@ export default function ProductDetailsModal({
         {/* Detailed Description */}
         <div className="mb-6 prose prose-sm dark:prose-invert max-w-none">
           <div 
-            dangerouslySetInnerHTML={{ __html: detailedDesc }}
+            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(detailedDesc, { ALLOWED_TAGS: ["p", "br", "strong", "b", "em", "i", "u", "s", "ul", "ol", "li", "blockquote", "h2", "h3", "a", "code", "pre"], ALLOWED_ATTR: ["href", "title"], ALLOW_DATA_ATTR: false }) }}
             className="text-base leading-relaxed text-slate-700 dark:text-slate-300 [&_h2]:text-lg [&_h2]:font-bold [&_h2]:mt-4 [&_h2]:mb-2 [&_h3]:text-base [&_h3]:font-semibold [&_h3]:mt-3 [&_h3]:mb-1 [&_strong]:font-bold [&_em]:italic [&_ul]:list-disc [&_ul]:ml-5 [&_ol]:list-decimal [&_ol]:ml-5 [&_li]:mb-1 [&_blockquote]:border-l-4 [&_blockquote]:border-emerald-500 [&_blockquote]:pl-4 [&_blockquote]:italic"
           />
         </div>
@@ -113,12 +95,13 @@ export default function ProductDetailsModal({
 
         {/* Close Button */}
         <button
+          type="button"
           onClick={onClose}
           className="mt-6 w-full rounded-xl bg-emerald-600 py-3 font-bold text-white transition hover:bg-emerald-700 active:scale-95 dark:bg-emerald-500 dark:hover:bg-emerald-600"
         >
-          Got it!
+          {lang === "nl" ? "Begrepen" : "Got it!"}
         </button>
       </div>
-    </div>
+    </OrderSheet>
   );
 }

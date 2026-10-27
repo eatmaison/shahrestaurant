@@ -50,7 +50,8 @@ import {
 import { useLang, useStore } from "../providers";
 import { CATEGORY_ICON_CHOICES, categoryIconFor, formatOrderNumber, isDrinkCategory, ORDER_STATUS_FLOW } from "../lib/data";
 import { SOCIAL_PLATFORMS } from "../components/socialIcons";
-import RichTextEditor from "../components/RichTextEditor";
+import dynamic from "next/dynamic";
+const RichTextEditor = dynamic(() => import("../components/RichTextEditor"), { ssr: false });
 import PartyAdmin from "./PartyAdmin";
 import type { AccountType, Brand, Category, Order, OrderStatus, Product, RecentVisitor, User } from "../lib/types";
 import type { RestaurantOpenOverride } from "../lib/openingHours";

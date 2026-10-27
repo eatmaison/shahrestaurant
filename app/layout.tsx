@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Jost, Cormorant_Garamond } from "next/font/google";
 import "./design-system.css";
+import "./optimizations.css";
 import { Providers } from "./providers";
 import { Header } from "./components/header";
 import { Footer } from "./components/footer";
@@ -119,7 +120,7 @@ export default function RootLayout({
     <html lang="nl" suppressHydrationWarning data-scroll-behavior="smooth" className={`${jost.variable} ${cormorant.variable} h-full antialiased`}>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
       </head>
       <body className="flex min-h-full flex-col">
         <Providers>

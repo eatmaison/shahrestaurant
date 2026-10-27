@@ -99,9 +99,9 @@ export function publicOrigin(req: { url: string; headers: Headers }): string {
 /* ------------------------------------------------------------------ auth */
 
 export async function getCurrentUser(): Promise<User | null> {
-  await ensureReady();
   const userId = await getSessionUserId();
   if (!userId) return null;
+  await ensureReady();
   const rows = (await sql.query(`SELECT * FROM users WHERE id = $1`, [userId])) as any[];
   return rows[0] ? rowToUser(rows[0]) : null;
 }
@@ -338,8 +338,7 @@ export async function setRestaurantOpenOverride(override: RestaurantOpenOverride
 
 export async function bootstrap(): Promise<Bootstrap> {
   await ensureReady();
-  await backfillPaymentAttemptOrders();
-  const currentUser = await getCurrentUser();
+  const [currentUser] = await Promise.all([getCurrentUser(), backfillPaymentAttemptOrders()]);
   const isAdmin = currentUser?.role === "admin";
 
   // Track when the user was last active on the site (shown to admins). Signed-in
@@ -359,16 +358,15 @@ export async function bootstrap(): Promise<Bootstrap> {
     );
   }
 
-  const productRows = (await sql.query(`SELECT * FROM products ORDER BY sort_order ASC, created_at ASC, id ASC`)) as any[];
+  const [productRows, brands, restaurantStatus, reviewRows, socialRows] = await Promise.all([
+    sql.query(`SELECT * FROM products ORDER BY sort_order ASC, created_at ASC, id ASC`),
+    loadBrands(),
+    loadRestaurantStatus(),
+    sql.query(`SELECT * FROM reviews ORDER BY created_at DESC`),
+    sql.query(`SELECT * FROM social_links`),
+  ]);
   const products = productRows.map(rowToProduct);
-
-  const brands = await loadBrands();
-  const restaurantStatus = await loadRestaurantStatus();
-
-  const reviewRows = (await sql.query(`SELECT * FROM reviews ORDER BY created_at DESC`)) as any[];
   const reviews = reviewRows.map(rowToReview);
-
-  const socialRows = (await sql.query(`SELECT * FROM social_links`)) as any[];
   const socialLinks: SocialLink[] = socialRows.map((r) => ({
     platform: r.platform as SocialPlatform,
     url: r.url,
@@ -384,9 +382,14 @@ export async function bootstrap(): Promise<Bootstrap> {
   let recentVisitors: RecentVisitor[] = [];
 
   if (isAdmin) {
-    orders = await loadOrders();
-    users = ((await sql.query(`SELECT * FROM users ORDER BY created_at ASC`)) as any[]).map(rowToUser);
-    vipRequests = ((await sql.query(`SELECT * FROM vip_requests ORDER BY created_at DESC`)) as any[]).map(rowToVipRequest);
+    const [adminOrders, userRows, vipRows] = await Promise.all([
+      loadOrders(),
+      sql.query(`SELECT * FROM users ORDER BY created_at ASC`),
+      sql.query(`SELECT * FROM vip_requests ORDER BY created_at DESC`),
+    ]);
+    orders = adminOrders;
+    users = userRows.map(rowToUser);
+    vipRequests = vipRows.map(rowToVipRequest);
     const reservationCounts = new Map<string, { maison: number; tandoor: number; maisonArrived: number; tandoorArrived: number }>();
     try {
       const reservationRows = (await sql.query(`SELECT user_id, site, count(*)::int AS count, count(*) FILTER (WHERE status = 'arrived')::int AS arrived FROM reservations WHERE user_id IS NOT NULL GROUP BY user_id, site`)) as any[];
@@ -736,7 +739,13 @@ async function applyOrderCustomerEffects(order: Order): Promise<void> {
   );
 }
 
-async function backfillPaymentAttemptOrders(): Promise<void> {
+let paymentBackfill: Promise<void> | undefined;
+function backfillPaymentAttemptOrders(): Promise<void> {
+  if (!paymentBackfill) paymentBackfill = runPaymentAttemptOrderBackfill().catch(error => { paymentBackfill = undefined; throw error; });
+  return paymentBackfill;
+}
+
+async function runPaymentAttemptOrderBackfill(): Promise<void> {
   const migrationId = "20260726_payment_attempt_orders";
   const done = (await sql.query(`SELECT 1 FROM app_migrations WHERE id = $1`, [migrationId])) as unknown[];
   if (done.length > 0) return;

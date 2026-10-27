@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   FaBellConcierge,
   FaCalendarCheck,
@@ -35,8 +35,7 @@ const TIME_SLOTS: string[] = (() => {
 const OCCASIONS = ["", "birthday", "business", "romantic", "family", "other"] as const;
 
 function todayIso(): string {
-  const d = new Date();
-  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+  return new Intl.DateTimeFormat("sv-SE", { timeZone: "Europe/Amsterdam", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
 }
 
 export default function ReservationsPage() {
@@ -53,9 +52,17 @@ export default function ReservationsPage() {
   const [note, setNote] = useState("");
   const [prefilled, setPrefilled] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const reservationBusy = useRef(false);
+  const errorRef = useRef<HTMLParagraphElement>(null);
   const [error, setError] = useState<string | null>(null);
   const [done, setDone] = useState<Reservation | null>(null);
   const [nowLocal, setNowLocal] = useState("");
+  const isClosedDay = date !== "" && new Date(`${date}T00:00:00Z`).getUTCDay() === 1;
+  const availableSlots = useMemo(() => {
+    if (isClosedDay) return [];
+    if (!nowLocal || date !== nowLocal.slice(0, 10)) return TIME_SLOTS;
+    return TIME_SLOTS.filter(slot => slot > nowLocal.slice(11, 16));
+  }, [date, isClosedDay, nowLocal]);
 
   // Per-reservation review state (only one open at a time).
   const [reviewingId, setReviewingId] = useState<string | null>(null);
@@ -116,36 +123,25 @@ export default function ReservationsPage() {
     { Icon: FaBellConcierge, title: t.reservations.info3Title, text: t.reservations.info3Text },
   ];
 
+  useEffect(() => {
+    if (error) { errorRef.current?.focus({ preventScroll: true }); errorRef.current?.scrollIntoView({ block: "nearest" }); }
+  }, [error]);
+
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (reservationBusy.current) return;
     setError(null);
-    if (!name.trim() || !phone.trim() || !date || !time) {
-      setError(t.reservations.errorFillFields);
-      return;
-    }
+    if (!name.trim() || !phone.trim() || !email.trim() || !date || !time) { setError(t.reservations.errorFillFields); return; }
+    if (isClosedDay || !availableSlots.includes(time)) { setError(t.reservations.errorInvalidSlot); return; }
+    reservationBusy.current = true;
     setSubmitting(true);
-    const res = await createReservation({
-      guestName: name,
-      email: email.trim() || undefined,
-      phone,
-      date,
-      time,
-      guests,
-      occasion: occasion || undefined,
-      note: note.trim() || undefined,
-    });
-    setSubmitting(false);
-    if (res.ok && res.reservation) {
-      setDone(res.reservation);
-      setNote("");
-      return;
-    }
-    const messages: Record<string, string> = {
-      fillFields: t.reservations.errorFillFields,
-      invalidSlot: t.reservations.errorInvalidSlot,
-      pastDate: t.reservations.errorPastDate,
-    };
-    setError(messages[res.error ?? ""] ?? t.reservations.errorGeneric);
+    try {
+      const result = await createReservation({ guestName: name, email: email.trim(), phone, date, time, guests, occasion: occasion || undefined, note: note.trim() || undefined, lang });
+      if (result.ok && result.reservation) { setDone(result.reservation); setNote(""); return; }
+      const messages: Record<string, string> = { fillFields: t.reservations.errorFillFields, invalidSlot: t.reservations.errorInvalidSlot, pastDate: t.reservations.errorPastDate };
+      setError(messages[result.error ?? ""] ?? t.reservations.errorGeneric);
+    } catch { setError(t.reservations.errorGeneric); }
+    finally { reservationBusy.current = false; setSubmitting(false); }
   };
 
   const dateLocale = lang === "nl" ? "nl-NL" : "en-GB";
@@ -225,7 +221,7 @@ export default function ReservationsPage() {
                 </button>
               </div>
             ) : (
-              <form onSubmit={submit} className="form-lux" aria-busy={submitting}>
+              <form aria-describedby={error ? "reservation-error" : undefined} onSubmit={submit} className="form-lux" aria-busy={submitting}>
                 <div className="ornament">
                   <h2 className="font-display text-xl font-semibold text-slate-900 dark:text-white">{t.reservations.formTitle}</h2>
                 </div>
@@ -260,7 +256,7 @@ export default function ReservationsPage() {
                       <option value="" disabled>
                         --:--
                       </option>
-                      {TIME_SLOTS.map((s) => (
+                      {availableSlots.map((s) => (
                         <option key={s} value={s} className="dark:bg-[#170d04]">
                           {s}
                         </option>
@@ -309,7 +305,7 @@ export default function ReservationsPage() {
                     <span className="mb-1.5 flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
                       <FaUser className="text-emerald-500" /> {t.reservations.name} *
                     </span>
-                    <input
+                    <input maxLength={100}
                       type="text"
                       required
                       autoComplete="name"
@@ -324,7 +320,7 @@ export default function ReservationsPage() {
                     <span className="mb-1.5 flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
                       <FaPhone className="text-emerald-500" /> {t.reservations.phone} *
                     </span>
-                    <input
+                    <input inputMode="tel" maxLength={30}
                       type="tel"
                       required
                       autoComplete="tel"
@@ -339,9 +335,9 @@ export default function ReservationsPage() {
                 {/* Email */}
                 <label className="mt-4 block">
                   <span className="mb-1.5 flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
-                    <FaEnvelope className="text-emerald-500" /> {t.reservations.email}
+                    <FaEnvelope className="text-emerald-500" /> {t.reservations.email} *
                   </span>
-                  <input
+                  <input required maxLength={254} inputMode="email" autoCapitalize="none" spellCheck={false}
                     type="email"
                     autoComplete="email"
                     value={email}
@@ -391,14 +387,15 @@ export default function ReservationsPage() {
                 </label>
 
                 {error && (
-                  <p role="alert" className="mt-4 rounded-xl border border-red-400/40 bg-red-400/10 px-4 py-3 text-sm font-semibold text-red-600 dark:text-red-400">
+                  <p id="reservation-error" ref={errorRef} tabIndex={-1} role="alert" className="mt-4 rounded-xl border border-red-400/40 bg-red-400/10 px-4 py-3 text-sm font-semibold text-red-600 dark:text-red-400">
                     {error}
                   </p>
                 )}
 
                 <button
                   type="submit"
-                  disabled={submitting}
+                  aria-busy={submitting}
+                  disabled={submitting || isClosedDay || availableSlots.length === 0}
                   className="btn-ember btn-shine mt-6 flex w-full items-center justify-center gap-2 rounded-full px-6 py-4 text-sm font-bold text-white disabled:cursor-not-allowed disabled:opacity-60"
                 >
                   <FaCalendarCheck />

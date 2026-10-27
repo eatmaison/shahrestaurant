@@ -1,5 +1,9 @@
 "use client";
 
+import type { Bootstrap } from "./lib/serverStore";
+import { fetchJSON } from "./lib/clientFetch";
+import { readStoredJSON, readStoredCart, writeStoredJSON } from "./lib/clientStorage";
+
 import {
   createContext,
   useCallback,
@@ -213,15 +217,7 @@ const LS = {
   cart: "tm.cart",
 };
 
-function readJSON<T>(key: string, fallback: T): T {
-  if (typeof window === "undefined") return fallback;
-  try {
-    const raw = window.localStorage.getItem(key);
-    return raw ? (JSON.parse(raw) as T) : fallback;
-  } catch {
-    return fallback;
-  }
-}
+const readJSON = readStoredJSON;
 
 function readThemePreference(fallback: Theme): Theme {
   const value = readJSON<unknown>(LS.theme, fallback);
@@ -235,6 +231,8 @@ function readThemePreference(fallback: Theme): Theme {
 export function Providers({ children }: { children: ReactNode }) {
   const [hydrated, setHydrated] = useState(false);
   const checkoutBusy = useRef(false);
+  const bootstrapController = useRef<AbortController | null>(null);
+  const statusController = useRef<AbortController | null>(null);
 
   const [theme, setTheme] = useState<Theme>("light");
   const [lang, setLangState] = useState<Lang>("nl");
@@ -256,10 +254,12 @@ export function Providers({ children }: { children: ReactNode }) {
 
   // Load server-backed data (products, session user, orders, reviews, VIP requests).
   const refresh = useCallback(async () => {
+    bootstrapController.current?.abort();
+    const controller = new AbortController();
+    bootstrapController.current = controller;
     try {
-      const res = await fetch("/api/bootstrap", { cache: "no-store" });
-      if (!res.ok) return;
-      const data = await res.json();
+      const { response: res, data } = await fetchJSON<Bootstrap>("/api/bootstrap", { cache: "no-store", signal: controller.signal });
+      if (!res.ok || controller.signal.aborted) return;
       setProducts(data.products ?? []);
       setBrands(data.brands ?? []);
       setCurrentUser(data.currentUser ?? null);
@@ -275,58 +275,88 @@ export function Providers({ children }: { children: ReactNode }) {
       const status = data.restaurantStatus;
       setRestaurantStatus(getRestaurantStatus(status?.override ?? "auto", status?.overrideDate));
     } catch {
-      /* ignore transient network errors - the UI keeps its current state */
+      // Keep the current cart/catalogue during transient failures.
+    } finally {
+      if (bootstrapController.current === controller) bootstrapController.current = null;
     }
   }, []);
 
   const refreshRestaurantStatus = useCallback(async () => {
+    if (statusController.current) return;
+    const controller = new AbortController();
+    statusController.current = controller;
     try {
-      const res = await fetch("/api/restaurant-status", { cache: "no-store" });
-      const data = await res.json().catch(() => null);
-      if (res.ok && data?.restaurantStatus) {
+      const { response: res, data } = await fetchJSON<{ restaurantStatus?: RestaurantStatus }>("/api/restaurant-status", { cache: "no-store", signal: controller.signal });
+      if (res.ok && data.restaurantStatus && !controller.signal.aborted) {
         const status = data.restaurantStatus;
         setRestaurantStatus(getRestaurantStatus(status.override ?? "auto", status.overrideDate));
       }
     } catch {
-      setRestaurantStatus((status) => getRestaurantStatus(status.override, status.overrideDate));
+      if (!controller.signal.aborted) setRestaurantStatus(status => getRestaurantStatus(status.override, status.overrideDate));
+    } finally {
+      if (statusController.current === controller) statusController.current = null;
     }
   }, []);
 
-  // Hydrate client-only preferences from localStorage, then load server data.
+  // Storage can be unavailable in private browsers; the in-memory cart still works.
   useEffect(() => {
+    let mounted = true;
     queueMicrotask(() => {
+      if (!mounted) return;
       const initialTheme = readThemePreference(document.documentElement.classList.contains("dark") ? "dark" : "light");
-      setTheme((currentTheme) => (currentTheme === initialTheme ? currentTheme : initialTheme));
-      setLangState("nl");
-      window.localStorage.removeItem(LS.lang);
-      setCart(readJSON<Record<string, number>>(LS.cart, {}));
-      refresh().finally(() => setHydrated(true));
+      setTheme(current => current === initialTheme ? current : initialTheme);
+      const savedLang = readJSON<unknown>(LS.lang, "nl");
+      setLangState(savedLang === "en" ? "en" : "nl");
+      setCart(readStoredCart(LS.cart));
+      void refresh().finally(() => { if (mounted) setHydrated(true); });
     });
+    return () => { mounted = false; bootstrapController.current?.abort(); statusController.current?.abort(); };
   }, [refresh]);
 
   useEffect(() => {
-    const update = () => setRestaurantStatus((status) => getRestaurantStatus(status.override, status.overrideDate));
-    update();
-    const id = window.setInterval(() => void refreshRestaurantStatus(), 15_000);
-    return () => window.clearInterval(id);
+    const tick = () => {
+      document.documentElement.dataset.pageHidden = String(document.hidden);
+      if (!document.hidden && navigator.onLine) void refreshRestaurantStatus();
+    };
+    document.documentElement.dataset.pageHidden = String(document.hidden);
+    const id = window.setInterval(tick, 15_000);
+    document.addEventListener("visibilitychange", tick);
+    window.addEventListener("online", tick);
+    return () => {
+      window.clearInterval(id);
+      document.removeEventListener("visibilitychange", tick);
+      window.removeEventListener("online", tick);
+      delete document.documentElement.dataset.pageHidden;
+    };
   }, [refreshRestaurantStatus]);
+
+  useEffect(() => {
+    const sync = (event: StorageEvent) => {
+      if (event.key === LS.cart || event.key === null) setCart(readStoredCart(LS.cart));
+      if (event.key === LS.theme) setTheme(readThemePreference("light"));
+      if (event.key === LS.lang || event.key === null) setLangState(readJSON<unknown>(LS.lang, "nl") === "en" ? "en" : "nl");
+    };
+    window.addEventListener("storage", sync);
+    return () => window.removeEventListener("storage", sync);
+  }, []);
   // Apply + persist theme.
   useEffect(() => {
     if (!hydrated) return;
     const root = document.documentElement;
     root.classList.toggle("dark", theme === "dark");
-    window.localStorage.setItem(LS.theme, JSON.stringify(theme));
+    writeStoredJSON(LS.theme, theme);
   }, [theme, hydrated]);
 
   // Persist language + reflect on <html lang>.
   useEffect(() => {
     if (!hydrated) return;
     document.documentElement.setAttribute("lang", lang);
+    writeStoredJSON(LS.lang, lang);
   }, [lang, hydrated]);
 
   // Persist the cart (client-only; users/orders/etc. live in the database).
   useEffect(() => {
-    if (hydrated) window.localStorage.setItem(LS.cart, JSON.stringify(cart));
+    if (hydrated) writeStoredJSON(LS.cart, cart);
   }, [cart, hydrated]);
 
   const toggleTheme = useCallback(() => setTheme((t) => (t === "light" ? "dark" : "light")), []);
@@ -424,7 +454,7 @@ export function Providers({ children }: { children: ReactNode }) {
 
   const addToCart = useCallback((pid: string, sideChoice?: GrillSideChoice) => {
     const key = cartKeyForProduct(pid, sideChoice);
-    setCart((prev) => ({ ...prev, [key]: (prev[key] || 0) + 1 }));
+    setCart((prev) => ({ ...prev, [key]: Math.min(99, (prev[key] || 0) + 1) }));
   }, []);
   const removeFromCart = useCallback((pid: string, sideChoice?: GrillSideChoice) => {
     const key = cartKeyForProduct(pid, sideChoice);

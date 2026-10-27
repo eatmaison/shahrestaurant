@@ -76,7 +76,7 @@ export default function GalleryPage() {
 
   return (
     <div className="overflow-hidden">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
 
       {/* Hero */}
       <section className="relative overflow-hidden">

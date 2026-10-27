@@ -259,3 +259,18 @@ export function useHomeTilt(rootRef: RefObject<HTMLDivElement | null>, enabled: 
     };
   }, [enabled, rootRef]);
 }
+type MediaConnection = EventTarget & { saveData?: boolean; effectiveType?: string };
+const mediaConnection = () => (navigator as Navigator & { connection?: MediaConnection }).connection;
+function subscribeRichMedia(listener: () => void) {
+  const query = window.matchMedia("(min-width: 768px) and (pointer: fine) and (prefers-reduced-motion: no-preference)");
+  const connection = mediaConnection();
+  query.addEventListener("change", listener);
+  connection?.addEventListener("change", listener);
+  return () => { query.removeEventListener("change", listener); connection?.removeEventListener("change", listener); };
+}
+function richMediaSnapshot() {
+  const connection = mediaConnection();
+  return window.matchMedia("(min-width: 768px) and (pointer: fine) and (prefers-reduced-motion: no-preference)").matches && !connection?.saveData && !["slow-2g", "2g"].includes(connection?.effectiveType ?? "");
+}
+/** Rich visual media is optional; the fully rendered restaurant image remains available. */
+export function useRichMedia() { return useSyncExternalStore(subscribeRichMedia, richMediaSnapshot, () => false); }

@@ -9,7 +9,7 @@ import { SITE_ID } from "./lib/data";
 import type { Product } from "./lib/types";
 import { homeContent } from "./lib/homeContent";
 import { HomeDialog } from "./components/HomeDialog";
-import { useHomeMotion, useHomeTilt } from "./components/HomeDepth";
+import { useHomeMotion, useHomeTilt, useRichMedia } from "./components/HomeDepth";
 import styles from "./home.module.css";
 
 const SIGNATURE_IDS = ["tdc-butter-chicken", "tdc-tandoori-mixed-grill", "tdc-tandoori-lamb-chops", "tdc-biryani-lamb", "tdc-tandoori-chicken-tikka", "tdc-samosa-chaat"];
@@ -34,7 +34,8 @@ export default function Home() {
   const searchRef = useRef<HTMLInputElement>(null);
   const swipeStart = useRef<{ horizontal: number; vertical: number } | null>(null);
   const { enabled: motionEnabled } = useHomeMotion();
-  useHomeTilt(rootRef, motionEnabled);
+  const richMedia = useRichMedia();
+  useHomeTilt(rootRef, motionEnabled && richMedia);
   const [category, setCategory] = useState("");
   const [search, setSearch] = useState("");
   const [showAll, setShowAll] = useState(false);
@@ -103,7 +104,7 @@ export default function Home() {
     const syncFrame = () => {
       frame = 0;
       video.pause();
-      if (!Number.isFinite(video.duration) || !video.duration || video.seeking) return;
+      if (document.hidden || !Number.isFinite(video.duration) || !video.duration || video.seeking) return;
       const stage = video.parentElement!;
       const pinTop = parseFloat(getComputedStyle(stage).top) || 0;
       const distance = track.offsetHeight - stage.offsetHeight;
@@ -132,7 +133,7 @@ export default function Home() {
       video.removeEventListener("seeked", schedule);
       video.pause();
     };
-  }, [theme, hydrated]);
+  }, [theme, hydrated, richMedia, motionEnabled]);
 
   function resetMenu() {
     setSearch("");
@@ -154,10 +155,6 @@ export default function Home() {
     "@context": "https://schema.org", "@type": "ItemList",
     itemListElement: featured.map((product, index) => ({ "@type": "ListItem", position: index + 1, item: { "@type": "Product", name: product.name, description: product.description, offers: { "@type": "Offer", price: product.price, priceCurrency: "EUR", url: "https://shahrestaurant.nl/order" } } })),
   };
-  const organizationJsonLd = {
-    "@context": "https://schema.org", "@type": "Organization", name: "Amsterdam Restaurant Group", url: "https://shahrestaurant.nl",
-    subOrganization: [{ "@type": "Restaurant", name: "Shah Restaurant", url: "https://shahrestaurant.nl" }, { "@type": "Restaurant", name: "Eat to go", url: "https://eattogo.nl" }],
-  };
 
   return (
     <div ref={rootRef} className={styles.home} data-motion={motionEnabled ? "on" : "off"}>
@@ -165,7 +162,7 @@ export default function Home() {
       <div ref={heroScrollRef} className={styles.heroScroll}>
       <section className={styles.hero} aria-labelledby="home-title">
         <Image key={"hero-" + theme} src={theme === "dark" ? "/photos/shah-hero-night.webp" : "/photos/shah-hero-day.webp"} alt={lang === "nl" ? "Shah Restaurant met terras en geopende parasols" : "Shah Restaurant with its terrace and open parasols"} fill loading="eager" fetchPriority="high" sizes="100vw" className={styles.heroImage} />
-        {hydrated && <video
+        {hydrated && motionEnabled && richMedia && <video
           key={theme}
           ref={heroVideoRef}
           className={styles.heroVideo}
@@ -173,7 +170,7 @@ export default function Home() {
           poster={theme === "dark" ? "/photos/shah-hero-night.webp" : "/photos/shah-hero-day.webp"}
           muted
           playsInline
-          preload="auto"
+          preload="metadata"
           aria-hidden="true"
           tabIndex={-1}
         />}
@@ -287,7 +284,7 @@ export default function Home() {
       {currentPhoto && <HomeDialog titleId="photo-title" closeLabel={copy.close} onClose={() => setPhotoIndex(null)} onKeyDown={(event) => { if (event.key === "ArrowRight" || event.key === "ArrowLeft") { event.preventDefault(); changePhoto(event.key === "ArrowRight" ? 1 : -1); } }}><div className={styles.lightboxPhoto} onTouchStart={(event) => { swipeStart.current = event.touches.length === 1 ? { horizontal: event.touches[0].clientX, vertical: event.touches[0].clientY } : null; }} onTouchCancel={() => { swipeStart.current = null; }} onTouchEnd={(event) => { const start = swipeStart.current; swipeStart.current = null; const end = event.changedTouches[0]; if (start && end && Math.abs(end.clientX - start.horizontal) > 60 && Math.abs(end.clientY - start.vertical) < 50) changePhoto(end.clientX < start.horizontal ? 1 : -1); }}><Image key={currentPhoto.src} src={currentPhoto.src} alt={currentPhoto.alt} fill sizes="90vw" /></div><div className={styles.lightboxFooter}><button type="button" onClick={() => changePhoto(-1)} aria-label={copy.previous} title={copy.previous}><FaArrowLeft aria-hidden="true" /></button><div aria-live="polite"><h2 id="photo-title">{currentPhoto.title}</h2><p>{copy.photo} {(photoIndex ?? 0) + 1} / {photos.length}</p></div><button type="button" onClick={() => changePhoto(1)} aria-label={copy.next} title={copy.next}><FaArrowRight aria-hidden="true" /></button></div><nav className={styles.photoThumbnails} aria-label={copy.photoNavigation}>{photos.map((photo, index) => <button type="button" key={photo.src} aria-label={`${copy.viewPhoto}: ${photo.title}`} title={photo.title} aria-current={index === photoIndex ? "true" : undefined} onClick={() => setPhotoIndex(index)}><Image src={photo.src} alt="" fill sizes="72px" /></button>)}</nav></HomeDialog>}
 
       {selectedProduct && <HomeDialog titleId="dish-title" closeLabel={copy.close} onClose={() => setSelectedProduct(null)}><div className={styles.productDetails}>{selectedProduct.image && <DishPhoto key={selectedProduct.id} product={selectedProduct} large />}<p className={styles.eyebrow}>{selectedProduct.category}</p><h2 id="dish-title">{selectedProduct.name}</h2><p className={styles.productPrice}>{currency.format(selectedProduct.price)}</p><p>{(lang === "nl" && selectedProduct.detailedDescription?.nl) || selectedProduct.detailedDescription?.en || (lang === "nl" && selectedProduct.descriptionNl) || selectedProduct.description}</p>{!!ingredients?.length && <><h3>{copy.ingredients}</h3><ul className={styles.ingredientList}>{ingredients.map((ingredient, index) => <li key={`${ingredient}-${index}`}>{ingredient}</li>)}</ul></>}{!!allergens?.length && <><h3>{copy.allergens}</h3><p className={styles.allergenList}>{allergens.join(", ")}</p></>}<p className={styles.allergyNote}>{copy.allergy}</p><Link href="/order" className={styles.primaryButton}><FaUtensils aria-hidden="true" />{copy.order}<FaArrowRight aria-hidden="true" /></Link></div></HomeDialog>}
-      {[reviewsJsonLd, productsJsonLd, organizationJsonLd].filter(Boolean).map((schema, index) => <script key={index} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, "\\u003c") }} />)}
+      {[reviewsJsonLd, productsJsonLd].filter(Boolean).map((schema, index) => <script key={index} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, "\\u003c") }} />)}
     </div>
   );
 }

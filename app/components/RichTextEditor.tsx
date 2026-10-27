@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import {
@@ -27,12 +28,18 @@ export default function RichTextEditor({
   rows = 3,
 }: RichTextEditorProps) {
   const editor = useEditor({
+    immediatelyRender: false,
     extensions: [StarterKit],
     content: value,
+    editorProps: { attributes: { role: "textbox", "aria-label": placeholder, "aria-multiline": "true", style: `min-height: ${Math.max(120, rows * 24)}px` } },
     onUpdate: ({ editor }) => {
       onChange(editor.getHTML());
     },
   });
+
+  useEffect(() => {
+    if (editor && editor.getHTML() !== value) editor.commands.setContent(value, { emitUpdate: false });
+  }, [editor, value]);
 
   if (!editor) return null;
 
@@ -41,6 +48,7 @@ export default function RichTextEditor({
       {/* Toolbar */}
       <div className="flex flex-wrap gap-1 border-b border-slate-200 bg-white p-2 dark:border-white/10 dark:bg-slate-950">
         <button
+          type="button"
           onClick={() => editor.chain().focus().toggleBold().run()}
           disabled={!editor.can().chain().focus().toggleBold().run()}
           className={`p-2 rounded-lg transition ${
@@ -48,12 +56,13 @@ export default function RichTextEditor({
               ? "bg-emerald-500 text-white"
               : "bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-white/10 dark:text-white dark:hover:bg-white/20"
           } disabled:opacity-50`}
-          title="Bold (Ctrl+B)"
+          aria-label="Bold (Ctrl+B)" title="Bold (Ctrl+B)"
         >
           <FaBold size={16} />
         </button>
 
         <button
+          type="button"
           onClick={() => editor.chain().focus().toggleItalic().run()}
           disabled={!editor.can().chain().focus().toggleItalic().run()}
           className={`p-2 rounded-lg transition ${
@@ -61,12 +70,13 @@ export default function RichTextEditor({
               ? "bg-emerald-500 text-white"
               : "bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-white/10 dark:text-white dark:hover:bg-white/20"
           } disabled:opacity-50`}
-          title="Italic (Ctrl+I)"
+          aria-label="Italic (Ctrl+I)" title="Italic (Ctrl+I)"
         >
           <FaItalic size={16} />
         </button>
 
         <button
+          type="button"
           onClick={() => editor.chain().focus().toggleStrike().run()}
           disabled={!editor.can().chain().focus().toggleStrike().run()}
           className={`p-2 rounded-lg transition ${
@@ -74,7 +84,7 @@ export default function RichTextEditor({
               ? "bg-emerald-500 text-white"
               : "bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-white/10 dark:text-white dark:hover:bg-white/20"
           } disabled:opacity-50`}
-          title="Strikethrough"
+          aria-label="Strikethrough" title="Strikethrough"
         >
           <span className="line-through text-sm font-bold">S</span>
         </button>
@@ -82,6 +92,7 @@ export default function RichTextEditor({
         <div className="w-px bg-slate-200 dark:bg-white/10" />
 
         <button
+          type="button"
           onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
           disabled={!editor.can().chain().focus().toggleHeading({ level: 2 }).run()}
           className={`p-2 rounded-lg transition ${
@@ -89,12 +100,13 @@ export default function RichTextEditor({
               ? "bg-emerald-500 text-white"
               : "bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-white/10 dark:text-white dark:hover:bg-white/20"
           } disabled:opacity-50`}
-          title="Heading"
+          aria-label="Heading" title="Heading"
         >
           <FaHeading size={16} />
         </button>
 
         <button
+          type="button"
           onClick={() => editor.chain().focus().toggleBulletList().run()}
           disabled={!editor.can().chain().focus().toggleBulletList().run()}
           className={`p-2 rounded-lg transition ${
@@ -102,12 +114,13 @@ export default function RichTextEditor({
               ? "bg-emerald-500 text-white"
               : "bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-white/10 dark:text-white dark:hover:bg-white/20"
           } disabled:opacity-50`}
-          title="Bullet List"
+          aria-label="Bullet List" title="Bullet List"
         >
           <FaListUl size={16} />
         </button>
 
         <button
+          type="button"
           onClick={() => editor.chain().focus().toggleOrderedList().run()}
           disabled={!editor.can().chain().focus().toggleOrderedList().run()}
           className={`p-2 rounded-lg transition ${
@@ -115,12 +128,13 @@ export default function RichTextEditor({
               ? "bg-emerald-500 text-white"
               : "bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-white/10 dark:text-white dark:hover:bg-white/20"
           } disabled:opacity-50`}
-          title="Ordered List"
+          aria-label="Ordered List" title="Ordered List"
         >
           <FaListOl size={16} />
         </button>
 
         <button
+          type="button"
           onClick={() => editor.chain().focus().toggleBlockquote().run()}
           disabled={!editor.can().chain().focus().toggleBlockquote().run()}
           className={`p-2 rounded-lg transition ${
@@ -128,7 +142,7 @@ export default function RichTextEditor({
               ? "bg-emerald-500 text-white"
               : "bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-white/10 dark:text-white dark:hover:bg-white/20"
           } disabled:opacity-50`}
-          title="Quote"
+          aria-label="Quote" title="Quote"
         >
           <FaQuoteLeft size={16} />
         </button>
@@ -136,19 +150,21 @@ export default function RichTextEditor({
         <div className="w-px bg-slate-200 dark:bg-white/10" />
 
         <button
+          type="button"
           onClick={() => editor.chain().focus().undo().run()}
           disabled={!editor.can().chain().focus().undo().run()}
           className="p-2 rounded-lg transition bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-white/10 dark:text-white dark:hover:bg-white/20 disabled:opacity-50"
-          title="Undo"
+          aria-label="Undo" title="Undo"
         >
           <FaArrowRotateLeft size={16} />
         </button>
 
         <button
+          type="button"
           onClick={() => editor.chain().focus().redo().run()}
           disabled={!editor.can().chain().focus().redo().run()}
           className="p-2 rounded-lg transition bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-white/10 dark:text-white dark:hover:bg-white/20 disabled:opacity-50"
-          title="Redo"
+          aria-label="Redo" title="Redo"
         >
           <FaArrowRotateRight size={16} />
         </button>

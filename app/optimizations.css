@@ -1,0 +1,12 @@
+/* Pause decorative work when the document is in the background. */
+html[data-page-hidden="true"] *, html[data-page-hidden="true"] *::before, html[data-page-hidden="true"] *::after { animation-play-state: paused !important; }
+.site-atmosphere__ember { opacity: 0; animation: optimized-ember 6s ease-out infinite; }
+.site-atmosphere__trail { animation: optimized-trail 8s ease-in-out infinite; }
+@keyframes optimized-ember { 0% { transform: translate(0, 28px) scale(.65); opacity: 0; } 50% { opacity: .8; } 100% { transform: translate(var(--ember-drift, 12px), -110px) scale(.82); opacity: 0; } }
+@keyframes optimized-trail { 0%, 100% { transform: translateY(0); opacity: .08; } 50% { transform: translateY(-38px); opacity: .2; } }
+@media (prefers-reduced-motion: reduce) { .site-atmosphere__embers, .site-atmosphere__trails { display: none; } }
+@media (max-width: 640px) {
+  input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="hidden"]), select, textarea { font-size: 16px; }
+}
+.skip-link { position: fixed; top: 8px; left: 12px; z-index: 10000; transform: translateY(-160%); border-radius: 8px; background: #fff; color: #173b2a; padding: 12px 20px; }
+.skip-link:focus { transform: translateY(0); outline: 2px solid currentColor; outline-offset: 2px; }

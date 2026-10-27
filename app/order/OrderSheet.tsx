@@ -3,7 +3,7 @@
 import { useEffect, useRef, type ReactNode } from "react";
 import styles from "./order.module.css";
 
-export function OrderSheet({ children, titleId, onClose }: { children: ReactNode; titleId: string; onClose: () => void }) {
+export function OrderSheet({ children, titleId, onClose, wide = false }: { children: ReactNode; titleId: string; onClose: () => void; wide?: boolean }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   useEffect(() => {
@@ -22,7 +22,7 @@ export function OrderSheet({ children, titleId, onClose }: { children: ReactNode
     };
   }, []);
 
-  return <dialog ref={dialogRef} className={styles.orderSheet} aria-labelledby={titleId}
+  return <dialog ref={dialogRef} className={styles.orderSheet} style={wide ? { width: "min(42rem, calc(100% - 2rem))", margin: "auto" } : undefined} aria-labelledby={titleId}
     onCancel={(event) => { event.preventDefault(); onClose(); }}
     onKeyDown={(event) => { if (event.key === "Escape") { event.preventDefault(); onClose(); } }}
     onClick={(event) => { if (event.target === event.currentTarget) onClose(); }}>

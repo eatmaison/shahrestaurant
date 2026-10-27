@@ -61,7 +61,7 @@ const orderSchedule = z.object({
     .string()
     .regex(/^\d{4}-\d{2}-\d{2}$/)
     .optional(),
-  time: z.string().regex(/^\d{2}:\d{2}$/),
+  time: z.string().regex(/^([01]\d|2[0-3]):[0-5]\d$/),
 });
 
 export const placeOrderSchema = z.object({
@@ -110,8 +110,8 @@ export const createReservationSchema = z.object({
   guestName: z.string().trim().min(1).max(100),
   email: z.string().trim().toLowerCase().email().max(254).optional().or(z.literal("")),
   phone: z.string().trim().min(5).max(30),
-  date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
-  time: z.string().regex(/^\d{2}:\d{2}$/),
+  date: z.iso.date(),
+  time: z.string().regex(/^([01]\d|2[0-3]):[0-5]\d$/),
   guests: z.number().int().min(1).max(40),
   occasion: z.string().trim().max(40).optional(),
   note: z.string().trim().max(500).optional(),

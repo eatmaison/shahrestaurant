@@ -7,10 +7,11 @@ const OVERRIDES: RestaurantOpenOverride[] = ["auto", "open", "closed"];
 export async function GET() {
   try {
     const restaurantStatus = await loadRestaurantStatus();
-    return NextResponse.json({ ok: true, restaurantStatus });
+    return NextResponse.json({ ok: true, restaurantStatus }, { headers: { "Cache-Control": "private, no-store" } });
   } catch (err) {
+    console.error("[restaurant-status] Unable to load status", err);
     return NextResponse.json(
-      { ok: false, error: err instanceof Error ? err.message : "error" },
+      { ok: false, error: "temporarilyUnavailable" },
       { status: 500 }
     );
   }
@@ -24,7 +25,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ ok: false, error: "invalidInput" }, { status: 400 });
     }
     const restaurantStatus = await setRestaurantOpenOverride(override);
-    return NextResponse.json({ ok: true, restaurantStatus });
+    return NextResponse.json({ ok: true, restaurantStatus }, { headers: { "Cache-Control": "private, no-store" } });
   } catch (err) {
     return NextResponse.json(
       { ok: false, error: err instanceof Error ? err.message : "error" },

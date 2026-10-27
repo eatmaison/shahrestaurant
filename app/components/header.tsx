@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { writeSessionValue } from "../lib/clientStorage";
 import { useEffect, useRef, useState, type MouseEvent } from "react";
 import {
   FaBars,
@@ -24,6 +25,7 @@ export function Header() {
   const { lang, setLang, t } = useLang();
   const { cart, currentUser } = useStore();
   const pathname = usePathname();
+  const router = useRouter();
   const [open, setOpen] = useState(false);
   const [eventsOpen, setEventsOpen] = useState(false); // mobile submenu
   const [scrolled, setScrolled] = useState(false);
@@ -100,7 +102,11 @@ export function Header() {
     setOpen(false);
     if (cartCount <= 0) return;
 
-    window.sessionStorage.setItem("openCartModal", "1");
+    if (!writeSessionValue("openCartModal", "1") && pathname !== "/order") {
+      event.preventDefault();
+      router.push("/order?cart=1");
+      return;
+    }
     if (pathname === "/order") {
       event.preventDefault();
       window.dispatchEvent(new Event("open-cart-modal"));
@@ -117,7 +123,7 @@ export function Header() {
     >
       <a href="#main-content" className={styles.skipLink}>{lang === "nl" ? "Ga naar inhoud" : "Skip to content"}</a>
       <div ref={barRef} className={`${styles.bar} mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8`}>
-        <Link href="/" aria-label="Shah Restaurant" className={`${styles.brand} group flex items-center gap-3`} onClick={() => setOpen(false)}>
+        <Link href="/" aria-label="Shah Restaurant" className={`${styles.brand} group flex items-center gap-3`} onClick={() => { setOpen(false); setEventsOpen(false); }}>
           <span className="relative grid h-10 w-10 place-items-center overflow-hidden rounded-full border border-emerald-500/50 bg-white font-display text-xl font-semibold text-emerald-700 shadow-[0_0_16px_rgba(196,154,58,0.3)] transition duration-300 group-hover:scale-110 group-hover:shadow-[0_0_24px_rgba(196,154,58,0.55)] dark:bg-emerald-950/60 dark:text-emerald-300">
             S
           </span>
@@ -172,6 +178,7 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
+                prefetch={link.href === "/account" || link.href === "/admin" || link.href === "/parties" ? false : undefined}
                 className={`underline-grow rounded-full px-3.5 py-2 text-sm font-semibold transition ${
                   isActive(link.href)
                     ? "bg-emerald-500/10 text-emerald-700 dark:text-emerald-300"
@@ -291,7 +298,7 @@ export function Header() {
                           <Link
                             key={c.href}
                             href={c.href}
-                            onClick={() => setOpen(false)}
+                            onClick={() => { setOpen(false); setEventsOpen(false); }}
                             aria-current={active ? "page" : undefined}
                             className={`rounded-xl px-3 py-2 text-sm font-medium transition ${
                               active
@@ -310,7 +317,8 @@ export function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  onClick={() => setOpen(false)}
+                prefetch={link.href === "/account" || link.href === "/admin" || link.href === "/parties" ? false : undefined}
+                  onClick={() => { setOpen(false); setEventsOpen(false); }}
                   aria-current={isActive(link.href) ? "page" : undefined}
                   className={`rounded-xl px-3 py-2.5 text-sm font-semibold transition ${
                     isActive(link.href)

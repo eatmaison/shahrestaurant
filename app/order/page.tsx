@@ -1,4 +1,5 @@
 "use client";
+import { readSessionValue, removeSessionValue } from "../lib/clientStorage";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -28,7 +29,9 @@ import {
 } from "react-icons/fa6";
 import { MdMenuBook } from "react-icons/md";
 import { useLang, useStore } from "../providers";
-import ProductDetailsModal from "../components/ProductDetailsModal";
+import dynamic from "next/dynamic";
+import { ProductImage } from "../components/ProductImage";
+const ProductDetailsModal = dynamic(() => import("../components/ProductDetailsModal"), { ssr: false });
 import {
   categoryIconFor,
   COMPANY_DISCOUNT_PCT,
@@ -361,14 +364,17 @@ export default function OrderPage() {
   const pointsToEarn = Math.floor(Math.max(0, payableBeforePoints - pointsUsed) / POINTS_EARN_EVERY);
 
   useEffect(() => {
+    const cartUrl = new URL(window.location.href);
+    const requestedCart = cartUrl.searchParams.get("cart") === "1";
     const openCartModal = () => {
       if (cartLines.length === 0) return;
-      window.sessionStorage.removeItem("openCartModal");
+      removeSessionValue("openCartModal");
+      if (requestedCart) { cartUrl.searchParams.delete("cart"); window.history.replaceState(null, "", cartUrl.toString()); }
       setShowCartModal(true);
     };
 
     window.addEventListener("open-cart-modal", openCartModal);
-    if (window.sessionStorage.getItem("openCartModal") === "1") openCartModal();
+    if (readSessionValue("openCartModal") === "1" || requestedCart) openCartModal();
     return () => window.removeEventListener("open-cart-modal", openCartModal);
   }, [cartLines.length]);
 
@@ -579,7 +585,7 @@ export default function OrderPage() {
           >
             <div className="dish-img relative aspect-[4/3] w-full overflow-hidden bg-gradient-to-br from-emerald-500/15 via-emerald-400/5 to-emerald-600/10">
               {p.image ? (
-                <img src={p.image} alt={p.name} loading="lazy" decoding="async" className="h-full w-full object-cover" />
+                <ProductImage key={p.image} src={p.image} alt={p.name} />
               ) : (
                 <span className="grid h-full w-full place-items-center text-4xl text-emerald-500/50">
                   <Icon />
@@ -1650,10 +1656,10 @@ export default function OrderPage() {
       {confirmedOrder && <OrderConfirmation order={confirmedOrder} onClose={() => setConfirmedOrder(null)} />}
 
       {/* Product Details Modal */}
-      <ProductDetailsModal
+      {selectedProduct && <ProductDetailsModal
         product={selectedProduct}
         onClose={() => setSelectedProduct(null)}
-      />
+      />}
     </div>
   );
 }
