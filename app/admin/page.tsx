@@ -53,6 +53,7 @@ import { SOCIAL_PLATFORMS } from "../components/socialIcons";
 import dynamic from "next/dynamic";
 const RichTextEditor = dynamic(() => import("../components/RichTextEditor"), { ssr: false });
 import PartyAdmin from "./PartyAdmin";
+const PhoneAgentPanel = dynamic(() => import("./PhoneAgentPanel"));
 import type { AccountType, Brand, Category, Order, OrderStatus, Product, RecentVisitor, User } from "../lib/types";
 import type { RestaurantOpenOverride } from "../lib/openingHours";
 
@@ -2594,6 +2595,8 @@ export default function AdminPage() {
       )}
 
       <PartyAdmin processImageFile={processImageFile} />
+
+      <PhoneAgentPanel />
 
       {/* Reservations management */}
       <div className="mt-6 rounded-3xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-white/5">

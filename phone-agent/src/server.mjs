@@ -1,0 +1,27 @@
+import { createServer } from 'node:http';
+import OpenAI from 'openai';
+import { loadConfig } from './config.mjs';
+import { Store } from './store.mjs';
+import { runCall } from './realtime.mjs';
+import { createHandler } from './http.mjs';
+import { deliverEmails } from './email.mjs';
+const config=loadConfig();
+if(config.enabled&&!config.ready)throw new Error('Missing configuration: '+config.missing.join(', '));
+const store=config.databaseUrl?new Store(config.databaseUrl):null;
+if(store)await store.migrate();
+const client=config.apiKey?new OpenAI({apiKey:config.apiKey,maxRetries:0,timeout:10000}):null;
+const active=new Map();
+const startCall=callId=>runCall({callId,client,store,config,onClose:()=>active.delete(callId)});
+const server=createServer(createHandler({config,client,store,active,startCall}));
+server.requestTimeout=15000;server.headersTimeout=10000;
+server.listen(config.port,'127.0.0.1',()=>console.log('[phone-agent] listening on loopback; enabled='+config.enabled+'; ready='+config.ready));
+let delivering=false;
+const tick=async()=>{if(!config.ready||!store||delivering)return;delivering=true;try{await deliverEmails(store,config);}catch{console.error('[phone-agent] outbox unavailable');}finally{delivering=false;}};
+const emailTimer=setInterval(()=>void tick(),30000);
+const shutdown=async()=>{
+  clearInterval(emailTimer);server.close();
+  await Promise.allSettled([...active.values()].filter(Boolean).map(session=>session.stop()));
+  if(store)await store.pool.end();
+  process.exit(0);
+};
+process.on('SIGTERM',()=>void shutdown());process.on('SIGINT',()=>void shutdown());

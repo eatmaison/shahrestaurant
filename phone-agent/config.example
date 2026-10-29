@@ -1,0 +1,18 @@
+# Copy to ../.env.phone-agent on the server; never commit real values.
+PHONE_AGENT_ENABLED=false
+PHONE_AGENT_PORT=3010
+OPENAI_API_KEY=
+OPENAI_WEBHOOK_SECRET=
+PHONE_AGENT_MODEL=gpt-realtime-2.1-mini
+PHONE_AGENT_TRANSCRIPTION_MODEL=gpt-transcribe
+PHONE_AGENT_VOICE=marin
+# New Dutch number purchased from the SIP provider, not the forwarded KPN number.
+PHONE_AGENT_ALLOWED_NUMBERS=
+# Generate with: openssl rand -hex 32
+PHONE_AGENT_INTERNAL_SECRET=
+# Optional different staff mobile. Never use the forwarded restaurant/AI number.
+PHONE_AGENT_TRANSFER_NUMBER=
+PHONE_AGENT_MAX_CONCURRENT=3
+PHONE_AGENT_MAX_CALLS_PER_DAY=60
+PHONE_AGENT_MAX_SECONDS=360
+# DATABASE_URL and Resend settings are inherited from ../.env.local.
