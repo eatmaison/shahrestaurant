@@ -34,10 +34,18 @@ test('signed SIP webhooks reject forged/stale events and deduplicate without pla
     const other=JSON.stringify({...event,id:'evt2',data:{...event.data,call_id:'call2'}});
     const busy=await fetch(base+'/phone-ai/webhook',{method:'POST',headers:signed(other,'msg2'),body:other});assert.equal((await busy.json()).busy,true);assert.equal(rejects,1);
     active.clear();
+    const diverted=JSON.stringify({...event,id:'evt-diverted',data:{call_id:'call-diverted',sip_headers:[{name:'To',value:'<sip:proj_abc@sip.api.openai.com>'},{name:'Diversion',value:'<sip:+31201234567@twilio.com>;reason=unconditional'}]}});
+    const divertedResult=await fetch(base+'/phone-ai/webhook',{method:'POST',headers:signed(diverted,'msg-diverted'),body:diverted});
+    assert.equal((await divertedResult.json()).ok,true);assert.equal(starts,2);
+    active.clear();
     const wrongNumber=JSON.stringify({...event,id:'evt3',data:{call_id:'call3',sip_headers:[{name:'To',value:'sip:+31999999999@example.invalid'}]}});
     assert.equal((await (await fetch(base+'/phone-ai/webhook',{method:'POST',headers:signed(wrongNumber,'msg3'),body:wrongNumber})).json()).rejected,true);
-    assert.equal(starts,1);
+    assert.equal(starts,2);
     assert.equal(dialedNumber([{name:'To',value:'anonymous'}]),'');
+    assert.equal(dialedNumber([{name:'To',value:'<sip:proj_abc@sip.api.openai.com>'},{name:'Diversion',value:'<sip:+31201234567@twilio.com>;reason=unconditional'}]),'+31201234567');
+    assert.equal(dialedNumber([{name:'Diversion',value:'<sip:+31201234567@not-twilio.invalid>'}]),'');
+    assert.equal(dialedNumber(null),'');
+    assert.equal(dialedNumber([{name:42,value:42},null]),'');
   }finally{server.closeAllConnections();await new Promise(resolve=>server.close(resolve));}
 });
 test('disabled service never accepts a call even with a valid webhook',async()=>{

@@ -75,7 +75,7 @@ Sākuma robežas: 30 zvani dienā, 4 minūtes katram, 3 vienlaikus. Izvēlies sa
 
 Vispirms no cita telefona zvani TIKAI uz jauno Twilio numuru. Pārbaudi sveicienu, abas valodas, pārtraukšanu, vārdus/numurus, datumus, pirmdienas/neatļautu laiku, detaļu atkārtošanu un piekrišanu. Adminā jābūt vienai rezervācijai; izvēles e-pastam jāpienāk. Testa rezervāciju pēc pārbaudes atcel.
 
-Pārbaudi arī kļūmes un alternatīvu zvanu maršrutu. Ja webhook atsaka galamērķi, pārbaudi Twilio To/P-Called-Party-ID galvenes un numura atļauto sarakstu; aizsardzību neizslēdz.
+Pārbaudi arī kļūmes un alternatīvu zvanu maršrutu. Ja webhook atsaka galamērķi, pārbaudi Twilio Diversion/To/P-Called-Party-ID galvenes un numura atļauto sarakstu; aizsardzību neizslēdz.
 
 ## 7. Tikai pēc veiksmīga testa — KPN
 

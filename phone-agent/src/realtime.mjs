@@ -1,9 +1,18 @@
 import WebSocket from 'ws';
 import { Agent, instructions, TOOLS } from './agent.mjs';
 export function dialedNumber(headers=[]) {
+  // Twilio delivers the dialed Twilio number in a Diversion header even when
+  // the request URI targets the OpenAI project rather than a phone number.
+  // Only consider its documented Twilio-domain form and ignore malformed data.
+  if (!Array.isArray(headers)) return '';
+  for (const header of headers) {
+    if (typeof header?.name !== 'string' || header.name.toLowerCase() !== 'diversion' || typeof header.value !== 'string') continue;
+    const match=header.value.match(/(?:^|[<\s])sip:(\+[1-9]\d{7,14})@twilio\.com(?=[>;:\s]|$)/i);
+    if (match) return match[1];
+  }
   for(const name of ['To','P-Called-Party-ID','X-Twilio-Called']){
-    const header=headers.find(h=>h.name?.toLowerCase()===name.toLowerCase());
-    const match=header?.value?.match(/(?:sip:|tel:)?(\+[1-9]\d{7,14})(?=[@>;:\s]|$)/);
+    const header=headers.find(h=>typeof h?.name==='string' && h.name.toLowerCase()===name.toLowerCase() && typeof h.value==='string');
+    const match=header?.value.match(/(?:sip:|tel:)?(\+[1-9]\d{7,14})(?=[@>;:\s]|$)/);
     if(match)return match[1];
   }
   return '';
