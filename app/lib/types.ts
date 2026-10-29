@@ -208,6 +208,8 @@ export interface Order {
   paid: boolean;
   /** Raw online payment status, if this order came through Mollie. */
   paymentStatus?: PaymentStatus;
+  /** Phone pickup orders are collected unpaid and settled at the restaurant. */
+  paymentMethod?: "online" | "pay_on_pickup";
   /** Mollie failure/cancellation detail, when Mollie provides one. */
   paymentFailureReason?: string;
   /** Mollie payment id for support lookups. */

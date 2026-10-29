@@ -4,7 +4,9 @@ Separate Node 22+ service; existing Next.js app stays the public storefront.
 
 KPN existing number → forward to new Dutch Twilio voice number → Elastic SIP trunk → OpenAI Realtime → signed inbound webhook at https://shahrestaurant.nl/phone-ai/webhook → loopback Node service → shared PostgreSQL reservations.
 
-The first sentence is “Goedendag, u spreekt met Shah Restaurant!” followed by AI disclosure. Default language Dutch; caller can choose English.
+The first sentence is “Goedendag, u spreekt met Shah Restaurant!” followed by asking how to help. Default language Dutch; caller can choose English. Before launch, review EU AI Act transparency requirements for interactions with AI.
+
+The assistant prioritizes reservations and can also quote and create one unpaid pickup order per call after a fresh caller confirmation. Prices and promotions come from the shared Shah menu and are rechecked before commit; orders are marked `pay_on_pickup` so staff can prepare them and mark payment when received. Delivery orders are directed to the website for payment. Pickup time uses the regular opening-hour quarter-hour slots. The caller cannot pay by phone.
 
 ## Prepared, not activated
 

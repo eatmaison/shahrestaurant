@@ -1,6 +1,6 @@
 import pg from 'pg';
 import { readFileSync } from 'node:fs';
-import { SITE, availability, clock, validateSlot } from './domain.mjs';
+import { SITE, availability, clock, normalizePhone, validateSlot } from './domain.mjs';
 export class Store {
   constructor(databaseUrl) { this.pool = new pg.Pool({ connectionString: databaseUrl, max: 5, connectionTimeoutMillis: 10000, idleTimeoutMillis: 30000, statement_timeout: 10000 }); }
   async migrate() { await this.pool.query(readFileSync(new URL('../schema.sql', import.meta.url), 'utf8')); }
@@ -50,6 +50,54 @@ export class Store {
       await client.query('INSERT INTO phone_agent_bookings(call_id,reservation_id) VALUES($1,$2)', [callId,booking.id]);
       if (data.email) await client.query('INSERT INTO phone_agent_email_outbox(reservation_id,lang) VALUES($1,$2)', [booking.id,data.lang]);
       return { ok:true,status:booking.status,number:'RSV-' + booking.reservation_number,date:booking.date,time:booking.time,guests:booking.guests };
+    });
+  }
+  async findMenu(search) {
+    if (typeof search !== 'string' || search.trim().length < 2 || search.length > 80) return {ok:false,error:'invalid_search'};
+    const result = await this.pool.query("SELECT id,name,price,category,bogo_enabled FROM products WHERE brand='tandoor' AND position(lower($1) in lower(name))>0 ORDER BY name LIMIT 21", [search.trim()]);
+    return {ok:true,items:result.rows.slice(0,20).map(p=>({id:p.id,name:p.name,price:Number(p.price),category:p.category,sideRequired:p.category.trim().toLowerCase()==='grill dishes',buyOneGetOne:!!p.bogo_enabled})),more:result.rows.length>20};
+  }
+  async quotePickup(input, client=this.pool, lock=false) {
+    const slotError = validateSlot({...input,guests:1});
+    if (slotError) return {ok:false,error:slotError};
+    if (typeof input.guestName !== 'string' || !input.guestName.trim() || input.guestName.length > 100 || /[\u0000-\u001f]/.test(input.guestName)) return {ok:false,error:'invalid_name'};
+    const phone = normalizePhone(input.phone);
+    if (!phone) return {ok:false,error:'invalid_phone'};
+    if (input.note != null && (typeof input.note !== 'string' || input.note.length>300 || /[\u0000-\u001f]/.test(input.note))) return {ok:false,error:'invalid_note'};
+    if (!Array.isArray(input.items) || input.items.length<1 || input.items.length>30 || input.items.some(i=>!i || typeof i.productId!=='string' || i.productId.length>100 || !Number.isInteger(i.qty) || i.qty<1 || i.qty>20 || (i.sideChoice && !['rice','fries'].includes(i.sideChoice)))) return {ok:false,error:'invalid_items'};
+    const ids=[...new Set(input.items.map(i=>i.productId))];
+    const rows=await client.query("SELECT id,name,price,brand,category,bogo_enabled FROM products WHERE brand='tandoor' AND id=ANY($1::text[])"+(lock?' FOR SHARE':''),[ids]);
+    const products=new Map(rows.rows.map(row=>[row.id,row]));
+    const items=[];let cents=0;
+    for(const request of input.items){
+      const product=products.get(request.productId);
+      if(!product)return {ok:false,error:'product_unavailable'};
+      const sideRequired=product.category.trim().toLowerCase()==='grill dishes';
+      if(sideRequired && !['rice','fries'].includes(request.sideChoice))return {ok:false,error:'side_required',product:product.name};
+      if(!sideRequired && request.sideChoice)return {ok:false,error:'side_not_applicable',product:product.name};
+      const priceCents=Math.round(Number(product.price)*100);
+      if(!Number.isSafeInteger(priceCents) || priceCents<0)return {ok:false,error:'invalid_price'};
+      const item={productId:product.id,name:product.name,price:priceCents/100,qty:request.qty,brand:product.brand,category:product.category,sideChoice:request.sideChoice||null,sideLabel:request.sideChoice==='rice'?'Rice':request.sideChoice==='fries'?'Fries':null};
+      items.push(item);cents+=priceCents*request.qty;
+      if(product.bogo_enabled)items.push({...item,productId:'bogo-free:'+product.id,name:product.name+' (FREE)',price:0});
+    }
+    if(cents>99999999)return {ok:false,error:'invalid_total'};
+    return {ok:true,data:{date:input.date,time:input.time,guestName:input.guestName.trim(),phone,note:input.note?.trim()||'',requestedItems:input.items,items,subtotal:cents/100}};
+  }
+  async pickup(callId, data) {
+    return this.transaction(async client=>{
+      await client.query("SELECT pg_advisory_xact_lock(hashtext($1))",['phone-order:'+callId]);
+      const existing=await client.query('SELECT o.order_number,o.total FROM phone_agent_orders p JOIN orders o ON o.id=p.order_id WHERE p.call_id=$1',[callId]);
+      if(existing.rowCount)return {ok:true,duplicate:true,number:'ETG-'+existing.rows[0].order_number,total:Number(existing.rows[0].total)};
+      const quote=await this.quotePickup({...data,items:data.requestedItems},client,true);
+      if(!quote.ok)return quote;
+      if(JSON.stringify(quote.data.items)!==JSON.stringify(data.items) || quote.data.subtotal!==data.subtotal)return {ok:false,error:'menu_changed',action:'Quote and confirm the updated menu and price again.'};
+      const schedule=JSON.stringify({type:'once',date:data.date,time:data.time});
+      const note='[AI telefoon: betalen bij afhalen / pay on pickup]'+(data.note?' '+data.note:'');
+      const order=await client.query("INSERT INTO orders(customer_name,address,postcode,phone,subtotal,discount,points_used,points_earned,delivery,total,status,paid,account_type,invoice_sent,customer_effects_applied,note,schedule,fulfillment,payment_method) VALUES($1,'','',$2,$3,0,0,0,0,$3,'new',false,'personal',false,false,$4,$5::jsonb,'pickup','pay_on_pickup') RETURNING id,order_number,total",[data.guestName,data.phone,data.subtotal,note,schedule]);
+      for(const item of data.items)await client.query('INSERT INTO order_items(order_id,product_id,name,price,qty,brand,category,side_choice,side_label) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9)',[order.rows[0].id,item.productId,item.name,item.price,item.qty,item.brand,item.category,item.sideChoice,item.sideLabel]);
+      await client.query('INSERT INTO phone_agent_orders(call_id,order_id) VALUES($1,$2)',[callId,order.rows[0].id]);
+      return {ok:true,number:'ETG-'+order.rows[0].order_number,total:Number(order.rows[0].total),date:data.date,time:data.time,payment:'pay_on_pickup'};
     });
   }
   async setDay(input) {

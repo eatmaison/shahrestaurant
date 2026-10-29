@@ -9,6 +9,10 @@ import { deliverEmails } from '../src/email.mjs';
 async function fixture(){
   const db=new PGlite();
   await db.exec("CREATE TABLE reservations(id uuid PRIMARY KEY DEFAULT gen_random_uuid(),reservation_number integer GENERATED ALWAYS AS IDENTITY (START WITH 501),guest_name text NOT NULL,email text NOT NULL DEFAULT '',phone text NOT NULL,date text NOT NULL,time text NOT NULL,guests integer NOT NULL CHECK(guests BETWEEN 1 AND 40),note text,status text NOT NULL,site text NOT NULL,created_at timestamptz NOT NULL DEFAULT now())");
+  await db.exec(`CREATE TABLE products(id text PRIMARY KEY,brand text NOT NULL,category text NOT NULL,name text NOT NULL,price numeric(10,2) NOT NULL,bogo_enabled boolean NOT NULL DEFAULT false);
+    CREATE TABLE orders(id uuid PRIMARY KEY DEFAULT gen_random_uuid(),order_number integer GENERATED ALWAYS AS IDENTITY (START WITH 1001),customer_name text NOT NULL,address text NOT NULL,postcode text NOT NULL,phone text NOT NULL,subtotal numeric NOT NULL,discount numeric NOT NULL,points_used integer NOT NULL,points_earned integer NOT NULL,delivery numeric NOT NULL,total numeric NOT NULL,status text NOT NULL,paid boolean NOT NULL,account_type text NOT NULL,invoice_sent boolean NOT NULL,customer_effects_applied boolean NOT NULL,note text,schedule jsonb,fulfillment text NOT NULL);
+    CREATE TABLE order_items(id uuid PRIMARY KEY DEFAULT gen_random_uuid(),order_id uuid NOT NULL REFERENCES orders(id),product_id text NOT NULL,name text NOT NULL,price numeric NOT NULL,qty integer NOT NULL,brand text NOT NULL,category text NOT NULL,side_choice text,side_label text);
+    INSERT INTO products VALUES('tikka','tandoor','Grill Dishes','Chicken Tikka',25,false),('lassi','tandoor','Drinks','Mango Lassi',4,true),('other','otherbrand','Main','Other dish',3,false);`);
   await db.exec(readFileSync(new URL('../schema.sql',import.meta.url),'utf8'));
   const query=async(sql,params)=>{const r=await db.query(sql,params);return {rows:r.rows,rowCount:r.rows.length || r.affectedRows || 0};};
   const client={query,release(){}};
@@ -35,6 +39,34 @@ test('SQL stores phone bookings in the shared table once and reserves email outb
     assert.equal((await db.query('SELECT count(*)::int AS n FROM phone_agent_bookings')).rows[0].n,1);
     assert.equal((await store.setDay({date:'2026-02-30',capacity:35,externalGuests:0,limitEnabled:true})).error,'invalid_policy');
   }finally{await db.close();}
+});
+test('phone pickup uses real menu, confirms fresh consent, saves unpaid once, and rejects changed prices',async()=>{
+  const {db,store,data}=await fixture();
+  try {
+    await store.claimCall('pickup-call','pickup-event',60);
+    const agent=new Agent({callId:'pickup-call',store,config:{},transfer:()=>{},hangup:()=>{}});
+    const menu=await agent.execute('find_menu',{search:'tikka'});
+    assert.equal(menu.items[0].price,25);assert.equal(menu.items[0].sideRequired,true);
+    const input={date:data.date,time:'17:00',guestName:'Pickup Test',phone:'0612345678',items:[{productId:'tikka',qty:1,sideChoice:'rice'},{productId:'lassi',qty:2}]};
+    assert.equal((await agent.execute('prepare_pickup_order',{...input,items:[{productId:'other',qty:1}]})).error,'product_unavailable');
+    assert.equal((await agent.execute('prepare_pickup_order',{...input,items:[{productId:'tikka',qty:1}]})).error,'side_required');
+    let draft=await agent.execute('prepare_pickup_order',input);
+    assert.equal(draft.saved,false);assert.equal(draft.readBack.subtotal,33);assert.equal(draft.readBack.items.length,3);
+    assert.equal((await agent.execute('confirm_pickup_order',{token:draft.token})).error,'caller_confirmation_required');
+    agent.heard('yes-1','ja');
+    await db.query("UPDATE products SET price=26 WHERE id='tikka'");
+    assert.equal((await agent.execute('confirm_pickup_order',{token:draft.token})).error,'menu_changed');
+    draft=await agent.execute('prepare_pickup_order',input);assert.equal(draft.readBack.subtotal,34);
+    assert.equal((await agent.execute('confirm_pickup_order',{token:draft.token})).error,'caller_confirmation_required');
+    agent.heard('yes-2','ja, dat klopt');
+    const saved=await agent.execute('confirm_pickup_order',{token:draft.token});assert.equal(saved.ok,true);assert.equal(saved.total,34);assert.equal(saved.number,'ETG-1001');
+    assert.equal((await agent.execute('confirm_pickup_order',{token:draft.token})).number,saved.number);
+    assert.equal((await store.pickup('pickup-call',draft.readBack)).duplicate,true);
+    const row=(await db.query('SELECT * FROM orders')).rows[0];
+    assert.equal(row.paid,false);assert.equal(row.payment_method,'pay_on_pickup');assert.equal(row.fulfillment,'pickup');
+    assert.equal(row.schedule.date,data.date);assert.equal(row.schedule.time,'17:00');
+    assert.equal((await db.query('SELECT count(*)::int AS n FROM order_items')).rows[0].n,3);
+  } finally { await db.close(); }
 });
 test('agent requires caller read-back confirmation, handles corrected drafts and idempotent retries',async()=>{
   const {db,store,data}=await fixture();

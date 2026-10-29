@@ -4,9 +4,11 @@ Izvēlētais variants: Twilio + OpenAI Realtime. Klientiem paliek KPN numurs **0
 
 ## Sagatavotā darbība
 
-Pirmā frāze: **“Goedendag, u spreekt met Shah Restaurant!”** Tālāk asistents paziņo, ka ir AI, un noskaidro klienta vajadzību. Valodas: nīderlandiešu un angļu.
+Pirmā frāze: **“Goedendag, u spreekt met Shah Restaurant!”** Tālāk asistents jautā, kā palīdzēt. Valodas: nīderlandiešu un angļu. Pirms publiskas ieslēgšanas izvērtē ES AI akta 50. panta prasību informēt cilvēkus par saziņu ar AI, ja tas nav acīmredzami.
 
 Rezervācijai noskaidro vārdu, kontakttelefonu, datumu/gadu, laiku, viesu skaitu; e-pasts nav obligāts. Atkārto detaļas un gaida jaunu klienta piekrišanu pirms saglabāšanas. Rezervācija nonāk esošajā vienotajā datubāzē un adminā ar AI telefona atzīmi. Atkārtots apstiprinājums neveido dublikātu. Ja klients vēlas e-pastu, tas izmanto esošo Resend pieslēgumu.
+
+Asistents var pieņemt arī vienu pasūtījumu saņemšanai restorānā: tas izmanto aktuālo Shah ēdienkarti un cenu, pirms saglabāšanas atkārto ēdienus, summu un saņemšanas laiku, un gaida klienta piekrišanu. Pasūtījums redzams virtuvē kā neapmaksāts — jāmaksā saņemot. Piegādes pasūtījums un maksājums jāveic vietnē shahrestaurant.nl/order. Precīzs pagatavošanas laiks netiek solīts. Uzturiet ēdienkarti un cenas aktuālas.
 
 Darba laiki: otrdien–svētdien 15:00–22:00, pirmdien slēgts. Social Deal 14:00 rezervācijas jāveic attiecīgajā platformā. Pēc noklusējuma nav vajadzīga manuāla pieejamības apstiprināšana; adminā var pēc izvēles ierobežot atsevišķu dienu.
 
@@ -57,7 +59,7 @@ Terminālī:
     python3 scripts/configure.py
     npm run check
 
-Skripts slēpti paprasīs projekta API atslēgu un webhook signing secret, pēc tam jauno Twilio numuru formātā +31…. Nekopē atslēgas čatā.
+Skripts slēpti paprasīs projekta API atslēgu un webhook signing secret, pēc tam jauno Twilio numuru formātā +31…. Ja pagaidām ir tikai API atslēga, ievadi to un pārējiem jautājumiem nospied Enter; vēlāk atkārto komandu, lai pievienotu trūkstošos datus. Rakstītās atslēgas terminālī nav redzamas. Nekopē atslēgas čatā.
 
 Iestatījumi glabājas /root/shahrestaurant/.env.phone-agent ar tiesībām 0600. check izvada tikai stāvokli un trūkstošo iestatījumu nosaukumus.
 
@@ -99,6 +101,7 @@ Lietotne nesaglabā pilnu audioierakstu vai transkriptu. Pirms publiskas palaiš
 
 - https://developers.openai.com/api/docs/guides/voice-sip?voice-api=realtime
 - https://developers.openai.com/api/docs/pricing
+- https://eur-lex.europa.eu/eli/reg/2024/1689
 - https://www.twilio.com/en-us/blog/developers/tutorials/product/openai-realtime-api-elastic-sip-trunking
 - https://www.twilio.com/en-us/voice/pricing/nl
 - https://www.kpn.com/service/ugs/doorschakelen-vaste-telefoon

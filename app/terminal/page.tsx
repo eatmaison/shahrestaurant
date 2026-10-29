@@ -94,7 +94,7 @@ function buildReceipt(order: Order, lang: string): string {
   r += ESC + "!" + "\x18"; // double height bold
   r += line("TOTAL", "EUR " + order.total.toFixed(2));
   r += ESC + "!" + "\x00";
-  r += line("Paid", order.paid ? "YES" : "NO (invoice)");
+  r += line("Paid", order.paid ? "YES" : order.paymentMethod === "pay_on_pickup" ? "NO (pay on pickup)" : "NO (invoice)");
   if (order.note) {
     r += "--------------------------------\n";
     r += ESC + "!" + "\x08" + "NOTE:\n" + ESC + "!" + "\x00";
@@ -199,7 +199,7 @@ ${items}
 ${discount}
 ${delivery}
 <div class="row total"><span>TOTAL</span><span>EUR ${order.total.toFixed(2)}</span></div>
-<div class="row"><span>Paid</span><span>${order.paid ? "YES" : "NO (invoice)"}</span></div>
+<div class="row"><span>Paid</span><span>${order.paid ? "YES" : order.paymentMethod === "pay_on_pickup" ? "NO (pay on pickup)" : "NO (invoice)"}</span></div>
 ${note}
 <div class="hr"></div>
 <div class="center">${esc(SHOP_SITE)}</div>
@@ -331,7 +331,7 @@ export default function TerminalPage() {
   /* Detect newly arrived orders -> beep, flash, optionally print. */
   useEffect(() => {
     if (!isStaff) return;
-    const fresh = orders.filter((o) => (o.paid || o.accountType === "company") && !seenRef.current.has(o.id));
+    const fresh = orders.filter((o) => (o.paid || o.accountType === "company" || o.paymentMethod === "pay_on_pickup") && !seenRef.current.has(o.id));
     if (fresh.length === 0) return;
     for (const o of fresh) seenRef.current.add(o.id);
     try {
@@ -360,12 +360,12 @@ export default function TerminalPage() {
   }, []);
 
   const active = useMemo(
-    () => orders.filter((o) => (o.paid || o.accountType === "company") && o.status !== "delivered").sort((a, b) => a.createdAt - b.createdAt),
+    () => orders.filter((o) => (o.paid || o.accountType === "company" || o.paymentMethod === "pay_on_pickup") && o.status !== "delivered").sort((a, b) => a.createdAt - b.createdAt),
     [orders]
   );
   const doneToday = useMemo(() => {
     const start = new Date().setHours(0, 0, 0, 0);
-    return orders.filter((o) => (o.paid || o.accountType === "company") && o.status === "delivered" && o.createdAt >= start).length;
+    return orders.filter((o) => (o.paid || o.accountType === "company" || o.paymentMethod === "pay_on_pickup") && o.status === "delivered" && o.createdAt >= start).length;
   }, [orders]);
 
   const statusLabels: Record<OrderStatus, string> = {
@@ -488,6 +488,8 @@ export default function TerminalPage() {
                       <a href={`tel:${o.phone}`} className="inline-flex items-center gap-1.5"><FaPhone className="text-emerald-500" /> {o.phone}</a>
                     </div>
 
+                    {o.paymentMethod === "pay_on_pickup" && <p className="mt-2 rounded-xl bg-amber-400/15 px-3 py-2 text-xs font-bold text-amber-700 dark:text-amber-300">{lang === "nl" ? "Betalen bij afhalen" : "Pay on pickup"} · {o.schedule?.date} {o.schedule?.time}</p>}
+
                     <ul className="mt-3 space-y-1 border-t border-slate-100 pt-3 text-sm dark:border-white/10">
                       <li className="font-black text-emerald-700 dark:text-emerald-300">Items: {o.items.reduce((sum, item) => sum + item.qty, 0)}</li>
                       {o.items.map((it, i) => (
@@ -529,12 +531,12 @@ export default function TerminalPage() {
                           onClick={() => updateOrderStatus(o.id, next)}
                           className="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-emerald-600 px-4 py-3 text-sm font-bold text-white transition active:bg-emerald-500"
                         >
-                          <FaCircleCheck /> {nextAction[o.status]}
+                          <FaCircleCheck /> {o.paymentMethod === "pay_on_pickup" && o.status === "preparing" ? (lang === "nl" ? "Klaar voor afhalen" : "Ready for pickup") : o.paymentMethod === "pay_on_pickup" && o.status === "delivery" ? (lang === "nl" ? "Afgehaald" : "Collected") : nextAction[o.status]}
                         </button>
                       )}
                     </div>
                     <p className="mt-2 text-center text-[0.65rem] font-semibold uppercase tracking-wider text-slate-400">
-                      {statusLabels[o.status]}
+                      {o.paymentMethod === "pay_on_pickup" && o.status === "delivery" ? (lang === "nl" ? "Klaar voor afhalen" : "Ready for pickup") : statusLabels[o.status]}
                     </p>
                   </li>
                 );

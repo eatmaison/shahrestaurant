@@ -109,6 +109,7 @@ export function rowToOrder(r: any, items: OrderItem[]): Order {
     createdAt: toMs(r.created_at),
     status: r.status,
     paid: r.paid,
+    paymentMethod: r.payment_method === "pay_on_pickup" ? "pay_on_pickup" : "online",
     paymentStatus: (r.payment_status ?? (r.paid ? "paid" : r.account_type === "company" ? "not_required" : "open")) as Order["paymentStatus"],
     paymentFailureReason: r.payment_failure_reason ?? undefined,
     molliePaymentId: r.mollie_payment_id ?? undefined,

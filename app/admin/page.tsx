@@ -1316,6 +1316,7 @@ export default function AdminPage() {
 
   const paymentLabel = (o: Order): string => {
     if (o.paid) return t.fulfillment.paid;
+    if (o.paymentMethod === "pay_on_pickup") return lang === "nl" ? "Betalen bij afhalen" : "Pay on pickup";
     if (o.accountType === "company") return t.fulfillment.invoiced;
     if (o.paymentStatus === "failed") return t.fulfillment.paymentFailed;
     if (o.paymentStatus === "canceled") return t.fulfillment.paymentCanceled;
@@ -1389,6 +1390,8 @@ export default function AdminPage() {
 
   const renderOrderCard = (o: Order) => {
     const action = nextAction(o.status);
+    if (action && o.paymentMethod === "pay_on_pickup" && o.status === "preparing") action.label = lang === "nl" ? "Klaar voor afhalen" : "Ready for pickup";
+    if (action && o.paymentMethod === "pay_on_pickup" && o.status === "delivery") action.label = lang === "nl" ? "Afgehaald" : "Collected";
     const currentStep = ORDER_STATUS_FLOW.indexOf(o.status);
     const account = o.userId ? users.find((u) => u.id === o.userId) : undefined;
     const isCompany = o.accountType === "company";
@@ -1626,7 +1629,7 @@ export default function AdminPage() {
                       reached ? "text-emerald-700 dark:text-emerald-300" : "text-slate-400"
                     }`}
                   >
-                    {statusLabel(s)}
+                    {o.paymentMethod === "pay_on_pickup" && s === "delivery" ? (lang === "nl" ? "Klaar voor afhalen" : "Ready for pickup") : o.paymentMethod === "pay_on_pickup" && s === "delivered" ? (lang === "nl" ? "Afgehaald" : "Collected") : statusLabel(s)}
                   </span>
                 </div>
                 {i < ORDER_STATUS_FLOW.length - 1 && (
@@ -1644,7 +1647,7 @@ export default function AdminPage() {
         {/* Action */}
         <div className="mt-4 flex items-center justify-between gap-3">
           <span className="inline-flex items-center gap-1.5 rounded-full bg-slate-200/70 px-3 py-1 text-xs font-bold text-slate-700 dark:bg-white/10 dark:text-slate-200">
-            {statusLabel(o.status)}
+            {o.paymentMethod === "pay_on_pickup" && o.status === "delivery" ? (lang === "nl" ? "Klaar voor afhalen" : "Ready for pickup") : o.paymentMethod === "pay_on_pickup" && o.status === "delivered" ? (lang === "nl" ? "Afgehaald" : "Collected") : statusLabel(o.status)}
           </span>
           {action ? (
             <button

@@ -47,7 +47,7 @@ export default function PhoneAgentPanel() {
       {nl ? "AI-telefoonassistent · instellingen en beschikbaarheid" : "AI phone assistant · settings and availability"}
     </button>
     {opened && <div id="phone-agent-settings" className="mt-3 space-y-4">
-      <p>{nl ? "Begroeting: Goedendag, u spreekt met Shah Restaurant! Daarna vermeldt de assistent dat het AI is. Talen: Nederlands en Engels." : "Greeting: Goedendag, u spreekt met Shah Restaurant! The assistant then identifies itself as AI. Languages: Dutch and English."}</p>
+      <p>{nl ? "Begroeting: Goedendag, u spreekt met Shah Restaurant! Talen: Nederlands en Engels." : "Greeting: Goedendag, u spreekt met Shah Restaurant! Languages: Dutch and English."}</p>
       {status && <p className="font-semibold">{status.ready ? (nl ? "Verbonden · actief" : "Connected · active") : (nl ? "Voorbereid · nog niet actief" : "Prepared · not active")}{status.activeCalls ? " · " + status.activeCalls + (nl ? " lopende gesprekken" : " active calls") : ""}</p>}
       {!!status?.missing?.length && <p>{nl ? "Nog nodig: " : "Still needed: "}{status.missing.join(", ")}</p>}
       <p>{nl ? "Volgens de restaurantmanager zijn tafels beschikbaar. Geldige reserveringen worden standaard automatisch bevestigd na toestemming van de beller. Alleen indien nodig kunt u hieronder een dag beperken." : "The restaurant manager confirms tables are available. Valid bookings are automatically confirmed after caller consent. Set an optional day limit below only when needed."}</p>

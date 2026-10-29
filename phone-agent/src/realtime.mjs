@@ -26,7 +26,7 @@ export async function runCall({callId,client,store,config,onClose,WebSocketClass
     const send=event=>{if(socket.readyState===1)socket.send(JSON.stringify(event));};
     let responseActive=false;let responseNeeded=false;
     const requestResponse=()=>{if(responseActive){responseNeeded=true;return;}responseActive=true;send({type:'response.create'});};
-    socket.on('open',()=>{responseActive=true;send({type:'response.create',response:{instructions:'Start now with the exact Dutch greeting from your instructions, disclose AI and ask how you can help.'}});});
+    socket.on('open',()=>{responseActive=true;send({type:'response.create',response:{instructions:'Start now with the exact Dutch greeting from your instructions and ask how you can help.'}});});
     socket.on('message',bytes=>{
       let event;try{event=JSON.parse(bytes.toString());}catch{return;}
       // Only caller transcription events can unlock confirmation. Neither tool arguments nor assistant text can do so.
