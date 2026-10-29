@@ -38,9 +38,20 @@ export function validateBooking(input, now = new Date()) {
 }
 export function positiveConfirmation(text) {
   if (typeof text !== 'string' || text.length > 250) return false;
-  const normalized = text.toLowerCase().normalize('NFKD').replace(/[^\p{L}\p{N}\s']/gu, ' ').trim();
-  if (/\b(nee|neen|niet|geen|no|not|don't|wrong|change|wijzig|verander|maar|but|except|behalve|correctie|instead)\b/u.test(normalized)) return false;
-  return /\b(ja|yes|yep|yeah|klopt|akkoord|correct|confirm|bevestig|goed|right)\b/u.test(normalized);
+  const normalized = text.toLowerCase().normalize('NFKD').replace(/[^\p{L}\p{N}\s']/gu, ' ').trim().replace(/\s+/g, ' ');
+  // Only an unambiguous affirmative turn can authorize a write. A reply like
+  // "yes, three people" may be correcting the read-back, even without "but".
+  const affirmatives = new Set([
+    'ja','jawel','jazeker','ja zeker','ja graag','ja klopt','ja dat klopt',
+    'ja dat klopt helemaal','ja klopt helemaal','ja dat is goed','ja dat is juist',
+    'ja dat is correct','dat klopt','klopt','klopt helemaal','helemaal juist',
+    'dat is juist','dat is correct','akkoord','ik ga akkoord','bevestig',
+    'ik bevestig','goed','ok','oke','okay','yes','yep','yeah','yes please',
+    'yes correct','yes exactly','yes that is correct',"yes that's correct",
+    'yes that is right',"yes that's right",'that is correct',"that's correct",
+    'that is right',"that's right",'correct','right','sounds good','confirmed','i confirm',
+  ]);
+  return affirmatives.has(normalized);
 }
 export function availability(policy, bookedGuests, requestedGuests) {
   // Restaurant manager explicitly confirms that normal opening-hour reservations are available.
@@ -54,7 +65,9 @@ export class ReservationDraft {
   heard(text) {
     this.turn += 1;
     this.confirmedTurn = positiveConfirmation(text) ? this.turn : -1;
-    if (typeof text === 'string' && /\b(nee|neen|niet|geen|no|not|wrong|change|wijzig|verander|maar|but|except|behalve|correctie|instead)\b/iu.test(text)) this.draft = null;
+    // Any non-affirmative reply may contain a correction; never let a later
+    // "yes" confirm the old details without preparing and reading them again.
+    if (this.draft && this.confirmedTurn < 0) this.draft = null;
   }
   prepare(data) { this.draft = { token: randomBytes(18).toString('hex'), data, preparedTurn: this.turn, expires: Date.now() + 5 * 60000 }; return this.draft; }
   confirm(token) {

@@ -41,9 +41,14 @@ test('booking requires a fresh affirmative caller turn after each draft',()=>{
   prepared=draft.prepare({...input,guests:3});
   assert.equal(draft.confirm(prepared.token).error,'caller_confirmation_required');
   draft.heard('Yes, correct');assert.equal(draft.confirm(prepared.token).data.guests,3);
+  prepared=draft.prepare(input);
+  draft.heard('ja, drie personen');draft.heard('ja');
+  assert.equal(draft.confirm(prepared.token).error,'draft_expired');
   assert.equal(draft.confirm('invented-token').error,'draft_expired');
+  prepared=draft.prepare(input);
   draft.draft.expires=0;assert.equal(draft.confirm(prepared.token).error,'draft_expired');
-  for(const text of ['no','yes but change the time','ja maar niet vier','nee akkoord',''])assert.equal(positiveConfirmation(text),false);
+  for(const text of ['no','yes but change the time','ja maar niet vier','nee akkoord','','ja, drie personen','yes for five','ja om zes','yes no','ja eigenlijk twee'])assert.equal(positiveConfirmation(text),false);
+  for(const text of ['ja, dat klopt!','Ja graag','Yes, that is correct.','sounds good','akkoord'])assert.equal(positiveConfirmation(text),true);
 });
 test('email distinguishes requests and confirmations and escapes caller content',()=>{
   const row={lang:'nl',status:'pending',reservation_number:501,guest_name:'<script>guest</script>',date:input.date,time:input.time,guests:4};
