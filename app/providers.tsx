@@ -177,7 +177,7 @@ interface StoreCtx {
     lang?: Lang;
   }) => Promise<{ ok: boolean; error?: "fillFields" | "invalidSlot" | "pastDate" | "invalidInput"; reservation?: Reservation }>;
   /** Customer: cancel an upcoming reservation. Admin: cancel any. */
-  cancelReservation: (id: string) => Promise<void>;
+  cancelReservation: (id: string) => Promise<{ ok: boolean }>;
   /** Admin: confirm or decline a pending reservation. */
   setReservationStatus: (id: string, action: "confirm" | "decline" | "arrived" | "no_show") => Promise<void>;
   /** Admin: permanently delete a reservation (e.g. duplicates). */
@@ -197,6 +197,7 @@ interface StoreCtx {
   refresh: () => Promise<void>;
 
   hydrated: boolean;
+  catalogStatus: "loading" | "ready" | "error";
 }
 
 const StoreContext = createContext<StoreCtx | null>(null);
@@ -230,6 +231,7 @@ function readThemePreference(fallback: Theme): Theme {
 
 export function Providers({ children }: { children: ReactNode }) {
   const [hydrated, setHydrated] = useState(false);
+  const [catalogStatus, setCatalogStatus] = useState<"loading" | "ready" | "error">("loading");
   const checkoutBusy = useRef(false);
   const bootstrapController = useRef<AbortController | null>(null);
   const statusController = useRef<AbortController | null>(null);
@@ -257,9 +259,12 @@ export function Providers({ children }: { children: ReactNode }) {
     bootstrapController.current?.abort();
     const controller = new AbortController();
     bootstrapController.current = controller;
+    setCatalogStatus("loading");
     try {
       const { response: res, data } = await fetchJSON<Bootstrap>("/api/bootstrap", { cache: "no-store", signal: controller.signal });
-      if (!res.ok || controller.signal.aborted) return;
+      if (controller.signal.aborted) return;
+      if (!res.ok || !Array.isArray(data?.products) || !Array.isArray(data?.brands)) throw new Error("Invalid catalogue response");
+      setCatalogStatus("ready");
       setProducts(data.products ?? []);
       setBrands(data.brands ?? []);
       setCurrentUser(data.currentUser ?? null);
@@ -275,6 +280,7 @@ export function Providers({ children }: { children: ReactNode }) {
       const status = data.restaurantStatus;
       setRestaurantStatus(getRestaurantStatus(status?.override ?? "auto", status?.overrideDate));
     } catch {
+      if (!controller.signal.aborted) setCatalogStatus("error");
       // Keep the current cart/catalogue during transient failures.
     } finally {
       if (bootstrapController.current === controller) bootstrapController.current = null;
@@ -339,6 +345,13 @@ export function Providers({ children }: { children: ReactNode }) {
     window.addEventListener("storage", sync);
     return () => window.removeEventListener("storage", sync);
   }, []);
+  useEffect(() => {
+    const restored = (event: PageTransitionEvent) => { if (event.persisted && navigator.onLine) void refresh(); };
+    const online = () => { if (catalogStatus === "error") void refresh(); };
+    window.addEventListener("pageshow", restored); window.addEventListener("online", online);
+    return () => { window.removeEventListener("pageshow", restored); window.removeEventListener("online", online); };
+  }, [refresh, catalogStatus]);
+
   // Apply + persist theme.
   useEffect(() => {
     if (!hydrated) return;
@@ -470,13 +483,12 @@ export function Providers({ children }: { children: ReactNode }) {
   const register: StoreCtx["register"] = useCallback(
     async (data) => {
       try {
-        const res = await fetch("/api/auth", {
+        const { response: res, data: json } = await fetchJSON<{ ok: boolean; error?: string; user?: User }>("/api/auth", {
           method: "POST",
           headers: JSON_HEADERS,
           body: JSON.stringify({ action: "register", ...data }),
         });
-        const json = await res.json().catch(() => null);
-        if (!json) return { ok: false, error: "server" };
+        if (!res.ok || !json) return { ok: false, error: json?.error ?? "server" };
         if (json.ok && json.user) {
           setCurrentUser(json.user);
           void refresh();
@@ -492,13 +504,12 @@ export function Providers({ children }: { children: ReactNode }) {
   const login: StoreCtx["login"] = useCallback(
     async (email, password) => {
       try {
-        const res = await fetch("/api/auth", {
+        const { response: res, data: json } = await fetchJSON<{ ok: boolean; error?: string; user?: User }>("/api/auth", {
           method: "POST",
           headers: JSON_HEADERS,
           body: JSON.stringify({ action: "login", email, password }),
         });
-        const json = await res.json().catch(() => null);
-        if (!json) return { ok: false, error: "server" };
+        if (!res.ok || !json) return { ok: false, error: json?.error ?? "server" };
         if (json.ok && json.user) {
           setCurrentUser(json.user);
           void refresh();
@@ -512,7 +523,8 @@ export function Providers({ children }: { children: ReactNode }) {
   );
 
   const logout = useCallback<StoreCtx["logout"]>(async () => {
-    await fetch("/api/auth", { method: "POST", headers: JSON_HEADERS, body: JSON.stringify({ action: "logout" }) });
+    const { response, data } = await fetchJSON<{ ok?: boolean }>("/api/auth", { method: "POST", headers: JSON_HEADERS, body: JSON.stringify({ action: "logout" }) });
+    if (!response.ok || !data?.ok) throw new Error("Sign out failed");
     setCurrentUser(null);
     setOrders([]);
     setUsers([]);
@@ -552,26 +564,19 @@ export function Providers({ children }: { children: ReactNode }) {
   }, [refresh]);
 
   const buyVip = useCallback<StoreCtx["buyVip"]>(async () => {
-    const res = await fetch("/api/vip", { method: "POST", headers: JSON_HEADERS, body: JSON.stringify({ action: "buy" }) });
-    const json = await res.json();
-    // With Mollie enabled the server returns a checkout URL (no state change yet).
-    if (json.ok && !json.checkoutUrl) await refresh();
-    return json;
+    try {
+      const { response, data } = await fetchJSON<{ ok: boolean; checkoutUrl?: string }>("/api/vip", { method: "POST", headers: JSON_HEADERS, body: JSON.stringify({ action: "buy" }) }, 30_000);
+      if (!response.ok || !data?.ok) return { ok: false };
+      if (!data.checkoutUrl) void refresh(); return data;
+    } catch { return { ok: false }; }
   }, [refresh]);
-
-  const requestVip = useCallback<StoreCtx["requestVip"]>(
-    async (image) => {
-      const res = await fetch("/api/vip", {
-        method: "POST",
-        headers: JSON_HEADERS,
-        body: JSON.stringify({ action: "request", image }),
-      });
-      const json = await res.json();
-      if (json.ok) await refresh();
-      return json;
-    },
-    [refresh]
-  );
+  const requestVip = useCallback<StoreCtx["requestVip"]>(async image => {
+    try {
+      const { response, data } = await fetchJSON<{ ok: boolean }>("/api/vip", { method: "POST", headers: JSON_HEADERS, body: JSON.stringify({ action: "request", image }) }, 30_000);
+      if (!response.ok || !data?.ok) return { ok: false };
+      void refresh(); return data;
+    } catch { return { ok: false }; }
+  }, [refresh]);
 
   const approveVipRequest = useCallback<StoreCtx["approveVipRequest"]>(async (requestId) => {
     await fetch("/api/vip", { method: "POST", headers: JSON_HEADERS, body: JSON.stringify({ action: "approve", id: requestId }) });
@@ -583,45 +588,32 @@ export function Providers({ children }: { children: ReactNode }) {
     await refresh();
   }, [refresh]);
 
-  const addReview: StoreCtx["addReview"] = useCallback(
-    async ({ orderId, rating, text }) => {
-      const res = await fetch("/api/reviews", {
-        method: "POST",
-        headers: JSON_HEADERS,
-        body: JSON.stringify({ orderId, rating, text }),
-      });
-      const json = await res.json();
-      if (json.ok) await refresh();
-      return json;
-    },
-    [refresh]
-  );
+  const addReview: StoreCtx["addReview"] = useCallback(async ({ orderId, rating, text }) => {
+    try {
+      const { response, data } = await fetchJSON<{ ok: boolean; error?: string }>("/api/reviews", { method: "POST", headers: JSON_HEADERS, body: JSON.stringify({ orderId, rating, text }) });
+      if (!response.ok || !data?.ok) return { ok: false, error: data?.error ?? "server" };
+      void refresh(); return data;
+    } catch { return { ok: false, error: "network" }; }
+  }, [refresh]);
 
-  const addReservationReview: StoreCtx["addReservationReview"] = useCallback(
-    async ({ reservationId, rating, text }) => {
-      const res = await fetch("/api/reviews", {
-        method: "POST",
-        headers: JSON_HEADERS,
-        body: JSON.stringify({ reservationId, rating, text }),
-      });
-      const json = await res.json();
-      if (json.ok) await refresh();
-      return json;
-    },
-    [refresh]
-  );
+  const addReservationReview: StoreCtx["addReservationReview"] = useCallback(async ({ reservationId, rating, text }) => {
+    try {
+      const { response, data } = await fetchJSON<{ ok: boolean; error?: string }>("/api/reviews", { method: "POST", headers: JSON_HEADERS, body: JSON.stringify({ reservationId, rating, text }) });
+      if (!response.ok || !data?.ok) return { ok: false, error: data?.error ?? "server" };
+      void refresh(); return data;
+    } catch { return { ok: false, error: "network" }; }
+  }, [refresh]);
 
   const createReservation: StoreCtx["createReservation"] = useCallback(
     async (data) => {
       try {
-        const res = await fetch("/api/reservations", {
+        const { response: res, data: json } = await fetchJSON<Awaited<ReturnType<StoreCtx["createReservation"]>>>("/api/reservations", {
           method: "POST",
           headers: JSON_HEADERS,
           body: JSON.stringify({ ...data, email: data.email ?? "", lang: data.lang ?? lang }),
         });
-        const json = await res.json().catch(() => null);
-        if (!json) return { ok: false, error: "invalidInput" as const };
-        if (json.ok) await refresh();
+        if (!res.ok || !json) return { ok: false, error: "invalidInput" as const };
+        if (json.ok) void refresh();
         return json;
       } catch {
         return { ok: false, error: "invalidInput" as const };
@@ -631,8 +623,11 @@ export function Providers({ children }: { children: ReactNode }) {
   );
 
   const cancelReservation = useCallback<StoreCtx["cancelReservation"]>(async (id) => {
-    await fetch("/api/reservations", { method: "PATCH", headers: JSON_HEADERS, body: JSON.stringify({ id, action: "cancel" }) });
-    await refresh();
+    try {
+      const { response, data } = await fetchJSON<{ ok?: boolean }>("/api/reservations", { method: "PATCH", headers: JSON_HEADERS, body: JSON.stringify({ id, action: "cancel" }) });
+      if (!response.ok || !data?.ok) return { ok: false };
+      void refresh(); return { ok: true };
+    } catch { return { ok: false }; }
   }, [refresh]);
 
   const setReservationStatus = useCallback<StoreCtx["setReservationStatus"]>(async (id, action) => {
@@ -664,17 +659,15 @@ export function Providers({ children }: { children: ReactNode }) {
       const identity = { userId: currentUser?.id ?? "guest", ...payload };
       try {
         const idempotencyKey = await checkoutRequestKey(identity);
-        const res = await fetch("/api/orders", {
-          method: "POST",
-          headers: JSON_HEADERS,
-          body: JSON.stringify({ ...payload, idempotencyKey }),
-        });
-        const json = await res.json().catch(() => null);
-        if (!json) return { ok: false, error: "network" };
+        const { response: res, data: json } = await fetchJSON<Awaited<ReturnType<StoreCtx["placeOrder"]>>>("/api/orders", {
+          method: "POST", headers: JSON_HEADERS, body: JSON.stringify({ ...payload, idempotencyKey }),
+        }, 45_000);
+        if (!res.ok || !json) return { ok: false, error: json?.error ?? "network" };
         if (json.ok && json.order) {
           setCart({});
           try { window.localStorage.setItem(LS.cart, "{}"); } catch { /* Optional storage. */ }
-          setOrders(previous => [json.order, ...previous.filter(order => order.id !== json.order.id)]);
+          const confirmedOrder = json.order;
+          setOrders(previous => [confirmedOrder, ...previous.filter(order => order.id !== confirmedOrder.id)]);
           void refresh();
           // Confirmation must not depend on bootstrap or browser storage.
           void clearCheckoutRequest(identity).catch(() => {});
@@ -784,6 +777,7 @@ export function Providers({ children }: { children: ReactNode }) {
       recentVisitors,
       refresh,
       hydrated,
+      catalogStatus,
     }),
     [
       products,
@@ -834,6 +828,7 @@ export function Providers({ children }: { children: ReactNode }) {
       recentVisitors,
       refresh,
       hydrated,
+      catalogStatus,
     ]
   );
 

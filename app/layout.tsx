@@ -56,20 +56,20 @@ export const metadata: Metadata = {
     title: "Indiaas restaurant Amsterdam-Noord | Shah Restaurant",
     description:
       "Reserveer online een tafel bij Shah Restaurant in Amsterdam-Noord. Indiase gerechten, tandoori en curry aan de Klaprozenweg 36a.",
-    images: [{ url: "/shahrestaurant.png", width: 512, height: 512, alt: "Shah Restaurant Amsterdam" }],
+    images: [{ url: "/shah-social-card.png", width: 1200, height: 630, alt: "Shah Restaurant — Indiaas eten in Amsterdam-Noord" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Indiaas restaurant Amsterdam-Noord | Shah Restaurant",
     description: "Reserveer een tafel voor Indiaas eten bij Shah Restaurant in Amsterdam-Noord.",
-    images: ["/shahrestaurant.png"],
+    images: ["/shah-social-card.png"],
   },
   robots: {
     index: true,
     follow: true,
     googleBot: { index: true, follow: true, "max-image-preview": "large" },
   },
-  icons: { icon: "/shahrestaurant.png" },
+  icons: { icon: [{ url: "/shahrestaurant.svg", type: "image/svg+xml" }, { url: "/shahrestaurant.png", sizes: "512x512", type: "image/png" }], apple: { url: "/shah-apple-180.png", sizes: "180x180", type: "image/png" } },
 };
 
 export const viewport: Viewport = {
@@ -86,7 +86,7 @@ const jsonLd = {
   "@type": "Restaurant",
   name: "Shah Restaurant",
   image: `${siteUrl}/shahrestaurant.png`,
-  "@id": siteUrl,
+  "@id": `${siteUrl}/#restaurant`,
   url: siteUrl,
   telephone: "+31 20 341 2995",
   email: "info@shahrestaurant.nl",

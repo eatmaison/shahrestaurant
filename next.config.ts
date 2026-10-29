@@ -19,7 +19,9 @@ const nextConfig: NextConfig = {
         { key: "Cache-Control", value: "private, no-store" },
         { key: "X-Robots-Tag", value: "noindex, nofollow" },
       ],
-    }];
+    }, ...["account", "admin", "terminal", "forgot-password", "reset-password", "verify-email", "pay"].map(path => ({
+      source: `/${path}/:path*`, headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }, { key: "Referrer-Policy", value: "no-referrer" }],
+    }))];
   },
   images: {
     formats: ["image/avif", "image/webp"],

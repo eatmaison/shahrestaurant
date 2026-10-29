@@ -57,12 +57,9 @@ export type AuthInput = z.infer<typeof authSchema>;
 
 const orderSchedule = z.object({
   type: z.enum(["once", "workdays"]),
-  date: z
-    .string()
-    .regex(/^\d{4}-\d{2}-\d{2}$/)
-    .optional(),
+  date: z.iso.date().optional(),
   time: z.string().regex(/^([01]\d|2[0-3]):[0-5]\d$/),
-});
+}).refine(value => value.type !== "once" || !!value.date, { path: ["date"], message: "Date is required" });
 
 export const placeOrderSchema = z.object({
   idempotencyKey: z.string().uuid().optional(),
@@ -226,3 +223,8 @@ export const brandsActionSchema = z.discriminatedUnion("action", [
 ]);
 
 export type BrandsActionInput = z.infer<typeof brandsActionSchema>;
+
+export const reviewSchema = z.object({
+  orderId: z.string().uuid().optional(), reservationId: z.string().uuid().optional(),
+  rating: z.number().int().min(1).max(5), text: z.string().trim().max(500),
+}).refine(value => !!value.orderId !== !!value.reservationId, { message: "Choose one review target" });

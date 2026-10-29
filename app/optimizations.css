@@ -10,3 +10,15 @@ html[data-page-hidden="true"] *, html[data-page-hidden="true"] *::before, html[d
 }
 .skip-link { position: fixed; top: 8px; left: 12px; z-index: 10000; transform: translateY(-160%); border-radius: 8px; background: #fff; color: #173b2a; padding: 12px 20px; }
 .skip-link:focus { transform: translateY(0); outline: 2px solid currentColor; outline-offset: 2px; }
+
+/* Keep keyboard focus and messages clear of the sticky header on every page. */
+html { scroll-padding-top: calc(var(--site-header-height, 76px) + 16px); }
+:where(input, select, textarea, [role="alert"], [tabindex="-1"]) { scroll-margin-top: calc(var(--site-header-height, 76px) + 20px); }
+[data-site-footer] a[href^="mailto:"] { overflow-wrap: anywhere; }
+.product-description { overflow-wrap: anywhere; line-height: 1.75; }
+.product-description :is(p, ul, ol, blockquote) { margin-block: .75em; }
+.product-description ul { list-style: disc; padding-inline-start: 1.5em; }
+.product-description ol { list-style: decimal; padding-inline-start: 1.5em; }
+.product-description a { text-decoration: underline; text-underline-offset: .15em; }
+.product-description :is(code, pre) { white-space: pre-wrap; }
+@media (forced-colors: active) { :is(button, a):focus-visible { outline: 2px solid Highlight !important; } }

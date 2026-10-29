@@ -1,77 +1,42 @@
 "use client";
-
 import Link from "next/link";
 import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { FaCircleCheck, FaCircleXmark, FaSpinner } from "react-icons/fa6";
-import { useLang } from "../providers";
+import { useLang, useStore } from "../providers";
+import { fetchJSON } from "../lib/clientFetch";
 
 function VerifyEmailInner() {
-  const { t } = useLang();
-  const params = useSearchParams();
-  const token = params.get("token");
-  const [status, setStatus] = useState<"loading" | "ok" | "fail">("loading");
-
+  const { t, lang } = useLang(); const { refresh } = useStore();
+  const token = useSearchParams().get("token") ?? "";
+  const [status, setStatus] = useState<"loading" | "ok" | "invalid" | "error">("loading");
+  const [retry, setRetry] = useState(0);
+  const validToken = token.length > 0 && token.length <= 2048;
   useEffect(() => {
-    if (!token) {
-      setStatus("fail");
-      return;
-    }
-    (async () => {
+    if (!validToken) return;
+    const controller = new AbortController(); let active = true;
+    queueMicrotask(() => { if (active) setStatus("loading"); });
+    void (async () => {
       try {
-        const res = await fetch("/api/auth", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ action: "verifyEmail", token }),
-        });
-        const json = await res.json();
-        setStatus(json.ok ? "ok" : "fail");
-      } catch {
-        setStatus("fail");
-      }
+        const { response, data } = await fetchJSON<{ ok?: boolean }>("/api/auth", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ action: "verifyEmail", token }), signal: controller.signal });
+        if (!active) return;
+        if (!response.ok && response.status >= 500) { setStatus("error"); return; }
+        if (!response.ok || !data?.ok) { setStatus("invalid"); return; }
+        setStatus("ok");
+        const url = new URL(window.location.href); url.searchParams.delete("token"); window.history.replaceState(window.history.state, "", url.pathname + url.search + url.hash);
+        void refresh();
+      } catch { if (active && !controller.signal.aborted) setStatus("error"); }
     })();
-  }, [token]);
-
-  return (
-    <div className="mx-auto flex min-h-[60vh] max-w-lg flex-col items-center justify-center px-4 py-16 text-center">
-      {status === "loading" ? (
-        <>
-          <span className="grid h-16 w-16 place-items-center rounded-2xl bg-emerald-500/10 text-3xl text-emerald-600 dark:text-emerald-400">
-            <FaSpinner className="animate-spin" />
-          </span>
-          <h1 className="mt-6 text-2xl font-black text-slate-900 dark:text-white">{t.email.verifyingTitle}</h1>
-        </>
-      ) : status === "ok" ? (
-        <>
-          <span className="animate-pop grid h-16 w-16 place-items-center rounded-2xl bg-emerald-500/15 text-3xl text-emerald-600 shadow-[0_0_30px_rgba(217,126,38,0.3)] dark:text-emerald-400">
-            <FaCircleCheck />
-          </span>
-          <h1 className="font-display mt-6 text-2xl font-bold text-slate-900 dark:text-white">{t.email.verifySuccess}</h1>
-          <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">{t.email.verifySuccessText}</p>
-          <Link href="/account" className="btn-shine mt-8 rounded-full bg-gradient-to-r from-emerald-600 via-emerald-500 to-emerald-600 bg-[length:200%_auto] px-6 py-3 text-sm font-bold text-white shadow-lg shadow-emerald-600/25 transition-all duration-300 hover:bg-right">
-            {t.email.goToAccount}
-          </Link>
-        </>
-      ) : (
-        <>
-          <span className="grid h-16 w-16 place-items-center rounded-2xl bg-red-500/10 text-3xl text-red-500">
-            <FaCircleXmark />
-          </span>
-          <h1 className="mt-6 text-2xl font-black text-slate-900 dark:text-white">{t.email.verifyFail}</h1>
-          <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">{t.email.verifyFailText}</p>
-          <Link href="/account" className="mt-8 rounded-full bg-emerald-600 px-6 py-3 text-sm font-bold text-white transition hover:bg-emerald-500">
-            {t.email.goToAccount}
-          </Link>
-        </>
-      )}
+    return () => { active = false; controller.abort(); };
+  }, [token, validToken, retry, refresh]);
+  const shown = !validToken && status !== "ok" ? "invalid" : status;
+  return <section aria-busy={shown === "loading"} className="mx-auto flex min-h-[60vh] max-w-lg flex-col items-center justify-center px-4 py-16 text-center">
+    <div role="status"><span aria-hidden="true" className="mx-auto grid h-16 w-16 place-items-center rounded-2xl bg-emerald-500/10 text-3xl text-emerald-600">{shown === "loading" ? <FaSpinner className="animate-spin" /> : shown === "ok" ? <FaCircleCheck /> : <FaCircleXmark />}</span>
+      <h1 className="mt-6 text-2xl font-bold text-slate-900 dark:text-white">{shown === "loading" ? t.email.verifyingTitle : shown === "ok" ? t.email.verifySuccess : shown === "error" ? (lang === "nl" ? "Bevestigen is tijdelijk niet mogelijk" : "Verification is temporarily unavailable") : t.email.verifyFail}</h1>
+      {shown !== "loading" && <p className="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">{shown === "ok" ? t.email.verifySuccessText : shown === "error" ? (lang === "nl" ? "Controleer je verbinding en probeer opnieuw." : "Check your connection and try again.") : t.email.verifyFailText}</p>}
     </div>
-  );
+    {shown === "error" && <button type="button" onClick={() => { setStatus("loading"); setRetry(value => value + 1); }} className="mt-6 min-h-11 rounded-full border px-6 py-3 font-semibold">{lang === "nl" ? "Opnieuw proberen" : "Try again"}</button>}
+    {shown !== "loading" && <Link href="/account" prefetch={false} className="mt-6 min-h-11 rounded-full bg-emerald-600 px-6 py-3 font-semibold text-white">{t.email.goToAccount}</Link>}
+  </section>;
 }
-
-export default function VerifyEmailPage() {
-  return (
-    <Suspense fallback={<div className="mx-auto max-w-lg px-4 py-20 text-center text-sm text-slate-500">…</div>}>
-      <VerifyEmailInner />
-    </Suspense>
-  );
-}
+export default function VerifyEmailPage() { return <Suspense fallback={<p role="status" className="p-12 text-center">…</p>}><VerifyEmailInner /></Suspense>; }

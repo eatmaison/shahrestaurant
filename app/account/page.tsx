@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { fetchJSON } from "../lib/clientFetch";
 import { OrderTotals } from "../components/OrderTotals";
 import { useEffect, useRef, useState } from "react";
 import {
@@ -61,6 +62,18 @@ export default function AccountPage() {
     agreement: false,
   });
   const [error, setError] = useState("");
+  const errorRef = useRef<HTMLParagraphElement>(null);
+  const [showPassword, setShowPassword] = useState(false);
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [actionError, setActionError] = useState("");
+  const [reviewBusy, setReviewBusy] = useState(false);
+  const reviewLock = useRef(false);
+  const verifyLock = useRef(false);
+  const vipLock = useRef(false);
+  const [vipBusy, setVipBusy] = useState(false);
+  const [signingOut, setSigningOut] = useState(false);
+  const signOutLock = useRef(false);
+  useEffect(() => { if (error) errorRef.current?.focus(); }, [error]);
   const [submitting, setSubmitting] = useState(false);
   const authLock = useRef(false);
   const [verifyResent, setVerifyResent] = useState(false);
@@ -68,21 +81,22 @@ export default function AccountPage() {
   const [verifyError, setVerifyError] = useState(false);
 
   const resendVerification = async () => {
-    if (verifySending) return;
+    if (verifyLock.current) return;
+    verifyLock.current = true;
     setVerifySending(true);
     setVerifyError(false);
     try {
-      const response = await fetch("/api/auth", {
+      const { response, data: result } = await fetchJSON<{ ok?: boolean }>("/api/auth", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ action: "resendVerification" }),
       });
-      const result = await response.json().catch(() => null);
       if (!response.ok || !result?.ok) throw new Error("Verification email was not sent");
       setVerifyResent(true);
     } catch {
       setVerifyError(true);
     } finally {
+      verifyLock.current = false;
       setVerifySending(false);
     }
   };
@@ -129,24 +143,57 @@ export default function AccountPage() {
 
   // Upload a photo of an existing physical VIP card for admin approval.
   const onVipCardFile = (file?: File) => {
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = () => {
-      void requestVip(reader.result as string);
+    if (!file || vipLock.current) return;
+    setActionError("");
+    if (!["image/jpeg", "image/png", "image/webp"].includes(file.type) || file.size > 5 * 1024 * 1024) {
+      setActionError(lang === "nl" ? "Kies een JPG-, PNG- of WebP-foto van maximaal 5 MB." : "Choose a JPG, PNG or WebP photo up to 5 MB.");
       if (vipCardRef.current) vipCardRef.current.value = "";
+      return;
+    }
+    vipLock.current = true; setVipBusy(true);
+    const finish = () => { vipLock.current = false; setVipBusy(false); if (vipCardRef.current) vipCardRef.current.value = ""; };
+    const reader = new FileReader();
+    reader.onerror = () => { setActionError(errorText("server")); finish(); };
+    reader.onload = async () => {
+      try { const result = await requestVip(String(reader.result)); if (!result.ok) setActionError(errorText("server")); }
+      catch { setActionError(errorText("server")); }
+      finally { finish(); }
     };
     reader.readAsDataURL(file);
+  };
+  const purchaseVip = async () => {
+    if (vipLock.current) return;
+    vipLock.current = true; setVipBusy(true); setActionError("");
+    try { const result = await buyVip(); if (result.ok && result.checkoutUrl) window.location.assign(result.checkoutUrl); else if (!result.ok) setActionError(errorText("server")); }
+    catch { setActionError(errorText("server")); }
+    finally { vipLock.current = false; setVipBusy(false); }
+  };
+  const signOut = async () => {
+    if (signOutLock.current) return;
+    signOutLock.current = true; setSigningOut(true); setActionError("");
+    try { await logout(); } catch { setActionError(errorText("server")); }
+    finally { signOutLock.current = false; setSigningOut(false); }
+  };
+  const sendReview = async (orderId: string) => {
+    if (reviewLock.current) return;
+    reviewLock.current = true; setReviewBusy(true); setActionError("");
+    try {
+      const result = await addReview({ orderId, rating, text: reviewText });
+      if (result.ok) { setReviewingId(null); setReviewText(""); setRating(5); }
+      else setActionError(errorText("server"));
+    } finally { reviewLock.current = false; setReviewBusy(false); }
   };
 
   const submit = async () => {
     if (authLock.current) return;
+    if (mode === "register" && form.password !== confirmPassword) { setError(t.email.passwordMismatch); return; }
     authLock.current = true;
     setSubmitting(true);
     setError("");
     try {
       const res = mode === "register"
-        ? await register({ ...form, agreementAccepted: form.agreement })
-        : await login(form.email, form.password);
+        ? await register({ ...form, name: form.name.trim(), email: form.email.trim(), phone: form.phone.trim(), agreementAccepted: form.agreement })
+        : await login(form.email.trim(), form.password);
       if (!res.ok) setError(errorText(res.error));
     } catch {
       setError(errorText("server"));
@@ -221,12 +268,13 @@ export default function AccountPage() {
                 <FaCrown /> {t.nav.admin}
               </Link>
             )}
-            <button onClick={logout} className="inline-flex items-center gap-2 rounded-full border border-slate-200 px-4 py-2.5 text-sm font-semibold text-slate-700 transition hover:border-red-400 hover:text-red-600 dark:border-white/10 dark:text-slate-300">
+            <button type="button" onClick={() => void signOut()} disabled={signingOut} aria-busy={signingOut} className="inline-flex items-center gap-2 rounded-full border border-slate-200 px-4 py-2.5 text-sm font-semibold text-slate-700 transition hover:border-red-400 hover:text-red-600 dark:border-white/10 dark:text-slate-300">
               <FaArrowRightFromBracket /> {t.common.signOut}
             </button>
           </div>
         </div>
 
+        {actionError && <p role="alert" className="mt-4 rounded-xl bg-red-500/10 p-4 text-sm text-red-600">{actionError}</p>}
         {/* Email verification banner */}
         {!currentUser.emailVerified && (
           <div className="mt-6 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-amber-300/60 bg-amber-50 px-5 py-4 dark:border-amber-400/30 dark:bg-amber-500/10">
@@ -342,10 +390,7 @@ export default function AccountPage() {
                   <p className="text-2xl font-black text-amber-600 dark:text-amber-400">€{VIP_SALE_PRICE.toFixed(2)}</p>
                 </div>
                 <button
-                  onClick={async () => {
-                    const res = await buyVip();
-                    if (res.checkoutUrl) window.location.href = res.checkoutUrl;
-                  }}
+                  onClick={() => void purchaseVip()} disabled={vipBusy} aria-busy={vipBusy}
                   className="rounded-full bg-gradient-to-r from-amber-500 to-yellow-500 px-5 py-3 text-sm font-black text-white shadow-lg shadow-amber-500/30 transition hover:-translate-y-0.5 hover:shadow-xl"
                 >
                   {t.vip.buy}
@@ -370,7 +415,7 @@ export default function AccountPage() {
               >
                 <FaCloudArrowUp /> {t.vip.uploadCard}
               </button>
-              <input ref={vipCardRef} type="file" accept="image/*" className="hidden" onChange={(e) => onVipCardFile(e.target.files?.[0])} />
+              <input ref={vipCardRef} type="file" accept="image/jpeg,image/png,image/webp" disabled={vipBusy} className="hidden" onChange={(e) => onVipCardFile(e.target.files?.[0])} />
             </div>
           </div>
         )}
@@ -498,7 +543,7 @@ export default function AccountPage() {
                           {[1, 2, 3, 4, 5].map((s) => (
                             <button
                               key={s}
-                              onClick={() => setRating(s)}
+                              onClick={() => setRating(s)} aria-pressed={rating === s}
                               className={`text-2xl transition hover:scale-110 ${s <= rating ? "text-amber-400" : "text-slate-300 dark:text-slate-600"}`}
                               aria-label={`${s}/5`}
                             >
@@ -506,7 +551,7 @@ export default function AccountPage() {
                             </button>
                           ))}
                         </div>
-                        <textarea
+                        <textarea maxLength={500} aria-label={lang === "nl" ? "Je ervaring" : "Your experience"}
                           value={reviewText}
                           onChange={(e) => setReviewText(e.target.value)}
                           placeholder={t.reviews.placeholder}
@@ -514,14 +559,7 @@ export default function AccountPage() {
                           className="w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/5 dark:text-white"
                         />
                         <button
-                          onClick={async () => {
-                            const res = await addReview({ orderId: o.id, rating, text: reviewText });
-                            if (res.ok) {
-                              setReviewingId(null);
-                              setReviewText("");
-                              setRating(5);
-                            }
-                          }}
+                          type="button" onClick={() => void sendReview(o.id)} disabled={reviewBusy} aria-busy={reviewBusy}
                           className="rounded-full bg-emerald-600 px-4 py-2 text-xs font-bold text-white transition hover:bg-emerald-500"
                         >
                           {t.reviews.submit}
@@ -529,7 +567,7 @@ export default function AccountPage() {
                       </div>
                     ) : (
                       <button
-                        onClick={() => { setReviewingId(o.id); setRating(5); setReviewText(""); }}
+                        onClick={() => { setReviewingId(o.id); setActionError(""); setRating(5); setReviewText(""); }}
                         className="mt-2 inline-flex items-center gap-1.5 rounded-full border border-amber-300/60 bg-amber-400/10 px-3 py-1.5 text-xs font-bold text-amber-700 transition hover:bg-amber-400/20 dark:text-amber-300"
                       >
                         <FaStar /> {t.reviews.leaveReview}
@@ -554,9 +592,9 @@ export default function AccountPage() {
         <div className="relative flex h-full flex-col justify-between">
           <div>
             <span className="lux-overline text-emerald-300">Shah Restaurant</span>
-            <h1 className="font-display mt-5 text-4xl font-semibold leading-tight">
+            <h2 className="font-display mt-5 text-4xl font-semibold leading-tight">
               <span className="ember-text">{mode === "login" ? t.auth.loginTitle : t.auth.registerTitle}</span>
-            </h1>
+            </h2>
           </div>
           <div className="grid gap-3">
             {[
@@ -578,13 +616,13 @@ export default function AccountPage() {
       <div className="premium-panel ember-border lux-sweep rounded-3xl p-6 sm:p-8">
         <div className="mb-6 flex rounded-full bg-slate-100 p-1 dark:bg-white/5">
           <button
-            onClick={() => { setMode("login"); setError(""); }}
+            type="button" aria-pressed={mode === "login"} onClick={() => { setMode("login"); setError(""); }}
             className={`flex-1 rounded-full py-2 text-sm font-bold transition ${mode === "login" ? "bg-emerald-600 text-white" : "text-slate-500 dark:text-slate-400"}`}
           >
             {t.common.signIn}
           </button>
           <button
-            onClick={() => { setMode("register"); setError(""); }}
+            type="button" aria-pressed={mode === "register"} onClick={() => { setMode("register"); setError(""); }}
             className={`flex-1 rounded-full py-2 text-sm font-bold transition ${mode === "register" ? "bg-emerald-600 text-white" : "text-slate-500 dark:text-slate-400"}`}
           >
             {t.common.signUp}
@@ -595,14 +633,14 @@ export default function AccountPage() {
           {mode === "login" ? t.auth.loginTitle : t.auth.registerTitle}
         </h1>
 
-        <form id="account-auth" onSubmit={(event) => { event.preventDefault(); void submit(); }} className="mt-5 space-y-3">
+        <form id="account-auth" aria-describedby={error ? "account-error" : undefined} onSubmit={(event) => { event.preventDefault(); void submit(); }} className="mt-5 space-y-3">
           {mode === "register" && (
             <>
               <p className="text-xs font-bold uppercase tracking-wide text-slate-500 dark:text-slate-400">{t.company.registerAs}</p>
               <div className="flex rounded-full bg-slate-100 p-1 dark:bg-white/5">
                 <button
                   type="button"
-                  onClick={() => setForm({ ...form, accountType: "personal" })}
+                  aria-pressed={form.accountType === "personal"} onClick={() => setForm({ ...form, accountType: "personal" })}
                   className={`flex flex-1 items-center justify-center gap-2 rounded-full py-2 text-sm font-bold transition ${
                     form.accountType === "personal" ? "bg-emerald-600 text-white" : "text-slate-500 dark:text-slate-400"
                   }`}
@@ -611,7 +649,7 @@ export default function AccountPage() {
                 </button>
                 <button
                   type="button"
-                  onClick={() => setForm({ ...form, accountType: "company" })}
+                  aria-pressed={form.accountType === "company"} onClick={() => setForm({ ...form, accountType: "company" })}
                   className={`flex flex-1 items-center justify-center gap-2 rounded-full py-2 text-sm font-bold transition ${
                     form.accountType === "company" ? "bg-sky-600 text-white" : "text-slate-500 dark:text-slate-400"
                   }`}
@@ -645,8 +683,8 @@ export default function AccountPage() {
             placeholder={t.auth.email}
             className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-3 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/5 dark:text-white"
           />
-          <input aria-label={t.auth.password}
-            type="password"
+          <input id="account-password" aria-label={t.auth.password}
+            type={showPassword ? "text" : "password"} autoCapitalize="none" spellCheck={false}
             required
             minLength={mode === "register" ? 6 : 1}
             maxLength={200}
@@ -656,8 +694,11 @@ export default function AccountPage() {
             placeholder={t.auth.password}
             className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-3 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/5 dark:text-white"
           />
+          <button type="button" aria-controls="account-password" aria-pressed={showPassword} onClick={() => setShowPassword(value => !value)} className="min-h-11 px-1 text-sm font-semibold underline">{showPassword ? (lang === "nl" ? "Wachtwoord verbergen" : "Hide password") : (lang === "nl" ? "Wachtwoord tonen" : "Show password")}</button>
           {mode === "register" && (
             <>
+              <label className="block text-sm font-semibold" htmlFor="account-password-confirm">{t.email.confirmPassword}</label>
+              <input id="account-password-confirm" type={showPassword ? "text" : "password"} required minLength={6} maxLength={200} autoComplete="new-password" autoCapitalize="none" spellCheck={false} value={confirmPassword} onChange={event => setConfirmPassword(event.target.value)} className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-3 dark:border-white/10 dark:bg-white/5" />
               <input aria-label={t.auth.phone} type="tel" inputMode="tel" autoComplete="tel" maxLength={30}
                 value={form.phone}
                 onChange={(e) => setForm({ ...form, phone: e.target.value })}
@@ -711,7 +752,7 @@ export default function AccountPage() {
             </div>
           </div>
         )}
-        {error && <p role="alert" className="mt-3 rounded-xl bg-red-500/10 px-3 py-2 text-sm font-medium text-red-600 dark:text-red-400">{error}</p>}
+        {error && <p ref={errorRef} id="account-error" tabIndex={-1} role="alert" className="mt-3 rounded-xl bg-red-500/10 px-3 py-2 text-sm font-medium text-red-600 dark:text-red-400">{error}</p>}
 
         <button
           type="submit"

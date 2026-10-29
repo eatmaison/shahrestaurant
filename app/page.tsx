@@ -2,13 +2,18 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useDeferredValue, useEffect, useRef, useState } from "react";
+import dynamic from "next/dynamic";
+import { ProductImage } from "./components/ProductImage";
+import { CatalogFeedback } from "./components/CatalogFeedback";
+import { matchesMenuSearch, normalizeMenuSearch } from "./lib/menuSearch";
+import { useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
 import { FaArrowDown, FaArrowLeft, FaArrowRight, FaBagShopping, FaCalendarCheck, FaChevronDown, FaClock, FaEnvelope, FaExpand, FaFireBurner, FaLocationDot, FaMagnifyingGlass, FaPhone, FaStar, FaUtensils, FaUsers, FaXmark } from "react-icons/fa6";
 import { useLang, useStore, useTheme } from "./providers";
 import { SITE_ID } from "./lib/data";
 import type { Product } from "./lib/types";
 import { homeContent } from "./lib/homeContent";
-import { HomeDialog } from "./components/HomeDialog";
+const HomeDialog = dynamic(() => import("./components/HomeDialog").then(module => module.HomeDialog), { ssr: false });
+const RichDescription = dynamic(() => import("./components/RichDescription"), { ssr: false });
 import { useHomeMotion, useHomeTilt, useRichMedia } from "./components/HomeDepth";
 import styles from "./home.module.css";
 
@@ -16,9 +21,8 @@ const SIGNATURE_IDS = ["tdc-butter-chicken", "tdc-tandoori-mixed-grill", "tdc-ta
 const DIRECTIONS = "https://www.google.com/maps/dir/?api=1&destination=Klaprozenweg+36a+1032+KL+Amsterdam";
 
 function DishPhoto({ product, large = false }: { product: Product; large?: boolean }) {
-  const [failed, setFailed] = useState(false);
-  return <span className={large ? styles.productPhoto : styles.dishPhoto}>{product.image && !failed
-    ? <Image src={product.image} alt={large ? product.name : ""} fill sizes={large ? "(min-width: 700px) 540px, 90vw" : "72px"} unoptimized onError={() => setFailed(true)} />
+  return <span className={large ? styles.productPhoto : styles.dishPhoto}>{product.image
+    ? <ProductImage src={product.image} alt={large ? product.name : ""} sizes={large ? "(min-width: 700px) 540px, 90vw" : "72px"} />
     : <FaUtensils aria-hidden="true" />}</span>;
 }
 
@@ -43,20 +47,24 @@ export default function Home() {
   const [activeSection, setActiveSection] = useState("menu");
   const [photoIndex, setPhotoIndex] = useState<number | null>(null);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
-  const menu = products.filter((product) => product.brand === "tandoor");
-  const curated = SIGNATURE_IDS.flatMap((id) => menu.filter((product) => product.id === id));
-  const featured = [...curated, ...menu.filter((product) => !SIGNATURE_IDS.includes(product.id))].slice(0, 6);
-  const categories = [...new Set(menu.map((product) => product.category))];
+  const { menu, featured, categories } = useMemo(() => {
+    const menu = products.filter(product => product.brand === "tandoor");
+    const curated = SIGNATURE_IDS.flatMap(id => menu.filter(product => product.id === id));
+    return { menu, featured: [...curated, ...menu.filter(product => !SIGNATURE_IDS.includes(product.id))].slice(0, 6), categories: [...new Set(menu.map(product => product.category))] };
+  }, [products]);
   const selectedCategory = categories.includes(category) ? category : "";
-  const searchTerm = deferredSearch.trim().toLocaleLowerCase(lang);
-  const candidates = selectedCategory ? menu.filter((product) => product.category === selectedCategory) : searchTerm ? menu : featured;
-  const matchedDishes = candidates.filter((product) => !searchTerm || [product.name, product.description, product.descriptionNl, product.category, ...(product.ingredients || []), ...(product.ingredientsNl || [])].join(" ").toLocaleLowerCase(lang).includes(searchTerm));
+  const searchTerm = normalizeMenuSearch(deferredSearch);
+  const matchedDishes = useMemo(() => {
+    const candidates = selectedCategory ? menu.filter(product => product.category === selectedCategory) : searchTerm ? menu : featured;
+    return candidates.filter(product => matchesMenuSearch(product, searchTerm));
+  }, [menu, featured, selectedCategory, searchTerm]);
   const visibleDishes = showAll ? matchedDishes : matchedDishes.slice(0, 6);
-  const siteReviews = reviews.filter((review) => review.site === SITE_ID && Number.isFinite(review.rating) && review.rating >= 1 && review.rating <= 5);
-  const userReviews = siteReviews.filter((review) => review.text.trim()).slice(0, 3);
-  const avgRating = siteReviews.length ? siteReviews.reduce((sum, review) => sum + review.rating, 0) / siteReviews.length : 0;
-  const currency = new Intl.NumberFormat(lang === "nl" ? "nl-NL" : "en-IE", { style: "currency", currency: "EUR" });
-  const dateFormat = new Intl.DateTimeFormat(lang === "nl" ? "nl-NL" : "en-GB", { month: "long", year: "numeric", timeZone: "Europe/Amsterdam" });
+  const { siteReviews, userReviews, avgRating } = useMemo(() => {
+    const siteReviews = reviews.filter(review => review.site === SITE_ID && Number.isFinite(review.rating) && review.rating >= 1 && review.rating <= 5 && Number.isFinite(new Date(review.createdAt).getTime()));
+    return { siteReviews, userReviews: siteReviews.filter(review => review.text.trim()).slice(0, 3), avgRating: siteReviews.length ? siteReviews.reduce((sum, review) => sum + review.rating, 0) / siteReviews.length : 0 };
+  }, [reviews]);
+  const currency = useMemo(() => new Intl.NumberFormat(lang === "nl" ? "nl-NL" : "en-IE", { style: "currency", currency: "EUR" }), [lang]);
+  const dateFormat = useMemo(() => new Intl.DateTimeFormat(lang === "nl" ? "nl-NL" : "en-GB", { month: "long", year: "numeric", timeZone: "Europe/Amsterdam" }), [lang]);
   const sections = [{ id: "menu", label: copy.menu }, { id: "atmosphere", label: copy.atmosphere }, { id: "story", label: copy.story }, { id: "visit", label: copy.visit }];
   const photos = [
     { src: "/photos/687A0402.jpeg", title: copy.table, alt: copy.tableAlt },
@@ -101,10 +109,11 @@ export default function Home() {
     const track = heroScrollRef.current;
     if (!video || !track) return;
     let frame = 0;
+    let visible = true;
     const syncFrame = () => {
       frame = 0;
       video.pause();
-      if (document.hidden || !Number.isFinite(video.duration) || !video.duration || video.seeking) return;
+      if (!visible || document.hidden || !Number.isFinite(video.duration) || !video.duration || video.seeking) return;
       const stage = video.parentElement!;
       const pinTop = parseFloat(getComputedStyle(stage).top) || 0;
       const distance = track.offsetHeight - stage.offsetHeight;
@@ -113,7 +122,11 @@ export default function Home() {
       const time = progress * Math.max(0, video.duration - 0.001);
       if (Math.abs(video.currentTime - time) > 0.008) video.currentTime = time;
     };
-    const schedule = () => { if (!frame) frame = requestAnimationFrame(syncFrame); };
+    const schedule = () => { if (!frame && visible && !document.hidden) frame = requestAnimationFrame(syncFrame); };
+    const intersection = new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; if (visible) schedule(); else { cancelAnimationFrame(frame); frame = 0; } });
+    intersection.observe(track);
+    const visibility = () => { if (document.hidden) { cancelAnimationFrame(frame); frame = 0; } else schedule(); };
+    document.addEventListener("visibilitychange", visibility);
     const observer = new ResizeObserver(schedule);
     observer.observe(track);
     observer.observe(video);
@@ -126,6 +139,8 @@ export default function Home() {
     return () => {
       cancelAnimationFrame(frame);
       observer.disconnect();
+      intersection.disconnect();
+      document.removeEventListener("visibilitychange", visibility);
       window.removeEventListener("scroll", schedule);
       window.removeEventListener("resize", schedule);
       video.removeEventListener("loadedmetadata", schedule);
@@ -147,13 +162,13 @@ export default function Home() {
   }
 
   const reviewsJsonLd = siteReviews.length ? {
-    "@context": "https://schema.org", "@type": "Restaurant", "@id": "https://shahrestaurant.nl", name: "Shah Restaurant",
+    "@context": "https://schema.org", "@type": "Restaurant", "@id": "https://shahrestaurant.nl/#restaurant", name: "Shah Restaurant",
     aggregateRating: { "@type": "AggregateRating", ratingValue: Number(avgRating.toFixed(1)), reviewCount: siteReviews.length, bestRating: 5, worstRating: 1 },
     review: userReviews.map((review) => ({ "@type": "Review", author: { "@type": "Person", name: review.userName }, reviewBody: review.text, reviewRating: { "@type": "Rating", ratingValue: review.rating, bestRating: 5 } })),
   } : null;
   const productsJsonLd = {
     "@context": "https://schema.org", "@type": "ItemList",
-    itemListElement: featured.map((product, index) => ({ "@type": "ListItem", position: index + 1, item: { "@type": "Product", name: product.name, description: product.description, offers: { "@type": "Offer", price: product.price, priceCurrency: "EUR", url: "https://shahrestaurant.nl/order" } } })),
+    itemListElement: featured.map((product, index) => ({ "@type": "ListItem", position: index + 1, item: { "@type": "Product", name: product.name, description: product.description, offers: { "@type": "Offer", price: product.price, priceCurrency: "EUR", url: `https://shahrestaurant.nl/order?dish=${encodeURIComponent(product.id)}` } } })),
   };
 
   return (
@@ -171,6 +186,7 @@ export default function Home() {
           muted
           playsInline
           preload="metadata"
+          onError={event => { event.currentTarget.style.display = "none"; }}
           aria-hidden="true"
           tabIndex={-1}
         />}
@@ -216,7 +232,8 @@ export default function Home() {
         </div>
         <div className={styles.menuContent} data-reveal="visible">
           <p className={styles.eyebrow}>01 / {copy.kitchen}</p><h2 id="menu-title">{copy.menuTitle}</h2><p className={styles.sectionDescription}>{copy.menuText}</p>
-          <div className={styles.menuSearch}><FaMagnifyingGlass aria-hidden="true" /><label className="sr-only" htmlFor="dish-search">{copy.searchMenu}</label><input ref={searchRef} id="dish-search" type="search" autoComplete="off" value={search} placeholder={copy.searchPlaceholder} onChange={(event) => { setSearch(event.target.value); setShowAll(false); }} />{search && <button type="button" onClick={() => { setSearch(""); setShowAll(false); searchRef.current?.focus(); }} aria-label={copy.clearSearch} title={copy.clearSearch}><FaXmark aria-hidden="true" /></button>}</div>
+          <div className={styles.menuSearch}><FaMagnifyingGlass aria-hidden="true" /><label className="sr-only" htmlFor="dish-search">{copy.searchMenu}</label><input ref={searchRef} id="dish-search" type="search" autoComplete="off" maxLength={120} spellCheck={false} enterKeyHint="search" value={search} placeholder={copy.searchPlaceholder} onChange={(event) => { setSearch(event.target.value); setShowAll(false); }} />{search && <button type="button" onClick={() => { setSearch(""); setShowAll(false); searchRef.current?.focus(); }} aria-label={copy.clearSearch} title={copy.clearSearch}><FaXmark aria-hidden="true" /></button>}</div>
+          <CatalogFeedback />
           <fieldset className={styles.filters}>
             <legend className="sr-only">{copy.category}</legend>
             {[{ value: "", label: copy.signature }, ...categories.map((value) => ({ value, label: value }))].map((option) => (
@@ -281,9 +298,9 @@ export default function Home() {
 
       <div className={styles.mobileActions}><Link href="/order"><FaUtensils aria-hidden="true" />{copy.order}</Link><Link href="/reservations"><FaCalendarCheck aria-hidden="true" />{copy.reserve}</Link></div>
 
-      {currentPhoto && <HomeDialog titleId="photo-title" closeLabel={copy.close} onClose={() => setPhotoIndex(null)} onKeyDown={(event) => { if (event.key === "ArrowRight" || event.key === "ArrowLeft") { event.preventDefault(); changePhoto(event.key === "ArrowRight" ? 1 : -1); } }}><div className={styles.lightboxPhoto} onTouchStart={(event) => { swipeStart.current = event.touches.length === 1 ? { horizontal: event.touches[0].clientX, vertical: event.touches[0].clientY } : null; }} onTouchCancel={() => { swipeStart.current = null; }} onTouchEnd={(event) => { const start = swipeStart.current; swipeStart.current = null; const end = event.changedTouches[0]; if (start && end && Math.abs(end.clientX - start.horizontal) > 60 && Math.abs(end.clientY - start.vertical) < 50) changePhoto(end.clientX < start.horizontal ? 1 : -1); }}><Image key={currentPhoto.src} src={currentPhoto.src} alt={currentPhoto.alt} fill sizes="90vw" /></div><div className={styles.lightboxFooter}><button type="button" onClick={() => changePhoto(-1)} aria-label={copy.previous} title={copy.previous}><FaArrowLeft aria-hidden="true" /></button><div aria-live="polite"><h2 id="photo-title">{currentPhoto.title}</h2><p>{copy.photo} {(photoIndex ?? 0) + 1} / {photos.length}</p></div><button type="button" onClick={() => changePhoto(1)} aria-label={copy.next} title={copy.next}><FaArrowRight aria-hidden="true" /></button></div><nav className={styles.photoThumbnails} aria-label={copy.photoNavigation}>{photos.map((photo, index) => <button type="button" key={photo.src} aria-label={`${copy.viewPhoto}: ${photo.title}`} title={photo.title} aria-current={index === photoIndex ? "true" : undefined} onClick={() => setPhotoIndex(index)}><Image src={photo.src} alt="" fill sizes="72px" /></button>)}</nav></HomeDialog>}
+      {currentPhoto && <HomeDialog titleId="photo-title" closeLabel={copy.close} onClose={() => setPhotoIndex(null)} onKeyDown={(event) => { if (event.key === "Home" || event.key === "End") { event.preventDefault(); setPhotoIndex(event.key === "Home" ? 0 : photos.length - 1); } else if (event.key === "ArrowRight" || event.key === "ArrowLeft") { event.preventDefault(); changePhoto(event.key === "ArrowRight" ? 1 : -1); } }}><div className={styles.lightboxPhoto} onTouchStart={(event) => { swipeStart.current = event.touches.length === 1 ? { horizontal: event.touches[0].clientX, vertical: event.touches[0].clientY } : null; }} onTouchCancel={() => { swipeStart.current = null; }} onTouchEnd={(event) => { const start = swipeStart.current; swipeStart.current = null; const end = event.changedTouches[0]; if (start && end && Math.abs(end.clientX - start.horizontal) > 60 && Math.abs(end.clientY - start.vertical) < 50) changePhoto(end.clientX < start.horizontal ? 1 : -1); }}><Image key={currentPhoto.src} src={currentPhoto.src} alt={currentPhoto.alt} fill sizes="90vw" /></div><div className={styles.lightboxFooter}><button type="button" onClick={() => changePhoto(-1)} aria-label={copy.previous} title={copy.previous}><FaArrowLeft aria-hidden="true" /></button><div aria-live="polite"><h2 id="photo-title">{currentPhoto.title}</h2><p>{copy.photo} {(photoIndex ?? 0) + 1} / {photos.length}</p></div><button type="button" onClick={() => changePhoto(1)} aria-label={copy.next} title={copy.next}><FaArrowRight aria-hidden="true" /></button></div><nav className={styles.photoThumbnails} aria-label={copy.photoNavigation}>{photos.map((photo, index) => <button type="button" key={photo.src} aria-label={`${copy.viewPhoto}: ${photo.title}`} title={photo.title} aria-current={index === photoIndex ? "true" : undefined} onClick={() => setPhotoIndex(index)}><Image src={photo.src} alt="" fill sizes="72px" /></button>)}</nav></HomeDialog>}
 
-      {selectedProduct && <HomeDialog titleId="dish-title" closeLabel={copy.close} onClose={() => setSelectedProduct(null)}><div className={styles.productDetails}>{selectedProduct.image && <DishPhoto key={selectedProduct.id} product={selectedProduct} large />}<p className={styles.eyebrow}>{selectedProduct.category}</p><h2 id="dish-title">{selectedProduct.name}</h2><p className={styles.productPrice}>{currency.format(selectedProduct.price)}</p><p>{(lang === "nl" && selectedProduct.detailedDescription?.nl) || selectedProduct.detailedDescription?.en || (lang === "nl" && selectedProduct.descriptionNl) || selectedProduct.description}</p>{!!ingredients?.length && <><h3>{copy.ingredients}</h3><ul className={styles.ingredientList}>{ingredients.map((ingredient, index) => <li key={`${ingredient}-${index}`}>{ingredient}</li>)}</ul></>}{!!allergens?.length && <><h3>{copy.allergens}</h3><p className={styles.allergenList}>{allergens.join(", ")}</p></>}<p className={styles.allergyNote}>{copy.allergy}</p><Link href="/order" className={styles.primaryButton}><FaUtensils aria-hidden="true" />{copy.order}<FaArrowRight aria-hidden="true" /></Link></div></HomeDialog>}
+      {selectedProduct && <HomeDialog titleId="dish-title" closeLabel={copy.close} onClose={() => setSelectedProduct(null)}><div className={styles.productDetails}>{selectedProduct.image && <DishPhoto key={selectedProduct.id} product={selectedProduct} large />}<p className={styles.eyebrow}>{selectedProduct.category}</p><h2 id="dish-title">{selectedProduct.name}</h2><p className={styles.productPrice}>{currency.format(selectedProduct.price)}</p><RichDescription html={(lang === "nl" && selectedProduct.detailedDescription?.nl) || selectedProduct.detailedDescription?.en || (lang === "nl" && selectedProduct.descriptionNl) || selectedProduct.description || ""} />{!!ingredients?.length && <><h3>{copy.ingredients}</h3><ul className={styles.ingredientList}>{ingredients.map((ingredient, index) => <li key={`${ingredient}-${index}`}>{ingredient}</li>)}</ul></>}{!!allergens?.length && <><h3>{copy.allergens}</h3><p className={styles.allergenList}>{allergens.join(", ")}</p></>}<p className={styles.allergyNote}>{copy.allergy}</p><Link href={`/order?dish=${encodeURIComponent(selectedProduct.id)}`} className={styles.primaryButton}><FaUtensils aria-hidden="true" />{copy.order}<FaArrowRight aria-hidden="true" /></Link></div></HomeDialog>}
       {[reviewsJsonLd, productsJsonLd].filter(Boolean).map((schema, index) => <script key={index} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, "\\u003c") }} />)}
     </div>
   );

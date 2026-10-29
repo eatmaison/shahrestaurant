@@ -1,6 +1,11 @@
 "use client";
 
 import Link from "next/link";
+import { LocationMap } from "../components/LocationMap";
+import dynamic from "next/dynamic";
+import { useRestaurantClock } from "../lib/useRestaurantClock";
+import { downloadReservationCalendar } from "../lib/reservationCalendar";
+const HomeDialog = dynamic(() => import("../components/HomeDialog").then(module => module.HomeDialog), { ssr: false });
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
   FaBellConcierge,
@@ -34,10 +39,6 @@ const TIME_SLOTS: string[] = (() => {
 
 const OCCASIONS = ["", "birthday", "business", "romantic", "family", "other"] as const;
 
-function todayIso(): string {
-  return new Intl.DateTimeFormat("sv-SE", { timeZone: "Europe/Amsterdam", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
-}
-
 export default function ReservationsPage() {
   const { t, lang } = useLang();
   const { currentUser, reservations, reviews, createReservation, cancelReservation, addReservationReview, hydrated } = useStore();
@@ -56,7 +57,14 @@ export default function ReservationsPage() {
   const errorRef = useRef<HTMLParagraphElement>(null);
   const [error, setError] = useState<string | null>(null);
   const [done, setDone] = useState<Reservation | null>(null);
-  const [nowLocal, setNowLocal] = useState("");
+  const nowLocal = useRestaurantClock();
+  const successRef = useRef<HTMLHeadingElement>(null);
+  const [cancelTarget, setCancelTarget] = useState<Reservation | null>(null);
+  const cancelLock = useRef(false);
+  const [cancelBusy, setCancelBusy] = useState(false);
+  const reviewLock = useRef(false);
+  const [reviewBusy, setReviewBusy] = useState(false);
+  const [actionError, setActionError] = useState("");
   const isClosedDay = date !== "" && new Date(`${date}T00:00:00Z`).getUTCDay() === 1;
   const availableSlots = useMemo(() => {
     if (isClosedDay) return [];
@@ -81,11 +89,11 @@ export default function ReservationsPage() {
   }, [hydrated, currentUser, prefilled]);
 
   useEffect(() => {
-    const update = () => setNowLocal(new Date().toLocaleString("sv-SE", { timeZone: "Europe/Amsterdam" }).replace(" ", "T"));
-    queueMicrotask(update);
-    const id = setInterval(update, 60_000);
-    return () => clearInterval(id);
-  }, []);
+    if (done) successRef.current?.focus();
+  }, [done]);
+  useEffect(() => {
+    if (time && !availableSlots.includes(time)) queueMicrotask(() => setTime(value => value === time ? "" : value));
+  }, [availableSlots, time]);
 
   const occasionLabels: Record<string, string> = {
     "": t.reservations.occasionNone,
@@ -133,6 +141,7 @@ export default function ReservationsPage() {
     setError(null);
     if (!name.trim() || !phone.trim() || !email.trim() || !date || !time) { setError(t.reservations.errorFillFields); return; }
     if (isClosedDay || !availableSlots.includes(time)) { setError(t.reservations.errorInvalidSlot); return; }
+    if (!Number.isInteger(guests) || guests < 1 || guests > 40) { setError(lang === "nl" ? "Kies 1 tot 40 gasten. Bel ons voor een grotere groep." : "Choose 1 to 40 guests. Call us for a larger group."); return; }
     reservationBusy.current = true;
     setSubmitting(true);
     try {
@@ -146,7 +155,23 @@ export default function ReservationsPage() {
 
   const dateLocale = lang === "nl" ? "nl-NL" : "en-GB";
   const fmtDate = (iso: string) =>
-    new Date(`${iso}T00:00:00`).toLocaleDateString(dateLocale, { weekday: "long", day: "numeric", month: "long", year: "numeric" });
+    new Date(`${iso}T12:00:00Z`).toLocaleDateString(dateLocale, { timeZone: "Europe/Amsterdam", weekday: "long", day: "numeric", month: "long", year: "numeric" });
+
+  const sendReview = async (reservationId: string) => {
+    if (reviewLock.current) return;
+    reviewLock.current = true; setReviewBusy(true); setActionError("");
+    try {
+      const result = await addReservationReview({ reservationId, rating: reviewRating, text: reviewText });
+      if (!result.ok) { setActionError(t.reservations.errorGeneric); return; }
+      setReviewingId(null); setReviewText(""); setReviewRating(5);
+    } finally { reviewLock.current = false; setReviewBusy(false); }
+  };
+  const confirmCancellation = async () => {
+    if (!cancelTarget || cancelLock.current) return;
+    cancelLock.current = true; setCancelBusy(true); setActionError("");
+    try { const result = await cancelReservation(cancelTarget.id); if (result.ok) setCancelTarget(null); else setActionError(t.reservations.errorGeneric); }
+    finally { cancelLock.current = false; setCancelBusy(false); }
+  };
 
   return (
     <div className={`${styles.page} page-stage overflow-hidden`}>
@@ -189,7 +214,7 @@ export default function ReservationsPage() {
                 <span className="animate-pop grid h-16 w-16 place-items-center rounded-full border border-emerald-500/40 bg-emerald-500/10 text-2xl text-emerald-600 dark:text-emerald-400">
                   <FaCalendarCheck />
                 </span>
-                <h2 className="font-display mt-5 text-2xl font-semibold text-slate-900 dark:text-white">
+                <h2 ref={successRef} tabIndex={-1} className="font-display mt-5 text-2xl font-semibold text-slate-900 dark:text-white">
                   {t.reservations.successTitle}
                 </h2>
                 <p className="mt-3 max-w-md text-sm leading-7 text-slate-600 dark:text-slate-300">{t.reservations.successText}</p>
@@ -213,6 +238,7 @@ export default function ReservationsPage() {
                     {t.reservations.successEmailNote} <span className="font-semibold">{done.email}</span>
                   </p>
                 )}
+                <button type="button" onClick={() => downloadReservationCalendar(done)} className="mt-5 min-h-11 rounded-full border px-5 py-3 text-sm font-semibold">{lang === "nl" ? "Toevoegen aan agenda" : "Add to calendar"}</button>
                 <button
                   onClick={() => setDone(null)}
                   className="btn-ember btn-shine mt-7 inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-bold text-white"
@@ -235,9 +261,9 @@ export default function ReservationsPage() {
                     <input
                       type="date"
                       required
-                      min={todayIso()}
+                      min={nowLocal.slice(0, 10) || undefined}
                       value={date}
-                      onChange={(e) => setDate(e.target.value)}
+                      onChange={(e) => { setDate(e.target.value); setTime(""); }}
                       className="block w-full min-w-0 max-w-full appearance-none rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition [-webkit-appearance:none] focus:border-emerald-500 dark:border-white/10 dark:bg-white/5 dark:text-white dark:[color-scheme:dark]"
                     />
                   </label>
@@ -248,6 +274,8 @@ export default function ReservationsPage() {
                       <FaClock className="text-emerald-500" /> {t.reservations.time} *
                     </span>
                     <select
+                      disabled={!date || availableSlots.length === 0}
+                      aria-describedby="reservation-availability"
                       required
                       value={time}
                       onChange={(e) => setTime(e.target.value)}
@@ -265,6 +293,7 @@ export default function ReservationsPage() {
                   </label>
                 </div>
 
+                <p id="reservation-availability" role="status" className="mt-3 text-sm text-slate-600 dark:text-slate-300">{isClosedDay ? (lang === "nl" ? "Op maandag zijn we gesloten. Kies dinsdag tot en met zondag." : "We are closed on Mondays. Choose Tuesday through Sunday.") : date && !availableSlots.length ? (lang === "nl" ? "Er zijn vandaag geen aankomsttijden meer. Kies een andere datum." : "There are no arrival times left today. Choose another date.") : (lang === "nl" ? "Alle tijden zijn lokale tijden in Amsterdam." : "All times are local to Amsterdam.")}</p>
                 {/* Guests */}
                 <div className="mt-4">
                   <span className="mb-1.5 flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
@@ -277,7 +306,7 @@ export default function ReservationsPage() {
                         type="button"
                         onClick={() => setGuests(n)}
                         aria-pressed={guests === n}
-                        className={`h-10 w-10 rounded-full border text-sm font-bold transition duration-200 hover:-translate-y-0.5 ${
+                        className={`h-11 w-11 rounded-full border text-sm font-bold transition duration-200 hover:-translate-y-0.5 ${
                           guests === n
                             ? "border-emerald-500 bg-emerald-500/15 text-emerald-700 shadow-md shadow-emerald-600/15 dark:text-emerald-300"
                             : "border-slate-200 bg-white text-slate-500 hover:border-emerald-400 dark:border-white/10 dark:bg-white/5 dark:text-slate-400"
@@ -289,14 +318,14 @@ export default function ReservationsPage() {
                     <input
                       type="number"
                       min={1}
-                      max={200}
-                      value={guests}
-                      onChange={(e) => setGuests(Math.min(200, Math.max(1, parseInt(e.target.value, 10) || 1)))}
+                      max={40} required step={1} inputMode="numeric"
+                      value={guests || ""}
+                      onChange={e => setGuests(Number.isFinite(e.target.valueAsNumber) ? e.target.valueAsNumber : 0)}
                       aria-label={t.reservations.guests}
                       className="h-10 w-20 rounded-full border border-slate-200 bg-white px-4 text-center text-sm font-bold text-slate-900 outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/5 dark:text-white"
                     />
                   </div>
-                  <p className="mt-2 text-xs leading-5 text-slate-500 dark:text-slate-400">{t.reservations.largeGroupNote}</p>
+                  <p className="mt-2 text-xs leading-5 text-slate-500 dark:text-slate-400">{t.reservations.largeGroupNote} <a href="tel:+31203412995" className="inline-flex min-h-11 items-center font-semibold underline">+31 20 341 2995</a></p>
                 </div>
 
                 <div className="mt-5 grid gap-4 sm:grid-cols-2">
@@ -386,6 +415,8 @@ export default function ReservationsPage() {
                   />
                 </label>
 
+                <p className="mt-1 text-right text-xs text-slate-500" aria-live="off">{note.length}/500</p>
+                {date && time && availableSlots.includes(time) && <output className="mt-4 block rounded-xl border border-emerald-500/20 p-4 text-sm" aria-live="polite">{fmtDate(date)} · {time} · {guests || "—"} {t.reservations.guestsSuffix}</output>}
                 {error && (
                   <p id="reservation-error" ref={errorRef} tabIndex={-1} role="alert" className="mt-4 rounded-xl border border-red-400/40 bg-red-400/10 px-4 py-3 text-sm font-semibold text-red-600 dark:text-red-400">
                     {error}
@@ -442,6 +473,7 @@ export default function ReservationsPage() {
           {/* My reservations */}
           <div className="premium-panel lux-sweep texture-linen rounded-[2rem] p-6 sm:p-7">
             <h2 className="font-display text-lg font-semibold text-slate-900 dark:text-white">{t.reservations.myReservations}</h2>
+            {actionError && !cancelTarget && <p role="alert" className="mt-3 text-sm text-red-600">{actionError}</p>}
             {!currentUser ? (
               <p className="mt-3 text-sm leading-7 text-slate-500 dark:text-slate-400">
                 {t.reservations.signInPrompt}{" "}
@@ -455,8 +487,7 @@ export default function ReservationsPage() {
               <ul className="mt-4 space-y-3">
                 {myReservations.map((r) => {
                   const meta = statusMeta[r.status];
-                  const today = todayIso();
-                  const isUpcoming = r.date >= today && (r.status === "pending" || r.status === "confirmed");
+                  const isUpcoming = !!nowLocal && `${r.date}T${r.time}` > nowLocal && (r.status === "pending" || r.status === "confirmed");
                   // Reviewable when confirmed AND already took place (past date, or today after the seating time).
                   const slot = `${r.date}T${r.time}:00`;
                   const isReviewable = r.status === "confirmed" && !!nowLocal && slot < nowLocal;
@@ -475,7 +506,7 @@ export default function ReservationsPage() {
                       </p>
                       {isUpcoming && (
                         <button
-                          onClick={() => cancelReservation(r.id)}
+                          type="button" onClick={() => { setCancelTarget(r); setActionError(""); }}
                           className="mt-2.5 text-xs font-semibold text-red-500 underline-offset-4 transition hover:underline"
                         >
                           {t.reservations.cancelBooking}
@@ -505,7 +536,7 @@ export default function ReservationsPage() {
                       {isReviewable && !existingReview && reviewingId !== r.id && (
                         <button
                           onClick={() => {
-                            setReviewingId(r.id);
+                            setReviewingId(r.id); setActionError("");
                             setReviewRating(5);
                             setReviewText("");
                           }}
@@ -522,7 +553,7 @@ export default function ReservationsPage() {
                               <button
                                 key={s}
                                 type="button"
-                                onClick={() => setReviewRating(s)}
+                                onClick={() => setReviewRating(s)} aria-pressed={reviewRating === s}
                                 className={`text-2xl transition hover:scale-110 ${
                                   s <= reviewRating ? "text-amber-400" : "text-slate-300 dark:text-slate-600"
                                 }`}
@@ -532,7 +563,7 @@ export default function ReservationsPage() {
                               </button>
                             ))}
                           </div>
-                          <textarea
+                          <textarea aria-label={lang === "nl" ? "Je ervaring" : "Your experience"}
                             value={reviewText}
                             onChange={(e) => setReviewText(e.target.value)}
                             placeholder={t.reviews.reservationPlaceholder}
@@ -543,18 +574,7 @@ export default function ReservationsPage() {
                           <div className="flex gap-2">
                             <button
                               type="button"
-                              onClick={async () => {
-                                const res = await addReservationReview({
-                                  reservationId: r.id,
-                                  rating: reviewRating,
-                                  text: reviewText,
-                                });
-                                if (res.ok) {
-                                  setReviewingId(null);
-                                  setReviewText("");
-                                  setReviewRating(5);
-                                }
-                              }}
+                              onClick={() => void sendReview(r.id)} disabled={reviewBusy} aria-busy={reviewBusy}
                               className="rounded-full bg-emerald-600 px-4 py-2 text-xs font-bold text-white transition hover:bg-emerald-500"
                             >
                               {t.reviews.submit}
@@ -640,17 +660,7 @@ export default function ReservationsPage() {
                 </a>
               </div>
               <div className="reservation-map-frame">
-                <iframe
-                  src="https://www.google.com/maps?q=Klaprozenweg%2036a%2C%201032%20KL%20Amsterdam&output=embed"
-                  width="100%"
-                  height="520"
-                  style={{ border: 0 }}
-                  allowFullScreen={true}
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  className="block h-full min-h-[380px] w-full"
-                  title={t.reservations.location}
-                />
+                <LocationMap />
                 <div className="reservation-map-pin-card" aria-hidden>
                   <span><FaLocationDot /></span>
                   <strong>Shah Restaurant</strong>
@@ -666,6 +676,13 @@ export default function ReservationsPage() {
           </div>
         </div>
       </section>
+      {cancelTarget && <HomeDialog titleId="cancel-reservation-title" closeLabel={lang === "nl" ? "Sluiten" : "Close"} onClose={() => { if (!cancelLock.current) setCancelTarget(null); }}>
+        <h2 id="cancel-reservation-title" className="text-2xl font-bold">{lang === "nl" ? "Reservering annuleren?" : "Cancel reservation?"}</h2>
+        <p className="mt-4">RSV-{cancelTarget.reservationNumber} · {fmtDate(cancelTarget.date)} · {cancelTarget.time}</p>
+        {actionError && <p role="alert" className="mt-4 text-red-600">{actionError}</p>}
+        <div className="mt-6 flex flex-wrap gap-3"><button type="button" disabled={cancelBusy} onClick={() => setCancelTarget(null)} className="min-h-11 rounded-full border px-5 py-3">{lang === "nl" ? "Reservering behouden" : "Keep reservation"}</button><button type="button" disabled={cancelBusy} aria-busy={cancelBusy} onClick={() => void confirmCancellation()} className="min-h-11 rounded-full bg-red-600 px-5 py-3 text-white">{cancelBusy ? "…" : t.reservations.cancelBooking}</button></div>
+      </HomeDialog>}
+
     </div>
   );
 }

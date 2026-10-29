@@ -3,9 +3,12 @@ import { readSessionValue, removeSessionValue } from "../lib/clientStorage";
 
 import Image from "next/image";
 import Link from "next/link";
+import { CatalogFeedback } from "../components/CatalogFeedback";
+import { matchesMenuSearch, normalizeMenuSearch } from "../lib/menuSearch";
+import { useRestaurantClock } from "../lib/useRestaurantClock";
 import { OrderConfirmation } from "../components/OrderConfirmation";
 import type { Order } from "../lib/types";
-import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { useDeferredValue, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import {
   FaArrowRight,
   FaBagShopping,
@@ -178,8 +181,10 @@ export default function OrderPage() {
   const [scheduleType, setScheduleType] = useState<"asap" | "once" | "workdays">("asap");
   const [scheduleDate, setScheduleDate] = useState("");
   const [scheduleTime, setScheduleTime] = useState("");
-  const [fallbackProducts, setFallbackProducts] = useState<Product[]>([]);
-  const today = new Date().toISOString().split("T")[0];
+  const localNow = useRestaurantClock();
+  const today = localNow.slice(0, 10);
+  const deferredSearch = useDeferredValue(search);
+  const linkedDishHandled = useRef(false);
 
   const nextOpen = restaurantStatus.nextOpening;
 
@@ -213,24 +218,16 @@ export default function OrderPage() {
   }, [currentUser]);
 
   useEffect(() => {
-    if (products.length > 0 || fallbackProducts.length > 0) return;
-    let cancelled = false;
-    queueMicrotask(() => {
-      fetch("/api/bootstrap", { cache: "no-store" })
-        .then((res) => (res.ok ? res.json() : null))
-        .then((data) => {
-          if (!cancelled) setFallbackProducts(data?.products ?? []);
-        })
-        .catch(() => {
-          if (!cancelled) setFallbackProducts([]);
-        });
-    });
-    return () => {
-      cancelled = true;
-    };
-  }, [products.length, fallbackProducts.length]);
+    if (!hydrated || !products.length || linkedDishHandled.current) return;
+    linkedDishHandled.current = true;
+    const url = new URL(window.location.href);
+    const product = products.find(product => product.id === url.searchParams.get("dish"));
+    if (!product) return;
+    queueMicrotask(() => setSearch(product.name));
+    url.searchParams.delete("dish"); window.history.replaceState(window.history.state, "", url.pathname + url.search + url.hash);
+  }, [products, hydrated]);
 
-  const menuProducts = products.length > 0 ? products : fallbackProducts;
+  const menuProducts = products;
   const subcategoriesOf = (brandId: string, categoryName: string) =>
     brands.find((b) => b.id === brandId)?.categories.find((c) => c.name === categoryName)?.subcategories ?? [];
 
@@ -244,11 +241,10 @@ export default function OrderPage() {
     return activeSubcategory === "all" || product.subcategory === activeSubcategory;
   };
 
-  const searchTerms = search.trim().toLocaleLowerCase(lang).split(/\s+/).filter(Boolean);
+  const searchTerms = normalizeMenuSearch(deferredSearch).split(/\s+/).filter(Boolean);
   const visible = menuProducts.filter((product) => {
     if (!searchTerms.length) return product.brand === activeBrand && categoryMatchesProduct(product, activeCategory);
-    const searchableText = `${product.name} ${product.description} ${product.descriptionNl ?? ""} ${product.category}`.toLocaleLowerCase(lang);
-    return searchTerms.every((term) => searchableText.includes(term));
+    return matchesMenuSearch(product, deferredSearch);
   });
 
   /** The active restaurant's admin-managed config (safe fallback while loading). */
@@ -309,7 +305,7 @@ export default function OrderPage() {
 
   const cartLines = useMemo(
     () => {
-      const availableProducts = products.concat(fallbackProducts.filter((fallbackProduct) => !products.some((product) => product.id === fallbackProduct.id)));
+      const availableProducts = products;
       const productById = new Map(availableProducts.map((product) => [product.id, product]));
       return Object.entries(cart).flatMap(([key, qty]): CartLine[] => {
         const { productId, sideChoice } = parseCartKey(key);
@@ -319,7 +315,7 @@ export default function OrderPage() {
         return [{ key, product, qty, sideChoice: isGrillSideRequired(product) ? sideChoice : undefined }];
       });
     },
-    [products, fallbackProducts, cart]
+    [products, cart]
   );
 
   const softDrinkProducts = useMemo(() => menuProducts.filter(isSoftDrinkProduct), [menuProducts]);
@@ -403,6 +399,8 @@ export default function OrderPage() {
 
   const handleCheckout = async () => {
     if (submitLock.current) return;
+    const fields = document.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>("[data-checkout-fields] input, [data-checkout-fields] textarea");
+    for (const field of fields) { if (field.getClientRects().length && !field.disabled && !field.reportValidity()) return; }
     if (belowMinOrder) {
       setMessage({ type: "error", text: minOrderNote });
       return;
@@ -670,16 +668,16 @@ export default function OrderPage() {
                           <span className="flex items-center gap-1.5">
                             <button
                               onClick={() => removeFromCart(p.id, option.id)}
-                              className="grid h-7 w-7 place-items-center rounded-full bg-white text-slate-700 transition hover:text-red-600 dark:bg-white/10 dark:text-slate-200"
-                              aria-label={t.common.remove}
+                              className="grid h-11 w-11 place-items-center rounded-full bg-white text-slate-700 transition hover:text-red-600 dark:bg-white/10 dark:text-slate-200"
+                              type="button" aria-label={`${t.common.remove}: ${p.name}`}
                             >
                               {optionQty <= 1 ? <FaTrash className="text-[0.6rem]" /> : <FaMinus className="text-[0.6rem]" />}
                             </button>
                             <span className="w-4 text-center text-xs font-bold text-emerald-700 dark:text-emerald-300">{optionQty}</span>
                             <button
                               onClick={() => addToCart(p.id, option.id)}
-                              className="grid h-7 w-7 place-items-center rounded-full bg-emerald-600 text-white transition hover:bg-emerald-500"
-                              aria-label={t.common.add}
+                              className="grid h-11 w-11 place-items-center rounded-full bg-emerald-600 text-white transition hover:bg-emerald-500"
+                              type="button" aria-label={`${t.common.add}: ${p.name}`} disabled={qty >= 99}
                             >
                               <FaPlus className="text-[0.6rem]" />
                             </button>
@@ -700,7 +698,7 @@ export default function OrderPage() {
                     <button
                       onClick={() => removeFromCart(p.id)}
                       className="grid h-8 w-8 place-items-center rounded-full bg-white text-slate-700 transition hover:text-red-600 dark:bg-white/10 dark:text-slate-200"
-                      aria-label={t.common.remove}
+                      type="button" aria-label={`${t.common.remove}: ${p.name}`}
                     >
                       <FaMinus className="text-xs" />
                     </button>
@@ -708,7 +706,7 @@ export default function OrderPage() {
                     <button
                       onClick={() => addToCart(p.id)}
                       className="grid h-8 w-8 place-items-center rounded-full bg-emerald-600 text-white transition hover:bg-emerald-500"
-                      aria-label={t.common.add}
+                      type="button" aria-label={`${t.common.add}: ${p.name}`} disabled={qty >= 99}
                     >
                       <FaPlus className="text-xs" />
                     </button>
@@ -788,7 +786,7 @@ export default function OrderPage() {
         <div className={styles.searchBox}>
           <FaMagnifyingGlass aria-hidden="true" />
           <label htmlFor="order-search" className="sr-only">{lang === "nl" ? "Zoek gerechten" : "Search dishes"}</label>
-          <input id="order-search" ref={searchRef} type="search" value={search} onChange={(event) => setSearch(event.target.value)} placeholder={lang === "nl" ? "Zoek in alle restaurants" : "Search all restaurants"} aria-describedby="order-search-results" />
+          <input id="order-search" ref={searchRef} type="search" maxLength={120} autoComplete="off" spellCheck={false} enterKeyHint="search" value={search} onChange={(event) => setSearch(event.target.value)} placeholder={lang === "nl" ? "Zoek in alle restaurants" : "Search all restaurants"} aria-describedby="order-search-results" />
           {search && <button type="button" onClick={() => { setSearch(""); searchRef.current?.focus(); }} aria-label={lang === "nl" ? "Zoekopdracht wissen" : "Clear search"} title={lang === "nl" ? "Zoekopdracht wissen" : "Clear search"}><FaXmark aria-hidden="true" /></button>}
         </div>
         <p id="order-search-results" role="status" aria-live="polite">{searchTerms.length ? (lang === "nl" ? "Alle restaurants" : "All restaurants") : activeBrandCfg?.name} · {hydrated ? `${visible.length} ${t.common.items}` : (lang === "nl" ? "Menukaart laden" : "Loading menu")}</p>
@@ -796,6 +794,7 @@ export default function OrderPage() {
         {hydrated && !currentUser && <div className={styles.loyaltyNotice}><FaStar aria-hidden="true" /><div><strong>{lang === "nl" ? "Maak een account en spaar punten" : "Register and start earning loyalty points"}</strong><p>{lang === "nl" ? "Spaar bij uw bestellingen en gebruik uw punten voor korting." : "Earn points with your orders and redeem them for discounts."}</p></div><Link href="/account#register">{lang === "nl" ? "Registreren" : "Register"}<FaArrowRight aria-hidden="true" /></Link></div>}
       </div>
 
+      <div className="mx-auto max-w-7xl px-4 sm:px-6"><CatalogFeedback /></div>
       {/* Mobile & Tablet: Brand switch + Categories Bar (Sticky) */}
       <div className={`${styles.categoryBar} sticky z-40 border-b border-emerald-500/20 bg-white/90 shadow-lg shadow-emerald-900/5 backdrop-blur-xl dark:border-white/10 dark:bg-[#0c0703]/90 lg:hidden`}>
         {/* Restaurant switcher */}
@@ -1022,7 +1021,7 @@ export default function OrderPage() {
                     <div className="flex items-center gap-3">
                       <div className="min-w-0 flex-1">
                         <p className="truncate text-sm font-semibold text-slate-900 dark:text-white">{product.name}</p>
-                        <p className="text-xs text-slate-500 dark:text-slate-400">€{product.price.toFixed(2)} {t.common.each} · {qty * (product.bogoEnabled ? 2 : 1)} drinks</p>
+                        <p className="text-xs text-slate-500 dark:text-slate-400">€{product.price.toFixed(2)} {t.common.each} · {qty * (product.bogoEnabled ? 2 : 1)} {t.common.items}</p>
                         {sideChoice && (
                           <p className="mt-0.5 text-[11px] font-bold text-emerald-700 dark:text-emerald-300">
                             {lang === "nl" ? "Bijgerecht" : "Side"}: {grillSideLabel(sideChoice, lang)}
@@ -1030,11 +1029,11 @@ export default function OrderPage() {
                         )}
                       </div>
                       <div className="flex items-center gap-1.5">
-                        <button onClick={() => removeFromCart(product.id, sideChoice)} className="grid h-7 w-7 place-items-center rounded-full bg-white text-slate-600 transition hover:text-red-600 dark:bg-white/10 dark:text-slate-300" aria-label={t.common.remove}>
+                        <button onClick={() => removeFromCart(product.id, sideChoice)} className="grid h-11 w-11 place-items-center rounded-full bg-white text-slate-600 transition hover:text-red-600 dark:bg-white/10 dark:text-slate-300" type="button" aria-label={`${t.common.remove}: ${product.name}`}>
                           {qty <= 1 ? <FaTrash className="text-[0.65rem]" /> : <FaMinus className="text-[0.65rem]" />}
                         </button>
                         <span className="w-5 text-center text-sm font-bold text-slate-900 dark:text-white">{qty * (product.bogoEnabled ? 2 : 1)}</span>
-                        <button onClick={() => addToCart(product.id, sideChoice)} className="grid h-7 w-7 place-items-center rounded-full bg-emerald-600 text-white transition hover:bg-emerald-500" aria-label={t.common.add}>
+                        <button onClick={() => addToCart(product.id, sideChoice)} className="grid h-11 w-11 place-items-center rounded-full bg-emerald-600 text-white transition hover:bg-emerald-500" type="button" aria-label={`${t.common.add}: ${product.name}`} disabled={qty >= 99}>
                           <FaPlus className="text-[0.65rem]" />
                         </button>
                       </div>
@@ -1069,17 +1068,17 @@ export default function OrderPage() {
             )}
 
             {/* Delivery details */}
-            <div className="form-lux mt-5 space-y-3">
+            <div data-checkout-fields className="form-lux mt-5 space-y-3">
               {fulfillmentToggle}
               <p className="text-sm font-bold text-slate-900 dark:text-white">{isPickup ? t.order.name : t.order.deliveryDetails}</p>
-              <input
+              <input aria-label={t.order.name} autoComplete="name" required maxLength={100}
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
                 placeholder={t.order.name}
                 className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/5 dark:text-white"
               />
               <input
-                type="email"
+                type="email" inputMode="email" autoCapitalize="none" spellCheck={false} maxLength={254} aria-label={lang === "nl" ? "E-mailadres voor bestelbevestiging" : "Email address for order confirmation"}
                 autoComplete="email"
                 required
                 value={currentUser?.email || form.email}
@@ -1088,7 +1087,7 @@ export default function OrderPage() {
                 placeholder={lang === "nl" ? "E-mailadres voor bestelbevestiging" : "Email address for order confirmation"}
                 className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/5 dark:text-white"
               />
-              <input
+              <input aria-label={t.order.phone} type="tel" inputMode="tel" autoComplete="tel" required minLength={5} maxLength={30}
                 value={form.phone}
                 onChange={(e) => setForm({ ...form, phone: e.target.value })}
                 placeholder={t.order.phone}
@@ -1096,14 +1095,14 @@ export default function OrderPage() {
               />
               {!isPickup && (
                 <>
-                  <input
+                  <input aria-label={t.order.address} autoComplete="street-address" required maxLength={300}
                     value={form.address}
                     onChange={(e) => setForm({ ...form, address: e.target.value })}
                     placeholder={t.order.address}
                     className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/5 dark:text-white"
                   />
                   <div>
-                    <input
+                    <input aria-label={t.order.postcode} autoComplete="postal-code" required maxLength={10} autoCapitalize="characters" spellCheck={false}
                       value={form.postcode}
                       onChange={(e) => setForm({ ...form, postcode: e.target.value })}
                       placeholder={`${t.order.postcode} (${t.order.postcodeHint})`}
@@ -1131,7 +1130,7 @@ export default function OrderPage() {
                   </div>
                 </>
               )}
-              <textarea
+              <textarea aria-label={t.order.note} maxLength={500}
                 value={form.note}
                 onChange={(e) => setForm({ ...form, note: e.target.value })}
                 placeholder={`${t.order.note} - ${t.order.notePlaceholder}`}
@@ -1150,7 +1149,7 @@ export default function OrderPage() {
                       <button
                         key={opt}
                         type="button"
-                        onClick={() => setScheduleType(opt)}
+                        onClick={() => setScheduleType(opt)} aria-pressed={scheduleType === opt}
                         className={`rounded-full px-3 py-1.5 text-xs font-semibold transition ${
                           scheduleType === opt
                             ? "bg-sky-600 text-white"
@@ -1204,7 +1203,7 @@ export default function OrderPage() {
                   <span>{currentUser.points} {t.order.pointsAvailable}</span>
                 </div>
                 <input
-                  type="range"
+                  type="range" aria-label={t.order.usePoints} aria-valuetext={`${pointsUsed} ${lang === "nl" ? "punten" : "points"}`}
                   min={0}
                   max={maxPoints}
                   value={pointsUsed}
@@ -1291,7 +1290,7 @@ export default function OrderPage() {
             </p>
 
             {message && (
-              <p
+              <p role={message.type === "error" ? "alert" : "status"}
                 className={`mt-3 rounded-xl px-3 py-2 text-center text-sm font-medium ${
                   message.type === "success"
                     ? "bg-emerald-500/10 text-emerald-700 dark:text-emerald-300"
@@ -1345,7 +1344,7 @@ export default function OrderPage() {
                   <div className="flex items-center gap-3">
                     <div className="min-w-0 flex-1">
                       <p className="truncate text-sm font-semibold text-slate-900 dark:text-white">{product.name}</p>
-                      <p className="text-xs text-slate-500 dark:text-slate-400">€{product.price.toFixed(2)} {t.common.each} · {qty * (product.bogoEnabled ? 2 : 1)} drinks</p>
+                      <p className="text-xs text-slate-500 dark:text-slate-400">€{product.price.toFixed(2)} {t.common.each} · {qty * (product.bogoEnabled ? 2 : 1)} {t.common.items}</p>
                       {sideChoice && (
                         <p className="mt-0.5 text-[11px] font-bold text-emerald-700 dark:text-emerald-300">
                           {lang === "nl" ? "Bijgerecht" : "Side"}: {grillSideLabel(sideChoice, lang)}
@@ -1353,11 +1352,11 @@ export default function OrderPage() {
                       )}
                     </div>
                     <div className="flex items-center gap-1.5">
-                      <button onClick={() => removeFromCart(product.id, sideChoice)} className="grid h-6 w-6 place-items-center rounded-full bg-white text-slate-600 transition hover:text-red-600 dark:bg-white/10 dark:text-slate-300" aria-label={t.common.remove}>
+                      <button onClick={() => removeFromCart(product.id, sideChoice)} className="grid h-11 w-11 place-items-center rounded-full bg-white text-slate-600 transition hover:text-red-600 dark:bg-white/10 dark:text-slate-300" type="button" aria-label={`${t.common.remove}: ${product.name}`}>
                         {qty <= 1 ? <FaTrash className="text-[0.6rem]" /> : <FaMinus className="text-[0.6rem]" />}
                       </button>
                       <span className="w-5 text-center text-sm font-bold text-slate-900 dark:text-white">{qty * (product.bogoEnabled ? 2 : 1)}</span>
-                      <button onClick={() => addToCart(product.id, sideChoice)} className="grid h-6 w-6 place-items-center rounded-full bg-emerald-600 text-white transition hover:bg-emerald-500" aria-label={t.common.add}>
+                      <button onClick={() => addToCart(product.id, sideChoice)} className="grid h-11 w-11 place-items-center rounded-full bg-emerald-600 text-white transition hover:bg-emerald-500" type="button" aria-label={`${t.common.add}: ${product.name}`} disabled={qty >= 99}>
                         <FaPlus className="text-[0.6rem]" />
                       </button>
                     </div>
@@ -1494,16 +1493,16 @@ export default function OrderPage() {
               </button>
             </div>
 
-            <div className="form-lux space-y-3 px-5 py-4">
+            <div data-checkout-fields className="form-lux space-y-3 px-5 py-4">
               {fulfillmentToggle}
-              <input
+              <input aria-label={t.order.name} autoComplete="name" required maxLength={100}
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
                 placeholder={t.order.name}
                 className="w-full rounded-lg border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/5 dark:text-white"
               />
               <input
-                type="email"
+                type="email" inputMode="email" autoCapitalize="none" spellCheck={false} maxLength={254} aria-label={lang === "nl" ? "E-mailadres voor bestelbevestiging" : "Email address for order confirmation"}
                 autoComplete="email"
                 required
                 value={currentUser?.email || form.email}
@@ -1512,7 +1511,7 @@ export default function OrderPage() {
                 placeholder={lang === "nl" ? "E-mailadres voor bestelbevestiging" : "Email address for order confirmation"}
                 className="w-full rounded-lg border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/5 dark:text-white"
               />
-              <input
+              <input aria-label={t.order.phone} type="tel" inputMode="tel" autoComplete="tel" required minLength={5} maxLength={30}
                 value={form.phone}
                 onChange={(e) => setForm({ ...form, phone: e.target.value })}
                 placeholder={t.order.phone}
@@ -1520,14 +1519,14 @@ export default function OrderPage() {
               />
               {!isPickup && (
                 <>
-                  <input
+                  <input aria-label={t.order.address} autoComplete="street-address" required maxLength={300}
                     value={form.address}
                     onChange={(e) => setForm({ ...form, address: e.target.value })}
                     placeholder={t.order.address}
                     className="w-full rounded-lg border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/5 dark:text-white"
                   />
                   <div>
-                    <input
+                    <input aria-label={t.order.postcode} autoComplete="postal-code" required maxLength={10} autoCapitalize="characters" spellCheck={false}
                       value={form.postcode}
                       onChange={(e) => setForm({ ...form, postcode: e.target.value })}
                       placeholder={`${t.order.postcode} (${t.order.postcodeHint})`}
@@ -1555,7 +1554,7 @@ export default function OrderPage() {
                   </div>
                 </>
               )}
-              <textarea
+              <textarea aria-label={t.order.note} maxLength={500}
                 value={form.note}
                 onChange={(e) => setForm({ ...form, note: e.target.value })}
                 placeholder={`${t.order.note} - ${t.order.notePlaceholder}`}
@@ -1574,7 +1573,7 @@ export default function OrderPage() {
                       <button
                         key={opt}
                         type="button"
-                        onClick={() => setScheduleType(opt)}
+                        onClick={() => setScheduleType(opt)} aria-pressed={scheduleType === opt}
                         className={`rounded-full px-3 py-1.5 text-xs font-semibold transition ${
                           scheduleType === opt
                             ? "bg-sky-600 text-white"
@@ -1626,7 +1625,7 @@ export default function OrderPage() {
               )}
 
               {message && (
-                <p
+                <p role={message.type === "error" ? "alert" : "status"}
                   className={`rounded-lg px-3 py-2 text-center text-sm font-medium ${
                     message.type === "success"
                       ? "bg-emerald-500/10 text-emerald-700 dark:text-emerald-300"

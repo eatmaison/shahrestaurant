@@ -6,6 +6,10 @@ const primaryHosts = new Set(["shahrestaurant.nl", "www.shahrestaurant.nl"]);
 export async function proxy(request: NextRequest) {
   const host = request.headers.get("host")?.split(":")[0].toLowerCase();
   const pathname = request.nextUrl.pathname;
+  if (host === "www.shahrestaurant.nl" && ["GET", "HEAD"].includes(request.method) && !pathname.startsWith("/api/")) {
+    const canonical = request.nextUrl.clone(); canonical.hostname = "shahrestaurant.nl"; canonical.port = ""; canonical.protocol = "https:";
+    return NextResponse.redirect(canonical, 308);
+  }
   if (host?.endsWith(".shahrestaurant.nl") && !primaryHosts.has(host)) {
     return new NextResponse("Not Found", { status: 404, headers: { "X-Robots-Tag": "noindex" } });
   }
