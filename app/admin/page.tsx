@@ -960,6 +960,18 @@ export default function AdminPage() {
     }
   };
 
+  const customerOrdersForSelection = useMemo(() => {
+    if (!selectedCustomer) return [];
+    return orders.filter((order) => selectedCustomer.userId
+      ? order.userId === selectedCustomer.userId
+      : !order.userId && normalizeCustomerAddress(order.address, order.postcode) === selectedCustomer.key.slice(8));
+  }, [orders, selectedCustomer]);
+
+  const selectedCustomerVisitor = useMemo(
+    () => selectedCustomer?.userId ? recentVisitors.find((visitor) => visitor.kind === "user" && visitor.id === selectedCustomer.userId) : undefined,
+    [recentVisitors, selectedCustomer]
+  );
+
   if (!hydrated) {
     return <div className="mx-auto max-w-md px-4 py-20 text-center text-sm text-slate-500">…</div>;
   }
@@ -1345,18 +1357,6 @@ export default function AdminPage() {
 
   const filteredCustomerOrders = customerOrders.filter((o) => ordersCheck(o.createdAt) && matchesOrder(o, customerSearch));
   const filteredCompanyOrders = companyOrders.filter((o) => ordersCheck(o.createdAt) && matchesOrder(o, companySearch));
-
-  const customerOrdersForSelection = useMemo(() => {
-    if (!selectedCustomer) return [];
-    return orders.filter((order) => selectedCustomer.userId
-      ? order.userId === selectedCustomer.userId
-      : !order.userId && normalizeCustomerAddress(order.address, order.postcode) === selectedCustomer.key.slice(8));
-  }, [orders, selectedCustomer]);
-
-  const selectedCustomerVisitor = useMemo(
-    () => selectedCustomer?.userId ? recentVisitors.find((visitor) => visitor.kind === "user" && visitor.id === selectedCustomer.userId) : undefined,
-    [recentVisitors, selectedCustomer]
-  );
 
   const openCustomerProfile = (order: Order) => {
     const user = order.userId ? users.find((item) => item.id === order.userId) : undefined;
