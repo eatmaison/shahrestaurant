@@ -10,14 +10,14 @@ import { ProductImage } from "./components/ProductImage";
 import { CatalogFeedback } from "./components/CatalogFeedback";
 import { matchesMenuSearch, normalizeMenuSearch } from "./lib/menuSearch";
 import { useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
-import { FaArrowDown, FaArrowLeft, FaArrowRight, FaBagShopping, FaCalendarCheck, FaChevronDown, FaClock, FaEnvelope, FaExpand, FaFireBurner, FaLocationDot, FaMagnifyingGlass, FaPause, FaPlay, FaPhone, FaStar, FaUtensils, FaUsers, FaXmark } from "react-icons/fa6";
+import { FaArrowDown, FaArrowLeft, FaArrowRight, FaBagShopping, FaCalendarCheck, FaChevronDown, FaClock, FaEnvelope, FaExpand, FaFireBurner, FaLocationDot, FaMagnifyingGlass, FaPhone, FaStar, FaUtensils, FaUsers, FaXmark } from "react-icons/fa6";
 import { useLang, useStore } from "./providers";
 import { SITE_ID } from "./lib/data";
 import type { Product } from "./lib/types";
 import { homeContent } from "./lib/homeContent";
 const HomeDialog = dynamic(() => import("./components/HomeDialog").then(module => module.HomeDialog), { ssr: false });
 const RichDescription = dynamic(() => import("./components/RichDescription"), { ssr: false });
-import { useHomeMotion, useHomeTilt, useRichMedia } from "./components/HomeDepth";
+import { useHomeTilt, useRichMedia } from "./components/HomeDepth";
 import styles from "./home.module.css";
 
 const SIGNATURE_IDS = ["tdc-butter-chicken", "tdc-tandoori-mixed-grill", "tdc-tandoori-lamb-chops", "tdc-biryani-lamb", "tdc-tandoori-chicken-tikka", "tdc-samosa-chaat"];
@@ -38,9 +38,8 @@ export default function Home() {
   const heroScrollRef = useRef<HTMLDivElement>(null);
   const searchRef = useRef<HTMLInputElement>(null);
   const swipeStart = useRef<{ horizontal: number; vertical: number } | null>(null);
-  const { enabled: motionEnabled, reduced: reducedMotion, toggleMotion } = useHomeMotion();
   const richMedia = useRichMedia();
-  useHomeTilt(rootRef, motionEnabled && richMedia);
+  useHomeTilt(rootRef, richMedia);
   const [category, setCategory] = useState("");
   const [search, setSearch] = useState("");
   const [showAll, setShowAll] = useState(false);
@@ -129,16 +128,15 @@ export default function Home() {
   };
 
   return (
-    <div ref={rootRef} className={styles.home} data-motion={motionEnabled ? "on" : "off"} data-media={richMedia ? "scrub" : "static"}>
+    <div ref={rootRef} className={styles.home} data-motion={richMedia ? "on" : "off"} data-media={richMedia ? "scrub" : "static"}>
       <div className={styles.scrollProgress} aria-hidden="true" />
       <h1 id="home-title" className="sr-only">Shah Restaurant</h1>
       <div ref={heroScrollRef} className={styles.heroScroll}>
       <section className={styles.hero} aria-labelledby="home-title">
         <div className={styles.heroMedia}>
           <picture><source media="(max-width: 767px)" srcSet="/brand/shah-hero-poster-mobile-v3.webp" /><Image src="/brand/shah-hero-poster-desktop-v3.webp" alt={lang === "nl" ? "De entree en het terras van Shah Restaurant in Amsterdam-Noord" : "The entrance and terrace of Shah Restaurant in Amsterdam-Noord"} fill loading="eager" fetchPriority="high" sizes="100vw" className={styles.heroImage} /></picture>
-          <HeroFilm enabled={motionEnabled && richMedia} trackRef={heroScrollRef} />
+          <HeroFilm enabled={richMedia} trackRef={heroScrollRef} />
         </div>
-        {!reducedMotion && richMedia && <button type="button" className={styles.motionToggle} onClick={toggleMotion} aria-label={motionEnabled ? copy.pauseMotion : copy.resumeMotion} title={motionEnabled ? copy.pauseMotion : copy.resumeMotion} aria-pressed={!motionEnabled}>{motionEnabled ? <FaPause aria-hidden="true" /> : <FaPlay aria-hidden="true" />}</button>}
         <div className={styles.heroFoot}>
           <a href={DIRECTIONS} target="_blank" rel="noopener noreferrer"><FaLocationDot aria-hidden="true" />Klaprozenweg 36a</a>
           <a href="#intro" className={styles.discover}>{copy.explore}<FaArrowDown aria-hidden="true" /></a>

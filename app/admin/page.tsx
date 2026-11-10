@@ -53,6 +53,7 @@ import { SOCIAL_PLATFORMS } from "../components/socialIcons";
 import dynamic from "next/dynamic";
 const RichTextEditor = dynamic(() => import("../components/RichTextEditor"), { ssr: false });
 import PartyAdmin from "./PartyAdmin";
+import { BrandNameEditor } from "./BrandNameEditor";
 const PhoneAgentPanel = dynamic(() => import("./PhoneAgentPanel"));
 import type { AccountType, Brand, Category, Order, OrderStatus, Product, RecentVisitor, User } from "../lib/types";
 import type { RestaurantOpenOverride } from "../lib/openingHours";
@@ -3239,7 +3240,7 @@ export default function AdminPage() {
                   return (
                     <div
                       key={b.id}
-                      className={`flex items-center gap-3 rounded-2xl border p-2.5 transition ${
+                      className={`flex flex-wrap items-center gap-3 rounded-2xl border p-2.5 transition ${
                         selected
                           ? "border-emerald-400 bg-emerald-50/50 dark:border-emerald-500/40 dark:bg-emerald-400/5"
                           : "border-slate-200 bg-slate-50 dark:border-white/10 dark:bg-white/5"
@@ -3251,6 +3252,7 @@ export default function AdminPage() {
                           <span className="text-[11px] text-slate-500 dark:text-slate-400">{b.categories.length} {t.admin.productCategory.toLowerCase()}</span>
                         </span>
                       </button>
+                      <BrandNameEditor brandId={b.id} name={b.name} onSaved={refresh} />
                       {/* Logo: click to upload/replace, × to remove */}
                       <span className="relative shrink-0">
                         <button
