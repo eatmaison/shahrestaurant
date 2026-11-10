@@ -2,12 +2,15 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { BrandLogo } from "./components/BrandLogo";
+import { HeroFilm } from "./components/HeroFilm";
+import { DrinkPartners } from "./components/DrinkPartners";
 import dynamic from "next/dynamic";
 import { ProductImage } from "./components/ProductImage";
 import { CatalogFeedback } from "./components/CatalogFeedback";
 import { matchesMenuSearch, normalizeMenuSearch } from "./lib/menuSearch";
 import { useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
-import { FaArrowDown, FaArrowLeft, FaArrowRight, FaBagShopping, FaCalendarCheck, FaChevronDown, FaClock, FaEnvelope, FaExpand, FaFireBurner, FaLocationDot, FaMagnifyingGlass, FaPhone, FaStar, FaUtensils, FaUsers, FaXmark } from "react-icons/fa6";
+import { FaArrowDown, FaArrowLeft, FaArrowRight, FaBagShopping, FaCalendarCheck, FaChevronDown, FaClock, FaEnvelope, FaExpand, FaFireBurner, FaLocationDot, FaMagnifyingGlass, FaPause, FaPlay, FaPhone, FaStar, FaUtensils, FaUsers, FaXmark } from "react-icons/fa6";
 import { useLang, useStore, useTheme } from "./providers";
 import { SITE_ID } from "./lib/data";
 import type { Product } from "./lib/types";
@@ -33,11 +36,9 @@ export default function Home() {
   const isAdmin = currentUser?.role === "admin";
   const copy = homeContent[lang];
   const rootRef = useRef<HTMLDivElement>(null);
-  const heroVideoRef = useRef<HTMLVideoElement>(null);
-  const heroScrollRef = useRef<HTMLDivElement>(null);
   const searchRef = useRef<HTMLInputElement>(null);
   const swipeStart = useRef<{ horizontal: number; vertical: number } | null>(null);
-  const { enabled: motionEnabled } = useHomeMotion();
+  const { enabled: motionEnabled, reduced: reducedMotion, toggleMotion } = useHomeMotion();
   const richMedia = useRichMedia();
   useHomeTilt(rootRef, motionEnabled && richMedia);
   const [category, setCategory] = useState("");
@@ -67,11 +68,11 @@ export default function Home() {
   const dateFormat = useMemo(() => new Intl.DateTimeFormat(lang === "nl" ? "nl-NL" : "en-GB", { month: "long", year: "numeric", timeZone: "Europe/Amsterdam" }), [lang]);
   const sections = [{ id: "menu", label: copy.menu }, { id: "atmosphere", label: copy.atmosphere }, { id: "story", label: copy.story }, { id: "visit", label: copy.visit }];
   const photos = [
-    { src: "/photos/687A0402.jpeg", title: copy.table, alt: copy.tableAlt },
-    { src: "/photos/687A0412.jpeg", title: copy.tandoor, alt: copy.dishAlt },
-    { src: "/photos/687A0343.jpeg", title: copy.bar, alt: copy.barAlt },
-    { src: "/photos/687A0260.jpeg", title: copy.drinks, alt: copy.drinksAlt },
-    { src: "/photos/687A0336.jpeg", title: copy.room, alt: copy.interiorAlt },
+    { src: "/brand/shah-dining-v1.webp", title: copy.table, alt: copy.tableAlt },
+    { src: "/brand/shah-table-v1.webp", title: copy.tandoor, alt: copy.dishAlt },
+    { src: "/brand/shah-bar-v1.webp", title: copy.bar, alt: copy.barAlt },
+    { src: "/brand/shah-cocktail-v1.webp", title: copy.drinks, alt: copy.drinksAlt },
+    { src: "/brand/shah-atmosphere-v1.webp", title: copy.room, alt: copy.interiorAlt },
   ];
   const currentPhoto = photoIndex === null ? null : photos[photoIndex];
   const ingredients = selectedProduct && ((lang === "nl" && selectedProduct.ingredientsNl?.length ? selectedProduct.ingredientsNl : selectedProduct.ingredients) || []);
@@ -104,51 +105,7 @@ export default function Home() {
     return () => { revealObserver.disconnect(); sectionObserver.disconnect(); motionQuery.removeEventListener("change", revealAll); };
   }, []);
 
-  useEffect(() => {
-    const video = heroVideoRef.current;
-    const track = heroScrollRef.current;
-    if (!video || !track) return;
-    let frame = 0;
-    let visible = true;
-    const syncFrame = () => {
-      frame = 0;
-      video.pause();
-      if (!visible || document.hidden || !Number.isFinite(video.duration) || !video.duration || video.seeking) return;
-      const stage = video.parentElement!;
-      const pinTop = parseFloat(getComputedStyle(stage).top) || 0;
-      const distance = track.offsetHeight - stage.offsetHeight;
-      const progress = Math.max(0, Math.min(1, (pinTop - track.getBoundingClientRect().top) / Math.max(1, distance)));
-      // Stay just inside the media duration so the final decoded frame remains visible.
-      const time = progress * Math.max(0, video.duration - 0.001);
-      if (Math.abs(video.currentTime - time) > 0.008) video.currentTime = time;
-    };
-    const schedule = () => { if (!frame && visible && !document.hidden) frame = requestAnimationFrame(syncFrame); };
-    const intersection = new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; if (visible) schedule(); else { cancelAnimationFrame(frame); frame = 0; } });
-    intersection.observe(track);
-    const visibility = () => { if (document.hidden) { cancelAnimationFrame(frame); frame = 0; } else schedule(); };
-    document.addEventListener("visibilitychange", visibility);
-    const observer = new ResizeObserver(schedule);
-    observer.observe(track);
-    observer.observe(video);
-    window.addEventListener("scroll", schedule, { passive: true });
-    window.addEventListener("resize", schedule);
-    video.addEventListener("loadedmetadata", schedule);
-    video.addEventListener("loadeddata", schedule);
-    video.addEventListener("seeked", schedule);
-    schedule();
-    return () => {
-      cancelAnimationFrame(frame);
-      observer.disconnect();
-      intersection.disconnect();
-      document.removeEventListener("visibilitychange", visibility);
-      window.removeEventListener("scroll", schedule);
-      window.removeEventListener("resize", schedule);
-      video.removeEventListener("loadedmetadata", schedule);
-      video.removeEventListener("loadeddata", schedule);
-      video.removeEventListener("seeked", schedule);
-      video.pause();
-    };
-  }, [theme, hydrated, richMedia, motionEnabled]);
+
 
   function resetMenu() {
     setSearch("");
@@ -174,27 +131,19 @@ export default function Home() {
   return (
     <div ref={rootRef} className={styles.home} data-motion={motionEnabled ? "on" : "off"}>
       <div className={styles.scrollProgress} aria-hidden="true" />
-      <div ref={heroScrollRef} className={styles.heroScroll}>
+      <div className={styles.heroScroll}>
       <section className={styles.hero} aria-labelledby="home-title">
-        <Image key={"hero-" + theme} src={theme === "dark" ? "/photos/shah-hero-night.webp" : "/photos/shah-hero-day.webp"} alt={lang === "nl" ? "Shah Restaurant met terras en geopende parasols" : "Shah Restaurant with its terrace and open parasols"} fill loading="eager" fetchPriority="high" sizes="100vw" className={styles.heroImage} />
-        {hydrated && motionEnabled && richMedia && <video
-          key={theme}
-          ref={heroVideoRef}
-          className={styles.heroVideo}
-          src={theme === "dark" ? "/photos/shah-hero-night-walkthrough.mp4" : "/photos/shah-hero-day-walkthrough.mp4"}
-          poster={theme === "dark" ? "/photos/shah-hero-night.webp" : "/photos/shah-hero-day.webp"}
-          muted
-          playsInline
-          preload="metadata"
-          onError={event => { event.currentTarget.style.display = "none"; }}
-          aria-hidden="true"
-          tabIndex={-1}
-        />}
-        <div className={styles.heroShade} />
+        <Image src="/brand/shah-mark-gold-v1.svg" width={680} height={803} alt="" unoptimized className={styles.heroOrnament} aria-hidden="true" />
+        <div className={styles.heroMedia}>
+          <Image key={theme} src={theme === "dark" ? "/brand/shah-arrival-night-v1.webp" : "/brand/shah-arrival-day-v1.webp"} alt={lang === "nl" ? "De entree en het terras van Shah Restaurant in Amsterdam-Noord" : "The entrance and terrace of Shah Restaurant in Amsterdam-Noord"} fill loading="eager" fetchPriority="high" sizes="(min-width: 901px) 52vw, calc(100vw - 32px)" className={styles.heroImage} />
+          <HeroFilm enabled={motionEnabled && richMedia} theme={theme} />
+        </div>
+        {!reducedMotion && richMedia && <button type="button" className={styles.motionToggle} onClick={toggleMotion} aria-label={motionEnabled ? copy.pauseMotion : copy.resumeMotion} title={motionEnabled ? copy.pauseMotion : copy.resumeMotion} aria-pressed={!motionEnabled}>{motionEnabled ? <FaPause aria-hidden="true" /> : <FaPlay aria-hidden="true" />}</button>}
         <div className={styles.heroTopline}><span>Amsterdam-Noord</span><span>Indian kitchen & hospitality</span></div>
         <div className={styles.heroContent}>
           <p className={styles.heroEyebrow}>Fine Indian Dining</p>
-          <h1 id="home-title" className={styles.heroTitle}><span>Shah</span><span>Restaurant</span></h1>
+          <h1 id="home-title" className={styles.heroTitle}><span className="sr-only">Shah Restaurant</span><BrandLogo variant="wordmark" className={styles.heroBrand} alt="" eager /></h1>
+          <p className={styles.heroDescriptor} aria-hidden="true">Restaurant</p>
           <p className={styles.heroSubtitle}>{copy.introduction}</p>
           <div className={styles.actions}>
             <Link href="/reservations" className={styles.primaryButton}><FaCalendarCheck aria-hidden="true" />{copy.reserve}<FaArrowRight aria-hidden="true" /></Link>
@@ -225,10 +174,10 @@ export default function Home() {
 
       <section id="menu" data-section className={`${styles.section} ${styles.menuSection}`} aria-labelledby="menu-title">
         <div className={styles.menuVisual} data-reveal="visible">
-          <div className={styles.menuPhoto} data-tilt><Image src="/photos/687A0412.jpeg" alt={copy.dishAlt} fill sizes="(min-width: 1000px) 42vw, 100vw" /><span className={styles.photoLabel}>{copy.fromMenu}<FaFireBurner aria-hidden="true" /></span></div>
+          <div className={styles.menuPhoto} data-tilt><Image src="/brand/shah-table-v1.webp" alt={copy.dishAlt} fill sizes="(min-width: 1000px) 42vw, 100vw" /><span className={styles.photoLabel}>{copy.fromMenu}<FaFireBurner aria-hidden="true" /></span></div>
           <div className={styles.photoCaption}><span>Shah Restaurant</span><span>{copy.kitchen}</span></div>
           <p className={styles.menuAside}>{copy.kitchenNote}</p>
-          <a href="#atmosphere" className={styles.menuInset} data-tilt><span className={styles.menuInsetPhoto}><Image src="/photos/687A0402.jpeg" alt={copy.tableAlt} fill sizes="180px" /></span><span>{copy.table}<FaArrowRight aria-hidden="true" /></span></a>
+          <a href="#atmosphere" className={styles.menuInset} data-tilt><span className={styles.menuInsetPhoto}><Image src="/brand/shah-dining-v1.webp" alt={copy.tableAlt} fill sizes="180px" /></span><span>{copy.table}<FaArrowRight aria-hidden="true" /></span></a>
         </div>
         <div className={styles.menuContent} data-reveal="visible">
           <p className={styles.eyebrow}>01 / {copy.kitchen}</p><h2 id="menu-title">{copy.menuTitle}</h2><p className={styles.sectionDescription}>{copy.menuText}</p>
@@ -267,7 +216,7 @@ export default function Home() {
       <section id="story" data-section className={styles.storySection} aria-labelledby="story-title">
         <div className={styles.storyInner}>
           <div className={styles.storyContent} data-reveal="visible"><p className={styles.eyebrow}>03 / {copy.story}</p><h2 id="story-title">{t.home.storyTitle}</h2><p>{t.home.storyText}</p><blockquote>{t.home.storyQuote}</blockquote>{isAdmin && <Link href="/events/about" className={styles.textLink}>{copy.storyLink}<FaArrowRight aria-hidden="true" /></Link>}</div>
-          <figure className={styles.storyPhoto} data-reveal="visible"><div data-tilt><Image src="/photos/687A0210.jpeg" alt={copy.interiorAlt} fill sizes="(min-width: 900px) 45vw, 100vw" /><span className={styles.storyPhotoMark} aria-hidden="true">Shah</span></div><figcaption><span>{copy.storyAside}</span><FaFireBurner aria-hidden="true" /></figcaption></figure>
+          <figure className={styles.storyPhoto} data-reveal="visible"><div data-tilt><Image src="/brand/shah-room-v1.webp" alt={copy.interiorAlt} fill sizes="(min-width: 900px) 45vw, 100vw" /><BrandLogo variant="wordmark" tone="gold" className={styles.storyPhotoMark} alt="" /></div><figcaption><span>{copy.storyAside}</span><FaFireBurner aria-hidden="true" /></figcaption></figure>
         </div>
       </section>
 
@@ -288,13 +237,15 @@ export default function Home() {
       {userReviews.length > 0 && <section className={styles.reviewsSection} aria-labelledby="reviews-title"><div className={styles.sectionHeading}><div><p className={styles.eyebrow}>{t.home.testimonialsOverline}</p><h2 id="reviews-title">{copy.guestTitle}</h2></div><p className={styles.rating}><FaStar aria-hidden="true" /><strong>{avgRating.toFixed(1)} / 5</strong><span>{siteReviews.length} {copy.guestCount}</span></p></div><div className={styles.reviewsGrid}>{userReviews.map((review) => <figure key={review.id}><div className={styles.stars} aria-label={`${review.rating} ${copy.outOf}`}>{[1, 2, 3, 4, 5].map((star) => <FaStar key={star} aria-hidden="true" style={{ opacity: star <= Math.round(review.rating) ? 1 : 0.2 }} />)}</div><blockquote>{review.text}</blockquote><figcaption><strong>{review.userName}</strong><time dateTime={new Date(review.createdAt).toISOString()}>{dateFormat.format(new Date(review.createdAt))}</time></figcaption></figure>)}</div></section>}
 
       <section id="visit" data-section className={`${styles.section} ${styles.visit}`} aria-labelledby="visit-title">
-        <div data-reveal="visible"><p className={styles.eyebrow}>04 / {copy.visit}</p><h2 id="visit-title">{copy.visitTitle}</h2><p className={styles.sectionDescription}>{copy.visitText}</p><address><FaLocationDot aria-hidden="true" /><span>Klaprozenweg 36a<br />1032 KL Amsterdam</span></address><a href={DIRECTIONS} target="_blank" rel="noopener noreferrer" className={styles.textLink}>{copy.directions}<FaArrowRight aria-hidden="true" /></a><a href={DIRECTIONS} target="_blank" rel="noopener noreferrer" className={styles.visitPhoto} aria-label={copy.directions}><Image src="/photos/687A0343.jpeg" alt={copy.barAlt} fill sizes="(min-width: 701px) 40vw, 90vw" /><span><FaLocationDot aria-hidden="true" />Amsterdam-Noord<FaArrowRight aria-hidden="true" /></span></a></div>
+        <div data-reveal="visible"><p className={styles.eyebrow}>04 / {copy.visit}</p><h2 id="visit-title">{copy.visitTitle}</h2><p className={styles.sectionDescription}>{copy.visitText}</p><address><FaLocationDot aria-hidden="true" /><span>Klaprozenweg 36a<br />1032 KL Amsterdam</span></address><a href={DIRECTIONS} target="_blank" rel="noopener noreferrer" className={styles.textLink}>{copy.directions}<FaArrowRight aria-hidden="true" /></a><a href={DIRECTIONS} target="_blank" rel="noopener noreferrer" className={styles.visitPhoto} aria-label={copy.directions}><Image src="/brand/shah-bar-v1.webp" alt={copy.barAlt} fill sizes="(min-width: 701px) 40vw, 90vw" /><span><FaLocationDot aria-hidden="true" />Amsterdam-Noord<FaArrowRight aria-hidden="true" /></span></a></div>
         <div className={styles.visitDetails} data-reveal="visible"><div className={styles.hoursHeading}><h3><FaClock aria-hidden="true" />{copy.hours}</h3>{typeof restaurantStatus.isOpen === "boolean" && <span className={styles.openStatus} data-open={restaurantStatus.isOpen}>{restaurantStatus.isOpen ? t.hours.openNow : t.hours.closedNow}</span>}</div><dl className={styles.hours}><div><dt>{t.hours.tueSun}</dt><dd>15:00–22:00</dd></div><div><dt>{t.hours.monday}</dt><dd>{t.hours.closed}</dd></div></dl><h3>{copy.contact}</h3><a href="tel:+31203412995" className={styles.contactLink}><FaPhone aria-hidden="true" />+31 20 341 2995</a><a href="mailto:info@shahrestaurant.nl" className={styles.contactLink}><FaEnvelope aria-hidden="true" />info@shahrestaurant.nl</a><Link href="/reservations" className={styles.primaryButton}><FaCalendarCheck aria-hidden="true" />{copy.reserve}<FaArrowRight aria-hidden="true" /></Link></div>
       </section>
 
       <section className={`${styles.section} ${styles.faq}`} aria-labelledby="faq-title"><div data-reveal="visible"><p className={styles.eyebrow}>{copy.faq}</p><h2 id="faq-title">{copy.faqTitle}</h2><a className={styles.faqContact} href="mailto:info@shahrestaurant.nl"><FaEnvelope aria-hidden="true" />{copy.email}<FaArrowRight aria-hidden="true" /></a></div><div className={styles.faqList}>{copy.questions.filter(item => !("adminOnly" in item) || !item.adminOnly || isAdmin).map((item, index) => <details key={item.question} name="visit-questions"><summary><span className={styles.faqNumber}>0{index + 1}</span><span>{item.question}</span><FaChevronDown aria-hidden="true" /></summary><p>{item.answer}</p></details>)}</div></section>
 
-      <section className={styles.closing} aria-labelledby="closing-title"><Image src="/photos/687A0402.jpeg" alt="" fill sizes="100vw" className={styles.closingImage} /><div className={styles.closingShade} /><div className={styles.closingContent} data-reveal="visible"><p className={styles.heroEyebrow}>Shah Restaurant</p><h2 id="closing-title">{copy.closing}</h2><p>{copy.closingText}</p><div className={styles.actions}><Link href="/reservations" className={styles.primaryButton}><FaCalendarCheck aria-hidden="true" />{copy.reserve}</Link><a href="tel:+31203412995" className={styles.heroSecondary}><FaPhone aria-hidden="true" />{copy.call}</a></div></div></section>
+      <DrinkPartners site="shah" />
+
+      <section className={styles.closing} aria-labelledby="closing-title"><Image src="/brand/shah-dining-v1.webp" alt="" fill sizes="100vw" className={styles.closingImage} /><div className={styles.closingShade} /><div className={styles.closingContent} data-reveal="visible"><BrandLogo variant="mark" tone="gold" className={styles.closingMark} alt="" /><p className={styles.heroEyebrow}>Shah Restaurant</p><h2 id="closing-title">{copy.closing}</h2><p>{copy.closingText}</p><div className={styles.actions}><Link href="/reservations" className={styles.primaryButton}><FaCalendarCheck aria-hidden="true" />{copy.reserve}</Link><a href="tel:+31203412995" className={styles.heroSecondary}><FaPhone aria-hidden="true" />{copy.call}</a></div></div></section>
 
       <div className={styles.mobileActions}><Link href="/order"><FaUtensils aria-hidden="true" />{copy.order}</Link><Link href="/reservations"><FaCalendarCheck aria-hidden="true" />{copy.reserve}</Link></div>
 

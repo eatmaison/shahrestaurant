@@ -4,7 +4,10 @@ const nextConfig: NextConfig = {
   compress: true,
   experimental: { optimizePackageImports: ["react-icons"] },
   async headers() {
-    return [{
+    return [{ source: "/brand/:path*", headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }] }, ...["coca-cola", "heineken", "de-kuyper", "chaudfontaine"].map(brand => ({
+      source: `/partners/${brand}-v1.webp`,
+      headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }],
+    })), {
       source: "/(.*)",
       headers: [
         { key: "X-Content-Type-Options", value: "nosniff" },
@@ -19,6 +22,10 @@ const nextConfig: NextConfig = {
         { key: "Cache-Control", value: "private, no-store" },
         { key: "X-Robots-Tag", value: "noindex, nofollow" },
       ],
+    }, ...["day", "night"].map(theme => ({
+      source: `/photos/shah-hero-${theme}-scroll-v1.mp4`, headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }],
+    })), {
+      source: "/photos/shah-interior-bg-v1.webp", headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }],
     }, ...["account", "admin", "terminal", "forgot-password", "reset-password", "verify-email", "pay"].map(path => ({
       source: `/${path}/:path*`, headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }, { key: "Referrer-Policy", value: "no-referrer" }],
     }))];

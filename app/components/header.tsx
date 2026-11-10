@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { BrandLogo } from "./BrandLogo";
 import { usePathname, useRouter } from "next/navigation";
 import { writeSessionValue } from "../lib/clientStorage";
 import { useEffect, useRef, useState, type MouseEvent } from "react";
@@ -124,17 +125,8 @@ export function Header() {
       <a href="#main-content" className={styles.skipLink}>{lang === "nl" ? "Ga naar inhoud" : "Skip to content"}</a>
       <div ref={barRef} className={`${styles.bar} mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8`}>
         <Link href="/" aria-label="Shah Restaurant" className={`${styles.brand} group flex items-center gap-3`} onClick={() => { setOpen(false); setEventsOpen(false); }}>
-          <span className="relative grid h-10 w-10 place-items-center overflow-hidden rounded-full border border-emerald-500/50 bg-white font-display text-xl font-semibold text-emerald-700 shadow-[0_0_16px_rgba(196,154,58,0.3)] transition duration-300 group-hover:scale-110 group-hover:shadow-[0_0_24px_rgba(196,154,58,0.55)] dark:bg-emerald-950/60 dark:text-emerald-300">
-            S
-          </span>
-          <span className="flex flex-col leading-none">
-            <span className="text-[0.6rem] font-semibold uppercase tracking-[0.3em] text-emerald-600 dark:text-emerald-400">
-              Fine Indian Dining · Amsterdam
-            </span>
-            <span className="font-display whitespace-nowrap text-base font-semibold tracking-[0.18em] text-slate-900 transition-colors group-hover:text-emerald-700 dark:text-white dark:group-hover:text-emerald-300 sm:text-lg sm:tracking-[0.22em]">
-              SHAH RESTAURANT
-            </span>
-          </span>
+          <BrandLogo className={styles.brandArtwork} alt="" eager />
+          <span className={styles.brandCaption}>Restaurant · Amsterdam</span>
         </Link>
 
         <nav aria-label={lang === "nl" ? "Hoofdnavigatie" : "Primary navigation"} className={`${styles.desktopNav} hidden items-center gap-1 xl:flex`}>

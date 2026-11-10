@@ -68,8 +68,8 @@ export function useHomeTilt(rootRef: RefObject<HTMLDivElement | null>, enabled: 
         const bounds = active.getBoundingClientRect();
         const horizontal = Math.max(-0.5, Math.min(0.5, (pointerHorizontal - bounds.left) / Math.max(bounds.width, 1) - 0.5));
         const vertical = Math.max(-0.5, Math.min(0.5, (pointerVertical - bounds.top) / Math.max(bounds.height, 1) - 0.5));
-        active.style.setProperty("--tilt-x", `${-vertical * 8}deg`);
-        active.style.setProperty("--tilt-y", `${horizontal * 10}deg`);
+        active.style.setProperty("--tilt-x", `${-vertical * 3}deg`);
+        active.style.setProperty("--tilt-y", `${horizontal * 4}deg`);
         active.style.setProperty("--light-x", `${(horizontal + 0.5) * 100}%`);
         active.style.setProperty("--light-y", `${(vertical + 0.5) * 100}%`);
       });
@@ -98,7 +98,7 @@ function subscribeRichMedia(listener: () => void) {
 }
 function richMediaSnapshot() {
   const connection = mediaConnection();
-  return window.matchMedia("(min-width: 768px) and (pointer: fine) and (prefers-reduced-motion: no-preference)").matches && !connection?.saveData && !["slow-2g", "2g"].includes(connection?.effectiveType ?? "");
+  return window.matchMedia("(min-width: 768px) and (pointer: fine) and (prefers-reduced-motion: no-preference)").matches && !connection?.saveData && !["slow-2g", "2g", "3g"].includes(connection?.effectiveType ?? "");
 }
 /** Rich visual media is optional; the fully rendered restaurant image remains available. */
 export function useRichMedia() { return useSyncExternalStore(subscribeRichMedia, richMediaSnapshot, () => false); }

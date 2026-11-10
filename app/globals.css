@@ -31,44 +31,44 @@
 }
 
 /* ------------------------------------------------------------------
-   Shah Restaurant - white & gold luxury palette.
+   Shah Restaurant — original teal & gold brand palette.
    The default Tailwind "emerald" scale is remapped to refined
-   champagne gold and "slate" to porcelain/charcoal neutrals, so every
+   deep teal and "slate" to warm, complementary neutrals, so every
    utility class in the app picks up the Shah look automatically.
    ------------------------------------------------------------------ */
 @theme {
-  /* Champagne gold - the Shah signature (replaces emerald) */
-  --color-emerald-50: #fbf9f3;
-  --color-emerald-100: #f6f0de;
-  --color-emerald-200: #eee0b8;
-  --color-emerald-300: #e2ca88;
-  --color-emerald-400: #d4b05c;
-  --color-emerald-500: #c49a3a;
-  --color-emerald-600: #a87f24;
-  --color-emerald-700: #8a661d;
-  --color-emerald-800: #6d501b;
-  --color-emerald-900: #573f18;
-  --color-emerald-950: #31220a;
+  /* Teal is the original brand colour; gold is defined in design-system.css. */
+  --color-emerald-50: #eef6f3;
+  --color-emerald-100: #dbebe6;
+  --color-emerald-200: #bbd9d2;
+  --color-emerald-300: #8cbabc;
+  --color-emerald-400: #57949a;
+  --color-emerald-500: #0D4952;
+  --color-emerald-600: #0b3e47;
+  --color-emerald-700: #08343c;
+  --color-emerald-800: #082e35;
+  --color-emerald-900: #072930;
+  --color-emerald-950: #052127;
 
   /* Porcelain to charcoal neutrals (replaces slate) */
-  --color-slate-50: #fafaf8;
-  --color-slate-100: #f4f3ef;
-  --color-slate-200: #e7e5dd;
-  --color-slate-300: #d5d1c4;
-  --color-slate-400: #a8a294;
-  --color-slate-500: #8a8375;
-  --color-slate-600: #6e675a;
-  --color-slate-700: #565045;
-  --color-slate-800: #37332b;
-  --color-slate-900: #201d17;
-  --color-slate-950: #12100c;
+  --color-slate-50: #f9faf7;
+  --color-slate-100: #eef3ef;
+  --color-slate-200: #d5e1db;
+  --color-slate-300: #b8cbc6;
+  --color-slate-400: #7f9c99;
+  --color-slate-500: #5f7e7d;
+  --color-slate-600: #466568;
+  --color-slate-700: #2b5158;
+  --color-slate-800: #143e46;
+  --color-slate-900: #0D4952;
+  --color-slate-950: #06232a;
 }
 
 @theme inline {
   --font-sans: var(--font-jost);
   --font-display: var(--font-cormorant);
-  --color-brand: #c49a3a;
-  --color-brand-dark: #a87f24;
+  --color-brand: #0D4952;
+  --color-brand-dark: #08343c;
 }
 
 * {

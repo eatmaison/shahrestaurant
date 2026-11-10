@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { BrandLogo } from "./BrandLogo";
 import { useEffect, useState } from "react";
 import { FaArrowUp, FaClock, FaEnvelope, FaLocationDot, FaPhone } from "react-icons/fa6";
 import { useLang, useStore } from "../providers";
@@ -31,7 +32,7 @@ export function Footer() {
       <div className="relative mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-2 lg:px-8">
         <div>
           <p className="text-[0.6rem] font-semibold uppercase tracking-[0.3em] text-emerald-600 dark:text-emerald-400">Fine Indian Dining · Amsterdam-Noord</p>
-          <p className="font-display mt-1 text-2xl font-semibold tracking-[0.22em] text-slate-900 dark:text-white">SHAH RESTAURANT</p>
+          <Link href="/" aria-label="Shah Restaurant" className="inline-block"><BrandLogo tone="gold" className="shah-footer-brand" alt="" /></Link>
           <p className="mt-3 max-w-md text-sm leading-7 text-slate-600 dark:text-slate-400">{t.footer.tagline}</p>
           <nav className="footer-quick-links" aria-label={lang === "nl" ? "Snelle links" : "Quick links"}>
             <Link href="/order">{lang === "nl" ? "Menukaart" : "Menu"}</Link>
@@ -116,12 +117,6 @@ export function Footer() {
 
       <div className="border-t border-slate-200/70 py-5 text-center text-xs text-slate-500 dark:border-emerald-400/15 dark:text-slate-500">
         © {new Date().getFullYear()} SHAH RESTAURANT - Amsterdam. {t.footer.rights}
-        <p className="mt-2 px-4 text-[11px]">
-          {lang === "nl" ? "Botanisch achtergrondbeeld" : "Botanical background"}: {" "}
-          <a href="https://commons.wikimedia.org/wiki/File:Green_Wall_Harmony_of_the_Seas_2025.jpg" className="underline underline-offset-2">Larry D. Moore</a>, {" "}
-          <a href="https://creativecommons.org/licenses/by/4.0/" className="underline underline-offset-2">CC BY 4.0</a>
-          {lang === "nl" ? " (uitsnede)." : " (cropped)."}
-        </p>
       </div>
 
       {/* Floating back-to-top */}
