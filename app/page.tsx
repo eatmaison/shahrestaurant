@@ -11,7 +11,7 @@ import { CatalogFeedback } from "./components/CatalogFeedback";
 import { matchesMenuSearch, normalizeMenuSearch } from "./lib/menuSearch";
 import { useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
 import { FaArrowDown, FaArrowLeft, FaArrowRight, FaBagShopping, FaCalendarCheck, FaChevronDown, FaClock, FaEnvelope, FaExpand, FaFireBurner, FaLocationDot, FaMagnifyingGlass, FaPause, FaPlay, FaPhone, FaStar, FaUtensils, FaUsers, FaXmark } from "react-icons/fa6";
-import { useLang, useStore, useTheme } from "./providers";
+import { useLang, useStore } from "./providers";
 import { SITE_ID } from "./lib/data";
 import type { Product } from "./lib/types";
 import { homeContent } from "./lib/homeContent";
@@ -31,7 +31,6 @@ function DishPhoto({ product, large = false }: { product: Product; large?: boole
 
 export default function Home() {
   const { t, lang } = useLang();
-  const { theme } = useTheme();
   const { products, reviews, restaurantStatus, hydrated, currentUser } = useStore();
   const isAdmin = currentUser?.role === "admin";
   const copy = homeContent[lang];
@@ -135,8 +134,8 @@ export default function Home() {
       <div ref={heroScrollRef} className={styles.heroScroll}>
       <section className={styles.hero} aria-labelledby="home-title">
         <div className={styles.heroMedia}>
-          <Image key={theme} src={theme === "dark" ? "/brand/shah-arrival-night-v1.webp" : "/brand/shah-arrival-day-v1.webp"} alt={lang === "nl" ? "De entree en het terras van Shah Restaurant in Amsterdam-Noord" : "The entrance and terrace of Shah Restaurant in Amsterdam-Noord"} fill loading="eager" fetchPriority="high" sizes="100vw" className={styles.heroImage} />
-          <HeroFilm enabled={motionEnabled && richMedia} theme={theme} trackRef={heroScrollRef} />
+          <picture><source media="(max-width: 767px)" srcSet="/brand/shah-hero-poster-mobile-v3.webp" /><Image src="/brand/shah-hero-poster-desktop-v3.webp" alt={lang === "nl" ? "De entree en het terras van Shah Restaurant in Amsterdam-Noord" : "The entrance and terrace of Shah Restaurant in Amsterdam-Noord"} fill loading="eager" fetchPriority="high" sizes="100vw" className={styles.heroImage} /></picture>
+          <HeroFilm enabled={motionEnabled && richMedia} trackRef={heroScrollRef} />
         </div>
         {!reducedMotion && richMedia && <button type="button" className={styles.motionToggle} onClick={toggleMotion} aria-label={motionEnabled ? copy.pauseMotion : copy.resumeMotion} title={motionEnabled ? copy.pauseMotion : copy.resumeMotion} aria-pressed={!motionEnabled}>{motionEnabled ? <FaPause aria-hidden="true" /> : <FaPlay aria-hidden="true" />}</button>}
         <div className={styles.heroTopline}><span>Amsterdam-Noord</span><span>Indian kitchen & hospitality</span></div>

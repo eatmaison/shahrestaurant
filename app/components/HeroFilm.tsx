@@ -3,9 +3,9 @@
 import { useEffect, useRef, useState, type RefObject } from "react";
 import styles from "./HeroFilm.module.css";
 
-type Props = { enabled: boolean; theme: "light" | "dark"; trackRef: RefObject<HTMLDivElement | null> };
+type Props = { enabled: boolean; trackRef: RefObject<HTMLDivElement | null> };
 
-export function HeroFilm({ enabled, theme, trackRef }: Props) {
+export function HeroFilm({ enabled, trackRef }: Props) {
   const [ready, setReady] = useState(false);
   const [compact, setCompact] = useState(false);
   const stageRef = useRef<HTMLDivElement>(null);
@@ -93,7 +93,7 @@ export function HeroFilm({ enabled, theme, trackRef }: Props) {
       video.removeEventListener("seeked", schedule);
       video.pause();
     };
-  }, [enabled, ready, compact, theme, trackRef]);
+  }, [enabled, ready, compact, trackRef]);
 
-  return <div ref={stageRef} className={styles.stage} aria-hidden="true">{enabled && ready && <video key={`${theme}-${compact}`} ref={videoRef} className={styles.film} src={`/brand/shah-scroll-${theme === "dark" ? "night" : "day"}-${compact ? "mobile" : "desktop"}-v2.mp4`} muted playsInline preload="auto" tabIndex={-1} onLoadedData={event => { event.currentTarget.dataset.ready = "true"; }} onError={event => { event.currentTarget.style.display = "none"; trackRef.current?.setAttribute("data-unavailable", "true"); }} />}</div>;
+  return <div ref={stageRef} className={styles.stage} aria-hidden="true">{enabled && ready && <video key={compact ? "mobile" : "desktop"} ref={videoRef} className={styles.film} src={`/brand/shah-hero-scroll-${compact ? "mobile" : "desktop"}-v3.mp4`} muted playsInline preload="auto" tabIndex={-1} onLoadedData={event => { event.currentTarget.dataset.ready = "true"; }} onError={event => { event.currentTarget.style.display = "none"; trackRef.current?.setAttribute("data-unavailable", "true"); }} />}</div>;
 }
