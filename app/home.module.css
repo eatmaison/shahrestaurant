@@ -618,3 +618,17 @@
   .heroContent .heroEyebrow::before { margin-bottom: 12px; }
 }
 @media (prefers-reduced-motion: reduce) { .heroScroll { height: 100svh; } }
+
+@media (max-height: 540px) and (min-width: 701px) {
+  .heroContent { display: grid; grid-template-columns: minmax(180px, 1fr) minmax(200px, 1fr); align-items: center; gap: 14px 32px; padding: calc(var(--site-header-height, 102px) + 38px) 28px 44px; }
+  .heroContent .heroEyebrow, .home .heroDescriptor { display: none; }
+  .heroTitle { grid-column: 1; grid-row: 1; margin: 0; }
+  .home .heroBrand { max-width: 240px; }
+  .heroSubtitle { grid-column: 2; grid-row: 1; max-width: 300px; font-size: 26px; margin: 0; }
+  .heroContent .actions { grid-column: 1 / -1; grid-row: 2; }
+  .heroContent .primaryButton, .heroContent .heroSecondary { min-height: 44px; padding: 11px 20px; font-size: 12px; }
+  .heroFoot { bottom: 12px; padding-top: 10px; font-size: 10px; }
+  .heroFoot .discover, .heroMenuLink { display: none; }
+  .heroTopline { top: calc(var(--site-header-height, 102px) + 16px); }
+  .motionToggle { top: calc(var(--site-header-height, 102px) + 10px); }
+}
