@@ -134,8 +134,8 @@ export default function Home() {
       <div ref={heroScrollRef} className={styles.heroScroll}>
       <section className={styles.hero} aria-labelledby="home-title">
         <div className={styles.heroMedia}>
-          <picture><source media="(max-width: 767px)" srcSet="/brand/shah-hero-poster-mobile-v3.webp" /><Image src="/brand/shah-hero-poster-desktop-v3.webp" alt={lang === "nl" ? "De entree en het terras van Shah Restaurant in Amsterdam-Noord" : "The entrance and terrace of Shah Restaurant in Amsterdam-Noord"} fill loading="eager" fetchPriority="high" sizes="100vw" className={styles.heroImage} /></picture>
-          <HeroFilm enabled={richMedia} trackRef={heroScrollRef} />
+          <picture style={{ display: "block", position: "relative", width: "100%", height: "100%" }}><source media="(max-width: 767px)" srcSet="/brand/shah-hero-poster-mobile-v4.webp" /><Image src="/brand/shah-hero-poster-desktop-v4.webp" alt={lang === "nl" ? "De entree en het terras van Shah Restaurant in Amsterdam-Noord" : "The entrance and terrace of Shah Restaurant in Amsterdam-Noord"} fill loading="eager" fetchPriority="high" sizes="100vw" className={styles.heroImage} /></picture>
+          <HeroFilm trackRef={heroScrollRef} />
         </div>
         <div className={styles.heroFoot}>
           <a href={DIRECTIONS} target="_blank" rel="noopener noreferrer"><FaLocationDot aria-hidden="true" />Klaprozenweg 36a</a>
