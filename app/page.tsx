@@ -131,6 +131,7 @@ export default function Home() {
   return (
     <div ref={rootRef} className={styles.home} data-motion={motionEnabled ? "on" : "off"} data-media={richMedia ? "scrub" : "static"}>
       <div className={styles.scrollProgress} aria-hidden="true" />
+      <h1 id="home-title" className="sr-only">Shah Restaurant</h1>
       <div ref={heroScrollRef} className={styles.heroScroll}>
       <section className={styles.hero} aria-labelledby="home-title">
         <div className={styles.heroMedia}>
@@ -138,18 +139,6 @@ export default function Home() {
           <HeroFilm enabled={motionEnabled && richMedia} trackRef={heroScrollRef} />
         </div>
         {!reducedMotion && richMedia && <button type="button" className={styles.motionToggle} onClick={toggleMotion} aria-label={motionEnabled ? copy.pauseMotion : copy.resumeMotion} title={motionEnabled ? copy.pauseMotion : copy.resumeMotion} aria-pressed={!motionEnabled}>{motionEnabled ? <FaPause aria-hidden="true" /> : <FaPlay aria-hidden="true" />}</button>}
-        <div className={styles.heroTopline}><span>Amsterdam-Noord</span><span>Indian kitchen & hospitality</span></div>
-        <div className={styles.heroContent}>
-          <p className={styles.heroEyebrow}>Fine Indian Dining</p>
-          <h1 id="home-title" className={styles.heroTitle}><span className="sr-only">Shah Restaurant</span><BrandLogo variant="wordmark" tone="gold" className={styles.heroBrand} alt="" eager /></h1>
-          <p className={styles.heroDescriptor} aria-hidden="true">Restaurant</p>
-          <p className={styles.heroSubtitle}>{copy.introduction}</p>
-          <div className={styles.actions}>
-            <Link href="/reservations" className={styles.primaryButton}><FaCalendarCheck aria-hidden="true" />{copy.reserve}<FaArrowRight aria-hidden="true" /></Link>
-            <a href="#menu" className={styles.heroSecondary}>{copy.menu}<FaArrowDown aria-hidden="true" /></a>
-          </div>
-        </div>
-        <a href="#menu" className={styles.heroMenuLink}><span>01 / {copy.kitchen}</span><strong>{copy.browseDishes}</strong><FaArrowDown aria-hidden="true" /></a>
         <div className={styles.heroFoot}>
           <a href={DIRECTIONS} target="_blank" rel="noopener noreferrer"><FaLocationDot aria-hidden="true" />Klaprozenweg 36a</a>
           <a href="#intro" className={styles.discover}>{copy.explore}<FaArrowDown aria-hidden="true" /></a>
