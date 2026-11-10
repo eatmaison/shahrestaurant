@@ -36,6 +36,7 @@ export default function Home() {
   const isAdmin = currentUser?.role === "admin";
   const copy = homeContent[lang];
   const rootRef = useRef<HTMLDivElement>(null);
+  const heroScrollRef = useRef<HTMLDivElement>(null);
   const searchRef = useRef<HTMLInputElement>(null);
   const swipeStart = useRef<{ horizontal: number; vertical: number } | null>(null);
   const { enabled: motionEnabled, reduced: reducedMotion, toggleMotion } = useHomeMotion();
@@ -129,20 +130,19 @@ export default function Home() {
   };
 
   return (
-    <div ref={rootRef} className={styles.home} data-motion={motionEnabled ? "on" : "off"}>
+    <div ref={rootRef} className={styles.home} data-motion={motionEnabled ? "on" : "off"} data-media={richMedia ? "scrub" : "static"}>
       <div className={styles.scrollProgress} aria-hidden="true" />
-      <div className={styles.heroScroll}>
+      <div ref={heroScrollRef} className={styles.heroScroll}>
       <section className={styles.hero} aria-labelledby="home-title">
-        <Image src="/brand/shah-mark-gold-v1.svg" width={680} height={803} alt="" unoptimized className={styles.heroOrnament} aria-hidden="true" />
         <div className={styles.heroMedia}>
-          <Image key={theme} src={theme === "dark" ? "/brand/shah-arrival-night-v1.webp" : "/brand/shah-arrival-day-v1.webp"} alt={lang === "nl" ? "De entree en het terras van Shah Restaurant in Amsterdam-Noord" : "The entrance and terrace of Shah Restaurant in Amsterdam-Noord"} fill loading="eager" fetchPriority="high" sizes="(min-width: 901px) 52vw, calc(100vw - 32px)" className={styles.heroImage} />
-          <HeroFilm enabled={motionEnabled && richMedia} theme={theme} />
+          <Image key={theme} src={theme === "dark" ? "/brand/shah-arrival-night-v1.webp" : "/brand/shah-arrival-day-v1.webp"} alt={lang === "nl" ? "De entree en het terras van Shah Restaurant in Amsterdam-Noord" : "The entrance and terrace of Shah Restaurant in Amsterdam-Noord"} fill loading="eager" fetchPriority="high" sizes="100vw" className={styles.heroImage} />
+          <HeroFilm enabled={motionEnabled && richMedia} theme={theme} trackRef={heroScrollRef} />
         </div>
         {!reducedMotion && richMedia && <button type="button" className={styles.motionToggle} onClick={toggleMotion} aria-label={motionEnabled ? copy.pauseMotion : copy.resumeMotion} title={motionEnabled ? copy.pauseMotion : copy.resumeMotion} aria-pressed={!motionEnabled}>{motionEnabled ? <FaPause aria-hidden="true" /> : <FaPlay aria-hidden="true" />}</button>}
         <div className={styles.heroTopline}><span>Amsterdam-Noord</span><span>Indian kitchen & hospitality</span></div>
         <div className={styles.heroContent}>
           <p className={styles.heroEyebrow}>Fine Indian Dining</p>
-          <h1 id="home-title" className={styles.heroTitle}><span className="sr-only">Shah Restaurant</span><BrandLogo variant="wordmark" className={styles.heroBrand} alt="" eager /></h1>
+          <h1 id="home-title" className={styles.heroTitle}><span className="sr-only">Shah Restaurant</span><BrandLogo variant="wordmark" tone="gold" className={styles.heroBrand} alt="" eager /></h1>
           <p className={styles.heroDescriptor} aria-hidden="true">Restaurant</p>
           <p className={styles.heroSubtitle}>{copy.introduction}</p>
           <div className={styles.actions}>
