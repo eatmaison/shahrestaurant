@@ -94,7 +94,7 @@ async function payload(dist, value, destination) {
       const rows = await Promise.all([...items].map(asset));
       return { assets: rows.map(item => item.url), rawBytes: rows.reduce((n, item) => n + item.rawBytes, 0), gzipBytes: rows.reduce((n, item) => n + item.gzipBytes, 0) };
     }
-    measurements.push({ route, httpStatus: 200, javascript: await sum(scripts), css: await sum(styles), excludedLegacy: await sum(legacy) });
+    measurements.push({ route, httpStatus: 200, document: { rawBytes: Buffer.byteLength(html, "utf8"), gzipBytes: gzip(Buffer.from(html, "utf8")) }, javascript: await sum(scripts), css: await sum(styles), excludedLegacy: await sum(legacy) });
   }
   if (fingerprint().sha256 !== before.sha256) throw new Error("Source changed during measurement.");
   const manifest = JSON.parse(fs.readFileSync(path.join(root, dist, "build-manifest.json"), "utf8"));
