@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { siteSchema } from "../lib/seo";
+import styles from "./events.module.css";
 
 const url = "/events";
 const title = "Evenementen en catering | Shah Restaurant Amsterdam";
@@ -33,7 +34,7 @@ export const metadata: Metadata = {
 };
 
 export default function EventsLayout({ children }: { children: React.ReactNode }) {
-  return <div className="events-pages">
+  return <div className={`events-pages ${styles.pages}`}>
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(siteSchema("nl")).replace(/</g, "\\u003c") }} />
     {children}
   </div>;

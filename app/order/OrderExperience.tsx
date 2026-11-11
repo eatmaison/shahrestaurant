@@ -921,7 +921,7 @@ export default function OrderExperience({ searchParams, initialCatalog = null }:
       )}
       <div data-menu-desktop className="mx-auto hidden max-w-7xl gap-6 px-4 py-8 sm:px-6 lg:grid lg:grid-cols-[210px_1fr_300px] lg:px-8">
         {/* Desktop: Restaurant + Categories Sidebar */}
-        <aside className="sticky top-[76px] self-start">
+        <aside className={`${styles.categorySidebar} sticky top-[76px] self-start`} aria-label={lang === "nl" ? "Restaurants en categorieën" : "Restaurants and categories"}>
           <div className="space-y-3">
             {sortedBrands.map((b) => {
               const active = b.id === activeBrand;

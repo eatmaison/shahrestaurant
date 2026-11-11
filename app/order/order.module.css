@@ -44,6 +44,7 @@
 .loyaltyNotice[data-menu-loyalty] a { margin-left: 0; }
 @media (min-width: 640px) and (max-width: 1023px) { .mobileProducts { padding-inline: 24px; } }
 .page aside:global(.sticky) { top: calc(var(--site-header-height, 76px) + 16px); }
+.categorySidebar { max-height: calc(100dvh - var(--site-header-height, 76px) - 32px); overflow-y: auto; overscroll-behavior-y: contain; scrollbar-width: thin; scrollbar-color: var(--shah-gold) transparent; scroll-padding-block: 8px; padding: 2px 8px 8px 2px; }
 .products article { transition: border-color .25s, box-shadow .25s; }
 .products article:hover { transform: none; border-color: var(--shah-gold); box-shadow: var(--shah-shadow); }
 .products article > div:last-child { padding: 16px; }

@@ -15,6 +15,21 @@ const legacyPaths: Record<string, PublicPageKey> = {
   "/terms": "terms",
 };
 
+// These public Dutch URLs have no separate English URL pair yet.
+const publicEventPaths = new Set([
+  "/events", "/events/about", "/events/gallery", "/events/birthdays",
+  "/events/celebrations", "/events/company-catering", "/events/company-lunches",
+]);
+
+export function isPublicEventRoute(path: string): boolean {
+  return publicEventPaths.has(path.split(/[?#]/, 1)[0].replace(/\/$/, "") || "/");
+}
+
+/** URL language wins; unpaired event pages accept an explicit in-memory choice. */
+export function resolveSiteLocale(path: string, preference: SiteLocale, eventChoice: SiteLocale | null = null): SiteLocale {
+  return getPublicRoute(path)?.locale ?? (isPublicEventRoute(path) ? eventChoice ?? "nl" : preference);
+}
+
 export function getPublicRoute(path: string): { key: PublicPageKey; locale: SiteLocale; canonical: string } | null {
   if (!path.startsWith("/")) return null;
   const pathname = path.split(/[?#]/, 1)[0].replace(/\/$/, "") || "/";

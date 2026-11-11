@@ -107,7 +107,7 @@ const denied = () => { throw new Error('NOT_FOUND'); };
     if (oldNodeEnv === undefined) delete process.env.NODE_ENV; else process.env.NODE_ENV = oldNodeEnv;
   }
   await test('event layouts render all children publicly and override inherited noindex', () => {
-    const layout = load('app/events/layout.tsx', { '../lib/seo': site }); assert.equal(layout.metadata.robots.index, true); assert.equal(layout.metadata.robots.follow, true);
+    const layout = load('app/events/layout.tsx', { '../lib/seo': site, './events.module.css': { default: { pages: 'events-review' } } }); assert.equal(layout.metadata.robots.index, true); assert.equal(layout.metadata.robots.follow, true);
     const html = renderToStaticMarkup(layout.default({ children: 'PUBLIC_EVENT' }));
     assert.match(html, /PUBLIC_EVENT/);
     const scripts = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)];

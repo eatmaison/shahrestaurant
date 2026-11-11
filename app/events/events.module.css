@@ -1,0 +1,9 @@
+.pages :global(.text-slate-400),
+.pages :global(.text-slate-500),
+.pages :global(.text-stone-400) { color: var(--shah-muted); }
+
+.pages :global(blockquote.text-stone-100) { color: var(--shah-ink); }
+
+.pages :global(span.font-display[class~="text-emerald-600/40"]) { color: var(--shah-gold); }
+
+:global(.dark) .pages :global([class~="dark:text-slate-400"]) { color: var(--shah-muted); }

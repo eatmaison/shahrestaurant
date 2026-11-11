@@ -2,7 +2,7 @@
 
 import type { Bootstrap } from "./lib/serverStore";
 import { usePathname } from "next/navigation";
-import { getPublicRoute, localePath } from "./lib/locale";
+import { getPublicRoute, isPublicEventRoute, localePath, resolveSiteLocale } from "./lib/locale";
 import { fetchJSON } from "./lib/clientFetch";
 import { readStoredJSON, readStoredCart, writeStoredJSON } from "./lib/clientStorage";
 
@@ -241,7 +241,8 @@ export function Providers({ children, initialLang = "nl" }: { children: ReactNod
   const [theme, setTheme] = useState<Theme>("light");
   const pathname = usePathname();
   const [languagePreference, setLangState] = useState<Lang>(initialLang);
-  const lang = getPublicRoute(pathname)?.locale ?? languagePreference;
+  const [eventLanguageChoice, setEventLanguageChoice] = useState<Lang | null>(null);
+  const lang = resolveSiteLocale(pathname, languagePreference, eventLanguageChoice);
 
   const [products, setProducts] = useState<Product[]>([]);
   const [brands, setBrands] = useState<BrandConfig[]>(DEFAULT_BRAND_CONFIGS);
@@ -384,6 +385,7 @@ export function Providers({ children, initialLang = "nl" }: { children: ReactNod
       window.location.assign(localePath(pathname, l) + window.location.search + window.location.hash);
       return;
     }
+    if (isPublicEventRoute(pathname)) setEventLanguageChoice(l);
     setLangState(l);
   }, [pathname]);
 
