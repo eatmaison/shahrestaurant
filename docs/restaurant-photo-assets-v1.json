@@ -1,0 +1,1449 @@
+{
+  "version": "restaurant-photos-v1",
+  "generatedAt": "2026-11-11T12:37:07.104Z",
+  "encoderVersions": {
+    "aom": "3.13.1",
+    "archive": "3.8.2",
+    "cairo": "1.18.4",
+    "cgif": "0.5.0",
+    "exif": "0.6.25",
+    "expat": "2.7.3",
+    "ffi": "3.5.2",
+    "fontconfig": "2.17.1",
+    "freetype": "2.14.1",
+    "fribidi": "1.0.16",
+    "glib": "2.86.1",
+    "harfbuzz": "12.1.0",
+    "heif": "1.20.2",
+    "highway": "1.3.0",
+    "imagequant": "2.4.1",
+    "lcms": "2.17",
+    "mozjpeg": "0826579",
+    "pango": "1.57.0",
+    "pixman": "0.46.4",
+    "png": "1.6.50",
+    "proxy-libintl": "0.5",
+    "rsvg": "2.61.2",
+    "spng": "0.7.4",
+    "tiff": "4.7.1",
+    "vips": "8.17.3",
+    "webp": "1.6.0",
+    "xml2": "2.15.1",
+    "zlib-ng": "2.2.5",
+    "sharp": "0.34.5"
+  },
+  "options": {
+    "resize": {
+      "withoutEnlargement": true,
+      "kernel": "lanczos3"
+    },
+    "webp": {
+      "effort": 6,
+      "smartSubsample": true
+    },
+    "avif": {
+      "effort": 6,
+      "chromaSubsampling": "4:2:0",
+      "bitdepth": 8
+    },
+    "lqip": {
+      "width": 20,
+      "sigma": 0.6,
+      "quality": 30,
+      "effort": 6
+    }
+  },
+  "qualityChoices": {
+    "webp": [
+      88,
+      84,
+      80,
+      76,
+      72,
+      68,
+      64
+    ],
+    "avif": [
+      68,
+      64,
+      60,
+      56,
+      52,
+      48
+    ]
+  },
+  "perPhotoQualityChoices": {
+    "bar": {
+      "webp": [
+        76,
+        72,
+        68,
+        64
+      ]
+    }
+  },
+  "widthCandidates": [
+    160,
+    320,
+    640,
+    960,
+    1440,
+    1600
+  ],
+  "budgetBytesExclusive": 200000,
+  "neverUpscale": true,
+  "metadataPolicy": "EXIF, XMP, IPTC and ICC absent on every output; verified. Sharp default metadata stripping and sRGB delivery; originals untouched.",
+  "visualQA": {
+    "status": "reviewed",
+    "reviewedAt": "2026-11-11T12:42:01.868Z",
+    "method": "view_image",
+    "originalPhotosViewed": 6,
+    "responsiveOutputsViewed": 60,
+    "maximumSizeNativeScaleDetailComparisons": true,
+    "smallest160pxOriginalComparisons": true,
+    "observations": "Composition and crop preserved. No obvious new banding, color shift or smearing in the viewed variants/detail crops. Existing photographic shallow focus remains.",
+    "limits": "Visual review does not imply mathematically lossless photo encoding or verified browser layout. Five clean original-max WebP fallbacks preserve their original bytes exactly."
+  },
+  "excludedInactivePhoto": {
+    "source": "/photos/plant-wall.webp",
+    "reason": "Earlier story background is overridden by a later solid background in home.module.css."
+  },
+  "partnerLogoTradeoff": {
+    "preferred": "existing transparent WebP",
+    "generatedAlternatives": false,
+    "reason": "Exact lossless AVIF files were substantially larger, so existing WebP is preferred for performance and artwork fidelity.",
+    "test": {
+      "sharp": "0.34.5",
+      "vips": "8.17.3",
+      "options": {
+        "lossless": true,
+        "chromaSubsampling": "4:4:4",
+        "effort": 4
+      },
+      "rgbaIdentical": true,
+      "alphaMismatchedPixels": 0
+    },
+    "results": [
+      {
+        "name": "coca-cola",
+        "originalWebpBytes": 57748,
+        "losslessAvifBytes": 172057
+      },
+      {
+        "name": "heineken",
+        "originalWebpBytes": 33532,
+        "losslessAvifBytes": 104211
+      },
+      {
+        "name": "de-kuyper",
+        "originalWebpBytes": 49730,
+        "losslessAvifBytes": 131039
+      },
+      {
+        "name": "chaudfontaine",
+        "originalWebpBytes": 27650,
+        "losslessAvifBytes": 96973
+      }
+    ]
+  },
+  "photos": [
+    {
+      "source": "/brand/shah-bar-v1.webp",
+      "originalWidth": 1200,
+      "originalHeight": 1800,
+      "originalBytes": 220768,
+      "originalSha256": "b18de848e01c5bf3624187bc7cfde6258f0f1038cbdfa5e209f3d5d7c41f6442",
+      "originalMetadata": {
+        "exif": false,
+        "xmp": false,
+        "iptc": false,
+        "icc": false
+      },
+      "widths": [
+        160,
+        320,
+        640,
+        960,
+        1200
+      ],
+      "outputs": [
+        {
+          "src": "/brand/restaurant-photos-v1/shah-bar-160.avif",
+          "width": 160,
+          "height": 240,
+          "bytes": 11215,
+          "format": "avif",
+          "quality": 68,
+          "reusedOriginal": false,
+          "sha256": "9213e623c4a1edff5da82aa6bf0fd07ed5f90e77b919dd59ecd89db7a404732e",
+          "metadataStripped": true,
+          "withinBudget": true,
+          "upscaled": false,
+          "visualReview": {
+            "method": "view_image contact sheet",
+            "reviewed": true,
+            "hash": "9213e623c4a1edff5da82aa6bf0fd07ed5f90e77b919dd59ecd89db7a404732e"
+          }
+        },
+        {
+          "src": "/brand/restaurant-photos-v1/shah-bar-160.webp",
+          "width": 160,
+          "height": 240,
+          "bytes": 9810,
+          "format": "webp",
+          "quality": 76,
+          "reusedOriginal": false,
+          "sha256": "7881dec05ac2f560dcf278557ef5ec2d65487ff2d93e5f3e4d57bca25f877c0b",
+          "metadataStripped": true,
+          "withinBudget": true,
+          "upscaled": false,
+          "visualReview": {
+            "method": "view_image contact sheet",
+            "reviewed": true,
+            "hash": "7881dec05ac2f560dcf278557ef5ec2d65487ff2d93e5f3e4d57bca25f877c0b"
+          }
+        },
+        {
+          "src": "/brand/restaurant-photos-v1/shah-bar-320.avif",
+          "width": 320,
+          "height": 480,
+          "bytes": 30612,
+          "format": "avif",
+          "quality": 68,
+          "reusedOriginal": false,
+          "sha256": "19fc534c472adb1f08780fc8bd3b41f140cf075754130150be30ba9d3adf01b0",
+          "metadataStripped": true,
+          "withinBudget": true,
+          "upscaled": false,
+          "visualReview": {
+            "method": "view_image contact sheet",
+            "reviewed": true,
+            "hash": "19fc534c472adb1f08780fc8bd3b41f140cf075754130150be30ba9d3adf01b0"
+          }
+        },
+        {
+          "src": "/brand/restaurant-photos-v1/shah-bar-320.webp",
+          "width": 320,
+          "height": 480,
+          "bytes": 28304,
+          "format": "webp",
+          "quality": 76,
+          "reusedOriginal": false,
+          "sha256": "2b97b6e3855c6a09a41da088d6c05326b3091a0969257a7f5db342b5b8b29f93",
+          "metadataStripped": true,
+          "withinBudget": true,
+          "upscaled": false,
+          "visualReview": {
+            "method": "view_image contact sheet",
+            "reviewed": true,
+            "hash": "2b97b6e3855c6a09a41da088d6c05326b3091a0969257a7f5db342b5b8b29f93"
+          }
+        },
+        {
+          "src": "/brand/restaurant-photos-v1/shah-bar-640.avif",
+          "width": 640,
+          "height": 960,
+          "bytes": 73660,
+          "format": "avif",
+          "quality": 68,
+          "reusedOriginal": false,
+          "sha256": "173ef852db74bd1d8b232dd4ae919277567645f995baa95b9c778a421797c480",
+          "metadataStripped": true,
+          "withinBudget": true,
+          "upscaled": false,
+          "visualReview": {
+            "method": "view_image contact sheet",
+            "reviewed": true,
+            "hash": "173ef852db74bd1d8b232dd4ae919277567645f995baa95b9c778a421797c480"
+          }
+        },
+        {
+          "src": "/brand/restaurant-photos-v1/shah-bar-640.webp",
+          "width": 640,
+          "height": 960,
+          "bytes": 76188,
+          "format": "webp",
+          "quality": 76,
+          "reusedOriginal": false,
+          "sha256": "4ccb44aa41067b3dab1e18115273afd6d380cf850ac7e184d490b3e4d26e210a",
+          "metadataStripped": true,
+          "withinBudget": true,
+          "upscaled": false,
+          "visualReview": {
+            "method": "view_image contact sheet",
+            "reviewed": true,
+            "hash": "4ccb44aa41067b3dab1e18115273afd6d380cf850ac7e184d490b3e4d26e210a"
+          }
+        },
+        {
+          "src": "/brand/restaurant-photos-v1/shah-bar-960.avif",
+          "width": 960,
+          "height": 1440,
+          "bytes": 112723,
+          "format": "avif",
+          "quality": 68,
+          "reusedOriginal": false,
+          "sha256": "b4dd34accef2f23ac05d1c109363508af6858da2e8edb03db1d351e9f58816d1",
+          "metadataStripped": true,
+          "withinBudget": true,
+          "upscaled": false,
+          "visualReview": {
+            "method": "view_image contact sheet",
+            "reviewed": true,
+            "hash": "b4dd34accef2f23ac05d1c109363508af6858da2e8edb03db1d351e9f58816d1"
+          }
+        },
+        {
+          "src": "/brand/restaurant-photos-v1/shah-bar-960.webp",
+          "width": 960,
+          "height": 1440,
+          "bytes": 118970,
+          "format": "webp",
+          "quality": 76,
+          "reusedOriginal": false,
+          "sha256": "4ce20a4021f423be7c0c92071f5a7d07bba86d57ae49181bc753064a5e1f8e24",
+          "metadataStripped": true,
+          "withinBudget": true,
+          "upscaled": false,
+          "visualReview": {
+            "method": "view_image contact sheet",
+            "reviewed": true,
+            "hash": "4ce20a4021f423be7c0c92071f5a7d07bba86d57ae49181bc753064a5e1f8e24"
+          }
+        },
+        {
+          "src": "/brand/restaurant-photos-v1/shah-bar-1200.avif",
+          "width": 1200,
+          "height": 1800,
+          "bytes": 161047,
+          "format": "avif",
+          "quality": 68,
+          "reusedOriginal": false,
+          "sha256": "24aa7d0f1a092d0b687425109eec6ba74ff39190087141a1ba26b4c7b2af7189",
+          "metadataStripped": true,
+          "withinBudget": true,
+          "upscaled": false,
+          "visualReview": {
+            "method": "view_image contact sheet",
+            "reviewed": true,
+            "hash": "24aa7d0f1a092d0b687425109eec6ba74ff39190087141a1ba26b4c7b2af7189"
+          }
+        },
+        {
+          "src": "/brand/restaurant-photos-v1/shah-bar-1200.webp",
+          "width": 1200,
+          "height": 1800,
+          "bytes": 176090,
+          "format": "webp",
+          "quality": 76,
+          "reusedOriginal": false,
+          "sha256": "d20177627248005cb418c85f3c4427b91b96359c93351b4b1aac6578fc86051b",
+          "metadataStripped": true,
+          "withinBudget": true,
+          "upscaled": false,
+          "visualReview": {
+            "method": "view_image contact sheet",
+            "reviewed": true,
+            "hash": "d20177627248005cb418c85f3c4427b91b96359c93351b4b1aac6578fc86051b"
+          }
+        }
+      ],
+      "blur": {
+        "width": 20,
+        "height": 30,
+        "bytes": 150
+      },
+      "originalUnchanged": true
+    },
+    {
+      "source": "/brand/shah-room-v1.webp",
+      "originalWidth": 1200,
+      "originalHeight": 1800,
+      "originalBytes": 153334,
+      "originalSha256": "d583b7815079e66e4925fb004ffec42079c21968ee2256fb7d75caf2cd3a2098",
+      "originalMetadata": {
+        "exif": false,
+        "xmp": false,
+        "iptc": false,
+        "icc": false
+      },
+      "widths": [
+        160,
+        320,
+        640,
+        960,
+        1200
+      ],
+      "outputs": [
+        {
+          "src": "/brand/restaurant-photos-v1/shah-room-160.avif",
+          "width": 160,
+          "height": 240,
+          "bytes": 8834,
+          "format": "avif",
+          "quality": 68,
+          "reusedOriginal": false,
+          "sha256": "24bebc2dcab05c47960e8fc497d1e11926741c26750480730e7c632743a949f6",
+          "metadataStripped": true,
+          "withinBudget": true,
+          "upscaled": false,
+          "visualReview": {
+            "method": "view_image contact sheet",
+            "reviewed": true,
+            "hash": "24bebc2dcab05c47960e8fc497d1e11926741c26750480730e7c632743a949f6"
+          }
+        },
+        {
+          "src": "/brand/restaurant-photos-v1/shah-room-160.webp",
+          "width": 160,
+          "height": 240,
+          "bytes": 12192,
+          "format": "webp",
+          "quality": 88,
+          "reusedOriginal": false,
+          "sha256": "f908d0b7cbfbb449c52d421e011ee92e75c107b452053a1a6972074828fab051",
+          "metadataStripped": true,
+          "withinBudget": true,
+          "upscaled": false,
+          "visualReview": {
+            "method": "view_image contact sheet",
+            "reviewed": true,
+            "hash": "f908d0b7cbfbb449c52d421e011ee92e75c107b452053a1a6972074828fab051"
+          }
+        },
+        {
+          "src": "/brand/restaurant-photos-v1/shah-room-320.avif",
+          "width": 320,
+          "height": 480,
+          "bytes": 21555,
+          "format": "avif",
+          "quality": 68,
+          "reusedOriginal": false,
+          "sha256": "8f68ef76cbc3c91a4570110ca6e1392edf4755855d51e5d359e16dab1b1a11e1",
+          "metadataStripped": true,
+          "withinBudget": true,
+          "upscaled": false,
+          "visualReview": {
+            "method": "view_image contact sheet",
+            "reviewed": true,
+            "hash": "8f68ef76cbc3c91a4570110ca6e1392edf4755855d51e5d359e16dab1b1a11e1"
+          }
+        },
+        {
+          "src": "/brand/restaurant-photos-v1/shah-room-320.webp",
+          "width": 320,
+          "height": 480,
+          "bytes": 34474,
+          "format": "webp",
+          "quality": 88,
+          "reusedOriginal": false,
+          "sha256": "8a510cdfbf17c3c60c46199555b11e95f9ab6b2263b45fe148dc1ef328614eee",
+          "metadataStripped": true,
+          "withinBudget": true,
+          "upscaled": false,
+          "visualReview": {
+            "method": "view_image contact sheet",
+            "reviewed": true,
+            "hash": "8a510cdfbf17c3c60c46199555b11e95f9ab6b2263b45fe148dc1ef328614eee"
+          }
+        },
+        {
+          "src": "/brand/restaurant-photos-v1/shah-room-640.avif",
+          "width": 640,
+          "height": 960,
+          "bytes": 48545,
+          "format": "avif",
+          "quality": 68,
+          "reusedOriginal": false,
+          "sha256": "56a2dbe8969b5bac8aa4c3d90ef2790096a2680e465c63035242353fcce8c49b",
+          "metadataStripped": true,
+          "withinBudget": true,
+          "upscaled": false,
+          "visualReview": {
+            "method": "view_image contact sheet",
+            "reviewed": true,
+            "hash": "56a2dbe8969b5bac8aa4c3d90ef2790096a2680e465c63035242353fcce8c49b"
+          }
+        },
+        {
+          "src": "/brand/restaurant-photos-v1/shah-room-640.webp",
+          "width": 640,
+          "height": 960,
+          "bytes": 88290,
+          "format": "webp",
+          "quality": 88,
+          "reusedOriginal": false,
+          "sha256": "e1683f833afeb6c883a010853a9e28cabdc2c7eb88028bf9ac4432a9dc28d89b",
+          "metadataStripped": true,
+          "withinBudget": true,
+          "upscaled": false,
+          "visualReview": {
+            "method": "view_image contact sheet",
+            "reviewed": true,
+            "hash": "e1683f833afeb6c883a010853a9e28cabdc2c7eb88028bf9ac4432a9dc28d89b"
+          }
+        },
+        {
+          "src": "/brand/restaurant-photos-v1/shah-room-960.avif",
+          "width": 960,
+          "height": 1440,
+          "bytes": 72248,
+          "format": "avif",
+          "quality": 68,
+          "reusedOriginal": false,
+          "sha256": "537ed45ee37089153f37c144628ce0078e0dcbbe327c5323a8127134e375af19",
+          "metadataStripped": true,
+          "withinBudget": true,
+          "upscaled": false,
+          "visualReview": {
+            "method": "view_image contact sheet",
+            "reviewed": true,
+            "hash": "537ed45ee37089153f37c144628ce0078e0dcbbe327c5323a8127134e375af19"
+          }
+        },
+        {
+          "src": "/brand/restaurant-photos-v1/shah-room-960.webp",
+          "width": 960,
+          "height": 1440,
+          "bytes": 133050,
+          "format": "webp",
+          "quality": 88,
+          "reusedOriginal": false,
+          "sha256": "7ade79aade3237bb4e63c5bbe65bd96fa6c7feb7db8eed073d42b896ad6a407d",
+          "metadataStripped": true,
+          "withinBudget": true,
+          "upscaled": false,
+          "visualReview": {
+            "method": "view_image contact sheet",
+            "reviewed": true,
+            "hash": "7ade79aade3237bb4e63c5bbe65bd96fa6c7feb7db8eed073d42b896ad6a407d"
+          }
+        },
+        {
+          "src": "/brand/restaurant-photos-v1/shah-room-1200.avif",
+          "width": 1200,
+          "height": 1800,
+          "bytes": 100144,
+          "format": "avif",
+          "quality": 68,
+          "reusedOriginal": false,
+          "sha256": "eecf902468063614c5b90c3e6d89f305fe128d775d777452384b44ff7b43a31c",
+          "metadataStripped": true,
+          "withinBudget": true,
+          "upscaled": false,
+          "visualReview": {
+            "method": "view_image contact sheet",
+            "reviewed": true,
+            "hash": "eecf902468063614c5b90c3e6d89f305fe128d775d777452384b44ff7b43a31c"
+          }
+        },
+        {
+          "src": "/brand/restaurant-photos-v1/shah-room-1200.webp",
+          "width": 1200,
+          "height": 1800,
+          "bytes": 153334,
+          "format": "webp",
+          "quality": null,
+          "reusedOriginal": true,
+          "sha256": "d583b7815079e66e4925fb004ffec42079c21968ee2256fb7d75caf2cd3a2098",
+          "metadataStripped": true,
+          "withinBudget": true,
+          "upscaled": false,
+          "visualReview": {
+            "method": "view_image contact sheet",
+            "reviewed": true,
+            "hash": "d583b7815079e66e4925fb004ffec42079c21968ee2256fb7d75caf2cd3a2098"
+          }
+        }
+      ],
+      "blur": {
+        "width": 20,
+        "height": 30,
+        "bytes": 144
+      },
+      "originalUnchanged": true
+    },
+    {
+      "source": "/brand/shah-table-v1.webp",
+      "originalWidth": 1400,
+      "originalHeight": 933,
+      "originalBytes": 76786,
+      "originalSha256": "591f0933839f9311243b142892b73dd95cb3f3683a38df3819bf006551a4ba33",
+      "originalMetadata": {
+        "exif": false,
+        "xmp": false,
+        "iptc": false,
+        "icc": false
+      },
+      "widths": [
+        160,
+        320,
+        640,
+        960,
+        1400
+      ],
+      "outputs": [
+        {
+          "src": "/brand/restaurant-photos-v1/shah-table-160.avif",
+          "width": 160,
+          "height": 107,
+          "bytes": 4503,
+          "format": "avif",
+          "quality": 68,
+          "reusedOriginal": false,
+          "sha256": "0d3d6bb8af4257481fcbf1a6b92b96b4cafbca995f220f670ddbe30aedc4b66e",
+          "metadataStripped": true,
+          "withinBudget": true,
+          "upscaled": false,
+          "visualReview": {
+            "method": "view_image contact sheet",
+            "reviewed": true,
+            "hash": "0d3d6bb8af4257481fcbf1a6b92b96b4cafbca995f220f670ddbe30aedc4b66e"
+          }
+        },
+        {
+          "src": "/brand/restaurant-photos-v1/shah-table-160.webp",
+          "width": 160,
+          "height": 107,
+          "bytes": 5866,
+          "format": "webp",
+          "quality": 88,
+          "reusedOriginal": false,
+          "sha256": "e58ded80a0e2b852d5eaf5ab1aebb05d4ecba2b7c5978063bb2b12ba9da30026",
+          "metadataStripped": true,
+          "withinBudget": true,
+          "upscaled": false,
+          "visualReview": {
+            "method": "view_image contact sheet",
+            "reviewed": true,
+            "hash": "e58ded80a0e2b852d5eaf5ab1aebb05d4ecba2b7c5978063bb2b12ba9da30026"
+          }
+        },
+        {
+          "src": "/brand/restaurant-photos-v1/shah-table-320.avif",
+          "width": 320,
+          "height": 213,
+          "bytes": 10173,
+          "format": "avif",
+          "quality": 68,
+          "reusedOriginal": false,
+          "sha256": "5a99f1029c92c6563c8163893765e1034d01a1146eb9bead16d2a0b044327e46",
+          "metadataStripped": true,
+          "withinBudget": true,
+          "upscaled": false,
+          "visualReview": {
+            "method": "view_image contact sheet",
+            "reviewed": true,
+            "hash": "5a99f1029c92c6563c8163893765e1034d01a1146eb9bead16d2a0b044327e46"
+          }
+        },
+        {
+          "src": "/brand/restaurant-photos-v1/shah-table-320.webp",
+          "width": 320,
+          "height": 213,
+          "bytes": 15916,
+          "format": "webp",
+          "quality": 88,
+          "reusedOriginal": false,
+          "sha256": "8f899299613d12d39c3a9edfa71143d7863055ff5b2cd47f95209c426334fa0b",
+          "metadataStripped": true,
+          "withinBudget": true,
+          "upscaled": false,
+          "visualReview": {
+            "method": "view_image contact sheet",
+            "reviewed": true,
+            "hash": "8f899299613d12d39c3a9edfa71143d7863055ff5b2cd47f95209c426334fa0b"
+          }
+        },
+        {
+          "src": "/brand/restaurant-photos-v1/shah-table-640.avif",
+          "width": 640,
+          "height": 427,
+          "bytes": 21261,
+          "format": "avif",
+          "quality": 68,
+          "reusedOriginal": false,
+          "sha256": "08e2501fe13a94ed0de6007f1bef039b5a4b0146dfa69ec35cbfe77245cfffb6",
+          "metadataStripped": true,
+          "withinBudget": true,
+          "upscaled": false,
+          "visualReview": {
+            "method": "view_image contact sheet",
+            "reviewed": true,
+            "hash": "08e2501fe13a94ed0de6007f1bef039b5a4b0146dfa69ec35cbfe77245cfffb6"
+          }
+        },
+        {
+          "src": "/brand/restaurant-photos-v1/shah-table-640.webp",
+          "width": 640,
+          "height": 427,
+          "bytes": 38720,
+          "format": "webp",
+          "quality": 88,
+          "reusedOriginal": false,
+          "sha256": "c83c61ba4cc8d49bc9f3da73df86b01e75324a7049a663460d3870b15bbb39e1",
+          "metadataStripped": true,
+          "withinBudget": true,
+          "upscaled": false,
+          "visualReview": {
+            "method": "view_image contact sheet",
+            "reviewed": true,
+            "hash": "c83c61ba4cc8d49bc9f3da73df86b01e75324a7049a663460d3870b15bbb39e1"
+          }
+        },
+        {
+          "src": "/brand/restaurant-photos-v1/shah-table-960.avif",
+          "width": 960,
+          "height": 640,
+          "bytes": 32600,
+          "format": "avif",
+          "quality": 68,
+          "reusedOriginal": false,
+          "sha256": "bf4dceee9785820639b7f344b4cba0e34b591472db740772a29dc18038d63b79",
+          "metadataStripped": true,
+          "withinBudget": true,
+          "upscaled": false,
+          "visualReview": {
+            "method": "view_image contact sheet",
+            "reviewed": true,
+            "hash": "bf4dceee9785820639b7f344b4cba0e34b591472db740772a29dc18038d63b79"
+          }
+        },
+        {
+          "src": "/brand/restaurant-photos-v1/shah-table-960.webp",
+          "width": 960,
+          "height": 640,
+          "bytes": 63570,
+          "format": "webp",
+          "quality": 88,
+          "reusedOriginal": false,
+          "sha256": "e2babcd6276c56936ee2907c087fce1baa946ec659c031d189835528144b4c36",
+          "metadataStripped": true,
+          "withinBudget": true,
+          "upscaled": false,
+          "visualReview": {
+            "method": "view_image contact sheet",
+            "reviewed": true,
+            "hash": "e2babcd6276c56936ee2907c087fce1baa946ec659c031d189835528144b4c36"
+          }
+        },
+        {
+          "src": "/brand/restaurant-photos-v1/shah-table-1400.avif",
+          "width": 1400,
+          "height": 933,
+          "bytes": 50353,
+          "format": "avif",
+          "quality": 68,
+          "reusedOriginal": false,
+          "sha256": "123bd26393da9ca38486c46d3bde18b5ffcf37ee0bcb6a2a166585aea69d560d",
+          "metadataStripped": true,
+          "withinBudget": true,
+          "upscaled": false,
+          "visualReview": {
+            "method": "view_image contact sheet",
+            "reviewed": true,
+            "hash": "123bd26393da9ca38486c46d3bde18b5ffcf37ee0bcb6a2a166585aea69d560d"
+          }
+        },
+        {
+          "src": "/brand/restaurant-photos-v1/shah-table-1400.webp",
+          "width": 1400,
+          "height": 933,
+          "bytes": 76786,
+          "format": "webp",
+          "quality": null,
+          "reusedOriginal": true,
+          "sha256": "591f0933839f9311243b142892b73dd95cb3f3683a38df3819bf006551a4ba33",
+          "metadataStripped": true,
+          "withinBudget": true,
+          "upscaled": false,
+          "visualReview": {
+            "method": "view_image contact sheet",
+            "reviewed": true,
+            "hash": "591f0933839f9311243b142892b73dd95cb3f3683a38df3819bf006551a4ba33"
+          }
+        }
+      ],
+      "blur": {
+        "width": 20,
+        "height": 13,
+        "bytes": 126
+      },
+      "originalUnchanged": true
+    },
+    {
+      "source": "/brand/shah-dining-v1.webp",
+      "originalWidth": 1400,
+      "originalHeight": 933,
+      "originalBytes": 63426,
+      "originalSha256": "d289a0be63c2724e8a9859e9a4ae8c73bf491a72fde26db0254bf2a317777497",
+      "originalMetadata": {
+        "exif": false,
+        "xmp": false,
+        "iptc": false,
+        "icc": false
+      },
+      "widths": [
+        160,
+        320,
+        640,
+        960,
+        1400
+      ],
+      "outputs": [
+        {
+          "src": "/brand/restaurant-photos-v1/shah-dining-160.avif",
+          "width": 160,
+          "height": 107,
+          "bytes": 4226,
+          "format": "avif",
+          "quality": 68,
+          "reusedOriginal": false,
+          "sha256": "7ddae75b497e3df839479d564f6ef557aba552e0dbef1050ccabaddd891ab09b",
+          "metadataStripped": true,
+          "withinBudget": true,
+          "upscaled": false,
+          "visualReview": {
+            "method": "view_image contact sheet",
+            "reviewed": true,
+            "hash": "7ddae75b497e3df839479d564f6ef557aba552e0dbef1050ccabaddd891ab09b"
+          }
+        },
+        {
+          "src": "/brand/restaurant-photos-v1/shah-dining-160.webp",
+          "width": 160,
+          "height": 107,
+          "bytes": 5606,
+          "format": "webp",
+          "quality": 88,
+          "reusedOriginal": false,
+          "sha256": "5b9d5b4aa16245e436c01b0aca34d0b00c7048f8bb06803af2ba2f8f9d8e949d",
+          "metadataStripped": true,
+          "withinBudget": true,
+          "upscaled": false,
+          "visualReview": {
+            "method": "view_image contact sheet",
+            "reviewed": true,
+            "hash": "5b9d5b4aa16245e436c01b0aca34d0b00c7048f8bb06803af2ba2f8f9d8e949d"
+          }
+        },
+        {
+          "src": "/brand/restaurant-photos-v1/shah-dining-320.avif",
+          "width": 320,
+          "height": 213,
+          "bytes": 9188,
+          "format": "avif",
+          "quality": 68,
+          "reusedOriginal": false,
+          "sha256": "9b04774186c9c21d396eb48e94487e3a813e48a13902220f553c40aa176c1f2d",
+          "metadataStripped": true,
+          "withinBudget": true,
+          "upscaled": false,
+          "visualReview": {
+            "method": "view_image contact sheet",
+            "reviewed": true,
+            "hash": "9b04774186c9c21d396eb48e94487e3a813e48a13902220f553c40aa176c1f2d"
+          }
+        },
+        {
+          "src": "/brand/restaurant-photos-v1/shah-dining-320.webp",
+          "width": 320,
+          "height": 213,
+          "bytes": 14186,
+          "format": "webp",
+          "quality": 88,
+          "reusedOriginal": false,
+          "sha256": "37eef1587a699952642ffe0d66ea09d91d2448990df5b680c7dcbd24393fce40",
+          "metadataStripped": true,
+          "withinBudget": true,
+          "upscaled": false,
+          "visualReview": {
+            "method": "view_image contact sheet",
+            "reviewed": true,
+            "hash": "37eef1587a699952642ffe0d66ea09d91d2448990df5b680c7dcbd24393fce40"
+          }
+        },
+        {
+          "src": "/brand/restaurant-photos-v1/shah-dining-640.avif",
+          "width": 640,
+          "height": 427,
+          "bytes": 18123,
+          "format": "avif",
+          "quality": 68,
+          "reusedOriginal": false,
+          "sha256": "8b2f3b15cda0ae3841c81b68eef9974750d3a08efaa1f47879781f71751ef925",
+          "metadataStripped": true,
+          "withinBudget": true,
+          "upscaled": false,
+          "visualReview": {
+            "method": "view_image contact sheet",
+            "reviewed": true,
+            "hash": "8b2f3b15cda0ae3841c81b68eef9974750d3a08efaa1f47879781f71751ef925"
+          }
+        },
+        {
+          "src": "/brand/restaurant-photos-v1/shah-dining-640.webp",
+          "width": 640,
+          "height": 427,
+          "bytes": 34268,
+          "format": "webp",
+          "quality": 88,
+          "reusedOriginal": false,
+          "sha256": "5e8e329bf98e75924ff81bd627a29105805969dc8331a0fb226945e921f7fd8d",
+          "metadataStripped": true,
+          "withinBudget": true,
+          "upscaled": false,
+          "visualReview": {
+            "method": "view_image contact sheet",
+            "reviewed": true,
+            "hash": "5e8e329bf98e75924ff81bd627a29105805969dc8331a0fb226945e921f7fd8d"
+          }
+        },
+        {
+          "src": "/brand/restaurant-photos-v1/shah-dining-960.avif",
+          "width": 960,
+          "height": 640,
+          "bytes": 27157,
+          "format": "avif",
+          "quality": 68,
+          "reusedOriginal": false,
+          "sha256": "5b175718126469a69300a9c6f2ac2f720960baf2b45868a0f3453605adf2295a",
+          "metadataStripped": true,
+          "withinBudget": true,
+          "upscaled": false,
+          "visualReview": {
+            "method": "view_image contact sheet",
+            "reviewed": true,
+            "hash": "5b175718126469a69300a9c6f2ac2f720960baf2b45868a0f3453605adf2295a"
+          }
+        },
+        {
+          "src": "/brand/restaurant-photos-v1/shah-dining-960.webp",
+          "width": 960,
+          "height": 640,
+          "bytes": 54646,
+          "format": "webp",
+          "quality": 88,
+          "reusedOriginal": false,
+          "sha256": "f57759ad7b22621b4a1c0bb34ce85a20a1d6eb3f560ec9f242f84c7e10450c63",
+          "metadataStripped": true,
+          "withinBudget": true,
+          "upscaled": false,
+          "visualReview": {
+            "method": "view_image contact sheet",
+            "reviewed": true,
+            "hash": "f57759ad7b22621b4a1c0bb34ce85a20a1d6eb3f560ec9f242f84c7e10450c63"
+          }
+        },
+        {
+          "src": "/brand/restaurant-photos-v1/shah-dining-1400.avif",
+          "width": 1400,
+          "height": 933,
+          "bytes": 39069,
+          "format": "avif",
+          "quality": 68,
+          "reusedOriginal": false,
+          "sha256": "32f7eb567d6ebbb13558484fe409eb069dc86662e2e6a5d7bbdd6ee729f6bbe0",
+          "metadataStripped": true,
+          "withinBudget": true,
+          "upscaled": false,
+          "visualReview": {
+            "method": "view_image contact sheet",
+            "reviewed": true,
+            "hash": "32f7eb567d6ebbb13558484fe409eb069dc86662e2e6a5d7bbdd6ee729f6bbe0"
+          }
+        },
+        {
+          "src": "/brand/restaurant-photos-v1/shah-dining-1400.webp",
+          "width": 1400,
+          "height": 933,
+          "bytes": 63426,
+          "format": "webp",
+          "quality": null,
+          "reusedOriginal": true,
+          "sha256": "d289a0be63c2724e8a9859e9a4ae8c73bf491a72fde26db0254bf2a317777497",
+          "metadataStripped": true,
+          "withinBudget": true,
+          "upscaled": false,
+          "visualReview": {
+            "method": "view_image contact sheet",
+            "reviewed": true,
+            "hash": "d289a0be63c2724e8a9859e9a4ae8c73bf491a72fde26db0254bf2a317777497"
+          }
+        }
+      ],
+      "blur": {
+        "width": 20,
+        "height": 13,
+        "bytes": 108
+      },
+      "originalUnchanged": true
+    },
+    {
+      "source": "/brand/shah-cocktail-v1.webp",
+      "originalWidth": 1200,
+      "originalHeight": 1800,
+      "originalBytes": 57866,
+      "originalSha256": "70ff50e8897738e8a9989399e3ea0bcc45211f44585353312fdc352216bf56c5",
+      "originalMetadata": {
+        "exif": false,
+        "xmp": false,
+        "iptc": false,
+        "icc": false
+      },
+      "widths": [
+        160,
+        320,
+        640,
+        960,
+        1200
+      ],
+      "outputs": [
+        {
+          "src": "/brand/restaurant-photos-v1/shah-cocktail-160.avif",
+          "width": 160,
+          "height": 240,
+          "bytes": 3632,
+          "format": "avif",
+          "quality": 68,
+          "reusedOriginal": false,
+          "sha256": "d01b1a2cc37f1be3bed296b7951d03e1020bb737d1a9d7814acb8471c6ef3158",
+          "metadataStripped": true,
+          "withinBudget": true,
+          "upscaled": false,
+          "visualReview": {
+            "method": "view_image contact sheet",
+            "reviewed": true,
+            "hash": "d01b1a2cc37f1be3bed296b7951d03e1020bb737d1a9d7814acb8471c6ef3158"
+          }
+        },
+        {
+          "src": "/brand/restaurant-photos-v1/shah-cocktail-160.webp",
+          "width": 160,
+          "height": 240,
+          "bytes": 5564,
+          "format": "webp",
+          "quality": 88,
+          "reusedOriginal": false,
+          "sha256": "90263c68290fb78c43037dee20e8bfb8c15b69a83ddd3ee1a93bcaff4ecd4dda",
+          "metadataStripped": true,
+          "withinBudget": true,
+          "upscaled": false,
+          "visualReview": {
+            "method": "view_image contact sheet",
+            "reviewed": true,
+            "hash": "90263c68290fb78c43037dee20e8bfb8c15b69a83ddd3ee1a93bcaff4ecd4dda"
+          }
+        },
+        {
+          "src": "/brand/restaurant-photos-v1/shah-cocktail-320.avif",
+          "width": 320,
+          "height": 480,
+          "bytes": 7856,
+          "format": "avif",
+          "quality": 68,
+          "reusedOriginal": false,
+          "sha256": "e17e9b58fe97e147f7552b6ecad93a0d29dd934add91a386e36f06ad5d204323",
+          "metadataStripped": true,
+          "withinBudget": true,
+          "upscaled": false,
+          "visualReview": {
+            "method": "view_image contact sheet",
+            "reviewed": true,
+            "hash": "e17e9b58fe97e147f7552b6ecad93a0d29dd934add91a386e36f06ad5d204323"
+          }
+        },
+        {
+          "src": "/brand/restaurant-photos-v1/shah-cocktail-320.webp",
+          "width": 320,
+          "height": 480,
+          "bytes": 13480,
+          "format": "webp",
+          "quality": 88,
+          "reusedOriginal": false,
+          "sha256": "d5f73805ea8f2322d9b74a0295198fa9de4b37649ebcb0f458945874c9cc7f42",
+          "metadataStripped": true,
+          "withinBudget": true,
+          "upscaled": false,
+          "visualReview": {
+            "method": "view_image contact sheet",
+            "reviewed": true,
+            "hash": "d5f73805ea8f2322d9b74a0295198fa9de4b37649ebcb0f458945874c9cc7f42"
+          }
+        },
+        {
+          "src": "/brand/restaurant-photos-v1/shah-cocktail-640.avif",
+          "width": 640,
+          "height": 960,
+          "bytes": 17600,
+          "format": "avif",
+          "quality": 68,
+          "reusedOriginal": false,
+          "sha256": "dc3d12d2d22cffdb0aa5bbc86174a7d2577374a1fe242dffdb2081570fc0ec40",
+          "metadataStripped": true,
+          "withinBudget": true,
+          "upscaled": false,
+          "visualReview": {
+            "method": "view_image contact sheet",
+            "reviewed": true,
+            "hash": "dc3d12d2d22cffdb0aa5bbc86174a7d2577374a1fe242dffdb2081570fc0ec40"
+          }
+        },
+        {
+          "src": "/brand/restaurant-photos-v1/shah-cocktail-640.webp",
+          "width": 640,
+          "height": 960,
+          "bytes": 34550,
+          "format": "webp",
+          "quality": 88,
+          "reusedOriginal": false,
+          "sha256": "b2b263c141425f884d4c328d5dc95bfbb7c05dfaae1516890de9dbc6a5256281",
+          "metadataStripped": true,
+          "withinBudget": true,
+          "upscaled": false,
+          "visualReview": {
+            "method": "view_image contact sheet",
+            "reviewed": true,
+            "hash": "b2b263c141425f884d4c328d5dc95bfbb7c05dfaae1516890de9dbc6a5256281"
+          }
+        },
+        {
+          "src": "/brand/restaurant-photos-v1/shah-cocktail-960.avif",
+          "width": 960,
+          "height": 1440,
+          "bytes": 26177,
+          "format": "avif",
+          "quality": 68,
+          "reusedOriginal": false,
+          "sha256": "e48f8a3d2945aee452e2f92b7149accbf2deefd1f198a4d01dc143354db83422",
+          "metadataStripped": true,
+          "withinBudget": true,
+          "upscaled": false,
+          "visualReview": {
+            "method": "view_image contact sheet",
+            "reviewed": true,
+            "hash": "e48f8a3d2945aee452e2f92b7149accbf2deefd1f198a4d01dc143354db83422"
+          }
+        },
+        {
+          "src": "/brand/restaurant-photos-v1/shah-cocktail-960.webp",
+          "width": 960,
+          "height": 1440,
+          "bytes": 51558,
+          "format": "webp",
+          "quality": 88,
+          "reusedOriginal": false,
+          "sha256": "4b49e53c1de756d653ab89b6196ba50389371ac9d0378180fa5ff1807b8f696f",
+          "metadataStripped": true,
+          "withinBudget": true,
+          "upscaled": false,
+          "visualReview": {
+            "method": "view_image contact sheet",
+            "reviewed": true,
+            "hash": "4b49e53c1de756d653ab89b6196ba50389371ac9d0378180fa5ff1807b8f696f"
+          }
+        },
+        {
+          "src": "/brand/restaurant-photos-v1/shah-cocktail-1200.avif",
+          "width": 1200,
+          "height": 1800,
+          "bytes": 37011,
+          "format": "avif",
+          "quality": 68,
+          "reusedOriginal": false,
+          "sha256": "a0d53ebea1fa0d950ec4a75a013f9ebb1e4912a370878ae3112b48909bbc0738",
+          "metadataStripped": true,
+          "withinBudget": true,
+          "upscaled": false,
+          "visualReview": {
+            "method": "view_image contact sheet",
+            "reviewed": true,
+            "hash": "a0d53ebea1fa0d950ec4a75a013f9ebb1e4912a370878ae3112b48909bbc0738"
+          }
+        },
+        {
+          "src": "/brand/restaurant-photos-v1/shah-cocktail-1200.webp",
+          "width": 1200,
+          "height": 1800,
+          "bytes": 57866,
+          "format": "webp",
+          "quality": null,
+          "reusedOriginal": true,
+          "sha256": "70ff50e8897738e8a9989399e3ea0bcc45211f44585353312fdc352216bf56c5",
+          "metadataStripped": true,
+          "withinBudget": true,
+          "upscaled": false,
+          "visualReview": {
+            "method": "view_image contact sheet",
+            "reviewed": true,
+            "hash": "70ff50e8897738e8a9989399e3ea0bcc45211f44585353312fdc352216bf56c5"
+          }
+        }
+      ],
+      "blur": {
+        "width": 20,
+        "height": 30,
+        "bytes": 162
+      },
+      "originalUnchanged": true
+    },
+    {
+      "source": "/brand/shah-atmosphere-v1.webp",
+      "originalWidth": 1200,
+      "originalHeight": 1800,
+      "originalBytes": 173104,
+      "originalSha256": "2489b5c877c7e46b6bea2ca37dd5e7f52c5dccdb6fb463ba81544f0b4193156b",
+      "originalMetadata": {
+        "exif": false,
+        "xmp": false,
+        "iptc": false,
+        "icc": false
+      },
+      "widths": [
+        160,
+        320,
+        640,
+        960,
+        1200
+      ],
+      "outputs": [
+        {
+          "src": "/brand/restaurant-photos-v1/shah-atmosphere-160.avif",
+          "width": 160,
+          "height": 240,
+          "bytes": 7961,
+          "format": "avif",
+          "quality": 68,
+          "reusedOriginal": false,
+          "sha256": "c7c14eb5f62f43d1f721b369e714d32a79fb76432af76ceecaf19ad239c90ba2",
+          "metadataStripped": true,
+          "withinBudget": true,
+          "upscaled": false,
+          "visualReview": {
+            "method": "view_image contact sheet",
+            "reviewed": true,
+            "hash": "c7c14eb5f62f43d1f721b369e714d32a79fb76432af76ceecaf19ad239c90ba2"
+          }
+        },
+        {
+          "src": "/brand/restaurant-photos-v1/shah-atmosphere-160.webp",
+          "width": 160,
+          "height": 240,
+          "bytes": 11232,
+          "format": "webp",
+          "quality": 88,
+          "reusedOriginal": false,
+          "sha256": "c5addd0f6cbd8ff88d05d8c44bbe3bb4effee73988d19bb6d9be41d55079dafa",
+          "metadataStripped": true,
+          "withinBudget": true,
+          "upscaled": false,
+          "visualReview": {
+            "method": "view_image contact sheet",
+            "reviewed": true,
+            "hash": "c5addd0f6cbd8ff88d05d8c44bbe3bb4effee73988d19bb6d9be41d55079dafa"
+          }
+        },
+        {
+          "src": "/brand/restaurant-photos-v1/shah-atmosphere-320.avif",
+          "width": 320,
+          "height": 480,
+          "bytes": 20913,
+          "format": "avif",
+          "quality": 68,
+          "reusedOriginal": false,
+          "sha256": "52d6e3b74d11b37d17fadf34960fc0be03f3933ab1d18d3bd22516df11842181",
+          "metadataStripped": true,
+          "withinBudget": true,
+          "upscaled": false,
+          "visualReview": {
+            "method": "view_image contact sheet",
+            "reviewed": true,
+            "hash": "52d6e3b74d11b37d17fadf34960fc0be03f3933ab1d18d3bd22516df11842181"
+          }
+        },
+        {
+          "src": "/brand/restaurant-photos-v1/shah-atmosphere-320.webp",
+          "width": 320,
+          "height": 480,
+          "bytes": 31778,
+          "format": "webp",
+          "quality": 88,
+          "reusedOriginal": false,
+          "sha256": "486527f1b217a9f2d8c2531b6e2d6734f5359c16d695b98cf35eca614ad68d5a",
+          "metadataStripped": true,
+          "withinBudget": true,
+          "upscaled": false,
+          "visualReview": {
+            "method": "view_image contact sheet",
+            "reviewed": true,
+            "hash": "486527f1b217a9f2d8c2531b6e2d6734f5359c16d695b98cf35eca614ad68d5a"
+          }
+        },
+        {
+          "src": "/brand/restaurant-photos-v1/shah-atmosphere-640.avif",
+          "width": 640,
+          "height": 960,
+          "bytes": 54234,
+          "format": "avif",
+          "quality": 68,
+          "reusedOriginal": false,
+          "sha256": "22af8dc44ea6779d539640d790de40ae6119bcd74ae742999226bdd145a80ab4",
+          "metadataStripped": true,
+          "withinBudget": true,
+          "upscaled": false,
+          "visualReview": {
+            "method": "view_image contact sheet",
+            "reviewed": true,
+            "hash": "22af8dc44ea6779d539640d790de40ae6119bcd74ae742999226bdd145a80ab4"
+          }
+        },
+        {
+          "src": "/brand/restaurant-photos-v1/shah-atmosphere-640.webp",
+          "width": 640,
+          "height": 960,
+          "bytes": 89808,
+          "format": "webp",
+          "quality": 88,
+          "reusedOriginal": false,
+          "sha256": "43847df86a75a94a5ce68af9f3630ce95c79c7972034fb93af4af7d0e65a361d",
+          "metadataStripped": true,
+          "withinBudget": true,
+          "upscaled": false,
+          "visualReview": {
+            "method": "view_image contact sheet",
+            "reviewed": true,
+            "hash": "43847df86a75a94a5ce68af9f3630ce95c79c7972034fb93af4af7d0e65a361d"
+          }
+        },
+        {
+          "src": "/brand/restaurant-photos-v1/shah-atmosphere-960.avif",
+          "width": 960,
+          "height": 1440,
+          "bytes": 87981,
+          "format": "avif",
+          "quality": 68,
+          "reusedOriginal": false,
+          "sha256": "1fb633aae1f0dadd27bc881850544e3132503c0d3c823ba42d2d62f97d63d00b",
+          "metadataStripped": true,
+          "withinBudget": true,
+          "upscaled": false,
+          "visualReview": {
+            "method": "view_image contact sheet",
+            "reviewed": true,
+            "hash": "1fb633aae1f0dadd27bc881850544e3132503c0d3c823ba42d2d62f97d63d00b"
+          }
+        },
+        {
+          "src": "/brand/restaurant-photos-v1/shah-atmosphere-960.webp",
+          "width": 960,
+          "height": 1440,
+          "bytes": 138276,
+          "format": "webp",
+          "quality": 88,
+          "reusedOriginal": false,
+          "sha256": "d8417d3b140ae69fe12f892e37b20a71487d27387be7fe17f70486815e9ddebd",
+          "metadataStripped": true,
+          "withinBudget": true,
+          "upscaled": false,
+          "visualReview": {
+            "method": "view_image contact sheet",
+            "reviewed": true,
+            "hash": "d8417d3b140ae69fe12f892e37b20a71487d27387be7fe17f70486815e9ddebd"
+          }
+        },
+        {
+          "src": "/brand/restaurant-photos-v1/shah-atmosphere-1200.avif",
+          "width": 1200,
+          "height": 1800,
+          "bytes": 132589,
+          "format": "avif",
+          "quality": 68,
+          "reusedOriginal": false,
+          "sha256": "e577f4062c84d1631d0b63394223afa2c1fbee1698a46b678b432a833f913a98",
+          "metadataStripped": true,
+          "withinBudget": true,
+          "upscaled": false,
+          "visualReview": {
+            "method": "view_image contact sheet",
+            "reviewed": true,
+            "hash": "e577f4062c84d1631d0b63394223afa2c1fbee1698a46b678b432a833f913a98"
+          }
+        },
+        {
+          "src": "/brand/restaurant-photos-v1/shah-atmosphere-1200.webp",
+          "width": 1200,
+          "height": 1800,
+          "bytes": 173104,
+          "format": "webp",
+          "quality": null,
+          "reusedOriginal": true,
+          "sha256": "2489b5c877c7e46b6bea2ca37dd5e7f52c5dccdb6fb463ba81544f0b4193156b",
+          "metadataStripped": true,
+          "withinBudget": true,
+          "upscaled": false,
+          "visualReview": {
+            "method": "view_image contact sheet",
+            "reviewed": true,
+            "hash": "2489b5c877c7e46b6bea2ca37dd5e7f52c5dccdb6fb463ba81544f0b4193156b"
+          }
+        }
+      ],
+      "blur": {
+        "width": 20,
+        "height": 30,
+        "bytes": 162
+      },
+      "originalUnchanged": true
+    }
+  ],
+  "summary": {
+    "originals": 6,
+    "outputs": 60,
+    "everyOutputUnderBudget": true,
+    "everyOutputMetadataStripped": true,
+    "allOriginalsUnchanged": true
+  },
+  "generator": "scripts/generate-restaurant-photos.mjs",
+  "protectedOriginals": [
+    {
+      "file": "public/brand/shah-hero-scroll-desktop-v4.mp4",
+      "sha256": "91934E4FC834E7050F37B3CD2C6EE063779B622C22E8BA61E3C788B1E63D3A2C",
+      "unchanged": true
+    },
+    {
+      "file": "public/brand/shah-hero-scroll-mobile-v4.mp4",
+      "sha256": "685F08858741F06D04BC436C2B633AF01D2FB4E56A07C24F2FC5EC0D311B67F0",
+      "unchanged": true
+    },
+    {
+      "file": "public/brand/shah-landscape-gold-v1.svg",
+      "sha256": "13DE955BAE005CDCBD680ADAF6BE1546E2AEDC1452791F7640700AE73138E46B",
+      "unchanged": true
+    },
+    {
+      "file": "public/brand/shah-landscape-teal-v1.svg",
+      "sha256": "B543B5EE55804B9044C7D8A570E859BF4977FFD673256A4124F22445139685B7",
+      "unchanged": true
+    },
+    {
+      "file": "public/partners/coca-cola-v1.webp",
+      "sha256": "4D5FDB0ADE5FB1AC069F87CE542D98CC54A7ABCB751A4E8A0FE0BFD6BFAA1FFB",
+      "unchanged": true
+    },
+    {
+      "file": "public/partners/heineken-v1.webp",
+      "sha256": "77B2FAC2F5D59E93726DF31AAD4A9723FA7B3216C25931503F39FA75CEF83E94",
+      "unchanged": true
+    },
+    {
+      "file": "public/partners/de-kuyper-v1.webp",
+      "sha256": "8B5AEC9D89C36A1E4CABB0311233732733CF5A1DC47274BCD1ECFF09BFE75705",
+      "unchanged": true
+    },
+    {
+      "file": "public/partners/chaudfontaine-v1.webp",
+      "sha256": "EE1C409B2F6CFDF1884734C56BC57AC148960954DA5F1288C7DE95D20E8E0FBE",
+      "unchanged": true
+    }
+  ]
+}

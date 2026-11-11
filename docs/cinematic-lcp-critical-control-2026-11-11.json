@@ -1,0 +1,400 @@
+{
+  "classification": "Offline NUcp9 measured-control analysis; no new page loads or application edits",
+  "buildId": "NUcp9_HWho-gmCR-jRh8K",
+  "sourceFingerprint": "80e67c4e6e04fd03e2a37190cdbe897579b93ceafd9d5ee996b3a02800cbe963",
+  "analyzedAtUTC": "2026-11-11T18:13:49.771Z",
+  "sourceVisibilityInspection": {
+    "files": [
+      "app/components/CinematicSections.tsx",
+      "app/cinematic.css"
+    ],
+    "bothComparedEqualToNUAtInspection": true,
+    "facts": [
+      "Secondary hero CSS is applied through the server-rendered body cinematicPage attribute.",
+      "CinematicSections enters elements with transform22px→0 only; no opacity/visibility concealment keyframe.",
+      "The inspected cinematic.css has no opacity/visibility gate; its reduced-motion rule explicitly setsopacity1.",
+      "Hero LCP equals firstPaint/FCP in these three observed loopback captures."
+    ],
+    "limit": "This proves no observed multi-second readiness wait in these captures; it does not establish a field performance floor or imply simulated network and observed timings are interchangeable."
+  },
+  "recommendation": {
+    "scope": "Only first visible gallery grid image",
+    "change": "loading=eager and fetchPriority=high on the selected picture image; all other gallery images retain lazy loading. No additional preload needed because initial HTML already contains its discoverable source.",
+    "evidence": "First galleryLCPimage is lazy and remainsLow, both priority/eager checks fail, observed request delay142.412ms vsload18.743ms.",
+    "guaranteedScoreOrLcpGain": false,
+    "notRecommended": "Additional menu/reservation preload or readiness removal: discovery alreadypasses and their simulatedendingnodes are later sharedJS/CPU."
+  },
+  "lanternSummary": {
+    "menuNL": {
+      "optimisticMs": 3655.71,
+      "pessimisticMs": 4116.638
+    },
+    "menuEN": {
+      "optimisticMs": 4236.329,
+      "pessimisticMs": 4397.438
+    },
+    "reservationsNL": {
+      "optimisticMs": 3507.372,
+      "pessimisticMs": 3667.465
+    },
+    "gallery": {
+      "optimisticMs": 3350.951,
+      "pessimisticMs": 3696.951,
+      "lowImageModel": "Optimistic graph omits image; pessimistic models2899.919→3959.903 butLowimagefinish is excluded from eligible metric tail.",
+      "eligibleTail": "Shared171ms andgallery46ms CPU nodes."
+    },
+    "limit": "Preload promotion changes scheduling and graph eligibility; do not subtract observed resource delay from simulated LCP or promise the required1.8s."
+  },
+  "rows": [
+    {
+      "key": "menukaart-mobile",
+      "route": "/menukaart",
+      "lcpNode": {
+        "type": "node",
+        "lhId": "page-0-DIV",
+        "path": "1,HTML,1,BODY,2,MAIN,2,DIV,1,DIV",
+        "selector": "body.flex > main#main-content > div.order_page__466_v > div.order-hero-strip",
+        "boundingRect": {
+          "top": 147,
+          "bottom": 406,
+          "left": 0,
+          "right": 412,
+          "width": 412,
+          "height": 259
+        },
+        "snippet": "<div class=\"order-hero-strip relative overflow-hidden px-4 py-6 sm:px-6 lg:mx-auto lg:…\" data-cinema-parallax=\"true\">",
+        "nodeLabel": "DUIDELIJKE PRIJZEN. SNELLE KEUZE.\nStel je bestelling samen\n— Indiase menukaart …"
+      },
+      "simulated": {
+        "lcpMs": 3886.1742,
+        "fcpMs": 1371.8552,
+        "ttfbMs": 461,
+        "lcpLoadDelayMs": 389,
+        "lcpLoadDurationMs": 225
+      },
+      "observed": {
+        "lcpMs": 247,
+        "fcpMs": 247,
+        "firstPaintMs": 247,
+        "breakdown": [
+          {
+            "subpart": "timeToFirstByte",
+            "label": "Time to first byte",
+            "duration": 34.67
+          },
+          {
+            "subpart": "resourceLoadDelay",
+            "label": "Resource load delay",
+            "duration": 18.995
+          },
+          {
+            "subpart": "resourceLoadDuration",
+            "label": "Resource load duration",
+            "duration": 14.713
+          },
+          {
+            "subpart": "elementRenderDelay",
+            "label": "Element render delay",
+            "duration": 178.72
+          }
+        ]
+      },
+      "discovery": {
+        "priorityHinted": {
+          "label": "fetchpriority=high applied",
+          "value": true
+        },
+        "requestDiscoverable": {
+          "label": "Request is discoverable in initial document",
+          "value": true
+        },
+        "eagerlyLoaded": {
+          "label": "LCP resources shouldn’t use loading=lazy",
+          "value": true
+        }
+      },
+      "lcpNetwork": [
+        {
+          "path": "/brand/restaurant-photos-v1/shah-table-1400.avif",
+          "priority": "High",
+          "requestStartMs": 53.444000244140625,
+          "requestEndMs": 67.75799989700317,
+          "transferBytes": 50969,
+          "bodyBytes": 50353,
+          "protocol": "http/1.1"
+        }
+      ],
+      "proof": "menukaart-mobile.lighthouse.json",
+      "proofSha256": "f755e7ce7db23380cf3687232d2aa68c4e5df90be54fe4bcf7fdf68db1ef5974"
+    },
+    {
+      "key": "en-menu-mobile",
+      "route": "/en/menu",
+      "lcpNode": {
+        "type": "node",
+        "lhId": "page-2-DIV",
+        "path": "1,HTML,1,BODY,2,MAIN,2,DIV,1,DIV",
+        "selector": "body.flex > main#main-content > div.order_page__466_v > div.order-hero-strip",
+        "boundingRect": {
+          "top": 147,
+          "bottom": 363,
+          "left": 0,
+          "right": 412,
+          "width": 412,
+          "height": 216
+        },
+        "snippet": "<div class=\"order-hero-strip relative overflow-hidden px-4 py-6 sm:px-6 lg:mx-auto lg:…\" data-cinema-parallax=\"true\">",
+        "nodeLabel": "CLEAR PRICING. FAST SELECTION.\nBuild your order\n— Indian menu Amsterdam-Noord\n\n…"
+      },
+      "simulated": {
+        "lcpMs": 4316.883425000002,
+        "fcpMs": 1372.2191000000003,
+        "ttfbMs": 461,
+        "lcpLoadDelayMs": 480,
+        "lcpLoadDurationMs": 311
+      },
+      "observed": {
+        "lcpMs": 226,
+        "fcpMs": 226,
+        "firstPaintMs": 226,
+        "breakdown": [
+          {
+            "subpart": "timeToFirstByte",
+            "label": "Time to first byte",
+            "duration": 28.476
+          },
+          {
+            "subpart": "resourceLoadDelay",
+            "label": "Resource load delay",
+            "duration": 20.251
+          },
+          {
+            "subpart": "resourceLoadDuration",
+            "label": "Resource load duration",
+            "duration": 16.713
+          },
+          {
+            "subpart": "elementRenderDelay",
+            "label": "Element render delay",
+            "duration": 160.177
+          }
+        ]
+      },
+      "discovery": {
+        "priorityHinted": {
+          "label": "fetchpriority=high applied",
+          "value": true
+        },
+        "requestDiscoverable": {
+          "label": "Request is discoverable in initial document",
+          "value": true
+        },
+        "eagerlyLoaded": {
+          "label": "LCP resources shouldn’t use loading=lazy",
+          "value": true
+        }
+      },
+      "lcpNetwork": [
+        {
+          "path": "/brand/restaurant-photos-v1/shah-table-1400.avif",
+          "priority": "High",
+          "requestStartMs": 48.52799987792969,
+          "requestEndMs": 64.79200005531311,
+          "transferBytes": 50969,
+          "bodyBytes": 50353,
+          "protocol": "http/1.1"
+        }
+      ],
+      "proof": "en-menu-mobile.lighthouse.json",
+      "proofSha256": "723f5affcfee73c907d163e2f32550bb4a89b16c0d6861c29429db33eebeeccd"
+    },
+    {
+      "key": "reserveren-mobile",
+      "route": "/reserveren",
+      "lcpNode": {
+        "type": "node",
+        "lhId": "page-0-SECTION",
+        "path": "1,HTML,1,BODY,2,MAIN,2,DIV,0,SECTION",
+        "selector": "body.flex > main#main-content > div.reservations_page__Yv4BP > section.reservations_hero__Amt3j",
+        "boundingRect": {
+          "top": 147,
+          "bottom": 458,
+          "left": 0,
+          "right": 412,
+          "width": 412,
+          "height": 311
+        },
+        "snippet": "<section class=\"reservations_hero__Amt3j reservation-hero-strip relative overflow-hidden\" data-cinema-parallax=\"true\">",
+        "nodeLabel": "RESERVERINGEN\nReserveer uw tafel\n— Amsterdam-Noord\n\nEen onvergetelijke avond be…"
+      },
+      "simulated": {
+        "lcpMs": 3587.4184999999998,
+        "fcpMs": 1220.186,
+        "ttfbMs": 460,
+        "lcpLoadDelayMs": 280,
+        "lcpLoadDurationMs": 238
+      },
+      "observed": {
+        "lcpMs": 226,
+        "fcpMs": 226,
+        "firstPaintMs": 226,
+        "breakdown": [
+          {
+            "subpart": "timeToFirstByte",
+            "label": "Time to first byte",
+            "duration": 15.293
+          },
+          {
+            "subpart": "resourceLoadDelay",
+            "label": "Resource load delay",
+            "duration": 30.874
+          },
+          {
+            "subpart": "resourceLoadDuration",
+            "label": "Resource load duration",
+            "duration": 15.415
+          },
+          {
+            "subpart": "elementRenderDelay",
+            "label": "Element render delay",
+            "duration": 164.195
+          }
+        ]
+      },
+      "discovery": {
+        "priorityHinted": {
+          "label": "fetchpriority=high applied",
+          "value": true
+        },
+        "requestDiscoverable": {
+          "label": "Request is discoverable in initial document",
+          "value": true
+        },
+        "eagerlyLoaded": {
+          "label": "LCP resources shouldn’t use loading=lazy",
+          "value": true
+        }
+      },
+      "lcpNetwork": [
+        {
+          "path": "/brand/restaurant-photos-v1/shah-dining-1400.avif",
+          "priority": "High",
+          "requestStartMs": 46.08799982070923,
+          "requestEndMs": 61.062999963760376,
+          "transferBytes": 39685,
+          "bodyBytes": 39069,
+          "protocol": "http/1.1"
+        }
+      ],
+      "proof": "reserveren-mobile.lighthouse.json",
+      "proofSha256": "d958c40ebc10cfa3b0630c7d082aeb6064c53ebd64caab1fc5880653343346f8"
+    },
+    {
+      "key": "events-gallery-mobile",
+      "route": "/events/gallery",
+      "lcpNode": {
+        "type": "node",
+        "lhId": "page-0-IMG",
+        "path": "1,HTML,1,BODY,2,MAIN,0,DIV,1,DIV,4,SECTION,0,DIV,0,FIGURE,0,DIV,0,PICTURE,2,IMG",
+        "selector": "figure.animate-fade-up > div.relative > picture > img.object-cover",
+        "boundingRect": {
+          "top": 503,
+          "bottom": 786,
+          "left": 17,
+          "right": 395,
+          "width": 378,
+          "height": 284
+        },
+        "snippet": "<img class=\"object-cover transition duration-700 group-hover:scale-105\" src=\"http://127.0.0.1:3508/brand/event-gallery-v1/shah-gallery-687a0402-960.avif\" srcset=\"/brand/event-gallery-v1/shah-gallery-687a0402-320.webp 320w, /brand/event-…\" sizes=\"(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw\" alt=\"Table setting with naan, golden cutlery and dipping sauces\" width=\"1280\" height=\"853\" loading=\"lazy\" decoding=\"async\" style=\"position: absolute; inset: 0px; width: 100%; height: 100%; background-image: url(&quot;dat…&quot;);\">",
+        "nodeLabel": "Table setting with naan, golden cutlery and dipping sauces"
+      },
+      "simulated": {
+        "lcpMs": 3523.95125,
+        "fcpMs": 962.98375,
+        "ttfbMs": 460,
+        "lcpLoadDelayMs": 1487,
+        "lcpLoadDurationMs": 225
+      },
+      "observed": {
+        "lcpMs": 286,
+        "fcpMs": 219,
+        "firstPaintMs": 219,
+        "breakdown": [
+          {
+            "subpart": "timeToFirstByte",
+            "label": "Time to first byte",
+            "duration": 15.185
+          },
+          {
+            "subpart": "resourceLoadDelay",
+            "label": "Resource load delay",
+            "duration": 142.412
+          },
+          {
+            "subpart": "resourceLoadDuration",
+            "label": "Resource load duration",
+            "duration": 18.743
+          },
+          {
+            "subpart": "elementRenderDelay",
+            "label": "Element render delay",
+            "duration": 109.744
+          }
+        ]
+      },
+      "discovery": {
+        "priorityHinted": {
+          "label": "fetchpriority=high should be applied",
+          "value": false
+        },
+        "requestDiscoverable": {
+          "label": "Request is discoverable in initial document",
+          "value": true
+        },
+        "eagerlyLoaded": {
+          "label": "LCP resources shouldn’t use loading=lazy",
+          "value": false
+        }
+      },
+      "lcpNetwork": [
+        {
+          "path": "/brand/event-gallery-v1/shah-gallery-687a0402-960.avif",
+          "priority": "Low",
+          "requestStartMs": 157.39800024032593,
+          "requestEndMs": 175.70300006866455,
+          "transferBytes": 28155,
+          "bodyBytes": 27539,
+          "protocol": "http/1.1"
+        }
+      ],
+      "proof": "events-gallery-mobile.lighthouse.json",
+      "proofSha256": "0eb343aaf68dbd888f796f027aa9402b3a72e52efeae47f6e9c1a01e3380cca9"
+    }
+  ],
+  "proofRoot": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cinematic-qa-20261111\\production\\final-NUcp9_HWho-gmCR-jRh8K",
+  "replayProofs": [
+    {
+      "file": "offline-menu-reservation-lcp-analysis.json",
+      "exists": true,
+      "sha256": "3b0f996e89b14b16ad9ae7d1853b07329fced94e3d0c533bb3ac005a2721ef0d"
+    },
+    {
+      "file": "offline-gallery-lcp-lantern-analysis.json",
+      "exists": true,
+      "sha256": "9d8c0e82c124b3a01e4ce82488f066467eb011deb06fbbfe4583e3b3e492330f"
+    }
+  ],
+  "limitations": [
+    "Four native-candidate mobile cases only; homepage UKM fallback deliberately excluded.",
+    "Observed phase breakdowns are unthrottled local trace timings; scored values use Lighthouse13.6 simulated mobile network/CPU.",
+    "Raw traces and reports are immutable control references; later language/AA/sidebar/gallery-priority fixes are outside this build."
+  ],
+  "originalUserTargets": {
+    "mobilePerformanceMin": 92,
+    "mobileLcpStrictMaxMs": 1800,
+    "clsStrictMax": 0.02,
+    "inpStrictMaxMs": 150,
+    "tbtStrictMaxMs": 150,
+    "source": "Parent-confirmed original Library brief lines69–72"
+  }
+}

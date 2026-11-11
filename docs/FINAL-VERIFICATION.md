@@ -1,5 +1,7 @@
 # Final local verification — 11 November 2026
 
+**Historical build report.** The later [cinematic design revision](CINEMATIC-REVISION.md) changes the opening and page motion. Current results are in [CINEMATIC-FINAL-VERIFICATION.md](CINEMATIC-FINAL-VERIFICATION.md). Measurements and above-film CTA descriptions below apply only to the named earlier build, not the current design.
+
 Final production build: `ZvsF7jSptyH4JJlRdUepP`. All 20 final mobile/desktop route measurements are complete. The baseline is in [verification-baseline-2026-11-11.md](verification-baseline-2026-11-11.md).
 
 ## Scope and data isolation

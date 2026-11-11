@@ -1,0 +1,892 @@
+{
+  "checkedAt": "2026-11-11T15:56:59.638Z",
+  "transportBuild": "qtEl0n7z1LSeYdyHiZ19Y",
+  "compiledSourceHash": "043a21fa8843cd164584ae2175a7eb12f3bf1b0e13d0bc4872b8fd3af2c1fdc2",
+  "sourceSnapshotHash": "66eda306b74cf90dc15ad018cc3064212349151810d8df2e098a06d6e8588892",
+  "scope": "10corelocalegraphs plus localHTMLpresence audit of7public eventmarketing routes; no Google submission",
+  "core": [
+    {
+      "route": "/",
+      "httpStatus": 200,
+      "schemaScripts": 2,
+      "scriptBlocks": [
+        {
+          "index": 0,
+          "htmlSha256": "7774bf852ff7cbb488b4fd91fca7bc19f0cb9009fb45863aca6f8be46d49afff",
+          "jsonTextSha256": "38e87afd3c28520aa10b1c15c87f804a118abf07aa758fa0f2fe51c30c3566fd",
+          "rootType": "@graph"
+        },
+        {
+          "index": 1,
+          "htmlSha256": "e9094944f0559c6058b7ce5992ff319d92ab7f164d782b7d243d98a4a853289e",
+          "jsonTextSha256": "3d70099920b6c9e7d790694da4d336bdbb80451a2af6ec0b9b8a412919ffcfb0",
+          "rootType": "FAQPage"
+        }
+      ],
+      "typeCounts": {
+        "Restaurant": 1,
+        "PostalAddress": 1,
+        "GeoCoordinates": 1,
+        "OpeningHoursSpecification": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "SearchAction": 1,
+        "EntryPoint": 1,
+        "ImageObject": 1,
+        "FAQPage": 1,
+        "Question": 9,
+        "Answer": 9
+      },
+      "codeSha256": "20a1b7957573870c5ad848168a503712018bb7b734a9af6b1c9357b1af374949",
+      "schemaSha256": "337db2d1300f325d7b342cb8d1778504c3d2be9f5290c70741a9b6e966c33efa",
+      "codeBytes": 4151,
+      "menuItemCount": 0,
+      "menuMatchesImmutableSnapshot": null,
+      "menuCoverage": "not-applicable",
+      "approvedTandoorProducts": 140
+    },
+    {
+      "route": "/en",
+      "httpStatus": 200,
+      "schemaScripts": 2,
+      "scriptBlocks": [
+        {
+          "index": 0,
+          "htmlSha256": "86101ff5f03e6ba4c4362eafb8c1a43963e4b302e9f7346912bd000a76e8ebe0",
+          "jsonTextSha256": "a3ccdeff2aabd35e5b5390e46af89d40ccef60e07083e2b951257b60a480e694",
+          "rootType": "@graph"
+        },
+        {
+          "index": 1,
+          "htmlSha256": "69398d742279b28be50c05eb8757388dc68383dca639ac56bd41152d9a5e4f2f",
+          "jsonTextSha256": "15c9a8575aab83f62cc947c93023236a1ec9ae5a6073b0d6040cb7667cccf0ff",
+          "rootType": "FAQPage"
+        }
+      ],
+      "typeCounts": {
+        "Restaurant": 1,
+        "PostalAddress": 1,
+        "GeoCoordinates": 1,
+        "OpeningHoursSpecification": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "SearchAction": 1,
+        "EntryPoint": 1,
+        "ImageObject": 1,
+        "FAQPage": 1,
+        "Question": 9,
+        "Answer": 9
+      },
+      "codeSha256": "aaccbf517ee23a061398cf54fbd6312e83c8a225667994bfdba54defcee8bb17",
+      "schemaSha256": "46ff610327ec987e8d5f42536fa7af29e5082a7c33c5460d1940417a9bd0664e",
+      "codeBytes": 4102,
+      "menuItemCount": 0,
+      "menuMatchesImmutableSnapshot": null,
+      "menuCoverage": "not-applicable",
+      "approvedTandoorProducts": 140
+    },
+    {
+      "route": "/menukaart",
+      "httpStatus": 200,
+      "schemaScripts": 3,
+      "scriptBlocks": [
+        {
+          "index": 0,
+          "htmlSha256": "7774bf852ff7cbb488b4fd91fca7bc19f0cb9009fb45863aca6f8be46d49afff",
+          "jsonTextSha256": "38e87afd3c28520aa10b1c15c87f804a118abf07aa758fa0f2fe51c30c3566fd",
+          "rootType": "@graph"
+        },
+        {
+          "index": 1,
+          "htmlSha256": "684b9c0c0663ab6293d457b078937d21d2125595e5df8c0fe011e4fd40b5ecca",
+          "jsonTextSha256": "3231aa8b8dab1e5cc048132567232d58379e236affa3858d3851b8962c835daf",
+          "rootType": "BreadcrumbList"
+        },
+        {
+          "index": 2,
+          "htmlSha256": "bbc41cc5a743de6e464cdeac0ba11481119e6057e3e54cf909f9eac2262e0c5c",
+          "jsonTextSha256": "2f55118cea79991e4e989f8bff3eb585556574d0db291179093ae602eec6a23e",
+          "rootType": "Menu"
+        }
+      ],
+      "typeCounts": {
+        "Restaurant": 1,
+        "PostalAddress": 1,
+        "GeoCoordinates": 1,
+        "OpeningHoursSpecification": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "SearchAction": 1,
+        "EntryPoint": 1,
+        "ImageObject": 1,
+        "BreadcrumbList": 1,
+        "ListItem": 2,
+        "Menu": 1,
+        "MenuSection": 1,
+        "MenuItem": 2,
+        "Offer": 2
+      },
+      "codeSha256": "5819906bc1b5f1d6882f68708712e800dfcfc5f938c6dc0cd64dccdc1d443c27",
+      "schemaSha256": "3bfb428f279c4921c30db83adee55d1ccd5a146f077a62ba71bca14ec13e9b37",
+      "codeBytes": 3005,
+      "menuItemCount": 2,
+      "menuMatchesImmutableSnapshot": true,
+      "menuCoverage": "visible subset; all emitted names/prices match approved224snapshot",
+      "approvedTandoorProducts": 140
+    },
+    {
+      "route": "/en/menu",
+      "httpStatus": 200,
+      "schemaScripts": 3,
+      "scriptBlocks": [
+        {
+          "index": 0,
+          "htmlSha256": "86101ff5f03e6ba4c4362eafb8c1a43963e4b302e9f7346912bd000a76e8ebe0",
+          "jsonTextSha256": "a3ccdeff2aabd35e5b5390e46af89d40ccef60e07083e2b951257b60a480e694",
+          "rootType": "@graph"
+        },
+        {
+          "index": 1,
+          "htmlSha256": "5d29d73fd96f130a5d87e1a504c152a4d5d8be944422e424a650f3ba05284b8e",
+          "jsonTextSha256": "03602fbad00aa9385d77b664e3fc00fb7f86c840cd82515c4738ddc583c8a35d",
+          "rootType": "BreadcrumbList"
+        },
+        {
+          "index": 2,
+          "htmlSha256": "5594be6f4d6b76fd2cde00cff96663488a688ca6a427407d201b300710248f63",
+          "jsonTextSha256": "a16bb4b0e1191d5455f95a196c09919097b4d0c31f9a30f600b7226d238d5139",
+          "rootType": "Menu"
+        }
+      ],
+      "typeCounts": {
+        "Restaurant": 1,
+        "PostalAddress": 1,
+        "GeoCoordinates": 1,
+        "OpeningHoursSpecification": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "SearchAction": 1,
+        "EntryPoint": 1,
+        "ImageObject": 1,
+        "BreadcrumbList": 1,
+        "ListItem": 2,
+        "Menu": 1,
+        "MenuSection": 1,
+        "MenuItem": 2,
+        "Offer": 2
+      },
+      "codeSha256": "e2c6a1ed3ea132b4bef774bba0821b67bff09323c92d8197d4fbe7360e5f17d6",
+      "schemaSha256": "5f429c3498a2de8b227fcbd861472d943cc7ef9db2e7c41991a3021791c854d4",
+      "codeBytes": 2976,
+      "menuItemCount": 2,
+      "menuMatchesImmutableSnapshot": true,
+      "menuCoverage": "visible subset; all emitted names/prices match approved224snapshot",
+      "approvedTandoorProducts": 140
+    },
+    {
+      "route": "/reserveren",
+      "httpStatus": 200,
+      "schemaScripts": 2,
+      "scriptBlocks": [
+        {
+          "index": 0,
+          "htmlSha256": "7774bf852ff7cbb488b4fd91fca7bc19f0cb9009fb45863aca6f8be46d49afff",
+          "jsonTextSha256": "38e87afd3c28520aa10b1c15c87f804a118abf07aa758fa0f2fe51c30c3566fd",
+          "rootType": "@graph"
+        },
+        {
+          "index": 1,
+          "htmlSha256": "f47ae1752ff51e192c88128f0fcb55812e4f6789815264a54ab13d1f6107814a",
+          "jsonTextSha256": "86ef25bfa9b6fd02d9290ceac4f96a529561a294a920985ee9d0ec23eb7ceb04",
+          "rootType": "BreadcrumbList"
+        }
+      ],
+      "typeCounts": {
+        "Restaurant": 1,
+        "PostalAddress": 1,
+        "GeoCoordinates": 1,
+        "OpeningHoursSpecification": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "SearchAction": 1,
+        "EntryPoint": 1,
+        "ImageObject": 1,
+        "BreadcrumbList": 1,
+        "ListItem": 2
+      },
+      "codeSha256": "fc6c97c50b0143f0b4085b321e7408d5dea044c8b058c8ce5b78593fca7850e0",
+      "schemaSha256": "9691a365216ce94edda2c8ab8c3b71a8b46eab7a30d978f436eaf75a5dd5ae00",
+      "codeBytes": 2334,
+      "menuItemCount": 0,
+      "menuMatchesImmutableSnapshot": null,
+      "menuCoverage": "not-applicable",
+      "approvedTandoorProducts": 140
+    },
+    {
+      "route": "/en/reservations",
+      "httpStatus": 200,
+      "schemaScripts": 2,
+      "scriptBlocks": [
+        {
+          "index": 0,
+          "htmlSha256": "86101ff5f03e6ba4c4362eafb8c1a43963e4b302e9f7346912bd000a76e8ebe0",
+          "jsonTextSha256": "a3ccdeff2aabd35e5b5390e46af89d40ccef60e07083e2b951257b60a480e694",
+          "rootType": "@graph"
+        },
+        {
+          "index": 1,
+          "htmlSha256": "1960650a348f3b35b847cd4849c7b0be0455e551c8a4dfd5dc3e93aca76374d8",
+          "jsonTextSha256": "713d05f90656d3b2eb0c941fb657267a00bc8e3193c8a6c9e9697b9b7ef23fba",
+          "rootType": "BreadcrumbList"
+        }
+      ],
+      "typeCounts": {
+        "Restaurant": 1,
+        "PostalAddress": 1,
+        "GeoCoordinates": 1,
+        "OpeningHoursSpecification": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "SearchAction": 1,
+        "EntryPoint": 1,
+        "ImageObject": 1,
+        "BreadcrumbList": 1,
+        "ListItem": 2
+      },
+      "codeSha256": "ea885de48098941396126764a5d4506c8cc1401289b5f98400b05af8360db02f",
+      "schemaSha256": "93499bc7cfcd1fca2e7f4e7ae844e704922a437731dd47a9ae25ffc2be8eb97a",
+      "codeBytes": 2348,
+      "menuItemCount": 0,
+      "menuMatchesImmutableSnapshot": null,
+      "menuCoverage": "not-applicable",
+      "approvedTandoorProducts": 140
+    },
+    {
+      "route": "/privacy",
+      "httpStatus": 200,
+      "schemaScripts": 2,
+      "scriptBlocks": [
+        {
+          "index": 0,
+          "htmlSha256": "7774bf852ff7cbb488b4fd91fca7bc19f0cb9009fb45863aca6f8be46d49afff",
+          "jsonTextSha256": "38e87afd3c28520aa10b1c15c87f804a118abf07aa758fa0f2fe51c30c3566fd",
+          "rootType": "@graph"
+        },
+        {
+          "index": 1,
+          "htmlSha256": "ed1251bed8bd5366220ac308eddc400f71f8598dda8621cb5c0cd3d23b750c87",
+          "jsonTextSha256": "6440ec6554b236d9e1e49c35be142beddfe8438ccefbafe3d599e20b44f62ba2",
+          "rootType": "BreadcrumbList"
+        }
+      ],
+      "typeCounts": {
+        "Restaurant": 1,
+        "PostalAddress": 1,
+        "GeoCoordinates": 1,
+        "OpeningHoursSpecification": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "SearchAction": 1,
+        "EntryPoint": 1,
+        "ImageObject": 1,
+        "BreadcrumbList": 1,
+        "ListItem": 2
+      },
+      "codeSha256": "bc2650c1cd053acbb2052cc7f37d3c0c231cdc8985a8b22cb3f3ec0199a6fd33",
+      "schemaSha256": "53b4304ff9a64d0cbfaa845fc7b3202609fd0cb8c7244f6395612a7a8fa73a11",
+      "codeBytes": 2331,
+      "menuItemCount": 0,
+      "menuMatchesImmutableSnapshot": null,
+      "menuCoverage": "not-applicable",
+      "approvedTandoorProducts": 140
+    },
+    {
+      "route": "/en/privacy",
+      "httpStatus": 200,
+      "schemaScripts": 2,
+      "scriptBlocks": [
+        {
+          "index": 0,
+          "htmlSha256": "86101ff5f03e6ba4c4362eafb8c1a43963e4b302e9f7346912bd000a76e8ebe0",
+          "jsonTextSha256": "a3ccdeff2aabd35e5b5390e46af89d40ccef60e07083e2b951257b60a480e694",
+          "rootType": "@graph"
+        },
+        {
+          "index": 1,
+          "htmlSha256": "baa69178a73ceafaa67266fbb7f96f42ccc3fb2a684afb9e55848cf6951ec90a",
+          "jsonTextSha256": "8adff49a5868e3f71f2d0430786b04f69a168af6e15fd9233fe42325d41ec4f8",
+          "rootType": "BreadcrumbList"
+        }
+      ],
+      "typeCounts": {
+        "Restaurant": 1,
+        "PostalAddress": 1,
+        "GeoCoordinates": 1,
+        "OpeningHoursSpecification": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "SearchAction": 1,
+        "EntryPoint": 1,
+        "ImageObject": 1,
+        "BreadcrumbList": 1,
+        "ListItem": 2
+      },
+      "codeSha256": "d6e99a21ddfe1a41f43b6820afbb73395d199ee2ffb5ee8c6f0b4a1e21bcf18f",
+      "schemaSha256": "2352cd2876c201828ffda2ae726912df400845c954146f4360f15000a27492c3",
+      "codeBytes": 2340,
+      "menuItemCount": 0,
+      "menuMatchesImmutableSnapshot": null,
+      "menuCoverage": "not-applicable",
+      "approvedTandoorProducts": 140
+    },
+    {
+      "route": "/voorwaarden",
+      "httpStatus": 200,
+      "schemaScripts": 2,
+      "scriptBlocks": [
+        {
+          "index": 0,
+          "htmlSha256": "7774bf852ff7cbb488b4fd91fca7bc19f0cb9009fb45863aca6f8be46d49afff",
+          "jsonTextSha256": "38e87afd3c28520aa10b1c15c87f804a118abf07aa758fa0f2fe51c30c3566fd",
+          "rootType": "@graph"
+        },
+        {
+          "index": 1,
+          "htmlSha256": "2e92018f2abc396886f9bb4bc4b6abc55027be88d59a47766503d6e4c7673174",
+          "jsonTextSha256": "1de4192edb64341dccd89a3400440079d9e1212ce3e738860abad6731af863dc",
+          "rootType": "BreadcrumbList"
+        }
+      ],
+      "typeCounts": {
+        "Restaurant": 1,
+        "PostalAddress": 1,
+        "GeoCoordinates": 1,
+        "OpeningHoursSpecification": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "SearchAction": 1,
+        "EntryPoint": 1,
+        "ImageObject": 1,
+        "BreadcrumbList": 1,
+        "ListItem": 2
+      },
+      "codeSha256": "c3a8fcb90b27d85f0cb504c7ebf3629c4765817cb99a88fdd7f3a00d9ac281f6",
+      "schemaSha256": "9595cdab9a8b8c7919c7b61bcca68599a51fcc73cc35274969fa1dc866b6c691",
+      "codeBytes": 2337,
+      "menuItemCount": 0,
+      "menuMatchesImmutableSnapshot": null,
+      "menuCoverage": "not-applicable",
+      "approvedTandoorProducts": 140
+    },
+    {
+      "route": "/en/terms",
+      "httpStatus": 200,
+      "schemaScripts": 2,
+      "scriptBlocks": [
+        {
+          "index": 0,
+          "htmlSha256": "86101ff5f03e6ba4c4362eafb8c1a43963e4b302e9f7346912bd000a76e8ebe0",
+          "jsonTextSha256": "a3ccdeff2aabd35e5b5390e46af89d40ccef60e07083e2b951257b60a480e694",
+          "rootType": "@graph"
+        },
+        {
+          "index": 1,
+          "htmlSha256": "d5adae58ff830a8491856217289590ed5ec166d0f8b308ae548967883f77195d",
+          "jsonTextSha256": "9e0a012c1559deacbe7a52994ed59452af0ef75e4addce47c39bb4cef33b1c5e",
+          "rootType": "BreadcrumbList"
+        }
+      ],
+      "typeCounts": {
+        "Restaurant": 1,
+        "PostalAddress": 1,
+        "GeoCoordinates": 1,
+        "OpeningHoursSpecification": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "SearchAction": 1,
+        "EntryPoint": 1,
+        "ImageObject": 1,
+        "BreadcrumbList": 1,
+        "ListItem": 2
+      },
+      "codeSha256": "aa627c3869e344040ffd95a6a7332074d95082f93e55f110cb4d67702be14493",
+      "schemaSha256": "1b483c765e5d13960c2edb05369510319ff8afab6b323d6ed89b07a8540ee69d",
+      "codeBytes": 2342,
+      "menuItemCount": 0,
+      "menuMatchesImmutableSnapshot": null,
+      "menuCoverage": "not-applicable",
+      "approvedTandoorProducts": 140
+    }
+  ],
+  "comparisonToTFn5": [
+    {
+      "route": "/",
+      "allCodeBytesIdentical": false,
+      "blockComparison": [
+        {
+          "index": 0,
+          "rootType": "@graph",
+          "exactBlockIdentical": true,
+          "jsonTextIdentical": true
+        },
+        {
+          "index": 1,
+          "rootType": "FAQPage",
+          "exactBlockIdentical": false,
+          "jsonTextIdentical": false
+        }
+      ]
+    },
+    {
+      "route": "/en",
+      "allCodeBytesIdentical": false,
+      "blockComparison": [
+        {
+          "index": 0,
+          "rootType": "@graph",
+          "exactBlockIdentical": true,
+          "jsonTextIdentical": true
+        },
+        {
+          "index": 1,
+          "rootType": "FAQPage",
+          "exactBlockIdentical": false,
+          "jsonTextIdentical": false
+        }
+      ]
+    },
+    {
+      "route": "/menukaart",
+      "allCodeBytesIdentical": true,
+      "blockComparison": [
+        {
+          "index": 0,
+          "rootType": "@graph",
+          "exactBlockIdentical": true,
+          "jsonTextIdentical": true
+        },
+        {
+          "index": 1,
+          "rootType": "BreadcrumbList",
+          "exactBlockIdentical": true,
+          "jsonTextIdentical": true
+        },
+        {
+          "index": 2,
+          "rootType": "Menu",
+          "exactBlockIdentical": true,
+          "jsonTextIdentical": true
+        }
+      ]
+    },
+    {
+      "route": "/en/menu",
+      "allCodeBytesIdentical": true,
+      "blockComparison": [
+        {
+          "index": 0,
+          "rootType": "@graph",
+          "exactBlockIdentical": true,
+          "jsonTextIdentical": true
+        },
+        {
+          "index": 1,
+          "rootType": "BreadcrumbList",
+          "exactBlockIdentical": true,
+          "jsonTextIdentical": true
+        },
+        {
+          "index": 2,
+          "rootType": "Menu",
+          "exactBlockIdentical": true,
+          "jsonTextIdentical": true
+        }
+      ]
+    },
+    {
+      "route": "/reserveren",
+      "allCodeBytesIdentical": true,
+      "blockComparison": [
+        {
+          "index": 0,
+          "rootType": "@graph",
+          "exactBlockIdentical": true,
+          "jsonTextIdentical": true
+        },
+        {
+          "index": 1,
+          "rootType": "BreadcrumbList",
+          "exactBlockIdentical": true,
+          "jsonTextIdentical": true
+        }
+      ]
+    },
+    {
+      "route": "/en/reservations",
+      "allCodeBytesIdentical": true,
+      "blockComparison": [
+        {
+          "index": 0,
+          "rootType": "@graph",
+          "exactBlockIdentical": true,
+          "jsonTextIdentical": true
+        },
+        {
+          "index": 1,
+          "rootType": "BreadcrumbList",
+          "exactBlockIdentical": true,
+          "jsonTextIdentical": true
+        }
+      ]
+    },
+    {
+      "route": "/privacy",
+      "allCodeBytesIdentical": true,
+      "blockComparison": [
+        {
+          "index": 0,
+          "rootType": "@graph",
+          "exactBlockIdentical": true,
+          "jsonTextIdentical": true
+        },
+        {
+          "index": 1,
+          "rootType": "BreadcrumbList",
+          "exactBlockIdentical": true,
+          "jsonTextIdentical": true
+        }
+      ]
+    },
+    {
+      "route": "/en/privacy",
+      "allCodeBytesIdentical": true,
+      "blockComparison": [
+        {
+          "index": 0,
+          "rootType": "@graph",
+          "exactBlockIdentical": true,
+          "jsonTextIdentical": true
+        },
+        {
+          "index": 1,
+          "rootType": "BreadcrumbList",
+          "exactBlockIdentical": true,
+          "jsonTextIdentical": true
+        }
+      ]
+    },
+    {
+      "route": "/voorwaarden",
+      "allCodeBytesIdentical": true,
+      "blockComparison": [
+        {
+          "index": 0,
+          "rootType": "@graph",
+          "exactBlockIdentical": true,
+          "jsonTextIdentical": true
+        },
+        {
+          "index": 1,
+          "rootType": "BreadcrumbList",
+          "exactBlockIdentical": true,
+          "jsonTextIdentical": true
+        }
+      ]
+    },
+    {
+      "route": "/en/terms",
+      "allCodeBytesIdentical": true,
+      "blockComparison": [
+        {
+          "index": 0,
+          "rootType": "@graph",
+          "exactBlockIdentical": true,
+          "jsonTextIdentical": true
+        },
+        {
+          "index": 1,
+          "rootType": "BreadcrumbList",
+          "exactBlockIdentical": true,
+          "jsonTextIdentical": true
+        }
+      ]
+    }
+  ],
+  "events": [
+    {
+      "route": "/events",
+      "httpStatus": 200,
+      "servedBuildMatches": true,
+      "title": "Events, Catering & Private Dining Amsterdam",
+      "description": "Host your birthday, wedding, corporate dinner or company lunch with Shah Restaurant Amsterdam. Indian private dining, on-site catering and daily office lunches - up to 100 guests.",
+      "canonical": "https://shahrestaurant.nl/events",
+      "robots": "index, follow",
+      "googlebot": null,
+      "openGraph": {
+        "title": "Events & Catering | Shah Restaurant Amsterdam",
+        "description": "Weddings, birthdays, corporate dinners and daily office lunches - expertly catered by Shah Restaurant.",
+        "url": "https://shahrestaurant.nl/events",
+        "image": null
+      },
+      "twitter": {
+        "card": "summary",
+        "title": "Events & Catering | Shah Restaurant Amsterdam",
+        "image": null
+      },
+      "jsonLdScripts": 0,
+      "jsonLdParseErrors": [],
+      "typeCounts": {},
+      "scriptBlocks": [],
+      "missing": [
+        "og:image",
+        "JSON-LD"
+      ]
+    },
+    {
+      "route": "/events/about",
+      "httpStatus": 200,
+      "servedBuildMatches": true,
+      "title": "About Shah Restaurant Amsterdam - A Family Story of Indian Cuisine",
+      "description": "Meet the family behind Shah Restaurant Amsterdam: 32+ years of hospitality experience, five-star hotel kitchens in India and a passion for authentic tandoori cooking in Amsterdam-Noord.",
+      "canonical": "https://shahrestaurant.nl/events/about",
+      "robots": "index, follow",
+      "googlebot": null,
+      "openGraph": {
+        "title": "About Shah Restaurant Amsterdam",
+        "description": "The family story, the kitchen and the passion behind refined Indian cuisine at Shah Restaurant, Amsterdam-Noord.",
+        "url": "https://shahrestaurant.nl/events/about",
+        "image": null
+      },
+      "twitter": {
+        "card": "summary_large_image",
+        "title": "About Shah Restaurant Amsterdam",
+        "image": null
+      },
+      "jsonLdScripts": 1,
+      "jsonLdParseErrors": [],
+      "typeCounts": {
+        "Restaurant": 1,
+        "PostalAddress": 1
+      },
+      "scriptBlocks": [
+        {
+          "index": 0,
+          "rootType": "Restaurant",
+          "htmlSha256": "719f961b7d306303375b89f4a448ebf7f31e0028ea23fe82e101739cbee453ed",
+          "jsonTextSha256": "02920a66bb0fcdfa832380c3f07cddf0dc103632f5efbde334f63d0ca71e67af"
+        }
+      ],
+      "missing": [
+        "og:image"
+      ]
+    },
+    {
+      "route": "/events/birthdays",
+      "httpStatus": 200,
+      "servedBuildMatches": true,
+      "title": "Birthday & Party Catering Amsterdam - Shah Restaurant",
+      "description": "Celebrate your birthday, anniversary or private party at Shah Restaurant Amsterdam. Personalised Indian menus, warm ambiance, dedicated service and private dining for up to 100 guests.",
+      "canonical": "https://shahrestaurant.nl/events/birthdays",
+      "robots": "index, follow",
+      "googlebot": null,
+      "openGraph": {
+        "title": "Birthday & Party Catering Amsterdam | Shah Restaurant",
+        "description": "Personalised birthday parties and private celebrations at Shah Restaurant Amsterdam - up to 100 guests.",
+        "url": "https://shahrestaurant.nl/events/birthdays",
+        "image": null
+      },
+      "twitter": {
+        "card": "summary_large_image",
+        "title": "Birthday Catering Amsterdam - Shah Restaurant",
+        "image": null
+      },
+      "jsonLdScripts": 1,
+      "jsonLdParseErrors": [],
+      "typeCounts": {
+        "Service": 1,
+        "Restaurant": 1,
+        "PostalAddress": 1,
+        "City": 1,
+        "PeopleAudience": 1,
+        "AggregateOffer": 1
+      },
+      "scriptBlocks": [
+        {
+          "index": 0,
+          "rootType": "Service",
+          "htmlSha256": "4e17d3535b164ead6cc86aaba7d4f327d5bfddfefe4ad4db460ac2d91a6cd3c1",
+          "jsonTextSha256": "3b2dc591a3de2fb4413d858e12312415df71d5f3f9d9a755e70b5a1de48b6c0d"
+        }
+      ],
+      "missing": [
+        "og:image"
+      ]
+    },
+    {
+      "route": "/events/celebrations",
+      "httpStatus": 200,
+      "servedBuildMatches": true,
+      "title": "Wedding & Celebration Catering Amsterdam - Shah Restaurant",
+      "description": "Wedding receptions, engagement dinners, anniversaries, gala evenings and rehearsal dinners at Shah Restaurant Amsterdam. Refined Indian feasts, warm and unforgettable - up to 100 guests.",
+      "canonical": "https://shahrestaurant.nl/events/celebrations",
+      "robots": "index, follow",
+      "googlebot": null,
+      "openGraph": {
+        "title": "Wedding & Celebration Catering Amsterdam | Shah Restaurant",
+        "description": "Wedding receptions and gala evenings at Shah Restaurant Amsterdam - refined, warm, unforgettable.",
+        "url": "https://shahrestaurant.nl/events/celebrations",
+        "image": null
+      },
+      "twitter": {
+        "card": "summary_large_image",
+        "title": "Wedding Catering Amsterdam - Shah Restaurant",
+        "image": null
+      },
+      "jsonLdScripts": 1,
+      "jsonLdParseErrors": [],
+      "typeCounts": {
+        "Service": 1,
+        "Restaurant": 1,
+        "PostalAddress": 1,
+        "City": 1,
+        "PeopleAudience": 1
+      },
+      "scriptBlocks": [
+        {
+          "index": 0,
+          "rootType": "Service",
+          "htmlSha256": "a6232c780973bc6bd562832ee5ca4f272be06045916bf248b8eca91219e9a9f5",
+          "jsonTextSha256": "62c5a69a005c811f9d784a3c491ed7ca53a9fa9fb30d15ac3ddb275bb60d8d8e"
+        }
+      ],
+      "missing": [
+        "og:image"
+      ]
+    },
+    {
+      "route": "/events/company-catering",
+      "httpStatus": 200,
+      "servedBuildMatches": true,
+      "title": "Corporate & Company Catering Amsterdam - Shah Restaurant",
+      "description": "Corporate dinners, client receptions, product launches and executive catering in Amsterdam. On-site or at Shah Restaurant - monthly invoicing, bespoke Indian menus and full-service events for up to 100 guests.",
+      "canonical": "https://shahrestaurant.nl/events/company-catering",
+      "robots": "index, follow",
+      "googlebot": null,
+      "openGraph": {
+        "title": "Corporate & Company Catering Amsterdam | Shah Restaurant",
+        "description": "Executive dinners, client receptions and corporate events at Shah Restaurant Amsterdam - bespoke, invoiced, unforgettable.",
+        "url": "https://shahrestaurant.nl/events/company-catering",
+        "image": null
+      },
+      "twitter": {
+        "card": "summary_large_image",
+        "title": "Corporate Catering Amsterdam - Shah Restaurant",
+        "image": null
+      },
+      "jsonLdScripts": 1,
+      "jsonLdParseErrors": [],
+      "typeCounts": {
+        "Service": 1,
+        "Restaurant": 1,
+        "PostalAddress": 1,
+        "City": 1,
+        "BusinessAudience": 1
+      },
+      "scriptBlocks": [
+        {
+          "index": 0,
+          "rootType": "Service",
+          "htmlSha256": "45192c7cdc3d1e9d6e84ba0c17f9563de795ed7ce0b01b9b6ef42dc8bed325a7",
+          "jsonTextSha256": "bad422365f40f48b2e20434329ab4945efb7e00bc46f0ef79703fb6ab0e01725"
+        }
+      ],
+      "missing": [
+        "og:image"
+      ]
+    },
+    {
+      "route": "/events/company-lunches",
+      "httpStatus": 200,
+      "servedBuildMatches": true,
+      "title": "Company Lunches & Office Catering Amsterdam - Shah Restaurant",
+      "description": "Fresh daily and weekly office lunches delivered across Amsterdam. Aromatic Indian lunches, healthy options, hot mains and dietary choices - invoiced monthly, delivered on time.",
+      "canonical": "https://shahrestaurant.nl/events/company-lunches",
+      "robots": "index, follow",
+      "googlebot": null,
+      "openGraph": {
+        "title": "Company Lunches & Office Catering Amsterdam | Shah Restaurant",
+        "description": "Weekly delivered office lunches across Amsterdam - fresh, aromatic, invoiced monthly.",
+        "url": "https://shahrestaurant.nl/events/company-lunches",
+        "image": null
+      },
+      "twitter": {
+        "card": "summary_large_image",
+        "title": "Office Lunches Amsterdam - Shah Restaurant",
+        "image": null
+      },
+      "jsonLdScripts": 1,
+      "jsonLdParseErrors": [],
+      "typeCounts": {
+        "FoodEstablishment": 1,
+        "PostalAddress": 1,
+        "City": 1,
+        "OfferCatalog": 1,
+        "Offer": 3,
+        "Service": 3
+      },
+      "scriptBlocks": [
+        {
+          "index": 0,
+          "rootType": "FoodEstablishment",
+          "htmlSha256": "b32a7162ab2b4c89e5c52387a8513dd6a833e20b3ff338bbe3a234b967c85336",
+          "jsonTextSha256": "acc966835423cd84366c28a47be7c4dcb7b6e5b7f76f0774418e660ac363c31e"
+        }
+      ],
+      "missing": [
+        "og:image"
+      ]
+    },
+    {
+      "route": "/events/gallery",
+      "httpStatus": 200,
+      "servedBuildMatches": true,
+      "title": "Gallery - Shah Restaurant Amsterdam | Interior, Dishes & Events",
+      "description": "Explore Shah Restaurant Amsterdam in pictures: our warm dining room, tandoori dishes, private events, birthdays, weddings and corporate catering setups.",
+      "canonical": "https://shahrestaurant.nl/events/gallery",
+      "robots": "index, follow",
+      "googlebot": null,
+      "openGraph": {
+        "title": "Gallery | Shah Restaurant Amsterdam",
+        "description": "Interior, tandoori dishes and past events at Shah Restaurant Amsterdam - a refined Indian restaurant in Amsterdam-Noord.",
+        "url": "https://shahrestaurant.nl/events/gallery",
+        "image": null
+      },
+      "twitter": {
+        "card": "summary_large_image",
+        "title": "Gallery - Shah Restaurant Amsterdam",
+        "image": null
+      },
+      "jsonLdScripts": 1,
+      "jsonLdParseErrors": [],
+      "typeCounts": {
+        "ImageGallery": 1
+      },
+      "scriptBlocks": [
+        {
+          "index": 0,
+          "rootType": "ImageGallery",
+          "htmlSha256": "5b633bce7aa2d04d8ab009f31ca7a308c1c76d0bf0b42f1cfb3f13a719a4c749",
+          "jsonTextSha256": "48f88a00a8b04b2f495b1f09236b3da3b8c407029de2df15427f6b818a884f03"
+        }
+      ],
+      "missing": [
+        "og:image"
+      ]
+    }
+  ],
+  "limitations": [
+    "Event inspection checks servedmetadata andJSON-LD presence/parseability only; not Google eligibility, business-fact validation, indexing or deployment.",
+    "No externalRichResultsCODEtest has run in this audit; nativeUI coordination remains pending.",
+    "Current coreMenu graphs contain2visible tandoor dishes perlocale, validated as subset of140tandoor products within approved224-product snapshot."
+  ]
+}

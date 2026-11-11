@@ -1,0 +1,129 @@
+{
+  "measuredAt": "2026-11-11T18:23:02.296Z",
+  "buildId": "nlBAxpm6UCzeBOCDkhorU",
+  "sourceFingerprint": "deec532bef06341bbbb5b009e9e24030e2683f6ee9fe5cd362daab217f6fcb87",
+  "origin": "http://127.0.0.1:3518",
+  "scope": "Native Tab/Enter after expanding Curries; three desktop and two mobile viewport checks. Reduced motion. No business mutations.",
+  "rows": [
+    {
+      "width": 1440,
+      "height": 900,
+      "before": {
+        "scrollTop": 0,
+        "clientHeight": 766,
+        "scrollHeight": 1373,
+        "overflowY": "auto",
+        "bodyY": 204
+      },
+      "keyboard": {
+        "text": "Biryani",
+        "top": 708.546875,
+        "bottom": 756.546875,
+        "height": 900,
+        "scrollTop": 450,
+        "hit": true
+      },
+      "tabCount": 14,
+      "after": {
+        "heading": [
+          "Biryani · 4 producten"
+        ],
+        "overflow": false,
+        "build": true
+      }
+    },
+    {
+      "width": 1200,
+      "height": 800,
+      "before": {
+        "scrollTop": 0,
+        "clientHeight": 672,
+        "scrollHeight": 1373,
+        "overflowY": "auto",
+        "bodyY": 261
+      },
+      "keyboard": {
+        "text": "Biryani",
+        "top": 727.828125,
+        "bottom": 775.828125,
+        "height": 800,
+        "scrollTop": 401,
+        "hit": true
+      },
+      "tabCount": 14,
+      "after": {
+        "heading": [
+          "Biryani · 4 producten"
+        ],
+        "overflow": false,
+        "build": true
+      }
+    },
+    {
+      "width": 1024,
+      "height": 600,
+      "before": {
+        "scrollTop": 0,
+        "clientHeight": 472,
+        "scrollHeight": 1373,
+        "overflowY": "auto",
+        "bodyY": 425
+      },
+      "keyboard": {
+        "text": "Biryani",
+        "top": 323.828125,
+        "bottom": 371.828125,
+        "height": 600,
+        "scrollTop": 805,
+        "hit": true
+      },
+      "tabCount": 14,
+      "after": {
+        "heading": [
+          "Biryani · 4 producten"
+        ],
+        "overflow": false,
+        "build": true
+      }
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "mobile": {
+        "sidebarHidden": true,
+        "overflow": false,
+        "products": [
+          {
+            "height": 0,
+            "overflow": "visible"
+          },
+          {
+            "height": 439,
+            "overflow": "visible"
+          }
+        ]
+      }
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "mobile": {
+        "sidebarHidden": true,
+        "overflow": false,
+        "products": [
+          {
+            "height": 0,
+            "overflow": "visible"
+          },
+          {
+            "height": 525,
+            "overflow": "visible"
+          }
+        ]
+      }
+    }
+  ],
+  "exceptions": 0,
+  "writes": 0,
+  "screenshots": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cinematic-route-qa-20261111\\usability-nlBAxpm6UCzeBOCDkhorU"
+}

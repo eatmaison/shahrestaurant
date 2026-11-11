@@ -1,0 +1,46 @@
+{
+  "status": "Executed and verified for Hj2 final34 Lighthouse,6officialINP and10film cases; ack/legacy separate",
+  "name": "first-visit-ack-absent-v1",
+  "knownAckCookie": "shah_notice_ack_v1",
+  "knownConsentLocalStorageKey": "tm.cookieConsent",
+  "beforeServerNavigation": [
+    "Verify exact task-owned headless QA profile by listenerPID/command/profile; native user browser refused.",
+    "Create fresh blank page target; close older task pages through existing runner.",
+    "Delete only matching knownack cookie for target URL/domain/path.",
+    "Clear local_storage for exact loopback origin; do not clear native/other profile state."
+  ],
+  "verification": [
+    "Knownack absent through CDP before navigation.",
+    "Read-only earliest main-document script verifies tm.cookieConsent absent before site scripts.",
+    "Actual first main server HTML saved and hashed; data-cookie-notice markup recorded.",
+    "No preference overrides, forcedpaints, special LCP selection or notice hiding.",
+    "After navigation/hydration, knownack and tm.cookieConsent remain absent; all unacked secondary notices computed visible. Home only uses unchanged SSR opening-film hiding."
+  ],
+  "lighthouseStorageReset": true,
+  "ackAndLegacy": "Separate functional flows; never mixed into first-visit34.",
+  "controls": "ExistingNU/CrBm raw/controlcopies unchanged; protocol difference explicitly recorded on newmatrix.",
+  "originalStrictTargets": {
+    "mobilePerformanceMin": 92,
+    "mobileLcpMaxMs": 1800,
+    "clsMax": 0.02,
+    "inpMaxMs": 150,
+    "tbtMaxMs": 150,
+    "jsMaxBytes": 120000,
+    "cssMaxBytes": 40000,
+    "seo": 100,
+    "accessibilityMin": 95,
+    "bestPracticesMin": 95
+  },
+  "freshRuntimeBuildBinding": {
+    "buildId": "Hj2ubUjCMfbacacwFligZ",
+    "sourceFingerprint": "1b9a194de54237b2104232c89ce249729ddd466a648d819a1118bcd81717fc62",
+    "sourceInputs": 418,
+    "origin": "http://127.0.0.1:3518"
+  },
+  "results": {
+    "lighthouseFirstVisitProofs": 34,
+    "inpFirstVisitProofs": 6,
+    "filmStateResets": 10,
+    "formalCapturesComplete": true
+  }
+}

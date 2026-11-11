@@ -1,0 +1,197 @@
+{
+  "buildId": "Hj2ubUjCMfbacacwFligZ",
+  "sourceFingerprint": "1b9a194de54237b2104232c89ce249729ddd466a648d819a1118bcd81717fc62",
+  "checkedAtUTC": "2026-11-11T19:52:14.945Z",
+  "origin": "http://127.0.0.1:3518",
+  "mainReviewURL": "http://localhost:3398/",
+  "fixtureVersion": "2-empty-public-gallery",
+  "sourceInputs": 418,
+  "sourceInputs418Unchanged": true,
+  "firstVisitProtocol": "first-visit-ack-absent-v1",
+  "counts": {
+    "lighthouse": 34,
+    "inp": 6,
+    "fastFilm": 8,
+    "coldFilm": 2
+  },
+  "allStrictTargetsMet": false,
+  "performanceSummary": {
+    "rows": 34,
+    "publicRoutes": 17,
+    "performanceRanges": {
+      "mobile": [
+        70,
+        100
+      ],
+      "desktop": [
+        98,
+        100
+      ]
+    },
+    "accessibilityRanges": {
+      "mobile": [
+        100,
+        100
+      ],
+      "desktop": [
+        100,
+        100
+      ]
+    },
+    "bestPractices100": true,
+    "seo100": true,
+    "thresholdFailureCounts": {
+      "performance": 6,
+      "accessibility": 0,
+      "bestPractices": 0,
+      "seo": 0,
+      "lcp": 5,
+      "cls": 0,
+      "tbt": 2
+    },
+    "thresholdUnvalidatedCounts": {
+      "performance": 0,
+      "accessibility": 0,
+      "bestPractices": 0,
+      "seo": 0,
+      "lcp": 4,
+      "cls": 0,
+      "tbt": 0
+    },
+    "nativeLcpEligibleRows": 30,
+    "ukmFallbackRows": [
+      "mobile:/",
+      "mobile:/en",
+      "desktop:/",
+      "desktop:/en"
+    ],
+    "allReportedLighthouseTargetsMet": false,
+    "allRequestedBudgetsMet": false
+  },
+  "inp": [
+    {
+      "page": "home",
+      "mode": "mobile",
+      "inpMs": 224,
+      "below150": false,
+      "overlapGroups": 0,
+      "visibleFocused": true,
+      "loafCount": 27
+    },
+    {
+      "page": "menu",
+      "mode": "mobile",
+      "inpMs": 1712,
+      "below150": false,
+      "overlapGroups": 1,
+      "visibleFocused": true,
+      "loafCount": 13
+    },
+    {
+      "page": "reservations",
+      "mode": "mobile",
+      "inpMs": 72,
+      "below150": true,
+      "overlapGroups": 0,
+      "visibleFocused": true,
+      "loafCount": 4
+    },
+    {
+      "page": "home",
+      "mode": "desktop",
+      "inpMs": 208,
+      "below150": false,
+      "overlapGroups": 0,
+      "visibleFocused": true,
+      "loafCount": 24
+    },
+    {
+      "page": "menu",
+      "mode": "desktop",
+      "inpMs": 1720,
+      "below150": false,
+      "overlapGroups": 1,
+      "visibleFocused": true,
+      "loafCount": 11
+    },
+    {
+      "page": "reservations",
+      "mode": "desktop",
+      "inpMs": 368,
+      "below150": false,
+      "overlapGroups": 0,
+      "visibleFocused": true,
+      "loafCount": 4
+    }
+  ],
+  "film": [
+    {
+      "case": "passive",
+      "phase": "ready",
+      "readyOrStaticAtMs": 60767.799999952316,
+      "downloadedBytes": 11337072,
+      "headingVisible": true,
+      "unexpectedInert": 0
+    },
+    {
+      "case": "early-scroll",
+      "phase": "static",
+      "readyOrStaticAtMs": 4573.599999904633,
+      "downloadedBytes": 0,
+      "headingVisible": true,
+      "unexpectedInert": 0
+    }
+  ],
+  "proofs": [
+    {
+      "file": "docs/cinematic-final-performance-2026-11-11.json",
+      "sha256": "1eb3dcb242e2cbd21ca37ac17f72f55d0d4e869a6667ae173703f2b8ac2fd4ea"
+    },
+    {
+      "file": "docs/cinematic-final-inp-2026-11-11.json",
+      "sha256": "9a5a4c73cb72e3a5b35e486c37f81bb0496463be9d4ccba69d7578737b4fce31"
+    },
+    {
+      "file": "docs/cinematic-final-film-2026-11-11.json",
+      "sha256": "317393e40f472a8e50a0af6a521e5de052a6f3d1fead55284c486e2dc58c23f8"
+    },
+    {
+      "file": "docs/cinematic-cookie-ssr-preflight-2026-11-11.json",
+      "sha256": "6c656157ea65990d13ad7c453a0f888a447b01887603554859804acbf4600775"
+    },
+    {
+      "file": "docs/cinematic-event-usability-verification-2026-11-11.json",
+      "sha256": "c69042cae12e940d5870ba011969b685008327b3ace9e962b9c97da25eaa2c7c"
+    },
+    {
+      "file": "docs/cinematic-final-critical-lcp-2026-11-11.json",
+      "sha256": "30847e2264ff89b710aec69afb0176d256f2cd5fe25a12b2e76aefac9c15da80"
+    },
+    {
+      "file": "docs/cinematic-first-visit-protocol-2026-11-11.json",
+      "sha256": "00103136969555d752d45edd9e488817fb76491cb99901b5419b2221c8bb7b24"
+    },
+    {
+      "file": "docs/cinematic-final-search-2026-11-11.json",
+      "sha256": "74ce6b38db8b87a4ac90b32c3f5b7298a712c50fc7fa797ea5d52dfd0e126f7a"
+    }
+  ],
+  "controls": [
+    "docs/cinematic-performance-control-crbm-2026-11-11.json",
+    "docs/cinematic-inp-control-crbm-2026-11-11.json",
+    "docs/cinematic-film-control-crbm-2026-11-11.json"
+  ],
+  "limitations": [
+    "Exactcompiledbuild/read-onlyfixtureonly. No deployment or business submissions.",
+    "FieldCWV/officialGooglevalidation and physicaldevice/Safari/droppedframeguarantees are not established by these local probes.",
+    "FourhomepageLCPs remain UKM-fallback/unvalidated; no fabricated pass.",
+    "Publicgalleryv2 is empty-upload fixture200, not actualuploaded data.",
+    "Raw officialINP and overlap markers are preserved without inferring app/CSS cost."
+  ],
+  "firstVisitProtocolProof": "docs/cinematic-first-visit-protocol-2026-11-11.json",
+  "controlsPreserved": {
+    "index": "docs/cinematic-crbm-control-index-2026-11-11.json",
+    "reports": 5,
+    "allArchivedHashesUnchanged": true
+  }
+}

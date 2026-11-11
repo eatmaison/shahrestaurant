@@ -1,0 +1,129 @@
+{
+  "classification": "Functional preflight only; no formal performance acceptance measured",
+  "buildId": "nlBAxpm6UCzeBOCDkhorU",
+  "sourceFingerprint": "deec532bef06341bbbb5b009e9e24030e2683f6ee9fe5cd362daab217f6fcb87",
+  "origin": "http://127.0.0.1:3518",
+  "checkedAtUTC": "2026-11-11T18:24:53.777Z",
+  "fixture": {
+    "kind": "actual-public-catalog-read-only",
+    "products": 224,
+    "brands": 2,
+    "catalogSourceHash": "66eda306b74cf90dc15ad018cc3064212349151810d8df2e098a06d6e8588892",
+    "bootstrapSha256": "87cd9c939a82820c555968a3189d82dca413eecb18d90126add52327a60b3bbf",
+    "clockUTC": "2026-11-11T12:47:58.379Z",
+    "version": "2-empty-public-gallery",
+    "publicGallery": {
+      "status": 200,
+      "dataKind": "empty-upload-fixture-not-live",
+      "bodySha256": "23a94afc9afa821a8f50d64375a7a87fa1375b76365658f0d2b86e3e5b6e4a41",
+      "actualUploadedData": false
+    }
+  },
+  "allFunctionalChecksPass": true,
+  "tests": {
+    "chapter": true,
+    "fontsNoJsRedirect": true,
+    "geometry": true,
+    "ssr": true,
+    "features": true,
+    "native": true,
+    "search": true
+  },
+  "counts": {
+    "photoPreloads": 12,
+    "fontRoutes": 3,
+    "noJsRoutes": 2,
+    "redirects": 5,
+    "geometryViewports": 3,
+    "ssrRoutes": 4,
+    "featureCases": 3,
+    "searchStates": 13,
+    "nativeDiagnostics": 4
+  },
+  "nativeDiagnostics": [
+    {
+      "route": "/",
+      "form": "mobile",
+      "width": 412,
+      "height": 823,
+      "dpr": 1.75,
+      "nativeLcpCandidates": 0,
+      "visibleThroughout": true,
+      "hasFocus": true,
+      "attachedFilmVideos": 0,
+      "phase": "ready"
+    },
+    {
+      "route": "/en",
+      "form": "mobile",
+      "width": 412,
+      "height": 823,
+      "dpr": 1.75,
+      "nativeLcpCandidates": 0,
+      "visibleThroughout": true,
+      "hasFocus": true,
+      "attachedFilmVideos": 0,
+      "phase": "ready"
+    },
+    {
+      "route": "/",
+      "form": "desktop",
+      "width": 1350,
+      "height": 940,
+      "dpr": 1,
+      "nativeLcpCandidates": 0,
+      "visibleThroughout": true,
+      "hasFocus": true,
+      "attachedFilmVideos": 0,
+      "phase": "ready"
+    },
+    {
+      "route": "/en",
+      "form": "desktop",
+      "width": 1350,
+      "height": 940,
+      "dpr": 1,
+      "nativeLcpCandidates": 0,
+      "visibleThroughout": true,
+      "hasFocus": true,
+      "attachedFilmVideos": 0,
+      "phase": "ready"
+    }
+  ],
+  "expectedDecorativeInertClone": "NoJS home inert1 is only the aria-hidden partner clone; unexpectedInert0/H1notinert/bodyunlocked. No global inert0 claim.",
+  "limitations": [
+    "Ten-core-route functional scope; parent owns17routeSEO/events/sidebar/AA evidence.",
+    "Native paint diagnostics are unthrottled candidate-presence checks, not Lighthouse or field CWV; no eligible homeLCP is established when candidatecount0.",
+    "Company-only schedule control unavailable to guest fixture; not tested. Dummy unsent draft/cart cleared after13states.",
+    "Public gallery200 is an explicit empty-upload preview fixture, not actual uploaded photos.",
+    "No formalLighthouse/INP/film run started for this newartifact; original stricttargetsremain P92,LCP1800ms,CLS.02,INP150ms,TBT150ms."
+  ],
+  "proofRoot": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cinematic-qa-20261111\\production\\measured-nlBAxpm6UCzeBOCDkhorU",
+  "proofs": [
+    {
+      "file": "chapter-preload-checks.json",
+      "sha256": "d93c8f7f3ebc1b29a4df7c5d11612c7d4ffffe1d8263bebab5bae187b0776172"
+    },
+    {
+      "file": "font-noscript-redirect-preflight.json",
+      "sha256": "7ce041a08b8cd35c5f902d3b1cbcb80cf6e6e16d9f739829e4a8b79295c1fd6e"
+    },
+    {
+      "file": "header-js-resource-held-geometry.json",
+      "sha256": "b4003552255a5c8bb09c558988c40c8a2ae066e354a0312bfcf7012018ff0dea"
+    },
+    {
+      "file": "ssr-catalog.json",
+      "sha256": "34fd4ab6349d1aedee2ed6ef16bb5062038df5f31f0ed06e96592631d3559cd4"
+    },
+    {
+      "file": "feature-navigation-regressions.json",
+      "sha256": "a312b3cd55d1de27db00d79a11f430643074391350f3742f3f29f13134ac5352"
+    },
+    {
+      "file": "native-paint-diagnostics.json",
+      "sha256": "e18b4ca507ae3b743263490f4457715c90aeb58559f2ee33cb98dc448fce80b7"
+    }
+  ],
+  "searchProof": "docs/cinematic-final-search-2026-11-11.json"
+}

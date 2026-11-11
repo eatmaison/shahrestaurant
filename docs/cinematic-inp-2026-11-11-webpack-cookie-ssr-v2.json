@@ -1,0 +1,4277 @@
+{
+  "bundler": "webpack-cookie-ssr-v2",
+  "sourceFingerprint": "1b9a194de54237b2104232c89ce249729ddd466a648d819a1118bcd81717fc62",
+  "fixtureDataSourceFingerprint": "66eda306b74cf90dc15ad018cc3064212349151810d8df2e098a06d6e8588892",
+  "fixtureKind": "actual-public-catalog-read-only",
+  "catalogSourceHash": "66eda306b74cf90dc15ad018cc3064212349151810d8df2e098a06d6e8588892",
+  "fixtureProducts": 224,
+  "fixtureBrands": 2,
+  "fixtureJsonGzip": true,
+  "fixtureClockUTC": "2026-11-11T12:47:58.379Z",
+  "fixtureBootstrapSha256": "87cd9c939a82820c555968a3189d82dca413eecb18d90126add52327a60b3bbf",
+  "buildId": "Hj2ubUjCMfbacacwFligZ",
+  "startedAtUTC": "2026-11-11T19:45:20.024Z",
+  "origin": "http://127.0.0.1:3518",
+  "method": "Controlled local sampled INP from installed official web-vitals onINP, corroborated with EventTiming interactionId grouping. Not field CWV or a substitute for a real-user INP distribution.",
+  "settings": {
+    "cpuSlowdownMultiplier": 4,
+    "latencyMs": 150,
+    "downloadBytesPerSecond": 200000,
+    "uploadBytesPerSecond": 93750,
+    "deviceScaleFactor": 1,
+    "coldBrowserCache": true,
+    "observerDurationThresholdMs": 16,
+    "webVitalsReportAllChanges": true,
+    "input": "Trusted CDP touch taps on mobile; trusted mouse clicks on desktop; trusted keyDown/up in both",
+    "filmAccess": "Explicit native #intro bypass for post-film home controls",
+    "settle": "Inputs begin after hydration, fonts.ready and1s idle; scroll setup settles1s before a click",
+    "noSubmissions": true,
+    "noCartChanges": true,
+    "actionCadenceMs": 600,
+    "observers": "OfficialonINP+EventTiming+LoAF+longtask+action/lifecycle/focusmarkers;noforcedpaint/continuousrAF"
+  },
+  "webVitals": {
+    "path": "node_modules/next/dist/compiled/web-vitals/web-vitals.js",
+    "sha256": "7c55a2162afe161306f72c45309efd4232c4827cb212e2ca64e36f3828b2f0ff",
+    "license": "Apache-2.0 (installed bundle)"
+  },
+  "limitations": [
+    "This is a bounded local sample, not field Core Web Vitals or physical-device/Safari testing.",
+    "EventTiming durations are quantized; entries below16ms may be absent. onINP uses official interaction count/percentile handling; reportAllChanges reports metric changes, not every input.",
+    "Per-page sample count stays below50 interactions, so the sample emphasizes the worst interaction rather than a traffic-level98th percentile.",
+    "Instrumentation and this machine/network fixture can affect results. No INP is inferred from Lighthouse TBT.",
+    "The pinned actual224-product snapshot is used; home provides dish/gallery dialog samples, menu samples search and category controls.",
+    "Interactionspanninglateractionsisflagged,notremovedfromofficialonINP;spandoesnotattributecosttoCSS/apphandler.",
+    "EachcaseusesanexplicitfreshCDPtargetwithURL/buildguard;ownedvisibility-flushtabisclosedaftereachcase."
+  ],
+  "runs": [
+    {
+      "page": "home",
+      "route": "/en#intro",
+      "mode": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "inpMs": 224,
+      "webVitalsRating": "needs-improvement",
+      "userBelow150ms": false,
+      "interactionCount": 14,
+      "observedGroupsAtOrAbove16ms": 14,
+      "trustedInputEvents": 16,
+      "allObservedInputsTrusted": true,
+      "hiddenFlushObserved": true,
+      "freshTargetId": "1407B61E4BF93BEB117817E174A1D46D",
+      "flushTargetClosed": true,
+      "documentGuard": {
+        "expectedBuild": "Hj2ubUjCMfbacacwFligZ",
+        "headerBuild": "Hj2ubUjCMfbacacwFligZ",
+        "url": "http://127.0.0.1:3518/en#intro",
+        "status": 200,
+        "sourceCheck": {
+          "enabled": true,
+          "verifiedInputs": 418,
+          "allRecordedBytesMatch": true,
+          "kind": "initial-full-hash",
+          "sourceFingerprint": "1b9a194de54237b2104232c89ce249729ddd466a648d819a1118bcd81717fc62"
+        },
+        "firstVisitProtocol": "first-visit-ack-absent-v1",
+        "firstVisitReset": {
+          "startedAtUTC": "2026-11-11T19:45:22.054Z",
+          "completedAtUTC": "2026-11-11T19:45:22.057Z",
+          "ackCookieName": "shah_notice_ack_v1",
+          "ackCookiesRemoved": 0,
+          "ackCookieCountBeforeNavigation": 0,
+          "localStorageKey": "tm.cookieConsent",
+          "localStorageClearScope": "http://127.0.0.1:3518",
+          "localStorageClearCompleted": true,
+          "onlyKnownAckCookiesDeleted": true,
+          "otherCookieValuesLogged": false
+        },
+        "firstVisitState": {
+          "initial": {
+            "localStorageKeyAbsent": true,
+            "ackCookiePresent": false,
+            "at": 216.20000004768372
+          },
+          "localStorageKeyAbsent": true,
+          "ackCookiePresent": false,
+          "noticePresent": true,
+          "noticeVisible": true
+        }
+      },
+      "navigation": {
+        "type": "navigate",
+        "responseEnd": 288.40000009536743,
+        "domContentLoadedEventEnd": 1625.7000000476837,
+        "loadEventEnd": 2801.4000000953674
+      },
+      "lifecycle": [
+        {
+          "phase": "observer-installed",
+          "at": 206.40000009536743,
+          "visibility": "visible",
+          "hasFocus": false,
+          "readyState": "loading",
+          "fontStatus": "loaded",
+          "activeElement": null
+        },
+        {
+          "phase": "DOMContentLoaded",
+          "at": 1624.9000000953674,
+          "visibility": "visible",
+          "hasFocus": true,
+          "readyState": "interactive",
+          "fontStatus": "loading",
+          "activeElement": "body"
+        },
+        {
+          "phase": "load",
+          "at": 2801.4000000953674,
+          "visibility": "visible",
+          "hasFocus": true,
+          "readyState": "complete",
+          "fontStatus": "loaded",
+          "activeElement": "section#intro"
+        },
+        {
+          "phase": "fonts-ready-after-controls",
+          "at": 3968.7999999523163,
+          "visibility": "visible",
+          "hasFocus": true,
+          "readyState": "complete",
+          "fontStatus": "loaded",
+          "activeElement": "section#intro"
+        },
+        {
+          "phase": "ready-for-input",
+          "at": 6114.100000143051,
+          "visibility": "visible",
+          "hasFocus": true,
+          "readyState": "complete",
+          "fontStatus": "loaded",
+          "activeElement": "section#intro"
+        },
+        {
+          "phase": "visibilitychange",
+          "at": 23982.900000095367,
+          "visibility": "hidden",
+          "hasFocus": false,
+          "readyState": "complete",
+          "fontStatus": "loaded",
+          "activeElement": "summary"
+        }
+      ],
+      "loafSupported": true,
+      "loafCount": 27,
+      "longTaskCount": 15,
+      "observerErrors": [],
+      "overlappedGroups": [],
+      "positiveOverflowPx": 0,
+      "actions": [
+        {
+          "label": "Acknowledge cookie notice",
+          "start": 7132.100000143051,
+          "end": 7782.100000143051,
+          "before": {
+            "phase": "action-before",
+            "at": 7132.100000143051,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "section#intro"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 7782.100000143051,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "body"
+          }
+        },
+        {
+          "label": "Search home dishes focus",
+          "start": 8817.600000143051,
+          "end": 9485.100000143051,
+          "before": {
+            "phase": "action-before",
+            "at": 8817.600000143051,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "body"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 9485.100000143051,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input#dish-search"
+          }
+        },
+        {
+          "label": "Search home dishes b",
+          "start": 9487.900000095367,
+          "end": 10151,
+          "before": {
+            "phase": "action-before",
+            "at": 9487.900000095367,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input#dish-search"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 10151,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input#dish-search"
+          }
+        },
+        {
+          "label": "Search home dishes u",
+          "start": 10153.100000143051,
+          "end": 10787.200000047684,
+          "before": {
+            "phase": "action-before",
+            "at": 10153.100000143051,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input#dish-search"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 10787.200000047684,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input#dish-search"
+          }
+        },
+        {
+          "label": "Search home dishes t",
+          "start": 10789.600000143051,
+          "end": 11441.5,
+          "before": {
+            "phase": "action-before",
+            "at": 10789.600000143051,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input#dish-search"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 11441.5,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input#dish-search"
+          }
+        },
+        {
+          "label": "Clear home search",
+          "start": 12460.600000143051,
+          "end": 13142,
+          "before": {
+            "phase": "action-before",
+            "at": 12460.600000143051,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input#dish-search"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 13142,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input#dish-search"
+          }
+        },
+        {
+          "label": "Select home Curries",
+          "start": 14171.700000047684,
+          "end": 14883.299999952316,
+          "before": {
+            "phase": "action-before",
+            "at": 14171.700000047684,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input#dish-search"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 14883.299999952316,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input[name=home-menu-category]"
+          }
+        },
+        {
+          "label": "Open home dish dialog",
+          "start": 15897.400000095367,
+          "end": 16612,
+          "before": {
+            "phase": "action-before",
+            "at": 15897.400000095367,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input[name=home-menu-category]"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 16612,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "button[aria-label=Close]"
+          }
+        },
+        {
+          "label": "Close home dish dialog",
+          "start": 16657.799999952316,
+          "end": 17368.799999952316,
+          "before": {
+            "phase": "action-before",
+            "at": 16657.799999952316,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "button[aria-label=Close]"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 17368.799999952316,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "button[aria-label=View dish details: Butter Chicken]"
+          }
+        },
+        {
+          "label": "Open home photo gallery",
+          "start": 18393.60000014305,
+          "end": 19208.700000047684,
+          "before": {
+            "phase": "action-before",
+            "at": 18393.60000014305,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "button[aria-label=View dish details: Butter Chicken]"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 19208.700000047684,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "button[aria-label=Close]"
+          }
+        },
+        {
+          "label": "Next gallery photo",
+          "start": 19212.299999952316,
+          "end": 19871,
+          "before": {
+            "phase": "action-before",
+            "at": 19212.299999952316,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "button[aria-label=Close]"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 19871,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "button[aria-label=Close]"
+          }
+        },
+        {
+          "label": "Close gallery",
+          "start": 19874.299999952316,
+          "end": 20593.400000095367,
+          "before": {
+            "phase": "action-before",
+            "at": 19874.299999952316,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "button[aria-label=Close]"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 20593.400000095367,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "button[aria-label=Enlarge photo: At the table]"
+          }
+        },
+        {
+          "label": "Open first FAQ",
+          "start": 21626.400000095367,
+          "end": 22299.700000047684,
+          "before": {
+            "phase": "action-before",
+            "at": 21626.400000095367,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "button[aria-label=Enlarge photo: At the table]"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 22299.700000047684,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "summary"
+          }
+        },
+        {
+          "label": "Close first FAQ with Space",
+          "start": 22310,
+          "end": 22921.700000047684,
+          "before": {
+            "phase": "action-before",
+            "at": 22310,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "summary"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 22921.700000047684,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "summary"
+          }
+        }
+      ],
+      "slowestGroups": [
+        {
+          "interactionId": 4003,
+          "duration": 224,
+          "entries": [
+            {
+              "name": "pointerdown",
+              "entryType": "event",
+              "startTime": 18395.799999952316,
+              "duration": 32,
+              "processingStart": 18427.700000047684,
+              "processingEnd": 18427.700000047684,
+              "interactionId": 4003,
+              "target": "img"
+            },
+            {
+              "name": "pointerup",
+              "entryType": "event",
+              "startTime": 18420.10000014305,
+              "duration": 16,
+              "processingStart": 18435.200000047684,
+              "processingEnd": 18435.200000047684,
+              "interactionId": 4003,
+              "target": "img"
+            },
+            {
+              "name": "click",
+              "entryType": "event",
+              "startTime": 18420.10000014305,
+              "duration": 224,
+              "processingStart": 18454.400000095367,
+              "processingEnd": 18591.900000095367,
+              "interactionId": 4003,
+              "target": "img"
+            }
+          ],
+          "startMs": 18395.799999952316,
+          "endMs": 18644.10000014305,
+          "laterActionStarts": [],
+          "overlappingOtherInteractionIds": [],
+          "loafIndexes": [
+            24
+          ]
+        },
+        {
+          "interactionId": 3982,
+          "duration": 160,
+          "entries": [
+            {
+              "name": "pointerup",
+              "entryType": "event",
+              "startTime": 14179.5,
+              "duration": 16,
+              "processingStart": 14197.200000047684,
+              "processingEnd": 14197.400000095367,
+              "interactionId": 3982,
+              "target": "span"
+            },
+            {
+              "name": "click",
+              "entryType": "event",
+              "startTime": 14179.5,
+              "duration": 160,
+              "processingStart": 14215.5,
+              "processingEnd": 14269.900000095367,
+              "interactionId": 3982,
+              "target": "span"
+            }
+          ],
+          "startMs": 14179.5,
+          "endMs": 14339.5,
+          "laterActionStarts": [],
+          "overlappingOtherInteractionIds": [],
+          "loafIndexes": [
+            20
+          ]
+        },
+        {
+          "interactionId": 3996,
+          "duration": 144,
+          "entries": [
+            {
+              "name": "keydown",
+              "entryType": "event",
+              "startTime": 16658.200000047684,
+              "duration": 144,
+              "processingStart": 16658.400000095367,
+              "processingEnd": 16764.60000014305,
+              "interactionId": 3996,
+              "target": null
+            },
+            {
+              "name": "keyup",
+              "entryType": "event",
+              "startTime": 16765.200000047684,
+              "duration": 40,
+              "processingStart": 16766.10000014305,
+              "processingEnd": 16766.400000095367,
+              "interactionId": 3996,
+              "target": "button[aria-label=View dish details: Butter Chicken]"
+            }
+          ],
+          "startMs": 16658.200000047684,
+          "endMs": 16805.200000047684,
+          "laterActionStarts": [],
+          "overlappingOtherInteractionIds": [],
+          "loafIndexes": [
+            23
+          ]
+        },
+        {
+          "interactionId": 4017,
+          "duration": 120,
+          "entries": [
+            {
+              "name": "keydown",
+              "entryType": "event",
+              "startTime": 19874.799999952316,
+              "duration": 120,
+              "processingStart": 19875.10000014305,
+              "processingEnd": 19968,
+              "interactionId": 4017,
+              "target": null
+            },
+            {
+              "name": "keyup",
+              "entryType": "event",
+              "startTime": 19968.60000014305,
+              "duration": 48,
+              "processingStart": 19986.200000047684,
+              "processingEnd": 19986.60000014305,
+              "interactionId": 4017,
+              "target": "button[aria-label=Enlarge photo: At the table]"
+            }
+          ],
+          "startMs": 19874.799999952316,
+          "endMs": 20016.60000014305,
+          "laterActionStarts": [],
+          "overlappingOtherInteractionIds": [],
+          "loafIndexes": [
+            26
+          ]
+        },
+        {
+          "interactionId": 3989,
+          "duration": 104,
+          "entries": [
+            {
+              "name": "pointerdown",
+              "entryType": "event",
+              "startTime": 15898.100000143051,
+              "duration": 32,
+              "processingStart": 15911.600000143051,
+              "processingEnd": 15911.700000047684,
+              "interactionId": 3989,
+              "target": "span"
+            },
+            {
+              "name": "pointerup",
+              "entryType": "event",
+              "startTime": 15909.799999952316,
+              "duration": 104,
+              "processingStart": 15928.5,
+              "processingEnd": 15928.700000047684,
+              "interactionId": 3989,
+              "target": "span"
+            },
+            {
+              "name": "click",
+              "entryType": "event",
+              "startTime": 15909.799999952316,
+              "duration": 104,
+              "processingStart": 15952.299999952316,
+              "processingEnd": 15994.799999952316,
+              "interactionId": 3989,
+              "target": "span"
+            }
+          ],
+          "startMs": 15898.100000143051,
+          "endMs": 16013.799999952316,
+          "laterActionStarts": [],
+          "overlappingOtherInteractionIds": [],
+          "loafIndexes": [
+            21
+          ]
+        }
+      ],
+      "finalMetric": {
+        "name": "INP",
+        "value": 224,
+        "rating": "needs-improvement",
+        "id": "v4-1794426322276-7756074279458",
+        "delta": 64,
+        "at": 18684.900000095367,
+        "visibility": "visible",
+        "entries": [
+          {
+            "name": "click",
+            "entryType": "event",
+            "startTime": 18420.10000014305,
+            "duration": 224,
+            "processingStart": 18454.400000095367,
+            "processingEnd": 18591.900000095367,
+            "interactionId": 4003,
+            "target": "img"
+          }
+        ]
+      },
+      "errors": [],
+      "consoleErrors": [],
+      "businessApiWrites": []
+    },
+    {
+      "page": "menu",
+      "route": "/en/menu",
+      "mode": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "inpMs": 1712,
+      "webVitalsRating": "poor",
+      "userBelow150ms": false,
+      "interactionCount": 9,
+      "observedGroupsAtOrAbove16ms": 9,
+      "trustedInputEvents": 9,
+      "allObservedInputsTrusted": true,
+      "hiddenFlushObserved": true,
+      "freshTargetId": "DC0F2BBDD227EC721317E6AEC95BDF6A",
+      "flushTargetClosed": true,
+      "documentGuard": {
+        "expectedBuild": "Hj2ubUjCMfbacacwFligZ",
+        "headerBuild": "Hj2ubUjCMfbacacwFligZ",
+        "url": "http://127.0.0.1:3518/en/menu",
+        "status": 200,
+        "sourceCheck": {
+          "enabled": true,
+          "verifiedInputs": 418,
+          "allRecordedBytesMatch": true,
+          "kind": "stat-watch-plus-changed-byte-hash",
+          "sourceFingerprint": "1b9a194de54237b2104232c89ce249729ddd466a648d819a1118bcd81717fc62"
+        },
+        "firstVisitProtocol": "first-visit-ack-absent-v1",
+        "firstVisitReset": {
+          "startedAtUTC": "2026-11-11T19:45:48.810Z",
+          "completedAtUTC": "2026-11-11T19:45:48.813Z",
+          "ackCookieName": "shah_notice_ack_v1",
+          "ackCookiesRemoved": 1,
+          "ackCookieCountBeforeNavigation": 0,
+          "localStorageKey": "tm.cookieConsent",
+          "localStorageClearScope": "http://127.0.0.1:3518",
+          "localStorageClearCompleted": true,
+          "onlyKnownAckCookiesDeleted": true,
+          "otherCookieValuesLogged": false
+        },
+        "firstVisitState": {
+          "initial": {
+            "localStorageKeyAbsent": true,
+            "ackCookiePresent": false,
+            "at": 217.79999995231628
+          },
+          "localStorageKeyAbsent": true,
+          "ackCookiePresent": false,
+          "noticePresent": true,
+          "noticeVisible": true
+        }
+      },
+      "navigation": {
+        "type": "navigate",
+        "responseEnd": 727.4000000953674,
+        "domContentLoadedEventEnd": 1176.7999999523163,
+        "loadEventEnd": 4051.2999999523163
+      },
+      "lifecycle": [
+        {
+          "phase": "observer-installed",
+          "at": 209.70000004768372,
+          "visibility": "visible",
+          "hasFocus": false,
+          "readyState": "loading",
+          "fontStatus": "loaded",
+          "activeElement": null
+        },
+        {
+          "phase": "DOMContentLoaded",
+          "at": 1175.6000001430511,
+          "visibility": "visible",
+          "hasFocus": true,
+          "readyState": "interactive",
+          "fontStatus": "loaded",
+          "activeElement": "body"
+        },
+        {
+          "phase": "load",
+          "at": 4051.100000143051,
+          "visibility": "visible",
+          "hasFocus": true,
+          "readyState": "complete",
+          "fontStatus": "loaded",
+          "activeElement": "body"
+        },
+        {
+          "phase": "fonts-ready-after-controls",
+          "at": 4432.900000095367,
+          "visibility": "visible",
+          "hasFocus": true,
+          "readyState": "complete",
+          "fontStatus": "loaded",
+          "activeElement": "body"
+        },
+        {
+          "phase": "ready-for-input",
+          "at": 5442.200000047684,
+          "visibility": "visible",
+          "hasFocus": true,
+          "readyState": "complete",
+          "fontStatus": "loaded",
+          "activeElement": "body"
+        },
+        {
+          "phase": "visibilitychange",
+          "at": 19485.10000014305,
+          "visibility": "hidden",
+          "hasFocus": false,
+          "readyState": "complete",
+          "fontStatus": "loaded",
+          "activeElement": "input#order-search[name=q]"
+        }
+      ],
+      "loafSupported": true,
+      "loafCount": 13,
+      "longTaskCount": 8,
+      "observerErrors": [],
+      "overlappedGroups": [
+        {
+          "interactionId": 8978,
+          "laterActionStarts": [
+            {
+              "label": "Search menu focus",
+              "start": 8123.5
+            }
+          ],
+          "overlappingOtherInteractionIds": [
+            8985
+          ]
+        }
+      ],
+      "positiveOverflowPx": 0,
+      "actions": [
+        {
+          "label": "Acknowledge cookie notice",
+          "start": 6463,
+          "end": 7112.900000095367,
+          "before": {
+            "phase": "action-before",
+            "at": 6463,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "body"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 7112.900000095367,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "body"
+          }
+        },
+        {
+          "label": "Search menu focus",
+          "start": 8123.5,
+          "end": 8768.700000047684,
+          "before": {
+            "phase": "action-before",
+            "at": 8123.5,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "body"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 8768.700000047684,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input#order-search[name=q]"
+          }
+        },
+        {
+          "label": "Search menu b",
+          "start": 8770.5,
+          "end": 9838.5,
+          "before": {
+            "phase": "action-before",
+            "at": 8770.5,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input#order-search[name=q]"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 9838.5,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input#order-search[name=q]"
+          }
+        },
+        {
+          "label": "Search menu u",
+          "start": 9869.799999952316,
+          "end": 10677,
+          "before": {
+            "phase": "action-before",
+            "at": 9869.799999952316,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input#order-search[name=q]"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 10677,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input#order-search[name=q]"
+          }
+        },
+        {
+          "label": "Search menu t",
+          "start": 10679.100000143051,
+          "end": 11389.5,
+          "before": {
+            "phase": "action-before",
+            "at": 10679.100000143051,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input#order-search[name=q]"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 11389.5,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input#order-search[name=q]"
+          }
+        },
+        {
+          "label": "Clear menu search",
+          "start": 12408.200000047684,
+          "end": 13102.200000047684,
+          "before": {
+            "phase": "action-before",
+            "at": 12408.200000047684,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input#order-search[name=q]"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 13102.200000047684,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input#order-search[name=q]"
+          }
+        },
+        {
+          "label": "Select menu Curries",
+          "start": 14120.600000143051,
+          "end": 15006.5,
+          "before": {
+            "phase": "action-before",
+            "at": 14120.600000143051,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input#order-search[name=q]"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 15006.5,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input#order-search[name=q]"
+          }
+        },
+        {
+          "label": "Select menu Biryani",
+          "start": 16024.900000095367,
+          "end": 16737.10000014305,
+          "before": {
+            "phase": "action-before",
+            "at": 16024.900000095367,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input#order-search[name=q]"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 16737.10000014305,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input#order-search[name=q]"
+          }
+        },
+        {
+          "label": "Select menu Soups",
+          "start": 17753.10000014305,
+          "end": 18444.900000095367,
+          "before": {
+            "phase": "action-before",
+            "at": 17753.10000014305,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input#order-search[name=q]"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 18444.900000095367,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input#order-search[name=q]"
+          }
+        }
+      ],
+      "slowestGroups": [
+        {
+          "interactionId": 8978,
+          "duration": 1712,
+          "entries": [
+            {
+              "name": "pointerdown",
+              "entryType": "event",
+              "startTime": 6464.200000047684,
+              "duration": 32,
+              "processingStart": 6482.100000143051,
+              "processingEnd": 6482.299999952316,
+              "interactionId": 8978,
+              "target": null
+            },
+            {
+              "name": "pointerup",
+              "entryType": "event",
+              "startTime": 6478.700000047684,
+              "duration": 1712,
+              "processingStart": 6497.100000143051,
+              "processingEnd": 6497.600000143051,
+              "interactionId": 8978,
+              "target": null
+            },
+            {
+              "name": "click",
+              "entryType": "event",
+              "startTime": 6478.700000047684,
+              "duration": 1712,
+              "processingStart": 6503.5,
+              "processingEnd": 6508.799999952316,
+              "interactionId": 8978,
+              "target": null
+            }
+          ],
+          "startMs": 6464.200000047684,
+          "endMs": 8190.700000047684,
+          "laterActionStarts": [
+            {
+              "label": "Search menu focus",
+              "start": 8123.5
+            }
+          ],
+          "overlappingOtherInteractionIds": [
+            8985
+          ],
+          "loafIndexes": []
+        },
+        {
+          "interactionId": 9020,
+          "duration": 304,
+          "entries": [
+            {
+              "name": "pointerdown",
+              "entryType": "event",
+              "startTime": 14121.200000047684,
+              "duration": 24,
+              "processingStart": 14131.5,
+              "processingEnd": 14131.5,
+              "interactionId": 9020,
+              "target": "span"
+            },
+            {
+              "name": "pointerup",
+              "entryType": "event",
+              "startTime": 14130.200000047684,
+              "duration": 304,
+              "processingStart": 14148.900000095367,
+              "processingEnd": 14149.100000143051,
+              "interactionId": 9020,
+              "target": "span"
+            },
+            {
+              "name": "click",
+              "entryType": "event",
+              "startTime": 14130.200000047684,
+              "duration": 304,
+              "processingStart": 14165.900000095367,
+              "processingEnd": 14301,
+              "interactionId": 9020,
+              "target": "span"
+            }
+          ],
+          "startMs": 14121.200000047684,
+          "endMs": 14434.200000047684,
+          "laterActionStarts": [],
+          "overlappingOtherInteractionIds": [],
+          "loafIndexes": [
+            9
+          ]
+        },
+        {
+          "interactionId": 8999,
+          "duration": 224,
+          "entries": [
+            {
+              "name": "keydown",
+              "entryType": "event",
+              "startTime": 9871,
+              "duration": 224,
+              "processingStart": 9872.900000095367,
+              "processingEnd": 9873.700000047684,
+              "interactionId": 8999,
+              "target": "input#order-search[name=q]"
+            },
+            {
+              "name": "keypress",
+              "entryType": "event",
+              "startTime": 9871,
+              "duration": 224,
+              "processingStart": 9873.700000047684,
+              "processingEnd": 10065.700000047684,
+              "interactionId": 8999,
+              "target": "input#order-search[name=q]"
+            },
+            {
+              "name": "keyup",
+              "entryType": "event",
+              "startTime": 10066.400000095367,
+              "duration": 32,
+              "processingStart": 10067.299999952316,
+              "processingEnd": 10067.900000095367,
+              "interactionId": 8999,
+              "target": "input#order-search[name=q]"
+            }
+          ],
+          "startMs": 9871,
+          "endMs": 10098.400000095367,
+          "laterActionStarts": [],
+          "overlappingOtherInteractionIds": [],
+          "loafIndexes": [
+            5
+          ]
+        },
+        {
+          "interactionId": 9006,
+          "duration": 136,
+          "entries": [
+            {
+              "name": "keydown",
+              "entryType": "event",
+              "startTime": 10679.900000095367,
+              "duration": 136,
+              "processingStart": 10680.299999952316,
+              "processingEnd": 10680.900000095367,
+              "interactionId": 9006,
+              "target": "input#order-search[name=q]"
+            },
+            {
+              "name": "keypress",
+              "entryType": "event",
+              "startTime": 10679.900000095367,
+              "duration": 136,
+              "processingStart": 10681.100000143051,
+              "processingEnd": 10775,
+              "interactionId": 9006,
+              "target": "input#order-search[name=q]"
+            },
+            {
+              "name": "keyup",
+              "entryType": "event",
+              "startTime": 10775.799999952316,
+              "duration": 40,
+              "processingStart": 10777.200000047684,
+              "processingEnd": 10778,
+              "interactionId": 9006,
+              "target": "input#order-search[name=q]"
+            }
+          ],
+          "startMs": 10679.900000095367,
+          "endMs": 10815.900000095367,
+          "laterActionStarts": [],
+          "overlappingOtherInteractionIds": [],
+          "loafIndexes": [
+            7
+          ]
+        },
+        {
+          "interactionId": 9027,
+          "duration": 104,
+          "entries": [
+            {
+              "name": "pointerdown",
+              "entryType": "event",
+              "startTime": 16025.400000095367,
+              "duration": 32,
+              "processingStart": 16040.299999952316,
+              "processingEnd": 16040.400000095367,
+              "interactionId": 9027,
+              "target": "span"
+            },
+            {
+              "name": "pointerup",
+              "entryType": "event",
+              "startTime": 16039.200000047684,
+              "duration": 104,
+              "processingStart": 16057,
+              "processingEnd": 16057.200000047684,
+              "interactionId": 9027,
+              "target": "span"
+            },
+            {
+              "name": "click",
+              "entryType": "event",
+              "startTime": 16039.200000047684,
+              "duration": 104,
+              "processingStart": 16071.100000143051,
+              "processingEnd": 16102.5,
+              "interactionId": 9027,
+              "target": "span"
+            }
+          ],
+          "startMs": 16025.400000095367,
+          "endMs": 16143.200000047684,
+          "laterActionStarts": [],
+          "overlappingOtherInteractionIds": [],
+          "loafIndexes": [
+            11
+          ]
+        }
+      ],
+      "finalMetric": {
+        "name": "INP",
+        "value": 1712,
+        "rating": "poor",
+        "id": "v4-1794426349033-5900275674327",
+        "delta": 1680,
+        "at": 8224.5,
+        "visibility": "visible",
+        "entries": [
+          {
+            "name": "pointerup",
+            "entryType": "event",
+            "startTime": 6478.700000047684,
+            "duration": 1712,
+            "processingStart": 6497.100000143051,
+            "processingEnd": 6497.600000143051,
+            "interactionId": 8978,
+            "target": null
+          },
+          {
+            "name": "click",
+            "entryType": "event",
+            "startTime": 6478.700000047684,
+            "duration": 1712,
+            "processingStart": 6503.5,
+            "processingEnd": 6508.799999952316,
+            "interactionId": 8978,
+            "target": null
+          }
+        ]
+      },
+      "errors": [],
+      "consoleErrors": [],
+      "businessApiWrites": []
+    },
+    {
+      "page": "reservations",
+      "route": "/en/reservations",
+      "mode": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "inpMs": 72,
+      "webVitalsRating": "good",
+      "userBelow150ms": true,
+      "interactionCount": 21,
+      "observedGroupsAtOrAbove16ms": 21,
+      "trustedInputEvents": 21,
+      "allObservedInputsTrusted": true,
+      "hiddenFlushObserved": true,
+      "freshTargetId": "BB69BCE8C289582524487AAAE5DEA91D",
+      "flushTargetClosed": true,
+      "documentGuard": {
+        "expectedBuild": "Hj2ubUjCMfbacacwFligZ",
+        "headerBuild": "Hj2ubUjCMfbacacwFligZ",
+        "url": "http://127.0.0.1:3518/en/reservations",
+        "status": 200,
+        "sourceCheck": {
+          "enabled": true,
+          "verifiedInputs": 418,
+          "allRecordedBytesMatch": true,
+          "kind": "stat-watch-plus-changed-byte-hash",
+          "sourceFingerprint": "1b9a194de54237b2104232c89ce249729ddd466a648d819a1118bcd81717fc62"
+        },
+        "firstVisitProtocol": "first-visit-ack-absent-v1",
+        "firstVisitReset": {
+          "startedAtUTC": "2026-11-11T19:46:10.911Z",
+          "completedAtUTC": "2026-11-11T19:46:11.452Z",
+          "ackCookieName": "shah_notice_ack_v1",
+          "ackCookiesRemoved": 1,
+          "ackCookieCountBeforeNavigation": 0,
+          "localStorageKey": "tm.cookieConsent",
+          "localStorageClearScope": "http://127.0.0.1:3518",
+          "localStorageClearCompleted": true,
+          "onlyKnownAckCookiesDeleted": true,
+          "otherCookieValuesLogged": false
+        },
+        "firstVisitState": {
+          "initial": {
+            "localStorageKeyAbsent": true,
+            "ackCookiePresent": false,
+            "at": 219.40000009536743
+          },
+          "localStorageKeyAbsent": true,
+          "ackCookiePresent": false,
+          "noticePresent": true,
+          "noticeVisible": true
+        }
+      },
+      "navigation": {
+        "type": "navigate",
+        "responseEnd": 272.5,
+        "domContentLoadedEventEnd": 1149.6000001430511,
+        "loadEventEnd": 3420.5
+      },
+      "lifecycle": [
+        {
+          "phase": "observer-installed",
+          "at": 210.60000014305115,
+          "visibility": "visible",
+          "hasFocus": false,
+          "readyState": "loading",
+          "fontStatus": "loaded",
+          "activeElement": null
+        },
+        {
+          "phase": "DOMContentLoaded",
+          "at": 1148.2999999523163,
+          "visibility": "visible",
+          "hasFocus": true,
+          "readyState": "interactive",
+          "fontStatus": "loaded",
+          "activeElement": "body"
+        },
+        {
+          "phase": "load",
+          "at": 3420.2999999523163,
+          "visibility": "visible",
+          "hasFocus": true,
+          "readyState": "complete",
+          "fontStatus": "loaded",
+          "activeElement": "body"
+        },
+        {
+          "phase": "fonts-ready-after-controls",
+          "at": 3823.7999999523163,
+          "visibility": "visible",
+          "hasFocus": true,
+          "readyState": "complete",
+          "fontStatus": "loaded",
+          "activeElement": "body"
+        },
+        {
+          "phase": "ready-for-input",
+          "at": 4831.600000143051,
+          "visibility": "visible",
+          "hasFocus": true,
+          "readyState": "complete",
+          "fontStatus": "loaded",
+          "activeElement": "body"
+        },
+        {
+          "phase": "visibilitychange",
+          "at": 27397,
+          "visibility": "hidden",
+          "hasFocus": false,
+          "readyState": "complete",
+          "fontStatus": "loaded",
+          "activeElement": "textarea"
+        }
+      ],
+      "loafSupported": true,
+      "loafCount": 4,
+      "longTaskCount": 3,
+      "observerErrors": [],
+      "overlappedGroups": [],
+      "positiveOverflowPx": 0,
+      "actions": [
+        {
+          "label": "Acknowledge cookie notice",
+          "start": 5851,
+          "end": 6510.600000143051,
+          "before": {
+            "phase": "action-before",
+            "at": 5851,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "body"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 6510.600000143051,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "body"
+          }
+        },
+        {
+          "label": "Choose3 guests",
+          "start": 7531.5,
+          "end": 8197,
+          "before": {
+            "phase": "action-before",
+            "at": 7531.5,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "body"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 8197,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "button"
+          }
+        },
+        {
+          "label": "Focus custom guest count",
+          "start": 9217.299999952316,
+          "end": 9878.200000047684,
+          "before": {
+            "phase": "action-before",
+            "at": 9217.299999952316,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "button"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 9878.200000047684,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input[aria-label=Guests]"
+          }
+        },
+        {
+          "label": "Increment guest count",
+          "start": 9880.5,
+          "end": 10507.600000143051,
+          "before": {
+            "phase": "action-before",
+            "at": 9880.5,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input[aria-label=Guests]"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 10507.600000143051,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input[aria-label=Guests]"
+          }
+        },
+        {
+          "label": "Choose Birthday",
+          "start": 11526.100000143051,
+          "end": 12189.700000047684,
+          "before": {
+            "phase": "action-before",
+            "at": 11526.100000143051,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input[aria-label=Guests]"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 12189.700000047684,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "button"
+          }
+        },
+        {
+          "label": "Name input focus",
+          "start": 13210.700000047684,
+          "end": 13846.200000047684,
+          "before": {
+            "phase": "action-before",
+            "at": 13210.700000047684,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "button"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 13846.200000047684,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input"
+          }
+        },
+        {
+          "label": "Name input T",
+          "start": 13848.400000095367,
+          "end": 14466.200000047684,
+          "before": {
+            "phase": "action-before",
+            "at": 13848.400000095367,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 14466.200000047684,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input"
+          }
+        },
+        {
+          "label": "Name input e",
+          "start": 14467.900000095367,
+          "end": 15088.400000095367,
+          "before": {
+            "phase": "action-before",
+            "at": 14467.900000095367,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 15088.400000095367,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input"
+          }
+        },
+        {
+          "label": "Name input s",
+          "start": 15090.100000143051,
+          "end": 15708.600000143051,
+          "before": {
+            "phase": "action-before",
+            "at": 15090.100000143051,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 15708.600000143051,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input"
+          }
+        },
+        {
+          "label": "Name input t",
+          "start": 15710.5,
+          "end": 16329.299999952316,
+          "before": {
+            "phase": "action-before",
+            "at": 15710.5,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 16329.299999952316,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input"
+          }
+        },
+        {
+          "label": "Phone input focus",
+          "start": 17341.5,
+          "end": 17988.200000047684,
+          "before": {
+            "phase": "action-before",
+            "at": 17341.5,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 17988.200000047684,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input"
+          }
+        },
+        {
+          "label": "Phone input 0",
+          "start": 17989.700000047684,
+          "end": 18605.299999952316,
+          "before": {
+            "phase": "action-before",
+            "at": 17989.700000047684,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 18605.299999952316,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input"
+          }
+        },
+        {
+          "label": "Phone input 6",
+          "start": 18607.900000095367,
+          "end": 19221.299999952316,
+          "before": {
+            "phase": "action-before",
+            "at": 18607.900000095367,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 19221.299999952316,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input"
+          }
+        },
+        {
+          "label": "Phone input 0",
+          "start": 19223.200000047684,
+          "end": 19857.900000095367,
+          "before": {
+            "phase": "action-before",
+            "at": 19223.200000047684,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 19857.900000095367,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input"
+          }
+        },
+        {
+          "label": "Email input focus",
+          "start": 20872.400000095367,
+          "end": 21523.900000095367,
+          "before": {
+            "phase": "action-before",
+            "at": 20872.400000095367,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 21523.900000095367,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input"
+          }
+        },
+        {
+          "label": "Email input q",
+          "start": 21526,
+          "end": 22145,
+          "before": {
+            "phase": "action-before",
+            "at": 21526,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 22145,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input"
+          }
+        },
+        {
+          "label": "Special request input focus",
+          "start": 23161.5,
+          "end": 23808.400000095367,
+          "before": {
+            "phase": "action-before",
+            "at": 23161.5,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 23808.400000095367,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "textarea"
+          }
+        },
+        {
+          "label": "Special request input T",
+          "start": 23810.200000047684,
+          "end": 24442.5,
+          "before": {
+            "phase": "action-before",
+            "at": 23810.200000047684,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "textarea"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 24442.5,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "textarea"
+          }
+        },
+        {
+          "label": "Special request input e",
+          "start": 24444.700000047684,
+          "end": 25080.700000047684,
+          "before": {
+            "phase": "action-before",
+            "at": 24444.700000047684,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "textarea"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 25080.700000047684,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "textarea"
+          }
+        },
+        {
+          "label": "Special request input s",
+          "start": 25082.400000095367,
+          "end": 25714.900000095367,
+          "before": {
+            "phase": "action-before",
+            "at": 25082.400000095367,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "textarea"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 25714.900000095367,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "textarea"
+          }
+        },
+        {
+          "label": "Special request input t",
+          "start": 25716.299999952316,
+          "end": 26334.900000095367,
+          "before": {
+            "phase": "action-before",
+            "at": 25716.299999952316,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "textarea"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 26334.900000095367,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "textarea"
+          }
+        }
+      ],
+      "slowestGroups": [
+        {
+          "interactionId": 3938,
+          "duration": 72,
+          "entries": [
+            {
+              "name": "pointerdown",
+              "entryType": "event",
+              "startTime": 7532.299999952316,
+              "duration": 24,
+              "processingStart": 7544.299999952316,
+              "processingEnd": 7544.5,
+              "interactionId": 3938,
+              "target": "button"
+            },
+            {
+              "name": "pointerup",
+              "entryType": "event",
+              "startTime": 7542.700000047684,
+              "duration": 72,
+              "processingStart": 7560.799999952316,
+              "processingEnd": 7561.100000143051,
+              "interactionId": 3938,
+              "target": "button"
+            },
+            {
+              "name": "click",
+              "entryType": "event",
+              "startTime": 7542.700000047684,
+              "duration": 72,
+              "processingStart": 7573.5,
+              "processingEnd": 7580.200000047684,
+              "interactionId": 3938,
+              "target": "button"
+            }
+          ],
+          "startMs": 7532.299999952316,
+          "endMs": 7614.700000047684,
+          "laterActionStarts": [],
+          "overlappingOtherInteractionIds": [],
+          "loafIndexes": []
+        },
+        {
+          "interactionId": 3959,
+          "duration": 72,
+          "entries": [
+            {
+              "name": "pointerdown",
+              "entryType": "event",
+              "startTime": 11526.600000143051,
+              "duration": 32,
+              "processingStart": 11541.5,
+              "processingEnd": 11541.5,
+              "interactionId": 3959,
+              "target": "button"
+            },
+            {
+              "name": "pointerup",
+              "entryType": "event",
+              "startTime": 11540.299999952316,
+              "duration": 72,
+              "processingStart": 11558.200000047684,
+              "processingEnd": 11558.400000095367,
+              "interactionId": 3959,
+              "target": "button"
+            },
+            {
+              "name": "click",
+              "entryType": "event",
+              "startTime": 11540.299999952316,
+              "duration": 72,
+              "processingStart": 11574.200000047684,
+              "processingEnd": 11582.299999952316,
+              "interactionId": 3959,
+              "target": "button"
+            }
+          ],
+          "startMs": 11526.600000143051,
+          "endMs": 11612.299999952316,
+          "laterActionStarts": [],
+          "overlappingOtherInteractionIds": [],
+          "loafIndexes": []
+        },
+        {
+          "interactionId": 3931,
+          "duration": 48,
+          "entries": [
+            {
+              "name": "pointerdown",
+              "entryType": "event",
+              "startTime": 5852.299999952316,
+              "duration": 32,
+              "processingStart": 5873.400000095367,
+              "processingEnd": 5873.700000047684,
+              "interactionId": 3931,
+              "target": null
+            },
+            {
+              "name": "pointerup",
+              "entryType": "event",
+              "startTime": 5869.299999952316,
+              "duration": 48,
+              "processingStart": 5886.799999952316,
+              "processingEnd": 5887.200000047684,
+              "interactionId": 3931,
+              "target": null
+            },
+            {
+              "name": "click",
+              "entryType": "event",
+              "startTime": 5869.299999952316,
+              "duration": 48,
+              "processingStart": 5896.299999952316,
+              "processingEnd": 5904.400000095367,
+              "interactionId": 3931,
+              "target": null
+            }
+          ],
+          "startMs": 5852.299999952316,
+          "endMs": 5917.299999952316,
+          "laterActionStarts": [],
+          "overlappingOtherInteractionIds": [],
+          "loafIndexes": []
+        },
+        {
+          "interactionId": 3945,
+          "duration": 48,
+          "entries": [
+            {
+              "name": "pointerdown",
+              "entryType": "event",
+              "startTime": 9218.200000047684,
+              "duration": 32,
+              "processingStart": 9236.400000095367,
+              "processingEnd": 9236.600000143051,
+              "interactionId": 3945,
+              "target": "input[aria-label=Guests]"
+            },
+            {
+              "name": "pointerup",
+              "entryType": "event",
+              "startTime": 9234.600000143051,
+              "duration": 48,
+              "processingStart": 9252.700000047684,
+              "processingEnd": 9252.900000095367,
+              "interactionId": 3945,
+              "target": "input[aria-label=Guests]"
+            },
+            {
+              "name": "click",
+              "entryType": "event",
+              "startTime": 9234.600000143051,
+              "duration": 48,
+              "processingStart": 9271.400000095367,
+              "processingEnd": 9271.700000047684,
+              "interactionId": 3945,
+              "target": "input[aria-label=Guests]"
+            }
+          ],
+          "startMs": 9218.200000047684,
+          "endMs": 9282.600000143051,
+          "laterActionStarts": [],
+          "overlappingOtherInteractionIds": [],
+          "loafIndexes": []
+        },
+        {
+          "interactionId": 3966,
+          "duration": 48,
+          "entries": [
+            {
+              "name": "pointerdown",
+              "entryType": "event",
+              "startTime": 13211.200000047684,
+              "duration": 24,
+              "processingStart": 13216.400000095367,
+              "processingEnd": 13216.400000095367,
+              "interactionId": 3966,
+              "target": "input"
+            },
+            {
+              "name": "pointerup",
+              "entryType": "event",
+              "startTime": 13214.799999952316,
+              "duration": 48,
+              "processingStart": 13232.200000047684,
+              "processingEnd": 13232.5,
+              "interactionId": 3966,
+              "target": "input"
+            },
+            {
+              "name": "click",
+              "entryType": "event",
+              "startTime": 13214.799999952316,
+              "duration": 48,
+              "processingStart": 13244.600000143051,
+              "processingEnd": 13244.799999952316,
+              "interactionId": 3966,
+              "target": "input"
+            }
+          ],
+          "startMs": 13211.200000047684,
+          "endMs": 13262.799999952316,
+          "laterActionStarts": [],
+          "overlappingOtherInteractionIds": [],
+          "loafIndexes": []
+        }
+      ],
+      "finalMetric": {
+        "name": "INP",
+        "value": 72,
+        "rating": "good",
+        "id": "v4-1794426371673-6254173759987",
+        "delta": 24,
+        "at": 7654.600000143051,
+        "visibility": "visible",
+        "entries": [
+          {
+            "name": "pointerup",
+            "entryType": "event",
+            "startTime": 7542.700000047684,
+            "duration": 72,
+            "processingStart": 7560.799999952316,
+            "processingEnd": 7561.100000143051,
+            "interactionId": 3938,
+            "target": "button"
+          },
+          {
+            "name": "click",
+            "entryType": "event",
+            "startTime": 7542.700000047684,
+            "duration": 72,
+            "processingStart": 7573.5,
+            "processingEnd": 7580.200000047684,
+            "interactionId": 3938,
+            "target": "button"
+          }
+        ]
+      },
+      "errors": [],
+      "consoleErrors": [],
+      "businessApiWrites": []
+    },
+    {
+      "page": "home",
+      "route": "/en#intro",
+      "mode": "desktop",
+      "viewport": {
+        "width": 1200,
+        "height": 800,
+        "dpr": 1
+      },
+      "inpMs": 208,
+      "webVitalsRating": "needs-improvement",
+      "userBelow150ms": false,
+      "interactionCount": 14,
+      "observedGroupsAtOrAbove16ms": 14,
+      "trustedInputEvents": 16,
+      "allObservedInputsTrusted": true,
+      "hiddenFlushObserved": true,
+      "freshTargetId": "727B39A4AC44245A9416F2D27FFEC4C5",
+      "flushTargetClosed": true,
+      "documentGuard": {
+        "expectedBuild": "Hj2ubUjCMfbacacwFligZ",
+        "headerBuild": "Hj2ubUjCMfbacacwFligZ",
+        "url": "http://127.0.0.1:3518/en#intro",
+        "status": 200,
+        "sourceCheck": {
+          "enabled": true,
+          "verifiedInputs": 418,
+          "allRecordedBytesMatch": true,
+          "kind": "stat-watch-plus-changed-byte-hash",
+          "sourceFingerprint": "1b9a194de54237b2104232c89ce249729ddd466a648d819a1118bcd81717fc62"
+        },
+        "firstVisitProtocol": "first-visit-ack-absent-v1",
+        "firstVisitReset": {
+          "startedAtUTC": "2026-11-11T19:46:41.487Z",
+          "completedAtUTC": "2026-11-11T19:46:41.751Z",
+          "ackCookieName": "shah_notice_ack_v1",
+          "ackCookiesRemoved": 1,
+          "ackCookieCountBeforeNavigation": 0,
+          "localStorageKey": "tm.cookieConsent",
+          "localStorageClearScope": "http://127.0.0.1:3518",
+          "localStorageClearCompleted": true,
+          "onlyKnownAckCookiesDeleted": true,
+          "otherCookieValuesLogged": false
+        },
+        "firstVisitState": {
+          "initial": {
+            "localStorageKeyAbsent": true,
+            "ackCookiePresent": false,
+            "at": 224.20000004768372
+          },
+          "localStorageKeyAbsent": true,
+          "ackCookiePresent": false,
+          "noticePresent": true,
+          "noticeVisible": true
+        }
+      },
+      "navigation": {
+        "type": "navigate",
+        "responseEnd": 289.10000014305115,
+        "domContentLoadedEventEnd": 1588.5,
+        "loadEventEnd": 3876.9000000953674
+      },
+      "lifecycle": [
+        {
+          "phase": "observer-installed",
+          "at": 216,
+          "visibility": "visible",
+          "hasFocus": false,
+          "readyState": "loading",
+          "fontStatus": "loaded",
+          "activeElement": null
+        },
+        {
+          "phase": "DOMContentLoaded",
+          "at": 1587.6000001430511,
+          "visibility": "visible",
+          "hasFocus": true,
+          "readyState": "interactive",
+          "fontStatus": "loading",
+          "activeElement": "body"
+        },
+        {
+          "phase": "load",
+          "at": 3876.5,
+          "visibility": "visible",
+          "hasFocus": true,
+          "readyState": "complete",
+          "fontStatus": "loaded",
+          "activeElement": "section#intro"
+        },
+        {
+          "phase": "fonts-ready-after-controls",
+          "at": 4961,
+          "visibility": "visible",
+          "hasFocus": true,
+          "readyState": "complete",
+          "fontStatus": "loaded",
+          "activeElement": "section#intro"
+        },
+        {
+          "phase": "ready-for-input",
+          "at": 7094.900000095367,
+          "visibility": "visible",
+          "hasFocus": true,
+          "readyState": "complete",
+          "fontStatus": "loaded",
+          "activeElement": "section#intro"
+        },
+        {
+          "phase": "visibilitychange",
+          "at": 24815.300000190735,
+          "visibility": "hidden",
+          "hasFocus": false,
+          "readyState": "complete",
+          "fontStatus": "loaded",
+          "activeElement": "summary"
+        }
+      ],
+      "loafSupported": true,
+      "loafCount": 24,
+      "longTaskCount": 17,
+      "observerErrors": [],
+      "overlappedGroups": [],
+      "positiveOverflowPx": 0,
+      "actions": [
+        {
+          "label": "Acknowledge cookie notice",
+          "start": 8106.900000095367,
+          "end": 8742.400000095367,
+          "before": {
+            "phase": "action-before",
+            "at": 8106.900000095367,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "section#intro"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 8742.400000095367,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "body"
+          }
+        },
+        {
+          "label": "Search home dishes focus",
+          "start": 9773.400000095367,
+          "end": 10442.100000143051,
+          "before": {
+            "phase": "action-before",
+            "at": 9773.400000095367,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "body"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 10442.100000143051,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input#dish-search"
+          }
+        },
+        {
+          "label": "Search home dishes b",
+          "start": 10443.900000095367,
+          "end": 11094.100000143051,
+          "before": {
+            "phase": "action-before",
+            "at": 10443.900000095367,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input#dish-search"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 11094.100000143051,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input#dish-search"
+          }
+        },
+        {
+          "label": "Search home dishes u",
+          "start": 11095.700000047684,
+          "end": 11730.400000095367,
+          "before": {
+            "phase": "action-before",
+            "at": 11095.700000047684,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input#dish-search"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 11730.400000095367,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input#dish-search"
+          }
+        },
+        {
+          "label": "Search home dishes t",
+          "start": 11732.200000047684,
+          "end": 12364.600000143051,
+          "before": {
+            "phase": "action-before",
+            "at": 11732.200000047684,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input#dish-search"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 12364.600000143051,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input#dish-search"
+          }
+        },
+        {
+          "label": "Clear home search",
+          "start": 13383,
+          "end": 14060.200000047684,
+          "before": {
+            "phase": "action-before",
+            "at": 13383,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input#dish-search"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 14060.200000047684,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input#dish-search"
+          }
+        },
+        {
+          "label": "Select home Curries",
+          "start": 15086.600000143051,
+          "end": 15837.400000095367,
+          "before": {
+            "phase": "action-before",
+            "at": 15086.600000143051,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input#dish-search"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 15837.400000095367,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input[name=home-menu-category]"
+          }
+        },
+        {
+          "label": "Open home dish dialog",
+          "start": 16863.800000190735,
+          "end": 17563.800000190735,
+          "before": {
+            "phase": "action-before",
+            "at": 16863.800000190735,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input[name=home-menu-category]"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 17563.800000190735,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "button[aria-label=Close]"
+          }
+        },
+        {
+          "label": "Close home dish dialog",
+          "start": 17567,
+          "end": 18303.900000095367,
+          "before": {
+            "phase": "action-before",
+            "at": 17567,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "button[aria-label=Close]"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 18303.900000095367,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "button[aria-label=View dish details: Butter Chicken]"
+          }
+        },
+        {
+          "label": "Open home photo gallery",
+          "start": 19327.5,
+          "end": 20116.300000190735,
+          "before": {
+            "phase": "action-before",
+            "at": 19327.5,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "button[aria-label=View dish details: Butter Chicken]"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 20116.300000190735,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "button[aria-label=Close]"
+          }
+        },
+        {
+          "label": "Next gallery photo",
+          "start": 20119.700000047684,
+          "end": 20766.400000095367,
+          "before": {
+            "phase": "action-before",
+            "at": 20119.700000047684,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "button[aria-label=Close]"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 20766.400000095367,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "button[aria-label=Close]"
+          }
+        },
+        {
+          "label": "Close gallery",
+          "start": 20769.800000190735,
+          "end": 21464.5,
+          "before": {
+            "phase": "action-before",
+            "at": 20769.800000190735,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "button[aria-label=Close]"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 21464.5,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "button[aria-label=Enlarge photo: At the table]"
+          }
+        },
+        {
+          "label": "Open first FAQ",
+          "start": 22490.200000047684,
+          "end": 23137.10000014305,
+          "before": {
+            "phase": "action-before",
+            "at": 22490.200000047684,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "button[aria-label=Enlarge photo: At the table]"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 23137.10000014305,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "summary"
+          }
+        },
+        {
+          "label": "Close first FAQ with Space",
+          "start": 23139.700000047684,
+          "end": 23759.10000014305,
+          "before": {
+            "phase": "action-before",
+            "at": 23139.700000047684,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "summary"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 23759.10000014305,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "summary"
+          }
+        }
+      ],
+      "slowestGroups": [
+        {
+          "interactionId": 5102,
+          "duration": 208,
+          "entries": [
+            {
+              "name": "pointerdown",
+              "entryType": "event",
+              "startTime": 19349.300000190735,
+              "duration": 208,
+              "processingStart": 19367,
+              "processingEnd": 19367.400000095367,
+              "interactionId": 5102,
+              "target": "img"
+            },
+            {
+              "name": "pointerup",
+              "entryType": "event",
+              "startTime": 19377.800000190735,
+              "duration": 176,
+              "processingStart": 19380.200000047684,
+              "processingEnd": 19380.60000014305,
+              "interactionId": 5102,
+              "target": "img"
+            },
+            {
+              "name": "click",
+              "entryType": "event",
+              "startTime": 19377.800000190735,
+              "duration": 176,
+              "processingStart": 19380.800000190735,
+              "processingEnd": 19496.300000190735,
+              "interactionId": 5102,
+              "target": "img"
+            }
+          ],
+          "startMs": 19349.300000190735,
+          "endMs": 19557.300000190735,
+          "laterActionStarts": [],
+          "overlappingOtherInteractionIds": [],
+          "loafIndexes": [
+            21
+          ]
+        },
+        {
+          "interactionId": 5081,
+          "duration": 192,
+          "entries": [
+            {
+              "name": "pointerdown",
+              "entryType": "event",
+              "startTime": 15097.900000095367,
+              "duration": 192,
+              "processingStart": 15106.400000095367,
+              "processingEnd": 15106.800000190735,
+              "interactionId": 5081,
+              "target": "span"
+            },
+            {
+              "name": "pointerup",
+              "entryType": "event",
+              "startTime": 15123.100000143051,
+              "duration": 168,
+              "processingStart": 15129.400000095367,
+              "processingEnd": 15130,
+              "interactionId": 5081,
+              "target": "span"
+            },
+            {
+              "name": "click",
+              "entryType": "event",
+              "startTime": 15123.100000143051,
+              "duration": 168,
+              "processingStart": 15130.200000047684,
+              "processingEnd": 15209.800000190735,
+              "interactionId": 5081,
+              "target": "span"
+            }
+          ],
+          "startMs": 15097.900000095367,
+          "endMs": 15291.100000143051,
+          "laterActionStarts": [],
+          "overlappingOtherInteractionIds": [],
+          "loafIndexes": [
+            17
+          ]
+        },
+        {
+          "interactionId": 5095,
+          "duration": 192,
+          "entries": [
+            {
+              "name": "keydown",
+              "entryType": "event",
+              "startTime": 17567.800000190735,
+              "duration": 192,
+              "processingStart": 17574.700000047684,
+              "processingEnd": 17694,
+              "interactionId": 5095,
+              "target": null
+            },
+            {
+              "name": "keyup",
+              "entryType": "event",
+              "startTime": 17694.700000047684,
+              "duration": 64,
+              "processingStart": 17697.700000047684,
+              "processingEnd": 17698,
+              "interactionId": 5095,
+              "target": "button[aria-label=View dish details: Butter Chicken]"
+            }
+          ],
+          "startMs": 17567.800000190735,
+          "endMs": 17759.800000190735,
+          "laterActionStarts": [],
+          "overlappingOtherInteractionIds": [],
+          "loafIndexes": [
+            20
+          ]
+        },
+        {
+          "interactionId": 5116,
+          "duration": 120,
+          "entries": [
+            {
+              "name": "keydown",
+              "entryType": "event",
+              "startTime": 20770.60000014305,
+              "duration": 120,
+              "processingStart": 20770.900000095367,
+              "processingEnd": 20848.900000095367,
+              "interactionId": 5116,
+              "target": null
+            },
+            {
+              "name": "keyup",
+              "entryType": "event",
+              "startTime": 20849.60000014305,
+              "duration": 40,
+              "processingStart": 20850.5,
+              "processingEnd": 20850.800000190735,
+              "interactionId": 5116,
+              "target": "button[aria-label=Enlarge photo: At the table]"
+            }
+          ],
+          "startMs": 20770.60000014305,
+          "endMs": 20890.60000014305,
+          "laterActionStarts": [],
+          "overlappingOtherInteractionIds": [],
+          "loafIndexes": [
+            22
+          ]
+        },
+        {
+          "interactionId": 5088,
+          "duration": 88,
+          "entries": [
+            {
+              "name": "pointerdown",
+              "entryType": "event",
+              "startTime": 16878.10000014305,
+              "duration": 88,
+              "processingStart": 16884.300000190735,
+              "processingEnd": 16884.900000095367,
+              "interactionId": 5088,
+              "target": "span"
+            },
+            {
+              "name": "pointerup",
+              "entryType": "event",
+              "startTime": 16895.200000047684,
+              "duration": 72,
+              "processingStart": 16897.5,
+              "processingEnd": 16897.900000095367,
+              "interactionId": 5088,
+              "target": "span"
+            },
+            {
+              "name": "click",
+              "entryType": "event",
+              "startTime": 16895.200000047684,
+              "duration": 72,
+              "processingStart": 16898.10000014305,
+              "processingEnd": 16938.200000047684,
+              "interactionId": 5088,
+              "target": "span"
+            }
+          ],
+          "startMs": 16878.10000014305,
+          "endMs": 16967.200000047684,
+          "laterActionStarts": [],
+          "overlappingOtherInteractionIds": [],
+          "loafIndexes": [
+            18
+          ]
+        }
+      ],
+      "finalMetric": {
+        "name": "INP",
+        "value": 208,
+        "rating": "needs-improvement",
+        "id": "v4-1794426401977-7099382571509",
+        "delta": 16,
+        "at": 19605,
+        "visibility": "visible",
+        "entries": [
+          {
+            "name": "pointerdown",
+            "entryType": "event",
+            "startTime": 19349.300000190735,
+            "duration": 208,
+            "processingStart": 19367,
+            "processingEnd": 19367.400000095367,
+            "interactionId": 5102,
+            "target": "img"
+          }
+        ]
+      },
+      "errors": [],
+      "consoleErrors": [],
+      "businessApiWrites": []
+    },
+    {
+      "page": "menu",
+      "route": "/en/menu",
+      "mode": "desktop",
+      "viewport": {
+        "width": 1200,
+        "height": 800,
+        "dpr": 1
+      },
+      "inpMs": 1720,
+      "webVitalsRating": "poor",
+      "userBelow150ms": false,
+      "interactionCount": 9,
+      "observedGroupsAtOrAbove16ms": 9,
+      "trustedInputEvents": 9,
+      "allObservedInputsTrusted": true,
+      "hiddenFlushObserved": true,
+      "freshTargetId": "494606DD271E1990D3B4E57AB44F0241",
+      "flushTargetClosed": true,
+      "documentGuard": {
+        "expectedBuild": "Hj2ubUjCMfbacacwFligZ",
+        "headerBuild": "Hj2ubUjCMfbacacwFligZ",
+        "url": "http://127.0.0.1:3518/en/menu",
+        "status": 200,
+        "sourceCheck": {
+          "enabled": true,
+          "verifiedInputs": 418,
+          "allRecordedBytesMatch": true,
+          "kind": "stat-watch-plus-changed-byte-hash",
+          "sourceFingerprint": "1b9a194de54237b2104232c89ce249729ddd466a648d819a1118bcd81717fc62"
+        },
+        "firstVisitProtocol": "first-visit-ack-absent-v1",
+        "firstVisitReset": {
+          "startedAtUTC": "2026-11-11T19:47:09.120Z",
+          "completedAtUTC": "2026-11-11T19:47:09.123Z",
+          "ackCookieName": "shah_notice_ack_v1",
+          "ackCookiesRemoved": 1,
+          "ackCookieCountBeforeNavigation": 0,
+          "localStorageKey": "tm.cookieConsent",
+          "localStorageClearScope": "http://127.0.0.1:3518",
+          "localStorageClearCompleted": true,
+          "onlyKnownAckCookiesDeleted": true,
+          "otherCookieValuesLogged": false
+        },
+        "firstVisitState": {
+          "initial": {
+            "localStorageKeyAbsent": true,
+            "ackCookiePresent": false,
+            "at": 227.20000004768372
+          },
+          "localStorageKeyAbsent": true,
+          "ackCookiePresent": false,
+          "noticePresent": true,
+          "noticeVisible": true
+        }
+      },
+      "navigation": {
+        "type": "navigate",
+        "responseEnd": 784.0999999046326,
+        "domContentLoadedEventEnd": 1116.7999999523163,
+        "loadEventEnd": 4088.5999999046326
+      },
+      "lifecycle": [
+        {
+          "phase": "observer-installed",
+          "at": 216.29999995231628,
+          "visibility": "visible",
+          "hasFocus": false,
+          "readyState": "loading",
+          "fontStatus": "loaded",
+          "activeElement": null
+        },
+        {
+          "phase": "DOMContentLoaded",
+          "at": 1116,
+          "visibility": "visible",
+          "hasFocus": true,
+          "readyState": "interactive",
+          "fontStatus": "loaded",
+          "activeElement": "body"
+        },
+        {
+          "phase": "load",
+          "at": 4088.5,
+          "visibility": "visible",
+          "hasFocus": true,
+          "readyState": "complete",
+          "fontStatus": "loaded",
+          "activeElement": "body"
+        },
+        {
+          "phase": "fonts-ready-after-controls",
+          "at": 4539.599999904633,
+          "visibility": "visible",
+          "hasFocus": true,
+          "readyState": "complete",
+          "fontStatus": "loaded",
+          "activeElement": "body"
+        },
+        {
+          "phase": "ready-for-input",
+          "at": 5559.200000047684,
+          "visibility": "visible",
+          "hasFocus": true,
+          "readyState": "complete",
+          "fontStatus": "loaded",
+          "activeElement": "body"
+        },
+        {
+          "phase": "visibilitychange",
+          "at": 19460.39999985695,
+          "visibility": "hidden",
+          "hasFocus": false,
+          "readyState": "complete",
+          "fontStatus": "loaded",
+          "activeElement": "button"
+        }
+      ],
+      "loafSupported": true,
+      "loafCount": 11,
+      "longTaskCount": 9,
+      "observerErrors": [],
+      "overlappedGroups": [
+        {
+          "interactionId": 6879,
+          "laterActionStarts": [
+            {
+              "label": "Search menu b",
+              "start": 8875.399999856949
+            }
+          ],
+          "overlappingOtherInteractionIds": [
+            6886
+          ]
+        }
+      ],
+      "positiveOverflowPx": 0,
+      "actions": [
+        {
+          "label": "Acknowledge cookie notice",
+          "start": 6570.099999904633,
+          "end": 7215.200000047684,
+          "before": {
+            "phase": "action-before",
+            "at": 6570.099999904633,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "body"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 7215.200000047684,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "body"
+          }
+        },
+        {
+          "label": "Search menu focus",
+          "start": 8227.599999904633,
+          "end": 8870.299999952316,
+          "before": {
+            "phase": "action-before",
+            "at": 8227.599999904633,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "body"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 8870.299999952316,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input#order-search[name=q]"
+          }
+        },
+        {
+          "label": "Search menu b",
+          "start": 8875.399999856949,
+          "end": 9951.399999856949,
+          "before": {
+            "phase": "action-before",
+            "at": 8875.399999856949,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input#order-search[name=q]"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 9951.399999856949,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input#order-search[name=q]"
+          }
+        },
+        {
+          "label": "Search menu u",
+          "start": 9983.200000047684,
+          "end": 10779.399999856949,
+          "before": {
+            "phase": "action-before",
+            "at": 9983.200000047684,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input#order-search[name=q]"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 10779.399999856949,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input#order-search[name=q]"
+          }
+        },
+        {
+          "label": "Search menu t",
+          "start": 10785.5,
+          "end": 11496.299999952316,
+          "before": {
+            "phase": "action-before",
+            "at": 10785.5,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input#order-search[name=q]"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 11496.299999952316,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input#order-search[name=q]"
+          }
+        },
+        {
+          "label": "Clear menu search",
+          "start": 12512.099999904633,
+          "end": 13177.700000047684,
+          "before": {
+            "phase": "action-before",
+            "at": 12512.099999904633,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input#order-search[name=q]"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 13177.700000047684,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input#order-search[name=q]"
+          }
+        },
+        {
+          "label": "Select menu Biryani",
+          "start": 14191.700000047684,
+          "end": 14888.299999952316,
+          "before": {
+            "phase": "action-before",
+            "at": 14191.700000047684,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input#order-search[name=q]"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 14888.299999952316,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "button"
+          }
+        },
+        {
+          "label": "Select menu Soups",
+          "start": 15904.200000047684,
+          "end": 16550.099999904633,
+          "before": {
+            "phase": "action-before",
+            "at": 15904.200000047684,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "button"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 16550.099999904633,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "button"
+          }
+        },
+        {
+          "label": "Select menu Curries",
+          "start": 17567.39999985695,
+          "end": 18418.099999904633,
+          "before": {
+            "phase": "action-before",
+            "at": 17567.39999985695,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "button"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 18418.099999904633,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "button"
+          }
+        }
+      ],
+      "slowestGroups": [
+        {
+          "interactionId": 6879,
+          "duration": 1720,
+          "entries": [
+            {
+              "name": "pointerdown",
+              "entryType": "event",
+              "startTime": 8246.200000047684,
+              "duration": 1720,
+              "processingStart": 8255.799999952316,
+              "processingEnd": 8256.5,
+              "interactionId": 6879,
+              "target": "input#order-search[name=q]"
+            },
+            {
+              "name": "pointerup",
+              "entryType": "event",
+              "startTime": 8262.599999904633,
+              "duration": 1704,
+              "processingStart": 8265.5,
+              "processingEnd": 8265.899999856949,
+              "interactionId": 6879,
+              "target": "input#order-search[name=q]"
+            },
+            {
+              "name": "click",
+              "entryType": "event",
+              "startTime": 8262.599999904633,
+              "duration": 1704,
+              "processingStart": 8266.599999904633,
+              "processingEnd": 8266.899999856949,
+              "interactionId": 6879,
+              "target": "input#order-search[name=q]"
+            }
+          ],
+          "startMs": 8246.200000047684,
+          "endMs": 9966.599999904633,
+          "laterActionStarts": [
+            {
+              "label": "Search menu b",
+              "start": 8875.399999856949
+            }
+          ],
+          "overlappingOtherInteractionIds": [
+            6886
+          ],
+          "loafIndexes": [
+            4
+          ]
+        },
+        {
+          "interactionId": 6886,
+          "duration": 1096,
+          "entries": [
+            {
+              "name": "keydown",
+              "entryType": "event",
+              "startTime": 8876.299999952316,
+              "duration": 1096,
+              "processingStart": 8876.5,
+              "processingEnd": 8878.099999904633,
+              "interactionId": 6886,
+              "target": "input#order-search[name=q]"
+            },
+            {
+              "name": "keypress",
+              "entryType": "event",
+              "startTime": 8876.299999952316,
+              "duration": 1096,
+              "processingStart": 8878.099999904633,
+              "processingEnd": 8904.200000047684,
+              "interactionId": 6886,
+              "target": "input#order-search[name=q]"
+            },
+            {
+              "name": "keyup",
+              "entryType": "event",
+              "startTime": 8904.700000047684,
+              "duration": 1064,
+              "processingStart": 8905.5,
+              "processingEnd": 8906.099999904633,
+              "interactionId": 6886,
+              "target": "input#order-search[name=q]"
+            }
+          ],
+          "startMs": 8876.299999952316,
+          "endMs": 9972.299999952316,
+          "laterActionStarts": [],
+          "overlappingOtherInteractionIds": [],
+          "loafIndexes": [
+            4
+          ]
+        },
+        {
+          "interactionId": 6872,
+          "duration": 680,
+          "entries": [
+            {
+              "name": "pointerdown",
+              "entryType": "event",
+              "startTime": 6592.099999904633,
+              "duration": 680,
+              "processingStart": 6595.799999952316,
+              "processingEnd": 6596.399999856949,
+              "interactionId": 6872,
+              "target": null
+            },
+            {
+              "name": "pointerup",
+              "entryType": "event",
+              "startTime": 6600.899999856949,
+              "duration": 672,
+              "processingStart": 6601.299999952316,
+              "processingEnd": 6602,
+              "interactionId": 6872,
+              "target": null
+            },
+            {
+              "name": "click",
+              "entryType": "event",
+              "startTime": 6600.899999856949,
+              "duration": 672,
+              "processingStart": 6602.5,
+              "processingEnd": 6608,
+              "interactionId": 6872,
+              "target": null
+            }
+          ],
+          "startMs": 6592.099999904633,
+          "endMs": 7272.899999856949,
+          "laterActionStarts": [],
+          "overlappingOtherInteractionIds": [],
+          "loafIndexes": []
+        },
+        {
+          "interactionId": 6893,
+          "duration": 384,
+          "entries": [
+            {
+              "name": "keydown",
+              "entryType": "event",
+              "startTime": 9984.200000047684,
+              "duration": 384,
+              "processingStart": 9986,
+              "processingEnd": 9986.700000047684,
+              "interactionId": 6893,
+              "target": "input#order-search[name=q]"
+            },
+            {
+              "name": "keypress",
+              "entryType": "event",
+              "startTime": 9984.200000047684,
+              "duration": 384,
+              "processingStart": 9986.700000047684,
+              "processingEnd": 10173.5,
+              "interactionId": 6893,
+              "target": "input#order-search[name=q]"
+            },
+            {
+              "name": "keyup",
+              "entryType": "event",
+              "startTime": 10174.099999904633,
+              "duration": 192,
+              "processingStart": 10175.799999952316,
+              "processingEnd": 10176.399999856949,
+              "interactionId": 6893,
+              "target": "input#order-search[name=q]"
+            }
+          ],
+          "startMs": 9984.200000047684,
+          "endMs": 10368.200000047684,
+          "laterActionStarts": [],
+          "overlappingOtherInteractionIds": [],
+          "loafIndexes": [
+            5,
+            6
+          ]
+        },
+        {
+          "interactionId": 6928,
+          "duration": 288,
+          "entries": [
+            {
+              "name": "pointerdown",
+              "entryType": "event",
+              "startTime": 17570.299999952316,
+              "duration": 288,
+              "processingStart": 17572.5,
+              "processingEnd": 17572.700000047684,
+              "interactionId": 6928,
+              "target": "span"
+            },
+            {
+              "name": "pointerup",
+              "entryType": "event",
+              "startTime": 17579,
+              "duration": 280,
+              "processingStart": 17579.799999952316,
+              "processingEnd": 17580.39999985695,
+              "interactionId": 6928,
+              "target": "span"
+            },
+            {
+              "name": "click",
+              "entryType": "event",
+              "startTime": 17579,
+              "duration": 280,
+              "processingStart": 17580.599999904633,
+              "processingEnd": 17716.89999985695,
+              "interactionId": 6928,
+              "target": "span"
+            }
+          ],
+          "startMs": 17570.299999952316,
+          "endMs": 17859,
+          "laterActionStarts": [],
+          "overlappingOtherInteractionIds": [],
+          "loafIndexes": [
+            10
+          ]
+        }
+      ],
+      "finalMetric": {
+        "name": "INP",
+        "value": 1720,
+        "rating": "poor",
+        "id": "v4-1794426429350-9957414518168",
+        "delta": 1040,
+        "at": 10391.599999904633,
+        "visibility": "visible",
+        "entries": [
+          {
+            "name": "pointerdown",
+            "entryType": "event",
+            "startTime": 8246.200000047684,
+            "duration": 1720,
+            "processingStart": 8255.799999952316,
+            "processingEnd": 8256.5,
+            "interactionId": 6879,
+            "target": "input#order-search[name=q]"
+          }
+        ]
+      },
+      "errors": [],
+      "consoleErrors": [],
+      "businessApiWrites": []
+    },
+    {
+      "page": "reservations",
+      "route": "/en/reservations",
+      "mode": "desktop",
+      "viewport": {
+        "width": 1200,
+        "height": 800,
+        "dpr": 1
+      },
+      "inpMs": 368,
+      "webVitalsRating": "needs-improvement",
+      "userBelow150ms": false,
+      "interactionCount": 21,
+      "observedGroupsAtOrAbove16ms": 21,
+      "trustedInputEvents": 21,
+      "allObservedInputsTrusted": true,
+      "hiddenFlushObserved": true,
+      "freshTargetId": "5E4B5D5E3CF05D647E0551DFD34D3109",
+      "flushTargetClosed": true,
+      "documentGuard": {
+        "expectedBuild": "Hj2ubUjCMfbacacwFligZ",
+        "headerBuild": "Hj2ubUjCMfbacacwFligZ",
+        "url": "http://127.0.0.1:3518/en/reservations",
+        "status": 200,
+        "sourceCheck": {
+          "enabled": true,
+          "verifiedInputs": 418,
+          "allRecordedBytesMatch": true,
+          "kind": "stat-watch-plus-changed-byte-hash",
+          "sourceFingerprint": "1b9a194de54237b2104232c89ce249729ddd466a648d819a1118bcd81717fc62"
+        },
+        "firstVisitProtocol": "first-visit-ack-absent-v1",
+        "firstVisitReset": {
+          "startedAtUTC": "2026-11-11T19:47:31.088Z",
+          "completedAtUTC": "2026-11-11T19:47:31.258Z",
+          "ackCookieName": "shah_notice_ack_v1",
+          "ackCookiesRemoved": 1,
+          "ackCookieCountBeforeNavigation": 0,
+          "localStorageKey": "tm.cookieConsent",
+          "localStorageClearScope": "http://127.0.0.1:3518",
+          "localStorageClearCompleted": true,
+          "onlyKnownAckCookiesDeleted": true,
+          "otherCookieValuesLogged": false
+        },
+        "firstVisitState": {
+          "initial": {
+            "localStorageKeyAbsent": true,
+            "ackCookiePresent": false,
+            "at": 231.5
+          },
+          "localStorageKeyAbsent": true,
+          "ackCookiePresent": false,
+          "noticePresent": true,
+          "noticeVisible": true
+        }
+      },
+      "navigation": {
+        "type": "navigate",
+        "responseEnd": 270.90000009536743,
+        "domContentLoadedEventEnd": 1089.4000000953674,
+        "loadEventEnd": 3144.2000000476837
+      },
+      "lifecycle": [
+        {
+          "phase": "observer-installed",
+          "at": 224.10000014305115,
+          "visibility": "visible",
+          "hasFocus": false,
+          "readyState": "loading",
+          "fontStatus": "loaded",
+          "activeElement": null
+        },
+        {
+          "phase": "DOMContentLoaded",
+          "at": 1088.3000001907349,
+          "visibility": "visible",
+          "hasFocus": true,
+          "readyState": "interactive",
+          "fontStatus": "loaded",
+          "activeElement": "body"
+        },
+        {
+          "phase": "load",
+          "at": 3144.100000143051,
+          "visibility": "visible",
+          "hasFocus": true,
+          "readyState": "complete",
+          "fontStatus": "loaded",
+          "activeElement": "body"
+        },
+        {
+          "phase": "fonts-ready-after-controls",
+          "at": 3605.2000000476837,
+          "visibility": "visible",
+          "hasFocus": true,
+          "readyState": "complete",
+          "fontStatus": "loaded",
+          "activeElement": "body"
+        },
+        {
+          "phase": "ready-for-input",
+          "at": 4613,
+          "visibility": "visible",
+          "hasFocus": true,
+          "readyState": "complete",
+          "fontStatus": "loaded",
+          "activeElement": "body"
+        },
+        {
+          "phase": "visibilitychange",
+          "at": 27081.400000095367,
+          "visibility": "hidden",
+          "hasFocus": false,
+          "readyState": "complete",
+          "fontStatus": "loaded",
+          "activeElement": "textarea"
+        }
+      ],
+      "loafSupported": true,
+      "loafCount": 4,
+      "longTaskCount": 3,
+      "observerErrors": [],
+      "overlappedGroups": [],
+      "positiveOverflowPx": 0,
+      "actions": [
+        {
+          "label": "Acknowledge cookie notice",
+          "start": 5634.5,
+          "end": 6287.100000143051,
+          "before": {
+            "phase": "action-before",
+            "at": 5634.5,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "body"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 6287.100000143051,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "body"
+          }
+        },
+        {
+          "label": "Choose3 guests",
+          "start": 7312.5,
+          "end": 7981.200000047684,
+          "before": {
+            "phase": "action-before",
+            "at": 7312.5,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "body"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 7981.200000047684,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "button"
+          }
+        },
+        {
+          "label": "Focus custom guest count",
+          "start": 9001.700000047684,
+          "end": 9650.5,
+          "before": {
+            "phase": "action-before",
+            "at": 9001.700000047684,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "button"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 9650.5,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input[aria-label=Guests]"
+          }
+        },
+        {
+          "label": "Increment guest count",
+          "start": 9653.800000190735,
+          "end": 10290.200000047684,
+          "before": {
+            "phase": "action-before",
+            "at": 9653.800000190735,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input[aria-label=Guests]"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 10290.200000047684,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input[aria-label=Guests]"
+          }
+        },
+        {
+          "label": "Choose Birthday",
+          "start": 11311.900000095367,
+          "end": 11960.300000190735,
+          "before": {
+            "phase": "action-before",
+            "at": 11311.900000095367,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input[aria-label=Guests]"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 11960.300000190735,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "button"
+          }
+        },
+        {
+          "label": "Name input focus",
+          "start": 12970.900000095367,
+          "end": 13606.600000143051,
+          "before": {
+            "phase": "action-before",
+            "at": 12970.900000095367,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "button"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 13606.600000143051,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input"
+          }
+        },
+        {
+          "label": "Name input T",
+          "start": 13608.200000047684,
+          "end": 14225.200000047684,
+          "before": {
+            "phase": "action-before",
+            "at": 13608.200000047684,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 14225.200000047684,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input"
+          }
+        },
+        {
+          "label": "Name input e",
+          "start": 14228.300000190735,
+          "end": 14863.100000143051,
+          "before": {
+            "phase": "action-before",
+            "at": 14228.300000190735,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 14863.100000143051,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input"
+          }
+        },
+        {
+          "label": "Name input s",
+          "start": 14867.800000190735,
+          "end": 15487.200000047684,
+          "before": {
+            "phase": "action-before",
+            "at": 14867.800000190735,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 15487.200000047684,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input"
+          }
+        },
+        {
+          "label": "Name input t",
+          "start": 15488.700000047684,
+          "end": 16105.800000190735,
+          "before": {
+            "phase": "action-before",
+            "at": 15488.700000047684,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 16105.800000190735,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input"
+          }
+        },
+        {
+          "label": "Phone input focus",
+          "start": 17115.10000014305,
+          "end": 17746.5,
+          "before": {
+            "phase": "action-before",
+            "at": 17115.10000014305,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 17746.5,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input"
+          }
+        },
+        {
+          "label": "Phone input 0",
+          "start": 17747.900000095367,
+          "end": 18364.60000014305,
+          "before": {
+            "phase": "action-before",
+            "at": 17747.900000095367,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 18364.60000014305,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input"
+          }
+        },
+        {
+          "label": "Phone input 6",
+          "start": 18369.200000047684,
+          "end": 18984.60000014305,
+          "before": {
+            "phase": "action-before",
+            "at": 18369.200000047684,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 18984.60000014305,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input"
+          }
+        },
+        {
+          "label": "Phone input 0",
+          "start": 18986,
+          "end": 19607.10000014305,
+          "before": {
+            "phase": "action-before",
+            "at": 18986,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 19607.10000014305,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input"
+          }
+        },
+        {
+          "label": "Email input focus",
+          "start": 20625.5,
+          "end": 21257.5,
+          "before": {
+            "phase": "action-before",
+            "at": 20625.5,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 21257.5,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input"
+          }
+        },
+        {
+          "label": "Email input q",
+          "start": 21260.5,
+          "end": 21898.200000047684,
+          "before": {
+            "phase": "action-before",
+            "at": 21260.5,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 21898.200000047684,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input"
+          }
+        },
+        {
+          "label": "Special request input focus",
+          "start": 22916.200000047684,
+          "end": 23555.300000190735,
+          "before": {
+            "phase": "action-before",
+            "at": 22916.200000047684,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "input"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 23555.300000190735,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "textarea"
+          }
+        },
+        {
+          "label": "Special request input T",
+          "start": 23557.300000190735,
+          "end": 24175.900000095367,
+          "before": {
+            "phase": "action-before",
+            "at": 23557.300000190735,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "textarea"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 24175.900000095367,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "textarea"
+          }
+        },
+        {
+          "label": "Special request input e",
+          "start": 24177.800000190735,
+          "end": 24798,
+          "before": {
+            "phase": "action-before",
+            "at": 24177.800000190735,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "textarea"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 24798,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "textarea"
+          }
+        },
+        {
+          "label": "Special request input s",
+          "start": 24799.400000095367,
+          "end": 25418.200000047684,
+          "before": {
+            "phase": "action-before",
+            "at": 24799.400000095367,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "textarea"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 25418.200000047684,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "textarea"
+          }
+        },
+        {
+          "label": "Special request input t",
+          "start": 25419.700000047684,
+          "end": 26040.200000047684,
+          "before": {
+            "phase": "action-before",
+            "at": 25419.700000047684,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "textarea"
+          },
+          "after": {
+            "phase": "action-after",
+            "at": 26040.200000047684,
+            "visibility": "visible",
+            "hasFocus": true,
+            "readyState": "complete",
+            "fontStatus": "loaded",
+            "activeElement": "textarea"
+          }
+        }
+      ],
+      "slowestGroups": [
+        {
+          "interactionId": 2583,
+          "duration": 368,
+          "entries": [
+            {
+              "name": "pointerdown",
+              "entryType": "event",
+              "startTime": 5653.800000190735,
+              "duration": 368,
+              "processingStart": 5657.900000095367,
+              "processingEnd": 5658.5,
+              "interactionId": 2583,
+              "target": null
+            },
+            {
+              "name": "pointerup",
+              "entryType": "event",
+              "startTime": 5662.100000143051,
+              "duration": 360,
+              "processingStart": 5662.400000095367,
+              "processingEnd": 5662.900000095367,
+              "interactionId": 2583,
+              "target": null
+            },
+            {
+              "name": "click",
+              "entryType": "event",
+              "startTime": 5662.100000143051,
+              "duration": 360,
+              "processingStart": 5663.5,
+              "processingEnd": 5671.100000143051,
+              "interactionId": 2583,
+              "target": null
+            }
+          ],
+          "startMs": 5653.800000190735,
+          "endMs": 6022.100000143051,
+          "laterActionStarts": [],
+          "overlappingOtherInteractionIds": [],
+          "loafIndexes": []
+        },
+        {
+          "interactionId": 2604,
+          "duration": 64,
+          "entries": [
+            {
+              "name": "keydown",
+              "entryType": "event",
+              "startTime": 9654.700000047684,
+              "duration": 64,
+              "processingStart": 9655.200000047684,
+              "processingEnd": 9675.700000047684,
+              "interactionId": 2604,
+              "target": "input[aria-label=Guests]"
+            },
+            {
+              "name": "keyup",
+              "entryType": "event",
+              "startTime": 9676.400000095367,
+              "duration": 40,
+              "processingStart": 9682.200000047684,
+              "processingEnd": 9683.5,
+              "interactionId": 2604,
+              "target": "input[aria-label=Guests]"
+            }
+          ],
+          "startMs": 9654.700000047684,
+          "endMs": 9718.700000047684,
+          "laterActionStarts": [],
+          "overlappingOtherInteractionIds": [],
+          "loafIndexes": []
+        },
+        {
+          "interactionId": 2611,
+          "duration": 64,
+          "entries": [
+            {
+              "name": "pointerdown",
+              "entryType": "event",
+              "startTime": 11324.900000095367,
+              "duration": 64,
+              "processingStart": 11332.100000143051,
+              "processingEnd": 11332.600000143051,
+              "interactionId": 2611,
+              "target": "button"
+            },
+            {
+              "name": "pointerup",
+              "entryType": "event",
+              "startTime": 11342.700000047684,
+              "duration": 48,
+              "processingStart": 11345.200000047684,
+              "processingEnd": 11345.5,
+              "interactionId": 2611,
+              "target": "button"
+            },
+            {
+              "name": "click",
+              "entryType": "event",
+              "startTime": 11342.700000047684,
+              "duration": 48,
+              "processingStart": 11345.700000047684,
+              "processingEnd": 11352.100000143051,
+              "interactionId": 2611,
+              "target": "button"
+            }
+          ],
+          "startMs": 11324.900000095367,
+          "endMs": 11390.700000047684,
+          "laterActionStarts": [],
+          "overlappingOtherInteractionIds": [],
+          "loafIndexes": []
+        },
+        {
+          "interactionId": 2590,
+          "duration": 48,
+          "entries": [
+            {
+              "name": "pointerdown",
+              "entryType": "event",
+              "startTime": 7330,
+              "duration": 24,
+              "processingStart": 7336.800000190735,
+              "processingEnd": 7337,
+              "interactionId": 2590,
+              "target": "button"
+            },
+            {
+              "name": "pointerup",
+              "entryType": "event",
+              "startTime": 7344.800000190735,
+              "duration": 48,
+              "processingStart": 7351.300000190735,
+              "processingEnd": 7351.900000095367,
+              "interactionId": 2590,
+              "target": "button"
+            },
+            {
+              "name": "click",
+              "entryType": "event",
+              "startTime": 7344.800000190735,
+              "duration": 48,
+              "processingStart": 7352.100000143051,
+              "processingEnd": 7362.100000143051,
+              "interactionId": 2590,
+              "target": "button"
+            }
+          ],
+          "startMs": 7330,
+          "endMs": 7392.800000190735,
+          "laterActionStarts": [],
+          "overlappingOtherInteractionIds": [],
+          "loafIndexes": []
+        },
+        {
+          "interactionId": 2597,
+          "duration": 48,
+          "entries": [
+            {
+              "name": "pointerdown",
+              "entryType": "event",
+              "startTime": 9018.300000190735,
+              "duration": 48,
+              "processingStart": 9026.700000047684,
+              "processingEnd": 9027.300000190735,
+              "interactionId": 2597,
+              "target": "input[aria-label=Guests]"
+            },
+            {
+              "name": "pointerup",
+              "entryType": "event",
+              "startTime": 9038.400000095367,
+              "duration": 32,
+              "processingStart": 9041.700000047684,
+              "processingEnd": 9042.100000143051,
+              "interactionId": 2597,
+              "target": "input[aria-label=Guests]"
+            },
+            {
+              "name": "click",
+              "entryType": "event",
+              "startTime": 9038.400000095367,
+              "duration": 32,
+              "processingStart": 9043.100000143051,
+              "processingEnd": 9043.5,
+              "interactionId": 2597,
+              "target": "input[aria-label=Guests]"
+            }
+          ],
+          "startMs": 9018.300000190735,
+          "endMs": 9070.400000095367,
+          "laterActionStarts": [],
+          "overlappingOtherInteractionIds": [],
+          "loafIndexes": []
+        }
+      ],
+      "finalMetric": {
+        "name": "INP",
+        "value": 368,
+        "rating": "needs-improvement",
+        "id": "v4-1794426451494-1882432795731",
+        "delta": 368,
+        "at": 6065.200000047684,
+        "visibility": "visible",
+        "entries": [
+          {
+            "name": "pointerdown",
+            "entryType": "event",
+            "startTime": 5653.800000190735,
+            "duration": 368,
+            "processingStart": 5657.900000095367,
+            "processingEnd": 5658.5,
+            "interactionId": 2583,
+            "target": null
+          },
+          {
+            "name": "pointerdown",
+            "entryType": "first-input",
+            "startTime": 5653.800000190735,
+            "duration": 368,
+            "processingStart": 5657.900000095367,
+            "processingEnd": 5658.5,
+            "interactionId": 2583,
+            "target": null
+          }
+        ]
+      },
+      "errors": [],
+      "consoleErrors": [],
+      "businessApiWrites": []
+    }
+  ],
+  "previewFixtureVersion": "2-empty-public-gallery",
+  "publicGalleryFixture": {
+    "status": 200,
+    "bodySha256": "23a94afc9afa821a8f50d64375a7a87fa1375b76365658f0d2b86e3e5b6e4a41",
+    "dataKind": "empty-upload-fixture-not-live"
+  },
+  "firstVisitProtocol": "first-visit-ack-absent-v1",
+  "finishedAtUTC": "2026-11-11T19:47:59.144Z",
+  "proof": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cinematic-qa-20261111\\production\\measured-Hj2ubUjCMfbacacwFligZ\\inp-full.json"
+}

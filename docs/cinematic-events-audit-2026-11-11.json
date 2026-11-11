@@ -1,0 +1,1350 @@
+{
+  "generatedAt": "2026-11-11T16:02:13.216Z",
+  "origin": "http://127.0.0.1:3478",
+  "scope": "Seven public event pages only; raw HTML GETs, no APIs or live database calls",
+  "requests": 7,
+  "pages": [
+    {
+      "route": "/events",
+      "status": 200,
+      "lang": "nl",
+      "title": [
+        "Events, Catering & Private Dining Amsterdam"
+      ],
+      "description": [
+        "Host your birthday, wedding, corporate dinner or company lunch with Shah Restaurant Amsterdam. Indian private dining, on-site catering and daily office lunches - up to 100 guests."
+      ],
+      "h1": [
+        "Momenten die het vieren waard zijn"
+      ],
+      "canonical": [
+        "https://shahrestaurant.nl/events"
+      ],
+      "robots": [
+        "index, follow"
+      ],
+      "ogImage": [],
+      "ogTitle": [
+        "Events & Catering | Shah Restaurant Amsterdam"
+      ],
+      "ogDescription": [
+        "Weddings, birthdays, corporate dinners and daily office lunches - expertly catered by Shah Restaurant."
+      ],
+      "ogUrl": [
+        "https://shahrestaurant.nl/events"
+      ],
+      "ogLocale": [],
+      "twitterCard": [
+        "summary"
+      ],
+      "twitterTitle": [
+        "Events & Catering | Shah Restaurant Amsterdam"
+      ],
+      "twitterDescription": [
+        "Weddings, birthdays, corporate dinners and daily office lunches - expertly catered by Shah Restaurant."
+      ],
+      "twitterImage": [],
+      "schemaTypes": [],
+      "schemas": [],
+      "visibleBreadcrumbNav": 0,
+      "images": [],
+      "links": [
+        {
+          "aria-current": "page",
+          "class": "block rounded-xl px-3.5 py-2 text-sm font-semibold transition bg-emerald-500/15 text-emerald-700 dark:text-emerald-300",
+          "href": "/events"
+        },
+        {
+          "class": "block rounded-xl px-3.5 py-2 text-sm font-semibold transition text-slate-700 hover:bg-emerald-500/10 hover:text-emerald-700 dark:text-slate-200 dark:hover:text-emerald-300",
+          "href": "/events/about"
+        },
+        {
+          "class": "block rounded-xl px-3.5 py-2 text-sm font-semibold transition text-slate-700 hover:bg-emerald-500/10 hover:text-emerald-700 dark:text-slate-200 dark:hover:text-emerald-300",
+          "href": "/events/gallery"
+        },
+        {
+          "class": "block rounded-xl px-3.5 py-2 text-sm font-semibold transition text-slate-700 hover:bg-emerald-500/10 hover:text-emerald-700 dark:text-slate-200 dark:hover:text-emerald-300",
+          "href": "/events/birthdays"
+        },
+        {
+          "class": "block rounded-xl px-3.5 py-2 text-sm font-semibold transition text-slate-700 hover:bg-emerald-500/10 hover:text-emerald-700 dark:text-slate-200 dark:hover:text-emerald-300",
+          "href": "/events/celebrations"
+        },
+        {
+          "class": "block rounded-xl px-3.5 py-2 text-sm font-semibold transition text-slate-700 hover:bg-emerald-500/10 hover:text-emerald-700 dark:text-slate-200 dark:hover:text-emerald-300",
+          "href": "/events/company-catering"
+        },
+        {
+          "class": "block rounded-xl px-3.5 py-2 text-sm font-semibold transition text-slate-700 hover:bg-emerald-500/10 hover:text-emerald-700 dark:text-slate-200 dark:hover:text-emerald-300",
+          "href": "/events/company-lunches"
+        },
+        {
+          "class": "animate-fade-up group flex flex-col rounded-3xl border border-emerald-500/15 bg-white p-7 transition hover:-translate-y-1 hover:border-emerald-500/40 hover:shadow-xl hover:shadow-emerald-900/10 dark:border-emerald-400/10 dark:bg-white/5",
+          "href": "/events/about"
+        },
+        {
+          "class": "animate-fade-up group flex flex-col rounded-3xl border border-emerald-500/15 bg-white p-7 transition hover:-translate-y-1 hover:border-emerald-500/40 hover:shadow-xl hover:shadow-emerald-900/10 dark:border-emerald-400/10 dark:bg-white/5",
+          "href": "/events/gallery"
+        },
+        {
+          "class": "animate-fade-up group flex flex-col rounded-3xl border border-emerald-500/15 bg-white p-7 transition hover:-translate-y-1 hover:border-emerald-500/40 hover:shadow-xl hover:shadow-emerald-900/10 dark:border-emerald-400/10 dark:bg-white/5",
+          "href": "/events/birthdays"
+        },
+        {
+          "class": "animate-fade-up group flex flex-col rounded-3xl border border-emerald-500/15 bg-white p-7 transition hover:-translate-y-1 hover:border-emerald-500/40 hover:shadow-xl hover:shadow-emerald-900/10 dark:border-emerald-400/10 dark:bg-white/5",
+          "href": "/events/celebrations"
+        },
+        {
+          "class": "animate-fade-up group flex flex-col rounded-3xl border border-emerald-500/15 bg-white p-7 transition hover:-translate-y-1 hover:border-emerald-500/40 hover:shadow-xl hover:shadow-emerald-900/10 dark:border-emerald-400/10 dark:bg-white/5",
+          "href": "/events/company-catering"
+        },
+        {
+          "class": "animate-fade-up group flex flex-col rounded-3xl border border-emerald-500/15 bg-white p-7 transition hover:-translate-y-1 hover:border-emerald-500/40 hover:shadow-xl hover:shadow-emerald-900/10 dark:border-emerald-400/10 dark:bg-white/5",
+          "href": "/events/company-lunches"
+        },
+        {
+          "class": "inline-flex items-center gap-2 rounded-full border border-emerald-400/40 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur transition hover:-translate-y-0.5 hover:border-emerald-400 hover:text-emerald-300",
+          "href": "/reservations"
+        },
+        {
+          "href": "/events/gallery"
+        }
+      ],
+      "titleLength": 43,
+      "descriptionLength": 179,
+      "titleWithin50To60": false,
+      "descriptionWithin140To160": false,
+      "breadcrumbSchemaCount": 0,
+      "legacyReservationLinks": 1
+    },
+    {
+      "route": "/events/about",
+      "status": 200,
+      "lang": "nl",
+      "title": [
+        "About Shah Restaurant Amsterdam - A Family Story of Indian Cuisine"
+      ],
+      "description": [
+        "Meet the family behind Shah Restaurant Amsterdam: 32+ years of hospitality experience, five-star hotel kitchens in India and a passion for authentic tandoori cooking in Amsterdam-Noord."
+      ],
+      "h1": [
+        "Over Shah Restaurant Amsterdam"
+      ],
+      "canonical": [
+        "https://shahrestaurant.nl/events/about"
+      ],
+      "robots": [
+        "index, follow"
+      ],
+      "ogImage": [],
+      "ogTitle": [
+        "About Shah Restaurant Amsterdam"
+      ],
+      "ogDescription": [
+        "The family story, the kitchen and the passion behind refined Indian cuisine at Shah Restaurant, Amsterdam-Noord."
+      ],
+      "ogUrl": [
+        "https://shahrestaurant.nl/events/about"
+      ],
+      "ogLocale": [],
+      "twitterCard": [
+        "summary_large_image"
+      ],
+      "twitterTitle": [
+        "About Shah Restaurant Amsterdam"
+      ],
+      "twitterDescription": [
+        "The family story behind our authentic Indian restaurant in Amsterdam-Noord."
+      ],
+      "twitterImage": [],
+      "schemaTypes": [
+        "Restaurant",
+        "PostalAddress"
+      ],
+      "schemas": [
+        {
+          "@context": "https://schema.org",
+          "@type": "Restaurant",
+          "@id": "https://shahrestaurant.nl/#restaurant",
+          "name": "Shah Restaurant",
+          "description": "Shah Restaurant is een verfijnd Indiaas familierestaurant in Amsterdam-Noord met tandoori grills, rijke curry's en verse naan.",
+          "url": "https://shahrestaurant.nl/events/about",
+          "image": "https://shahrestaurant.nl/shahrestaurant.png",
+          "telephone": "+31 20 341 2995",
+          "priceRange": "€€€",
+          "servesCuisine": [
+            "Indian",
+            "Tandoori",
+            "Curry",
+            "Biryani"
+          ],
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Klaprozenweg 36a",
+            "postalCode": "1032 KL",
+            "addressLocality": "Amsterdam",
+            "addressCountry": "NL"
+          },
+          "hasMenu": "https://shahrestaurant.nl/order",
+          "acceptsReservations": "True",
+          "openingHours": "Tu-Su 15:00-22:00"
+        }
+      ],
+      "visibleBreadcrumbNav": 0,
+      "images": [],
+      "links": [
+        {
+          "class": "block rounded-xl px-3.5 py-2 text-sm font-semibold transition text-slate-700 hover:bg-emerald-500/10 hover:text-emerald-700 dark:text-slate-200 dark:hover:text-emerald-300",
+          "href": "/events"
+        },
+        {
+          "aria-current": "page",
+          "class": "block rounded-xl px-3.5 py-2 text-sm font-semibold transition bg-emerald-500/15 text-emerald-700 dark:text-emerald-300",
+          "href": "/events/about"
+        },
+        {
+          "class": "block rounded-xl px-3.5 py-2 text-sm font-semibold transition text-slate-700 hover:bg-emerald-500/10 hover:text-emerald-700 dark:text-slate-200 dark:hover:text-emerald-300",
+          "href": "/events/gallery"
+        },
+        {
+          "class": "block rounded-xl px-3.5 py-2 text-sm font-semibold transition text-slate-700 hover:bg-emerald-500/10 hover:text-emerald-700 dark:text-slate-200 dark:hover:text-emerald-300",
+          "href": "/events/birthdays"
+        },
+        {
+          "class": "block rounded-xl px-3.5 py-2 text-sm font-semibold transition text-slate-700 hover:bg-emerald-500/10 hover:text-emerald-700 dark:text-slate-200 dark:hover:text-emerald-300",
+          "href": "/events/celebrations"
+        },
+        {
+          "class": "block rounded-xl px-3.5 py-2 text-sm font-semibold transition text-slate-700 hover:bg-emerald-500/10 hover:text-emerald-700 dark:text-slate-200 dark:hover:text-emerald-300",
+          "href": "/events/company-catering"
+        },
+        {
+          "class": "block rounded-xl px-3.5 py-2 text-sm font-semibold transition text-slate-700 hover:bg-emerald-500/10 hover:text-emerald-700 dark:text-slate-200 dark:hover:text-emerald-300",
+          "href": "/events/company-lunches"
+        },
+        {
+          "class": "group flex items-center justify-between rounded-2xl border border-emerald-500/15 bg-white p-4 transition hover:border-emerald-500/40 dark:border-emerald-400/10 dark:bg-white/5",
+          "href": "/events/gallery"
+        },
+        {
+          "class": "group flex items-center justify-between rounded-2xl border border-emerald-500/15 bg-white p-4 transition hover:border-emerald-500/40 dark:border-emerald-400/10 dark:bg-white/5",
+          "href": "/reservations"
+        },
+        {
+          "class": "inline-flex items-center gap-2 rounded-full border border-emerald-400/40 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur transition hover:-translate-y-0.5 hover:border-emerald-400 hover:text-emerald-300",
+          "href": "/reservations"
+        },
+        {
+          "href": "/events/gallery"
+        }
+      ],
+      "titleLength": 66,
+      "descriptionLength": 185,
+      "titleWithin50To60": false,
+      "descriptionWithin140To160": false,
+      "breadcrumbSchemaCount": 0,
+      "legacyReservationLinks": 2
+    },
+    {
+      "route": "/events/gallery",
+      "status": 200,
+      "lang": "nl",
+      "title": [
+        "Gallery - Shah Restaurant Amsterdam | Interior, Dishes & Events"
+      ],
+      "description": [
+        "Explore Shah Restaurant Amsterdam in pictures: our warm dining room, tandoori dishes, private events, birthdays, weddings and corporate catering setups."
+      ],
+      "h1": [
+        "Sfeer, gerechten en momenten"
+      ],
+      "canonical": [
+        "https://shahrestaurant.nl/events/gallery"
+      ],
+      "robots": [
+        "index, follow"
+      ],
+      "ogImage": [],
+      "ogTitle": [
+        "Gallery | Shah Restaurant Amsterdam"
+      ],
+      "ogDescription": [
+        "Interior, tandoori dishes and past events at Shah Restaurant Amsterdam - a refined Indian restaurant in Amsterdam-Noord."
+      ],
+      "ogUrl": [
+        "https://shahrestaurant.nl/events/gallery"
+      ],
+      "ogLocale": [],
+      "twitterCard": [
+        "summary_large_image"
+      ],
+      "twitterTitle": [
+        "Gallery - Shah Restaurant Amsterdam"
+      ],
+      "twitterDescription": [
+        "Interior, tandoori dishes and past events at Shah Restaurant Amsterdam - a refined Indian restaurant in Amsterdam-Noord."
+      ],
+      "twitterImage": [],
+      "schemaTypes": [
+        "ImageGallery"
+      ],
+      "schemas": [
+        {
+          "@context": "https://schema.org",
+          "@type": "ImageGallery",
+          "name": "Shah Restaurant Amsterdam - Gallery",
+          "description": "Foto's van Shah Restaurant Amsterdam: interieur, gerechten en evenementen.",
+          "url": "https://shahrestaurant.nl/events/gallery",
+          "image": [
+            "https://shahrestaurant.nl/photos/687A0402.jpeg",
+            "https://shahrestaurant.nl/photos/687A0210.jpeg",
+            "https://shahrestaurant.nl/photos/687A0211.jpeg",
+            "https://shahrestaurant.nl/photos/687A0260.jpeg",
+            "https://shahrestaurant.nl/photos/687A0216.jpeg",
+            "https://shahrestaurant.nl/photos/687A0321.jpeg",
+            "https://shahrestaurant.nl/photos/687A0090.jpeg",
+            "https://shahrestaurant.nl/photos/687A0336.jpeg",
+            "https://shahrestaurant.nl/photos/687A0343.jpeg",
+            "https://shahrestaurant.nl/photos/687A0412.jpeg"
+          ]
+        }
+      ],
+      "visibleBreadcrumbNav": 0,
+      "images": [
+        {
+          "alt": "Gedekte tafel met naan, gouden bestek en dipsauzen",
+          "loading": "lazy",
+          "decoding": "async",
+          "data-nimg": "fill",
+          "class": "object-cover transition duration-700 group-hover:scale-105",
+          "style": "position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent",
+          "sizes": "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw",
+          "srcset": "/_next/image?url=%2Fphotos%2F687A0402.jpeg&w=256&q=75 256w, /_next/image?url=%2Fphotos%2F687A0402.jpeg&w=384&q=75 384w, /_next/image?url=%2Fphotos%2F687A0402.jpeg&w=640&q=75 640w, /_next/image?url=%2Fphotos%2F687A0402.jpeg&w=750&q=75 750w, /_next/image?url=%2Fphotos%2F687A0402.jpeg&w=828&q=75 828w, /_next/image?url=%2Fphotos%2F687A0402.jpeg&w=1080&q=75 1080w, /_next/image?url=%2Fphotos%2F687A0402.jpeg&w=1200&q=75 1200w, /_next/image?url=%2Fphotos%2F687A0402.jpeg&w=1920&q=75 1920w, /_next/image?url=%2Fphotos%2F687A0402.jpeg&w=2048&q=75 2048w, /_next/image?url=%2Fphotos%2F687A0402.jpeg&w=3840&q=75 3840w",
+          "src": "/_next/image?url=%2Fphotos%2F687A0402.jpeg&w=3840&q=75"
+        },
+        {
+          "alt": "Modern restaurantinterieur met een warme sfeer",
+          "loading": "lazy",
+          "decoding": "async",
+          "data-nimg": "fill",
+          "class": "object-cover transition duration-700 group-hover:scale-105",
+          "style": "position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent",
+          "sizes": "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw",
+          "srcset": "/_next/image?url=%2Fphotos%2F687A0210.jpeg&w=256&q=75 256w, /_next/image?url=%2Fphotos%2F687A0210.jpeg&w=384&q=75 384w, /_next/image?url=%2Fphotos%2F687A0210.jpeg&w=640&q=75 640w, /_next/image?url=%2Fphotos%2F687A0210.jpeg&w=750&q=75 750w, /_next/image?url=%2Fphotos%2F687A0210.jpeg&w=828&q=75 828w, /_next/image?url=%2Fphotos%2F687A0210.jpeg&w=1080&q=75 1080w, /_next/image?url=%2Fphotos%2F687A0210.jpeg&w=1200&q=75 1200w, /_next/image?url=%2Fphotos%2F687A0210.jpeg&w=1920&q=75 1920w, /_next/image?url=%2Fphotos%2F687A0210.jpeg&w=2048&q=75 2048w, /_next/image?url=%2Fphotos%2F687A0210.jpeg&w=3840&q=75 3840w",
+          "src": "/_next/image?url=%2Fphotos%2F687A0210.jpeg&w=3840&q=75"
+        },
+        {
+          "alt": "Seekh kebab van lamsvlees met yoghurtsaus en verse kruiden",
+          "loading": "lazy",
+          "decoding": "async",
+          "data-nimg": "fill",
+          "class": "object-cover transition duration-700 group-hover:scale-105",
+          "style": "position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent",
+          "sizes": "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw",
+          "srcset": "/_next/image?url=%2Fphotos%2F687A0211.jpeg&w=256&q=75 256w, /_next/image?url=%2Fphotos%2F687A0211.jpeg&w=384&q=75 384w, /_next/image?url=%2Fphotos%2F687A0211.jpeg&w=640&q=75 640w, /_next/image?url=%2Fphotos%2F687A0211.jpeg&w=750&q=75 750w, /_next/image?url=%2Fphotos%2F687A0211.jpeg&w=828&q=75 828w, /_next/image?url=%2Fphotos%2F687A0211.jpeg&w=1080&q=75 1080w, /_next/image?url=%2Fphotos%2F687A0211.jpeg&w=1200&q=75 1200w, /_next/image?url=%2Fphotos%2F687A0211.jpeg&w=1920&q=75 1920w, /_next/image?url=%2Fphotos%2F687A0211.jpeg&w=2048&q=75 2048w, /_next/image?url=%2Fphotos%2F687A0211.jpeg&w=3840&q=75 3840w",
+          "src": "/_next/image?url=%2Fphotos%2F687A0211.jpeg&w=3840&q=75"
+        },
+        {
+          "alt": "Gelaagde signatuurcocktail met granaatappel",
+          "loading": "lazy",
+          "decoding": "async",
+          "data-nimg": "fill",
+          "class": "object-cover transition duration-700 group-hover:scale-105",
+          "style": "position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent",
+          "sizes": "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw",
+          "srcset": "/_next/image?url=%2Fphotos%2F687A0260.jpeg&w=256&q=75 256w, /_next/image?url=%2Fphotos%2F687A0260.jpeg&w=384&q=75 384w, /_next/image?url=%2Fphotos%2F687A0260.jpeg&w=640&q=75 640w, /_next/image?url=%2Fphotos%2F687A0260.jpeg&w=750&q=75 750w, /_next/image?url=%2Fphotos%2F687A0260.jpeg&w=828&q=75 828w, /_next/image?url=%2Fphotos%2F687A0260.jpeg&w=1080&q=75 1080w, /_next/image?url=%2Fphotos%2F687A0260.jpeg&w=1200&q=75 1200w, /_next/image?url=%2Fphotos%2F687A0260.jpeg&w=1920&q=75 1920w, /_next/image?url=%2Fphotos%2F687A0260.jpeg&w=2048&q=75 2048w, /_next/image?url=%2Fphotos%2F687A0260.jpeg&w=3840&q=75 3840w",
+          "src": "/_next/image?url=%2Fphotos%2F687A0260.jpeg&w=3840&q=75"
+        },
+        {
+          "alt": "Goudgeroosterde paneer tikka met limoen",
+          "loading": "lazy",
+          "decoding": "async",
+          "data-nimg": "fill",
+          "class": "object-cover transition duration-700 group-hover:scale-105",
+          "style": "position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent",
+          "sizes": "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw",
+          "srcset": "/_next/image?url=%2Fphotos%2F687A0216.jpeg&w=256&q=75 256w, /_next/image?url=%2Fphotos%2F687A0216.jpeg&w=384&q=75 384w, /_next/image?url=%2Fphotos%2F687A0216.jpeg&w=640&q=75 640w, /_next/image?url=%2Fphotos%2F687A0216.jpeg&w=750&q=75 750w, /_next/image?url=%2Fphotos%2F687A0216.jpeg&w=828&q=75 828w, /_next/image?url=%2Fphotos%2F687A0216.jpeg&w=1080&q=75 1080w, /_next/image?url=%2Fphotos%2F687A0216.jpeg&w=1200&q=75 1200w, /_next/image?url=%2Fphotos%2F687A0216.jpeg&w=1920&q=75 1920w, /_next/image?url=%2Fphotos%2F687A0216.jpeg&w=2048&q=75 2048w, /_next/image?url=%2Fphotos%2F687A0216.jpeg&w=3840&q=75 3840w",
+          "src": "/_next/image?url=%2Fphotos%2F687A0216.jpeg&w=3840&q=75"
+        },
+        {
+          "alt": "Verfijnd geplateerd tandoori gerecht",
+          "loading": "lazy",
+          "decoding": "async",
+          "data-nimg": "fill",
+          "class": "object-cover transition duration-700 group-hover:scale-105",
+          "style": "position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent",
+          "sizes": "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw",
+          "srcset": "/_next/image?url=%2Fphotos%2F687A0321.jpeg&w=256&q=75 256w, /_next/image?url=%2Fphotos%2F687A0321.jpeg&w=384&q=75 384w, /_next/image?url=%2Fphotos%2F687A0321.jpeg&w=640&q=75 640w, /_next/image?url=%2Fphotos%2F687A0321.jpeg&w=750&q=75 750w, /_next/image?url=%2Fphotos%2F687A0321.jpeg&w=828&q=75 828w, /_next/image?url=%2Fphotos%2F687A0321.jpeg&w=1080&q=75 1080w, /_next/image?url=%2Fphotos%2F687A0321.jpeg&w=1200&q=75 1200w, /_next/image?url=%2Fphotos%2F687A0321.jpeg&w=1920&q=75 1920w, /_next/image?url=%2Fphotos%2F687A0321.jpeg&w=2048&q=75 2048w, /_next/image?url=%2Fphotos%2F687A0321.jpeg&w=3840&q=75 3840w",
+          "src": "/_next/image?url=%2Fphotos%2F687A0321.jpeg&w=3840&q=75"
+        },
+        {
+          "alt": "Zwevende wijnfles aan de bar van Shah Restaurant",
+          "loading": "lazy",
+          "decoding": "async",
+          "data-nimg": "fill",
+          "class": "object-cover transition duration-700 group-hover:scale-105",
+          "style": "position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent",
+          "sizes": "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw",
+          "srcset": "/_next/image?url=%2Fphotos%2F687A0090.jpeg&w=256&q=75 256w, /_next/image?url=%2Fphotos%2F687A0090.jpeg&w=384&q=75 384w, /_next/image?url=%2Fphotos%2F687A0090.jpeg&w=640&q=75 640w, /_next/image?url=%2Fphotos%2F687A0090.jpeg&w=750&q=75 750w, /_next/image?url=%2Fphotos%2F687A0090.jpeg&w=828&q=75 828w, /_next/image?url=%2Fphotos%2F687A0090.jpeg&w=1080&q=75 1080w, /_next/image?url=%2Fphotos%2F687A0090.jpeg&w=1200&q=75 1200w, /_next/image?url=%2Fphotos%2F687A0090.jpeg&w=1920&q=75 1920w, /_next/image?url=%2Fphotos%2F687A0090.jpeg&w=2048&q=75 2048w, /_next/image?url=%2Fphotos%2F687A0090.jpeg&w=3840&q=75 3840w",
+          "src": "/_next/image?url=%2Fphotos%2F687A0090.jpeg&w=3840&q=75"
+        },
+        {
+          "alt": "Een stijlvolle en gastvrije sfeer om samen te genieten",
+          "loading": "lazy",
+          "decoding": "async",
+          "data-nimg": "fill",
+          "class": "object-cover transition duration-700 group-hover:scale-105",
+          "style": "position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent",
+          "sizes": "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw",
+          "srcset": "/_next/image?url=%2Fphotos%2F687A0336.jpeg&w=256&q=75 256w, /_next/image?url=%2Fphotos%2F687A0336.jpeg&w=384&q=75 384w, /_next/image?url=%2Fphotos%2F687A0336.jpeg&w=640&q=75 640w, /_next/image?url=%2Fphotos%2F687A0336.jpeg&w=750&q=75 750w, /_next/image?url=%2Fphotos%2F687A0336.jpeg&w=828&q=75 828w, /_next/image?url=%2Fphotos%2F687A0336.jpeg&w=1080&q=75 1080w, /_next/image?url=%2Fphotos%2F687A0336.jpeg&w=1200&q=75 1200w, /_next/image?url=%2Fphotos%2F687A0336.jpeg&w=1920&q=75 1920w, /_next/image?url=%2Fphotos%2F687A0336.jpeg&w=2048&q=75 2048w, /_next/image?url=%2Fphotos%2F687A0336.jpeg&w=3840&q=75 3840w",
+          "src": "/_next/image?url=%2Fphotos%2F687A0336.jpeg&w=3840&q=75"
+        },
+        {
+          "alt": "Stijlvolle bar waar cocktails en gastvrijheid samenkomen",
+          "loading": "lazy",
+          "decoding": "async",
+          "data-nimg": "fill",
+          "class": "object-cover transition duration-700 group-hover:scale-105",
+          "style": "position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent",
+          "sizes": "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw",
+          "srcset": "/_next/image?url=%2Fphotos%2F687A0343.jpeg&w=256&q=75 256w, /_next/image?url=%2Fphotos%2F687A0343.jpeg&w=384&q=75 384w, /_next/image?url=%2Fphotos%2F687A0343.jpeg&w=640&q=75 640w, /_next/image?url=%2Fphotos%2F687A0343.jpeg&w=750&q=75 750w, /_next/image?url=%2Fphotos%2F687A0343.jpeg&w=828&q=75 828w, /_next/image?url=%2Fphotos%2F687A0343.jpeg&w=1080&q=75 1080w, /_next/image?url=%2Fphotos%2F687A0343.jpeg&w=1200&q=75 1200w, /_next/image?url=%2Fphotos%2F687A0343.jpeg&w=1920&q=75 1920w, /_next/image?url=%2Fphotos%2F687A0343.jpeg&w=2048&q=75 2048w, /_next/image?url=%2Fphotos%2F687A0343.jpeg&w=3840&q=75 3840w",
+          "src": "/_next/image?url=%2Fphotos%2F687A0343.jpeg&w=3840&q=75"
+        },
+        {
+          "alt": "Samen genieten van curry, rijst en tandoori gerechten",
+          "loading": "lazy",
+          "decoding": "async",
+          "data-nimg": "fill",
+          "class": "object-cover transition duration-700 group-hover:scale-105",
+          "style": "position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent",
+          "sizes": "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw",
+          "srcset": "/_next/image?url=%2Fphotos%2F687A0412.jpeg&w=256&q=75 256w, /_next/image?url=%2Fphotos%2F687A0412.jpeg&w=384&q=75 384w, /_next/image?url=%2Fphotos%2F687A0412.jpeg&w=640&q=75 640w, /_next/image?url=%2Fphotos%2F687A0412.jpeg&w=750&q=75 750w, /_next/image?url=%2Fphotos%2F687A0412.jpeg&w=828&q=75 828w, /_next/image?url=%2Fphotos%2F687A0412.jpeg&w=1080&q=75 1080w, /_next/image?url=%2Fphotos%2F687A0412.jpeg&w=1200&q=75 1200w, /_next/image?url=%2Fphotos%2F687A0412.jpeg&w=1920&q=75 1920w, /_next/image?url=%2Fphotos%2F687A0412.jpeg&w=2048&q=75 2048w, /_next/image?url=%2Fphotos%2F687A0412.jpeg&w=3840&q=75 3840w",
+          "src": "/_next/image?url=%2Fphotos%2F687A0412.jpeg&w=3840&q=75"
+        }
+      ],
+      "links": [
+        {
+          "class": "block rounded-xl px-3.5 py-2 text-sm font-semibold transition text-slate-700 hover:bg-emerald-500/10 hover:text-emerald-700 dark:text-slate-200 dark:hover:text-emerald-300",
+          "href": "/events"
+        },
+        {
+          "class": "block rounded-xl px-3.5 py-2 text-sm font-semibold transition text-slate-700 hover:bg-emerald-500/10 hover:text-emerald-700 dark:text-slate-200 dark:hover:text-emerald-300",
+          "href": "/events/about"
+        },
+        {
+          "aria-current": "page",
+          "class": "block rounded-xl px-3.5 py-2 text-sm font-semibold transition bg-emerald-500/15 text-emerald-700 dark:text-emerald-300",
+          "href": "/events/gallery"
+        },
+        {
+          "class": "block rounded-xl px-3.5 py-2 text-sm font-semibold transition text-slate-700 hover:bg-emerald-500/10 hover:text-emerald-700 dark:text-slate-200 dark:hover:text-emerald-300",
+          "href": "/events/birthdays"
+        },
+        {
+          "class": "block rounded-xl px-3.5 py-2 text-sm font-semibold transition text-slate-700 hover:bg-emerald-500/10 hover:text-emerald-700 dark:text-slate-200 dark:hover:text-emerald-300",
+          "href": "/events/celebrations"
+        },
+        {
+          "class": "block rounded-xl px-3.5 py-2 text-sm font-semibold transition text-slate-700 hover:bg-emerald-500/10 hover:text-emerald-700 dark:text-slate-200 dark:hover:text-emerald-300",
+          "href": "/events/company-catering"
+        },
+        {
+          "class": "block rounded-xl px-3.5 py-2 text-sm font-semibold transition text-slate-700 hover:bg-emerald-500/10 hover:text-emerald-700 dark:text-slate-200 dark:hover:text-emerald-300",
+          "href": "/events/company-lunches"
+        },
+        {
+          "class": "inline-flex items-center gap-2 rounded-full border border-emerald-400/40 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur transition hover:-translate-y-0.5 hover:border-emerald-400 hover:text-emerald-300",
+          "href": "/reservations"
+        },
+        {
+          "href": "/events/gallery"
+        }
+      ],
+      "titleLength": 63,
+      "descriptionLength": 152,
+      "titleWithin50To60": false,
+      "descriptionWithin140To160": true,
+      "breadcrumbSchemaCount": 0,
+      "legacyReservationLinks": 1
+    },
+    {
+      "route": "/events/birthdays",
+      "status": 200,
+      "lang": "nl",
+      "title": [
+        "Birthday & Party Catering Amsterdam - Shah Restaurant"
+      ],
+      "description": [
+        "Celebrate your birthday, anniversary or private party at Shah Restaurant Amsterdam. Personalised Indian menus, warm ambiance, dedicated service and private dining for up to 100 guests."
+      ],
+      "h1": [
+        "Vier uw verjaardag bij Shah Restaurant"
+      ],
+      "canonical": [
+        "https://shahrestaurant.nl/events/birthdays"
+      ],
+      "robots": [
+        "index, follow"
+      ],
+      "ogImage": [],
+      "ogTitle": [
+        "Birthday & Party Catering Amsterdam | Shah Restaurant"
+      ],
+      "ogDescription": [
+        "Personalised birthday parties and private celebrations at Shah Restaurant Amsterdam - up to 100 guests."
+      ],
+      "ogUrl": [
+        "https://shahrestaurant.nl/events/birthdays"
+      ],
+      "ogLocale": [],
+      "twitterCard": [
+        "summary_large_image"
+      ],
+      "twitterTitle": [
+        "Birthday Catering Amsterdam - Shah Restaurant"
+      ],
+      "twitterDescription": [
+        "Personalised birthday parties and private celebrations at Shah Restaurant Amsterdam - up to 100 guests."
+      ],
+      "twitterImage": [],
+      "schemaTypes": [
+        "Service",
+        "Restaurant",
+        "PostalAddress",
+        "City",
+        "PeopleAudience",
+        "AggregateOffer"
+      ],
+      "schemas": [
+        {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "serviceType": "Verjaardagscatering en privéfeesten",
+          "provider": {
+            "@type": "Restaurant",
+            "name": "Shah Restaurant",
+            "@id": "https://shahrestaurant.nl/#restaurant",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Klaprozenweg 36a",
+              "postalCode": "1032 KL",
+              "addressLocality": "Amsterdam",
+              "addressCountry": "NL"
+            },
+            "telephone": "+31 20 341 2995"
+          },
+          "areaServed": {
+            "@type": "City",
+            "name": "Amsterdam"
+          },
+          "audience": {
+            "@type": "PeopleAudience",
+            "audienceType": "Private groups up to 100 guests"
+          },
+          "url": "https://shahrestaurant.nl/events/birthdays",
+          "description": "Verjaardagen, jubilea en privéfeesten bij Shah Restaurant Amsterdam - gepersonaliseerd Indiaas menu, warme sfeer en toegewijde service.",
+          "offers": {
+            "@type": "AggregateOffer",
+            "priceCurrency": "EUR",
+            "lowPrice": "45",
+            "highPrice": "150",
+            "offerCount": 4,
+            "availability": "https://schema.org/InStock"
+          }
+        }
+      ],
+      "visibleBreadcrumbNav": 0,
+      "images": [],
+      "links": [
+        {
+          "class": "block rounded-xl px-3.5 py-2 text-sm font-semibold transition text-slate-700 hover:bg-emerald-500/10 hover:text-emerald-700 dark:text-slate-200 dark:hover:text-emerald-300",
+          "href": "/events"
+        },
+        {
+          "class": "block rounded-xl px-3.5 py-2 text-sm font-semibold transition text-slate-700 hover:bg-emerald-500/10 hover:text-emerald-700 dark:text-slate-200 dark:hover:text-emerald-300",
+          "href": "/events/about"
+        },
+        {
+          "class": "block rounded-xl px-3.5 py-2 text-sm font-semibold transition text-slate-700 hover:bg-emerald-500/10 hover:text-emerald-700 dark:text-slate-200 dark:hover:text-emerald-300",
+          "href": "/events/gallery"
+        },
+        {
+          "aria-current": "page",
+          "class": "block rounded-xl px-3.5 py-2 text-sm font-semibold transition bg-emerald-500/15 text-emerald-700 dark:text-emerald-300",
+          "href": "/events/birthdays"
+        },
+        {
+          "class": "block rounded-xl px-3.5 py-2 text-sm font-semibold transition text-slate-700 hover:bg-emerald-500/10 hover:text-emerald-700 dark:text-slate-200 dark:hover:text-emerald-300",
+          "href": "/events/celebrations"
+        },
+        {
+          "class": "block rounded-xl px-3.5 py-2 text-sm font-semibold transition text-slate-700 hover:bg-emerald-500/10 hover:text-emerald-700 dark:text-slate-200 dark:hover:text-emerald-300",
+          "href": "/events/company-catering"
+        },
+        {
+          "class": "block rounded-xl px-3.5 py-2 text-sm font-semibold transition text-slate-700 hover:bg-emerald-500/10 hover:text-emerald-700 dark:text-slate-200 dark:hover:text-emerald-300",
+          "href": "/events/company-lunches"
+        },
+        {
+          "class": "inline-flex items-center gap-2 rounded-full border border-emerald-400/40 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur transition hover:-translate-y-0.5 hover:border-emerald-400 hover:text-emerald-300",
+          "href": "/reservations"
+        },
+        {
+          "href": "/events/gallery"
+        }
+      ],
+      "titleLength": 53,
+      "descriptionLength": 184,
+      "titleWithin50To60": true,
+      "descriptionWithin140To160": false,
+      "breadcrumbSchemaCount": 0,
+      "legacyReservationLinks": 1
+    },
+    {
+      "route": "/events/celebrations",
+      "status": 200,
+      "lang": "nl",
+      "title": [
+        "Wedding & Celebration Catering Amsterdam - Shah Restaurant"
+      ],
+      "description": [
+        "Wedding receptions, engagement dinners, anniversaries, gala evenings and rehearsal dinners at Shah Restaurant Amsterdam. Refined Indian feasts, warm and unforgettable - up to 100 guests."
+      ],
+      "h1": [
+        "Bruiloften & vieringen bij Shah Restaurant"
+      ],
+      "canonical": [
+        "https://shahrestaurant.nl/events/celebrations"
+      ],
+      "robots": [
+        "index, follow"
+      ],
+      "ogImage": [],
+      "ogTitle": [
+        "Wedding & Celebration Catering Amsterdam | Shah Restaurant"
+      ],
+      "ogDescription": [
+        "Wedding receptions and gala evenings at Shah Restaurant Amsterdam - refined, warm, unforgettable."
+      ],
+      "ogUrl": [
+        "https://shahrestaurant.nl/events/celebrations"
+      ],
+      "ogLocale": [],
+      "twitterCard": [
+        "summary_large_image"
+      ],
+      "twitterTitle": [
+        "Wedding Catering Amsterdam - Shah Restaurant"
+      ],
+      "twitterDescription": [
+        "Wedding receptions and gala evenings at Shah Restaurant Amsterdam - refined, warm, unforgettable."
+      ],
+      "twitterImage": [],
+      "schemaTypes": [
+        "Service",
+        "Restaurant",
+        "PostalAddress",
+        "City",
+        "PeopleAudience"
+      ],
+      "schemas": [
+        {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "serviceType": "Bruiloftscatering en vieringen",
+          "provider": {
+            "@type": "Restaurant",
+            "name": "Shah Restaurant",
+            "@id": "https://shahrestaurant.nl/#restaurant",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Klaprozenweg 36a",
+              "postalCode": "1032 KL",
+              "addressLocality": "Amsterdam",
+              "addressCountry": "NL"
+            },
+            "telephone": "+31 20 341 2995"
+          },
+          "areaServed": {
+            "@type": "City",
+            "name": "Amsterdam"
+          },
+          "audience": {
+            "@type": "PeopleAudience",
+            "audienceType": "Wedding parties and celebrations up to 100 guests"
+          },
+          "url": "https://shahrestaurant.nl/events/celebrations",
+          "description": "Bruiloftsrecepties, gala-avonden, jubilea en verlovingsdiners bij Shah Restaurant Amsterdam."
+        }
+      ],
+      "visibleBreadcrumbNav": 0,
+      "images": [],
+      "links": [
+        {
+          "class": "block rounded-xl px-3.5 py-2 text-sm font-semibold transition text-slate-700 hover:bg-emerald-500/10 hover:text-emerald-700 dark:text-slate-200 dark:hover:text-emerald-300",
+          "href": "/events"
+        },
+        {
+          "class": "block rounded-xl px-3.5 py-2 text-sm font-semibold transition text-slate-700 hover:bg-emerald-500/10 hover:text-emerald-700 dark:text-slate-200 dark:hover:text-emerald-300",
+          "href": "/events/about"
+        },
+        {
+          "class": "block rounded-xl px-3.5 py-2 text-sm font-semibold transition text-slate-700 hover:bg-emerald-500/10 hover:text-emerald-700 dark:text-slate-200 dark:hover:text-emerald-300",
+          "href": "/events/gallery"
+        },
+        {
+          "class": "block rounded-xl px-3.5 py-2 text-sm font-semibold transition text-slate-700 hover:bg-emerald-500/10 hover:text-emerald-700 dark:text-slate-200 dark:hover:text-emerald-300",
+          "href": "/events/birthdays"
+        },
+        {
+          "aria-current": "page",
+          "class": "block rounded-xl px-3.5 py-2 text-sm font-semibold transition bg-emerald-500/15 text-emerald-700 dark:text-emerald-300",
+          "href": "/events/celebrations"
+        },
+        {
+          "class": "block rounded-xl px-3.5 py-2 text-sm font-semibold transition text-slate-700 hover:bg-emerald-500/10 hover:text-emerald-700 dark:text-slate-200 dark:hover:text-emerald-300",
+          "href": "/events/company-catering"
+        },
+        {
+          "class": "block rounded-xl px-3.5 py-2 text-sm font-semibold transition text-slate-700 hover:bg-emerald-500/10 hover:text-emerald-700 dark:text-slate-200 dark:hover:text-emerald-300",
+          "href": "/events/company-lunches"
+        },
+        {
+          "class": "mt-5 inline-flex items-center justify-center gap-2 rounded-full bg-emerald-600 px-4 py-2.5 text-xs font-semibold text-white shadow-md shadow-emerald-600/20 transition hover:-translate-y-0.5 hover:bg-emerald-500",
+          "href": "/reservations"
+        },
+        {
+          "class": "mt-5 inline-flex items-center justify-center gap-2 rounded-full bg-emerald-600 px-4 py-2.5 text-xs font-semibold text-white shadow-md shadow-emerald-600/20 transition hover:-translate-y-0.5 hover:bg-emerald-500",
+          "href": "/reservations"
+        },
+        {
+          "class": "mt-5 inline-flex items-center justify-center gap-2 rounded-full bg-emerald-600 px-4 py-2.5 text-xs font-semibold text-white shadow-md shadow-emerald-600/20 transition hover:-translate-y-0.5 hover:bg-emerald-500",
+          "href": "/reservations"
+        },
+        {
+          "class": "mt-5 inline-flex items-center justify-center gap-2 rounded-full bg-emerald-600 px-4 py-2.5 text-xs font-semibold text-white shadow-md shadow-emerald-600/20 transition hover:-translate-y-0.5 hover:bg-emerald-500",
+          "href": "/reservations"
+        },
+        {
+          "class": "mt-5 inline-flex items-center justify-center gap-2 rounded-full bg-emerald-600 px-4 py-2.5 text-xs font-semibold text-white shadow-md shadow-emerald-600/20 transition hover:-translate-y-0.5 hover:bg-emerald-500",
+          "href": "/reservations"
+        },
+        {
+          "class": "mt-5 inline-flex items-center justify-center gap-2 rounded-full bg-emerald-600 px-4 py-2.5 text-xs font-semibold text-white shadow-md shadow-emerald-600/20 transition hover:-translate-y-0.5 hover:bg-emerald-500",
+          "href": "/reservations"
+        },
+        {
+          "class": "inline-flex items-center gap-2 rounded-full border border-emerald-400/40 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur transition hover:-translate-y-0.5 hover:border-emerald-400 hover:text-emerald-300",
+          "href": "/reservations"
+        },
+        {
+          "href": "/events/gallery"
+        }
+      ],
+      "titleLength": 58,
+      "descriptionLength": 186,
+      "titleWithin50To60": true,
+      "descriptionWithin140To160": false,
+      "breadcrumbSchemaCount": 0,
+      "legacyReservationLinks": 7
+    },
+    {
+      "route": "/events/company-catering",
+      "status": 200,
+      "lang": "nl",
+      "title": [
+        "Corporate & Company Catering Amsterdam - Shah Restaurant"
+      ],
+      "description": [
+        "Corporate dinners, client receptions, product launches and executive catering in Amsterdam. On-site or at Shah Restaurant - monthly invoicing, bespoke Indian menus and full-service events for up to 100 guests."
+      ],
+      "h1": [
+        "Bedrijfscatering"
+      ],
+      "canonical": [
+        "https://shahrestaurant.nl/events/company-catering"
+      ],
+      "robots": [
+        "index, follow"
+      ],
+      "ogImage": [],
+      "ogTitle": [
+        "Corporate & Company Catering Amsterdam | Shah Restaurant"
+      ],
+      "ogDescription": [
+        "Executive dinners, client receptions and corporate events at Shah Restaurant Amsterdam - bespoke, invoiced, unforgettable."
+      ],
+      "ogUrl": [
+        "https://shahrestaurant.nl/events/company-catering"
+      ],
+      "ogLocale": [],
+      "twitterCard": [
+        "summary_large_image"
+      ],
+      "twitterTitle": [
+        "Corporate Catering Amsterdam - Shah Restaurant"
+      ],
+      "twitterDescription": [
+        "Executive dinners, client receptions and corporate events at Shah Restaurant Amsterdam - bespoke, invoiced, unforgettable."
+      ],
+      "twitterImage": [],
+      "schemaTypes": [
+        "Service",
+        "Restaurant",
+        "PostalAddress",
+        "City",
+        "BusinessAudience"
+      ],
+      "schemas": [
+        {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "serviceType": "Zakelijke catering en bedrijfsdiners",
+          "provider": {
+            "@type": "Restaurant",
+            "name": "Shah Restaurant",
+            "@id": "https://shahrestaurant.nl/#restaurant",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Klaprozenweg 36a",
+              "postalCode": "1032 KL",
+              "addressLocality": "Amsterdam",
+              "addressCountry": "NL"
+            },
+            "telephone": "+31 20 341 2995"
+          },
+          "areaServed": {
+            "@type": "City",
+            "name": "Amsterdam"
+          },
+          "audience": {
+            "@type": "BusinessAudience",
+            "audienceType": "Corporate clients and business teams up to 100 attendees"
+          },
+          "url": "https://shahrestaurant.nl/events/company-catering",
+          "description": "Zakelijke diners, klantrecepties, productlanceringen en board-diners in Amsterdam. Maandelijkse facturatie beschikbaar."
+        }
+      ],
+      "visibleBreadcrumbNav": 0,
+      "images": [],
+      "links": [
+        {
+          "class": "block rounded-xl px-3.5 py-2 text-sm font-semibold transition text-slate-700 hover:bg-emerald-500/10 hover:text-emerald-700 dark:text-slate-200 dark:hover:text-emerald-300",
+          "href": "/events"
+        },
+        {
+          "class": "block rounded-xl px-3.5 py-2 text-sm font-semibold transition text-slate-700 hover:bg-emerald-500/10 hover:text-emerald-700 dark:text-slate-200 dark:hover:text-emerald-300",
+          "href": "/events/about"
+        },
+        {
+          "class": "block rounded-xl px-3.5 py-2 text-sm font-semibold transition text-slate-700 hover:bg-emerald-500/10 hover:text-emerald-700 dark:text-slate-200 dark:hover:text-emerald-300",
+          "href": "/events/gallery"
+        },
+        {
+          "class": "block rounded-xl px-3.5 py-2 text-sm font-semibold transition text-slate-700 hover:bg-emerald-500/10 hover:text-emerald-700 dark:text-slate-200 dark:hover:text-emerald-300",
+          "href": "/events/birthdays"
+        },
+        {
+          "class": "block rounded-xl px-3.5 py-2 text-sm font-semibold transition text-slate-700 hover:bg-emerald-500/10 hover:text-emerald-700 dark:text-slate-200 dark:hover:text-emerald-300",
+          "href": "/events/celebrations"
+        },
+        {
+          "aria-current": "page",
+          "class": "block rounded-xl px-3.5 py-2 text-sm font-semibold transition bg-emerald-500/15 text-emerald-700 dark:text-emerald-300",
+          "href": "/events/company-catering"
+        },
+        {
+          "class": "block rounded-xl px-3.5 py-2 text-sm font-semibold transition text-slate-700 hover:bg-emerald-500/10 hover:text-emerald-700 dark:text-slate-200 dark:hover:text-emerald-300",
+          "href": "/events/company-lunches"
+        },
+        {
+          "class": "inline-flex items-center gap-2 rounded-full border border-emerald-400/40 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur transition hover:-translate-y-0.5 hover:border-emerald-400 hover:text-emerald-300",
+          "href": "/reservations"
+        },
+        {
+          "href": "/events/gallery"
+        }
+      ],
+      "titleLength": 56,
+      "descriptionLength": 209,
+      "titleWithin50To60": true,
+      "descriptionWithin140To160": false,
+      "breadcrumbSchemaCount": 0,
+      "legacyReservationLinks": 1
+    },
+    {
+      "route": "/events/company-lunches",
+      "status": 200,
+      "lang": "nl",
+      "title": [
+        "Company Lunches & Office Catering Amsterdam - Shah Restaurant"
+      ],
+      "description": [
+        "Fresh daily and weekly office lunches delivered across Amsterdam. Aromatic Indian lunches, healthy options, hot mains and dietary choices - invoiced monthly, delivered on time."
+      ],
+      "h1": [
+        "Bedrijfslunches & kantoor-catering in Amsterdam"
+      ],
+      "canonical": [
+        "https://shahrestaurant.nl/events/company-lunches"
+      ],
+      "robots": [
+        "index, follow"
+      ],
+      "ogImage": [],
+      "ogTitle": [
+        "Company Lunches & Office Catering Amsterdam | Shah Restaurant"
+      ],
+      "ogDescription": [
+        "Weekly delivered office lunches across Amsterdam - fresh, aromatic, invoiced monthly."
+      ],
+      "ogUrl": [
+        "https://shahrestaurant.nl/events/company-lunches"
+      ],
+      "ogLocale": [],
+      "twitterCard": [
+        "summary_large_image"
+      ],
+      "twitterTitle": [
+        "Office Lunches Amsterdam - Shah Restaurant"
+      ],
+      "twitterDescription": [
+        "Weekly delivered office lunches across Amsterdam - fresh, aromatic, invoiced monthly."
+      ],
+      "twitterImage": [],
+      "schemaTypes": [
+        "FoodEstablishment",
+        "PostalAddress",
+        "City",
+        "OfferCatalog",
+        "Offer",
+        "Service",
+        "Offer",
+        "Service",
+        "Offer",
+        "Service"
+      ],
+      "schemas": [
+        {
+          "@context": "https://schema.org",
+          "@type": "FoodEstablishment",
+          "name": "Shah Restaurant - Company Lunches Amsterdam",
+          "description": "Vers bezorgde bedrijfslunches in Amsterdam - dagelijkse of wekelijkse levering, maandelijkse facturatie.",
+          "servesCuisine": [
+            "Indian",
+            "Healthy",
+            "Vegan-friendly"
+          ],
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Klaprozenweg 36a",
+            "postalCode": "1032 KL",
+            "addressLocality": "Amsterdam",
+            "addressCountry": "NL"
+          },
+          "telephone": "+31 20 341 2995",
+          "areaServed": {
+            "@type": "City",
+            "name": "Amsterdam"
+          },
+          "url": "https://shahrestaurant.nl/events/company-lunches",
+          "priceRange": "€€€",
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Company Lunch Formats",
+            "itemListElement": [
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Daily lunch delivery"
+                },
+                "price": "18",
+                "priceCurrency": "EUR"
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Weekly rotating menu"
+                },
+                "price": "22",
+                "priceCurrency": "EUR"
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Executive plated lunch"
+                },
+                "price": "35",
+                "priceCurrency": "EUR"
+              }
+            ]
+          }
+        }
+      ],
+      "visibleBreadcrumbNav": 0,
+      "images": [],
+      "links": [
+        {
+          "class": "block rounded-xl px-3.5 py-2 text-sm font-semibold transition text-slate-700 hover:bg-emerald-500/10 hover:text-emerald-700 dark:text-slate-200 dark:hover:text-emerald-300",
+          "href": "/events"
+        },
+        {
+          "class": "block rounded-xl px-3.5 py-2 text-sm font-semibold transition text-slate-700 hover:bg-emerald-500/10 hover:text-emerald-700 dark:text-slate-200 dark:hover:text-emerald-300",
+          "href": "/events/about"
+        },
+        {
+          "class": "block rounded-xl px-3.5 py-2 text-sm font-semibold transition text-slate-700 hover:bg-emerald-500/10 hover:text-emerald-700 dark:text-slate-200 dark:hover:text-emerald-300",
+          "href": "/events/gallery"
+        },
+        {
+          "class": "block rounded-xl px-3.5 py-2 text-sm font-semibold transition text-slate-700 hover:bg-emerald-500/10 hover:text-emerald-700 dark:text-slate-200 dark:hover:text-emerald-300",
+          "href": "/events/birthdays"
+        },
+        {
+          "class": "block rounded-xl px-3.5 py-2 text-sm font-semibold transition text-slate-700 hover:bg-emerald-500/10 hover:text-emerald-700 dark:text-slate-200 dark:hover:text-emerald-300",
+          "href": "/events/celebrations"
+        },
+        {
+          "class": "block rounded-xl px-3.5 py-2 text-sm font-semibold transition text-slate-700 hover:bg-emerald-500/10 hover:text-emerald-700 dark:text-slate-200 dark:hover:text-emerald-300",
+          "href": "/events/company-catering"
+        },
+        {
+          "aria-current": "page",
+          "class": "block rounded-xl px-3.5 py-2 text-sm font-semibold transition bg-emerald-500/15 text-emerald-700 dark:text-emerald-300",
+          "href": "/events/company-lunches"
+        },
+        {
+          "class": "inline-flex items-center gap-2 rounded-full border border-emerald-400/40 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur transition hover:-translate-y-0.5 hover:border-emerald-400 hover:text-emerald-300",
+          "href": "/reservations"
+        },
+        {
+          "href": "/events/gallery"
+        }
+      ],
+      "titleLength": 61,
+      "descriptionLength": 176,
+      "titleWithin50To60": false,
+      "descriptionWithin140To160": false,
+      "breadcrumbSchemaCount": 0,
+      "legacyReservationLinks": 1
+    }
+  ],
+  "analysisPending": false,
+  "artifactContext": {
+    "distDir": ".next-review-combined-20261111",
+    "buildId": "qtEl0n7z1LSeYdyHiZ19Y",
+    "runtimeSuppliedByParent": "http://127.0.0.1:3478",
+    "sourceFingerprintPrefixSuppliedByParent": "043a",
+    "buildTokenWasNotIndependentlyExtractedFromHtml": true
+  },
+  "knownExistingFinding": {
+    "code": "event-social-images-missing",
+    "routes": 7,
+    "detail": "All seven lack og:image and twitter:image; already reported by the asset agent, not counted as a newly discovered issue here."
+  },
+  "additionalFindings": [
+    {
+      "code": "event-metadata-language-and-length",
+      "routes": 7,
+      "detail": "All seven HTML documents and visible headings are Dutch; all seven titles/descriptions are English. Four decoded titles fall outside the requested 50–60 characters; six descriptions fall outside 140–160.",
+      "titleOutOfRange": [
+        {
+          "route": "/events",
+          "length": 43
+        },
+        {
+          "route": "/events/about",
+          "length": 66
+        },
+        {
+          "route": "/events/gallery",
+          "length": 63
+        },
+        {
+          "route": "/events/company-lunches",
+          "length": 61
+        }
+      ],
+      "descriptionOutOfRange": [
+        {
+          "route": "/events",
+          "length": 179
+        },
+        {
+          "route": "/events/about",
+          "length": 185
+        },
+        {
+          "route": "/events/birthdays",
+          "length": 184
+        },
+        {
+          "route": "/events/celebrations",
+          "length": 186
+        },
+        {
+          "route": "/events/company-catering",
+          "length": 209
+        },
+        {
+          "route": "/events/company-lunches",
+          "length": 176
+        }
+      ]
+    },
+    {
+      "code": "event-breadcrumbs-absent",
+      "routes": 7,
+      "detail": "No breadcrumb navigation and no BreadcrumbList JSON-LD were found on any of the seven pages. Shared server-layout breadcrumbs must not capture stale sibling-route state across client navigation."
+    },
+    {
+      "code": "stale-birthday-schema-prices",
+      "route": "/events/birthdays",
+      "servedSchema": {
+        "lowPrice": "45",
+        "highPrice": "150",
+        "offerCount": 4,
+        "availability": "https://schema.org/InStock"
+      },
+      "visibleCopyPrices": [
+        "from EUR42 per person",
+        "from EUR62 per person",
+        "from EUR72 per person",
+        "custom quote"
+      ],
+      "source": "app/events/birthdays/page.tsx:34–78",
+      "detail": "Schema pricing conflicts with the preserved visible packages; no justified numeric upper bound is given for the custom quote. Keep visible prices unchanged."
+    },
+    {
+      "code": "stale-company-lunch-schema-prices",
+      "route": "/events/company-lunches",
+      "servedSchemaPrices": [
+        "18",
+        "22",
+        "35"
+      ],
+      "visibleCopyPrices": [
+        "20",
+        "24",
+        "38",
+        "48"
+      ],
+      "source": "app/events/company-lunches/page.tsx:30–84",
+      "detail": "Three structured offers disagree with the four visible format prices. Keep visible prices unchanged."
+    },
+    {
+      "code": "legacy-canonical-destinations",
+      "visibleReservationLinkCount": 14,
+      "visibleDestination": "/reservations",
+      "canonicalDestination": "/reserveren",
+      "schemaReference": {
+        "route": "/events/about",
+        "property": "hasMenu",
+        "value": "https://shahrestaurant.nl/order",
+        "canonical": "https://shahrestaurant.nl/menukaart"
+      },
+      "detail": "These are working legacy redirects, but event HTML/schema still link through aliases rather than the canonical public destinations."
+    },
+    {
+      "code": "og-locale-absent",
+      "routes": 7,
+      "detail": "All event Open Graph objects omit og:locale; the server HTML and content currently use Dutch. No new translated route is implied."
+    }
+  ],
+  "imageDelivery": {
+    "sharedBackground": {
+      "source": "/brand/shah-room-v1.webp",
+      "bytes": 153334,
+      "activeSelector": ".botanical-band",
+      "sourceLocation": "app/design-system.css:67",
+      "routesWithSourceClass": [
+        "/events/about",
+        "/events/gallery",
+        "/events/birthdays",
+        "/events/celebrations",
+        "/events/company-catering",
+        "/events/company-lunches"
+      ],
+      "pipeline": "Direct CSS WebP background; no Next optimizer or RestaurantPhoto picture selection.",
+      "existingCoverage": {
+        "report": "docs/restaurant-photo-assets-v1.json",
+        "sourcePresent": true,
+        "originalBytes": 153334,
+        "originalMetadata": {
+          "exif": false,
+          "xmp": false,
+          "iptc": false,
+          "icc": false
+        }
+      },
+      "sourceUnder200000Bytes": true
+    },
+    "builtInGallery": {
+      "route": "/events/gallery",
+      "images": [
+        {
+          "source": "/photos/687A0402.jpeg",
+          "originalBytes": 2404514,
+          "renderedSrc": "/_next/image?url=%2Fphotos%2F687A0402.jpeg&w=3840&q=75",
+          "sizes": "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw",
+          "srcSet": "/_next/image?url=%2Fphotos%2F687A0402.jpeg&w=256&q=75 256w, /_next/image?url=%2Fphotos%2F687A0402.jpeg&w=384&q=75 384w, /_next/image?url=%2Fphotos%2F687A0402.jpeg&w=640&q=75 640w, /_next/image?url=%2Fphotos%2F687A0402.jpeg&w=750&q=75 750w, /_next/image?url=%2Fphotos%2F687A0402.jpeg&w=828&q=75 828w, /_next/image?url=%2Fphotos%2F687A0402.jpeg&w=1080&q=75 1080w, /_next/image?url=%2Fphotos%2F687A0402.jpeg&w=1200&q=75 1200w, /_next/image?url=%2Fphotos%2F687A0402.jpeg&w=1920&q=75 1920w, /_next/image?url=%2Fphotos%2F687A0402.jpeg&w=2048&q=75 2048w, /_next/image?url=%2Fphotos%2F687A0402.jpeg&w=3840&q=75 3840w",
+          "alt": "Gedekte tafel met naan, gouden bestek en dipsauzen",
+          "loading": "lazy",
+          "optimizerQuality": "75",
+          "maxAdvertisedWidth": 3840
+        },
+        {
+          "source": "/photos/687A0210.jpeg",
+          "originalBytes": 9370303,
+          "renderedSrc": "/_next/image?url=%2Fphotos%2F687A0210.jpeg&w=3840&q=75",
+          "sizes": "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw",
+          "srcSet": "/_next/image?url=%2Fphotos%2F687A0210.jpeg&w=256&q=75 256w, /_next/image?url=%2Fphotos%2F687A0210.jpeg&w=384&q=75 384w, /_next/image?url=%2Fphotos%2F687A0210.jpeg&w=640&q=75 640w, /_next/image?url=%2Fphotos%2F687A0210.jpeg&w=750&q=75 750w, /_next/image?url=%2Fphotos%2F687A0210.jpeg&w=828&q=75 828w, /_next/image?url=%2Fphotos%2F687A0210.jpeg&w=1080&q=75 1080w, /_next/image?url=%2Fphotos%2F687A0210.jpeg&w=1200&q=75 1200w, /_next/image?url=%2Fphotos%2F687A0210.jpeg&w=1920&q=75 1920w, /_next/image?url=%2Fphotos%2F687A0210.jpeg&w=2048&q=75 2048w, /_next/image?url=%2Fphotos%2F687A0210.jpeg&w=3840&q=75 3840w",
+          "alt": "Modern restaurantinterieur met een warme sfeer",
+          "loading": "lazy",
+          "optimizerQuality": "75",
+          "maxAdvertisedWidth": 3840
+        },
+        {
+          "source": "/photos/687A0211.jpeg",
+          "originalBytes": 4976025,
+          "renderedSrc": "/_next/image?url=%2Fphotos%2F687A0211.jpeg&w=3840&q=75",
+          "sizes": "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw",
+          "srcSet": "/_next/image?url=%2Fphotos%2F687A0211.jpeg&w=256&q=75 256w, /_next/image?url=%2Fphotos%2F687A0211.jpeg&w=384&q=75 384w, /_next/image?url=%2Fphotos%2F687A0211.jpeg&w=640&q=75 640w, /_next/image?url=%2Fphotos%2F687A0211.jpeg&w=750&q=75 750w, /_next/image?url=%2Fphotos%2F687A0211.jpeg&w=828&q=75 828w, /_next/image?url=%2Fphotos%2F687A0211.jpeg&w=1080&q=75 1080w, /_next/image?url=%2Fphotos%2F687A0211.jpeg&w=1200&q=75 1200w, /_next/image?url=%2Fphotos%2F687A0211.jpeg&w=1920&q=75 1920w, /_next/image?url=%2Fphotos%2F687A0211.jpeg&w=2048&q=75 2048w, /_next/image?url=%2Fphotos%2F687A0211.jpeg&w=3840&q=75 3840w",
+          "alt": "Seekh kebab van lamsvlees met yoghurtsaus en verse kruiden",
+          "loading": "lazy",
+          "optimizerQuality": "75",
+          "maxAdvertisedWidth": 3840
+        },
+        {
+          "source": "/photos/687A0260.jpeg",
+          "originalBytes": 1721983,
+          "renderedSrc": "/_next/image?url=%2Fphotos%2F687A0260.jpeg&w=3840&q=75",
+          "sizes": "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw",
+          "srcSet": "/_next/image?url=%2Fphotos%2F687A0260.jpeg&w=256&q=75 256w, /_next/image?url=%2Fphotos%2F687A0260.jpeg&w=384&q=75 384w, /_next/image?url=%2Fphotos%2F687A0260.jpeg&w=640&q=75 640w, /_next/image?url=%2Fphotos%2F687A0260.jpeg&w=750&q=75 750w, /_next/image?url=%2Fphotos%2F687A0260.jpeg&w=828&q=75 828w, /_next/image?url=%2Fphotos%2F687A0260.jpeg&w=1080&q=75 1080w, /_next/image?url=%2Fphotos%2F687A0260.jpeg&w=1200&q=75 1200w, /_next/image?url=%2Fphotos%2F687A0260.jpeg&w=1920&q=75 1920w, /_next/image?url=%2Fphotos%2F687A0260.jpeg&w=2048&q=75 2048w, /_next/image?url=%2Fphotos%2F687A0260.jpeg&w=3840&q=75 3840w",
+          "alt": "Gelaagde signatuurcocktail met granaatappel",
+          "loading": "lazy",
+          "optimizerQuality": "75",
+          "maxAdvertisedWidth": 3840
+        },
+        {
+          "source": "/photos/687A0216.jpeg",
+          "originalBytes": 5348284,
+          "renderedSrc": "/_next/image?url=%2Fphotos%2F687A0216.jpeg&w=3840&q=75",
+          "sizes": "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw",
+          "srcSet": "/_next/image?url=%2Fphotos%2F687A0216.jpeg&w=256&q=75 256w, /_next/image?url=%2Fphotos%2F687A0216.jpeg&w=384&q=75 384w, /_next/image?url=%2Fphotos%2F687A0216.jpeg&w=640&q=75 640w, /_next/image?url=%2Fphotos%2F687A0216.jpeg&w=750&q=75 750w, /_next/image?url=%2Fphotos%2F687A0216.jpeg&w=828&q=75 828w, /_next/image?url=%2Fphotos%2F687A0216.jpeg&w=1080&q=75 1080w, /_next/image?url=%2Fphotos%2F687A0216.jpeg&w=1200&q=75 1200w, /_next/image?url=%2Fphotos%2F687A0216.jpeg&w=1920&q=75 1920w, /_next/image?url=%2Fphotos%2F687A0216.jpeg&w=2048&q=75 2048w, /_next/image?url=%2Fphotos%2F687A0216.jpeg&w=3840&q=75 3840w",
+          "alt": "Goudgeroosterde paneer tikka met limoen",
+          "loading": "lazy",
+          "optimizerQuality": "75",
+          "maxAdvertisedWidth": 3840
+        },
+        {
+          "source": "/photos/687A0321.jpeg",
+          "originalBytes": 4057491,
+          "renderedSrc": "/_next/image?url=%2Fphotos%2F687A0321.jpeg&w=3840&q=75",
+          "sizes": "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw",
+          "srcSet": "/_next/image?url=%2Fphotos%2F687A0321.jpeg&w=256&q=75 256w, /_next/image?url=%2Fphotos%2F687A0321.jpeg&w=384&q=75 384w, /_next/image?url=%2Fphotos%2F687A0321.jpeg&w=640&q=75 640w, /_next/image?url=%2Fphotos%2F687A0321.jpeg&w=750&q=75 750w, /_next/image?url=%2Fphotos%2F687A0321.jpeg&w=828&q=75 828w, /_next/image?url=%2Fphotos%2F687A0321.jpeg&w=1080&q=75 1080w, /_next/image?url=%2Fphotos%2F687A0321.jpeg&w=1200&q=75 1200w, /_next/image?url=%2Fphotos%2F687A0321.jpeg&w=1920&q=75 1920w, /_next/image?url=%2Fphotos%2F687A0321.jpeg&w=2048&q=75 2048w, /_next/image?url=%2Fphotos%2F687A0321.jpeg&w=3840&q=75 3840w",
+          "alt": "Verfijnd geplateerd tandoori gerecht",
+          "loading": "lazy",
+          "optimizerQuality": "75",
+          "maxAdvertisedWidth": 3840
+        },
+        {
+          "source": "/photos/687A0090.jpeg",
+          "originalBytes": 380204,
+          "renderedSrc": "/_next/image?url=%2Fphotos%2F687A0090.jpeg&w=3840&q=75",
+          "sizes": "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw",
+          "srcSet": "/_next/image?url=%2Fphotos%2F687A0090.jpeg&w=256&q=75 256w, /_next/image?url=%2Fphotos%2F687A0090.jpeg&w=384&q=75 384w, /_next/image?url=%2Fphotos%2F687A0090.jpeg&w=640&q=75 640w, /_next/image?url=%2Fphotos%2F687A0090.jpeg&w=750&q=75 750w, /_next/image?url=%2Fphotos%2F687A0090.jpeg&w=828&q=75 828w, /_next/image?url=%2Fphotos%2F687A0090.jpeg&w=1080&q=75 1080w, /_next/image?url=%2Fphotos%2F687A0090.jpeg&w=1200&q=75 1200w, /_next/image?url=%2Fphotos%2F687A0090.jpeg&w=1920&q=75 1920w, /_next/image?url=%2Fphotos%2F687A0090.jpeg&w=2048&q=75 2048w, /_next/image?url=%2Fphotos%2F687A0090.jpeg&w=3840&q=75 3840w",
+          "alt": "Zwevende wijnfles aan de bar van Shah Restaurant",
+          "loading": "lazy",
+          "optimizerQuality": "75",
+          "maxAdvertisedWidth": 3840
+        },
+        {
+          "source": "/photos/687A0336.jpeg",
+          "originalBytes": 3194173,
+          "renderedSrc": "/_next/image?url=%2Fphotos%2F687A0336.jpeg&w=3840&q=75",
+          "sizes": "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw",
+          "srcSet": "/_next/image?url=%2Fphotos%2F687A0336.jpeg&w=256&q=75 256w, /_next/image?url=%2Fphotos%2F687A0336.jpeg&w=384&q=75 384w, /_next/image?url=%2Fphotos%2F687A0336.jpeg&w=640&q=75 640w, /_next/image?url=%2Fphotos%2F687A0336.jpeg&w=750&q=75 750w, /_next/image?url=%2Fphotos%2F687A0336.jpeg&w=828&q=75 828w, /_next/image?url=%2Fphotos%2F687A0336.jpeg&w=1080&q=75 1080w, /_next/image?url=%2Fphotos%2F687A0336.jpeg&w=1200&q=75 1200w, /_next/image?url=%2Fphotos%2F687A0336.jpeg&w=1920&q=75 1920w, /_next/image?url=%2Fphotos%2F687A0336.jpeg&w=2048&q=75 2048w, /_next/image?url=%2Fphotos%2F687A0336.jpeg&w=3840&q=75 3840w",
+          "alt": "Een stijlvolle en gastvrije sfeer om samen te genieten",
+          "loading": "lazy",
+          "optimizerQuality": "75",
+          "maxAdvertisedWidth": 3840
+        },
+        {
+          "source": "/photos/687A0343.jpeg",
+          "originalBytes": 3562388,
+          "renderedSrc": "/_next/image?url=%2Fphotos%2F687A0343.jpeg&w=3840&q=75",
+          "sizes": "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw",
+          "srcSet": "/_next/image?url=%2Fphotos%2F687A0343.jpeg&w=256&q=75 256w, /_next/image?url=%2Fphotos%2F687A0343.jpeg&w=384&q=75 384w, /_next/image?url=%2Fphotos%2F687A0343.jpeg&w=640&q=75 640w, /_next/image?url=%2Fphotos%2F687A0343.jpeg&w=750&q=75 750w, /_next/image?url=%2Fphotos%2F687A0343.jpeg&w=828&q=75 828w, /_next/image?url=%2Fphotos%2F687A0343.jpeg&w=1080&q=75 1080w, /_next/image?url=%2Fphotos%2F687A0343.jpeg&w=1200&q=75 1200w, /_next/image?url=%2Fphotos%2F687A0343.jpeg&w=1920&q=75 1920w, /_next/image?url=%2Fphotos%2F687A0343.jpeg&w=2048&q=75 2048w, /_next/image?url=%2Fphotos%2F687A0343.jpeg&w=3840&q=75 3840w",
+          "alt": "Stijlvolle bar waar cocktails en gastvrijheid samenkomen",
+          "loading": "lazy",
+          "optimizerQuality": "75",
+          "maxAdvertisedWidth": 3840
+        },
+        {
+          "source": "/photos/687A0412.jpeg",
+          "originalBytes": 2537772,
+          "renderedSrc": "/_next/image?url=%2Fphotos%2F687A0412.jpeg&w=3840&q=75",
+          "sizes": "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw",
+          "srcSet": "/_next/image?url=%2Fphotos%2F687A0412.jpeg&w=256&q=75 256w, /_next/image?url=%2Fphotos%2F687A0412.jpeg&w=384&q=75 384w, /_next/image?url=%2Fphotos%2F687A0412.jpeg&w=640&q=75 640w, /_next/image?url=%2Fphotos%2F687A0412.jpeg&w=750&q=75 750w, /_next/image?url=%2Fphotos%2F687A0412.jpeg&w=828&q=75 828w, /_next/image?url=%2Fphotos%2F687A0412.jpeg&w=1080&q=75 1080w, /_next/image?url=%2Fphotos%2F687A0412.jpeg&w=1200&q=75 1200w, /_next/image?url=%2Fphotos%2F687A0412.jpeg&w=1920&q=75 1920w, /_next/image?url=%2Fphotos%2F687A0412.jpeg&w=2048&q=75 2048w, /_next/image?url=%2Fphotos%2F687A0412.jpeg&w=3840&q=75 3840w",
+          "alt": "Samen genieten van curry, rijst en tandoori gerechten",
+          "loading": "lazy",
+          "optimizerQuality": "75",
+          "maxAdvertisedWidth": 3840
+        }
+      ],
+      "pipeline": "next/image fill, quality75, responsive sizes; not the prebuilt RestaurantPhoto component.",
+      "allHaveDescriptiveAlt": true,
+      "originalSizes": {
+        "min": 380204,
+        "max": 9370303,
+        "sum": 37553137,
+        "areNotMeasuredBrowserTraffic": true
+      },
+      "existingCoverage": {
+        "remoteProductDeliveryAuditCoversTheseLocalPaths": false,
+        "sixRestaurantPhotoVariantAuditCoversTheseLocalPaths": false,
+        "deliveredBudget": "not_measured_by_this_audit"
+      },
+      "schemaImagesPointToOriginalJpegs": true
+    },
+    "adminGallery": {
+      "source": "Existing client GET /api/gallery; not requested by this audit.",
+      "initialServerUploadedImages": 0,
+      "delivery": "Prepended after hydration and rendered by the same next/image component.",
+      "productionRowsOrImageUrlsVerified": false
+    }
+  },
+  "summary": {
+    "pages200": 7,
+    "htmlLangNl": 7,
+    "oneH1": 7,
+    "uniqueTitles": 7,
+    "uniqueDescriptions": 7,
+    "selfCanonicals": 7,
+    "indexable": 7,
+    "visibleBreadcrumbNav": 0,
+    "breadcrumbSchemas": 0,
+    "titleLengthRange": [
+      43,
+      66
+    ],
+    "descriptionLengthRange": [
+      152,
+      209
+    ],
+    "localGalleryImages": 10,
+    "legacyReservationLinks": 14
+  },
+  "limitations": [
+    "No browser, gallery API, image-body GET, production database or transactional request was made.",
+    "Metadata, JSON-LD and initial built-in gallery were observed in raw HTML; uploaded gallery content after hydration was not observed.",
+    "No external rich-result or search-engine validation was performed. Existing restaurant/event facts were not independently reverified or expanded.",
+    "This audit does not assert that source JPEG sizes equal optimized browser transfer or that the gallery passes/fails its delivered-image budget.",
+    "The seven public event URLs have no newly invented English counterpart URLs; absence of paired hreflang was not treated as a defect.",
+    "This is a pre-fix scoped audit of the qtEl combined candidate; a subsequent metadata build requires focused revalidation."
+  ]
+}

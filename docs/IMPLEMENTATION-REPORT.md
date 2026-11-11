@@ -1,5 +1,7 @@
 # Shah Restaurant implementation and verification
 
+**Earlier SEO/performance revision.** See [CINEMATIC-REVISION.md](CINEMATIC-REVISION.md) for the subsequent design changes and clean opening film, and [CINEMATIC-FINAL-VERIFICATION.md](CINEMATIC-FINAL-VERIFICATION.md) for current acceptance. Scores, fixture data and build identity below refer to the earlier implementation.
+
 11 November 2026. Final source build: ZvsF7jSptyH4JJlRdUepP. Local review only; nothing deployed or published. The implementation preserves the existing restaurant data and the prior unrelated changes in this working tree. The full requested definition of done is not claimed: the JavaScript budget remains exceeded, and field Core Web Vitals and live transaction success have not been established.
 
 ## Review and start

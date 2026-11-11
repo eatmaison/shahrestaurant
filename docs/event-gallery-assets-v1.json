@@ -1,0 +1,1696 @@
+{
+  "version": "event-gallery-v1",
+  "generatedAt": "2026-11-11T16:30:14.224Z",
+  "encoderVersions": {
+    "aom": "3.13.1",
+    "archive": "3.8.2",
+    "cairo": "1.18.4",
+    "cgif": "0.5.0",
+    "exif": "0.6.25",
+    "expat": "2.7.3",
+    "ffi": "3.5.2",
+    "fontconfig": "2.17.1",
+    "freetype": "2.14.1",
+    "fribidi": "1.0.16",
+    "glib": "2.86.1",
+    "harfbuzz": "12.1.0",
+    "heif": "1.20.2",
+    "highway": "1.3.0",
+    "imagequant": "2.4.1",
+    "lcms": "2.17",
+    "mozjpeg": "0826579",
+    "pango": "1.57.0",
+    "pixman": "0.46.4",
+    "png": "1.6.50",
+    "proxy-libintl": "0.5",
+    "rsvg": "2.61.2",
+    "spng": "0.7.4",
+    "tiff": "4.7.1",
+    "vips": "8.17.3",
+    "webp": "1.6.0",
+    "xml2": "2.15.1",
+    "zlib-ng": "2.2.5",
+    "sharp": "0.34.5"
+  },
+  "budgetBytesExclusive": 200000,
+  "maximumWidth": 1280,
+  "options": {
+    "resize": {
+      "withoutEnlargement": true,
+      "kernel": "lanczos3"
+    },
+    "avif": {
+      "effort": 6,
+      "chromaSubsampling": "4:2:0",
+      "bitdepth": 8
+    },
+    "webp": {
+      "effort": 6,
+      "smartSubsample": true
+    },
+    "lqip": {
+      "width": 20,
+      "sigma": 0.6,
+      "quality": 28,
+      "effort": 6
+    }
+  },
+  "qualityChoices": {
+    "avif": [
+      68,
+      64,
+      60,
+      56,
+      52,
+      48
+    ],
+    "webp": [
+      88,
+      84,
+      80,
+      76,
+      72,
+      68,
+      64
+    ]
+  },
+  "photos": [
+    {
+      "source": "/photos/687A0402.jpeg",
+      "originalBytes": 2404514,
+      "originalWidth": 6960,
+      "originalHeight": 4640,
+      "originalOrientation": 1,
+      "orientedWidth": 6960,
+      "orientedHeight": 4640,
+      "originalSha256": "654ffdf491fecde247a3a9926165137c60cf73d73911eddf84a4aee2a0089341",
+      "originalMetadata": {
+        "exif": true,
+        "xmp": true,
+        "iptc": false,
+        "icc": false
+      },
+      "widths": [
+        320,
+        640,
+        960,
+        1280
+      ],
+      "outputs": [
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0402-320.avif",
+          "width": 320,
+          "height": 213,
+          "bytes": 9637,
+          "format": "avif",
+          "quality": 68,
+          "sha256": "cac73557b86700382df2c44054adad44f481b38af8ce9ebc9a86b5e126c10640",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0402-320.webp",
+          "width": 320,
+          "height": 213,
+          "bytes": 14942,
+          "format": "webp",
+          "quality": 88,
+          "sha256": "25cc4fc06daa0be49bc28ce88e2e7b6e68e3597dbe0e4221f4629d6d98f3054a",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0402-640.avif",
+          "width": 640,
+          "height": 427,
+          "bytes": 18596,
+          "format": "avif",
+          "quality": 68,
+          "sha256": "3e6830705445c85e9ff674b9416c090a75f1e6eea7d0c8c6b9a6b7fd7034062e",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0402-640.webp",
+          "width": 640,
+          "height": 427,
+          "bytes": 34614,
+          "format": "webp",
+          "quality": 88,
+          "sha256": "4dfd532ab2f64cffbaa405761b75135aca6d611537a037c7f7f3c84d16cd1374",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0402-960.avif",
+          "width": 960,
+          "height": 640,
+          "bytes": 27539,
+          "format": "avif",
+          "quality": 68,
+          "sha256": "8e5b1671b650d9a70e83d59d4001a8734ac143714c50084a5daa7e5de076c142",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0402-960.webp",
+          "width": 960,
+          "height": 640,
+          "bytes": 55496,
+          "format": "webp",
+          "quality": 88,
+          "sha256": "44e9d7676b3514883b6190c6a6be962d99dc489d68f7fe800fd199c71d4c1ece",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0402-1280.avif",
+          "width": 1280,
+          "height": 853,
+          "bytes": 35637,
+          "format": "avif",
+          "quality": 68,
+          "sha256": "7f9bcecfffe7dc10e1a5936b89370b6f449e286043bb1b510a279dc0bb564120",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0402-1280.webp",
+          "width": 1280,
+          "height": 853,
+          "bytes": 77794,
+          "format": "webp",
+          "quality": 88,
+          "sha256": "3f653af69cd6290a62eb75905dfe8da1f94265a7d1d6563a5fe46c72707f9aec",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        }
+      ],
+      "blur": {
+        "width": 20,
+        "height": 13,
+        "bytes": 100,
+        "sha256": "ad06a652f7ed425c65ecff4780be9c9149016807b2eaedb5309339b6a2ea95a2",
+        "metadataStripped": true
+      },
+      "originalUnchanged": true
+    },
+    {
+      "source": "/photos/687A0210.jpeg",
+      "originalBytes": 9370303,
+      "originalWidth": 6960,
+      "originalHeight": 4640,
+      "originalOrientation": 6,
+      "orientedWidth": 4640,
+      "orientedHeight": 6960,
+      "originalSha256": "09b371e2044d80aa9f9e26ca5f13b110173436b065d7c180a80c96bdb18e775f",
+      "originalMetadata": {
+        "exif": true,
+        "xmp": true,
+        "iptc": false,
+        "icc": false
+      },
+      "widths": [
+        320,
+        640,
+        960,
+        1280
+      ],
+      "outputs": [
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0210-320.avif",
+          "width": 320,
+          "height": 480,
+          "bytes": 22405,
+          "format": "avif",
+          "quality": 68,
+          "sha256": "a371da2c01b5d976aa6458d982d446337ec7ae54f29e8253a5c56e4f0384cf21",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0210-320.webp",
+          "width": 320,
+          "height": 480,
+          "bytes": 36582,
+          "format": "webp",
+          "quality": 88,
+          "sha256": "9adae96ca319529497d6fea0b5db76d8c9036e564f502b51bd06beedc236763a",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0210-640.avif",
+          "width": 640,
+          "height": 960,
+          "bytes": 51240,
+          "format": "avif",
+          "quality": 68,
+          "sha256": "b22df6d42a03949c016d2b4dfcd008dc8d93cac33c3b1d7b878b8aa9358eed3b",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0210-640.webp",
+          "width": 640,
+          "height": 960,
+          "bytes": 93288,
+          "format": "webp",
+          "quality": 88,
+          "sha256": "66eac519c3323f1361c60ec5e71520854a000bd12fdaeb60e30ff0f36b7f2ad8",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0210-960.avif",
+          "width": 960,
+          "height": 1440,
+          "bytes": 82699,
+          "format": "avif",
+          "quality": 68,
+          "sha256": "7db87973185b90575dc15a1bef161d4495700fd63143de36eaabed16f139df28",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0210-960.webp",
+          "width": 960,
+          "height": 1440,
+          "bytes": 169568,
+          "format": "webp",
+          "quality": 88,
+          "sha256": "9328d7a39aa7db7955227e8cb768d749fbfaea20e6e28a6a5779e0e192c278bb",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0210-1280.avif",
+          "width": 1280,
+          "height": 1920,
+          "bytes": 113428,
+          "format": "avif",
+          "quality": 68,
+          "sha256": "87b29ab7a40d3e8aeb370754dd61202a7cc187c719e913bbd2c92be5b5e466eb",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0210-1280.webp",
+          "width": 1280,
+          "height": 1920,
+          "bytes": 191090,
+          "format": "webp",
+          "quality": 84,
+          "sha256": "cea5b633f763a9a99d7dda1261b7850d22dec594488fdec5076b48ab6240cfec",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        }
+      ],
+      "blur": {
+        "width": 20,
+        "height": 30,
+        "bytes": 142,
+        "sha256": "86a933acc88375180cd7b077c8f6f3b5ab7cbc98f0881a0a7c95a666b5e6135c",
+        "metadataStripped": true
+      },
+      "originalUnchanged": true
+    },
+    {
+      "source": "/photos/687A0211.jpeg",
+      "originalBytes": 4976025,
+      "originalWidth": 4800,
+      "originalHeight": 3200,
+      "originalOrientation": 6,
+      "orientedWidth": 3200,
+      "orientedHeight": 4800,
+      "originalSha256": "b4ebc33ad018bfe44c1a8f2e6ad94c7f1a0547dcdba5f2300072719d665a0ceb",
+      "originalMetadata": {
+        "exif": true,
+        "xmp": true,
+        "iptc": false,
+        "icc": false
+      },
+      "widths": [
+        320,
+        640,
+        960,
+        1280
+      ],
+      "outputs": [
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0211-320.avif",
+          "width": 320,
+          "height": 480,
+          "bytes": 21725,
+          "format": "avif",
+          "quality": 68,
+          "sha256": "0c06ff83bdcb132daac87a1c960bef147632338822c280a87c643ed3ab5d4d14",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0211-320.webp",
+          "width": 320,
+          "height": 480,
+          "bytes": 34410,
+          "format": "webp",
+          "quality": 88,
+          "sha256": "56de71a8d4ec430f378ff1f7ac204065dd974b9204eae6163ac8e89ea421a005",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0211-640.avif",
+          "width": 640,
+          "height": 960,
+          "bytes": 50124,
+          "format": "avif",
+          "quality": 68,
+          "sha256": "8bbd95db5407f66649b12fce3ffc5c5126c84b2258348cf9fff64e8577b1ef59",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0211-640.webp",
+          "width": 640,
+          "height": 960,
+          "bytes": 91662,
+          "format": "webp",
+          "quality": 88,
+          "sha256": "91bc7f70f46d1ca5bca49edf4c3aeaa6e31ca94d4c02ddfc1747416f780791e9",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0211-960.avif",
+          "width": 960,
+          "height": 1440,
+          "bytes": 82376,
+          "format": "avif",
+          "quality": 68,
+          "sha256": "1583407da4742a69f449e74ada4a6171956c5b3792c87524e99c501a1f6d9a6c",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0211-960.webp",
+          "width": 960,
+          "height": 1440,
+          "bytes": 162180,
+          "format": "webp",
+          "quality": 88,
+          "sha256": "dfd26b2779cf066f06ade5f547f0e72f0884324c52112446ad76015e122b8a2f",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0211-1280.avif",
+          "width": 1280,
+          "height": 1920,
+          "bytes": 115152,
+          "format": "avif",
+          "quality": 68,
+          "sha256": "ffc5249a9ed09a6ff5ac23f1e6d3bbb49e934f48af010bd34b56d1b9e5574915",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0211-1280.webp",
+          "width": 1280,
+          "height": 1920,
+          "bytes": 192314,
+          "format": "webp",
+          "quality": 84,
+          "sha256": "2e3abb56020e12a5abe8e22ab07148a6bb171c24912abebac00317f0848568a6",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        }
+      ],
+      "blur": {
+        "width": 20,
+        "height": 30,
+        "bytes": 182,
+        "sha256": "3d7cd0a4c58ecea4bb26ecdea0a26697b7c87d66f509bd06eb6c7cda80d2fdfe",
+        "metadataStripped": true
+      },
+      "originalUnchanged": true
+    },
+    {
+      "source": "/photos/687A0260.jpeg",
+      "originalBytes": 1721983,
+      "originalWidth": 6960,
+      "originalHeight": 4640,
+      "originalOrientation": 8,
+      "orientedWidth": 4640,
+      "orientedHeight": 6960,
+      "originalSha256": "f8d64e444f7d129016b756aed36c0193caedd8a482f17dc0b561e03299a6b825",
+      "originalMetadata": {
+        "exif": true,
+        "xmp": true,
+        "iptc": false,
+        "icc": false
+      },
+      "widths": [
+        320,
+        640,
+        960,
+        1280
+      ],
+      "outputs": [
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0260-320.avif",
+          "width": 320,
+          "height": 480,
+          "bytes": 8027,
+          "format": "avif",
+          "quality": 68,
+          "sha256": "dbd2653c206905a2e4e9ad2e4a8ce8ec8a9112e032823dda64df1483f4676a8f",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0260-320.webp",
+          "width": 320,
+          "height": 480,
+          "bytes": 13824,
+          "format": "webp",
+          "quality": 88,
+          "sha256": "a542621a085ae396ea0fd1386212af23157558a6b7e17c82eeacc33abbc43bb0",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0260-640.avif",
+          "width": 640,
+          "height": 960,
+          "bytes": 18300,
+          "format": "avif",
+          "quality": 68,
+          "sha256": "fb15da81f2ebbed72a7676e43e0ce0938d4b1ec25c74f50dd10134a33761f223",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0260-640.webp",
+          "width": 640,
+          "height": 960,
+          "bytes": 34532,
+          "format": "webp",
+          "quality": 88,
+          "sha256": "52d322a6751f7e02b26e1092321119b167b444fcb0de20da3f0a9b87bc7063cf",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0260-960.avif",
+          "width": 960,
+          "height": 1440,
+          "bytes": 30449,
+          "format": "avif",
+          "quality": 68,
+          "sha256": "3a3965e565b49e1bd8d693e10c2f69bc4b4184e74b4bdb2c3b24b567b73afec9",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0260-960.webp",
+          "width": 960,
+          "height": 1440,
+          "bytes": 60910,
+          "format": "webp",
+          "quality": 88,
+          "sha256": "a960cdc4cf2aca11f300c0cfa5616df9254ddadaedb75272f52f5490b9984800",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0260-1280.avif",
+          "width": 1280,
+          "height": 1920,
+          "bytes": 43410,
+          "format": "avif",
+          "quality": 68,
+          "sha256": "35c7da7e92c0a295a9764b236fcf09c587fecc62ad8ec39de1bd2b0c306e6f71",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0260-1280.webp",
+          "width": 1280,
+          "height": 1920,
+          "bytes": 90552,
+          "format": "webp",
+          "quality": 88,
+          "sha256": "09785f0d6d3bc8d5fd4edeeb6ba2df0acfa9b10b93b82e8c4c524d4cd20b5a5b",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        }
+      ],
+      "blur": {
+        "width": 20,
+        "height": 30,
+        "bytes": 156,
+        "sha256": "3e7b017d0d70a0cd5f5444a55b2b97ea819b1379755994e9b659d739a1b18496",
+        "metadataStripped": true
+      },
+      "originalUnchanged": true
+    },
+    {
+      "source": "/photos/687A0216.jpeg",
+      "originalBytes": 5348284,
+      "originalWidth": 4800,
+      "originalHeight": 3200,
+      "originalOrientation": 8,
+      "orientedWidth": 3200,
+      "orientedHeight": 4800,
+      "originalSha256": "71476b22ce3191ef58734eb7d1cf4559175b2d0268a0d34d04d599f1f4f257b1",
+      "originalMetadata": {
+        "exif": true,
+        "xmp": true,
+        "iptc": false,
+        "icc": false
+      },
+      "widths": [
+        320,
+        640,
+        960,
+        1280
+      ],
+      "outputs": [
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0216-320.avif",
+          "width": 320,
+          "height": 480,
+          "bytes": 25758,
+          "format": "avif",
+          "quality": 68,
+          "sha256": "0b5a573266770a2ed124df9e3345ae7fb6786a63ae509dfed553222eec9b233f",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0216-320.webp",
+          "width": 320,
+          "height": 480,
+          "bytes": 39356,
+          "format": "webp",
+          "quality": 88,
+          "sha256": "812c178f8558a0fe8591414307c9cffa78845ad9f64ec296c0ddb776ed779031",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0216-640.avif",
+          "width": 640,
+          "height": 960,
+          "bytes": 59932,
+          "format": "avif",
+          "quality": 68,
+          "sha256": "d7a3e8bc9716e5f9825deed3f845b5d72d62c4df1b57b3dd021c92bad5e704aa",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0216-640.webp",
+          "width": 640,
+          "height": 960,
+          "bytes": 100288,
+          "format": "webp",
+          "quality": 88,
+          "sha256": "bb69082a645c3b29be052135d985d0138f63d6e18fda597dbf0d46b73e484cac",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0216-960.avif",
+          "width": 960,
+          "height": 1440,
+          "bytes": 98960,
+          "format": "avif",
+          "quality": 68,
+          "sha256": "1248517848c8d22dcd942a5b3d005caf01383c2505e3f742fad5854c86ed2368",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0216-960.webp",
+          "width": 960,
+          "height": 1440,
+          "bytes": 180088,
+          "format": "webp",
+          "quality": 88,
+          "sha256": "19821259c717e0252c92d1cc15a770e98882ae4d2c9ec3340dac295989a19d9e",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0216-1280.avif",
+          "width": 1280,
+          "height": 1920,
+          "bytes": 141479,
+          "format": "avif",
+          "quality": 68,
+          "sha256": "b0f0835147cbd9e6b760cd80b59decc20a94c681458b1f2d804757e943c3ce42",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0216-1280.webp",
+          "width": 1280,
+          "height": 1920,
+          "bytes": 178672,
+          "format": "webp",
+          "quality": 80,
+          "sha256": "e8a76c8e8d33318381ac82df75804eea4ac1ffdb582a4bfd470c21a700baaf80",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        }
+      ],
+      "blur": {
+        "width": 20,
+        "height": 30,
+        "bytes": 172,
+        "sha256": "ee1a3a450bada3d773511742cb103b07ab1881db285d93fe2f10dd16023760a8",
+        "metadataStripped": true
+      },
+      "originalUnchanged": true
+    },
+    {
+      "source": "/photos/687A0321.jpeg",
+      "originalBytes": 4057491,
+      "originalWidth": 6960,
+      "originalHeight": 4640,
+      "originalOrientation": 8,
+      "orientedWidth": 4640,
+      "orientedHeight": 6960,
+      "originalSha256": "e6aaf9f7ab13c33a832cafb36aca1ecf3249180906c248fa35e9550b4499dd69",
+      "originalMetadata": {
+        "exif": true,
+        "xmp": true,
+        "iptc": false,
+        "icc": false
+      },
+      "widths": [
+        320,
+        640,
+        960,
+        1280
+      ],
+      "outputs": [
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0321-320.avif",
+          "width": 320,
+          "height": 480,
+          "bytes": 22702,
+          "format": "avif",
+          "quality": 68,
+          "sha256": "c6823a9f2f019b5a516ab8e36a1b958344d908e0ae4ad7b26010b15ae0ff6a08",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0321-320.webp",
+          "width": 320,
+          "height": 480,
+          "bytes": 35526,
+          "format": "webp",
+          "quality": 88,
+          "sha256": "93a9896e954546b42755fb749cdfa3e1d35754a2780baba3b2514c876d46d7a0",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0321-640.avif",
+          "width": 640,
+          "height": 960,
+          "bytes": 71732,
+          "format": "avif",
+          "quality": 68,
+          "sha256": "5be8d0b61b8d1ef1049af3b29f63f8060f3318f6fc0daf4fafa3f454f8cc7f83",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0321-640.webp",
+          "width": 640,
+          "height": 960,
+          "bytes": 118960,
+          "format": "webp",
+          "quality": 88,
+          "sha256": "6086655d0dc23c636385b21708a3918af586e3147163e9465e9deff70c8f35e1",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0321-960.avif",
+          "width": 960,
+          "height": 1440,
+          "bytes": 137121,
+          "format": "avif",
+          "quality": 68,
+          "sha256": "285e0513b12f1c1a949409f47714fc1bfe6699d4078bdaeb487b54162a7cb3dc",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0321-960.webp",
+          "width": 960,
+          "height": 1440,
+          "bytes": 189970,
+          "format": "webp",
+          "quality": 84,
+          "sha256": "ddf9fc43c01ece0455fe3c359ded229f46c7153fab83be99953070db182ec0df",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0321-1280.avif",
+          "width": 1280,
+          "height": 1920,
+          "bytes": 192305,
+          "format": "avif",
+          "quality": 64,
+          "sha256": "dfa363da84402eab7b218919c91b31dde346a46172c9a78410d59e62879e1149",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0321-1280.webp",
+          "width": 1280,
+          "height": 1920,
+          "bytes": 192860,
+          "format": "webp",
+          "quality": 72,
+          "sha256": "1bcc3124fbe5854b9745a362384e211c2d02dad69754b332e04bf915f8c76ad6",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        }
+      ],
+      "blur": {
+        "width": 20,
+        "height": 30,
+        "bytes": 142,
+        "sha256": "226001334e40fcfed145337595a3bee81a30f28790c85219d470172d4e5effdc",
+        "metadataStripped": true
+      },
+      "originalUnchanged": true
+    },
+    {
+      "source": "/photos/687A0090.jpeg",
+      "originalBytes": 380204,
+      "originalWidth": 1620,
+      "originalHeight": 1080,
+      "originalOrientation": 1,
+      "orientedWidth": 1620,
+      "orientedHeight": 1080,
+      "originalSha256": "f366528546ed464ca0ddc47ab1385ba9b7275ef87a7f847ec7a67372c906019d",
+      "originalMetadata": {
+        "exif": true,
+        "xmp": true,
+        "iptc": false,
+        "icc": false
+      },
+      "widths": [
+        320,
+        640,
+        960,
+        1280
+      ],
+      "outputs": [
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0090-320.avif",
+          "width": 320,
+          "height": 213,
+          "bytes": 12987,
+          "format": "avif",
+          "quality": 68,
+          "sha256": "d1d0aab0368d875053a2e67c6dba38f3df87fda6b3d01a1565d20f4ab319905a",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0090-320.webp",
+          "width": 320,
+          "height": 213,
+          "bytes": 18616,
+          "format": "webp",
+          "quality": 88,
+          "sha256": "1bfebeacb2b46a14737c8317d4555e13a7881467c2d58114a85c4572de572a19",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0090-640.avif",
+          "width": 640,
+          "height": 427,
+          "bytes": 32332,
+          "format": "avif",
+          "quality": 68,
+          "sha256": "8f2dfbca8b127462b121c4c9b841511729629ae435a26da5afbcd3b99b32c7ea",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0090-640.webp",
+          "width": 640,
+          "height": 427,
+          "bytes": 51864,
+          "format": "webp",
+          "quality": 88,
+          "sha256": "a94727f5c684dc887f269c34dec52929675ed25edc2dc976d31798b12519337f",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0090-960.avif",
+          "width": 960,
+          "height": 640,
+          "bytes": 51242,
+          "format": "avif",
+          "quality": 68,
+          "sha256": "addfca370a19371d8d2048e272f96f70f6ac1e6c65ba146ed1139af4e95d9fe8",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0090-960.webp",
+          "width": 960,
+          "height": 640,
+          "bytes": 85470,
+          "format": "webp",
+          "quality": 88,
+          "sha256": "f97824abc393a10ee7128d06cc8ce840eeab6d394c8522e4b288b06345701c9a",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0090-1280.avif",
+          "width": 1280,
+          "height": 853,
+          "bytes": 69761,
+          "format": "avif",
+          "quality": 68,
+          "sha256": "1b109d89aa9b4431085eca60e45b3eedafde288800713f5ebd7ac8a7669f0def",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0090-1280.webp",
+          "width": 1280,
+          "height": 853,
+          "bytes": 125786,
+          "format": "webp",
+          "quality": 88,
+          "sha256": "44ae89c0a78ccade6ec5485823026394bca4f5a0e8dcc7f8e50ae401629f4d86",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        }
+      ],
+      "blur": {
+        "width": 20,
+        "height": 13,
+        "bytes": 116,
+        "sha256": "cdf3a1e3e03650409edf308f5190473550392cd2773b1c8b96d9ace804c18223",
+        "metadataStripped": true
+      },
+      "originalUnchanged": true
+    },
+    {
+      "source": "/photos/687A0336.jpeg",
+      "originalBytes": 3194173,
+      "originalWidth": 6960,
+      "originalHeight": 4640,
+      "originalOrientation": 8,
+      "orientedWidth": 4640,
+      "orientedHeight": 6960,
+      "originalSha256": "f1fe8dba5da900050a223a0bc4f51edf13cfde300eb82de0302d18de7ef95306",
+      "originalMetadata": {
+        "exif": true,
+        "xmp": true,
+        "iptc": false,
+        "icc": false
+      },
+      "widths": [
+        320,
+        640,
+        960,
+        1280
+      ],
+      "outputs": [
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0336-320.avif",
+          "width": 320,
+          "height": 480,
+          "bytes": 21330,
+          "format": "avif",
+          "quality": 68,
+          "sha256": "0c6a0899dde4a6b03e0fe9c92aadb6ea4e8cc4a2624570226be69d0b30ad6d90",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0336-320.webp",
+          "width": 320,
+          "height": 480,
+          "bytes": 33192,
+          "format": "webp",
+          "quality": 88,
+          "sha256": "28fac8a11e9a6448f038b1492e26c6e61ab9eccb21cb142f24640a9f99f98cf4",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0336-640.avif",
+          "width": 640,
+          "height": 960,
+          "bytes": 57016,
+          "format": "avif",
+          "quality": 68,
+          "sha256": "411af6ecc54d7bc09038767d60bc8debb08c69c4bb3929214dc73ac80fd7f76e",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0336-640.webp",
+          "width": 640,
+          "height": 960,
+          "bytes": 93942,
+          "format": "webp",
+          "quality": 88,
+          "sha256": "e4949cde3751f97c41505bd975403b33b7742a7aecee7c736b5e30a197a90915",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0336-960.avif",
+          "width": 960,
+          "height": 1440,
+          "bytes": 103737,
+          "format": "avif",
+          "quality": 68,
+          "sha256": "21bc0e09ebe8c3c2e30fd3771ead2eab5ecdf411d9dc4c8ff1d3991985dbeb92",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0336-960.webp",
+          "width": 960,
+          "height": 1440,
+          "bytes": 177664,
+          "format": "webp",
+          "quality": 88,
+          "sha256": "64121e2cf6b1d99efccd030879adf770ce7b5ce7320238dde4106a58a6af1e70",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0336-1280.avif",
+          "width": 1280,
+          "height": 1920,
+          "bytes": 153751,
+          "format": "avif",
+          "quality": 68,
+          "sha256": "62f4587ccbb735fa5cc282ee31c04570c702b94a9bb5a45548c38e534baa4d57",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0336-1280.webp",
+          "width": 1280,
+          "height": 1920,
+          "bytes": 177064,
+          "format": "webp",
+          "quality": 80,
+          "sha256": "ad39fc043877faf848c2daa5c949cf1890a532b602adaa97d061b1b8a3db0c27",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        }
+      ],
+      "blur": {
+        "width": 20,
+        "height": 30,
+        "bytes": 158,
+        "sha256": "395bdf858735ad91ccd827e13aa5ef5ca8120c708e082aee8354b946d381d702",
+        "metadataStripped": true
+      },
+      "originalUnchanged": true
+    },
+    {
+      "source": "/photos/687A0343.jpeg",
+      "originalBytes": 3562388,
+      "originalWidth": 6960,
+      "originalHeight": 4640,
+      "originalOrientation": 8,
+      "orientedWidth": 4640,
+      "orientedHeight": 6960,
+      "originalSha256": "799a7f46f906e07471da4c5545f387fea8d88d0c69ee24d1ffaa3de5351a1bab",
+      "originalMetadata": {
+        "exif": true,
+        "xmp": true,
+        "iptc": false,
+        "icc": false
+      },
+      "widths": [
+        320,
+        640,
+        960,
+        1280
+      ],
+      "outputs": [
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0343-320.avif",
+          "width": 320,
+          "height": 480,
+          "bytes": 31272,
+          "format": "avif",
+          "quality": 68,
+          "sha256": "c1313543d418efe30aee7425c298489eb84ffd75608e6b3bbb31277d10b3f4cd",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0343-320.webp",
+          "width": 320,
+          "height": 480,
+          "bytes": 46450,
+          "format": "webp",
+          "quality": 88,
+          "sha256": "fd4bb64308be9d8078f1aba8e216fed51f8e3dd5de1054937ccff37350ee2ec5",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0343-640.avif",
+          "width": 640,
+          "height": 960,
+          "bytes": 77507,
+          "format": "avif",
+          "quality": 68,
+          "sha256": "864cacc737aac4f46f28ade4c76e008482173053632c5f5a416e05d155c191a5",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0343-640.webp",
+          "width": 640,
+          "height": 960,
+          "bytes": 128080,
+          "format": "webp",
+          "quality": 88,
+          "sha256": "8d887ed9816d7d21404471faac2e1d3ac83fbc9537c35ed9c9290c9b58087b58",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0343-960.avif",
+          "width": 960,
+          "height": 1440,
+          "bytes": 126753,
+          "format": "avif",
+          "quality": 68,
+          "sha256": "9d33634c3372e02437a726ea22e01044ef279a898c16d4b5fb702d734701d3ae",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0343-960.webp",
+          "width": 960,
+          "height": 1440,
+          "bytes": 192410,
+          "format": "webp",
+          "quality": 84,
+          "sha256": "42a1345ca552530cdfd74c5cd1724ab06e62e9b14b99ba2b77ab2364be23275d",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0343-1280.avif",
+          "width": 1280,
+          "height": 1920,
+          "bytes": 173183,
+          "format": "avif",
+          "quality": 68,
+          "sha256": "9ee3207b7804a74d74dc6030dcbe8e4b57781fae8853dd2fd317fa3a34cba219",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0343-1280.webp",
+          "width": 1280,
+          "height": 1920,
+          "bytes": 197878,
+          "format": "webp",
+          "quality": 76,
+          "sha256": "748826828f75c435034c2b4498017850b5319a463405c8af394e21c2fb27c3ba",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        }
+      ],
+      "blur": {
+        "width": 20,
+        "height": 30,
+        "bytes": 170,
+        "sha256": "7b5385d3b73159f98c42dff4cf9fd5fe67a327a25397afe4ec244c247f40db64",
+        "metadataStripped": true
+      },
+      "originalUnchanged": true
+    },
+    {
+      "source": "/photos/687A0412.jpeg",
+      "originalBytes": 2537772,
+      "originalWidth": 6960,
+      "originalHeight": 4640,
+      "originalOrientation": 1,
+      "orientedWidth": 6960,
+      "orientedHeight": 4640,
+      "originalSha256": "fc78116a1357a2829b18194e5d0df5f8dbf1bce18a0707ebd65a8b839a71b8bf",
+      "originalMetadata": {
+        "exif": true,
+        "xmp": true,
+        "iptc": false,
+        "icc": false
+      },
+      "widths": [
+        320,
+        640,
+        960,
+        1280
+      ],
+      "outputs": [
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0412-320.avif",
+          "width": 320,
+          "height": 213,
+          "bytes": 10810,
+          "format": "avif",
+          "quality": 68,
+          "sha256": "8e43a75808728908f3fce34c262d3f04a7b3a6955684751e164515220ec397f3",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0412-320.webp",
+          "width": 320,
+          "height": 213,
+          "bytes": 16164,
+          "format": "webp",
+          "quality": 88,
+          "sha256": "27cd5a37edae19e74890cb67e578c0bdb720c2e5a38f2372de137b60a5af10c5",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0412-640.avif",
+          "width": 640,
+          "height": 427,
+          "bytes": 21817,
+          "format": "avif",
+          "quality": 68,
+          "sha256": "1f3690f20baeb17a6d974ff34cfb9d15c8483f1acf6472665e46c7c08ef43720",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0412-640.webp",
+          "width": 640,
+          "height": 427,
+          "bytes": 39546,
+          "format": "webp",
+          "quality": 88,
+          "sha256": "0f4ef9783db2596c188ebe82d29a53819973de47fb54a4f23ec12e596f264ed3",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0412-960.avif",
+          "width": 960,
+          "height": 640,
+          "bytes": 34267,
+          "format": "avif",
+          "quality": 68,
+          "sha256": "0de00323330c4c6e1af890498222c8091c850f0f7e3ec92d97797fba12e81f70",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0412-960.webp",
+          "width": 960,
+          "height": 640,
+          "bytes": 68326,
+          "format": "webp",
+          "quality": 88,
+          "sha256": "8e0d0225e010aaedb10c4c987cc4d414b3bea5a35b18c0cc384300b4fd41f961",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0412-1280.avif",
+          "width": 1280,
+          "height": 853,
+          "bytes": 45453,
+          "format": "avif",
+          "quality": 68,
+          "sha256": "c5911cbec5d541c8d71cc8e880b05ed42d85485e8561b600dc47e0f027b466c9",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/event-gallery-v1/shah-gallery-687a0412-1280.webp",
+          "width": 1280,
+          "height": 853,
+          "bytes": 94218,
+          "format": "webp",
+          "quality": 88,
+          "sha256": "eada4dd1e0e36a4293c48fb3e39aef90fefaf38655082318bb627ec1956f8190",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "withinBudget": true,
+          "upscaled": false
+        }
+      ],
+      "blur": {
+        "width": 20,
+        "height": 13,
+        "bytes": 126,
+        "sha256": "95cc0254ef59fe7d2bf825bbb29c57daa56758bd262cf617968ae517d7d02706",
+        "metadataStripped": true
+      },
+      "originalUnchanged": true
+    }
+  ],
+  "validation": {
+    "outputs": 80,
+    "originalCount": 10,
+    "originalUnchangedCount": 10,
+    "autoOrientationRequiredCount": 7,
+    "everyOutputUnderBudget": true,
+    "manifestSha256": "cb86326adfe1547064e4d0247999344a4ff26f759b3bc11c7a89a11790beae9b",
+    "independentFileAssertionsAt": "2026-11-11T16:37:02.315Z",
+    "outputFileHashesVerified": 80,
+    "metadataAbsentOutputs": 80,
+    "orientationClearedOutputs": 80,
+    "formatCounts": {
+      "avif": 40,
+      "webp": 40
+    },
+    "maximumBytes": {
+      "avif": 192305,
+      "webp": 197878
+    },
+    "originalHashesRechecked": 10,
+    "exactKnownLookupVerified": true,
+    "controlledSrcsetsVerified": true,
+    "schemaHighestWebpAbsoluteUrlsVerified": 10
+  },
+  "visualReview": {
+    "status": "completed-with-scope-limits",
+    "completedAt": "2026-11-11T16:37:02.317Z",
+    "sourcePhotosReviewed": 10,
+    "variantFilesReviewed": 80,
+    "contactSheetsReviewed": 10,
+    "nativeCropsReviewed": 10,
+    "reviewers": [
+      {
+        "agent": "audit_assets",
+        "photos": "01-05",
+        "variants": 40,
+        "nativeCrops": 5
+      },
+      {
+        "agent": "photo_inventory",
+        "photos": "06-10",
+        "variants": 40,
+        "nativeCrops": 5,
+        "independentSourceReview": "passed"
+      }
+    ],
+    "findings": "No definite content substitution, orientation/crop inconsistency, objectionable compression blocks or banding was found in reviewed views. Mild expected lossy softness is present. Existing source depth-of-field blur is preserved.",
+    "scope": "All80variants were inspected at contact-sheet scale. Ten1280delivery-density native320x320 center crops were compared against identically oriented/resized source pixels. Large originals were reviewed through auto-oriented1280 reference renders when tool raw-output limits prevented direct display. This is not all-pixel equality or full4K fidelity.",
+    "evidenceDirectory": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-preview-20261111\\event-gallery-v1-visual-review",
+    "contactSheets": [
+      {
+        "file": "contact-01-687a0402.png",
+        "source": "/photos/687A0402.jpeg",
+        "variants": 8
+      },
+      {
+        "file": "contact-02-687a0210.png",
+        "source": "/photos/687A0210.jpeg",
+        "variants": 8
+      },
+      {
+        "file": "contact-03-687a0211.png",
+        "source": "/photos/687A0211.jpeg",
+        "variants": 8
+      },
+      {
+        "file": "contact-04-687a0260.png",
+        "source": "/photos/687A0260.jpeg",
+        "variants": 8
+      },
+      {
+        "file": "contact-05-687a0216.png",
+        "source": "/photos/687A0216.jpeg",
+        "variants": 8
+      },
+      {
+        "file": "contact-06-687a0321.png",
+        "source": "/photos/687A0321.jpeg",
+        "variants": 8
+      },
+      {
+        "file": "contact-07-687a0090.png",
+        "source": "/photos/687A0090.jpeg",
+        "variants": 8
+      },
+      {
+        "file": "contact-08-687a0336.png",
+        "source": "/photos/687A0336.jpeg",
+        "variants": 8
+      },
+      {
+        "file": "contact-09-687a0343.png",
+        "source": "/photos/687A0343.jpeg",
+        "variants": 8
+      },
+      {
+        "file": "contact-10-687a0412.png",
+        "source": "/photos/687A0412.jpeg",
+        "variants": 8
+      }
+    ],
+    "nativeCrops": [
+      {
+        "file": "native-01-687a0402.png",
+        "source": "/photos/687A0402.jpeg",
+        "crop": "320x320unscaled at1280 delivery pixel density"
+      },
+      {
+        "file": "native-02-687a0210.png",
+        "source": "/photos/687A0210.jpeg",
+        "crop": "320x320unscaled at1280 delivery pixel density"
+      },
+      {
+        "file": "native-03-687a0211.png",
+        "source": "/photos/687A0211.jpeg",
+        "crop": "320x320unscaled at1280 delivery pixel density"
+      },
+      {
+        "file": "native-04-687a0260.png",
+        "source": "/photos/687A0260.jpeg",
+        "crop": "320x320unscaled at1280 delivery pixel density"
+      },
+      {
+        "file": "native-05-687a0216.png",
+        "source": "/photos/687A0216.jpeg",
+        "crop": "320x320unscaled at1280 delivery pixel density"
+      },
+      {
+        "file": "native-06-687a0321.png",
+        "source": "/photos/687A0321.jpeg",
+        "crop": "320x320unscaled at1280 delivery pixel density"
+      },
+      {
+        "file": "native-07-687a0090.png",
+        "source": "/photos/687A0090.jpeg",
+        "crop": "320x320unscaled at1280 delivery pixel density"
+      },
+      {
+        "file": "native-08-687a0336.png",
+        "source": "/photos/687A0336.jpeg",
+        "crop": "320x320unscaled at1280 delivery pixel density"
+      },
+      {
+        "file": "native-09-687a0343.png",
+        "source": "/photos/687A0343.jpeg",
+        "crop": "320x320unscaled at1280 delivery pixel density"
+      },
+      {
+        "file": "native-10-687a0412.png",
+        "source": "/photos/687A0412.jpeg",
+        "crop": "320x320unscaled at1280 delivery pixel density"
+      }
+    ],
+    "sourceReferences": [
+      {
+        "file": "reference-687a0402.jpg",
+        "source": "/photos/687A0402.jpeg",
+        "scope": "Auto-oriented1280 reference render; original source unchanged"
+      },
+      {
+        "file": "reference-687a0210.jpg",
+        "source": "/photos/687A0210.jpeg",
+        "scope": "Auto-oriented1280 reference render; original source unchanged"
+      },
+      {
+        "file": "reference-687a0211.jpg",
+        "source": "/photos/687A0211.jpeg",
+        "scope": "Auto-oriented1280 reference render; original source unchanged"
+      },
+      {
+        "file": "reference-687a0260.jpg",
+        "source": "/photos/687A0260.jpeg",
+        "scope": "Auto-oriented1280 reference render; original source unchanged"
+      },
+      {
+        "file": "reference-687a0216.jpg",
+        "source": "/photos/687A0216.jpeg",
+        "scope": "Auto-oriented1280 reference render; original source unchanged"
+      },
+      {
+        "file": "reference-687a0321.jpg",
+        "source": "/photos/687A0321.jpeg",
+        "scope": "Auto-oriented1280 reference render; original source unchanged"
+      },
+      {
+        "file": "reference-687a0090.jpg",
+        "source": "/photos/687A0090.jpeg",
+        "scope": "Auto-oriented1280 reference render; original source unchanged"
+      },
+      {
+        "file": "reference-687a0336.jpg",
+        "source": "/photos/687A0336.jpeg",
+        "scope": "Auto-oriented1280 reference render; original source unchanged"
+      },
+      {
+        "file": "reference-687a0343.jpg",
+        "source": "/photos/687A0343.jpeg",
+        "scope": "Auto-oriented1280 reference render; original source unchanged"
+      },
+      {
+        "file": "reference-687a0412.jpg",
+        "source": "/photos/687A0412.jpeg",
+        "scope": "Auto-oriented1280 reference render; original source unchanged"
+      }
+    ]
+  },
+  "integration": {
+    "component": "app/components/EventGalleryPhoto.tsx",
+    "manifest": "app/lib/eventGalleryPhotos.ts",
+    "route": "app/events/gallery/page.tsx",
+    "knownOriginalsOnly": 10,
+    "unknownAdminUploadPath": "Existing next/image fallback; unchanged and outside this80file delivery guarantee.",
+    "layout": "Existing figure/grid, portrait flags, aspect containers, object-cover/hover classes, sizes, alt and caption layout preserved.",
+    "schema": "Known originals map to highest deliveredWebP absoluteURLs; unknown existing sources retain previous URL behavior.",
+    "priority": "Known images use native eager/highfetchpriority when requested; route defaults remain lazy/async.",
+    "shippingHttpVerification": "Pending root rebuild; current evidence validates actual local versioned response files, not a final-build browser selection."
+  },
+  "captionAudit": {
+    "reviewedSourceCount": 10,
+    "confirmedCaptionCorrections": 3,
+    "confirmedCategoryCorrections": 4,
+    "beforeAfter": [
+      {
+        "before": "{ src: \"/photos/687A0211.jpeg\", alt: nl ? \"Seekh kebab van lamsvlees met yoghurtsaus en verse kruiden\" : \"Lamb seekh kebab with yogurt sauce and fresh herbs\", category: cat.dishes }",
+        "after": "{ src: \"/photos/687A0211.jpeg\", alt: nl ? \"Eetzaal van Shah Restaurant met tafels en gestoffeerde stoelen\" : \"Shah Restaurant dining room with tables and upholstered chairs\", category: cat.interior }"
+      },
+      {
+        "before": "{ src: \"/photos/687A0216.jpeg\", alt: nl ? \"Goudgeroosterde paneer tikka met limoen\" : \"Golden-charred paneer tikka with lime\", category: cat.dishes }",
+        "after": "{ src: \"/photos/687A0216.jpeg\", alt: nl ? \"Tafels en hanglampen in de eetzaal van Shah Restaurant\" : \"Tables and pendant lights in the Shah Restaurant dining room\", category: cat.interior }"
+      },
+      {
+        "before": "{ src: \"/photos/687A0321.jpeg\", alt: nl ? \"Verfijnd geplateerd tandoori gerecht\" : \"Refined plated tandoori dish\", category: cat.dishes }",
+        "after": "{ src: \"/photos/687A0321.jpeg\", alt: nl ? \"Eethoek met tafels, stoelen en zicht op de bar\" : \"Dining area with tables, chairs and a view of the bar\", category: cat.interior }"
+      },
+      {
+        "before": "{ src: \"/photos/687A0336.jpeg\", alt: nl ? \"Een stijlvolle en gastvrije sfeer om samen te genieten\" : \"A stylish and welcoming atmosphere to enjoy together\", category: cat.dishes }",
+        "after": "{ src: \"/photos/687A0336.jpeg\", alt: nl ? \"Een stijlvolle en gastvrije sfeer om samen te genieten\" : \"A stylish and welcoming atmosphere to enjoy together\", category: cat.interior }"
+      }
+    ],
+    "confirmedSubjects": {
+      "687A0211.jpeg": "Dining room with tables and upholsteredchairs",
+      "687A0216.jpeg": "Diningroom tables and pendantlights",
+      "687A0321.jpeg": "Diningarea tables/chairs with view ofbar",
+      "687A0336.jpeg": "Dininginterior; atmospherecaption retained, category corrected"
+    },
+    "visualEvidence": [
+      "contact-03-687a0211.png",
+      "reference-687a0211.jpg",
+      "contact-05-687a0216.png",
+      "reference-687a0216.jpg",
+      "contact-06-687a0321.png",
+      "reference-687a0321.jpg",
+      "contact-08-687a0336.png",
+      "reference-687a0336.jpg"
+    ],
+    "unchangedScope": "All other restaurant narrative, menu/prices/contact, originalJPEGbytes/filenames and originalvideo/logo assets retained."
+  }
+}

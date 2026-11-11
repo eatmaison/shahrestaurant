@@ -1,0 +1,829 @@
+{
+  "buildId": "EwyI5J4c8In3dnKh4mht7",
+  "stage": "Current cinematic-design baseline before additional performance work",
+  "notes": [
+    "These are four spot checks, not the final all-route acceptance matrix.",
+    "LCP audit is simulated; insight subpart timings are observed and need not sum to the simulated LCP.",
+    "Single navigation per route/device; local read-only104-product fixture, no business submissions."
+  ],
+  "runs": [
+    {
+      "buildId": "EwyI5J4c8In3dnKh4mht7",
+      "route": "/",
+      "form": "mobile",
+      "fetchTime": "2026-11-11T12:10:00.643Z",
+      "lighthouseVersion": "13.6.0",
+      "settings": {
+        "method": "simulate",
+        "formFactor": "mobile",
+        "screen": {
+          "mobile": true,
+          "width": 412,
+          "height": 823,
+          "deviceScaleFactor": 1.75,
+          "disabled": false
+        },
+        "throttling": {
+          "rttMs": 150,
+          "throughputKbps": 1638.4,
+          "requestLatencyMs": 562.5,
+          "downloadThroughputKbps": 1474.5600000000002,
+          "uploadThroughputKbps": 675,
+          "cpuSlowdownMultiplier": 4
+        }
+      },
+      "scores": {
+        "performance": 88,
+        "accessibility": 97,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "largest-contentful-paint": 3430.577475000001,
+        "first-contentful-paint": 1374.7011,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 202,
+        "speed-index": 2208.3314755566153
+      },
+      "observedLcpBreakdown": [
+        {
+          "subpart": "timeToFirstByte",
+          "label": "Time to first byte",
+          "duration": 19.677
+        },
+        {
+          "subpart": "resourceLoadDelay",
+          "label": "Resource load delay",
+          "duration": 41.272
+        },
+        {
+          "subpart": "resourceLoadDuration",
+          "label": "Resource load duration",
+          "duration": 40.897
+        },
+        {
+          "subpart": "elementRenderDelay",
+          "label": "Element render delay",
+          "duration": 162.106
+        }
+      ],
+      "lcpElement": {
+        "selector": "section.home-module__txgM7a__hero > div.home-module__txgM7a__heroMedia > picture > img.home-module__txgM7a__heroImage",
+        "snippet": "<img src=\"http://127.0.0.1:3398/brand/shah-hero-poster-mobile-delivery-v1.avif\" alt=\"De entree en het terras van Shah Restaurant in Amsterdam-Noord\" width=\"1600\" height=\"900\" loading=\"eager\" decoding=\"async\" fetchpriority=\"high\" class=\"home-module__txgM7a__heroImage\">"
+      },
+      "fonts": [
+        {
+          "url": "http://127.0.0.1:3398/_next/static/media/01e4147cff8141ee-s.p.3huc2loe0ie8a.woff2",
+          "transferSize": 38351,
+          "resourceSize": 37776,
+          "start": 53.48200011253357,
+          "end": 65.44200015068054,
+          "priority": "High",
+          "resourceType": "Font"
+        },
+        {
+          "url": "http://127.0.0.1:3398/_next/static/media/81cef6a21128489e-s.p.2csanl8cs02r-.woff2",
+          "transferSize": 27163,
+          "resourceSize": 26588,
+          "start": 53.64300012588501,
+          "end": 65.58900022506714,
+          "priority": "High",
+          "resourceType": "Font"
+        }
+      ],
+      "renderBlocking": {
+        "title": "Render-blocking requests",
+        "score": 0,
+        "display": "Est savings of 380 ms",
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "url",
+              "valueType": "url",
+              "label": "URL"
+            },
+            {
+              "key": "totalBytes",
+              "valueType": "bytes",
+              "label": "Transfer Size"
+            },
+            {
+              "key": "wastedMs",
+              "valueType": "timespanMs",
+              "label": "Duration"
+            }
+          ],
+          "items": [
+            {
+              "url": "http://127.0.0.1:3398/_next/static/chunks/1p2vx_aqpkia-.css",
+              "totalBytes": 14707,
+              "wastedMs": 612
+            },
+            {
+              "url": "http://127.0.0.1:3398/_next/static/chunks/3xfqn17rerb5e.css",
+              "totalBytes": 1902,
+              "wastedMs": 312
+            },
+            {
+              "url": "http://127.0.0.1:3398/_next/static/chunks/379p5i7iu93c4.css",
+              "totalBytes": 24828,
+              "wastedMs": 612
+            },
+            {
+              "url": "http://127.0.0.1:3398/_next/static/chunks/41w8vsc5pk8eg.css",
+              "totalBytes": 1582,
+              "wastedMs": 312
+            },
+            {
+              "url": "http://127.0.0.1:3398/_next/static/chunks/1nopnqt7qnlse.css",
+              "totalBytes": 1640,
+              "wastedMs": 162
+            }
+          ]
+        }
+      },
+      "a11y": [
+        {
+          "id": "color-contrast",
+          "count": 10,
+          "examples": [
+            {
+              "selector": "div.home-module__txgM7a__home > section#intro > div.home-module__txgM7a__openingHeading > p.home-module__txgM7a__eyebrow",
+              "text": "INDIASE SMAKEN. AMSTERDAMSE AVONDEN.",
+              "explanation": "Fix any of the following:\n  Element has insufficient color contrast of 1.84 (foreground color: #ccbba2, background color: #fffdfa, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "selector": "div.home-module__txgM7a__openingHeading > h1#home-title > span.home-module__txgM7a__titleMask > span",
+              "text": "Indiaas restaurant",
+              "explanation": "Fix any of the following:\n  Element has insufficient color contrast of 1.18 (foreground color: #e7ebe9, background color: #fffdfa, font size: 32.1pt (42.848px), font weight: normal). Expected contrast ratio of 3:1"
+            },
+            {
+              "selector": "div.home-module__txgM7a__openingHeading > h1#home-title > span.home-module__txgM7a__titleMask > span",
+              "text": "in Amsterdam-Noord",
+              "explanation": "Fix any of the following:\n  Element has insufficient color contrast of 1.18 (foreground color: #e7ebe9, background color: #fffdfa, font size: 32.1pt (42.848px), font weight: normal). Expected contrast ratio of 3:1"
+            }
+          ]
+        }
+      ],
+      "fullReport": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cinematic-qa-20261111\\production\\cinematic-baseline-Ewy-home-mobile.lighthouse.json"
+    },
+    {
+      "buildId": "EwyI5J4c8In3dnKh4mht7",
+      "route": "/",
+      "form": "desktop",
+      "fetchTime": "2026-11-11T12:10:11.701Z",
+      "lighthouseVersion": "13.6.0",
+      "settings": {
+        "method": "simulate",
+        "formFactor": "desktop",
+        "screen": {
+          "mobile": false,
+          "width": 1350,
+          "height": 940,
+          "deviceScaleFactor": 1,
+          "disabled": false
+        },
+        "throttling": {
+          "rttMs": 40,
+          "throughputKbps": 10240,
+          "requestLatencyMs": 0,
+          "downloadThroughputKbps": 0,
+          "uploadThroughputKbps": 0,
+          "cpuSlowdownMultiplier": 1
+        }
+      },
+      "scores": {
+        "performance": 99,
+        "accessibility": 97,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "largest-contentful-paint": 860.72545,
+        "first-contentful-paint": 387.1503,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 5,
+        "speed-index": 661.99371733328
+      },
+      "observedLcpBreakdown": [
+        {
+          "subpart": "timeToFirstByte",
+          "label": "Time to first byte",
+          "duration": 18.903
+        },
+        {
+          "subpart": "resourceLoadDelay",
+          "label": "Resource load delay",
+          "duration": 44.435
+        },
+        {
+          "subpart": "resourceLoadDuration",
+          "label": "Resource load duration",
+          "duration": 27.401
+        },
+        {
+          "subpart": "elementRenderDelay",
+          "label": "Element render delay",
+          "duration": 183.403
+        }
+      ],
+      "lcpElement": {
+        "selector": "section.home-module__txgM7a__hero > div.home-module__txgM7a__heroMedia > picture > img.home-module__txgM7a__heroImage",
+        "snippet": "<img src=\"http://127.0.0.1:3398/brand/shah-hero-poster-desktop-delivery-v1.avif\" alt=\"De entree en het terras van Shah Restaurant in Amsterdam-Noord\" width=\"1600\" height=\"900\" loading=\"eager\" decoding=\"async\" fetchpriority=\"high\" class=\"home-module__txgM7a__heroImage\">"
+      },
+      "fonts": [
+        {
+          "url": "http://127.0.0.1:3398/_next/static/media/01e4147cff8141ee-s.p.3huc2loe0ie8a.woff2",
+          "transferSize": 38351,
+          "resourceSize": 37776,
+          "start": 58.80499982833862,
+          "end": 76.68600010871887,
+          "priority": "High",
+          "resourceType": "Font"
+        },
+        {
+          "url": "http://127.0.0.1:3398/_next/static/media/81cef6a21128489e-s.p.2csanl8cs02r-.woff2",
+          "transferSize": 27163,
+          "resourceSize": 26588,
+          "start": 59.29099988937378,
+          "end": 76.89100003242493,
+          "priority": "High",
+          "resourceType": "Font"
+        }
+      ],
+      "renderBlocking": {
+        "title": "Render-blocking requests",
+        "score": 0,
+        "display": "Est savings of 100 ms",
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "url",
+              "valueType": "url",
+              "label": "URL"
+            },
+            {
+              "key": "totalBytes",
+              "valueType": "bytes",
+              "label": "Transfer Size"
+            },
+            {
+              "key": "wastedMs",
+              "valueType": "timespanMs",
+              "label": "Duration"
+            }
+          ],
+          "items": [
+            {
+              "url": "http://127.0.0.1:3398/_next/static/chunks/1p2vx_aqpkia-.css",
+              "totalBytes": 14707,
+              "wastedMs": 134
+            },
+            {
+              "url": "http://127.0.0.1:3398/_next/static/chunks/379p5i7iu93c4.css",
+              "totalBytes": 24828,
+              "wastedMs": 174
+            },
+            {
+              "url": "http://127.0.0.1:3398/_next/static/chunks/3xfqn17rerb5e.css",
+              "totalBytes": 1902,
+              "wastedMs": 94
+            },
+            {
+              "url": "http://127.0.0.1:3398/_next/static/chunks/41w8vsc5pk8eg.css",
+              "totalBytes": 1582,
+              "wastedMs": 94
+            },
+            {
+              "url": "http://127.0.0.1:3398/_next/static/chunks/1nopnqt7qnlse.css",
+              "totalBytes": 1640,
+              "wastedMs": 54
+            }
+          ]
+        }
+      },
+      "a11y": [
+        {
+          "id": "color-contrast",
+          "count": 11,
+          "examples": [
+            {
+              "selector": "div.home-module__txgM7a__home > section#intro > div.home-module__txgM7a__openingHeading > p.home-module__txgM7a__eyebrow",
+              "text": "INDIASE SMAKEN. AMSTERDAMSE AVONDEN.",
+              "explanation": "Fix any of the following:\n  Element has insufficient color contrast of 1.84 (foreground color: #ccbba2, background color: #fffdfa, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "selector": "div.home-module__txgM7a__openingHeading > h1#home-title > span.home-module__txgM7a__titleMask > span",
+              "text": "Indiaas restaurant",
+              "explanation": "Fix any of the following:\n  Element has insufficient color contrast of 1.18 (foreground color: #e7ebe9, background color: #fffdfa, font size: 79.0pt (105.3px), font weight: normal). Expected contrast ratio of 3:1"
+            },
+            {
+              "selector": "div.home-module__txgM7a__openingHeading > h1#home-title > span.home-module__txgM7a__titleMask > span",
+              "text": "in Amsterdam-Noord",
+              "explanation": "Fix any of the following:\n  Element has insufficient color contrast of 1.18 (foreground color: #e7ebe9, background color: #fffdfa, font size: 79.0pt (105.3px), font weight: normal). Expected contrast ratio of 3:1"
+            }
+          ]
+        }
+      ],
+      "fullReport": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cinematic-qa-20261111\\production\\cinematic-baseline-Ewy-home-desktop.lighthouse.json"
+    },
+    {
+      "buildId": "EwyI5J4c8In3dnKh4mht7",
+      "route": "/menukaart",
+      "form": "mobile",
+      "fetchTime": "2026-11-11T12:10:23.823Z",
+      "lighthouseVersion": "13.6.0",
+      "settings": {
+        "method": "simulate",
+        "formFactor": "mobile",
+        "screen": {
+          "mobile": true,
+          "width": 412,
+          "height": 823,
+          "deviceScaleFactor": 1.75,
+          "disabled": false
+        },
+        "throttling": {
+          "rttMs": 150,
+          "throughputKbps": 1638.4,
+          "requestLatencyMs": 562.5,
+          "downloadThroughputKbps": 1474.5600000000002,
+          "uploadThroughputKbps": 675,
+          "cpuSlowdownMultiplier": 4
+        }
+      },
+      "scores": {
+        "performance": 82,
+        "accessibility": 99,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "largest-contentful-paint": 4716.753500000001,
+        "first-contentful-paint": 1520.274,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 97,
+        "speed-index": 2034.566965489123
+      },
+      "observedLcpBreakdown": [
+        {
+          "subpart": "timeToFirstByte",
+          "label": "Time to first byte",
+          "duration": 16.889000122070314
+        },
+        {
+          "subpart": "resourceLoadDelay",
+          "label": "Resource load delay",
+          "duration": 100.73699987792969
+        },
+        {
+          "subpart": "resourceLoadDuration",
+          "label": "Resource load duration",
+          "duration": 39.498
+        },
+        {
+          "subpart": "elementRenderDelay",
+          "label": "Element render delay",
+          "duration": 522.937
+        }
+      ],
+      "lcpElement": {
+        "selector": "body.flex > main#main-content > div.order-module__m8zB_W__page > div.order-hero-strip",
+        "snippet": "<div class=\"order-hero-strip relative overflow-hidden px-4 py-6 sm:px-6 lg:mx-auto lg:…\" data-cinema-parallax=\"true\">"
+      },
+      "fonts": [
+        {
+          "url": "http://127.0.0.1:3398/_next/static/media/01e4147cff8141ee-s.p.3huc2loe0ie8a.woff2",
+          "transferSize": 38351,
+          "resourceSize": 37776,
+          "start": 65.24899983406067,
+          "end": 71.79800009727478,
+          "priority": "High",
+          "resourceType": "Font"
+        },
+        {
+          "url": "http://127.0.0.1:3398/_next/static/media/81cef6a21128489e-s.p.2csanl8cs02r-.woff2",
+          "transferSize": 27163,
+          "resourceSize": 26588,
+          "start": 65.44600009918213,
+          "end": 71.93800020217896,
+          "priority": "High",
+          "resourceType": "Font"
+        }
+      ],
+      "renderBlocking": {
+        "title": "Render-blocking requests",
+        "score": 0,
+        "display": "Est savings of 620 ms",
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "url",
+              "valueType": "url",
+              "label": "URL"
+            },
+            {
+              "key": "totalBytes",
+              "valueType": "bytes",
+              "label": "Transfer Size"
+            },
+            {
+              "key": "wastedMs",
+              "valueType": "timespanMs",
+              "label": "Duration"
+            }
+          ],
+          "items": [
+            {
+              "url": "http://127.0.0.1:3398/_next/static/chunks/379p5i7iu93c4.css",
+              "totalBytes": 24828,
+              "wastedMs": 760
+            },
+            {
+              "url": "http://127.0.0.1:3398/_next/static/chunks/175dknn6sltqd.css",
+              "totalBytes": 4353,
+              "wastedMs": 310
+            },
+            {
+              "url": "http://127.0.0.1:3398/_next/static/chunks/3-1dyezds4q6h.css",
+              "totalBytes": 2846,
+              "wastedMs": 310
+            },
+            {
+              "url": "http://127.0.0.1:3398/_next/static/chunks/3xfqn17rerb5e.css",
+              "totalBytes": 1902,
+              "wastedMs": 310
+            },
+            {
+              "url": "http://127.0.0.1:3398/_next/static/chunks/41w8vsc5pk8eg.css",
+              "totalBytes": 1582,
+              "wastedMs": 310
+            },
+            {
+              "url": "http://127.0.0.1:3398/_next/static/chunks/1nopnqt7qnlse.css",
+              "totalBytes": 1640,
+              "wastedMs": 160
+            }
+          ]
+        }
+      },
+      "a11y": [
+        {
+          "id": "heading-order",
+          "count": 1,
+          "examples": [
+            {
+              "selector": "div.flex > div.flex > div.flex > h3.font-display",
+              "text": "Chicken Soup",
+              "explanation": "Fix any of the following:\n  Heading order invalid"
+            }
+          ]
+        }
+      ],
+      "fullReport": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cinematic-qa-20261111\\production\\cinematic-baseline-Ewy-menukaart-mobile.lighthouse.json"
+    },
+    {
+      "buildId": "EwyI5J4c8In3dnKh4mht7",
+      "route": "/reserveren",
+      "form": "mobile",
+      "fetchTime": "2026-11-11T12:10:33.325Z",
+      "lighthouseVersion": "13.6.0",
+      "settings": {
+        "method": "simulate",
+        "formFactor": "mobile",
+        "screen": {
+          "mobile": true,
+          "width": 412,
+          "height": 823,
+          "deviceScaleFactor": 1.75,
+          "disabled": false
+        },
+        "throttling": {
+          "rttMs": 150,
+          "throughputKbps": 1638.4,
+          "requestLatencyMs": 562.5,
+          "downloadThroughputKbps": 1474.5600000000002,
+          "uploadThroughputKbps": 675,
+          "cpuSlowdownMultiplier": 4
+        }
+      },
+      "scores": {
+        "performance": 83,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "largest-contentful-paint": 4708.310775,
+        "first-contentful-paint": 1521.9159,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 38,
+        "speed-index": 1691.6216925296494
+      },
+      "observedLcpBreakdown": [
+        {
+          "subpart": "timeToFirstByte",
+          "label": "Time to first byte",
+          "duration": 19.527
+        },
+        {
+          "subpart": "resourceLoadDelay",
+          "label": "Resource load delay",
+          "duration": 91.002
+        },
+        {
+          "subpart": "resourceLoadDuration",
+          "label": "Resource load duration",
+          "duration": 37.413000122070315
+        },
+        {
+          "subpart": "elementRenderDelay",
+          "label": "Element render delay",
+          "duration": 240.17499987792968
+        }
+      ],
+      "lcpElement": {
+        "selector": "body.flex > main#main-content > div.reservations-module__gdiD1G__page > section.reservations-module__gdiD1G__hero",
+        "snippet": "<section class=\"reservations-module__gdiD1G__hero reservation-hero-strip relative overflow…\" data-cinema-parallax=\"true\">"
+      },
+      "fonts": [
+        {
+          "url": "http://127.0.0.1:3398/_next/static/media/01e4147cff8141ee-s.p.3huc2loe0ie8a.woff2",
+          "transferSize": 38351,
+          "resourceSize": 37776,
+          "start": 48.740999937057495,
+          "end": 58.11899971961975,
+          "priority": "High",
+          "resourceType": "Font"
+        },
+        {
+          "url": "http://127.0.0.1:3398/_next/static/media/81cef6a21128489e-s.p.2csanl8cs02r-.woff2",
+          "transferSize": 27163,
+          "resourceSize": 26588,
+          "start": 48.97599983215332,
+          "end": 57.91099977493286,
+          "priority": "High",
+          "resourceType": "Font"
+        }
+      ],
+      "renderBlocking": {
+        "title": "Render-blocking requests",
+        "score": 0,
+        "display": "Est savings of 570 ms",
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "url",
+              "valueType": "url",
+              "label": "URL"
+            },
+            {
+              "key": "totalBytes",
+              "valueType": "bytes",
+              "label": "Transfer Size"
+            },
+            {
+              "key": "wastedMs",
+              "valueType": "timespanMs",
+              "label": "Duration"
+            }
+          ],
+          "items": [
+            {
+              "url": "http://127.0.0.1:3398/_next/static/chunks/1p2vx_aqpkia-.css",
+              "totalBytes": 14707,
+              "wastedMs": 611
+            },
+            {
+              "url": "http://127.0.0.1:3398/_next/static/chunks/175dknn6sltqd.css",
+              "totalBytes": 4353,
+              "wastedMs": 311
+            },
+            {
+              "url": "http://127.0.0.1:3398/_next/static/chunks/379p5i7iu93c4.css",
+              "totalBytes": 24828,
+              "wastedMs": 761
+            },
+            {
+              "url": "http://127.0.0.1:3398/_next/static/chunks/3xfqn17rerb5e.css",
+              "totalBytes": 1902,
+              "wastedMs": 311
+            },
+            {
+              "url": "http://127.0.0.1:3398/_next/static/chunks/41w8vsc5pk8eg.css",
+              "totalBytes": 1582,
+              "wastedMs": 311
+            },
+            {
+              "url": "http://127.0.0.1:3398/_next/static/chunks/1nopnqt7qnlse.css",
+              "totalBytes": 1640,
+              "wastedMs": 161
+            }
+          ]
+        }
+      },
+      "a11y": [],
+      "fullReport": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cinematic-qa-20261111\\production\\cinematic-baseline-Ewy-reserveren-mobile.lighthouse.json"
+    }
+  ],
+  "homeMobileLongTaskAttribution": {
+    "simulatedLongTasks": [
+      {
+        "url": "http://127.0.0.1:3398/_next/static/chunks/43rfq7guowqma.js",
+        "duration": 269,
+        "startTime": 4938.453849999999
+      },
+      {
+        "url": "http://127.0.0.1:3398/",
+        "duration": 233.0000000000001,
+        "startTime": 891.35055
+      },
+      {
+        "url": "http://127.0.0.1:3398/_next/static/chunks/43rfq7guowqma.js",
+        "duration": 187,
+        "startTime": 4586.453849999999
+      },
+      {
+        "url": "Unattributable",
+        "duration": 168,
+        "startTime": 1124.35055
+      },
+      {
+        "url": "Unattributable",
+        "duration": 87,
+        "startTime": 762.35055
+      },
+      {
+        "url": "http://127.0.0.1:3398/_next/static/chunks/2-1p8dxzp_wvx.js",
+        "duration": 77,
+        "startTime": 4773.453849999999
+      },
+      {
+        "url": "http://127.0.0.1:3398/_next/static/chunks/43rfq7guowqma.js",
+        "duration": 68,
+        "startTime": 5260.453849999999
+      },
+      {
+        "url": "http://127.0.0.1:3398/_next/static/chunks/43rfq7guowqma.js",
+        "duration": 53,
+        "startTime": 5207.453849999999
+      }
+    ],
+    "simulatedBreakdown": {
+      "type": "debugdata",
+      "urls": [
+        "http://127.0.0.1:3398/_next/static/chunks/43rfq7guowqma.js",
+        "http://127.0.0.1:3398/",
+        "Unattributable",
+        "http://127.0.0.1:3398/_next/static/chunks/2-1p8dxzp_wvx.js"
+      ],
+      "tasks": [
+        {
+          "urlIndex": 0,
+          "startTime": 4938.5,
+          "duration": 269,
+          "other": 269
+        },
+        {
+          "urlIndex": 1,
+          "startTime": 891.4,
+          "duration": 233,
+          "other": 233,
+          "paintCompositeRender": 0,
+          "scriptEvaluation": 0,
+          "styleLayout": 0
+        },
+        {
+          "urlIndex": 0,
+          "startTime": 4586.5,
+          "duration": 187,
+          "other": 187,
+          "scriptEvaluation": 0
+        },
+        {
+          "urlIndex": 2,
+          "startTime": 1124.4,
+          "duration": 168,
+          "other": 168
+        },
+        {
+          "urlIndex": 2,
+          "startTime": 762.4,
+          "duration": 87,
+          "other": 87
+        },
+        {
+          "urlIndex": 3,
+          "startTime": 4773.5,
+          "duration": 77,
+          "other": 77,
+          "scriptEvaluation": 0
+        },
+        {
+          "urlIndex": 0,
+          "startTime": 5260.5,
+          "duration": 68,
+          "other": 68,
+          "paintCompositeRender": 0,
+          "scriptEvaluation": 0,
+          "styleLayout": 0
+        },
+        {
+          "urlIndex": 0,
+          "startTime": 5207.5,
+          "duration": 53,
+          "other": 53,
+          "paintCompositeRender": 0,
+          "scriptEvaluation": 0
+        }
+      ]
+    },
+    "bootup": [
+      {
+        "url": "http://127.0.0.1:3398/_next/static/chunks/43rfq7guowqma.js",
+        "total": 1417.8479999999865,
+        "scripting": 671.2039999999863,
+        "scriptParseCompile": 27.568
+      },
+      {
+        "url": "http://127.0.0.1:3398/",
+        "total": 1104.016,
+        "scripting": 13.043999999999986,
+        "scriptParseCompile": 5.155999999999999
+      },
+      {
+        "url": "Unattributable",
+        "total": 604.3599999999989,
+        "scripting": 11.171999999999997,
+        "scriptParseCompile": 0
+      },
+      {
+        "url": "http://127.0.0.1:3398/_next/static/chunks/2-1p8dxzp_wvx.js",
+        "total": 222.52000000000004,
+        "scripting": 94.22800000000004,
+        "scriptParseCompile": 7.256
+      },
+      {
+        "url": "http://127.0.0.1:3398/_next/static/chunks/2-r0a5gokqs12.js",
+        "total": 60.007999999999996,
+        "scripting": 38.10799999999999,
+        "scriptParseCompile": 15.468
+      }
+    ],
+    "mainThread": [
+      {
+        "group": "styleLayout",
+        "groupLabel": "Style & Layout",
+        "duration": 1220.3759999999995
+      },
+      {
+        "group": "other",
+        "groupLabel": "Other",
+        "duration": 1133.1999999999907
+      },
+      {
+        "group": "scriptEvaluation",
+        "groupLabel": "Script Evaluation",
+        "duration": 877.0839999999864
+      },
+      {
+        "group": "paintCompositeRender",
+        "groupLabel": "Rendering",
+        "duration": 146.65600000000074
+      },
+      {
+        "group": "scriptParseCompile",
+        "groupLabel": "Script Parsing & Compilation",
+        "duration": 107.01200000000007
+      },
+      {
+        "group": "parseHTML",
+        "groupLabel": "Parse HTML & CSS",
+        "duration": 45.644
+      },
+      {
+        "group": "garbageCollection",
+        "groupLabel": "Garbage Collection",
+        "duration": 6.019999999999998
+      }
+    ],
+    "chunkIdentification": [
+      {
+        "name": "43rfq7guowqma.js",
+        "bytes": 227315,
+        "contents": "React/Next runtime; no HeroFilm, data-scene or IntersectionObserver markers"
+      },
+      {
+        "name": "2-1p8dxzp_wvx.js",
+        "bytes": 55176,
+        "contents": "Shared home chunk contains film and scene hooks"
+      }
+    ],
+    "limit": "LHR URL attribution is not a function stack. Simulated long-task diagnostic drops child task timings; no original trace was saved. Cannot distinguish specific observer, React or video warmup callbacks from this evidence.",
+    "source": "Installed Lighthouse13.6.0 core/audits/long-tasks.js getTimingBreakdown comment and simulation branch"
+  }
+}

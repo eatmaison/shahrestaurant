@@ -1,0 +1,1822 @@
+{
+  "schemaVersion": 1,
+  "classifiedAtUTC": "2026-11-11T18:13:07.646Z",
+  "classification": "Read-only diagnostic of frozenNUcontrol; not a finalsource performance result and not replacementINP",
+  "buildId": "NUcp9_HWho-gmCR-jRh8K",
+  "sourceFingerprint": "80e67c4e6e04fd03e2a37190cdbe897579b93ceafd9d5ee996b3a02800cbe963",
+  "origin": "http://127.0.0.1:3508",
+  "catalogSourceHash": "66eda306b74cf90dc15ad018cc3064212349151810d8df2e098a06d6e8588892",
+  "rawDirectory": "%TEMP%/shah-cinematic-qa-20261111/production/inp-diagnostic-NUcp9_HWho-gmCR-jRh8K",
+  "cases": [
+    {
+      "mode": "mobile",
+      "buildId": "NUcp9_HWho-gmCR-jRh8K",
+      "browser": "Chrome/157.0.8103.39",
+      "capturedAtUTC": "2026-11-11T18:04:20.069Z",
+      "targetId": "9E252AA4D5304C9EF213F3B9A557CBFE",
+      "exactLocation": {
+        "href": "http://127.0.0.1:3508/en/menu",
+        "buildSeen": true
+      },
+      "settings": {
+        "cpuRate": 4,
+        "latencyMs": 150,
+        "downloadBps": 200000,
+        "traceEnabled": true,
+        "continuousRafInstrumentation": false,
+        "officialOnINPInjected": false,
+        "sequence": "Same600ms intervals and1000ms target scroll setup as original harness; realcoldfirst cookie interaction preserved. Diagnostic EventTiming, not replacement INP."
+      },
+      "states": [
+        {
+          "label": "ready",
+          "at": 4895.700000047684,
+          "visibility": "visible",
+          "hasFocus": true,
+          "fontStatus": "loaded",
+          "readyState": "complete",
+          "scrollY": 0,
+          "activeElement": "body",
+          "imagesPending": 3,
+          "animations": [
+            {
+              "playState": "running",
+              "currentTime": 3433.3000000000006,
+              "target": "span"
+            }
+          ]
+        },
+        {
+          "label": "before-cookie",
+          "at": 5951.5,
+          "visibility": "visible",
+          "hasFocus": true,
+          "fontStatus": "loaded",
+          "readyState": "complete",
+          "scrollY": 0,
+          "activeElement": "body",
+          "imagesPending": 3,
+          "animations": [
+            {
+              "playState": "running",
+              "currentTime": 4500.066000000001,
+              "target": "span"
+            }
+          ]
+        },
+        {
+          "label": "before-search-focus",
+          "at": 7640.600000143051,
+          "visibility": "visible",
+          "hasFocus": true,
+          "fontStatus": "loaded",
+          "readyState": "complete",
+          "scrollY": 0,
+          "activeElement": "body",
+          "imagesPending": 3,
+          "animations": [
+            {
+              "playState": "running",
+              "currentTime": 6183.400000000001,
+              "target": "span"
+            }
+          ]
+        },
+        {
+          "label": "end",
+          "at": 18196.5,
+          "visibility": "visible",
+          "hasFocus": true,
+          "fontStatus": "loaded",
+          "readyState": "complete",
+          "scrollY": 0,
+          "activeElement": "input#order-search[name=q]",
+          "imagesPending": 10,
+          "animations": [
+            {
+              "playState": "running",
+              "currentTime": 16733.466,
+              "target": "span"
+            }
+          ]
+        }
+      ],
+      "visibilityChanges": [],
+      "businessApiWrites": [],
+      "slowestGroups": [
+        {
+          "interactionId": 3486,
+          "duration": 1744,
+          "events": [
+            {
+              "name": "pointerdown",
+              "startTime": 5954.300000190735,
+              "duration": 16,
+              "processingStart": 5962.200000047684,
+              "processingEnd": 5962.800000190735,
+              "interactionId": 3486,
+              "target": null
+            },
+            {
+              "name": "pointerup",
+              "startTime": 5958.200000047684,
+              "duration": 1744,
+              "processingStart": 5969.900000095367,
+              "processingEnd": 5970.400000095367,
+              "interactionId": 3486,
+              "target": null
+            },
+            {
+              "name": "click",
+              "startTime": 5958.200000047684,
+              "duration": 1744,
+              "processingStart": 5977.700000047684,
+              "processingEnd": 6009,
+              "interactionId": 3486,
+              "target": null
+            }
+          ]
+        },
+        {
+          "interactionId": 3507,
+          "duration": 240,
+          "events": [
+            {
+              "name": "keydown",
+              "startTime": 11373.600000143051,
+              "duration": 240,
+              "processingStart": 11374.700000047684,
+              "processingEnd": 11375.400000095367,
+              "interactionId": 3507,
+              "target": "input#order-search[name=q]"
+            },
+            {
+              "name": "keypress",
+              "startTime": 11373.600000143051,
+              "duration": 240,
+              "processingStart": 11375.400000095367,
+              "processingEnd": 11579.400000095367,
+              "interactionId": 3507,
+              "target": "input#order-search[name=q]"
+            },
+            {
+              "name": "keyup",
+              "startTime": 11580.200000047684,
+              "duration": 40,
+              "processingStart": 11580.900000095367,
+              "processingEnd": 11581.600000143051,
+              "interactionId": 3507,
+              "target": "input#order-search[name=q]"
+            }
+          ]
+        },
+        {
+          "interactionId": 3514,
+          "duration": 144,
+          "events": [
+            {
+              "name": "keydown",
+              "startTime": 15476.200000047684,
+              "duration": 144,
+              "processingStart": 15477.5,
+              "processingEnd": 15478.700000047684,
+              "interactionId": 3514,
+              "target": "input#order-search[name=q]"
+            },
+            {
+              "name": "keypress",
+              "startTime": 15476.200000047684,
+              "duration": 144,
+              "processingStart": 15478.700000047684,
+              "processingEnd": 15587.900000095367,
+              "interactionId": 3514,
+              "target": "input#order-search[name=q]"
+            },
+            {
+              "name": "keyup",
+              "startTime": 15589.100000143051,
+              "duration": 24,
+              "processingStart": 15590.100000143051,
+              "processingEnd": 15591.400000095367,
+              "interactionId": 3514,
+              "target": "input#order-search[name=q]"
+            }
+          ]
+        }
+      ],
+      "exactEventTiming": [
+        {
+          "cancelable": true,
+          "commitFinishTime": 6015.562,
+          "duration": 1742.139,
+          "enqueuedToMainThreadTime": 5968.857,
+          "frame": "9E252AA4D5304C9EF213F3B9A557CBFE",
+          "interactionId": 3486,
+          "interactionOffset": 2,
+          "nodeId": 201,
+          "processingEnd": 5970.449,
+          "processingStart": 5969.833,
+          "timeStamp": 5958.182,
+          "type": "pointerup"
+        },
+        {
+          "cancelable": true,
+          "commitFinishTime": 6015.562,
+          "duration": 1742.139,
+          "enqueuedToMainThreadTime": 5971.738,
+          "frame": "9E252AA4D5304C9EF213F3B9A557CBFE",
+          "interactionId": 3486,
+          "interactionOffset": 2,
+          "nodeId": 201,
+          "processingEnd": 6009.014,
+          "processingStart": 5977.748,
+          "timeStamp": 5958.182,
+          "type": "click"
+        },
+        {
+          "cancelable": true,
+          "commitFinishTime": 7690.02,
+          "duration": 45.784,
+          "enqueuedToMainThreadTime": 7669.249,
+          "frame": "9E252AA4D5304C9EF213F3B9A557CBFE",
+          "interactionId": 3493,
+          "interactionOffset": 3,
+          "nodeId": 3,
+          "processingEnd": 7671.875,
+          "processingStart": 7671.456,
+          "timeStamp": 7654.537,
+          "type": "pointerup"
+        }
+      ],
+      "nativeSubmissionPresentationPairs": [
+        {
+          "id": "0x47",
+          "startMs": 6015.991000175476,
+          "endMs": 7691.017000198364,
+          "presentationWaitMs": 1675.0260000228882
+        },
+        {
+          "id": "0x3",
+          "startMs": 6015.991000175476,
+          "endMs": 7691.017000198364,
+          "presentationWaitMs": 1675.0260000228882
+        },
+        {
+          "id": "0x3b",
+          "startMs": 7690.839000225067,
+          "endMs": 7700.364000320435,
+          "presentationWaitMs": 9.525000095367432
+        },
+        {
+          "id": "0x3a",
+          "startMs": 7690.839000225067,
+          "endMs": 7700.364000320435,
+          "presentationWaitMs": 9.525000095367432
+        },
+        {
+          "id": "0x61",
+          "startMs": 7690.839000225067,
+          "endMs": 7700.364000320435,
+          "presentationWaitMs": 9.525000095367432
+        },
+        {
+          "id": "0x60",
+          "startMs": 7690.839000225067,
+          "endMs": 7700.364000320435,
+          "presentationWaitMs": 9.525000095367432
+        }
+      ],
+      "frameWindow": {
+        "interval": [
+          5950,
+          7720
+        ],
+        "summary": [
+          {
+            "name": "UpdateLayoutTree",
+            "pid": 40680,
+            "tid": 35456,
+            "count": 116,
+            "totalMs": 48.9,
+            "maxMs": 2.6,
+            "times": [
+              5951.7,
+              5955.5,
+              5967.7,
+              5972.1,
+              5976,
+              5990.9,
+              6009.1,
+              6013.3
+            ],
+            "lastTimes": [
+              7679.4,
+              7686.3,
+              7686.9,
+              7700.8,
+              7717.7
+            ]
+          },
+          {
+            "name": "PrePaint",
+            "pid": 40680,
+            "tid": 35456,
+            "count": 132,
+            "totalMs": 5.3,
+            "maxMs": 0.4,
+            "times": [
+              5955.9,
+              5957.7,
+              5958.4,
+              5964,
+              5968.1,
+              5971.9,
+              5973.3,
+              5973.7
+            ],
+            "lastTimes": [
+              7682,
+              7684.3,
+              7687.1,
+              7701.6,
+              7718.7
+            ]
+          },
+          {
+            "name": "LayerTreeHost::WaitForCommitCompletion",
+            "pid": 40680,
+            "tid": 35456,
+            "count": 107,
+            "totalMs": 2.8,
+            "maxMs": 0.2,
+            "times": [
+              5956.7,
+              5968.5,
+              6015.5,
+              6016.7,
+              6019.2,
+              6035.5,
+              6052.5,
+              6068.6
+            ],
+            "lastTimes": [
+              7653.4,
+              7668.9,
+              7690,
+              7702.2,
+              7719.3
+            ]
+          },
+          {
+            "name": "LayerTreeHost::WaitForCommitCompletion",
+            "pid": 31428,
+            "tid": 31016,
+            "count": 1,
+            "totalMs": 0,
+            "maxMs": 0,
+            "times": [
+              5957.6
+            ],
+            "lastTimes": [
+              5957.6
+            ]
+          },
+          {
+            "name": "DCompPresenter::Present",
+            "pid": 26596,
+            "tid": 27300,
+            "count": 2,
+            "totalMs": 0.1,
+            "maxMs": 0,
+            "times": [
+              5958.7,
+              7692.7
+            ],
+            "lastTimes": [
+              5958.7,
+              7692.7
+            ]
+          },
+          {
+            "name": "FramePresented",
+            "pid": 31428,
+            "tid": 31016,
+            "count": 1,
+            "totalMs": 0,
+            "maxMs": 0,
+            "times": [],
+            "lastTimes": []
+          },
+          {
+            "name": "Layout",
+            "pid": 40680,
+            "tid": 35456,
+            "count": 1,
+            "totalMs": 0.4,
+            "maxMs": 0.4,
+            "times": [
+              6011.9
+            ],
+            "lastTimes": [
+              6011.9
+            ]
+          },
+          {
+            "name": "Paint",
+            "pid": 40680,
+            "tid": 35456,
+            "count": 3,
+            "totalMs": 1.6,
+            "maxMs": 0.8,
+            "times": [
+              6013.7,
+              7687.3,
+              7687.5
+            ],
+            "lastTimes": [
+              6013.7,
+              7687.3,
+              7687.5
+            ]
+          },
+          {
+            "name": "DrawFrame",
+            "pid": 40680,
+            "tid": 40884,
+            "count": 2,
+            "totalMs": 0,
+            "maxMs": 0,
+            "times": [
+              6016.1,
+              7690.9
+            ],
+            "lastTimes": [
+              6016.1,
+              7690.9
+            ]
+          },
+          {
+            "name": "RasterTask",
+            "pid": 40680,
+            "tid": 29528,
+            "count": 1,
+            "totalMs": 0.2,
+            "maxMs": 0.2,
+            "times": [
+              7690.3
+            ],
+            "lastTimes": [
+              7690.3
+            ]
+          },
+          {
+            "name": "GpuRasterBuffer::Playback",
+            "pid": 40680,
+            "tid": 29528,
+            "count": 1,
+            "totalMs": 0.2,
+            "maxMs": 0.2,
+            "times": [
+              7690.3
+            ],
+            "lastTimes": [
+              7690.3
+            ]
+          },
+          {
+            "name": "AnimationFrame",
+            "pid": 40680,
+            "tid": 35456,
+            "count": 428,
+            "totalMs": 0,
+            "maxMs": 0,
+            "times": [
+              5956.8,
+              5956.7,
+              5968.5,
+              6016.1,
+              6016.8,
+              6016.8,
+              6019.2,
+              6019.4
+            ],
+            "lastTimes": [
+              7690.6,
+              7701.6,
+              7702.2,
+              7718.9,
+              7719.5
+            ]
+          },
+          {
+            "name": "EventLatency",
+            "pid": 40680,
+            "tid": 35456,
+            "count": 12,
+            "totalMs": 0,
+            "maxMs": 0,
+            "times": [
+              5954.4,
+              5954.4,
+              5958.2,
+              5963.4,
+              5964.1,
+              5971.3,
+              7641.6,
+              7641.6
+            ],
+            "lastTimes": [
+              7641.6,
+              7654.6,
+              7657.6,
+              7657.8,
+              7672.9
+            ]
+          },
+          {
+            "name": "EventTiming",
+            "pid": 40680,
+            "tid": 35456,
+            "count": 124,
+            "totalMs": 0,
+            "maxMs": 0,
+            "times": [
+              5954.4,
+              5954.4,
+              5954.4,
+              5954.4,
+              5954.4,
+              5954.4,
+              5954.4,
+              5954.4
+            ],
+            "lastTimes": [
+              7700.4,
+              7700.4,
+              7700.4,
+              7700.4,
+              7700.4
+            ]
+          },
+          {
+            "name": "AnimationFrame::Presentation",
+            "pid": 40680,
+            "tid": 35456,
+            "count": 107,
+            "totalMs": 0,
+            "maxMs": 0,
+            "times": [
+              5956.8,
+              5968.5,
+              6016.8,
+              6019.2,
+              6035.5,
+              6052.5,
+              6068.6,
+              6086.5
+            ],
+            "lastTimes": [
+              7668.9,
+              7700.4,
+              7700.4,
+              7702.2,
+              7719.3
+            ]
+          },
+          {
+            "name": "SubmitCompositorFrameToPresentationCompositorFrame",
+            "pid": 31428,
+            "tid": 31016,
+            "count": 2,
+            "totalMs": 0,
+            "maxMs": 0,
+            "times": [
+              5957.9,
+              5967
+            ],
+            "lastTimes": [
+              5957.9,
+              5967
+            ]
+          },
+          {
+            "name": "EventLatency",
+            "pid": 40680,
+            "tid": 40884,
+            "count": 8,
+            "totalMs": 0,
+            "maxMs": 0,
+            "times": [
+              5958.2,
+              5958.2,
+              7654.6,
+              7654.6,
+              7700.4,
+              7700.4,
+              7700.4,
+              7700.4
+            ],
+            "lastTimes": [
+              7654.6,
+              7700.4,
+              7700.4,
+              7700.4,
+              7700.4
+            ]
+          },
+          {
+            "name": "SwapEndToPresentationCompositorFrame",
+            "pid": 31428,
+            "tid": 31016,
+            "count": 2,
+            "totalMs": 0,
+            "maxMs": 0,
+            "times": [
+              5958.8,
+              5967
+            ],
+            "lastTimes": [
+              5958.8,
+              5967
+            ]
+          },
+          {
+            "name": "SubmitCompositorFrameToPresentationCompositorFrame",
+            "pid": 40680,
+            "tid": 40884,
+            "count": 14,
+            "totalMs": 0,
+            "maxMs": 0,
+            "times": [
+              6016,
+              6016,
+              7690.8,
+              7690.8,
+              7690.8,
+              7690.8,
+              7690.8,
+              7691
+            ],
+            "lastTimes": [
+              7700.4,
+              7700.4,
+              7700.4,
+              7700.4,
+              7700.4
+            ]
+          },
+          {
+            "name": "SwapEndToPresentationCompositorFrame",
+            "pid": 40680,
+            "tid": 40884,
+            "count": 10,
+            "totalMs": 0,
+            "maxMs": 0,
+            "times": [
+              7692.7,
+              7692.7,
+              7692.7,
+              7692.7,
+              7692.7,
+              7700.4,
+              7700.4,
+              7700.4
+            ],
+            "lastTimes": [
+              7700.4,
+              7700.4,
+              7700.4,
+              7700.4,
+              7700.4
+            ]
+          }
+        ]
+      },
+      "longAnimationFrames": [
+        {
+          "startTime": 8286.700000047684,
+          "duration": 53,
+          "blockingDuration": 0,
+          "renderStart": 8337.700000047684,
+          "styleAndLayoutStart": 8338.900000095367,
+          "firstUIEventTimestamp": 8288.5,
+          "scripts": [
+            {
+              "duration": 30,
+              "executionStart": 8299.400000095367,
+              "forcedStyleAndLayoutDuration": 0,
+              "pauseDuration": 0,
+              "invoker": "#document.oninput",
+              "invokerType": "event-listener",
+              "sourceURL": "http://127.0.0.1:3508/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+              "sourceFunctionName": "fO",
+              "sourceCharPosition": 190203
+            }
+          ]
+        },
+        {
+          "startTime": 8820.200000047684,
+          "duration": 2522,
+          "blockingDuration": 2410.8,
+          "renderStart": 11299.200000047684,
+          "styleAndLayoutStart": 11313.200000047684,
+          "firstUIEventTimestamp": 0,
+          "scripts": [
+            {
+              "duration": 5.400000095367432,
+              "executionStart": 8820.400000095367,
+              "forcedStyleAndLayoutDuration": 0,
+              "pauseDuration": 0,
+              "invoker": "MessagePort.onmessage",
+              "invokerType": "event-listener",
+              "sourceURL": "http://127.0.0.1:3508/_next/static/chunks/3794-c968c786880cae15.js",
+              "sourceFunctionName": "A",
+              "sourceCharPosition": 48538
+            },
+            {
+              "duration": 5.300000190734863,
+              "executionStart": 8826,
+              "forcedStyleAndLayoutDuration": 0,
+              "pauseDuration": 0,
+              "invoker": "MessagePort.onmessage",
+              "invokerType": "event-listener",
+              "sourceURL": "http://127.0.0.1:3508/_next/static/chunks/3794-c968c786880cae15.js",
+              "sourceFunctionName": "A",
+              "sourceCharPosition": 48538
+            },
+            {
+              "duration": 2083.300000190735,
+              "executionStart": 8831.5,
+              "forcedStyleAndLayoutDuration": 0,
+              "pauseDuration": 0,
+              "invoker": "MessagePort.onmessage",
+              "invokerType": "event-listener",
+              "sourceURL": "http://127.0.0.1:3508/_next/static/chunks/3794-c968c786880cae15.js",
+              "sourceFunctionName": "A",
+              "sourceCharPosition": 48538
+            },
+            {
+              "duration": 13.799999952316284,
+              "executionStart": 11299.400000095367,
+              "forcedStyleAndLayoutDuration": 0,
+              "pauseDuration": 0,
+              "invoker": "FrameRequestCallback",
+              "invokerType": "user-callback",
+              "sourceURL": "http://127.0.0.1:3508/_next/static/chunks/app/layout-3a05a1b2fe094581.js",
+              "sourceFunctionName": "j",
+              "sourceCharPosition": 2898
+            }
+          ]
+        },
+        {
+          "startTime": 11371.100000143051,
+          "duration": 223.5,
+          "blockingDuration": 168.7,
+          "renderStart": 11581.600000143051,
+          "styleAndLayoutStart": 11590.700000047684,
+          "firstUIEventTimestamp": 11373.600000143051,
+          "scripts": [
+            {
+              "duration": 197.5,
+              "executionStart": 11381.5,
+              "forcedStyleAndLayoutDuration": 0,
+              "pauseDuration": 0,
+              "invoker": "#document.oninput",
+              "invokerType": "event-listener",
+              "sourceURL": "http://127.0.0.1:3508/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+              "sourceFunctionName": "fO",
+              "sourceCharPosition": 190203
+            },
+            {
+              "duration": 8.700000047683716,
+              "executionStart": 11581.900000095367,
+              "forcedStyleAndLayoutDuration": 0,
+              "pauseDuration": 0,
+              "invoker": "FrameRequestCallback",
+              "invokerType": "user-callback",
+              "sourceURL": "http://127.0.0.1:3508/_next/static/chunks/app/layout-3a05a1b2fe094581.js",
+              "sourceFunctionName": "j",
+              "sourceCharPosition": 2898
+            }
+          ]
+        },
+        {
+          "startTime": 11693.5,
+          "duration": 3750,
+          "blockingDuration": 3651.7,
+          "renderStart": 15431,
+          "styleAndLayoutStart": 15439.400000095367,
+          "firstUIEventTimestamp": 0,
+          "scripts": [
+            {
+              "duration": 5.6000001430511475,
+              "executionStart": 11693.700000047684,
+              "forcedStyleAndLayoutDuration": 0,
+              "pauseDuration": 0,
+              "invoker": "MessagePort.onmessage",
+              "invokerType": "event-listener",
+              "sourceURL": "http://127.0.0.1:3508/_next/static/chunks/3794-c968c786880cae15.js",
+              "sourceFunctionName": "A",
+              "sourceCharPosition": 48538
+            },
+            {
+              "duration": 3688.899999856949,
+              "executionStart": 11699.600000143051,
+              "forcedStyleAndLayoutDuration": 0,
+              "pauseDuration": 0,
+              "invoker": "MessagePort.onmessage",
+              "invokerType": "event-listener",
+              "sourceURL": "http://127.0.0.1:3508/_next/static/chunks/3794-c968c786880cae15.js",
+              "sourceFunctionName": "A",
+              "sourceCharPosition": 48538
+            }
+          ]
+        },
+        {
+          "startTime": 15470.100000143051,
+          "duration": 130.20000004768372,
+          "blockingDuration": 69.6,
+          "renderStart": 15591.600000143051,
+          "styleAndLayoutStart": 15597.300000190735,
+          "firstUIEventTimestamp": 15476.200000047684,
+          "scripts": [
+            {
+              "duration": 100.59999990463257,
+              "executionStart": 15486.900000095367,
+              "forcedStyleAndLayoutDuration": 0,
+              "pauseDuration": 0,
+              "invoker": "#document.oninput",
+              "invokerType": "event-listener",
+              "sourceURL": "http://127.0.0.1:3508/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+              "sourceFunctionName": "fO",
+              "sourceCharPosition": 190203
+            }
+          ]
+        },
+        {
+          "startTime": 15666.600000143051,
+          "duration": 1204.8999998569489,
+          "blockingDuration": 1139.2,
+          "renderStart": 16866.60000014305,
+          "styleAndLayoutStart": 16869.300000190735,
+          "firstUIEventTimestamp": 0,
+          "scripts": [
+            {
+              "duration": 1184.2999999523163,
+              "executionStart": 15667.400000095367,
+              "forcedStyleAndLayoutDuration": 0,
+              "pauseDuration": 0,
+              "invoker": "MessagePort.onmessage",
+              "invokerType": "event-listener",
+              "sourceURL": "http://127.0.0.1:3508/_next/static/chunks/3794-c968c786880cae15.js",
+              "sourceFunctionName": "A",
+              "sourceCharPosition": 48538
+            }
+          ]
+        }
+      ],
+      "longTasks": [
+        {
+          "startTime": 8831.5,
+          "duration": 2083,
+          "name": "self"
+        },
+        {
+          "startTime": 10914.800000190735,
+          "duration": 456,
+          "name": "self"
+        },
+        {
+          "startTime": 11373.900000095367,
+          "duration": 205,
+          "name": "self"
+        },
+        {
+          "startTime": 11699.5,
+          "duration": 3689,
+          "name": "self"
+        },
+        {
+          "startTime": 15401.800000190735,
+          "duration": 68,
+          "name": "self"
+        },
+        {
+          "startTime": 15477.300000190735,
+          "duration": 110,
+          "name": "self"
+        },
+        {
+          "startTime": 15667.400000095367,
+          "duration": 1184,
+          "name": "self"
+        }
+      ],
+      "rawTrace": {
+        "file": "mobile-trace.json",
+        "bytes": 147601138,
+        "sha256": "abe8c39ac8c9b2f7e210f7f096258278d505c10544516e48a329ae057a2f8f05"
+      },
+      "rawEvents": {
+        "file": "mobile-events.json",
+        "sha256": "a06be2084ee8b835b03deb9287b2f46e1f8ac839f974b89982c874612b06d471"
+      }
+    },
+    {
+      "mode": "desktop",
+      "buildId": "NUcp9_HWho-gmCR-jRh8K",
+      "browser": "Chrome/157.0.8103.39",
+      "capturedAtUTC": "2026-11-11T18:04:37.189Z",
+      "targetId": "B7A660FE3980E75F639BD935F87E8A96",
+      "exactLocation": {
+        "href": "http://127.0.0.1:3508/en/menu",
+        "buildSeen": true
+      },
+      "settings": {
+        "cpuRate": 4,
+        "latencyMs": 150,
+        "downloadBps": 200000,
+        "traceEnabled": true,
+        "continuousRafInstrumentation": false,
+        "officialOnINPInjected": false,
+        "sequence": "Same600ms intervals and1000ms target scroll setup as original harness; realcoldfirst cookie interaction preserved. Diagnostic EventTiming, not replacement INP."
+      },
+      "states": [
+        {
+          "label": "ready",
+          "at": 4392.700000047684,
+          "visibility": "visible",
+          "hasFocus": true,
+          "fontStatus": "loaded",
+          "readyState": "complete",
+          "scrollY": 0,
+          "activeElement": "body",
+          "imagesPending": 2,
+          "animations": [
+            {
+              "playState": "running",
+              "currentTime": 2799.9,
+              "target": "span"
+            }
+          ]
+        },
+        {
+          "label": "before-cookie",
+          "at": 5411.600000143051,
+          "visibility": "visible",
+          "hasFocus": true,
+          "fontStatus": "loaded",
+          "readyState": "complete",
+          "scrollY": 0,
+          "activeElement": "body",
+          "imagesPending": 2,
+          "animations": [
+            {
+              "playState": "running",
+              "currentTime": 3816.7,
+              "target": "span"
+            }
+          ]
+        },
+        {
+          "label": "before-search-focus",
+          "at": 7144,
+          "visibility": "visible",
+          "hasFocus": true,
+          "fontStatus": "loaded",
+          "readyState": "complete",
+          "scrollY": 103,
+          "activeElement": "body",
+          "imagesPending": 2,
+          "animations": [
+            {
+              "playState": "running",
+              "currentTime": 716.7369999807329,
+              "target": "img"
+            },
+            {
+              "playState": "running",
+              "currentTime": 5550,
+              "target": "span"
+            }
+          ]
+        },
+        {
+          "label": "end",
+          "at": 11796.300000190735,
+          "visibility": "visible",
+          "hasFocus": true,
+          "fontStatus": "loaded",
+          "readyState": "complete",
+          "scrollY": 103,
+          "activeElement": "input#order-search[name=q]",
+          "imagesPending": 10,
+          "animations": [
+            {
+              "playState": "running",
+              "currentTime": 10199.996000000001,
+              "target": "span"
+            }
+          ]
+        }
+      ],
+      "visibilityChanges": [],
+      "businessApiWrites": [],
+      "slowestGroups": [
+        {
+          "interactionId": 9368,
+          "duration": 1864,
+          "events": [
+            {
+              "name": "pointerdown",
+              "startTime": 7153.100000143051,
+              "duration": 1864,
+              "processingStart": 7168.600000143051,
+              "processingEnd": 7169.400000095367,
+              "interactionId": 9368,
+              "target": "input#order-search[name=q]"
+            },
+            {
+              "name": "pointerup",
+              "startTime": 7177.400000095367,
+              "duration": 1832,
+              "processingStart": 7179.400000095367,
+              "processingEnd": 7180.400000095367,
+              "interactionId": 9368,
+              "target": "input#order-search[name=q]"
+            },
+            {
+              "name": "click",
+              "startTime": 7177.400000095367,
+              "duration": 1832,
+              "processingStart": 7181.900000095367,
+              "processingEnd": 7182.5,
+              "interactionId": 9368,
+              "target": "input#order-search[name=q]"
+            }
+          ]
+        },
+        {
+          "interactionId": 9375,
+          "duration": 1216,
+          "events": [
+            {
+              "name": "keydown",
+              "startTime": 7796.600000143051,
+              "duration": 1216,
+              "processingStart": 7799.600000143051,
+              "processingEnd": 7801.5,
+              "interactionId": 9375,
+              "target": "input#order-search[name=q]"
+            },
+            {
+              "name": "keypress",
+              "startTime": 7796.600000143051,
+              "duration": 1216,
+              "processingStart": 7801.5,
+              "processingEnd": 7835.400000095367,
+              "interactionId": 9375,
+              "target": "input#order-search[name=q]"
+            }
+          ]
+        },
+        {
+          "interactionId": 9389,
+          "duration": 1080,
+          "events": [
+            {
+              "name": "keydown",
+              "startTime": 9102.100000143051,
+              "duration": 1080,
+              "processingStart": 9102.400000095367,
+              "processingEnd": 9103.400000095367,
+              "interactionId": 9389,
+              "target": "input#order-search[name=q]"
+            },
+            {
+              "name": "keypress",
+              "startTime": 9102.100000143051,
+              "duration": 1080,
+              "processingStart": 9103.400000095367,
+              "processingEnd": 9162.300000190735,
+              "interactionId": 9389,
+              "target": "input#order-search[name=q]"
+            },
+            {
+              "name": "keyup",
+              "startTime": 9162.900000095367,
+              "duration": 1016,
+              "processingStart": 9165.100000143051,
+              "processingEnd": 9166.100000143051,
+              "interactionId": 9389,
+              "target": "input#order-search[name=q]"
+            }
+          ]
+        }
+      ],
+      "exactEventTiming": [
+        {
+          "cancelable": true,
+          "commitFinishTime": 7189.927,
+          "duration": 1860.035,
+          "enqueuedToMainThreadTime": 7153.341,
+          "frame": "B7A660FE3980E75F639BD935F87E8A96",
+          "interactionId": 9368,
+          "interactionOffset": 3,
+          "nodeId": 3,
+          "processingEnd": 7169.453,
+          "processingStart": 7168.64,
+          "timeStamp": 7153.111,
+          "type": "pointerdown"
+        },
+        {
+          "cancelable": true,
+          "commitFinishTime": 7189.927,
+          "duration": 1835.664,
+          "enqueuedToMainThreadTime": 7177.588,
+          "frame": "B7A660FE3980E75F639BD935F87E8A96",
+          "interactionId": 9368,
+          "interactionOffset": 3,
+          "nodeId": 3,
+          "processingEnd": 7180.457,
+          "processingStart": 7179.458,
+          "timeStamp": 7177.482,
+          "type": "pointerup"
+        },
+        {
+          "cancelable": true,
+          "commitFinishTime": 7189.927,
+          "duration": 1835.664,
+          "enqueuedToMainThreadTime": 7177.588,
+          "frame": "B7A660FE3980E75F639BD935F87E8A96",
+          "interactionId": 9368,
+          "interactionOffset": 3,
+          "nodeId": 3,
+          "processingEnd": 7182.494,
+          "processingStart": 7181.881,
+          "timeStamp": 7177.482,
+          "type": "click"
+        }
+      ],
+      "nativeSubmissionPresentationPairs": [
+        {
+          "id": "0x5e",
+          "startMs": 8495.996000051498,
+          "endMs": 8992.44000005722,
+          "presentationWaitMs": 496.44400000572205
+        },
+        {
+          "id": "0x3",
+          "startMs": 8495.996000051498,
+          "endMs": 8992.44000005722,
+          "presentationWaitMs": 496.44400000572205
+        },
+        {
+          "id": "0x3",
+          "startMs": 8059.5650000572205,
+          "endMs": 8386.973000049591,
+          "presentationWaitMs": 327.4079999923706
+        },
+        {
+          "id": "0x38",
+          "startMs": 8386.740000247955,
+          "endMs": 8496.220000267029,
+          "presentationWaitMs": 109.48000001907349
+        },
+        {
+          "id": "0x38",
+          "startMs": 7783.446000099182,
+          "endMs": 7811.905000209808,
+          "presentationWaitMs": 28.45900011062622
+        },
+        {
+          "id": "0x3",
+          "startMs": 7165.075000047684,
+          "endMs": 7190.914000272751,
+          "presentationWaitMs": 25.83900022506714
+        }
+      ],
+      "frameWindow": {
+        "interval": [
+          7140,
+          9030
+        ],
+        "summary": [
+          {
+            "name": "PrePaint",
+            "pid": 38764,
+            "tid": 37076,
+            "count": 106,
+            "totalMs": 36.7,
+            "maxMs": 8.3,
+            "times": [
+              7141.7,
+              7148.2,
+              7159.1,
+              7167.2,
+              7168.2,
+              7169.6,
+              7175.1,
+              7178.6
+            ],
+            "lastTimes": [
+              8954.2,
+              8970.2,
+              9005.7,
+              9016.5,
+              9023
+            ]
+          },
+          {
+            "name": "UpdateLayoutTree",
+            "pid": 38764,
+            "tid": 37076,
+            "count": 105,
+            "totalMs": 192.1,
+            "maxMs": 54.9,
+            "times": [
+              7147,
+              7152.6,
+              7164.6,
+              7170,
+              7173.7,
+              7190.9,
+              7198.5,
+              7213.4
+            ],
+            "lastTimes": [
+              8631.5,
+              8649.9,
+              8851.1,
+              9004.3,
+              9013.6
+            ]
+          },
+          {
+            "name": "Layout",
+            "pid": 38764,
+            "tid": 37076,
+            "count": 7,
+            "totalMs": 52.6,
+            "maxMs": 47.6,
+            "times": [
+              7157.1,
+              7804.4,
+              7806.6,
+              7834.2,
+              8052.3,
+              8461.4,
+              8906
+            ],
+            "lastTimes": [
+              7806.6,
+              7834.2,
+              8052.3,
+              8461.4,
+              8906
+            ]
+          },
+          {
+            "name": "Paint",
+            "pid": 38764,
+            "tid": 37076,
+            "count": 113,
+            "totalMs": 70.3,
+            "maxMs": 11.4,
+            "times": [
+              7159.9,
+              7160.1,
+              7160.3,
+              7185.7,
+              7185.9,
+              7194,
+              7194.4,
+              7201.5
+            ],
+            "lastTimes": [
+              9007.5,
+              9007.9,
+              9008.3,
+              9017.7,
+              9018.3
+            ]
+          },
+          {
+            "name": "DrawFrame",
+            "pid": 38764,
+            "tid": 42012,
+            "count": 59,
+            "totalMs": 0,
+            "maxMs": 0,
+            "times": [
+              7162.6,
+              7165.2,
+              7190.8,
+              7198.1,
+              7213.9,
+              7230.9,
+              7247.3,
+              7264
+            ],
+            "lastTimes": [
+              8059.7,
+              8386.8,
+              8496.1,
+              8992.3,
+              9022.6
+            ]
+          },
+          {
+            "name": "RasterTask",
+            "pid": 38764,
+            "tid": 16516,
+            "count": 61,
+            "totalMs": 3.6,
+            "maxMs": 0.2,
+            "times": [
+              7164.4,
+              7164.5,
+              7164.5,
+              7164.5,
+              7164.6,
+              7190.1,
+              7190.1,
+              7197.2
+            ],
+            "lastTimes": [
+              8991.4,
+              8991.5,
+              8991.5,
+              9022,
+              9022
+            ]
+          },
+          {
+            "name": "GpuRasterBuffer::Playback",
+            "pid": 38764,
+            "tid": 16516,
+            "count": 61,
+            "totalMs": 3.4,
+            "maxMs": 0.2,
+            "times": [
+              7164.4,
+              7164.5,
+              7164.5,
+              7164.5,
+              7164.6,
+              7190.1,
+              7190.2,
+              7197.2
+            ],
+            "lastTimes": [
+              8991.4,
+              8991.5,
+              8991.5,
+              9022,
+              9022
+            ]
+          },
+          {
+            "name": "LayerTreeHost::WaitForCommitCompletion",
+            "pid": 38764,
+            "tid": 37076,
+            "count": 93,
+            "totalMs": 3.1,
+            "maxMs": 0.4,
+            "times": [
+              7185.3,
+              7189.8,
+              7196.6,
+              7204.6,
+              7218.8,
+              7237.4,
+              7257.7,
+              7273.4
+            ],
+            "lastTimes": [
+              8651.6,
+              9005.5,
+              9010.2,
+              9022.7,
+              9023.7
+            ]
+          },
+          {
+            "name": "DCompPresenter::Present",
+            "pid": 26596,
+            "tid": 27300,
+            "count": 1,
+            "totalMs": 0,
+            "maxMs": 0,
+            "times": [
+              8999.9
+            ],
+            "lastTimes": [
+              8999.9
+            ]
+          },
+          {
+            "name": "AnimationFrame",
+            "pid": 38764,
+            "tid": 37076,
+            "count": 420,
+            "totalMs": 0,
+            "maxMs": 0,
+            "times": [
+              7734.2,
+              7750.5,
+              7750.5,
+              7767.2,
+              7767.4,
+              7783.2,
+              7783.4,
+              7796.6
+            ],
+            "lastTimes": [
+              9010.2,
+              9016.9,
+              9022.3,
+              9023.1,
+              9023.7
+            ]
+          },
+          {
+            "name": "EventLatency",
+            "pid": 38764,
+            "tid": 37076,
+            "count": 8,
+            "totalMs": 0,
+            "maxMs": 0,
+            "times": [
+              7145.4,
+              7152.3,
+              7177.4,
+              7182.6,
+              7836.2,
+              7844.9,
+              8487.7,
+              8489.3
+            ],
+            "lastTimes": [
+              7182.6,
+              7836.2,
+              7844.9,
+              8487.7,
+              8489.3
+            ]
+          },
+          {
+            "name": "EventTiming",
+            "pid": 38764,
+            "tid": 37076,
+            "count": 78,
+            "totalMs": 0,
+            "maxMs": 0,
+            "times": [
+              7145.4,
+              7145.4,
+              7145.4,
+              7145.4,
+              7145.4,
+              7145.4,
+              7145.4,
+              7145.4
+            ],
+            "lastTimes": [
+              9013.1,
+              9013.1,
+              9013.1,
+              9013.1,
+              9013.1
+            ]
+          },
+          {
+            "name": "EventLatency",
+            "pid": 38764,
+            "tid": 42012,
+            "count": 6,
+            "totalMs": 0,
+            "maxMs": 0,
+            "times": [
+              7153,
+              7796.6,
+              8454.7,
+              9013.1,
+              9013.1,
+              9013.1
+            ],
+            "lastTimes": [
+              7796.6,
+              8454.7,
+              9013.1,
+              9013.1,
+              9013.1
+            ]
+          },
+          {
+            "name": "SubmitCompositorFrameToPresentationCompositorFrame",
+            "pid": 38764,
+            "tid": 42012,
+            "count": 203,
+            "totalMs": 0,
+            "maxMs": 0,
+            "times": [
+              7162.5,
+              7162.7,
+              7165.1,
+              7165.1,
+              7165.4,
+              7190.6,
+              7190.6,
+              7190.9
+            ],
+            "lastTimes": [
+              9013.1,
+              9013.1,
+              9013.1,
+              9022.4,
+              9022.4
+            ]
+          },
+          {
+            "name": "AnimationFrame::Presentation",
+            "pid": 38764,
+            "tid": 37076,
+            "count": 141,
+            "totalMs": 0,
+            "maxMs": 0,
+            "times": [
+              7750.5,
+              7767.2,
+              7783.2,
+              7847.4,
+              7879.6,
+              7890.7,
+              7901.1,
+              7917.5
+            ],
+            "lastTimes": [
+              9013.1,
+              9013.1,
+              9013.1,
+              9013.1,
+              9013.1
+            ]
+          },
+          {
+            "name": "SwapEndToPresentationCompositorFrame",
+            "pid": 38764,
+            "tid": 42012,
+            "count": 10,
+            "totalMs": 0,
+            "maxMs": 0,
+            "times": [
+              8999.9,
+              8999.9,
+              8999.9,
+              8999.9,
+              8999.9,
+              9013.1,
+              9013.1,
+              9013.1
+            ],
+            "lastTimes": [
+              9013.1,
+              9013.1,
+              9013.1,
+              9013.1,
+              9013.1
+            ]
+          }
+        ]
+      },
+      "longAnimationFrames": [
+        {
+          "startTime": 5447.200000047684,
+          "duration": 71.70000004768372,
+          "blockingDuration": 9.4,
+          "renderStart": 5513.300000190735,
+          "styleAndLayoutStart": 5518.700000047684,
+          "firstUIEventTimestamp": 5441.800000190735,
+          "scripts": [
+            {
+              "duration": 46.89999985694885,
+              "executionStart": 5463.100000143051,
+              "forcedStyleAndLayoutDuration": 1.7,
+              "pauseDuration": 0,
+              "invoker": "#document.onclick",
+              "invokerType": "event-listener",
+              "sourceURL": "http://127.0.0.1:3508/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+              "sourceFunctionName": "fO",
+              "sourceCharPosition": 190203
+            }
+          ]
+        },
+        {
+          "startTime": 7783.5,
+          "duration": 55,
+          "blockingDuration": 0,
+          "renderStart": 7835.600000143051,
+          "styleAndLayoutStart": 7838.300000190735,
+          "firstUIEventTimestamp": 7796.600000143051,
+          "scripts": [
+            {
+              "duration": 24.59999990463257,
+              "executionStart": 7808.600000143051,
+              "forcedStyleAndLayoutDuration": 0,
+              "pauseDuration": 0,
+              "invoker": "#document.oninput",
+              "invokerType": "event-listener",
+              "sourceURL": "http://127.0.0.1:3508/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+              "sourceFunctionName": "fO",
+              "sourceCharPosition": 190203
+            }
+          ]
+        },
+        {
+          "startTime": 8651.800000190735,
+          "duration": 318.59999990463257,
+          "blockingDuration": 213,
+          "renderStart": 8954,
+          "styleAndLayoutStart": 8970,
+          "firstUIEventTimestamp": 0,
+          "scripts": [
+            {
+              "duration": 5.5,
+              "executionStart": 8651.800000190735,
+              "forcedStyleAndLayoutDuration": 0,
+              "pauseDuration": 0,
+              "invoker": "MessagePort.onmessage",
+              "invokerType": "event-listener",
+              "sourceURL": "http://127.0.0.1:3508/_next/static/chunks/3794-c968c786880cae15.js",
+              "sourceFunctionName": "A",
+              "sourceCharPosition": 48538
+            },
+            {
+              "duration": 192.70000004768372,
+              "executionStart": 8657.700000047684,
+              "forcedStyleAndLayoutDuration": 0,
+              "pauseDuration": 0,
+              "invoker": "MessagePort.onmessage",
+              "invokerType": "event-listener",
+              "sourceURL": "http://127.0.0.1:3508/_next/static/chunks/3794-c968c786880cae15.js",
+              "sourceFunctionName": "A",
+              "sourceCharPosition": 48538
+            },
+            {
+              "duration": 6.199999809265137,
+              "executionStart": 8963.800000190735,
+              "forcedStyleAndLayoutDuration": 0,
+              "pauseDuration": 0,
+              "invoker": "FrameRequestCallback",
+              "invokerType": "user-callback",
+              "sourceURL": "http://127.0.0.1:3508/_next/static/chunks/app/layout-3a05a1b2fe094581.js",
+              "sourceFunctionName": "j",
+              "sourceCharPosition": 2898
+            }
+          ]
+        },
+        {
+          "startTime": 9100.5,
+          "duration": 71.30000019073486,
+          "blockingDuration": 15.3,
+          "renderStart": 9166.5,
+          "styleAndLayoutStart": 9171.5,
+          "firstUIEventTimestamp": 9102.100000143051,
+          "scripts": [
+            {
+              "duration": 54.60000014305115,
+              "executionStart": 9107.200000047684,
+              "forcedStyleAndLayoutDuration": 0,
+              "pauseDuration": 0,
+              "invoker": "#document.oninput",
+              "invokerType": "event-listener",
+              "sourceURL": "http://127.0.0.1:3508/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+              "sourceFunctionName": "fO",
+              "sourceCharPosition": 190203
+            }
+          ]
+        },
+        {
+          "startTime": 9204.600000143051,
+          "duration": 948.5,
+          "blockingDuration": 881,
+          "renderStart": 10147.100000143051,
+          "styleAndLayoutStart": 10152.800000190735,
+          "firstUIEventTimestamp": 0,
+          "scripts": [
+            {
+              "duration": 5.199999809265137,
+              "executionStart": 9204.800000190735,
+              "forcedStyleAndLayoutDuration": 0,
+              "pauseDuration": 0,
+              "invoker": "MessagePort.onmessage",
+              "invokerType": "event-listener",
+              "sourceURL": "http://127.0.0.1:3508/_next/static/chunks/3794-c968c786880cae15.js",
+              "sourceFunctionName": "A",
+              "sourceCharPosition": 48538
+            },
+            {
+              "duration": 924.7999999523163,
+              "executionStart": 9212.100000143051,
+              "forcedStyleAndLayoutDuration": 0,
+              "pauseDuration": 0,
+              "invoker": "MessagePort.onmessage",
+              "invokerType": "event-listener",
+              "sourceURL": "http://127.0.0.1:3508/_next/static/chunks/3794-c968c786880cae15.js",
+              "sourceFunctionName": "A",
+              "sourceCharPosition": 48538
+            }
+          ]
+        }
+      ],
+      "longTasks": [
+        {
+          "startTime": 5459.400000095367,
+          "duration": 64,
+          "name": "self"
+        },
+        {
+          "startTime": 8657.5,
+          "duration": 193,
+          "name": "self"
+        },
+        {
+          "startTime": 8850.600000143051,
+          "duration": 145,
+          "name": "self"
+        },
+        {
+          "startTime": 9102.400000095367,
+          "duration": 60,
+          "name": "self"
+        },
+        {
+          "startTime": 9212.100000143051,
+          "duration": 924,
+          "name": "self"
+        }
+      ],
+      "rawTrace": {
+        "file": "desktop-trace.json",
+        "bytes": 40590421,
+        "sha256": "be056ba78798c8fa2e78df9fc41f4c74a2624544aad772e1c7782768a660153a"
+      },
+      "rawEvents": {
+        "file": "desktop-events.json",
+        "sha256": "a228cb52ac778d966901104654e8dbf032e886a659962fa1443b6a1ae7b75181"
+      }
+    }
+  ],
+  "findings": [
+    {
+      "kind": "observed",
+      "finding": "The reproduced mobilecookie group is1744ms. NativeEventTiming commits at6015.562ms,57.38ms after thepointerup/click timestamp5958.182ms; DrawFrame follows at6015.991ms. A matching compositor submission pair then spans1675.026ms, and EventTiming presentation ends~7700ms. Mainthread Layout totals0.4ms/Paint totals1.6ms in the5950–7720mswindow. No longtask spans that gap."
+    },
+    {
+      "kind": "observed",
+      "finding": "The reproduced desktopfocus group is1864ms. NativeEventTiming pointerdown at7153.111ms commits at7189.927ms (36.816ms). The renderer records59DrawFrame events during7140–9030ms; individual Paint max11.4ms. WindowsDCompPresenter::Present appears~8999.9ms and EventTiming ends~9013.1ms. This distinguishes fastcommit from later presentation feedback; it does not identify why the compositor/OS pipeline delayed it."
+    },
+    {
+      "kind": "observed",
+      "finding": "Both targets staydocumentvisible and focused with fontsloaded; no businessAPI writes or visibility changes were observed. Explicit newly-createdCDP targets and URL/build assertions avoid the first-page helper's leftover-blank ambiguity."
+    },
+    {
+      "kind": "observed",
+      "finding": "Later typing has real longmainthread ReactScheduler MessagePort tasks: mobile2083/3689/1184ms and desktop~925ms, attributed only to frameworkchunk3794…/functionA. A desktopdeferred-update frame has54.9ms style and47.6ms layout with992dirty of1304objects. No CPUprofile/appfunction attribution identifies ProductsGrid."
+    },
+    {
+      "kind": "decision",
+      "finding": "Do not make a guessed CSS/provider/memoization change from this evidence. First-input delay is largely beyondfastcommit; laterReactwork is not attributed to a safe application hotspot. Existing controlINP remainsunmet and unchanged."
+    }
+  ],
+  "methodology": {
+    "nativeGlobalInputUsed": false,
+    "isolatedBrowserPort": 9227,
+    "continuousRafForcing": false,
+    "coldFirstInteractionPreserved": true,
+    "original600msBurstCadencePreserved": true,
+    "traceAndObserverOverhead": true,
+    "officialOnINPInjectedInDiagnostic": false,
+    "officialControlReport": "docs/cinematic-inp-control-2026-11-11.json",
+    "originalControlValues": {
+      "mobileMenuCookieINP": 1712,
+      "desktopMenuFocusINP": 1824
+    },
+    "noSourceEdits": true,
+    "allOwnedTargetsClosed": true,
+    "tracingEnded": true
+  },
+  "limitations": [
+    "DiagnosticEventTiming groups are not officialonINP values or a fieldCWV distribution; original six controlled samples remain the control.",
+    "Trace/LoAF instrumentation differs from the original harness and adds overhead. Timing magnitudes reproduced, but the diagnostic cannot quantify a sourcechange benefit because no sourcechange was made.",
+    "The native Windowsheadless presentation gap could involve Chrome, GPU/OS scheduling, environment or layer behavior; this trace does not prove a specific origin. No claim of a browserbug or user-visible full-delay equivalence is made.",
+    "Fixed600ms gaps permit a prior slowinteraction to overlap later input. A longer post-idle wait is not proposed as a performancefix and the cold firstinteraction is not discarded.",
+    "NoCPU samplingprofile or appcomponent rendercounts were collected. The Schedulerlabel alone cannot justify a15-dependency memoized ProductsGrid.",
+    "Sourceworktree review is only hypothesis support; source edits elsewhere do not alter the pinnedservedNUartifact used for these traces."
+  ],
+  "officialReferences": [
+    "https://web.dev/articles/optimize-inp",
+    "https://developer.chrome.com/docs/web-platform/long-animation-frames"
+  ]
+}

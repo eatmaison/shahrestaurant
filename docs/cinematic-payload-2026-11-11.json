@@ -1,0 +1,819 @@
+{
+  "schemaVersion": 1,
+  "measuredAt": "2026-11-11T11:57:05.441Z",
+  "buildId": "EwyI5J4c8In3dnKh4mht7",
+  "origin": "http://127.0.0.1:3397",
+  "methodology": {
+    "units": "decimal bytes",
+    "compression": "gzip, node:zlib level 6, separate compression per asset",
+    "cacheModel": "cold route: each distinct initial external asset once; shared assets counted anew per route",
+    "exclusions": [
+      "HTML",
+      "fonts",
+      "images",
+      "API data",
+      "dynamic imports",
+      "navigation prefetch",
+      "video",
+      "legacy nomodule polyfills"
+    ],
+    "inlineNote": "Executable/Flight script gzip is an indicator only; inline scripts travel inside HTML with its shared compression dictionary. JSON-LD excluded.",
+    "servedBytesVerifiedAgainst": ".next/static",
+    "runtimeBuildIdVerifiedInEveryPage": true
+  },
+  "limits": {
+    "jsGzipBytesExclusive": 120000,
+    "cssGzipBytesExclusive": 40000
+  },
+  "routes": [
+    {
+      "route": "/",
+      "httpStatus": 200,
+      "expectedRuntimeBuildIdPresent": true,
+      "javascript": {
+        "assetCount": 16,
+        "rawBytes": 801372,
+        "gzipBytes": 237635,
+        "passesBudget": false,
+        "reductionNeededBytes": 117636,
+        "assets": [
+          "/_next/static/chunks/3v5p_89gzoou-.js",
+          "/_next/static/chunks/43rfq7guowqma.js",
+          "/_next/static/chunks/2-r0a5gokqs12.js",
+          "/_next/static/chunks/27jktro2p5rq9.js",
+          "/_next/static/chunks/turbopack-3smeg9pl7nawj.js",
+          "/_next/static/chunks/3xzrf04fd6yk1.js",
+          "/_next/static/chunks/11c5-ejki0ug9.js",
+          "/_next/static/chunks/34y30617y348f.js",
+          "/_next/static/chunks/0dhspf_ga-l9x.js",
+          "/_next/static/chunks/35ip4ctshr802.js",
+          "/_next/static/chunks/3_sou3zb03dxz.js",
+          "/_next/static/chunks/2s5eua0ieov9w.js",
+          "/_next/static/chunks/2-1p8dxzp_wvx.js",
+          "/_next/static/chunks/2tflvsbt13_04.js",
+          "/_next/static/chunks/0ya23fqxsak8w.js",
+          "/_next/static/chunks/2zjueh7t2vecu.js"
+        ]
+      },
+      "css": {
+        "assetCount": 5,
+        "rawBytes": 244164,
+        "gzipBytes": 41363,
+        "passesBudget": false,
+        "reductionNeededBytes": 1364,
+        "assets": [
+          "/_next/static/chunks/1nopnqt7qnlse.css",
+          "/_next/static/chunks/379p5i7iu93c4.css",
+          "/_next/static/chunks/41w8vsc5pk8eg.css",
+          "/_next/static/chunks/3xfqn17rerb5e.css",
+          "/_next/static/chunks/1p2vx_aqpkia-.css"
+        ]
+      },
+      "inlineExecutableAndFlightScripts": {
+        "rawBytes": 16689,
+        "standaloneGzipBytes": 3521,
+        "isSeparateHttpTransfer": false
+      },
+      "legacyNomodule": {
+        "assetCount": 1,
+        "gzipBytes": 39627,
+        "includedInModernJavascriptBudget": false
+      }
+    },
+    {
+      "route": "/en",
+      "httpStatus": 200,
+      "expectedRuntimeBuildIdPresent": true,
+      "javascript": {
+        "assetCount": 16,
+        "rawBytes": 801372,
+        "gzipBytes": 237635,
+        "passesBudget": false,
+        "reductionNeededBytes": 117636,
+        "assets": [
+          "/_next/static/chunks/3v5p_89gzoou-.js",
+          "/_next/static/chunks/43rfq7guowqma.js",
+          "/_next/static/chunks/2-r0a5gokqs12.js",
+          "/_next/static/chunks/27jktro2p5rq9.js",
+          "/_next/static/chunks/turbopack-3smeg9pl7nawj.js",
+          "/_next/static/chunks/3xzrf04fd6yk1.js",
+          "/_next/static/chunks/11c5-ejki0ug9.js",
+          "/_next/static/chunks/34y30617y348f.js",
+          "/_next/static/chunks/0dhspf_ga-l9x.js",
+          "/_next/static/chunks/35ip4ctshr802.js",
+          "/_next/static/chunks/3_sou3zb03dxz.js",
+          "/_next/static/chunks/2s5eua0ieov9w.js",
+          "/_next/static/chunks/2-1p8dxzp_wvx.js",
+          "/_next/static/chunks/2tflvsbt13_04.js",
+          "/_next/static/chunks/0ya23fqxsak8w.js",
+          "/_next/static/chunks/2zjueh7t2vecu.js"
+        ]
+      },
+      "css": {
+        "assetCount": 5,
+        "rawBytes": 244164,
+        "gzipBytes": 41363,
+        "passesBudget": false,
+        "reductionNeededBytes": 1364,
+        "assets": [
+          "/_next/static/chunks/1nopnqt7qnlse.css",
+          "/_next/static/chunks/379p5i7iu93c4.css",
+          "/_next/static/chunks/41w8vsc5pk8eg.css",
+          "/_next/static/chunks/3xfqn17rerb5e.css",
+          "/_next/static/chunks/1p2vx_aqpkia-.css"
+        ]
+      },
+      "inlineExecutableAndFlightScripts": {
+        "rawBytes": 17141,
+        "standaloneGzipBytes": 3541,
+        "isSeparateHttpTransfer": false
+      },
+      "legacyNomodule": {
+        "assetCount": 1,
+        "gzipBytes": 39627,
+        "includedInModernJavascriptBudget": false
+      }
+    },
+    {
+      "route": "/menukaart",
+      "httpStatus": 200,
+      "expectedRuntimeBuildIdPresent": true,
+      "javascript": {
+        "assetCount": 16,
+        "rawBytes": 807610,
+        "gzipBytes": 233883,
+        "passesBudget": false,
+        "reductionNeededBytes": 113884,
+        "assets": [
+          "/_next/static/chunks/3v5p_89gzoou-.js",
+          "/_next/static/chunks/43rfq7guowqma.js",
+          "/_next/static/chunks/2-r0a5gokqs12.js",
+          "/_next/static/chunks/27jktro2p5rq9.js",
+          "/_next/static/chunks/turbopack-3smeg9pl7nawj.js",
+          "/_next/static/chunks/3xzrf04fd6yk1.js",
+          "/_next/static/chunks/11c5-ejki0ug9.js",
+          "/_next/static/chunks/34y30617y348f.js",
+          "/_next/static/chunks/0dhspf_ga-l9x.js",
+          "/_next/static/chunks/35ip4ctshr802.js",
+          "/_next/static/chunks/3_sou3zb03dxz.js",
+          "/_next/static/chunks/33yi4abi3g6c-.js",
+          "/_next/static/chunks/0hxkogmp_3npd.js",
+          "/_next/static/chunks/2tflvsbt13_04.js",
+          "/_next/static/chunks/0ya23fqxsak8w.js",
+          "/_next/static/chunks/2zjueh7t2vecu.js"
+        ]
+      },
+      "css": {
+        "assetCount": 6,
+        "rawBytes": 190405,
+        "gzipBytes": 33200,
+        "passesBudget": true,
+        "reductionNeededBytes": 0,
+        "assets": [
+          "/_next/static/chunks/1nopnqt7qnlse.css",
+          "/_next/static/chunks/379p5i7iu93c4.css",
+          "/_next/static/chunks/41w8vsc5pk8eg.css",
+          "/_next/static/chunks/3xfqn17rerb5e.css",
+          "/_next/static/chunks/3-1dyezds4q6h.css",
+          "/_next/static/chunks/175dknn6sltqd.css"
+        ]
+      },
+      "inlineExecutableAndFlightScripts": {
+        "rawBytes": 18373,
+        "standaloneGzipBytes": 3800,
+        "isSeparateHttpTransfer": false
+      },
+      "legacyNomodule": {
+        "assetCount": 1,
+        "gzipBytes": 39627,
+        "includedInModernJavascriptBudget": false
+      }
+    },
+    {
+      "route": "/en/menu",
+      "httpStatus": 200,
+      "expectedRuntimeBuildIdPresent": true,
+      "javascript": {
+        "assetCount": 16,
+        "rawBytes": 807610,
+        "gzipBytes": 233883,
+        "passesBudget": false,
+        "reductionNeededBytes": 113884,
+        "assets": [
+          "/_next/static/chunks/3v5p_89gzoou-.js",
+          "/_next/static/chunks/43rfq7guowqma.js",
+          "/_next/static/chunks/2-r0a5gokqs12.js",
+          "/_next/static/chunks/27jktro2p5rq9.js",
+          "/_next/static/chunks/turbopack-3smeg9pl7nawj.js",
+          "/_next/static/chunks/3xzrf04fd6yk1.js",
+          "/_next/static/chunks/11c5-ejki0ug9.js",
+          "/_next/static/chunks/34y30617y348f.js",
+          "/_next/static/chunks/0dhspf_ga-l9x.js",
+          "/_next/static/chunks/35ip4ctshr802.js",
+          "/_next/static/chunks/3_sou3zb03dxz.js",
+          "/_next/static/chunks/33yi4abi3g6c-.js",
+          "/_next/static/chunks/0hxkogmp_3npd.js",
+          "/_next/static/chunks/2tflvsbt13_04.js",
+          "/_next/static/chunks/0ya23fqxsak8w.js",
+          "/_next/static/chunks/2zjueh7t2vecu.js"
+        ]
+      },
+      "css": {
+        "assetCount": 6,
+        "rawBytes": 190405,
+        "gzipBytes": 33200,
+        "passesBudget": true,
+        "reductionNeededBytes": 0,
+        "assets": [
+          "/_next/static/chunks/1nopnqt7qnlse.css",
+          "/_next/static/chunks/379p5i7iu93c4.css",
+          "/_next/static/chunks/41w8vsc5pk8eg.css",
+          "/_next/static/chunks/3xfqn17rerb5e.css",
+          "/_next/static/chunks/3-1dyezds4q6h.css",
+          "/_next/static/chunks/175dknn6sltqd.css"
+        ]
+      },
+      "inlineExecutableAndFlightScripts": {
+        "rawBytes": 18793,
+        "standaloneGzipBytes": 3819,
+        "isSeparateHttpTransfer": false
+      },
+      "legacyNomodule": {
+        "assetCount": 1,
+        "gzipBytes": 39627,
+        "includedInModernJavascriptBudget": false
+      }
+    },
+    {
+      "route": "/reserveren",
+      "httpStatus": 200,
+      "expectedRuntimeBuildIdPresent": true,
+      "javascript": {
+        "assetCount": 16,
+        "rawBytes": 769760,
+        "gzipBytes": 226941,
+        "passesBudget": false,
+        "reductionNeededBytes": 106942,
+        "assets": [
+          "/_next/static/chunks/3v5p_89gzoou-.js",
+          "/_next/static/chunks/43rfq7guowqma.js",
+          "/_next/static/chunks/2-r0a5gokqs12.js",
+          "/_next/static/chunks/27jktro2p5rq9.js",
+          "/_next/static/chunks/turbopack-3smeg9pl7nawj.js",
+          "/_next/static/chunks/3xzrf04fd6yk1.js",
+          "/_next/static/chunks/11c5-ejki0ug9.js",
+          "/_next/static/chunks/34y30617y348f.js",
+          "/_next/static/chunks/0dhspf_ga-l9x.js",
+          "/_next/static/chunks/35ip4ctshr802.js",
+          "/_next/static/chunks/3_sou3zb03dxz.js",
+          "/_next/static/chunks/09aoy-xrxqujz.js",
+          "/_next/static/chunks/2_bbpjzt083nm.js",
+          "/_next/static/chunks/2tflvsbt13_04.js",
+          "/_next/static/chunks/0ya23fqxsak8w.js",
+          "/_next/static/chunks/2zjueh7t2vecu.js"
+        ]
+      },
+      "css": {
+        "assetCount": 6,
+        "rawBytes": 266507,
+        "gzipBytes": 45059,
+        "passesBudget": false,
+        "reductionNeededBytes": 5060,
+        "assets": [
+          "/_next/static/chunks/1nopnqt7qnlse.css",
+          "/_next/static/chunks/379p5i7iu93c4.css",
+          "/_next/static/chunks/41w8vsc5pk8eg.css",
+          "/_next/static/chunks/3xfqn17rerb5e.css",
+          "/_next/static/chunks/1p2vx_aqpkia-.css",
+          "/_next/static/chunks/175dknn6sltqd.css"
+        ]
+      },
+      "inlineExecutableAndFlightScripts": {
+        "rawBytes": 18398,
+        "standaloneGzipBytes": 3815,
+        "isSeparateHttpTransfer": false
+      },
+      "legacyNomodule": {
+        "assetCount": 1,
+        "gzipBytes": 39627,
+        "includedInModernJavascriptBudget": false
+      }
+    },
+    {
+      "route": "/en/reservations",
+      "httpStatus": 200,
+      "expectedRuntimeBuildIdPresent": true,
+      "javascript": {
+        "assetCount": 16,
+        "rawBytes": 769760,
+        "gzipBytes": 226941,
+        "passesBudget": false,
+        "reductionNeededBytes": 106942,
+        "assets": [
+          "/_next/static/chunks/3v5p_89gzoou-.js",
+          "/_next/static/chunks/43rfq7guowqma.js",
+          "/_next/static/chunks/2-r0a5gokqs12.js",
+          "/_next/static/chunks/27jktro2p5rq9.js",
+          "/_next/static/chunks/turbopack-3smeg9pl7nawj.js",
+          "/_next/static/chunks/3xzrf04fd6yk1.js",
+          "/_next/static/chunks/11c5-ejki0ug9.js",
+          "/_next/static/chunks/34y30617y348f.js",
+          "/_next/static/chunks/0dhspf_ga-l9x.js",
+          "/_next/static/chunks/35ip4ctshr802.js",
+          "/_next/static/chunks/3_sou3zb03dxz.js",
+          "/_next/static/chunks/09aoy-xrxqujz.js",
+          "/_next/static/chunks/2_bbpjzt083nm.js",
+          "/_next/static/chunks/2tflvsbt13_04.js",
+          "/_next/static/chunks/0ya23fqxsak8w.js",
+          "/_next/static/chunks/2zjueh7t2vecu.js"
+        ]
+      },
+      "css": {
+        "assetCount": 6,
+        "rawBytes": 266507,
+        "gzipBytes": 45059,
+        "passesBudget": false,
+        "reductionNeededBytes": 5060,
+        "assets": [
+          "/_next/static/chunks/1nopnqt7qnlse.css",
+          "/_next/static/chunks/379p5i7iu93c4.css",
+          "/_next/static/chunks/41w8vsc5pk8eg.css",
+          "/_next/static/chunks/3xfqn17rerb5e.css",
+          "/_next/static/chunks/1p2vx_aqpkia-.css",
+          "/_next/static/chunks/175dknn6sltqd.css"
+        ]
+      },
+      "inlineExecutableAndFlightScripts": {
+        "rawBytes": 18885,
+        "standaloneGzipBytes": 3824,
+        "isSeparateHttpTransfer": false
+      },
+      "legacyNomodule": {
+        "assetCount": 1,
+        "gzipBytes": 39627,
+        "includedInModernJavascriptBudget": false
+      }
+    },
+    {
+      "route": "/privacy",
+      "httpStatus": 200,
+      "expectedRuntimeBuildIdPresent": true,
+      "javascript": {
+        "assetCount": 15,
+        "rawBytes": 742197,
+        "gzipBytes": 220682,
+        "passesBudget": false,
+        "reductionNeededBytes": 100683,
+        "assets": [
+          "/_next/static/chunks/3v5p_89gzoou-.js",
+          "/_next/static/chunks/43rfq7guowqma.js",
+          "/_next/static/chunks/2-r0a5gokqs12.js",
+          "/_next/static/chunks/27jktro2p5rq9.js",
+          "/_next/static/chunks/turbopack-3smeg9pl7nawj.js",
+          "/_next/static/chunks/3xzrf04fd6yk1.js",
+          "/_next/static/chunks/11c5-ejki0ug9.js",
+          "/_next/static/chunks/34y30617y348f.js",
+          "/_next/static/chunks/0dhspf_ga-l9x.js",
+          "/_next/static/chunks/35ip4ctshr802.js",
+          "/_next/static/chunks/3_sou3zb03dxz.js",
+          "/_next/static/chunks/1lyacx3w9fjxx.js",
+          "/_next/static/chunks/2tflvsbt13_04.js",
+          "/_next/static/chunks/0ya23fqxsak8w.js",
+          "/_next/static/chunks/2zjueh7t2vecu.js"
+        ]
+      },
+      "css": {
+        "assetCount": 5,
+        "rawBytes": 180912,
+        "gzipBytes": 31011,
+        "passesBudget": true,
+        "reductionNeededBytes": 0,
+        "assets": [
+          "/_next/static/chunks/1nopnqt7qnlse.css",
+          "/_next/static/chunks/379p5i7iu93c4.css",
+          "/_next/static/chunks/41w8vsc5pk8eg.css",
+          "/_next/static/chunks/3xfqn17rerb5e.css",
+          "/_next/static/chunks/175dknn6sltqd.css"
+        ]
+      },
+      "inlineExecutableAndFlightScripts": {
+        "rawBytes": 18198,
+        "standaloneGzipBytes": 3802,
+        "isSeparateHttpTransfer": false
+      },
+      "legacyNomodule": {
+        "assetCount": 1,
+        "gzipBytes": 39627,
+        "includedInModernJavascriptBudget": false
+      }
+    },
+    {
+      "route": "/en/privacy",
+      "httpStatus": 200,
+      "expectedRuntimeBuildIdPresent": true,
+      "javascript": {
+        "assetCount": 15,
+        "rawBytes": 742197,
+        "gzipBytes": 220682,
+        "passesBudget": false,
+        "reductionNeededBytes": 100683,
+        "assets": [
+          "/_next/static/chunks/3v5p_89gzoou-.js",
+          "/_next/static/chunks/43rfq7guowqma.js",
+          "/_next/static/chunks/2-r0a5gokqs12.js",
+          "/_next/static/chunks/27jktro2p5rq9.js",
+          "/_next/static/chunks/turbopack-3smeg9pl7nawj.js",
+          "/_next/static/chunks/3xzrf04fd6yk1.js",
+          "/_next/static/chunks/11c5-ejki0ug9.js",
+          "/_next/static/chunks/34y30617y348f.js",
+          "/_next/static/chunks/0dhspf_ga-l9x.js",
+          "/_next/static/chunks/35ip4ctshr802.js",
+          "/_next/static/chunks/3_sou3zb03dxz.js",
+          "/_next/static/chunks/1lyacx3w9fjxx.js",
+          "/_next/static/chunks/2tflvsbt13_04.js",
+          "/_next/static/chunks/0ya23fqxsak8w.js",
+          "/_next/static/chunks/2zjueh7t2vecu.js"
+        ]
+      },
+      "css": {
+        "assetCount": 5,
+        "rawBytes": 180912,
+        "gzipBytes": 31011,
+        "passesBudget": true,
+        "reductionNeededBytes": 0,
+        "assets": [
+          "/_next/static/chunks/1nopnqt7qnlse.css",
+          "/_next/static/chunks/379p5i7iu93c4.css",
+          "/_next/static/chunks/41w8vsc5pk8eg.css",
+          "/_next/static/chunks/3xfqn17rerb5e.css",
+          "/_next/static/chunks/175dknn6sltqd.css"
+        ]
+      },
+      "inlineExecutableAndFlightScripts": {
+        "rawBytes": 18389,
+        "standaloneGzipBytes": 3769,
+        "isSeparateHttpTransfer": false
+      },
+      "legacyNomodule": {
+        "assetCount": 1,
+        "gzipBytes": 39627,
+        "includedInModernJavascriptBudget": false
+      }
+    },
+    {
+      "route": "/voorwaarden",
+      "httpStatus": 200,
+      "expectedRuntimeBuildIdPresent": true,
+      "javascript": {
+        "assetCount": 15,
+        "rawBytes": 741595,
+        "gzipBytes": 220652,
+        "passesBudget": false,
+        "reductionNeededBytes": 100653,
+        "assets": [
+          "/_next/static/chunks/3v5p_89gzoou-.js",
+          "/_next/static/chunks/43rfq7guowqma.js",
+          "/_next/static/chunks/2-r0a5gokqs12.js",
+          "/_next/static/chunks/27jktro2p5rq9.js",
+          "/_next/static/chunks/turbopack-3smeg9pl7nawj.js",
+          "/_next/static/chunks/3xzrf04fd6yk1.js",
+          "/_next/static/chunks/11c5-ejki0ug9.js",
+          "/_next/static/chunks/34y30617y348f.js",
+          "/_next/static/chunks/0dhspf_ga-l9x.js",
+          "/_next/static/chunks/35ip4ctshr802.js",
+          "/_next/static/chunks/3_sou3zb03dxz.js",
+          "/_next/static/chunks/43fu0mnfbi6kp.js",
+          "/_next/static/chunks/2tflvsbt13_04.js",
+          "/_next/static/chunks/0ya23fqxsak8w.js",
+          "/_next/static/chunks/2zjueh7t2vecu.js"
+        ]
+      },
+      "css": {
+        "assetCount": 5,
+        "rawBytes": 180912,
+        "gzipBytes": 31011,
+        "passesBudget": true,
+        "reductionNeededBytes": 0,
+        "assets": [
+          "/_next/static/chunks/1nopnqt7qnlse.css",
+          "/_next/static/chunks/379p5i7iu93c4.css",
+          "/_next/static/chunks/41w8vsc5pk8eg.css",
+          "/_next/static/chunks/3xfqn17rerb5e.css",
+          "/_next/static/chunks/175dknn6sltqd.css"
+        ]
+      },
+      "inlineExecutableAndFlightScripts": {
+        "rawBytes": 17946,
+        "standaloneGzipBytes": 3753,
+        "isSeparateHttpTransfer": false
+      },
+      "legacyNomodule": {
+        "assetCount": 1,
+        "gzipBytes": 39627,
+        "includedInModernJavascriptBudget": false
+      }
+    },
+    {
+      "route": "/en/terms",
+      "httpStatus": 200,
+      "expectedRuntimeBuildIdPresent": true,
+      "javascript": {
+        "assetCount": 15,
+        "rawBytes": 741595,
+        "gzipBytes": 220652,
+        "passesBudget": false,
+        "reductionNeededBytes": 100653,
+        "assets": [
+          "/_next/static/chunks/3v5p_89gzoou-.js",
+          "/_next/static/chunks/43rfq7guowqma.js",
+          "/_next/static/chunks/2-r0a5gokqs12.js",
+          "/_next/static/chunks/27jktro2p5rq9.js",
+          "/_next/static/chunks/turbopack-3smeg9pl7nawj.js",
+          "/_next/static/chunks/3xzrf04fd6yk1.js",
+          "/_next/static/chunks/11c5-ejki0ug9.js",
+          "/_next/static/chunks/34y30617y348f.js",
+          "/_next/static/chunks/0dhspf_ga-l9x.js",
+          "/_next/static/chunks/35ip4ctshr802.js",
+          "/_next/static/chunks/3_sou3zb03dxz.js",
+          "/_next/static/chunks/43fu0mnfbi6kp.js",
+          "/_next/static/chunks/2tflvsbt13_04.js",
+          "/_next/static/chunks/0ya23fqxsak8w.js",
+          "/_next/static/chunks/2zjueh7t2vecu.js"
+        ]
+      },
+      "css": {
+        "assetCount": 5,
+        "rawBytes": 180912,
+        "gzipBytes": 31011,
+        "passesBudget": true,
+        "reductionNeededBytes": 0,
+        "assets": [
+          "/_next/static/chunks/1nopnqt7qnlse.css",
+          "/_next/static/chunks/379p5i7iu93c4.css",
+          "/_next/static/chunks/41w8vsc5pk8eg.css",
+          "/_next/static/chunks/3xfqn17rerb5e.css",
+          "/_next/static/chunks/175dknn6sltqd.css"
+        ]
+      },
+      "inlineExecutableAndFlightScripts": {
+        "rawBytes": 18395,
+        "standaloneGzipBytes": 3773,
+        "isSeparateHttpTransfer": false
+      },
+      "legacyNomodule": {
+        "assetCount": 1,
+        "gzipBytes": 39627,
+        "includedInModernJavascriptBudget": false
+      }
+    }
+  ],
+  "assets": [
+    {
+      "url": "/_next/static/chunks/09aoy-xrxqujz.js",
+      "rawBytes": 249,
+      "gzipBytes": 214,
+      "sha256": "e826b07155e9f90a5a7149f1363e9e9b04520faf45e3a57fbc37405cbe0a13b6",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/0cz1d0mv5g_q7.js",
+      "rawBytes": 112594,
+      "gzipBytes": 39627,
+      "sha256": "0973c1d64c88adc8e3c950410cb58b288f72118d5965b78049438deb8f2f9683",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/0dhspf_ga-l9x.js",
+      "rawBytes": 87355,
+      "gzipBytes": 26962,
+      "sha256": "652be0fcdca17e30e1944dd3854741639dfc351eba4b0195a272b7395827219b",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/0hxkogmp_3npd.js",
+      "rawBytes": 65238,
+      "gzipBytes": 13282,
+      "sha256": "cbed69a0203a5253527bd8e9cbb8d658c58e4eaa26e24013489bdc3836be4821",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/0ya23fqxsak8w.js",
+      "rawBytes": 1238,
+      "gzipBytes": 653,
+      "sha256": "1ffc23714a6f50423313c25849b6897a54b9f294e72c29a453870505986398ce",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/11c5-ejki0ug9.js",
+      "rawBytes": 76161,
+      "gzipBytes": 24910,
+      "sha256": "4ff4b02d8cd806ae2ad1b97d820c60994e7d08d3f0dceb038713e471563caf3e",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/175dknn6sltqd.css",
+      "rawBytes": 22343,
+      "gzipBytes": 3696,
+      "sha256": "3c4cf697b6223aba92c18df6c2e69fdbda0025c9c0fd977b61d82d9833e5a41e",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/1lyacx3w9fjxx.js",
+      "rawBytes": 10390,
+      "gzipBytes": 4242,
+      "sha256": "b8c6dc233a3905f4dfb746dc11c770c1bef46e8010c9ac92da39510112210470",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/1nopnqt7qnlse.css",
+      "rawBytes": 7318,
+      "gzipBytes": 983,
+      "sha256": "8d2f15aa212dd8caaccdb5e0e8b246517348ca921562c86028db861efee6e7be",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/1p2vx_aqpkia-.css",
+      "rawBytes": 85595,
+      "gzipBytes": 14048,
+      "sha256": "458c9afb0188088e31047b9236a1536034a3452b356b1f5f1396b1d09d511726",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/2_bbpjzt083nm.js",
+      "rawBytes": 37704,
+      "gzipBytes": 10287,
+      "sha256": "62e6b0785c2cd17e38db7ab084e78bb93e109392d9a6bc2c06e7b4ef2de4989f",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/2-1p8dxzp_wvx.js",
+      "rawBytes": 55204,
+      "gzipBytes": 16299,
+      "sha256": "ce9c7a5de52072debe162aecefde331c493feee0a23c099b6077cba8d60389b9",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/2-r0a5gokqs12.js",
+      "rawBytes": 137451,
+      "gzipBytes": 37376,
+      "sha256": "99c5799f727b68eacb43bdb19ccde8701e78e1282bbd650973e89a0a73a0ad23",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/27jktro2p5rq9.js",
+      "rawBytes": 44414,
+      "gzipBytes": 9236,
+      "sha256": "5261101892e2476e4346e19e86fd5f19cbcf7c765ff76e92eb9cefcc86b6db6a",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/2s5eua0ieov9w.js",
+      "rawBytes": 14361,
+      "gzipBytes": 4896,
+      "sha256": "78e2bf2f04ba30e1d50f93c778793d96e544198eaf118a9ef91de0c6730e1983",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/2tflvsbt13_04.js",
+      "rawBytes": 1180,
+      "gzipBytes": 680,
+      "sha256": "c66767795df8ede8c78718ceaa9ab551861b7396d6d4d3650c9e1287d6c1b547",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/2zjueh7t2vecu.js",
+      "rawBytes": 5587,
+      "gzipBytes": 2018,
+      "sha256": "a46211a22ca83766afe77489b2635bc7ed6efd3da4f1c60bc94408deb352a575",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/3_sou3zb03dxz.js",
+      "rawBytes": 817,
+      "gzipBytes": 536,
+      "sha256": "165f5db93b2e223bc8234c0e7f5cc73314793d3d441a012a7a637adaf8eff7d8",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/3-1dyezds4q6h.css",
+      "rawBytes": 9493,
+      "gzipBytes": 2189,
+      "sha256": "8c143b00b2c1ceb52ccba1f350309ec73ce08a2a9c3cdc2af10ca48111f1345c",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/33yi4abi3g6c-.js",
+      "rawBytes": 10565,
+      "gzipBytes": 4161,
+      "sha256": "340bb9f7f879e6516de0761ca38a6108082ae16d3e8efe2db6e4771e34f52378",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/34y30617y348f.js",
+      "rawBytes": 2938,
+      "gzipBytes": 1416,
+      "sha256": "1644ffb37b99c9df440c75d51dc63743dac5ecbb6d2749f1daef90f8e5b3ce30",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/35ip4ctshr802.js",
+      "rawBytes": 54646,
+      "gzipBytes": 12875,
+      "sha256": "fe005dd52019dfda7b5ff8b3250cb487cfbe4d86f5ca7f38a8712a086d793c49",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/379p5i7iu93c4.css",
+      "rawBytes": 143889,
+      "gzipBytes": 24161,
+      "sha256": "ca0ba3a6098d7d09ba375d201379696ffbdc8a47c4a7937b3a1cc4780d1080ef",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/3v5p_89gzoou-.js",
+      "rawBytes": 31396,
+      "gzipBytes": 8907,
+      "sha256": "e8c00a84a67971e3d8f73e09637a2e6cf73c5648a2f6ead020a2f8a36386e41d",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/3xfqn17rerb5e.css",
+      "rawBytes": 4854,
+      "gzipBytes": 1245,
+      "sha256": "a41088e48e99b6bef1d2f29fdbdb6896cf7c0e6e57b35b5dbde227d4bc0a3d9c",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/3xzrf04fd6yk1.js",
+      "rawBytes": 50696,
+      "gzipBytes": 15728,
+      "sha256": "52b8349340907ea06d090cc0409a7219a4bb6fd3636c6bcfcae0e92e505ea241",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/41w8vsc5pk8eg.css",
+      "rawBytes": 2508,
+      "gzipBytes": 926,
+      "sha256": "2d3c3336ebca5c8aeacfd5198252e4d7196a1f8582ac7e11bb20adb52e71d6c4",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/43fu0mnfbi6kp.js",
+      "rawBytes": 9788,
+      "gzipBytes": 4212,
+      "sha256": "c9b0ca3fabcc5e6d135210ce303ce3065f2978df6048420fe8456c978979f532",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/43rfq7guowqma.js",
+      "rawBytes": 227315,
+      "gzipBytes": 70980,
+      "sha256": "eff638c3b4dd291ee747a5e5d500ca703cf32e0c9e6576988f69e93d72bfe7f5",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/turbopack-3smeg9pl7nawj.js",
+      "rawBytes": 10613,
+      "gzipBytes": 4163,
+      "sha256": "03d229eacfdca99f6aeae5198ee122f8cdc35749156434622a9cc16e3a91b2ae",
+      "servedMatchesBuild": true
+    }
+  ],
+  "protectedOriginals": [
+    {
+      "file": "public/brand/shah-hero-scroll-desktop-v4.mp4",
+      "rawBytes": 36744691,
+      "expectedSha256": "91934E4FC834E7050F37B3CD2C6EE063779B622C22E8BA61E3C788B1E63D3A2C",
+      "actualSha256": "91934E4FC834E7050F37B3CD2C6EE063779B622C22E8BA61E3C788B1E63D3A2C",
+      "unchanged": true
+    },
+    {
+      "file": "public/brand/shah-hero-scroll-mobile-v4.mp4",
+      "rawBytes": 11337072,
+      "expectedSha256": "685F08858741F06D04BC436C2B633AF01D2FB4E56A07C24F2FC5EC0D311B67F0",
+      "actualSha256": "685F08858741F06D04BC436C2B633AF01D2FB4E56A07C24F2FC5EC0D311B67F0",
+      "unchanged": true
+    },
+    {
+      "file": "public/brand/shah-landscape-gold-v1.svg",
+      "rawBytes": 17100,
+      "expectedSha256": "13DE955BAE005CDCBD680ADAF6BE1546E2AEDC1452791F7640700AE73138E46B",
+      "actualSha256": "13DE955BAE005CDCBD680ADAF6BE1546E2AEDC1452791F7640700AE73138E46B",
+      "unchanged": true
+    },
+    {
+      "file": "public/brand/shah-landscape-teal-v1.svg",
+      "rawBytes": 17099,
+      "expectedSha256": "B543B5EE55804B9044C7D8A570E859BF4977FFD673256A4124F22445139685B7",
+      "actualSha256": "B543B5EE55804B9044C7D8A570E859BF4977FFD673256A4124F22445139685B7",
+      "unchanged": true
+    }
+  ],
+  "summary": {
+    "routes": 10,
+    "distinctVerifiedAssets": 30,
+    "allJavascriptBudgetsPass": false,
+    "allCssBudgetsPass": false,
+    "allProtectedOriginalsUnchanged": true
+  }
+}

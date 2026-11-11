@@ -1,0 +1,143 @@
+{
+  "checkedAt": "2026-11-11T20:00:26.491Z",
+  "buildId": "Hj2ubUjCMfbacacwFligZ",
+  "distDir": ".next-review-cookie-ssr-20261111",
+  "sourceFingerprint": "1b9a194de54237b2104232c89ce249729ddd466a648d819a1118bcd81717fc62",
+  "sourceInputs": 418,
+  "sourceCommit": "013b7f1",
+  "mainURL": "http://localhost:3398/",
+  "candidateURL": "http://localhost:3518/",
+  "definitionOfDoneMet": false,
+  "integrity": {
+    "checkedAt": "2026-11-11T19:56:53.098Z",
+    "buildId": "Hj2ubUjCMfbacacwFligZ",
+    "sourceFingerprint": "1b9a194de54237b2104232c89ce249729ddd466a648d819a1118bcd81717fc62",
+    "inputCount": 418,
+    "sourceUnchanged": true,
+    "rawClsMax": 0,
+    "protectedFiles": [
+      {
+        "file": "public/brand/shah-hero-scroll-desktop-v4.mp4",
+        "sha256": "91934e4fc834e7050f37b3cd2c6ee063779b622c22e8ba61e3c788b1e63d3a2c"
+      },
+      {
+        "file": "public/brand/shah-hero-scroll-mobile-v4.mp4",
+        "sha256": "685f08858741f06d04bc436c2b633af01d2fb4e56a07c24f2fc5ec0d311b67f0"
+      },
+      {
+        "file": "public/brand/shah-landscape-gold-v1.svg",
+        "sha256": "13de955bae005cdcbd680adaf6be1546e2aedc1452791f7640700ae73138e46b"
+      },
+      {
+        "file": "public/brand/shah-landscape-teal-v1.svg",
+        "sha256": "b543b5ee55804b9044c7d8a570e859bf4977ffd673256a4124f22445139685b7"
+      }
+    ]
+  },
+  "proofs": [
+    {
+      "file": "cinematic-final-performance-2026-11-11.json",
+      "sha256": "1eb3dcb242e2cbd21ca37ac17f72f55d0d4e869a6667ae173703f2b8ac2fd4ea",
+      "bytes": 36595,
+      "buildId": "Hj2ubUjCMfbacacwFligZ"
+    },
+    {
+      "file": "cinematic-final-inp-2026-11-11.json",
+      "sha256": "9a5a4c73cb72e3a5b35e486c37f81bb0496463be9d4ccba69d7578737b4fce31",
+      "bytes": 30995,
+      "buildId": "Hj2ubUjCMfbacacwFligZ"
+    },
+    {
+      "file": "cinematic-final-film-2026-11-11.json",
+      "sha256": "317393e40f472a8e50a0af6a521e5de052a6f3d1fead55284c486e2dc58c23f8",
+      "bytes": 24632,
+      "buildId": "Hj2ubUjCMfbacacwFligZ"
+    },
+    {
+      "file": "cinematic-final-capture-summary-2026-11-11.json",
+      "sha256": "206426bd7a14377947e42f746387f1e9abe1d95c2690db1668e05956438184a5",
+      "bytes": 5291,
+      "buildId": "Hj2ubUjCMfbacacwFligZ"
+    },
+    {
+      "file": "cinematic-final-critical-lcp-2026-11-11.json",
+      "sha256": "30847e2264ff89b710aec69afb0176d256f2cd5fe25a12b2e76aefac9c15da80",
+      "bytes": 24425,
+      "buildId": "Identity recorded in structured payload"
+    },
+    {
+      "file": "cinematic-cookie-ssr-preflight-2026-11-11.json",
+      "sha256": "6c656157ea65990d13ad7c453a0f888a447b01887603554859804acbf4600775",
+      "bytes": 7130,
+      "buildId": "Hj2ubUjCMfbacacwFligZ"
+    },
+    {
+      "file": "cinematic-final-search-2026-11-11.json",
+      "sha256": "74ce6b38db8b87a4ac90b32c3f5b7298a712c50fc7fa797ea5d52dfd0e126f7a",
+      "bytes": 12262,
+      "buildId": "Hj2ubUjCMfbacacwFligZ"
+    },
+    {
+      "file": "cinematic-menu-sidebar-2026-11-11.json",
+      "sha256": "d9a72c4d652d87a51712aebfdb0c065cf96c2468227f64516780d487ac8ffd67",
+      "bytes": 2888,
+      "buildId": "Hj2ubUjCMfbacacwFligZ"
+    },
+    {
+      "file": "cinematic-cookie-ssr-verification-2026-11-11.json",
+      "sha256": "3812c71a51c619b9065e69cd8b0ad6a70b8c63e3bc390e8451bbcd6725e32eb2",
+      "bytes": 15197,
+      "buildId": "Identity recorded in structured payload"
+    },
+    {
+      "file": "cinematic-final-seo-2026-11-11.json",
+      "sha256": "0c2ab97478d01e660c598d10566edd373d6d3f837f958a0ff35fae734f46fefe",
+      "bytes": 67308,
+      "buildId": "Hj2ubUjCMfbacacwFligZ"
+    },
+    {
+      "file": "structured-data-local-Hj2ubUjC-2026-11-11.json",
+      "sha256": "90300e220c4506ce33e46369069dd2cd2bcb025cb603313fd1191bf4fc58bb6d",
+      "bytes": 112462,
+      "buildId": "Hj2ubUjCMfbacacwFligZ"
+    },
+    {
+      "file": "events-visibility-http-20261111.json",
+      "sha256": "1cd7dd7cacf1611ad5113a67aff12404f7d561104966afa69405541907d0e1e7",
+      "bytes": 3736,
+      "buildId": "Hj2ubUjCMfbacacwFligZ"
+    },
+    {
+      "file": "cinematic-cookie-ssr-payload-2026-11-11.json",
+      "sha256": "c31565dcb7ddf67832f5ee12795e8ba94b68e4b0b7dd017787adc7b707bb09c7",
+      "bytes": 38306,
+      "buildId": "Hj2ubUjCMfbacacwFligZ"
+    }
+  ],
+  "counts": {
+    "publicRoutes": 17,
+    "httpAccessCases": 31,
+    "lighthouseRuns": 34,
+    "officialInpSamples": 6,
+    "filmCases": 10,
+    "cookieSsrCases": 18,
+    "cookieBrowserKeyboardStates": 27,
+    "sidebarCases": 5
+  },
+  "carriedEvidence": [
+    {
+      "file": "cinematic-event-usability-verification-2026-11-11.json",
+      "scope": "CrBm24 contrast cases/360 observations; event palette stylesheet and locale/provider code unchanged. Current34 Lighthouse A100 is separately measured."
+    },
+    {
+      "file": "structured-data-local-Hj2ubUjC-2026-11-11.json",
+      "scope": "Current17schemaGETs plus explicit unchanged83publicimagefile identity carried from prior HTTP checks, not83repeatedrequests."
+    }
+  ],
+  "limitations": [
+    "Strict JS/mobile performance/LCP/TBT/INP targets remain unmet; four home LCPs unvalidated.",
+    "GoogleCODE not run; seven English event URL pairs missing.",
+    "Native gallery fallback is WebP; original-JPEG pipeline/tap48px not fully certified.",
+    "PhysicalSafari,fieldCWV/livebusinessflows and separateCapCutedit not verified or delivered."
+  ]
+}

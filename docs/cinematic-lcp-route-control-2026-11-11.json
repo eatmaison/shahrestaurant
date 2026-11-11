@@ -1,0 +1,699 @@
+{
+  "buildId": "TFn5_Zc60dpJy1JBfD4dx",
+  "classification": "Historical pre-partner/pre-preload TFn5 route control; not final post-change measurements.",
+  "method": "Offline saved LHR/trace/CDP analysis and matching installed Lighthouse13.6.0 Lantern replay only. No browser navigation, network activity, app/config/public edits or fresh timings.",
+  "provenanceDirectory": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cinematic-qa-20261111\\production\\final-TFn5_Zc60dpJy1JBfD4dx",
+  "settings": {
+    "formFactor": "mobile",
+    "throttlingMethod": "simulate",
+    "rttMs": 150,
+    "throughputKbps": 1638.4,
+    "cpuSlowdownMultiplier": 4
+  },
+  "conclusions": [
+    "Both captured mobile and desktop Chrome runs select the same route-specific1400pxAVIF CSS background.",
+    "Each target is CSS-parser-discovered, initiallyLow thenHigh, and absent from document Link preloads.",
+    "A bounded route-scoped preload matching the exact selected AVIF image path/type is justified for discovery and priority.",
+    "A responsive preload choosing another width while CSS still selects1400 could duplicate downloads. CSS and preload candidates must match before introducing responsive selection.",
+    "Do not preload both AVIF and WebP merely as fallbacks; other-browser format selection was not measured here.",
+    "Observed225–250ms breakdowns and scored simulated3.6–4.0s LCP are different measures and must not be mixed.",
+    "The replay exactly matches scoredLCP. Both hero images finish before the final modeled shared-script network/CPU tail, so image preload alone cannot be assumed to solve the entire LCP delay.",
+    "Saved lcp-discovery insights report estimatedLCPsavings0; remeasure the final change and promise no fixed saving."
+  ],
+  "routes": [
+    {
+      "route": "/menukaart",
+      "fetchTime": "2026-11-11T14:49:45.550Z",
+      "lighthouseVersion": "13.6.0",
+      "lcpNode": {
+        "type": "node",
+        "lhId": "page-0-DIV",
+        "path": "1,HTML,1,BODY,2,MAIN,2,DIV,1,DIV",
+        "selector": "body.flex > main#main-content > div.order_page__466_v > div.order-hero-strip",
+        "boundingRect": {
+          "top": 147,
+          "bottom": 406,
+          "left": 0,
+          "right": 412,
+          "width": 412,
+          "height": 259
+        },
+        "snippet": "<div class=\"order-hero-strip relative overflow-hidden px-4 py-6 sm:px-6 lg:mx-auto lg:…\" data-cinema-parallax=\"true\">",
+        "nodeLabel": "DUIDELIJKE PRIJZEN. SNELLE KEUZE.\nStel je bestelling samen\n— Indiase menukaart …"
+      },
+      "observed": {
+        "reportedLcpMs": 250,
+        "breakdownMs": {
+          "timeToFirstByte": 27.818999877929688,
+          "resourceLoadDelay": 86.6910001220703,
+          "resourceLoadDuration": 30.726000122070314,
+          "elementRenderDelay": 104.84999987792969
+        },
+        "breakdownSumMs": 250.08599999999998
+      },
+      "simulated": {
+        "scoredLcpMs": 3951.2207500000004,
+        "metricDebug": {
+          "timeToFirstByteMs": 460,
+          "lcpLoadDelayMs": 1693,
+          "lcpLoadDurationMs": 142
+        },
+        "offlineLanternReplayMs": 3951.2207500000004,
+        "replayMatchesRawScore": true,
+        "branches": {
+          "optimistic": {
+            "estimateMs": 3800.720750000001,
+            "image": {
+              "id": "36876.91",
+              "type": "network",
+              "path": "/brand/restaurant-photos-v1/shah-table-1400.avif",
+              "resourceType": "Image",
+              "event": null,
+              "startMs": 1370.2883000000002,
+              "endMs": 3180.4324500000007,
+              "durationMs": 1810.1441500000005,
+              "dependencies": [
+                {
+                  "id": "36876.7",
+                  "type": "network",
+                  "path": "/_next/static/css/2aca0088adc8a1ae.css",
+                  "event": null
+                }
+              ]
+            },
+            "lastEndingNodes": [
+              {
+                "id": "36876.24",
+                "type": "network",
+                "path": "/_next/static/chunks/6371-fd3a69218e1fd626.js",
+                "resourceType": "Script",
+                "event": null,
+                "startMs": 3340.576600000001,
+                "endMs": 3800.720750000001,
+                "durationMs": 460.1441500000001,
+                "dependencies": [
+                  {
+                    "id": "05930CFB4BEE44780F50ED4B785C6C6F",
+                    "type": "network",
+                    "path": "/menukaart",
+                    "event": null
+                  },
+                  {
+                    "id": "25648.1095983335859",
+                    "type": "cpu",
+                    "path": null,
+                    "event": "RunTask"
+                  }
+                ]
+              },
+              {
+                "id": "25648.1095983490391",
+                "type": "cpu",
+                "path": null,
+                "resourceType": null,
+                "event": "RunTask",
+                "startMs": 3640.576600000001,
+                "endMs": 3791.576600000001,
+                "durationMs": 151,
+                "dependencies": [
+                  {
+                    "id": "05930CFB4BEE44780F50ED4B785C6C6F",
+                    "type": "network",
+                    "path": "/menukaart",
+                    "event": null
+                  },
+                  {
+                    "id": "36876.10",
+                    "type": "network",
+                    "path": "/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+                    "event": null
+                  },
+                  {
+                    "id": "36876.11",
+                    "type": "network",
+                    "path": "/_next/static/chunks/3794-c968c786880cae15.js",
+                    "event": null
+                  },
+                  {
+                    "id": "36876.9",
+                    "type": "network",
+                    "path": "/_next/static/chunks/webpack-3cc9119b4fac4295.js",
+                    "event": null
+                  },
+                  {
+                    "id": "36876.12",
+                    "type": "network",
+                    "path": "/_next/static/chunks/main-app-2f3596a243c31fc0.js",
+                    "event": null
+                  }
+                ]
+              },
+              {
+                "id": "36876.11",
+                "type": "network",
+                "path": "/_next/static/chunks/3794-c968c786880cae15.js",
+                "resourceType": "Script",
+                "event": null,
+                "startMs": 1380.4324500000002,
+                "endMs": 3640.576600000001,
+                "durationMs": 2260.1441500000005,
+                "dependencies": [
+                  {
+                    "id": "05930CFB4BEE44780F50ED4B785C6C6F",
+                    "type": "network",
+                    "path": "/menukaart",
+                    "event": null
+                  },
+                  {
+                    "id": "25648.1095983335859",
+                    "type": "cpu",
+                    "path": null,
+                    "event": "RunTask"
+                  }
+                ]
+              }
+            ]
+          },
+          "pessimistic": {
+            "estimateMs": 4101.72075,
+            "image": {
+              "id": "36876.91",
+              "type": "network",
+              "path": "/brand/restaurant-photos-v1/shah-table-1400.avif",
+              "resourceType": "Image",
+              "event": null,
+              "startMs": 1370.2883000000002,
+              "endMs": 3180.4324500000007,
+              "durationMs": 1810.1441500000005,
+              "dependencies": [
+                {
+                  "id": "36876.7",
+                  "type": "network",
+                  "path": "/_next/static/css/2aca0088adc8a1ae.css",
+                  "event": null
+                }
+              ]
+            },
+            "lastEndingNodes": [
+              {
+                "id": "25648.1095983490391",
+                "type": "cpu",
+                "path": null,
+                "resourceType": null,
+                "event": "RunTask",
+                "startMs": 3950.7207500000004,
+                "endMs": 4101.72075,
+                "durationMs": 151,
+                "dependencies": [
+                  {
+                    "id": "05930CFB4BEE44780F50ED4B785C6C6F",
+                    "type": "network",
+                    "path": "/menukaart",
+                    "event": null
+                  },
+                  {
+                    "id": "36876.10",
+                    "type": "network",
+                    "path": "/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+                    "event": null
+                  },
+                  {
+                    "id": "36876.11",
+                    "type": "network",
+                    "path": "/_next/static/chunks/3794-c968c786880cae15.js",
+                    "event": null
+                  },
+                  {
+                    "id": "36876.9",
+                    "type": "network",
+                    "path": "/_next/static/chunks/webpack-3cc9119b4fac4295.js",
+                    "event": null
+                  },
+                  {
+                    "id": "36876.12",
+                    "type": "network",
+                    "path": "/_next/static/chunks/main-app-2f3596a243c31fc0.js",
+                    "event": null
+                  }
+                ]
+              },
+              {
+                "id": "36876.11",
+                "type": "network",
+                "path": "/_next/static/chunks/3794-c968c786880cae15.js",
+                "resourceType": "Script",
+                "event": null,
+                "startMs": 1690.5766000000003,
+                "endMs": 3950.7207500000004,
+                "durationMs": 2260.14415,
+                "dependencies": [
+                  {
+                    "id": "05930CFB4BEE44780F50ED4B785C6C6F",
+                    "type": "network",
+                    "path": "/menukaart",
+                    "event": null
+                  },
+                  {
+                    "id": "25648.1095983335859",
+                    "type": "cpu",
+                    "path": null,
+                    "event": "RunTask"
+                  }
+                ]
+              },
+              {
+                "id": "36876.24",
+                "type": "network",
+                "path": "/_next/static/chunks/6371-fd3a69218e1fd626.js",
+                "resourceType": "Script",
+                "event": null,
+                "startMs": 3340.576600000001,
+                "endMs": 3950.7207500000004,
+                "durationMs": 610.1441499999996,
+                "dependencies": [
+                  {
+                    "id": "05930CFB4BEE44780F50ED4B785C6C6F",
+                    "type": "network",
+                    "path": "/menukaart",
+                    "event": null
+                  },
+                  {
+                    "id": "25648.1095983335859",
+                    "type": "cpu",
+                    "path": null,
+                    "event": "RunTask"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "discovery": {
+        "checklist": {
+          "priorityHinted": {
+            "label": "fetchpriority=high should be applied",
+            "value": false
+          },
+          "requestDiscoverable": {
+            "label": "Request is discoverable in initial document",
+            "value": false
+          },
+          "eagerlyLoaded": {
+            "label": "LCP resources shouldn’t use loading=lazy",
+            "value": true
+          }
+        },
+        "estimatedLcpSavingsMs": 0,
+        "priorityChanges": [
+          {
+            "priority": "High",
+            "relativeToDocumentRequestMs": 172.71300009451807
+          }
+        ],
+        "existingDocumentLinkHeader": "</fonts/jost-latin-235d8f8964bf-v1.woff2>; rel=preload; as=\"font\"; crossorigin=\"anonymous\"; type=\"font/woff2\", </fonts/cormorant-garamond-latin-5d618c462b7a-v1.woff2>; rel=preload; as=\"font\"; crossorigin=\"anonymous\"; type=\"font/woff2\", </brand/shah-landscape-teal-v1.svg>; rel=preload; as=\"image\", </brand/shah-landscape-gold-v1.svg>; rel=preload; as=\"image\""
+      },
+      "selectedResources": [
+        {
+          "form": "mobile",
+          "imagePath": "/brand/restaurant-photos-v1/shah-table-1400.avif",
+          "bodyBytes": 50353,
+          "transferBytes": 50969,
+          "rendererDiscoveryMs": 113.71399998664856,
+          "networkStartMs": 135.48200011253357,
+          "networkEndMs": 144.44000029563904,
+          "initialPriority": "Low",
+          "finalPriority": "High",
+          "initiatorType": "parser",
+          "initiatorPath": "/_next/static/css/2aca0088adc8a1ae.css",
+          "isLinkPreload": false,
+          "proof": {
+            "lhr": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cinematic-qa-20261111\\production\\final-TFn5_Zc60dpJy1JBfD4dx\\menukaart-mobile.lighthouse.json",
+            "devtoolsLog": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cinematic-qa-20261111\\production\\final-TFn5_Zc60dpJy1JBfD4dx\\menukaart-mobile.devtoolslog.json"
+          }
+        },
+        {
+          "form": "desktop",
+          "imagePath": "/brand/restaurant-photos-v1/shah-table-1400.avif",
+          "bodyBytes": 50353,
+          "transferBytes": 50969,
+          "rendererDiscoveryMs": 88.86199998855591,
+          "networkStartMs": 101.40199971199036,
+          "networkEndMs": 114.1969997882843,
+          "initialPriority": "Low",
+          "finalPriority": "High",
+          "initiatorType": "parser",
+          "initiatorPath": "/_next/static/css/2aca0088adc8a1ae.css",
+          "isLinkPreload": false,
+          "proof": {
+            "lhr": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cinematic-qa-20261111\\production\\final-TFn5_Zc60dpJy1JBfD4dx\\menukaart-desktop.lighthouse.json",
+            "devtoolsLog": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cinematic-qa-20261111\\production\\final-TFn5_Zc60dpJy1JBfD4dx\\menukaart-desktop.devtoolslog.json"
+          }
+        }
+      ],
+      "sameImageMobileDesktop": true,
+      "proof": {
+        "rawLhr": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cinematic-qa-20261111\\production\\final-TFn5_Zc60dpJy1JBfD4dx\\menukaart-mobile.lighthouse.json",
+        "trace": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cinematic-qa-20261111\\production\\final-TFn5_Zc60dpJy1JBfD4dx\\menukaart-mobile.trace.json",
+        "devtoolsLog": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cinematic-qa-20261111\\production\\final-TFn5_Zc60dpJy1JBfD4dx\\menukaart-mobile.devtoolslog.json"
+      }
+    },
+    {
+      "route": "/reserveren",
+      "fetchTime": "2026-11-11T14:50:05.927Z",
+      "lighthouseVersion": "13.6.0",
+      "lcpNode": {
+        "type": "node",
+        "lhId": "page-0-SECTION",
+        "path": "1,HTML,1,BODY,2,MAIN,2,DIV,0,SECTION",
+        "selector": "body.flex > main#main-content > div.reservations_page__Yv4BP > section.reservations_hero__Amt3j",
+        "boundingRect": {
+          "top": 147,
+          "bottom": 458,
+          "left": 0,
+          "right": 412,
+          "width": 412,
+          "height": 311
+        },
+        "snippet": "<section class=\"reservations_hero__Amt3j reservation-hero-strip relative overflow-hidden\" data-cinema-parallax=\"true\">",
+        "nodeLabel": "RESERVERINGEN\nReserveer uw tafel\n— Amsterdam-Noord\n\nEen onvergetelijke avond be…"
+      },
+      "observed": {
+        "reportedLcpMs": 225,
+        "breakdownMs": {
+          "timeToFirstByte": 14.655,
+          "resourceLoadDelay": 55.545,
+          "resourceLoadDuration": 39.497,
+          "elementRenderDelay": 115.157
+        },
+        "breakdownSumMs": 224.85399999999998
+      },
+      "simulated": {
+        "scoredLcpMs": 3588.947074999999,
+        "metricDebug": {
+          "timeToFirstByteMs": 461,
+          "lcpLoadDelayMs": 1102,
+          "lcpLoadDurationMs": 188
+        },
+        "offlineLanternReplayMs": 3588.947074999999,
+        "replayMatchesRawScore": true,
+        "branches": {
+          "optimistic": {
+            "estimateMs": 3508.3973999999994,
+            "image": {
+              "id": "33868.76",
+              "type": "network",
+              "path": "/brand/restaurant-photos-v1/shah-dining-1400.avif",
+              "resourceType": "Image",
+              "event": null,
+              "startMs": 1222.1987,
+              "endMs": 2733.29805,
+              "durationMs": 1511.09935,
+              "dependencies": [
+                {
+                  "id": "33868.7",
+                  "type": "network",
+                  "path": "/_next/static/css/2aca0088adc8a1ae.css",
+                  "event": null
+                }
+              ]
+            },
+            "lastEndingNodes": [
+              {
+                "id": "32016.1096003851113",
+                "type": "cpu",
+                "path": null,
+                "resourceType": null,
+                "event": "RunTask",
+                "startMs": 3344.3973999999994,
+                "endMs": 3508.3973999999994,
+                "durationMs": 164,
+                "dependencies": [
+                  {
+                    "id": "427AEFE4EB57E42F360F457A5CFD3F65",
+                    "type": "network",
+                    "path": "/reserveren",
+                    "event": null
+                  },
+                  {
+                    "id": "33868.11",
+                    "type": "network",
+                    "path": "/_next/static/chunks/3794-c968c786880cae15.js",
+                    "event": null
+                  },
+                  {
+                    "id": "33868.9",
+                    "type": "network",
+                    "path": "/_next/static/chunks/webpack-3cc9119b4fac4295.js",
+                    "event": null
+                  },
+                  {
+                    "id": "33868.12",
+                    "type": "network",
+                    "path": "/_next/static/chunks/main-app-2f3596a243c31fc0.js",
+                    "event": null
+                  },
+                  {
+                    "id": "33868.10",
+                    "type": "network",
+                    "path": "/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+                    "event": null
+                  }
+                ]
+              },
+              {
+                "id": "33868.11",
+                "type": "network",
+                "path": "/_next/static/chunks/3794-c968c786880cae15.js",
+                "resourceType": "Script",
+                "event": null,
+                "startMs": 1233.2980499999999,
+                "endMs": 3344.3973999999994,
+                "durationMs": 2111.0993499999995,
+                "dependencies": [
+                  {
+                    "id": "427AEFE4EB57E42F360F457A5CFD3F65",
+                    "type": "network",
+                    "path": "/reserveren",
+                    "event": null
+                  },
+                  {
+                    "id": "32016.1096003671359",
+                    "type": "cpu",
+                    "path": null,
+                    "event": "RunTask"
+                  }
+                ]
+              },
+              {
+                "id": "33868.10",
+                "type": "network",
+                "path": "/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+                "resourceType": "Script",
+                "event": null,
+                "startMs": 1072.1987,
+                "endMs": 3333.2980499999994,
+                "durationMs": 2261.0993499999995,
+                "dependencies": [
+                  {
+                    "id": "427AEFE4EB57E42F360F457A5CFD3F65",
+                    "type": "network",
+                    "path": "/reserveren",
+                    "event": null
+                  },
+                  {
+                    "id": "32016.1096003671359",
+                    "type": "cpu",
+                    "path": null,
+                    "event": "RunTask"
+                  }
+                ]
+              }
+            ]
+          },
+          "pessimistic": {
+            "estimateMs": 3669.496749999999,
+            "image": {
+              "id": "33868.76",
+              "type": "network",
+              "path": "/brand/restaurant-photos-v1/shah-dining-1400.avif",
+              "resourceType": "Image",
+              "event": null,
+              "startMs": 1222.1987,
+              "endMs": 2733.2980499999994,
+              "durationMs": 1511.0993499999995,
+              "dependencies": [
+                {
+                  "id": "33868.7",
+                  "type": "network",
+                  "path": "/_next/static/css/2aca0088adc8a1ae.css",
+                  "event": null
+                }
+              ]
+            },
+            "lastEndingNodes": [
+              {
+                "id": "32016.1096003851113",
+                "type": "cpu",
+                "path": null,
+                "resourceType": null,
+                "event": "RunTask",
+                "startMs": 3505.496749999999,
+                "endMs": 3669.496749999999,
+                "durationMs": 164,
+                "dependencies": [
+                  {
+                    "id": "427AEFE4EB57E42F360F457A5CFD3F65",
+                    "type": "network",
+                    "path": "/reserveren",
+                    "event": null
+                  },
+                  {
+                    "id": "33868.11",
+                    "type": "network",
+                    "path": "/_next/static/chunks/3794-c968c786880cae15.js",
+                    "event": null
+                  },
+                  {
+                    "id": "33868.9",
+                    "type": "network",
+                    "path": "/_next/static/chunks/webpack-3cc9119b4fac4295.js",
+                    "event": null
+                  },
+                  {
+                    "id": "33868.12",
+                    "type": "network",
+                    "path": "/_next/static/chunks/main-app-2f3596a243c31fc0.js",
+                    "event": null
+                  },
+                  {
+                    "id": "33868.10",
+                    "type": "network",
+                    "path": "/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+                    "event": null
+                  }
+                ]
+              },
+              {
+                "id": "33868.11",
+                "type": "network",
+                "path": "/_next/static/chunks/3794-c968c786880cae15.js",
+                "resourceType": "Script",
+                "event": null,
+                "startMs": 1544.3973999999998,
+                "endMs": 3505.496749999999,
+                "durationMs": 1961.099349999999,
+                "dependencies": [
+                  {
+                    "id": "427AEFE4EB57E42F360F457A5CFD3F65",
+                    "type": "network",
+                    "path": "/reserveren",
+                    "event": null
+                  },
+                  {
+                    "id": "32016.1096003671359",
+                    "type": "cpu",
+                    "path": null,
+                    "event": "RunTask"
+                  }
+                ]
+              },
+              {
+                "id": "33868.10",
+                "type": "network",
+                "path": "/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+                "resourceType": "Script",
+                "event": null,
+                "startMs": 1383.2980499999999,
+                "endMs": 3494.397399999999,
+                "durationMs": 2111.099349999999,
+                "dependencies": [
+                  {
+                    "id": "427AEFE4EB57E42F360F457A5CFD3F65",
+                    "type": "network",
+                    "path": "/reserveren",
+                    "event": null
+                  },
+                  {
+                    "id": "32016.1096003671359",
+                    "type": "cpu",
+                    "path": null,
+                    "event": "RunTask"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "discovery": {
+        "checklist": {
+          "priorityHinted": {
+            "label": "fetchpriority=high should be applied",
+            "value": false
+          },
+          "requestDiscoverable": {
+            "label": "Request is discoverable in initial document",
+            "value": false
+          },
+          "eagerlyLoaded": {
+            "label": "LCP resources shouldn’t use loading=lazy",
+            "value": true
+          }
+        },
+        "estimatedLcpSavingsMs": 0,
+        "priorityChanges": [
+          {
+            "priority": "High",
+            "relativeToDocumentRequestMs": 158.9600001461804
+          }
+        ],
+        "existingDocumentLinkHeader": "</fonts/jost-latin-235d8f8964bf-v1.woff2>; rel=preload; as=\"font\"; crossorigin=\"anonymous\"; type=\"font/woff2\", </fonts/cormorant-garamond-latin-5d618c462b7a-v1.woff2>; rel=preload; as=\"font\"; crossorigin=\"anonymous\"; type=\"font/woff2\", </brand/shah-landscape-teal-v1.svg>; rel=preload; as=\"image\", </brand/shah-landscape-gold-v1.svg>; rel=preload; as=\"image\""
+      },
+      "selectedResources": [
+        {
+          "form": "mobile",
+          "imagePath": "/brand/restaurant-photos-v1/shah-dining-1400.avif",
+          "bodyBytes": 39069,
+          "transferBytes": 39685,
+          "rendererDiscoveryMs": 69.67500019073486,
+          "networkStartMs": 97.39400005340576,
+          "networkEndMs": 109.17200016975403,
+          "initialPriority": "Low",
+          "finalPriority": "High",
+          "initiatorType": "parser",
+          "initiatorPath": "/_next/static/css/2aca0088adc8a1ae.css",
+          "isLinkPreload": false,
+          "proof": {
+            "lhr": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cinematic-qa-20261111\\production\\final-TFn5_Zc60dpJy1JBfD4dx\\reserveren-mobile.lighthouse.json",
+            "devtoolsLog": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cinematic-qa-20261111\\production\\final-TFn5_Zc60dpJy1JBfD4dx\\reserveren-mobile.devtoolslog.json"
+          }
+        },
+        {
+          "form": "desktop",
+          "imagePath": "/brand/restaurant-photos-v1/shah-dining-1400.avif",
+          "bodyBytes": 39069,
+          "transferBytes": 39685,
+          "rendererDiscoveryMs": 66.81300020217896,
+          "networkStartMs": 87.42300009727478,
+          "networkEndMs": 104.71900010108948,
+          "initialPriority": "Low",
+          "finalPriority": "High",
+          "initiatorType": "parser",
+          "initiatorPath": "/_next/static/css/2aca0088adc8a1ae.css",
+          "isLinkPreload": false,
+          "proof": {
+            "lhr": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cinematic-qa-20261111\\production\\final-TFn5_Zc60dpJy1JBfD4dx\\reserveren-desktop.lighthouse.json",
+            "devtoolsLog": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cinematic-qa-20261111\\production\\final-TFn5_Zc60dpJy1JBfD4dx\\reserveren-desktop.devtoolslog.json"
+          }
+        }
+      ],
+      "sameImageMobileDesktop": true,
+      "proof": {
+        "rawLhr": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cinematic-qa-20261111\\production\\final-TFn5_Zc60dpJy1JBfD4dx\\reserveren-mobile.lighthouse.json",
+        "trace": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cinematic-qa-20261111\\production\\final-TFn5_Zc60dpJy1JBfD4dx\\reserveren-mobile.trace.json",
+        "devtoolsLog": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cinematic-qa-20261111\\production\\final-TFn5_Zc60dpJy1JBfD4dx\\reserveren-mobile.devtoolslog.json"
+      }
+    }
+  ]
+}

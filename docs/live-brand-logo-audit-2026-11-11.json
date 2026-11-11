@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "measuredAt": "2026-11-11T13:35:04.457Z",
+  "mode": "live-brand-config-logo-read-only-local-metadata-or-remote-HEAD",
+  "policy": {
+    "catalogTimeoutMs": 5000,
+    "transactionReadOnly": true,
+    "isolationLevel": "RepeatableRead",
+    "exactBoundedSelects": 2,
+    "remoteMethod": "HEAD only",
+    "remoteConcurrency": 1,
+    "remoteTimeoutMs": 5000,
+    "remoteRedirectsFollowed": false,
+    "retries": 0,
+    "remoteAuthenticationAdded": false,
+    "remoteCookiesSent": false,
+    "remoteBodiesDownloaded": false,
+    "remoteAllowedHttpsHost": "horica-media.ams3.cdn.digitaloceanspaces.com",
+    "remoteQueryUrlsAllowed": false,
+    "localResolution": "real path constrained to public directory",
+    "localMaximumReadBytes": 2000000,
+    "sourceBudgetBytesInclusive": 200000,
+    "remoteDimensionsAndMetadata": "unknown: no response body downloaded",
+    "separateFromProductImageAudit": true
+  },
+  "catalog": {
+    "accepted": true,
+    "transportCompleted": true,
+    "elapsedMs": 1563,
+    "error": null,
+    "products": 224,
+    "brands": 2,
+    "finiteNonnegativePrices": true
+  },
+  "logos": [
+    {
+      "present": true,
+      "sourceId": "04cc19b9b1e941774b5185fc4997d98736485ba18bf3784dfc76230578b813ea",
+      "location": "remote-allowlisted",
+      "extension": ".png",
+      "hasQuery": false,
+      "status": 200,
+      "contentType": "image/png",
+      "declaredBytes": 63067,
+      "atOrBelow200000Bytes": true,
+      "metadataUnknownReason": "HEAD only; source dimensions/metadata/body bytes not inspected"
+    },
+    {
+      "present": true,
+      "sourceId": "9fed40cb2c85cae0e2e842f71a22c83cc712f8c2591e9abab45301bb6dbdf1e5",
+      "location": "remote-allowlisted",
+      "extension": ".png",
+      "hasQuery": false,
+      "status": 200,
+      "contentType": "image/png",
+      "declaredBytes": 65491,
+      "atOrBelow200000Bytes": true,
+      "metadataUnknownReason": "HEAD only; source dimensions/metadata/body bytes not inspected"
+    }
+  ],
+  "expectedBrandCount": 2,
+  "summary": {
+    "brands": 2,
+    "present": 2,
+    "local": 0,
+    "remoteAllowlisted": 2,
+    "knownAtOrBelow200000Bytes": 2,
+    "knownOver200000Bytes": 0,
+    "unknownSize": 0,
+    "denied": 0
+  },
+  "rendering": {
+    "sourceFile": "app/order/OrderExperience.tsx",
+    "sourceLines": [
+      840,
+      928,
+      1004
+    ],
+    "currentSourceUsesNextImage": true,
+    "explicitUnoptimizedPropOnLogoUsages": false,
+    "actualSourceFormat": "Both live brand logo references are remotePNG, notSVG.",
+    "measurementScope": "Only original source HEAD representations measured; optimized logo bytes, decoded dimensions and metadata remain unverified.",
+    "protectedRootBrandLogoVariants": "Separate6localSVG variants; excluded from this2BrandConfig.logo audit and not edited."
+  },
+  "limitations": [
+    "This separate audit covers only the2actual catalog BrandConfig.logo references; no product-image totals were changed.",
+    "Remote HEAD sizes are declared source sizes and do not establish decoded dimensions, metadata stripping or optimized delivery.403responses receive no bypass or retry.",
+    "Local metadata inspection reads public-file bytes only; no files, URLs or catalog data are edited."
+  ]
+}

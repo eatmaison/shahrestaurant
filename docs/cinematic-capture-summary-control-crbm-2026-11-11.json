@@ -1,0 +1,177 @@
+{
+  "buildId": "CrBmCcjgdCeUlQi3JzrCi",
+  "sourceFingerprint": "e4769c09a92e6611f75050551fcd8fac96620f17c9e01ddb136164e3f7ba3f1f",
+  "checkedAtUTC": "2026-11-11T18:58:20.519Z",
+  "origin": "http://127.0.0.1:3518",
+  "mainReviewURL": "http://localhost:3398/",
+  "fixtureVersion": "2-empty-public-gallery",
+  "sourceInputs417Unchanged": true,
+  "counts": {
+    "lighthouse": 34,
+    "inp": 6,
+    "fastFilm": 8,
+    "coldFilm": 2
+  },
+  "allStrictTargetsMet": false,
+  "performanceSummary": {
+    "rows": 34,
+    "publicRoutes": 17,
+    "performanceRanges": {
+      "mobile": [
+        72,
+        100
+      ],
+      "desktop": [
+        98,
+        100
+      ]
+    },
+    "accessibilityRanges": {
+      "mobile": [
+        100,
+        100
+      ],
+      "desktop": [
+        100,
+        100
+      ]
+    },
+    "bestPractices100": true,
+    "seo100": true,
+    "thresholdFailureCounts": {
+      "performance": 8,
+      "accessibility": 0,
+      "bestPractices": 0,
+      "seo": 0,
+      "lcp": 6,
+      "cls": 0,
+      "tbt": 2
+    },
+    "thresholdUnvalidatedCounts": {
+      "performance": 0,
+      "accessibility": 0,
+      "bestPractices": 0,
+      "seo": 0,
+      "lcp": 4,
+      "cls": 0,
+      "tbt": 0
+    },
+    "nativeLcpEligibleRows": 30,
+    "ukmFallbackRows": [
+      "mobile:/",
+      "mobile:/en",
+      "desktop:/",
+      "desktop:/en"
+    ],
+    "allReportedLighthouseTargetsMet": false,
+    "allRequestedBudgetsMet": false
+  },
+  "inp": [
+    {
+      "page": "home",
+      "mode": "mobile",
+      "inpMs": 232,
+      "below150": false,
+      "overlapGroups": 0,
+      "visibleFocused": true,
+      "loafCount": 24
+    },
+    {
+      "page": "menu",
+      "mode": "mobile",
+      "inpMs": 1712,
+      "below150": false,
+      "overlapGroups": 1,
+      "visibleFocused": true,
+      "loafCount": 12
+    },
+    {
+      "page": "reservations",
+      "mode": "mobile",
+      "inpMs": 72,
+      "below150": true,
+      "overlapGroups": 0,
+      "visibleFocused": true,
+      "loafCount": 4
+    },
+    {
+      "page": "home",
+      "mode": "desktop",
+      "inpMs": 208,
+      "below150": false,
+      "overlapGroups": 0,
+      "visibleFocused": true,
+      "loafCount": 23
+    },
+    {
+      "page": "menu",
+      "mode": "desktop",
+      "inpMs": 1688,
+      "below150": false,
+      "overlapGroups": 2,
+      "visibleFocused": true,
+      "loafCount": 11
+    },
+    {
+      "page": "reservations",
+      "mode": "desktop",
+      "inpMs": 680,
+      "below150": false,
+      "overlapGroups": 0,
+      "visibleFocused": true,
+      "loafCount": 5
+    }
+  ],
+  "film": [
+    {
+      "case": "passive",
+      "phase": "ready",
+      "readyOrStaticAtMs": 61775.5,
+      "downloadedBytes": 11337072,
+      "headingVisible": true,
+      "unexpectedInert": 0
+    },
+    {
+      "case": "early-scroll",
+      "phase": "static",
+      "readyOrStaticAtMs": 5565,
+      "downloadedBytes": 0,
+      "headingVisible": true,
+      "unexpectedInert": 0
+    }
+  ],
+  "proofs": [
+    {
+      "file": "docs/cinematic-final-performance-2026-11-11.json",
+      "sha256": "3873b81f06e1071dbd9607f038aae4087178cdad9de0e54ee59c35dd53e306d1"
+    },
+    {
+      "file": "docs/cinematic-final-inp-2026-11-11.json",
+      "sha256": "0a5e545182c1600a915bb5bde60977e2d2387a7972cf0abf3918973153d7026c"
+    },
+    {
+      "file": "docs/cinematic-final-film-2026-11-11.json",
+      "sha256": "aadc37bea8d2ec234d3cd9dcccd3815e1fb7ef1c1324317507676311239763cb"
+    },
+    {
+      "file": "docs/cinematic-final-aa-preflight-2026-11-11.json",
+      "sha256": "7f9bff73fabc26a14fcb348070bc63a1c244afcdbd76451fd65baa5fa6b98899"
+    },
+    {
+      "file": "docs/cinematic-event-usability-verification-2026-11-11.json",
+      "sha256": "c69042cae12e940d5870ba011969b685008327b3ace9e962b9c97da25eaa2c7c"
+    }
+  ],
+  "controls": [
+    "docs/cinematic-performance-control-nucp9-2026-11-11.json",
+    "docs/cinematic-inp-control-2026-11-11.json",
+    "docs/cinematic-film-control-2026-11-11.json"
+  ],
+  "limitations": [
+    "Exactcompiledbuild/read-onlyfixtureonly. No deployment or business submissions.",
+    "FieldCWV/officialGooglevalidation and physicaldevice/Safari/droppedframeguarantees are not established by these local probes.",
+    "FourhomepageLCPs remain UKM-fallback/unvalidated; no fabricated pass.",
+    "Publicgalleryv2 is empty-upload fixture200, not actualuploaded data.",
+    "Raw officialINP and overlap markers are preserved without inferring app/CSS cost."
+  ]
+}

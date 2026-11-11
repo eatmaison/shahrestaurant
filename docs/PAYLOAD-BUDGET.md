@@ -1,5 +1,7 @@
 # Production payload budget
 
+**Historical build measurement.** The later [cinematic design revision](CINEMATIC-REVISION.md) changes CSS and client components. Current acceptance is recorded in [CINEMATIC-FINAL-VERIFICATION.md](CINEMATIC-FINAL-VERIFICATION.md). These exact totals apply only to the build below; do not present them as current payload figures.
+
 Measured on 2026-11-11T01:42:33.335Z. Production build ID: ZvsF7jSptyH4JJlRdUepP. Preview: http://127.0.0.1:3397.
 
 Initial external JavaScript and stylesheet URLs were extracted from each production HTML response (HTTP 200). Each distinct local build asset was matched byte-for-byte against the served asset, then independently gzip-compressed at zlib level 6. Route totals sum each asset once for a cold-cache page load. Units below are decimal bytes; the requested limits are JS <120,000 and CSS <40,000 bytes.

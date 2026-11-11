@@ -1,0 +1,451 @@
+{
+  "buildId": "Hj2ubUjCMfbacacwFligZ",
+  "sourceFingerprint": "1b9a194de54237b2104232c89ce249729ddd466a648d819a1118bcd81717fc62",
+  "catalogSourceHash": "66eda306b74cf90dc15ad018cc3064212349151810d8df2e098a06d6e8588892",
+  "origin": "http://127.0.0.1:3518",
+  "guestFixture": {
+    "products": 224,
+    "brands": 2,
+    "currentUser": null
+  },
+  "noBusinessSubmissions": true,
+  "limitation": "Unauthenticated guest fixture; company-only schedule controls unavailable and not tested. Dummy unsent QA draft fields and local cart only; all cleared after test.",
+  "states": [
+    {
+      "checkedAtUTC": "2026-11-11T19:32:36.661Z",
+      "name": "bare-dish-consumed-before-add",
+      "timeOrigin": 1794425555742.3,
+      "q": null,
+      "hasDish": false,
+      "hasCart": true,
+      "input": "Butter Chicken",
+      "resultStatus": "All restaurants · 4 items",
+      "draft": {
+        "name": "",
+        "note": ""
+      },
+      "fulfillment": [
+        "DeliveryWe bring it to your address"
+      ],
+      "scheduleControls": 0,
+      "cart": {},
+      "openSheet": null,
+      "overflow": 0,
+      "sameDocument": true,
+      "consoleErrors": [],
+      "runtimeExceptions": 0,
+      "businessWrites": [],
+      "path": "/en/menu?cart=1",
+      "visibleDishCount": 4,
+      "visibleDishSample": [
+        "Butter Chicken Wrap",
+        "Butter Chicken Pizza",
+        "Butter Chicken"
+      ]
+    },
+    {
+      "checkedAtUTC": "2026-11-11T19:32:36.905Z",
+      "name": "local-draft-set",
+      "scheduleChoiceTested": false,
+      "scheduleLimitation": "Company-only schedule unavailable to guest; pickup tested.",
+      "timeOrigin": 1794425555742.3,
+      "q": null,
+      "hasDish": false,
+      "hasCart": false,
+      "input": "Butter Chicken",
+      "resultStatus": "All restaurants · 4 items",
+      "draft": {
+        "name": "QA unsent draft",
+        "note": "QA unsent note"
+      },
+      "fulfillment": [
+        "PickupCollect it yourself in-store",
+        "PickupCollect it yourself in-store"
+      ],
+      "scheduleControls": 0,
+      "cart": {
+        "tdc-butter-chicken": 1
+      },
+      "openSheet": "checkout-sheet-title",
+      "overflow": 0,
+      "sameDocument": true,
+      "consoleErrors": [],
+      "runtimeExceptions": 0,
+      "businessWrites": [],
+      "path": "/en/menu",
+      "visibleDishCount": 4,
+      "visibleDishSample": [
+        "Butter Chicken Wrap",
+        "Butter Chicken Pizza",
+        "Butter Chicken"
+      ]
+    },
+    {
+      "checkedAtUTC": "2026-11-11T19:32:37.337Z",
+      "name": "enter-search-retains-draft",
+      "timeOrigin": 1794425555742.3,
+      "q": "naan",
+      "hasDish": false,
+      "hasCart": false,
+      "input": "naan",
+      "resultStatus": "All restaurants · 12 items",
+      "draft": {
+        "name": "QA unsent draft",
+        "note": "QA unsent note"
+      },
+      "fulfillment": [
+        "PickupCollect it yourself in-store"
+      ],
+      "scheduleControls": 0,
+      "cart": {
+        "tdc-butter-chicken": 1
+      },
+      "openSheet": null,
+      "overflow": 0,
+      "sameDocument": true,
+      "consoleErrors": [],
+      "runtimeExceptions": 0,
+      "businessWrites": [],
+      "path": "/en/menu?q=naan",
+      "visibleDishCount": 12,
+      "visibleDishSample": [
+        "Saag Paneer Wrap",
+        "Butter Chicken Wrap",
+        "Chicken Tikka Masala Wrap"
+      ]
+    },
+    {
+      "checkedAtUTC": "2026-11-11T19:32:37.763Z",
+      "name": "arrow-search-retains-draft",
+      "timeOrigin": 1794425555742.3,
+      "q": "butter",
+      "hasDish": false,
+      "hasCart": false,
+      "input": "butter",
+      "resultStatus": "All restaurants · 7 items",
+      "draft": {
+        "name": "QA unsent draft",
+        "note": "QA unsent note"
+      },
+      "fulfillment": [
+        "PickupCollect it yourself in-store"
+      ],
+      "scheduleControls": 0,
+      "cart": {
+        "tdc-butter-chicken": 1
+      },
+      "openSheet": null,
+      "overflow": 0,
+      "sameDocument": true,
+      "consoleErrors": [],
+      "runtimeExceptions": 0,
+      "businessWrites": [],
+      "path": "/en/menu?q=butter",
+      "visibleDishCount": 7,
+      "visibleDishSample": [
+        "Butter Chicken Wrap",
+        "Butter Chicken Pizza",
+        "King Prawn Butterfly"
+      ]
+    },
+    {
+      "checkedAtUTC": "2026-11-11T19:32:38.276Z",
+      "name": "back-to-naan",
+      "timeOrigin": 1794425555742.3,
+      "q": "naan",
+      "hasDish": false,
+      "hasCart": false,
+      "input": "naan",
+      "resultStatus": "All restaurants · 12 items",
+      "draft": {
+        "name": "QA unsent draft",
+        "note": "QA unsent note"
+      },
+      "fulfillment": [
+        "PickupCollect it yourself in-store"
+      ],
+      "scheduleControls": 0,
+      "cart": {
+        "tdc-butter-chicken": 1
+      },
+      "openSheet": null,
+      "overflow": 0,
+      "sameDocument": true,
+      "consoleErrors": [],
+      "runtimeExceptions": 0,
+      "businessWrites": [],
+      "path": "/en/menu?q=naan",
+      "visibleDishCount": 12,
+      "visibleDishSample": [
+        "Saag Paneer Wrap",
+        "Butter Chicken Wrap",
+        "Chicken Tikka Masala Wrap"
+      ]
+    },
+    {
+      "checkedAtUTC": "2026-11-11T19:32:38.681Z",
+      "name": "back-to-consumed-base",
+      "timeOrigin": 1794425555742.3,
+      "q": null,
+      "hasDish": false,
+      "hasCart": false,
+      "input": "",
+      "resultStatus": "Shah Restaurant · 2 items",
+      "draft": {
+        "name": "QA unsent draft",
+        "note": "QA unsent note"
+      },
+      "fulfillment": [
+        "PickupCollect it yourself in-store"
+      ],
+      "scheduleControls": 0,
+      "cart": {
+        "tdc-butter-chicken": 1
+      },
+      "openSheet": null,
+      "overflow": 0,
+      "sameDocument": true,
+      "consoleErrors": [],
+      "runtimeExceptions": 0,
+      "businessWrites": [],
+      "path": "/en/menu",
+      "visibleDishCount": 2,
+      "visibleDishSample": [
+        "Chicken Soup",
+        "Golden Lentil Essence"
+      ]
+    },
+    {
+      "checkedAtUTC": "2026-11-11T19:32:39.088Z",
+      "name": "forward-to-naan",
+      "timeOrigin": 1794425555742.3,
+      "q": "naan",
+      "hasDish": false,
+      "hasCart": false,
+      "input": "naan",
+      "resultStatus": "All restaurants · 12 items",
+      "draft": {
+        "name": "QA unsent draft",
+        "note": "QA unsent note"
+      },
+      "fulfillment": [
+        "PickupCollect it yourself in-store"
+      ],
+      "scheduleControls": 0,
+      "cart": {
+        "tdc-butter-chicken": 1
+      },
+      "openSheet": null,
+      "overflow": 0,
+      "sameDocument": true,
+      "consoleErrors": [],
+      "runtimeExceptions": 0,
+      "businessWrites": [],
+      "path": "/en/menu?q=naan",
+      "visibleDishCount": 12,
+      "visibleDishSample": [
+        "Saag Paneer Wrap",
+        "Butter Chicken Wrap",
+        "Chicken Tikka Masala Wrap"
+      ]
+    },
+    {
+      "checkedAtUTC": "2026-11-11T19:32:39.265Z",
+      "name": "forward-draft-visible",
+      "timeOrigin": 1794425555742.3,
+      "q": "naan",
+      "hasDish": false,
+      "hasCart": false,
+      "input": "naan",
+      "resultStatus": "All restaurants · 12 items",
+      "draft": {
+        "name": "QA unsent draft",
+        "note": "QA unsent note"
+      },
+      "fulfillment": [
+        "PickupCollect it yourself in-store",
+        "PickupCollect it yourself in-store"
+      ],
+      "scheduleControls": 0,
+      "cart": {
+        "tdc-butter-chicken": 1
+      },
+      "openSheet": "checkout-sheet-title",
+      "overflow": 0,
+      "sameDocument": true,
+      "consoleErrors": [],
+      "runtimeExceptions": 0,
+      "businessWrites": [],
+      "path": "/en/menu?q=naan",
+      "visibleDishCount": 12,
+      "visibleDishSample": [
+        "Saag Paneer Wrap",
+        "Butter Chicken Wrap",
+        "Chicken Tikka Masala Wrap"
+      ]
+    },
+    {
+      "checkedAtUTC": "2026-11-11T19:32:39.696Z",
+      "name": "cleanup-cart-and-draft",
+      "timeOrigin": 1794425555742.3,
+      "q": "naan",
+      "hasDish": false,
+      "hasCart": false,
+      "input": "naan",
+      "resultStatus": "All restaurants · 12 items",
+      "draft": {
+        "name": "",
+        "note": ""
+      },
+      "fulfillment": [
+        "DeliveryWe bring it to your address"
+      ],
+      "scheduleControls": 0,
+      "cart": {},
+      "openSheet": null,
+      "overflow": 0,
+      "sameDocument": true,
+      "consoleErrors": [],
+      "runtimeExceptions": 0,
+      "businessWrites": [],
+      "path": "/en/menu?q=naan",
+      "visibleDishCount": 12,
+      "visibleDishSample": [
+        "Saag Paneer Wrap",
+        "Butter Chicken Wrap",
+        "Chicken Tikka Masala Wrap"
+      ]
+    },
+    {
+      "checkedAtUTC": "2026-11-11T19:32:40.715Z",
+      "name": "explicit-empty",
+      "timeOrigin": 1794425559820.5,
+      "q": "",
+      "hasDish": true,
+      "hasCart": false,
+      "input": "",
+      "resultStatus": "Shah Restaurant · 2 items",
+      "draft": {
+        "name": "",
+        "note": ""
+      },
+      "fulfillment": [
+        "DeliveryWe bring it to your address"
+      ],
+      "scheduleControls": 0,
+      "cart": {},
+      "openSheet": null,
+      "overflow": 0,
+      "sameDocument": null,
+      "consoleErrors": [],
+      "runtimeExceptions": 0,
+      "businessWrites": [],
+      "path": "/en/menu?q=&dish=tdc-butter-chicken",
+      "visibleDishCount": 2,
+      "visibleDishSample": [
+        "Chicken Soup",
+        "Golden Lentil Essence"
+      ]
+    },
+    {
+      "checkedAtUTC": "2026-11-11T19:32:41.832Z",
+      "name": "explicit-naan",
+      "timeOrigin": 1794425560925.5,
+      "q": "naan",
+      "hasDish": true,
+      "hasCart": false,
+      "input": "naan",
+      "resultStatus": "All restaurants · 12 items",
+      "draft": {
+        "name": "",
+        "note": ""
+      },
+      "fulfillment": [
+        "DeliveryWe bring it to your address"
+      ],
+      "scheduleControls": 0,
+      "cart": {},
+      "openSheet": null,
+      "overflow": 0,
+      "sameDocument": null,
+      "consoleErrors": [],
+      "runtimeExceptions": 0,
+      "businessWrites": [],
+      "path": "/en/menu?q=naan&dish=tdc-butter-chicken",
+      "visibleDishCount": 12,
+      "visibleDishSample": [
+        "Saag Paneer Wrap",
+        "Butter Chicken Wrap",
+        "Chicken Tikka Masala Wrap"
+      ]
+    },
+    {
+      "checkedAtUTC": "2026-11-11T19:32:42.920Z",
+      "name": "bare-dish-fresh",
+      "timeOrigin": 1794425562037.7,
+      "q": null,
+      "hasDish": false,
+      "hasCart": false,
+      "input": "Butter Chicken",
+      "resultStatus": "All restaurants · 4 items",
+      "draft": {
+        "name": "",
+        "note": ""
+      },
+      "fulfillment": [
+        "DeliveryWe bring it to your address"
+      ],
+      "scheduleControls": 0,
+      "cart": {},
+      "openSheet": null,
+      "overflow": 0,
+      "sameDocument": null,
+      "consoleErrors": [],
+      "runtimeExceptions": 0,
+      "businessWrites": [],
+      "path": "/en/menu",
+      "visibleDishCount": 4,
+      "visibleDishSample": [
+        "Butter Chicken Wrap",
+        "Butter Chicken Pizza",
+        "Butter Chicken"
+      ]
+    },
+    {
+      "checkedAtUTC": "2026-11-11T19:32:45.252Z",
+      "name": "noscript-native-get-naan",
+      "javascriptDisabled": true,
+      "nativeGetNewDocument": true,
+      "timeOrigin": 1794425563588.7,
+      "q": "naan",
+      "hasDish": false,
+      "hasCart": false,
+      "input": "naan",
+      "resultStatus": "Alle restaurants · 12 producten",
+      "draft": {
+        "name": "",
+        "note": ""
+      },
+      "fulfillment": [
+        "BezorgenWij bezorgen op jouw adres"
+      ],
+      "scheduleControls": 0,
+      "cart": {},
+      "openSheet": null,
+      "overflow": 0,
+      "sameDocument": null,
+      "consoleErrors": [],
+      "runtimeExceptions": 0,
+      "businessWrites": [],
+      "path": "/menukaart?q=naan",
+      "visibleDishCount": 12,
+      "visibleDishSample": [
+        "Saag Paneer Wrap",
+        "Butter Chicken Wrap",
+        "Chicken Tikka Masala Wrap"
+      ]
+    }
+  ],
+  "fullProof": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cinematic-qa-20261111\\production\\webpack-Hj2ubUjCMfbacacwFligZ\\search-draft-history-proof.json",
+  "classification": "Cookie-SSR candidate / fixture-v2 functional evidence"
+}

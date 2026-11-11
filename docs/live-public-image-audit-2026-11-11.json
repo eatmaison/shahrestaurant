@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "measuredAt": "2026-11-11T13:00:19.589Z",
+  "mode": "live-public-catalog-read-only-and-HEAD-only",
+  "policy": {
+    "catalogTimeoutMs": 5000,
+    "transactionReadOnly": true,
+    "isolationLevel": "RepeatableRead",
+    "exactBoundedSelects": 2,
+    "headTimeoutMs": 5000,
+    "totalHeadTimeoutMs": 120000,
+    "concurrency": 4,
+    "allowlistedHttpsHost": "horica-media.ams3.cdn.digitaloceanspaces.com",
+    "redirectsFollowed": false,
+    "retries": 0,
+    "headAuthenticationAdded": false,
+    "headCookiesSent": false,
+    "imageResponseBodiesDownloaded": false,
+    "imageMetadataInspection": "EXIF/XMP/ICC unknown: HEAD only, no image body/decode."
+  },
+  "catalog": {
+    "accepted": true,
+    "transportCompleted": true,
+    "elapsedMs": 1051,
+    "error": null,
+    "products": 224,
+    "brands": 2,
+    "finiteNonnegativePrices": true
+  },
+  "references": {
+    "imageReferences": 224,
+    "allowlistedReferences": 224,
+    "distinctExactUrls": 188,
+    "duplicateReferences": 36,
+    "distinctPathsIgnoringQuery": 188,
+    "referencesWithQuery": 0,
+    "skipped": {}
+  },
+  "head": {
+    "elapsedMs": 20341,
+    "attempted": 188,
+    "completed": 188,
+    "notAttempted": 0,
+    "maxConcurrentObserved": 4,
+    "stopReason": null,
+    "statusCounts": {
+      "200": 188
+    },
+    "statusReferenceCounts": {
+      "200": 224
+    },
+    "contentTypes": {
+      "image/jpeg": 188
+    },
+    "contentEncodings": {
+      "identity": 188
+    },
+    "errors": {},
+    "successful2xx": 188,
+    "successfulImageResponses": 188,
+    "successfulUnexpectedContentTypes": 0,
+    "sizes": {
+      "knownImageHeads": 188,
+      "unknownImageHeads": 0,
+      "atOrBelow200000Bytes": 142,
+      "over200000Bytes": 46,
+      "exactly200000Bytes": 0,
+      "referenceCountOver200000Bytes": 46,
+      "minDeclaredBytes": 28201,
+      "maxDeclaredBytes": 282030,
+      "totalDeclaredBytes": 31325925
+    },
+    "limitations": "Content-Length is the declared HEAD representation size, not measured body bytes or optimizer output. Redirect targets, denied objects and missing lengths remain unverified. No retries or bypasses."
+  },
+  "budgetInterpretation": {
+    "units": "decimal bytes",
+    "thresholdBytes": 200000,
+    "storedSourceImagesAtOrBelowThreshold": 142,
+    "storedSourceImagesAboveThreshold": 46,
+    "exactlyAtThreshold": 0,
+    "deliveredImageBudgetVerified": false,
+    "explanation": "HEAD Content-Length describes the stored JPEG source representation. It does not establish the size delivered by responsive or Next image optimization. No GET, local optimizer request, pixel decode, encoding or upload occurred.",
+    "totalDeclaredBytesIsNotDownloadedImageTraffic": true
+  },
+  "validationLimits": [
+    "HTTP200 and image/jpeg HEAD headers establish source reachability/type declarations only, not successful pixel decoding.",
+    "Pixel dimensions, visual quality, EXIF/XMP/ICC and generated delivery sizes remain unknown because image bodies were not fetched.",
+    "Only current product.image references were audited; brand logos were not included.",
+    "The 5,000 ms catalogue budget is diagnostic-only; the production 750 ms setting was not changed."
+  ]
+}

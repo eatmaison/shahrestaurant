@@ -1,0 +1,170 @@
+{
+  "schemaVersion": 1,
+  "classification": "Final event functional acceptance; lab/native/computed-style checks, not field CWV or a whole-site accessibility certification.",
+  "buildId": "CrBmCcjgdCeUlQi3JzrCi",
+  "sourceFingerprint": "e4769c09a92e6611f75050551fcd8fac96620f17c9e01ddb136164e3f7ba3f1f",
+  "origin": "http://127.0.0.1:3518",
+  "checkedAtUTC": "2026-11-11T18:36:55.913Z",
+  "sameBuildVerification": {
+    "aa": {
+      "cases": 24,
+      "pages": 6,
+      "widths": [
+        1440,
+        320
+      ],
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "historicalFailingNodesPerViewport": 42,
+      "historicalDesktopMobileNodeSet": 84,
+      "historicalNodeObservationsAcrossBothThemes": 168,
+      "totalComputedTextObservations": 360,
+      "additionalPreviouslyFailingDarkObservations": 94,
+      "additionalDarkObservationsNowResolved": 94,
+      "unresolvedFailures": 0,
+      "minimumHistoricalNodeContrast": 5.515756573121405,
+      "goldNumberRatios": [
+        {
+          "dark": false,
+          "ratio": 6.145388614129145,
+          "required": 3
+        },
+        {
+          "dark": true,
+          "ratio": 6.544186456550035,
+          "required": 3
+        }
+      ]
+    },
+    "nativeCold": {
+      "cases": 1,
+      "route": "/events/company-catering",
+      "persistedPreference": "en",
+      "foreground": true,
+      "inputDispatched": false,
+      "cache": "browser cache cleared and disabled; unthrottled loopback",
+      "viewport": {
+        "width": 412,
+        "height": 823,
+        "dpr": 1.75
+      },
+      "nativeLayoutShiftEntries": 0,
+      "eligibleNativeCls": 0,
+      "finalH1": "Bedrijfscatering",
+      "finalLang": "nl",
+      "allNonemptyH1StatesDutch": true,
+      "fontAndTextTimelinesSaved": true,
+      "qualification": "One controlled fresh foreground observation; no universal or field CLS guarantee."
+    },
+    "galleryFirstImage": [
+      {
+        "width": 1440,
+        "dark": false,
+        "loading": "eager",
+        "fetchPriority": "high",
+        "currentSource": "/brand/event-gallery-v1/shah-gallery-687a0402-640.avif",
+        "complete": true,
+        "networkInitialPriority": "High"
+      },
+      {
+        "width": 1440,
+        "dark": true,
+        "loading": "eager",
+        "fetchPriority": "high",
+        "currentSource": "/brand/event-gallery-v1/shah-gallery-687a0402-640.avif",
+        "complete": true,
+        "networkInitialPriority": "High"
+      },
+      {
+        "width": 320,
+        "dark": false,
+        "loading": "eager",
+        "fetchPriority": "high",
+        "currentSource": "/brand/event-gallery-v1/shah-gallery-687a0402-320.avif",
+        "complete": true,
+        "networkInitialPriority": "High"
+      },
+      {
+        "width": 320,
+        "dark": true,
+        "loading": "eager",
+        "fetchPriority": "high",
+        "currentSource": "/brand/event-gallery-v1/shah-gallery-687a0402-320.avif",
+        "complete": true,
+        "networkInitialPriority": "High"
+      }
+    ],
+    "errors": {
+      "overflowCases": 0,
+      "consoleErrors": 0,
+      "runtimeExceptions": 0,
+      "businessWrites": 0
+    }
+  },
+  "carryForward": {
+    "fromBuild": "nlBAxpm6UCzeBOCDkhorU",
+    "fromSourceFingerprint": "deec532bef06341bbbb5b009e9e24030e2683f6ee9fe5cd362daab217f6fcb87",
+    "explicitScope": "Root verified the only compiled input delta is the event CSS module dark:text-slate-400 rule. Provider, locale resolver, layout, gallery image priority and fixture are unchanged. Earlier interaction/cold-load evidence is carried, not represented as rerun on CrBm.",
+    "coldNativeCases": 4,
+    "coldRoutes": [
+      "/events/company-catering",
+      "/events/company-lunches"
+    ],
+    "coldPreferences": [
+      "empty",
+      "en"
+    ],
+    "allPriorNativeEntriesZero": true,
+    "localeInteractionStates": 12,
+    "localeInteractionChecks": [
+      "Explicit EN keyboard button retains same control focus and same document",
+      "English survives unrelated theme/provider rerender",
+      "English persists across sibling event SPA and event Back/Forward",
+      "Paired core URLs retain EN/NL through navigation and Back/Forward",
+      "Cold Dutch event reload resets explicit in-memory event choice to NL"
+    ],
+    "sourceIdentities": {
+      "app/lib/locale.ts": "5bdee3b48eae2831e955f18475397dfb1006a1472f19f15463e71b7efb79da81",
+      "app/providers.tsx": "7cbfb95a2d480eddd501fe6d222e5195ae58c602431b3506110368869fc0fab0",
+      "app/events/layout.tsx": "855e835b6f8c80866f1e518a2f8c7530b6beb81c0aa305a0ca77c1053f43695a",
+      "app/events/events.module.css": "cb09c1caaaf05b3cad7d6918db4c21a3f62f2ad1e4f355be6abb3b6882cf7f70"
+    }
+  },
+  "historicalControl": {
+    "buildId": "NUcp9_HWho-gmCR-jRh8K",
+    "sourceFingerprint": "80e67c4e6e04fd03e2a37190cdbe897579b93ceafd9d5ee996b3a02800cbe963",
+    "nativeCateringWithPersistedEnglish": {
+      "eligibleCls": 0.25050515741536283,
+      "languageSwapAfterPaint": true,
+      "fontReadyBeforeShift": true
+    },
+    "nativeCateringEmptyStorage": {
+      "eligibleCls": 0
+    },
+    "nativeLunchesSavedEnglishRawShift": 0.2504508948032841,
+    "nativeLunchesRawHadRecentInput": true,
+    "qualification": "Saved raw Lighthouse values and recent-input differences remain in the control evidence; they are not field metrics."
+  },
+  "deliberateScope": {
+    "knownDutchEventCanonicals": 7,
+    "englishEventCanonicalPairsAdded": false,
+    "englishEventBehavior": "Explicit client language choice remains available in memory. These event URLs have no separate English canonical routes; cold loads remain Dutch.",
+    "preserved": "Facts, prices, contact data, assets, three homepage occasion links/cards, public marketing visibility and private/API authorization are untouched by these event locale/contrast fixes."
+  },
+  "rawEvidence": {
+    "sameBuildAA": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-event-layout-fix-20261111\\CrBmCcjgdCeUlQi3JzrCi\\event-aa-matrix.json",
+    "sameBuildColdNative": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-event-layout-fix-20261111\\final-CrBmCcjg-native-cls-probe.json",
+    "sameBuildColdScreenshot": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-event-layout-fix-20261111\\final-CrBmCcjg-company-catering-en.png",
+    "carriedPriorAA": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-event-layout-fix-20261111\\nlBAxpm6UCzeBOCDkhorU\\event-aa-matrix.json",
+    "carriedLocaleFlow": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-event-layout-fix-20261111\\nlBAxpm6UCzeBOCDkhorU\\event-language-flow.json",
+    "carriedColdNative": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-event-layout-fix-20261111\\candidate-nlBAxpm6-native-cls-probe.json",
+    "historicalColdNative": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-event-layout-fix-20261111\\control-NU-native-cls-probe.json",
+    "sourceChecks": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-event-layout-fix-20261111\\event-source-checks.json",
+    "historicalLighthouseControl": "docs/cinematic-event-control-evidence-2026-11-11.json"
+  },
+  "remainingSourceBlockersFound": [],
+  "browser9226": "about:blank",
+  "browserAndNetworkTrafficEnded": true
+}

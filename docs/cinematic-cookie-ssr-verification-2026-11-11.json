@@ -1,0 +1,387 @@
+{
+  "atUTC": "2026-11-11T19:30:43.866Z",
+  "status": "PASS — production functional acceptance; performance measurement pending",
+  "artifact": {
+    "build": "Hj2ubUjCMfbacacwFligZ",
+    "dist": ".next-review-cookie-ssr-20261111",
+    "origin": "http://127.0.0.1:3518",
+    "sourceSnapshotSha256": "1b9a194de54237b2104232c89ce249729ddd466a648d819a1118bcd81717fc62",
+    "sourceFileCount": 418,
+    "binding": "Build and source snapshot independently supplied/verified by root; file hashes below recorded after functional checks."
+  },
+  "control": {
+    "build": "CrBmCcjgdCeUlQi3JzrCi",
+    "scope": "Immutable earlier control, including late CookieConsent LCP finding. No control metric is represented as a new-candidate result."
+  },
+  "runtimeDelta": [
+    "RootLayout reads strict non-sensitive acknowledgement cookie and emits a small pre-paint legacy preference flag/style.",
+    "CookieConsent uses the server acknowledgement for initial visibility; legacy preferences migrate without changing the original localStorage value.",
+    "Either existing action retains its original JSON value and records a host-only one-year acknowledgement cookie.",
+    "Root-owned gallery change makes the existing eager/high-priority first figure immediately visible; remaining figure entrances are retained."
+  ],
+  "preserved": {
+    "noticeJsxCopyClassesActions": true,
+    "filmVideoAssetsAndChoreography": true,
+    "themeBootstrap": true,
+    "privacyAndTermsCopy": true,
+    "languageProvider": true,
+    "businessAndAdminApis": true,
+    "existingFontAssertions": "13 SSR routes,8 byte-identical files,25 font faces,2 licenses,zero network/database calls"
+  },
+  "checks": {
+    "rawHttpCases": 18,
+    "browserStateCases": 23,
+    "privacyKeyboardCases": 4,
+    "sourceSsrCases": 15,
+    "sourceBootstrapCases": 5,
+    "sourceClientStateCases": 9,
+    "globalTypeScript": "PASS",
+    "focusedEslint": "PASS",
+    "fontRegression": "PASS",
+    "overflow": "No positive document overflow in any inspected state (390/1440 keyboard cases;390 other cases).",
+    "runtimeExceptions": 0,
+    "consoleErrors": 0,
+    "firstVisit": "Unknown/absent cookie includes the real notice in SSR HTML. Valid value1 omits it across six public NL/EN routes.",
+    "openingFilm": "With app JS blocked, server opening marker precedes notice and existing film CSS hides it at parser insertion and paint. Script-disabled home also hides notice; existing no-JS header fallback remains.",
+    "legacy": "Accepted, necessary and nonempty legacy values are hidden by the head flag before hydration, migrated to the acknowledgement cookie on mount, and remain byte-for-byte unchanged in localStorage.",
+    "actions": "Actual Enter activation of each existing action preserves its JSON value/timestamp, dismisses, and stays dismissed after full reload and cross-route navigation.",
+    "privacyKeyboard": "NL/EN at390/1440: Privacy→Necessary→Accept Tab order; Shift+Tab returns to Privacy; Enter follows the correct localized Privacy href through actual SPA navigation without acknowledging the notice.",
+    "blockedStorage": "A valid server cookie remains acknowledged with localStorage blocked. A new visitor with blocked preference reads still sees the notice.",
+    "gallery": "With app JS blocked: first figure animationName none,opacity1; image loading eager/fetchPriority high, decoded."
+  },
+  "cookie": {
+    "name": "shah_notice_ack_v1",
+    "acknowledgedValue": "1",
+    "path": "/",
+    "sameSite": "Lax",
+    "maxAgeSeconds": 31536000,
+    "domainAttribute": false,
+    "httpOnly": false,
+    "secure": "Added on HTTPS; verified by pure serializer test. Runtime fixture is local HTTP, where Secure is omitted.",
+    "content": "Non-sensitive UI acknowledgement only; no consent choice or personal data in cookie."
+  },
+  "representativeStates": [
+    {
+      "name": "first-visit-secondary-before-hydration",
+      "path": "/privacy",
+      "notice": {
+        "display": "block",
+        "visibility": "visible",
+        "opacity": "1"
+      },
+      "filmView": null,
+      "htmlAck": null,
+      "revealNodes": 0,
+      "timeline": {
+        "seen": [
+          {
+            "at": 48.60000014305115,
+            "ready": "loading",
+            "display": "block",
+            "visibility": "visible",
+            "opacity": "1",
+            "film": null
+          }
+        ],
+        "paints": [
+          {
+            "name": "first-paint",
+            "at": 156,
+            "notice": {
+              "display": "block",
+              "visibility": "visible",
+              "opacity": "1"
+            }
+          },
+          {
+            "name": "first-contentful-paint",
+            "at": 156,
+            "notice": {
+              "display": "block",
+              "visibility": "visible",
+              "opacity": "1"
+            }
+          }
+        ]
+      },
+      "firstFigure": null,
+      "screenshot": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cookie-ssr-20261111\\Hj2ubUjCMfbacacwFligZ\\first-visit-secondary-before-hydration.png"
+    },
+    {
+      "name": "first-visit-home-before-hydration",
+      "path": "/",
+      "notice": {
+        "display": "block",
+        "visibility": "hidden",
+        "opacity": "0"
+      },
+      "filmView": "opening",
+      "htmlAck": null,
+      "revealNodes": 0,
+      "timeline": {
+        "seen": [
+          {
+            "at": 48.09999990463257,
+            "ready": "loading",
+            "display": "block",
+            "visibility": "hidden",
+            "opacity": "0",
+            "film": "opening"
+          }
+        ],
+        "paints": [
+          {
+            "name": "first-paint",
+            "at": 148,
+            "notice": {
+              "display": "block",
+              "visibility": "hidden",
+              "opacity": "0"
+            }
+          },
+          {
+            "name": "first-contentful-paint",
+            "at": 148,
+            "notice": {
+              "display": "block",
+              "visibility": "hidden",
+              "opacity": "0"
+            }
+          }
+        ]
+      },
+      "firstFigure": null,
+      "screenshot": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cookie-ssr-20261111\\Hj2ubUjCMfbacacwFligZ\\first-visit-home-before-hydration.png"
+    },
+    {
+      "name": "nojs-first-film",
+      "path": "/",
+      "notice": {
+        "display": "block",
+        "visibility": "hidden",
+        "opacity": "0"
+      },
+      "filmView": "opening",
+      "htmlAck": null,
+      "revealNodes": 0,
+      "timeline": {
+        "seen": [],
+        "paints": []
+      },
+      "firstFigure": null,
+      "screenshot": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cookie-ssr-20261111\\Hj2ubUjCMfbacacwFligZ\\nojs-first-film.png"
+    },
+    {
+      "name": "legacy-0-before-hydration",
+      "path": "/privacy",
+      "notice": {
+        "display": "none",
+        "visibility": "visible",
+        "opacity": "1"
+      },
+      "filmView": null,
+      "htmlAck": "true",
+      "revealNodes": 0,
+      "timeline": {
+        "seen": [
+          {
+            "at": 23.5,
+            "ready": "loading",
+            "display": "none",
+            "visibility": "visible",
+            "opacity": "1",
+            "film": null
+          }
+        ],
+        "paints": [
+          {
+            "name": "first-paint",
+            "at": 64,
+            "notice": {
+              "display": "none",
+              "visibility": "visible",
+              "opacity": "1"
+            }
+          },
+          {
+            "name": "first-contentful-paint",
+            "at": 64,
+            "notice": {
+              "display": "none",
+              "visibility": "visible",
+              "opacity": "1"
+            }
+          }
+        ]
+      },
+      "firstFigure": null,
+      "screenshot": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cookie-ssr-20261111\\Hj2ubUjCMfbacacwFligZ\\legacy-0-before-hydration.png"
+    },
+    {
+      "name": "gallery-first-figure-before-hydration",
+      "path": "/events/gallery",
+      "notice": {
+        "display": "block",
+        "visibility": "visible",
+        "opacity": "1"
+      },
+      "filmView": null,
+      "htmlAck": null,
+      "revealNodes": 0,
+      "timeline": {
+        "seen": [
+          {
+            "at": 28.59999990463257,
+            "ready": "loading",
+            "display": "block",
+            "visibility": "visible",
+            "opacity": "1",
+            "film": null
+          }
+        ],
+        "paints": [
+          {
+            "name": "first-paint",
+            "at": 76,
+            "notice": {
+              "display": "block",
+              "visibility": "visible",
+              "opacity": "1"
+            }
+          },
+          {
+            "name": "first-contentful-paint",
+            "at": 76,
+            "notice": {
+              "display": "block",
+              "visibility": "visible",
+              "opacity": "1"
+            }
+          }
+        ]
+      },
+      "firstFigure": {
+        "animation": "none",
+        "opacity": "1",
+        "loading": "eager",
+        "priority": "high",
+        "complete": true,
+        "naturalWidth": 390
+      },
+      "screenshot": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cookie-ssr-20261111\\Hj2ubUjCMfbacacwFligZ\\gallery-first-figure-before-hydration.png"
+    }
+  ],
+  "limitations": [
+    "Functional lab evidence, not a claim of improved Lighthouse scores or field Web Vitals. A fresh strict measurement matrix is still required.",
+    "JavaScript-disabled visitors with only an old localStorage preference cannot be recognized server-side until a JavaScript visit migrates it; valid acknowledgement-cookie visitors are recognized without JavaScript.",
+    "The preexisting notice action buttons require JavaScript; no new server consent endpoint or legal policy was added.",
+    "Blocked external app-JS tests intentionally generate blocked resource requests; the reported zero errors refers to runtime exceptions and console.error calls.",
+    "No physical Safari/device or live business-submission testing."
+  ],
+  "sources": [
+    {
+      "path": "app/layout.tsx",
+      "sha256": "1e2fc8919aa1a621bd3254cd550be685c6bc945fcf5cdcb77e6034e32578249f"
+    },
+    {
+      "path": "app/components/CookieConsent.tsx",
+      "sha256": "c341fa826e2c8463b44175086330304d669d9914ba4dc8651fd9fd9848e8b6c4"
+    },
+    {
+      "path": "app/lib/cookieNotice.ts",
+      "sha256": "746c939d501cd301630dc98f03ccf19f034b2c5c27b5c79ec753643e1224568a"
+    },
+    {
+      "path": "app/events/gallery/page.tsx",
+      "sha256": "56152af62944d3cf35fa59498e0ac69e2af06060ba02b8c53a7d15a02abf37b5"
+    },
+    {
+      "path": "scripts/test-public-fonts.cjs",
+      "sha256": "a770f3b890fc63380fc7177d7064b976bc228a66c6af1bc61757326372a09e80"
+    }
+  ],
+  "raw": [
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cookie-ssr-20261111\\Hj2ubUjCMfbacacwFligZ\\cookie-production-results.json",
+      "sha256": "a1608ea1abf4a291472c9d62440268f9eb6731f2b238f3f0a9badbbcccced424"
+    },
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cookie-ssr-20261111\\Hj2ubUjCMfbacacwFligZ\\cookie-keyboard-results.json",
+      "sha256": "8a8c9b9f3f6c5408f7725023520f069a770ada3df22c10c0309eb1ba3f801540"
+    },
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cookie-ssr-20261111\\cookie-source-checks.json",
+      "sha256": "dcd1ec4688aa71d2af5c1d325776df783144b63ab0fcfc43c908793726a34110"
+    },
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cookie-ssr-20261111\\verify-cookie-production.cjs",
+      "sha256": "ee677a04f7e30d0a4bda096c2e7c8aba0af2434bf160e7e9fa4bd7b9d2665da2"
+    },
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cookie-ssr-20261111\\verify-cookie-keyboard.cjs",
+      "sha256": "3c8a9fe647bbb6c687e71da8c3b5c7863531e211d72dba6698c70677f3893b73"
+    },
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cookie-ssr-20261111\\check-cookie-source.cjs",
+      "sha256": "5eee4ad8bdc16240a1d3923c8a6dac9bb0a989ef11d4f17e2035e2e64b83a40b"
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cookie-ssr-20261111\\Hj2ubUjCMfbacacwFligZ\\cookie-privacy-keyboard-en-1440.png",
+      "sha256": "3392d11b1a1b8dff1c2071a1edbe509ec7bf2c133461fe794102bc91791cb4e6",
+      "visuallyInspected": true
+    },
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cookie-ssr-20261111\\Hj2ubUjCMfbacacwFligZ\\cookie-privacy-keyboard-en-390.png",
+      "sha256": "058dcb44901d3ee835b9bd45823e1180d3869e138cee6ef9d5af5f0c7ebbf1e7",
+      "visuallyInspected": true
+    },
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cookie-ssr-20261111\\Hj2ubUjCMfbacacwFligZ\\cookie-privacy-keyboard-nl-1440.png",
+      "sha256": "a0b703bc2b19317418b01a48e2583d8af7c13e9490937e2e331ca9359b0d0a2e",
+      "visuallyInspected": true
+    },
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cookie-ssr-20261111\\Hj2ubUjCMfbacacwFligZ\\cookie-privacy-keyboard-nl-390.png",
+      "sha256": "a876a7338145f004018f8e22c883f6922c9b04ab232be3688b0ed4fdc5cd8df2",
+      "visuallyInspected": true
+    },
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cookie-ssr-20261111\\Hj2ubUjCMfbacacwFligZ\\first-visit-home-before-hydration.png",
+      "sha256": "5ae963fd06549bceccc6fd28f12c246d364fface0707e6d64573387f53a59b43",
+      "visuallyInspected": true
+    },
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cookie-ssr-20261111\\Hj2ubUjCMfbacacwFligZ\\first-visit-necessary.png",
+      "sha256": "a0d623768bbdf454dcb04417beea4c2eab9e3213f41116e453183ccee6f63540",
+      "visuallyInspected": true
+    },
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cookie-ssr-20261111\\Hj2ubUjCMfbacacwFligZ\\first-visit-secondary-before-hydration.png",
+      "sha256": "e9ba8dec7e85d729a3b659e888b941ab778e2ef8f9647079a63d5359bce35b9e",
+      "visuallyInspected": true
+    },
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cookie-ssr-20261111\\Hj2ubUjCMfbacacwFligZ\\gallery-first-figure-before-hydration.png",
+      "sha256": "3c1e476a46849e5bde9dfbf6b55638ce989058f0d34c4333664e3c322b369c7e",
+      "visuallyInspected": true
+    },
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cookie-ssr-20261111\\Hj2ubUjCMfbacacwFligZ\\legacy-0-before-hydration.png",
+      "sha256": "5a8ee358c1dc4ddae815861c1610dcbd1b8f17b861e5ecc219f1f0263b7d0dd3",
+      "visuallyInspected": true
+    },
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cookie-ssr-20261111\\Hj2ubUjCMfbacacwFligZ\\nojs-first-film.png",
+      "sha256": "3e98f34c1f3902a2e23086ae9ceccf8fd2bab4f35abb7431fa08a2b8846d6b65",
+      "visuallyInspected": true
+    },
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cookie-ssr-20261111\\Hj2ubUjCMfbacacwFligZ\\nojs-first-privacy.png",
+      "sha256": "eec206671d04762f4e29a06d496eaeee0146a3c6268a85748e0cfc013613b29e",
+      "visuallyInspected": true
+    }
+  ],
+  "browserReleased": "Every task-owned9226 page was confirmed about:blank after checks; no site browser/HTTP traffic remains."
+}

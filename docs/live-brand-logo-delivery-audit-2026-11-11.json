@@ -1,0 +1,402 @@
+{
+  "schemaVersion": 1,
+  "measuredAt": "2026-11-11T14:02:47.734Z",
+  "mode": "immutable-public-brand-logo-isolated-next-optimizer-delivery",
+  "policy": {
+    "immutablePublicSnapshotOnly": true,
+    "databaseRequests": 0,
+    "callerEndpoints": "loopback3437/_next/image only",
+    "sourceHost": "horica-media.ams3.cdn.digitaloceanspaces.com",
+    "sourceQueriesAllowed": false,
+    "requestedWidth": 3840,
+    "requestedQuality": 75,
+    "requestedFormats": [
+      "image/avif",
+      "image/webp"
+    ],
+    "maximumConcurrentRequests": 2,
+    "maximumLoopbackOptimizerRequests": 4,
+    "maximumDistinctLogoSources": 2,
+    "requestTimeoutMs": 60000,
+    "totalTimeoutMs": 1800000,
+    "maximumDeliveredResponseBytes": 4000000,
+    "deliveredBudgetBytesExclusive": 200000,
+    "retries": 0,
+    "sourceBodies": "Cloned from optimizer's own exact-allowlisted upstream fetch; no additional source GET.",
+    "metadataValuesSaved": false,
+    "sourceUrlsSaved": false
+  },
+  "assets": [
+    {
+      "sourceId": "04cc19b9b1e941774b5185fc4997d98736485ba18bf3784dfc76230578b813ea",
+      "references": 1,
+      "variants": {
+        "avif": {
+          "requestedFormat": "avif",
+          "status": 200,
+          "contentType": "image/avif",
+          "contentEncoding": "identity",
+          "cache": "MISS",
+          "declaredBytes": 18421,
+          "bytes": 18421,
+          "sha256": "760bf63c28e9514d767b0b11ed8d9339fb11a0948c1896fc58fca48f78e6a6e9",
+          "file": "04cc19b9b1e941774b5185fc4997d98736485ba18bf3784dfc76230578b813ea-avif.bin",
+          "metadata": {
+            "format": "heif",
+            "width": 339,
+            "height": 400,
+            "displayWidth": 339,
+            "displayHeight": 400,
+            "orientation": null,
+            "pages": 1,
+            "hasAlpha": true,
+            "metadata": {
+              "exif": false,
+              "xmp": false,
+              "iptc": false,
+              "icc": false
+            },
+            "space": "srgb",
+            "channels": 4
+          },
+          "sourceCaptureSha256": "f6d45a0ff0c575d802367a509010beb3acb24198a670f81c88211b02b859b4e1",
+          "sourceLineageVerified": true,
+          "elapsedMs": 967,
+          "noUpscaleVerified": true
+        },
+        "webp": {
+          "requestedFormat": "webp",
+          "status": 200,
+          "contentType": "image/webp",
+          "contentEncoding": "identity",
+          "cache": "MISS",
+          "declaredBytes": 24242,
+          "bytes": 24242,
+          "sha256": "751c09dfcdc1bbf320d869edf20ac6c8e9926dd035ac6a2b046af86f395f7731",
+          "file": "04cc19b9b1e941774b5185fc4997d98736485ba18bf3784dfc76230578b813ea-webp.bin",
+          "metadata": {
+            "format": "webp",
+            "width": 339,
+            "height": 400,
+            "displayWidth": 339,
+            "displayHeight": 400,
+            "orientation": null,
+            "pages": 1,
+            "hasAlpha": true,
+            "metadata": {
+              "exif": false,
+              "xmp": false,
+              "iptc": false,
+              "icc": false
+            },
+            "space": "srgb",
+            "channels": 4
+          },
+          "sourceCaptureSha256": "f6d45a0ff0c575d802367a509010beb3acb24198a670f81c88211b02b859b4e1",
+          "sourceLineageVerified": true,
+          "elapsedMs": 218,
+          "noUpscaleVerified": true
+        }
+      },
+      "source": {
+        "runId": "b49d58cf-5e51-459c-a240-e9427dff731c",
+        "buildId": "Ha7gRB0yVTu_YiudNsWZu",
+        "sourceId": "04cc19b9b1e941774b5185fc4997d98736485ba18bf3784dfc76230578b813ea",
+        "status": 200,
+        "contentType": "image/png",
+        "declaredBytes": 63067,
+        "capturedAt": "2026-11-11T14:02:48.915Z",
+        "captured": true,
+        "bytes": 63067,
+        "sha256": "f6d45a0ff0c575d802367a509010beb3acb24198a670f81c88211b02b859b4e1",
+        "file": "04cc19b9b1e941774b5185fc4997d98736485ba18bf3784dfc76230578b813ea-f6d45a0ff0c575d802367a509010beb3acb24198a670f81c88211b02b859b4e1.bin",
+        "changedDuringAudit": false,
+        "metadata": {
+          "format": "png",
+          "width": 339,
+          "height": 400,
+          "displayWidth": 339,
+          "displayHeight": 400,
+          "orientation": null,
+          "pages": 1,
+          "hasAlpha": true,
+          "metadata": {
+            "exif": false,
+            "xmp": false,
+            "iptc": false,
+            "icc": false
+          },
+          "space": "srgb",
+          "channels": 4
+        }
+      }
+    },
+    {
+      "sourceId": "9fed40cb2c85cae0e2e842f71a22c83cc712f8c2591e9abab45301bb6dbdf1e5",
+      "references": 1,
+      "variants": {
+        "avif": {
+          "requestedFormat": "avif",
+          "status": 200,
+          "contentType": "image/avif",
+          "contentEncoding": "identity",
+          "cache": "MISS",
+          "declaredBytes": 25304,
+          "bytes": 25304,
+          "sha256": "2e3283e6063c14b69041364c88154e715c984dc0bd440b99387f66dd0ba66667",
+          "file": "9fed40cb2c85cae0e2e842f71a22c83cc712f8c2591e9abab45301bb6dbdf1e5-avif.bin",
+          "metadata": {
+            "format": "heif",
+            "width": 339,
+            "height": 400,
+            "displayWidth": 339,
+            "displayHeight": 400,
+            "orientation": null,
+            "pages": 1,
+            "hasAlpha": true,
+            "metadata": {
+              "exif": false,
+              "xmp": false,
+              "iptc": false,
+              "icc": false
+            },
+            "space": "srgb",
+            "channels": 4
+          },
+          "sourceCaptureSha256": "dbcc5873c7c13610ee756c45cd6d84960bcfba4c7badab2283446f3559c315d4",
+          "sourceLineageVerified": true,
+          "elapsedMs": 959,
+          "noUpscaleVerified": true
+        },
+        "webp": {
+          "requestedFormat": "webp",
+          "status": 200,
+          "contentType": "image/webp",
+          "contentEncoding": "identity",
+          "cache": "MISS",
+          "declaredBytes": 26494,
+          "bytes": 26494,
+          "sha256": "c903162da1a8b8c7fdbc29708e21c190f49c6580d3019a8530e530c51cd5ea73",
+          "file": "9fed40cb2c85cae0e2e842f71a22c83cc712f8c2591e9abab45301bb6dbdf1e5-webp.bin",
+          "metadata": {
+            "format": "webp",
+            "width": 339,
+            "height": 400,
+            "displayWidth": 339,
+            "displayHeight": 400,
+            "orientation": null,
+            "pages": 1,
+            "hasAlpha": true,
+            "metadata": {
+              "exif": false,
+              "xmp": false,
+              "iptc": false,
+              "icc": false
+            },
+            "space": "srgb",
+            "channels": 4
+          },
+          "sourceCaptureSha256": "dbcc5873c7c13610ee756c45cd6d84960bcfba4c7badab2283446f3559c315d4",
+          "sourceLineageVerified": true,
+          "elapsedMs": 210,
+          "noUpscaleVerified": true
+        }
+      },
+      "source": {
+        "runId": "b49d58cf-5e51-459c-a240-e9427dff731c",
+        "buildId": "Ha7gRB0yVTu_YiudNsWZu",
+        "sourceId": "9fed40cb2c85cae0e2e842f71a22c83cc712f8c2591e9abab45301bb6dbdf1e5",
+        "status": 200,
+        "contentType": "image/png",
+        "declaredBytes": 65491,
+        "capturedAt": "2026-11-11T14:02:48.927Z",
+        "captured": true,
+        "bytes": 65491,
+        "sha256": "dbcc5873c7c13610ee756c45cd6d84960bcfba4c7badab2283446f3559c315d4",
+        "file": "9fed40cb2c85cae0e2e842f71a22c83cc712f8c2591e9abab45301bb6dbdf1e5-dbcc5873c7c13610ee756c45cd6d84960bcfba4c7badab2283446f3559c315d4.bin",
+        "changedDuringAudit": false,
+        "metadata": {
+          "format": "png",
+          "width": 339,
+          "height": 400,
+          "displayWidth": 339,
+          "displayHeight": 400,
+          "orientation": null,
+          "pages": 1,
+          "hasAlpha": true,
+          "metadata": {
+            "exif": false,
+            "xmp": false,
+            "iptc": false,
+            "icc": false
+          },
+          "space": "srgb",
+          "channels": 4
+        }
+      }
+    }
+  ],
+  "visualReview": {
+    "status": "completed-with-scope-limits",
+    "completedAt": "2026-11-11T14:04:33.370Z",
+    "completeSourceAvifWebpTriplesReviewed": 2,
+    "contactSheetsReviewed": 1,
+    "nativeUnscaledCenterCropsReviewed": 2,
+    "nativeCropSize": "320x320",
+    "findings": "Both mark designs retain matching content, orientation and crop in the actual saved source/AVIF/WebP comparisons. Minor edge softness/ringing is visible under lossy optimization; no gross content or transparency defect identified.",
+    "limits": "This is visual contact-sheet and selected native-crop review, not pixel/alpha identity or exact palette equality. OriginalPNG and local protectedSVG assets were not changed.",
+    "contactSheets": [
+      {
+        "file": "contact-01.png",
+        "sourceIds": [
+          "04cc19b9b1e941774b5185fc4997d98736485ba18bf3784dfc76230578b813ea",
+          "9fed40cb2c85cae0e2e842f71a22c83cc712f8c2591e9abab45301bb6dbdf1e5"
+        ]
+      }
+    ],
+    "nativeCrops": [
+      {
+        "file": "native-9fed40cb2c85cae0.png",
+        "sourceId": "9fed40cb2c85cae0e2e842f71a22c83cc712f8c2591e9abab45301bb6dbdf1e5",
+        "nativeCropWidth": 320,
+        "nativeCropHeight": 320,
+        "selection": "center; unscaled source and representations"
+      },
+      {
+        "file": "native-04cc19b9b1e94177.png",
+        "sourceId": "04cc19b9b1e941774b5185fc4997d98736485ba18bf3784dfc76230578b813ea",
+        "nativeCropWidth": 320,
+        "nativeCropHeight": 320,
+        "selection": "center; unscaled source and representations"
+      }
+    ]
+  },
+  "runtime": {
+    "runId": "b49d58cf-5e51-459c-a240-e9427dff731c",
+    "buildId": "Ha7gRB0yVTu_YiudNsWZu",
+    "distDir": ".next-review-css-local-20261111",
+    "pid": 29196,
+    "startedAt": "2026-11-11T13:23:56.866Z",
+    "port": 3437
+  },
+  "sourceSnapshot": {
+    "capturedAt": "2026-11-11T14:02:15.463Z",
+    "sourceHash": "66eda306b74cf90dc15ad018cc3064212349151810d8df2e098a06d6e8588892",
+    "products": 224,
+    "brands": 2
+  },
+  "references": {
+    "imageReferences": 2,
+    "allowlistedReferences": 2,
+    "distinctUrls": 2,
+    "duplicateReferences": 0,
+    "skipped": {}
+  },
+  "execution": {
+    "actualLoopbackOptimizerRequests": 4,
+    "elapsedMs": 1217,
+    "completedSources": 2,
+    "notAttempted": 0,
+    "maxConcurrentObserved": 2,
+    "stopReason": null,
+    "sourceNetworkRequestsAddedByAuditor": 0,
+    "callerRequestsOnlyLoopbackOptimizer": true
+  },
+  "limitations": [
+    "Source and variant measurements are for this live catalog snapshot, isolated build and requested3840/q75 representations; browser-selected smaller responsive requests differ.",
+    "The sum of saved representation bodies is audit workload, not initial page transfer.",
+    "A requested format is a pass only when the actual HTTP Content-Type matches; metadata values are never included.",
+    "Visual review is separately recorded after saved contact sheets and native crops are inspected.",
+    "This report covers only2actual BrandConfig.logo sources and4optimized representations; product-image totals remain separate.",
+    "Immutable snapshot file and raw public catalog content remain Temp-only; docs contain only capturedAt and sourceHash.",
+    "Only AVIF andWebP optimizer representations were measured; exact-artwork pixel/palette identity is not claimed."
+  ],
+  "summary": {
+    "sourceRows": 2,
+    "sourcesCapturedDecoded": 2,
+    "sourceTypes": {
+      "image/png": 2
+    },
+    "sourceSizes": {
+      "under200000Bytes": 2,
+      "exactly200000Bytes": 0,
+      "over200000Bytes": 0,
+      "minBytes": 63067,
+      "maxBytes": 65491,
+      "sumActualCapturedBytes": 128558
+    },
+    "sourcesWithMetadata": {
+      "exif": 0,
+      "xmp": 0,
+      "iptc": 0,
+      "icc": 0
+    },
+    "sourcesChangedDuringAudit": 0,
+    "variants": {
+      "avif": {
+        "attempted": 2,
+        "successfulDecoded": 2,
+        "statusCounts": {
+          "200": 2
+        },
+        "contentTypes": {
+          "image/avif": 2
+        },
+        "expectedMimeCount": 2,
+        "under200000Bytes": 2,
+        "exactly200000Bytes": 0,
+        "over200000Bytes": 0,
+        "minBytes": 18421,
+        "maxBytes": 25304,
+        "sumMeasuredBodyBytes": 43725,
+        "metadataAbsentCount": 2,
+        "sourceLineageVerifiedCount": 2,
+        "noUpscaleVerifiedCount": 2,
+        "noUpscaleUnknownCount": 0,
+        "widthCapVerifiedCount": 2
+      },
+      "webp": {
+        "attempted": 2,
+        "successfulDecoded": 2,
+        "statusCounts": {
+          "200": 2
+        },
+        "contentTypes": {
+          "image/webp": 2
+        },
+        "expectedMimeCount": 2,
+        "under200000Bytes": 2,
+        "exactly200000Bytes": 0,
+        "over200000Bytes": 0,
+        "minBytes": 24242,
+        "maxBytes": 26494,
+        "sumMeasuredBodyBytes": 50736,
+        "metadataAbsentCount": 2,
+        "sourceLineageVerifiedCount": 2,
+        "noUpscaleVerifiedCount": 2,
+        "noUpscaleUnknownCount": 0,
+        "widthCapVerifiedCount": 2
+      }
+    }
+  },
+  "validation": {
+    "exactlyFourOptimizerRequests": true,
+    "allRequestedRepresentationsPass": true,
+    "dimensionsPreserved": true,
+    "alphaChannelPresencePreserved": true,
+    "sourceDimensions": [
+      {
+        "sourceId": "04cc19b9b1e941774b5185fc4997d98736485ba18bf3784dfc76230578b813ea",
+        "width": 339,
+        "height": 400,
+        "hasAlpha": true
+      },
+      {
+        "sourceId": "9fed40cb2c85cae0e2e842f71a22c83cc712f8c2591e9abab45301bb6dbdf1e5",
+        "width": 339,
+        "height": 400,
+        "hasAlpha": true
+      }
+    ]
+  }
+}

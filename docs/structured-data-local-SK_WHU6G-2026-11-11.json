@@ -1,0 +1,2543 @@
+{
+  "checkedAt": "2026-11-11T16:53:46.321Z",
+  "buildId": "SK_WHU6G9CzKDtJ1iVaCs",
+  "compiledSourceHash": "e83793819428be699cdb602474dba7cb0b19e4818d6cb7f66aae399b272df990",
+  "sourceSnapshotHash": "66eda306b74cf90dc15ad018cc3064212349151810d8df2e098a06d6e8588892",
+  "snapshotCapturedAt": "2026-11-11T14:02:15.463Z",
+  "scope": "17 public server-rendered JSON-LD payloads; local validation only; GoogleCODE pending nativeinput coordination",
+  "routes": [
+    {
+      "route": "/",
+      "httpStatus": 200,
+      "servedBuildMatches": true,
+      "schemaScripts": 2,
+      "typeCounts": {
+        "Restaurant": 1,
+        "PostalAddress": 1,
+        "GeoCoordinates": 1,
+        "OpeningHoursSpecification": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "SearchAction": 1,
+        "EntryPoint": 1,
+        "ImageObject": 1,
+        "FAQPage": 1,
+        "Question": 9,
+        "Answer": 9
+      },
+      "scriptBlocks": [
+        {
+          "index": 0,
+          "rootType": "@graph",
+          "htmlSha256": "7774bf852ff7cbb488b4fd91fca7bc19f0cb9009fb45863aca6f8be46d49afff",
+          "jsonTextSha256": "38e87afd3c28520aa10b1c15c87f804a118abf07aa758fa0f2fe51c30c3566fd"
+        },
+        {
+          "index": 1,
+          "rootType": "FAQPage",
+          "htmlSha256": "e9094944f0559c6058b7ce5992ff319d92ab7f164d782b7d243d98a4a853289e",
+          "jsonTextSha256": "3d70099920b6c9e7d790694da4d336bdbb80451a2af6ec0b9b8a412919ffcfb0"
+        }
+      ],
+      "codeFile": "nl-home.html",
+      "schemaFile": "nl-home.json",
+      "codeSha256": "20a1b7957573870c5ad848168a503712018bb7b734a9af6b1c9357b1af374949",
+      "schemaSha256": "337db2d1300f325d7b342cb8d1778504c3d2be9f5290c70741a9b6e966c33efa",
+      "coreCodeIdenticalToQtEl": true,
+      "sharedNlExact": null,
+      "faq": {
+        "schemaCount": 1,
+        "questions": 9,
+        "visibleDetails": 9,
+        "textAndOrderEqual": true
+      },
+      "breadcrumb": null,
+      "service": null,
+      "gallery": null,
+      "menu": null,
+      "metadata": {
+        "title": "Indiaas restaurant | Shah Restaurant | Amsterdam-Noord",
+        "description": "Ontdek Shah Restaurant aan de Klaprozenweg 36a in Amsterdam-Noord. Bekijk Indiase gerechten, openingstijden en de menukaart. Reserveer uw tafel online.",
+        "canonical": "https://shahrestaurant.nl",
+        "robots": "index, follow",
+        "ogImage": "https://shahrestaurant.nl/brand/shah-social-v1.png",
+        "twitterImage": "https://shahrestaurant.nl/brand/shah-social-v1.png",
+        "canonicalNormalizedHref": "https://shahrestaurant.nl/",
+        "canonicalMatchesExpected": true
+      },
+      "failures": [],
+      "passed": true
+    },
+    {
+      "route": "/en",
+      "httpStatus": 200,
+      "servedBuildMatches": true,
+      "schemaScripts": 2,
+      "typeCounts": {
+        "Restaurant": 1,
+        "PostalAddress": 1,
+        "GeoCoordinates": 1,
+        "OpeningHoursSpecification": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "SearchAction": 1,
+        "EntryPoint": 1,
+        "ImageObject": 1,
+        "FAQPage": 1,
+        "Question": 9,
+        "Answer": 9
+      },
+      "scriptBlocks": [
+        {
+          "index": 0,
+          "rootType": "@graph",
+          "htmlSha256": "86101ff5f03e6ba4c4362eafb8c1a43963e4b302e9f7346912bd000a76e8ebe0",
+          "jsonTextSha256": "a3ccdeff2aabd35e5b5390e46af89d40ccef60e07083e2b951257b60a480e694"
+        },
+        {
+          "index": 1,
+          "rootType": "FAQPage",
+          "htmlSha256": "69398d742279b28be50c05eb8757388dc68383dca639ac56bd41152d9a5e4f2f",
+          "jsonTextSha256": "15c9a8575aab83f62cc947c93023236a1ec9ae5a6073b0d6040cb7667cccf0ff"
+        }
+      ],
+      "codeFile": "en.html",
+      "schemaFile": "en.json",
+      "codeSha256": "aaccbf517ee23a061398cf54fbd6312e83c8a225667994bfdba54defcee8bb17",
+      "schemaSha256": "46ff610327ec987e8d5f42536fa7af29e5082a7c33c5460d1940417a9bd0664e",
+      "coreCodeIdenticalToQtEl": true,
+      "sharedNlExact": null,
+      "faq": {
+        "schemaCount": 1,
+        "questions": 9,
+        "visibleDetails": 9,
+        "textAndOrderEqual": true
+      },
+      "breadcrumb": null,
+      "service": null,
+      "gallery": null,
+      "menu": null,
+      "metadata": {
+        "title": "Indian restaurant | Shah Restaurant | Amsterdam-Noord",
+        "description": "Discover Shah Restaurant at Klaprozenweg 36a in Amsterdam-Noord. Explore Indian dishes, the menu and opening hours, then book your table online.",
+        "canonical": "https://shahrestaurant.nl/en",
+        "robots": "index, follow",
+        "ogImage": "https://shahrestaurant.nl/brand/shah-social-v1.png",
+        "twitterImage": "https://shahrestaurant.nl/brand/shah-social-v1.png",
+        "canonicalNormalizedHref": "https://shahrestaurant.nl/en",
+        "canonicalMatchesExpected": true
+      },
+      "failures": [],
+      "passed": true
+    },
+    {
+      "route": "/menukaart",
+      "httpStatus": 200,
+      "servedBuildMatches": true,
+      "schemaScripts": 3,
+      "typeCounts": {
+        "Restaurant": 1,
+        "PostalAddress": 1,
+        "GeoCoordinates": 1,
+        "OpeningHoursSpecification": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "SearchAction": 1,
+        "EntryPoint": 1,
+        "ImageObject": 1,
+        "BreadcrumbList": 1,
+        "ListItem": 2,
+        "Menu": 1,
+        "MenuSection": 1,
+        "MenuItem": 2,
+        "Offer": 2
+      },
+      "scriptBlocks": [
+        {
+          "index": 0,
+          "rootType": "@graph",
+          "htmlSha256": "7774bf852ff7cbb488b4fd91fca7bc19f0cb9009fb45863aca6f8be46d49afff",
+          "jsonTextSha256": "38e87afd3c28520aa10b1c15c87f804a118abf07aa758fa0f2fe51c30c3566fd"
+        },
+        {
+          "index": 1,
+          "rootType": "BreadcrumbList",
+          "htmlSha256": "684b9c0c0663ab6293d457b078937d21d2125595e5df8c0fe011e4fd40b5ecca",
+          "jsonTextSha256": "3231aa8b8dab1e5cc048132567232d58379e236affa3858d3851b8962c835daf"
+        },
+        {
+          "index": 2,
+          "rootType": "Menu",
+          "htmlSha256": "bbc41cc5a743de6e464cdeac0ba11481119e6057e3e54cf909f9eac2262e0c5c",
+          "jsonTextSha256": "2f55118cea79991e4e989f8bff3eb585556574d0db291179093ae602eec6a23e"
+        }
+      ],
+      "codeFile": "menukaart.html",
+      "schemaFile": "menukaart.json",
+      "codeSha256": "5819906bc1b5f1d6882f68708712e800dfcfc5f938c6dc0cd64dccdc1d443c27",
+      "schemaSha256": "3bfb428f279c4921c30db83adee55d1ccd5a146f077a62ba71bca14ec13e9b37",
+      "coreCodeIdenticalToQtEl": true,
+      "sharedNlExact": null,
+      "faq": null,
+      "breadcrumb": {
+        "count": 1,
+        "items": [
+          {
+            "position": 1,
+            "path": "/"
+          },
+          {
+            "position": 2,
+            "path": "/menukaart"
+          }
+        ],
+        "expectedPaths": [
+          "/",
+          "/menukaart"
+        ],
+        "exact": true
+      },
+      "service": null,
+      "gallery": null,
+      "menu": {
+        "visibleItems": 2,
+        "allNamesPricesMatchApproved224Snapshot": true
+      },
+      "metadata": {
+        "title": "Indiase menukaart | Shah Restaurant | Amsterdam-Noord",
+        "description": "Bekijk de Indiase menukaart van Shah Restaurant in Amsterdam-Noord: curry, tandoori en naan met actuele prijzen. Kies uw gerechten en bestel online.",
+        "canonical": "https://shahrestaurant.nl/menukaart",
+        "robots": "index, follow",
+        "ogImage": "https://shahrestaurant.nl/brand/shah-social-v1.png",
+        "twitterImage": "https://shahrestaurant.nl/brand/shah-social-v1.png",
+        "canonicalNormalizedHref": "https://shahrestaurant.nl/menukaart",
+        "canonicalMatchesExpected": true
+      },
+      "failures": [],
+      "passed": true
+    },
+    {
+      "route": "/en/menu",
+      "httpStatus": 200,
+      "servedBuildMatches": true,
+      "schemaScripts": 3,
+      "typeCounts": {
+        "Restaurant": 1,
+        "PostalAddress": 1,
+        "GeoCoordinates": 1,
+        "OpeningHoursSpecification": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "SearchAction": 1,
+        "EntryPoint": 1,
+        "ImageObject": 1,
+        "BreadcrumbList": 1,
+        "ListItem": 2,
+        "Menu": 1,
+        "MenuSection": 1,
+        "MenuItem": 2,
+        "Offer": 2
+      },
+      "scriptBlocks": [
+        {
+          "index": 0,
+          "rootType": "@graph",
+          "htmlSha256": "86101ff5f03e6ba4c4362eafb8c1a43963e4b302e9f7346912bd000a76e8ebe0",
+          "jsonTextSha256": "a3ccdeff2aabd35e5b5390e46af89d40ccef60e07083e2b951257b60a480e694"
+        },
+        {
+          "index": 1,
+          "rootType": "BreadcrumbList",
+          "htmlSha256": "5d29d73fd96f130a5d87e1a504c152a4d5d8be944422e424a650f3ba05284b8e",
+          "jsonTextSha256": "03602fbad00aa9385d77b664e3fc00fb7f86c840cd82515c4738ddc583c8a35d"
+        },
+        {
+          "index": 2,
+          "rootType": "Menu",
+          "htmlSha256": "5594be6f4d6b76fd2cde00cff96663488a688ca6a427407d201b300710248f63",
+          "jsonTextSha256": "a16bb4b0e1191d5455f95a196c09919097b4d0c31f9a30f600b7226d238d5139"
+        }
+      ],
+      "codeFile": "en-menu.html",
+      "schemaFile": "en-menu.json",
+      "codeSha256": "e2c6a1ed3ea132b4bef774bba0821b67bff09323c92d8197d4fbe7360e5f17d6",
+      "schemaSha256": "5f429c3498a2de8b227fcbd861472d943cc7ef9db2e7c41991a3021791c854d4",
+      "coreCodeIdenticalToQtEl": true,
+      "sharedNlExact": null,
+      "faq": null,
+      "breadcrumb": {
+        "count": 1,
+        "items": [
+          {
+            "position": 1,
+            "path": "/en"
+          },
+          {
+            "position": 2,
+            "path": "/en/menu"
+          }
+        ],
+        "expectedPaths": [
+          "/en",
+          "/en/menu"
+        ],
+        "exact": true
+      },
+      "service": null,
+      "gallery": null,
+      "menu": {
+        "visibleItems": 2,
+        "allNamesPricesMatchApproved224Snapshot": true
+      },
+      "metadata": {
+        "title": "Indian food menu | Shah Restaurant | Amsterdam-Noord",
+        "description": "Explore the Indian menu at Shah Restaurant in Amsterdam-Noord: curry, tandoori and naan with current prices. Choose your dishes and order online.",
+        "canonical": "https://shahrestaurant.nl/en/menu",
+        "robots": "index, follow",
+        "ogImage": "https://shahrestaurant.nl/brand/shah-social-v1.png",
+        "twitterImage": "https://shahrestaurant.nl/brand/shah-social-v1.png",
+        "canonicalNormalizedHref": "https://shahrestaurant.nl/en/menu",
+        "canonicalMatchesExpected": true
+      },
+      "failures": [],
+      "passed": true
+    },
+    {
+      "route": "/reserveren",
+      "httpStatus": 200,
+      "servedBuildMatches": true,
+      "schemaScripts": 2,
+      "typeCounts": {
+        "Restaurant": 1,
+        "PostalAddress": 1,
+        "GeoCoordinates": 1,
+        "OpeningHoursSpecification": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "SearchAction": 1,
+        "EntryPoint": 1,
+        "ImageObject": 1,
+        "BreadcrumbList": 1,
+        "ListItem": 2
+      },
+      "scriptBlocks": [
+        {
+          "index": 0,
+          "rootType": "@graph",
+          "htmlSha256": "7774bf852ff7cbb488b4fd91fca7bc19f0cb9009fb45863aca6f8be46d49afff",
+          "jsonTextSha256": "38e87afd3c28520aa10b1c15c87f804a118abf07aa758fa0f2fe51c30c3566fd"
+        },
+        {
+          "index": 1,
+          "rootType": "BreadcrumbList",
+          "htmlSha256": "f47ae1752ff51e192c88128f0fcb55812e4f6789815264a54ab13d1f6107814a",
+          "jsonTextSha256": "86ef25bfa9b6fd02d9290ceac4f96a529561a294a920985ee9d0ec23eb7ceb04"
+        }
+      ],
+      "codeFile": "reserveren.html",
+      "schemaFile": "reserveren.json",
+      "codeSha256": "fc6c97c50b0143f0b4085b321e7408d5dea044c8b058c8ce5b78593fca7850e0",
+      "schemaSha256": "9691a365216ce94edda2c8ab8c3b71a8b46eab7a30d978f436eaf75a5dd5ae00",
+      "coreCodeIdenticalToQtEl": true,
+      "sharedNlExact": null,
+      "faq": null,
+      "breadcrumb": {
+        "count": 1,
+        "items": [
+          {
+            "position": 1,
+            "path": "/"
+          },
+          {
+            "position": 2,
+            "path": "/reserveren"
+          }
+        ],
+        "expectedPaths": [
+          "/",
+          "/reserveren"
+        ],
+        "exact": true
+      },
+      "service": null,
+      "gallery": null,
+      "menu": null,
+      "metadata": {
+        "title": "Tafel reserveren | Shah Restaurant | Amsterdam-Noord",
+        "description": "Reserveer uw tafel bij Shah Restaurant aan de Klaprozenweg 36a in Amsterdam-Noord. Dinsdag t/m zondag 15:00–22:00. Bekijk de tijden en boek online.",
+        "canonical": "https://shahrestaurant.nl/reserveren",
+        "robots": "index, follow",
+        "ogImage": "https://shahrestaurant.nl/brand/shah-social-v1.png",
+        "twitterImage": "https://shahrestaurant.nl/brand/shah-social-v1.png",
+        "canonicalNormalizedHref": "https://shahrestaurant.nl/reserveren",
+        "canonicalMatchesExpected": true
+      },
+      "failures": [],
+      "passed": true
+    },
+    {
+      "route": "/en/reservations",
+      "httpStatus": 200,
+      "servedBuildMatches": true,
+      "schemaScripts": 2,
+      "typeCounts": {
+        "Restaurant": 1,
+        "PostalAddress": 1,
+        "GeoCoordinates": 1,
+        "OpeningHoursSpecification": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "SearchAction": 1,
+        "EntryPoint": 1,
+        "ImageObject": 1,
+        "BreadcrumbList": 1,
+        "ListItem": 2
+      },
+      "scriptBlocks": [
+        {
+          "index": 0,
+          "rootType": "@graph",
+          "htmlSha256": "86101ff5f03e6ba4c4362eafb8c1a43963e4b302e9f7346912bd000a76e8ebe0",
+          "jsonTextSha256": "a3ccdeff2aabd35e5b5390e46af89d40ccef60e07083e2b951257b60a480e694"
+        },
+        {
+          "index": 1,
+          "rootType": "BreadcrumbList",
+          "htmlSha256": "1960650a348f3b35b847cd4849c7b0be0455e551c8a4dfd5dc3e93aca76374d8",
+          "jsonTextSha256": "713d05f90656d3b2eb0c941fb657267a00bc8e3193c8a6c9e9697b9b7ef23fba"
+        }
+      ],
+      "codeFile": "en-reservations.html",
+      "schemaFile": "en-reservations.json",
+      "codeSha256": "ea885de48098941396126764a5d4506c8cc1401289b5f98400b05af8360db02f",
+      "schemaSha256": "93499bc7cfcd1fca2e7f4e7ae844e704922a437731dd47a9ae25ffc2be8eb97a",
+      "coreCodeIdenticalToQtEl": true,
+      "sharedNlExact": null,
+      "faq": null,
+      "breadcrumb": {
+        "count": 1,
+        "items": [
+          {
+            "position": 1,
+            "path": "/en"
+          },
+          {
+            "position": 2,
+            "path": "/en/reservations"
+          }
+        ],
+        "expectedPaths": [
+          "/en",
+          "/en/reservations"
+        ],
+        "exact": true
+      },
+      "service": null,
+      "gallery": null,
+      "menu": null,
+      "metadata": {
+        "title": "Table reservations | Shah Restaurant | Amsterdam-Noord",
+        "description": "Book a table at Shah Restaurant, Klaprozenweg 36a in Amsterdam-Noord. Open Tuesday to Sunday, 15:00–22:00. View available times and reserve online.",
+        "canonical": "https://shahrestaurant.nl/en/reservations",
+        "robots": "index, follow",
+        "ogImage": "https://shahrestaurant.nl/brand/shah-social-v1.png",
+        "twitterImage": "https://shahrestaurant.nl/brand/shah-social-v1.png",
+        "canonicalNormalizedHref": "https://shahrestaurant.nl/en/reservations",
+        "canonicalMatchesExpected": true
+      },
+      "failures": [],
+      "passed": true
+    },
+    {
+      "route": "/privacy",
+      "httpStatus": 200,
+      "servedBuildMatches": true,
+      "schemaScripts": 2,
+      "typeCounts": {
+        "Restaurant": 1,
+        "PostalAddress": 1,
+        "GeoCoordinates": 1,
+        "OpeningHoursSpecification": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "SearchAction": 1,
+        "EntryPoint": 1,
+        "ImageObject": 1,
+        "BreadcrumbList": 1,
+        "ListItem": 2
+      },
+      "scriptBlocks": [
+        {
+          "index": 0,
+          "rootType": "@graph",
+          "htmlSha256": "7774bf852ff7cbb488b4fd91fca7bc19f0cb9009fb45863aca6f8be46d49afff",
+          "jsonTextSha256": "38e87afd3c28520aa10b1c15c87f804a118abf07aa758fa0f2fe51c30c3566fd"
+        },
+        {
+          "index": 1,
+          "rootType": "BreadcrumbList",
+          "htmlSha256": "ed1251bed8bd5366220ac308eddc400f71f8598dda8621cb5c0cd3d23b750c87",
+          "jsonTextSha256": "6440ec6554b236d9e1e49c35be142beddfe8438ccefbafe3d599e20b44f62ba2"
+        }
+      ],
+      "codeFile": "privacy.html",
+      "schemaFile": "privacy.json",
+      "codeSha256": "bc2650c1cd053acbb2052cc7f37d3c0c231cdc8985a8b22cb3f3ec0199a6fd33",
+      "schemaSha256": "53b4304ff9a64d0cbfaa845fc7b3202609fd0cb8c7244f6395612a7a8fa73a11",
+      "coreCodeIdenticalToQtEl": true,
+      "sharedNlExact": null,
+      "faq": null,
+      "breadcrumb": {
+        "count": 1,
+        "items": [
+          {
+            "position": 1,
+            "path": "/"
+          },
+          {
+            "position": 2,
+            "path": "/privacy"
+          }
+        ],
+        "expectedPaths": [
+          "/",
+          "/privacy"
+        ],
+        "exact": true
+      },
+      "service": null,
+      "gallery": null,
+      "menu": null,
+      "metadata": {
+        "title": "Ons privacybeleid | Shah Restaurant | Amsterdam-Noord",
+        "description": "Lees het privacybeleid van Shah Restaurant in Amsterdam-Noord: hoe wij persoonsgegevens bij bestellingen en reserveringen verwerken en beschermen.",
+        "canonical": "https://shahrestaurant.nl/privacy",
+        "robots": "index, follow",
+        "ogImage": "https://shahrestaurant.nl/brand/shah-social-v1.png",
+        "twitterImage": "https://shahrestaurant.nl/brand/shah-social-v1.png",
+        "canonicalNormalizedHref": "https://shahrestaurant.nl/privacy",
+        "canonicalMatchesExpected": true
+      },
+      "failures": [],
+      "passed": true
+    },
+    {
+      "route": "/en/privacy",
+      "httpStatus": 200,
+      "servedBuildMatches": true,
+      "schemaScripts": 2,
+      "typeCounts": {
+        "Restaurant": 1,
+        "PostalAddress": 1,
+        "GeoCoordinates": 1,
+        "OpeningHoursSpecification": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "SearchAction": 1,
+        "EntryPoint": 1,
+        "ImageObject": 1,
+        "BreadcrumbList": 1,
+        "ListItem": 2
+      },
+      "scriptBlocks": [
+        {
+          "index": 0,
+          "rootType": "@graph",
+          "htmlSha256": "86101ff5f03e6ba4c4362eafb8c1a43963e4b302e9f7346912bd000a76e8ebe0",
+          "jsonTextSha256": "a3ccdeff2aabd35e5b5390e46af89d40ccef60e07083e2b951257b60a480e694"
+        },
+        {
+          "index": 1,
+          "rootType": "BreadcrumbList",
+          "htmlSha256": "baa69178a73ceafaa67266fbb7f96f42ccc3fb2a684afb9e55848cf6951ec90a",
+          "jsonTextSha256": "8adff49a5868e3f71f2d0430786b04f69a168af6e15fd9233fe42325d41ec4f8"
+        }
+      ],
+      "codeFile": "en-privacy.html",
+      "schemaFile": "en-privacy.json",
+      "codeSha256": "d6e99a21ddfe1a41f43b6820afbb73395d199ee2ffb5ee8c6f0b4a1e21bcf18f",
+      "schemaSha256": "2352cd2876c201828ffda2ae726912df400845c954146f4360f15000a27492c3",
+      "coreCodeIdenticalToQtEl": true,
+      "sharedNlExact": null,
+      "faq": null,
+      "breadcrumb": {
+        "count": 1,
+        "items": [
+          {
+            "position": 1,
+            "path": "/en"
+          },
+          {
+            "position": 2,
+            "path": "/en/privacy"
+          }
+        ],
+        "expectedPaths": [
+          "/en",
+          "/en/privacy"
+        ],
+        "exact": true
+      },
+      "service": null,
+      "gallery": null,
+      "menu": null,
+      "metadata": {
+        "title": "Privacy policy | Shah Restaurant | Amsterdam-Noord",
+        "description": "Read the privacy policy of Shah Restaurant in Amsterdam-Noord and learn how personal data for orders and table reservations is handled and protected.",
+        "canonical": "https://shahrestaurant.nl/en/privacy",
+        "robots": "index, follow",
+        "ogImage": "https://shahrestaurant.nl/brand/shah-social-v1.png",
+        "twitterImage": "https://shahrestaurant.nl/brand/shah-social-v1.png",
+        "canonicalNormalizedHref": "https://shahrestaurant.nl/en/privacy",
+        "canonicalMatchesExpected": true
+      },
+      "failures": [],
+      "passed": true
+    },
+    {
+      "route": "/voorwaarden",
+      "httpStatus": 200,
+      "servedBuildMatches": true,
+      "schemaScripts": 2,
+      "typeCounts": {
+        "Restaurant": 1,
+        "PostalAddress": 1,
+        "GeoCoordinates": 1,
+        "OpeningHoursSpecification": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "SearchAction": 1,
+        "EntryPoint": 1,
+        "ImageObject": 1,
+        "BreadcrumbList": 1,
+        "ListItem": 2
+      },
+      "scriptBlocks": [
+        {
+          "index": 0,
+          "rootType": "@graph",
+          "htmlSha256": "7774bf852ff7cbb488b4fd91fca7bc19f0cb9009fb45863aca6f8be46d49afff",
+          "jsonTextSha256": "38e87afd3c28520aa10b1c15c87f804a118abf07aa758fa0f2fe51c30c3566fd"
+        },
+        {
+          "index": 1,
+          "rootType": "BreadcrumbList",
+          "htmlSha256": "2e92018f2abc396886f9bb4bc4b6abc55027be88d59a47766503d6e4c7673174",
+          "jsonTextSha256": "1de4192edb64341dccd89a3400440079d9e1212ce3e738860abad6731af863dc"
+        }
+      ],
+      "codeFile": "voorwaarden.html",
+      "schemaFile": "voorwaarden.json",
+      "codeSha256": "c3a8fcb90b27d85f0cb504c7ebf3629c4765817cb99a88fdd7f3a00d9ac281f6",
+      "schemaSha256": "9595cdab9a8b8c7919c7b61bcca68599a51fcc73cc35274969fa1dc866b6c691",
+      "coreCodeIdenticalToQtEl": true,
+      "sharedNlExact": null,
+      "faq": null,
+      "breadcrumb": {
+        "count": 1,
+        "items": [
+          {
+            "position": 1,
+            "path": "/"
+          },
+          {
+            "position": 2,
+            "path": "/voorwaarden"
+          }
+        ],
+        "expectedPaths": [
+          "/",
+          "/voorwaarden"
+        ],
+        "exact": true
+      },
+      "service": null,
+      "gallery": null,
+      "menu": null,
+      "metadata": {
+        "title": "Algemene voorwaarden | Shah Restaurant | Amsterdam-Noord",
+        "description": "Lees de algemene voorwaarden van Shah Restaurant in Amsterdam-Noord voor bestellingen en tafelreserveringen. Bekijk de informatie voor uw bezoek.",
+        "canonical": "https://shahrestaurant.nl/voorwaarden",
+        "robots": "index, follow",
+        "ogImage": "https://shahrestaurant.nl/brand/shah-social-v1.png",
+        "twitterImage": "https://shahrestaurant.nl/brand/shah-social-v1.png",
+        "canonicalNormalizedHref": "https://shahrestaurant.nl/voorwaarden",
+        "canonicalMatchesExpected": true
+      },
+      "failures": [],
+      "passed": true
+    },
+    {
+      "route": "/en/terms",
+      "httpStatus": 200,
+      "servedBuildMatches": true,
+      "schemaScripts": 2,
+      "typeCounts": {
+        "Restaurant": 1,
+        "PostalAddress": 1,
+        "GeoCoordinates": 1,
+        "OpeningHoursSpecification": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "SearchAction": 1,
+        "EntryPoint": 1,
+        "ImageObject": 1,
+        "BreadcrumbList": 1,
+        "ListItem": 2
+      },
+      "scriptBlocks": [
+        {
+          "index": 0,
+          "rootType": "@graph",
+          "htmlSha256": "86101ff5f03e6ba4c4362eafb8c1a43963e4b302e9f7346912bd000a76e8ebe0",
+          "jsonTextSha256": "a3ccdeff2aabd35e5b5390e46af89d40ccef60e07083e2b951257b60a480e694"
+        },
+        {
+          "index": 1,
+          "rootType": "BreadcrumbList",
+          "htmlSha256": "d5adae58ff830a8491856217289590ed5ec166d0f8b308ae548967883f77195d",
+          "jsonTextSha256": "9e0a012c1559deacbe7a52994ed59452af0ef75e4addce47c39bb4cef33b1c5e"
+        }
+      ],
+      "codeFile": "en-terms.html",
+      "schemaFile": "en-terms.json",
+      "codeSha256": "aa627c3869e344040ffd95a6a7332074d95082f93e55f110cb4d67702be14493",
+      "schemaSha256": "1b483c765e5d13960c2edb05369510319ff8afab6b323d6ed89b07a8540ee69d",
+      "coreCodeIdenticalToQtEl": true,
+      "sharedNlExact": null,
+      "faq": null,
+      "breadcrumb": {
+        "count": 1,
+        "items": [
+          {
+            "position": 1,
+            "path": "/en"
+          },
+          {
+            "position": 2,
+            "path": "/en/terms"
+          }
+        ],
+        "expectedPaths": [
+          "/en",
+          "/en/terms"
+        ],
+        "exact": true
+      },
+      "service": null,
+      "gallery": null,
+      "menu": null,
+      "metadata": {
+        "title": "Terms and conditions | Shah Restaurant | Amsterdam",
+        "description": "Read Shah Restaurant's terms and conditions for orders and table reservations in Amsterdam-Noord. Review the practical information before your visit.",
+        "canonical": "https://shahrestaurant.nl/en/terms",
+        "robots": "index, follow",
+        "ogImage": "https://shahrestaurant.nl/brand/shah-social-v1.png",
+        "twitterImage": "https://shahrestaurant.nl/brand/shah-social-v1.png",
+        "canonicalNormalizedHref": "https://shahrestaurant.nl/en/terms",
+        "canonicalMatchesExpected": true
+      },
+      "failures": [],
+      "passed": true
+    },
+    {
+      "route": "/events",
+      "httpStatus": 200,
+      "servedBuildMatches": true,
+      "schemaScripts": 2,
+      "typeCounts": {
+        "Restaurant": 1,
+        "PostalAddress": 1,
+        "GeoCoordinates": 1,
+        "OpeningHoursSpecification": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "SearchAction": 1,
+        "EntryPoint": 1,
+        "ImageObject": 1,
+        "BreadcrumbList": 1,
+        "ListItem": 2
+      },
+      "scriptBlocks": [
+        {
+          "index": 0,
+          "rootType": "@graph",
+          "htmlSha256": "7774bf852ff7cbb488b4fd91fca7bc19f0cb9009fb45863aca6f8be46d49afff",
+          "jsonTextSha256": "38e87afd3c28520aa10b1c15c87f804a118abf07aa758fa0f2fe51c30c3566fd"
+        },
+        {
+          "index": 1,
+          "rootType": "BreadcrumbList",
+          "htmlSha256": "098bb2a66d8bda27aa8cdbd16f262bd80d747ff1288ee411d07a34375b508217",
+          "jsonTextSha256": "0bd7a616dcaac257185f7e6aafc892b25e4dcf9dbbc491a212cfd62d21a393c6"
+        }
+      ],
+      "codeFile": "events.html",
+      "schemaFile": "events.json",
+      "codeSha256": "d013b21204ae985bd588ef3a94f001f45b3c01d73e7092a30948c7a219367a77",
+      "schemaSha256": "6f24e91944f6c8211d20920edc9eec19121be082c18273e9c0374c2ac0df4960",
+      "coreCodeIdenticalToQtEl": null,
+      "sharedNlExact": true,
+      "faq": null,
+      "breadcrumb": {
+        "count": 1,
+        "items": [
+          {
+            "position": 1,
+            "path": "/"
+          },
+          {
+            "position": 2,
+            "path": "/events"
+          }
+        ],
+        "expectedPaths": [
+          "/",
+          "/events"
+        ],
+        "exact": true
+      },
+      "service": null,
+      "gallery": null,
+      "menu": null,
+      "metadata": {
+        "title": "Evenementen en catering | Shah Restaurant Amsterdam",
+        "description": "Ontdek de evenementen en catering van Shah Restaurant in Amsterdam-Noord. Bekijk verjaardagen, bruiloften, bedrijfscatering en lunches en neem contact op.",
+        "canonical": "https://shahrestaurant.nl/events",
+        "robots": "index, follow",
+        "ogImage": "https://shahrestaurant.nl/brand/shah-social-v1.png",
+        "twitterImage": "https://shahrestaurant.nl/brand/shah-social-v1.png",
+        "canonicalNormalizedHref": "https://shahrestaurant.nl/events",
+        "canonicalMatchesExpected": true
+      },
+      "failures": [],
+      "passed": true
+    },
+    {
+      "route": "/events/about",
+      "httpStatus": 200,
+      "servedBuildMatches": true,
+      "schemaScripts": 2,
+      "typeCounts": {
+        "Restaurant": 1,
+        "PostalAddress": 1,
+        "GeoCoordinates": 1,
+        "OpeningHoursSpecification": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "SearchAction": 1,
+        "EntryPoint": 1,
+        "ImageObject": 1,
+        "BreadcrumbList": 1,
+        "ListItem": 3
+      },
+      "scriptBlocks": [
+        {
+          "index": 0,
+          "rootType": "@graph",
+          "htmlSha256": "7774bf852ff7cbb488b4fd91fca7bc19f0cb9009fb45863aca6f8be46d49afff",
+          "jsonTextSha256": "38e87afd3c28520aa10b1c15c87f804a118abf07aa758fa0f2fe51c30c3566fd"
+        },
+        {
+          "index": 1,
+          "rootType": "BreadcrumbList",
+          "htmlSha256": "82abb6b9552e0442bbc36af6d4c3eb1cf9910acefb140dd3ac0e7fdf64b4f6c7",
+          "jsonTextSha256": "0c5f9c844c2e3b32dc9aca115162dabb11171f18dbfcebd3fe1690355b1ff35f"
+        }
+      ],
+      "codeFile": "events-about.html",
+      "schemaFile": "events-about.json",
+      "codeSha256": "426449171534c695c72d41cb62c82553bdec8612ecdfc2b7c38f978b5f189c9e",
+      "schemaSha256": "9fe6af36287cb522ff8a5b0b72f15f54a560612c00c9253b2f3797814414f09c",
+      "coreCodeIdenticalToQtEl": null,
+      "sharedNlExact": true,
+      "faq": null,
+      "breadcrumb": {
+        "count": 1,
+        "items": [
+          {
+            "position": 1,
+            "path": "/"
+          },
+          {
+            "position": 2,
+            "path": "/events"
+          },
+          {
+            "position": 3,
+            "path": "/events/about"
+          }
+        ],
+        "expectedPaths": [
+          "/",
+          "/events",
+          "/events/about"
+        ],
+        "exact": true
+      },
+      "service": null,
+      "gallery": null,
+      "menu": null,
+      "metadata": {
+        "title": "Over Shah Restaurant | Indiaas eten in Amsterdam-Noord",
+        "description": "Lees het verhaal van Shah Restaurant in Amsterdam-Noord. Ontdek de Indiase keuken, tandoori gerechten en gastvrijheid en bekijk de sfeer in onze galerij.",
+        "canonical": "https://shahrestaurant.nl/events/about",
+        "robots": "index, follow",
+        "ogImage": "https://shahrestaurant.nl/brand/shah-social-v1.png",
+        "twitterImage": "https://shahrestaurant.nl/brand/shah-social-v1.png",
+        "canonicalNormalizedHref": "https://shahrestaurant.nl/events/about",
+        "canonicalMatchesExpected": true
+      },
+      "failures": [],
+      "passed": true
+    },
+    {
+      "route": "/events/birthdays",
+      "httpStatus": 200,
+      "servedBuildMatches": true,
+      "schemaScripts": 3,
+      "typeCounts": {
+        "Restaurant": 1,
+        "PostalAddress": 1,
+        "GeoCoordinates": 1,
+        "OpeningHoursSpecification": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "SearchAction": 1,
+        "EntryPoint": 1,
+        "ImageObject": 1,
+        "BreadcrumbList": 1,
+        "ListItem": 3,
+        "Service": 1,
+        "City": 1,
+        "PeopleAudience": 1
+      },
+      "scriptBlocks": [
+        {
+          "index": 0,
+          "rootType": "@graph",
+          "htmlSha256": "7774bf852ff7cbb488b4fd91fca7bc19f0cb9009fb45863aca6f8be46d49afff",
+          "jsonTextSha256": "38e87afd3c28520aa10b1c15c87f804a118abf07aa758fa0f2fe51c30c3566fd"
+        },
+        {
+          "index": 1,
+          "rootType": "BreadcrumbList",
+          "htmlSha256": "25e629adaf6367469dd0aab2c040a43f71ecbca72dff64b0796986995d3eca65",
+          "jsonTextSha256": "b68cae361239a8dbe6c5ba9f34d9a41f5cc9fddf0cccea430ad3bd62c6ac64d0"
+        },
+        {
+          "index": 2,
+          "rootType": "Service",
+          "htmlSha256": "8cae9878b57234a4a6587727659d593a8d92b0d287770154d6c6264eaf411160",
+          "jsonTextSha256": "f5cd6e4c4bc354df86e7184d243c3c376c4a3249be6b79000952f47139e361e9"
+        }
+      ],
+      "codeFile": "events-birthdays.html",
+      "schemaFile": "events-birthdays.json",
+      "codeSha256": "c9ff3267067679115165342e15228c2dbac74acfe44820c12b1917cf557c1155",
+      "schemaSha256": "24f5c9eadf27b3bf62c6beaa023a03a0cfb52b9334704fb83bc82a62b2ac6eed",
+      "coreCodeIdenticalToQtEl": null,
+      "sharedNlExact": true,
+      "faq": null,
+      "breadcrumb": {
+        "count": 1,
+        "items": [
+          {
+            "position": 1,
+            "path": "/"
+          },
+          {
+            "position": 2,
+            "path": "/events"
+          },
+          {
+            "position": 3,
+            "path": "/events/birthdays"
+          }
+        ],
+        "expectedPaths": [
+          "/",
+          "/events",
+          "/events/birthdays"
+        ],
+        "exact": true
+      },
+      "service": {
+        "primaryServicePresent": true,
+        "providerIsRootRestaurantId": true,
+        "fixedOfferPriceFields": 0
+      },
+      "gallery": null,
+      "menu": null,
+      "metadata": {
+        "title": "Verjaardag vieren | Shah Restaurant Amsterdam-Noord",
+        "description": "Vier uw verjaardag of jubileum bij Shah Restaurant in Amsterdam-Noord. Bekijk de mogelijkheden voor een Indiaas menu en neem contact op over uw wensen.",
+        "canonical": "https://shahrestaurant.nl/events/birthdays",
+        "robots": "index, follow",
+        "ogImage": "https://shahrestaurant.nl/brand/shah-social-v1.png",
+        "twitterImage": "https://shahrestaurant.nl/brand/shah-social-v1.png",
+        "canonicalNormalizedHref": "https://shahrestaurant.nl/events/birthdays",
+        "canonicalMatchesExpected": true
+      },
+      "failures": [],
+      "passed": true
+    },
+    {
+      "route": "/events/celebrations",
+      "httpStatus": 200,
+      "servedBuildMatches": true,
+      "schemaScripts": 3,
+      "typeCounts": {
+        "Restaurant": 1,
+        "PostalAddress": 1,
+        "GeoCoordinates": 1,
+        "OpeningHoursSpecification": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "SearchAction": 1,
+        "EntryPoint": 1,
+        "ImageObject": 1,
+        "BreadcrumbList": 1,
+        "ListItem": 3,
+        "Service": 1,
+        "City": 1,
+        "PeopleAudience": 1
+      },
+      "scriptBlocks": [
+        {
+          "index": 0,
+          "rootType": "@graph",
+          "htmlSha256": "7774bf852ff7cbb488b4fd91fca7bc19f0cb9009fb45863aca6f8be46d49afff",
+          "jsonTextSha256": "38e87afd3c28520aa10b1c15c87f804a118abf07aa758fa0f2fe51c30c3566fd"
+        },
+        {
+          "index": 1,
+          "rootType": "BreadcrumbList",
+          "htmlSha256": "bdec06d6c49df648f551c6fcfa58b6eeaff7ef2ba167c88e5589055d301eb474",
+          "jsonTextSha256": "2c19c414eb0f8520ef178e5d4eac4cfd4af153d4836037b5628336ad059ef105"
+        },
+        {
+          "index": 2,
+          "rootType": "Service",
+          "htmlSha256": "31873f25ac9764f4ed33eee02f0d98586cd4b6e55a73e034447f9aeaae344a57",
+          "jsonTextSha256": "0c1b83ed669d6c69ea45ed57303e7ae75263d6339b2094e93f901080d5658d11"
+        }
+      ],
+      "codeFile": "events-celebrations.html",
+      "schemaFile": "events-celebrations.json",
+      "codeSha256": "5496cf707e2910833ac4c63e4c10a27034a6248bb66464c86fbe8f7aa64be399",
+      "schemaSha256": "a670097d04ce4fc7a792f271e398259cf89afb437ae2b3383e601faaa716f08f",
+      "coreCodeIdenticalToQtEl": null,
+      "sharedNlExact": true,
+      "faq": null,
+      "breadcrumb": {
+        "count": 1,
+        "items": [
+          {
+            "position": 1,
+            "path": "/"
+          },
+          {
+            "position": 2,
+            "path": "/events"
+          },
+          {
+            "position": 3,
+            "path": "/events/celebrations"
+          }
+        ],
+        "expectedPaths": [
+          "/",
+          "/events",
+          "/events/celebrations"
+        ],
+        "exact": true
+      },
+      "service": {
+        "primaryServicePresent": true,
+        "providerIsRootRestaurantId": true,
+        "fixedOfferPriceFields": 0
+      },
+      "gallery": null,
+      "menu": null,
+      "metadata": {
+        "title": "Bruiloften en vieringen | Shah Restaurant Amsterdam",
+        "description": "Ontdek bruiloften en vieringen bij Shah Restaurant in Amsterdam-Noord. Bekijk de mogelijkheden voor een Indiaas diner en bespreek uw wensen met ons.",
+        "canonical": "https://shahrestaurant.nl/events/celebrations",
+        "robots": "index, follow",
+        "ogImage": "https://shahrestaurant.nl/brand/shah-social-v1.png",
+        "twitterImage": "https://shahrestaurant.nl/brand/shah-social-v1.png",
+        "canonicalNormalizedHref": "https://shahrestaurant.nl/events/celebrations",
+        "canonicalMatchesExpected": true
+      },
+      "failures": [],
+      "passed": true
+    },
+    {
+      "route": "/events/company-catering",
+      "httpStatus": 200,
+      "servedBuildMatches": true,
+      "schemaScripts": 3,
+      "typeCounts": {
+        "Restaurant": 1,
+        "PostalAddress": 1,
+        "GeoCoordinates": 1,
+        "OpeningHoursSpecification": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "SearchAction": 1,
+        "EntryPoint": 1,
+        "ImageObject": 1,
+        "BreadcrumbList": 1,
+        "ListItem": 3,
+        "Service": 1,
+        "City": 1,
+        "BusinessAudience": 1
+      },
+      "scriptBlocks": [
+        {
+          "index": 0,
+          "rootType": "@graph",
+          "htmlSha256": "7774bf852ff7cbb488b4fd91fca7bc19f0cb9009fb45863aca6f8be46d49afff",
+          "jsonTextSha256": "38e87afd3c28520aa10b1c15c87f804a118abf07aa758fa0f2fe51c30c3566fd"
+        },
+        {
+          "index": 1,
+          "rootType": "BreadcrumbList",
+          "htmlSha256": "a162aafaa35724a866b7739f69b2345b79d8a82ec8712ce379f0a314f69695db",
+          "jsonTextSha256": "0bc10b503477e15c038c229f7baf4ae0e8a0c3233ca59816720a60816764d3b7"
+        },
+        {
+          "index": 2,
+          "rootType": "Service",
+          "htmlSha256": "d5d414acb633f83a3efe68a70f5ee731561b75f52b5f7cafd1d273438980e5f7",
+          "jsonTextSha256": "419e4ffde8c30eb3cb84ffb44c98133d501d57a20b81da250e31c5bd1453f335"
+        }
+      ],
+      "codeFile": "events-company-catering.html",
+      "schemaFile": "events-company-catering.json",
+      "codeSha256": "16f0b73dae7691d98c51b797c519705bb230a2bf717a0c4b7f8f4e9701ee953b",
+      "schemaSha256": "9971d043eeb099b522729391d60c76ef03761421b7d3b78bbe3bc923cdd197a2",
+      "coreCodeIdenticalToQtEl": null,
+      "sharedNlExact": true,
+      "faq": null,
+      "breadcrumb": {
+        "count": 1,
+        "items": [
+          {
+            "position": 1,
+            "path": "/"
+          },
+          {
+            "position": 2,
+            "path": "/events"
+          },
+          {
+            "position": 3,
+            "path": "/events/company-catering"
+          }
+        ],
+        "expectedPaths": [
+          "/",
+          "/events",
+          "/events/company-catering"
+        ],
+        "exact": true
+      },
+      "service": {
+        "primaryServicePresent": true,
+        "providerIsRootRestaurantId": true,
+        "fixedOfferPriceFields": 0
+      },
+      "gallery": null,
+      "menu": null,
+      "metadata": {
+        "title": "Bedrijfscatering | Shah Restaurant in Amsterdam-Noord",
+        "description": "Bekijk bedrijfscatering van Shah Restaurant in Amsterdam-Noord. Ontdek de mogelijkheden voor zakelijke diners en ontvangsten en bespreek uw wensen.",
+        "canonical": "https://shahrestaurant.nl/events/company-catering",
+        "robots": "index, follow",
+        "ogImage": "https://shahrestaurant.nl/brand/shah-social-v1.png",
+        "twitterImage": "https://shahrestaurant.nl/brand/shah-social-v1.png",
+        "canonicalNormalizedHref": "https://shahrestaurant.nl/events/company-catering",
+        "canonicalMatchesExpected": true
+      },
+      "failures": [],
+      "passed": true
+    },
+    {
+      "route": "/events/company-lunches",
+      "httpStatus": 200,
+      "servedBuildMatches": true,
+      "schemaScripts": 3,
+      "typeCounts": {
+        "Restaurant": 1,
+        "PostalAddress": 1,
+        "GeoCoordinates": 1,
+        "OpeningHoursSpecification": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "SearchAction": 1,
+        "EntryPoint": 1,
+        "ImageObject": 1,
+        "BreadcrumbList": 1,
+        "ListItem": 3,
+        "Service": 1,
+        "City": 1
+      },
+      "scriptBlocks": [
+        {
+          "index": 0,
+          "rootType": "@graph",
+          "htmlSha256": "7774bf852ff7cbb488b4fd91fca7bc19f0cb9009fb45863aca6f8be46d49afff",
+          "jsonTextSha256": "38e87afd3c28520aa10b1c15c87f804a118abf07aa758fa0f2fe51c30c3566fd"
+        },
+        {
+          "index": 1,
+          "rootType": "BreadcrumbList",
+          "htmlSha256": "fb0dadd047c5825ccce6c7b62b64346be44de58fe9f1756bf6d62884ffd469d9",
+          "jsonTextSha256": "ed8addd56ad9909ccd4085224b6a5a9414a481652bc5b1323b9b0ce3c0ef5bfc"
+        },
+        {
+          "index": 2,
+          "rootType": "Service",
+          "htmlSha256": "afc6d7ba74d405149fec159adcbf772efda5621e5c05d9dec89f66a28717667d",
+          "jsonTextSha256": "d23a60628b04094f197468d958ea3addee4af80c024a6e857949cca444a54d99"
+        }
+      ],
+      "codeFile": "events-company-lunches.html",
+      "schemaFile": "events-company-lunches.json",
+      "codeSha256": "5dd137c579c6c88a608921406b8387c45eb1284c192dfe8defb6f54b52c22ed2",
+      "schemaSha256": "55c57954960204a182d84239871ac72145af58bbdc1406bcd37ff627cdefa694",
+      "coreCodeIdenticalToQtEl": null,
+      "sharedNlExact": true,
+      "faq": null,
+      "breadcrumb": {
+        "count": 1,
+        "items": [
+          {
+            "position": 1,
+            "path": "/"
+          },
+          {
+            "position": 2,
+            "path": "/events"
+          },
+          {
+            "position": 3,
+            "path": "/events/company-lunches"
+          }
+        ],
+        "expectedPaths": [
+          "/",
+          "/events",
+          "/events/company-lunches"
+        ],
+        "exact": true
+      },
+      "service": {
+        "primaryServicePresent": true,
+        "providerIsRootRestaurantId": true,
+        "fixedOfferPriceFields": 0
+      },
+      "gallery": null,
+      "menu": null,
+      "metadata": {
+        "title": "Bedrijfslunches | Shah Restaurant in Amsterdam-Noord",
+        "description": "Ontdek de bedrijfslunches van Shah Restaurant in Amsterdam-Noord. Bekijk de lunchvormen en menuopties voor uw team en neem contact op over uw wensen.",
+        "canonical": "https://shahrestaurant.nl/events/company-lunches",
+        "robots": "index, follow",
+        "ogImage": "https://shahrestaurant.nl/brand/shah-social-v1.png",
+        "twitterImage": "https://shahrestaurant.nl/brand/shah-social-v1.png",
+        "canonicalNormalizedHref": "https://shahrestaurant.nl/events/company-lunches",
+        "canonicalMatchesExpected": true
+      },
+      "failures": [],
+      "passed": true
+    },
+    {
+      "route": "/events/gallery",
+      "httpStatus": 200,
+      "servedBuildMatches": true,
+      "schemaScripts": 3,
+      "typeCounts": {
+        "Restaurant": 1,
+        "PostalAddress": 1,
+        "GeoCoordinates": 1,
+        "OpeningHoursSpecification": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "SearchAction": 1,
+        "EntryPoint": 1,
+        "ImageObject": 1,
+        "BreadcrumbList": 1,
+        "ListItem": 3,
+        "ImageGallery": 1
+      },
+      "scriptBlocks": [
+        {
+          "index": 0,
+          "rootType": "@graph",
+          "htmlSha256": "7774bf852ff7cbb488b4fd91fca7bc19f0cb9009fb45863aca6f8be46d49afff",
+          "jsonTextSha256": "38e87afd3c28520aa10b1c15c87f804a118abf07aa758fa0f2fe51c30c3566fd"
+        },
+        {
+          "index": 1,
+          "rootType": "BreadcrumbList",
+          "htmlSha256": "170c1aba000d90b4d12d5eae2483bedfbde322a944f4a0259b9a7ba9907ee223",
+          "jsonTextSha256": "9afad2e287de8c3a641d1fb2ade10140467748a593f663bd96a04dd4a7b37080"
+        },
+        {
+          "index": 2,
+          "rootType": "ImageGallery",
+          "htmlSha256": "193f0af2d34841bc535f91ac79f3eee0dcee7bc43a78ab03f369b87b7c42b6cd",
+          "jsonTextSha256": "e1863fe78c87c4973434cbafc902df07a155463670854d2ed6bd404fdca611ff"
+        }
+      ],
+      "codeFile": "events-gallery.html",
+      "schemaFile": "events-gallery.json",
+      "codeSha256": "8fa8fe73ee5a8b9154c4a0c477c19ce6ac7f9711bd571a6110fb5532545464bd",
+      "schemaSha256": "f3c4fcc7299e4e5384f137efa1903f5332070f49ee036ec3f3cd63f03937cbfc",
+      "coreCodeIdenticalToQtEl": null,
+      "sharedNlExact": true,
+      "faq": null,
+      "breadcrumb": {
+        "count": 1,
+        "items": [
+          {
+            "position": 1,
+            "path": "/"
+          },
+          {
+            "position": 2,
+            "path": "/events"
+          },
+          {
+            "position": 3,
+            "path": "/events/gallery"
+          }
+        ],
+        "expectedPaths": [
+          "/",
+          "/events",
+          "/events/gallery"
+        ],
+        "exact": true
+      },
+      "service": null,
+      "gallery": {
+        "schemaCount": 1,
+        "images": 10,
+        "knownHighestWebpUrls": 10,
+        "originalJpegRefs": 0
+      },
+      "menu": null,
+      "metadata": {
+        "title": "Galerij Shah Restaurant | Sfeer en gerechten Amsterdam",
+        "description": "Bekijk de galerij van Shah Restaurant in Amsterdam-Noord: het interieur, gedekte tafels en Indiase gerechten. Ontdek de sfeer en plan uw bezoek.",
+        "canonical": "https://shahrestaurant.nl/events/gallery",
+        "robots": "index, follow",
+        "ogImage": "https://shahrestaurant.nl/brand/shah-social-v1.png",
+        "twitterImage": "https://shahrestaurant.nl/brand/shah-social-v1.png",
+        "canonicalNormalizedHref": "https://shahrestaurant.nl/events/gallery",
+        "canonicalMatchesExpected": true
+      },
+      "failures": [],
+      "passed": true
+    }
+  ],
+  "assets": [
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0090-1280.avif",
+      "status": 200,
+      "mime": "image/avif",
+      "bytes": 69761,
+      "sha256": "1b109d89aa9b4431085eca60e45b3eedafde288800713f5ebd7ac8a7669f0def",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0090-1280.webp",
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 125786,
+      "sha256": "44ae89c0a78ccade6ec5485823026394bca4f5a0e8dcc7f8e50ae401629f4d86",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0090-320.avif",
+      "status": 200,
+      "mime": "image/avif",
+      "bytes": 12987,
+      "sha256": "d1d0aab0368d875053a2e67c6dba38f3df87fda6b3d01a1565d20f4ab319905a",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0090-320.webp",
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 18616,
+      "sha256": "1bfebeacb2b46a14737c8317d4555e13a7881467c2d58114a85c4572de572a19",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0090-640.avif",
+      "status": 200,
+      "mime": "image/avif",
+      "bytes": 32332,
+      "sha256": "8f2dfbca8b127462b121c4c9b841511729629ae435a26da5afbcd3b99b32c7ea",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0090-640.webp",
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 51864,
+      "sha256": "a94727f5c684dc887f269c34dec52929675ed25edc2dc976d31798b12519337f",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0090-960.avif",
+      "status": 200,
+      "mime": "image/avif",
+      "bytes": 51242,
+      "sha256": "addfca370a19371d8d2048e272f96f70f6ac1e6c65ba146ed1139af4e95d9fe8",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0090-960.webp",
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 85470,
+      "sha256": "f97824abc393a10ee7128d06cc8ce840eeab6d394c8522e4b288b06345701c9a",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0210-1280.avif",
+      "status": 200,
+      "mime": "image/avif",
+      "bytes": 113428,
+      "sha256": "87b29ab7a40d3e8aeb370754dd61202a7cc187c719e913bbd2c92be5b5e466eb",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0210-1280.webp",
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 191090,
+      "sha256": "cea5b633f763a9a99d7dda1261b7850d22dec594488fdec5076b48ab6240cfec",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0210-320.avif",
+      "status": 200,
+      "mime": "image/avif",
+      "bytes": 22405,
+      "sha256": "a371da2c01b5d976aa6458d982d446337ec7ae54f29e8253a5c56e4f0384cf21",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0210-320.webp",
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 36582,
+      "sha256": "9adae96ca319529497d6fea0b5db76d8c9036e564f502b51bd06beedc236763a",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0210-640.avif",
+      "status": 200,
+      "mime": "image/avif",
+      "bytes": 51240,
+      "sha256": "b22df6d42a03949c016d2b4dfcd008dc8d93cac33c3b1d7b878b8aa9358eed3b",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0210-640.webp",
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 93288,
+      "sha256": "66eac519c3323f1361c60ec5e71520854a000bd12fdaeb60e30ff0f36b7f2ad8",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0210-960.avif",
+      "status": 200,
+      "mime": "image/avif",
+      "bytes": 82699,
+      "sha256": "7db87973185b90575dc15a1bef161d4495700fd63143de36eaabed16f139df28",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0210-960.webp",
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 169568,
+      "sha256": "9328d7a39aa7db7955227e8cb768d749fbfaea20e6e28a6a5779e0e192c278bb",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0211-1280.avif",
+      "status": 200,
+      "mime": "image/avif",
+      "bytes": 115152,
+      "sha256": "ffc5249a9ed09a6ff5ac23f1e6d3bbb49e934f48af010bd34b56d1b9e5574915",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0211-1280.webp",
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 192314,
+      "sha256": "2e3abb56020e12a5abe8e22ab07148a6bb171c24912abebac00317f0848568a6",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0211-320.avif",
+      "status": 200,
+      "mime": "image/avif",
+      "bytes": 21725,
+      "sha256": "0c06ff83bdcb132daac87a1c960bef147632338822c280a87c643ed3ab5d4d14",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0211-320.webp",
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 34410,
+      "sha256": "56de71a8d4ec430f378ff1f7ac204065dd974b9204eae6163ac8e89ea421a005",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0211-640.avif",
+      "status": 200,
+      "mime": "image/avif",
+      "bytes": 50124,
+      "sha256": "8bbd95db5407f66649b12fce3ffc5c5126c84b2258348cf9fff64e8577b1ef59",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0211-640.webp",
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 91662,
+      "sha256": "91bc7f70f46d1ca5bca49edf4c3aeaa6e31ca94d4c02ddfc1747416f780791e9",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0211-960.avif",
+      "status": 200,
+      "mime": "image/avif",
+      "bytes": 82376,
+      "sha256": "1583407da4742a69f449e74ada4a6171956c5b3792c87524e99c501a1f6d9a6c",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0211-960.webp",
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 162180,
+      "sha256": "dfd26b2779cf066f06ade5f547f0e72f0884324c52112446ad76015e122b8a2f",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0216-1280.avif",
+      "status": 200,
+      "mime": "image/avif",
+      "bytes": 141479,
+      "sha256": "b0f0835147cbd9e6b760cd80b59decc20a94c681458b1f2d804757e943c3ce42",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0216-1280.webp",
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 178672,
+      "sha256": "e8a76c8e8d33318381ac82df75804eea4ac1ffdb582a4bfd470c21a700baaf80",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0216-320.avif",
+      "status": 200,
+      "mime": "image/avif",
+      "bytes": 25758,
+      "sha256": "0b5a573266770a2ed124df9e3345ae7fb6786a63ae509dfed553222eec9b233f",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0216-320.webp",
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 39356,
+      "sha256": "812c178f8558a0fe8591414307c9cffa78845ad9f64ec296c0ddb776ed779031",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0216-640.avif",
+      "status": 200,
+      "mime": "image/avif",
+      "bytes": 59932,
+      "sha256": "d7a3e8bc9716e5f9825deed3f845b5d72d62c4df1b57b3dd021c92bad5e704aa",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0216-640.webp",
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 100288,
+      "sha256": "bb69082a645c3b29be052135d985d0138f63d6e18fda597dbf0d46b73e484cac",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0216-960.avif",
+      "status": 200,
+      "mime": "image/avif",
+      "bytes": 98960,
+      "sha256": "1248517848c8d22dcd942a5b3d005caf01383c2505e3f742fad5854c86ed2368",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0216-960.webp",
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 180088,
+      "sha256": "19821259c717e0252c92d1cc15a770e98882ae4d2c9ec3340dac295989a19d9e",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0260-1280.avif",
+      "status": 200,
+      "mime": "image/avif",
+      "bytes": 43410,
+      "sha256": "35c7da7e92c0a295a9764b236fcf09c587fecc62ad8ec39de1bd2b0c306e6f71",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0260-1280.webp",
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 90552,
+      "sha256": "09785f0d6d3bc8d5fd4edeeb6ba2df0acfa9b10b93b82e8c4c524d4cd20b5a5b",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0260-320.avif",
+      "status": 200,
+      "mime": "image/avif",
+      "bytes": 8027,
+      "sha256": "dbd2653c206905a2e4e9ad2e4a8ce8ec8a9112e032823dda64df1483f4676a8f",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0260-320.webp",
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 13824,
+      "sha256": "a542621a085ae396ea0fd1386212af23157558a6b7e17c82eeacc33abbc43bb0",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0260-640.avif",
+      "status": 200,
+      "mime": "image/avif",
+      "bytes": 18300,
+      "sha256": "fb15da81f2ebbed72a7676e43e0ce0938d4b1ec25c74f50dd10134a33761f223",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0260-640.webp",
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 34532,
+      "sha256": "52d322a6751f7e02b26e1092321119b167b444fcb0de20da3f0a9b87bc7063cf",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0260-960.avif",
+      "status": 200,
+      "mime": "image/avif",
+      "bytes": 30449,
+      "sha256": "3a3965e565b49e1bd8d693e10c2f69bc4b4184e74b4bdb2c3b24b567b73afec9",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0260-960.webp",
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 60910,
+      "sha256": "a960cdc4cf2aca11f300c0cfa5616df9254ddadaedb75272f52f5490b9984800",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0321-1280.avif",
+      "status": 200,
+      "mime": "image/avif",
+      "bytes": 192305,
+      "sha256": "dfa363da84402eab7b218919c91b31dde346a46172c9a78410d59e62879e1149",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0321-1280.webp",
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 192860,
+      "sha256": "1bcc3124fbe5854b9745a362384e211c2d02dad69754b332e04bf915f8c76ad6",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0321-320.avif",
+      "status": 200,
+      "mime": "image/avif",
+      "bytes": 22702,
+      "sha256": "c6823a9f2f019b5a516ab8e36a1b958344d908e0ae4ad7b26010b15ae0ff6a08",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0321-320.webp",
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 35526,
+      "sha256": "93a9896e954546b42755fb749cdfa3e1d35754a2780baba3b2514c876d46d7a0",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0321-640.avif",
+      "status": 200,
+      "mime": "image/avif",
+      "bytes": 71732,
+      "sha256": "5be8d0b61b8d1ef1049af3b29f63f8060f3318f6fc0daf4fafa3f454f8cc7f83",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0321-640.webp",
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 118960,
+      "sha256": "6086655d0dc23c636385b21708a3918af586e3147163e9465e9deff70c8f35e1",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0321-960.avif",
+      "status": 200,
+      "mime": "image/avif",
+      "bytes": 137121,
+      "sha256": "285e0513b12f1c1a949409f47714fc1bfe6699d4078bdaeb487b54162a7cb3dc",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0321-960.webp",
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 189970,
+      "sha256": "ddf9fc43c01ece0455fe3c359ded229f46c7153fab83be99953070db182ec0df",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0336-1280.avif",
+      "status": 200,
+      "mime": "image/avif",
+      "bytes": 153751,
+      "sha256": "62f4587ccbb735fa5cc282ee31c04570c702b94a9bb5a45548c38e534baa4d57",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0336-1280.webp",
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 177064,
+      "sha256": "ad39fc043877faf848c2daa5c949cf1890a532b602adaa97d061b1b8a3db0c27",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0336-320.avif",
+      "status": 200,
+      "mime": "image/avif",
+      "bytes": 21330,
+      "sha256": "0c6a0899dde4a6b03e0fe9c92aadb6ea4e8cc4a2624570226be69d0b30ad6d90",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0336-320.webp",
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 33192,
+      "sha256": "28fac8a11e9a6448f038b1492e26c6e61ab9eccb21cb142f24640a9f99f98cf4",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0336-640.avif",
+      "status": 200,
+      "mime": "image/avif",
+      "bytes": 57016,
+      "sha256": "411af6ecc54d7bc09038767d60bc8debb08c69c4bb3929214dc73ac80fd7f76e",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0336-640.webp",
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 93942,
+      "sha256": "e4949cde3751f97c41505bd975403b33b7742a7aecee7c736b5e30a197a90915",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0336-960.avif",
+      "status": 200,
+      "mime": "image/avif",
+      "bytes": 103737,
+      "sha256": "21bc0e09ebe8c3c2e30fd3771ead2eab5ecdf411d9dc4c8ff1d3991985dbeb92",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0336-960.webp",
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 177664,
+      "sha256": "64121e2cf6b1d99efccd030879adf770ce7b5ce7320238dde4106a58a6af1e70",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0343-1280.avif",
+      "status": 200,
+      "mime": "image/avif",
+      "bytes": 173183,
+      "sha256": "9ee3207b7804a74d74dc6030dcbe8e4b57781fae8853dd2fd317fa3a34cba219",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0343-1280.webp",
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 197878,
+      "sha256": "748826828f75c435034c2b4498017850b5319a463405c8af394e21c2fb27c3ba",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0343-320.avif",
+      "status": 200,
+      "mime": "image/avif",
+      "bytes": 31272,
+      "sha256": "c1313543d418efe30aee7425c298489eb84ffd75608e6b3bbb31277d10b3f4cd",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0343-320.webp",
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 46450,
+      "sha256": "fd4bb64308be9d8078f1aba8e216fed51f8e3dd5de1054937ccff37350ee2ec5",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0343-640.avif",
+      "status": 200,
+      "mime": "image/avif",
+      "bytes": 77507,
+      "sha256": "864cacc737aac4f46f28ade4c76e008482173053632c5f5a416e05d155c191a5",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0343-640.webp",
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 128080,
+      "sha256": "8d887ed9816d7d21404471faac2e1d3ac83fbc9537c35ed9c9290c9b58087b58",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0343-960.avif",
+      "status": 200,
+      "mime": "image/avif",
+      "bytes": 126753,
+      "sha256": "9d33634c3372e02437a726ea22e01044ef279a898c16d4b5fb702d734701d3ae",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0343-960.webp",
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 192410,
+      "sha256": "42a1345ca552530cdfd74c5cd1724ab06e62e9b14b99ba2b77ab2364be23275d",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0402-1280.avif",
+      "status": 200,
+      "mime": "image/avif",
+      "bytes": 35637,
+      "sha256": "7f9bcecfffe7dc10e1a5936b89370b6f449e286043bb1b510a279dc0bb564120",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0402-1280.webp",
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 77794,
+      "sha256": "3f653af69cd6290a62eb75905dfe8da1f94265a7d1d6563a5fe46c72707f9aec",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0402-320.avif",
+      "status": 200,
+      "mime": "image/avif",
+      "bytes": 9637,
+      "sha256": "cac73557b86700382df2c44054adad44f481b38af8ce9ebc9a86b5e126c10640",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0402-320.webp",
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 14942,
+      "sha256": "25cc4fc06daa0be49bc28ce88e2e7b6e68e3597dbe0e4221f4629d6d98f3054a",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0402-640.avif",
+      "status": 200,
+      "mime": "image/avif",
+      "bytes": 18596,
+      "sha256": "3e6830705445c85e9ff674b9416c090a75f1e6eea7d0c8c6b9a6b7fd7034062e",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0402-640.webp",
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 34614,
+      "sha256": "4dfd532ab2f64cffbaa405761b75135aca6d611537a037c7f7f3c84d16cd1374",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0402-960.avif",
+      "status": 200,
+      "mime": "image/avif",
+      "bytes": 27539,
+      "sha256": "8e5b1671b650d9a70e83d59d4001a8734ac143714c50084a5daa7e5de076c142",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0402-960.webp",
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 55496,
+      "sha256": "44e9d7676b3514883b6190c6a6be962d99dc489d68f7fe800fd199c71d4c1ece",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0412-1280.avif",
+      "status": 200,
+      "mime": "image/avif",
+      "bytes": 45453,
+      "sha256": "c5911cbec5d541c8d71cc8e880b05ed42d85485e8561b600dc47e0f027b466c9",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0412-1280.webp",
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 94218,
+      "sha256": "eada4dd1e0e36a4293c48fb3e39aef90fefaf38655082318bb627ec1956f8190",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0412-320.avif",
+      "status": 200,
+      "mime": "image/avif",
+      "bytes": 10810,
+      "sha256": "8e43a75808728908f3fce34c262d3f04a7b3a6955684751e164515220ec397f3",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0412-320.webp",
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 16164,
+      "sha256": "27cd5a37edae19e74890cb67e578c0bdb720c2e5a38f2372de137b60a5af10c5",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0412-640.avif",
+      "status": 200,
+      "mime": "image/avif",
+      "bytes": 21817,
+      "sha256": "1f3690f20baeb17a6d974ff34cfb9d15c8483f1acf6472665e46c7c08ef43720",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0412-640.webp",
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 39546,
+      "sha256": "0f4ef9783db2596c188ebe82d29a53819973de47fb54a4f23ec12e596f264ed3",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0412-960.avif",
+      "status": 200,
+      "mime": "image/avif",
+      "bytes": 34267,
+      "sha256": "0de00323330c4c6e1af890498222c8091c850f0f7e3ec92d97797fba12e81f70",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0412-960.webp",
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 68326,
+      "sha256": "8e0d0225e010aaedb10c4c987cc4d414b3bea5a35b18c0cc384300b4fd41f961",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": true,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": true,
+      "expectedFileBytesMatch": true,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/shah-landscape-teal-v1.svg",
+      "status": 200,
+      "mime": "image/svg+xml",
+      "bytes": 17099,
+      "sha256": "b543b5ee55804b9044c7d8a570e859bf4977ffd673256a4124f22445139685b7",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "gzip",
+      "knownGalleryVariant": false,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": null,
+      "expectedFileBytesMatch": null,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/shah-room-v1.webp",
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 153334,
+      "sha256": "d583b7815079e66e4925fb004ffec42079c21968ee2256fb7d75caf2cd3a2098",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": false,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": null,
+      "expectedFileBytesMatch": null,
+      "mimeMatchesExtension": true
+    },
+    {
+      "src": "/brand/shah-social-v1.png",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 41551,
+      "sha256": "c1c5693902db1732593718a64d50af11ee2fc23601d4c9a08426bdb7b4886032",
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentEncoding": "identity",
+      "knownGalleryVariant": false,
+      "under200000Bytes": true,
+      "expectedFileHashMatches": null,
+      "expectedFileBytesMatch": null,
+      "mimeMatchesExtension": true
+    }
+  ],
+  "globalFailures": [],
+  "assetSummary": {
+    "requests": 83,
+    "maxConcurrent": 2,
+    "allHttp200": true,
+    "allMimeMatches": true,
+    "allUnder200000Bytes": true,
+    "galleryVariants": 80,
+    "allGalleryHashesAndBytesMatch": true,
+    "maxGalleryBytes": 197878,
+    "allImmutableCacheHeaders": true
+  },
+  "validation": {
+    "routes": 17,
+    "allRouteChecksPass": true,
+    "all17Parsed": true,
+    "corePayloadsUnchangedFromQtEl": 10,
+    "eventSharedNlExact": 7,
+    "faq9VisibleEquality": 2,
+    "canonicalBreadcrumbsPassed": 15,
+    "servicesRootProviderNoFixedPrices": 4,
+    "menuPriceSnapshotsPassed": 2,
+    "gallery10HighestWebpUrls": true
+  },
+  "limitations": [
+    "Google Rich Results CODE tests have not run on these payloads; native input awaits coordinatedCapCut pause. No current Google eligibility claim is made.",
+    "Local JSON-LD parsing, internal consistency, serverHTML FAQ equality and menu-subset snapshot comparison do not establish indexing, search display or truth of every business claim.",
+    "Menu schema covers2visible dishes percanonical menu route, not all224products. All actual prices in that subset match approved snapshot66eda306… .",
+    "Static-image checks measure encoded localHTTP bodies for this build, not totalpage transfers. Unknownfuture adminuploaded galleryimages remain outside80known-variant guarantee."
+  ],
+  "canonicalComparison": "URL.href normalization; homepage origin-only and trailing-slash URL are equivalent."
+}

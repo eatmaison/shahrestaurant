@@ -1,0 +1,153 @@
+{
+  "bundler": "webpack-contrast",
+  "sourceFingerprint": "80e67c4e6e04fd03e2a37190cdbe897579b93ceafd9d5ee996b3a02800cbe963",
+  "fixtureDataSourceFingerprint": "66eda306b74cf90dc15ad018cc3064212349151810d8df2e098a06d6e8588892",
+  "fixtureKind": "actual-public-catalog-read-only",
+  "catalogSourceHash": "66eda306b74cf90dc15ad018cc3064212349151810d8df2e098a06d6e8588892",
+  "fixtureProducts": 224,
+  "fixtureBrands": 2,
+  "fixtureJsonGzip": true,
+  "fixtureClockUTC": "2026-11-11T12:47:58.379Z",
+  "fixtureBootstrapSha256": "87cd9c939a82820c555968a3189d82dca413eecb18d90126add52327a60b3bbf",
+  "buildId": "NUcp9_HWho-gmCR-jRh8K",
+  "startedAtUTC": "2026-11-11T17:25:07.346Z",
+  "origin": "http://127.0.0.1:3508",
+  "method": "Public raw HTML and browser display precedence against explicit pinned public-snapshot Neon SELECT transport; no live database, application fixtures or business writes.",
+  "raw": [
+    {
+      "route": "/menukaart",
+      "status": 200,
+      "serverRenderedDishCount": 4,
+      "containsSnapshotSample": true,
+      "containsNumericPrice": true,
+      "proof": "menukaart.ssr.html",
+      "javaScriptExecuted": false
+    },
+    {
+      "route": "/en/menu",
+      "status": 200,
+      "serverRenderedDishCount": 4,
+      "containsSnapshotSample": true,
+      "containsNumericPrice": true,
+      "proof": "en-menu.ssr.html",
+      "javaScriptExecuted": false
+    },
+    {
+      "route": "/menukaart?q=Butter%20Chicken",
+      "status": 200,
+      "serverRenderedDishCount": 8,
+      "containsSnapshotSample": true,
+      "containsNumericPrice": true,
+      "proof": "menukaart_q-Butter-Chicken.ssr.html",
+      "javaScriptExecuted": false
+    },
+    {
+      "route": "/en/menu?q=Butter%20Chicken",
+      "status": 200,
+      "serverRenderedDishCount": 8,
+      "containsSnapshotSample": true,
+      "containsNumericPrice": true,
+      "proof": "en-menu_q-Butter-Chicken.ssr.html",
+      "javaScriptExecuted": false
+    }
+  ],
+  "precedence": {
+    "route": "/en/menu?q=Butter%20Chicken",
+    "bootstrapMethod": "GET intercepted only in this task-owned browser",
+    "before": {
+      "disabledFieldsets": 8,
+      "dishCount": 8,
+      "hasButter": true,
+      "query": "Butter Chicken",
+      "schemaMenuItemCount": 1
+    },
+    "after": {
+      "dishCount": 0,
+      "query": "Butter Chicken",
+      "hasButterInMain": false,
+      "message": "ng. Fast selection.Build your order — Indian menu Amsterdam-NoordPick your meals, see prices instantly and check out - all on one page.Search dishesAll restaurants · 0 itemsRegister and start earning loyalty pointsEarn points with your orders and redeem them for discounts.RegisterAll restaurantsSearch results · 0 itemsNo dishes foundTry another name or clear your search.Clear search Your order0 itemsYour selected items will appear here. Pick a dish to build your order.Delivery detailsHow would you like to receive your order? DeliveryWe bring it to your address PickupCollect it yourself in-storeDelivery details We currently deliver only within Amsterdam-Noord.Subtotal€0.00Delivery€2.50Total€0.00Free delivery on orders over €30 (always free for company accounts). Discounts apply to food only - not drinks.Sign in - Sign in to earn loyalty points and unlock discounts.Place order Secure payment via Mollie · iDEALSearch resultsNo dishes foundTry another name or clear your search.Clear search",
+      "overflow": 0,
+      "schemaMenuItemCount": 0
+    },
+    "emptyResultReplacedSsr": true,
+    "stableAfterMs": 2000,
+    "businessApiWrites": [],
+    "runtimeErrors": [],
+    "screenshot": "ssr-ready-empty-mobile.png"
+  },
+  "transportLog": [
+    {
+      "atUTC": "2026-11-11T17:25:07.415Z",
+      "pid": 27800,
+      "buildId": "NUcp9_HWho-gmCR-jRh8K",
+      "bundler": "webpack-contrast",
+      "mode": "fixture",
+      "event": "mock-select-transaction",
+      "queryCount": 2,
+      "readOnly": true,
+      "isolation": "RepeatableRead",
+      "networkForwarded": false,
+      "productRows": 224,
+      "brandRows": 2
+    },
+    {
+      "atUTC": "2026-11-11T17:25:07.476Z",
+      "pid": 27800,
+      "buildId": "NUcp9_HWho-gmCR-jRh8K",
+      "bundler": "webpack-contrast",
+      "mode": "fixture",
+      "event": "mock-select-transaction",
+      "queryCount": 2,
+      "readOnly": true,
+      "isolation": "RepeatableRead",
+      "networkForwarded": false,
+      "productRows": 224,
+      "brandRows": 2
+    },
+    {
+      "atUTC": "2026-11-11T17:25:07.533Z",
+      "pid": 27800,
+      "buildId": "NUcp9_HWho-gmCR-jRh8K",
+      "bundler": "webpack-contrast",
+      "mode": "fixture",
+      "event": "mock-select-transaction",
+      "queryCount": 2,
+      "readOnly": true,
+      "isolation": "RepeatableRead",
+      "networkForwarded": false,
+      "productRows": 224,
+      "brandRows": 2
+    },
+    {
+      "atUTC": "2026-11-11T17:25:07.575Z",
+      "pid": 27800,
+      "buildId": "NUcp9_HWho-gmCR-jRh8K",
+      "bundler": "webpack-contrast",
+      "mode": "fixture",
+      "event": "mock-select-transaction",
+      "queryCount": 2,
+      "readOnly": true,
+      "isolation": "RepeatableRead",
+      "networkForwarded": false,
+      "productRows": 224,
+      "brandRows": 2
+    },
+    {
+      "atUTC": "2026-11-11T17:25:07.683Z",
+      "pid": 27800,
+      "buildId": "NUcp9_HWho-gmCR-jRh8K",
+      "bundler": "webpack-contrast",
+      "mode": "fixture",
+      "event": "mock-select-transaction",
+      "queryCount": 2,
+      "readOnly": true,
+      "isolation": "RepeatableRead",
+      "networkForwarded": false,
+      "productRows": 224,
+      "brandRows": 2
+    }
+  ],
+  "liveDatabaseUsed": false,
+  "finishedAtUTC": "2026-11-11T17:25:10.256Z",
+  "proofDirectory": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cinematic-qa-20261111\\production\\measured-NUcp9_HWho-gmCR-jRh8K"
+}

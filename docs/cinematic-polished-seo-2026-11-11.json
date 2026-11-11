@@ -1,0 +1,2046 @@
+{
+  "generatedAt": "2026-11-11T16:59:59.921Z",
+  "capturedAt": "2026-11-11T16:59:59.371Z",
+  "trafficFinishedAt": "2026-11-11T16:59:59.860Z",
+  "origin": "http://127.0.0.1:3498",
+  "buildId": "SK_WHU6G9CzKDtJ1iVaCs",
+  "sourceFingerprint": "e83793819428be699cdb602474dba7cb0b19e4818d6cb7f66aae399b272df990",
+  "method": "Bounded 19 GET raw HTML/XML/text document requests; no browser, business API, image-body request or database query.",
+  "requests": 19,
+  "languageExtent": {
+    "localizedCoreRoutes": 10,
+    "pairedCorePages": 5,
+    "unpairedDutchEventUrls": [
+      "/events",
+      "/events/about",
+      "/events/gallery",
+      "/events/birthdays",
+      "/events/celebrations",
+      "/events/company-catering",
+      "/events/company-lunches"
+    ],
+    "englishEventCounterpartUrlsPresent": false,
+    "note": "Existing English UI strings do not establish seven new English URL pairs or17bilingualcanonicals."
+  },
+  "summary": {
+    "publicPages200": 17,
+    "expectedBuildMatches": 17,
+    "correctLanguage": 17,
+    "oneH1": 17,
+    "selfCanonicals": 17,
+    "socialMetadataPassed": 17,
+    "titleLengthRange": [
+      50,
+      56
+    ],
+    "descriptionLengthRange": [
+      144,
+      154
+    ],
+    "uniqueTitles": 17,
+    "uniqueDescriptions": 17,
+    "coreHreflangLinks": 30,
+    "eventHreflangLinks": 0,
+    "visibleBreadcrumbRoutes": 15,
+    "breadcrumbSchemaRoutes": 15,
+    "sharedBusinessGraphRoutes": 17,
+    "sitemapUrls": 17,
+    "sitemapLastmod": 17,
+    "sitemapAlternates": 30,
+    "publicInternalLinks": 451,
+    "hashLinksChecked": 27,
+    "faqRoutesWithNineEqualItems": 2,
+    "menuRoutesMatchingPinnedPrices": 2,
+    "issues": 0
+  },
+  "pages": [
+    {
+      "route": "/",
+      "httpStatus": 200,
+      "language": "nl",
+      "title": "Indiaas restaurant | Shah Restaurant | Amsterdam-Noord",
+      "titleLength": 54,
+      "description": "Ontdek Shah Restaurant aan de Klaprozenweg 36a in Amsterdam-Noord. Bekijk Indiase gerechten, openingstijden en de menukaart. Reserveer uw tafel online.",
+      "descriptionLength": 151,
+      "h1": [
+        "Indiaas restaurant in Amsterdam-Noord"
+      ],
+      "canonical": [
+        "https://shahrestaurant.nl"
+      ],
+      "hreflang": [
+        {
+          "code": "nl-NL",
+          "href": "https://shahrestaurant.nl"
+        },
+        {
+          "code": "en",
+          "href": "https://shahrestaurant.nl/en"
+        },
+        {
+          "code": "x-default",
+          "href": "https://shahrestaurant.nl"
+        }
+      ],
+      "og": {
+        "title": "Indiaas restaurant | Shah Restaurant | Amsterdam-Noord",
+        "description": "Ontdek Shah Restaurant aan de Klaprozenweg 36a in Amsterdam-Noord. Bekijk Indiase gerechten, openingstijden en de menukaart. Reserveer uw tafel online.",
+        "url": "https://shahrestaurant.nl",
+        "locale": "nl_NL",
+        "image": "https://shahrestaurant.nl/brand/shah-social-v1.png",
+        "width": "1200",
+        "height": "630"
+      },
+      "twitter": {
+        "card": "summary_large_image",
+        "title": "Indiaas restaurant | Shah Restaurant | Amsterdam-Noord",
+        "description": "Ontdek Shah Restaurant aan de Klaprozenweg 36a in Amsterdam-Noord. Bekijk Indiase gerechten, openingstijden en de menukaart. Reserveer uw tafel online.",
+        "image": "https://shahrestaurant.nl/brand/shah-social-v1.png"
+      },
+      "breadcrumbs": {
+        "visibleNavs": 0,
+        "schemaBlocks": 0,
+        "items": []
+      },
+      "schemaCounts": {
+        "Restaurant": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "ImageObject": 1,
+        "BreadcrumbList": 0,
+        "FAQPage": 1,
+        "Menu": 0,
+        "ImageGallery": 0,
+        "Service": 0,
+        "FoodEstablishment": 0,
+        "AggregateRating": 0
+      },
+      "jsonLdBlocks": 2,
+      "checks": {
+        "http200": true,
+        "expectedBuild": true,
+        "language": true,
+        "oneH1": true,
+        "oneTitle": true,
+        "titleLength": true,
+        "oneDescription": true,
+        "descriptionLength": true,
+        "selfCanonical": true,
+        "hreflang": true,
+        "ogTitle": true,
+        "ogDescription": true,
+        "ogUrl": true,
+        "ogLocale": true,
+        "ogImage": true,
+        "ogDimensions": true,
+        "twitterCard": true,
+        "twitterTitle": true,
+        "twitterDescription": true,
+        "twitterImage": true,
+        "indexable": true,
+        "validJsonLd": true,
+        "sharedBusinessGraph": true,
+        "breadcrumb": true,
+        "noAggregateRating": true
+      }
+    },
+    {
+      "route": "/en",
+      "httpStatus": 200,
+      "language": "en",
+      "title": "Indian restaurant | Shah Restaurant | Amsterdam-Noord",
+      "titleLength": 53,
+      "description": "Discover Shah Restaurant at Klaprozenweg 36a in Amsterdam-Noord. Explore Indian dishes, the menu and opening hours, then book your table online.",
+      "descriptionLength": 144,
+      "h1": [
+        "Indian restaurant in Amsterdam-Noord"
+      ],
+      "canonical": [
+        "https://shahrestaurant.nl/en"
+      ],
+      "hreflang": [
+        {
+          "code": "nl-NL",
+          "href": "https://shahrestaurant.nl"
+        },
+        {
+          "code": "en",
+          "href": "https://shahrestaurant.nl/en"
+        },
+        {
+          "code": "x-default",
+          "href": "https://shahrestaurant.nl"
+        }
+      ],
+      "og": {
+        "title": "Indian restaurant | Shah Restaurant | Amsterdam-Noord",
+        "description": "Discover Shah Restaurant at Klaprozenweg 36a in Amsterdam-Noord. Explore Indian dishes, the menu and opening hours, then book your table online.",
+        "url": "https://shahrestaurant.nl/en",
+        "locale": "en_GB",
+        "image": "https://shahrestaurant.nl/brand/shah-social-v1.png",
+        "width": "1200",
+        "height": "630"
+      },
+      "twitter": {
+        "card": "summary_large_image",
+        "title": "Indian restaurant | Shah Restaurant | Amsterdam-Noord",
+        "description": "Discover Shah Restaurant at Klaprozenweg 36a in Amsterdam-Noord. Explore Indian dishes, the menu and opening hours, then book your table online.",
+        "image": "https://shahrestaurant.nl/brand/shah-social-v1.png"
+      },
+      "breadcrumbs": {
+        "visibleNavs": 0,
+        "schemaBlocks": 0,
+        "items": []
+      },
+      "schemaCounts": {
+        "Restaurant": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "ImageObject": 1,
+        "BreadcrumbList": 0,
+        "FAQPage": 1,
+        "Menu": 0,
+        "ImageGallery": 0,
+        "Service": 0,
+        "FoodEstablishment": 0,
+        "AggregateRating": 0
+      },
+      "jsonLdBlocks": 2,
+      "checks": {
+        "http200": true,
+        "expectedBuild": true,
+        "language": true,
+        "oneH1": true,
+        "oneTitle": true,
+        "titleLength": true,
+        "oneDescription": true,
+        "descriptionLength": true,
+        "selfCanonical": true,
+        "hreflang": true,
+        "ogTitle": true,
+        "ogDescription": true,
+        "ogUrl": true,
+        "ogLocale": true,
+        "ogImage": true,
+        "ogDimensions": true,
+        "twitterCard": true,
+        "twitterTitle": true,
+        "twitterDescription": true,
+        "twitterImage": true,
+        "indexable": true,
+        "validJsonLd": true,
+        "sharedBusinessGraph": true,
+        "breadcrumb": true,
+        "noAggregateRating": true
+      }
+    },
+    {
+      "route": "/menukaart",
+      "httpStatus": 200,
+      "language": "nl",
+      "title": "Indiase menukaart | Shah Restaurant | Amsterdam-Noord",
+      "titleLength": 53,
+      "description": "Bekijk de Indiase menukaart van Shah Restaurant in Amsterdam-Noord: curry, tandoori en naan met actuele prijzen. Kies uw gerechten en bestel online.",
+      "descriptionLength": 148,
+      "h1": [
+        "Stel je bestelling samen — Indiase menukaart Amsterdam-Noord"
+      ],
+      "canonical": [
+        "https://shahrestaurant.nl/menukaart"
+      ],
+      "hreflang": [
+        {
+          "code": "nl-NL",
+          "href": "https://shahrestaurant.nl/menukaart"
+        },
+        {
+          "code": "en",
+          "href": "https://shahrestaurant.nl/en/menu"
+        },
+        {
+          "code": "x-default",
+          "href": "https://shahrestaurant.nl/menukaart"
+        }
+      ],
+      "og": {
+        "title": "Indiase menukaart | Shah Restaurant | Amsterdam-Noord",
+        "description": "Bekijk de Indiase menukaart van Shah Restaurant in Amsterdam-Noord: curry, tandoori en naan met actuele prijzen. Kies uw gerechten en bestel online.",
+        "url": "https://shahrestaurant.nl/menukaart",
+        "locale": "nl_NL",
+        "image": "https://shahrestaurant.nl/brand/shah-social-v1.png",
+        "width": "1200",
+        "height": "630"
+      },
+      "twitter": {
+        "card": "summary_large_image",
+        "title": "Indiase menukaart | Shah Restaurant | Amsterdam-Noord",
+        "description": "Bekijk de Indiase menukaart van Shah Restaurant in Amsterdam-Noord: curry, tandoori en naan met actuele prijzen. Kies uw gerechten en bestel online.",
+        "image": "https://shahrestaurant.nl/brand/shah-social-v1.png"
+      },
+      "breadcrumbs": {
+        "visibleNavs": 1,
+        "schemaBlocks": 1,
+        "items": [
+          {
+            "position": 1,
+            "name": "Shah Restaurant",
+            "item": "https://shahrestaurant.nl/"
+          },
+          {
+            "position": 2,
+            "name": "Menukaart",
+            "item": "https://shahrestaurant.nl/menukaart"
+          }
+        ]
+      },
+      "schemaCounts": {
+        "Restaurant": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "ImageObject": 1,
+        "BreadcrumbList": 1,
+        "FAQPage": 0,
+        "Menu": 1,
+        "ImageGallery": 0,
+        "Service": 0,
+        "FoodEstablishment": 0,
+        "AggregateRating": 0
+      },
+      "jsonLdBlocks": 3,
+      "checks": {
+        "http200": true,
+        "expectedBuild": true,
+        "language": true,
+        "oneH1": true,
+        "oneTitle": true,
+        "titleLength": true,
+        "oneDescription": true,
+        "descriptionLength": true,
+        "selfCanonical": true,
+        "hreflang": true,
+        "ogTitle": true,
+        "ogDescription": true,
+        "ogUrl": true,
+        "ogLocale": true,
+        "ogImage": true,
+        "ogDimensions": true,
+        "twitterCard": true,
+        "twitterTitle": true,
+        "twitterDescription": true,
+        "twitterImage": true,
+        "indexable": true,
+        "validJsonLd": true,
+        "sharedBusinessGraph": true,
+        "breadcrumb": true,
+        "noAggregateRating": true
+      }
+    },
+    {
+      "route": "/en/menu",
+      "httpStatus": 200,
+      "language": "en",
+      "title": "Indian food menu | Shah Restaurant | Amsterdam-Noord",
+      "titleLength": 52,
+      "description": "Explore the Indian menu at Shah Restaurant in Amsterdam-Noord: curry, tandoori and naan with current prices. Choose your dishes and order online.",
+      "descriptionLength": 145,
+      "h1": [
+        "Build your order — Indian menu Amsterdam-Noord"
+      ],
+      "canonical": [
+        "https://shahrestaurant.nl/en/menu"
+      ],
+      "hreflang": [
+        {
+          "code": "nl-NL",
+          "href": "https://shahrestaurant.nl/menukaart"
+        },
+        {
+          "code": "en",
+          "href": "https://shahrestaurant.nl/en/menu"
+        },
+        {
+          "code": "x-default",
+          "href": "https://shahrestaurant.nl/menukaart"
+        }
+      ],
+      "og": {
+        "title": "Indian food menu | Shah Restaurant | Amsterdam-Noord",
+        "description": "Explore the Indian menu at Shah Restaurant in Amsterdam-Noord: curry, tandoori and naan with current prices. Choose your dishes and order online.",
+        "url": "https://shahrestaurant.nl/en/menu",
+        "locale": "en_GB",
+        "image": "https://shahrestaurant.nl/brand/shah-social-v1.png",
+        "width": "1200",
+        "height": "630"
+      },
+      "twitter": {
+        "card": "summary_large_image",
+        "title": "Indian food menu | Shah Restaurant | Amsterdam-Noord",
+        "description": "Explore the Indian menu at Shah Restaurant in Amsterdam-Noord: curry, tandoori and naan with current prices. Choose your dishes and order online.",
+        "image": "https://shahrestaurant.nl/brand/shah-social-v1.png"
+      },
+      "breadcrumbs": {
+        "visibleNavs": 1,
+        "schemaBlocks": 1,
+        "items": [
+          {
+            "position": 1,
+            "name": "Shah Restaurant",
+            "item": "https://shahrestaurant.nl/en"
+          },
+          {
+            "position": 2,
+            "name": "Menu",
+            "item": "https://shahrestaurant.nl/en/menu"
+          }
+        ]
+      },
+      "schemaCounts": {
+        "Restaurant": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "ImageObject": 1,
+        "BreadcrumbList": 1,
+        "FAQPage": 0,
+        "Menu": 1,
+        "ImageGallery": 0,
+        "Service": 0,
+        "FoodEstablishment": 0,
+        "AggregateRating": 0
+      },
+      "jsonLdBlocks": 3,
+      "checks": {
+        "http200": true,
+        "expectedBuild": true,
+        "language": true,
+        "oneH1": true,
+        "oneTitle": true,
+        "titleLength": true,
+        "oneDescription": true,
+        "descriptionLength": true,
+        "selfCanonical": true,
+        "hreflang": true,
+        "ogTitle": true,
+        "ogDescription": true,
+        "ogUrl": true,
+        "ogLocale": true,
+        "ogImage": true,
+        "ogDimensions": true,
+        "twitterCard": true,
+        "twitterTitle": true,
+        "twitterDescription": true,
+        "twitterImage": true,
+        "indexable": true,
+        "validJsonLd": true,
+        "sharedBusinessGraph": true,
+        "breadcrumb": true,
+        "noAggregateRating": true
+      }
+    },
+    {
+      "route": "/reserveren",
+      "httpStatus": 200,
+      "language": "nl",
+      "title": "Tafel reserveren | Shah Restaurant | Amsterdam-Noord",
+      "titleLength": 52,
+      "description": "Reserveer uw tafel bij Shah Restaurant aan de Klaprozenweg 36a in Amsterdam-Noord. Dinsdag t/m zondag 15:00–22:00. Bekijk de tijden en boek online.",
+      "descriptionLength": 147,
+      "h1": [
+        "Reserveer uw tafel — Amsterdam-Noord"
+      ],
+      "canonical": [
+        "https://shahrestaurant.nl/reserveren"
+      ],
+      "hreflang": [
+        {
+          "code": "nl-NL",
+          "href": "https://shahrestaurant.nl/reserveren"
+        },
+        {
+          "code": "en",
+          "href": "https://shahrestaurant.nl/en/reservations"
+        },
+        {
+          "code": "x-default",
+          "href": "https://shahrestaurant.nl/reserveren"
+        }
+      ],
+      "og": {
+        "title": "Tafel reserveren | Shah Restaurant | Amsterdam-Noord",
+        "description": "Reserveer uw tafel bij Shah Restaurant aan de Klaprozenweg 36a in Amsterdam-Noord. Dinsdag t/m zondag 15:00–22:00. Bekijk de tijden en boek online.",
+        "url": "https://shahrestaurant.nl/reserveren",
+        "locale": "nl_NL",
+        "image": "https://shahrestaurant.nl/brand/shah-social-v1.png",
+        "width": "1200",
+        "height": "630"
+      },
+      "twitter": {
+        "card": "summary_large_image",
+        "title": "Tafel reserveren | Shah Restaurant | Amsterdam-Noord",
+        "description": "Reserveer uw tafel bij Shah Restaurant aan de Klaprozenweg 36a in Amsterdam-Noord. Dinsdag t/m zondag 15:00–22:00. Bekijk de tijden en boek online.",
+        "image": "https://shahrestaurant.nl/brand/shah-social-v1.png"
+      },
+      "breadcrumbs": {
+        "visibleNavs": 1,
+        "schemaBlocks": 1,
+        "items": [
+          {
+            "position": 1,
+            "name": "Shah Restaurant",
+            "item": "https://shahrestaurant.nl/"
+          },
+          {
+            "position": 2,
+            "name": "Reserveren",
+            "item": "https://shahrestaurant.nl/reserveren"
+          }
+        ]
+      },
+      "schemaCounts": {
+        "Restaurant": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "ImageObject": 1,
+        "BreadcrumbList": 1,
+        "FAQPage": 0,
+        "Menu": 0,
+        "ImageGallery": 0,
+        "Service": 0,
+        "FoodEstablishment": 0,
+        "AggregateRating": 0
+      },
+      "jsonLdBlocks": 2,
+      "checks": {
+        "http200": true,
+        "expectedBuild": true,
+        "language": true,
+        "oneH1": true,
+        "oneTitle": true,
+        "titleLength": true,
+        "oneDescription": true,
+        "descriptionLength": true,
+        "selfCanonical": true,
+        "hreflang": true,
+        "ogTitle": true,
+        "ogDescription": true,
+        "ogUrl": true,
+        "ogLocale": true,
+        "ogImage": true,
+        "ogDimensions": true,
+        "twitterCard": true,
+        "twitterTitle": true,
+        "twitterDescription": true,
+        "twitterImage": true,
+        "indexable": true,
+        "validJsonLd": true,
+        "sharedBusinessGraph": true,
+        "breadcrumb": true,
+        "noAggregateRating": true
+      }
+    },
+    {
+      "route": "/en/reservations",
+      "httpStatus": 200,
+      "language": "en",
+      "title": "Table reservations | Shah Restaurant | Amsterdam-Noord",
+      "titleLength": 54,
+      "description": "Book a table at Shah Restaurant, Klaprozenweg 36a in Amsterdam-Noord. Open Tuesday to Sunday, 15:00–22:00. View available times and reserve online.",
+      "descriptionLength": 147,
+      "h1": [
+        "Reserve your table — Amsterdam-Noord"
+      ],
+      "canonical": [
+        "https://shahrestaurant.nl/en/reservations"
+      ],
+      "hreflang": [
+        {
+          "code": "nl-NL",
+          "href": "https://shahrestaurant.nl/reserveren"
+        },
+        {
+          "code": "en",
+          "href": "https://shahrestaurant.nl/en/reservations"
+        },
+        {
+          "code": "x-default",
+          "href": "https://shahrestaurant.nl/reserveren"
+        }
+      ],
+      "og": {
+        "title": "Table reservations | Shah Restaurant | Amsterdam-Noord",
+        "description": "Book a table at Shah Restaurant, Klaprozenweg 36a in Amsterdam-Noord. Open Tuesday to Sunday, 15:00–22:00. View available times and reserve online.",
+        "url": "https://shahrestaurant.nl/en/reservations",
+        "locale": "en_GB",
+        "image": "https://shahrestaurant.nl/brand/shah-social-v1.png",
+        "width": "1200",
+        "height": "630"
+      },
+      "twitter": {
+        "card": "summary_large_image",
+        "title": "Table reservations | Shah Restaurant | Amsterdam-Noord",
+        "description": "Book a table at Shah Restaurant, Klaprozenweg 36a in Amsterdam-Noord. Open Tuesday to Sunday, 15:00–22:00. View available times and reserve online.",
+        "image": "https://shahrestaurant.nl/brand/shah-social-v1.png"
+      },
+      "breadcrumbs": {
+        "visibleNavs": 1,
+        "schemaBlocks": 1,
+        "items": [
+          {
+            "position": 1,
+            "name": "Shah Restaurant",
+            "item": "https://shahrestaurant.nl/en"
+          },
+          {
+            "position": 2,
+            "name": "Reservations",
+            "item": "https://shahrestaurant.nl/en/reservations"
+          }
+        ]
+      },
+      "schemaCounts": {
+        "Restaurant": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "ImageObject": 1,
+        "BreadcrumbList": 1,
+        "FAQPage": 0,
+        "Menu": 0,
+        "ImageGallery": 0,
+        "Service": 0,
+        "FoodEstablishment": 0,
+        "AggregateRating": 0
+      },
+      "jsonLdBlocks": 2,
+      "checks": {
+        "http200": true,
+        "expectedBuild": true,
+        "language": true,
+        "oneH1": true,
+        "oneTitle": true,
+        "titleLength": true,
+        "oneDescription": true,
+        "descriptionLength": true,
+        "selfCanonical": true,
+        "hreflang": true,
+        "ogTitle": true,
+        "ogDescription": true,
+        "ogUrl": true,
+        "ogLocale": true,
+        "ogImage": true,
+        "ogDimensions": true,
+        "twitterCard": true,
+        "twitterTitle": true,
+        "twitterDescription": true,
+        "twitterImage": true,
+        "indexable": true,
+        "validJsonLd": true,
+        "sharedBusinessGraph": true,
+        "breadcrumb": true,
+        "noAggregateRating": true
+      }
+    },
+    {
+      "route": "/privacy",
+      "httpStatus": 200,
+      "language": "nl",
+      "title": "Ons privacybeleid | Shah Restaurant | Amsterdam-Noord",
+      "titleLength": 53,
+      "description": "Lees het privacybeleid van Shah Restaurant in Amsterdam-Noord: hoe wij persoonsgegevens bij bestellingen en reserveringen verwerken en beschermen.",
+      "descriptionLength": 146,
+      "h1": [
+        "Privacybeleid"
+      ],
+      "canonical": [
+        "https://shahrestaurant.nl/privacy"
+      ],
+      "hreflang": [
+        {
+          "code": "nl-NL",
+          "href": "https://shahrestaurant.nl/privacy"
+        },
+        {
+          "code": "en",
+          "href": "https://shahrestaurant.nl/en/privacy"
+        },
+        {
+          "code": "x-default",
+          "href": "https://shahrestaurant.nl/privacy"
+        }
+      ],
+      "og": {
+        "title": "Ons privacybeleid | Shah Restaurant | Amsterdam-Noord",
+        "description": "Lees het privacybeleid van Shah Restaurant in Amsterdam-Noord: hoe wij persoonsgegevens bij bestellingen en reserveringen verwerken en beschermen.",
+        "url": "https://shahrestaurant.nl/privacy",
+        "locale": "nl_NL",
+        "image": "https://shahrestaurant.nl/brand/shah-social-v1.png",
+        "width": "1200",
+        "height": "630"
+      },
+      "twitter": {
+        "card": "summary_large_image",
+        "title": "Ons privacybeleid | Shah Restaurant | Amsterdam-Noord",
+        "description": "Lees het privacybeleid van Shah Restaurant in Amsterdam-Noord: hoe wij persoonsgegevens bij bestellingen en reserveringen verwerken en beschermen.",
+        "image": "https://shahrestaurant.nl/brand/shah-social-v1.png"
+      },
+      "breadcrumbs": {
+        "visibleNavs": 1,
+        "schemaBlocks": 1,
+        "items": [
+          {
+            "position": 1,
+            "name": "Shah Restaurant",
+            "item": "https://shahrestaurant.nl/"
+          },
+          {
+            "position": 2,
+            "name": "Privacybeleid",
+            "item": "https://shahrestaurant.nl/privacy"
+          }
+        ]
+      },
+      "schemaCounts": {
+        "Restaurant": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "ImageObject": 1,
+        "BreadcrumbList": 1,
+        "FAQPage": 0,
+        "Menu": 0,
+        "ImageGallery": 0,
+        "Service": 0,
+        "FoodEstablishment": 0,
+        "AggregateRating": 0
+      },
+      "jsonLdBlocks": 2,
+      "checks": {
+        "http200": true,
+        "expectedBuild": true,
+        "language": true,
+        "oneH1": true,
+        "oneTitle": true,
+        "titleLength": true,
+        "oneDescription": true,
+        "descriptionLength": true,
+        "selfCanonical": true,
+        "hreflang": true,
+        "ogTitle": true,
+        "ogDescription": true,
+        "ogUrl": true,
+        "ogLocale": true,
+        "ogImage": true,
+        "ogDimensions": true,
+        "twitterCard": true,
+        "twitterTitle": true,
+        "twitterDescription": true,
+        "twitterImage": true,
+        "indexable": true,
+        "validJsonLd": true,
+        "sharedBusinessGraph": true,
+        "breadcrumb": true,
+        "noAggregateRating": true
+      }
+    },
+    {
+      "route": "/en/privacy",
+      "httpStatus": 200,
+      "language": "en",
+      "title": "Privacy policy | Shah Restaurant | Amsterdam-Noord",
+      "titleLength": 50,
+      "description": "Read the privacy policy of Shah Restaurant in Amsterdam-Noord and learn how personal data for orders and table reservations is handled and protected.",
+      "descriptionLength": 149,
+      "h1": [
+        "Privacy Policy"
+      ],
+      "canonical": [
+        "https://shahrestaurant.nl/en/privacy"
+      ],
+      "hreflang": [
+        {
+          "code": "nl-NL",
+          "href": "https://shahrestaurant.nl/privacy"
+        },
+        {
+          "code": "en",
+          "href": "https://shahrestaurant.nl/en/privacy"
+        },
+        {
+          "code": "x-default",
+          "href": "https://shahrestaurant.nl/privacy"
+        }
+      ],
+      "og": {
+        "title": "Privacy policy | Shah Restaurant | Amsterdam-Noord",
+        "description": "Read the privacy policy of Shah Restaurant in Amsterdam-Noord and learn how personal data for orders and table reservations is handled and protected.",
+        "url": "https://shahrestaurant.nl/en/privacy",
+        "locale": "en_GB",
+        "image": "https://shahrestaurant.nl/brand/shah-social-v1.png",
+        "width": "1200",
+        "height": "630"
+      },
+      "twitter": {
+        "card": "summary_large_image",
+        "title": "Privacy policy | Shah Restaurant | Amsterdam-Noord",
+        "description": "Read the privacy policy of Shah Restaurant in Amsterdam-Noord and learn how personal data for orders and table reservations is handled and protected.",
+        "image": "https://shahrestaurant.nl/brand/shah-social-v1.png"
+      },
+      "breadcrumbs": {
+        "visibleNavs": 1,
+        "schemaBlocks": 1,
+        "items": [
+          {
+            "position": 1,
+            "name": "Shah Restaurant",
+            "item": "https://shahrestaurant.nl/en"
+          },
+          {
+            "position": 2,
+            "name": "Privacy policy",
+            "item": "https://shahrestaurant.nl/en/privacy"
+          }
+        ]
+      },
+      "schemaCounts": {
+        "Restaurant": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "ImageObject": 1,
+        "BreadcrumbList": 1,
+        "FAQPage": 0,
+        "Menu": 0,
+        "ImageGallery": 0,
+        "Service": 0,
+        "FoodEstablishment": 0,
+        "AggregateRating": 0
+      },
+      "jsonLdBlocks": 2,
+      "checks": {
+        "http200": true,
+        "expectedBuild": true,
+        "language": true,
+        "oneH1": true,
+        "oneTitle": true,
+        "titleLength": true,
+        "oneDescription": true,
+        "descriptionLength": true,
+        "selfCanonical": true,
+        "hreflang": true,
+        "ogTitle": true,
+        "ogDescription": true,
+        "ogUrl": true,
+        "ogLocale": true,
+        "ogImage": true,
+        "ogDimensions": true,
+        "twitterCard": true,
+        "twitterTitle": true,
+        "twitterDescription": true,
+        "twitterImage": true,
+        "indexable": true,
+        "validJsonLd": true,
+        "sharedBusinessGraph": true,
+        "breadcrumb": true,
+        "noAggregateRating": true
+      }
+    },
+    {
+      "route": "/voorwaarden",
+      "httpStatus": 200,
+      "language": "nl",
+      "title": "Algemene voorwaarden | Shah Restaurant | Amsterdam-Noord",
+      "titleLength": 56,
+      "description": "Lees de algemene voorwaarden van Shah Restaurant in Amsterdam-Noord voor bestellingen en tafelreserveringen. Bekijk de informatie voor uw bezoek.",
+      "descriptionLength": 145,
+      "h1": [
+        "Algemene Voorwaarden"
+      ],
+      "canonical": [
+        "https://shahrestaurant.nl/voorwaarden"
+      ],
+      "hreflang": [
+        {
+          "code": "nl-NL",
+          "href": "https://shahrestaurant.nl/voorwaarden"
+        },
+        {
+          "code": "en",
+          "href": "https://shahrestaurant.nl/en/terms"
+        },
+        {
+          "code": "x-default",
+          "href": "https://shahrestaurant.nl/voorwaarden"
+        }
+      ],
+      "og": {
+        "title": "Algemene voorwaarden | Shah Restaurant | Amsterdam-Noord",
+        "description": "Lees de algemene voorwaarden van Shah Restaurant in Amsterdam-Noord voor bestellingen en tafelreserveringen. Bekijk de informatie voor uw bezoek.",
+        "url": "https://shahrestaurant.nl/voorwaarden",
+        "locale": "nl_NL",
+        "image": "https://shahrestaurant.nl/brand/shah-social-v1.png",
+        "width": "1200",
+        "height": "630"
+      },
+      "twitter": {
+        "card": "summary_large_image",
+        "title": "Algemene voorwaarden | Shah Restaurant | Amsterdam-Noord",
+        "description": "Lees de algemene voorwaarden van Shah Restaurant in Amsterdam-Noord voor bestellingen en tafelreserveringen. Bekijk de informatie voor uw bezoek.",
+        "image": "https://shahrestaurant.nl/brand/shah-social-v1.png"
+      },
+      "breadcrumbs": {
+        "visibleNavs": 1,
+        "schemaBlocks": 1,
+        "items": [
+          {
+            "position": 1,
+            "name": "Shah Restaurant",
+            "item": "https://shahrestaurant.nl/"
+          },
+          {
+            "position": 2,
+            "name": "Voorwaarden",
+            "item": "https://shahrestaurant.nl/voorwaarden"
+          }
+        ]
+      },
+      "schemaCounts": {
+        "Restaurant": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "ImageObject": 1,
+        "BreadcrumbList": 1,
+        "FAQPage": 0,
+        "Menu": 0,
+        "ImageGallery": 0,
+        "Service": 0,
+        "FoodEstablishment": 0,
+        "AggregateRating": 0
+      },
+      "jsonLdBlocks": 2,
+      "checks": {
+        "http200": true,
+        "expectedBuild": true,
+        "language": true,
+        "oneH1": true,
+        "oneTitle": true,
+        "titleLength": true,
+        "oneDescription": true,
+        "descriptionLength": true,
+        "selfCanonical": true,
+        "hreflang": true,
+        "ogTitle": true,
+        "ogDescription": true,
+        "ogUrl": true,
+        "ogLocale": true,
+        "ogImage": true,
+        "ogDimensions": true,
+        "twitterCard": true,
+        "twitterTitle": true,
+        "twitterDescription": true,
+        "twitterImage": true,
+        "indexable": true,
+        "validJsonLd": true,
+        "sharedBusinessGraph": true,
+        "breadcrumb": true,
+        "noAggregateRating": true
+      }
+    },
+    {
+      "route": "/en/terms",
+      "httpStatus": 200,
+      "language": "en",
+      "title": "Terms and conditions | Shah Restaurant | Amsterdam",
+      "titleLength": 50,
+      "description": "Read Shah Restaurant's terms and conditions for orders and table reservations in Amsterdam-Noord. Review the practical information before your visit.",
+      "descriptionLength": 149,
+      "h1": [
+        "Terms & Conditions"
+      ],
+      "canonical": [
+        "https://shahrestaurant.nl/en/terms"
+      ],
+      "hreflang": [
+        {
+          "code": "nl-NL",
+          "href": "https://shahrestaurant.nl/voorwaarden"
+        },
+        {
+          "code": "en",
+          "href": "https://shahrestaurant.nl/en/terms"
+        },
+        {
+          "code": "x-default",
+          "href": "https://shahrestaurant.nl/voorwaarden"
+        }
+      ],
+      "og": {
+        "title": "Terms and conditions | Shah Restaurant | Amsterdam",
+        "description": "Read Shah Restaurant's terms and conditions for orders and table reservations in Amsterdam-Noord. Review the practical information before your visit.",
+        "url": "https://shahrestaurant.nl/en/terms",
+        "locale": "en_GB",
+        "image": "https://shahrestaurant.nl/brand/shah-social-v1.png",
+        "width": "1200",
+        "height": "630"
+      },
+      "twitter": {
+        "card": "summary_large_image",
+        "title": "Terms and conditions | Shah Restaurant | Amsterdam",
+        "description": "Read Shah Restaurant's terms and conditions for orders and table reservations in Amsterdam-Noord. Review the practical information before your visit.",
+        "image": "https://shahrestaurant.nl/brand/shah-social-v1.png"
+      },
+      "breadcrumbs": {
+        "visibleNavs": 1,
+        "schemaBlocks": 1,
+        "items": [
+          {
+            "position": 1,
+            "name": "Shah Restaurant",
+            "item": "https://shahrestaurant.nl/en"
+          },
+          {
+            "position": 2,
+            "name": "Terms and conditions",
+            "item": "https://shahrestaurant.nl/en/terms"
+          }
+        ]
+      },
+      "schemaCounts": {
+        "Restaurant": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "ImageObject": 1,
+        "BreadcrumbList": 1,
+        "FAQPage": 0,
+        "Menu": 0,
+        "ImageGallery": 0,
+        "Service": 0,
+        "FoodEstablishment": 0,
+        "AggregateRating": 0
+      },
+      "jsonLdBlocks": 2,
+      "checks": {
+        "http200": true,
+        "expectedBuild": true,
+        "language": true,
+        "oneH1": true,
+        "oneTitle": true,
+        "titleLength": true,
+        "oneDescription": true,
+        "descriptionLength": true,
+        "selfCanonical": true,
+        "hreflang": true,
+        "ogTitle": true,
+        "ogDescription": true,
+        "ogUrl": true,
+        "ogLocale": true,
+        "ogImage": true,
+        "ogDimensions": true,
+        "twitterCard": true,
+        "twitterTitle": true,
+        "twitterDescription": true,
+        "twitterImage": true,
+        "indexable": true,
+        "validJsonLd": true,
+        "sharedBusinessGraph": true,
+        "breadcrumb": true,
+        "noAggregateRating": true
+      }
+    },
+    {
+      "route": "/events",
+      "httpStatus": 200,
+      "language": "nl",
+      "title": "Evenementen en catering | Shah Restaurant Amsterdam",
+      "titleLength": 51,
+      "description": "Ontdek de evenementen en catering van Shah Restaurant in Amsterdam-Noord. Bekijk verjaardagen, bruiloften, bedrijfscatering en lunches en neem contact op.",
+      "descriptionLength": 154,
+      "h1": [
+        "Momenten die het vieren waard zijn"
+      ],
+      "canonical": [
+        "https://shahrestaurant.nl/events"
+      ],
+      "hreflang": [],
+      "og": {
+        "title": "Evenementen en catering | Shah Restaurant Amsterdam",
+        "description": "Ontdek de evenementen en catering van Shah Restaurant in Amsterdam-Noord. Bekijk verjaardagen, bruiloften, bedrijfscatering en lunches en neem contact op.",
+        "url": "https://shahrestaurant.nl/events",
+        "locale": "nl_NL",
+        "image": "https://shahrestaurant.nl/brand/shah-social-v1.png",
+        "width": "1200",
+        "height": "630"
+      },
+      "twitter": {
+        "card": "summary_large_image",
+        "title": "Evenementen en catering | Shah Restaurant Amsterdam",
+        "description": "Ontdek de evenementen en catering van Shah Restaurant in Amsterdam-Noord. Bekijk verjaardagen, bruiloften, bedrijfscatering en lunches en neem contact op.",
+        "image": "https://shahrestaurant.nl/brand/shah-social-v1.png"
+      },
+      "breadcrumbs": {
+        "visibleNavs": 1,
+        "schemaBlocks": 1,
+        "items": [
+          {
+            "position": 1,
+            "name": "Shah Restaurant",
+            "item": "https://shahrestaurant.nl/"
+          },
+          {
+            "position": 2,
+            "name": "Evenementen en catering",
+            "item": "https://shahrestaurant.nl/events"
+          }
+        ]
+      },
+      "schemaCounts": {
+        "Restaurant": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "ImageObject": 1,
+        "BreadcrumbList": 1,
+        "FAQPage": 0,
+        "Menu": 0,
+        "ImageGallery": 0,
+        "Service": 0,
+        "FoodEstablishment": 0,
+        "AggregateRating": 0
+      },
+      "jsonLdBlocks": 2,
+      "checks": {
+        "http200": true,
+        "expectedBuild": true,
+        "language": true,
+        "oneH1": true,
+        "oneTitle": true,
+        "titleLength": true,
+        "oneDescription": true,
+        "descriptionLength": true,
+        "selfCanonical": true,
+        "hreflang": true,
+        "ogTitle": true,
+        "ogDescription": true,
+        "ogUrl": true,
+        "ogLocale": true,
+        "ogImage": true,
+        "ogDimensions": true,
+        "twitterCard": true,
+        "twitterTitle": true,
+        "twitterDescription": true,
+        "twitterImage": true,
+        "indexable": true,
+        "validJsonLd": true,
+        "sharedBusinessGraph": true,
+        "breadcrumb": true,
+        "noAggregateRating": true
+      }
+    },
+    {
+      "route": "/events/about",
+      "httpStatus": 200,
+      "language": "nl",
+      "title": "Over Shah Restaurant | Indiaas eten in Amsterdam-Noord",
+      "titleLength": 54,
+      "description": "Lees het verhaal van Shah Restaurant in Amsterdam-Noord. Ontdek de Indiase keuken, tandoori gerechten en gastvrijheid en bekijk de sfeer in onze galerij.",
+      "descriptionLength": 153,
+      "h1": [
+        "Over Shah Restaurant Amsterdam"
+      ],
+      "canonical": [
+        "https://shahrestaurant.nl/events/about"
+      ],
+      "hreflang": [],
+      "og": {
+        "title": "Over Shah Restaurant | Indiaas eten in Amsterdam-Noord",
+        "description": "Lees het verhaal van Shah Restaurant in Amsterdam-Noord. Ontdek de Indiase keuken, tandoori gerechten en gastvrijheid en bekijk de sfeer in onze galerij.",
+        "url": "https://shahrestaurant.nl/events/about",
+        "locale": "nl_NL",
+        "image": "https://shahrestaurant.nl/brand/shah-social-v1.png",
+        "width": "1200",
+        "height": "630"
+      },
+      "twitter": {
+        "card": "summary_large_image",
+        "title": "Over Shah Restaurant | Indiaas eten in Amsterdam-Noord",
+        "description": "Lees het verhaal van Shah Restaurant in Amsterdam-Noord. Ontdek de Indiase keuken, tandoori gerechten en gastvrijheid en bekijk de sfeer in onze galerij.",
+        "image": "https://shahrestaurant.nl/brand/shah-social-v1.png"
+      },
+      "breadcrumbs": {
+        "visibleNavs": 1,
+        "schemaBlocks": 1,
+        "items": [
+          {
+            "position": 1,
+            "name": "Shah Restaurant",
+            "item": "https://shahrestaurant.nl/"
+          },
+          {
+            "position": 2,
+            "name": "Evenementen en catering",
+            "item": "https://shahrestaurant.nl/events"
+          },
+          {
+            "position": 3,
+            "name": "Over Shah Restaurant",
+            "item": "https://shahrestaurant.nl/events/about"
+          }
+        ]
+      },
+      "schemaCounts": {
+        "Restaurant": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "ImageObject": 1,
+        "BreadcrumbList": 1,
+        "FAQPage": 0,
+        "Menu": 0,
+        "ImageGallery": 0,
+        "Service": 0,
+        "FoodEstablishment": 0,
+        "AggregateRating": 0
+      },
+      "jsonLdBlocks": 2,
+      "checks": {
+        "http200": true,
+        "expectedBuild": true,
+        "language": true,
+        "oneH1": true,
+        "oneTitle": true,
+        "titleLength": true,
+        "oneDescription": true,
+        "descriptionLength": true,
+        "selfCanonical": true,
+        "hreflang": true,
+        "ogTitle": true,
+        "ogDescription": true,
+        "ogUrl": true,
+        "ogLocale": true,
+        "ogImage": true,
+        "ogDimensions": true,
+        "twitterCard": true,
+        "twitterTitle": true,
+        "twitterDescription": true,
+        "twitterImage": true,
+        "indexable": true,
+        "validJsonLd": true,
+        "sharedBusinessGraph": true,
+        "breadcrumb": true,
+        "noAggregateRating": true
+      }
+    },
+    {
+      "route": "/events/gallery",
+      "httpStatus": 200,
+      "language": "nl",
+      "title": "Galerij Shah Restaurant | Sfeer en gerechten Amsterdam",
+      "titleLength": 54,
+      "description": "Bekijk de galerij van Shah Restaurant in Amsterdam-Noord: het interieur, gedekte tafels en Indiase gerechten. Ontdek de sfeer en plan uw bezoek.",
+      "descriptionLength": 144,
+      "h1": [
+        "Sfeer, gerechten en momenten"
+      ],
+      "canonical": [
+        "https://shahrestaurant.nl/events/gallery"
+      ],
+      "hreflang": [],
+      "og": {
+        "title": "Galerij Shah Restaurant | Sfeer en gerechten Amsterdam",
+        "description": "Bekijk de galerij van Shah Restaurant in Amsterdam-Noord: het interieur, gedekte tafels en Indiase gerechten. Ontdek de sfeer en plan uw bezoek.",
+        "url": "https://shahrestaurant.nl/events/gallery",
+        "locale": "nl_NL",
+        "image": "https://shahrestaurant.nl/brand/shah-social-v1.png",
+        "width": "1200",
+        "height": "630"
+      },
+      "twitter": {
+        "card": "summary_large_image",
+        "title": "Galerij Shah Restaurant | Sfeer en gerechten Amsterdam",
+        "description": "Bekijk de galerij van Shah Restaurant in Amsterdam-Noord: het interieur, gedekte tafels en Indiase gerechten. Ontdek de sfeer en plan uw bezoek.",
+        "image": "https://shahrestaurant.nl/brand/shah-social-v1.png"
+      },
+      "breadcrumbs": {
+        "visibleNavs": 1,
+        "schemaBlocks": 1,
+        "items": [
+          {
+            "position": 1,
+            "name": "Shah Restaurant",
+            "item": "https://shahrestaurant.nl/"
+          },
+          {
+            "position": 2,
+            "name": "Evenementen en catering",
+            "item": "https://shahrestaurant.nl/events"
+          },
+          {
+            "position": 3,
+            "name": "Galerij",
+            "item": "https://shahrestaurant.nl/events/gallery"
+          }
+        ]
+      },
+      "schemaCounts": {
+        "Restaurant": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "ImageObject": 1,
+        "BreadcrumbList": 1,
+        "FAQPage": 0,
+        "Menu": 0,
+        "ImageGallery": 1,
+        "Service": 0,
+        "FoodEstablishment": 0,
+        "AggregateRating": 0
+      },
+      "jsonLdBlocks": 3,
+      "checks": {
+        "http200": true,
+        "expectedBuild": true,
+        "language": true,
+        "oneH1": true,
+        "oneTitle": true,
+        "titleLength": true,
+        "oneDescription": true,
+        "descriptionLength": true,
+        "selfCanonical": true,
+        "hreflang": true,
+        "ogTitle": true,
+        "ogDescription": true,
+        "ogUrl": true,
+        "ogLocale": true,
+        "ogImage": true,
+        "ogDimensions": true,
+        "twitterCard": true,
+        "twitterTitle": true,
+        "twitterDescription": true,
+        "twitterImage": true,
+        "indexable": true,
+        "validJsonLd": true,
+        "sharedBusinessGraph": true,
+        "breadcrumb": true,
+        "noAggregateRating": true
+      }
+    },
+    {
+      "route": "/events/birthdays",
+      "httpStatus": 200,
+      "language": "nl",
+      "title": "Verjaardag vieren | Shah Restaurant Amsterdam-Noord",
+      "titleLength": 51,
+      "description": "Vier uw verjaardag of jubileum bij Shah Restaurant in Amsterdam-Noord. Bekijk de mogelijkheden voor een Indiaas menu en neem contact op over uw wensen.",
+      "descriptionLength": 151,
+      "h1": [
+        "Vier uw verjaardag bij Shah Restaurant"
+      ],
+      "canonical": [
+        "https://shahrestaurant.nl/events/birthdays"
+      ],
+      "hreflang": [],
+      "og": {
+        "title": "Verjaardag vieren | Shah Restaurant Amsterdam-Noord",
+        "description": "Vier uw verjaardag of jubileum bij Shah Restaurant in Amsterdam-Noord. Bekijk de mogelijkheden voor een Indiaas menu en neem contact op over uw wensen.",
+        "url": "https://shahrestaurant.nl/events/birthdays",
+        "locale": "nl_NL",
+        "image": "https://shahrestaurant.nl/brand/shah-social-v1.png",
+        "width": "1200",
+        "height": "630"
+      },
+      "twitter": {
+        "card": "summary_large_image",
+        "title": "Verjaardag vieren | Shah Restaurant Amsterdam-Noord",
+        "description": "Vier uw verjaardag of jubileum bij Shah Restaurant in Amsterdam-Noord. Bekijk de mogelijkheden voor een Indiaas menu en neem contact op over uw wensen.",
+        "image": "https://shahrestaurant.nl/brand/shah-social-v1.png"
+      },
+      "breadcrumbs": {
+        "visibleNavs": 1,
+        "schemaBlocks": 1,
+        "items": [
+          {
+            "position": 1,
+            "name": "Shah Restaurant",
+            "item": "https://shahrestaurant.nl/"
+          },
+          {
+            "position": 2,
+            "name": "Evenementen en catering",
+            "item": "https://shahrestaurant.nl/events"
+          },
+          {
+            "position": 3,
+            "name": "Verjaardagen en feesten",
+            "item": "https://shahrestaurant.nl/events/birthdays"
+          }
+        ]
+      },
+      "schemaCounts": {
+        "Restaurant": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "ImageObject": 1,
+        "BreadcrumbList": 1,
+        "FAQPage": 0,
+        "Menu": 0,
+        "ImageGallery": 0,
+        "Service": 1,
+        "FoodEstablishment": 0,
+        "AggregateRating": 0
+      },
+      "jsonLdBlocks": 3,
+      "checks": {
+        "http200": true,
+        "expectedBuild": true,
+        "language": true,
+        "oneH1": true,
+        "oneTitle": true,
+        "titleLength": true,
+        "oneDescription": true,
+        "descriptionLength": true,
+        "selfCanonical": true,
+        "hreflang": true,
+        "ogTitle": true,
+        "ogDescription": true,
+        "ogUrl": true,
+        "ogLocale": true,
+        "ogImage": true,
+        "ogDimensions": true,
+        "twitterCard": true,
+        "twitterTitle": true,
+        "twitterDescription": true,
+        "twitterImage": true,
+        "indexable": true,
+        "validJsonLd": true,
+        "sharedBusinessGraph": true,
+        "breadcrumb": true,
+        "noAggregateRating": true
+      }
+    },
+    {
+      "route": "/events/celebrations",
+      "httpStatus": 200,
+      "language": "nl",
+      "title": "Bruiloften en vieringen | Shah Restaurant Amsterdam",
+      "titleLength": 51,
+      "description": "Ontdek bruiloften en vieringen bij Shah Restaurant in Amsterdam-Noord. Bekijk de mogelijkheden voor een Indiaas diner en bespreek uw wensen met ons.",
+      "descriptionLength": 148,
+      "h1": [
+        "Bruiloften & vieringen bij Shah Restaurant"
+      ],
+      "canonical": [
+        "https://shahrestaurant.nl/events/celebrations"
+      ],
+      "hreflang": [],
+      "og": {
+        "title": "Bruiloften en vieringen | Shah Restaurant Amsterdam",
+        "description": "Ontdek bruiloften en vieringen bij Shah Restaurant in Amsterdam-Noord. Bekijk de mogelijkheden voor een Indiaas diner en bespreek uw wensen met ons.",
+        "url": "https://shahrestaurant.nl/events/celebrations",
+        "locale": "nl_NL",
+        "image": "https://shahrestaurant.nl/brand/shah-social-v1.png",
+        "width": "1200",
+        "height": "630"
+      },
+      "twitter": {
+        "card": "summary_large_image",
+        "title": "Bruiloften en vieringen | Shah Restaurant Amsterdam",
+        "description": "Ontdek bruiloften en vieringen bij Shah Restaurant in Amsterdam-Noord. Bekijk de mogelijkheden voor een Indiaas diner en bespreek uw wensen met ons.",
+        "image": "https://shahrestaurant.nl/brand/shah-social-v1.png"
+      },
+      "breadcrumbs": {
+        "visibleNavs": 1,
+        "schemaBlocks": 1,
+        "items": [
+          {
+            "position": 1,
+            "name": "Shah Restaurant",
+            "item": "https://shahrestaurant.nl/"
+          },
+          {
+            "position": 2,
+            "name": "Evenementen en catering",
+            "item": "https://shahrestaurant.nl/events"
+          },
+          {
+            "position": 3,
+            "name": "Bruiloften en vieringen",
+            "item": "https://shahrestaurant.nl/events/celebrations"
+          }
+        ]
+      },
+      "schemaCounts": {
+        "Restaurant": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "ImageObject": 1,
+        "BreadcrumbList": 1,
+        "FAQPage": 0,
+        "Menu": 0,
+        "ImageGallery": 0,
+        "Service": 1,
+        "FoodEstablishment": 0,
+        "AggregateRating": 0
+      },
+      "jsonLdBlocks": 3,
+      "checks": {
+        "http200": true,
+        "expectedBuild": true,
+        "language": true,
+        "oneH1": true,
+        "oneTitle": true,
+        "titleLength": true,
+        "oneDescription": true,
+        "descriptionLength": true,
+        "selfCanonical": true,
+        "hreflang": true,
+        "ogTitle": true,
+        "ogDescription": true,
+        "ogUrl": true,
+        "ogLocale": true,
+        "ogImage": true,
+        "ogDimensions": true,
+        "twitterCard": true,
+        "twitterTitle": true,
+        "twitterDescription": true,
+        "twitterImage": true,
+        "indexable": true,
+        "validJsonLd": true,
+        "sharedBusinessGraph": true,
+        "breadcrumb": true,
+        "noAggregateRating": true
+      }
+    },
+    {
+      "route": "/events/company-catering",
+      "httpStatus": 200,
+      "language": "nl",
+      "title": "Bedrijfscatering | Shah Restaurant in Amsterdam-Noord",
+      "titleLength": 53,
+      "description": "Bekijk bedrijfscatering van Shah Restaurant in Amsterdam-Noord. Ontdek de mogelijkheden voor zakelijke diners en ontvangsten en bespreek uw wensen.",
+      "descriptionLength": 147,
+      "h1": [
+        "Bedrijfscatering"
+      ],
+      "canonical": [
+        "https://shahrestaurant.nl/events/company-catering"
+      ],
+      "hreflang": [],
+      "og": {
+        "title": "Bedrijfscatering | Shah Restaurant in Amsterdam-Noord",
+        "description": "Bekijk bedrijfscatering van Shah Restaurant in Amsterdam-Noord. Ontdek de mogelijkheden voor zakelijke diners en ontvangsten en bespreek uw wensen.",
+        "url": "https://shahrestaurant.nl/events/company-catering",
+        "locale": "nl_NL",
+        "image": "https://shahrestaurant.nl/brand/shah-social-v1.png",
+        "width": "1200",
+        "height": "630"
+      },
+      "twitter": {
+        "card": "summary_large_image",
+        "title": "Bedrijfscatering | Shah Restaurant in Amsterdam-Noord",
+        "description": "Bekijk bedrijfscatering van Shah Restaurant in Amsterdam-Noord. Ontdek de mogelijkheden voor zakelijke diners en ontvangsten en bespreek uw wensen.",
+        "image": "https://shahrestaurant.nl/brand/shah-social-v1.png"
+      },
+      "breadcrumbs": {
+        "visibleNavs": 1,
+        "schemaBlocks": 1,
+        "items": [
+          {
+            "position": 1,
+            "name": "Shah Restaurant",
+            "item": "https://shahrestaurant.nl/"
+          },
+          {
+            "position": 2,
+            "name": "Evenementen en catering",
+            "item": "https://shahrestaurant.nl/events"
+          },
+          {
+            "position": 3,
+            "name": "Bedrijfscatering",
+            "item": "https://shahrestaurant.nl/events/company-catering"
+          }
+        ]
+      },
+      "schemaCounts": {
+        "Restaurant": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "ImageObject": 1,
+        "BreadcrumbList": 1,
+        "FAQPage": 0,
+        "Menu": 0,
+        "ImageGallery": 0,
+        "Service": 1,
+        "FoodEstablishment": 0,
+        "AggregateRating": 0
+      },
+      "jsonLdBlocks": 3,
+      "checks": {
+        "http200": true,
+        "expectedBuild": true,
+        "language": true,
+        "oneH1": true,
+        "oneTitle": true,
+        "titleLength": true,
+        "oneDescription": true,
+        "descriptionLength": true,
+        "selfCanonical": true,
+        "hreflang": true,
+        "ogTitle": true,
+        "ogDescription": true,
+        "ogUrl": true,
+        "ogLocale": true,
+        "ogImage": true,
+        "ogDimensions": true,
+        "twitterCard": true,
+        "twitterTitle": true,
+        "twitterDescription": true,
+        "twitterImage": true,
+        "indexable": true,
+        "validJsonLd": true,
+        "sharedBusinessGraph": true,
+        "breadcrumb": true,
+        "noAggregateRating": true
+      }
+    },
+    {
+      "route": "/events/company-lunches",
+      "httpStatus": 200,
+      "language": "nl",
+      "title": "Bedrijfslunches | Shah Restaurant in Amsterdam-Noord",
+      "titleLength": 52,
+      "description": "Ontdek de bedrijfslunches van Shah Restaurant in Amsterdam-Noord. Bekijk de lunchvormen en menuopties voor uw team en neem contact op over uw wensen.",
+      "descriptionLength": 149,
+      "h1": [
+        "Bedrijfslunches & kantoor-catering in Amsterdam"
+      ],
+      "canonical": [
+        "https://shahrestaurant.nl/events/company-lunches"
+      ],
+      "hreflang": [],
+      "og": {
+        "title": "Bedrijfslunches | Shah Restaurant in Amsterdam-Noord",
+        "description": "Ontdek de bedrijfslunches van Shah Restaurant in Amsterdam-Noord. Bekijk de lunchvormen en menuopties voor uw team en neem contact op over uw wensen.",
+        "url": "https://shahrestaurant.nl/events/company-lunches",
+        "locale": "nl_NL",
+        "image": "https://shahrestaurant.nl/brand/shah-social-v1.png",
+        "width": "1200",
+        "height": "630"
+      },
+      "twitter": {
+        "card": "summary_large_image",
+        "title": "Bedrijfslunches | Shah Restaurant in Amsterdam-Noord",
+        "description": "Ontdek de bedrijfslunches van Shah Restaurant in Amsterdam-Noord. Bekijk de lunchvormen en menuopties voor uw team en neem contact op over uw wensen.",
+        "image": "https://shahrestaurant.nl/brand/shah-social-v1.png"
+      },
+      "breadcrumbs": {
+        "visibleNavs": 1,
+        "schemaBlocks": 1,
+        "items": [
+          {
+            "position": 1,
+            "name": "Shah Restaurant",
+            "item": "https://shahrestaurant.nl/"
+          },
+          {
+            "position": 2,
+            "name": "Evenementen en catering",
+            "item": "https://shahrestaurant.nl/events"
+          },
+          {
+            "position": 3,
+            "name": "Bedrijfslunches",
+            "item": "https://shahrestaurant.nl/events/company-lunches"
+          }
+        ]
+      },
+      "schemaCounts": {
+        "Restaurant": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "ImageObject": 1,
+        "BreadcrumbList": 1,
+        "FAQPage": 0,
+        "Menu": 0,
+        "ImageGallery": 0,
+        "Service": 1,
+        "FoodEstablishment": 0,
+        "AggregateRating": 0
+      },
+      "jsonLdBlocks": 3,
+      "checks": {
+        "http200": true,
+        "expectedBuild": true,
+        "language": true,
+        "oneH1": true,
+        "oneTitle": true,
+        "titleLength": true,
+        "oneDescription": true,
+        "descriptionLength": true,
+        "selfCanonical": true,
+        "hreflang": true,
+        "ogTitle": true,
+        "ogDescription": true,
+        "ogUrl": true,
+        "ogLocale": true,
+        "ogImage": true,
+        "ogDimensions": true,
+        "twitterCard": true,
+        "twitterTitle": true,
+        "twitterDescription": true,
+        "twitterImage": true,
+        "indexable": true,
+        "validJsonLd": true,
+        "sharedBusinessGraph": true,
+        "breadcrumb": true,
+        "noAggregateRating": true
+      }
+    }
+  ],
+  "internalLinks": {
+    "totalAnchors": 621,
+    "publicInternalLinks": 451,
+    "hashLinksChecked": 27,
+    "missingAnchors": [],
+    "localeMismatches": [],
+    "legacyDestinations": [],
+    "nonCanonicalPublicPaths": [],
+    "sharedUnpairedEventLinksFromEnglish": 47,
+    "externalLinksNotRequested": 77,
+    "utilityPathsNotRequested": [
+      "/account"
+    ]
+  },
+  "sitemap": {
+    "httpStatus": 200,
+    "urlCount": 17,
+    "lastmodCount": 17,
+    "alternateCount": 30,
+    "entries": [
+      {
+        "loc": "https://shahrestaurant.nl/",
+        "lastmod": "2026-11-11",
+        "alternates": [
+          {
+            "rel": "alternate",
+            "hreflang": "nl-NL",
+            "href": "https://shahrestaurant.nl/"
+          },
+          {
+            "rel": "alternate",
+            "hreflang": "en",
+            "href": "https://shahrestaurant.nl/en"
+          },
+          {
+            "rel": "alternate",
+            "hreflang": "x-default",
+            "href": "https://shahrestaurant.nl/"
+          }
+        ]
+      },
+      {
+        "loc": "https://shahrestaurant.nl/en",
+        "lastmod": "2026-11-11",
+        "alternates": [
+          {
+            "rel": "alternate",
+            "hreflang": "nl-NL",
+            "href": "https://shahrestaurant.nl/"
+          },
+          {
+            "rel": "alternate",
+            "hreflang": "en",
+            "href": "https://shahrestaurant.nl/en"
+          },
+          {
+            "rel": "alternate",
+            "hreflang": "x-default",
+            "href": "https://shahrestaurant.nl/"
+          }
+        ]
+      },
+      {
+        "loc": "https://shahrestaurant.nl/menukaart",
+        "lastmod": "2026-11-11",
+        "alternates": [
+          {
+            "rel": "alternate",
+            "hreflang": "nl-NL",
+            "href": "https://shahrestaurant.nl/menukaart"
+          },
+          {
+            "rel": "alternate",
+            "hreflang": "en",
+            "href": "https://shahrestaurant.nl/en/menu"
+          },
+          {
+            "rel": "alternate",
+            "hreflang": "x-default",
+            "href": "https://shahrestaurant.nl/menukaart"
+          }
+        ]
+      },
+      {
+        "loc": "https://shahrestaurant.nl/en/menu",
+        "lastmod": "2026-11-11",
+        "alternates": [
+          {
+            "rel": "alternate",
+            "hreflang": "nl-NL",
+            "href": "https://shahrestaurant.nl/menukaart"
+          },
+          {
+            "rel": "alternate",
+            "hreflang": "en",
+            "href": "https://shahrestaurant.nl/en/menu"
+          },
+          {
+            "rel": "alternate",
+            "hreflang": "x-default",
+            "href": "https://shahrestaurant.nl/menukaart"
+          }
+        ]
+      },
+      {
+        "loc": "https://shahrestaurant.nl/reserveren",
+        "lastmod": "2026-11-11",
+        "alternates": [
+          {
+            "rel": "alternate",
+            "hreflang": "nl-NL",
+            "href": "https://shahrestaurant.nl/reserveren"
+          },
+          {
+            "rel": "alternate",
+            "hreflang": "en",
+            "href": "https://shahrestaurant.nl/en/reservations"
+          },
+          {
+            "rel": "alternate",
+            "hreflang": "x-default",
+            "href": "https://shahrestaurant.nl/reserveren"
+          }
+        ]
+      },
+      {
+        "loc": "https://shahrestaurant.nl/en/reservations",
+        "lastmod": "2026-11-11",
+        "alternates": [
+          {
+            "rel": "alternate",
+            "hreflang": "nl-NL",
+            "href": "https://shahrestaurant.nl/reserveren"
+          },
+          {
+            "rel": "alternate",
+            "hreflang": "en",
+            "href": "https://shahrestaurant.nl/en/reservations"
+          },
+          {
+            "rel": "alternate",
+            "hreflang": "x-default",
+            "href": "https://shahrestaurant.nl/reserveren"
+          }
+        ]
+      },
+      {
+        "loc": "https://shahrestaurant.nl/privacy",
+        "lastmod": "2026-11-11",
+        "alternates": [
+          {
+            "rel": "alternate",
+            "hreflang": "nl-NL",
+            "href": "https://shahrestaurant.nl/privacy"
+          },
+          {
+            "rel": "alternate",
+            "hreflang": "en",
+            "href": "https://shahrestaurant.nl/en/privacy"
+          },
+          {
+            "rel": "alternate",
+            "hreflang": "x-default",
+            "href": "https://shahrestaurant.nl/privacy"
+          }
+        ]
+      },
+      {
+        "loc": "https://shahrestaurant.nl/en/privacy",
+        "lastmod": "2026-11-11",
+        "alternates": [
+          {
+            "rel": "alternate",
+            "hreflang": "nl-NL",
+            "href": "https://shahrestaurant.nl/privacy"
+          },
+          {
+            "rel": "alternate",
+            "hreflang": "en",
+            "href": "https://shahrestaurant.nl/en/privacy"
+          },
+          {
+            "rel": "alternate",
+            "hreflang": "x-default",
+            "href": "https://shahrestaurant.nl/privacy"
+          }
+        ]
+      },
+      {
+        "loc": "https://shahrestaurant.nl/voorwaarden",
+        "lastmod": "2026-11-11",
+        "alternates": [
+          {
+            "rel": "alternate",
+            "hreflang": "nl-NL",
+            "href": "https://shahrestaurant.nl/voorwaarden"
+          },
+          {
+            "rel": "alternate",
+            "hreflang": "en",
+            "href": "https://shahrestaurant.nl/en/terms"
+          },
+          {
+            "rel": "alternate",
+            "hreflang": "x-default",
+            "href": "https://shahrestaurant.nl/voorwaarden"
+          }
+        ]
+      },
+      {
+        "loc": "https://shahrestaurant.nl/en/terms",
+        "lastmod": "2026-11-11",
+        "alternates": [
+          {
+            "rel": "alternate",
+            "hreflang": "nl-NL",
+            "href": "https://shahrestaurant.nl/voorwaarden"
+          },
+          {
+            "rel": "alternate",
+            "hreflang": "en",
+            "href": "https://shahrestaurant.nl/en/terms"
+          },
+          {
+            "rel": "alternate",
+            "hreflang": "x-default",
+            "href": "https://shahrestaurant.nl/voorwaarden"
+          }
+        ]
+      },
+      {
+        "loc": "https://shahrestaurant.nl/events",
+        "lastmod": "2026-11-11",
+        "alternates": []
+      },
+      {
+        "loc": "https://shahrestaurant.nl/events/about",
+        "lastmod": "2026-11-11",
+        "alternates": []
+      },
+      {
+        "loc": "https://shahrestaurant.nl/events/gallery",
+        "lastmod": "2026-11-11",
+        "alternates": []
+      },
+      {
+        "loc": "https://shahrestaurant.nl/events/birthdays",
+        "lastmod": "2026-11-11",
+        "alternates": []
+      },
+      {
+        "loc": "https://shahrestaurant.nl/events/celebrations",
+        "lastmod": "2026-11-11",
+        "alternates": []
+      },
+      {
+        "loc": "https://shahrestaurant.nl/events/company-catering",
+        "lastmod": "2026-11-11",
+        "alternates": []
+      },
+      {
+        "loc": "https://shahrestaurant.nl/events/company-lunches",
+        "lastmod": "2026-11-11",
+        "alternates": []
+      }
+    ],
+    "checks": {
+      "http200": true,
+      "seventeenUrls": true,
+      "allExpected": true,
+      "lastmodForAll": true,
+      "exactlyThirtyCoreAlternates": true,
+      "noPrivateParties": true
+    }
+  },
+  "robots": {
+    "httpStatus": 200,
+    "disallow": [
+      "/api/",
+      "/admin",
+      "/terminal",
+      "/parties"
+    ],
+    "sitemap": "https://shahrestaurant.nl/sitemap.xml",
+    "checks": {
+      "http200": true,
+      "expectedPrivateExclusions": true,
+      "eventsNotDisallowed": true,
+      "productionSitemap": true
+    }
+  },
+  "faq": [
+    {
+      "route": "/",
+      "visibleQuestions": 9,
+      "structuredQuestions": 9,
+      "exactTextEquality": true,
+      "visibleContentSha256": "2fc5bf4d9e47e00d9500966b6bfcb590b41926973137f8127ff1721a9cb3d9a6"
+    },
+    {
+      "route": "/en",
+      "visibleQuestions": 9,
+      "structuredQuestions": 9,
+      "exactTextEquality": true,
+      "visibleContentSha256": "0c3a9b62f11bb1e9cb031be6110aafdf9cef900ee215d942a3842f1b37909e62"
+    }
+  ],
+  "menuSnapshotVerification": {
+    "capturedAt": "2026-11-11T14:02:15.463Z",
+    "sourceHash": "66eda306b74cf90dc15ad018cc3064212349151810d8df2e098a06d6e8588892",
+    "sourceHashVerified": true,
+    "products": 224,
+    "brands": 2,
+    "comparison": "The component intentionally receives visible products (app/order/OrderExperience.tsx:800). Every published Menu item must match the pinned snapshot category/name/two-decimal price/EUR and the distinct rendered dish cards; the full140-item Tandoor catalogue is not required in the initial selected-category schema. Responsive mobile/desktop article copies are deduplicated for equality.",
+    "menus": [
+      {
+        "route": "/menukaart",
+        "menuSchemas": 1,
+        "totalTandoorCatalogItems": 140,
+        "publishedMenuItems": 2,
+        "renderedResponsiveArticleCopies": 4,
+        "distinctRenderedDishes": 2,
+        "allPublishedMenuItemsMatchSnapshotPrices": true,
+        "exactVisibleNamePriceCurrencyMatch": true,
+        "allRenderedCopiesMatchPublishedSchema": true,
+        "passed": true,
+        "priceTableSha256": "17aa2f2927677f333f16bf18ab20a88a0e2f0f7b18dceddf4b357f124ad08b6a"
+      },
+      {
+        "route": "/en/menu",
+        "menuSchemas": 1,
+        "totalTandoorCatalogItems": 140,
+        "publishedMenuItems": 2,
+        "renderedResponsiveArticleCopies": 4,
+        "distinctRenderedDishes": 2,
+        "allPublishedMenuItemsMatchSnapshotPrices": true,
+        "exactVisibleNamePriceCurrencyMatch": true,
+        "allRenderedCopiesMatchPublishedSchema": true,
+        "passed": true,
+        "priceTableSha256": "17aa2f2927677f333f16bf18ab20a88a0e2f0f7b18dceddf4b357f124ad08b6a"
+      }
+    ]
+  },
+  "issues": [],
+  "limitations": [
+    "Raw server output only; browser navigation, focus, visual behavior and font/image reuse are handled by baseline.",
+    "English counterparts for the seven event URLs do not exist; no claim of17bilingualroutepairs is made.",
+    "External destinations and/account were not requested; private party/session/HTTP guards are checked separately by the parent31-case suite.",
+    "The fixed224-product public snapshot is verified locally; matching it does not establish current live database contents or transactional behavior.",
+    "Live-www-host redirects cannot be established through the Host-rewriting preview fixture; existing real-NextRequest/source tests cover them.",
+    "No external search-console, rich-result eligibility or search-engine indexing validation was performed."
+  ],
+  "temporaryRawHtmlEvidence": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-polished-seo-20261111\\SK_WHU6G9CzKDtJ1iVaCs-raw-pages.json",
+  "reportFinalizedAt": "2026-11-11T17:01:54.320Z"
+}

@@ -1,0 +1,66 @@
+{
+  "classification": "FinalCSS-only candidate binding plus explicitly carried corefunctional proof; no formal timing run",
+  "buildId": "CrBmCcjgdCeUlQi3JzrCi",
+  "sourceFingerprint": "e4769c09a92e6611f75050551fcd8fac96620f17c9e01ddb136164e3f7ba3f1f",
+  "checkedAtUTC": "2026-11-11T18:34:37.412Z",
+  "origin": "http://127.0.0.1:3518",
+  "sourceInputs": 417,
+  "sourceDelta": {
+    "fromBuild": "nlBAxpm6UCzeBOCDkhorU",
+    "fromSource": "deec532bef06341bbbb5b009e9e24030e2683f6ee9fe5cd362daab217f6fcb87",
+    "changed": [
+      {
+        "file": "app/events/events.module.css",
+        "beforeSha256": "bc7f1fa0b31e1d8ec2c0de8647424c0ac559d01e81b47e2c4f515812f7c8c4c7",
+        "afterSha256": "cb09c1caaaf05b3cad7d6918db4c21a3f62f2ad1e4f355be6abb3b6882cf7f70"
+      }
+    ],
+    "removed": [],
+    "allOther416InputsByteIdentical": true
+  },
+  "freshProbe": {
+    "homeStatus": 200,
+    "servedBuildMatches": true,
+    "products": 224,
+    "brands": 2,
+    "bootstrapSha256": "87cd9c939a82820c555968a3189d82dca413eecb18d90126add52327a60b3bbf",
+    "galleryStatus": 200,
+    "galleryFixtureVersion": "2-empty-public-gallery",
+    "galleryDataKind": "empty-upload-fixture-not-live",
+    "galleryBodySha256": "23a94afc9afa821a8f50d64375a7a87fa1375b76365658f0d2b86e3e5b6e4a41",
+    "actualUploadedData": false
+  },
+  "carriedCoreFunctional": {
+    "proof": "docs/cinematic-final-usability-preflight-2026-11-11.json",
+    "sha256": "4a7b2b89937c1374fd78ba3a4d41e80553c6ef9609316a5c76bad25571b339fe",
+    "counts": {
+      "photoPreloads": 12,
+      "fontRoutes": 3,
+      "noJsRoutes": 2,
+      "redirects": 5,
+      "geometryViewports": 3,
+      "ssrRoutes": 4,
+      "featureCases": 3,
+      "searchStates": 13,
+      "nativeDiagnostics": 4
+    },
+    "allFunctionalChecksPass": true,
+    "scope": "fonts/preloads,NoJS,geometry,SSR/q/liveempty,observer/Back,13draft/history/nativeGETstates,nativecandidatepresence"
+  },
+  "exceptions": [
+    "Changed event Dark400 CSS requires fresh compiled event AA checks owned by review; not claimed carried.",
+    "Parent31HTTP/payload and17SEO/schema refreshed independently.",
+    "No final34LH/6INP/film run started; all prior NU controls remain exact old-build controls."
+  ],
+  "preparedDriver": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cinematic-qa-20261111\\production\\run-final-aa-lighthouse.cjs",
+  "strictOriginalTargets": {
+    "mobilePerformanceMin": 92,
+    "lcpStrictMaxMs": 1800,
+    "clsStrictMax": 0.02,
+    "inpStrictMaxMs": 150,
+    "tbtStrictMaxMs": 150,
+    "seo": 100,
+    "accessibilityMin": 95,
+    "bestPracticesMin": 95
+  }
+}

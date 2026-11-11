@@ -1,5 +1,9 @@
 # Shah Restaurant audit
 
+This file preserves the original audit and first SEO-phase results. The later owner-requested cinematic redesign is described in [docs/CINEMATIC-REVISION.md](docs/CINEMATIC-REVISION.md); its current measured acceptance is recorded separately in [docs/CINEMATIC-FINAL-VERIFICATION.md](docs/CINEMATIC-FINAL-VERIFICATION.md). Historical scores below are not the current build's results.
+
+Later owner instruction: all seven `/events` marketing pages are now public and indexed; `/parties` and its nested pages/APIs remain administrator-only. The original restricted-event inventory below records the pre-change state. Current access evidence is in [docs/EVENT-VISIBILITY.md](docs/EVENT-VISIBILITY.md).
+
 Audit date: 11 November 2026. Scope: the existing repository, localhost first. No deployment, publication, remote database writes or transactional submissions are authorized by this task. Read AGENTS.md and the installed Next.js 16.2.10 image, font, metadata, internationalization, headers and sitemap documentation before implementation.
 
 ## Baseline and preservation

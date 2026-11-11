@@ -25,7 +25,7 @@ The accessibility stylesheet uses these existing properties for focus outlines. 
 
 ## Existing type scale
 
-Fonts: Jost variable for body/UI, Cormorant Garamond 400/500/600/700 for display. Both already use `next/font/google`, which serves the built font files from this application rather than requesting Google at runtime. No font family or existing weight is changed. The build still requires access to the font source unless cached.
+Fonts: Jost variable for body/UI, Cormorant Garamond 400/500/600/700 for display. The baseline used `next/font/google`. The cinematic delivery revision now serves the exact same eight WOFF2 byte sequences from versioned `/fonts/` URLs, preserving all 25 font/fallback faces, weights and metrics. It requires no Google font lookup at build or runtime. See [FONT-PIPELINE.md](FONT-PIPELINE.md) for provenance, licenses and the route-specific preload policy.
 
 | Role | Existing size / behavior |
 | --- | --- |
@@ -50,7 +50,7 @@ SHA-256 recorded before and after this pass:
 | public/brand/shah-landscape-gold-v1.svg | 13DE955BAE005CDCBD680ADAF6BE1546E2AEDC1452791F7640700AE73138E46B |
 | public/brand/shah-landscape-teal-v1.svg | B543B5EE55804B9044C7D8A570E859BF4977FFD673256A4124F22445139685B7 |
 
-`BrandLogo.tsx` and its CSS remain unchanged. Landscape, wordmark and mark artwork retain explicit intrinsic dimensions and aspect ratio.
+`BrandLogo.tsx` now renders a native image instead of an unoptimized Next image. Landscape, wordmark and mark use the same original artwork, intrinsic dimensions, aspect ratio and existing placement classes. The hidden homepage header does not preload a logo above the film.
 
 ## Poster delivery variants
 
@@ -64,6 +64,6 @@ The WebP and decoded AVIF variants were visually inspected: composition, signage
 
 The film still fully prebuffers its original file before display to preserve the existing scrubbing approach. The change removes the full-screen gate, body scroll lock and inert content. The poster, restaurant copy and booking actions remain usable while loading. Once prebuffering is complete, the initial poster stays visible until the visitor scrolls; the film is then revealed only after its scroll-target frame is decoded. This avoids an unnecessary initial still-to-video swap.
 
-The film starts after the critical poster settles and an idle opportunity. Save-Data, 2G and reduced-motion visitors retain a static poster. A bounded loading/decode failure also retains the poster. The same 24fps scroll-to-time mapping and existing Safari decode warm-up remain.
+The film starts after the critical poster settles and an idle opportunity. Save-Data, 2G and reduced-motion visitors retain a static poster. A bounded loading/decode failure also retains the poster. The cinematic revision scrubs the unchanged 24fps timeline through the first 80% of the active track and holds its decoded final frame for the last 20%; the existing Safari decode warm-up remains. Early scrolling can choose an accessible one-viewport still, and explicit skips do not pretend that the final frame was viewed.
 
 This deliberately preserves a 36,744,691-byte desktop or 11,337,072-byte mobile optional download; it does not claim the original film meets a small-page transfer budget. Browser/connection-specific smoothness still needs real-device checking.

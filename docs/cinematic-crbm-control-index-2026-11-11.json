@@ -1,0 +1,49 @@
+{
+  "classification": "Immutable byte-identical CrBm controls preserved before later CookieConsent SSR changes",
+  "archivedAtUTC": "2026-11-11T19:08:15.265Z",
+  "buildId": "CrBmCcjgdCeUlQi3JzrCi",
+  "sourceFingerprint": "e4769c09a92e6611f75050551fcd8fac96620f17c9e01ddb136164e3f7ba3f1f",
+  "fixtureVersion": "2-empty-public-gallery",
+  "reports": [
+    {
+      "originalPath": "docs/cinematic-final-performance-2026-11-11.json",
+      "controlPath": "docs/cinematic-performance-control-crbm-2026-11-11.json",
+      "bytes": 34856,
+      "sha256": "3873b81f06e1071dbd9607f038aae4087178cdad9de0e54ee59c35dd53e306d1",
+      "byteIdentical": true
+    },
+    {
+      "originalPath": "docs/cinematic-final-inp-2026-11-11.json",
+      "controlPath": "docs/cinematic-inp-control-crbm-2026-11-11.json",
+      "bytes": 29623,
+      "sha256": "0a5e545182c1600a915bb5bde60977e2d2387a7972cf0abf3918973153d7026c",
+      "byteIdentical": true
+    },
+    {
+      "originalPath": "docs/cinematic-final-film-2026-11-11.json",
+      "controlPath": "docs/cinematic-film-control-crbm-2026-11-11.json",
+      "bytes": 24531,
+      "sha256": "aadc37bea8d2ec234d3cd9dcccd3815e1fb7ef1c1324317507676311239763cb",
+      "byteIdentical": true
+    },
+    {
+      "originalPath": "docs/cinematic-final-capture-summary-2026-11-11.json",
+      "controlPath": "docs/cinematic-capture-summary-control-crbm-2026-11-11.json",
+      "bytes": 4458,
+      "sha256": "1106c8f0080373d26d3912c134ba0b159ba66475846ee9fe138cd7dd7da5bf64",
+      "byteIdentical": true
+    },
+    {
+      "originalPath": "docs/cinematic-final-critical-lcp-2026-11-11.json",
+      "controlPath": "docs/cinematic-critical-lcp-control-crbm-2026-11-11.json",
+      "bytes": 24127,
+      "sha256": "e2f65463ba4e10e679db71d076a34b1af9e64e3b8f239dedbc9e4b7ef9a5dad4",
+      "byteIdentical": true
+    }
+  ],
+  "referenceResolution": "Archived summaries retain their original proof-path strings and SHA values. If a mutable cinematic-final-* path later points to a different build, resolve it through this originalPath→controlPath mapping; immutable raw proof directories remain unchanged.",
+  "rawLighthouse": "C:/Users/DaviiC/AppData/Local/Temp/shah-cinematic-qa-20261111/production/final-CrBmCcjgdCeUlQi3JzrCi",
+  "rawInteractionsAndFilm": "C:/Users/DaviiC/AppData/Local/Temp/shah-cinematic-qa-20261111/production/measured-CrBmCcjgdCeUlQi3JzrCi",
+  "browsersRetired": false,
+  "newTimingsStarted": false
+}
