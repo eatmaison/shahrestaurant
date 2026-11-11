@@ -58,7 +58,7 @@ main .btn-ember::before, main .btn-shine::after { display: none; }
 .events-pages { color: var(--shah-ink); background: var(--shah-page); }
 .events-pages > div > section:first-of-type > .pointer-events-none { display: none; }
 .events-pages :is(.bg-white, [class~="dark:bg-white/5"]) { background: var(--shah-surface); border-color: var(--shah-line); }
-.events-pages :is(a, button, summary) { min-height: 44px; }
+.events-pages :is(a, button, summary) { min-height: 48px; }
 .events-pages [class*="bg-gradient-to-br"] { background: var(--shah-soft); color: var(--shah-ink); border: 0; border-radius: 0; }
 .events-pages [class*="bg-gradient-to-br"] :is(.text-stone-200, .text-stone-300, .text-emerald-100, .text-white) { color: var(--shah-ink); }
 .events-pages [class*="bg-gradient-to-br"] [class*="text-emerald-300"] { color: var(--shah-accent); }

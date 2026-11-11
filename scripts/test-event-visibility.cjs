@@ -15,6 +15,12 @@ function load(file, mocks = {}) {
   new Function('require', 'module', 'exports', code)(id => {
     if (Object.hasOwn(mocks, id)) return mocks[id];
     if (['react', 'react/jsx-runtime', 'next/server', 'react-icons/fa6'].includes(id)) return require(id);
+    const iconPack = id.match(/(?:^|\/)icons\/(fa6|si|md)$/)?.[1];
+    if (iconPack) {
+      const resolved = path.relative(root, path.resolve(root, path.dirname(file), id + '.tsx')).replaceAll('\\', '/');
+      assert.equal(resolved, `app/components/icons/${iconPack}.tsx`);
+      return load(resolved, { '../SpriteIcon': load('app/components/SpriteIcon.tsx') });
+    }
     throw new Error(`Unexpected dependency ${id} in ${file}`);
   }, mod, mod.exports);
   return mod.exports;
@@ -23,6 +29,8 @@ async function test(name, run) { await run(); passed++; console.log(`PASS ${name
 const eventRoutes = ['/events', ...fs.readdirSync(path.join(root, 'app/events'), { withFileTypes: true }).filter(entry => entry.isDirectory()).map(entry => '/events/' + entry.name)];
 const locale = load('app/lib/locale.ts');
 const site = load('app/lib/seo.ts', { './locale': locale });
+const eventSeo = load('app/lib/eventSeo.ts', { './locale': locale, './seo': site });
+const eventShell = load('app/components/EventsShell.tsx', { '../lib/seo': site, '../events/events.module.css': { default: { pages: 'events-review' } } });
 const translations = load('app/lib/translations.ts').translations;
 let role = null;
 let state = [];
@@ -107,14 +115,14 @@ const denied = () => { throw new Error('NOT_FOUND'); };
     if (oldNodeEnv === undefined) delete process.env.NODE_ENV; else process.env.NODE_ENV = oldNodeEnv;
   }
   await test('event layouts render all children publicly and override inherited noindex', () => {
-    const layout = load('app/events/layout.tsx', { '../lib/seo': site, './events.module.css': { default: { pages: 'events-review' } } }); assert.equal(layout.metadata.robots.index, true); assert.equal(layout.metadata.robots.follow, true);
+    const layout = load('app/events/layout.tsx', { '../lib/eventSeo': eventSeo, '../components/EventsShell': eventShell }); assert.equal(layout.metadata.robots.index, true); assert.equal(layout.metadata.robots.follow, true);
     const html = renderToStaticMarkup(layout.default({ children: 'PUBLIC_EVENT' }));
     assert.match(html, /PUBLIC_EVENT/);
     const scripts = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)];
     assert.equal(scripts.length, 1);
     assert.deepEqual(JSON.parse(scripts[0][1]), site.siteSchema('nl'));
     for (const route of eventRoutes.slice(1)) {
-      const nested = load(`app${route}/layout.tsx`); assert.match(renderToStaticMarkup(nested.default({ children: 'PUBLIC_EVENT' })), /PUBLIC_EVENT/);
+      const nested = load(`app${route}/layout.tsx`, { '../../lib/eventSeo': eventSeo }); assert.match(renderToStaticMarkup(nested.default({ children: 'PUBLIC_EVENT' })), /PUBLIC_EVENT/);
       assert.equal(nested.metadata.alternates.canonical, route); assert.notEqual(nested.metadata.robots?.index, false);
     }
   });
@@ -141,7 +149,13 @@ const denied = () => { throw new Error('NOT_FOUND'); };
       state = [true, true, false];
       const html = renderToStaticMarkup(React.createElement(header));
       assert.match(html, /id="mobile-events"/);
-      for (const route of eventRoutes) assert.equal(html.split(`href="${route}"`).length - 1, 2, route);
+      const anchors = [...html.matchAll(/<a\b[^>]*>/g)].map(match => match[0]);
+      const navigationAnchors = anchors.filter(tag => !tag.includes('data-language-link'));
+      for (const route of eventRoutes) assert.equal(navigationAnchors.filter(tag => tag.includes(`href="${route}"`)).length, 2, route);
+      const languageAnchors = anchors.filter(tag => tag.includes('data-language-link'));
+      assert.equal(languageAnchors.length, 4);
+      assert.equal(languageAnchors.filter(tag => tag.includes('href="/events"')).length, 2);
+      assert.equal(languageAnchors.filter(tag => tag.includes('href="/en/events"')).length, 2);
       assert.equal(html.includes('href="/parties"'), role === 'admin');
       state = [];
       assert.match(renderToStaticMarkup(React.createElement(footer)), /href="\/events\/gallery"/);

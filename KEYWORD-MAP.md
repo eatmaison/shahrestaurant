@@ -1,6 +1,6 @@
 # Keyword map
 
-Prepared before source changes, 11 November 2026. Existing brand copy, menu/prices and private `/parties` records remain protected. Primary language Dutch; the five English URL pairs serve tourists/expats. The owner later made all seven `/events` marketing pages public; that extension is recorded below. One intent per public page.
+Prepared before the initial source changes, 11 November 2026. Existing brand copy, menu/prices and private `/parties` records remain protected. Primary language Dutch; the original five core language pairs serve tourists/expats. The owner later made all seven `/events` marketing pages public. Those seven additional language pairs are now implemented, with their intent recorded below. One intent per public page.
 
 | Dutch canonical | English canonical | Primary Dutch intent | Primary English intent | Supporting sections |
 | --- | --- | --- | --- | --- |
@@ -12,17 +12,17 @@ Prepared before source changes, 11 November 2026. Existing brand copy, menu/pric
 
 Legacy /order -> /menukaart, /reservations -> /reserveren, /terms -> /voorwaarden. Preserve query parameters for cart/dish/order flows. Utility URLs can keep existing names; remain noindex and absent from sitemap.
 
-Later public-event extension, following the owner's access instruction. These seven Dutch canonical URLs have English interface copy after an explicit language choice, but no separate English URL pairs yet.
+Later public-event extension, following the owner's access instruction. These seven pairs now have separate URL-authoritative Dutch and English pages. The English pages reuse the existing English copy; no new arrangements or restaurant facts were invented. The compiled24-route SEO crawl verifies their canonical and language links.
 
-| Public Dutch canonical | Primary Dutch intent | Existing content boundary |
-| --- | --- | --- |
-| /events | Evenementen en catering Amsterdam-Noord | Existing occasions overview and links |
-| /events/about | Over Shah Restaurant Amsterdam-Noord | Existing restaurant story |
-| /events/birthdays | Verjaardag vieren Amsterdam-Noord | Existing birthday arrangements and visible prices |
-| /events/celebrations | Feestelijk dineren Amsterdam-Noord | Existing celebration copy and arrangements |
-| /events/company-catering | Bedrijfscatering Amsterdam-Noord | Existing catering options; no invented delivery promises |
-| /events/company-lunches | Bedrijfslunch Amsterdam-Noord | Existing lunch arrangements and visible prices |
-| /events/gallery | Foto's Shah Restaurant Amsterdam-Noord | Actual supplied restaurant photographs and accurate alt text |
+| Public Dutch canonical | English canonical | Primary Dutch intent | Primary English intent | Existing content boundary |
+| --- | --- | --- | --- | --- |
+| /events | /en/events | Evenementen en catering Amsterdam-Noord | Events and catering Amsterdam-Noord | Existing occasions overview and links |
+| /events/about | /en/events/about | Over Shah Restaurant Amsterdam-Noord | About Shah Restaurant Amsterdam-Noord | Existing restaurant story |
+| /events/birthdays | /en/events/birthdays | Verjaardag vieren Amsterdam-Noord | Birthday celebrations Amsterdam-Noord | Existing birthday arrangements and visible prices |
+| /events/celebrations | /en/events/celebrations | Feestelijk dineren Amsterdam-Noord | Celebration dining Amsterdam-Noord | Existing celebration copy and arrangements |
+| /events/company-catering | /en/events/company-catering | Bedrijfscatering Amsterdam-Noord | Company catering Amsterdam-Noord | Existing catering options; no invented delivery promises |
+| /events/company-lunches | /en/events/company-lunches | Bedrijfslunch Amsterdam-Noord | Company lunches Amsterdam-Noord | Existing lunch arrangements and visible prices |
+| /events/gallery | /en/events/gallery | Foto's Shah Restaurant Amsterdam-Noord | Shah Restaurant photo gallery Amsterdam-Noord | Actual supplied restaurant photographs and accurate alt text |
 
 Home section ownership (updated for the owner's later cinematic instruction):
 - Opening film: original fullscreen film/still only. All visible cuisine, Amsterdam-Noord, address, hours, reservation and phone information starts in the introduction below the film.

@@ -1,8 +1,9 @@
 "use client";
 
 import { EventBreadcrumbs } from "../../components/EventBreadcrumbs";
-import { FaBoxesStacked, FaBreadSlice, FaCalendarDays, FaCarrot, FaCheck, FaClock, FaFileInvoice, FaLeaf, FaMugSaucer, FaSeedling, FaTruck } from "react-icons/fa6";
+import { FaBoxesStacked, FaBreadSlice, FaCalendarDays, FaCarrot, FaCheck, FaClock, FaFileInvoice, FaLeaf, FaMugSaucer, FaSeedling, FaTruck } from "../../components/icons/fa6";
 import { useLang } from "../../providers";
+import { localePath } from "../../lib/locale";
 import { SITE_URL } from "../../lib/seo";
 import { EventsContactCta } from "../../components/EventsContactCta";
 
@@ -20,7 +21,7 @@ export default function CompanyLunchesPage() {
       ? "Vers bezorgde bedrijfslunches in Amsterdam - dagelijkse of wekelijkse levering, maandelijkse facturatie."
       : "Fresh delivered company lunches across Amsterdam - daily or weekly delivery, monthly invoicing.",
     areaServed: { "@type": "City", name: "Amsterdam" },
-    url: "https://shahrestaurant.nl/events/company-lunches",
+    url: `https://shahrestaurant.nl${localePath("/events/company-lunches", lang)}`,
   };
 
   const formats = [

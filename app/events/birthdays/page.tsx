@@ -1,8 +1,9 @@
 "use client";
 
 import { EventBreadcrumbs } from "../../components/EventBreadcrumbs";
-import { FaCakeCandles, FaCheck, FaGift, FaGuitar, FaHeart, FaMusic, FaStar, FaUsers, FaUtensils } from "react-icons/fa6";
+import { FaCakeCandles, FaCheck, FaGift, FaGuitar, FaHeart, FaMusic, FaStar, FaUsers, FaUtensils } from "../../components/icons/fa6";
 import { useLang } from "../../providers";
+import { localePath } from "../../lib/locale";
 import { SITE_URL } from "../../lib/seo";
 import { EventsContactCta } from "../../components/EventsContactCta";
 
@@ -17,7 +18,7 @@ export default function BirthdaysPage() {
     provider: { "@id": `${SITE_URL}/#restaurant` },
     areaServed: { "@type": "City", name: "Amsterdam" },
     audience: { "@type": "PeopleAudience", audienceType: "Private groups up to 100 guests" },
-    url: "https://shahrestaurant.nl/events/birthdays",
+    url: `https://shahrestaurant.nl${localePath("/events/birthdays", lang)}`,
     description: nl
       ? "Verjaardagen, jubilea en privéfeesten bij Shah Restaurant Amsterdam - gepersonaliseerd Indiaas menu, warme sfeer en toegewijde service."
       : "Birthdays, anniversaries and private parties at Shah Restaurant Amsterdam - personalised Indian menus, warm ambiance and dedicated service.",

@@ -32,8 +32,8 @@ import {
   FaTrash,
   FaTruck,
   FaXmark,
-} from "react-icons/fa6";
-import { MdMenuBook } from "react-icons/md";
+} from "../components/icons/fa6";
+import { MdMenuBook } from "../components/icons/md";
 import { useLang, useStore } from "../providers";
 import dynamic from "next/dynamic";
 import { ORDER_DISH_IMAGE_SIZES, ProductImage } from "../components/ProductImage";

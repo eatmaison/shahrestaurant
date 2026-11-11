@@ -14,8 +14,8 @@ import {
   FaXTwitter,
   FaYelp,
   FaYoutube,
-} from "react-icons/fa6";
-import { SiGooglemaps, SiTripadvisor } from "react-icons/si";
+} from "./icons/fa6";
+import { SiGooglemaps, SiTripadvisor } from "./icons/si";
 import type { SocialPlatform } from "../lib/types";
 
 export interface SocialPlatformInfo {

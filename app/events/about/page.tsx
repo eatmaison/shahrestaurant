@@ -2,7 +2,7 @@
 
 import { EventBreadcrumbs } from "../../components/EventBreadcrumbs";
 import Link from "../../components/LocaleLink";
-import { FaArrowRight, FaAward, FaHeart, FaLeaf, FaStar, FaUtensils } from "react-icons/fa6";
+import { FaArrowRight, FaAward, FaHeart, FaLeaf, FaStar, FaUtensils } from "../../components/icons/fa6";
 import { useLang } from "../../providers";
 import { EventsContactCta } from "../../components/EventsContactCta";
 

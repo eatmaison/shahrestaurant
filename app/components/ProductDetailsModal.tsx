@@ -4,7 +4,7 @@ import DOMPurify from "dompurify";
 import { OrderSheet } from "../order/OrderSheet";
 import { useLang } from "../providers";
 import type { Product } from "../lib/types";
-import { FaX } from "react-icons/fa6";
+import { FaX } from "./icons/fa6";
 
 interface ProductDetailsModalProps {
   product: Product | null;

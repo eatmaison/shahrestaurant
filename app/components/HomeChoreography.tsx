@@ -154,7 +154,7 @@ export function useHomeChoreography(
     };
     const focus = (event: FocusEvent) => {
       if (!(event.target instanceof Element) || !root.contains(event.target)) return;
-      if (root.dataset.filmView === "opening") window.dispatchEvent(new Event("shah:film-skip"));
+      if (root.dataset.filmView === "opening" && !event.target.closest("[data-film-track] video")) window.dispatchEvent(new Event("shah:film-skip"));
       forceTarget(event.target);
       schedule();
     };

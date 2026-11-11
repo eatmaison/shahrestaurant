@@ -4,13 +4,14 @@ import { RestaurantPhoto } from "./components/RestaurantPhoto";
 import Link from "./components/LocaleLink";
 import { BrandLogo } from "./components/BrandLogo";
 import { HeroFilm } from "./components/HeroFilm";
+import { HeroPoster } from "./components/HeroPoster";
 import { DrinkPartners } from "./components/DrinkPartners";
 import dynamic from "next/dynamic";
 import { ProductImage } from "./components/ProductImage";
 import { CatalogFeedback } from "./components/CatalogFeedback";
 import { matchesMenuSearch, normalizeMenuSearch } from "./lib/menuSearch";
 import { useDeferredValue, useMemo, useRef, useState } from "react";
-import { FaArrowDown, FaArrowLeft, FaArrowRight, FaBagShopping, FaCalendarCheck, FaChevronDown, FaClock, FaEnvelope, FaExpand, FaFireBurner, FaLocationDot, FaMagnifyingGlass, FaPhone, FaStar, FaUtensils, FaUsers, FaXmark } from "react-icons/fa6";
+import { FaArrowDown, FaArrowLeft, FaArrowRight, FaBagShopping, FaCalendarCheck, FaChevronDown, FaClock, FaEnvelope, FaExpand, FaFireBurner, FaLocationDot, FaMagnifyingGlass, FaPhone, FaStar, FaUtensils, FaUsers, FaXmark } from "./components/icons/fa6";
 import { useLang, useStore } from "./providers";
 import { SITE_ID } from "./lib/data";
 import type { Product } from "./lib/types";
@@ -104,19 +105,12 @@ export default function Home() {
   };
 
   return (
-    <div ref={rootRef} className={styles.home} data-cinematic-home="true" data-film-view="opening" data-motion={richMedia ? "on" : "off"} data-media={richMedia ? "scrub" : "static"}>
+    <div ref={rootRef} className={styles.home} data-cinematic-home="true" data-film-view="opening" data-motion={richMedia ? "on" : "off"} data-media={richMedia ? "autoplay" : "static"}>
       <noscript><style>{`body:has([data-cinematic-home][data-film-view]) [data-site-header]{position:relative!important;inset:auto!important;background:var(--shah-surface)!important;pointer-events:auto!important}body:has([data-cinematic-home][data-film-view]) [data-site-header-bar]{visibility:visible!important;opacity:1!important;transform:none!important}[data-cinematic-home] [data-film-track]{margin-top:0!important;height:calc(100svh - var(--site-header-height,102px))!important}[data-cinematic-home] [data-film-track]>section{height:100%!important;min-height:0!important}`}</style></noscript>
       <div ref={heroScrollRef} className={styles.heroScroll} data-film-track data-unavailable="true" data-film-state="waiting" data-film-progress="0" data-film-complete="false">
       <section className={styles.hero} aria-label={lang === "nl" ? "Film van Shah Restaurant" : "Shah Restaurant film"}>
         <div className={styles.heroMedia}>
-          <picture style={{ display: "block", position: "relative", width: "100%", height: "100%" }}>
-            <source media="(max-width: 767px)" type="image/avif" srcSet="/brand/shah-hero-poster-mobile-delivery-v1-360.avif 360w, /brand/shah-hero-poster-mobile-delivery-v1.avif 608w" sizes="100vw" />
-            <source media="(max-width: 767px)" type="image/webp" srcSet="/brand/shah-hero-poster-mobile-delivery-v1-360.webp 360w, /brand/shah-hero-poster-mobile-delivery-v1.webp 608w" sizes="100vw" />
-            <source type="image/avif" srcSet="/brand/shah-hero-poster-desktop-delivery-v1-960.avif 960w, /brand/shah-hero-poster-desktop-delivery-v1.avif 1600w" sizes="100vw" />
-            <source type="image/webp" srcSet="/brand/shah-hero-poster-desktop-delivery-v1-960.webp 960w, /brand/shah-hero-poster-desktop-delivery-v1.webp 1600w" sizes="100vw" />
-            {/* Native picture keeps the selected responsive poster as the film fallback. */}
-            <img src="/brand/shah-hero-poster-desktop-delivery-v1.webp" alt={lang === "nl" ? "De entree en het terras van Shah Restaurant in Amsterdam-Noord" : "The entrance and terrace of Shah Restaurant in Amsterdam-Noord"} width={1600} height={900} loading="eager" decoding="async" fetchPriority="high" className={styles.heroImage} />
-          </picture>
+          <HeroPoster alt={lang === "nl" ? "De entree en het terras van Shah Restaurant in Amsterdam-Noord" : "The entrance and terrace of Shah Restaurant in Amsterdam-Noord"} className={styles.heroImage} />
           <HeroFilm trackRef={heroScrollRef} />
         </div>
       </section>

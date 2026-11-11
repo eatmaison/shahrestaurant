@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { hasEventAdminAccess } from "./app/lib/eventAccess";
-import { getPublicRoute } from "./app/lib/locale";
+import { getLocalizedRoute } from "./app/lib/locale";
 
 const primaryHosts = new Set(["shahrestaurant.nl", "www.shahrestaurant.nl"]);
 
@@ -11,7 +11,7 @@ export async function proxy(request: NextRequest) {
     return new NextResponse("Not Found", { status: 404, headers: { "X-Robots-Tag": "noindex" } });
   }
 
-  const route = getPublicRoute(pathname.toLowerCase());
+  const route = getLocalizedRoute(pathname.toLowerCase());
   const navigation = ["GET", "HEAD"].includes(request.method) && !pathname.startsWith("/api/");
   // Preserve Next's ordinary slash removal for every method, including webhooks.
   const withoutTrailingSlash = pathname !== "/" && pathname.endsWith("/") ? pathname.slice(0, -1) : pathname;

@@ -2,6 +2,7 @@
 
 import Link from "./LocaleLink";
 import { useLang } from "../providers";
+import { localePath } from "../lib/locale";
 
 const labels = {
   "/events": { nl: "Evenementen en catering", en: "Events and catering" },
@@ -17,9 +18,9 @@ const labels = {
 export function EventBreadcrumbs({ route }: { route: keyof typeof labels }) {
   const { lang } = useLang();
   const crumbs = [
-    { href: lang === "en" ? "/en" : "/", label: "Shah Restaurant" },
-    ...(route === "/events" ? [] : [{ href: "/events", label: labels["/events"][lang] }]),
-    { href: route, label: labels[route][lang] },
+    { href: localePath("/", lang), label: "Shah Restaurant" },
+    ...(route === "/events" ? [] : [{ href: localePath("/events", lang), label: labels["/events"][lang] }]),
+    { href: localePath(route, lang), label: labels[route][lang] },
   ];
   const schema = {
     "@context": "https://schema.org",

@@ -1,8 +1,9 @@
 "use client";
 
 import { EventBreadcrumbs } from "../../components/EventBreadcrumbs";
-import { FaBriefcase, FaCheck, FaChartLine, FaEarthEurope, FaHandshake, FaPeopleGroup, FaReceipt, FaRocket, FaWineGlass } from "react-icons/fa6";
+import { FaBriefcase, FaCheck, FaChartLine, FaEarthEurope, FaHandshake, FaPeopleGroup, FaReceipt, FaRocket, FaWineGlass } from "../../components/icons/fa6";
 import { useLang } from "../../providers";
+import { localePath } from "../../lib/locale";
 import { SITE_URL } from "../../lib/seo";
 import { EventsContactCta } from "../../components/EventsContactCta";
 
@@ -17,7 +18,7 @@ export default function CompanyCateringPage() {
     provider: { "@id": `${SITE_URL}/#restaurant` },
     areaServed: { "@type": "City", name: "Amsterdam" },
     audience: { "@type": "BusinessAudience", audienceType: "Corporate clients and business teams up to 100 attendees" },
-    url: "https://shahrestaurant.nl/events/company-catering",
+    url: `https://shahrestaurant.nl${localePath("/events/company-catering", lang)}`,
     description: nl
       ? "Zakelijke diners, klantrecepties, productlanceringen en board-diners in Amsterdam. Maandelijkse facturatie beschikbaar."
       : "Corporate dinners, client receptions, product launches and board dinners in Amsterdam. Monthly invoicing available.",

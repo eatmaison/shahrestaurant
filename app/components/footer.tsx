@@ -3,7 +3,7 @@
 import Link from "./LocaleLink";
 import { BrandLogo } from "./BrandLogo";
 import { useEffect, useState } from "react";
-import { FaArrowUp, FaClock, FaEnvelope, FaLocationDot, FaPhone } from "react-icons/fa6";
+import { FaArrowUp, FaClock, FaEnvelope, FaLocationDot, FaPhone } from "./icons/fa6";
 import { useLang, useStore } from "../providers";
 import { SOCIAL_PLATFORMS } from "./socialIcons";
 

@@ -526,7 +526,7 @@
 /* Cinematic chapters: the original film is the entire first frame. */
 .home { --gold: var(--shah-gold); --accent: var(--shah-accent); --scene-progress: .5; --scene-shift: 0px; }
 .home .heroScroll { height: 100svh; margin-top: 0; background: var(--shah-brand-teal); }
-.home .heroScroll:not([data-unavailable="true"]) { height: 360svh; }
+.home .heroScroll:not([data-unavailable="true"]) { height: 100svh; }
 .home .heroScroll[data-unavailable="true"] { height: 100svh; }
 .home .hero { height: 100svh; min-height: 100svh; }
 .home .heroMedia { inset: 0; }
@@ -559,7 +559,7 @@
 .openingDetails { display: flex; flex-direction: column; gap: 14px; margin-top: 30px; color: var(--muted); font-size: 13px; }
 .openingDetails :is(a,span) { display: inline-flex; align-items: center; gap: 12px; }
 .openingDetails svg { color: var(--gold); width: 14px; }
-.openingDetails a { width: fit-content; min-height: 36px; }
+.openingDetails a { width: fit-content; min-height: 48px; }
 .openingDetails a:hover { color: var(--ink); }
 .home .opening .actions { justify-content: flex-start; margin-top: 34px; gap: 22px; }
 .openingPhone { display: inline-flex; align-items: center; gap: 12px; min-height: 54px; color: var(--ink); border-bottom: 1px solid var(--line); font-size: 14px; }
@@ -720,4 +720,4 @@
   .home [data-parallax] { transform:none !important; will-change:auto !important; }
 }
 
-.home .opening { scroll-margin-top: 0; }
+.home section.opening[id] { scroll-margin-top: calc(-1 * var(--site-header-height, 76px) - 16px); }

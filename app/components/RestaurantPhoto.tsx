@@ -2,6 +2,7 @@
 
 import type { CSSProperties, ImgHTMLAttributes } from "react";
 import { getRestaurantPhoto } from "../lib/restaurantPhotos";
+import { getRestaurantPhotoJpegFallback } from "../lib/restaurantPhotoJpegFallbacks";
 
 type Props = Omit<ImgHTMLAttributes<HTMLImageElement>, "src" | "srcSet" | "sizes" | "alt" | "width" | "height"> & {
   src: string;
@@ -19,6 +20,7 @@ export function RestaurantPhoto({
   loading = "lazy", decoding = "async", style, onLoad, ...attributes
 }: Props) {
   const photo = getRestaurantPhoto(src);
+  const jpegFallback = getRestaurantPhotoJpegFallback(src);
   const imageStyle: CSSProperties = {
     ...(fill ? { position: "absolute", inset: 0, width: "100%", height: "100%" } : {}),
     ...(photo ? { backgroundImage: `url("${photo.blurDataURL}")`, backgroundSize: placeholderFit, backgroundPosition: "center", backgroundRepeat: "no-repeat" } : {}),
@@ -28,7 +30,7 @@ export function RestaurantPhoto({
     {photo && <source type="image/avif" srcSet={photo.avifSrcSet} sizes={sizes} />}
     {photo && <source type="image/webp" srcSet={photo.webpSrcSet} sizes={sizes} />}
     {/* Native picture selects prebuilt variants; no runtime optimizer or external URL is used. */}
-    <img {...attributes} src={photo?.src ?? src} srcSet={photo?.webpSrcSet} sizes={sizes} alt={alt}
+    <img {...attributes} src={jpegFallback?.src ?? photo?.src ?? src} srcSet={jpegFallback?.srcSet ?? photo?.webpSrcSet} sizes={sizes} alt={alt}
       onLoad={event => {
         const image = event.currentTarget;
         const clearPlaceholder = () => { if (image.complete && image.naturalWidth > 0) image.style.backgroundImage = "none"; };

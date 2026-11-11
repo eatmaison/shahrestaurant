@@ -31,7 +31,7 @@ import {
   FaUtensils,
   FaWheatAwn,
   FaWineBottle,
-} from "react-icons/fa6";
+} from "../components/icons/fa6";
 import type { Brand, BrandConfig, Category, Product } from "./types";
 import { TANDOOR_CATEGORY_ORDER } from "./tandoorProducts";
 

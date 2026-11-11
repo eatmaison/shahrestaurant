@@ -4,8 +4,9 @@ import { EventBreadcrumbs } from "../../components/EventBreadcrumbs";
 import { EventGalleryPhoto } from "../../components/EventGalleryPhoto";
 import { getEventGalleryPhoto } from "../../lib/eventGalleryPhotos";
 import { useEffect, useState } from "react";
-import { FaCamera, FaImage } from "react-icons/fa6";
+import { FaCamera, FaImage } from "../../components/icons/fa6";
 import { useLang } from "../../providers";
+import { localePath } from "../../lib/locale";
 import { EventsContactCta } from "../../components/EventsContactCta";
 import type { GalleryImage } from "../../lib/types";
 
@@ -72,7 +73,7 @@ export default function GalleryPage() {
     description: nl
       ? "Foto's van Shah Restaurant Amsterdam: interieur, gerechten en evenementen."
       : "Photos of Shah Restaurant Amsterdam: interior, dishes and events.",
-    url: "https://shahrestaurant.nl/events/gallery",
+    url: `https://shahrestaurant.nl${localePath("/events/gallery", lang)}`,
     image: items.map((item) => {
       const src = getEventGalleryPhoto(item.src)?.src ?? item.src;
       return src.startsWith("http") ? src : `https://shahrestaurant.nl${src}`;

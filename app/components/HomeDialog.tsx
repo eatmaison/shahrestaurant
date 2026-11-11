@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, type KeyboardEvent, type ReactNode } from "react";
-import { FaXmark } from "react-icons/fa6";
+import { FaXmark } from "./icons/fa6";
 import styles from "./HomeDialog.module.css";
 
 export function HomeDialog({ children, titleId, closeLabel, onClose, onKeyDown }: {

@@ -2,7 +2,7 @@
 
 import type { Bootstrap } from "./lib/serverStore";
 import { usePathname } from "next/navigation";
-import { getPublicRoute, isPublicEventRoute, localePath, resolveSiteLocale } from "./lib/locale";
+import { getLocalizedRoute, localePath, resolveSiteLocale } from "./lib/locale";
 import { fetchJSON } from "./lib/clientFetch";
 import { readStoredJSON, readStoredCart, writeStoredJSON } from "./lib/clientStorage";
 
@@ -17,13 +17,21 @@ import {
   type ReactNode,
 } from "react";
 import { checkoutRequestKey, clearCheckoutRequest } from "./lib/checkoutRequest";
-import { translations, type Dictionary } from "./lib/translations";
+import type { Dictionary } from "./lib/translations";
 import { DEFAULT_BRAND_CONFIGS } from "./lib/brandDefaults";
 import { cartKeyForProduct, parseCartKey } from "./lib/cart";
 import { restaurantStatus as getRestaurantStatus, type RestaurantOpenOverride, type RestaurantStatus } from "./lib/openingHours";
 import type { AccountType, BrandConfig, GrillSideChoice, Lang, MenuUpgrades, Order, OrderFulfillment, OrderSchedule, OrderStatus, Product, ProductContent, ProductTarget, RecentVisitor, Reservation, Review, SocialLink, SocialPlatform, User, VipPurchase, VipRequest } from "./lib/types";
 
 const JSON_HEADERS = { "Content-Type": "application/json" } as const;
+type Dictionaries = Partial<Record<Lang, Dictionary>>;
+let deferredDictionaries: Promise<Record<Lang, Dictionary>> | undefined;
+
+function loadDictionaries() {
+  return deferredDictionaries ??= import("./lib/translations")
+    .then(module => module.translations)
+    .catch(error => { deferredDictionaries = undefined; throw error; });
+}
 
 /* ------------------------------------------------------------------ */
 /* Theme                                                               */
@@ -231,7 +239,7 @@ function readThemePreference(fallback: Theme): Theme {
 /* Provider                                                            */
 /* ------------------------------------------------------------------ */
 
-export function Providers({ children, initialLang = "nl" }: { children: ReactNode; initialLang?: Lang }) {
+export function Providers({ children, initialLang = "nl", initialDictionaries }: { children: ReactNode; initialLang?: Lang; initialDictionaries: Dictionaries }) {
   const [hydrated, setHydrated] = useState(false);
   const [catalogStatus, setCatalogStatus] = useState<"loading" | "ready" | "error">("loading");
   const checkoutBusy = useRef(false);
@@ -241,8 +249,46 @@ export function Providers({ children, initialLang = "nl" }: { children: ReactNod
   const [theme, setTheme] = useState<Theme>("light");
   const pathname = usePathname();
   const [languagePreference, setLangState] = useState<Lang>(initialLang);
-  const [eventLanguageChoice, setEventLanguageChoice] = useState<Lang | null>(null);
-  const lang = resolveSiteLocale(pathname, languagePreference, eventLanguageChoice);
+  const lang = resolveSiteLocale(pathname, languagePreference);
+  const [loadedDictionaries, setLoadedDictionaries] = useState<Dictionaries>({});
+  const dictionaryCache = useRef<Dictionaries>(initialDictionaries);
+  const languageRequest = useRef(0);
+  const invalidateLanguageRequest = useCallback(() => { languageRequest.current++; }, []);
+  const dictionary = loadedDictionaries[lang] ?? initialDictionaries[lang];
+  const initialDictionary = initialDictionaries[initialLang]!;
+  const ensureLanguage = useCallback(async (nextLang: Lang) => {
+    const cached = dictionaryCache.current[nextLang];
+    if (cached) {
+      setLoadedDictionaries(previous => previous[nextLang] ? previous : { ...previous, [nextLang]: cached });
+      return;
+    }
+    const complete = await loadDictionaries();
+    dictionaryCache.current = complete;
+    setLoadedDictionaries(complete);
+  }, []);
+  const selectUtilityLanguage = useCallback((nextLang: Lang, persist: boolean) => {
+    const request = ++languageRequest.current;
+    const requestedPath = window.location.pathname;
+    void ensureLanguage(nextLang).then(() => {
+      // A slower language request must not override a later choice or navigation.
+      if (request !== languageRequest.current || window.location.pathname !== requestedPath || getLocalizedRoute(requestedPath)) return;
+      if (persist) writeStoredJSON(LS.lang, nextLang);
+      setLangState(nextLang);
+    }).catch(() => { /* Keep the current form and language intact if a chunk fails. */ });
+  }, [ensureLanguage]);
+
+  useEffect(() => {
+    invalidateLanguageRequest();
+    const route = getLocalizedRoute(pathname);
+    let active = true;
+    if (route) queueMicrotask(() => { if (active) setLangState(route.locale); });
+    return () => { active = false; invalidateLanguageRequest(); };
+  }, [pathname, invalidateLanguageRequest]);
+  useEffect(() => {
+    const route = getLocalizedRoute(pathname);
+    // Warm the alternate dictionary only when a utility screen actually needs it.
+    if (!route || !dictionary) void ensureLanguage(!dictionary ? lang : lang === "nl" ? "en" : "nl").catch(() => {});
+  }, [pathname, lang, dictionary, ensureLanguage]);
 
   const [products, setProducts] = useState<Product[]>([]);
   const [brands, setBrands] = useState<BrandConfig[]>(DEFAULT_BRAND_CONFIGS);
@@ -317,7 +363,7 @@ export function Providers({ children, initialLang = "nl" }: { children: ReactNod
       const initialTheme = readThemePreference(document.documentElement.classList.contains("dark") ? "dark" : "light");
       setTheme(current => current === initialTheme ? current : initialTheme);
       const savedLang = readJSON<unknown>(LS.lang, "nl");
-      setLangState(savedLang === "en" ? "en" : "nl");
+      setLangState(getLocalizedRoute(window.location.pathname)?.locale ?? (savedLang === "en" ? "en" : "nl"));
       setCart(readStoredCart(LS.cart));
       void refresh().finally(() => { if (mounted) setHydrated(true); });
     });
@@ -345,11 +391,15 @@ export function Providers({ children, initialLang = "nl" }: { children: ReactNod
     const sync = (event: StorageEvent) => {
       if (event.key === LS.cart || event.key === null) setCart(readStoredCart(LS.cart));
       if (event.key === LS.theme) setTheme(readThemePreference("light"));
-      if (event.key === LS.lang || event.key === null) setLangState(readJSON<unknown>(LS.lang, "nl") === "en" ? "en" : "nl");
+      if (event.key === LS.lang || event.key === null) {
+        const route = getLocalizedRoute(window.location.pathname);
+        if (route) { languageRequest.current++; setLangState(route.locale); }
+        else selectUtilityLanguage(readJSON<unknown>(LS.lang, "nl") === "en" ? "en" : "nl", false);
+      }
     };
     window.addEventListener("storage", sync);
     return () => window.removeEventListener("storage", sync);
-  }, []);
+  }, [selectUtilityLanguage]);
   useEffect(() => {
     const restored = (event: PageTransitionEvent) => { if (event.persisted && navigator.onLine) void refresh(); };
     const online = () => { if (catalogStatus === "error") void refresh(); };
@@ -379,15 +429,16 @@ export function Providers({ children, initialLang = "nl" }: { children: ReactNod
 
   const toggleTheme = useCallback(() => setTheme((t) => (t === "light" ? "dark" : "light")), []);
   const setLang = useCallback((l: Lang) => {
-    writeStoredJSON(LS.lang, l);
-    const route = getPublicRoute(pathname);
+    const route = getLocalizedRoute(pathname);
     if (route && route.locale !== l) {
+      languageRequest.current++;
+      writeStoredJSON(LS.lang, l);
       window.location.assign(localePath(pathname, l) + window.location.search + window.location.hash);
       return;
     }
-    if (isPublicEventRoute(pathname)) setEventLanguageChoice(l);
-    setLangState(l);
-  }, [pathname]);
+    if (route) { languageRequest.current++; setLangState(l); }
+    else selectUtilityLanguage(l, true);
+  }, [pathname, selectUtilityLanguage]);
 
   const addProduct = useCallback<StoreCtx["addProduct"]>(async (p) => {
     try {
@@ -738,8 +789,8 @@ export function Providers({ children, initialLang = "nl" }: { children: ReactNod
 
   const themeValue = useMemo<ThemeCtx>(() => ({ theme, toggleTheme }), [theme, toggleTheme]);
   const langValue = useMemo<LangCtx>(
-    () => ({ lang, setLang, t: translations[lang] }),
-    [lang, setLang]
+    () => ({ lang, setLang, t: dictionary ?? initialDictionary }),
+    [lang, setLang, dictionary, initialDictionary]
   );
   const storeValue = useMemo<StoreCtx>(
     () => ({
@@ -849,7 +900,12 @@ export function Providers({ children, initialLang = "nl" }: { children: ReactNod
   return (
     <ThemeContext.Provider value={themeValue}>
       <LanguageContext.Provider value={langValue}>
-        <StoreContext.Provider value={storeValue}>{children}</StoreContext.Provider>
+        <StoreContext.Provider value={storeValue}>
+          {dictionary ? children : <main role="status" aria-live="polite" className="p-8 text-center">
+            <p>{lang === "en" ? "Loading translation…" : "Vertaling laden…"}</p>
+            <button type="button" className="btn-ghost mt-4" onClick={() => { void ensureLanguage(lang).catch(() => {}); }}>{lang === "en" ? "Try again" : "Opnieuw proberen"}</button>
+          </main>}
+        </StoreContext.Provider>
       </LanguageContext.Provider>
     </ThemeContext.Provider>
   );

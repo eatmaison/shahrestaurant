@@ -14,7 +14,7 @@ import {
   FaPhone,
   FaUsers,
   FaWandMagicSparkles,
-} from "react-icons/fa6";
+} from "../components/icons/fa6";
 import { useLang } from "../providers";
 
 export default function EventsHubPage() {

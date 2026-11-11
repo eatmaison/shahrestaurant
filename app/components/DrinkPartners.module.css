@@ -32,7 +32,7 @@
 .bottom { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 24px; border-top: 1px solid #ffffff29; margin-top: 36px; padding-top: 24px; }
 .bottom p { margin: 0; color: #cbd5ce; font-size: 14px; }
 .links { display: flex; flex-wrap: wrap; gap: 12px 28px; }
-.links a { display: inline-flex; align-items: center; justify-content: space-between; min-height: 44px; gap: 16px; padding-block: 8px; color: var(--partner-accent); font-size: 14px; font-weight: 600; text-decoration: underline; text-decoration-color: #ffffff59; text-underline-offset: 6px; }
+.links a { display: inline-flex; align-items: center; justify-content: space-between; min-height: 48px; gap: 16px; padding-block: 8px; color: var(--partner-accent); font-size: 14px; font-weight: 600; text-decoration: underline; text-decoration-color: #ffffff59; text-underline-offset: 6px; }
 .links a:hover { color: #fff; text-decoration-color: currentColor; }
 .links a:focus-visible, .controls button:focus-visible, .viewport:focus-visible { outline: 2px solid var(--partner-accent); outline-offset: 5px; border-radius: 2px; }
 @media (max-width: 850px) {

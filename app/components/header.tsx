@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "./LocaleLink";
-import { getPublicRoute, localePath } from "../lib/locale";
+import { getLocalizedRoute, getPublicRoute, localePath } from "../lib/locale";
 import { BrandLogo } from "./BrandLogo";
 import { usePathname, useRouter } from "next/navigation";
 import { writeSessionValue } from "../lib/clientStorage";
@@ -15,7 +15,7 @@ import {
   FaSun,
   FaUser,
   FaXmark,
-} from "react-icons/fa6";
+} from "./icons/fa6";
 import { useLang, useStore, useTheme } from "../providers";
 import styles from "./header.module.css";
 
@@ -26,7 +26,7 @@ function LanguageOption({ code, className }: { code: "nl" | "en"; className: str
   const { lang, setLang } = useLang();
   const pathname = usePathname();
   const label = code === "nl" ? "NL - Nederlands" : "EN - English";
-  if (!getPublicRoute(pathname)) return <button onClick={() => setLang(code)} className={className} aria-label={label} aria-pressed={lang === code}>{code.toUpperCase()}</button>;
+  if (!getLocalizedRoute(pathname)) return <button onClick={() => setLang(code)} className={className} aria-label={label} aria-pressed={lang === code}>{code.toUpperCase()}</button>;
   return <a data-language-link href={localePath(pathname, code)} hrefLang={code === "nl" ? "nl-NL" : "en"} lang={code} className={className} aria-label={label} aria-current={lang === code ? "page" : undefined} onClick={event => {
     if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     event.preventDefault(); setLang(code);

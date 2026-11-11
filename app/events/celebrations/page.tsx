@@ -2,8 +2,9 @@
 
 import { EventBreadcrumbs } from "../../components/EventBreadcrumbs";
 import Link from "../../components/LocaleLink";
-import { FaArrowRight, FaChampagneGlasses, FaCheck, FaGem, FaHandshake, FaHeart, FaMusic, FaRing, FaStar } from "react-icons/fa6";
+import { FaArrowRight, FaChampagneGlasses, FaCheck, FaGem, FaHandshake, FaHeart, FaMusic, FaRing, FaStar } from "../../components/icons/fa6";
 import { useLang } from "../../providers";
+import { localePath } from "../../lib/locale";
 import { SITE_URL } from "../../lib/seo";
 import { EventsContactCta } from "../../components/EventsContactCta";
 
@@ -18,7 +19,7 @@ export default function CelebrationsPage() {
     provider: { "@id": `${SITE_URL}/#restaurant` },
     areaServed: { "@type": "City", name: "Amsterdam" },
     audience: { "@type": "PeopleAudience", audienceType: "Wedding parties and celebrations up to 100 guests" },
-    url: "https://shahrestaurant.nl/events/celebrations",
+    url: `https://shahrestaurant.nl${localePath("/events/celebrations", lang)}`,
     description: nl
       ? "Bruiloftsrecepties, gala-avonden, jubilea en verlovingsdiners bij Shah Restaurant Amsterdam."
       : "Wedding receptions, gala evenings, anniversaries and engagement dinners at Shah Restaurant Amsterdam.",

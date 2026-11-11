@@ -23,7 +23,7 @@ import {
   FaUser,
   FaUserGroup,
   FaWandMagicSparkles,
-} from "react-icons/fa6";
+} from "../components/icons/fa6";
 import { useLang, useStore } from "../providers";
 import type { Reservation, ReservationStatus } from "../lib/types";
 import { OPEN_FROM_MIN, OPEN_UNTIL_MIN } from "../lib/openingHours";

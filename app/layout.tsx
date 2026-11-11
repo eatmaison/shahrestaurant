@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { cookies, headers } from "next/headers";
-import { getPublicRoute } from "./lib/locale";
+import { getLocalizedRoute, getPublicRoute } from "./lib/locale";
+import { translations } from "./lib/translations";
 import { publicMetadata, SITE_URL, siteSchema } from "./lib/seo";
 import "./fonts.css";
 import "./design-system.css";
@@ -45,6 +46,11 @@ export default async function RootLayout({
   const initialAcknowledged = isCookieNoticeAcknowledged(requestCookies.get(COOKIE_NOTICE_ACK_COOKIE)?.value);
   const initialLang = requestHeaders.get("x-shah-locale") === "en" ? "en" : "nl";
   const route = getPublicRoute(requestHeaders.get("x-shah-path") ?? "");
+  // Public URLs carry one complete dictionary as data, rather than executing both
+  // languages on every visit. Utility pages keep their in-page language switch.
+  const initialDictionaries = getLocalizedRoute(requestHeaders.get("x-shah-path") ?? "")
+    ? { [initialLang]: translations[initialLang] }
+    : translations;
   const chapterPhoto = route?.key === "menu" ? "shah-table" : route?.key === "reservations" ? "shah-dining" : null;
   return (
     <html lang={initialLang} suppressHydrationWarning data-cookie-notice-ack={initialAcknowledged ? "true" : undefined} data-scroll-behavior="smooth" className="h-full antialiased">
@@ -69,7 +75,7 @@ export default async function RootLayout({
         {route && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(siteSchema(initialLang)).replace(/</g, "\\u003c") }} />}
       </head>
       <body data-cinematic-page={route && route.key !== "home" ? route.key : undefined} className="flex min-h-full flex-col">
-        <Providers initialLang={initialLang}>
+        <Providers initialLang={initialLang} initialDictionaries={initialDictionaries}>
           <CinematicSections />
           <Header />
           <main id="main-content" tabIndex={-1} className="flex-1">{children}</main>
