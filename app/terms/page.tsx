@@ -1,6 +1,9 @@
 "use client";
 
 import { useLang } from "../providers";
+import { useRef } from "react";
+import { useCinematicPageReady } from "../lib/useCinematicPageReady";
+import "../cinematic.css";
 
 /**
  * Terms & Conditions (Algemene Voorwaarden). Bilingual EN/NL, self-contained
@@ -166,11 +169,13 @@ const CONTENT: Record<"en" | "nl", { title: string; updated: string; intro: stri
 };
 
 export default function TermsPage() {
+  const cinematicRootRef = useRef<HTMLDivElement>(null);
+  useCinematicPageReady(cinematicRootRef, "terms");
   const { lang } = useLang();
   const c = CONTENT[lang];
 
   return (
-    <div className="relative mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
+    <div ref={cinematicRootRef} className="relative mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-64 bg-[radial-gradient(60%_100%_at_50%_0%,rgba(217,126,38,0.10),transparent_70%)]" />
       <span className="lux-overline relative inline-flex items-center gap-2 text-emerald-600 dark:text-emerald-400">
         <span className="ornament-gem" aria-hidden /> Shah Restaurant

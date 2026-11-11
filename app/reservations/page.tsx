@@ -28,6 +28,8 @@ import { useLang, useStore } from "../providers";
 import type { Reservation, ReservationStatus } from "../lib/types";
 import { OPEN_FROM_MIN, OPEN_UNTIL_MIN } from "../lib/openingHours";
 import styles from "./reservations.module.css";
+import { useCinematicPageReady } from "../lib/useCinematicPageReady";
+import "../cinematic.css";
 
 /** Selectable arrival times: every 30 min within opening hours (last seating 30 min before close). */
 const TIME_SLOTS: string[] = (() => {
@@ -41,6 +43,8 @@ const TIME_SLOTS: string[] = (() => {
 const OCCASIONS = ["", "birthday", "business", "romantic", "family", "other"] as const;
 
 export default function ReservationsPage() {
+  const cinematicRootRef = useRef<HTMLDivElement>(null);
+  useCinematicPageReady(cinematicRootRef, "reservations");
   const { t, lang } = useLang();
   const { currentUser, reservations, reviews, createReservation, cancelReservation, addReservationReview, hydrated } = useStore();
 
@@ -175,7 +179,7 @@ export default function ReservationsPage() {
   };
 
   return (
-    <div className={`${styles.page} page-stage overflow-hidden`}>
+    <div ref={cinematicRootRef} data-reservation-page className={`${styles.page} page-stage overflow-hidden`}>
       {/* Heading - candlelit evening hero, intentionally darker & moodier than the homepage */}
       <section className={`${styles.hero} reservation-hero-strip relative overflow-hidden`}>
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(70%_90%_at_50%_110%,rgba(217,126,38,0.30),transparent_70%)]" />
@@ -206,10 +210,10 @@ export default function ReservationsPage() {
         <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-b from-transparent to-[#fbf5eb] dark:to-[#0c0703]" />
       </section>
 
-      <section className="mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
+      <section data-reservation-booking className="mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
         {/* Booking form */}
-        <div className="animate-fade-up min-w-0">
-          <div className="premium-panel ember-border frame-ornate lux-sweep texture-linen rounded-[2rem] p-6 sm:p-8">
+        <div data-reservation-form-column className="min-w-0">
+          <div data-reservation-form-panel className="premium-panel ember-border frame-ornate lux-sweep texture-linen rounded-[2rem] p-6 sm:p-8">
             {done ? (
               <div className="flex flex-col items-center py-8 text-center">
                 <span className="animate-pop grid h-16 w-16 place-items-center rounded-full border border-emerald-500/40 bg-emerald-500/10 text-2xl text-emerald-600 dark:text-emerald-400">
@@ -300,7 +304,7 @@ export default function ReservationsPage() {
                   <span className="mb-1.5 flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
                     <FaUserGroup className="text-emerald-500" /> {t.reservations.guests} *
                   </span>
-                  <div className="flex flex-wrap items-center gap-2">
+                  <div data-reservation-guests className="flex flex-wrap items-center gap-2">
                     {[2, 3, 4, 5, 6, 8].map((n) => (
                       <button
                         key={n}
@@ -382,7 +386,7 @@ export default function ReservationsPage() {
                   <span className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
                     {t.reservations.occasion}
                   </span>
-                  <div className="flex flex-wrap gap-2">
+                  <div data-reservation-occasions className="flex flex-wrap gap-2">
                     {OCCASIONS.map((o) => (
                       <button
                         key={o || "none"}
@@ -439,7 +443,7 @@ export default function ReservationsPage() {
         </div>
 
         {/* Right column: info + my reservations */}
-        <div className="animate-fade-up delay-200 min-w-0 space-y-6">
+        <div data-reservation-practical className="min-w-0 space-y-6">
           {/* Good to know */}
           <div className={`${styles.info} premium-panel ember-border relative overflow-hidden rounded-[2rem] p-7 sm:p-8`}>
             <div className="spice-dots pointer-events-none absolute inset-0 opacity-25" />
@@ -447,7 +451,7 @@ export default function ReservationsPage() {
             <span className="ember" style={{ left: "16%", animationDelay: "0.8s" }} aria-hidden />
             <span className="ember" style={{ left: "74%", animationDelay: "2.4s" }} aria-hidden />
             <span className="lux-overline relative text-emerald-300/90">{t.reservations.infoTitle}</span>
-            <div className="relative mt-5 space-y-5">
+            <div data-reservation-info-cards className="relative mt-5 space-y-5">
               {infoCards.map(({ Icon, title, text }) => (
                 <div key={title} className="flex gap-4">
                   <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-emerald-400/30 bg-emerald-400/10 text-emerald-300">
@@ -600,7 +604,7 @@ export default function ReservationsPage() {
       </section>
 
       {/* Location - warm directions panel + framed map */}
-      <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+      <section data-reservation-location className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
         <div className="reservation-location relative overflow-hidden rounded-[2rem] text-white">
           <div className="reservation-location__glow reservation-location__glow--left" />
           <div className="reservation-location__glow reservation-location__glow--right" />
@@ -618,7 +622,7 @@ export default function ReservationsPage() {
                 <span className="mt-1 block text-lg font-medium text-stone-300 sm:text-xl">1032 KL Amsterdam</span>
               </h2>
               <p className="mt-4 max-w-lg text-sm leading-7 text-stone-300">{t.reservations.locationSubtitle}</p>
-              <ArrivalInfo />
+              <details className="reservation-arrival-details"><summary>{lang === "nl" ? "Plan uw bezoek" : "Plan your visit"}</summary><ArrivalInfo />
 
               <div className="reservation-location__route-grid mt-6">
                 <span>{lang === "nl" ? "Auto" : "Car"}</span>
@@ -647,6 +651,7 @@ export default function ReservationsPage() {
                 <span className="reservation-arrival-note__dot" aria-hidden />
                 <span>{lang === "nl" ? "U vindt ons aan de Klaprozenweg 36a in Amsterdam-Noord." : "Find us at Klaprozenweg 36a in Amsterdam-Noord."}</span>
               </div>
+              </details>
             </div>
 
             <div className="reservation-map-shell">

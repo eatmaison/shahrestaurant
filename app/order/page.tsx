@@ -57,6 +57,8 @@ import { cartKeyForProduct, grillSideLabel, GRILL_SIDE_OPTIONS, isGrillSideRequi
 import type { Brand, Category, GrillSideChoice, MenuUpgrades, Product } from "../lib/types";
 import styles from "./order.module.css";
 import { OrderSheet } from "./OrderSheet";
+import { useCinematicPageReady } from "../lib/useCinematicPageReady";
+import "../cinematic.css";
 
 type CartLine = { key: string; product: Product; qty: number; sideChoice?: GrillSideChoice };
 
@@ -152,6 +154,8 @@ function MobileMenuScrollRow({ children, className = "" }: { children: ReactNode
 }
 
 export default function OrderPage() {
+  const cinematicRootRef = useRef<HTMLDivElement>(null);
+  useCinematicPageReady(cinematicRootRef, "menu");
   const { t, lang } = useLang();
   const { products, brands, cart, addToCart, removeFromCart, currentUser, placeOrder, restaurantStatus, hydrated } = useStore();
   const [search, setSearch] = useState("");
@@ -542,7 +546,7 @@ export default function OrderPage() {
   );
 
   const ProductsGrid = () => (
-    <div key={`${activeBrand}-${activeCategory}`} className={`${styles.products} grid grid-cols-2 gap-4 lg:grid-cols-2`}>
+    <div key={`${activeBrand}-${activeCategory}`} data-menu-products className={`${styles.products} grid grid-cols-2 gap-4 lg:grid-cols-2`}>
       {!hydrated && menuProducts.length === 0 && (
         [0, 1, 2, 3].map((index) => (
           <div key={index} className="premium-panel ember-border lux-sweep rounded-2xl p-3">
@@ -576,7 +580,8 @@ export default function OrderPage() {
         return (
           <article
             key={p.id}
-            className={`premium-panel magnetic-card lux-sweep animate-fade-up group flex flex-col overflow-hidden rounded-2xl ${
+            data-menu-dish
+            className={`premium-panel magnetic-card lux-sweep group flex flex-col overflow-hidden rounded-2xl ${
               qty > 0
                 ? "ring-1 ring-emerald-500/40 shadow-lg shadow-emerald-600/10"
                 : ""
@@ -755,18 +760,14 @@ export default function OrderPage() {
   };
 
   return (
-    <div className={`${styles.page} page-stage min-h-screen`}>
+    <div ref={cinematicRootRef} data-menu-page className={`${styles.page} page-stage min-h-screen`}>
       <MenuSchema products={visible} />
       {/* Closed notice - ordering stays possible, preparation starts at the next opening */}
       {preOrderNote && (
-        <div className="mx-auto max-w-7xl px-4 pb-3 pt-4 sm:px-6 lg:px-8">
-          <div className="premium-panel lux-sweep flex items-start gap-3 rounded-2xl px-4 py-3 text-sm text-sky-800 dark:text-sky-300">
-            <FaClock className="mt-0.5 flex-shrink-0" />
-            <p>
-              <span className="font-bold">{t.hours.closedNow}.</span> {preOrderNote}
-            </p>
-          </div>
-        </div>
+        <details data-menu-ordering-note className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <summary><FaClock aria-hidden="true" /><strong>{t.hours.closedNow}</strong><FaChevronRight aria-hidden="true" /></summary>
+          <p>{preOrderNote}</p>
+        </details>
       )}
 
       {/* Header - Desktop only */}
@@ -783,7 +784,7 @@ export default function OrderPage() {
         <div className="gold-rule relative mt-5" />
       </div>
 
-      <div className={styles.searchArea}>
+      <div data-menu-search className={styles.searchArea}>
         <div className={styles.searchControls}>
         <div className={styles.searchBox}>
           <FaMagnifyingGlass aria-hidden="true" />
@@ -793,7 +794,7 @@ export default function OrderPage() {
         </div>
         <p id="order-search-results" role="status" aria-live="polite">{searchTerms.length ? (lang === "nl" ? "Alle restaurants" : "All restaurants") : activeBrandCfg?.name} · {hydrated ? `${visible.length} ${t.common.items}` : (lang === "nl" ? "Menukaart laden" : "Loading menu")}</p>
         </div>
-        <div className={styles.loyaltyNotice} style={{ visibility: hydrated && !currentUser ? "visible" : "hidden" }} aria-hidden={!hydrated || !!currentUser}><FaStar aria-hidden="true" /><div><strong>{lang === "nl" ? "Maak een account en spaar punten" : "Register and start earning loyalty points"}</strong><p>{lang === "nl" ? "Spaar bij uw bestellingen en gebruik uw punten voor korting." : "Earn points with your orders and redeem them for discounts."}</p></div><Link href="/account#register">{lang === "nl" ? "Registreren" : "Register"}<FaArrowRight aria-hidden="true" /></Link></div>
+        <details data-menu-loyalty className={styles.loyaltyNotice} style={{ visibility: hydrated && !currentUser ? "visible" : "hidden" }} aria-hidden={!hydrated || !!currentUser}><summary><FaStar aria-hidden="true" /><strong>{lang === "nl" ? "Maak een account en spaar punten" : "Register and start earning loyalty points"}</strong><FaChevronRight aria-hidden="true" /></summary><div><p>{lang === "nl" ? "Spaar bij uw bestellingen en gebruik uw punten voor korting." : "Earn points with your orders and redeem them for discounts."}</p><Link href="/account#register">{lang === "nl" ? "Registreren" : "Register"}<FaArrowRight aria-hidden="true" /></Link></div></details>
       </div>
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6"><CatalogFeedback /></div>
@@ -881,7 +882,7 @@ export default function OrderPage() {
           <p className="mt-1 text-sm font-bold text-rose-600 dark:text-rose-300">Buy one, get the second one free: {bogoProducts.map((product) => product.name).join(", ")}</p>
         </div>
       )}
-      <div className="mx-auto hidden max-w-7xl gap-6 px-4 py-8 sm:px-6 lg:grid lg:grid-cols-[210px_1fr_300px] lg:px-8">
+      <div data-menu-desktop className="mx-auto hidden max-w-7xl gap-6 px-4 py-8 sm:px-6 lg:grid lg:grid-cols-[210px_1fr_300px] lg:px-8">
         {/* Desktop: Restaurant + Categories Sidebar */}
         <aside className="sticky top-[76px] self-start">
           <div className="space-y-3">
@@ -1046,6 +1047,8 @@ export default function OrderPage() {
             </div>
 
             {/* Free-delivery progress - nudges the guest towards €0 delivery */}
+            <details data-menu-checkout-detail open={cartLines.length > 0}>
+              <summary>{t.order.deliveryDetails}<FaChevronRight aria-hidden="true" /></summary>
             {!isPickup && !isCompany && cartLines.length > 0 && (
               freeDelivery ? (
                 <p className="animate-pop mt-4 flex items-center justify-center gap-2 rounded-2xl border border-emerald-500/30 bg-emerald-500/10 px-3 py-2.5 text-xs font-bold text-emerald-700 dark:text-emerald-300">
@@ -1300,20 +1303,21 @@ export default function OrderPage() {
                 {message.text}
               </p>
             )}
+            </details>
           </div>
         </aside>
       </div>
 
       {/* Mobile Layout: Products + Cart Footer (Hidden on desktop) */}
-      <div className="flex h-[calc(100vh-136px)] flex-col lg:hidden">
-        {/* Products - Scrollable */}
-        <div className="flex-1 overflow-y-auto px-4 py-3 sm:px-6">
+      <div data-menu-mobile className={`${styles.mobileFlow} lg:hidden`}>
+        {/* Products follow the normal document scroll. */}
+        <div className={styles.mobileProducts}>
           {ProductsGrid()}
         </div>
 
         {/* Mobile: Cart Footer - Sticky Bottom */}
         {cartLines.length > 0 && (
-          <div className="border-t border-emerald-500/20 bg-white/95 backdrop-blur dark:border-white/10 dark:bg-[#0c0703]/95 px-4 py-3 sm:px-6">
+          <div className={`${styles.mobileCartBar} border-t border-emerald-500/20 bg-white/95 dark:border-white/10 dark:bg-[#0c0703]/95 px-4 py-3 sm:px-6`}>
             <button
               onClick={() => setShowCartModal(true)}
               className="btn-ember btn-shine wiggle-hover flex w-full items-center justify-between rounded-full px-4 py-3 text-sm font-bold text-white"

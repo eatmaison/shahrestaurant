@@ -31,6 +31,18 @@
 .productBrand { display: flex; align-items: center; gap: 7px; margin-bottom: 8px; color: var(--shah-gold); font-size: 12px !important; }
 .resetSearch { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 8px 16px; margin-top: 20px; border: 1px solid var(--order-line); border-radius: 5px; }
 .categoryBar { top: var(--site-header-height, 76px); }
+.mobileFlow { min-width: 0; height: auto; }
+.mobileProducts { padding: 20px 16px 32px; overflow: visible; }
+.mobileCartBar { position: sticky; bottom: 0; z-index: 45; padding-bottom: max(12px, env(safe-area-inset-bottom)); box-shadow: 0 -8px 30px color-mix(in srgb, var(--shah-brand-teal) 12%, transparent); }
+.loyaltyNotice[data-menu-loyalty] { display: block; padding: 0 0 0 18px; flex: 1 1 340px; }
+.loyaltyNotice[data-menu-loyalty] summary { display: flex; align-items: center; gap: 12px; min-height: 48px; list-style: none; cursor: pointer; }
+.loyaltyNotice[data-menu-loyalty] summary::-webkit-details-marker { display: none; }
+.loyaltyNotice[data-menu-loyalty] summary > svg { color: var(--shah-gold); flex-shrink: 0; }
+.loyaltyNotice[data-menu-loyalty] summary > svg:last-child { margin-left: auto; width: 10px; transition: transform .3s; }
+.loyaltyNotice[data-menu-loyalty][open] summary > svg:last-child { transform: rotate(90deg); }
+.loyaltyNotice[data-menu-loyalty] > div { padding: 2px 0 6px 28px; }
+.loyaltyNotice[data-menu-loyalty] a { margin-left: 0; }
+@media (min-width: 640px) and (max-width: 1023px) { .mobileProducts { padding-inline: 24px; } }
 .page aside:global(.sticky) { top: calc(var(--site-header-height, 76px) + 16px); }
 .products article { transition: border-color .25s, box-shadow .25s; }
 .products article:hover { transform: none; border-color: var(--shah-gold); box-shadow: var(--shah-shadow); }

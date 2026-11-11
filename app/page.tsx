@@ -9,7 +9,7 @@ import dynamic from "next/dynamic";
 import { ProductImage } from "./components/ProductImage";
 import { CatalogFeedback } from "./components/CatalogFeedback";
 import { matchesMenuSearch, normalizeMenuSearch } from "./lib/menuSearch";
-import { useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
+import { useDeferredValue, useMemo, useRef, useState } from "react";
 import { FaArrowDown, FaArrowLeft, FaArrowRight, FaBagShopping, FaCalendarCheck, FaChevronDown, FaClock, FaEnvelope, FaExpand, FaFireBurner, FaLocationDot, FaMagnifyingGlass, FaPhone, FaStar, FaUtensils, FaUsers, FaXmark } from "react-icons/fa6";
 import { useLang, useStore } from "./providers";
 import { SITE_ID } from "./lib/data";
@@ -21,6 +21,7 @@ import { useRestaurantClock } from "./lib/useRestaurantClock";
 const HomeDialog = dynamic(() => import("./components/HomeDialog").then(module => module.HomeDialog), { ssr: false });
 const RichDescription = dynamic(() => import("./components/RichDescription"), { ssr: false });
 import { useHomeTilt, useRichMedia } from "./components/HomeDepth";
+import { useHomeChoreography } from "./components/HomeChoreography";
 import styles from "./home.module.css";
 
 const SIGNATURE_IDS = ["tdc-butter-chicken", "tdc-tandoori-mixed-grill", "tdc-tandoori-lamb-chops", "tdc-biryani-lamb", "tdc-tandoori-chicken-tikka", "tdc-samosa-chaat"];
@@ -82,34 +83,7 @@ export default function Home() {
   const ingredients = selectedProduct && ((lang === "nl" && selectedProduct.ingredientsNl?.length ? selectedProduct.ingredientsNl : selectedProduct.ingredients) || []);
   const allergens = selectedProduct && ((lang === "nl" && selectedProduct.allergensNl?.length ? selectedProduct.allergensNl : selectedProduct.allergens) || []);
 
-  useEffect(() => {
-    const root = rootRef.current;
-    if (!root || !("IntersectionObserver" in window)) return;
-    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          (entry.target as HTMLElement).dataset.reveal = "visible";
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    }, { rootMargin: "0px 0px 64px 0px", threshold: 0.08 });
-    const revealAll = () => {
-      if (motionQuery.matches) root.querySelectorAll<HTMLElement>("[data-reveal]").forEach((element) => { element.dataset.reveal = "visible"; });
-    };
-    root.querySelectorAll<HTMLElement>("[data-reveal]").forEach((element) => {
-      if (!motionQuery.matches && element.getBoundingClientRect().top > window.innerHeight) element.dataset.reveal = "pending";
-      revealObserver.observe(element);
-    });
-    const sectionObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => { if (entry.isIntersecting) setActiveSection(entry.target.id); });
-    }, { rootMargin: "-20% 0px -55% 0px", threshold: 0 });
-    root.querySelectorAll("[data-section]").forEach((section) => sectionObserver.observe(section));
-    motionQuery.addEventListener("change", revealAll);
-    return () => { revealObserver.disconnect(); sectionObserver.disconnect(); motionQuery.removeEventListener("change", revealAll); };
-  }, []);
-
-
+  useHomeChoreography(rootRef, heroScrollRef, richMedia, setActiveSection);
 
   function resetMenu() {
     setSearch("");
@@ -130,10 +104,10 @@ export default function Home() {
   };
 
   return (
-    <div ref={rootRef} className={styles.home} data-motion={richMedia ? "on" : "off"} data-media={richMedia ? "scrub" : "static"}>
-      <div className={styles.scrollProgress} aria-hidden="true" />
-      <div ref={heroScrollRef} className={styles.heroScroll}>
-      <section className={styles.hero} aria-labelledby="home-title">
+    <div ref={rootRef} className={styles.home} data-cinematic-home="true" data-film-view="opening" data-admin={isAdmin ? "true" : "false"} data-motion={richMedia ? "on" : "off"} data-media={richMedia ? "scrub" : "static"}>
+      <noscript><style>{`body:has([data-cinematic-home][data-film-view]) [data-site-header]{background:var(--shah-surface)!important;pointer-events:auto!important}body:has([data-cinematic-home][data-film-view]) [data-site-header-bar]{visibility:visible!important;opacity:1!important;transform:none!important}[data-cinematic-home] [data-film-track]{margin-top:0!important;height:calc(100svh - var(--site-header-height,102px))!important}`}</style></noscript>
+      <div ref={heroScrollRef} className={styles.heroScroll} data-film-track data-unavailable="true" data-film-state="waiting" data-film-progress="0" data-film-complete="false">
+      <section className={styles.hero} aria-label={lang === "nl" ? "Film van Shah Restaurant" : "Shah Restaurant film"}>
         <div className={styles.heroMedia}>
           <picture style={{ display: "block", position: "relative", width: "100%", height: "100%" }}>
             <source media="(max-width: 767px)" type="image/avif" srcSet="/brand/shah-hero-poster-mobile-delivery-v1-360.avif 360w, /brand/shah-hero-poster-mobile-delivery-v1.avif 608w" sizes="100vw" />
@@ -145,44 +119,31 @@ export default function Home() {
           </picture>
           <HeroFilm trackRef={heroScrollRef} />
         </div>
-        <div className={styles.heroInfo}>
-          <p className={styles.heroEyebrow}>Shah Restaurant</p>
-          <h1 id="home-title">{lang === "nl" ? "Indiaas restaurant in Amsterdam-Noord" : "Indian restaurant in Amsterdam-Noord"}</h1>
-          <p>Klaprozenweg 36a · {t.hours.tueSun} 15:00–22:00</p>
-          <div className={styles.actions}>
-            <Link href="/reservations" className={styles.primaryButton}><FaCalendarCheck aria-hidden="true" />{copy.reserve}</Link>
-            <a href="tel:+31203412995" className={styles.heroSecondary}><FaPhone aria-hidden="true" />{copy.call}</a>
-          </div>
-        </div>
-        <div className={styles.heroFoot}>
-          <a href={DIRECTIONS} target="_blank" rel="noopener noreferrer"><FaLocationDot aria-hidden="true" />Klaprozenweg 36a</a>
-          <a href="#intro" className={styles.discover}>{copy.explore}<FaArrowDown aria-hidden="true" /></a>
-          <span><FaClock aria-hidden="true" />{t.hours.tueSun} · 15:00–22:00</span>
-        </div>
       </section>
 
       </div>
 
-      <nav className={styles.sectionNav} aria-label={copy.explore}>
-        <div className={styles.sectionNavInner}>
-          {sections.map((section) => <a key={section.id} href={`#${section.id}`} aria-current={activeSection === section.id ? "location" : undefined}>{section.label}</a>)}
-          <Link href="/reservations" className={styles.navReserve}><FaCalendarCheck aria-hidden="true" />{copy.reserve}</Link>
+      <section id="intro" tabIndex={-1} data-scene="opening" data-opening-chapter className={`${styles.section} ${styles.intro} ${styles.opening}`} aria-labelledby="home-title">
+        <div className={styles.openingHeading}>
+          <p className={styles.eyebrow} data-reveal="visible" data-reveal-kind="quiet">{copy.introduction}</p>
+          <h1 id="home-title"><span className={styles.titleMask} data-reveal="visible" data-reveal-kind="title"><span>{lang === "nl" ? "Indiaas restaurant" : "Indian restaurant"}</span></span>{" "}<span className={styles.titleMask} data-reveal="visible" data-reveal-kind="title" data-reveal-delay="110"><span>in Amsterdam-Noord</span></span></h1>
         </div>
-      </nav>
-
-      <section id="intro" className={`${styles.section} ${styles.intro}`} aria-labelledby="intro-title">
-        <div data-reveal="visible"><p className={styles.eyebrow}>{t.home.aboutOverline}</p><h2 id="intro-title">{copy.welcome}</h2></div>
-        <div data-reveal="visible"><p className={styles.lead}>{copy.welcomeText}</p><div className={styles.facts}><span><FaFireBurner aria-hidden="true" />{copy.food}</span><span><FaUsers aria-hidden="true" />{copy.family}</span><span><FaLocationDot aria-hidden="true" />{copy.location}</span></div></div>
+        <div className={styles.openingContent}>
+          <div data-reveal="visible" data-reveal-kind="left" data-reveal-delay="100"><p className={styles.eyebrow}>{t.home.aboutOverline}</p><h2>{copy.welcome}</h2><div className={styles.facts}><span><FaFireBurner aria-hidden="true" />{copy.food}</span><span><FaUsers aria-hidden="true" />{copy.family}</span></div></div>
+          <div data-reveal="visible" data-reveal-kind="rise" data-reveal-delay="180"><p className={styles.lead}>{copy.welcomeText}</p><div className={styles.openingDetails}><a href={DIRECTIONS} target="_blank" rel="noopener noreferrer"><FaLocationDot aria-hidden="true" />Klaprozenweg 36a, Amsterdam-Noord</a><span><FaClock aria-hidden="true" />{t.hours.tueSun} · 15:00–22:00</span></div><div className={styles.actions}><Link href="/reservations" className={styles.primaryButton}><FaCalendarCheck aria-hidden="true" />{copy.reserve}</Link><a href="tel:+31203412995" className={styles.openingPhone}><FaPhone aria-hidden="true" />{copy.call}</a></div></div>
+        </div>
       </section>
 
-      <section id="menu" data-section className={`${styles.section} ${styles.menuSection}`} aria-labelledby="menu-title">
-        <div className={styles.menuVisual} data-reveal="visible">
-          <div className={styles.menuPhoto} data-tilt><Image src="/brand/shah-table-v1.webp" alt={copy.dishAlt} fill sizes="(min-width: 1000px) 42vw, 100vw" /><span className={styles.photoLabel}>{copy.fromMenu}<FaFireBurner aria-hidden="true" /></span></div>
+      <nav className={styles.sectionNav} aria-label={copy.explore}><div className={styles.sectionNavInner}><span className={styles.chapterLead}>{copy.explore}<FaArrowDown aria-hidden="true" /></span>{sections.map((section, index) => <a key={section.id} href={`#${section.id}`} aria-current={activeSection === section.id ? "location" : undefined}><span aria-hidden="true">0{index + 1}</span>{section.label}</a>)}</div></nav>
+
+      <section id="menu" data-section data-scene="menu" className={`${styles.section} ${styles.menuSection}`} aria-labelledby="menu-title">
+        <div className={styles.menuVisual} data-reveal="visible" data-reveal-kind="left">
+          <div className={styles.menuPhoto} data-tilt><Image data-parallax src="/brand/shah-table-v1.webp" alt={copy.dishAlt} fill sizes="(min-width: 1000px) 42vw, 100vw" /><span className={styles.photoLabel}>{copy.fromMenu}<FaFireBurner aria-hidden="true" /></span></div>
           <div className={styles.photoCaption}><span>Shah Restaurant</span><span>{copy.kitchen}</span></div>
           <p className={styles.menuAside}>{copy.kitchenNote}</p>
           <a href="#atmosphere" className={styles.menuInset} data-tilt><span className={styles.menuInsetPhoto}><Image src="/brand/shah-dining-v1.webp" alt={copy.tableAlt} fill sizes="180px" /></span><span>{copy.table}<FaArrowRight aria-hidden="true" /></span></a>
         </div>
-        <div className={styles.menuContent} data-reveal="visible">
+        <div className={styles.menuContent} data-reveal="visible" data-reveal-kind="rise">
           <p className={styles.eyebrow}>01 / {copy.kitchen}</p><h2 id="menu-title">{copy.menuTitle}</h2><p className={styles.sectionDescription}>{copy.menuText}</p>
           <div className={styles.menuSearch}><FaMagnifyingGlass aria-hidden="true" /><label className="sr-only" htmlFor="dish-search">{copy.searchMenu}</label><input ref={searchRef} id="dish-search" type="search" autoComplete="off" maxLength={120} spellCheck={false} enterKeyHint="search" value={search} placeholder={copy.searchPlaceholder} onChange={(event) => { setSearch(event.target.value); setShowAll(false); }} />{search && <button type="button" onClick={() => { setSearch(""); setShowAll(false); searchRef.current?.focus(); }} aria-label={copy.clearSearch} title={copy.clearSearch}><FaXmark aria-hidden="true" /></button>}</div>
           <CatalogFeedback />
@@ -194,7 +155,7 @@ export default function Home() {
           </fieldset>
           <div className={styles.menuMeta}><span>{copy.menuSelection}</span><span>{hydrated ? `${matchedDishes.length} ${copy.menuCount}` : copy.menuLoading}</span></div>
           <div className={styles.menuResults} aria-busy={!hydrated || search !== deferredSearch}>
-            {!hydrated ? <div className={styles.menuSkeleton} role="status" aria-label={copy.menuLoading}>{[0, 1, 2, 3].map((index) => <span key={index} />)}</div> : visibleDishes.length ? <ul className={styles.dishes}>
+            {!hydrated ? <div className={styles.menuSkeleton} role="status" aria-label={copy.menuLoading}>{[0, 1, 2, 3].map((index) => <span key={index} />)}</div> : visibleDishes.length ? <ul data-dish-list className={styles.dishes}>
               {visibleDishes.map((product) => <li key={product.id}><button type="button" className={styles.dish} onClick={() => setSelectedProduct(product)} aria-label={`${copy.details}: ${product.name}`}>
                 <DishPhoto product={product} /><span className={styles.dishBody}><span className={styles.dishHeading}><span>{product.name}</span><span className={styles.price}>{currency.format(product.price)}</span></span>
                 <span className={styles.dishDescription}>{(lang === "nl" && product.descriptionNl) || product.description}</span>{(product.isPopular || product.isNew) && <span className={styles.dishTags}>{product.isPopular && <span><FaStar aria-hidden="true" />{copy.popular}</span>}{product.isNew && <span>{copy.newDish}</span>}</span>}</span><FaArrowRight className={styles.dishArrow} aria-hidden="true" />
@@ -208,47 +169,47 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="atmosphere" data-section className={styles.gallerySection} aria-labelledby="gallery-title">
+      <section id="atmosphere" data-section data-scene="gallery" className={styles.gallerySection} aria-labelledby="gallery-title">
         <div className={styles.sectionHeading} data-reveal="visible"><div><p className={styles.eyebrow}>02 / {copy.atmosphere}</p><h2 id="gallery-title">{copy.galleryTitle}</h2></div><p>{copy.galleryText}</p></div>
         <div className={styles.galleryGrid}>
-          {photos.slice(0, 3).map((photo, index) => <figure key={photo.src} className={styles.galleryItem} data-reveal="visible"><button type="button" data-tilt onClick={() => setPhotoIndex(index)} aria-label={`${copy.enlarge}: ${photo.title}`} title={`${copy.enlarge}: ${photo.title}`}><Image src={photo.src} alt={photo.alt} fill sizes={index === 0 ? "(min-width: 800px) 50vw, 100vw" : "(min-width: 800px) 25vw, 50vw"} /><span className={styles.galleryPhotoNumber}>0{index + 1}</span><span className={styles.expandIcon}><FaExpand aria-hidden="true" /></span></button><figcaption><span>{photo.title}</span><span>0{index + 1}</span></figcaption></figure>)}
+          {photos.slice(0, 3).map((photo, index) => <figure key={photo.src} className={styles.galleryItem} data-reveal="visible" data-reveal-kind="frame" data-reveal-delay={index * 110}><button type="button" data-tilt onClick={() => setPhotoIndex(index)} aria-label={`${copy.enlarge}: ${photo.title}`} title={`${copy.enlarge}: ${photo.title}`}><Image data-parallax src={photo.src} alt={photo.alt} fill sizes={index === 0 ? "(min-width: 800px) 50vw, 100vw" : "(min-width: 800px) 25vw, 50vw"} /><span className={styles.galleryPhotoNumber}>0{index + 1}</span><span className={styles.expandIcon}><FaExpand aria-hidden="true" /></span></button><figcaption><span>{photo.title}</span><span>0{index + 1}</span></figcaption></figure>)}
         </div>
         {isAdmin && <div className={styles.galleryFooter}><Link href="/events/gallery" className={styles.textLink}>{copy.fullGallery}<FaArrowRight aria-hidden="true" /></Link></div>}
       </section>
 
-      <section id="story" data-section className={styles.storySection} aria-labelledby="story-title">
+      <section id="story" data-section data-scene="story" className={styles.storySection} aria-labelledby="story-title">
         <div className={styles.storyInner}>
-          <div className={styles.storyContent} data-reveal="visible"><p className={styles.eyebrow}>03 / {copy.story}</p><h2 id="story-title">{t.home.storyTitle}</h2><p>{t.home.storyText}</p><blockquote>{t.home.storyQuote}</blockquote>{isAdmin && <Link href="/events/about" className={styles.textLink}>{copy.storyLink}<FaArrowRight aria-hidden="true" /></Link>}</div>
-          <figure className={styles.storyPhoto} data-reveal="visible"><div data-tilt><Image src="/brand/shah-room-v1.webp" alt={copy.interiorAlt} fill sizes="(min-width: 900px) 45vw, 100vw" /><BrandLogo variant="wordmark" tone="gold" className={styles.storyPhotoMark} alt="" /></div><figcaption><span>{copy.storyAside}</span><FaFireBurner aria-hidden="true" /></figcaption></figure>
+          <div className={styles.storyContent} data-reveal="visible" data-reveal-kind="left"><p className={styles.eyebrow}>03 / {copy.story}</p><h2 id="story-title">{t.home.storyTitle}</h2><p>{t.home.storyText}</p><blockquote>{t.home.storyQuote}</blockquote>{isAdmin && <Link href="/events/about" className={styles.textLink}>{copy.storyLink}<FaArrowRight aria-hidden="true" /></Link>}</div>
+          <figure className={styles.storyPhoto} data-reveal="visible" data-reveal-kind="right"><div data-tilt><Image data-parallax src="/brand/shah-room-v1.webp" alt={copy.interiorAlt} fill sizes="(min-width: 900px) 45vw, 100vw" /><BrandLogo variant="wordmark" tone="gold" className={styles.storyPhotoMark} alt="" /></div><figcaption><span>{copy.storyAside}</span><FaFireBurner aria-hidden="true" /></figcaption></figure>
         </div>
       </section>
 
-      <section className={`${styles.section} ${styles.eveningSection}`} aria-labelledby="evening-title">
+      <section className={`${styles.section} ${styles.eveningSection}`} data-scene="evening" aria-labelledby="evening-title">
         <div className={styles.sectionHeading} data-reveal="visible"><div><p className={styles.eyebrow}>{copy.tableNote}</p><h2 id="evening-title">{copy.evening}</h2></div></div>
         <div className={styles.eveningGrid}>{[
           { href: "/reservations", title: copy.dine, text: copy.dineText, action: copy.reserve, image: photos[0], Icon: FaCalendarCheck },
           { href: "/order", title: copy.takeaway, text: copy.takeawayText, action: copy.order, image: photos[1], Icon: FaBagShopping },
           { href: "/events", title: copy.gather, text: copy.gatherText, action: copy.exploreEvents, image: photos[4], Icon: FaUsers },
-        ].filter(({ href }) => isAdmin || !href.startsWith("/events")).map(({ href, title, text, action, image, Icon }, index) => <article key={href} className={styles.eveningItem} data-reveal="visible"><Link href={href} className={styles.eveningPhoto} data-tilt aria-label={action}><Image src={image.src} alt={image.alt} fill sizes="(min-width: 701px) 30vw, 100vw" /><span><Icon aria-hidden="true" /></span><span className={styles.eveningNumber}>0{index + 1}</span></Link><h3>{title}</h3><p>{text}</p><Link href={href} className={styles.textLink}>{action}<FaArrowRight aria-hidden="true" /></Link></article>)}</div>
+        ].filter(({ href }) => isAdmin || !href.startsWith("/events")).map(({ href, title, text, action, image, Icon }, index) => <article key={href} className={styles.eveningItem} data-evening-card data-reveal="visible"><Link href={href} className={styles.eveningPhoto} data-tilt aria-label={action}><Image data-parallax src={image.src} alt={image.alt} fill sizes="(min-width: 701px) 30vw, 100vw" /><span><Icon aria-hidden="true" /></span><span className={styles.eveningNumber}>0{index + 1}</span></Link><h3>{title}</h3><p>{text}</p><Link href={href} className={styles.textLink}>{action}<FaArrowRight aria-hidden="true" /></Link></article>)}</div>
       </section>
 
-      {isAdmin && <section className={`${styles.section} ${styles.occasions}`} aria-labelledby="occasions-title">
+      {isAdmin && <section className={`${styles.section} ${styles.occasions}`} data-scene="occasions" aria-labelledby="occasions-title">
         <div data-reveal="visible"><p className={styles.eyebrow}>{copy.occasions}</p><h2 id="occasions-title">{copy.occasionsTitle}</h2><p className={styles.sectionDescription}>{copy.occasionsText}</p></div>
         <div className={styles.occasionLinks} data-reveal="visible">{[{ href: "/events/birthdays", label: copy.birthdays }, { href: "/events/celebrations", label: copy.celebrations }, { href: "/events/company-catering", label: copy.company }].map((occasion, index) => <Link key={occasion.href} href={occasion.href}><span className={styles.occasionNumber}>0{index + 1}</span><span>{occasion.label}</span><FaArrowRight aria-hidden="true" /></Link>)}</div>
       </section>}
 
-      {userReviews.length > 0 && <section className={styles.reviewsSection} aria-labelledby="reviews-title"><div className={styles.sectionHeading}><div><p className={styles.eyebrow}>{t.home.testimonialsOverline}</p><h2 id="reviews-title">{copy.guestTitle}</h2></div><p className={styles.rating}><FaStar aria-hidden="true" /><strong>{avgRating.toFixed(1)} / 5</strong><span>{siteReviews.length} {copy.guestCount}</span></p></div><div className={styles.reviewsGrid}>{userReviews.map((review) => <figure key={review.id}><div className={styles.stars} aria-label={`${review.rating} ${copy.outOf}`}>{[1, 2, 3, 4, 5].map((star) => <FaStar key={star} aria-hidden="true" style={{ opacity: star <= Math.round(review.rating) ? 1 : 0.2 }} />)}</div><blockquote>{review.text}</blockquote><figcaption><strong>{review.userName}</strong><time dateTime={new Date(review.createdAt).toISOString()}>{dateFormat.format(new Date(review.createdAt))}</time></figcaption></figure>)}</div></section>}
+      {userReviews.length > 0 && <section data-scene="reviews" className={styles.reviewsSection} aria-labelledby="reviews-title"><div className={styles.sectionHeading}><div><p className={styles.eyebrow}>{t.home.testimonialsOverline}</p><h2 id="reviews-title">{copy.guestTitle}</h2></div><p className={styles.rating}><FaStar aria-hidden="true" /><strong>{avgRating.toFixed(1)} / 5</strong><span>{siteReviews.length} {copy.guestCount}</span></p></div><div className={styles.reviewsGrid}>{userReviews.map((review) => <figure data-review-card key={review.id}><div className={styles.stars} aria-label={`${review.rating} ${copy.outOf}`}>{[1, 2, 3, 4, 5].map((star) => <FaStar key={star} aria-hidden="true" style={{ opacity: star <= Math.round(review.rating) ? 1 : 0.2 }} />)}</div><blockquote>{review.text}</blockquote><figcaption><strong>{review.userName}</strong><time dateTime={new Date(review.createdAt).toISOString()}>{dateFormat.format(new Date(review.createdAt))}</time></figcaption></figure>)}</div></section>}
 
-      <section id="visit" data-section className={`${styles.section} ${styles.visit}`} aria-labelledby="visit-title">
-        <div data-reveal="visible"><p className={styles.eyebrow}>04 / {copy.visit}</p><h2 id="visit-title">{copy.visitTitle}</h2><p className={styles.sectionDescription}>{copy.visitText}</p><address><FaLocationDot aria-hidden="true" /><span>Klaprozenweg 36a<br />1032 KL Amsterdam</span></address><a href={DIRECTIONS} target="_blank" rel="noopener noreferrer" className={styles.textLink}>{copy.directions}<FaArrowRight aria-hidden="true" /></a><a href={DIRECTIONS} target="_blank" rel="noopener noreferrer" className={styles.visitPhoto} aria-label={copy.directions}><Image src="/brand/shah-bar-v1.webp" alt={copy.barAlt} fill sizes="(min-width: 701px) 40vw, 90vw" /><span><FaLocationDot aria-hidden="true" />Amsterdam-Noord<FaArrowRight aria-hidden="true" /></span></a></div>
-        <div className={styles.visitDetails} data-reveal="visible"><div className={styles.hoursHeading}><h3><FaClock aria-hidden="true" />{copy.hours}</h3>{diningOpen !== null && <span className={styles.openStatus} data-open={diningOpen}>{diningOpen ? (lang === "nl" ? "Open volgens openingstijden" : "Open during scheduled hours") : (lang === "nl" ? "Gesloten volgens openingstijden" : "Closed during scheduled hours")}</span>}</div><dl className={styles.hours}><div><dt>{t.hours.tueSun}</dt><dd>15:00–22:00</dd></div><div><dt>{t.hours.monday}</dt><dd>{t.hours.closed}</dd></div></dl><ArrivalInfo /><h3>{copy.contact}</h3><a href="tel:+31203412995" className={styles.contactLink}><FaPhone aria-hidden="true" />+31 20 341 2995</a><a href="mailto:info@shahrestaurant.nl" className={styles.contactLink}><FaEnvelope aria-hidden="true" />info@shahrestaurant.nl</a><Link href="/reservations" className={styles.primaryButton}><FaCalendarCheck aria-hidden="true" />{copy.reserve}<FaArrowRight aria-hidden="true" /></Link></div>
+      <section id="visit" data-section data-scene="visit" className={`${styles.section} ${styles.visit}`} aria-labelledby="visit-title">
+        <div data-reveal="visible"><p className={styles.eyebrow}>04 / {copy.visit}</p><h2 id="visit-title">{copy.visitTitle}</h2><p className={styles.sectionDescription}>{copy.visitText}</p><address><FaLocationDot aria-hidden="true" /><span>Klaprozenweg 36a<br />1032 KL Amsterdam</span></address><a href={DIRECTIONS} target="_blank" rel="noopener noreferrer" className={styles.textLink}>{copy.directions}<FaArrowRight aria-hidden="true" /></a><a href={DIRECTIONS} target="_blank" rel="noopener noreferrer" className={styles.visitPhoto} aria-label={copy.directions}><Image data-parallax src="/brand/shah-bar-v1.webp" alt={copy.barAlt} fill sizes="(min-width: 701px) 40vw, 90vw" /><span><FaLocationDot aria-hidden="true" />Amsterdam-Noord<FaArrowRight aria-hidden="true" /></span></a></div>
+        <div className={styles.visitDetails}><div className={styles.hoursHeading}><h3><FaClock aria-hidden="true" />{copy.hours}</h3>{diningOpen !== null && <span className={styles.openStatus} data-open={diningOpen}>{diningOpen ? (lang === "nl" ? "Open volgens openingstijden" : "Open during scheduled hours") : (lang === "nl" ? "Gesloten volgens openingstijden" : "Closed during scheduled hours")}</span>}</div><dl className={styles.hours}><div><dt>{t.hours.tueSun}</dt><dd>15:00–22:00</dd></div><div><dt>{t.hours.monday}</dt><dd>{t.hours.closed}</dd></div></dl><ArrivalInfo /><h3>{copy.contact}</h3><a href="tel:+31203412995" className={styles.contactLink}><FaPhone aria-hidden="true" />+31 20 341 2995</a><a href="mailto:info@shahrestaurant.nl" className={styles.contactLink}><FaEnvelope aria-hidden="true" />info@shahrestaurant.nl</a><Link href="/reservations" className={styles.primaryButton}><FaCalendarCheck aria-hidden="true" />{copy.reserve}<FaArrowRight aria-hidden="true" /></Link></div>
       </section>
 
-      <section className={`${styles.section} ${styles.faq}`} aria-labelledby="faq-title"><div data-reveal="visible"><p className={styles.eyebrow}>{copy.faq}</p><h2 id="faq-title">{copy.faqTitle}</h2><a className={styles.faqContact} href="mailto:info@shahrestaurant.nl"><FaEnvelope aria-hidden="true" />{copy.email}<FaArrowRight aria-hidden="true" /></a></div><div className={styles.faqList}>{copy.questions.filter(item => !("adminOnly" in item) || !item.adminOnly || isAdmin).map((item, index) => <details key={item.question} name="visit-questions"><summary><span className={styles.faqNumber}>0{index + 1}</span><span>{item.question}</span><FaChevronDown aria-hidden="true" /></summary><p>{item.answer}</p></details>)}</div></section>
+      <section className={`${styles.section} ${styles.faq}`} data-scene="faq" aria-labelledby="faq-title"><div data-reveal="visible"><p className={styles.eyebrow}>{copy.faq}</p><h2 id="faq-title">{copy.faqTitle}</h2><a className={styles.faqContact} href="mailto:info@shahrestaurant.nl"><FaEnvelope aria-hidden="true" />{copy.email}<FaArrowRight aria-hidden="true" /></a></div><div className={styles.faqList}>{copy.questions.filter(item => !("adminOnly" in item) || !item.adminOnly || isAdmin).map((item, index) => <details key={item.question} name="visit-questions"><summary><span className={styles.faqNumber}>0{index + 1}</span><span>{item.question}</span><FaChevronDown aria-hidden="true" /></summary><p>{item.answer}</p></details>)}</div></section>
 
       <DrinkPartners site="shah" />
 
-      <section className={styles.closing} aria-labelledby="closing-title"><Image src="/brand/shah-dining-v1.webp" alt="" fill sizes="100vw" className={styles.closingImage} /><div className={styles.closingShade} /><div className={styles.closingContent} data-reveal="visible"><BrandLogo variant="mark" tone="gold" className={styles.closingMark} alt="" /><p className={styles.heroEyebrow}>Shah Restaurant</p><h2 id="closing-title">{copy.closing}</h2><p>{copy.closingText}</p><div className={styles.actions}><Link href="/reservations" className={styles.primaryButton}><FaCalendarCheck aria-hidden="true" />{copy.reserve}</Link><a href="tel:+31203412995" className={styles.heroSecondary}><FaPhone aria-hidden="true" />{copy.call}</a></div></div></section>
+      <section className={styles.closing} data-scene="closing" aria-labelledby="closing-title"><Image data-parallax src="/brand/shah-dining-v1.webp" alt="" fill sizes="100vw" className={styles.closingImage} /><div className={styles.closingShade} /><div className={styles.closingContent} data-reveal="visible"><BrandLogo variant="mark" tone="gold" className={styles.closingMark} alt="" /><p className={styles.heroEyebrow}>Shah Restaurant</p><h2 id="closing-title">{copy.closing}</h2><p>{copy.closingText}</p><div className={styles.actions}><Link href="/reservations" className={styles.primaryButton}><FaCalendarCheck aria-hidden="true" />{copy.reserve}</Link><a href="tel:+31203412995" className={styles.heroSecondary}><FaPhone aria-hidden="true" />{copy.call}</a></div></div></section>
 
       <div className={styles.mobileActions}><Link href="/order"><FaUtensils aria-hidden="true" />{copy.order}</Link><Link href="/reservations"><FaCalendarCheck aria-hidden="true" />{copy.reserve}</Link></div>
 

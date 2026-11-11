@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "./LocaleLink";
-import { localePath } from "../lib/locale";
+import { getPublicRoute, localePath } from "../lib/locale";
 import { BrandLogo } from "./BrandLogo";
 import { usePathname, useRouter } from "next/navigation";
 import { writeSessionValue } from "../lib/clientStorage";
@@ -27,6 +27,7 @@ export function Header() {
   const { lang, setLang, t } = useLang();
   const { cart, currentUser } = useStore();
   const pathname = usePathname();
+  const isHome = getPublicRoute(pathname)?.key === "home";
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [eventsOpen, setEventsOpen] = useState(false); // mobile submenu
@@ -38,11 +39,28 @@ export function Header() {
   useEffect(() => {
     const bar = barRef.current;
     if (!bar) return;
-    const resizeObserver = new ResizeObserver(() => {
-      document.documentElement.style.setProperty("--site-header-height", `${bar.getBoundingClientRect().height}px`);
-    });
+    const measure = () => {
+      const height = headerRef.current?.getBoundingClientRect().height ?? bar.getBoundingClientRect().height;
+      document.documentElement.style.setProperty("--site-header-height", `${height}px`);
+    };
+    measure();
+    if (typeof window.ResizeObserver !== "function") {
+      window.addEventListener("resize", measure);
+      return () => window.removeEventListener("resize", measure);
+    }
+    const resizeObserver = new ResizeObserver(measure);
     resizeObserver.observe(bar);
     return () => resizeObserver.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const closeNavigation = () => { setOpen(false); setEventsOpen(false); };
+    window.addEventListener("popstate", closeNavigation);
+    window.addEventListener("shah:film-opening", closeNavigation);
+    return () => {
+      window.removeEventListener("popstate", closeNavigation);
+      window.removeEventListener("shah:film-opening", closeNavigation);
+    };
   }, []);
 
   useEffect(() => {
@@ -126,8 +144,13 @@ export function Header() {
         scrolled ? "shadow-lg shadow-emerald-900/10 dark:shadow-black/40" : ""
       }`}
     >
-      <a href="#main-content" className={styles.skipLink}>{lang === "nl" ? "Ga naar inhoud" : "Skip to content"}</a>
-      <div ref={barRef} className={`${styles.bar} mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8`}>
+      <a href={isHome ? "#intro" : "#main-content"} data-film-skip={isHome ? "true" : undefined} onClick={() => {
+        if (isHome) {
+          window.dispatchEvent(new Event("shah:film-skip"));
+          document.getElementById("intro")?.focus({ preventScroll: true });
+        }
+      }} className={styles.skipLink}>{lang === "nl" ? (isHome ? "Film overslaan en naar inhoud" : "Ga naar inhoud") : (isHome ? "Skip film to content" : "Skip to content")}</a>
+      <div ref={barRef} data-site-header-bar className={`${styles.bar} mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8`}>
         <Link href="/" aria-label="Shah Restaurant · Amsterdam" className={`${styles.brand} group flex items-center gap-3`} onClick={() => { setOpen(false); setEventsOpen(false); }}>
           <BrandLogo className={styles.brandArtwork} alt="" eager />
           <span className={styles.brandCaption}>Restaurant · Amsterdam</span>
@@ -267,7 +290,7 @@ export function Header() {
       </div>
 
       {open && (
-        <div className={`${styles.mobilePanel} animate-fade-up border-t border-slate-200/70 bg-white px-4 py-3 [animation-duration:0.25s] dark:border-emerald-400/15 dark:bg-[#0c0703] xl:hidden`}>
+        <div data-site-mobile-panel className={`${styles.mobilePanel} animate-fade-up border-t border-slate-200/70 bg-white px-4 py-3 [animation-duration:0.25s] dark:border-emerald-400/15 dark:bg-[#0c0703] xl:hidden`}>
           <nav id="mobile-navigation" aria-label={lang === "nl" ? "Mobiele navigatie" : "Mobile navigation"} className="flex flex-col gap-1">
             {links.map((link) =>
               link.children ? (

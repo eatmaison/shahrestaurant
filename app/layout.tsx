@@ -6,6 +6,7 @@ import { publicMetadata, SITE_URL, siteSchema } from "./lib/seo";
 import "./design-system.css";
 import "./optimizations.css";
 import "./accessibility.css";
+import { CinematicSections } from "./components/CinematicSections";
 import { Providers } from "./providers";
 import { Header } from "./components/header";
 import { Footer } from "./components/footer";
@@ -61,8 +62,9 @@ export default async function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         {route && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(siteSchema(initialLang)).replace(/</g, "\\u003c") }} />}
       </head>
-      <body className="flex min-h-full flex-col">
+      <body data-cinematic-page={route && route.key !== "home" ? route.key : undefined} className="flex min-h-full flex-col">
         <Providers initialLang={initialLang}>
+          <CinematicSections />
           <Header />
           <main id="main-content" tabIndex={-1} className="flex-1">{children}</main>
           <Footer />

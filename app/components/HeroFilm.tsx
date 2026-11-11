@@ -5,8 +5,11 @@ import { useRichMedia } from "./HomeDepth";
 import styles from "./HeroFilm.module.css";
 
 type Connection = { effectiveType?: string; saveData?: boolean };
+type FilmState = "waiting" | "loading" | "decoding" | "ready" | "scrubbing" | "complete" | "static" | "bypassed";
+const SCRUB_PORTION = 0.8;
+const FRAME_RATE = 24;
 
-/** Fully prebuffer the original film without blocking the restaurant or its poster. */
+/** Original full-quality film, followed by a decoded final-frame hold on native scroll. */
 export function HeroFilm({ trackRef }: { trackRef: RefObject<HTMLDivElement | null> }) {
   const allowed = useRichMedia();
   const stageRef = useRef<HTMLDivElement>(null);
@@ -14,20 +17,46 @@ export function HeroFilm({ trackRef }: { trackRef: RefObject<HTMLDivElement | nu
   useEffect(() => {
     const track = trackRef.current, stage = stageRef.current;
     if (!track || !stage) return;
-    const connection = (navigator as Navigator & { connection?: Connection }).connection;
-    const slow = connection?.saveData || /^(slow-)?2g$/.test(connection?.effectiveType ?? "");
-    if (!allowed || slow) {
+    let lastNotice = -1;
+    const publish = (state: FilmState, progress: number, complete: boolean) => {
+      const rounded = Number(Math.max(0, Math.min(1, progress)).toFixed(4));
+      const changed = track.dataset.filmState !== state || track.dataset.filmComplete !== String(complete);
+      track.dataset.filmState = state;
+      track.dataset.filmProgress = String(rounded);
+      track.dataset.filmComplete = String(complete);
+      track.dataset.filmBypassed = String(state === "bypassed");
+      if (changed || Math.abs(rounded - lastNotice) >= 0.05 || ((rounded === 0 || rounded === 1) && rounded !== lastNotice)) {
+        lastNotice = rounded;
+        track.dispatchEvent(new CustomEvent("shah:film-state", { bubbles: true, detail: { state, progress: rounded, complete, bypassed: state === "bypassed" } }));
+      }
+    };
+    const staticState = () => {
       track.dataset.unavailable = "true";
       stage.dataset.filmPhase = "static";
+      publish("static", 1, true);
+    };
+    if (typeof window.IntersectionObserver !== "function" || typeof window.ResizeObserver !== "function") {
+      staticState();
+      return;
+    }
+    const connection = (navigator as Navigator & { connection?: Connection }).connection;
+    const slow = connection?.saveData || /^(slow-)?2g$/.test(connection?.effectiveType ?? "");
+    // Read the actual media preference here; the hook also reruns this effect when it changes.
+    const reduced = !window.matchMedia("(prefers-reduced-motion: no-preference)").matches;
+    if (reduced || slow || window.location.hash || window.scrollY > 1) {
+      staticState();
       return;
     }
 
-    delete track.dataset.unavailable;
+    // Until the whole film is ready, keep one normal viewport rather than a still-image runway.
+    track.dataset.unavailable = "true";
     stage.dataset.filmPhase = "waiting";
     delete stage.dataset.filmSource;
     delete stage.dataset.filmTransport;
     delete stage.dataset.filmDownloaded;
-    // This effect owns the film element. React owns only the empty fullscreen stage.
+    publish("waiting", 0, false);
+
+    // This effect owns the video. React owns only its empty fullscreen stage.
     const video = document.createElement("video");
     video.className = styles.film;
     video.muted = true; video.defaultMuted = true; video.playsInline = true;
@@ -35,38 +64,113 @@ export function HeroFilm({ trackRef }: { trackRef: RefObject<HTMLDivElement | nu
     video.disablePictureInPicture = true; video.disableRemotePlayback = true;
     video.setAttribute("aria-hidden", "true");
     video.setAttribute("webkit-playsinline", "");
-    let disposed = false, url = "", frame = 0, visible = true, distance = 1, initialized = false, requested = -1;
-    let hasScrolled = window.scrollY > 1;
-    let deadline = 0, idle = 0, idleFallback = 0, posterPaintFrame = 0;
+    let disposed = false, failed = false, url = "", frame = 0, visible = true, distance = 1, initialized = false, requested = -1;
+    let progress = 0, hasScrolled = false, decodedEnd = false, presentedEnd = false, bypassed = false;
+    let deadline = 0, idle = 0, idleFallback = 0, posterPaintFrame = 0, videoFrame = 0, finalPaintFrame = 0;
     const controller = new AbortController();
     const nativeWebKit = /AppleWebKit/.test(navigator.userAgent) && !/(Chrome|Chromium|Edg|OPR|Android)/.test(navigator.userAgent);
     const measure = () => { distance = Math.max(1, track.offsetHeight - stage.offsetHeight); };
+    const finalTarget = () => Math.max(0, video.duration - 0.001);
+    const cancelEndConfirmation = () => {
+      if (videoFrame && typeof video.cancelVideoFrameCallback === "function") video.cancelVideoFrameCallback(videoFrame);
+      videoFrame = 0;
+      cancelAnimationFrame(finalPaintFrame);
+      finalPaintFrame = 0;
+    };
+    const finishEnd = () => {
+      if (disposed || failed || bypassed || !initialized || progress < 1 || video.seeking || video.readyState < 2 || requested !== finalTarget()) return;
+      decodedEnd = true;
+      publish("complete", 1, true);
+    };
+    const armEndConfirmation = () => {
+      if (disposed || failed || bypassed || decodedEnd || progress < 1) return;
+      if (presentedEnd) { finishEnd(); return; }
+      if (videoFrame || finalPaintFrame) return;
+      if (typeof video.requestVideoFrameCallback === "function") {
+        videoFrame = video.requestVideoFrameCallback((_now, metadata) => {
+          videoFrame = 0;
+          if (disposed || failed || bypassed || progress < 1) return;
+          const finalFrameStart = Math.max(0, video.duration - 1 / FRAME_RATE - 0.005);
+          if (metadata.mediaTime >= finalFrameStart) { presentedEnd = true; finishEnd(); }
+          else armEndConfirmation();
+        });
+      } else if (!video.seeking && video.readyState >= 2) {
+        // Older engines expose decode readiness through seeked/readyState instead.
+        finalPaintFrame = requestAnimationFrame(() => {
+          if (disposed || failed) return;
+          finalPaintFrame = requestAnimationFrame(() => { finalPaintFrame = 0; finishEnd(); });
+        });
+      }
+    };
+    const staticFallback = () => {
+      if (disposed || failed) return;
+      if (initialized) {
+        // Activation locks the runway geometry; skipping must not move later anchors or break rewind.
+        bypassed = true; cancelEndConfirmation();
+        publish(decodedEnd ? "complete" : "bypassed", progress, decodedEnd);
+        return;
+      }
+      failed = true; initialized = false;
+      controller.abort(); clearTimeout(deadline); cancelEndConfirmation();
+      cancelAnimationFrame(frame); frame = 0;
+      delete video.dataset.ready;
+      video.pause(); video.removeAttribute("src"); video.load(); video.remove();
+      staticState();
+    };
     const sync = () => {
       frame = 0;
-      if (!initialized || !visible || document.hidden || video.seeking || video.readyState < 1 || !Number.isFinite(video.duration)) return;
-      const progress = Math.max(0, Math.min(1, -track.getBoundingClientRect().top / distance));
-      const end = Math.max(0, video.duration - 1 / 24), target = Math.min(end, Math.round(progress * end * 24) / 24);
+      if (disposed || failed || !initialized || document.hidden) return;
+      const bounds = track.getBoundingClientRect();
+      progress = Math.max(0, Math.min(1, -bounds.top / (distance * SCRUB_PORTION)));
+      if (progress < 1) {
+        decodedEnd = false; presentedEnd = false;
+        cancelEndConfirmation();
+      }
+      // Leaving an activated film never collapses its native-scroll runway or destroys its media.
+      if (bounds.bottom <= 0) {
+        if (decodedEnd) publish("complete", 1, true);
+        else staticFallback();
+        return;
+      }
+      if (bounds.top < window.innerHeight) bypassed = false;
+      publish(bypassed ? "bypassed" : decodedEnd ? "complete" : progress === 0 ? "ready" : "scrubbing", progress, decodedEnd);
+      if (bypassed) return;
+      if ((!visible && progress < 1) || video.seeking || video.readyState < 1 || !Number.isFinite(video.duration)) return;
+      const end = finalTarget();
+      const target = progress === 1 ? end : Math.min(Math.max(0, end - 1 / FRAME_RATE), Math.round(progress * end * FRAME_RATE) / FRAME_RATE);
       if (target !== requested) {
         requested = target;
-        if (Math.abs(video.currentTime - target) > 1 / 48) { video.currentTime = target; return; }
+        if (Math.abs(video.currentTime - target) > 1 / 48) {
+          if (progress === 1) armEndConfirmation();
+          video.currentTime = target;
+          return;
+        }
       }
-      // Keep the initial poster stable. Reveal only a decoded frame needed after scrolling.
+      // Initial still remains stable; attach the owned Blob video when native scrolling needs it.
       if (hasScrolled && video.readyState >= 2 && !video.seeking) {
         if (video.parentElement !== stage) stage.appendChild(video);
         video.dataset.ready = "true";
       }
+      if (progress === 1) armEndConfirmation();
     };
-    const schedule = () => { if (!frame && visible && !document.hidden) frame = requestAnimationFrame(sync); };
-    const scrolled = () => { if (window.scrollY > 1) hasScrolled = true; schedule(); };
+    const schedule = () => { if (!frame && !disposed && !failed && !document.hidden) frame = requestAnimationFrame(sync); };
+    const scrolled = () => {
+      if (window.scrollY > 1) hasScrolled = true;
+      if (!initialized && hasScrolled) { staticFallback(); return; }
+      schedule();
+    };
+    const hashChanged = () => { if (window.location.hash) staticFallback(); };
     const resized = () => { measure(); schedule(); };
     const visibility = () => {
       if (document.hidden) { cancelAnimationFrame(frame); frame = 0; video.pause(); }
       else schedule();
     };
-    const observer = new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; if (visible) schedule(); });
+    const observer = new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; schedule(); });
     observer.observe(stage);
     const resize = new ResizeObserver(resized); resize.observe(track); resize.observe(stage);
     window.addEventListener("scroll", scrolled, { passive: true });
+    window.addEventListener("hashchange", hashChanged);
+    window.addEventListener("shah:film-skip", staticFallback);
     window.addEventListener("resize", resized);
     document.addEventListener("visibilitychange", visibility);
     video.addEventListener("seeked", schedule);
@@ -76,110 +180,85 @@ export function HeroFilm({ trackRef }: { trackRef: RefObject<HTMLDivElement | nu
         const timeout = window.setTimeout(() => { cleanup(); reject(new Error("Decode timeout")); }, 8000);
         const cleanup = () => {
           clearTimeout(timeout);
-          video!.removeEventListener("seeked", check); video!.removeEventListener("loadeddata", check); video!.removeEventListener("canplay", check);
+          video.removeEventListener("seeked", check); video.removeEventListener("loadeddata", check); video.removeEventListener("canplay", check);
           controller.signal.removeEventListener("abort", aborted);
         };
         const aborted = () => { cleanup(); reject(new DOMException("Aborted", "AbortError")); };
-        const check = () => { if (video && video.readyState >= 2 && !video.seeking) { cleanup(); resolve(); } };
-        video!.addEventListener("seeked", check); video!.addEventListener("loadeddata", check); video!.addEventListener("canplay", check);
+        const check = () => { if (video.readyState >= 2 && !video.seeking) { cleanup(); resolve(); } };
+        video.addEventListener("seeked", check); video.addEventListener("loadeddata", check); video.addEventListener("canplay", check);
         controller.signal.addEventListener("abort", aborted, { once: true });
-        if (Math.abs(video!.currentTime - target) > 1 / 48) video!.currentTime = target;
+        if (Math.abs(video.currentTime - target) > 1 / 48) video.currentTime = target;
         check();
       });
     }
 
-    const staticFallback = () => {
-      initialized = false;
-      delete video.dataset.ready;
-      stage.dataset.filmPhase = "static";
-      track.dataset.unavailable = "true";
-      video.pause(); video.removeAttribute("src"); video.load(); video.remove();
-    };
-
     async function load() {
+      if (disposed || failed) return;
       try {
-        stage!.dataset.filmPhase = "loading";
-        deadline = window.setTimeout(() => { controller.abort(); if (!disposed) staticFallback(); }, 60000);
+        stage!.dataset.filmPhase = "loading"; publish("loading", 0, false);
+        deadline = window.setTimeout(() => { staticFallback(); }, 60000);
         const compact = window.matchMedia("(max-width: 767px)").matches;
         const source = `/brand/shah-hero-scroll-${compact ? "mobile" : "desktop"}-v4.mp4`;
-        video!.dataset.source = source;
-        video!.dataset.transport = nativeWebKit ? "native-prebuffered" : "blob-prebuffered-detached";
-        stage!.dataset.filmSource = source;
-        stage!.dataset.filmTransport = video!.dataset.transport;
+        video.dataset.source = source;
+        video.dataset.transport = nativeWebKit ? "native-prebuffered" : "blob-prebuffered-detached";
+        stage!.dataset.filmSource = source; stage!.dataset.filmTransport = video.dataset.transport;
         const response = await fetch(source, { signal: controller.signal, cache: "force-cache" });
         if (!response.ok) throw new Error("Video unavailable");
-        // Wait for the full, untouched file; avoiding partial network seeks retains the film's smooth-scrub strategy.
         const blob = await response.blob();
-        if (disposed || controller.signal.aborted) return;
+        if (disposed || failed || controller.signal.aborted) return;
         if (!blob.size) throw new Error("Empty video");
-        video!.dataset.downloaded = String(blob.size);
-        stage!.dataset.filmDownloaded = String(blob.size);
+        video.dataset.downloaded = String(blob.size); stage!.dataset.filmDownloaded = String(blob.size);
         if (!nativeWebKit) url = URL.createObjectURL(blob);
-        stage!.dataset.filmPhase = "decoding";
-        video!.muted = true; video!.defaultMuted = true; video!.playsInline = true; video!.setAttribute("webkit-playsinline", "");
-        video!.preload = "auto";
-        video!.src = nativeWebKit ? source : url;
-        // WebKit keeps its original attached native-media warm-up path.
-        // Blob-capable browsers decode off-DOM and attach only when scrolling needs a frame.
-        if (nativeWebKit) stage!.appendChild(video!);
-        video!.load();
-        await video!.play();
-        if (disposed || controller.signal.aborted) return;
-        // Keep the existing Safari decoder warm-up, then return to the original first frame.
-        if (nativeWebKit) await firstFrame(Math.max(0, video!.duration - 1 / 24));
-        video!.pause(); await firstFrame();
-        if (disposed || controller.signal.aborted) return;
+        stage!.dataset.filmPhase = "decoding"; publish("decoding", 0, false);
+        video.preload = "auto"; video.src = nativeWebKit ? source : url;
+        // Preserve the original attached WebKit play/end-to-first decoder warm-up.
+        if (nativeWebKit) stage!.appendChild(video);
+        video.load(); await video.play();
+        if (disposed || failed || controller.signal.aborted) return;
+        if (nativeWebKit) await firstFrame(Math.max(0, video.duration - 1 / FRAME_RATE));
+        video.pause(); await firstFrame();
+        if (disposed || failed || controller.signal.aborted) return;
+        if (window.scrollY > 1 || window.location.hash) { staticFallback(); return; }
         clearTimeout(deadline);
-        initialized = true; measure();
-        stage!.dataset.filmPhase = "ready";
+        initialized = true; delete track!.dataset.unavailable; measure();
+        stage!.dataset.filmPhase = "ready"; publish("ready", 0, false);
         schedule();
-      } catch {
-        if (disposed) return;
-        controller.abort(); clearTimeout(deadline);
-        staticFallback();
-      }
+      } catch { if (!disposed && !failed) staticFallback(); }
     }
 
-    // The only high-priority visual is the poster. Begin the optional full-quality film after it settles.
     const poster = track.querySelector<HTMLImageElement>('img[fetchpriority="high"]') ?? track.querySelector<HTMLImageElement>("picture img");
     const queueFilm = () => {
-      if (disposed) return;
+      if (disposed || failed) return;
       const scheduleIdle = window.requestIdleCallback;
       if (typeof scheduleIdle === "function") idle = scheduleIdle.call(window, () => { void load(); }, { timeout: 1500 });
       else idleFallback = window.setTimeout(() => { void load(); }, 250);
     };
     const afterPosterPaint = () => {
-      if (disposed) return;
+      if (disposed || failed) return;
       const decoded = poster && typeof poster.decode === "function" ? poster.decode().catch(() => {}) : Promise.resolve();
       void decoded.then(() => {
-        if (disposed) return;
-        // Let the decoded critical image paint before starting optional full-file work.
+        if (disposed || failed) return;
         posterPaintFrame = requestAnimationFrame(() => {
-          if (disposed) return;
-          posterPaintFrame = requestAnimationFrame(() => {
-            posterPaintFrame = 0;
-            if (!disposed) queueFilm();
-          });
+          if (disposed || failed) return;
+          posterPaintFrame = requestAnimationFrame(() => { posterPaintFrame = 0; if (!disposed && !failed) queueFilm(); });
         });
       });
     };
     const posterSettled = () => {
-      poster?.removeEventListener("load", posterSettled);
-      poster?.removeEventListener("error", posterSettled);
+      poster?.removeEventListener("load", posterSettled); poster?.removeEventListener("error", posterSettled);
       afterPosterPaint();
     };
     if (!poster || poster.complete) afterPosterPaint();
     else { poster.addEventListener("load", posterSettled, { once: true }); poster.addEventListener("error", posterSettled, { once: true }); }
 
     return () => {
-      disposed = true; controller.abort(); clearTimeout(deadline); clearTimeout(idleFallback);
-      cancelAnimationFrame(posterPaintFrame);
-      if (idle && "cancelIdleCallback" in window) window.cancelIdleCallback(idle);
+      disposed = true; failed = true; controller.abort();
+      clearTimeout(deadline); clearTimeout(idleFallback); cancelAnimationFrame(posterPaintFrame); cancelEndConfirmation();
+      if (idle && typeof window.cancelIdleCallback === "function") window.cancelIdleCallback(idle);
       poster?.removeEventListener("load", posterSettled); poster?.removeEventListener("error", posterSettled);
       cancelAnimationFrame(frame); observer.disconnect(); resize.disconnect();
-      window.removeEventListener("scroll", scrolled); window.removeEventListener("resize", resized);
+      window.removeEventListener("scroll", scrolled); window.removeEventListener("hashchange", hashChanged); window.removeEventListener("shah:film-skip", staticFallback); window.removeEventListener("resize", resized);
       document.removeEventListener("visibilitychange", visibility); video.removeEventListener("seeked", schedule);
-      delete video.dataset.ready;
       video.pause(); video.removeAttribute("src"); video.load(); video.remove();
       if (url) URL.revokeObjectURL(url);
     };
