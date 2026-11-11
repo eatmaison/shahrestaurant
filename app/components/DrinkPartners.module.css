@@ -16,8 +16,14 @@
 .section .title { margin: 0; max-width: 560px; font-size: clamp(30px, 3.2vw, 44px); line-height: 1.15; font-weight: 500; color: #fff; text-wrap: balance; }
 .section[data-style="shah"] .title { font-family: var(--font-cormorant), Georgia, serif; font-size: clamp(36px, 3.7vw, 52px); }
 .section .introduction { margin: 0; font-size: 15px; line-height: 1.85; color: #d0d8d2; }
-.grid { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
-.partner { min-width: 0; }
+.viewport { max-width: 100%; overflow-x: auto; scrollbar-width: thin; scrollbar-color: var(--partner-accent) transparent; overscroll-behavior-x: contain; padding-bottom: 8px; }
+.track { display: flex; width: max-content; gap: 24px; }
+.group { list-style: none; padding: 0; margin: 0; display: flex; gap: 24px; }
+.partner { flex: 0 0 clamp(220px, calc(25vw - 34px), 278px); width: clamp(220px, calc(25vw - 34px), 278px); min-width: 0; }
+.controls { display: flex; justify-content: flex-end; gap: 8px; margin-top: 20px; }
+.controls button { min-width: 48px; min-height: 48px; padding: 8px 16px; border: 1px solid currentColor; border-radius: 3px; background: transparent; color: var(--partner-accent); font: inherit; font-size: 14px; cursor: pointer; }
+.controls button:disabled { cursor: default; }
+.section:not([data-enhanced="true"]) :is(.clone,.controls) { display: none; }
 .logoPanel { display: flex; align-items: center; justify-content: center; height: 144px; padding: 24px; border: 1px solid #ffffff1f; border-radius: 10px; background: #1a1f1d; }
 .logoPanel[data-light="true"] { background: #f6f5ef; border-color: #f6f5ef; }
 .section .logo { display: block; width: 100%; max-width: 190px; height: auto; max-height: 92px; object-fit: contain; }
@@ -28,11 +34,10 @@
 .links { display: flex; flex-wrap: wrap; gap: 12px 28px; }
 .links a { display: inline-flex; align-items: center; justify-content: space-between; min-height: 44px; gap: 16px; padding-block: 8px; color: var(--partner-accent); font-size: 14px; font-weight: 600; text-decoration: underline; text-decoration-color: #ffffff59; text-underline-offset: 6px; }
 .links a:hover { color: #fff; text-decoration-color: currentColor; }
-.links a:focus-visible { outline: 2px solid var(--partner-accent); outline-offset: 5px; border-radius: 2px; }
+.links a:focus-visible, .controls button:focus-visible, .viewport:focus-visible { outline: 2px solid var(--partner-accent); outline-offset: 5px; border-radius: 2px; }
 @media (max-width: 850px) {
   .heading { grid-template-columns: 1fr; gap: 20px; }
   .introduction { max-width: 650px; }
-  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 20px; }
   .section[data-style="eattogo"] { margin-inline: 16px; }
 }
 @media (max-width: 480px) {
@@ -40,7 +45,7 @@
   .section[data-style="eattogo"] { padding-inline: 16px; border-radius: 20px; }
   .heading { margin-bottom: 28px; }
   .section .introduction { font-size: 14px; line-height: 1.8; }
-  .grid { gap: 24px 16px; }
+  .track, .group { gap: 16px; }
   .logoPanel { height: 112px; padding: 18px; }
   .section .logo { max-height: 76px; }
   .section .brand { margin-top: 16px; font-size: 16px; }

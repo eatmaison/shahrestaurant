@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "./LocaleLink";
+import { useEffect, useId, useRef, useState, type KeyboardEvent } from "react";
 import { useLang } from "../providers";
 import styles from "./DrinkPartners.module.css";
 
@@ -39,8 +40,82 @@ const introductions = {
 export function DrinkPartners({ site }: { site: Site }) {
   const { lang } = useLang();
   const nl = lang === "nl";
+  const railId = useId();
+  const railRef = useRef<HTMLDivElement>(null);
+  const groupRef = useRef<HTMLUListElement>(null);
+  const [ready, setReady] = useState(false);
+  const [paused, setPaused] = useState(false);
+  const [staticMotion, setStaticMotion] = useState(true);
+
+  useEffect(() => {
+    const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let disposed = false;
+    const update = () => setStaticMotion(preference.matches || typeof window.IntersectionObserver !== "function" || typeof window.ResizeObserver !== "function");
+    queueMicrotask(() => { if (!disposed) { update(); setReady(true); } });
+    preference.addEventListener("change", update);
+    return () => { disposed = true; preference.removeEventListener("change", update); };
+  }, []);
+
+  useEffect(() => {
+    const rail = railRef.current, group = groupRef.current;
+    if (!rail || !group || !ready || paused || staticMotion) return;
+    let frame = 0, previous = 0, distance = 0, visible = false, position = rail.scrollLeft;
+    const stop = () => { cancelAnimationFrame(frame); frame = 0; previous = 0; rail.dataset.partnerRunning = "false"; };
+    const schedule = () => {
+      if (!visible || document.hidden || distance <= 0) { stop(); return; }
+      if (!frame) frame = requestAnimationFrame(tick);
+    };
+    const tick = (time: number) => {
+      frame = 0;
+      if (!visible || document.hidden) { stop(); return; }
+      if (previous) {
+        position = (position + Math.min(64, time - previous) * 0.028) % distance;
+        rail.scrollLeft = position;
+      }
+      previous = time;
+      rail.dataset.partnerRunning = "true";
+      schedule();
+    };
+    const measure = () => {
+      distance = group.getBoundingClientRect().width + parseFloat(getComputedStyle(group.parentElement!).columnGap || "0");
+      if (distance > 0) { position = rail.scrollLeft % distance; rail.scrollLeft = position; }
+      schedule();
+    };
+    const observer = new IntersectionObserver(([entry]) => { visible = entry.isIntersecting && entry.intersectionRatio >= 0.1; schedule(); }, { threshold: 0.1 });
+    const resize = new ResizeObserver(measure);
+    observer.observe(rail); resize.observe(rail); resize.observe(group); measure();
+    document.addEventListener("visibilitychange", schedule);
+    return () => { stop(); observer.disconnect(); resize.disconnect(); document.removeEventListener("visibilitychange", schedule); };
+  }, [ready, paused, staticMotion]);
+
+  const move = (direction: number) => {
+    setPaused(true);
+    const rail = railRef.current, group = groupRef.current;
+    if (rail && group) {
+      const step = (group.firstElementChild?.getBoundingClientRect().width ?? 220) + parseFloat(getComputedStyle(group).columnGap || "0");
+      rail.scrollBy({ left: direction * step, behavior: staticMotion ? "instant" : "smooth" });
+    }
+  };
+  const keyMove = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (event.target !== event.currentTarget) return;
+    if (event.key === "ArrowLeft" || event.key === "ArrowRight") { event.preventDefault(); move(event.key === "ArrowLeft" ? -1 : 1); }
+    else if (event.key === "Home" || event.key === "End") {
+      event.preventDefault(); setPaused(true);
+      const rail = railRef.current;
+      if (rail) rail.scrollTo({ left: event.key === "Home" ? 0 : Math.max(0, (groupRef.current?.scrollWidth ?? 0) - rail.clientWidth), behavior: "instant" });
+    }
+  };
+  const card = (partner: typeof partners[number], clone = false) => <>
+    <div className={styles.logoPanel} data-light={partner.light}>
+      {/* Exact partner artwork: lossless AVIF is 3x larger than these WebPs. */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img className={styles.logo} src={`/partners/${partner.file}-v1.webp`} alt={clone ? "" : `${partner.name} logo`} width={partner.width} height={partner.height} loading="lazy" decoding="async" />
+    </div>
+    <h3 className={styles.brand}>{partner.name}</h3>
+    <p className={styles.description}>{partner[nl ? "nl" : "en"]}</p>
+  </>;
   return (
-    <section id="drankenpartners" className={styles.section} data-style={site} aria-labelledby="drink-partners-title">
+    <section id="drankenpartners" className={styles.section} data-style={site} data-enhanced={ready} data-paused={paused || staticMotion} aria-labelledby="drink-partners-title">
       <div className={styles.inner}>
         <div className={styles.heading}>
           <div>
@@ -49,19 +124,18 @@ export function DrinkPartners({ site }: { site: Site }) {
           </div>
           <p className={styles.introduction}>{introductions[site][nl ? "nl" : "en"]}</p>
         </div>
-        <ul className={styles.grid}>
-          {partners.map(partner => (
-            <li key={partner.file} className={styles.partner}>
-              <div className={styles.logoPanel} data-light={partner.light}>
-                {/* Exact partner artwork: lossless AVIF is 3x larger than these WebPs. */}
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img className={styles.logo} src={`/partners/${partner.file}-v1.webp`} alt={`${partner.name} logo`} width={partner.width} height={partner.height} loading="lazy" decoding="async" />
-              </div>
-              <h3 className={styles.brand}>{partner.name}</h3>
-              <p className={styles.description}>{partner[nl ? "nl" : "en"]}</p>
-            </li>
-          ))}
-        </ul>
+        <p id={`${railId}-help`} className="sr-only">{nl ? "Drankenpartners. Veeg horizontaal of gebruik de pijltjestoetsen om alle vier te bekijken. Aanraken of toetsenbordfocus pauzeert de beweging." : "Drinks partners. Swipe horizontally or use the arrow keys to explore all four. Touch or keyboard focus pauses the motion."}</p>
+        <div id={railId} ref={railRef} className={styles.viewport} role="region" aria-label={nl ? "Onze vier drankenpartners" : "Our four drinks partners"} aria-describedby={`${railId}-help`} tabIndex={0} onKeyDown={keyMove} onFocus={() => setPaused(true)} onPointerDown={() => setPaused(true)} onWheel={event => { if (event.shiftKey || Math.abs(event.deltaX) > Math.abs(event.deltaY)) setPaused(true); }}>
+          <div className={styles.track}>
+            <ul ref={groupRef} className={styles.group} role="list">{partners.map(partner => <li key={partner.file} className={styles.partner}>{card(partner)}</li>)}</ul>
+            <div className={`${styles.group} ${styles.clone}`} aria-hidden="true" inert>{partners.map(partner => <div key={partner.file} className={styles.partner}>{card(partner, true)}</div>)}</div>
+          </div>
+        </div>
+        <div className={styles.controls}>
+          <button type="button" aria-controls={railId} aria-label={nl ? "Vorige drankenpartner" : "Previous drinks partner"} onClick={() => move(-1)} disabled={!ready}><span aria-hidden="true">←</span></button>
+          <button type="button" aria-controls={railId} onClick={() => setPaused(value => !value)} disabled={!ready || staticMotion}>{staticMotion ? (nl ? "Stilstaand" : "Still") : paused ? (nl ? "Afspelen" : "Play") : (nl ? "Pauzeren" : "Pause")}</button>
+          <button type="button" aria-controls={railId} aria-label={nl ? "Volgende drankenpartner" : "Next drinks partner"} onClick={() => move(1)} disabled={!ready}><span aria-hidden="true">→</span></button>
+        </div>
         <div className={styles.bottom}>
           <p>{nl ? "Benieuwd wat er op de kaart staat?" : "Curious about our menu?"}</p>
           <div className={styles.links}>

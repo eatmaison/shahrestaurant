@@ -43,12 +43,19 @@ export default async function RootLayout({
   const requestHeaders = await headers();
   const initialLang = requestHeaders.get("x-shah-locale") === "en" ? "en" : "nl";
   const route = getPublicRoute(requestHeaders.get("x-shah-path") ?? "");
+  const chapterPhoto = route?.key === "menu" ? "shah-table" : route?.key === "reservations" ? "shah-dining" : null;
   return (
     <html lang={initialLang} suppressHydrationWarning data-scroll-behavior="smooth" className="h-full antialiased">
       <head>
         {route?.key !== "home" && <>
           <link rel="preload" href="/fonts/jost-latin-235d8f8964bf-v1.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
           <link rel="preload" href="/fonts/cormorant-garamond-latin-5d618c462b7a-v1.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        </>}
+        {chapterPhoto && <>
+          {/* Match cinematic.css image-set densities and breakpoints exactly. */}
+          <link rel="preload" as="image" type="image/avif" href={`/brand/restaurant-photos-v1/${chapterPhoto}-1400.avif`} imageSrcSet={`/brand/restaurant-photos-v1/${chapterPhoto}-640.avif 1x, /brand/restaurant-photos-v1/${chapterPhoto}-1400.avif 2x`} media="(max-width: 600px)" fetchPriority="high" />
+          <link rel="preload" as="image" type="image/avif" href={`/brand/restaurant-photos-v1/${chapterPhoto}-1400.avif`} imageSrcSet={`/brand/restaurant-photos-v1/${chapterPhoto}-960.avif 1x, /brand/restaurant-photos-v1/${chapterPhoto}-1400.avif 2x`} media="(600px < width <= 900px)" fetchPriority="high" />
+          <link rel="preload" as="image" type="image/avif" href={`/brand/restaurant-photos-v1/${chapterPhoto}-1400.avif`} media="(width > 900px)" fetchPriority="high" />
         </>}
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         {route?.key === "home" && <>
