@@ -1,0 +1,5 @@
+.arrival { margin-block: 24px; padding-block: 20px; border-block: 1px solid var(--shah-line); }
+.arrival h3 { font-family: var(--font-cormorant), Georgia, serif; font-size: 28px; line-height: 1.2; }
+.arrival p { margin-top: 14px; font-size: 14px; line-height: 1.85; }
+.arrival a { display: flex; align-items: center; min-height: 48px; width: fit-content; text-decoration: underline; text-underline-offset: 4px; font-size: 14px; }
+.arrival a:focus-visible { outline: 3px solid var(--shah-brand-gold); outline-offset: 4px; }

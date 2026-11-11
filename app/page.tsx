@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import Link from "./components/LocaleLink";
 import { BrandLogo } from "./components/BrandLogo";
 import { HeroFilm } from "./components/HeroFilm";
 import { DrinkPartners } from "./components/DrinkPartners";
@@ -15,6 +15,9 @@ import { useLang, useStore } from "./providers";
 import { SITE_ID } from "./lib/data";
 import type { Product } from "./lib/types";
 import { homeContent } from "./lib/homeContent";
+import { MenuSchema } from "./components/MenuSchema";
+import { ArrivalInfo } from "./components/ArrivalInfo";
+import { useRestaurantClock } from "./lib/useRestaurantClock";
 const HomeDialog = dynamic(() => import("./components/HomeDialog").then(module => module.HomeDialog), { ssr: false });
 const RichDescription = dynamic(() => import("./components/RichDescription"), { ssr: false });
 import { useHomeTilt, useRichMedia } from "./components/HomeDepth";
@@ -31,7 +34,9 @@ function DishPhoto({ product, large = false }: { product: Product; large?: boole
 
 export default function Home() {
   const { t, lang } = useLang();
-  const { products, reviews, restaurantStatus, hydrated, currentUser } = useStore();
+  const { products, reviews, hydrated, currentUser } = useStore();
+  const nowLocal = useRestaurantClock();
+  const diningOpen = nowLocal ? new Date(nowLocal.slice(0, 10) + "T12:00:00Z").getUTCDay() !== 1 && nowLocal.slice(11) >= "15:00" && nowLocal.slice(11) < "22:00" : null;
   const isAdmin = currentUser?.role === "admin";
   const copy = homeContent[lang];
   const rootRef = useRef<HTMLDivElement>(null);
@@ -88,7 +93,7 @@ export default function Home() {
           revealObserver.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.08 });
+    }, { rootMargin: "0px 0px 64px 0px", threshold: 0.08 });
     const revealAll = () => {
       if (motionQuery.matches) root.querySelectorAll<HTMLElement>("[data-reveal]").forEach((element) => { element.dataset.reveal = "visible"; });
     };
@@ -117,25 +122,37 @@ export default function Home() {
     setPhotoIndex((index) => ((index ?? 0) + direction + photos.length) % photos.length);
   }
 
-  const reviewsJsonLd = siteReviews.length ? {
-    "@context": "https://schema.org", "@type": "Restaurant", "@id": "https://shahrestaurant.nl/#restaurant", name: "Shah Restaurant",
-    aggregateRating: { "@type": "AggregateRating", ratingValue: Number(avgRating.toFixed(1)), reviewCount: siteReviews.length, bestRating: 5, worstRating: 1 },
-    review: userReviews.map((review) => ({ "@type": "Review", author: { "@type": "Person", name: review.userName }, reviewBody: review.text, reviewRating: { "@type": "Rating", ratingValue: review.rating, bestRating: 5 } })),
-  } : null;
-  const productsJsonLd = {
-    "@context": "https://schema.org", "@type": "ItemList",
-    itemListElement: featured.map((product, index) => ({ "@type": "ListItem", position: index + 1, item: { "@type": "Product", name: product.name, description: product.description, offers: { "@type": "Offer", price: product.price, priceCurrency: "EUR", url: `https://shahrestaurant.nl/order?dish=${encodeURIComponent(product.id)}` } } })),
+  const faqJsonLd = {
+    "@context": "https://schema.org", "@type": "FAQPage",
+    mainEntity: copy.questions.filter(item => !("adminOnly" in item) || !item.adminOnly || isAdmin).map(item => ({
+      "@type": "Question", name: item.question, acceptedAnswer: { "@type": "Answer", text: item.answer },
+    })),
   };
 
   return (
     <div ref={rootRef} className={styles.home} data-motion={richMedia ? "on" : "off"} data-media={richMedia ? "scrub" : "static"}>
       <div className={styles.scrollProgress} aria-hidden="true" />
-      <h1 id="home-title" className="sr-only">Shah Restaurant</h1>
       <div ref={heroScrollRef} className={styles.heroScroll}>
       <section className={styles.hero} aria-labelledby="home-title">
         <div className={styles.heroMedia}>
-          <picture style={{ display: "block", position: "relative", width: "100%", height: "100%" }}><source media="(max-width: 767px)" srcSet="/brand/shah-hero-poster-mobile-v4.webp" /><Image src="/brand/shah-hero-poster-desktop-v4.webp" alt={lang === "nl" ? "De entree en het terras van Shah Restaurant in Amsterdam-Noord" : "The entrance and terrace of Shah Restaurant in Amsterdam-Noord"} fill loading="eager" fetchPriority="high" sizes="100vw" className={styles.heroImage} /></picture>
+          <picture style={{ display: "block", position: "relative", width: "100%", height: "100%" }}>
+            <source media="(max-width: 767px)" type="image/avif" srcSet="/brand/shah-hero-poster-mobile-delivery-v1-360.avif 360w, /brand/shah-hero-poster-mobile-delivery-v1.avif 608w" sizes="100vw" />
+            <source media="(max-width: 767px)" type="image/webp" srcSet="/brand/shah-hero-poster-mobile-delivery-v1-360.webp 360w, /brand/shah-hero-poster-mobile-delivery-v1.webp 608w" sizes="100vw" />
+            <source type="image/avif" srcSet="/brand/shah-hero-poster-desktop-delivery-v1-960.avif 960w, /brand/shah-hero-poster-desktop-delivery-v1.avif 1600w" sizes="100vw" />
+            <source type="image/webp" srcSet="/brand/shah-hero-poster-desktop-delivery-v1-960.webp 960w, /brand/shah-hero-poster-desktop-delivery-v1.webp 1600w" sizes="100vw" />
+            {/* Native picture keeps the selected responsive poster as the film fallback. */}
+            <img src="/brand/shah-hero-poster-desktop-delivery-v1.webp" alt={lang === "nl" ? "De entree en het terras van Shah Restaurant in Amsterdam-Noord" : "The entrance and terrace of Shah Restaurant in Amsterdam-Noord"} width={1600} height={900} loading="eager" decoding="async" fetchPriority="high" className={styles.heroImage} />
+          </picture>
           <HeroFilm trackRef={heroScrollRef} />
+        </div>
+        <div className={styles.heroInfo}>
+          <p className={styles.heroEyebrow}>Shah Restaurant</p>
+          <h1 id="home-title">{lang === "nl" ? "Indiaas restaurant in Amsterdam-Noord" : "Indian restaurant in Amsterdam-Noord"}</h1>
+          <p>Klaprozenweg 36a · {t.hours.tueSun} 15:00–22:00</p>
+          <div className={styles.actions}>
+            <Link href="/reservations" className={styles.primaryButton}><FaCalendarCheck aria-hidden="true" />{copy.reserve}</Link>
+            <a href="tel:+31203412995" className={styles.heroSecondary}><FaPhone aria-hidden="true" />{copy.call}</a>
+          </div>
         </div>
         <div className={styles.heroFoot}>
           <a href={DIRECTIONS} target="_blank" rel="noopener noreferrer"><FaLocationDot aria-hidden="true" />Klaprozenweg 36a</a>
@@ -224,7 +241,7 @@ export default function Home() {
 
       <section id="visit" data-section className={`${styles.section} ${styles.visit}`} aria-labelledby="visit-title">
         <div data-reveal="visible"><p className={styles.eyebrow}>04 / {copy.visit}</p><h2 id="visit-title">{copy.visitTitle}</h2><p className={styles.sectionDescription}>{copy.visitText}</p><address><FaLocationDot aria-hidden="true" /><span>Klaprozenweg 36a<br />1032 KL Amsterdam</span></address><a href={DIRECTIONS} target="_blank" rel="noopener noreferrer" className={styles.textLink}>{copy.directions}<FaArrowRight aria-hidden="true" /></a><a href={DIRECTIONS} target="_blank" rel="noopener noreferrer" className={styles.visitPhoto} aria-label={copy.directions}><Image src="/brand/shah-bar-v1.webp" alt={copy.barAlt} fill sizes="(min-width: 701px) 40vw, 90vw" /><span><FaLocationDot aria-hidden="true" />Amsterdam-Noord<FaArrowRight aria-hidden="true" /></span></a></div>
-        <div className={styles.visitDetails} data-reveal="visible"><div className={styles.hoursHeading}><h3><FaClock aria-hidden="true" />{copy.hours}</h3>{typeof restaurantStatus.isOpen === "boolean" && <span className={styles.openStatus} data-open={restaurantStatus.isOpen}>{restaurantStatus.isOpen ? t.hours.openNow : t.hours.closedNow}</span>}</div><dl className={styles.hours}><div><dt>{t.hours.tueSun}</dt><dd>15:00–22:00</dd></div><div><dt>{t.hours.monday}</dt><dd>{t.hours.closed}</dd></div></dl><h3>{copy.contact}</h3><a href="tel:+31203412995" className={styles.contactLink}><FaPhone aria-hidden="true" />+31 20 341 2995</a><a href="mailto:info@shahrestaurant.nl" className={styles.contactLink}><FaEnvelope aria-hidden="true" />info@shahrestaurant.nl</a><Link href="/reservations" className={styles.primaryButton}><FaCalendarCheck aria-hidden="true" />{copy.reserve}<FaArrowRight aria-hidden="true" /></Link></div>
+        <div className={styles.visitDetails} data-reveal="visible"><div className={styles.hoursHeading}><h3><FaClock aria-hidden="true" />{copy.hours}</h3>{diningOpen !== null && <span className={styles.openStatus} data-open={diningOpen}>{diningOpen ? (lang === "nl" ? "Open volgens openingstijden" : "Open during scheduled hours") : (lang === "nl" ? "Gesloten volgens openingstijden" : "Closed during scheduled hours")}</span>}</div><dl className={styles.hours}><div><dt>{t.hours.tueSun}</dt><dd>15:00–22:00</dd></div><div><dt>{t.hours.monday}</dt><dd>{t.hours.closed}</dd></div></dl><ArrivalInfo /><h3>{copy.contact}</h3><a href="tel:+31203412995" className={styles.contactLink}><FaPhone aria-hidden="true" />+31 20 341 2995</a><a href="mailto:info@shahrestaurant.nl" className={styles.contactLink}><FaEnvelope aria-hidden="true" />info@shahrestaurant.nl</a><Link href="/reservations" className={styles.primaryButton}><FaCalendarCheck aria-hidden="true" />{copy.reserve}<FaArrowRight aria-hidden="true" /></Link></div>
       </section>
 
       <section className={`${styles.section} ${styles.faq}`} aria-labelledby="faq-title"><div data-reveal="visible"><p className={styles.eyebrow}>{copy.faq}</p><h2 id="faq-title">{copy.faqTitle}</h2><a className={styles.faqContact} href="mailto:info@shahrestaurant.nl"><FaEnvelope aria-hidden="true" />{copy.email}<FaArrowRight aria-hidden="true" /></a></div><div className={styles.faqList}>{copy.questions.filter(item => !("adminOnly" in item) || !item.adminOnly || isAdmin).map((item, index) => <details key={item.question} name="visit-questions"><summary><span className={styles.faqNumber}>0{index + 1}</span><span>{item.question}</span><FaChevronDown aria-hidden="true" /></summary><p>{item.answer}</p></details>)}</div></section>
@@ -238,7 +255,8 @@ export default function Home() {
       {currentPhoto && <HomeDialog titleId="photo-title" closeLabel={copy.close} onClose={() => setPhotoIndex(null)} onKeyDown={(event) => { if (event.key === "Home" || event.key === "End") { event.preventDefault(); setPhotoIndex(event.key === "Home" ? 0 : photos.length - 1); } else if (event.key === "ArrowRight" || event.key === "ArrowLeft") { event.preventDefault(); changePhoto(event.key === "ArrowRight" ? 1 : -1); } }}><div className={styles.lightboxPhoto} onTouchStart={(event) => { swipeStart.current = event.touches.length === 1 ? { horizontal: event.touches[0].clientX, vertical: event.touches[0].clientY } : null; }} onTouchCancel={() => { swipeStart.current = null; }} onTouchEnd={(event) => { const start = swipeStart.current; swipeStart.current = null; const end = event.changedTouches[0]; if (start && end && Math.abs(end.clientX - start.horizontal) > 60 && Math.abs(end.clientY - start.vertical) < 50) changePhoto(end.clientX < start.horizontal ? 1 : -1); }}><Image key={currentPhoto.src} src={currentPhoto.src} alt={currentPhoto.alt} fill sizes="90vw" /></div><div className={styles.lightboxFooter}><button type="button" onClick={() => changePhoto(-1)} aria-label={copy.previous} title={copy.previous}><FaArrowLeft aria-hidden="true" /></button><div aria-live="polite"><h2 id="photo-title">{currentPhoto.title}</h2><p>{copy.photo} {(photoIndex ?? 0) + 1} / {photos.length}</p></div><button type="button" onClick={() => changePhoto(1)} aria-label={copy.next} title={copy.next}><FaArrowRight aria-hidden="true" /></button></div><nav className={styles.photoThumbnails} aria-label={copy.photoNavigation}>{photos.map((photo, index) => <button type="button" key={photo.src} aria-label={`${copy.viewPhoto}: ${photo.title}`} title={photo.title} aria-current={index === photoIndex ? "true" : undefined} onClick={() => setPhotoIndex(index)}><Image src={photo.src} alt="" fill sizes="72px" /></button>)}</nav></HomeDialog>}
 
       {selectedProduct && <HomeDialog titleId="dish-title" closeLabel={copy.close} onClose={() => setSelectedProduct(null)}><div className={styles.productDetails}>{selectedProduct.image && <DishPhoto key={selectedProduct.id} product={selectedProduct} large />}<p className={styles.eyebrow}>{selectedProduct.category}</p><h2 id="dish-title">{selectedProduct.name}</h2><p className={styles.productPrice}>{currency.format(selectedProduct.price)}</p><RichDescription html={(lang === "nl" && selectedProduct.detailedDescription?.nl) || selectedProduct.detailedDescription?.en || (lang === "nl" && selectedProduct.descriptionNl) || selectedProduct.description || ""} />{!!ingredients?.length && <><h3>{copy.ingredients}</h3><ul className={styles.ingredientList}>{ingredients.map((ingredient, index) => <li key={`${ingredient}-${index}`}>{ingredient}</li>)}</ul></>}{!!allergens?.length && <><h3>{copy.allergens}</h3><p className={styles.allergenList}>{allergens.join(", ")}</p></>}<p className={styles.allergyNote}>{copy.allergy}</p><Link href={`/order?dish=${encodeURIComponent(selectedProduct.id)}`} className={styles.primaryButton}><FaUtensils aria-hidden="true" />{copy.order}<FaArrowRight aria-hidden="true" /></Link></div></HomeDialog>}
-      {[reviewsJsonLd, productsJsonLd].filter(Boolean).map((schema, index) => <script key={index} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, "\\u003c") }} />)}
+      <MenuSchema products={visibleDishes} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd).replace(/</g, "\\u003c") }} />
     </div>
   );
 }
