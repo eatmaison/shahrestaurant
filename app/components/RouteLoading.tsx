@@ -1,7 +1,8 @@
 "use client";
-import { useLang } from "./providers";
-import { BrandLogo } from "./components/BrandLogo";
-export default function Loading() {
+import { useLang } from "../providers";
+import { BrandLogo } from "./BrandLogo";
+/** Reserved for internal route boundaries; public HTML renders without a root loading gate. */
+export default function RouteLoading() {
   const { lang } = useLang();
   return <div role="status" aria-busy="true" style={{ minHeight: "calc(100svh - var(--site-header-height, 102px))" }} className="mx-auto flex max-w-7xl flex-col items-center justify-center gap-8 px-6">
     <BrandLogo variant="wordmark" alt="" eager />

@@ -18,7 +18,7 @@ import {
 } from "react";
 import { checkoutRequestKey, clearCheckoutRequest } from "./lib/checkoutRequest";
 import { translations, type Dictionary } from "./lib/translations";
-import { DEFAULT_BRAND_CONFIGS } from "./lib/data";
+import { DEFAULT_BRAND_CONFIGS } from "./lib/brandDefaults";
 import { cartKeyForProduct, parseCartKey } from "./lib/cart";
 import { restaurantStatus as getRestaurantStatus, type RestaurantOpenOverride, type RestaurantStatus } from "./lib/openingHours";
 import type { AccountType, BrandConfig, GrillSideChoice, Lang, MenuUpgrades, Order, OrderFulfillment, OrderSchedule, OrderStatus, Product, ProductContent, ProductTarget, RecentVisitor, Reservation, Review, SocialLink, SocialPlatform, User, VipPurchase, VipRequest } from "./lib/types";

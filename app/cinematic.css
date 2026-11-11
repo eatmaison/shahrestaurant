@@ -9,6 +9,48 @@ body[data-cinematic-page] main > nav[aria-label] > a { text-decoration-color: co
 body[data-cinematic-page] main .gold-rule { height: 1px; background: linear-gradient(90deg, transparent, var(--shah-brand-gold), transparent); }
 body[data-cinematic-page] main .lux-overline { letter-spacing: .19em; font-size: 11px; }
 
+/* Prebuilt local photos retain the same crops; unsupported image-set falls back to WebP. */
+body[data-cinematic-page="menu"] { --cinema-menu-photo: url('/brand/restaurant-photos-v1/shah-table-1400.webp'); --cinema-menu-placeholder: url("data:image/webp;base64,UklGRnYAAABXRUJQVlA4IGoAAABwBACdASoUAA0APxFysFAsJqSisAgBgCIJZgCdMoR3ACAwpvn1n0rlI9YnAAD+pgelZWUZX1IiOg5ai3/t5/Pf1SPfMYJgNJdbQd0qJgj1MtThcO9ptp0XSZbxy6gyv7XNTQSrhSN2lBgA"); }
+body[data-cinematic-page="reservations"] {
+  --cinema-reservation-photo: url('/brand/restaurant-photos-v1/shah-dining-1400.webp'); --cinema-reservation-placeholder: url("data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAACQAwCdASoUAA0APxFysFAsJqSisAgBgCIJYwCsAAwD8wDHVUR8AMljZHGTB0pUj71aaBOVOYP9A4J/yvuOUEBLvlpGVEc6exk8b6rBfz+kiHhjaoDyyAAA");
+  --cinema-location-photo: url('/brand/restaurant-photos-v1/shah-room-1200.webp'); --cinema-location-placeholder: url("data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAACwBACdASoUAB4APxF0sVAsJySisAgBgCIJQBfJA3Y6/GSkl6KRV+XLMwJ68veAAPxdVjOYiU0eqP8jotoHmyc9kuUSYkCoTopPI3xWdoGMjZis52PoVGJiExhSNlKnJHSjW56+LgZ6PP9B3hqsQH5vrLGFhp8RQfmtGkAA");
+}
+@supports (background-image: image-set(url("") type("image/avif"))) {
+  body[data-cinematic-page="menu"] { --cinema-menu-photo: image-set(url('/brand/restaurant-photos-v1/shah-table-1400.avif') type('image/avif'), url('/brand/restaurant-photos-v1/shah-table-1400.webp') type('image/webp')); }
+  body[data-cinematic-page="reservations"] {
+    --cinema-reservation-photo: image-set(url('/brand/restaurant-photos-v1/shah-dining-1400.avif') type('image/avif'), url('/brand/restaurant-photos-v1/shah-dining-1400.webp') type('image/webp'));
+    --cinema-location-photo: image-set(url('/brand/restaurant-photos-v1/shah-room-1200.avif') type('image/avif'), url('/brand/restaurant-photos-v1/shah-room-1200.webp') type('image/webp'));
+  }
+}
+@media (max-width: 900px) {
+  body[data-cinematic-page="menu"] { --cinema-menu-photo: url('/brand/restaurant-photos-v1/shah-table-960.webp'); }
+  body[data-cinematic-page="reservations"] {
+    --cinema-reservation-photo: url('/brand/restaurant-photos-v1/shah-dining-960.webp');
+    --cinema-location-photo: url('/brand/restaurant-photos-v1/shah-room-960.webp');
+  }
+  @supports (background-image: image-set(url("") type("image/avif"))) {
+    body[data-cinematic-page="menu"] { --cinema-menu-photo: image-set(url('/brand/restaurant-photos-v1/shah-table-960.avif') 1x type('image/avif'), url('/brand/restaurant-photos-v1/shah-table-1400.avif') 2x type('image/avif'), url('/brand/restaurant-photos-v1/shah-table-960.webp') 1x type('image/webp'), url('/brand/restaurant-photos-v1/shah-table-1400.webp') 2x type('image/webp')); }
+    body[data-cinematic-page="reservations"] {
+      --cinema-reservation-photo: image-set(url('/brand/restaurant-photos-v1/shah-dining-960.avif') 1x type('image/avif'), url('/brand/restaurant-photos-v1/shah-dining-1400.avif') 2x type('image/avif'), url('/brand/restaurant-photos-v1/shah-dining-960.webp') 1x type('image/webp'), url('/brand/restaurant-photos-v1/shah-dining-1400.webp') 2x type('image/webp'));
+      --cinema-location-photo: image-set(url('/brand/restaurant-photos-v1/shah-room-960.avif') 1x type('image/avif'), url('/brand/restaurant-photos-v1/shah-room-1200.avif') 2x type('image/avif'), url('/brand/restaurant-photos-v1/shah-room-960.webp') 1x type('image/webp'), url('/brand/restaurant-photos-v1/shah-room-1200.webp') 2x type('image/webp'));
+    }
+  }
+}
+@media (max-width: 600px) {
+  body[data-cinematic-page="menu"] { --cinema-menu-photo: url('/brand/restaurant-photos-v1/shah-table-640.webp'); }
+  body[data-cinematic-page="reservations"] {
+    --cinema-reservation-photo: url('/brand/restaurant-photos-v1/shah-dining-640.webp');
+    --cinema-location-photo: url('/brand/restaurant-photos-v1/shah-room-640.webp');
+  }
+  @supports (background-image: image-set(url("") type("image/avif"))) {
+    body[data-cinematic-page="menu"] { --cinema-menu-photo: image-set(url('/brand/restaurant-photos-v1/shah-table-640.avif') 1x type('image/avif'), url('/brand/restaurant-photos-v1/shah-table-1400.avif') 2x type('image/avif'), url('/brand/restaurant-photos-v1/shah-table-640.webp') 1x type('image/webp'), url('/brand/restaurant-photos-v1/shah-table-1400.webp') 2x type('image/webp')); }
+    body[data-cinematic-page="reservations"] {
+      --cinema-reservation-photo: image-set(url('/brand/restaurant-photos-v1/shah-dining-640.avif') 1x type('image/avif'), url('/brand/restaurant-photos-v1/shah-dining-1400.avif') 2x type('image/avif'), url('/brand/restaurant-photos-v1/shah-dining-640.webp') 1x type('image/webp'), url('/brand/restaurant-photos-v1/shah-dining-1400.webp') 2x type('image/webp'));
+      --cinema-location-photo: image-set(url('/brand/restaurant-photos-v1/shah-room-640.avif') 1x type('image/avif'), url('/brand/restaurant-photos-v1/shah-room-1200.avif') 2x type('image/avif'), url('/brand/restaurant-photos-v1/shah-room-640.webp') 1x type('image/webp'), url('/brand/restaurant-photos-v1/shah-room-1200.webp') 2x type('image/webp'));
+    }
+  }
+}
+
 /* Menu: a wide food-led opening, then a quiet catalogue with sculpted cards. */
 body[data-cinematic-page="menu"] main .order-hero-strip {
   display: block; position: relative; isolation: isolate; overflow: hidden; max-width: none;
@@ -18,7 +60,7 @@ body[data-cinematic-page="menu"] main .order-hero-strip {
 }
 body[data-cinematic-page="menu"] main .order-hero-strip::before {
   content: ""; position: absolute; z-index: -2; inset: -30px; pointer-events: none;
-  background: linear-gradient(90deg, var(--shah-brand-teal) 10%, color-mix(in srgb, var(--shah-brand-teal) 91%, transparent) 42%, color-mix(in srgb, var(--shah-brand-teal) 16%, transparent)), url('/brand/shah-table-v1.webp') right 45% / 62% auto no-repeat;
+  background: linear-gradient(90deg, var(--shah-brand-teal) 10%, color-mix(in srgb, var(--shah-brand-teal) 91%, transparent) 42%, color-mix(in srgb, var(--shah-brand-teal) 16%, transparent)), var(--cinema-menu-photo) right 45% / 62% auto no-repeat, var(--cinema-menu-placeholder) right 45% / 62% auto no-repeat;
   transform: translate3d(0, var(--cinema-parallax, 0px), 0) scale(1.04);
 }
 body[data-cinematic-page="menu"] main .order-hero-strip::after {
@@ -68,7 +110,7 @@ body[data-cinematic-page="reservations"] main .reservation-hero-strip {
 }
 body[data-cinematic-page="reservations"] main .reservation-hero-strip::before {
   content: ""; display: block; position: absolute; inset: -28px; z-index: -1; pointer-events: none;
-  background: linear-gradient(90deg, color-mix(in srgb, var(--shah-brand-teal) 93%, transparent), color-mix(in srgb, var(--shah-brand-teal) 70%, transparent) 52%, color-mix(in srgb, var(--shah-brand-teal) 90%, transparent)), url('/brand/shah-dining-v1.webp') center 52% / cover;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--shah-brand-teal) 93%, transparent), color-mix(in srgb, var(--shah-brand-teal) 70%, transparent) 52%, color-mix(in srgb, var(--shah-brand-teal) 90%, transparent)), var(--cinema-reservation-photo) center 52% / cover, var(--cinema-reservation-placeholder) center 52% / cover;
   transform: translate3d(0, var(--cinema-parallax, 0px), 0) scale(1.04);
 }
 body[data-cinematic-page="reservations"] main .reservation-hero-strip > .relative { max-width: 980px; padding-block: clamp(50px, 6vw, 82px); }
@@ -85,7 +127,9 @@ body[data-cinematic-page="reservations"] main .form-lux label > span { letter-sp
 body[data-cinematic-page="reservations"] main .form-lux > .ornament { padding-bottom: 18px; border-bottom: 1px solid var(--shah-line); }
 body[data-cinematic-page="reservations"] main section > div > .premium-panel:not(:has(.form-lux)) { border-top: 2px solid var(--shah-gold); box-shadow: var(--cinema-shadow); }
 body[data-cinematic-page="reservations"] main .reservation-location { position: relative; isolation: isolate; border: 1px solid color-mix(in srgb, var(--shah-brand-gold) 40%, transparent); box-shadow: var(--cinema-shadow); background: var(--shah-brand-teal); }
-body[data-cinematic-page="reservations"] main .reservation-location::before { content: ""; position: absolute; z-index: -1; inset: -25px; pointer-events: none; background: linear-gradient(110deg, color-mix(in srgb, var(--shah-brand-teal) 95%, transparent), color-mix(in srgb, var(--shah-brand-teal) 79%, transparent)), url('/brand/shah-room-v1.webp') center / cover; transform: translate3d(0, var(--cinema-parallax, 0px), 0) scale(1.04); }
+body[data-cinematic-page="reservations"] main .reservation-location::before { content: ""; position: absolute; z-index: -1; inset: -25px; pointer-events: none; background: linear-gradient(110deg, color-mix(in srgb, var(--shah-brand-teal) 95%, transparent), color-mix(in srgb, var(--shah-brand-teal) 79%, transparent)), var(--cinema-location-photo) center / cover, var(--cinema-location-placeholder) center / cover; transform: translate3d(0, var(--cinema-parallax, 0px), 0) scale(1.04); }
+/* The offscreen decorative photograph waits for the existing observer; text and LQIP stay visible. */
+body[data-cinematic-page="reservations"] main .reservation-location:not([data-cinema-photo-ready="true"])::before { background-image: linear-gradient(110deg, color-mix(in srgb, var(--shah-brand-teal) 95%, transparent), color-mix(in srgb, var(--shah-brand-teal) 79%, transparent)), var(--cinema-location-placeholder), var(--cinema-location-placeholder); }
 body[data-cinematic-page="reservations"] main .reservation-location > .relative { gap: clamp(28px, 4vw, 48px); padding: clamp(28px, 4vw, 44px); }
 body[data-cinematic-page="reservations"] main .reservation-location__info h2 { font-size: clamp(36px, 4vw, 52px); line-height: 1.1; }
 body[data-cinematic-page="reservations"] main .reservation-location__info > .lux-overline { color: var(--shah-brand-gold); }
@@ -158,7 +202,7 @@ body:is([data-cinematic-page="privacy"], [data-cinematic-page="terms"]) main > d
   body[data-cinematic-page="menu"] main .order-hero-strip h1 { margin-top: 12px; font-size: 42px; }
   body[data-cinematic-page="menu"] main .order-hero-strip > p { margin-top: 13px; line-height: 1.7; }
   body[data-cinematic-page="menu"] main .order-hero-strip > .gold-rule { margin-top: 18px; width: 72px; }
-  body[data-cinematic-page="menu"] main .order-hero-strip::before { background: linear-gradient(90deg, color-mix(in srgb, var(--shah-brand-teal) 97%, transparent), color-mix(in srgb, var(--shah-brand-teal) 75%, transparent)), url('/brand/shah-table-v1.webp') 70% center / cover; }
+  body[data-cinematic-page="menu"] main .order-hero-strip::before { background: linear-gradient(90deg, color-mix(in srgb, var(--shah-brand-teal) 97%, transparent), color-mix(in srgb, var(--shah-brand-teal) 75%, transparent)), var(--cinema-menu-photo) 70% center / cover, var(--cinema-menu-placeholder) 70% center / cover; }
   body[data-cinematic-page="menu"] main .order-hero-strip::after { inset: 14px; }
   body[data-cinematic-page="menu"] main .order-hero-strip > p { font-size: 14px; }
   body[data-cinematic-page="menu"] main [data-menu-search] { gap: 6px; padding-bottom: 12px; }

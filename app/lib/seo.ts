@@ -6,8 +6,8 @@ export const SOCIAL_IMAGE = "/brand/shah-social-v1.png";
 
 const pages: Record<PublicPageKey, Record<SiteLocale, { title: string; description: string; label: string }>> = {
   home: {
-    nl: { title: "Indiaas restaurant Amsterdam-Noord | Shah Restaurant", description: "Ontdek Shah Restaurant aan de Klaprozenweg 36a in Amsterdam-Noord. Bekijk Indiase gerechten, openingstijden en de menukaart. Reserveer uw tafel online.", label: "Home" },
-    en: { title: "Indian restaurant Amsterdam-Noord | Shah Restaurant", description: "Discover Shah Restaurant at Klaprozenweg 36a in Amsterdam-Noord. Explore Indian dishes, the menu and opening hours, then book your table online.", label: "Home" },
+    nl: { title: "Indiaas restaurant | Shah Restaurant | Amsterdam-Noord", description: "Ontdek Shah Restaurant aan de Klaprozenweg 36a in Amsterdam-Noord. Bekijk Indiase gerechten, openingstijden en de menukaart. Reserveer uw tafel online.", label: "Home" },
+    en: { title: "Indian restaurant | Shah Restaurant | Amsterdam-Noord", description: "Discover Shah Restaurant at Klaprozenweg 36a in Amsterdam-Noord. Explore Indian dishes, the menu and opening hours, then book your table online.", label: "Home" },
   },
   menu: {
     nl: { title: "Indiase menukaart | Shah Restaurant | Amsterdam-Noord", description: "Bekijk de Indiase menukaart van Shah Restaurant in Amsterdam-Noord: curry, tandoori en naan met actuele prijzen. Kies uw gerechten en bestel online.", label: "Menukaart" },
@@ -62,7 +62,10 @@ export function siteSchema(locale: SiteLocale) {
         logo: `${SITE_URL}/brand/shah-landscape-teal-v1.svg`,
         telephone: "+31 20 341 2995", email: "info@shahrestaurant.nl",
         address: { "@type": "PostalAddress", streetAddress: "Klaprozenweg 36a", postalCode: "1032 KL", addressLocality: "Amsterdam", addressCountry: "NL" },
+        // BAG address point, verified through PDOK Locatieserver on 11 November 2026.
+        geo: { "@type": "GeoCoordinates", latitude: 52.39763814, longitude: 4.91025655 },
         servesCuisine: ["Indian", "Tandoori", "Curry", "Biryani"], acceptsReservations: true,
+        priceRange: locale === "nl" ? "Circa €35 per persoon" : "About €35 per person",
         menu: `${SITE_URL}${PUBLIC_PATHS.menu[locale]}`,
         hasMap: "https://www.google.com/maps/dir/?api=1&destination=Klaprozenweg+36a+1032+KL+Amsterdam",
         openingHoursSpecification: {
@@ -70,7 +73,13 @@ export function siteSchema(locale: SiteLocale) {
         },
       },
       { "@type": "Organization", "@id": `${SITE_URL}/#organization`, name: "Shah Restaurant", url: `${SITE_URL}/`, logo: `${SITE_URL}/brand/shah-landscape-teal-v1.svg` },
-      { "@type": "WebSite", "@id": `${home}#website`, name: "Shah Restaurant", url: home, inLanguage: locale === "nl" ? "nl-NL" : "en", publisher: { "@id": `${SITE_URL}/#organization` } },
+      { "@type": "WebSite", "@id": `${home}#website`, name: "Shah Restaurant", url: home, inLanguage: locale === "nl" ? "nl-NL" : "en", publisher: { "@id": `${SITE_URL}/#organization` },
+        potentialAction: {
+          "@type": "SearchAction",
+          target: { "@type": "EntryPoint", urlTemplate: `${SITE_URL}${PUBLIC_PATHS.menu[locale]}?q={search_term_string}` },
+          "query-input": "required name=search_term_string",
+        },
+      },
       { "@type": "ImageObject", "@id": `${SITE_URL}/#restaurant-image`, contentUrl: `${SITE_URL}/brand/shah-room-v1.webp`, caption: locale === "nl" ? "De eetzaal van Shah Restaurant in Amsterdam-Noord" : "The dining room at Shah Restaurant in Amsterdam-Noord" },
     ],
   };

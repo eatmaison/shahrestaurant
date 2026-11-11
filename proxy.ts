@@ -12,13 +12,17 @@ export async function proxy(request: NextRequest) {
   }
 
   const route = getPublicRoute(pathname.toLowerCase());
-  const canonicalPath = route?.canonical ?? pathname;
-  // Host and known legacy-path changes happen together; clone retains the query.
-  if (["GET", "HEAD"].includes(request.method) && !pathname.startsWith("/api/") &&
-      (host === "www.shahrestaurant.nl" || pathname !== canonicalPath)) {
-    const canonical = request.nextUrl.clone();
+  const navigation = ["GET", "HEAD"].includes(request.method) && !pathname.startsWith("/api/");
+  // Preserve Next's ordinary slash removal for every method, including webhooks.
+  const withoutTrailingSlash = pathname !== "/" && pathname.endsWith("/") ? pathname.slice(0, -1) : pathname;
+  const canonicalPath = navigation && route ? route.canonical : withoutTrailingSlash;
+  // No broad rewrites: only recognized public aliases change case/name. Queries survive.
+  const canonicalHost = navigation && host === "www.shahrestaurant.nl";
+  if (canonicalHost || pathname !== canonicalPath) {
+    // NextURL retains the incoming slash flag when pathname changes.
+    const canonical = new URL(request.url);
     canonical.pathname = canonicalPath;
-    if (host === "www.shahrestaurant.nl") {
+    if (canonicalHost) {
       canonical.hostname = "shahrestaurant.nl"; canonical.port = ""; canonical.protocol = "https:";
     }
     return NextResponse.redirect(canonical, 308);

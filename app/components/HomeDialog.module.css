@@ -1,0 +1,16 @@
+/* Shared dialog rules extracted unchanged from the home module. */
+.dialog { position: fixed; inset: 0; margin: auto; border: 1px solid var(--line); padding: 0; max-width: min(1100px, calc(100vw - 48px)); width: max-content; max-height: calc(100dvh - 40px); background: var(--paper); color: var(--ink); border-radius: 6px; overscroll-behavior: contain; }
+.dialog[open] { animation: dialog-enter .4s var(--ease-out) both; box-shadow: 0 35px 100px #0006; }
+.dialog::backdrop { background: #0d160fd6; backdrop-filter: blur(6px); }
+.dialogBody { position: relative; }
+.dialogClose { position: absolute; z-index: 2; top: 14px; right: 14px; width: 44px; height: 44px; display: grid; place-items: center; border-radius: 50%; background: var(--paper); color: var(--ink); box-shadow: 0 2px 14px #0002; border: 1px solid var(--line); }
+.dialogClose { transition: transform .3s, color .2s, background .2s; }
+.dialogClose:hover { background: var(--ink); color: var(--paper); transform: rotate(90deg); }
+.dialog { border-color: color-mix(in srgb, var(--gold) 45%, var(--line)); }
+.dialog[open] { box-shadow: inset 0 1px 0 var(--edge-light), 0 2px 0 var(--line), 0 24px 70px #0006, 0 60px 140px #0003; }
+.dialogClose { background: linear-gradient(135deg, var(--paper), var(--shah-soft)); box-shadow: inset 0 1px 0 var(--edge-light), 0 3px 0 var(--line), 0 7px 18px #0003; }
+:global([data-cinematic-home][data-motion="off"]) .dialogClose:hover { transform: none; }
+@media (max-width: 700px) {
+  .dialog { max-width: calc(100vw - 24px); max-height: calc(100dvh - 24px); }
+}
+@keyframes dialog-enter { from { opacity: 0; transform: translateY(10px) scale(.985); } to { opacity: 1; transform: none; } }

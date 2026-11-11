@@ -1,0 +1,180 @@
+{
+  "sourceBuildId": "lFTqIAU9xP5fM3RMpYwdn",
+  "files": [
+    {
+      "sourceAsset": "b8c37bb59076c047-s.woff2",
+      "destination": "public/fonts/jost-cyrillic-184c3af415cd-v1.woff2",
+      "rawBytes": 10140,
+      "sha256": "184c3af415cddd52af31cf70166bf351adb70b09e64fdb1948109192a26c2c0d",
+      "fontVersion": "Version 3.710",
+      "copyright": "Copyright 2020 The Jost Project Authors (https://github.com/indestructible-type/Jost)",
+      "axes": {
+        "wght": {
+          "name": "Weight",
+          "min": 100,
+          "default": 400,
+          "max": 900
+        }
+      }
+    },
+    {
+      "sourceAsset": "5bbac197f803cc34-s.woff2",
+      "destination": "public/fonts/jost-latin-ext-b2a539cd1f2b-v1.woff2",
+      "rawBytes": 17204,
+      "sha256": "b2a539cd1f2bbf123e66bafa988bbd32249a7ba3335aec377a9fc1b37734b1ed",
+      "fontVersion": "Version 3.710",
+      "copyright": "Copyright 2020 The Jost Project Authors (https://github.com/indestructible-type/Jost)",
+      "axes": {
+        "wght": {
+          "name": "Weight",
+          "min": 100,
+          "default": 400,
+          "max": 900
+        }
+      }
+    },
+    {
+      "sourceAsset": "9dd75fadc5b3df29-s.p.woff2",
+      "destination": "public/fonts/jost-latin-235d8f8964bf-v1.woff2",
+      "rawBytes": 26588,
+      "sha256": "235d8f8964bfdf105fc0c3e4c77b5e70f31bee1dad611d59318b5f2a5cb64d90",
+      "fontVersion": "Version 3.710",
+      "copyright": "Copyright 2020 The Jost Project Authors (https://github.com/indestructible-type/Jost)",
+      "axes": {
+        "wght": {
+          "name": "Weight",
+          "min": 100,
+          "default": 400,
+          "max": 900
+        }
+      }
+    },
+    {
+      "sourceAsset": "393d45a2251e223a-s.woff2",
+      "destination": "public/fonts/cormorant-garamond-cyrillic-ext-d04439363ec8-v1.woff2",
+      "rawBytes": 23408,
+      "sha256": "d04439363ec805132dc6c6e6a925f76efe17646f9811af8e10e218ea3dba5335",
+      "fontVersion": "Version 4.001",
+      "copyright": "Copyright 2015 The Cormorant Project Authors (github.com/CatharsisFonts/Cormorant)",
+      "axes": {
+        "wght": {
+          "name": "Weight",
+          "min": 300,
+          "default": 300,
+          "max": 700
+        }
+      }
+    },
+    {
+      "sourceAsset": "8715d2ed531152f4-s.woff2",
+      "destination": "public/fonts/cormorant-garamond-cyrillic-d81372bae1f8-v1.woff2",
+      "rawBytes": 21132,
+      "sha256": "d81372bae1f872f1418c0b7eb412f8a92a156a950fda8d2383701c75d38969df",
+      "fontVersion": "Version 4.001",
+      "copyright": "Copyright 2015 The Cormorant Project Authors (github.com/CatharsisFonts/Cormorant)",
+      "axes": {
+        "wght": {
+          "name": "Weight",
+          "min": 300,
+          "default": 300,
+          "max": 700
+        }
+      }
+    },
+    {
+      "sourceAsset": "c48b38fe8bb532f3-s.woff2",
+      "destination": "public/fonts/cormorant-garamond-vietnamese-826f73ca737f-v1.woff2",
+      "rawBytes": 11264,
+      "sha256": "826f73ca737feec0eb1004808629973d6b611fddc2bd2a689b5fe331f6be6427",
+      "fontVersion": "Version 4.001",
+      "copyright": "Copyright 2015 The Cormorant Project Authors (github.com/CatharsisFonts/Cormorant)",
+      "axes": {
+        "wght": {
+          "name": "Weight",
+          "min": 300,
+          "default": 300,
+          "max": 700
+        }
+      }
+    },
+    {
+      "sourceAsset": "48410f3df60da620-s.woff2",
+      "destination": "public/fonts/cormorant-garamond-latin-ext-9dc38267bdee-v1.woff2",
+      "rawBytes": 33740,
+      "sha256": "9dc38267bdee93a653200ef3c1e8060e3f1399073432c415c683b419d3b50464",
+      "fontVersion": "Version 4.001",
+      "copyright": "Copyright 2015 The Cormorant Project Authors (github.com/CatharsisFonts/Cormorant)",
+      "axes": {
+        "wght": {
+          "name": "Weight",
+          "min": 300,
+          "default": 300,
+          "max": 700
+        }
+      }
+    },
+    {
+      "sourceAsset": "7b89a4fd5e90ede0-s.p.woff2",
+      "destination": "public/fonts/cormorant-garamond-latin-5d618c462b7a-v1.woff2",
+      "rawBytes": 37776,
+      "sha256": "5d618c462b7a5b74f442e1548880086af71764d9cc7d35c16ab45353da934621",
+      "fontVersion": "Version 4.001",
+      "copyright": "Copyright 2015 The Cormorant Project Authors (github.com/CatharsisFonts/Cormorant)",
+      "axes": {
+        "wght": {
+          "name": "Weight",
+          "min": 300,
+          "default": 300,
+          "max": 700
+        }
+      }
+    }
+  ],
+  "licenses": [
+    {
+      "destination": "public/fonts/OFL-Jost-v1.txt",
+      "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/jost/OFL.txt",
+      "sha256": "1af3438a4d5f0ed2bdbc5751a5a67ebf6d537334161184b7fbb68503ef0ea0c5",
+      "rawBytes": 4384
+    },
+    {
+      "destination": "public/fonts/OFL-Cormorant-Garamond-v1.txt",
+      "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/cormorantgaramond/OFL.txt",
+      "sha256": "60700d351cac4650c51f3f9db318d2a420f8b45052dba2715eb5fec41f0f6956",
+      "rawBytes": 4387
+    }
+  ],
+  "publicPrefix": "/fonts/",
+  "originalFontFaces": [
+    "@font-face{font-family:Jost;font-style:normal;font-weight:100 900;font-display:swap;src:url(/_next/static/media/b8c37bb59076c047-s.woff2) format(\"woff2\");unicode-range:u+0301,u+0400-045f,u+0490-0491,u+04b0-04b1,u+2116}",
+    "@font-face{font-family:Jost;font-style:normal;font-weight:100 900;font-display:swap;src:url(/_next/static/media/5bbac197f803cc34-s.woff2) format(\"woff2\");unicode-range:u+0100-02ba,u+02bd-02c5,u+02c7-02cc,u+02ce-02d7,u+02dd-02ff,u+0304,u+0308,u+0329,u+1d00-1dbf,u+1e00-1e9f,u+1ef2-1eff,u+2020,u+20a0-20ab,u+20ad-20c4,u+2113,u+2c60-2c7f,u+a720-a7ff}",
+    "@font-face{font-family:Jost;font-style:normal;font-weight:100 900;font-display:swap;src:url(/_next/static/media/9dd75fadc5b3df29-s.p.woff2) format(\"woff2\");unicode-range:u+00??,u+0131,u+0152-0153,u+02bb-02bc,u+02c6,u+02da,u+02dc,u+0304,u+0308,u+0329,u+2000-206f,u+20ac,u+2122,u+2191,u+2193,u+2212,u+2215,u+feff,u+fffd}",
+    "@font-face{font-family:Jost Fallback;src:local(\"Arial\");ascent-override:111.45%;descent-override:39.06%;line-gap-override:0.00%;size-adjust:96.01%}",
+    "@font-face{font-family:Cormorant Garamond;font-style:normal;font-weight:400;font-display:swap;src:url(/_next/static/media/393d45a2251e223a-s.woff2) format(\"woff2\");unicode-range:u+0460-052f,u+1c80-1c8a,u+20b4,u+2de0-2dff,u+a640-a69f,u+fe2e-fe2f}",
+    "@font-face{font-family:Cormorant Garamond;font-style:normal;font-weight:400;font-display:swap;src:url(/_next/static/media/8715d2ed531152f4-s.woff2) format(\"woff2\");unicode-range:u+0301,u+0400-045f,u+0490-0491,u+04b0-04b1,u+2116}",
+    "@font-face{font-family:Cormorant Garamond;font-style:normal;font-weight:400;font-display:swap;src:url(/_next/static/media/c48b38fe8bb532f3-s.woff2) format(\"woff2\");unicode-range:u+0102-0103,u+0110-0111,u+0128-0129,u+0168-0169,u+01a0-01a1,u+01af-01b0,u+0300-0301,u+0303-0304,u+0308-0309,u+0323,u+0329,u+1ea0-1ef9,u+20ab}",
+    "@font-face{font-family:Cormorant Garamond;font-style:normal;font-weight:400;font-display:swap;src:url(/_next/static/media/48410f3df60da620-s.woff2) format(\"woff2\");unicode-range:u+0100-02ba,u+02bd-02c5,u+02c7-02cc,u+02ce-02d7,u+02dd-02ff,u+0304,u+0308,u+0329,u+1d00-1dbf,u+1e00-1e9f,u+1ef2-1eff,u+2020,u+20a0-20ab,u+20ad-20c4,u+2113,u+2c60-2c7f,u+a720-a7ff}",
+    "@font-face{font-family:Cormorant Garamond;font-style:normal;font-weight:400;font-display:swap;src:url(/_next/static/media/7b89a4fd5e90ede0-s.p.woff2) format(\"woff2\");unicode-range:u+00??,u+0131,u+0152-0153,u+02bb-02bc,u+02c6,u+02da,u+02dc,u+0304,u+0308,u+0329,u+2000-206f,u+20ac,u+2122,u+2191,u+2193,u+2212,u+2215,u+feff,u+fffd}",
+    "@font-face{font-family:Cormorant Garamond;font-style:normal;font-weight:500;font-display:swap;src:url(/_next/static/media/393d45a2251e223a-s.woff2) format(\"woff2\");unicode-range:u+0460-052f,u+1c80-1c8a,u+20b4,u+2de0-2dff,u+a640-a69f,u+fe2e-fe2f}",
+    "@font-face{font-family:Cormorant Garamond;font-style:normal;font-weight:500;font-display:swap;src:url(/_next/static/media/8715d2ed531152f4-s.woff2) format(\"woff2\");unicode-range:u+0301,u+0400-045f,u+0490-0491,u+04b0-04b1,u+2116}",
+    "@font-face{font-family:Cormorant Garamond;font-style:normal;font-weight:500;font-display:swap;src:url(/_next/static/media/c48b38fe8bb532f3-s.woff2) format(\"woff2\");unicode-range:u+0102-0103,u+0110-0111,u+0128-0129,u+0168-0169,u+01a0-01a1,u+01af-01b0,u+0300-0301,u+0303-0304,u+0308-0309,u+0323,u+0329,u+1ea0-1ef9,u+20ab}",
+    "@font-face{font-family:Cormorant Garamond;font-style:normal;font-weight:500;font-display:swap;src:url(/_next/static/media/48410f3df60da620-s.woff2) format(\"woff2\");unicode-range:u+0100-02ba,u+02bd-02c5,u+02c7-02cc,u+02ce-02d7,u+02dd-02ff,u+0304,u+0308,u+0329,u+1d00-1dbf,u+1e00-1e9f,u+1ef2-1eff,u+2020,u+20a0-20ab,u+20ad-20c4,u+2113,u+2c60-2c7f,u+a720-a7ff}",
+    "@font-face{font-family:Cormorant Garamond;font-style:normal;font-weight:500;font-display:swap;src:url(/_next/static/media/7b89a4fd5e90ede0-s.p.woff2) format(\"woff2\");unicode-range:u+00??,u+0131,u+0152-0153,u+02bb-02bc,u+02c6,u+02da,u+02dc,u+0304,u+0308,u+0329,u+2000-206f,u+20ac,u+2122,u+2191,u+2193,u+2212,u+2215,u+feff,u+fffd}",
+    "@font-face{font-family:Cormorant Garamond;font-style:normal;font-weight:600;font-display:swap;src:url(/_next/static/media/393d45a2251e223a-s.woff2) format(\"woff2\");unicode-range:u+0460-052f,u+1c80-1c8a,u+20b4,u+2de0-2dff,u+a640-a69f,u+fe2e-fe2f}",
+    "@font-face{font-family:Cormorant Garamond;font-style:normal;font-weight:600;font-display:swap;src:url(/_next/static/media/8715d2ed531152f4-s.woff2) format(\"woff2\");unicode-range:u+0301,u+0400-045f,u+0490-0491,u+04b0-04b1,u+2116}",
+    "@font-face{font-family:Cormorant Garamond;font-style:normal;font-weight:600;font-display:swap;src:url(/_next/static/media/c48b38fe8bb532f3-s.woff2) format(\"woff2\");unicode-range:u+0102-0103,u+0110-0111,u+0128-0129,u+0168-0169,u+01a0-01a1,u+01af-01b0,u+0300-0301,u+0303-0304,u+0308-0309,u+0323,u+0329,u+1ea0-1ef9,u+20ab}",
+    "@font-face{font-family:Cormorant Garamond;font-style:normal;font-weight:600;font-display:swap;src:url(/_next/static/media/48410f3df60da620-s.woff2) format(\"woff2\");unicode-range:u+0100-02ba,u+02bd-02c5,u+02c7-02cc,u+02ce-02d7,u+02dd-02ff,u+0304,u+0308,u+0329,u+1d00-1dbf,u+1e00-1e9f,u+1ef2-1eff,u+2020,u+20a0-20ab,u+20ad-20c4,u+2113,u+2c60-2c7f,u+a720-a7ff}",
+    "@font-face{font-family:Cormorant Garamond;font-style:normal;font-weight:600;font-display:swap;src:url(/_next/static/media/7b89a4fd5e90ede0-s.p.woff2) format(\"woff2\");unicode-range:u+00??,u+0131,u+0152-0153,u+02bb-02bc,u+02c6,u+02da,u+02dc,u+0304,u+0308,u+0329,u+2000-206f,u+20ac,u+2122,u+2191,u+2193,u+2212,u+2215,u+feff,u+fffd}",
+    "@font-face{font-family:Cormorant Garamond;font-style:normal;font-weight:700;font-display:swap;src:url(/_next/static/media/393d45a2251e223a-s.woff2) format(\"woff2\");unicode-range:u+0460-052f,u+1c80-1c8a,u+20b4,u+2de0-2dff,u+a640-a69f,u+fe2e-fe2f}",
+    "@font-face{font-family:Cormorant Garamond;font-style:normal;font-weight:700;font-display:swap;src:url(/_next/static/media/8715d2ed531152f4-s.woff2) format(\"woff2\");unicode-range:u+0301,u+0400-045f,u+0490-0491,u+04b0-04b1,u+2116}",
+    "@font-face{font-family:Cormorant Garamond;font-style:normal;font-weight:700;font-display:swap;src:url(/_next/static/media/c48b38fe8bb532f3-s.woff2) format(\"woff2\");unicode-range:u+0102-0103,u+0110-0111,u+0128-0129,u+0168-0169,u+01a0-01a1,u+01af-01b0,u+0300-0301,u+0303-0304,u+0308-0309,u+0323,u+0329,u+1ea0-1ef9,u+20ab}",
+    "@font-face{font-family:Cormorant Garamond;font-style:normal;font-weight:700;font-display:swap;src:url(/_next/static/media/48410f3df60da620-s.woff2) format(\"woff2\");unicode-range:u+0100-02ba,u+02bd-02c5,u+02c7-02cc,u+02ce-02d7,u+02dd-02ff,u+0304,u+0308,u+0329,u+1d00-1dbf,u+1e00-1e9f,u+1ef2-1eff,u+2020,u+20a0-20ab,u+20ad-20c4,u+2113,u+2c60-2c7f,u+a720-a7ff}",
+    "@font-face{font-family:Cormorant Garamond;font-style:normal;font-weight:700;font-display:swap;src:url(/_next/static/media/7b89a4fd5e90ede0-s.p.woff2) format(\"woff2\");unicode-range:u+00??,u+0131,u+0152-0153,u+02bb-02bc,u+02c6,u+02da,u+02dc,u+0304,u+0308,u+0329,u+2000-206f,u+20ac,u+2122,u+2191,u+2193,u+2212,u+2215,u+feff,u+fffd}",
+    "@font-face{font-family:Cormorant Garamond Fallback;src:local(\"Times New Roman\");ascent-override:95.27%;descent-override:29.59%;line-gap-override:0.00%;size-adjust:96.98%}"
+  ],
+  "preloadPolicy": "Both Latin files on text-first public, private and unknown routes; no font preloads on the two film-first home routes.",
+  "preloads": [
+    "/fonts/jost-latin-235d8f8964bf-v1.woff2",
+    "/fonts/cormorant-garamond-latin-5d618c462b7a-v1.woff2"
+  ]
+}

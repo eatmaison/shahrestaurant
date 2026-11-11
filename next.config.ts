@@ -1,10 +1,18 @@
 import type { NextConfig } from "next";
 
+const reviewDistDir = process.env.SHAH_REVIEW_DIST_DIR;
+if (reviewDistDir && !/^\.next-review-[a-z0-9-]+$/.test(reviewDistDir)) {
+  throw new Error("SHAH_REVIEW_DIST_DIR must be a task-local .next-review-<name> directory.");
+}
+
 const nextConfig: NextConfig = {
+  ...(reviewDistDir ? { distDir: reviewDistDir, typescript: { tsconfigPath: `${reviewDistDir}.tsconfig.json` } } : {}),
   compress: true,
-  experimental: { optimizePackageImports: ["react-icons"] },
+  // Proxy combines known public aliases/case/slashes/host into a single redirect.
+  skipTrailingSlashRedirect: true,
+  experimental: { optimizePackageImports: ["react-icons"], cssChunking: false },
   async headers() {
-    return [{ source: "/brand/:path*", headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }] }, ...["coca-cola", "heineken", "de-kuyper", "chaudfontaine"].map(brand => ({
+    return [{ source: "/fonts/:path*", headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }] }, { source: "/brand/:path*", headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }] }, ...["coca-cola", "heineken", "de-kuyper", "chaudfontaine"].map(brand => ({
       source: `/partners/${brand}-v1.webp`,
       headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }],
     })), {

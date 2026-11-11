@@ -1,5 +1,5 @@
 /* Preserve the established palette while making primary controls easier to reach. */
-:is([data-site-header], [data-site-footer], [data-cookie-notice], main) :is(button, summary, input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="hidden"]), select, textarea) { min-height: 48px; }
+:is([data-site-header], [data-site-footer], [data-cookie-notice], main) :is(button, summary, input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="hidden"]), select, textarea) { min-height: 48px; min-width: 48px; }
 :is([data-site-header], [data-site-footer]) a { min-height: 48px; }
 [data-site-header] :is(button, a[title]) { min-width: 48px; }
 [data-site-header] button[aria-pressed] { min-width: 48px; }

@@ -3,6 +3,8 @@ import Image from "next/image";
 import { useState } from "react";
 
 type Props = { src: string; alt: string; sizes?: string };
+// Matches the mobile strips, tablet tiles and desktop central-column strips.
+export const ORDER_DISH_IMAGE_SIZES = "(min-width: 1400px) 266px, (min-width: 1024px) calc(32vw - 182px), (min-width: 701px) calc(50vw - 34px), (min-width: 341px) calc(30vw - 10px), 92px";
 export function ProductImage(props: Props) { return <ProductPicture key={props.src} {...props} />; }
 function ProductPicture({ src, alt, sizes = "(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 360px" }: Props) {
   const [failed, setFailed] = useState(false);

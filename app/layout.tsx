@@ -1,8 +1,8 @@
 import type { Metadata, Viewport } from "next";
-import { Jost, Cormorant_Garamond } from "next/font/google";
 import { headers } from "next/headers";
 import { getPublicRoute } from "./lib/locale";
 import { publicMetadata, SITE_URL, siteSchema } from "./lib/seo";
+import "./fonts.css";
 import "./design-system.css";
 import "./optimizations.css";
 import "./accessibility.css";
@@ -11,19 +11,6 @@ import { Providers } from "./providers";
 import { Header } from "./components/header";
 import { Footer } from "./components/footer";
 import { CookieConsent } from "./components/CookieConsent";
-
-const jost = Jost({
-  variable: "--font-jost",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const cormorant = Cormorant_Garamond({
-  variable: "--font-cormorant",
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["400", "500", "600", "700"],
-});
 
 export async function generateMetadata(): Promise<Metadata> {
   const requestHeaders = await headers();
@@ -57,9 +44,17 @@ export default async function RootLayout({
   const initialLang = requestHeaders.get("x-shah-locale") === "en" ? "en" : "nl";
   const route = getPublicRoute(requestHeaders.get("x-shah-path") ?? "");
   return (
-    <html lang={initialLang} suppressHydrationWarning data-scroll-behavior="smooth" className={`${jost.variable} ${cormorant.variable} h-full antialiased`}>
+    <html lang={initialLang} suppressHydrationWarning data-scroll-behavior="smooth" className="h-full antialiased">
       <head>
+        {route?.key !== "home" && <>
+          <link rel="preload" href="/fonts/jost-latin-235d8f8964bf-v1.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+          <link rel="preload" href="/fonts/cormorant-garamond-latin-5d618c462b7a-v1.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        </>}
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        {route?.key === "home" && <>
+          <link rel="preload" as="image" type="image/avif" href="/brand/shah-hero-poster-mobile-delivery-v1.avif" imageSrcSet="/brand/shah-hero-poster-mobile-delivery-v1-360.avif 360w, /brand/shah-hero-poster-mobile-delivery-v1.avif 608w" imageSizes="100vw" media="(max-width: 767px)" fetchPriority="high" />
+          <link rel="preload" as="image" type="image/avif" href="/brand/shah-hero-poster-desktop-delivery-v1.avif" imageSrcSet="/brand/shah-hero-poster-desktop-delivery-v1-960.avif 960w, /brand/shah-hero-poster-desktop-delivery-v1.avif 1600w" imageSizes="100vw" media="(min-width: 768px)" fetchPriority="high" />
+        </>}
         {route && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(siteSchema(initialLang)).replace(/</g, "\\u003c") }} />}
       </head>
       <body data-cinematic-page={route && route.key !== "home" ? route.key : undefined} className="flex min-h-full flex-col">

@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "./LocaleLink";
 import { useLang } from "../providers";
 import styles from "./DrinkPartners.module.css";
@@ -54,7 +53,9 @@ export function DrinkPartners({ site }: { site: Site }) {
           {partners.map(partner => (
             <li key={partner.file} className={styles.partner}>
               <div className={styles.logoPanel} data-light={partner.light}>
-                <Image className={styles.logo} src={`/partners/${partner.file}-v1.webp`} alt={`${partner.name} logo`} width={partner.width} height={partner.height} loading="lazy" decoding="async" unoptimized />
+                {/* Exact partner artwork: lossless AVIF is 3x larger than these WebPs. */}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img className={styles.logo} src={`/partners/${partner.file}-v1.webp`} alt={`${partner.name} logo`} width={partner.width} height={partner.height} loading="lazy" decoding="async" />
               </div>
               <h3 className={styles.brand}>{partner.name}</h3>
               <p className={styles.description}>{partner[nl ? "nl" : "en"]}</p>

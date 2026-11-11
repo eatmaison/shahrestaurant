@@ -5,8 +5,10 @@
 .brandCaption { display: block; text-align: right; color: var(--shah-ink); font-size: 8px; font-weight: 500; letter-spacing: .25em; text-transform: uppercase; padding-right: 2px; }
 .header button { cursor: pointer; }
 .header .bar :global(.btn-shine) { min-height: 44px; background: #E0AF59; border: 1px solid #E0AF59; color: #0D4952; box-shadow: none; }
-.header :is(button, a[title]) { min-width: 44px; min-height: 44px; }
-.desktopNav :is(a, summary) { font-weight: 500; font-size: 13px; border-radius: 3px; padding-inline: 12px; min-height: 44px; }
+.header :is(button, a[title], [data-language-link]) { min-width: 48px; min-height: 48px; }
+.header [data-language-link] { display: grid; place-items: center; text-align: center; }
+.header [data-language-link][aria-current="page"] { color: #0D4952; background: #E0AF59; border: 1px solid #E0AF59; box-shadow: none; }
+.desktopNav :is(a, summary) { font-weight: 500; font-size: 13px; border-radius: 3px; padding-inline: 12px; min-height: 48px; }
 .desktopNav > a[data-active="true"], .dropdown > summary[data-active="true"] { background: var(--shah-soft); color: var(--shah-accent); }
 .desktopNav > a:not([data-active="true"]):hover, .dropdown > summary:hover { background: var(--shah-soft); }
 .dropdown summary { cursor: pointer; list-style: none; }
@@ -18,7 +20,7 @@
 .header .skipLink { position: fixed; left: 16px; top: 8px; transform: translateY(-160%); padding: 12px 20px; background: var(--shah-surface); border: 2px solid var(--shah-accent); color: var(--shah-ink); z-index: 100; }
 .header .skipLink:focus { transform: none; }
 .mobilePanel { position: absolute; inset-inline: 0; top: 100%; max-height: calc(100dvh - var(--site-header-height, 88px)); overflow-y: auto; overscroll-behavior: contain; background: var(--shah-surface); border-bottom: 1px solid var(--shah-line); box-shadow: 0 16px 32px #062b3226; }
-.mobilePanel :is(a, button) { min-height: 46px; border-radius: 3px; }
+.mobilePanel :is(a, button) { min-height: 48px; border-radius: 3px; }
 :global(.dark) .mobilePanel { background: var(--shah-surface); }
 .mobilePanel a[aria-current="page"] { border-left: 2px solid #E0AF59; }
 .header [aria-pressed="true"] { color: #0D4952; }
@@ -32,7 +34,7 @@
   .brand .brandArtwork { width: 132px; }
   .brandCaption { font-size: 7px; }
   .bar > div:last-child { gap: 3px; }
-  .header :is(button, a[title]) { min-width: 40px; min-height: 44px; }
+  .header :is(button, a[title], [data-language-link]) { min-width: 48px; min-height: 48px; }
 }
 @media (max-width: 350px) { .brand .brandArtwork { width: 114px; } .bar { padding-inline: 12px; } }
 @media (prefers-reduced-motion: reduce) { .header *, .header *::after { animation: none !important; transition: none !important; } }

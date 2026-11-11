@@ -22,9 +22,20 @@ import styles from "./header.module.css";
 type SubLink = { href: string; label: string };
 type NavLink = { href: string; label: string; children?: SubLink[] };
 
+function LanguageOption({ code, className }: { code: "nl" | "en"; className: string }) {
+  const { lang, setLang } = useLang();
+  const pathname = usePathname();
+  const label = code === "nl" ? "NL - Nederlands" : "EN - English";
+  if (!getPublicRoute(pathname)) return <button onClick={() => setLang(code)} className={className} aria-label={label} aria-pressed={lang === code}>{code.toUpperCase()}</button>;
+  return <a data-language-link href={localePath(pathname, code)} hrefLang={code === "nl" ? "nl-NL" : "en"} lang={code} className={className} aria-label={label} aria-current={lang === code ? "page" : undefined} onClick={event => {
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault(); setLang(code);
+  }}>{code.toUpperCase()}</a>;
+}
+
 export function Header() {
   const { theme, toggleTheme } = useTheme();
-  const { lang, setLang, t } = useLang();
+  const { lang, t } = useLang();
   const { cart, currentUser } = useStore();
   const pathname = usePathname();
   const isHome = getPublicRoute(pathname)?.key === "home";
@@ -152,7 +163,7 @@ export function Header() {
       }} className={styles.skipLink}>{lang === "nl" ? (isHome ? "Film overslaan en naar inhoud" : "Ga naar inhoud") : (isHome ? "Skip film to content" : "Skip to content")}</a>
       <div ref={barRef} data-site-header-bar className={`${styles.bar} mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8`}>
         <Link href="/" aria-label="Shah Restaurant · Amsterdam" className={`${styles.brand} group flex items-center gap-3`} onClick={() => { setOpen(false); setEventsOpen(false); }}>
-          <BrandLogo className={styles.brandArtwork} alt="" eager />
+          <BrandLogo className={styles.brandArtwork} alt="" eager={!isHome || scrolled} />
           <span className={styles.brandCaption}>Restaurant · Amsterdam</span>
         </Link>
 
@@ -214,26 +225,16 @@ export function Header() {
 
         <div className="flex items-center gap-2">
           <div className="hidden items-center rounded-full border border-slate-200 bg-white p-0.5 text-xs font-bold dark:border-white/10 dark:bg-white/5 sm:flex">
-            <button
-              onClick={() => setLang("en")}
+            <LanguageOption code="en"
               className={`rounded-full px-2.5 py-1 transition ${
                 lang === "en" ? "bg-emerald-500 text-white" : "text-slate-500 dark:text-slate-400"
               }`}
-              aria-label="EN — English"
-              aria-pressed={lang === "en"}
-            >
-              EN
-            </button>
-            <button
-              onClick={() => setLang("nl")}
+            />
+            <LanguageOption code="nl"
               className={`rounded-full px-2.5 py-1 transition ${
                 lang === "nl" ? "bg-emerald-500 text-white" : "text-slate-500 dark:text-slate-400"
               }`}
-              aria-label="NL — Nederlands"
-              aria-pressed={lang === "nl"}
-            >
-              NL
-            </button>
+            />
           </div>
 
           <button
@@ -350,26 +351,16 @@ export function Header() {
               )
             )}
             <div className="mt-2 flex items-center gap-2">
-              <button
-                onClick={() => setLang("en")}
-                aria-label="EN — English"
-                aria-pressed={lang === "en"}
+              <LanguageOption code="en"
                 className={`flex-1 rounded-xl px-3 py-2 text-sm font-bold ${
                   lang === "en" ? "bg-emerald-500 text-white" : "border border-slate-200 dark:border-white/10"
                 }`}
-              >
-                EN
-              </button>
-              <button
-                onClick={() => setLang("nl")}
-                aria-label="NL — Nederlands"
-                aria-pressed={lang === "nl"}
+              />
+              <LanguageOption code="nl"
                 className={`flex-1 rounded-xl px-3 py-2 text-sm font-bold ${
                   lang === "nl" ? "bg-emerald-500 text-white" : "border border-slate-200 dark:border-white/10"
                 }`}
-              >
-                NL
-              </button>
+              />
             </div>
           </nav>
         </div>

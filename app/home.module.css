@@ -48,7 +48,6 @@
 .sectionNavInner > a::after { content: ""; position: absolute; bottom: -1px; left: 0; right: 0; height: 2px; background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform .5s var(--ease-out); }
 .sectionNavInner > a:is(:hover, [aria-current="location"]) { color: var(--gold); }
 .sectionNavInner > a:is(:hover, [aria-current="location"])::after { transform: scaleX(1); }
-.sectionNavInner .navReserve { margin-left: auto; color: var(--gold); }
 .section { width: min(100% - 96px, 1200px); margin: 0 auto; padding: 100px 0; }
 .eyebrow { color: var(--gold); font-size: 12px; font-weight: 600; text-transform: uppercase; margin-bottom: 20px; display: flex; align-items: center; gap: 16px; }
 .eyebrow::before { content: ""; height: 1px; width: 30px; background: currentColor; flex-shrink: 0; }
@@ -167,13 +166,6 @@
 .closingContent { position: relative; max-width: 780px; text-align: center; margin: auto; padding: 100px 32px; }
 .closingContent h2 { font-size: 58px; margin-top: 20px; }
 .mobileActions { display: none; }
-.dialog { position: fixed; inset: 0; margin: auto; border: 1px solid var(--line); padding: 0; max-width: min(1100px, calc(100vw - 48px)); width: max-content; max-height: calc(100dvh - 40px); background: var(--paper); color: var(--ink); border-radius: 6px; overscroll-behavior: contain; }
-.dialog[open] { animation: dialog-enter .4s var(--ease-out) both; box-shadow: 0 35px 100px #0006; }
-.dialog::backdrop { background: #0d160fd6; backdrop-filter: blur(6px); }
-.dialogBody { position: relative; }
-.dialogClose { position: absolute; z-index: 2; top: 14px; right: 14px; width: 44px; height: 44px; display: grid; place-items: center; border-radius: 50%; background: var(--paper); color: var(--ink); box-shadow: 0 2px 14px #0002; border: 1px solid var(--line); }
-.dialogClose { transition: transform .3s, color .2s, background .2s; }
-.dialogClose:hover { background: var(--ink); color: var(--paper); transform: rotate(90deg); }
 .lightboxPhoto { position: relative; width: min(1000px, calc(100vw - 50px)); height: min(68dvh, 700px); background: #111611; }
 .lightboxPhoto img { object-fit: contain; animation: photo-arrival .35s var(--ease-out) both; }
 .lightboxFooter { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px; text-align: center; }
@@ -188,10 +180,7 @@
 .productDetails h3 { font-size: 24px; margin: 24px 0 10px; }
 .home [data-reveal="visible"] { opacity: 1; transform: none; }
 @keyframes arrival { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: none; } }
-@keyframes discover-nudge { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(4px); } }
 @keyframes menu-shimmer { to { background-position: -200% 0; } }
-@keyframes reading-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
-@keyframes dialog-enter { from { opacity: 0; transform: translateY(10px) scale(.985); } to { opacity: 1; transform: none; } }
 .photoLabel { position: absolute; inset: auto 20px 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 18px; background: #fffffff2; color: #272724; font-size: 13px; border-radius: 3px; }
 .photoLabel svg { color: #80601f; }
 .menuAside { margin: 30px 0 24px; max-width: 320px; font-family: var(--font-cormorant), Georgia, serif; font-style: italic; font-size: 29px; line-height: 1.35; }
@@ -273,7 +262,6 @@
 .sectionNav { box-shadow: inset 0 1px 0 var(--edge-light), 0 1px 0 var(--line), 0 10px 24px #191d2208; }
 .sectionNavInner > a::after { background: linear-gradient(90deg, var(--gold), #d8bf86, var(--gold)); height: 3px; }
 .sectionNavInner > a[aria-current="location"] { text-shadow: 0 0 .01px currentColor; }
-.sectionNavInner .navReserve svg { padding: 8px; width: 32px; height: 32px; border: 1px solid var(--line); border-radius: 50%; box-shadow: inset 0 1px 0 var(--edge-light), 0 2px 5px var(--depth-shadow); }
 .intro { box-shadow: 0 1px 0 var(--edge-light); }
 .intro h2 { max-width: 420px; }
 .eyebrow::before { background: linear-gradient(90deg, currentColor, color-mix(in srgb, currentColor 25%, transparent)); }
@@ -339,9 +327,6 @@
 .faqList p { padding-left: 56px; }
 .closing::after { content: ""; position: absolute; inset: 14px; border: 1px solid #ffffff3b; pointer-events: none; }
 .closingContent h2 { text-shadow: 0 1px 0 #c2c4b9, 0 2px 0 #76796a, 0 10px 28px #0004; }
-.dialog { border-color: color-mix(in srgb, var(--gold) 45%, var(--line)); }
-.dialog[open] { box-shadow: inset 0 1px 0 var(--edge-light), 0 2px 0 var(--line), 0 24px 70px #0006, 0 60px 140px #0003; }
-.dialogClose { background: linear-gradient(135deg, var(--paper), var(--shah-soft)); box-shadow: inset 0 1px 0 var(--edge-light), 0 3px 0 var(--line), 0 7px 18px #0003; }
 .lightboxFooter { border-top: 1px solid var(--line); background: linear-gradient(180deg, var(--shah-soft), var(--paper)); }
 .lightboxFooter button { background: var(--paper); box-shadow: inset 0 1px 0 var(--edge-light), 0 2px 0 var(--line); }
 .lightboxFooter button:active { box-shadow: inset 0 2px 4px var(--depth-shadow); }
@@ -373,7 +358,7 @@
 .home[data-motion="off"] [data-tilt] { transform: none; }
 .home[data-motion="off"] [data-tilt]::after { display: none; }
 :global(html):has(.home[data-motion="off"]) { scroll-behavior: auto; }
-.home[data-motion="off"] :is(.primaryButton, .dish, .dialogClose):hover, .home[data-motion="off"] :is(a, button):is(:hover, :focus-visible) :is(img, svg, .expandIcon) { transform: none; }
+.home[data-motion="off"] :is(.primaryButton, .dish):hover, .home[data-motion="off"] :is(a, button):is(:hover, :focus-visible) :is(img, svg, .expandIcon) { transform: none; }
 .home[data-motion="off"] .occasionLinks a:hover { padding-inline: 0; }
 @keyframes photo-arrival { from { opacity: .5; transform: scale(.985); } to { opacity: 1; transform: none; } }
 @supports (animation-timeline: view()) {
@@ -403,7 +388,6 @@
   .primaryButton { padding: 13px 18px; min-height: 50px; font-size: 13px; gap: 10px; }
   .sectionNavInner { justify-content: space-between; padding-inline: 18px; gap: 12px; }
   .sectionNavInner > a { min-height: 54px; font-size: 12px; }
-  .sectionNavInner .navReserve { display: none; }
   .section { width: calc(100% - 44px); padding-block: 58px; }
   .intro { padding-top: 38px; }
   .home h2 { font-size: 38px; }
@@ -454,7 +438,6 @@
   :global(body):has(.home) :global([data-site-footer]) { padding-bottom: calc(72px + env(safe-area-inset-bottom)); }
   .mobileActions a { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 46px; padding: 8px; font-size: 12px; border: 1px solid var(--line); border-radius: 3px; }
   .mobileActions a:last-child { background: #e6cf98; color: #282416; border-color: #e6cf98; }
-  .dialog { max-width: calc(100vw - 24px); max-height: calc(100dvh - 24px); }
   .lightboxPhoto { width: calc(100vw - 26px); height: 60dvh; }
   .productDetails { width: calc(100vw - 26px); padding: 60px 24px 28px; }
   .productDetails h2 { font-size: 34px; }
@@ -485,7 +468,6 @@
 .primaryButton:active { transform: none; box-shadow: none; }
 .sectionNav { border-bottom-color: var(--line); box-shadow: 0 2px 16px #0d495208; }
 .sectionNavInner > a::after { height: 2px; background: #E0AF59; }
-.sectionNavInner .navReserve svg { padding: 0; width: 14px; height: 14px; border: 0; box-shadow: none; }
 .intro { padding-block: 100px; }
 .intro h2 { max-width: 490px; font-size: clamp(44px, 4.8vw, 68px); line-height: 1.04; }
 .eyebrow::before { background: #E0AF59; }
@@ -511,17 +493,7 @@
 .closingShade { background: linear-gradient(90deg, #062b32ed, #0D4952bf, #062b32ed); }
 .closingContent { max-width: 860px; padding-block: 88px; }
 .home .closingMark { width: 48px; margin: 0 auto 26px; }
-.scrollProgress { display: none; }
 .home[data-motion="off"] [data-reveal] { opacity: 1; transform: none; }
-.home[data-motion="off"] .scrollProgress { display: none; }
-@supports (animation-timeline: scroll()) {
-  .scrollProgress { display: block; position: fixed; inset: 0 0 auto; height: 2px; z-index: 60; background: #E0AF59; transform-origin: left; pointer-events: none; animation: brand-progress linear both; animation-timeline: scroll(root block); }
-  @keyframes brand-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
-}
-@supports (animation-timeline: view()) {
-  @media (min-width: 900px) and (prefers-reduced-motion: no-preference) {
-  }
-}
 @media (max-width: 700px) {
   .intro { padding-block: 56px; }
   .intro h2 { font-size: 43px; }
@@ -533,9 +505,6 @@
   .home .storyPhotoMark { width: 112px; right: 14px; bottom: 14px; padding: 12px; }
   .closingContent { padding: 64px 22px; }
   .mobileActions a:last-child { background: #E0AF59; border-color: #E0AF59; color: #0D4952; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .home .scrollProgress { display: none; }
 }
 
 /* The full viewport stays pinned while native scrolling selects the film frame. */
@@ -551,27 +520,19 @@
 @media (max-width: 900px) {
   .heroScroll { height: 280svh; }
 }
-@media (max-width: 700px) {
-}
-@media (max-width: 380px) {
-}
-@media (max-height: 700px) and (min-width: 701px) {
-}
 @media (prefers-reduced-motion: reduce) { .heroScroll { height: 100svh; } }
-
-@media (max-height: 540px) and (min-width: 701px) {
-}
 
 
 /* Cinematic chapters: the original film is the entire first frame. */
 .home { --gold: var(--shah-gold); --accent: var(--shah-accent); --scene-progress: .5; --scene-shift: 0px; }
-.home .heroScroll { height: 100svh; margin-top: calc(-1 * var(--site-header-height, 102px)); background: var(--shah-brand-teal); }
+.home .heroScroll { height: 100svh; margin-top: 0; background: var(--shah-brand-teal); }
 .home .heroScroll:not([data-unavailable="true"]) { height: 360svh; }
 .home .heroScroll[data-unavailable="true"] { height: 100svh; }
 .home .hero { height: 100svh; min-height: 100svh; }
 .home .heroMedia { inset: 0; }
 .home .heroMedia picture, .home .heroMedia video { border: 0; box-shadow: none; }
 .home .heroMedia::before, .home .heroMedia::after { display: none; }
+:global(body):has(.home) :global([data-site-header]) { position: fixed; inset: 0 0 auto; }
 :global(body):has(.home) :global([data-site-header-bar]) { transition: opacity .5s cubic-bezier(.16,1,.3,1), transform .65s cubic-bezier(.16,1,.3,1); }
 :global(body):has(.home[data-film-view="opening"]) :global([data-site-header]) { background: transparent !important; border-color: transparent !important; box-shadow: none !important; backdrop-filter: none !important; pointer-events: none; }
 :global(body):has(.home[data-film-view="opening"]) :global([data-site-header-bar]) { opacity: 0; visibility: hidden; transform: translate3d(0,-18px,0); pointer-events: none; }
@@ -670,7 +631,7 @@
 .home .faqList details[open] summary svg { transform: rotate(180deg); }
 .home .faqList summary svg { transition: transform .3s var(--ease-out); }
 .home .faqList details[open] > p { animation: answer-arrival .25s var(--ease-out); padding-bottom: 24px; }
-@keyframes answer-arrival { from { opacity:.2; transform:translateY(5px); } to { opacity:1; transform:none; } }
+@keyframes answer-arrival { from { transform:translateY(5px); } to { transform:none; } }
 .home [data-scene="partners"] { padding-block: 90px; border-top: 1px solid var(--line); }
 .home .closing { overflow: clip; margin: 0; }
 .home .closing::after { inset: 24px; border-color: color-mix(in srgb,var(--shah-brand-gold) 38%,transparent); }
@@ -682,20 +643,21 @@
 /* A small shared frame loop supplies only visible scenes with these compositor values. */
 .home [data-parallax] { animation: none; transform: translate3d(0,var(--scene-shift,0px),0) scale(1.09); transition: none; }
 .home [data-scene-active="true"] [data-parallax] { will-change: transform; }
-.home[data-choreography="ready"] [data-reveal] { transition: opacity .8s var(--ease-out) var(--reveal-delay,0ms), transform 1s var(--ease-out) var(--reveal-delay,0ms); }
+.home[data-choreography="ready"] [data-reveal] { transition: transform .9s var(--ease-out) var(--reveal-delay,0ms); }
 .home[data-choreography="ready"] [data-reveal="pending"] { opacity: 0; transform: translate3d(0,36px,0); }
 .home[data-choreography="ready"] [data-reveal="visible"] { opacity: 1; transform: none; }
 .home[data-choreography="ready"] [data-reveal-kind="left"][data-reveal="pending"] { transform: translate3d(-28px,20px,0); }
 .home[data-choreography="ready"] [data-reveal-kind="right"][data-reveal="pending"] { transform: translate3d(28px,20px,0); }
 .home[data-choreography="ready"] [data-reveal-kind="frame"][data-reveal="pending"] { transform: translate3d(0,42px,0) scale(.965); }
-.home[data-choreography="ready"] [data-reveal-kind="row"][data-reveal="pending"] { transform: translate3d(0,18px,0); opacity:.2; }
-.home[data-choreography="ready"] [data-reveal-kind="quiet"][data-reveal="pending"] { transform: translate3d(0,12px,0); opacity:.4; }
+.home[data-choreography="ready"] [data-reveal-kind="row"][data-reveal="pending"] { transform: translate3d(0,18px,0); }
+.home[data-choreography="ready"] [data-reveal-kind="quiet"][data-reveal="pending"] { transform: translate3d(0,12px,0); }
 .home[data-choreography="ready"] .titleMask[data-reveal] { opacity: 1; transform: none; transition: none; }
-.home .titleMask > span { transition: transform 1.15s var(--ease-out) var(--reveal-delay,0ms), opacity .8s var(--ease-out) var(--reveal-delay,0ms); }
-.home[data-choreography="ready"] .titleMask[data-reveal="pending"] > span { transform: translate3d(0,110%,0); opacity:.1; }
+.home .titleMask > span { transition: transform .9s var(--ease-out) var(--reveal-delay,0ms); }
+.home[data-choreography="ready"] .titleMask[data-reveal="pending"] > span { transform: translate3d(0,110%,0); }
 .home[data-choreography="ready"] .titleMask[data-reveal="visible"] > span { transform:none; opacity:1; }
 .home [data-reveal]:focus-within { opacity: 1 !important; transform: none !important; transition: none !important; }
-:global(body):has(.home) :global([data-cinematic-footer] .gold-rule) { transform-origin:left; transition:transform 1.4s cubic-bezier(.16,1,.3,1); }
+.home[data-choreography="ready"] [data-reveal-instant], .home[data-choreography="ready"] .titleMask[data-reveal-instant] > span { transition: none; }
+:global(body):has(.home) :global([data-cinematic-footer] .gold-rule) { transform-origin:left; transition:transform .9s cubic-bezier(.16,1,.3,1); }
 :global(body):has(.home) :global([data-cinematic-footer][data-reveal="pending"] .gold-rule) { transform:scaleX(0); }
 :global(body):has(.home) :global([data-cinematic-footer][data-reveal="visible"] .gold-rule) { transform:scaleX(1); }
 

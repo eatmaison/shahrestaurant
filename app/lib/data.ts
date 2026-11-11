@@ -197,28 +197,8 @@ export function iconByKey(key?: string): IconType | undefined {
   return CATEGORY_ICON_CHOICES.find((c) => c.id === key)?.Icon;
 }
 
-/** Icon key used when seeding the built-in category names. */
-function defaultIconKey(category: string): string {
-  const icon = CATEGORY_ICONS[category];
-  return CATEGORY_ICON_CHOICES.find((c) => c.Icon === icon)?.id ?? "utensils";
-}
-
-/** Built-in restaurants used to seed the `brands` table on first run. */
-export const DEFAULT_BRAND_CONFIGS: BrandConfig[] = BRANDS.map((b) => ({
-  id: b.id,
-  name: b.name,
-  logo: b.logo,
-  categories: b.categories.map((name) => ({
-    name,
-    icon: defaultIconKey(name),
-    ...(name === "Pizzas"
-      ? { subcategories: PIZZA_SUBCATEGORIES.map((sub) => ({ name: sub, icon: defaultIconKey(sub) })) }
-      : {}),
-    ...(name === "Drinks"
-      ? { subcategories: DRINK_SUBCATEGORIES.map((sub) => ({ name: sub, icon: defaultIconKey(sub) })) }
-      : {}),
-  })),
-}));
+/** Shared compatibility export; brand defaults contain no icon component dependencies. */
+export { DEFAULT_BRAND_CONFIGS } from "./brandDefaults";
 
 /** Find a brand in the dynamic (admin-managed) list, with a safe fallback. */
 export function brandById(brands: BrandConfig[], id: string): BrandConfig | undefined {

@@ -53,8 +53,8 @@ export function CinematicSections() {
       previousWillChange.set(element, element.style.willChange);
       element.style.willChange = "transform, opacity";
       const animation = element.animate([
-        { opacity: 0.72, transform: "translate3d(0, 22px, 0)" },
-        { opacity: 1, transform: "translate3d(0, 0, 0)" },
+        { transform: "translate3d(0, 22px, 0)" },
+        { transform: "translate3d(0, 0, 0)" },
       ], { duration: 720, delay: stagger, easing: "cubic-bezier(.16, 1, .3, 1)" });
       animations.set(element, animation);
       void animation.finished.catch(() => {}).finally(() => {
@@ -66,7 +66,10 @@ export function CinematicSections() {
       for (const entry of entries) {
         const element = entry.target as HTMLElement;
         if (element.dataset.cinemaParallax === "true") {
-          if (entry.isIntersecting) visibleMedia.add(element);
+          if (entry.isIntersecting) {
+            visibleMedia.add(element);
+            if (element.classList.contains("reservation-location")) element.dataset.cinemaPhotoReady = "true";
+          }
           else { visibleMedia.delete(element); element.style.removeProperty("--cinema-parallax"); }
         }
         if (entry.isIntersecting && element.dataset.cinemaReveal === "true") {
@@ -149,6 +152,7 @@ export function CinematicSections() {
       connection?.removeEventListener("change", changed);
       for (const element of registered) {
         delete element.dataset.cinemaReveal; delete element.dataset.cinemaParallax; delete element.dataset.cinemaState;
+        delete element.dataset.cinemaPhotoReady;
         element.style.removeProperty("--cinema-parallax");
       }
     };
