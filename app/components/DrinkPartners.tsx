@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import Link from "./LocaleLink";
 import { useLang } from "../providers";
 import styles from "./DrinkPartners.module.css";
 

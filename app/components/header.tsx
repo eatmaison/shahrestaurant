@@ -1,6 +1,7 @@
 "use client";
 
-import Link from "next/link";
+import Link from "./LocaleLink";
+import { localePath } from "../lib/locale";
 import { BrandLogo } from "./BrandLogo";
 import { usePathname, useRouter } from "next/navigation";
 import { writeSessionValue } from "../lib/clientStorage";
@@ -96,19 +97,22 @@ export function Header() {
   ];
   if (currentUser?.role === "admin") links.push({ href: "/admin", label: t.nav.admin });
 
-  const isActive = (href: string) =>
-    href === "/" ? pathname === "/" : pathname.startsWith(href);
+  const isActive = (href: string) => {
+    const target = localePath(href, lang);
+    return href === "/" ? pathname === target : pathname.startsWith(target);
+  };
 
   const handleCartClick = (event: MouseEvent<HTMLAnchorElement>) => {
     setOpen(false);
     if (cartCount <= 0) return;
 
-    if (!writeSessionValue("openCartModal", "1") && pathname !== "/order") {
+    const onMenu = pathname === localePath("/order", lang);
+    if (!writeSessionValue("openCartModal", "1") && !onMenu) {
       event.preventDefault();
-      router.push("/order?cart=1");
+      router.push(localePath("/order", lang) + "?cart=1");
       return;
     }
-    if (pathname === "/order") {
+    if (onMenu) {
       event.preventDefault();
       window.dispatchEvent(new Event("open-cart-modal"));
     }
@@ -124,7 +128,7 @@ export function Header() {
     >
       <a href="#main-content" className={styles.skipLink}>{lang === "nl" ? "Ga naar inhoud" : "Skip to content"}</a>
       <div ref={barRef} className={`${styles.bar} mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8`}>
-        <Link href="/" aria-label="Shah Restaurant" className={`${styles.brand} group flex items-center gap-3`} onClick={() => { setOpen(false); setEventsOpen(false); }}>
+        <Link href="/" aria-label="Shah Restaurant · Amsterdam" className={`${styles.brand} group flex items-center gap-3`} onClick={() => { setOpen(false); setEventsOpen(false); }}>
           <BrandLogo className={styles.brandArtwork} alt="" eager />
           <span className={styles.brandCaption}>Restaurant · Amsterdam</span>
         </Link>
@@ -192,7 +196,7 @@ export function Header() {
               className={`rounded-full px-2.5 py-1 transition ${
                 lang === "en" ? "bg-emerald-500 text-white" : "text-slate-500 dark:text-slate-400"
               }`}
-              aria-label="English"
+              aria-label="EN — English"
               aria-pressed={lang === "en"}
             >
               EN
@@ -202,7 +206,7 @@ export function Header() {
               className={`rounded-full px-2.5 py-1 transition ${
                 lang === "nl" ? "bg-emerald-500 text-white" : "text-slate-500 dark:text-slate-400"
               }`}
-              aria-label="Nederlands"
+              aria-label="NL — Nederlands"
               aria-pressed={lang === "nl"}
             >
               NL
@@ -325,7 +329,7 @@ export function Header() {
             <div className="mt-2 flex items-center gap-2">
               <button
                 onClick={() => setLang("en")}
-                aria-label="English"
+                aria-label="EN — English"
                 aria-pressed={lang === "en"}
                 className={`flex-1 rounded-xl px-3 py-2 text-sm font-bold ${
                   lang === "en" ? "bg-emerald-500 text-white" : "border border-slate-200 dark:border-white/10"
@@ -335,7 +339,7 @@ export function Header() {
               </button>
               <button
                 onClick={() => setLang("nl")}
-                aria-label="Nederlands"
+                aria-label="NL — Nederlands"
                 aria-pressed={lang === "nl"}
                 className={`flex-1 rounded-xl px-3 py-2 text-sm font-bold ${
                   lang === "nl" ? "bg-emerald-500 text-white" : "border border-slate-200 dark:border-white/10"

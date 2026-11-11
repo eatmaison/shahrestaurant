@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "./LocaleLink";
 import { useEffect, useState } from "react";
 import { useLang } from "../providers";
 
@@ -42,7 +42,7 @@ export function CookieConsent() {
         <p className="flex-1 text-sm leading-6 text-slate-600 dark:text-slate-300">
           {t.cookies.message}{" "}
           <Link href="/privacy" className="font-semibold text-emerald-600 underline underline-offset-2 hover:text-emerald-500 dark:text-emerald-400">
-            {t.cookies.learnMore}
+            {t.footer.privacy}
           </Link>
         </p>
         <div className="flex flex-shrink-0 gap-2">

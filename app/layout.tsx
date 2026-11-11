@@ -1,76 +1,42 @@
 import type { Metadata, Viewport } from "next";
 import { Jost, Cormorant_Garamond } from "next/font/google";
+import { headers } from "next/headers";
+import { getPublicRoute } from "./lib/locale";
+import { publicMetadata, SITE_URL, siteSchema } from "./lib/seo";
 import "./design-system.css";
 import "./optimizations.css";
+import "./accessibility.css";
 import { Providers } from "./providers";
 import { Header } from "./components/header";
 import { Footer } from "./components/footer";
 import { CookieConsent } from "./components/CookieConsent";
-import { Atmosphere } from "./components/Atmosphere";
 
 const jost = Jost({
   variable: "--font-jost",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
   subsets: ["latin"],
+  display: "swap",
   weight: ["400", "500", "600", "700"],
 });
 
-const siteUrl = "https://shahrestaurant.nl";
-
-export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
-  title: {
-    default: "Indiaas restaurant Amsterdam-Noord | Shah Restaurant",
-    template: "%s | Shah Restaurant Amsterdam",
-  },
-  description:
-    "Reserveer een tafel bij Shah Restaurant aan de Klaprozenweg 36a in Amsterdam-Noord. Indiase gerechten, tandoori, curry en verse naan. Dinsdag t/m zondag vanaf 15:00.",
-  keywords: [
-    "shah restaurant",
-    "shahrestaurant",
-    "Indian restaurant Amsterdam",
-    "Indiaas restaurant Amsterdam",
-    "fine dining Amsterdam",
-    "tandoori Amsterdam",
-    "curry Amsterdam",
-    "biryani Amsterdam",
-    "butter chicken Amsterdam",
-    "Indian food delivery Amsterdam Noord",
-    "restaurant reserveren Amsterdam",
-    "Klaprozenweg",
-  ],
-  authors: [{ name: "Shah Restaurant" }],
-  alternates: {
-    canonical: "./",
-  },
-  openGraph: {
-    type: "website",
-    locale: "nl_NL",
-    alternateLocale: "en_GB",
-    url: "./",
-    siteName: "Shah Restaurant Amsterdam",
-    title: "Indiaas restaurant Amsterdam-Noord | Shah Restaurant",
-    description:
-      "Reserveer online een tafel bij Shah Restaurant in Amsterdam-Noord. Indiase gerechten, tandoori en curry aan de Klaprozenweg 36a.",
-    images: [{ url: "/brand/shah-social-v1.png", width: 1200, height: 630, alt: "Shah Restaurant — Indiaas eten in Amsterdam-Noord" }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Indiaas restaurant Amsterdam-Noord | Shah Restaurant",
-    description: "Reserveer een tafel voor Indiaas eten bij Shah Restaurant in Amsterdam-Noord.",
-    images: ["/brand/shah-social-v1.png"],
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: { index: true, follow: true, "max-image-preview": "large" },
-  },
-  icons: { icon: [{ url: "/brand/shah-favicon-v1.svg", type: "image/svg+xml" }, { url: "/brand/shah-icon-512-v1.png", sizes: "512x512", type: "image/png" }], apple: { url: "/brand/shah-apple-180-v1.png", sizes: "180x180", type: "image/png" } },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const requestHeaders = await headers();
+  const route = getPublicRoute(requestHeaders.get("x-shah-path") ?? "");
+  return {
+    ...(route ? publicMetadata(route.key, route.locale) : {
+      metadataBase: new URL(SITE_URL),
+      title: "Shah Restaurant",
+      robots: { index: false, follow: false },
+    }),
+    authors: [{ name: "Shah Restaurant" }],
+    icons: { icon: [{ url: "/brand/shah-favicon-v1.svg", type: "image/svg+xml" }, { url: "/brand/shah-icon-512-v1.png", sizes: "512x512", type: "image/png" }], apple: { url: "/brand/shah-apple-180-v1.png", sizes: "180x180", type: "image/png" } },
+  };
+}
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -81,52 +47,23 @@ export const viewport: Viewport = {
 
 const themeScript = `(function(){try{var t=JSON.parse(localStorage.getItem('tm.theme'));document.documentElement.classList.toggle('dark',t==='dark');}catch(e){}})();`;
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Restaurant",
-  name: "Shah Restaurant",
-  image: `${siteUrl}/brand/shah-room-v1.webp`,
-  logo: `${siteUrl}/brand/shah-landscape-teal-v1.svg`,
-  "@id": `${siteUrl}/#restaurant`,
-  url: siteUrl,
-  telephone: "+31 20 341 2995",
-  email: "info@shahrestaurant.nl",
-  priceRange: "€€€",
-  servesCuisine: ["Indian", "Tandoori", "Curry", "Biryani"],
-  acceptsReservations: true,
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "Klaprozenweg 36a",
-    postalCode: "1032 KL",
-    addressLocality: "Amsterdam",
-    addressCountry: "NL",
-  },
-  geo: { "@type": "GeoCoordinates", latitude: 52.4045, longitude: 4.9009 },
-  areaServed: "Amsterdam",
-  menu: `${siteUrl}/order`,
-  openingHoursSpecification: {
-    "@type": "OpeningHoursSpecification",
-    dayOfWeek: ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-    opens: "15:00",
-    closes: "22:00",
-  },
-};
-
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const requestHeaders = await headers();
+  const initialLang = requestHeaders.get("x-shah-locale") === "en" ? "en" : "nl";
+  const route = getPublicRoute(requestHeaders.get("x-shah-path") ?? "");
   return (
-    <html lang="nl" suppressHydrationWarning data-scroll-behavior="smooth" className={`${jost.variable} ${cormorant.variable} h-full antialiased`}>
+    <html lang={initialLang} suppressHydrationWarning data-scroll-behavior="smooth" className={`${jost.variable} ${cormorant.variable} h-full antialiased`}>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
+        {route && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(siteSchema(initialLang)).replace(/</g, "\\u003c") }} />}
       </head>
       <body className="flex min-h-full flex-col">
-        <Providers>
+        <Providers initialLang={initialLang}>
           <Header />
-          <Atmosphere />
           <main id="main-content" tabIndex={-1} className="flex-1">{children}</main>
           <Footer />
           <CookieConsent />

@@ -1,0 +1,15 @@
+/* Preserve the established palette while making primary controls easier to reach. */
+:is([data-site-header], [data-site-footer], [data-cookie-notice], main) :is(button, summary, input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="hidden"]), select, textarea) { min-height: 48px; }
+:is([data-site-header], [data-site-footer]) a { min-height: 48px; }
+[data-site-header] :is(button, a[title]) { min-width: 48px; }
+[data-site-header] button[aria-pressed] { min-width: 48px; }
+[data-site-footer] a[title] { width: 48px; height: 48px; }
+main a[class*="Button"], main a[class*="contactLink"], main a[class*="textLink"], main a[class*="faqContact"], main [class*="mobileActions"] a { min-height: 48px; }
+main [class*="filters"] label > span { min-height: 48px; }
+:is([data-site-header], [data-site-footer], [data-cookie-notice], main) :is(a, button, summary, input, select, textarea):focus-visible { outline: 3px solid var(--shah-accent); outline-offset: 4px; }
+[data-site-footer] :is(a, button):focus-visible { outline-color: var(--shah-brand-gold); }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+  :is([data-site-header], [data-site-footer], [data-cookie-notice], main) *, :is([data-site-header], [data-site-footer], [data-cookie-notice], main) *::before, :is([data-site-header], [data-site-footer], [data-cookie-notice], main) *::after { animation: none !important; transition: none !important; }
+  main [data-reveal] { opacity: 1 !important; transform: none !important; }
+}

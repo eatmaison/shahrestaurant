@@ -1,6 +1,8 @@
 "use client";
 
 import type { Bootstrap } from "./lib/serverStore";
+import { usePathname } from "next/navigation";
+import { getPublicRoute, localePath } from "./lib/locale";
 import { fetchJSON } from "./lib/clientFetch";
 import { readStoredJSON, readStoredCart, writeStoredJSON } from "./lib/clientStorage";
 
@@ -229,7 +231,7 @@ function readThemePreference(fallback: Theme): Theme {
 /* Provider                                                            */
 /* ------------------------------------------------------------------ */
 
-export function Providers({ children }: { children: ReactNode }) {
+export function Providers({ children, initialLang = "nl" }: { children: ReactNode; initialLang?: Lang }) {
   const [hydrated, setHydrated] = useState(false);
   const [catalogStatus, setCatalogStatus] = useState<"loading" | "ready" | "error">("loading");
   const checkoutBusy = useRef(false);
@@ -237,7 +239,9 @@ export function Providers({ children }: { children: ReactNode }) {
   const statusController = useRef<AbortController | null>(null);
 
   const [theme, setTheme] = useState<Theme>("light");
-  const [lang, setLangState] = useState<Lang>("nl");
+  const pathname = usePathname();
+  const [languagePreference, setLangState] = useState<Lang>(initialLang);
+  const lang = getPublicRoute(pathname)?.locale ?? languagePreference;
 
   const [products, setProducts] = useState<Product[]>([]);
   const [brands, setBrands] = useState<BrandConfig[]>(DEFAULT_BRAND_CONFIGS);
@@ -373,7 +377,15 @@ export function Providers({ children }: { children: ReactNode }) {
   }, [cart, hydrated]);
 
   const toggleTheme = useCallback(() => setTheme((t) => (t === "light" ? "dark" : "light")), []);
-  const setLang = useCallback((l: Lang) => setLangState(l), []);
+  const setLang = useCallback((l: Lang) => {
+    writeStoredJSON(LS.lang, l);
+    const route = getPublicRoute(pathname);
+    if (route && route.locale !== l) {
+      window.location.assign(localePath(pathname, l) + window.location.search + window.location.hash);
+      return;
+    }
+    setLangState(l);
+  }, [pathname]);
 
   const addProduct = useCallback<StoreCtx["addProduct"]>(async (p) => {
     try {

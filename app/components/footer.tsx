@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "./LocaleLink";
 import { BrandLogo } from "./BrandLogo";
 import { useEffect, useState } from "react";
 import { FaArrowUp, FaClock, FaEnvelope, FaLocationDot, FaPhone } from "react-icons/fa6";
