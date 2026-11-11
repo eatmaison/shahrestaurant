@@ -176,7 +176,7 @@ export default function TermsPage() {
         <span className="ornament-gem" aria-hidden /> Shah Restaurant
       </span>
       <h1 className="font-display relative mt-3 text-3xl font-semibold text-slate-900 dark:text-white">{c.title}</h1>
-      <p className="relative mt-2 text-sm text-slate-500 dark:text-slate-400">{c.updated}</p>
+      <p className="relative mt-2 text-sm text-slate-600 dark:text-slate-300">{c.updated}</p>
       <p className="relative mt-6 text-sm leading-7 text-slate-600 dark:text-slate-300">{c.intro}</p>
       {c.sections.map((s) => (
         <section key={s.title} className="mt-8">
