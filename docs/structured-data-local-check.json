@@ -1,0 +1,102 @@
+[
+  {
+    "route": "/",
+    "lang": "nl",
+    "valid_jsonld_blocks": 2,
+    "types": [
+      "Graph",
+      "FAQPage"
+    ],
+    "checks": "pass"
+  },
+  {
+    "route": "/en",
+    "lang": "en",
+    "valid_jsonld_blocks": 2,
+    "types": [
+      "Graph",
+      "FAQPage"
+    ],
+    "checks": "pass"
+  },
+  {
+    "route": "/menukaart",
+    "lang": "nl",
+    "valid_jsonld_blocks": 2,
+    "types": [
+      "Graph",
+      "BreadcrumbList"
+    ],
+    "checks": "pass"
+  },
+  {
+    "route": "/en/menu",
+    "lang": "en",
+    "valid_jsonld_blocks": 2,
+    "types": [
+      "Graph",
+      "BreadcrumbList"
+    ],
+    "checks": "pass"
+  },
+  {
+    "route": "/reserveren",
+    "lang": "nl",
+    "valid_jsonld_blocks": 2,
+    "types": [
+      "Graph",
+      "BreadcrumbList"
+    ],
+    "checks": "pass"
+  },
+  {
+    "route": "/en/reservations",
+    "lang": "en",
+    "valid_jsonld_blocks": 2,
+    "types": [
+      "Graph",
+      "BreadcrumbList"
+    ],
+    "checks": "pass"
+  },
+  {
+    "route": "/privacy",
+    "lang": "nl",
+    "valid_jsonld_blocks": 2,
+    "types": [
+      "Graph",
+      "BreadcrumbList"
+    ],
+    "checks": "pass"
+  },
+  {
+    "route": "/en/privacy",
+    "lang": "en",
+    "valid_jsonld_blocks": 2,
+    "types": [
+      "Graph",
+      "BreadcrumbList"
+    ],
+    "checks": "pass"
+  },
+  {
+    "route": "/voorwaarden",
+    "lang": "nl",
+    "valid_jsonld_blocks": 2,
+    "types": [
+      "Graph",
+      "BreadcrumbList"
+    ],
+    "checks": "pass"
+  },
+  {
+    "route": "/en/terms",
+    "lang": "en",
+    "valid_jsonld_blocks": 2,
+    "types": [
+      "Graph",
+      "BreadcrumbList"
+    ],
+    "checks": "pass"
+  }
+]

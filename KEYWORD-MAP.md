@@ -24,3 +24,5 @@ Home section ownership:
 No public targeting of restricted /events or /parties, account/admin/auth/payment/terminal. No doorway pages for Centrum, Jordaan, De Pijp, Oost, West, Zuid, Oud-West or Plantage. No "near Dam/Rijksmuseum/Leidseplein/Vondelpark/Central Station" claims without grounded travel facts. Broad restaurant/where-to-eat terms are context, not guaranteed rankings. Unknown transit lines, parking, accessibility, terrace availability, children's facilities and in-restaurant payment methods need owner/source confirmation before being asserted.
 
 Titles target 50-60 characters where natural, unique descriptions target 140-158 characters; accuracy and readable brand names take priority over mechanically forcing an exact title pattern.
+
+Shipped and verified on 11 November 2026: all ten canonical URLs return 200 with matching server language, selfcanonical and reciprocal language alternatives. Public navigation/anchors and legacy query-preserving redirects were checked; private occasions remain protected. No additional neighborhood/landmark pages or unverified restaurant claims were added.

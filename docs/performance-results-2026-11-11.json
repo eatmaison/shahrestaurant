@@ -1,0 +1,1585 @@
+{
+  "date": "2026-11-11",
+  "buildId": "ZvsF7jSptyH4JJlRdUepP",
+  "origin": "http://localhost:3398",
+  "productionUpstream": "http://localhost:3397",
+  "lighthouseVersion": "13.6.0",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+  "environment": {
+    "networkUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Mobile Safari/537.36",
+    "hostUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+    "benchmarkIndex": 2320,
+    "credits": {
+      "axe-core": "4.14.0"
+    }
+  },
+  "scope": "One sequential production lab navigation per route and device with an isolated read-only 104-product checked-in seed fixture. No live records or transactional submissions.",
+  "baseline": null,
+  "counts": {
+    "performance": 14,
+    "accessibility": 20,
+    "bestPractices": 20,
+    "seo": 20,
+    "lcp": 14,
+    "cls": 20,
+    "tbt": 20
+  },
+  "accessibilityIssues": [],
+  "mobile": [
+    {
+      "buildId": "ZvsF7jSptyH4JJlRdUepP",
+      "route": "/",
+      "form": "mobile",
+      "label": "final-frozen",
+      "fetchTime": "2026-11-11T01:39:46.521Z",
+      "requestedUrl": "http://127.0.0.1:3398/",
+      "finalDisplayedUrl": "http://127.0.0.1:3398/",
+      "scores": {
+        "performance": 83,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "largest-contentful-paint": 4610.590499999999,
+        "cumulative-layout-shift": 0.01701093560145808,
+        "total-blocking-time": 88,
+        "speed-index": 1720.1263448676718,
+        "first-contentful-paint": 1375.6362,
+        "interactive": 4630.60412
+      },
+      "warnings": [],
+      "failures": [
+        {
+          "id": "first-contentful-paint",
+          "title": "First Contentful Paint",
+          "score": 0.97,
+          "displayValue": "1.4 s"
+        },
+        {
+          "id": "largest-contentful-paint",
+          "title": "Largest Contentful Paint",
+          "score": 0.34,
+          "displayValue": "4.6 s"
+        },
+        {
+          "id": "total-blocking-time",
+          "title": "Total Blocking Time",
+          "score": 0.99,
+          "displayValue": "90 ms"
+        },
+        {
+          "id": "max-potential-fid",
+          "title": "Max Potential First Input Delay",
+          "score": 0.9,
+          "displayValue": "130 ms"
+        },
+        {
+          "id": "interactive",
+          "title": "Time to Interactive",
+          "score": 0.81,
+          "displayValue": "4.6 s"
+        },
+        {
+          "id": "mainthread-work-breakdown",
+          "title": "Minimize main-thread work",
+          "score": 0,
+          "displayValue": "2.3 s"
+        },
+        {
+          "id": "total-byte-weight",
+          "title": "Avoid enormous network payloads",
+          "score": 0.5,
+          "displayValue": "Total size was 11,594 KiB"
+        },
+        {
+          "id": "unused-javascript",
+          "title": "Reduce unused JavaScript",
+          "score": 0,
+          "displayValue": "Est savings of 46 KiB"
+        },
+        {
+          "id": "bf-cache",
+          "title": "Page prevented back/forward cache restoration",
+          "score": 0,
+          "displayValue": "2 failure reasons"
+        },
+        {
+          "id": "forced-reflow-insight",
+          "title": "Forced reflow",
+          "score": 0
+        },
+        {
+          "id": "legacy-javascript-insight",
+          "title": "Legacy JavaScript",
+          "score": 0,
+          "displayValue": "Est savings of 14 KiB"
+        },
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree",
+          "score": 0
+        },
+        {
+          "id": "render-blocking-insight",
+          "title": "Render-blocking requests",
+          "score": 0,
+          "displayValue": "Est savings of 400 ms"
+        }
+      ]
+    },
+    {
+      "buildId": "ZvsF7jSptyH4JJlRdUepP",
+      "route": "/en",
+      "form": "mobile",
+      "label": "final-frozen",
+      "fetchTime": "2026-11-11T01:39:56.537Z",
+      "requestedUrl": "http://127.0.0.1:3398/en",
+      "finalDisplayedUrl": "http://127.0.0.1:3398/en",
+      "scores": {
+        "performance": 83,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "largest-contentful-paint": 4581.468825000002,
+        "cumulative-layout-shift": 0.01701093560145808,
+        "total-blocking-time": 71.5,
+        "speed-index": 1840.0126213852707,
+        "first-contentful-paint": 1372.3523,
+        "interactive": 4600.1452475000015
+      },
+      "warnings": [],
+      "failures": [
+        {
+          "id": "first-contentful-paint",
+          "title": "First Contentful Paint",
+          "score": 0.97,
+          "displayValue": "1.4 s"
+        },
+        {
+          "id": "largest-contentful-paint",
+          "title": "Largest Contentful Paint",
+          "score": 0.35,
+          "displayValue": "4.6 s"
+        },
+        {
+          "id": "total-blocking-time",
+          "title": "Total Blocking Time",
+          "score": 0.99,
+          "displayValue": "70 ms"
+        },
+        {
+          "id": "max-potential-fid",
+          "title": "Max Potential First Input Delay",
+          "score": 0.91,
+          "displayValue": "130 ms"
+        },
+        {
+          "id": "interactive",
+          "title": "Time to Interactive",
+          "score": 0.81,
+          "displayValue": "4.6 s"
+        },
+        {
+          "id": "mainthread-work-breakdown",
+          "title": "Minimize main-thread work",
+          "score": 0,
+          "displayValue": "2.3 s"
+        },
+        {
+          "id": "total-byte-weight",
+          "title": "Avoid enormous network payloads",
+          "score": 0.5,
+          "displayValue": "Total size was 11,594 KiB"
+        },
+        {
+          "id": "unused-javascript",
+          "title": "Reduce unused JavaScript",
+          "score": 0,
+          "displayValue": "Est savings of 46 KiB"
+        },
+        {
+          "id": "bf-cache",
+          "title": "Page prevented back/forward cache restoration",
+          "score": 0,
+          "displayValue": "2 failure reasons"
+        },
+        {
+          "id": "forced-reflow-insight",
+          "title": "Forced reflow",
+          "score": 0
+        },
+        {
+          "id": "legacy-javascript-insight",
+          "title": "Legacy JavaScript",
+          "score": 0,
+          "displayValue": "Est savings of 14 KiB"
+        },
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree",
+          "score": 0
+        },
+        {
+          "id": "render-blocking-insight",
+          "title": "Render-blocking requests",
+          "score": 0,
+          "displayValue": "Est savings of 360 ms"
+        }
+      ]
+    },
+    {
+      "buildId": "ZvsF7jSptyH4JJlRdUepP",
+      "route": "/menukaart",
+      "form": "mobile",
+      "label": "final-frozen",
+      "fetchTime": "2026-11-11T01:40:06.399Z",
+      "requestedUrl": "http://127.0.0.1:3398/menukaart",
+      "finalDisplayedUrl": "http://127.0.0.1:3398/menukaart",
+      "scores": {
+        "performance": 85,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "largest-contentful-paint": 4364.5949,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 34.5,
+        "speed-index": 1519.4590739750195,
+        "first-contentful-paint": 1516.0292,
+        "interactive": 4528.587600000001
+      },
+      "warnings": [],
+      "failures": [
+        {
+          "id": "first-contentful-paint",
+          "title": "First Contentful Paint",
+          "score": 0.95,
+          "displayValue": "1.5 s"
+        },
+        {
+          "id": "largest-contentful-paint",
+          "title": "Largest Contentful Paint",
+          "score": 0.4,
+          "displayValue": "4.4 s"
+        },
+        {
+          "id": "max-potential-fid",
+          "title": "Max Potential First Input Delay",
+          "score": 0.95,
+          "displayValue": "110 ms"
+        },
+        {
+          "id": "interactive",
+          "title": "Time to Interactive",
+          "score": 0.82,
+          "displayValue": "4.5 s"
+        },
+        {
+          "id": "mainthread-work-breakdown",
+          "title": "Minimize main-thread work",
+          "score": 0,
+          "displayValue": "2.3 s"
+        },
+        {
+          "id": "unused-javascript",
+          "title": "Reduce unused JavaScript",
+          "score": 0,
+          "displayValue": "Est savings of 43 KiB"
+        },
+        {
+          "id": "bf-cache",
+          "title": "Page prevented back/forward cache restoration",
+          "score": 0,
+          "displayValue": "2 failure reasons"
+        },
+        {
+          "id": "legacy-javascript-insight",
+          "title": "Legacy JavaScript",
+          "score": 0,
+          "displayValue": "Est savings of 14 KiB"
+        },
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree",
+          "score": 0
+        },
+        {
+          "id": "render-blocking-insight",
+          "title": "Render-blocking requests",
+          "score": 0,
+          "displayValue": "Est savings of 570 ms"
+        }
+      ]
+    },
+    {
+      "buildId": "ZvsF7jSptyH4JJlRdUepP",
+      "route": "/en/menu",
+      "form": "mobile",
+      "label": "final-frozen",
+      "fetchTime": "2026-11-11T01:40:19.286Z",
+      "requestedUrl": "http://127.0.0.1:3398/en/menu",
+      "finalDisplayedUrl": "http://127.0.0.1:3398/en/menu",
+      "scores": {
+        "performance": 86,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "largest-contentful-paint": 4226.127350000001,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 30.5,
+        "speed-index": 1473.4238,
+        "first-contentful-paint": 1473.4238,
+        "interactive": 4373.821400000001
+      },
+      "warnings": [],
+      "failures": [
+        {
+          "id": "first-contentful-paint",
+          "title": "First Contentful Paint",
+          "score": 0.96,
+          "displayValue": "1.5 s"
+        },
+        {
+          "id": "largest-contentful-paint",
+          "title": "Largest Contentful Paint",
+          "score": 0.44,
+          "displayValue": "4.2 s"
+        },
+        {
+          "id": "max-potential-fid",
+          "title": "Max Potential First Input Delay",
+          "score": 0.96,
+          "displayValue": "100 ms"
+        },
+        {
+          "id": "interactive",
+          "title": "Time to Interactive",
+          "score": 0.84,
+          "displayValue": "4.4 s"
+        },
+        {
+          "id": "mainthread-work-breakdown",
+          "title": "Minimize main-thread work",
+          "score": 0,
+          "displayValue": "2.3 s"
+        },
+        {
+          "id": "bootup-time",
+          "title": "Reduce JavaScript execution time",
+          "score": 0,
+          "displayValue": "1.3 s"
+        },
+        {
+          "id": "unused-javascript",
+          "title": "Reduce unused JavaScript",
+          "score": 0,
+          "displayValue": "Est savings of 44 KiB"
+        },
+        {
+          "id": "bf-cache",
+          "title": "Page prevented back/forward cache restoration",
+          "score": 0,
+          "displayValue": "2 failure reasons"
+        },
+        {
+          "id": "legacy-javascript-insight",
+          "title": "Legacy JavaScript",
+          "score": 0,
+          "displayValue": "Est savings of 14 KiB"
+        },
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree",
+          "score": 0
+        },
+        {
+          "id": "render-blocking-insight",
+          "title": "Render-blocking requests",
+          "score": 0,
+          "displayValue": "Est savings of 550 ms"
+        }
+      ]
+    },
+    {
+      "buildId": "ZvsF7jSptyH4JJlRdUepP",
+      "route": "/reserveren",
+      "form": "mobile",
+      "label": "final-frozen",
+      "fetchTime": "2026-11-11T01:40:30.818Z",
+      "requestedUrl": "http://127.0.0.1:3398/reserveren",
+      "finalDisplayedUrl": "http://127.0.0.1:3398/reserveren",
+      "scores": {
+        "performance": 86,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "largest-contentful-paint": 4186.363774999999,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 39.49999999999977,
+        "speed-index": 1372.3141,
+        "first-contentful-paint": 1372.3141,
+        "interactive": 4208.305922499999
+      },
+      "warnings": [],
+      "failures": [
+        {
+          "id": "first-contentful-paint",
+          "title": "First Contentful Paint",
+          "score": 0.97,
+          "displayValue": "1.4 s"
+        },
+        {
+          "id": "largest-contentful-paint",
+          "title": "Largest Contentful Paint",
+          "score": 0.45,
+          "displayValue": "4.2 s"
+        },
+        {
+          "id": "max-potential-fid",
+          "title": "Max Potential First Input Delay",
+          "score": 0.9,
+          "displayValue": "130 ms"
+        },
+        {
+          "id": "interactive",
+          "title": "Time to Interactive",
+          "score": 0.85,
+          "displayValue": "4.2 s"
+        },
+        {
+          "id": "unused-css-rules",
+          "title": "Reduce unused CSS",
+          "score": 0.5,
+          "displayValue": "Est savings of 11 KiB"
+        },
+        {
+          "id": "unused-javascript",
+          "title": "Reduce unused JavaScript",
+          "score": 0,
+          "displayValue": "Est savings of 48 KiB"
+        },
+        {
+          "id": "bf-cache",
+          "title": "Page prevented back/forward cache restoration",
+          "score": 0,
+          "displayValue": "2 failure reasons"
+        },
+        {
+          "id": "forced-reflow-insight",
+          "title": "Forced reflow",
+          "score": 0
+        },
+        {
+          "id": "image-delivery-insight",
+          "title": "Improve image delivery",
+          "score": 0.5,
+          "displayValue": "Est savings of 235 KiB"
+        },
+        {
+          "id": "legacy-javascript-insight",
+          "title": "Legacy JavaScript",
+          "score": 0.5,
+          "displayValue": "Est savings of 14 KiB"
+        },
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree",
+          "score": 0
+        },
+        {
+          "id": "render-blocking-insight",
+          "title": "Render-blocking requests",
+          "score": 0,
+          "displayValue": "Est savings of 410 ms"
+        }
+      ]
+    },
+    {
+      "buildId": "ZvsF7jSptyH4JJlRdUepP",
+      "route": "/en/reservations",
+      "form": "mobile",
+      "label": "final-frozen",
+      "fetchTime": "2026-11-11T01:40:39.508Z",
+      "requestedUrl": "http://127.0.0.1:3398/en/reservations",
+      "finalDisplayedUrl": "http://127.0.0.1:3398/en/reservations",
+      "scores": {
+        "performance": 86,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "largest-contentful-paint": 4176.241300000001,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 44,
+        "speed-index": 1441.161862795614,
+        "first-contentful-paint": 1368.6332,
+        "interactive": 4198.2754700000005
+      },
+      "warnings": [],
+      "failures": [
+        {
+          "id": "first-contentful-paint",
+          "title": "First Contentful Paint",
+          "score": 0.97,
+          "displayValue": "1.4 s"
+        },
+        {
+          "id": "largest-contentful-paint",
+          "title": "Largest Contentful Paint",
+          "score": 0.45,
+          "displayValue": "4.2 s"
+        },
+        {
+          "id": "max-potential-fid",
+          "title": "Max Potential First Input Delay",
+          "score": 0.87,
+          "displayValue": "140 ms"
+        },
+        {
+          "id": "interactive",
+          "title": "Time to Interactive",
+          "score": 0.85,
+          "displayValue": "4.2 s"
+        },
+        {
+          "id": "unused-css-rules",
+          "title": "Reduce unused CSS",
+          "score": 0.5,
+          "displayValue": "Est savings of 11 KiB"
+        },
+        {
+          "id": "unused-javascript",
+          "title": "Reduce unused JavaScript",
+          "score": 0,
+          "displayValue": "Est savings of 48 KiB"
+        },
+        {
+          "id": "bf-cache",
+          "title": "Page prevented back/forward cache restoration",
+          "score": 0,
+          "displayValue": "2 failure reasons"
+        },
+        {
+          "id": "forced-reflow-insight",
+          "title": "Forced reflow",
+          "score": 0
+        },
+        {
+          "id": "image-delivery-insight",
+          "title": "Improve image delivery",
+          "score": 0.5,
+          "displayValue": "Est savings of 235 KiB"
+        },
+        {
+          "id": "legacy-javascript-insight",
+          "title": "Legacy JavaScript",
+          "score": 0.5,
+          "displayValue": "Est savings of 14 KiB"
+        },
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree",
+          "score": 0
+        },
+        {
+          "id": "render-blocking-insight",
+          "title": "Render-blocking requests",
+          "score": 0,
+          "displayValue": "Est savings of 410 ms"
+        }
+      ]
+    },
+    {
+      "buildId": "ZvsF7jSptyH4JJlRdUepP",
+      "route": "/privacy",
+      "form": "mobile",
+      "label": "final-frozen",
+      "fetchTime": "2026-11-11T01:40:48.320Z",
+      "requestedUrl": "http://127.0.0.1:3398/privacy",
+      "finalDisplayedUrl": "http://127.0.0.1:3398/privacy",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "largest-contentful-paint": 1219.4204,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 37,
+        "speed-index": 1219.4204,
+        "first-contentful-paint": 1219.4204,
+        "interactive": 3638.5220200000003
+      },
+      "warnings": [],
+      "failures": [
+        {
+          "id": "first-contentful-paint",
+          "title": "First Contentful Paint",
+          "score": 0.99,
+          "displayValue": "1.2 s"
+        },
+        {
+          "id": "max-potential-fid",
+          "title": "Max Potential First Input Delay",
+          "score": 0.91,
+          "displayValue": "120 ms"
+        },
+        {
+          "id": "interactive",
+          "title": "Time to Interactive",
+          "score": 0.91,
+          "displayValue": "3.6 s"
+        },
+        {
+          "id": "unused-javascript",
+          "title": "Reduce unused JavaScript",
+          "score": 0.5,
+          "displayValue": "Est savings of 50 KiB"
+        },
+        {
+          "id": "bf-cache",
+          "title": "Page prevented back/forward cache restoration",
+          "score": 0,
+          "displayValue": "2 failure reasons"
+        },
+        {
+          "id": "legacy-javascript-insight",
+          "title": "Legacy JavaScript",
+          "score": 0.5,
+          "displayValue": "Est savings of 14 KiB"
+        },
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree",
+          "score": 0
+        },
+        {
+          "id": "render-blocking-insight",
+          "title": "Render-blocking requests",
+          "score": 0,
+          "displayValue": "Est savings of 500 ms"
+        }
+      ]
+    },
+    {
+      "buildId": "ZvsF7jSptyH4JJlRdUepP",
+      "route": "/en/privacy",
+      "form": "mobile",
+      "label": "final-frozen",
+      "fetchTime": "2026-11-11T01:40:56.066Z",
+      "requestedUrl": "http://127.0.0.1:3398/en/privacy",
+      "finalDisplayedUrl": "http://127.0.0.1:3398/en/privacy",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "largest-contentful-paint": 1225.0908,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 39,
+        "speed-index": 1225.0908,
+        "first-contentful-paint": 1225.0908,
+        "interactive": 3589.48154
+      },
+      "warnings": [],
+      "failures": [
+        {
+          "id": "first-contentful-paint",
+          "title": "First Contentful Paint",
+          "score": 0.99,
+          "displayValue": "1.2 s"
+        },
+        {
+          "id": "max-potential-fid",
+          "title": "Max Potential First Input Delay",
+          "score": 0.9,
+          "displayValue": "130 ms"
+        },
+        {
+          "id": "interactive",
+          "title": "Time to Interactive",
+          "score": 0.91,
+          "displayValue": "3.6 s"
+        },
+        {
+          "id": "unused-javascript",
+          "title": "Reduce unused JavaScript",
+          "score": 0.5,
+          "displayValue": "Est savings of 50 KiB"
+        },
+        {
+          "id": "bf-cache",
+          "title": "Page prevented back/forward cache restoration",
+          "score": 0,
+          "displayValue": "2 failure reasons"
+        },
+        {
+          "id": "legacy-javascript-insight",
+          "title": "Legacy JavaScript",
+          "score": 0.5,
+          "displayValue": "Est savings of 14 KiB"
+        },
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree",
+          "score": 0
+        },
+        {
+          "id": "render-blocking-insight",
+          "title": "Render-blocking requests",
+          "score": 0,
+          "displayValue": "Est savings of 480 ms"
+        }
+      ]
+    },
+    {
+      "buildId": "ZvsF7jSptyH4JJlRdUepP",
+      "route": "/voorwaarden",
+      "form": "mobile",
+      "label": "final-frozen",
+      "fetchTime": "2026-11-11T01:41:03.697Z",
+      "requestedUrl": "http://127.0.0.1:3398/voorwaarden",
+      "finalDisplayedUrl": "http://127.0.0.1:3398/voorwaarden",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "largest-contentful-paint": 1222.3537000000001,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 42.5,
+        "speed-index": 1222.3537000000001,
+        "first-contentful-paint": 1222.3537000000001,
+        "interactive": 3657.0019349999993
+      },
+      "warnings": [],
+      "failures": [
+        {
+          "id": "first-contentful-paint",
+          "title": "First Contentful Paint",
+          "score": 0.99,
+          "displayValue": "1.2 s"
+        },
+        {
+          "id": "max-potential-fid",
+          "title": "Max Potential First Input Delay",
+          "score": 0.88,
+          "displayValue": "140 ms"
+        },
+        {
+          "id": "interactive",
+          "title": "Time to Interactive",
+          "score": 0.91,
+          "displayValue": "3.7 s"
+        },
+        {
+          "id": "unused-javascript",
+          "title": "Reduce unused JavaScript",
+          "score": 0.5,
+          "displayValue": "Est savings of 50 KiB"
+        },
+        {
+          "id": "bf-cache",
+          "title": "Page prevented back/forward cache restoration",
+          "score": 0,
+          "displayValue": "2 failure reasons"
+        },
+        {
+          "id": "legacy-javascript-insight",
+          "title": "Legacy JavaScript",
+          "score": 0.5,
+          "displayValue": "Est savings of 14 KiB"
+        },
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree",
+          "score": 0
+        },
+        {
+          "id": "render-blocking-insight",
+          "title": "Render-blocking requests",
+          "score": 0,
+          "displayValue": "Est savings of 480 ms"
+        }
+      ]
+    },
+    {
+      "buildId": "ZvsF7jSptyH4JJlRdUepP",
+      "route": "/en/terms",
+      "form": "mobile",
+      "label": "final-frozen",
+      "fetchTime": "2026-11-11T01:41:11.267Z",
+      "requestedUrl": "http://127.0.0.1:3398/en/terms",
+      "finalDisplayedUrl": "http://127.0.0.1:3398/en/terms",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "largest-contentful-paint": 1218.8499,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 36.5,
+        "speed-index": 1218.8499,
+        "first-contentful-paint": 1218.8499,
+        "interactive": 3568.567245000001
+      },
+      "warnings": [],
+      "failures": [
+        {
+          "id": "first-contentful-paint",
+          "title": "First Contentful Paint",
+          "score": 0.99,
+          "displayValue": "1.2 s"
+        },
+        {
+          "id": "max-potential-fid",
+          "title": "Max Potential First Input Delay",
+          "score": 0.91,
+          "displayValue": "120 ms"
+        },
+        {
+          "id": "interactive",
+          "title": "Time to Interactive",
+          "score": 0.91,
+          "displayValue": "3.6 s"
+        },
+        {
+          "id": "unused-javascript",
+          "title": "Reduce unused JavaScript",
+          "score": 0.5,
+          "displayValue": "Est savings of 50 KiB"
+        },
+        {
+          "id": "bf-cache",
+          "title": "Page prevented back/forward cache restoration",
+          "score": 0,
+          "displayValue": "2 failure reasons"
+        },
+        {
+          "id": "legacy-javascript-insight",
+          "title": "Legacy JavaScript",
+          "score": 0.5,
+          "displayValue": "Est savings of 14 KiB"
+        },
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree",
+          "score": 0
+        },
+        {
+          "id": "render-blocking-insight",
+          "title": "Render-blocking requests",
+          "score": 0,
+          "displayValue": "Est savings of 490 ms"
+        }
+      ]
+    }
+  ],
+  "desktop": [
+    {
+      "route": "/",
+      "form": "desktop",
+      "label": "final-frozen",
+      "buildId": "ZvsF7jSptyH4JJlRdUepP",
+      "fetchTime": "2026-11-11T01:41:55.805Z",
+      "requestedUrl": "http://127.0.0.1:3398/",
+      "finalDisplayedUrl": "http://127.0.0.1:3398/",
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "largest-contentful-paint": 833.7365,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 0,
+        "speed-index": 475.252004939863,
+        "first-contentful-paint": 382.491,
+        "interactive": 837.7365
+      },
+      "warnings": [],
+      "failures": [
+        {
+          "id": "largest-contentful-paint",
+          "title": "Largest Contentful Paint",
+          "score": 0.97,
+          "displayValue": "0.8 s"
+        },
+        {
+          "id": "total-byte-weight",
+          "title": "Avoid enormous network payloads",
+          "score": 0.5,
+          "displayValue": "Total size was 36,447 KiB"
+        },
+        {
+          "id": "unused-javascript",
+          "title": "Reduce unused JavaScript",
+          "score": 0,
+          "displayValue": "Est savings of 46 KiB"
+        },
+        {
+          "id": "bf-cache",
+          "title": "Page prevented back/forward cache restoration",
+          "score": 0,
+          "displayValue": "2 failure reasons"
+        },
+        {
+          "id": "forced-reflow-insight",
+          "title": "Forced reflow",
+          "score": 0
+        },
+        {
+          "id": "legacy-javascript-insight",
+          "title": "Legacy JavaScript",
+          "score": 0.5,
+          "displayValue": "Est savings of 14 KiB"
+        },
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree",
+          "score": 0
+        },
+        {
+          "id": "render-blocking-insight",
+          "title": "Render-blocking requests",
+          "score": 0,
+          "displayValue": "Est savings of 110 ms"
+        }
+      ]
+    },
+    {
+      "route": "/en",
+      "form": "desktop",
+      "label": "final-frozen",
+      "buildId": "ZvsF7jSptyH4JJlRdUepP",
+      "fetchTime": "2026-11-11T01:42:06.686Z",
+      "requestedUrl": "http://127.0.0.1:3398/en",
+      "finalDisplayedUrl": "http://127.0.0.1:3398/en",
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "largest-contentful-paint": 873.8204000000001,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 0,
+        "speed-index": 486.6913110707666,
+        "first-contentful-paint": 380.4102,
+        "interactive": 877.8204000000001
+      },
+      "warnings": [],
+      "failures": [
+        {
+          "id": "largest-contentful-paint",
+          "title": "Largest Contentful Paint",
+          "score": 0.97,
+          "displayValue": "0.9 s"
+        },
+        {
+          "id": "total-byte-weight",
+          "title": "Avoid enormous network payloads",
+          "score": 0.5,
+          "displayValue": "Total size was 36,447 KiB"
+        },
+        {
+          "id": "unused-javascript",
+          "title": "Reduce unused JavaScript",
+          "score": 0.5,
+          "displayValue": "Est savings of 46 KiB"
+        },
+        {
+          "id": "bf-cache",
+          "title": "Page prevented back/forward cache restoration",
+          "score": 0,
+          "displayValue": "2 failure reasons"
+        },
+        {
+          "id": "forced-reflow-insight",
+          "title": "Forced reflow",
+          "score": 0
+        },
+        {
+          "id": "legacy-javascript-insight",
+          "title": "Legacy JavaScript",
+          "score": 0.5,
+          "displayValue": "Est savings of 14 KiB"
+        },
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree",
+          "score": 0
+        },
+        {
+          "id": "render-blocking-insight",
+          "title": "Render-blocking requests",
+          "score": 0,
+          "displayValue": "Est savings of 110 ms"
+        }
+      ]
+    },
+    {
+      "route": "/menukaart",
+      "form": "desktop",
+      "label": "final-frozen",
+      "buildId": "ZvsF7jSptyH4JJlRdUepP",
+      "fetchTime": "2026-11-11T01:42:17.218Z",
+      "requestedUrl": "http://127.0.0.1:3398/menukaart",
+      "finalDisplayedUrl": "http://127.0.0.1:3398/menukaart",
+      "scores": {
+        "performance": 94,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "largest-contentful-paint": 1571.1565,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 0,
+        "speed-index": 1217.7110865611548,
+        "first-contentful-paint": 631.759,
+        "interactive": 1578.7444500000001
+      },
+      "warnings": [],
+      "failures": [
+        {
+          "id": "first-contentful-paint",
+          "title": "First Contentful Paint",
+          "score": 0.99,
+          "displayValue": "0.6 s"
+        },
+        {
+          "id": "largest-contentful-paint",
+          "title": "Largest Contentful Paint",
+          "score": 0.78,
+          "displayValue": "1.6 s"
+        },
+        {
+          "id": "speed-index",
+          "title": "Speed Index",
+          "score": 0.92,
+          "displayValue": "1.2 s"
+        },
+        {
+          "id": "interactive",
+          "title": "Time to Interactive",
+          "score": 0.99,
+          "displayValue": "1.6 s"
+        },
+        {
+          "id": "unused-javascript",
+          "title": "Reduce unused JavaScript",
+          "score": 0.5,
+          "displayValue": "Est savings of 43 KiB"
+        },
+        {
+          "id": "bf-cache",
+          "title": "Page prevented back/forward cache restoration",
+          "score": 0,
+          "displayValue": "2 failure reasons"
+        },
+        {
+          "id": "lcp-breakdown-insight",
+          "title": "LCP breakdown",
+          "score": 0
+        },
+        {
+          "id": "legacy-javascript-insight",
+          "title": "Legacy JavaScript",
+          "score": 0.5,
+          "displayValue": "Est savings of 14 KiB"
+        },
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree",
+          "score": 0
+        },
+        {
+          "id": "render-blocking-insight",
+          "title": "Render-blocking requests",
+          "score": 0,
+          "displayValue": "Est savings of 140 ms"
+        }
+      ]
+    },
+    {
+      "route": "/en/menu",
+      "form": "desktop",
+      "label": "final-frozen",
+      "buildId": "ZvsF7jSptyH4JJlRdUepP",
+      "fetchTime": "2026-11-11T01:42:34.486Z",
+      "requestedUrl": "http://127.0.0.1:3398/en/menu",
+      "finalDisplayedUrl": "http://127.0.0.1:3398/en/menu",
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "largest-contentful-paint": 928.98025,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 0,
+        "speed-index": 683.6575057369432,
+        "first-contentful-paint": 387.5921,
+        "interactive": 930.9802500000001
+      },
+      "warnings": [],
+      "failures": [
+        {
+          "id": "largest-contentful-paint",
+          "title": "Largest Contentful Paint",
+          "score": 0.96,
+          "displayValue": "0.9 s"
+        },
+        {
+          "id": "unused-javascript",
+          "title": "Reduce unused JavaScript",
+          "score": 0,
+          "displayValue": "Est savings of 45 KiB"
+        },
+        {
+          "id": "bf-cache",
+          "title": "Page prevented back/forward cache restoration",
+          "score": 0,
+          "displayValue": "2 failure reasons"
+        },
+        {
+          "id": "legacy-javascript-insight",
+          "title": "Legacy JavaScript",
+          "score": 0,
+          "displayValue": "Est savings of 14 KiB"
+        },
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree",
+          "score": 0
+        },
+        {
+          "id": "render-blocking-insight",
+          "title": "Render-blocking requests",
+          "score": 0,
+          "displayValue": "Est savings of 140 ms"
+        }
+      ]
+    },
+    {
+      "route": "/reserveren",
+      "form": "desktop",
+      "label": "final-frozen",
+      "buildId": "ZvsF7jSptyH4JJlRdUepP",
+      "fetchTime": "2026-11-11T01:42:47.558Z",
+      "requestedUrl": "http://127.0.0.1:3398/reserveren",
+      "finalDisplayedUrl": "http://127.0.0.1:3398/reserveren",
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "largest-contentful-paint": 669.6424,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 0,
+        "speed-index": 788.4468628369377,
+        "first-contentful-paint": 669.6424,
+        "interactive": 669.6424
+      },
+      "warnings": [],
+      "failures": [
+        {
+          "id": "first-contentful-paint",
+          "title": "First Contentful Paint",
+          "score": 0.98,
+          "displayValue": "0.7 s"
+        },
+        {
+          "id": "largest-contentful-paint",
+          "title": "Largest Contentful Paint",
+          "score": 0.99,
+          "displayValue": "0.7 s"
+        },
+        {
+          "id": "speed-index",
+          "title": "Speed Index",
+          "score": 0.99,
+          "displayValue": "0.8 s"
+        },
+        {
+          "id": "unused-css-rules",
+          "title": "Reduce unused CSS",
+          "score": 0.5,
+          "displayValue": "Est savings of 11 KiB"
+        },
+        {
+          "id": "unused-javascript",
+          "title": "Reduce unused JavaScript",
+          "score": 0.5,
+          "displayValue": "Est savings of 47 KiB"
+        },
+        {
+          "id": "bf-cache",
+          "title": "Page prevented back/forward cache restoration",
+          "score": 0,
+          "displayValue": "2 failure reasons"
+        },
+        {
+          "id": "image-delivery-insight",
+          "title": "Improve image delivery",
+          "score": 0.5,
+          "displayValue": "Est savings of 235 KiB"
+        },
+        {
+          "id": "legacy-javascript-insight",
+          "title": "Legacy JavaScript",
+          "score": 0.5,
+          "displayValue": "Est savings of 14 KiB"
+        },
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree",
+          "score": 0
+        },
+        {
+          "id": "render-blocking-insight",
+          "title": "Render-blocking requests",
+          "score": 0,
+          "displayValue": "Est savings of 270 ms"
+        }
+      ]
+    },
+    {
+      "route": "/en/reservations",
+      "form": "desktop",
+      "label": "final-frozen",
+      "buildId": "ZvsF7jSptyH4JJlRdUepP",
+      "fetchTime": "2026-11-11T01:43:02.167Z",
+      "requestedUrl": "http://127.0.0.1:3398/en/reservations",
+      "finalDisplayedUrl": "http://127.0.0.1:3398/en/reservations",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "largest-contentful-paint": 609.1385,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 0,
+        "speed-index": 775.9209382357628,
+        "first-contentful-paint": 609.1385,
+        "interactive": 609.1385
+      },
+      "warnings": [],
+      "failures": [
+        {
+          "id": "first-contentful-paint",
+          "title": "First Contentful Paint",
+          "score": 0.99,
+          "displayValue": "0.6 s"
+        },
+        {
+          "id": "largest-contentful-paint",
+          "title": "Largest Contentful Paint",
+          "score": 0.99,
+          "displayValue": "0.6 s"
+        },
+        {
+          "id": "speed-index",
+          "title": "Speed Index",
+          "score": 0.99,
+          "displayValue": "0.8 s"
+        },
+        {
+          "id": "unused-css-rules",
+          "title": "Reduce unused CSS",
+          "score": 0.5,
+          "displayValue": "Est savings of 11 KiB"
+        },
+        {
+          "id": "unused-javascript",
+          "title": "Reduce unused JavaScript",
+          "score": 0.5,
+          "displayValue": "Est savings of 47 KiB"
+        },
+        {
+          "id": "bf-cache",
+          "title": "Page prevented back/forward cache restoration",
+          "score": 0,
+          "displayValue": "2 failure reasons"
+        },
+        {
+          "id": "image-delivery-insight",
+          "title": "Improve image delivery",
+          "score": 0.5,
+          "displayValue": "Est savings of 235 KiB"
+        },
+        {
+          "id": "legacy-javascript-insight",
+          "title": "Legacy JavaScript",
+          "score": 0.5,
+          "displayValue": "Est savings of 14 KiB"
+        },
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree",
+          "score": 0
+        },
+        {
+          "id": "render-blocking-insight",
+          "title": "Render-blocking requests",
+          "score": 0,
+          "displayValue": "Est savings of 240 ms"
+        }
+      ]
+    },
+    {
+      "route": "/privacy",
+      "form": "desktop",
+      "label": "final-frozen",
+      "buildId": "ZvsF7jSptyH4JJlRdUepP",
+      "fetchTime": "2026-11-11T01:43:17.820Z",
+      "requestedUrl": "http://127.0.0.1:3398/privacy",
+      "finalDisplayedUrl": "http://127.0.0.1:3398/privacy",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "largest-contentful-paint": 389.6711,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 0,
+        "speed-index": 389.6711,
+        "first-contentful-paint": 389.6711,
+        "interactive": 389.6711
+      },
+      "warnings": [],
+      "failures": [
+        {
+          "id": "unused-javascript",
+          "title": "Reduce unused JavaScript",
+          "score": 0.5,
+          "displayValue": "Est savings of 50 KiB"
+        },
+        {
+          "id": "bf-cache",
+          "title": "Page prevented back/forward cache restoration",
+          "score": 0,
+          "displayValue": "2 failure reasons"
+        },
+        {
+          "id": "legacy-javascript-insight",
+          "title": "Legacy JavaScript",
+          "score": 0.5,
+          "displayValue": "Est savings of 14 KiB"
+        },
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree",
+          "score": 0
+        },
+        {
+          "id": "render-blocking-insight",
+          "title": "Render-blocking requests",
+          "score": 0,
+          "displayValue": "Est savings of 140 ms"
+        }
+      ]
+    },
+    {
+      "route": "/en/privacy",
+      "form": "desktop",
+      "label": "final-frozen",
+      "buildId": "ZvsF7jSptyH4JJlRdUepP",
+      "fetchTime": "2026-11-11T01:43:27.841Z",
+      "requestedUrl": "http://127.0.0.1:3398/en/privacy",
+      "finalDisplayedUrl": "http://127.0.0.1:3398/en/privacy",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "largest-contentful-paint": 403.118,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 0,
+        "speed-index": 403.118,
+        "first-contentful-paint": 403.118,
+        "interactive": 403.11800000000005
+      },
+      "warnings": [],
+      "failures": [
+        {
+          "id": "unused-javascript",
+          "title": "Reduce unused JavaScript",
+          "score": 0.5,
+          "displayValue": "Est savings of 49 KiB"
+        },
+        {
+          "id": "bf-cache",
+          "title": "Page prevented back/forward cache restoration",
+          "score": 0,
+          "displayValue": "2 failure reasons"
+        },
+        {
+          "id": "legacy-javascript-insight",
+          "title": "Legacy JavaScript",
+          "score": 0.5,
+          "displayValue": "Est savings of 14 KiB"
+        },
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree",
+          "score": 0
+        },
+        {
+          "id": "render-blocking-insight",
+          "title": "Render-blocking requests",
+          "score": 0,
+          "displayValue": "Est savings of 160 ms"
+        }
+      ]
+    },
+    {
+      "route": "/voorwaarden",
+      "form": "desktop",
+      "label": "final-frozen",
+      "buildId": "ZvsF7jSptyH4JJlRdUepP",
+      "fetchTime": "2026-11-11T01:43:37.987Z",
+      "requestedUrl": "http://127.0.0.1:3398/voorwaarden",
+      "finalDisplayedUrl": "http://127.0.0.1:3398/voorwaarden",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "largest-contentful-paint": 305.7802,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 0,
+        "speed-index": 305.7802,
+        "first-contentful-paint": 305.7802,
+        "interactive": 305.78020000000004
+      },
+      "warnings": [],
+      "failures": [
+        {
+          "id": "unused-javascript",
+          "title": "Reduce unused JavaScript",
+          "score": 0.5,
+          "displayValue": "Est savings of 50 KiB"
+        },
+        {
+          "id": "bf-cache",
+          "title": "Page prevented back/forward cache restoration",
+          "score": 0,
+          "displayValue": "2 failure reasons"
+        },
+        {
+          "id": "forced-reflow-insight",
+          "title": "Forced reflow",
+          "score": 0
+        },
+        {
+          "id": "legacy-javascript-insight",
+          "title": "Legacy JavaScript",
+          "score": 0.5,
+          "displayValue": "Est savings of 14 KiB"
+        },
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree",
+          "score": 0
+        },
+        {
+          "id": "render-blocking-insight",
+          "title": "Render-blocking requests",
+          "score": 0,
+          "displayValue": "Est savings of 100 ms"
+        }
+      ]
+    },
+    {
+      "route": "/en/terms",
+      "form": "desktop",
+      "label": "final-frozen",
+      "buildId": "ZvsF7jSptyH4JJlRdUepP",
+      "fetchTime": "2026-11-11T01:43:45.805Z",
+      "requestedUrl": "http://127.0.0.1:3398/en/terms",
+      "finalDisplayedUrl": "http://127.0.0.1:3398/en/terms",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "largest-contentful-paint": 299.0413,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 0,
+        "speed-index": 299.0413,
+        "first-contentful-paint": 299.0413,
+        "interactive": 299.0413
+      },
+      "warnings": [],
+      "failures": [
+        {
+          "id": "unused-javascript",
+          "title": "Reduce unused JavaScript",
+          "score": 0.5,
+          "displayValue": "Est savings of 50 KiB"
+        },
+        {
+          "id": "bf-cache",
+          "title": "Page prevented back/forward cache restoration",
+          "score": 0,
+          "displayValue": "2 failure reasons"
+        },
+        {
+          "id": "forced-reflow-insight",
+          "title": "Forced reflow",
+          "score": 0
+        },
+        {
+          "id": "legacy-javascript-insight",
+          "title": "Legacy JavaScript",
+          "score": 0.5,
+          "displayValue": "Est savings of 14 KiB"
+        },
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree",
+          "score": 0
+        },
+        {
+          "id": "render-blocking-insight",
+          "title": "Render-blocking requests",
+          "score": 0,
+          "displayValue": "Est savings of 100 ms"
+        }
+      ]
+    }
+  ]
+}

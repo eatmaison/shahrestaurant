@@ -1,0 +1,246 @@
+{
+  "engineTestBuildId": "tFLXBf6wgrceydEy2vlvL",
+  "currentBuildId": "ZvsF7jSptyH4JJlRdUepP",
+  "note": "Subsequent changes affect cookie labels, stable menu slots and text contrast; hero engine and original assets are unchanged.",
+  "fast": {
+    "mode": "fast",
+    "origin": "http://127.0.0.1:3398",
+    "elapsed": 1195,
+    "phases": [
+      {
+        "ms": 1069.2999999523163,
+        "phase": "ready",
+        "source": "/brand/shah-hero-scroll-desktop-v4.mp4",
+        "transport": "blob-prebuffered-detached",
+        "downloaded": "36744691",
+        "videoAttached": false,
+        "hidden": false,
+        "scrollY": 0,
+        "bodyOverflow": "",
+        "inert": 0,
+        "poster": "http://127.0.0.1:3398/brand/shah-hero-poster-desktop-delivery-v1.avif",
+        "posterComplete": true
+      }
+    ],
+    "seeks": [
+      {
+        "fraction": 0.25,
+        "ms": 48.5,
+        "current": 3.041666,
+        "expected": 3.0416666666666665,
+        "ready": "true",
+        "visibility": "visible",
+        "width": 1920,
+        "height": 1080,
+        "duration": 12.25,
+        "seeking": false,
+        "scrollY": 496,
+        "trackHeight": 2880,
+        "stageHeight": 900
+      },
+      {
+        "fraction": 0.75,
+        "ms": 36.10000002384186,
+        "current": 9.166666,
+        "expected": 9.166666666666666,
+        "ready": "true",
+        "visibility": "visible",
+        "width": 1920,
+        "height": 1080,
+        "duration": 12.25,
+        "seeking": false,
+        "scrollY": 1486,
+        "trackHeight": 2880,
+        "stageHeight": 900
+      },
+      {
+        "fraction": 0,
+        "ms": 24.899999976158142,
+        "current": 0,
+        "expected": 0,
+        "ready": "true",
+        "visibility": "visible",
+        "width": 1920,
+        "height": 1080,
+        "duration": 12.25,
+        "seeking": false,
+        "scrollY": 1,
+        "trackHeight": 2880,
+        "stageHeight": 900
+      }
+    ],
+    "requests": [
+      "http://127.0.0.1:3398/brand/shah-hero-scroll-desktop-v4.mp4"
+    ],
+    "errors": []
+  },
+  "slow4g": {
+    "mode": "slow",
+    "origin": "http://127.0.0.1:3398",
+    "elapsed": 61866,
+    "phases": [
+      {
+        "ms": 1213.5,
+        "videoAttached": false,
+        "hidden": false,
+        "scrollY": 0,
+        "bodyOverflow": "",
+        "inert": 0,
+        "poster": "http://127.0.0.1:3398/brand/shah-hero-poster-mobile-delivery-v1.avif",
+        "posterComplete": false
+      },
+      {
+        "ms": 3224.7999999523163,
+        "phase": "loading",
+        "source": "/brand/shah-hero-scroll-mobile-v4.mp4",
+        "transport": "blob-prebuffered-detached",
+        "videoAttached": false,
+        "hidden": false,
+        "scrollY": 0,
+        "bodyOverflow": "",
+        "inert": 0,
+        "poster": "http://127.0.0.1:3398/brand/shah-hero-poster-mobile-delivery-v1.avif",
+        "posterComplete": true
+      },
+      {
+        "ms": 61750.5,
+        "phase": "ready",
+        "source": "/brand/shah-hero-scroll-mobile-v4.mp4",
+        "transport": "blob-prebuffered-detached",
+        "downloaded": "11337072",
+        "videoAttached": false,
+        "hidden": false,
+        "scrollY": 0,
+        "bodyOverflow": "",
+        "inert": 0,
+        "poster": "http://127.0.0.1:3398/brand/shah-hero-poster-mobile-delivery-v1.avif",
+        "posterComplete": true
+      }
+    ],
+    "seeks": [
+      {
+        "fraction": 0.25,
+        "ms": 60.299999952316284,
+        "current": 3.041666,
+        "expected": 3.0416666666666665,
+        "ready": "true",
+        "visibility": "visible",
+        "width": 608,
+        "height": 1080,
+        "duration": 12.25,
+        "seeking": false,
+        "scrollY": 381,
+        "trackHeight": 2363,
+        "stageHeight": 844
+      },
+      {
+        "fraction": 0.75,
+        "ms": 26.199999928474426,
+        "current": 9.166666,
+        "expected": 9.166666666666666,
+        "ready": "true",
+        "visibility": "visible",
+        "width": 608,
+        "height": 1080,
+        "duration": 12.25,
+        "seeking": false,
+        "scrollY": 1140,
+        "trackHeight": 2363,
+        "stageHeight": 844
+      },
+      {
+        "fraction": 0,
+        "ms": 18.899999976158142,
+        "current": 0,
+        "expected": 0,
+        "ready": "true",
+        "visibility": "visible",
+        "width": 608,
+        "height": 1080,
+        "duration": 12.25,
+        "seeking": false,
+        "scrollY": 1,
+        "trackHeight": 2363,
+        "stageHeight": 844
+      }
+    ],
+    "requests": [
+      "http://127.0.0.1:3398/brand/shah-hero-scroll-mobile-v4.mp4"
+    ],
+    "errors": []
+  },
+  "saveData": {
+    "mode": "savedata",
+    "origin": "http://127.0.0.1:3398",
+    "elapsed": 1060,
+    "phases": [
+      {
+        "ms": 1051.3000000715256,
+        "phase": "static",
+        "videoAttached": false,
+        "hidden": false,
+        "scrollY": 0,
+        "bodyOverflow": "",
+        "inert": 0,
+        "poster": "http://127.0.0.1:3398/brand/shah-hero-poster-mobile-delivery-v1.avif",
+        "posterComplete": true
+      }
+    ],
+    "seeks": [],
+    "requests": [],
+    "errors": []
+  },
+  "reducedMotion": {
+    "mode": "reduced",
+    "origin": "http://127.0.0.1:3398",
+    "elapsed": 1039,
+    "phases": [
+      {
+        "ms": 1031.3000000715256,
+        "phase": "static",
+        "videoAttached": false,
+        "hidden": false,
+        "scrollY": 0,
+        "bodyOverflow": "",
+        "inert": 0,
+        "poster": "http://127.0.0.1:3398/brand/shah-hero-poster-mobile-delivery-v1.avif",
+        "posterComplete": true
+      }
+    ],
+    "seeks": [],
+    "requests": [],
+    "errors": []
+  },
+  "nativeLcp": {
+    "url": "http://127.0.0.1:3398/",
+    "scrollY": 0,
+    "lcp": [
+      {
+        "start": 304,
+        "url": "http://127.0.0.1:3398/brand/shah-landscape-teal-v1.svg",
+        "tag": "IMG",
+        "html": "<img alt=\"\" loading=\"eager\" width=\"2451\" height=\"1000\" decoding=\"async\" data-nimg=\"1\" class=\"BrandLogo-module__yhzQLG__art BrandLogo-module__yhzQLG__teal\" style=\"color:transparent\" src=\"/brand/shah-landscape-teal-v1.svg\">",
+        "visibility": "visible",
+        "opacity": "1",
+        "scrollY": 0
+      },
+      {
+        "start": 576,
+        "url": "",
+        "tag": "P",
+        "html": "<p class=\"flex-1 text-sm leading-6 text-slate-600 dark:text-slate-300\">Wij gebruiken alleen functionele cookies die noodzakelijk zijn voor het functioneren van de website (uw sessie, winkelwagen en voorkeuren). Wij gebruiken geen tracking- of advertentiecookies. <a class=\"font-semibold text-emerald-600 underline underline-offset-2 hover:text-emerald-500 dark:text-emerald-400\" href=\"/privacy\">Meer informatie</a></p>",
+        "visibility": "visible",
+        "opacity": "1",
+        "scrollY": 0
+      }
+    ],
+    "videoAttached": false,
+    "stage": {
+      "filmPhase": "ready",
+      "filmSource": "/brand/shah-hero-scroll-mobile-v4.mp4",
+      "filmTransport": "blob-prebuffered-detached",
+      "filmDownloaded": "11337072"
+    },
+    "phase": "ready"
+  }
+}

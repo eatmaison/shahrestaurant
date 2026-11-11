@@ -62,3 +62,67 @@ Structured-data guidance reviewed: https://developers.google.com/search/docs/app
 ## Verification log
 
 Implementation not started when this audit was first written. Measured outcomes and remaining budget gaps will be appended after changes.
+
+
+## Final results - 11 November 2026
+
+Measured production build: ZvsF7jSptyH4JJlRdUepP. All source changes are saved in five approved local commits, preserving earlier unrelated work. Nothing was deployed or pushed. The review server remains http://localhost:3398/ (read-only checked-in catalogue fixture over production 3397).
+
+Shipped keyword map: ten NL/EN canonicals exactly as KEYWORD-MAP.md. All ten return 200 with one H1, correct server language, selfcanonical and reciprocal nl-NL/en/x-default. Existing private event authorization remains intact. Unknown pages return 404/noindex without misleading canonicals. 180 internal link/anchor instances pass. Sitemap has ten URLs, lastmod and 30 language alternate entries; submission path https://shahrestaurant.nl/sitemap.xml is documented but not submitted.
+
+Original v4 films and original logo hashes still match the audit. Palette source and menu/price data are unchanged. All eight new responsive AVIF/WebP stills are below 120,000 bytes; desktop AVIF 109,653 versus original 410,246 B, mobile AVIF 64,406 versus 138,306 B. The full original film remains fully prebuffered before scrubbing. The page/poster are not locked behind it. Chromium prewarms off-DOM; WebKit keeps its attached native warmup. Fast and simulated slow 4G readiness/seek observations are in docs/film-verification-2026-11-11.json; no stutter-free guarantee is made.
+
+Twenty sequential final Lighthouse 13.6 lab navigations: Accessibility 100, Best Practices 100 and SEO 100 on every mobile/desktop route. Desktop Performance 94-100. Mobile core pages 83-86 remain below 92, with LCP 4.176-4.611 s. Legal mobile pages100. CLS and TBT meet thresholds on every row; INP is not measured. No valid pre-change Lighthouse baseline exists, so no score delta is claimed.
+
+### Mobile
+
+| Route | P | A | BP | SEO | LCP (s) | CLS | TBT (ms) |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| `/` | 83 | 100 | 100 | 100 | 4.611 | 0.01701 | 88.0 |
+| `/en` | 83 | 100 | 100 | 100 | 4.581 | 0.01701 | 71.5 |
+| `/menukaart` | 85 | 100 | 100 | 100 | 4.365 | 0.00000 | 34.5 |
+| `/en/menu` | 86 | 100 | 100 | 100 | 4.226 | 0.00000 | 30.5 |
+| `/reserveren` | 86 | 100 | 100 | 100 | 4.186 | 0.00000 | 39.5 |
+| `/en/reservations` | 86 | 100 | 100 | 100 | 4.176 | 0.00000 | 44.0 |
+| `/privacy` | 100 | 100 | 100 | 100 | 1.219 | 0.00000 | 37.0 |
+| `/en/privacy` | 100 | 100 | 100 | 100 | 1.225 | 0.00000 | 39.0 |
+| `/voorwaarden` | 100 | 100 | 100 | 100 | 1.222 | 0.00000 | 42.5 |
+| `/en/terms` | 100 | 100 | 100 | 100 | 1.219 | 0.00000 | 36.5 |
+
+### Desktop
+
+| Route | P | A | BP | SEO | LCP (s) | CLS | TBT (ms) |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| `/` | 99 | 100 | 100 | 100 | 0.834 | 0.00000 | 0.0 |
+| `/en` | 99 | 100 | 100 | 100 | 0.874 | 0.00000 | 0.0 |
+| `/menukaart` | 94 | 100 | 100 | 100 | 1.571 | 0.00000 | 0.0 |
+| `/en/menu` | 99 | 100 | 100 | 100 | 0.929 | 0.00000 | 0.0 |
+| `/reserveren` | 99 | 100 | 100 | 100 | 0.670 | 0.00000 | 0.0 |
+| `/en/reservations` | 100 | 100 | 100 | 100 | 0.609 | 0.00000 | 0.0 |
+| `/privacy` | 100 | 100 | 100 | 100 | 0.390 | 0.00000 | 0.0 |
+| `/en/privacy` | 100 | 100 | 100 | 100 | 0.403 | 0.00000 | 0.0 |
+| `/voorwaarden` | 100 | 100 | 100 | 100 | 0.306 | 0.00000 | 0.0 |
+| `/en/terms` | 100 | 100 | 100 | 100 | 0.299 | 0.00000 | 0.0 |
+
+
+### Payload gates
+
+| Pair | Modern initial JS gzip B | CSS gzip B |
+| --- | ---: | ---: |
+| Home | 233650 | 39957 |
+| Menu | 231913 | 29178 |
+| Reservations | 224988 | 39957 |
+| Privacy | 218795 | 27275 |
+| Terms | 218763 | 27275 |
+
+CSS passes all ten routes; JavaScript exceeds 120,000 bytes on all ten. Exact byte matching, route memberships, legacy/inline exclusions and framework/provider/icon attribution are in docs/PAYLOAD-BUDGET.md. These are gzip6 build measurements, not an assertion that total media/HTTP transfer meets that size. The preserved movie remains 11.3 MB mobile/36.7 MB desktop.
+
+Current self-hosted build fonts: 8 WOFF2 files / 181252 bytes in .next/static/media, inventoried in docs/FONT-INVENTORY.csv. These are full generated assets, not per-route transfer totals. next/font uses swap; family/palette values are preserved.
+
+Google Rich Results CODE test of the shared business graph found two valid items (Restaurant and Organization); only optional priceRange is missing. Unverified values were not invented to silence it. Per-route JSON-LD parses/facts/breadcrumbs and FAQ/menu visible matching were checked locally. Scope and result link: docs/STRUCTURED-DATA-VALIDATION.md.
+
+Build/TypeScript and targeted changed-file lint pass. Full-project lint still has 22 prior errors and 6 warnings in existing terminal/tests/utility code; unrelated work was preserved. Keyboard gallery/focus, menu filters/search, NL/EN navigation, 320 px layout, image/alt coverage and no eager map iframe checks pass. Menu placeholder/guest-row space now remains stable; legal dates and inactive brand text use existing higher-contrast palette values.
+
+The full definition of done is NOT claimed: mobile core LCP/Performance and route JS remain over budget; real Safari/device GPU, field INP/CWV, live database records and transactional flows are unverified. No search-ranking promise or public publication occurred. Supported local Library attachment transfer failed on Windows os.setxattr; the complete 112-line brief was successfully read in Library.
+
+Final instructions, exact start commands and data limits: docs/FINAL-VERIFICATION.md. Per-section/file changes and deliberate preservation: docs/IMPLEMENTATION-REPORT.md.
