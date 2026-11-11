@@ -1,6 +1,7 @@
 "use client";
 
-import Link from "next/link";
+import Link from "../components/LocaleLink";
+import { ArrivalInfo } from "../components/ArrivalInfo";
 import { LocationMap } from "../components/LocationMap";
 import dynamic from "next/dynamic";
 import { useRestaurantClock } from "../lib/useRestaurantClock";
@@ -194,7 +195,7 @@ export default function ReservationsPage() {
             <span className="h-px w-10 bg-emerald-400/60" /> <span className="ornament-gem" aria-hidden /> {t.reservations.overline} <span className="ornament-gem" aria-hidden /> <span className="h-px w-10 bg-emerald-400/60" />
           </span>
           <h1 className="font-display mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">
-            <span className="ember-text">{t.reservations.title}</span>
+            <span className="ember-text">{t.reservations.title}</span><span className="sr-only"> — Amsterdam-Noord</span>
           </h1>
           <p className="mt-4 text-base leading-8 text-stone-300">{t.reservations.subtitle}</p>
           <p className="mt-4 inline-flex items-center gap-2.5 rounded-full border border-emerald-400/25 bg-white/5 px-5 py-2.5 text-xs font-semibold text-emerald-200 backdrop-blur">
@@ -617,6 +618,7 @@ export default function ReservationsPage() {
                 <span className="mt-1 block text-lg font-medium text-stone-300 sm:text-xl">1032 KL Amsterdam</span>
               </h2>
               <p className="mt-4 max-w-lg text-sm leading-7 text-stone-300">{t.reservations.locationSubtitle}</p>
+              <ArrivalInfo />
 
               <div className="reservation-location__route-grid mt-6">
                 <span>{lang === "nl" ? "Auto" : "Car"}</span>
