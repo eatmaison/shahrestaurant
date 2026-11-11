@@ -110,7 +110,7 @@ export default function GalleryPage() {
             <figure
               key={item.src}
               className="animate-fade-up group relative mb-4 break-inside-avoid overflow-hidden rounded-3xl border border-emerald-500/15 bg-white shadow-lg shadow-emerald-900/5 transition hover:-translate-y-1 hover:shadow-2xl dark:border-emerald-400/10 dark:bg-white/5"
-              style={{ animationDelay: `${Math.min(i, 8) * 0.06}s` }}
+              style={{ animationDelay: `${Math.min(i, 8) * 0.06}s`, animationName: i === 0 ? "none" : undefined }}
             >
               <div
                 className={`relative w-full overflow-hidden bg-gradient-to-br from-emerald-500/10 to-amber-500/10 ${

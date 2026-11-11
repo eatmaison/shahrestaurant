@@ -3,34 +3,45 @@
 import Link from "./LocaleLink";
 import { useEffect, useState } from "react";
 import { useLang } from "../providers";
+import { COOKIE_NOTICE_ACK_ATTRIBUTE, COOKIE_NOTICE_STORAGE_KEY, serializeCookieNoticeAcknowledgement } from "../lib/cookieNotice";
 
-const STORAGE_KEY = "tm.cookieConsent";
+function acknowledgeNotice() {
+  try {
+    document.documentElement.setAttribute(COOKIE_NOTICE_ACK_ATTRIBUTE, "true");
+    document.cookie = serializeCookieNoticeAcknowledgement(window.location.protocol === "https:");
+  } catch { /* Browser storage restrictions do not prevent dismissing the notice. */ }
+}
 
 /**
  * EU/NL cookie notice. The site only uses strictly necessary cookies/storage
  * (session, cart, language/theme), so no consent is legally required - this
  * banner informs the visitor and records their acknowledgement.
  */
-export function CookieConsent() {
+export function CookieConsent({ initialAcknowledged }: { initialAcknowledged: boolean }) {
   const { t } = useLang();
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(!initialAcknowledged);
 
   useEffect(() => {
+    let mounted = true;
     queueMicrotask(() => {
+      if (!mounted) return;
+      let acknowledged = initialAcknowledged;
       try {
-        if (!localStorage.getItem(STORAGE_KEY)) setVisible(true);
-      } catch {
-        setVisible(true);
-      }
+        acknowledged ||= Boolean(localStorage.getItem(COOKIE_NOTICE_STORAGE_KEY));
+      } catch { /* The server acknowledgement remains valid when localStorage is blocked. */ }
+      if (acknowledged && !initialAcknowledged) acknowledgeNotice();
+      setVisible(!acknowledged);
     });
-  }, []);
+    return () => { mounted = false; };
+  }, [initialAcknowledged]);
 
   const choose = (value: "accepted" | "necessary") => {
     try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify({ value, at: Date.now() }));
+      localStorage.setItem(COOKIE_NOTICE_STORAGE_KEY, JSON.stringify({ value, at: Date.now() }));
     } catch {
       /* ignore */
     }
+    acknowledgeNotice();
     setVisible(false);
   };
 

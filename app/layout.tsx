@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { headers } from "next/headers";
+import { cookies, headers } from "next/headers";
 import { getPublicRoute } from "./lib/locale";
 import { publicMetadata, SITE_URL, siteSchema } from "./lib/seo";
 import "./fonts.css";
@@ -11,6 +11,7 @@ import { Providers } from "./providers";
 import { Header } from "./components/header";
 import { Footer } from "./components/footer";
 import { CookieConsent } from "./components/CookieConsent";
+import { COOKIE_NOTICE_ACK_COOKIE, COOKIE_NOTICE_ACK_HIDE_CSS, cookieNoticeAcknowledgementBootstrap, isCookieNoticeAcknowledged } from "./lib/cookieNotice";
 
 export async function generateMetadata(): Promise<Metadata> {
   const requestHeaders = await headers();
@@ -40,12 +41,13 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const requestHeaders = await headers();
+  const [requestHeaders, requestCookies] = await Promise.all([headers(), cookies()]);
+  const initialAcknowledged = isCookieNoticeAcknowledged(requestCookies.get(COOKIE_NOTICE_ACK_COOKIE)?.value);
   const initialLang = requestHeaders.get("x-shah-locale") === "en" ? "en" : "nl";
   const route = getPublicRoute(requestHeaders.get("x-shah-path") ?? "");
   const chapterPhoto = route?.key === "menu" ? "shah-table" : route?.key === "reservations" ? "shah-dining" : null;
   return (
-    <html lang={initialLang} suppressHydrationWarning data-scroll-behavior="smooth" className="h-full antialiased">
+    <html lang={initialLang} suppressHydrationWarning data-cookie-notice-ack={initialAcknowledged ? "true" : undefined} data-scroll-behavior="smooth" className="h-full antialiased">
       <head>
         {route?.key !== "home" && <>
           <link rel="preload" href="/fonts/jost-latin-235d8f8964bf-v1.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
@@ -58,6 +60,8 @@ export default async function RootLayout({
           <link rel="preload" as="image" type="image/avif" href={`/brand/restaurant-photos-v1/${chapterPhoto}-1400.avif`} media="(width > 900px)" fetchPriority="high" />
         </>}
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <style>{COOKIE_NOTICE_ACK_HIDE_CSS}</style>
+        <script dangerouslySetInnerHTML={{ __html: cookieNoticeAcknowledgementBootstrap() }} />
         {route?.key === "home" && <>
           <link rel="preload" as="image" type="image/avif" href="/brand/shah-hero-poster-mobile-delivery-v1.avif" imageSrcSet="/brand/shah-hero-poster-mobile-delivery-v1-360.avif 360w, /brand/shah-hero-poster-mobile-delivery-v1.avif 608w" imageSizes="100vw" media="(max-width: 767px)" fetchPriority="high" />
           <link rel="preload" as="image" type="image/avif" href="/brand/shah-hero-poster-desktop-delivery-v1.avif" imageSrcSet="/brand/shah-hero-poster-desktop-delivery-v1-960.avif 960w, /brand/shah-hero-poster-desktop-delivery-v1.avif 1600w" imageSizes="100vw" media="(min-width: 768px)" fetchPriority="high" />
@@ -70,7 +74,7 @@ export default async function RootLayout({
           <Header />
           <main id="main-content" tabIndex={-1} className="flex-1">{children}</main>
           <Footer />
-          <CookieConsent />
+          <CookieConsent initialAcknowledged={initialAcknowledged} />
         </Providers>
       </body>
     </html>

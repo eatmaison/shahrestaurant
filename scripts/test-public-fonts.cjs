@@ -56,8 +56,12 @@ const Empty = () => null;
 const Transparent = ({ children }) => children;
 const { default: RootLayout } = evaluate(read("app/layout.tsx"), {
   "react/jsx-runtime": require("react/jsx-runtime"),
-  "next/headers": { headers: async () => new Headers({ "x-shah-path": pathname, "x-shah-locale": pathname.startsWith("/en") ? "en" : "nl" }) },
+  "next/headers": {
+    headers: async () => new Headers({ "x-shah-path": pathname, "x-shah-locale": pathname.startsWith("/en") ? "en" : "nl" }),
+    cookies: async () => ({ get: () => undefined }),
+  },
   "./lib/locale": evaluate(read("app/lib/locale.ts"), {}),
+  "./lib/cookieNotice": evaluate(read("app/lib/cookieNotice.ts"), {}),
   "./lib/seo": { publicMetadata: () => ({}), SITE_URL: "https://shahrestaurant.nl", siteSchema: () => ({}) },
   "./components/CinematicSections": { CinematicSections: Empty },
   "./providers": { Providers: Transparent },
