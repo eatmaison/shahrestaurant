@@ -2,7 +2,8 @@
 import { readSessionValue, removeSessionValue } from "../lib/clientStorage";
 
 import Image from "next/image";
-import Link from "next/link";
+import Link from "../components/LocaleLink";
+import { MenuSchema } from "../components/MenuSchema";
 import { CatalogFeedback } from "../components/CatalogFeedback";
 import { matchesMenuSearch, normalizeMenuSearch } from "../lib/menuSearch";
 import { useRestaurantClock } from "../lib/useRestaurantClock";
@@ -755,6 +756,7 @@ export default function OrderPage() {
 
   return (
     <div className={`${styles.page} page-stage min-h-screen`}>
+      <MenuSchema products={visible} />
       {/* Closed notice - ordering stays possible, preparation starts at the next opening */}
       {preOrderNote && (
         <div className="mx-auto max-w-7xl px-4 pb-3 pt-4 sm:px-6 lg:px-8">
@@ -775,7 +777,7 @@ export default function OrderPage() {
           <span className="ornament-gem" aria-hidden /> {t.order.categoryHint}
         </span>
         <h1 className="font-display relative mt-2 text-4xl font-semibold tracking-tight text-slate-900 dark:text-white">
-          <span className="ember-text">{t.order.title}</span>
+          <span className="ember-text">{t.order.title}</span><span className="sr-only"> — {lang === "nl" ? "Indiase menukaart Amsterdam-Noord" : "Indian menu Amsterdam-Noord"}</span>
         </h1>
         <p className="relative mt-2 text-sm text-slate-600 dark:text-slate-400">{t.order.subtitle}</p>
         <div className="gold-rule relative mt-5" />
@@ -791,7 +793,7 @@ export default function OrderPage() {
         </div>
         <p id="order-search-results" role="status" aria-live="polite">{searchTerms.length ? (lang === "nl" ? "Alle restaurants" : "All restaurants") : activeBrandCfg?.name} · {hydrated ? `${visible.length} ${t.common.items}` : (lang === "nl" ? "Menukaart laden" : "Loading menu")}</p>
         </div>
-        {hydrated && !currentUser && <div className={styles.loyaltyNotice}><FaStar aria-hidden="true" /><div><strong>{lang === "nl" ? "Maak een account en spaar punten" : "Register and start earning loyalty points"}</strong><p>{lang === "nl" ? "Spaar bij uw bestellingen en gebruik uw punten voor korting." : "Earn points with your orders and redeem them for discounts."}</p></div><Link href="/account#register">{lang === "nl" ? "Registreren" : "Register"}<FaArrowRight aria-hidden="true" /></Link></div>}
+        <div className={styles.loyaltyNotice} style={{ visibility: hydrated && !currentUser ? "visible" : "hidden" }} aria-hidden={!hydrated || !!currentUser}><FaStar aria-hidden="true" /><div><strong>{lang === "nl" ? "Maak een account en spaar punten" : "Register and start earning loyalty points"}</strong><p>{lang === "nl" ? "Spaar bij uw bestellingen en gebruik uw punten voor korting." : "Earn points with your orders and redeem them for discounts."}</p></div><Link href="/account#register">{lang === "nl" ? "Registreren" : "Register"}<FaArrowRight aria-hidden="true" /></Link></div>
       </div>
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6"><CatalogFeedback /></div>
@@ -897,16 +899,14 @@ export default function OrderPage() {
                   {/* Brand header (logo) - click to switch restaurant */}
                   <button
                     onClick={() => selectBrand(b.id)}
-                    className={`flex w-full items-center gap-3 px-3 py-3 text-left transition ${
-                      active ? "" : "opacity-70 hover:opacity-100"
-                    }`}
+                    className="flex w-full items-center gap-3 px-3 py-3 text-left transition"
                   >
                     <span className="relative grid h-11 w-11 shrink-0 place-items-center overflow-hidden rounded-xl bg-white ring-1 ring-slate-200 dark:ring-white/10">
                       {b.logo ? <Image src={b.logo} alt={b.name} fill sizes="44px" className="object-contain p-1" /> : <FaStore className="text-slate-400" />}
                     </span>
                     <span className="min-w-0">
                       <span className="block truncate text-sm font-black text-slate-900 dark:text-white">{b.name}</span>
-                      <span className={`text-[11px] font-semibold ${active ? "text-emerald-600 dark:text-emerald-400" : "text-slate-400"}`}>
+                      <span className={`text-[11px] font-semibold ${active ? "text-emerald-600 dark:text-emerald-400" : "text-slate-600 dark:text-slate-300"}`}>
                         {b.categories.length} {t.order.menuCategories}
                       </span>
                     </span>
