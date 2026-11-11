@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 
 const url = "/events/company-lunches";
+const title = "Bedrijfslunches | Shah Restaurant in Amsterdam-Noord";
+const description = "Ontdek de bedrijfslunches van Shah Restaurant in Amsterdam-Noord. Bekijk de lunchvormen en menuopties voor uw team en neem contact op over uw wensen.";
+const socialImage = "/brand/shah-social-v1.png";
 
 export const metadata: Metadata = {
-  title: "Company Lunches & Office Catering Amsterdam - Shah Restaurant",
-  description:
-    "Fresh daily and weekly office lunches delivered across Amsterdam. Aromatic Indian lunches, healthy options, hot mains and dietary choices - invoiced monthly, delivered on time.",
+  title,
+  description,
   keywords: [
     "company lunches Amsterdam",
     "office catering Amsterdam",
@@ -21,13 +23,15 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: url },
   openGraph: {
-    title: "Company Lunches & Office Catering Amsterdam | Shah Restaurant",
-    description:
-      "Weekly delivered office lunches across Amsterdam - fresh, aromatic, invoiced monthly.",
+    title,
+    description,
     url,
     type: "article",
+    siteName: "Shah Restaurant",
+    locale: "nl_NL",
+    images: [{ url: socialImage, width: 1200, height: 630, alt: "Shah Restaurant in Amsterdam-Noord" }],
   },
-  twitter: { card: "summary_large_image", title: "Office Lunches Amsterdam - Shah Restaurant" },
+  twitter: { card: "summary_large_image", title, description, images: [socialImage] },
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {

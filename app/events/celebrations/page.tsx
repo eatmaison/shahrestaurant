@@ -1,8 +1,10 @@
 "use client";
 
-import Link from "next/link";
+import { EventBreadcrumbs } from "../../components/EventBreadcrumbs";
+import Link from "../../components/LocaleLink";
 import { FaArrowRight, FaChampagneGlasses, FaCheck, FaGem, FaHandshake, FaHeart, FaMusic, FaRing, FaStar } from "react-icons/fa6";
 import { useLang } from "../../providers";
+import { SITE_URL } from "../../lib/seo";
 import { EventsContactCta } from "../../components/EventsContactCta";
 
 export default function CelebrationsPage() {
@@ -13,19 +15,7 @@ export default function CelebrationsPage() {
     "@context": "https://schema.org",
     "@type": "Service",
     serviceType: nl ? "Bruiloftscatering en vieringen" : "Wedding and celebration catering",
-    provider: {
-      "@type": "Restaurant",
-      name: "Shah Restaurant",
-      "@id": "https://shahrestaurant.nl/#restaurant",
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: "Klaprozenweg 36a",
-        postalCode: "1032 KL",
-        addressLocality: "Amsterdam",
-        addressCountry: "NL",
-      },
-      telephone: "+31 20 341 2995",
-    },
+    provider: { "@id": `${SITE_URL}/#restaurant` },
     areaServed: { "@type": "City", name: "Amsterdam" },
     audience: { "@type": "PeopleAudience", audienceType: "Wedding parties and celebrations up to 100 guests" },
     url: "https://shahrestaurant.nl/events/celebrations",
@@ -136,6 +126,7 @@ export default function CelebrationsPage() {
 
   return (
     <div className="overflow-hidden">
+      <EventBreadcrumbs route="/events/celebrations" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
 
       {/* Hero */}
@@ -173,7 +164,7 @@ export default function CelebrationsPage() {
               <h2 className="font-display mt-5 text-lg font-bold text-slate-900 dark:text-white">{title}</h2>
               <p className="mt-2 flex-1 text-sm leading-7 text-slate-600 dark:text-slate-400">{text}</p>
               <Link
-                href="/reservations"
+                href="/reserveren"
                 className="mt-5 inline-flex items-center justify-center gap-2 rounded-full bg-emerald-600 px-4 py-2.5 text-xs font-semibold text-white shadow-md shadow-emerald-600/20 transition hover:-translate-y-0.5 hover:bg-emerald-500"
               >
                 {nl ? "Reserveer nu" : "Book now"} <FaArrowRight className="text-[0.6rem]" />

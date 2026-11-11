@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 
 const url = "/events/company-catering";
+const title = "Bedrijfscatering | Shah Restaurant in Amsterdam-Noord";
+const description = "Bekijk bedrijfscatering van Shah Restaurant in Amsterdam-Noord. Ontdek de mogelijkheden voor zakelijke diners en ontvangsten en bespreek uw wensen.";
+const socialImage = "/brand/shah-social-v1.png";
 
 export const metadata: Metadata = {
-  title: "Corporate & Company Catering Amsterdam - Shah Restaurant",
-  description:
-    "Corporate dinners, client receptions, product launches and executive catering in Amsterdam. On-site or at Shah Restaurant - monthly invoicing, bespoke Indian menus and full-service events for up to 100 guests.",
+  title,
+  description,
   keywords: [
     "corporate catering Amsterdam",
     "company catering Amsterdam",
@@ -22,13 +24,15 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: url },
   openGraph: {
-    title: "Corporate & Company Catering Amsterdam | Shah Restaurant",
-    description:
-      "Executive dinners, client receptions and corporate events at Shah Restaurant Amsterdam - bespoke, invoiced, unforgettable.",
+    title,
+    description,
     url,
     type: "article",
+    siteName: "Shah Restaurant",
+    locale: "nl_NL",
+    images: [{ url: socialImage, width: 1200, height: 630, alt: "Shah Restaurant in Amsterdam-Noord" }],
   },
-  twitter: { card: "summary_large_image", title: "Corporate Catering Amsterdam - Shah Restaurant" },
+  twitter: { card: "summary_large_image", title, description, images: [socialImage] },
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {

@@ -1,7 +1,9 @@
 "use client";
 
+import { EventBreadcrumbs } from "../../components/EventBreadcrumbs";
 import { FaBriefcase, FaCheck, FaChartLine, FaEarthEurope, FaHandshake, FaPeopleGroup, FaReceipt, FaRocket, FaWineGlass } from "react-icons/fa6";
 import { useLang } from "../../providers";
+import { SITE_URL } from "../../lib/seo";
 import { EventsContactCta } from "../../components/EventsContactCta";
 
 export default function CompanyCateringPage() {
@@ -12,19 +14,7 @@ export default function CompanyCateringPage() {
     "@context": "https://schema.org",
     "@type": "Service",
     serviceType: nl ? "Zakelijke catering en bedrijfsdiners" : "Corporate catering and business dinners",
-    provider: {
-      "@type": "Restaurant",
-      name: "Shah Restaurant",
-      "@id": "https://shahrestaurant.nl/#restaurant",
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: "Klaprozenweg 36a",
-        postalCode: "1032 KL",
-        addressLocality: "Amsterdam",
-        addressCountry: "NL",
-      },
-      telephone: "+31 20 341 2995",
-    },
+    provider: { "@id": `${SITE_URL}/#restaurant` },
     areaServed: { "@type": "City", name: "Amsterdam" },
     audience: { "@type": "BusinessAudience", audienceType: "Corporate clients and business teams up to 100 attendees" },
     url: "https://shahrestaurant.nl/events/company-catering",
@@ -141,6 +131,7 @@ export default function CompanyCateringPage() {
 
   return (
     <div className="overflow-hidden">
+      <EventBreadcrumbs route="/events/company-catering" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
 
       {/* Hero */}

@@ -9,7 +9,7 @@ import { SOCIAL_PLATFORMS } from "./socialIcons";
 
 export function Footer() {
   const { t, lang } = useLang();
-  const { socialLinks, currentUser } = useStore();
+  const { socialLinks } = useStore();
   const [showTop, setShowTop] = useState(false);
 
   // Floating "back to top" appears after scrolling past the first screen.
@@ -37,7 +37,7 @@ export function Footer() {
           <nav className="footer-quick-links" aria-label={lang === "nl" ? "Snelle links" : "Quick links"}>
             <Link href="/order">{lang === "nl" ? "Menukaart" : "Menu"}</Link>
             <Link href="/reservations">{t.nav.reservations}</Link>
-            {currentUser?.role === "admin" && <Link href="/events/gallery">{t.nav.eventsGallery}</Link>}
+            <Link href="/events/gallery">{t.nav.eventsGallery}</Link>
           </nav>
           {activeSocials.length > 0 && (
             <div className="mt-5 flex flex-wrap gap-3">

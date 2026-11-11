@@ -1,6 +1,7 @@
 "use client";
 
-import Link from "next/link";
+import { EventBreadcrumbs } from "../components/EventBreadcrumbs";
+import Link from "../components/LocaleLink";
 import {
   FaArrowRight,
   FaBriefcase,
@@ -86,6 +87,7 @@ export default function EventsHubPage() {
 
   return (
     <div className="overflow-hidden">
+      <EventBreadcrumbs route="/events" />
       {/* Hero */}
       <section className="relative overflow-hidden">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_60%_at_50%_0%,rgba(217,126,38,0.16),transparent_65%)]" />
@@ -138,7 +140,7 @@ export default function EventsHubPage() {
               <FaEnvelope /> {ctaContact} <FaArrowRight />
             </a>
             <Link
-              href="/reservations"
+              href="/reserveren"
               className="inline-flex items-center gap-2 rounded-full border border-emerald-400/40 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur transition hover:-translate-y-0.5 hover:border-emerald-400 hover:text-emerald-300"
             >
               {ctaReserve}

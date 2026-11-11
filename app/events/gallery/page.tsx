@@ -1,6 +1,8 @@
 "use client";
 
-import Image from "next/image";
+import { EventBreadcrumbs } from "../../components/EventBreadcrumbs";
+import { EventGalleryPhoto } from "../../components/EventGalleryPhoto";
+import { getEventGalleryPhoto } from "../../lib/eventGalleryPhotos";
 import { useEffect, useState } from "react";
 import { FaCamera, FaImage } from "react-icons/fa6";
 import { useLang } from "../../providers";
@@ -53,12 +55,12 @@ export default function GalleryPage() {
     }),
     { src: "/photos/687A0402.jpeg", alt: nl ? "Gedekte tafel met naan, gouden bestek en dipsauzen" : "Table setting with naan, golden cutlery and dipping sauces", category: cat.dishes },
     { src: "/photos/687A0210.jpeg", alt: nl ? "Modern restaurantinterieur met een warme sfeer" : "Modern restaurant interior with a warm atmosphere", category: cat.interior },
-    { src: "/photos/687A0211.jpeg", alt: nl ? "Seekh kebab van lamsvlees met yoghurtsaus en verse kruiden" : "Lamb seekh kebab with yogurt sauce and fresh herbs", category: cat.dishes },
+    { src: "/photos/687A0211.jpeg", alt: nl ? "Eetzaal van Shah Restaurant met tafels en gestoffeerde stoelen" : "Shah Restaurant dining room with tables and upholstered chairs", category: cat.interior },
     { src: "/photos/687A0260.jpeg", alt: nl ? "Gelaagde signatuurcocktail met granaatappel" : "Layered signature cocktail with pomegranate", category: cat.bar, portrait: true },
-    { src: "/photos/687A0216.jpeg", alt: nl ? "Goudgeroosterde paneer tikka met limoen" : "Golden-charred paneer tikka with lime", category: cat.dishes },
-    { src: "/photos/687A0321.jpeg", alt: nl ? "Verfijnd geplateerd tandoori gerecht" : "Refined plated tandoori dish", category: cat.dishes },
+    { src: "/photos/687A0216.jpeg", alt: nl ? "Tafels en hanglampen in de eetzaal van Shah Restaurant" : "Tables and pendant lights in the Shah Restaurant dining room", category: cat.interior },
+    { src: "/photos/687A0321.jpeg", alt: nl ? "Eethoek met tafels, stoelen en zicht op de bar" : "Dining area with tables, chairs and a view of the bar", category: cat.interior },
     { src: "/photos/687A0090.jpeg", alt: nl ? "Zwevende wijnfles aan de bar van Shah Restaurant" : "Floating wine bottle at the bar of Shah Restaurant", category: cat.bar },
-    { src: "/photos/687A0336.jpeg", alt: nl ? "Een stijlvolle en gastvrije sfeer om samen te genieten" : "A stylish and welcoming atmosphere to enjoy together", category: cat.dishes },
+    { src: "/photos/687A0336.jpeg", alt: nl ? "Een stijlvolle en gastvrije sfeer om samen te genieten" : "A stylish and welcoming atmosphere to enjoy together", category: cat.interior },
     { src: "/photos/687A0343.jpeg", alt: nl ? "Stijlvolle bar waar cocktails en gastvrijheid samenkomen" : "Stylish bar where cocktails and hospitality come together", category: cat.bar },
     { src: "/photos/687A0412.jpeg", alt: nl ? "Samen genieten van curry, rijst en tandoori gerechten" : "Sharing curry, rice and tandoori dishes together", category: cat.ambiance },
   ];
@@ -71,11 +73,15 @@ export default function GalleryPage() {
       ? "Foto's van Shah Restaurant Amsterdam: interieur, gerechten en evenementen."
       : "Photos of Shah Restaurant Amsterdam: interior, dishes and events.",
     url: "https://shahrestaurant.nl/events/gallery",
-    image: items.map((i) => (i.src.startsWith("http") ? i.src : `https://shahrestaurant.nl${i.src}`)),
+    image: items.map((item) => {
+      const src = getEventGalleryPhoto(item.src)?.src ?? item.src;
+      return src.startsWith("http") ? src : `https://shahrestaurant.nl${src}`;
+    }),
   };
 
   return (
     <div className="overflow-hidden">
+      <EventBreadcrumbs route="/events/gallery" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
 
       {/* Hero */}
@@ -111,7 +117,7 @@ export default function GalleryPage() {
                   item.portrait ? "aspect-[3/4]" : "aspect-[4/3]"
                 }`}
               >
-                <Image
+                <EventGalleryPhoto
                   src={item.src}
                   alt={item.alt}
                   fill
@@ -119,7 +125,7 @@ export default function GalleryPage() {
                   className="object-cover transition duration-700 group-hover:scale-105"
                 />
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent opacity-0 transition duration-500 group-hover:opacity-100" />
-                <span className="absolute left-3 top-3 inline-flex items-center gap-1 rounded-full bg-black/40 px-2.5 py-1 text-[0.65rem] font-semibold uppercase tracking-wide text-white backdrop-blur">
+                <span className="absolute left-3 top-3 inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[0.65rem] font-semibold uppercase tracking-wide" style={{ backgroundColor: "var(--shah-brand-teal)", color: "#fffdfa" }}>
                   <FaImage className="text-xs" /> {item.category}
                 </span>
               </div>

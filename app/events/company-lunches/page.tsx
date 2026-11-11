@@ -1,7 +1,9 @@
 "use client";
 
+import { EventBreadcrumbs } from "../../components/EventBreadcrumbs";
 import { FaBoxesStacked, FaBreadSlice, FaCalendarDays, FaCarrot, FaCheck, FaClock, FaFileInvoice, FaLeaf, FaMugSaucer, FaSeedling, FaTruck } from "react-icons/fa6";
 import { useLang } from "../../providers";
+import { SITE_URL } from "../../lib/seo";
 import { EventsContactCta } from "../../components/EventsContactCta";
 
 export default function CompanyLunchesPage() {
@@ -10,32 +12,15 @@ export default function CompanyLunchesPage() {
 
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "FoodEstablishment",
+    "@type": "Service",
     name: "Shah Restaurant - Company Lunches Amsterdam",
+    serviceType: nl ? "Bedrijfslunches" : "Company lunches",
+    provider: { "@id": `${SITE_URL}/#restaurant` },
     description: nl
       ? "Vers bezorgde bedrijfslunches in Amsterdam - dagelijkse of wekelijkse levering, maandelijkse facturatie."
       : "Fresh delivered company lunches across Amsterdam - daily or weekly delivery, monthly invoicing.",
-    servesCuisine: ["Indian", "Healthy", "Vegan-friendly"],
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "Klaprozenweg 36a",
-      postalCode: "1032 KL",
-      addressLocality: "Amsterdam",
-      addressCountry: "NL",
-    },
-    telephone: "+31 20 341 2995",
     areaServed: { "@type": "City", name: "Amsterdam" },
     url: "https://shahrestaurant.nl/events/company-lunches",
-    priceRange: "€€€",
-    hasOfferCatalog: {
-      "@type": "OfferCatalog",
-      name: "Company Lunch Formats",
-      itemListElement: [
-        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Daily lunch delivery" }, price: "18", priceCurrency: "EUR" },
-        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Weekly rotating menu" }, price: "22", priceCurrency: "EUR" },
-        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Executive plated lunch" }, price: "35", priceCurrency: "EUR" },
-      ],
-    },
   };
 
   const formats = [
@@ -141,6 +126,7 @@ export default function CompanyLunchesPage() {
 
   return (
     <div className="overflow-hidden">
+      <EventBreadcrumbs route="/events/company-lunches" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
 
       {/* Hero */}

@@ -5,7 +5,7 @@ import { SITE_URL } from "./lib/seo";
 export default function sitemap(): MetadataRoute.Sitemap {
   // Date of the public-route/metadata revision; avoid a false change on each request.
   const lastModified = "2026-11-11";
-  return Object.entries(PUBLIC_PATHS).flatMap(([key, paths]) =>
+  const localizedPages = Object.entries(PUBLIC_PATHS).flatMap(([key, paths]) =>
     (["nl", "en"] as const).map(locale => ({
       url: `${SITE_URL}${paths[locale]}`,
       lastModified,
@@ -13,4 +13,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: key === "home" ? 1 : key === "menu" || key === "reservations" ? 0.9 : 0.3,
       alternates: { languages: { "nl-NL": `${SITE_URL}${paths.nl}`, en: `${SITE_URL}${paths.en}`, "x-default": `${SITE_URL}${paths.nl}` } },
     })));
+  const eventPages = ["/events", "/events/about", "/events/gallery", "/events/birthdays", "/events/celebrations", "/events/company-catering", "/events/company-lunches"];
+  return [...localizedPages, ...eventPages.map(path => ({
+    url: `${SITE_URL}${path}`, lastModified, changeFrequency: "monthly" as const, priority: path === "/events" ? 0.8 : 0.7,
+  }))];
 }

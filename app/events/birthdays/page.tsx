@@ -1,7 +1,9 @@
 "use client";
 
+import { EventBreadcrumbs } from "../../components/EventBreadcrumbs";
 import { FaCakeCandles, FaCheck, FaGift, FaGuitar, FaHeart, FaMusic, FaStar, FaUsers, FaUtensils } from "react-icons/fa6";
 import { useLang } from "../../providers";
+import { SITE_URL } from "../../lib/seo";
 import { EventsContactCta } from "../../components/EventsContactCta";
 
 export default function BirthdaysPage() {
@@ -12,33 +14,13 @@ export default function BirthdaysPage() {
     "@context": "https://schema.org",
     "@type": "Service",
     serviceType: nl ? "Verjaardagscatering en privéfeesten" : "Birthday & private party catering",
-    provider: {
-      "@type": "Restaurant",
-      name: "Shah Restaurant",
-      "@id": "https://shahrestaurant.nl/#restaurant",
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: "Klaprozenweg 36a",
-        postalCode: "1032 KL",
-        addressLocality: "Amsterdam",
-        addressCountry: "NL",
-      },
-      telephone: "+31 20 341 2995",
-    },
+    provider: { "@id": `${SITE_URL}/#restaurant` },
     areaServed: { "@type": "City", name: "Amsterdam" },
     audience: { "@type": "PeopleAudience", audienceType: "Private groups up to 100 guests" },
     url: "https://shahrestaurant.nl/events/birthdays",
     description: nl
       ? "Verjaardagen, jubilea en privéfeesten bij Shah Restaurant Amsterdam - gepersonaliseerd Indiaas menu, warme sfeer en toegewijde service."
       : "Birthdays, anniversaries and private parties at Shah Restaurant Amsterdam - personalised Indian menus, warm ambiance and dedicated service.",
-    offers: {
-      "@type": "AggregateOffer",
-      priceCurrency: "EUR",
-      lowPrice: "45",
-      highPrice: "150",
-      offerCount: 4,
-      availability: "https://schema.org/InStock",
-    },
   };
 
   const packages = [
@@ -145,6 +127,7 @@ export default function BirthdaysPage() {
 
   return (
     <div className="overflow-hidden">
+      <EventBreadcrumbs route="/events/birthdays" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
 
       {/* Hero */}

@@ -35,13 +35,10 @@ function DishPhoto({ product, large = false }: { product: Product; large?: boole
 
 export default function Home() {
   const { t, lang } = useLang();
-  const { products, reviews, hydrated, currentUser } = useStore();
+  const { products, reviews, hydrated } = useStore();
   const nowLocal = useRestaurantClock();
   const diningOpen = nowLocal ? new Date(nowLocal.slice(0, 10) + "T12:00:00Z").getUTCDay() !== 1 && nowLocal.slice(11) >= "15:00" && nowLocal.slice(11) < "22:00" : null;
-  const isAdmin = currentUser?.role === "admin";
-  const eveningPhotoSizes = isAdmin
-    ? "(min-width: 1296px) 379px, (min-width: 1051px) calc(33.333vw - 53.333px), (min-width: 701px) calc(33.333vw - 42.667px), calc(100vw - 44px)"
-    : "(min-width: 1296px) 572px, (min-width: 1051px) calc(50vw - 76px), (min-width: 701px) calc(50vw - 60px), calc(100vw - 44px)";
+  const eveningPhotoSizes = "(min-width: 1296px) 379px, (min-width: 1051px) calc(33.333vw - 53.333px), (min-width: 701px) calc(33.333vw - 42.667px), calc(100vw - 44px)";
   const copy = homeContent[lang];
   const rootRef = useRef<HTMLDivElement>(null);
   const heroScrollRef = useRef<HTMLDivElement>(null);
@@ -101,13 +98,13 @@ export default function Home() {
 
   const faqJsonLd = {
     "@context": "https://schema.org", "@type": "FAQPage",
-    mainEntity: copy.questions.filter(item => !("adminOnly" in item) || !item.adminOnly || isAdmin).map(item => ({
+    mainEntity: copy.questions.map(item => ({
       "@type": "Question", name: item.question, acceptedAnswer: { "@type": "Answer", text: item.answer },
     })),
   };
 
   return (
-    <div ref={rootRef} className={styles.home} data-cinematic-home="true" data-film-view="opening" data-admin={isAdmin ? "true" : "false"} data-motion={richMedia ? "on" : "off"} data-media={richMedia ? "scrub" : "static"}>
+    <div ref={rootRef} className={styles.home} data-cinematic-home="true" data-film-view="opening" data-motion={richMedia ? "on" : "off"} data-media={richMedia ? "scrub" : "static"}>
       <noscript><style>{`body:has([data-cinematic-home][data-film-view]) [data-site-header]{position:relative!important;inset:auto!important;background:var(--shah-surface)!important;pointer-events:auto!important}body:has([data-cinematic-home][data-film-view]) [data-site-header-bar]{visibility:visible!important;opacity:1!important;transform:none!important}[data-cinematic-home] [data-film-track]{margin-top:0!important;height:calc(100svh - var(--site-header-height,102px))!important}[data-cinematic-home] [data-film-track]>section{height:100%!important;min-height:0!important}`}</style></noscript>
       <div ref={heroScrollRef} className={styles.heroScroll} data-film-track data-unavailable="true" data-film-state="waiting" data-film-progress="0" data-film-complete="false">
       <section className={styles.hero} aria-label={lang === "nl" ? "Film van Shah Restaurant" : "Shah Restaurant film"}>
@@ -177,12 +174,12 @@ export default function Home() {
         <div className={styles.galleryGrid}>
           {photos.slice(0, 3).map((photo, index) => <figure key={photo.src} className={styles.galleryItem} data-reveal="visible" data-reveal-kind="frame" data-reveal-delay={index * 110}><button type="button" data-tilt onClick={() => setPhotoIndex(index)} aria-label={`${copy.enlarge}: ${photo.title}`} title={`${copy.enlarge}: ${photo.title}`}><RestaurantPhoto data-parallax src={photo.src} alt={photo.alt} fill sizes={index === 0 ? "(min-width: 800px) 50vw, 100vw" : "(min-width: 800px) 25vw, 50vw"} /><span className={styles.galleryPhotoNumber}>0{index + 1}</span><span className={styles.expandIcon}><FaExpand aria-hidden="true" /></span></button><figcaption><span>{photo.title}</span><span>0{index + 1}</span></figcaption></figure>)}
         </div>
-        {isAdmin && <div className={styles.galleryFooter}><Link href="/events/gallery" className={styles.textLink}>{copy.fullGallery}<FaArrowRight aria-hidden="true" /></Link></div>}
+        <div className={styles.galleryFooter}><Link href="/events/gallery" className={styles.textLink}>{copy.fullGallery}<FaArrowRight aria-hidden="true" /></Link></div>
       </section>
 
       <section id="story" data-section data-scene="story" className={styles.storySection} aria-labelledby="story-title">
         <div className={styles.storyInner}>
-          <div className={styles.storyContent} data-reveal="visible" data-reveal-kind="left"><p className={styles.eyebrow}>03 / {copy.story}</p><h2 id="story-title">{t.home.storyTitle}</h2><p>{t.home.storyText}</p><blockquote>{t.home.storyQuote}</blockquote>{isAdmin && <Link href="/events/about" className={styles.textLink}>{copy.storyLink}<FaArrowRight aria-hidden="true" /></Link>}</div>
+          <div className={styles.storyContent} data-reveal="visible" data-reveal-kind="left"><p className={styles.eyebrow}>03 / {copy.story}</p><h2 id="story-title">{t.home.storyTitle}</h2><p>{t.home.storyText}</p><blockquote>{t.home.storyQuote}</blockquote><Link href="/events/about" className={styles.textLink}>{copy.storyLink}<FaArrowRight aria-hidden="true" /></Link></div>
           <figure className={styles.storyPhoto} data-reveal="visible" data-reveal-kind="right"><div data-tilt><RestaurantPhoto data-parallax src="/brand/shah-room-v1.webp" alt={copy.interiorAlt} fill sizes="(min-width: 900px) 45vw, 100vw" /><BrandLogo variant="wordmark" tone="gold" className={styles.storyPhotoMark} alt="" /></div><figcaption><span>{copy.storyAside}</span><FaFireBurner aria-hidden="true" /></figcaption></figure>
         </div>
       </section>
@@ -193,13 +190,13 @@ export default function Home() {
           { href: "/reservations", title: copy.dine, text: copy.dineText, action: copy.reserve, image: photos[0], Icon: FaCalendarCheck },
           { href: "/order", title: copy.takeaway, text: copy.takeawayText, action: copy.order, image: photos[1], Icon: FaBagShopping },
           { href: "/events", title: copy.gather, text: copy.gatherText, action: copy.exploreEvents, image: photos[4], Icon: FaUsers },
-        ].filter(({ href }) => isAdmin || !href.startsWith("/events")).map(({ href, title, text, action, image, Icon }, index) => <article key={href} className={styles.eveningItem} data-evening-card data-reveal="visible"><Link href={href} className={styles.eveningPhoto} data-tilt aria-label={action}><RestaurantPhoto data-parallax src={image.src} alt={image.alt} fill sizes={eveningPhotoSizes} /><span><Icon aria-hidden="true" /></span><span className={styles.eveningNumber}>0{index + 1}</span></Link><h3>{title}</h3><p>{text}</p><Link href={href} className={styles.textLink}>{action}<FaArrowRight aria-hidden="true" /></Link></article>)}</div>
+        ].map(({ href, title, text, action, image, Icon }, index) => <article key={href} className={styles.eveningItem} data-evening-card data-reveal="visible"><Link href={href} className={styles.eveningPhoto} data-tilt aria-label={action}><RestaurantPhoto data-parallax src={image.src} alt={image.alt} fill sizes={eveningPhotoSizes} /><span><Icon aria-hidden="true" /></span><span className={styles.eveningNumber}>0{index + 1}</span></Link><h3>{title}</h3><p>{text}</p><Link href={href} className={styles.textLink}>{action}<FaArrowRight aria-hidden="true" /></Link></article>)}</div>
       </section>
 
-      {isAdmin && <section className={`${styles.section} ${styles.occasions}`} data-scene="occasions" aria-labelledby="occasions-title">
+      <section className={`${styles.section} ${styles.occasions}`} data-scene="occasions" aria-labelledby="occasions-title">
         <div data-reveal="visible"><p className={styles.eyebrow}>{copy.occasions}</p><h2 id="occasions-title">{copy.occasionsTitle}</h2><p className={styles.sectionDescription}>{copy.occasionsText}</p></div>
         <div className={styles.occasionLinks} data-reveal="visible">{[{ href: "/events/birthdays", label: copy.birthdays }, { href: "/events/celebrations", label: copy.celebrations }, { href: "/events/company-catering", label: copy.company }].map((occasion, index) => <Link key={occasion.href} href={occasion.href}><span className={styles.occasionNumber}>0{index + 1}</span><span>{occasion.label}</span><FaArrowRight aria-hidden="true" /></Link>)}</div>
-      </section>}
+      </section>
 
       {userReviews.length > 0 && <section data-scene="reviews" className={styles.reviewsSection} aria-labelledby="reviews-title"><div className={styles.sectionHeading}><div><p className={styles.eyebrow}>{t.home.testimonialsOverline}</p><h2 id="reviews-title">{copy.guestTitle}</h2></div><p className={styles.rating}><FaStar aria-hidden="true" /><strong>{avgRating.toFixed(1)} / 5</strong><span>{siteReviews.length} {copy.guestCount}</span></p></div><div className={styles.reviewsGrid}>{userReviews.map((review) => <figure data-review-card key={review.id}><div className={styles.stars} aria-label={`${review.rating} ${copy.outOf}`}>{[1, 2, 3, 4, 5].map((star) => <FaStar key={star} aria-hidden="true" style={{ opacity: star <= Math.round(review.rating) ? 1 : 0.2 }} />)}</div><blockquote>{review.text}</blockquote><figcaption><strong>{review.userName}</strong><time dateTime={new Date(review.createdAt).toISOString()}>{dateFormat.format(new Date(review.createdAt))}</time></figcaption></figure>)}</div></section>}
 
@@ -208,7 +205,7 @@ export default function Home() {
         <div className={styles.visitDetails}><div className={styles.hoursHeading}><h3><FaClock aria-hidden="true" />{copy.hours}</h3>{diningOpen !== null && <span className={styles.openStatus} data-open={diningOpen}>{diningOpen ? (lang === "nl" ? "Open volgens openingstijden" : "Open during scheduled hours") : (lang === "nl" ? "Gesloten volgens openingstijden" : "Closed during scheduled hours")}</span>}</div><dl className={styles.hours}><div><dt>{t.hours.tueSun}</dt><dd>15:00–22:00</dd></div><div><dt>{t.hours.monday}</dt><dd>{t.hours.closed}</dd></div></dl><ArrivalInfo /><h3>{copy.contact}</h3><a href="tel:+31203412995" className={styles.contactLink}><FaPhone aria-hidden="true" />+31 20 341 2995</a><a href="mailto:info@shahrestaurant.nl" className={styles.contactLink}><FaEnvelope aria-hidden="true" />info@shahrestaurant.nl</a><Link href="/reservations" className={styles.primaryButton}><FaCalendarCheck aria-hidden="true" />{copy.reserve}<FaArrowRight aria-hidden="true" /></Link></div>
       </section>
 
-      <section className={`${styles.section} ${styles.faq}`} data-scene="faq" aria-labelledby="faq-title"><div data-reveal="visible"><p className={styles.eyebrow}>{copy.faq}</p><h2 id="faq-title">{copy.faqTitle}</h2><a className={styles.faqContact} href="mailto:info@shahrestaurant.nl"><FaEnvelope aria-hidden="true" />{copy.email}<FaArrowRight aria-hidden="true" /></a></div><div className={styles.faqList}>{copy.questions.filter(item => !("adminOnly" in item) || !item.adminOnly || isAdmin).map((item, index) => <details key={item.question} name="visit-questions"><summary><span className={styles.faqNumber}>0{index + 1}</span><span>{item.question}</span><FaChevronDown aria-hidden="true" /></summary><p>{item.answer}</p></details>)}</div></section>
+      <section className={`${styles.section} ${styles.faq}`} data-scene="faq" aria-labelledby="faq-title"><div data-reveal="visible"><p className={styles.eyebrow}>{copy.faq}</p><h2 id="faq-title">{copy.faqTitle}</h2><a className={styles.faqContact} href="mailto:info@shahrestaurant.nl"><FaEnvelope aria-hidden="true" />{copy.email}<FaArrowRight aria-hidden="true" /></a></div><div className={styles.faqList}>{copy.questions.map((item, index) => <details key={item.question} name="visit-questions"><summary><span className={styles.faqNumber}>0{index + 1}</span><span>{item.question}</span><FaChevronDown aria-hidden="true" /></summary><p>{item.answer}</p></details>)}</div></section>
 
       <DrinkPartners site="shah" />
 

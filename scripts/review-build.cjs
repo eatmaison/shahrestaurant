@@ -8,7 +8,7 @@ const http = require("node:http");
 const os = require("node:os");
 
 const root = path.resolve(__dirname, "..");
-const routes = ["/", "/en", "/menukaart", "/en/menu", "/reserveren", "/en/reservations", "/privacy", "/en/privacy", "/voorwaarden", "/en/terms"];
+const routes = ["/", "/en", "/menukaart", "/en/menu", "/reserveren", "/en/reservations", "/privacy", "/en/privacy", "/voorwaarden", "/en/terms", "/events", "/events/about", "/events/birthdays", "/events/celebrations", "/events/company-catering", "/events/company-lunches", "/events/gallery"];
 const sha = bytes => crypto.createHash("sha256").update(bytes).digest("hex");
 const gzip = bytes => zlib.gzipSync(bytes, { level: 6 }).length;
 function reviewDir(value) {

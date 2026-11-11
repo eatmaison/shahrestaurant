@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 
 const url = "/events/birthdays";
+const title = "Verjaardag vieren | Shah Restaurant Amsterdam-Noord";
+const description = "Vier uw verjaardag of jubileum bij Shah Restaurant in Amsterdam-Noord. Bekijk de mogelijkheden voor een Indiaas menu en neem contact op over uw wensen.";
+const socialImage = "/brand/shah-social-v1.png";
 
 export const metadata: Metadata = {
-  title: "Birthday & Party Catering Amsterdam - Shah Restaurant",
-  description:
-    "Celebrate your birthday, anniversary or private party at Shah Restaurant Amsterdam. Personalised Indian menus, warm ambiance, dedicated service and private dining for up to 100 guests.",
+  title,
+  description,
   keywords: [
     "birthday catering Amsterdam",
     "party catering Amsterdam",
@@ -19,13 +21,15 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: url },
   openGraph: {
-    title: "Birthday & Party Catering Amsterdam | Shah Restaurant",
-    description:
-      "Personalised birthday parties and private celebrations at Shah Restaurant Amsterdam - up to 100 guests.",
+    title,
+    description,
     url,
     type: "article",
+    siteName: "Shah Restaurant",
+    locale: "nl_NL",
+    images: [{ url: socialImage, width: 1200, height: 630, alt: "Shah Restaurant in Amsterdam-Noord" }],
   },
-  twitter: { card: "summary_large_image", title: "Birthday Catering Amsterdam - Shah Restaurant" },
+  twitter: { card: "summary_large_image", title, description, images: [socialImage] },
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {

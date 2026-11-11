@@ -611,8 +611,7 @@
 .home .storyPhoto > div { border-radius: 2px; box-shadow: 18px 18px 0 color-mix(in srgb,var(--shah-brand-gold) 12%,transparent); aspect-ratio: 4/5; }
 .home .storyPhoto figcaption { padding-top: 30px; }
 
-.home .eveningGrid { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 56px; }
-.home[data-admin="true"] .eveningGrid { grid-template-columns: repeat(3,minmax(0,1fr)); gap: 32px; }
+.home .eveningGrid { grid-template-columns: repeat(3,minmax(0,1fr)); gap: 32px; }
 .home .eveningPhoto { border-radius: 2px; aspect-ratio: 16/11; box-shadow: 0 20px 44px color-mix(in srgb,var(--shah-brand-teal) 10%,transparent); }
 .home .eveningItem h3 { font-size: 38px; font-weight: 500; margin-top: 30px; padding-bottom: 18px; }
 .home .eveningItem > p { min-height: 0; max-width: 420px; line-height: 1.85; }
@@ -695,7 +694,7 @@
   .home .storyContent h2 { font-size:50px; }
   .home .storyContent blockquote { font-size:32px; }
   .home .storyPhoto > div { aspect-ratio:5/4; box-shadow:9px 9px 0 color-mix(in srgb,var(--shah-brand-gold) 12%,transparent); }
-  .home .eveningGrid, .home[data-admin="true"] .eveningGrid { grid-template-columns:1fr; gap:48px; }
+  .home .eveningGrid { grid-template-columns:1fr; gap:48px; }
   .home .eveningItem h3 { margin-top:24px; font-size:34px; }
   .home .reviewsSection { padding-block:76px; }
   .home .visit { gap:46px; }

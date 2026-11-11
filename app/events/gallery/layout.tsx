@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 
 const url = "/events/gallery";
+const title = "Galerij Shah Restaurant | Sfeer en gerechten Amsterdam";
+const description = "Bekijk de galerij van Shah Restaurant in Amsterdam-Noord: het interieur, gedekte tafels en Indiase gerechten. Ontdek de sfeer en plan uw bezoek.";
+const socialImage = "/brand/shah-social-v1.png";
 
 export const metadata: Metadata = {
-  title: "Gallery - Shah Restaurant Amsterdam | Interior, Dishes & Events",
-  description:
-    "Explore Shah Restaurant Amsterdam in pictures: our warm dining room, tandoori dishes, private events, birthdays, weddings and corporate catering setups.",
+  title,
+  description,
   keywords: [
     "Shah Restaurant gallery",
     "Indian restaurant Amsterdam photos",
@@ -16,13 +18,15 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: url },
   openGraph: {
-    title: "Gallery | Shah Restaurant Amsterdam",
-    description:
-      "Interior, tandoori dishes and past events at Shah Restaurant Amsterdam - a refined Indian restaurant in Amsterdam-Noord.",
+    title,
+    description,
     url,
     type: "website",
+    siteName: "Shah Restaurant",
+    locale: "nl_NL",
+    images: [{ url: socialImage, width: 1200, height: 630, alt: "Shah Restaurant in Amsterdam-Noord" }],
   },
-  twitter: { card: "summary_large_image", title: "Gallery - Shah Restaurant Amsterdam" },
+  twitter: { card: "summary_large_image", title, description, images: [socialImage] },
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {

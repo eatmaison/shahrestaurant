@@ -1,6 +1,7 @@
 "use client";
 
-import Link from "next/link";
+import { EventBreadcrumbs } from "../../components/EventBreadcrumbs";
+import Link from "../../components/LocaleLink";
 import { FaArrowRight, FaAward, FaHeart, FaLeaf, FaStar, FaUtensils } from "react-icons/fa6";
 import { useLang } from "../../providers";
 import { EventsContactCta } from "../../components/EventsContactCta";
@@ -8,31 +9,6 @@ import { EventsContactCta } from "../../components/EventsContactCta";
 export default function AboutPage() {
   const { lang } = useLang();
   const nl = lang === "nl";
-
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Restaurant",
-    "@id": "https://shahrestaurant.nl/#restaurant",
-    name: "Shah Restaurant",
-    description: nl
-      ? "Shah Restaurant is een verfijnd Indiaas familierestaurant in Amsterdam-Noord met tandoori grills, rijke curry's en verse naan."
-      : "Shah Restaurant is a refined family-run Indian restaurant in Amsterdam-Noord serving tandoori grills, rich curries and fresh naan.",
-    url: "https://shahrestaurant.nl/events/about",
-    image: "https://shahrestaurant.nl/shahrestaurant.png",
-    telephone: "+31 20 341 2995",
-    priceRange: "€€€",
-    servesCuisine: ["Indian", "Tandoori", "Curry", "Biryani"],
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "Klaprozenweg 36a",
-      postalCode: "1032 KL",
-      addressLocality: "Amsterdam",
-      addressCountry: "NL",
-    },
-    hasMenu: "https://shahrestaurant.nl/order",
-    acceptsReservations: "True",
-    openingHours: "Tu-Su 15:00-22:00",
-  };
 
   const pillars = [
     {
@@ -67,7 +43,7 @@ export default function AboutPage() {
 
   return (
     <div className="overflow-hidden">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
+      <EventBreadcrumbs route="/events/about" />
 
       {/* Hero */}
       <section className="relative overflow-hidden">
@@ -167,7 +143,7 @@ export default function AboutPage() {
             <FaArrowRight className="text-emerald-600 transition group-hover:translate-x-1 dark:text-emerald-400" />
           </Link>
           <Link
-            href="/reservations"
+            href="/reserveren"
             className="group flex items-center justify-between rounded-2xl border border-emerald-500/15 bg-white p-4 transition hover:border-emerald-500/40 dark:border-emerald-400/10 dark:bg-white/5"
           >
             <span className="text-sm font-semibold text-slate-800 dark:text-slate-200">

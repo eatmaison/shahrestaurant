@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
-import { getCurrentUser } from "../lib/serverStore";
+import { siteSchema } from "../lib/seo";
+
+const url = "/events";
+const title = "Evenementen en catering | Shah Restaurant Amsterdam";
+const description = "Ontdek de evenementen en catering van Shah Restaurant in Amsterdam-Noord. Bekijk verjaardagen, bruiloften, bedrijfscatering en lunches en neem contact op.";
+const socialImage = "/brand/shah-social-v1.png";
 
 export const metadata: Metadata = {
-  robots: { index: false, follow: false },
-  title: "Events, Catering & Private Dining Amsterdam",
-  description:
-    "Host your birthday, wedding, corporate dinner or company lunch with Shah Restaurant Amsterdam. Indian private dining, on-site catering and daily office lunches - up to 100 guests.",
+  robots: { index: true, follow: true },
+  title,
+  description,
   keywords: [
     "events Amsterdam",
     "Indian catering Amsterdam",
@@ -16,17 +19,22 @@ export const metadata: Metadata = {
     "party venue Amsterdam Noord",
     "catering Amsterdam Noord",
   ],
-  alternates: { canonical: "/events" },
+  alternates: { canonical: url },
   openGraph: {
-    title: "Events & Catering | Shah Restaurant Amsterdam",
-    description:
-      "Weddings, birthdays, corporate dinners and daily office lunches - expertly catered by Shah Restaurant.",
-    url: "/events",
+    title,
+    description,
+    url,
     type: "website",
+    siteName: "Shah Restaurant",
+    locale: "nl_NL",
+    images: [{ url: socialImage, width: 1200, height: 630, alt: "Shah Restaurant in Amsterdam-Noord" }],
   },
+  twitter: { card: "summary_large_image", title, description, images: [socialImage] },
 };
 
-export default async function EventsLayout({ children }: { children: React.ReactNode }) {
-  if ((await getCurrentUser())?.role !== "admin") notFound();
-  return <div className="events-pages">{children}</div>;
+export default function EventsLayout({ children }: { children: React.ReactNode }) {
+  return <div className="events-pages">
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(siteSchema("nl")).replace(/</g, "\\u003c") }} />
+    {children}
+  </div>;
 }

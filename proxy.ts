@@ -33,13 +33,14 @@ export async function proxy(request: NextRequest) {
   requestHeaders.set("x-shah-locale", route?.locale ?? (pathname === "/en" || pathname.startsWith("/en/") ? "en" : "nl"));
   requestHeaders.set("x-shah-path", pathname);
 
-  const eventPage = ["/events", "/parties"].some(path => pathname === path || pathname.startsWith(`${path}/`));
-  const eventApi = pathname === "/api/parties" || pathname.startsWith("/api/parties/");
+  // Public /events pages describe catering and dining; only ticketed /parties stay private.
+  const partyPage = pathname === "/parties" || pathname.startsWith("/parties/");
+  const partyApi = pathname === "/api/parties" || pathname.startsWith("/api/parties/");
   // Mollie must still reconcile payments that were started before the section became private.
-  if ((eventPage || eventApi) && pathname !== "/api/parties/webhook") {
+  if ((partyPage || partyApi) && pathname !== "/api/parties/webhook") {
     const headers = { "Cache-Control": "private, no-store", "X-Robots-Tag": "noindex, nofollow" };
     if (!await hasEventAdminAccess(request.cookies.get("etg_session")?.value)) {
-      return eventApi
+      return partyApi
         ? NextResponse.json({ error: "Administrator access required" }, { status: 403, headers })
         : new NextResponse("Not Found", { status: 404, headers });
     }

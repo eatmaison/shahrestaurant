@@ -120,8 +120,8 @@ export function Header() {
     { href: "/order", label: lang === "nl" ? "Menukaart" : "Menu" },
     ...(currentUser?.role === "admin" ? [
       { href: "/parties", label: "PARTY / EVENTS" },
-      { href: "/events", label: t.nav.events, children: eventsChildren },
     ] : []),
+    { href: "/events", label: t.nav.events, children: eventsChildren },
     { href: "/account", label: t.nav.account },
   ];
   if (currentUser?.role === "admin") links.push({ href: "/admin", label: t.nav.admin });

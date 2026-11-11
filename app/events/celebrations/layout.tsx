@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 
 const url = "/events/celebrations";
+const title = "Bruiloften en vieringen | Shah Restaurant Amsterdam";
+const description = "Ontdek bruiloften en vieringen bij Shah Restaurant in Amsterdam-Noord. Bekijk de mogelijkheden voor een Indiaas diner en bespreek uw wensen met ons.";
+const socialImage = "/brand/shah-social-v1.png";
 
 export const metadata: Metadata = {
-  title: "Wedding & Celebration Catering Amsterdam - Shah Restaurant",
-  description:
-    "Wedding receptions, engagement dinners, anniversaries, gala evenings and rehearsal dinners at Shah Restaurant Amsterdam. Refined Indian feasts, warm and unforgettable - up to 100 guests.",
+  title,
+  description,
   keywords: [
     "wedding catering Amsterdam",
     "Indian wedding catering Amsterdam",
@@ -21,13 +23,15 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: url },
   openGraph: {
-    title: "Wedding & Celebration Catering Amsterdam | Shah Restaurant",
-    description:
-      "Wedding receptions and gala evenings at Shah Restaurant Amsterdam - refined, warm, unforgettable.",
+    title,
+    description,
     url,
     type: "article",
+    siteName: "Shah Restaurant",
+    locale: "nl_NL",
+    images: [{ url: socialImage, width: 1200, height: 630, alt: "Shah Restaurant in Amsterdam-Noord" }],
   },
-  twitter: { card: "summary_large_image", title: "Wedding Catering Amsterdam - Shah Restaurant" },
+  twitter: { card: "summary_large_image", title, description, images: [socialImage] },
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {
