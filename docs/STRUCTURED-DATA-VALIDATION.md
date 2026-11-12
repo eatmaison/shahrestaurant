@@ -4,7 +4,7 @@
 
 ## Latest compiled control
 
-Build: `s_2pU6IxrWANtKLhFIf2S`. Source: `0d98fae249ab1b1516cd84408a7a4725ddaf9dcc0028a3093c28c0b9d5ea670d` (548 inputs). Origin: `http://127.0.0.1:3708`. The 26 GET-only document requests started at 2026-11-12T01:39:21.042Z and ended at 2026-11-12T01:39:21.479Z. This artifact is now promoted to main/LAN. This report verifies raw HTML and schemas; runtime/session interaction results and physical-device reports remain separate. Main/LAN promotion is tracked separately in [local preview](LOCAL_PREVIEW.md).
+Build: `s_2pU6IxrWANtKLhFIf2S`. Source: `0d98fae249ab1b1516cd84408a7a4725ddaf9dcc0028a3093c28c0b9d5ea670d` (548 inputs). Origin: `http://127.0.0.1:3708`. The 26 GET-only document requests started at 2026-11-12T01:39:21.042Z and ended at 2026-11-12T01:39:21.479Z. This is the preceding s_2p schema control; current BUodo main/LAN promotion is recorded in LOCAL_PREVIEW. No fresh external Google validation is inferred. This report verifies raw HTML and schemas; runtime/session interaction results and physical-device reports remain separate. Main/LAN promotion is tracked separately in [local preview](LOCAL_PREVIEW.md).
 
 [Exact current schema evidence](structured-data-local-s_2pU6Ix-2026-11-12.json) records 60 parsed script blocks, per-block/code hashes and 24 prepared CODE snippets in Temp. The [paired SEO proof](cinematic-paired-events-seo-2026-11-11.json) verifies 24 exact-build HTTP 200 responses, URL language, one H1, self-canonical/social metadata, 72 hreflang links, 24 sitemap entries/72 alternates, 654 localized public links and 34 hash anchors. The scope is five core pairs plus seven event pairs, not 24 language pairs.
 

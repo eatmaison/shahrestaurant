@@ -1,8 +1,8 @@
 {
-  "checkedAt": "2026-11-12T01:38:10.649Z",
-  "buildId": "s_2pU6IxrWANtKLhFIf2S",
-  "dist": ".next-review-shah-complete-20261112",
-  "sourceSha256": "0d98fae249ab1b1516cd84408a7a4725ddaf9dcc0028a3093c28c0b9d5ea670d",
+  "checkedAt": "2026-11-12T02:20:32.575Z",
+  "buildId": "BUodo1etC1wSEnAZD_-52",
+  "dist": ".next-review-shah-grid-perf-20261112",
+  "sourceSha256": "68e753609f8298de7db2bae4dae3dfcc0fd3d0898c4ff300651c44d4ef39927e",
   "sourceUnchangedAfterBuild": true,
   "sourceChanges": [],
   "loopbackOnly": true,
@@ -380,5 +380,5 @@
   "sitemap": true,
   "robots": true,
   "publicHomeCardsPerLocale": 3,
-  "readOnlyPreview": "http://127.0.0.1:3708/events"
+  "readOnlyPreview": "http://127.0.0.1:3398/events"
 }

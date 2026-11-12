@@ -1,6 +1,8 @@
 # Selected-language homepage performance candidate
 
-Candidate **http://localhost:3718/** (`/en` for English) serves build `S_b0mpTvbVmqqJ-ThVCUE`, source `016f7cc73bd7d33e2177c902e0bdf812463c5ce93f737e4a4b59c15e3f2dc906`,549 inputs. Build/TypeScript, focused lint and50 exact-build HTTP checks pass. Source is unchanged before/after compilation. **Main3398 and phone3618 retain the earlier verified s_2p build. No deployment or production data change.**
+**Promotion update:** The verified combined build `BUodo1etC1wSEnAZD_-52` is now active on desktop3398 and same-network phone3618. Candidate/control build identities and measurements below retain their original capture scope. [Current preview](LOCAL_PREVIEW.md).
+
+Candidate **http://localhost:3718/** (`/en` for English) serves build `S_b0mpTvbVmqqJ-ThVCUE`, source `016f7cc73bd7d33e2177c902e0bdf812463c5ce93f737e4a4b59c15e3f2dc906`,549 inputs. Build/TypeScript, focused lint and50 exact-build HTTP checks pass. Source is unchanged before/after compilation. **At capture time main3398 and phone3618 retained s_2p. They now serve the promoted combined build identified above; no deployment or production data change.**
 
 The homepage server boundary selects the URL-authoritative locale and serializes only that homepage copy into the existing interactive component. Previously both copies executed in the initial client module. Markup, content, prices, controls, media and session logic are preserved. This follows the installed Next16.2.10 client-boundary guidance, without framework patches or router migration.
 

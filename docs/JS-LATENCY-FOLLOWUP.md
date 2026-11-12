@@ -1,6 +1,8 @@
 # JavaScript attribution and responsive-menu latency follow-up
 
-The largest remaining homepage payload was inspected in build `S_b0mpTvbVmqqJ-ThVCUE` (the selected-copy candidate). Its initial external JavaScript is179,609 gzip bytes. The unchanged verified main/phone remain build `s_2pU6IxrWANtKLhFIf2S` at **http://localhost:3398/** and **http://192.168.0.122:3618/**. Nothing was deployed or changed in production data.
+**Promotion update:** The verified combined build `BUodo1etC1wSEnAZD_-52` is now active on desktop3398 and same-network phone3618. Candidate/control build identities and measurements below retain their original capture scope. [Current preview](LOCAL_PREVIEW.md).
+
+The largest remaining homepage payload was inspected in build `S_b0mpTvbVmqqJ-ThVCUE` (the selected-copy candidate). Its initial external JavaScript is179,609 gzip bytes. At capture time the unchanged verified main/phone served build `s_2pU6IxrWANtKLhFIf2S` at **http://localhost:3398/** and **http://192.168.0.122:3618/**. Nothing was deployed or changed in production data.
 
 ## Largest contributors
 
@@ -52,7 +54,7 @@ The first resize harness incorrectly changed Puppeteer's mobile-emulation flag w
 
 This is a measured latency improvement, **not a homepage JavaScript reduction**. The previous selected-language server boundary still provides the4,012B home JS saving, with its HTML cost reported separately. Substantial further JS savings require reducing client hydration/shared-provider responsibilities or validating a supported router architecture change. Deferring critical video, navigation or order confirmation merely to meet a count risks startup/accessibility/recovery regressions; prior unsupported ESM experiments failed. No such rewrite was adopted.
 
-The initial SSR still includes both responsive product lists, so this does not claim reduced initial HTML or zero hydration cost. It deliberately preserves native/no-JS behavior. Physical Safari, cold mobile video, full current Lighthouse/INP and real checkout remain outside this check. Main3398 and phone3618 are intentionally unchanged; this measured candidate is separate and reviewable.
+The initial SSR still includes both responsive product lists, so this does not claim reduced initial HTML or zero hydration cost. It deliberately preserves native/no-JS behavior. Physical Safari, cold mobile video, full current Lighthouse/INP and real checkout remain outside this check. Main3398 and phone3618 were unchanged during measurement; the verified candidate has since been promoted there, as recorded above.
 
 Start/check it from PowerShell:
 

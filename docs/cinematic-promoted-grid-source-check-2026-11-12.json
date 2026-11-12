@@ -1,0 +1,35 @@
+{
+  "atUTC": "2026-11-12T02:23:51.391Z",
+  "sources": [
+    {
+      "origin": "http://127.0.0.1:3398",
+      "lang": "nl",
+      "expected": "/brand/capcut-luxury-nl-v1/shah-luxury-capcut-desktop-nl-v1-web.mp4",
+      "first": {
+        "selected": "/brand/capcut-luxury-nl-v1/shah-luxury-capcut-desktop-nl-v1-web.mp4",
+        "currentSrc": "blob:http://127.0.0.1:3398/da307140-d0e8-44ed-82c7-6b797fea5321",
+        "time": 0.211961
+      },
+      "advance": 0.6735,
+      "requests": [
+        "http://127.0.0.1:3398/brand/capcut-luxury-nl-v1/shah-luxury-capcut-desktop-nl-v1-web.mp4"
+      ],
+      "pass": true
+    },
+    {
+      "origin": "http://192.168.0.122:3618",
+      "lang": "en",
+      "expected": "/brand/capcut-luxury-v3/shah-luxury-capcut-mobile-v2.mp4",
+      "first": {
+        "selected": "/brand/capcut-luxury-v3/shah-luxury-capcut-mobile-v2.mp4",
+        "currentSrc": "blob:http://192.168.0.122:3618/2362df83-3314-4900-aa6b-6facb0c26614",
+        "time": 0.232133
+      },
+      "advance": 0.662315,
+      "requests": [
+        "http://192.168.0.122:3618/brand/capcut-luxury-v3/shah-luxury-capcut-mobile-v2.mp4"
+      ],
+      "pass": true
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "checkedAtUTC": "2026-11-12T02:26:43.002Z",
+  "buildId": "BUodo1etC1wSEnAZD_-52",
+  "sourceSha256": "68e753609f8298de7db2bae4dae3dfcc0fd3d0898c4ff300651c44d4ef39927e",
+  "sourceInputs": 549,
+  "sourceUnchanged": true,
+  "combinedImprovements": [
+    "selected homepage locale server copy (e9f824f)",
+    "active-viewport menu product cards (d292819)"
+  ],
+  "origins": [
+    {
+      "url": "http://localhost:3398/",
+      "status": 200,
+      "buildMatches": true
+    },
+    {
+      "url": "http://localhost:3398/en",
+      "status": 200,
+      "buildMatches": true
+    },
+    {
+      "url": "http://192.168.0.122:3618/",
+      "status": 200,
+      "buildMatches": true
+    },
+    {
+      "url": "http://192.168.0.122:3618/en",
+      "status": 200,
+      "buildMatches": true
+    }
+  ],
+  "mainAppPid": 59252,
+  "mainProxyPid": 59076,
+  "phonePid": 50388,
+  "phoneManifest": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-phone-preview-20261111\\detached-BUodo1etC1wSEnAZD_-52-2026-11-12T021952350Z.stop-manifest.json",
+  "phoneConfigSha256": "28c1f1a57e0da8d7294f68371dfa711ca672519323e6ddcf6ccd80c373cf1281",
+  "browserProof": "cinematic-promoted-grid-browser-2026-11-12.json",
+  "publicDeployment": false,
+  "productionDataChanges": false,
+  "securitySettingsChanged": false
+}

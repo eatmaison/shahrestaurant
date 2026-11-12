@@ -1,0 +1,95 @@
+{
+  "atUTC": "2026-11-12T02:21:30.980Z",
+  "build": "BUodo1etC1wSEnAZD_-52",
+  "source": "68e753609f8298de7db2bae4dae3dfcc0fd3d0898c4ff300651c44d4ef39927e",
+  "scope": "Fresh Chromium desktop and emulated mobile checks on promoted loopback/LAN origins; not a physical phone or new performance benchmark",
+  "cases": [
+    {
+      "origin": "http://127.0.0.1:3398",
+      "lang": "nl",
+      "width": 1440,
+      "height": 900,
+      "buildVerified": true,
+      "video": {
+        "time": 0.223237,
+        "source": "blob:http://127.0.0.1:3398/0efb0bda-f440-4384-ab5b-63cd3e1e3e15",
+        "muted": true,
+        "inline": true
+      },
+      "advance": 0.665921,
+      "noReplay": true,
+      "grid": {
+        "count": 40,
+        "visible": 40,
+        "desktop": 40,
+        "mobile": 0,
+        "lang": "nl",
+        "overflow": 0
+      },
+      "errors": [],
+      "writes": [],
+      "pass": true,
+      "selectedSourceCheck": {
+        "origin": "http://127.0.0.1:3398",
+        "lang": "nl",
+        "expected": "/brand/capcut-luxury-nl-v1/shah-luxury-capcut-desktop-nl-v1-web.mp4",
+        "first": {
+          "selected": "/brand/capcut-luxury-nl-v1/shah-luxury-capcut-desktop-nl-v1-web.mp4",
+          "currentSrc": "blob:http://127.0.0.1:3398/da307140-d0e8-44ed-82c7-6b797fea5321",
+          "time": 0.211961
+        },
+        "advance": 0.6735,
+        "requests": [
+          "http://127.0.0.1:3398/brand/capcut-luxury-nl-v1/shah-luxury-capcut-desktop-nl-v1-web.mp4"
+        ],
+        "pass": true
+      }
+    },
+    {
+      "origin": "http://192.168.0.122:3618",
+      "lang": "en",
+      "width": 390,
+      "height": 844,
+      "buildVerified": true,
+      "video": {
+        "time": 0.21161,
+        "source": "blob:http://192.168.0.122:3618/9d76cbf8-4858-4d45-b228-ab4dd22ecd41",
+        "muted": true,
+        "inline": true
+      },
+      "advance": 0.658566,
+      "noReplay": true,
+      "grid": {
+        "count": 40,
+        "visible": 40,
+        "desktop": 0,
+        "mobile": 40,
+        "lang": "en",
+        "overflow": 0
+      },
+      "errors": [],
+      "writes": [],
+      "pass": true,
+      "selectedSourceCheck": {
+        "origin": "http://192.168.0.122:3618",
+        "lang": "en",
+        "expected": "/brand/capcut-luxury-v3/shah-luxury-capcut-mobile-v2.mp4",
+        "first": {
+          "selected": "/brand/capcut-luxury-v3/shah-luxury-capcut-mobile-v2.mp4",
+          "currentSrc": "blob:http://192.168.0.122:3618/2362df83-3314-4900-aa6b-6facb0c26614",
+          "time": 0.232133
+        },
+        "advance": 0.662315,
+        "requests": [
+          "http://192.168.0.122:3618/brand/capcut-luxury-v3/shah-luxury-capcut-mobile-v2.mp4"
+        ],
+        "pass": true
+      }
+    }
+  ],
+  "pass": true,
+  "sourceCheckCorrection": {
+    "reason": "The full-flow harness incorrectly expected video.currentSrc to contain the MP4 path; full-buffer playback intentionally uses a blob URL. The original failed path assertion is archived unchanged. Separate fresh requests + data-film-source identify the actual selected files and clock advancement. No app change was made.",
+    "proof": "cinematic-promoted-grid-source-check-2026-11-12.json"
+  }
+}

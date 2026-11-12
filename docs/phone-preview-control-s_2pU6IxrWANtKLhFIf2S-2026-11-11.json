@@ -1,0 +1,934 @@
+{
+  "checkedAt": "2026-11-12T01:45:11.441Z",
+  "phoneUrl": "http://192.168.0.122:3618/",
+  "englishUrl": "http://192.168.0.122:3618/en",
+  "buildId": "s_2pU6IxrWANtKLhFIf2S",
+  "sourceSha256": "0d98fae249ab1b1516cd84408a7a4725ddaf9dcc0028a3093c28c0b9d5ea670d",
+  "sourceInputs": 548,
+  "listener": {
+    "ip": "192.168.0.122",
+    "port": 3618,
+    "pid": 58192,
+    "scope": "Ethernet 192.168.0.0/24 peers only; no wildcard listener",
+    "detached": true,
+    "windowsHide": true,
+    "toolSession": null
+  },
+  "network": {
+    "physicalAdapter": "Ethernet",
+    "interfaceIndex": 12,
+    "ipv4": "192.168.0.122",
+    "prefixLength": 24,
+    "gateway": "192.168.0.1",
+    "profile": "Public",
+    "vpnAdapter": "ProtonVPN",
+    "vpnIpv4": "10.2.0.2",
+    "firewallEnabled": true,
+    "currentInboundPolicy": "BlockInbound",
+    "existingNodePublicInboundRules": "Enabled TCP/UDP application allow, any local/remote IP/port; unchanged",
+    "ruleReadLimit": "Get-NetFirewallPortFilter returned Access is denied; netsh read-only fallback succeeded"
+  },
+  "script": {
+    "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-phone-preview-20261111/lan-preview-nl-v2.cjs",
+    "sha256": "62f0381b8153fd31b6f662177fcc0e9e7234e23a788742d8a513f71925f54f8f"
+  },
+  "config": {
+    "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-phone-preview-20261111\\lan-config-s_2pU6IxrWANtKLhFIf2S.json",
+    "sha256": "5d94afffb8f100640e9095c43b22adb92af53e7f296ee399e244f0acbc737a9a",
+    "publicRoutes": 24,
+    "nextAssets": 59,
+    "publicAssets": 308,
+    "exactPinnedOptimizerSources": 190
+  },
+  "policyChecks": [
+    {
+      "name": "public /",
+      "passed": true
+    },
+    {
+      "name": "public /en",
+      "passed": true
+    },
+    {
+      "name": "public /menukaart",
+      "passed": true
+    },
+    {
+      "name": "public /en/menu",
+      "passed": true
+    },
+    {
+      "name": "public /reserveren",
+      "passed": true
+    },
+    {
+      "name": "public /en/reservations",
+      "passed": true
+    },
+    {
+      "name": "public /privacy",
+      "passed": true
+    },
+    {
+      "name": "public /en/privacy",
+      "passed": true
+    },
+    {
+      "name": "public /voorwaarden",
+      "passed": true
+    },
+    {
+      "name": "public /en/terms",
+      "passed": true
+    },
+    {
+      "name": "public /events",
+      "passed": true
+    },
+    {
+      "name": "public /en/events",
+      "passed": true
+    },
+    {
+      "name": "public /events/about",
+      "passed": true
+    },
+    {
+      "name": "public /en/events/about",
+      "passed": true
+    },
+    {
+      "name": "public /events/gallery",
+      "passed": true
+    },
+    {
+      "name": "public /en/events/gallery",
+      "passed": true
+    },
+    {
+      "name": "public /events/birthdays",
+      "passed": true
+    },
+    {
+      "name": "public /en/events/birthdays",
+      "passed": true
+    },
+    {
+      "name": "public /events/celebrations",
+      "passed": true
+    },
+    {
+      "name": "public /en/events/celebrations",
+      "passed": true
+    },
+    {
+      "name": "public /events/company-catering",
+      "passed": true
+    },
+    {
+      "name": "public /en/events/company-catering",
+      "passed": true
+    },
+    {
+      "name": "public /events/company-lunches",
+      "passed": true
+    },
+    {
+      "name": "public /en/events/company-lunches",
+      "passed": true
+    },
+    {
+      "name": "denied /admin",
+      "passed": true
+    },
+    {
+      "name": "denied /account",
+      "passed": true
+    },
+    {
+      "name": "denied /parties",
+      "passed": true
+    },
+    {
+      "name": "denied /terminal",
+      "passed": true
+    },
+    {
+      "name": "denied /pay/complete",
+      "passed": true
+    },
+    {
+      "name": "denied /reset-password",
+      "passed": true
+    },
+    {
+      "name": "denied /api/auth/login",
+      "passed": true
+    },
+    {
+      "name": "denied /test",
+      "passed": true
+    },
+    {
+      "name": "denied /.env",
+      "passed": true
+    },
+    {
+      "name": "denied /%2e%2e/admin",
+      "passed": true
+    },
+    {
+      "name": "denied //external.example/",
+      "passed": true
+    },
+    {
+      "name": "denied /events/../admin",
+      "passed": true
+    },
+    {
+      "name": "method POST",
+      "passed": true
+    },
+    {
+      "name": "method PUT",
+      "passed": true
+    },
+    {
+      "name": "method PATCH",
+      "passed": true
+    },
+    {
+      "name": "method DELETE",
+      "passed": true
+    },
+    {
+      "name": "method OPTIONS",
+      "passed": true
+    },
+    {
+      "name": "method CONNECT",
+      "passed": true
+    },
+    {
+      "name": "fixture /api/bootstrap",
+      "passed": true
+    },
+    {
+      "name": "fixture /api/gallery",
+      "passed": true
+    },
+    {
+      "name": "fixture /api/restaurant-status",
+      "passed": true
+    },
+    {
+      "name": "otherAPI",
+      "passed": true
+    },
+    {
+      "name": "offsiteOptimizer",
+      "passed": true
+    },
+    {
+      "name": "oversizeOptimizer",
+      "passed": true
+    },
+    {
+      "name": "knownOptimizer",
+      "passed": true
+    },
+    {
+      "name": "externalRedirect",
+      "passed": true
+    },
+    {
+      "name": "privateRedirect",
+      "passed": true
+    },
+    {
+      "name": "publicRedirect",
+      "passed": true
+    },
+    {
+      "name": "LANpeer",
+      "passed": true
+    },
+    {
+      "name": "VPNpeer",
+      "passed": true
+    },
+    {
+      "name": "otherPrivateSubnet",
+      "passed": true
+    },
+    {
+      "name": "privateAdminChunk",
+      "passed": true
+    }
+  ],
+  "localInterfaceHttp": {
+    "root200": true,
+    "english200": true,
+    "expectedBuild": true,
+    "readOnlyHeader": true,
+    "noSetCookie": true,
+    "privateGet404": 8,
+    "businessPost405": 4,
+    "otherApi503": true,
+    "bootstrap": {
+      "products": 224,
+      "brands": 2,
+      "currentUser": null,
+      "privateRecords": 0
+    }
+  },
+  "rangeChecks": [
+    {
+      "path": "/brand/capcut-luxury-v3/shah-luxury-capcut-mobile-v2.mp4",
+      "status": 206,
+      "bytes": 4096,
+      "contentType": "video/mp4",
+      "contentRange": "bytes 0-4095/14802082",
+      "sha256": "7456f00e969fa820b316e105c87df447a2f35ac3fc2fac9991e5abc155d4316f",
+      "localPrefixMatches": true,
+      "approvedFullFileSha": "de98d395d978de246bf42e97d21fa04cb45753e39354667d7b25c2e340e2ca6b"
+    },
+    {
+      "path": "/brand/capcut-luxury-v3/shah-luxury-capcut-desktop-v3.mp4",
+      "status": 206,
+      "bytes": 4096,
+      "contentType": "video/mp4",
+      "contentRange": "bytes 0-4095/22055086",
+      "sha256": "be3c7f3a34e01f36f91f684928c0b2f11ca54006f166b70ebee66de9dd84cf82",
+      "localPrefixMatches": true,
+      "approvedFullFileSha": "30f8b838d4086e64f0f24bd4385e5512bde8286ba65ca1f597ec0607afca85f3"
+    },
+    {
+      "path": "/brand/capcut-luxury-nl-v1/shah-luxury-capcut-mobile-nl-v1-web.mp4",
+      "status": 206,
+      "bytes": 4096,
+      "contentType": "video/mp4",
+      "contentRange": "bytes 0-4095/14767612",
+      "sha256": "4f6f0d8af6727162231e2f32d1ed5525e6a7f66bfa1f08f5f6e5fb919e65a637",
+      "localPrefixMatches": true,
+      "approvedFullFileSha": "f1daccbe2856904ee673227169d32a356653ab67f22922d56895f944d69c335a"
+    },
+    {
+      "path": "/brand/capcut-luxury-nl-v1/shah-luxury-capcut-desktop-nl-v1-web.mp4",
+      "status": 206,
+      "bytes": 4096,
+      "contentType": "video/mp4",
+      "contentRange": "bytes 0-4095/21595932",
+      "sha256": "9f9eb3a56ecdd74ffef07b0e4d3e6c2c37c6d281615ca6e18d7cb5bfd620905e",
+      "localPrefixMatches": true,
+      "approvedFullFileSha": "2f6d1d21801835892aa2d176df8fa02b1e0eeeb054ce58371ec92b82b1d608ad"
+    }
+  ],
+  "changes": {
+    "appSource": 0,
+    "firewall": 0,
+    "networkProfile": 0,
+    "vpn": 0,
+    "router": 0,
+    "publicTunnelOrDeployment": 0
+  },
+  "limits": [
+    "Local-interface HTTP success is not a test from the physical phone.",
+    "User-reported phone playback applies to preceding KIb4; this build has fresh PC-side LAN verification, not a new physical-phone report. Device, OS and actual fps remain unmeasured.",
+    "Phone preview intentionally returns404 for accounts/admin/private/auth/payment/recovery/test routes. Forms may be viewed but all network submissions are405.",
+    "Public catalog is the pinned224-product/two-brand read-only snapshot; uploaded gallery is empty.",
+    "Keep approved loopback3398 running; restart refuses a different build, busy3618 port or missing interface."
+  ],
+  "startCommand": "node \"C:/Users/DaviiC/AppData/Local/Temp/shah-phone-preview-20261111/launch-lan-nl-v2-detached.cjs\" \"C:/Users/DaviiC/AppData/Local/Temp/shah-phone-preview-20261111/lan-config-s_2pU6IxrWANtKLhFIf2S.json\"",
+  "approval": "Root approved starting this interface-bound public-only listener after approved main promotion; no network-security change was requested or performed.",
+  "fullMediaHashes": [
+    {
+      "path": "/brand/capcut-luxury-v3/shah-luxury-capcut-mobile-v2.mp4",
+      "status": 200,
+      "contentType": "video/mp4",
+      "bytes": 14802082,
+      "sha256": "de98d395d978de246bf42e97d21fa04cb45753e39354667d7b25c2e340e2ca6b",
+      "matchesApprovedBuildSnapshot": true,
+      "httpMeasuredBuildId": "KIb4T9-xcI_ECXiULLD-H",
+      "carriedToBuildId": "s_2pU6IxrWANtKLhFIf2S",
+      "carryReason": "Same approved frozen EN media; fresh Range/prefix validation."
+    },
+    {
+      "path": "/brand/capcut-luxury-v3/shah-luxury-capcut-desktop-v3.mp4",
+      "status": 200,
+      "contentType": "video/mp4",
+      "bytes": 22055086,
+      "sha256": "30f8b838d4086e64f0f24bd4385e5512bde8286ba65ca1f597ec0607afca85f3",
+      "matchesApprovedBuildSnapshot": true,
+      "httpMeasuredBuildId": "KIb4T9-xcI_ECXiULLD-H",
+      "carriedToBuildId": "s_2pU6IxrWANtKLhFIf2S",
+      "carryReason": "Same approved frozen EN media; fresh Range/prefix validation."
+    },
+    {
+      "path": "/brand/capcut-luxury-nl-v1/shah-luxury-capcut-mobile-nl-v1-web.mp4",
+      "status": 200,
+      "contentType": "video/mp4",
+      "bytes": 14767612,
+      "sha256": "f1daccbe2856904ee673227169d32a356653ab67f22922d56895f944d69c335a",
+      "matchesApprovedBuildSnapshot": true,
+      "httpMeasuredBuildId": "s_2pU6IxrWANtKLhFIf2S",
+      "carryReason": null
+    },
+    {
+      "path": "/brand/capcut-luxury-nl-v1/shah-luxury-capcut-desktop-nl-v1-web.mp4",
+      "status": 200,
+      "contentType": "video/mp4",
+      "bytes": 21595932,
+      "sha256": "2f6d1d21801835892aa2d176df8fa02b1e0eeeb054ce58371ec92b82b1d608ad",
+      "matchesApprovedBuildSnapshot": true,
+      "httpMeasuredBuildId": "s_2pU6IxrWANtKLhFIf2S",
+      "carryReason": null
+    }
+  ],
+  "independentReview": {
+    "policyChecksPassed": 39,
+    "httpReads": 11,
+    "rootAndEnglishExactBuild200": true,
+    "negativeChecks404": 5,
+    "unknownApi503": true,
+    "guestFixtureApis200": 3,
+    "publicProducts": 224,
+    "publicBrands": 2,
+    "currentUser": null,
+    "privateRows": 0,
+    "uploadedGallery": 0,
+    "noSetCookie": true,
+    "reviewer": "/root/preview_high",
+    "source": "Independent code/policy review and safe read-only HTTP results supplied in team messages; no separate raw file.",
+    "httpMeasuredBuildId": "KIb4T9-xcI_ECXiULLD-H",
+    "carriedToBuildId": "s_2pU6IxrWANtKLhFIf2S",
+    "frozenPolicyHelperUnchanged": true,
+    "nlV2PolicyReview": {
+      "reviewer": "/root/preview_high",
+      "helperShaMatches": true,
+      "exactNlEnDeliveries": 4,
+      "policyFunctionsByteIdenticalToOriginal": true,
+      "privateMasterTestsPassed": true,
+      "noFinding": true,
+      "httpRequests": 0,
+      "activation": false
+    }
+  },
+  "updatedAt": "2026-11-12T01:45:11.456Z",
+  "phoneUserConfirmation": {
+    "recordedAt": "2026-11-11T22:55:12.019Z",
+    "source": "Direct user answer relayed by parent thread; not inferred from HTTP logs",
+    "question": "Does http://192.168.0.122:3618/ open on your phone on the same Wi-Fi, and does the video play after buffering?",
+    "answer": "Yes, the video plays",
+    "physicalPhonePlayback": "user-reported confirmed",
+    "sameWifiPhoneQuestionAnsweredAffirmatively": true,
+    "device": "not recorded",
+    "operatingSystem": "not recorded",
+    "actualFrameRate": "not measured",
+    "instrumentedPhoneCapture": false,
+    "buildContext": "KIb4T9-xcI_ECXiULLD-H"
+  },
+  "nextRevision": {
+    "status": "ACTIVE after explicit approved-main promotion",
+    "buildId": "s_2pU6IxrWANtKLhFIf2S",
+    "mainBuildVerified": true,
+    "physicalPhoneRerun": "not yet reported"
+  },
+  "allNewPublicNextAssetsPolicyAllowed": 59,
+  "httpAssetAndGuardChecks": [
+    {
+      "path": "/",
+      "method": "GET",
+      "status": 200,
+      "buildMatches": true
+    },
+    {
+      "path": "/en",
+      "method": "GET",
+      "status": 200,
+      "buildMatches": true
+    },
+    {
+      "path": "/admin",
+      "method": "GET",
+      "status": 404
+    },
+    {
+      "path": "/account",
+      "method": "GET",
+      "status": 404
+    },
+    {
+      "path": "/parties",
+      "method": "GET",
+      "status": 404
+    },
+    {
+      "path": "/terminal",
+      "method": "GET",
+      "status": 404
+    },
+    {
+      "path": "/test",
+      "method": "GET",
+      "status": 404
+    },
+    {
+      "path": "/pay/complete",
+      "method": "GET",
+      "status": 404
+    },
+    {
+      "path": "/reset-password",
+      "method": "GET",
+      "status": 404
+    },
+    {
+      "path": "/api/auth/login",
+      "method": "GET",
+      "status": 404
+    },
+    {
+      "path": "/assets/video-masters/capcut-luxury-nl-v1/shah-luxury-capcut-desktop-nl-v1.mp4",
+      "method": "GET",
+      "status": 404
+    },
+    {
+      "path": "/brand/capcut-luxury-nl-v1/shah-luxury-capcut-desktop-nl-v1.mp4",
+      "method": "GET",
+      "status": 404
+    },
+    {
+      "path": "/brand/shah-hero-scroll-desktop-v4.mp4",
+      "method": "GET",
+      "status": 404
+    },
+    {
+      "path": "/api/orders",
+      "method": "POST",
+      "status": 405
+    },
+    {
+      "path": "/api/reservations",
+      "method": "POST",
+      "status": 405
+    },
+    {
+      "path": "/api/auth/login",
+      "method": "POST",
+      "status": 405
+    },
+    {
+      "path": "/",
+      "method": "POST",
+      "status": 405
+    }
+  ],
+  "previousVerifiedPhoneReport": "docs/phone-preview-control-VKLjgu-1RUsSY6wilFOyC-2026-11-11.json",
+  "promotion": {
+    "approvedByParent": true,
+    "newMainBuildVerified": true,
+    "newLanActive": true,
+    "oldListenerPid": 45676,
+    "stoppedOnlyExactOwnedListener": true,
+    "unknownProcessesStopped": false
+  },
+  "launcher": {
+    "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-phone-preview-20261111/launch-lan-nl-v2-detached.cjs",
+    "sha256": "0bcda032871fe0f4eca0c5f4743a1af83c9214daecd02812c4fe19dfc20a0e91",
+    "manifestPath": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-phone-preview-20261111\\detached-s_2pU6IxrWANtKLhFIf2S-2026-11-12T014350869Z.stop-manifest.json",
+    "stdoutLog": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-phone-preview-20261111\\detached-s_2pU6IxrWANtKLhFIf2S-2026-11-12T014350869Z.stdout.log",
+    "stderrLog": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-phone-preview-20261111\\detached-s_2pU6IxrWANtKLhFIf2S-2026-11-12T014350869Z.stderr.log",
+    "verifiedAfterLauncherExit": true
+  },
+  "publicNextAssetsHttpVerified": [
+    {
+      "path": "/_next/static/chunks/1398-f6b66c90eacf2ebb.js",
+      "status": 200,
+      "method": "HEAD",
+      "contentType": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/_next/static/chunks/1779.7ecb4cbf1d5ab537.js",
+      "status": 200,
+      "method": "HEAD",
+      "contentType": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/_next/static/chunks/1992.6278f371ef083c89.js",
+      "status": 200,
+      "method": "HEAD",
+      "contentType": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/_next/static/chunks/3776.5bbb46116708433a.js",
+      "status": 200,
+      "method": "HEAD",
+      "contentType": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/_next/static/chunks/3794-c968c786880cae15.js",
+      "status": 200,
+      "method": "HEAD",
+      "contentType": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+      "status": 200,
+      "method": "HEAD",
+      "contentType": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/_next/static/chunks/5666-ddd261eca007fe0a.js",
+      "status": 200,
+      "method": "HEAD",
+      "contentType": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/_next/static/chunks/5696.ec984454c7a37d63.js",
+      "status": 200,
+      "method": "HEAD",
+      "contentType": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/_next/static/chunks/5772-1c5f02be2ece8826.js",
+      "status": 200,
+      "method": "HEAD",
+      "contentType": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/_next/static/chunks/5797-8dd431a3f678a5e7.js",
+      "status": 200,
+      "method": "HEAD",
+      "contentType": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/_next/static/chunks/6587-c761ffd857c2d397.js",
+      "status": 200,
+      "method": "HEAD",
+      "contentType": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/_next/static/chunks/6708-8baa2fef96d8019e.js",
+      "status": 200,
+      "method": "HEAD",
+      "contentType": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/_next/static/chunks/6755-1e46919718aad98e.js",
+      "status": 200,
+      "method": "HEAD",
+      "contentType": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/_next/static/chunks/7296-edafbb8abb4d6d35.js",
+      "status": 200,
+      "method": "HEAD",
+      "contentType": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/_next/static/chunks/7460-7cfa9625a1c44bd7.js",
+      "status": 200,
+      "method": "HEAD",
+      "contentType": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/_next/static/chunks/7991-4bb5f711ebfd3987.js",
+      "status": 200,
+      "method": "HEAD",
+      "contentType": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/_next/static/chunks/7995.e6ea4d6fb5cde6e5.js",
+      "status": 200,
+      "method": "HEAD",
+      "contentType": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/_next/static/chunks/8377-40be304b83dd8703.js",
+      "status": 200,
+      "method": "HEAD",
+      "contentType": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/_next/static/chunks/8500-3953cc33eeceb44e.js",
+      "status": 200,
+      "method": "HEAD",
+      "contentType": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/_next/static/chunks/app/en/events/about/page-8ee4f701b663e7e6.js",
+      "status": 200,
+      "method": "HEAD",
+      "contentType": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/_next/static/chunks/app/en/events/birthdays/page-91d65037264f3b10.js",
+      "status": 200,
+      "method": "HEAD",
+      "contentType": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/_next/static/chunks/app/en/events/celebrations/page-40f641f8546181dd.js",
+      "status": 200,
+      "method": "HEAD",
+      "contentType": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/_next/static/chunks/app/en/events/company-catering/page-4c126f5f36296739.js",
+      "status": 200,
+      "method": "HEAD",
+      "contentType": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/_next/static/chunks/app/en/events/company-lunches/page-d905902f7d0da52c.js",
+      "status": 200,
+      "method": "HEAD",
+      "contentType": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/_next/static/chunks/app/en/events/gallery/page-9913e8e9b965ffe9.js",
+      "status": 200,
+      "method": "HEAD",
+      "contentType": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/_next/static/chunks/app/en/events/layout-caace80077be3073.js",
+      "status": 200,
+      "method": "HEAD",
+      "contentType": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/_next/static/chunks/app/en/events/page-49aa0d512e96f221.js",
+      "status": 200,
+      "method": "HEAD",
+      "contentType": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/_next/static/chunks/app/en/menu/page-8905cbceea65ca27.js",
+      "status": 200,
+      "method": "HEAD",
+      "contentType": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/_next/static/chunks/app/en/page-3a9ddc3afd173202.js",
+      "status": 200,
+      "method": "HEAD",
+      "contentType": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/_next/static/chunks/app/en/privacy/page-692d8969f86ac465.js",
+      "status": 200,
+      "method": "HEAD",
+      "contentType": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/_next/static/chunks/app/en/reservations/page-de4ee2532873c91c.js",
+      "status": 200,
+      "method": "HEAD",
+      "contentType": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/_next/static/chunks/app/en/terms/page-807694758e16b5d0.js",
+      "status": 200,
+      "method": "HEAD",
+      "contentType": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/_next/static/chunks/app/error-4e056100a4253fb4.js",
+      "status": 200,
+      "method": "HEAD",
+      "contentType": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/_next/static/chunks/app/events/about/page-9a919025535bd2ff.js",
+      "status": 200,
+      "method": "HEAD",
+      "contentType": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/_next/static/chunks/app/events/birthdays/page-85e4763ebc6cf7b3.js",
+      "status": 200,
+      "method": "HEAD",
+      "contentType": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/_next/static/chunks/app/events/celebrations/page-ce352a822cfc5ee3.js",
+      "status": 200,
+      "method": "HEAD",
+      "contentType": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/_next/static/chunks/app/events/company-catering/page-a1eaa8586daa1551.js",
+      "status": 200,
+      "method": "HEAD",
+      "contentType": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/_next/static/chunks/app/events/company-lunches/page-00766b56fd808694.js",
+      "status": 200,
+      "method": "HEAD",
+      "contentType": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/_next/static/chunks/app/events/gallery/page-5e996223f2fd2a9d.js",
+      "status": 200,
+      "method": "HEAD",
+      "contentType": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/_next/static/chunks/app/events/layout-caace80077be3073.js",
+      "status": 200,
+      "method": "HEAD",
+      "contentType": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/_next/static/chunks/app/events/page-98efa97963b899d9.js",
+      "status": 200,
+      "method": "HEAD",
+      "contentType": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/_next/static/chunks/app/layout-a66bc8f49bcf9b65.js",
+      "status": 200,
+      "method": "HEAD",
+      "contentType": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/_next/static/chunks/app/menukaart/page-8905cbceea65ca27.js",
+      "status": 200,
+      "method": "HEAD",
+      "contentType": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/_next/static/chunks/app/not-found-10fe67176e53b097.js",
+      "status": 200,
+      "method": "HEAD",
+      "contentType": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/_next/static/chunks/app/page-40e7ff9a5224d2cd.js",
+      "status": 200,
+      "method": "HEAD",
+      "contentType": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/_next/static/chunks/app/privacy/layout-0d2da65599dda998.js",
+      "status": 200,
+      "method": "HEAD",
+      "contentType": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/_next/static/chunks/app/privacy/page-ed178375810fa6e3.js",
+      "status": 200,
+      "method": "HEAD",
+      "contentType": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/_next/static/chunks/app/reserveren/page-de4ee2532873c91c.js",
+      "status": 200,
+      "method": "HEAD",
+      "contentType": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/_next/static/chunks/app/voorwaarden/page-807694758e16b5d0.js",
+      "status": 200,
+      "method": "HEAD",
+      "contentType": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/_next/static/chunks/main-app-2f3596a243c31fc0.js",
+      "status": 200,
+      "method": "HEAD",
+      "contentType": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/_next/static/chunks/polyfills-42372ed130431b0a.js",
+      "status": 200,
+      "method": "HEAD",
+      "contentType": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/_next/static/chunks/webpack-095aa67f46150012.js",
+      "status": 200,
+      "method": "HEAD",
+      "contentType": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/_next/static/css/0545e28c5ea95dd1.css",
+      "status": 200,
+      "method": "HEAD",
+      "contentType": "text/css; charset=UTF-8"
+    },
+    {
+      "path": "/_next/static/css/284f689771180a21.css",
+      "status": 200,
+      "method": "HEAD",
+      "contentType": "text/css; charset=UTF-8"
+    },
+    {
+      "path": "/_next/static/css/3c23be31ddd5d099.css",
+      "status": 200,
+      "method": "HEAD",
+      "contentType": "text/css; charset=UTF-8"
+    },
+    {
+      "path": "/_next/static/css/3ef47586ac351e86.css",
+      "status": 200,
+      "method": "HEAD",
+      "contentType": "text/css; charset=UTF-8"
+    },
+    {
+      "path": "/_next/static/css/5d365a88c493315b.css",
+      "status": 200,
+      "method": "HEAD",
+      "contentType": "text/css; charset=UTF-8"
+    },
+    {
+      "path": "/_next/static/css/a154b9e50d8d5e3d.css",
+      "status": 200,
+      "method": "HEAD",
+      "contentType": "text/css; charset=UTF-8"
+    },
+    {
+      "path": "/_next/static/css/fe282cc27672b87e.css",
+      "status": 200,
+      "method": "HEAD",
+      "contentType": "text/css; charset=UTF-8"
+    }
+  ],
+  "recovery": {
+    "observedAt": "2026-11-12T00:06:36.7638814Z",
+    "old3618ListenerAbsent": true,
+    "oldRecordedPid": 26844,
+    "reusedProcessName": "chrome.exe",
+    "reusedPidWasNotStopped": true,
+    "oldListenerExitCause": "not established",
+    "newDetachedLaunch": true
+  },
+  "mediaAuthorization": {
+    "approvedEnglishAndDutchPairs": true,
+    "allowedMedia": [
+      "/brand/capcut-luxury-v3/shah-luxury-capcut-mobile-v2.mp4",
+      "/brand/capcut-luxury-v3/shah-luxury-capcut-desktop-v3.mp4",
+      "/brand/capcut-luxury-nl-v1/shah-luxury-capcut-mobile-nl-v1-web.mp4",
+      "/brand/capcut-luxury-nl-v1/shah-luxury-capcut-desktop-nl-v1-web.mp4"
+    ],
+    "newDutchPairAuthorized": true,
+    "exactAllowedMediaCount": 4,
+    "mastersExposed": false,
+    "privateAssetsExposed": false
+  },
+  "finalGuardSummary": {
+    "policyChecks": 56,
+    "additionalApprovedMediaAllowed": 4,
+    "additionalMasterPathsDenied": 3,
+    "publicNextAssetHeads": 59,
+    "publicPrivateMasterWriteHttpCases": 17,
+    "guestFixtureApis": 3,
+    "mediaRangeBodies": 4,
+    "newDutchFullBodiesHashMatched": 2,
+    "existingEnglishFullHashesCarriedAfterFrozenIdentity": 2,
+    "phoneDeviceReport": "Only prior KIb4 playback was user-confirmed; no current-release physical-device/FPS claim"
+  }
+}
