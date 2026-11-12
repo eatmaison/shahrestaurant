@@ -18,7 +18,7 @@ export async function POST(req: NextRequest) {
     await updateSocialLink(platform, url, enabled);
     return NextResponse.json({ ok: true });
   } catch (err) {
-    const message = err instanceof Error ? err.message : "error";
+    const message = err instanceof Error && err.message === "Unauthorized" ? "Unauthorized" : "temporarilyUnavailable";
     const status = message === "Unauthorized" ? 401 : 500;
     return NextResponse.json({ ok: false, error: message }, { status });
   }

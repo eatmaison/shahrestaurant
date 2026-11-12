@@ -1,4 +1,6 @@
 import { after } from "next/server";
+import { buildGuestVisitors, buildRegisteredVisitors } from "./guestRecognition";
+import { reservationInsert, RESERVATION_SESSION_CAPABILITY_SQL } from "./reservationSessionLink";
 import { checkoutIdentity } from "./checkoutFingerprint";
 import { buildMenuUpgradeItems } from "./menuUpgrades";
 import { CATALOG_PRODUCT_LIMIT } from "./catalogSnapshot";
@@ -409,69 +411,33 @@ export async function bootstrap(): Promise<Bootstrap> {
       createdAt: new Date(r.created_at).getTime(),
       updatedAt: new Date(r.updated_at ?? r.created_at).getTime(),
     }));
-    reservations = ((await sql.query(`SELECT * FROM reservations ORDER BY date ASC, time ASC`)) as any[]).map(rowToReservation);
+    const adminReservationRows = (await sql.query(`SELECT * FROM reservations ORDER BY date ASC, time ASC`)) as any[];
+    reservations = adminReservationRows.map(rowToReservation);
     const visitorRows = (await sql.query(
       `SELECT count(*)::int AS n FROM visitor_sessions WHERE last_seen_site = $1 AND last_seen_at > now() - interval '5 minutes'`,
       [SITE_ID]
     )) as any[];
     onlineVisitors = visitorRows[0]?.n ?? 0;
 
-    const recentGuestRows = (await sql.query(
-            `SELECT id, created_at, last_seen_at, last_seen_site, visit_count, active_seconds,
-              (SELECT count(*)::int FROM orders o WHERE o.visitor_session_id = visitor_sessions.id) AS order_count
-       FROM visitor_sessions
-       WHERE last_seen_site = $1 AND last_seen_at > now() - interval '24 hours'
-       ORDER BY last_seen_at DESC
-       LIMIT 150`,
-      [SITE_ID]
-    )) as any[];
-
+    const [recentGuestRows, guestIdentityOrders] = await Promise.all([
+      sql.query(
+        `SELECT id, created_at, last_seen_at, last_seen_site, visit_count, active_seconds
+         FROM visitor_sessions
+         WHERE last_seen_site = $1 AND last_seen_at > now() - interval '24 hours'
+         ORDER BY last_seen_at DESC, id ASC`,
+        [SITE_ID]
+      ),
+      // Admin-only enrichment. Do not add guest emails to the public Order mapper.
+      sql.query(`SELECT id, user_id, visitor_session_id, customer_name, customer_email,
+                        address, postcode, fulfillment, paid
+                 FROM orders WHERE user_id IS NULL`),
+    ]);
     const nowMs = Date.now();
-    const signedInVisitors: RecentVisitor[] = users
-      .filter((u) => u.lastSeenAt && nowMs - u.lastSeenAt < 86_400_000)
-      .map((u) => ({
-        id: u.id,
-        kind: "user",
-        name: u.name,
-        email: u.email,
-        phone: u.phone,
-        role: u.role,
-        accountType: u.accountType,
-        isVip: u.isVip,
-        lastSeenAt: u.lastSeenAt!,
-        lastSeenSite: u.lastSeenSite,
-        activeSeconds: u.activeSeconds,
-        maisonReservationCount: reservationCounts.get(u.id)?.maison ?? 0,
-        tandoorReservationCount: reservationCounts.get(u.id)?.tandoor ?? 0,
-        maisonArrivedCount: reservationCounts.get(u.id)?.maisonArrived ?? 0,
-        tandoorArrivedCount: reservationCounts.get(u.id)?.tandoorArrived ?? 0,
-        isOnline: nowMs - (u.lastSeenAt ?? 0) < 5 * 60_000,
-        orderCount: u.orderCount,
-      }));
-
-    const guestVisitors: RecentVisitor[] = recentGuestRows.map((row) => {
-      const lastSeenAt = new Date(row.last_seen_at).getTime();
-      return {
-        id: row.id,
-        kind: "guest",
-        name: "Guest",
-        email: `Guest session ${String(row.id).slice(0, 8)}`,
-        role: "guest",
-        accountType: "guest",
-        lastSeenAt,
-        lastSeenSite: row.last_seen_site ?? undefined,
-        isOnline: nowMs - lastSeenAt < 5 * 60_000,
-        sessionId: row.id,
-        visitCount: Number(row.visit_count ?? 1),
-        orderCount: Number(row.order_count ?? 0),
-        activeSeconds: Number(row.active_seconds ?? 0),
-        firstSeenAt: row.created_at ? new Date(row.created_at).getTime() : undefined,
-      };
-    });
-
+    const signedInVisitors = buildRegisteredVisitors(users, reservationCounts, nowMs);
+    const guestVisitors = buildGuestVisitors(recentGuestRows as any[], guestIdentityOrders as any[], adminReservationRows, nowMs);
+    // Every registered account remains available; paging happens after UI filtering.
     recentVisitors = [...signedInVisitors, ...guestVisitors]
-      .sort((a, b) => b.lastSeenAt - a.lastSeenAt)
-      .slice(0, 150);
+      .sort((a, b) => b.lastSeenAt - a.lastSeenAt || a.kind.localeCompare(b.kind) || a.id.localeCompare(b.id));
   } else if (currentUser) {
     orders = await loadOrders(currentUser.id);
     vipRequests = ((await sql.query(`SELECT * FROM vip_requests WHERE user_id = $1 ORDER BY created_at DESC`, [currentUser.id])) as any[]).map(rowToVipRequest);
@@ -1402,22 +1368,21 @@ export async function createReservation(data: {
   const guests = Math.min(40, Math.max(1, Math.round(data.guests)));
   const email = (data.email ?? currentUser?.email ?? "").trim().toLowerCase();
 
-  const rows = (await sql.query(
-    `INSERT INTO reservations (user_id, guest_name, email, phone, date, time, guests, occasion, note, status, site)
-     VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,'confirmed',$10) RETURNING *`,
-    [
-      currentUser?.id ?? null,
-      guestName,
-      email,
-      phone,
-      data.date,
-      data.time,
-      guests,
-      data.occasion?.trim() ?? "",
-      data.note?.trim() || null,
-      SITE_ID,
-    ]
-  )) as any[];
+  // The optional migration is applied separately with database-owner approval.
+  // Old schemas keep working, and historical bookings are never guessed/backfilled.
+  let supportsVisitorSession = false;
+  try {
+    const capability = await sql.query(RESERVATION_SESSION_CAPABILITY_SQL);
+    supportsVisitorSession = capability[0]?.supported === true;
+  } catch {
+    // Recognition must not prevent a reservation on an older/restricted schema.
+  }
+  const visitorSessionId = !currentUser && supportsVisitorSession ? await getOrCreateVisitorId() : undefined;
+  const insert = reservationInsert(supportsVisitorSession, [
+    currentUser?.id ?? null, guestName, email, phone, data.date, data.time, guests,
+    data.occasion?.trim() ?? "", data.note?.trim() || null, SITE_ID,
+  ], visitorSessionId);
+  const rows = (await sql.query(insert.text, insert.params)) as any[];
 
   const reservation = rowToReservation(rows[0]);
 

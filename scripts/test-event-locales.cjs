@@ -63,6 +63,11 @@ const consent = load("app/components/CookieConsent.tsx", { "./LocaleLink": { def
 const { proxy } = load("proxy.ts", { "./app/lib/locale": locale, "./app/lib/eventAccess": { hasEventAdminAccess: async () => { guardCalls++; return false; } } });
 const request = url => new NextRequest(url, { headers: { host: new URL(url).host, "x-shah-locale": "forged", "x-shah-path": "/forged" } });
 const rootLayout = load("app/layout.tsx", {
+  "./lib/introSession": load("app/lib/introSession.ts"),
+  "./lib/introMedia": load("app/lib/introMedia.ts", {
+    "./capcutLuxuryPosters": load("app/lib/capcutLuxuryPosters.ts"),
+    "./capcutDutchPosters": load("app/lib/capcutDutchPosters.ts"),
+  }),
   "next/headers": {
     headers: async () => new Headers({ "x-shah-path": pathname, "x-shah-locale": locale.getLocalizedRoute(pathname)?.locale || "nl" }),
     cookies: async () => ({ get: () => undefined }),

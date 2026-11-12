@@ -17,9 +17,9 @@ export async function POST(req: NextRequest) {
 
     const res = await createReservation({ ...parsed.data, origin: publicOrigin(req) });
     return NextResponse.json(res);
-  } catch (err) {
+  } catch {
     return NextResponse.json(
-      { ok: false, error: err instanceof Error ? err.message : "error" },
+      { ok: false, error: "temporarilyUnavailable" },
       { status: 500 }
     );
   }
@@ -43,9 +43,9 @@ export async function PATCH(req: NextRequest) {
     }
     await setReservationStatus(id, action === "confirm" ? "confirmed" : action === "arrived" ? "arrived" : action === "no_show" ? "no_show" : "declined");
     return NextResponse.json({ ok: true });
-  } catch (err) {
+  } catch {
     return NextResponse.json(
-      { ok: false, error: err instanceof Error ? err.message : "error" },
+      { ok: false, error: "temporarilyUnavailable" },
       { status: 500 }
     );
   }
@@ -64,9 +64,9 @@ export async function DELETE(req: NextRequest) {
 
     const res = await deleteReservation(parsed.data.id);
     return NextResponse.json(res);
-  } catch (err) {
+  } catch {
     return NextResponse.json(
-      { ok: false, error: err instanceof Error ? err.message : "error" },
+      { ok: false, error: "temporarilyUnavailable" },
       { status: 500 }
     );
   }

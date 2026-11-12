@@ -370,6 +370,11 @@ export interface Dictionary {
     filterWeek: string;
     filterMonth: string;
     filterPickDate: string;
+    filterStartDate: string;
+    filterEndDate: string;
+    filterIncompleteRange: string;
+    filterInvalidRange: string;
+    filterTimeZone: string;
     noOrders: string;
     ordersByCategory: string;
     customerInsights: string;
@@ -430,6 +435,18 @@ export interface Dictionary {
     recentlyOnlineSortFirstSeen: string;
     recentlyOnlineNoResults: string;
     recentlyOnlineShowingCount: string;
+    recentlyOnlineShowingRange: string;
+    recentlyOnlinePreviousPage: string;
+    recentlyOnlineNextPage: string;
+    recentlyOnlinePage: string;
+    recentlyOnlineNoActivity: string;
+    recentlyOnlineRegisteredBadge: string;
+    recentlyOnlineIdentitySupplied: string;
+    recentlyOnlineIdentityAmbiguous: string;
+    recentlyOnlineSessionOrders: string;
+    recentlyOnlineGuestReservations: string;
+    recentlyOnlineMatchingOrders: string;
+    recentlyOnlineMatchingNote: string;
     recentlyOnlineNewBadge: string;
     recentlyOnlineRefresh: string;
     recentlyOnlineLastUpdated: string;
@@ -1004,6 +1021,11 @@ const en: Dictionary = {
     filterWeek: "Last 7 days",
     filterMonth: "Last 30 days",
     filterPickDate: "Pick a date",
+    filterStartDate: "From",
+    filterEndDate: "To",
+    filterIncompleteRange: "Choose both a start and end date.",
+    filterInvalidRange: "Choose valid dates with the end date on or after the start date.",
+    filterTimeZone: "Amsterdam time · both dates included",
     noOrders: "No orders yet.",
     ordersByCategory: "Sales by category",
     customerInsights: "Customer insights",
@@ -1044,7 +1066,7 @@ const en: Dictionary = {
     vipInactive: "VIP inactive",
     vipNoPurchases: "No paid VIP purchases recorded.",
     recentlyOnline: "Recently online",
-    recentlyOnlineSub: "The latest recent visitors and guests, including how long ago they were active.",
+    recentlyOnlineSub: "All registered accounts and guest sessions active in the last 24 hours. Online means active within 5 minutes.",
     justNow: "just now",
     minutesAgo: "{n} min ago",
     hoursAgo: "{n} h ago",
@@ -1064,6 +1086,18 @@ const en: Dictionary = {
     recentlyOnlineSortFirstSeen: "First seen",
     recentlyOnlineNoResults: "No visitors match these filters.",
     recentlyOnlineShowingCount: "Showing {shown} of {total}",
+    recentlyOnlineShowingRange: "Showing {from}-{to} of {total}",
+    recentlyOnlinePreviousPage: "Previous",
+    recentlyOnlineNextPage: "Next",
+    recentlyOnlinePage: "Page {page} of {pages}",
+    recentlyOnlineNoActivity: "No activity recorded",
+    recentlyOnlineRegisteredBadge: "Registered",
+    recentlyOnlineIdentitySupplied: "Name/contact supplied in this session",
+    recentlyOnlineIdentityAmbiguous: "Conflicting or incomplete customer details; session kept separate",
+    recentlyOnlineSessionOrders: "{count} session orders ({paid} paid)",
+    recentlyOnlineGuestReservations: "{count} session reservations",
+    recentlyOnlineMatchingOrders: "{count} matching order records ({paid} paid)",
+    recentlyOnlineMatchingNote: "Exact name + delivery address + postcode. Possible matches, not a verified person. Includes this session's matching orders.",
     recentlyOnlineNewBadge: "New",
     recentlyOnlineRefresh: "Refresh",
     recentlyOnlineLastUpdated: "Updated {time}",
@@ -1640,6 +1674,11 @@ const nl: Dictionary = {
     filterWeek: "Laatste 7 dagen",
     filterMonth: "Laatste 30 dagen",
     filterPickDate: "Kies een datum",
+    filterStartDate: "Van",
+    filterEndDate: "Tot",
+    filterIncompleteRange: "Kies een begin- en einddatum.",
+    filterInvalidRange: "Kies geldige datums met de einddatum op of na de begindatum.",
+    filterTimeZone: "Amsterdamse tijd · beide datums inbegrepen",
     noOrders: "Nog geen bestellingen.",
     ordersByCategory: "Verkoop per categorie",
     customerInsights: "Klantinzichten",
@@ -1680,7 +1719,7 @@ const nl: Dictionary = {
     vipInactive: "VIP inactief",
     vipNoPurchases: "Geen betaalde VIP-aankopen geregistreerd.",
     recentlyOnline: "Recent online",
-    recentlyOnlineSub: "De nieuwste recente bezoekers en gasten, inclusief hoe lang geleden ze actief waren.",
+    recentlyOnlineSub: "Alle geregistreerde accounts en gastsessies die de afgelopen 24 uur actief waren. Online betekent actief binnen 5 minuten.",
     justNow: "zojuist",
     minutesAgo: "{n} min geleden",
     hoursAgo: "{n} u geleden",
@@ -1700,6 +1739,18 @@ const nl: Dictionary = {
     recentlyOnlineSortFirstSeen: "Eerst gezien",
     recentlyOnlineNoResults: "Geen bezoekers komen overeen met deze filters.",
     recentlyOnlineShowingCount: "{shown} van {total} getoond",
+    recentlyOnlineShowingRange: "{from}-{to} van {total} getoond",
+    recentlyOnlinePreviousPage: "Vorige",
+    recentlyOnlineNextPage: "Volgende",
+    recentlyOnlinePage: "Pagina {page} van {pages}",
+    recentlyOnlineNoActivity: "Geen activiteit geregistreerd",
+    recentlyOnlineRegisteredBadge: "Geregistreerd",
+    recentlyOnlineIdentitySupplied: "Naam/contact opgegeven in deze sessie",
+    recentlyOnlineIdentityAmbiguous: "Tegenstrijdige of onvolledige klantgegevens; sessie apart gehouden",
+    recentlyOnlineSessionOrders: "{count} sessiebestellingen ({paid} betaald)",
+    recentlyOnlineGuestReservations: "{count} sessiereserveringen",
+    recentlyOnlineMatchingOrders: "{count} overeenkomende bestellingen ({paid} betaald)",
+    recentlyOnlineMatchingNote: "Exacte naam + bezorgadres + postcode. Mogelijke overeenkomsten, geen geverifieerde persoon. Inclusief overeenkomende bestellingen uit deze sessie.",
     recentlyOnlineNewBadge: "Nieuw",
     recentlyOnlineRefresh: "Vernieuwen",
     recentlyOnlineLastUpdated: "Bijgewerkt {time}",

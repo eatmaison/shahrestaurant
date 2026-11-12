@@ -7,7 +7,7 @@ export async function GET() {
     const images = await listGalleryImages();
     return NextResponse.json({ ok: true, images });
   } catch (err) {
-    const message = err instanceof Error ? err.message : "error";
+    const message = err instanceof Error && err.message === "Unauthorized" ? "Unauthorized" : "temporarilyUnavailable";
     return NextResponse.json({ ok: false, error: message }, { status: 500 });
   }
 }
@@ -25,7 +25,7 @@ export async function POST(req: NextRequest) {
     });
     return NextResponse.json(result, { status: result.ok ? 200 : 400 });
   } catch (err) {
-    const message = err instanceof Error ? err.message : "error";
+    const message = err instanceof Error && err.message === "Unauthorized" ? "Unauthorized" : "temporarilyUnavailable";
     return NextResponse.json({ ok: false, error: message }, { status: message === "Unauthorized" ? 401 : 500 });
   }
 }
@@ -38,7 +38,7 @@ export async function DELETE(req: NextRequest) {
     if (id) await removeGalleryImage(id);
     return NextResponse.json({ ok: true });
   } catch (err) {
-    const message = err instanceof Error ? err.message : "error";
+    const message = err instanceof Error && err.message === "Unauthorized" ? "Unauthorized" : "temporarilyUnavailable";
     return NextResponse.json({ ok: false, error: message }, { status: message === "Unauthorized" ? 401 : 500 });
   }
 }

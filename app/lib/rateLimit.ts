@@ -12,10 +12,13 @@ interface Bucket {
 }
 
 const buckets = new Map<string, Bucket>();
+const MAX_BUCKETS = 50_000;
+let nextSweepAt = 0;
 
 /** Periodically drop expired buckets so the map doesn't grow forever. */
 function sweep(now: number): void {
-  if (buckets.size < 1000) return;
+  if (buckets.size < 1000 || now < nextSweepAt) return;
+  nextSweepAt = now + 30_000;
   for (const [key, bucket] of buckets) {
     if (bucket.resetAt <= now) buckets.delete(key);
   }
@@ -23,8 +26,10 @@ function sweep(now: number): void {
 
 /** Best-effort client IP (behind a proxy/Vercel, x-forwarded-for is set). */
 export function clientIp(req: NextRequest): string {
+  // The nginx reverse proxy overwrites X-Real-IP; the rightmost forwarded
+  // address is the peer appended by nginx, not a caller-supplied prefix.
   const fwd = req.headers.get("x-forwarded-for");
-  const candidate = fwd?.split(",")[0].trim() || req.headers.get("x-real-ip")?.trim();
+  const candidate = req.headers.get("x-real-ip")?.trim() || fwd?.split(",").at(-1)?.trim();
   return candidate && candidate.length <= 100 ? candidate : "unknown";
 }
 
@@ -41,6 +46,8 @@ export function rateLimit(key: string, limit: number, windowMs: number): RateLim
 
   const bucket = buckets.get(key);
   if (!bucket || bucket.resetAt <= now) {
+    // Limit memory growth from unbounded distinct client keys; keep existing buckets intact.
+    if (!bucket && buckets.size >= MAX_BUCKETS) return { ok: false, retryAfter: 30 };
     buckets.set(key, { count: 1, resetAt: now + windowMs });
     return { ok: true, retryAfter: 0 };
   }

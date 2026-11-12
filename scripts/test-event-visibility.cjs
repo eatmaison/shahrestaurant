@@ -48,6 +48,7 @@ const header = load('app/components/header.tsx', {
   '../lib/clientStorage': { writeSessionValue: () => true }, '../providers': providers, './header.module.css': { default: styles },
 }).Header;
 const footer = load('app/components/footer.tsx', {
+  './footer.module.css': { default: styles },
   react: hooks, './LocaleLink': { default: Link }, './BrandLogo': { BrandLogo: () => null }, '../providers': providers, './socialIcons': { SOCIAL_PLATFORMS: [] },
 }).Footer;
 const denied = () => { throw new Error('NOT_FOUND'); };

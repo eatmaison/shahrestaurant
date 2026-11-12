@@ -133,6 +133,14 @@ export interface RecentVisitor {
   lastSeenSite?: string;
   isOnline: boolean;
   orderCount?: number;
+  /** Admin-only, submission-derived identity. This is not verified authentication. */
+  identityStatus?: "identified" | "unknown" | "ambiguous";
+  identitySource?: "order" | "reservation" | "order_and_reservation";
+  paidOrderCount?: number;
+  reservationCount?: number;
+  /** Exact name/address matches, not a verified person or an additional session total. */
+  matchingOrderCount?: number;
+  matchingPaidOrderCount?: number;
   sessionId?: string;
   visitCount?: number;
   firstSeenAt?: number;

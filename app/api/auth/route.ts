@@ -75,9 +75,9 @@ export async function POST(req: NextRequest) {
       return NextResponse.json(res);
     }
     return NextResponse.json({ ok: false, error: "unknownAction" }, { status: 400 });
-  } catch (err) {
+  } catch {
     return NextResponse.json(
-      { ok: false, error: err instanceof Error ? err.message : "error" },
+      { ok: false, error: "temporarilyUnavailable" },
       { status: 500 }
     );
   }

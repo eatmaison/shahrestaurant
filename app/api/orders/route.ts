@@ -17,9 +17,9 @@ export async function POST(req: NextRequest) {
 
     const res = await placeOrder({ ...parsed.data, origin: publicOrigin(req) });
     return NextResponse.json(res);
-  } catch (err) {
+  } catch {
     return NextResponse.json(
-      { ok: false, error: err instanceof Error ? err.message : "error" },
+      { ok: false, error: "temporarilyUnavailable" },
       { status: 500 }
     );
   }
@@ -42,9 +42,9 @@ export async function PATCH(req: NextRequest) {
     if (typeof body.paid === "boolean") await setOrderPaid(body.id, body.paid);
     if (typeof body.invoiceSent === "boolean") await setInvoiceSent(body.id, body.invoiceSent);
     return NextResponse.json({ ok: true });
-  } catch (err) {
+  } catch {
     return NextResponse.json(
-      { ok: false, error: err instanceof Error ? err.message : "error" },
+      { ok: false, error: "temporarilyUnavailable" },
       { status: 500 }
     );
   }
@@ -66,9 +66,9 @@ export async function DELETE(req: NextRequest) {
       return NextResponse.json({ ok: false, error: "notDeletable" }, { status: 409 });
     }
     return NextResponse.json({ ok: true });
-  } catch (err) {
+  } catch {
     return NextResponse.json(
-      { ok: false, error: err instanceof Error ? err.message : "error" },
+      { ok: false, error: "temporarilyUnavailable" },
       { status: 500 }
     );
   }

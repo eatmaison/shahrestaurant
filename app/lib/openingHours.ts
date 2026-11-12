@@ -28,18 +28,14 @@ export interface RestaurantStatus {
   nextOpening: { daysAhead: number; weekday: number } | null;
 }
 
+const amsterdamFormatter = new Intl.DateTimeFormat("en-US", {
+  timeZone: "Europe/Amsterdam", weekday: "short", year: "numeric", month: "2-digit",
+  day: "2-digit", hour: "2-digit", minute: "2-digit", hour12: false,
+});
+
 /** Current weekday (0-6, Sunday = 0) and minutes since midnight in Amsterdam. */
 export function amsterdamNow(date: Date = new Date()): { day: number; minutes: number; localDate: string } {
-  const parts = new Intl.DateTimeFormat("en-US", {
-    timeZone: "Europe/Amsterdam",
-    weekday: "short",
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: false,
-  }).formatToParts(date);
+  const parts = amsterdamFormatter.formatToParts(date);
 
   const get = (type: string) => parts.find((p) => p.type === type)?.value ?? "";
   const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];

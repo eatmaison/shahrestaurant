@@ -246,6 +246,13 @@ function readThemePreference(fallback: Theme): Theme {
   return value === "light" || value === "dark" ? value : fallback;
 }
 
+function stableRestaurantStatus(previous: RestaurantStatus, next: RestaurantStatus): RestaurantStatus {
+  return previous.isOpen === next.isOpen && previous.override === next.override &&
+    previous.activeOverride === next.activeOverride && previous.overrideDate === next.overrideDate &&
+    previous.canOverride === next.canOverride && previous.nextOpening?.daysAhead === next.nextOpening?.daysAhead &&
+    previous.nextOpening?.weekday === next.nextOpening?.weekday ? previous : next;
+}
+
 /* ------------------------------------------------------------------ */
 /* Provider                                                            */
 /* ------------------------------------------------------------------ */
@@ -348,7 +355,7 @@ export function Providers({ children, initialLang = "nl", initialDictionaries }:
       setRecentVisitors(data.recentVisitors ?? []);
       setReservations(data.reservations ?? []);
       const status = data.restaurantStatus;
-      setRestaurantStatus(getRestaurantStatus(status?.override ?? "auto", status?.overrideDate));
+      setRestaurantStatus(previous => stableRestaurantStatus(previous, getRestaurantStatus(status?.override ?? "auto", status?.overrideDate)));
     } catch {
       if (!controller.signal.aborted) setCatalogStatus("error");
       // Keep the current cart/catalogue during transient failures.
@@ -365,10 +372,10 @@ export function Providers({ children, initialLang = "nl", initialDictionaries }:
       const { response: res, data } = await fetchJSON<{ restaurantStatus?: RestaurantStatus }>("/api/restaurant-status", { cache: "no-store", signal: controller.signal });
       if (res.ok && data.restaurantStatus && !controller.signal.aborted) {
         const status = data.restaurantStatus;
-        setRestaurantStatus(getRestaurantStatus(status.override ?? "auto", status.overrideDate));
+        setRestaurantStatus(previous => stableRestaurantStatus(previous, getRestaurantStatus(status.override ?? "auto", status.overrideDate)));
       }
     } catch {
-      if (!controller.signal.aborted) setRestaurantStatus(status => getRestaurantStatus(status.override, status.overrideDate));
+      if (!controller.signal.aborted) setRestaurantStatus(status => stableRestaurantStatus(status, getRestaurantStatus(status.override, status.overrideDate)));
     } finally {
       if (statusController.current === controller) statusController.current = null;
     }
@@ -732,7 +739,7 @@ export function Providers({ children, initialLang = "nl", initialDictionaries }:
     const json = await res.json().catch(() => null);
     if (res.ok && json?.restaurantStatus) {
       const status = json.restaurantStatus;
-      setRestaurantStatus(getRestaurantStatus(status.override ?? "auto", status.overrideDate));
+      setRestaurantStatus(previous => stableRestaurantStatus(previous, getRestaurantStatus(status.override ?? "auto", status.overrideDate)));
       return { ok: true };
     }
     return { ok: false };

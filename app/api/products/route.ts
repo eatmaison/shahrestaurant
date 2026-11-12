@@ -1,9 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
+import { enforceRateLimit } from "../../lib/rateLimit";
 import { addProduct, createProductGroup, moveProductGroup, removeProduct, syncProductGroup, updateProduct } from "../../lib/serverStore";
 
 export async function POST(req: NextRequest) {
   try {
-    const body = await req.json();
+    const limited = enforceRateLimit(req, "products:create", 60, 10 * 60_000);
+    if (limited) return limited;
+    const body = await req.json().catch(() => null);
+    if (!body || typeof body !== "object" || Array.isArray(body)) return NextResponse.json({ ok: false, error: "invalidInput" }, { status: 400 });
     // A `targets` array means "publish this product to several restaurants at once".
     if (Array.isArray(body.targets)) {
       const { targets, ...content } = body;
@@ -13,14 +17,17 @@ export async function POST(req: NextRequest) {
     const product = await addProduct(body);
     return NextResponse.json({ ok: true, product });
   } catch (err) {
-    const message = err instanceof Error ? err.message : "error";
+    const message = err instanceof Error && err.message === "Unauthorized" ? "Unauthorized" : "temporarilyUnavailable";
     return NextResponse.json({ ok: false, error: message }, { status: message === "Unauthorized" ? 401 : 500 });
   }
 }
 
 export async function PATCH(req: NextRequest) {
   try {
-    const body = await req.json();
+    const limited = enforceRateLimit(req, "products:update", 120, 10 * 60_000);
+    if (limited) return limited;
+    const body = await req.json().catch(() => null);
+    if (!body || typeof body !== "object" || Array.isArray(body)) return NextResponse.json({ ok: false, error: "invalidInput" }, { status: 400 });
     if (body.action === "moveProductGroup") {
       await moveProductGroup(body.id, body.targetId, body.placement);
       return NextResponse.json({ ok: true });
@@ -35,19 +42,21 @@ export async function PATCH(req: NextRequest) {
     await updateProduct(id, patch);
     return NextResponse.json({ ok: true });
   } catch (err) {
-    const message = err instanceof Error ? err.message : "error";
+    const message = err instanceof Error && err.message === "Unauthorized" ? "Unauthorized" : "temporarilyUnavailable";
     return NextResponse.json({ ok: false, error: message }, { status: message === "Unauthorized" ? 401 : 500 });
   }
 }
 
 export async function DELETE(req: NextRequest) {
   try {
+    const limited = enforceRateLimit(req, "products:delete", 60, 10 * 60_000);
+    if (limited) return limited;
     const { searchParams } = new URL(req.url);
     const id = searchParams.get("id");
     if (id) await removeProduct(id);
     return NextResponse.json({ ok: true });
   } catch (err) {
-    const message = err instanceof Error ? err.message : "error";
+    const message = err instanceof Error && err.message === "Unauthorized" ? "Unauthorized" : "temporarilyUnavailable";
     return NextResponse.json({ ok: false, error: message }, { status: message === "Unauthorized" ? 401 : 500 });
   }
 }

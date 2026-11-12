@@ -26,9 +26,9 @@ export async function POST(req: NextRequest) {
     }
     const restaurantStatus = await setRestaurantOpenOverride(override);
     return NextResponse.json({ ok: true, restaurantStatus }, { headers: { "Cache-Control": "private, no-store" } });
-  } catch (err) {
+  } catch {
     return NextResponse.json(
-      { ok: false, error: err instanceof Error ? err.message : "error" },
+      { ok: false, error: "temporarilyUnavailable" },
       { status: 500 }
     );
   }

@@ -36,7 +36,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json(result, { status: result.ok ? 200 : 400 });
   } catch (err) {
-    const message = err instanceof Error ? err.message : "error";
+    const message = err instanceof Error && err.message === "Unauthorized" ? "Unauthorized" : "temporarilyUnavailable";
     return NextResponse.json({ ok: false, error: message }, { status: message === "Unauthorized" ? 401 : 500 });
   }
 }

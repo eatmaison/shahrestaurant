@@ -3,6 +3,7 @@ import workspace from "../components/Workspace.module.css";
 import { WorkspaceDialog } from "../components/WorkspaceDialog";
 
 import { OrderTotals } from "../components/OrderTotals";
+import { filterVisitors, paginateVisitors } from "../lib/visitorList";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -57,8 +58,9 @@ const RichTextEditor = dynamic(() => import("../components/RichTextEditor"), { s
 import PartyAdmin from "./PartyAdmin";
 import { BrandNameEditor } from "./BrandNameEditor";
 const PhoneAgentPanel = dynamic(() => import("./PhoneAgentPanel"));
-import type { AccountType, Brand, Category, Order, OrderStatus, Product, RecentVisitor, User } from "../lib/types";
+import type { AccountType, Brand, Category, Order, OrderStatus, Product, User } from "../lib/types";
 import type { RestaurantOpenOverride } from "../lib/openingHours";
+import { amsterdamDateKey, buildDailyMetrics, makeRangeCheck, rangeFilterError, type DailyMetric, type RangeFilter } from "../lib/adminMetrics";
 
 const statusIcons: Record<OrderStatus, typeof FaClock> = {
   new: FaClock,
@@ -75,28 +77,6 @@ type ProductGroup = { key: string; product: Product; products: Product[] };
 type CategoryEditDraft =
   | { kind: "category"; brandId: string; name: string; nextName: string; icon: string }
   | { kind: "subcategory"; brandId: string; categoryName: string; name: string; nextName: string; icon: string };
-
-/** Period filter for stats and order management. */
-type RangeFilter = { preset: "all" | "today" | "7d" | "30d" | "date"; date?: string };
-
-/** Predicate matching timestamps inside the selected period (local time). */
-const makeRangeCheck = (f: RangeFilter): ((ts: number) => boolean) => {
-  if (f.preset === "all") return () => true;
-  if (f.preset === "7d") {
-    const from = Date.now() - 7 * 86_400_000;
-    return (ts) => ts >= from;
-  }
-
-  if (f.preset === "30d") {
-    const from = Date.now() - 30 * 86_400_000;
-    return (ts) => ts >= from;
-  }
-  // "today" or a specific calendar date - one local-time day window.
-  if (f.preset === "date" && !f.date) return () => true;
-  const start = f.preset === "date" && f.date ? new Date(`${f.date}T00:00:00`).getTime() : new Date().setHours(0, 0, 0, 0);
-  const end = start + 86_400_000;
-  return (ts) => ts >= start && ts < end;
-};
 
 /** Keeps only digits and a single decimal dot while typing; a comma becomes a dot. */
 const sanitizePrice = (value: string): string => {
@@ -159,19 +139,6 @@ const processImageFile = (file: File, opts?: { maxDim?: number; mime?: string })
 
 const ADMIN_INITIAL_NOW = Date.now();
 
-type DailyMetric = { date: string; revenue: number; orders: number };
-
-const amsterdamDateKey = (date: Date): string => {
-  const parts = new Intl.DateTimeFormat("en-CA", {
-    timeZone: "Europe/Amsterdam",
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-  }).formatToParts(date);
-  const get = (type: string) => parts.find((part) => part.type === type)?.value ?? "";
-  return `${get("year")}-${get("month")}-${get("day")}`;
-};
-
 function smoothPath(points: Array<{ x: number; y: number }>): string {
   if (points.length === 0) return "";
   if (points.length === 1) return `M ${points[0].x} ${points[0].y}`;
@@ -184,20 +151,20 @@ function smoothPath(points: Array<{ x: number; y: number }>): string {
 }
 
 function DailySalesChart({ data, revenueLabel, ordersLabel, title, noData }: { data: DailyMetric[]; revenueLabel: string; ordersLabel: string; title: string; noData: string }) {
-  const width = 760;
+  const width = Math.min(12_000, Math.max(760, data.length * 12));
   const height = 250;
   const pad = { top: 24, right: 22, bottom: 42, left: 42 };
   const plotWidth = width - pad.left - pad.right;
   const plotHeight = height - pad.top - pad.bottom;
-  const maxRevenue = Math.max(100, ...data.map((item) => item.revenue));
-  const maxOrders = Math.max(1, ...data.map((item) => item.orders));
+  const maxRevenue = data.reduce((max, item) => Math.max(max, item.revenue), 100);
+  const maxOrders = data.reduce((max, item) => Math.max(max, item.orders), 1);
   const xFor = (index: number) => pad.left + (data.length <= 1 ? plotWidth / 2 : (index / (data.length - 1)) * plotWidth);
   const yRevenue = (value: number) => pad.top + plotHeight - (value / maxRevenue) * plotHeight;
   const yOrders = (value: number) => pad.top + plotHeight - (value / maxOrders) * plotHeight;
   const revenuePoints = data.map((item, index) => ({ x: xFor(index), y: yRevenue(item.revenue) }));
   const orderPoints = data.map((item, index) => ({ x: xFor(index), y: yOrders(item.orders) }));
   const revenueColor = (value: number) => value < 100 ? "#ef4444" : value <= 300 ? "#d97706" : "#059669";
-  const dateLabel = (date: string) => new Date(`${date}T00:00:00`).toLocaleDateString(undefined, { day: "numeric", month: "short" });
+  const dateLabel = (date: string) => new Date(`${date}T12:00:00Z`).toLocaleDateString(undefined, { timeZone: "UTC", day: "numeric", month: "short", year: "numeric" });
 
   return (
     <section className="mt-6 rounded-3xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-white/5" aria-label={title}>
@@ -208,9 +175,10 @@ function DailySalesChart({ data, revenueLabel, ordersLabel, title, noData }: { d
           <span className="inline-flex items-center gap-1.5"><i className="h-0.5 w-4 border-t-2 border-dashed border-sky-500" />{ordersLabel}</span>
         </div>
       </div>
+      {data.length > 0 && <p className="mt-2 text-xs text-slate-500 dark:text-slate-400">{dateLabel(data[0].date)} – {dateLabel(data[data.length - 1].date)}</p>}
       {data.length === 0 ? <p className="mt-8 text-center text-sm text-slate-500 dark:text-slate-400">{noData}</p> : (
         <div tabIndex={0} role="group" aria-label={title} className="mt-4 overflow-x-auto">
-          <svg viewBox={`0 0 ${width} ${height}`} role="img" aria-label={title} className="min-w-[560px] w-full overflow-visible">
+          <svg viewBox={`0 0 ${width} ${height}`} role="img" aria-label={title} style={{ minWidth: width }} className="w-full overflow-visible">
             {[0, 0.5, 1].map((ratio) => {
               const y = pad.top + plotHeight * ratio;
               return <line key={ratio} x1={pad.left} x2={width - pad.right} y1={y} y2={y} stroke="currentColor" className="text-slate-200 dark:text-white/10" strokeDasharray="3 6" />;
@@ -222,7 +190,7 @@ function DailySalesChart({ data, revenueLabel, ordersLabel, title, noData }: { d
                 <circle cx={revenuePoints[index].x} cy={revenuePoints[index].y} r="5" fill={revenueColor(item.revenue)} stroke="white" strokeWidth="2" className="dark:stroke-slate-900" />
                 <circle cx={orderPoints[index].x} cy={orderPoints[index].y} r="3.5" fill="#0ea5e9" stroke="white" strokeWidth="2" className="dark:stroke-slate-900" />
                 <title>{`${dateLabel(item.date)}: EUR ${item.revenue.toFixed(2)}, ${item.orders} ${ordersLabel}`}</title>
-                {(index === 0 || index === data.length - 1 || index % Math.max(1, Math.ceil(data.length / 6)) === 0) && <text x={xFor(index)} y={height - 14} textAnchor="middle" className="fill-slate-400 text-[11px]">{dateLabel(item.date)}</text>}
+                {(index === 0 || index === data.length - 1 || index % Math.max(1, Math.ceil(data.length / Math.max(6, Math.floor(width / 130)))) === 0) && <text x={xFor(index)} y={height - 14} textAnchor="middle" className="fill-slate-400 text-[11px]">{dateLabel(item.date)}</text>}
               </g>
             ))}
             <text x="8" y={pad.top + 4} className="fill-slate-400 text-[10px]">EUR {Math.round(maxRevenue)}</text>
@@ -400,8 +368,8 @@ export default function AdminPage() {
   // Period filters: one for the statistics block, one for order management.
   const [statsRange, setStatsRange] = useState<RangeFilter>({ preset: "all" });
   const [ordersRange, setOrdersRange] = useState<RangeFilter>({ preset: "all" });
-  const statsCheck = useMemo(() => makeRangeCheck(statsRange), [statsRange]);
-  const ordersCheck = useMemo(() => makeRangeCheck(ordersRange), [ordersRange]);
+  const statsCheck = useMemo(() => makeRangeCheck(statsRange, now), [statsRange, now]);
+  const ordersCheck = useMemo(() => makeRangeCheck(ordersRange, now), [ordersRange, now]);
 
   const stats = useMemo(() => {
     const inPeriod = orders.filter((o) => (o.paid || o.accountType === "company") && statsCheck(o.createdAt));
@@ -424,24 +392,7 @@ export default function AdminPage() {
     return { revenue, avg, byCategory, top, maxCat, orderCount: inPeriod.length };
   }, [orders, products, statsCheck]);
 
-  const dailyMetrics = useMemo<DailyMetric[]>(() => {
-    const dayCount = statsRange.preset === "today" || statsRange.preset === "date" ? 1 : statsRange.preset === "7d" ? 7 : 30;
-    const end = statsRange.preset === "date" && statsRange.date ? new Date(`${statsRange.date}T00:00:00`) : new Date(now);
-    const days = Array.from({ length: dayCount }, (_, index) => {
-      const day = new Date(end);
-      day.setHours(0, 0, 0, 0);
-      day.setDate(day.getDate() - (dayCount - 1 - index));
-      return amsterdamDateKey(day);
-    });
-    const totals = new Map(days.map((date) => [date, { date, revenue: 0, orders: 0 }]));
-    for (const order of orders) {
-      if (!(order.paid || order.accountType === "company") || !statsCheck(order.createdAt)) continue;
-      const date = amsterdamDateKey(new Date(order.createdAt));
-      const metric = totals.get(date);
-      if (metric) { metric.revenue += order.total; metric.orders += 1; }
-    }
-    return days.map((date) => totals.get(date)!);
-  }, [now, orders, statsCheck, statsRange]);
+  const dailyMetrics = useMemo(() => buildDailyMetrics(orders, statsRange, now), [now, orders, statsRange]);
 
   /** All category names across restaurants (plus any legacy ones found in orders). */
   const allCategories = useMemo(() => {
@@ -584,6 +535,7 @@ export default function AdminPage() {
   const [visitorSearch, setVisitorSearch] = useState("");
   const [visitorOnlineOnly, setVisitorOnlineOnly] = useState(false);
   const [visitorSort, setVisitorSort] = useState<"recent" | "online" | "visits" | "firstSeen">("recent");
+  const [visitorPage, setVisitorPage] = useState(1);
   /** Session id just copied to the clipboard (briefly shows a "Copied!" confirmation). */
   const [copiedSessionId, setCopiedSessionId] = useState<string | null>(null);
   const [expandedVisitorOrders, setExpandedVisitorOrders] = useState<Set<string>>(() => new Set());
@@ -591,38 +543,19 @@ export default function AdminPage() {
   const [visitorsUpdatedAt, setVisitorsUpdatedAt] = useState(ADMIN_INITIAL_NOW);
   const [visitorsRefreshing, setVisitorsRefreshing] = useState(false);
 
-  /** Signed-in users and guest sessions, filtered/searched/sorted per the admin's selection. */
-  const filteredVisitors = useMemo(() => {
-    const q = visitorSearch.trim().toLowerCase();
-    const list = recentVisitors.filter((entry) => {
-      if (visitorFilter !== "all" && entry.kind !== visitorFilter) return false;
-      if (visitorOnlineOnly && !entry.isOnline) return false;
-      if (!q) return true;
-      const haystack = [entry.name, entry.email ?? "", entry.phone ?? "", entry.sessionId ?? ""].join(" ").toLowerCase();
-      return haystack.includes(q);
-    });
-    const sorted = [...list];
-    if (visitorSort === "online") {
-      sorted.sort((a, b) => Number(b.isOnline) - Number(a.isOnline) || b.lastSeenAt - a.lastSeenAt);
-    } else if (visitorSort === "visits") {
-      const visits = (v: RecentVisitor) => v.visitCount ?? (v.kind === "user" ? v.orderCount ?? 0 : 1);
-      sorted.sort((a, b) => visits(b) - visits(a) || b.lastSeenAt - a.lastSeenAt);
-    } else if (visitorSort === "firstSeen") {
-      sorted.sort((a, b) => (a.firstSeenAt ?? a.lastSeenAt) - (b.firstSeenAt ?? b.lastSeenAt));
-    } else {
-      sorted.sort((a, b) => b.lastSeenAt - a.lastSeenAt);
-    }
-    return sorted;
-  }, [recentVisitors, visitorFilter, visitorOnlineOnly, visitorSearch, visitorSort]);
-
-  /** Signed-in users and guest sessions seen recently, filtered and capped for display. */
-  const recentlyOnline = useMemo(() => filteredVisitors.slice(0, 50), [filteredVisitors]);
+  /** Filter the full dataset before paging so every registered account is reachable. */
+  const filteredVisitors = useMemo(() => filterVisitors(recentVisitors, {
+    kind: visitorFilter, search: visitorSearch, onlineOnly: visitorOnlineOnly, sort: visitorSort,
+  }), [recentVisitors, visitorFilter, visitorOnlineOnly, visitorSearch, visitorSort]);
+  const visitorPagination = useMemo(() => paginateVisitors(filteredVisitors, visitorPage), [filteredVisitors, visitorPage]);
+  const recentlyOnline = visitorPagination.entries;
 
   /** Whether any non-default filter/search/sort is currently applied. */
   const visitorFiltersActive =
     visitorFilter !== "all" || visitorOnlineOnly || visitorSearch.trim() !== "" || visitorSort !== "recent";
 
   const clearVisitorFilters = () => {
+    setVisitorPage(1);
     setVisitorFilter("all");
     setVisitorSearch("");
     setVisitorOnlineOnly(false);
@@ -1252,43 +1185,43 @@ export default function AdminPage() {
   ];
   const attentionCount = dashboardSignals.slice(1).reduce((total, signal) => total + signal.value, 0);
 
-  /** Pill buttons + date picker used to filter stats and order management. */
-  const renderRangeFilter = (value: RangeFilter, onChange: (f: RangeFilter) => void) => (
-    <div className="flex flex-wrap items-center gap-1.5">
-      {(
-        [
-          ["all", t.admin.filterAll],
-          ["today", t.admin.filterToday],
-          ["7d", t.admin.filterWeek],
-          ["30d", t.admin.filterMonth],
-        ] as const
-      ).map(([preset, label]) => (
-        <button
-          key={preset}
-          onClick={() => onChange({ preset })}
-          className={`rounded-full px-3 py-1.5 text-xs font-bold transition ${
-            value.preset === preset
+  /** Shared, inclusive calendar-day range for statistics and order management. */
+  const renderRangeFilter = (value: RangeFilter, onChange: (f: RangeFilter) => void) => {
+    const error = rangeFilterError(value);
+    const errorText = error === "incomplete" ? t.admin.filterIncompleteRange : error === "invalid" ? t.admin.filterInvalidRange : "";
+    const today = amsterdamDateKey(now);
+    return (
+      <div className="flex flex-wrap items-center gap-2">
+        {([
+          ["all", t.admin.filterAll], ["today", t.admin.filterToday],
+          ["7d", t.admin.filterWeek], ["30d", t.admin.filterMonth],
+        ] as const).map(([preset, label]) => (
+          <button key={preset} onClick={() => onChange({ preset })}
+            className={`rounded-full px-3 py-1.5 text-xs font-bold transition ${value.preset === preset
               ? "bg-emerald-600 text-white shadow-md shadow-emerald-600/25"
-              : "bg-slate-100 text-slate-600 hover:bg-emerald-500/10 hover:text-emerald-700 dark:bg-white/10 dark:text-slate-300"
-          }`}
-        >
-          {label}
-        </button>
-      ))}
-      <input
-        type="date"
-        value={value.preset === "date" ? value.date ?? "" : ""}
-        onChange={(e) => onChange(e.target.value ? { preset: "date", date: e.target.value } : { preset: "all" })}
-        aria-label={t.admin.filterPickDate}
-        title={t.admin.filterPickDate}
-        className={`rounded-full border px-3 py-1 text-xs font-semibold outline-none transition focus:border-emerald-500 dark:bg-white/10 dark:text-white ${
-          value.preset === "date"
-            ? "border-emerald-500 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300"
-            : "border-slate-200 bg-slate-50 text-slate-600 dark:border-white/10 dark:text-slate-300"
-        }`}
-      />
-    </div>
-  );
+              : "bg-slate-100 text-slate-600 hover:bg-emerald-500/10 hover:text-emerald-700 dark:bg-white/10 dark:text-slate-300"}`}>
+            {label}
+          </button>
+        ))}
+        {([ ["startDate", t.admin.filterStartDate], ["endDate", t.admin.filterEndDate] ] as const).map(([field, label]) => (
+          <label key={field} className="flex items-center gap-1.5 text-xs font-semibold text-slate-600 dark:text-slate-300">
+            {label}
+            <input type="date" value={value.preset === "date" ? value[field] ?? "" : ""} max={today}
+              min={field === "endDate" && value.preset === "date" ? value.startDate : undefined}
+              onChange={(event) => onChange({
+                ...(value.preset === "date" ? value : {}), preset: "date", [field]: event.target.value,
+              })}
+              aria-label={label} aria-invalid={Boolean(error)} title={label}
+              className={`rounded-full border px-3 py-1 text-xs font-semibold outline-none transition focus:border-emerald-500 dark:bg-white/10 dark:text-white ${value.preset === "date"
+                ? "border-emerald-500 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300"
+                : "border-slate-200 bg-slate-50 text-slate-600 dark:border-white/10 dark:text-slate-300"}`} />
+          </label>
+        ))}
+        <span className="text-xs text-slate-500 dark:text-slate-400">{t.admin.filterTimeZone}</span>
+        {errorText && <p role="status" className="w-full text-xs font-semibold text-amber-700 dark:text-amber-300">{errorText}</p>}
+      </div>
+    );
+  };
 
   const statusLabel = (s: OrderStatus): string =>
     s === "new"
@@ -2018,7 +1951,7 @@ export default function AdminPage() {
               <button
                 key={value}
                 type="button"
-                onClick={() => setVisitorFilter(value)}
+                onClick={() => { setVisitorFilter(value); setVisitorPage(1); }}
                 className={`rounded-full px-3 py-1.5 transition ${
                   visitorFilter === value
                     ? "bg-white text-slate-900 shadow dark:bg-white/20 dark:text-white"
@@ -2035,14 +1968,14 @@ export default function AdminPage() {
             <input
               type="text"
               value={visitorSearch}
-              onChange={(e) => setVisitorSearch(e.target.value)}
+              onChange={(e) => { setVisitorSearch(e.target.value); setVisitorPage(1); }}
               placeholder={t.admin.recentlyOnlineSearchPlaceholder}
               className="w-full rounded-full border border-slate-200 bg-white py-1.5 pl-8 pr-8 text-xs font-semibold text-slate-700 outline-none focus:border-sky-400 dark:border-white/10 dark:bg-white/5 dark:text-slate-200"
             />
             {visitorSearch && (
               <button
                 type="button"
-                onClick={() => setVisitorSearch("")}
+                onClick={() => { setVisitorSearch(""); setVisitorPage(1); }}
                 className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"
               >
                 <FaXmark className="text-xs" />
@@ -2054,7 +1987,7 @@ export default function AdminPage() {
             <input
               type="checkbox"
               checked={visitorOnlineOnly}
-              onChange={(e) => setVisitorOnlineOnly(e.target.checked)}
+              onChange={(e) => { setVisitorOnlineOnly(e.target.checked); setVisitorPage(1); }}
               className="h-3.5 w-3.5 accent-emerald-500"
             />
             {t.admin.recentlyOnlineOnlineOnly}
@@ -2062,7 +1995,7 @@ export default function AdminPage() {
 
           <select
             value={visitorSort}
-            onChange={(e) => setVisitorSort(e.target.value as typeof visitorSort)}
+            onChange={(e) => { setVisitorSort(e.target.value as typeof visitorSort); setVisitorPage(1); }}
             aria-label={t.admin.recentlyOnlineSortLabel}
             className="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-bold text-slate-600 outline-none focus:border-sky-400 dark:border-white/10 dark:bg-white/5 dark:text-slate-300"
           >
@@ -2084,9 +2017,10 @@ export default function AdminPage() {
         </div>
 
         <p className="mt-3 text-[11px] font-semibold text-slate-400 dark:text-slate-500">
-          {t.admin.recentlyOnlineShowingCount
-            .replace("{shown}", String(recentlyOnline.length))
-            .replace("{total}", String(filteredVisitors.length))}
+          {t.admin.recentlyOnlineShowingRange
+            .replace("{from}", String(visitorPagination.from))
+            .replace("{to}", String(visitorPagination.to))
+            .replace("{total}", String(visitorPagination.total))}
         </p>
 
         {recentlyOnline.length === 0 ? (
@@ -2107,7 +2041,7 @@ export default function AdminPage() {
                   ? "Admin"
                   : entry.accountType === "company"
                     ? "B2B"
-                    : "Signed in";
+                    : t.admin.recentlyOnlineRegisteredBadge;
               return (
                 <li key={`${entry.kind}-${entry.id}`} className="flex flex-col gap-3 rounded-2xl border border-slate-100 bg-slate-50/70 p-3 md:flex-row md:items-center md:gap-3 dark:border-white/5 dark:bg-white/5">
                   <div className="flex min-w-0 flex-1 items-start gap-3">
@@ -2122,7 +2056,7 @@ export default function AdminPage() {
                     <div className="min-w-0 flex-1">
                       <div className="flex flex-wrap items-center gap-2">
                         <p className="truncate text-sm font-black text-slate-900 dark:text-white">
-                          {entry.kind === "guest" ? `${t.admin.guest} • ${String(entry.sessionId ?? entry.id).slice(0, 8)}` : entry.name}
+                          {entry.kind === "guest" ? `${t.admin.guest} - ${entry.identityStatus === "identified" ? entry.name : String(entry.sessionId ?? entry.id).slice(0, 8)}` : entry.name}
                         </p>
                         <span
                           className={`inline-flex items-center rounded-full px-2.5 py-1 text-[10px] font-black uppercase tracking-wide ${
@@ -2145,6 +2079,14 @@ export default function AdminPage() {
                       <p className="truncate text-xs text-slate-500 dark:text-slate-400">
                         {entry.kind === "guest" ? entry.email ?? `Session ${String(entry.id).slice(0, 8)}` : entry.email}
                       </p>
+                      {entry.kind === "guest" && entry.identityStatus === "identified" && (
+                        <p className="mt-0.5 text-[11px] text-slate-500 dark:text-slate-400">
+                          {t.admin.recentlyOnlineIdentitySupplied} · Session {String(entry.sessionId ?? entry.id).slice(0, 8)}
+                        </p>
+                      )}
+                      {entry.kind === "guest" && entry.identityStatus === "ambiguous" && (
+                        <p className="mt-0.5 text-[11px] font-semibold text-amber-700 dark:text-amber-300">{t.admin.recentlyOnlineIdentityAmbiguous}</p>
+                      )}
                       {entry.kind === "user" && entry.phone && (
                         <p className="mt-0.5 flex items-center gap-1.5 truncate text-xs font-semibold text-slate-600 dark:text-slate-300">
                           <FaPhone className="shrink-0 text-[10px] text-slate-400" /> {entry.phone}
@@ -2156,7 +2098,14 @@ export default function AdminPage() {
                             <span className="rounded-full bg-amber-500/10 px-2 py-0.5 font-semibold text-amber-700 dark:text-amber-300">
                               {entry.visitCount && entry.visitCount > 1 ? `${entry.visitCount} visits` : "1 visit"}
                             </span>
-                            {orderCount > 0 && <span className="rounded-full bg-emerald-500/10 px-2 py-0.5 font-semibold text-emerald-700 dark:text-emerald-300"><FaReceipt className="mr-1 inline text-[10px]" />{orderCount} {t.admin.recentlyOnlineOrders}</span>}
+                            {orderCount > 0 && <span className="rounded-full bg-emerald-500/10 px-2 py-0.5 font-semibold text-emerald-700 dark:text-emerald-300"><FaReceipt className="mr-1 inline text-[10px]" />{t.admin.recentlyOnlineSessionOrders.replace("{count}", String(orderCount)).replace("{paid}", String(entry.paidOrderCount ?? 0))}</span>}
+                            {!!entry.reservationCount && <span className="rounded-full bg-rose-500/10 px-2 py-0.5 font-semibold text-rose-700 dark:text-rose-300">{t.admin.recentlyOnlineGuestReservations.replace("{count}", String(entry.reservationCount))}</span>}
+                            {!!entry.matchingOrderCount && (
+                              <span className="w-full rounded-lg bg-sky-500/10 px-2 py-1 text-sky-800 dark:text-sky-300">
+                                <strong>{t.admin.recentlyOnlineMatchingOrders.replace("{count}", String(entry.matchingOrderCount)).replace("{paid}", String(entry.matchingPaidOrderCount ?? 0))}</strong>
+                                <span className="mt-0.5 block text-[10px]">{t.admin.recentlyOnlineMatchingNote}</span>
+                              </span>
+                            )}
                             <span className="rounded-full bg-slate-100 px-2 py-0.5 text-slate-600 dark:bg-white/10 dark:text-slate-300">
                               {entry.firstSeenAt ? `First seen ${relativeTime(entry.firstSeenAt)}` : "New session"}
                             </span>
@@ -2201,7 +2150,7 @@ export default function AdminPage() {
                         </button>
                         {expandedVisitorOrders.has(`${entry.kind}-${entry.id}`) && (
                           <ul className="mt-2 max-h-64 space-y-1 overflow-y-auto rounded-xl border border-slate-200 bg-white p-2 dark:border-white/10 dark:bg-white/5">
-                            {orders.filter((order) => entry.kind === "user" ? order.userId === entry.id : order.visitorSessionId === entry.sessionId).map((order) => (
+                            {orders.filter((order) => entry.kind === "user" ? order.userId === entry.id : !order.userId && order.visitorSessionId === entry.sessionId).map((order) => (
                               <li key={order.id} className="rounded-lg bg-slate-50 px-2 py-1.5 text-xs dark:bg-white/5">
                                 <span className="font-bold">{formatOrderNumber(order.orderNumber)}</span> · €{order.total.toFixed(2)} · {order.items.map((item) => `${item.qty}x ${item.name}`).join(", ")}
                               </li>
@@ -2213,14 +2162,14 @@ export default function AdminPage() {
                   </div>
                   <div className="flex shrink-0 items-center gap-2 md:flex-col md:items-end">
                     <span
-                      title={absoluteTime(entry.lastSeenAt)}
+                      title={entry.lastSeenAt ? absoluteTime(entry.lastSeenAt) : t.admin.recentlyOnlineNoActivity}
                       className={`rounded-full px-2.5 py-1 text-xs font-bold ${
                         online
                           ? "bg-emerald-500/10 text-emerald-700 dark:text-emerald-300"
                           : "bg-slate-100 text-slate-500 dark:bg-white/5 dark:text-slate-400"
                       }`}
                     >
-                      {online ? t.admin.onlineNow : relativeTime(entry.lastSeenAt)}
+                      {online ? t.admin.onlineNow : entry.lastSeenAt ? relativeTime(entry.lastSeenAt) : t.admin.recentlyOnlineNoActivity}
                     </span>
                     {entry.kind === "guest" && lastSeenSite && (
                       <span className="inline-flex items-center gap-1.5 rounded-full bg-sky-500/10 px-2 py-0.5 text-[11px] font-semibold text-sky-700 dark:text-sky-300">
@@ -2232,6 +2181,17 @@ export default function AdminPage() {
               );
             })}
           </ul>
+        )}
+        {visitorPagination.pageCount > 1 && (
+          <nav aria-label={t.admin.recentlyOnline} className="mt-4 flex flex-wrap items-center justify-between gap-2">
+            <button type="button" disabled={visitorPagination.page === 1} onClick={() => setVisitorPage(visitorPagination.page - 1)} className="rounded-full border border-slate-200 px-4 py-2 text-xs font-bold disabled:opacity-40 dark:border-white/10">
+              {t.admin.recentlyOnlinePreviousPage}
+            </button>
+            <span aria-live="polite" className="text-xs text-slate-500 dark:text-slate-400">{t.admin.recentlyOnlinePage.replace("{page}", String(visitorPagination.page)).replace("{pages}", String(visitorPagination.pageCount))}</span>
+            <button type="button" disabled={visitorPagination.page === visitorPagination.pageCount} onClick={() => setVisitorPage(visitorPagination.page + 1)} className="rounded-full border border-slate-200 px-4 py-2 text-xs font-bold disabled:opacity-40 dark:border-white/10">
+              {t.admin.recentlyOnlineNextPage}
+            </button>
+          </nav>
         )}
           </div>
         </div>
@@ -2917,7 +2877,7 @@ export default function AdminPage() {
                   <label className="inline-flex items-center gap-2 text-xs font-black text-rose-700"><input type="checkbox" checked={draft.bogoEnabled} onChange={(e) => setDraft({ ...draft, bogoEnabled: e.target.checked })} /> BUY 1 GET 1 FREE</label>
                 </div>
               </div>
-
+              
               <select aria-label={t.admin.productCategory}
                 value={draft.category}
                 onChange={(e) => {
@@ -3709,7 +3669,7 @@ export default function AdminPage() {
                   <label className="inline-flex items-center gap-2 rounded-full bg-amber-500/10 px-3 py-2 text-xs font-bold text-amber-700"><input type="checkbox" checked={editDraft.isPopular} onChange={(e) => setEditDraft({ ...editDraft, isPopular: e.target.checked })} /> Popular</label>
                   <label className="inline-flex items-center gap-2 rounded-full bg-emerald-500/10 px-3 py-2 text-xs font-bold text-emerald-700"><input type="checkbox" checked={editDraft.isNew} onChange={(e) => setEditDraft({ ...editDraft, isNew: e.target.checked })} /> New</label>
                 </div>
-                <select
+                <select 
                   value={editDraft.category}
                   onChange={(e) => {
                     const category = e.target.value as Category;
@@ -4095,7 +4055,7 @@ function GalleryManager() {
           />
         </div>
         <div className="flex flex-wrap items-center gap-3">
-          <select
+          <select 
             value={draft.category}
             onChange={(e) => setDraft({ ...draft, category: e.target.value })}
             aria-label={nl ? "Categorie" : "Category"}
