@@ -15,11 +15,14 @@ import {
   useState,
   useRef,
   type ReactNode,
+  type Dispatch,
+  type SetStateAction,
 } from "react";
 import { checkoutRequestKey, clearCheckoutRequest } from "./lib/checkoutRequest";
 import type { Dictionary } from "./lib/translations";
 import { DEFAULT_BRAND_CONFIGS } from "./lib/brandDefaults";
 import { cartKeyForProduct, parseCartKey } from "./lib/cart";
+import { normalizeMenuUpgrades, withMenuCartQuantity, type MenuCartState } from "./lib/menuUpgrades";
 import { restaurantStatus as getRestaurantStatus, type RestaurantOpenOverride, type RestaurantStatus } from "./lib/openingHours";
 import type { AccountType, BrandConfig, GrillSideChoice, Lang, MenuUpgrades, Order, OrderFulfillment, OrderSchedule, OrderStatus, Product, ProductContent, ProductTarget, RecentVisitor, Reservation, Review, SocialLink, SocialPlatform, User, VipPurchase, VipRequest } from "./lib/types";
 
@@ -103,6 +106,8 @@ interface StoreCtx {
   ) => Promise<{ ok: boolean; error?: string }>;
 
   cart: Record<string, number>;
+  menuUpgrades: MenuUpgrades;
+  setMenuUpgrades: Dispatch<SetStateAction<MenuUpgrades>>;
   addToCart: (id: string, sideChoice?: GrillSideChoice) => void;
   removeFromCart: (id: string, sideChoice?: GrillSideChoice) => void;
   clearCart: () => void;
@@ -226,9 +231,15 @@ const LS = {
   theme: "tm.theme",
   lang: "tm.lang",
   cart: "tm.cart",
+  menuUpgrades: "tm.menuUpgrades",
 };
 
 const readJSON = readStoredJSON;
+
+function readMenuCart(): MenuCartState {
+  const cart = readStoredCart(LS.cart);
+  return { cart, menuUpgrades: normalizeMenuUpgrades(readJSON<unknown>(LS.menuUpgrades, {}), cart) };
+}
 
 function readThemePreference(fallback: Theme): Theme {
   const value = readJSON<unknown>(LS.theme, fallback);
@@ -246,7 +257,7 @@ export function Providers({ children, initialLang = "nl", initialDictionaries }:
   const bootstrapController = useRef<AbortController | null>(null);
   const statusController = useRef<AbortController | null>(null);
 
-  const [theme, setTheme] = useState<Theme>("light");
+  const [theme, setTheme] = useState<Theme>("dark");
   const pathname = usePathname();
   const [languagePreference, setLangState] = useState<Lang>(initialLang);
   const lang = resolveSiteLocale(pathname, languagePreference);
@@ -292,7 +303,15 @@ export function Providers({ children, initialLang = "nl", initialDictionaries }:
 
   const [products, setProducts] = useState<Product[]>([]);
   const [brands, setBrands] = useState<BrandConfig[]>(DEFAULT_BRAND_CONFIGS);
-  const [cart, setCart] = useState<Record<string, number>>({});
+  const [{ cart, menuUpgrades }, setMenuCart] = useState<MenuCartState>({ cart: {}, menuUpgrades: {} });
+  const setCart: Dispatch<SetStateAction<Record<string, number>>> = useCallback(update => {
+    setMenuCart(current => withMenuCartQuantity(current, typeof update === "function" ? update(current.cart) : update));
+  }, []);
+  const setMenuUpgrades: StoreCtx["setMenuUpgrades"] = useCallback(update => {
+    setMenuCart(current => ({ ...current, menuUpgrades: normalizeMenuUpgrades(
+      typeof update === "function" ? update(current.menuUpgrades) : update, current.cart,
+    ) }));
+  }, []);
   const [users, setUsers] = useState<User[]>([]);
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [orders, setOrders] = useState<Order[]>([]);
@@ -364,7 +383,7 @@ export function Providers({ children, initialLang = "nl", initialDictionaries }:
       setTheme(current => current === initialTheme ? current : initialTheme);
       const savedLang = readJSON<unknown>(LS.lang, "nl");
       setLangState(getLocalizedRoute(window.location.pathname)?.locale ?? (savedLang === "en" ? "en" : "nl"));
-      setCart(readStoredCart(LS.cart));
+      setMenuCart(readMenuCart());
       void refresh().finally(() => { if (mounted) setHydrated(true); });
     });
     return () => { mounted = false; bootstrapController.current?.abort(); statusController.current?.abort(); };
@@ -389,7 +408,7 @@ export function Providers({ children, initialLang = "nl", initialDictionaries }:
 
   useEffect(() => {
     const sync = (event: StorageEvent) => {
-      if (event.key === LS.cart || event.key === null) setCart(readStoredCart(LS.cart));
+      if (event.key === LS.cart || event.key === LS.menuUpgrades || event.key === null) setMenuCart(readMenuCart());
       if (event.key === LS.theme) setTheme(readThemePreference("light"));
       if (event.key === LS.lang || event.key === null) {
         const route = getLocalizedRoute(window.location.pathname);
@@ -424,8 +443,11 @@ export function Providers({ children, initialLang = "nl", initialDictionaries }:
 
   // Persist the cart (client-only; users/orders/etc. live in the database).
   useEffect(() => {
-    if (hydrated) writeStoredJSON(LS.cart, cart);
-  }, [cart, hydrated]);
+    if (hydrated) {
+      writeStoredJSON(LS.cart, cart);
+      writeStoredJSON(LS.menuUpgrades, menuUpgrades);
+    }
+  }, [cart, menuUpgrades, hydrated]);
 
   const toggleTheme = useCallback(() => setTheme((t) => (t === "light" ? "dark" : "light")), []);
   const setLang = useCallback((l: Lang) => {
@@ -461,7 +483,7 @@ export function Providers({ children, initialLang = "nl", initialDictionaries }:
       return next;
     });
     await refresh();
-  }, [refresh]);
+  }, [refresh, setCart]);
   const updateProduct = useCallback<StoreCtx["updateProduct"]>(async (pid, patch) => {
     // Serialize undefined fields as explicit null so cleared values (e.g. a removed
     // image or detailed description) are sent - JSON.stringify omits undefined keys,
@@ -533,7 +555,7 @@ export function Providers({ children, initialLang = "nl", initialDictionaries }:
   const addToCart = useCallback((pid: string, sideChoice?: GrillSideChoice) => {
     const key = cartKeyForProduct(pid, sideChoice);
     setCart((prev) => ({ ...prev, [key]: Math.min(99, (prev[key] || 0) + 1) }));
-  }, []);
+  }, [setCart]);
   const removeFromCart = useCallback((pid: string, sideChoice?: GrillSideChoice) => {
     const key = cartKeyForProduct(pid, sideChoice);
     setCart((prev) => {
@@ -542,8 +564,8 @@ export function Providers({ children, initialLang = "nl", initialDictionaries }:
       else next[key] = next[key] - 1;
       return next;
     });
-  }, []);
-  const clearCart = useCallback(() => setCart({}), []);
+  }, [setCart]);
+  const clearCart = useCallback(() => setCart({}), [setCart]);
 
   const register: StoreCtx["register"] = useCallback(
     async (data) => {
@@ -720,7 +742,7 @@ export function Providers({ children, initialLang = "nl", initialDictionaries }:
     async (details) => {
       if (checkoutBusy.current) return { ok: false, error: "processing" };
       checkoutBusy.current = true;
-      const payload = { ...details, cart };
+      const payload = { ...details, cart, menuUpgrades: details.menuUpgrades ?? menuUpgrades };
       const identity = { userId: currentUser?.id ?? "guest", ...payload };
       try {
         const idempotencyKey = await checkoutRequestKey(identity);
@@ -730,7 +752,8 @@ export function Providers({ children, initialLang = "nl", initialDictionaries }:
         if (!res.ok || !json) return { ok: false, error: json?.error ?? "network" };
         if (json.ok && json.order) {
           setCart({});
-          try { window.localStorage.setItem(LS.cart, "{}"); } catch { /* Optional storage. */ }
+          writeStoredJSON(LS.cart, {});
+          writeStoredJSON(LS.menuUpgrades, {});
           const confirmedOrder = json.order;
           setOrders(previous => [confirmedOrder, ...previous.filter(order => order.id !== confirmedOrder.id)]);
           void refresh();
@@ -747,7 +770,7 @@ export function Providers({ children, initialLang = "nl", initialDictionaries }:
         checkoutBusy.current = false;
       }
     },
-    [cart, currentUser?.id, refresh]
+    [cart, menuUpgrades, currentUser?.id, refresh, setCart]
   );
 
   const updateOrderStatus = useCallback<StoreCtx["updateOrderStatus"]>(async (orderId, status) => {
@@ -804,6 +827,8 @@ export function Providers({ children, initialLang = "nl", initialDictionaries }:
       brands,
       manageBrands,
       cart,
+      menuUpgrades,
+      setMenuUpgrades,
       addToCart,
       removeFromCart,
       clearCart,
@@ -855,6 +880,8 @@ export function Providers({ children, initialLang = "nl", initialDictionaries }:
       brands,
       manageBrands,
       cart,
+      menuUpgrades,
+      setMenuUpgrades,
       addToCart,
       removeFromCart,
       clearCart,

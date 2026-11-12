@@ -160,8 +160,11 @@ export interface OrderItem {
   sideLabel?: string;
 }
 
-/** Full-menu upgrades keyed by the food product id, with the chosen free soft-drink product id as the value. */
-export type MenuUpgrades = Record<string, string>;
+/** Ordered free-drink choices per food product: one entry for each paid menu upgrade. */
+export type MenuUpgrades = Record<string, string[]>;
+
+/** Older clients used one drink for every paid copy of the food product. */
+export type MenuUpgradesInput = Record<string, string | string[]>;
 
 export interface OrderSchedule {
   /** "once" = single scheduled delivery, "workdays" = repeats every working day (Mon–Fri) */

@@ -73,7 +73,10 @@ export const placeOrderSchema = z.object({
   pointsToUse: z.number().int().min(0).max(100000).optional(),
   schedule: orderSchedule.optional(),
   fulfillment: z.enum(["delivery", "pickup"]).optional(),
-  menuUpgrades: z.record(z.string().max(100), z.string().max(100)).optional(),
+  menuUpgrades: z.record(z.string().max(100), z.union([
+    z.string().max(100), // Legacy empty scalar means no upgrade.
+    z.array(z.string().min(1).max(100)).max(99),
+  ])).optional(),
 }).superRefine((order, ctx) => {
   if (order.fulfillment === "pickup") return;
   if (!order.address) {

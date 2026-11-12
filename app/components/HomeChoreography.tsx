@@ -39,7 +39,7 @@ export function useHomeChoreography(
     const mayReveal = (node: HTMLElement) => {
       // Ordinary film traversal finishes its decoded frame before the first chapter opens.
       // Focus/hash navigation and the static fallback always retain immediate access.
-      return !node.closest("[data-opening-chapter]") || track.dataset.filmComplete === "true" || track.dataset.filmBypassed === "true" ||
+      return !node.closest("[data-opening-chapter]") || track.dataset.filmConsumed === "true" || track.dataset.filmComplete === "true" || track.dataset.filmBypassed === "true" ||
         track.dataset.unavailable === "true" || node.matches(":focus-within");
     };
     const observer = new IntersectionObserver(entries => {
@@ -57,7 +57,8 @@ export function useHomeChoreography(
       const filmBounds = track.getBoundingClientRect();
       const sceneMeasurements = [...activeScenes].map(scene => ({ scene, bounds: scene.getBoundingClientRect() }));
       const travelFactor = enabled ? (fine.matches ? 48 : 20) : 0;
-      const view = filmBounds.bottom > 1 && filmBounds.top < viewport ? "opening" : "content";
+      const dismissed = track.dataset.filmConsumed === "true" || track.dataset.filmHandoff === "true" || !!track.dataset.filmFallback;
+      const view = !dismissed && filmBounds.bottom > 1 && filmBounds.top < viewport ? "opening" : "content";
       if (root.dataset.filmView !== view) root.dataset.filmView = view;
       if (view !== previousView) {
         previousView = view;
@@ -165,7 +166,7 @@ export function useHomeChoreography(
       schedule();
     };
     const film = () => {
-      if (track.dataset.filmComplete === "true" || track.dataset.filmBypassed === "true" || track.dataset.unavailable === "true") {
+      if (track.dataset.filmConsumed === "true" || track.dataset.filmComplete === "true" || track.dataset.filmBypassed === "true" || track.dataset.unavailable === "true") {
         for (const node of [...reveals]) {
           const bounds = node.getBoundingClientRect();
           if (bounds.top < window.innerHeight * 0.94 && bounds.bottom > 0) reveal(node);

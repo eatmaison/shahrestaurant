@@ -2,15 +2,18 @@
 
 import Link from "./LocaleLink";
 import { BrandLogo } from "./BrandLogo";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaArrowUp, FaClock, FaEnvelope, FaLocationDot, FaPhone } from "./icons/fa6";
 import { useLang, useStore } from "../providers";
 import { SOCIAL_PLATFORMS } from "./socialIcons";
+import styles from "./footer.module.css";
 
 export function Footer() {
   const { t, lang } = useLang();
   const { socialLinks } = useStore();
   const [showTop, setShowTop] = useState(false);
+  const [topDocked, setTopDocked] = useState(false);
+  const footerRef = useRef<HTMLElement>(null);
 
   // Floating "back to top" appears after scrolling past the first screen.
   useEffect(() => {
@@ -20,6 +23,27 @@ export function Footer() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    const footer = footerRef.current;
+    if (!footer) return;
+    const measure = () => {
+      const bounds = footer.getBoundingClientRect();
+      setTopDocked(bounds.top < window.innerHeight && bounds.bottom > 0);
+    };
+    measure();
+    if (typeof window.IntersectionObserver === "function") {
+      const observer = new IntersectionObserver(([entry]) => setTopDocked(entry.isIntersecting));
+      observer.observe(footer);
+      return () => observer.disconnect();
+    }
+    window.addEventListener("scroll", measure, { passive: true });
+    window.addEventListener("resize", measure);
+    return () => {
+      window.removeEventListener("scroll", measure);
+      window.removeEventListener("resize", measure);
+    };
+  }, []);
+
   // Only platforms the admin enabled and gave a URL, in fixed display order.
   const activeSocials = SOCIAL_PLATFORMS.filter((p) => {
     const link = socialLinks.find((l) => l.platform === p.id);
@@ -27,12 +51,32 @@ export function Footer() {
   }).map((p) => ({ ...p, url: socialLinks.find((l) => l.platform === p.id)!.url }));
 
   return (
-    <footer data-site-footer className="relative overflow-hidden border-t border-slate-200/70 bg-white dark:border-emerald-400/15 dark:bg-[#0a0602]">
+    <footer ref={footerRef} data-site-footer className="relative overflow-hidden border-t border-slate-200/70 bg-white dark:border-emerald-400/15 dark:bg-[#0a0602]">
       <div className="gold-rule absolute inset-x-0 top-0" />
-      <div className="relative mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-2 lg:px-8">
+      <div className={`${styles.content} relative mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-2 lg:px-8`}>
         <div>
           <p className="text-[0.6rem] font-semibold uppercase tracking-[0.3em] text-emerald-600 dark:text-emerald-400">Fine Indian Dining · Amsterdam-Noord</p>
-          <Link href="/" aria-label="Shah Restaurant" className="inline-block"><BrandLogo tone="gold" className="shah-footer-brand" alt="" /></Link>
+          <div className={styles.brandRow}>
+            <Link href="/" aria-label="Shah Restaurant" className="inline-block"><BrandLogo tone="gold" className="shah-footer-brand" alt="" /></Link>
+            <button
+              type="button"
+              onClick={() => {
+                document.getElementById("main-content")?.focus({ preventScroll: true });
+                window.scrollTo({ top: 0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+              }}
+              aria-label={lang === "nl" ? "Terug naar boven" : "Back to top"}
+              title={lang === "nl" ? "Terug naar boven" : "Back to top"}
+              tabIndex={showTop ? 0 : -1}
+              aria-hidden={!showTop}
+              data-back-top
+              data-footer-docked={topDocked}
+              className={`${styles.backTop} fixed bottom-6 right-6 z-40 grid h-11 w-11 place-items-center rounded-full border border-emerald-500/40 bg-emerald-600 text-white shadow-lg shadow-emerald-600/30 transition-all duration-300 hover:-translate-y-1 hover:bg-emerald-500 hover:shadow-xl hover:shadow-emerald-500/40 ${
+                showTop ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-4 opacity-0"
+              }`}
+            >
+              <FaArrowUp className="text-sm" />
+            </button>
+          </div>
           <p className="mt-3 max-w-md text-sm leading-7 text-slate-600 dark:text-slate-400">{t.footer.tagline}</p>
           <nav className="footer-quick-links" aria-label={lang === "nl" ? "Snelle links" : "Quick links"}>
             <Link href="/order">{lang === "nl" ? "Menukaart" : "Menu"}</Link>
@@ -59,7 +103,7 @@ export function Footer() {
         </div>
 
         <div>
-          <div className="grid grid-cols-2 gap-6 sm:grid-cols-3">
+          <div className={styles.details}>
             <div>
               <p className="text-sm font-bold uppercase tracking-wider text-slate-900 dark:text-white">{t.footer.contact}</p>
               <ul className="mt-3 space-y-2 text-xs text-slate-600 dark:text-slate-400">
@@ -89,7 +133,8 @@ export function Footer() {
                 </span>
               </div>
             </div>
-            <div>
+            <div className={styles.secondaryGroups}>
+              <div>
               <p className="text-sm font-bold uppercase tracking-wider text-slate-900 dark:text-white">{t.footer.ourRestaurants}</p>
               <nav aria-label={t.footer.ourRestaurants} className="mt-3 flex min-w-0 flex-col gap-3 break-words">
                 <a href="https://eattogo.nl" target="_blank" rel="noopener noreferrer" className="text-xs text-slate-600 transition hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400">
@@ -101,7 +146,9 @@ export function Footer() {
                   <span className="mt-1 block text-xs leading-5">{lang === "nl" ? "Indiase curry's en tandoori" : "Indian curries and tandoori"}</span>
                 </a>
               </nav>
-              <p className="mt-6 text-sm font-bold uppercase tracking-wider text-slate-900 dark:text-white">{t.footer.legal}</p>
+              </div>
+              <div className={styles.legal}>
+              <p className="text-sm font-bold uppercase tracking-wider text-slate-900 dark:text-white">{t.footer.legal}</p>
               <div className="mt-3 flex flex-col gap-2">
                 <Link href="/privacy" className="text-xs text-slate-600 transition hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400">
                   {t.footer.privacy}
@@ -109,6 +156,7 @@ export function Footer() {
                 <Link href="/terms" className="text-xs text-slate-600 transition hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400">
                   {t.footer.terms}
                 </Link>
+              </div>
               </div>
             </div>
           </div>
@@ -119,21 +167,6 @@ export function Footer() {
         © {new Date().getFullYear()} SHAH RESTAURANT - Amsterdam. {t.footer.rights}
       </div>
 
-      {/* Floating back-to-top */}
-      <button
-        type="button"
-        onClick={() => window.scrollTo({ top: 0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" })}
-        aria-label={lang === "nl" ? "Terug naar boven" : "Back to top"}
-        title={lang === "nl" ? "Terug naar boven" : "Back to top"}
-        tabIndex={showTop ? 0 : -1}
-        aria-hidden={!showTop}
-        data-back-top
-        className={`fixed bottom-6 right-6 z-40 grid h-11 w-11 place-items-center rounded-full border border-emerald-500/40 bg-emerald-600 text-white shadow-lg shadow-emerald-600/30 transition-all duration-300 hover:-translate-y-1 hover:bg-emerald-500 hover:shadow-xl hover:shadow-emerald-500/40 ${
-          showTop ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-4 opacity-0"
-        }`}
-      >
-        <FaArrowUp className="text-sm" />
-      </button>
     </footer>
   );
 }

@@ -9,6 +9,7 @@
 body[data-cinematic-page="reservations"] main :is(a[href^="tel:"], a[href^="https://www.google.com/maps/dir/"]) { display: inline-flex; align-items: center; min-width: 48px; min-height: 48px; }
 main :is(a[href="/forgot-password"], a[href="/account"]),
 [data-cookie-notice] p a { position: relative; display: inline-flex; align-items: center; justify-content: center; min-width: 48px; min-height: 48px; }
+.dark [data-cookie-notice] p a { color: var(--shah-brand-gold); }
 /* Keep sentence rhythm while the anchor itself remains a real, hittable 48px box. */
 [data-cookie-notice] p a,
 body:is([data-cinematic-page="menu"], [data-cinematic-page="reservations"]) main p > a[href="/account"] { vertical-align: middle; margin-block: min(0px, calc((1lh - 48px) / 2)); }

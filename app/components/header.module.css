@@ -6,9 +6,9 @@
 .header button { cursor: pointer; }
 .header .bar :global(.btn-shine) { min-height: 48px; background: #E0AF59; border: 1px solid #E0AF59; color: #0D4952; box-shadow: none; }
 .header :is(button, a[title], [data-language-link]) { min-width: 48px; min-height: 48px; }
-.header [data-language-link] { display: grid; place-items: center; text-align: center; }
-.header [data-language-link][aria-current="page"] { color: #0D4952; background: #E0AF59; border: 1px solid #E0AF59; box-shadow: none; }
+.header [data-language-toggle] { display: grid; place-items: center; text-align: center; width: 48px; height: 48px; border-radius: 50%; flex-shrink: 0; }
 .desktopNav :is(a, summary) { font-weight: 500; font-size: 13px; border-radius: 3px; padding-inline: clamp(6px, calc(28px - 1em), 12px); min-height: 48px; }
+.desktopNav > a { display: flex; align-items: center; }
 .desktopNav > a[data-active="true"], .dropdown > summary[data-active="true"] { background: var(--shah-soft); color: var(--shah-accent); }
 .desktopNav > a:not([data-active="true"]):hover, .dropdown > summary:hover { background: var(--shah-soft); }
 .dropdown summary { cursor: pointer; list-style: none; }

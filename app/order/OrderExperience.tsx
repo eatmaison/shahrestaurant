@@ -48,15 +48,14 @@ import {
   isDrinkCategory,
   isMenuEligibleCategory,
   isPostcodeInDeliveryArea,
-  isSoftDrinkProduct,
   isValidDutchPostcode,
-  MENU_UPGRADE_PRICE,
   MIN_ORDER,
   POINTS_EARN_EVERY,
   VIP_DISCOUNT_PCT,
 } from "../lib/data";
 import { cartKeyForProduct, grillSideLabel, GRILL_SIDE_OPTIONS, isGrillSideRequired, parseCartKey } from "../lib/cart";
 import type { Brand, Category, GrillSideChoice, MenuUpgrades, Product } from "../lib/types";
+import { cartMenuPriceTotals, normalizeMenuUpgrades, softDrinksForMenu } from "../lib/menuUpgrades";
 import styles from "./order.module.css";
 import { OrderSheet } from "./OrderSheet";
 import { useCinematicPageReady } from "../lib/useCinematicPageReady";
@@ -66,7 +65,51 @@ import "../cinematic.css";
 
 type CartLine = { key: string; product: Product; qty: number; sideChoice?: GrillSideChoice };
 
-function MobileMenuScrollRow({ children, className = "" }: { children: ReactNode; className?: string }) {
+function CartLinePhoto({ product }: { product: Product }) {
+  const frameRef = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+  const src = product.image;
+  let optimized = !!src && src.startsWith("/") && !src.startsWith("//");
+  try {
+    const url = new URL(src ?? "");
+    optimized ||= url.protocol === "https:" && url.hostname.endsWith(".digitaloceanspaces.com");
+  } catch { /* Unsupported image sources use the solid cart background. */ }
+
+  useEffect(() => {
+    const frame = frameRef.current;
+    if (!frame || visible || !optimized) return;
+    const hasVisibleBox = () => {
+      const rect = frame.getBoundingClientRect();
+      const style = getComputedStyle(frame);
+      return rect.width > 0 && rect.height > 0 && style.display !== "none" && style.visibility !== "hidden";
+    };
+    if (typeof IntersectionObserver === "undefined") {
+      const reveal = () => { if (hasVisibleBox()) setVisible(true); };
+      const initialFrame = requestAnimationFrame(reveal);
+      window.addEventListener("resize", reveal);
+      return () => {
+        cancelAnimationFrame(initialFrame);
+        window.removeEventListener("resize", reveal);
+      };
+    }
+    const observer = new IntersectionObserver((entries) => {
+      if (!entries.some((entry) => entry.isIntersecting && entry.intersectionRect.width > 0 && entry.intersectionRect.height > 0) || !hasVisibleBox()) return;
+      setVisible(true);
+      observer.disconnect();
+    }, { rootMargin: "200px" });
+    observer.observe(frame);
+    return () => observer.disconnect();
+  }, [optimized, visible]);
+
+  if (!src || !optimized) return null;
+  return (
+    <div ref={frameRef} className={styles.cartLinePhoto} aria-hidden="true">
+      {visible && <ProductImage src={src} alt="" sizes="(min-width: 1024px) 240px, (min-width: 480px) 384px, calc(100vw - 42px)" loading="lazy" fetchPriority="low" />}
+    </div>
+  );
+}
+
+function MobileMenuScrollRow({ children, className = "", showScrollButtons = true }: { children: ReactNode; className?: string; showScrollButtons?: boolean }) {
   const rowRef = useRef<HTMLDivElement>(null);
   const suppressClickRef = useRef(false);
 
@@ -123,15 +166,15 @@ function MobileMenuScrollRow({ children, className = "" }: { children: ReactNode
   }, []);
 
   return (
-    <div className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-1">
-      <button
+    <div className={showScrollButtons ? "grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-1" : "min-w-0"}>
+      {showScrollButtons && <button
         type="button"
         aria-label="Scroll links"
         onClick={() => scrollByAmount(-260)}
         className="mobile-menu-scroll-button"
       >
         <FaChevronLeft />
-      </button>
+      </button>}
       <div
         ref={rowRef}
         className={`mobile-menu-scroll flex gap-2 ${className}`}
@@ -145,14 +188,14 @@ function MobileMenuScrollRow({ children, className = "" }: { children: ReactNode
       >
         {children}
       </div>
-      <button
+      {showScrollButtons && <button
         type="button"
         aria-label="Scroll rechts"
         onClick={() => scrollByAmount(260)}
         className="mobile-menu-scroll-button"
       >
         <FaChevronRight />
-      </button>
+      </button>}
     </div>
   );
 }
@@ -162,7 +205,7 @@ export default function OrderExperience({ searchParams, initialCatalog = null }:
   const cinematicRootRef = useRef<HTMLDivElement>(null);
   useCinematicPageReady(cinematicRootRef, "menu");
   const { t, lang } = useLang();
-  const { products, brands: liveBrands, cart, addToCart, removeFromCart, currentUser, placeOrder, restaurantStatus, hydrated, catalogStatus } = useStore();
+  const { products, brands: liveBrands, cart, menuUpgrades, setMenuUpgrades, addToCart, removeFromCart, currentUser, placeOrder, restaurantStatus, hydrated, catalogStatus } = useStore();
   const [hasSeenReady, setHasSeenReady] = useState(catalogStatus === "ready");
   useEffect(() => {
     if (catalogStatus === "ready") queueMicrotask(() => setHasSeenReady(true));
@@ -215,7 +258,6 @@ export default function OrderExperience({ searchParams, initialCatalog = null }:
   const [submitting, setSubmitting] = useState(false);
   const submitLock = useRef(false);
   const [showCheckoutModal, setShowCheckoutModal] = useState(false);
-  const [menuUpgrades, setMenuUpgrades] = useState<MenuUpgrades>({});
   const [pointsToUse, setPointsToUse] = useState(0);
   // How the customer wants to receive the order: delivered, or picked up in person.
   const [fulfillment, setFulfillment] = useState<"delivery" | "pickup">("delivery");
@@ -358,27 +400,22 @@ export default function OrderExperience({ searchParams, initialCatalog = null }:
     [products, cart]
   );
 
-  const softDrinkProducts = useMemo(() => products.filter(isSoftDrinkProduct), [products]);
-  const softDrinksFor = (product: Product) => {
-    const sameBrand = softDrinkProducts.filter((drink) => drink.brand === product.brand);
-    return sameBrand.length > 0 ? sameBrand : softDrinkProducts;
-  };
   const selectedMenuUpgrades = useMemo(() => {
+    const normalized = normalizeMenuUpgrades(menuUpgrades, cart);
     const selected: MenuUpgrades = {};
     for (const line of cartLines) {
-      if (!isMenuEligibleCategory(line.product.category)) continue;
-      const drinkId = menuUpgrades[line.product.id];
-      if (drinkId && softDrinksFor(line.product).some((drink) => drink.id === drinkId)) selected[line.product.id] = drinkId;
+      if (isMenuEligibleCategory(line.product.category) && normalized[line.product.id]?.length) {
+        selected[line.product.id] = normalized[line.product.id];
+      }
     }
     return selected;
-  }, [cartLines, menuUpgrades, softDrinkProducts]);
-  const menuUpgradeSubtotal = cartLines.reduce((sum, line) => (selectedMenuUpgrades[line.product.id] ? sum + MENU_UPGRADE_PRICE * line.qty : sum), 0);
+  }, [cartLines, menuUpgrades, cart]);
+  const hasInvalidMenuUpgrades = Object.entries(selectedMenuUpgrades).some(([productId, choices]) => {
+    const product = products.find((item) => item.id === productId);
+    return !product || choices.some((choice) => !softDrinksForMenu(product, products).some((drink) => drink.id === choice));
+  });
+  const { subtotal, foodSubtotal } = cartMenuPriceTotals(cartLines, selectedMenuUpgrades);
   const bogoProducts = [...new Map(menuProducts.filter((product) => product.bogoEnabled).map((product) => [product.name, product])).values()];
-  const subtotal = cartLines.reduce((sum, l) => sum + l.product.price * l.qty, 0) + menuUpgradeSubtotal;
-  const foodSubtotal = cartLines.reduce(
-    (sum, l) => (isDrinkCategory(l.product.category) ? sum : sum + l.product.price * l.qty),
-    0
-  );
   const isCompany = currentUser?.accountType === "company";
   const isVip = !isCompany && !!currentUser?.isVip;
   const discountPct = isCompany ? COMPANY_DISCOUNT_PCT : isVip ? VIP_DISCOUNT_PCT : 0;
@@ -425,6 +462,10 @@ export default function OrderExperience({ searchParams, initialCatalog = null }:
   })();
 
   const handleProceedToCheckout = () => {
+    if (hasInvalidMenuUpgrades) {
+      setMessage({ type: "error", text: lang === "nl" ? "Kies voor elk volledig menu een beschikbare gratis frisdrank." : "Choose an available free soft drink for each full menu." });
+      return;
+    }
     if (cartLines.length === 0) {
       setMessage({ type: "error", text: t.order.selectItem });
       return;
@@ -439,6 +480,10 @@ export default function OrderExperience({ searchParams, initialCatalog = null }:
 
   const handleCheckout = async () => {
     if (submitLock.current) return;
+    if (hasInvalidMenuUpgrades) {
+      setMessage({ type: "error", text: lang === "nl" ? "Kies voor elk volledig menu een beschikbare gratis frisdrank." : "Choose an available free soft drink for each full menu." });
+      return;
+    }
     const fields = document.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>("[data-checkout-fields] input, [data-checkout-fields] textarea");
     for (const field of fields) { if (field.getClientRects().length && !field.disabled && !field.reportValidity()) return; }
     if (belowMinOrder) {
@@ -606,7 +651,7 @@ export default function OrderExperience({ searchParams, initialCatalog = null }:
           {searchTerms.length > 0 && <button type="button" className={styles.resetSearch} onClick={() => { setSearch(""); searchRef.current?.focus(); }}><FaXmark aria-hidden="true" />{lang === "nl" ? "Zoekopdracht wissen" : "Clear search"}</button>}
         </div>
       )}
-      {visible.map((p) => {
+      {visible.map((p, imageIndex) => {
         const needsSideChoice = isGrillSideRequired(p);
         const qty = needsSideChoice
           ? GRILL_SIDE_OPTIONS.reduce((sum, option) => sum + (cart[cartKeyForProduct(p.id, option.id)] || 0), 0)
@@ -624,7 +669,7 @@ export default function OrderExperience({ searchParams, initialCatalog = null }:
           >
             <div className="dish-img relative aspect-[4/3] w-full overflow-hidden bg-gradient-to-br from-emerald-500/15 via-emerald-400/5 to-emerald-600/10">
               {p.image ? (
-                <ProductImage key={p.image} src={p.image} alt={p.name} sizes={ORDER_DISH_IMAGE_SIZES} />
+                <ProductImage key={p.image} src={p.image} alt={p.name} sizes={ORDER_DISH_IMAGE_SIZES} loading={imageIndex === 0 ? "eager" : "lazy"} fetchPriority={imageIndex === 0 ? "high" : "auto"} />
               ) : (
                 <span className="grid h-full w-full place-items-center text-4xl text-emerald-500/50">
                   <Icon />
@@ -761,35 +806,74 @@ export default function OrderExperience({ searchParams, initialCatalog = null }:
     </div>
   );
 
-  const renderMenuUpgradeControls = (product: Product) => {
+  const renderMenuUpgradeControls = (product: Product, qty: number) => {
     if (!isMenuEligibleCategory(product.category)) return null;
-    const drinks = softDrinksFor(product);
-    const selectedDrinkId = selectedMenuUpgrades[product.id] ?? "";
-    const enabled = !!selectedDrinkId;
+    const drinks = softDrinksForMenu(product, products);
+    const choices = selectedMenuUpgrades[product.id] ?? [];
+    const updateChoices = (update: (current: string[]) => string[]) => setMenuUpgrades((current) => {
+      const next = { ...current };
+      const updated = update(normalizeMenuUpgrades(current, cart)[product.id] ?? []);
+      if (updated.length) next[product.id] = updated;
+      else delete next[product.id];
+      return next;
+    });
     return (
-      <div className="mt-2 rounded-xl border border-emerald-500/20 bg-emerald-500/10 p-2.5">
-        <div className="flex items-start justify-between gap-3">
-          <div className="min-w-0">
-            <p className="flex items-center gap-1.5 text-xs font-black text-emerald-800 dark:text-emerald-200"><FaCircleCheck className="shrink-0" /> {t.order.menuUpgradeTitle}</p>
-            <p className="mt-0.5 text-[11px] leading-4 text-emerald-700/80 dark:text-emerald-200/75">{t.order.menuUpgradeHint}</p>
-          </div>
-          <button type="button" disabled={drinks.length === 0} onClick={() => setMenuUpgrades((current) => {
-            const next = { ...current };
-            if (next[product.id]) delete next[product.id];
-            else if (drinks[0]) next[product.id] = drinks[0].id;
-            return next;
-          })} aria-pressed={enabled} className={`shrink-0 rounded-full px-3 py-1.5 text-xs font-bold transition disabled:cursor-not-allowed disabled:opacity-50 ${enabled ? "bg-emerald-600 text-white" : "bg-white text-emerald-700 ring-1 ring-emerald-200 dark:bg-white/10 dark:text-emerald-200 dark:ring-emerald-400/20"}`}>
-            +€{MENU_UPGRADE_PRICE.toFixed(2)}
-          </button>
-        </div>
-        {drinks.length === 0 ? <p className="mt-2 text-[11px] font-semibold text-amber-700 dark:text-amber-300">{t.order.menuUpgradeNoDrinks}</p> : enabled ? (
-          <label className="mt-2 block text-[11px] font-bold uppercase tracking-wide text-emerald-800 dark:text-emerald-200">
-            {t.order.menuUpgradeDrink}
-            <select value={selectedDrinkId} onChange={(e) => setMenuUpgrades((current) => ({ ...current, [product.id]: e.target.value }))} className="mt-1 w-full rounded-lg border border-emerald-200 bg-white px-2.5 py-2 text-xs normal-case tracking-normal text-slate-800 outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-slate-950 dark:text-white dark:[color-scheme:dark]">
-              {drinks.map((drink) => <option key={drink.id} value={drink.id} className="bg-white text-slate-900 dark:bg-slate-950 dark:text-white">{drink.name}</option>)}
-            </select>
-          </label>
-        ) : null}
+      <div className={styles.menuUpgrade} data-menu-upgrade>
+        <p className={styles.menuUpgradeTitle}>{t.order.menuUpgradeTitle}</p>
+        <p className={styles.menuUpgradeHint}>{t.order.menuUpgradeHint}</p>
+        <label className={styles.menuUpgradeCount}>
+          <span>{lang === "nl" ? "Volledige menu's" : "Full menus"}</span>
+          <select
+            aria-label={`${lang === "nl" ? "Aantal volledige menu's" : "Number of full menus"}: ${product.name}`}
+            value={choices.length}
+            disabled={drinks.length === 0 && choices.length === 0}
+            onChange={(event) => {
+              const count = Number(event.target.value);
+              updateChoices((current) => Array.from({ length: count }, (_, index) => current[index] ?? drinks[0]?.id ?? ""));
+            }}
+            className={styles.menuUpgradeSelect}
+            data-menu-upgrade-count
+          >
+            {Array.from({ length: qty + 1 }, (_, count) => <option key={count} value={count} disabled={drinks.length === 0 && count > choices.length}>{count} / {qty}</option>)}
+          </select>
+        </label>
+        <p className={styles.menuUpgradeHint} aria-live="polite">
+          {lang === "nl"
+            ? `${choices.length} volledige menu's · ${qty - choices.length} zonder menu`
+            : `${choices.length} full ${choices.length === 1 ? "menu" : "menus"} · ${qty - choices.length} without menu`}
+        </p>
+        {drinks.length === 0 && <p className={styles.menuUpgradeHint}>{t.order.menuUpgradeNoDrinks}</p>}
+        {choices.map((drinkId, index) => {
+          const valid = drinks.some((drink) => drink.id === drinkId);
+          return (
+            <div key={index} className={styles.menuUpgradeChoice}>
+              <label className={styles.menuUpgradeLabel}>
+                {t.order.menuUpgradeDrink} · Menu {index + 1}
+                <select
+                  aria-label={`${t.order.menuUpgradeDrink} ${index + 1}: ${product.name}`}
+                  aria-invalid={!valid || undefined}
+                  required
+                  value={valid ? drinkId : ""}
+                  onChange={(event) => updateChoices((current) => current.map((choice, choiceIndex) => choiceIndex === index ? event.target.value : choice))}
+                  className={styles.menuUpgradeSelect}
+                  data-menu-upgrade-drink={index}
+                >
+                  {!valid && <option value="" disabled>{lang === "nl" ? "Kies een beschikbare frisdrank" : "Choose an available soft drink"}</option>}
+                  {drinks.map((drink) => <option key={drink.id} value={drink.id}>{drink.name}</option>)}
+                </select>
+              </label>
+              <button
+                type="button"
+                onClick={() => updateChoices((current) => current.filter((_, choiceIndex) => choiceIndex !== index))}
+                className={`${styles.cartQuantityButton} ${styles.menuUpgradeRemove}`}
+                aria-label={`${lang === "nl" ? "Verwijder volledig menu" : "Remove full menu"} ${index + 1}: ${product.name}`}
+              >
+                <span aria-hidden="true" className={`${styles.cartQuantityDisc} ${styles.menuUpgradeRemoveDisc}`}><FaXmark /></span>
+              </button>
+              {!valid && <p className={styles.menuUpgradeError}>{lang === "nl" ? "Kies een beschikbare frisdrank om verder te gaan." : "Choose an available soft drink to continue."}</p>}
+            </div>
+          );
+        })}
       </div>
     );
   };
@@ -838,7 +922,7 @@ export default function OrderExperience({ searchParams, initialCatalog = null }:
       {/* Mobile & Tablet: Brand switch + Categories Bar (Sticky) */}
       <div className={`${styles.categoryBar} sticky z-40 border-b border-emerald-500/20 bg-white/90 shadow-lg shadow-emerald-900/5 backdrop-blur-xl dark:border-white/10 dark:bg-[#0c0703]/90 lg:hidden`}>
         {/* Restaurant switcher */}
-        <MobileMenuScrollRow className="px-3 pt-2">
+        <MobileMenuScrollRow className="px-3 pt-2" showScrollButtons={false}>
           {sortedBrands.map((b) => {
             const active = b.id === activeBrand;
             return (
@@ -859,7 +943,7 @@ export default function OrderExperience({ searchParams, initialCatalog = null }:
             );
           })}
         </MobileMenuScrollRow>
-        <MobileMenuScrollRow className="px-3 py-2">
+        <MobileMenuScrollRow className="px-3 py-2" showScrollButtons={false}>
           {(activeBrandCfg?.categories ?? []).map((c) => {
             const cat = c.name;
             const Icon = categoryIconFor(brands, cat);
@@ -880,7 +964,7 @@ export default function OrderExperience({ searchParams, initialCatalog = null }:
           })}
         </MobileMenuScrollRow>
         {subcategoriesOf(activeBrand, activeCategory).length > 0 && (
-          <MobileMenuScrollRow className="px-3 pb-2">
+          <MobileMenuScrollRow className="px-3 pb-2" showScrollButtons={false}>
             <button
               onClick={() => setActiveSubcategory("all")}
               className={`flex shrink-0 snap-start items-center gap-1.5 rounded-full px-2.5 py-1 text-[10px] font-semibold transition ${
@@ -937,13 +1021,13 @@ export default function OrderExperience({ searchParams, initialCatalog = null }:
                   {/* Brand header (logo) - click to switch restaurant */}
                   <button
                     onClick={() => selectBrand(b.id)}
-                    className="flex w-full items-center gap-3 px-3 py-3 text-left transition"
+                    className={`${styles.brandHeader} flex w-full items-center gap-3 px-3 py-3 text-left transition`}
                   >
                     <span className="relative grid h-11 w-11 shrink-0 place-items-center overflow-hidden rounded-xl bg-white ring-1 ring-slate-200 dark:ring-white/10">
                       {b.logo ? <Image src={b.logo} alt={b.name} fill sizes="44px" className="object-contain p-1" /> : <FaStore className="text-slate-400" />}
                     </span>
-                    <span className="min-w-0">
-                      <span className="block truncate text-sm font-black text-slate-900 dark:text-white">{b.name}</span>
+                    <span className="min-w-0 flex-1">
+                      <span className={`${styles.brandName} block text-sm font-black text-slate-900 dark:text-white`}>{b.name}</span>
                       <span className={`text-[11px] font-semibold ${active ? "text-emerald-600 dark:text-emerald-400" : "text-slate-600 dark:text-slate-300"}`}>
                         {b.categories.length} {t.order.menuCategories}
                       </span>
@@ -1055,10 +1139,11 @@ export default function OrderExperience({ searchParams, initialCatalog = null }:
                 </div>
               ) : (
                 cartLines.map(({ key, product, qty, sideChoice }) => (
-                  <div key={key} className="magnetic-card rounded-2xl border border-emerald-500/10 bg-white/70 p-2.5 backdrop-blur dark:border-white/5 dark:bg-white/5">
-                    <div className="flex items-center gap-3">
+                  <div key={key} data-cart-line={key} className={`${styles.cartLineCard} magnetic-card rounded-2xl border p-2.5`}>
+                    <CartLinePhoto product={product} />
+                    <div className={styles.cartLine}>
                       <div className="min-w-0 flex-1">
-                        <p className="truncate text-sm font-semibold text-slate-900 dark:text-white">{product.name}</p>
+                        <p className={`${styles.cartLineName} text-sm font-semibold text-slate-900 dark:text-white`}>{product.name}</p>
                         <p className="text-xs text-slate-500 dark:text-slate-400">€{product.price.toFixed(2)} {t.common.each} · {qty * (product.bogoEnabled ? 2 : 1)} {t.common.items}</p>
                         {sideChoice && (
                           <p className="mt-0.5 text-[11px] font-bold text-emerald-700 dark:text-emerald-300">
@@ -1066,18 +1151,22 @@ export default function OrderExperience({ searchParams, initialCatalog = null }:
                           </p>
                         )}
                       </div>
-                      <div className="flex items-center gap-1.5">
-                        <button onClick={() => removeFromCart(product.id, sideChoice)} className="grid h-11 w-11 place-items-center rounded-full bg-white text-slate-600 transition hover:text-red-600 dark:bg-white/10 dark:text-slate-300" type="button" aria-label={`${t.common.remove}: ${product.name}`}>
-                          {qty <= 1 ? <FaTrash className="text-[0.65rem]" /> : <FaMinus className="text-[0.65rem]" />}
+                      <div className={styles.cartLineControls}>
+                        <button onClick={() => removeFromCart(product.id, sideChoice)} className={`${styles.cartQuantityButton} text-slate-600 transition hover:text-red-600 dark:text-slate-300`} type="button" aria-label={`${t.common.remove}: ${product.name}`}>
+                          <span aria-hidden="true" className={`${styles.cartQuantityDisc} bg-white dark:bg-white/10`}>
+                            {qty <= 1 ? <FaTrash className="text-[0.65rem]" /> : <FaMinus className="text-[0.65rem]" />}
+                          </span>
                         </button>
                         <span className="w-5 text-center text-sm font-bold text-slate-900 dark:text-white">{qty * (product.bogoEnabled ? 2 : 1)}</span>
-                        <button onClick={() => addToCart(product.id, sideChoice)} className="grid h-11 w-11 place-items-center rounded-full bg-emerald-600 text-white transition hover:bg-emerald-500" type="button" aria-label={`${t.common.add}: ${product.name}`} disabled={qty >= 99}>
-                          <FaPlus className="text-[0.65rem]" />
+                        <button onClick={() => addToCart(product.id, sideChoice)} className={`${styles.cartQuantityButton} transition`} type="button" aria-label={`${t.common.add}: ${product.name}`} disabled={qty >= 99}>
+                          <span aria-hidden="true" className={`${styles.cartQuantityDisc} bg-emerald-600 text-white`}>
+                            <FaPlus className="text-[0.65rem]" />
+                          </span>
                         </button>
                       </div>
-                      <span className="w-14 text-right text-sm font-bold text-slate-900 dark:text-white">€{(product.price * qty).toFixed(2)}</span>
+                      <span className={`${styles.cartLinePrice} text-sm font-bold text-slate-900 dark:text-white`}>€{(product.price * qty).toFixed(2)}</span>
                     </div>
-                    {renderMenuUpgradeControls(product)}
+                    {renderMenuUpgradeControls(product, qty)}
                   </div>
                 ))
               )}
@@ -1124,8 +1213,8 @@ export default function OrderExperience({ searchParams, initialCatalog = null }:
                 value={currentUser?.email || form.email}
                 onChange={(e) => setForm({ ...form, email: e.target.value })}
                 readOnly={!!currentUser}
-                placeholder={lang === "nl" ? "E-mailadres voor bestelbevestiging" : "Email address for order confirmation"}
-                className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/5 dark:text-white"
+                placeholder={lang === "nl" ? "E-mailadres voor bestelbevestiging" : "Email address"}
+                className={`${styles.checkoutEmail} w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/5 dark:text-white`}
               />
               <input aria-label={t.order.phone} type="tel" inputMode="tel" autoComplete="tel" required minLength={5} maxLength={30}
                 value={form.phone}
@@ -1382,10 +1471,11 @@ export default function OrderExperience({ searchParams, initialCatalog = null }:
 
             <div className="space-y-2 px-5 py-4 pr-3">
               {cartLines.map(({ key, product, qty, sideChoice }) => (
-                <div key={key} className="rounded-xl border border-slate-100 bg-slate-50 p-2.5 dark:border-white/5 dark:bg-white/5">
-                  <div className="flex items-center gap-3">
+                <div key={key} data-cart-line={key} className={`${styles.cartLineCard} rounded-xl border p-2.5`}>
+                  <CartLinePhoto product={product} />
+                  <div className={styles.cartLine}>
                     <div className="min-w-0 flex-1">
-                      <p className="truncate text-sm font-semibold text-slate-900 dark:text-white">{product.name}</p>
+                      <p className={`${styles.cartLineName} text-sm font-semibold text-slate-900 dark:text-white`}>{product.name}</p>
                       <p className="text-xs text-slate-500 dark:text-slate-400">€{product.price.toFixed(2)} {t.common.each} · {qty * (product.bogoEnabled ? 2 : 1)} {t.common.items}</p>
                       {sideChoice && (
                         <p className="mt-0.5 text-[11px] font-bold text-emerald-700 dark:text-emerald-300">
@@ -1393,18 +1483,22 @@ export default function OrderExperience({ searchParams, initialCatalog = null }:
                         </p>
                       )}
                     </div>
-                    <div className="flex items-center gap-1.5">
-                      <button onClick={() => removeFromCart(product.id, sideChoice)} className="grid h-11 w-11 place-items-center rounded-full bg-white text-slate-600 transition hover:text-red-600 dark:bg-white/10 dark:text-slate-300" type="button" aria-label={`${t.common.remove}: ${product.name}`}>
-                        {qty <= 1 ? <FaTrash className="text-[0.6rem]" /> : <FaMinus className="text-[0.6rem]" />}
+                    <div className={styles.cartLineControls}>
+                      <button onClick={() => removeFromCart(product.id, sideChoice)} className={`${styles.cartQuantityButton} text-slate-600 transition hover:text-red-600 dark:text-slate-300`} type="button" aria-label={`${t.common.remove}: ${product.name}`}>
+                        <span aria-hidden="true" className={`${styles.cartQuantityDisc} bg-white dark:bg-white/10`}>
+                          {qty <= 1 ? <FaTrash className="text-[0.6rem]" /> : <FaMinus className="text-[0.6rem]" />}
+                        </span>
                       </button>
                       <span className="w-5 text-center text-sm font-bold text-slate-900 dark:text-white">{qty * (product.bogoEnabled ? 2 : 1)}</span>
-                      <button onClick={() => addToCart(product.id, sideChoice)} className="grid h-11 w-11 place-items-center rounded-full bg-emerald-600 text-white transition hover:bg-emerald-500" type="button" aria-label={`${t.common.add}: ${product.name}`} disabled={qty >= 99}>
-                        <FaPlus className="text-[0.6rem]" />
+                      <button onClick={() => addToCart(product.id, sideChoice)} className={`${styles.cartQuantityButton} transition`} type="button" aria-label={`${t.common.add}: ${product.name}`} disabled={qty >= 99}>
+                        <span aria-hidden="true" className={`${styles.cartQuantityDisc} bg-emerald-600 text-white`}>
+                          <FaPlus className="text-[0.6rem]" />
+                        </span>
                       </button>
                     </div>
-                    <span className="w-12 text-right text-sm font-bold text-slate-900 dark:text-white">€{(product.price * qty).toFixed(2)}</span>
+                    <span className={`${styles.cartLinePrice} text-sm font-bold text-slate-900 dark:text-white`}>€{(product.price * qty).toFixed(2)}</span>
                   </div>
-                  {renderMenuUpgradeControls(product)}
+                  {renderMenuUpgradeControls(product, qty)}
                 </div>
               ))}
             </div>
@@ -1550,8 +1644,8 @@ export default function OrderExperience({ searchParams, initialCatalog = null }:
                 value={currentUser?.email || form.email}
                 onChange={(e) => setForm({ ...form, email: e.target.value })}
                 readOnly={!!currentUser}
-                placeholder={lang === "nl" ? "E-mailadres voor bestelbevestiging" : "Email address for order confirmation"}
-                className="w-full rounded-lg border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/5 dark:text-white"
+                placeholder={lang === "nl" ? "E-mailadres voor bestelbevestiging" : "Email address"}
+                className={`${styles.checkoutEmail} w-full rounded-lg border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/5 dark:text-white`}
               />
               <input aria-label={t.order.phone} type="tel" inputMode="tel" autoComplete="tel" required minLength={5} maxLength={30}
                 value={form.phone}

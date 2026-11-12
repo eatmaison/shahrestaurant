@@ -107,7 +107,7 @@
 .galleryItem figcaption { display: flex; justify-content: space-between; gap: 12px; padding: 18px 0; font-size: 13px; border-bottom: 1px solid var(--line); }
 .galleryItem figcaption > :last-child { color: var(--gold); font-variant-numeric: tabular-nums; }
 .galleryFooter { display: flex; justify-content: flex-end; padding-top: 28px; }
-.storySection { --gold: #ecd79e; --muted: #f3f3ec; padding: 100px 48px; background: linear-gradient(90deg, #141411e8, #141411a8 55%, #14141138), url('/photos/plant-wall.webp') center / cover; color: #fff; }
+.storySection { padding: 100px 48px; color: #fff; }
 .storyInner { max-width: 1200px; margin: auto; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 100px; }
 .storyContent > p:not(.eyebrow) { color: var(--muted); line-height: 1.9; font-size: 16px; margin-top: 28px; }
 .storyContent blockquote { margin: 30px 0; padding: 4px 0 4px 22px; border-left: 1px solid var(--gold); font-family: var(--font-cormorant), Georgia, serif; color: var(--gold); font-size: 27px; line-height: 1.45; font-style: italic; }
@@ -253,14 +253,9 @@
 .home [data-tilt]:hover::after { opacity: 1; }
 .home { --edge-light: #ffffffb3; --depth-shadow: #191d2221; --metal: linear-gradient(120deg, #f4e6c0, #dfc180 48%, #f7e8bf 76%, #d9b977); }
 :global(.dark) .home { --edge-light: #ffffff16; --depth-shadow: #0006; }
-.home ::selection { background: #dfc180; color: #272724; }
-.primaryButton { background: var(--metal); border-color: #c4a760; box-shadow: inset 0 1px 0 #fff8, 0 3px 0 #ad8b47, 0 8px 18px #0002; }
-.primaryButton:hover { background: var(--metal); box-shadow: inset 0 1px 0 #fffb, 0 4px 0 #ad8b47, 0 16px 28px #0003; }
-.primaryButton:active { transform: translateY(2px); box-shadow: inset 0 2px 4px #80601f30, 0 1px 0 #ad8b47; }
 .primaryButton > svg:last-child { transition: transform .35s var(--ease-out); }
 .primaryButton:hover > svg:last-child { transform: translateX(3px); }
 .sectionNav { box-shadow: inset 0 1px 0 var(--edge-light), 0 1px 0 var(--line), 0 10px 24px #191d2208; }
-.sectionNavInner > a::after { background: linear-gradient(90deg, var(--gold), #d8bf86, var(--gold)); height: 3px; }
 .sectionNavInner > a[aria-current="location"] { text-shadow: 0 0 .01px currentColor; }
 .intro { box-shadow: 0 1px 0 var(--edge-light); }
 .intro h2 { max-width: 420px; }
@@ -507,40 +502,35 @@
   .mobileActions a:last-child { background: #E0AF59; border-color: #E0AF59; color: #0D4952; }
 }
 
-/* The full viewport stays pinned while native scrolling selects the film frame. */
-.heroScroll { position: relative; height: 320svh; margin-top: calc(-1 * var(--site-header-height, 102px)); }
-/* Keep the scroll track stable while optional film buffering succeeds or fails. */
-.hero { position: sticky; top: 0; width: 100%; height: 100svh; min-height: 100svh; display: flex; align-items: center; overflow: hidden; isolation: isolate; background: #062b32; color: #fff; }
+.heroScroll { position: relative; }
+.hero { position: sticky; top: 0; width: 100%; display: flex; align-items: center; overflow: hidden; isolation: isolate; background: #062b32; color: #fff; }
 .heroMedia { position: absolute; inset: 0; width: 100%; height: 100%; overflow: hidden; background: #062b32; }
 .heroImage { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
 .heroSecondary { display: inline-flex; align-items: center; justify-content: center; gap: 14px; min-height: 54px; padding: 15px 24px; font-size: 14px; font-weight: 500; color: #fff; border: 1px solid #E0AF5980; border-radius: 3px; background: #0D495230; box-shadow: none; backdrop-filter: none; }
 .heroSecondary:hover { background: #0D495299; border-color: #E0AF59; }
 .closing .heroSecondary { color: #fff; border-color: #E0AF5980; background: transparent; }
 .closing .heroSecondary:hover { border-color: #E0AF59; background: #ffffff0a; }
-@media (max-width: 900px) {
-  .heroScroll { height: 280svh; }
-}
-@media (prefers-reduced-motion: reduce) { .heroScroll { height: 100svh; } }
 
 
 /* Cinematic chapters: the original film is the entire first frame. */
 .home { --gold: var(--shah-gold); --accent: var(--shah-accent); --scene-progress: .5; --scene-shift: 0px; }
 .home .heroScroll { height: 100svh; margin-top: 0; background: var(--shah-brand-teal); }
-.home .heroScroll:not([data-unavailable="true"]) { height: 100svh; }
-.home .heroScroll[data-unavailable="true"] { height: 100svh; }
+:global(html[data-shah-intro-active="true"]) .home .heroScroll { position: fixed; inset: 0; z-index: 40; pointer-events: auto; transition: transform .8s cubic-bezier(.16,1,.3,1); }
+.home .heroScroll[data-film-handoff="true"] { transform: translateY(-100%); }
 .home .hero { height: 100svh; min-height: 100svh; }
 .home .heroMedia { inset: 0; }
 .home .heroMedia picture, .home .heroMedia video { border: 0; box-shadow: none; }
 .home .heroMedia::before, .home .heroMedia::after { display: none; }
 :global(body):has(.home) :global([data-site-header]) { position: fixed; inset: 0 0 auto; }
 :global(body):has(.home) :global([data-site-header-bar]) { transition: opacity .5s cubic-bezier(.16,1,.3,1), transform .65s cubic-bezier(.16,1,.3,1); }
-:global(body):has(.home[data-film-view="opening"]) :global([data-site-header]) { background: transparent !important; border-color: transparent !important; box-shadow: none !important; backdrop-filter: none !important; pointer-events: none; }
-:global(body):has(.home[data-film-view="opening"]) :global([data-site-header-bar]) { opacity: 0; visibility: hidden; transform: translate3d(0,-18px,0); pointer-events: none; }
-:global(body):has(.home[data-film-view="opening"]) :global([data-site-mobile-panel]) { display: none; }
-:global(body):has(.home[data-film-view="opening"]) :global([data-cookie-notice]),
-:global(body):has(.home[data-film-view="opening"]) :global([data-back-top]) { visibility: hidden; opacity: 0; pointer-events: none; }
-:global(body):has(.home[data-film-view="opening"]) :global([data-film-skip]:focus) { pointer-events: auto; }
-.home[data-film-view="opening"] .mobileActions { visibility: hidden; opacity: 0; pointer-events: none; }
+:global(html):not([data-shah-intro-consumed="true"]) :global(body):has(.home[data-film-view="opening"]) :global([data-site-header]) { background: transparent !important; border-color: transparent !important; box-shadow: none !important; backdrop-filter: none !important; pointer-events: none; }
+:global(html):not([data-shah-intro-consumed="true"]) :global(body):has(.home[data-film-view="opening"]) :global([data-site-header-bar]) { opacity: 0; visibility: hidden; transform: translate3d(0,-18px,0); pointer-events: none; }
+:global(html):not([data-shah-intro-consumed="true"]) :global(body):has(.home[data-film-view="opening"]) :global([data-site-mobile-panel]) { display: none; }
+:global(html):not([data-shah-intro-consumed="true"]) :global(body):has(.home[data-film-view="opening"]) :global([data-cookie-notice]),
+:global(html):not([data-shah-intro-consumed="true"]) :global(body):has(.home[data-film-view="opening"]) :global([data-back-top]) { visibility: hidden; opacity: 0; pointer-events: none; }
+:global(html):not([data-shah-intro-consumed="true"]) :global(body):has(.home[data-film-view="opening"]) :global([data-film-skip]:focus) { pointer-events: auto; }
+:global(html):not([data-shah-intro-consumed="true"]) .home[data-film-view="opening"] .mobileActions { visibility: hidden; opacity: 0; pointer-events: none; }
+.home .heroScroll[data-film-consumed="true"] { display: none !important; }
 
 .home .section { padding-block: clamp(88px, 9vw, 144px); }
 .home :is(h1,h2,h3) { font-weight: 500; }
@@ -721,3 +711,6 @@
 }
 
 .home section.opening[id] { scroll-margin-top: calc(-1 * var(--site-header-height, 76px) - 16px); }
+@media (max-width: 767px) and (max-aspect-ratio: 9/20) {
+  .home .heroImage { object-fit: contain !important; background: #000; }
+}

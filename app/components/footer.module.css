@@ -1,0 +1,12 @@
+.brandRow { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.backTop[data-footer-docked="true"] { position: static; flex: 0 0 48px; transform: none; }
+.details { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.details > *, .secondaryGroups > * { min-width: 0; }
+.legal { margin-top: 24px; }
+
+@media (max-width: 639px) {
+  .content { padding-block: 32px; row-gap: 24px; }
+  .details, .secondaryGroups { grid-template-columns: repeat(auto-fit, minmax(min(100%, 8.5em), 1fr)); gap: 20px 16px; }
+  .secondaryGroups { display: grid; grid-column: 1 / -1; }
+  .legal { margin-top: 0; }
+}

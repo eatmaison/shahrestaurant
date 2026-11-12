@@ -1,5 +1,7 @@
 import { after } from "next/server";
 import { checkoutIdentity } from "./checkoutFingerprint";
+import { buildMenuUpgradeItems } from "./menuUpgrades";
+import { CATALOG_PRODUCT_LIMIT } from "./catalogSnapshot";
 import { persistOrder, type ComputedOrder } from "./orderPersistence";
 import bcrypt from "bcryptjs";
 import { ensureReady, sql } from "./db";
@@ -14,11 +16,7 @@ import {
   FREE_DELIVERY_FROM,
   formatOrderNumber,
   isDrinkCategory,
-  isMenuEligibleCategory,
   isPostcodeInDeliveryArea,
-  isSoftDrinkProduct,
-  MENU_UPGRADE_CATEGORY,
-  MENU_UPGRADE_PRICE,
   MIN_ORDER,
   normalizePostcode,
   POINTS_EARN_EVERY,
@@ -53,7 +51,7 @@ import type {
   OrderItem,
   OrderFulfillment,
   OrderSchedule,
-  MenuUpgrades,
+  MenuUpgradesInput,
   Product,
   ProductContent,
   ProductTarget,
@@ -537,7 +535,7 @@ export async function placeOrder(details: {
   note?: string;
   cart: Record<string, number>;
   pointsToUse?: number;
-  menuUpgrades?: MenuUpgrades;
+  menuUpgrades?: MenuUpgradesInput;
   schedule?: OrderSchedule;
   fulfillment?: OrderFulfillment;
   origin?: string;
@@ -575,10 +573,17 @@ export async function placeOrder(details: {
   // Pickup orders skip the delivery-area check (the customer collects it in person).
   if (fulfillment === "delivery" && !isPostcodeInDeliveryArea(postcode)) return { ok: false, error: "outsideArea" };
 
-  const drinkIds = [...new Set(Object.values(menuUpgrades).filter(Boolean))];
-  const productRows = (await sql.query(`SELECT * FROM products WHERE id = ANY($1::text[])`, [[...new Set([...productIds, ...drinkIds])]])) as any[];
+  const drinkIds = [...new Set(Object.values(menuUpgrades).flatMap(choice => typeof choice === "string" ? [choice] : choice).filter(Boolean))];
+  // Read the bounded public catalogue only for the existing same-brand drink rule.
+  const hasMenuUpgrades = drinkIds.length > 0;
+  const productRows = (await (hasMenuUpgrades
+    ? sql.query(`SELECT * FROM products LIMIT $1`, [CATALOG_PRODUCT_LIMIT + 1])
+    : sql.query(`SELECT * FROM products WHERE id = ANY($1::text[])`, [productIds]))) as any[];
+  if (hasMenuUpgrades && productRows.length > CATALOG_PRODUCT_LIMIT) return { ok: false, error: "invalidInput" };
   const products = productRows.map(rowToProduct);
   const productById = new Map(products.map((product) => [product.id, product]));
+  // Reject unavailable positive-quantity products instead of silently under-ordering.
+  if (productIds.some(productId => !productById.has(productId))) return { ok: false, error: "invalidInput" };
 
   const items: OrderItem[] = cartEntries
     .flatMap((entry) => {
@@ -607,17 +612,9 @@ export async function placeOrder(details: {
   });
   items.splice(0, items.length, ...pricedItems);
 
-  for (const productId of productIds) {
-    const food = productById.get(productId);
-    const drink = productById.get(menuUpgrades[productId]);
-    const qty = cartEntries.filter((entry) => entry.productId === productId).reduce((sum, entry) => sum + entry.qty, 0);
-    if (!food || qty <= 0 || !isMenuEligibleCategory(food.category) || !drink || !isSoftDrinkProduct(drink)) continue;
-    items.push(
-      { productId: `menu-upgrade:${food.id}`, name: `Full menu upgrade for ${food.name}`, price: MENU_UPGRADE_PRICE, qty, brand: food.brand, category: MENU_UPGRADE_CATEGORY },
-      { productId: `menu-fries:${food.id}`, name: `Fries included with ${food.name}`, price: 0, qty, brand: food.brand, category: MENU_UPGRADE_CATEGORY },
-      { productId: `menu-drink:${food.id}:${drink.id}`, name: `Free soft drink: ${drink.name}`, price: 0, qty, brand: drink.brand, category: "Drinks" }
-    );
-  }
+  const upgrades = buildMenuUpgradeItems(menuUpgrades, cart, products);
+  if (!upgrades.ok) return upgrades;
+  items.push(...upgrades.items);
 
   const subtotal = +items.reduce((s, i) => s + i.price * i.qty, 0).toFixed(2);
 

@@ -213,8 +213,9 @@ body:is([data-cinematic-page="privacy"], [data-cinematic-page="terms"]) main > d
   body[data-cinematic-page="menu"] main [data-menu-loyalty] summary { gap: 10px; }
   body[data-cinematic-page="menu"] main [data-menu-loyalty] summary strong { font-size: 12px; }
   body[data-cinematic-page="menu"] main [data-menu-products] { grid-template-columns: minmax(0, 1fr); gap: 20px; }
-  body[data-cinematic-page="menu"] main article[data-menu-dish] { display: grid; grid-template-columns: minmax(92px, 30%) minmax(0, 1fr); align-items: stretch; }
-  body[data-cinematic-page="menu"] main article[data-menu-dish] .dish-img { height: 100%; min-height: 180px; aspect-ratio: auto; border-bottom: 0; border-right: 1px solid var(--shah-line); }
+  body[data-cinematic-page="menu"] main article[data-menu-dish] { display: grid; grid-template-columns: minmax(0, 1fr); }
+  body[data-cinematic-page="menu"] main article[data-menu-dish] .dish-img { height: auto; min-height: 0; aspect-ratio: 4 / 3; border-bottom: 1px solid var(--shah-line); border-right: 0; }
+  body[data-cinematic-page="menu"] main article[data-menu-dish] .dish-img img { object-fit: contain; transform: none; }
   body[data-cinematic-page="menu"] main article[data-menu-dish] h3 { font-size: 23px; }
   body[data-cinematic-page="menu"] main article > div:last-child { padding: 20px 17px; }
   body[data-cinematic-page="menu"] main article[data-menu-dish] > div:last-child > div:first-child { gap: 8px; }

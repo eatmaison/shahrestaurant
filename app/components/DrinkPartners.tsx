@@ -45,6 +45,7 @@ export function DrinkPartners({ site }: { site: Site }) {
   const groupRef = useRef<HTMLUListElement>(null);
   const [ready, setReady] = useState(false);
   const [paused, setPaused] = useState(false);
+  const [hovered, setHovered] = useState(false);
   const [staticMotion, setStaticMotion] = useState(true);
 
   useEffect(() => {
@@ -58,7 +59,7 @@ export function DrinkPartners({ site }: { site: Site }) {
 
   useEffect(() => {
     const rail = railRef.current, group = groupRef.current;
-    if (!rail || !group || !ready || paused || staticMotion) return;
+    if (!rail || !group || !ready || paused || hovered || staticMotion) return;
     let frame = 0, previous = 0, distance = 0, visible = false, position = rail.scrollLeft;
     const stop = () => { cancelAnimationFrame(frame); frame = 0; previous = 0; rail.dataset.partnerRunning = "false"; };
     const schedule = () => {
@@ -86,7 +87,7 @@ export function DrinkPartners({ site }: { site: Site }) {
     observer.observe(rail); resize.observe(rail); resize.observe(group); measure();
     document.addEventListener("visibilitychange", schedule);
     return () => { stop(); observer.disconnect(); resize.disconnect(); document.removeEventListener("visibilitychange", schedule); };
-  }, [ready, paused, staticMotion]);
+  }, [ready, paused, hovered, staticMotion]);
 
   const move = (direction: number) => {
     setPaused(true);
@@ -115,7 +116,7 @@ export function DrinkPartners({ site }: { site: Site }) {
     <p className={styles.description}>{partner[nl ? "nl" : "en"]}</p>
   </>;
   return (
-    <section id="drankenpartners" className={styles.section} data-style={site} data-enhanced={ready} data-paused={paused || staticMotion} aria-labelledby="drink-partners-title">
+    <section id="drankenpartners" className={styles.section} data-style={site} data-enhanced={ready} data-paused={paused || hovered || staticMotion} aria-labelledby="drink-partners-title">
       <div className={styles.inner}>
         <div className={styles.heading}>
           <div>
@@ -125,16 +126,14 @@ export function DrinkPartners({ site }: { site: Site }) {
           <p className={styles.introduction}>{introductions[site][nl ? "nl" : "en"]}</p>
         </div>
         <p id={`${railId}-help`} className="sr-only">{nl ? "Drankenpartners. Veeg horizontaal of gebruik de pijltjestoetsen om alle vier te bekijken. Aanraken of toetsenbordfocus pauzeert de beweging." : "Drinks partners. Swipe horizontally or use the arrow keys to explore all four. Touch or keyboard focus pauses the motion."}</p>
+        <div className={styles.railShell} onPointerEnter={event => { if (event.pointerType === "mouse") setHovered(true); }} onPointerLeave={() => setHovered(false)}>
+          {ready && !staticMotion && <button type="button" className={styles.pauseControl} aria-controls={railId} onFocus={() => setPaused(true)} onClick={() => setPaused(value => !value)}>{paused ? (nl ? "Afspelen" : "Play") : (nl ? "Pauzeren" : "Pause")}</button>}
         <div id={railId} ref={railRef} className={styles.viewport} role="region" aria-label={nl ? "Onze vier drankenpartners" : "Our four drinks partners"} aria-describedby={`${railId}-help`} tabIndex={0} onKeyDown={keyMove} onFocus={() => setPaused(true)} onPointerDown={() => setPaused(true)} onWheel={event => { if (event.shiftKey || Math.abs(event.deltaX) > Math.abs(event.deltaY)) setPaused(true); }}>
           <div className={styles.track}>
             <ul ref={groupRef} className={styles.group} role="list">{partners.map(partner => <li key={partner.file} className={styles.partner}>{card(partner)}</li>)}</ul>
             <div className={`${styles.group} ${styles.clone}`} aria-hidden="true" inert>{partners.map(partner => <div key={partner.file} className={styles.partner}>{card(partner, true)}</div>)}</div>
           </div>
         </div>
-        <div className={styles.controls}>
-          <button type="button" aria-controls={railId} aria-label={nl ? "Vorige drankenpartner" : "Previous drinks partner"} onClick={() => move(-1)} disabled={!ready}><span aria-hidden="true">←</span></button>
-          <button type="button" aria-controls={railId} onClick={() => setPaused(value => !value)} disabled={!ready || staticMotion}>{staticMotion ? (nl ? "Stilstaand" : "Still") : paused ? (nl ? "Afspelen" : "Play") : (nl ? "Pauzeren" : "Pause")}</button>
-          <button type="button" aria-controls={railId} aria-label={nl ? "Volgende drankenpartner" : "Next drinks partner"} onClick={() => move(1)} disabled={!ready}><span aria-hidden="true">→</span></button>
         </div>
         <div className={styles.bottom}>
           <p>{nl ? "Benieuwd wat er op de kaart staat?" : "Curious about our menu?"}</p>

@@ -110,8 +110,8 @@ export default function Home() {
       <div ref={heroScrollRef} className={styles.heroScroll} data-film-track data-unavailable="true" data-film-state="waiting" data-film-progress="0" data-film-complete="false">
       <section className={styles.hero} aria-label={lang === "nl" ? "Film van Shah Restaurant" : "Shah Restaurant film"}>
         <div className={styles.heroMedia}>
-          <HeroPoster alt={lang === "nl" ? "De entree en het terras van Shah Restaurant in Amsterdam-Noord" : "The entrance and terrace of Shah Restaurant in Amsterdam-Noord"} className={styles.heroImage} />
-          <HeroFilm trackRef={heroScrollRef} />
+          <HeroPoster lang={lang} alt={lang === "nl" ? "SHAH Restaurant - gevel en entree" : "SHAH Restaurant - façade and entrance"} className={styles.heroImage} />
+          <HeroFilm trackRef={heroScrollRef} lang={lang} />
         </div>
       </section>
 

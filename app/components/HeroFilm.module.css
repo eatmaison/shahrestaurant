@@ -3,3 +3,7 @@
 .film[data-ready="true"] { visibility: visible; opacity: 1; }
 .stage:has(.film[data-manual="true"]), .film[data-manual="true"] { pointer-events: auto; }
 @media (prefers-reduced-motion: reduce) { .film { display: none; transition: none; } }
+@media (max-width: 767px) and (max-aspect-ratio: 9/20) {
+  .film { object-fit: contain; }
+  .film[data-ready="true"] { background: #000; }
+}

@@ -22,15 +22,18 @@ import styles from "./header.module.css";
 type SubLink = { href: string; label: string };
 type NavLink = { href: string; label: string; children?: SubLink[] };
 
-function LanguageOption({ code, className }: { code: "nl" | "en"; className: string }) {
+const languageControlClass = "grid h-9 w-9 place-items-center rounded-full border border-slate-200 bg-white text-xs font-semibold text-slate-700 transition dark:border-white/10 dark:bg-white/5 dark:text-slate-200";
+
+function LanguageToggle() {
   const { lang, setLang } = useLang();
   const pathname = usePathname();
-  const label = code === "nl" ? "NL - Nederlands" : "EN - English";
-  if (!getLocalizedRoute(pathname)) return <button onClick={() => setLang(code)} className={className} aria-label={label} aria-pressed={lang === code}>{code.toUpperCase()}</button>;
-  return <a data-language-link href={localePath(pathname, code)} hrefLang={code === "nl" ? "nl-NL" : "en"} lang={code} className={className} aria-label={label} aria-current={lang === code ? "page" : undefined} onClick={event => {
+  const target = lang === "nl" ? "en" : "nl";
+  const label = lang === "nl" ? "Huidige taal: Nederlands. Wisselen naar Engels." : "Current language: English. Switch to Dutch.";
+  if (!getLocalizedRoute(pathname)) return <button type="button" data-language-toggle lang={lang} onClick={() => setLang(target)} className={languageControlClass} aria-label={label} title={label}>{lang.toUpperCase()}</button>;
+  return <a data-language-link data-language-toggle href={localePath(pathname, target)} hrefLang={target === "nl" ? "nl-NL" : "en"} lang={lang} className={languageControlClass} aria-label={label} title={label} onClick={event => {
     if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-    event.preventDefault(); setLang(code);
-  }}>{code.toUpperCase()}</a>;
+    event.preventDefault(); setLang(target);
+  }}>{lang.toUpperCase()}</a>;
 }
 
 export function Header() {
@@ -224,17 +227,8 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <div className="hidden items-center rounded-full border border-slate-200 bg-white p-0.5 text-xs font-bold dark:border-white/10 dark:bg-white/5 sm:flex">
-            <LanguageOption code="en"
-              className={`rounded-full px-2.5 py-1 transition ${
-                lang === "en" ? "bg-emerald-500 text-white" : "text-slate-500 dark:text-slate-400"
-              }`}
-            />
-            <LanguageOption code="nl"
-              className={`rounded-full px-2.5 py-1 transition ${
-                lang === "nl" ? "bg-emerald-500 text-white" : "text-slate-500 dark:text-slate-400"
-              }`}
-            />
+          <div className="hidden sm:block">
+            <LanguageToggle />
           </div>
 
           <button
@@ -350,17 +344,8 @@ export function Header() {
                 </Link>
               )
             )}
-            <div className="mt-2 flex items-center gap-2">
-              <LanguageOption code="en"
-                className={`flex-1 rounded-xl px-3 py-2 text-sm font-bold ${
-                  lang === "en" ? "bg-emerald-500 text-white" : "border border-slate-200 dark:border-white/10"
-                }`}
-              />
-              <LanguageOption code="nl"
-                className={`flex-1 rounded-xl px-3 py-2 text-sm font-bold ${
-                  lang === "nl" ? "bg-emerald-500 text-white" : "border border-slate-200 dark:border-white/10"
-                }`}
-              />
+            <div className="mt-2 flex sm:hidden">
+              <LanguageToggle />
             </div>
           </nav>
         </div>
