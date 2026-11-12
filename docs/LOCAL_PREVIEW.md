@@ -1,4 +1,10 @@
-# Local review workflow — 12 November 2026
+# Current local preview - 13 November 2026
+
+The homepage dish rows now have an 8 px left inset and an 8 px arrow inset, with space reserved between the price and arrow. The updated read-only preview remains http://localhost:3398/en (Dutch: `/`). Build `-T_rvpAlEyxNegUz9zyMe`, `.next-review-shah-home-padding-20261113`, source `a5bcac46051fd91a3b1b8c027e7a92890d53bb3626180501dc105ff9e58ef44a`; build and TypeScript passed with all 551 source inputs unchanged. Browser checks at 1147, 390 and 320 px verified the padding, 6 px price/arrow separation and no document overflow.
+
+Start or verify this followup with `node "$env:TEMP\shah-preview-20261111\start-shah-home-padding-main.cjs"`. It retains the read-only catalog and existing functionality. This followup has not been pushed to GitHub or deployed publicly.
+
+## Historical workspace baseline - 12 November 2026
 
 Open **http://localhost:3398/** (Dutch) or **http://localhost:3398/en** (English). The running read-only preview serves build **`6zD0ge5SdqAm0X_krXcdr`**, Webpack / Next.js16.2.10, `.next-review-shah-workspaces-mobile-20261112`. Frozen combined source SHA-256 is **`c932fd7a1cbe84c52ab2e1e3d2669b143efcf918c8d252a1322e95e441c4fb71`**,551 inputs, identical before/after the successful build and TypeScript check. All61 routes generated. [Exact build](workspace-build-2026-11-12.json), [input hashes](workspace-source-2026-11-12.json).
 

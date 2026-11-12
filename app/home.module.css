@@ -574,7 +574,8 @@
 .home .filters span { border-radius: 0; padding-inline: 14px; min-height: 48px; }
 .home .menuResults { min-height: 0; }
 .home .menuResults[aria-busy="true"] { min-height: 280px; }
-.home .dish { padding-block: 23px; transform: none; }
+.home .dish { padding-block: 23px; padding-inline: 8px 36px; transform: none; }
+.home .dishArrow { right: 8px; }
 .home .dish:hover { transform: none; background: var(--shah-soft); }
 .home .dishPhoto { border-radius: 2px; overflow: hidden; }
 .home .dishHeading { font-size: 27px; letter-spacing: -.01em; }

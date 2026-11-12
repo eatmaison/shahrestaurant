@@ -1,5 +1,7 @@
 # Phone preview on the local network
 
+13 November followup: the same http://192.168.0.122:3618/ address now serves padding build `-T_rvpAlEyxNegUz9zyMe`, with its exact HTML build identity checked. Current start command: `node "$env:TEMP\shah-phone-preview-20261111\launch-lan-nl-v2-detached.cjs" "$env:TEMP\shah-phone-preview-20261111\lan-config--T_rvpAlEyxNegUz9zyMe.json"`. The approved policy helper and network-security settings are unchanged. The detailed 12 November baseline checks below remain historical controls, rather than new physical-device tests.
+
 Open **http://192.168.0.122:3618/** on the phone, or **http://192.168.0.122:3618/en** for English. The phone must be on the router's same local network as this PC; guest Wi-Fi isolation or VPN LAN filtering may prevent access.
 
 The PC's physical Ethernet adapter has `192.168.0.122/24`; `10.2.0.2` belongs to ProtonVPN and is not the phone address. The listener binds only `192.168.0.122:3618` and accepts peers from `192.168.0.0/24`. Local-interface GETs of `/` and `/en` returned 200 with promoted build `6zD0ge5SdqAm0X_krXcdr`, source `c932fd7a1cbe84c52ab2e1e3d2669b143efcf918c8d252a1322e95e441c4fb71` (551 inputs).
