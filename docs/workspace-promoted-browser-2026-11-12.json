@@ -1,0 +1,143 @@
+{
+  "build": "6zD0ge5SdqAm0X_krXcdr",
+  "scope": "Fresh headless Chromium contexts on promoted loopback and LAN address; emulated mobile, not physical phone. Playback smoke, no performance score.",
+  "cases": [
+    {
+      "origin": "http://127.0.0.1:3398",
+      "lang": "nl",
+      "width": 1440,
+      "mediaRequests": [
+        "http://127.0.0.1:3398/brand/capcut-luxury-nl-v1/shah-luxury-capcut-desktop-nl-v1-web.mp4"
+      ],
+      "src": "blob:http://127.0.0.1:3398/4ddad068-3479-49b5-ae6c-0d33239560fc",
+      "source": "/brand/capcut-luxury-nl-v1/shah-luxury-capcut-desktop-nl-v1-web.mp4",
+      "time": 0.288435,
+      "muted": true,
+      "playsInline": true,
+      "readyState": 4,
+      "laterTime": 0.805497,
+      "advanced": true,
+      "overflow": 0
+    },
+    {
+      "origin": "http://127.0.0.1:3398",
+      "lang": "nl",
+      "width": 390,
+      "mediaRequests": [
+        "http://127.0.0.1:3398/brand/capcut-luxury-nl-v1/shah-luxury-capcut-mobile-nl-v1-web.mp4"
+      ],
+      "src": "blob:http://127.0.0.1:3398/259817dc-1dbb-4117-9059-78f878cd8f6a",
+      "source": "/brand/capcut-luxury-nl-v1/shah-luxury-capcut-mobile-nl-v1-web.mp4",
+      "time": 0.266224,
+      "muted": true,
+      "playsInline": true,
+      "readyState": 4,
+      "laterTime": 0.780285,
+      "advanced": true,
+      "overflow": 0
+    },
+    {
+      "origin": "http://127.0.0.1:3398",
+      "lang": "en",
+      "width": 1440,
+      "mediaRequests": [
+        "http://127.0.0.1:3398/brand/capcut-luxury-v3/shah-luxury-capcut-desktop-v3.mp4"
+      ],
+      "src": "blob:http://127.0.0.1:3398/d3ef797a-db35-4285-8540-d1411f494aaa",
+      "source": "/brand/capcut-luxury-v3/shah-luxury-capcut-desktop-v3.mp4",
+      "time": 0.270832,
+      "muted": true,
+      "playsInline": true,
+      "readyState": 4,
+      "laterTime": 0.781316,
+      "advanced": true,
+      "overflow": 0
+    },
+    {
+      "origin": "http://127.0.0.1:3398",
+      "lang": "en",
+      "width": 390,
+      "mediaRequests": [
+        "http://127.0.0.1:3398/brand/capcut-luxury-v3/shah-luxury-capcut-mobile-v2.mp4"
+      ],
+      "src": "blob:http://127.0.0.1:3398/4fe868db-be52-4f7a-b2de-bcb8c46dac04",
+      "source": "/brand/capcut-luxury-v3/shah-luxury-capcut-mobile-v2.mp4",
+      "time": 0.269755,
+      "muted": true,
+      "playsInline": true,
+      "readyState": 4,
+      "laterTime": 0.781819,
+      "advanced": true,
+      "overflow": 0
+    },
+    {
+      "origin": "http://192.168.0.122:3618",
+      "lang": "nl",
+      "width": 1440,
+      "mediaRequests": [
+        "http://192.168.0.122:3618/brand/capcut-luxury-nl-v1/shah-luxury-capcut-desktop-nl-v1-web.mp4"
+      ],
+      "src": "blob:http://192.168.0.122:3618/4f187abb-13d5-4418-a2fc-7e7527285adb",
+      "source": "/brand/capcut-luxury-nl-v1/shah-luxury-capcut-desktop-nl-v1-web.mp4",
+      "time": 0.269388,
+      "muted": true,
+      "playsInline": true,
+      "readyState": 4,
+      "laterTime": 0.774686,
+      "advanced": true,
+      "overflow": 0
+    },
+    {
+      "origin": "http://192.168.0.122:3618",
+      "lang": "nl",
+      "width": 390,
+      "mediaRequests": [
+        "http://192.168.0.122:3618/brand/capcut-luxury-nl-v1/shah-luxury-capcut-mobile-nl-v1-web.mp4"
+      ],
+      "src": "blob:http://192.168.0.122:3618/c51b2d14-8c99-436b-87e7-97908648dd2a",
+      "source": "/brand/capcut-luxury-nl-v1/shah-luxury-capcut-mobile-nl-v1-web.mp4",
+      "time": 0.275468,
+      "muted": true,
+      "playsInline": true,
+      "readyState": 4,
+      "laterTime": 0.782783,
+      "advanced": true,
+      "overflow": 0
+    },
+    {
+      "origin": "http://192.168.0.122:3618",
+      "lang": "en",
+      "width": 1440,
+      "mediaRequests": [
+        "http://192.168.0.122:3618/brand/capcut-luxury-v3/shah-luxury-capcut-desktop-v3.mp4"
+      ],
+      "src": "blob:http://192.168.0.122:3618/8ba3db56-caee-4fc8-b054-074aa0183254",
+      "source": "/brand/capcut-luxury-v3/shah-luxury-capcut-desktop-v3.mp4",
+      "time": 0.261248,
+      "muted": true,
+      "playsInline": true,
+      "readyState": 4,
+      "laterTime": 0.772912,
+      "advanced": true,
+      "overflow": 0
+    },
+    {
+      "origin": "http://192.168.0.122:3618",
+      "lang": "en",
+      "width": 390,
+      "mediaRequests": [
+        "http://192.168.0.122:3618/brand/capcut-luxury-v3/shah-luxury-capcut-mobile-v2.mp4"
+      ],
+      "src": "blob:http://192.168.0.122:3618/5bc0adb6-54ce-4258-9939-be18dacdf162",
+      "source": "/brand/capcut-luxury-v3/shah-luxury-capcut-mobile-v2.mp4",
+      "time": 0.278595,
+      "muted": true,
+      "playsInline": true,
+      "readyState": 4,
+      "laterTime": 0.783177,
+      "advanced": true,
+      "overflow": 0
+    }
+  ],
+  "completedAtUTC": "2026-11-12T11:28:48.723Z"
+}

@@ -1,0 +1,37 @@
+{
+  "atUTC": "2026-11-12T11:30:38.441Z",
+  "build": "6zD0ge5SdqAm0X_krXcdr",
+  "syntheticOnly": true,
+  "checks": [
+    {
+      "port": 3758,
+      "status": 405,
+      "writeBlocked": true
+    },
+    {
+      "port": 3768,
+      "status": 405,
+      "writeBlocked": true
+    },
+    {
+      "port": 3778,
+      "status": 405,
+      "writeBlocked": true
+    },
+    {
+      "port": 3788,
+      "status": 405,
+      "writeBlocked": true
+    },
+    {
+      "port": 3798,
+      "status": 405,
+      "writeBlocked": true
+    },
+    {
+      "port": 3808,
+      "status": 405,
+      "writeBlocked": true
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "beforeBuild": "LeEcnf-DNLnvemu4K58bc",
+  "afterBuild": "6zD0ge5SdqAm0X_krXcdr",
+  "afterSource": "c932fd7a1cbe84c52ab2e1e3d2669b143efcf918c8d252a1322e95e441c4fb71",
+  "changedSourceFiles": [
+    "app/components/Workspace.module.css"
+  ],
+  "purpose": "Apply existing narrow-screen order padding and party scroll margin to their literal DOM IDs rather than CSS-module-local IDs."
+}

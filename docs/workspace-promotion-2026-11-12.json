@@ -1,0 +1,33 @@
+{
+  "atUTC": "2026-11-12T11:29:07.364Z",
+  "build": "6zD0ge5SdqAm0X_krXcdr",
+  "source": "c932fd7a1cbe84c52ab2e1e3d2669b143efcf918c8d252a1322e95e441c4fb71",
+  "dist": ".next-review-shah-workspaces-mobile-20261112",
+  "inputs": 551,
+  "main": {
+    "url": "http://localhost:3398/",
+    "appPid": 57492,
+    "proxyPid": 58604,
+    "bind": "127.0.0.1",
+    "startCommand": "node \"$env:TEMP\\shah-preview-20261111\\start-shah-workspaces-mobile-main.cjs\""
+  },
+  "lan": {
+    "url": "http://192.168.0.122:3618/",
+    "pid": 44944,
+    "configSha256": "3e5052adf081fcd37ee2e6dfa20003d5896b923d6d148666e5181c02e3303423",
+    "publicOnly": true
+  },
+  "privateSynthetic": {
+    "pid": 50792,
+    "bind": "127.0.0.1",
+    "syntheticOnly": true,
+    "allApiWritesBlocked": true
+  },
+  "codeCommits": [
+    "cb599d4",
+    "8ca2093"
+  ],
+  "productionPublishing": false,
+  "productionMigration": false,
+  "firewallChanges": 0
+}

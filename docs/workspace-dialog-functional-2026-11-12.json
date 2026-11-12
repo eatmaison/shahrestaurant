@@ -1,0 +1,409 @@
+{
+  "build": "6zD0ge5SdqAm0X_krXcdr",
+  "syntheticOnly": true,
+  "modals": [
+    {
+      "width": 320,
+      "theme": "dark",
+      "kind": "manage",
+      "modal": true,
+      "title": " Restaurants & categories",
+      "overflow": 0,
+      "panel": {
+        "left": 16,
+        "right": 304,
+        "width": 288
+      },
+      "bodyLock": "hidden",
+      "focusInside": true,
+      "axe": []
+    },
+    {
+      "width": 320,
+      "theme": "dark",
+      "kind": "edit",
+      "modal": true,
+      "title": " Edit product",
+      "overflow": 0,
+      "panel": {
+        "left": 16,
+        "right": 304,
+        "width": 288
+      },
+      "bodyLock": "hidden",
+      "focusInside": true,
+      "axe": []
+    },
+    {
+      "width": 320,
+      "theme": "dark",
+      "kind": "delete",
+      "modal": true,
+      "title": "Delete product?",
+      "overflow": 0,
+      "panel": {
+        "left": 16,
+        "right": 304,
+        "width": 288
+      },
+      "bodyLock": "hidden",
+      "focusInside": true,
+      "axe": []
+    },
+    {
+      "width": 320,
+      "theme": "dark",
+      "kind": "customer",
+      "modal": true,
+      "title": "Synthetic customer 1",
+      "overflow": 0,
+      "panel": {
+        "left": 16,
+        "right": 304,
+        "width": 288
+      },
+      "bodyLock": "hidden",
+      "focusInside": true,
+      "axe": []
+    },
+    {
+      "width": 320,
+      "theme": "light",
+      "kind": "manage",
+      "modal": true,
+      "title": " Restaurants & categories",
+      "overflow": 0,
+      "panel": {
+        "left": 16,
+        "right": 304,
+        "width": 288
+      },
+      "bodyLock": "hidden",
+      "focusInside": true,
+      "axe": []
+    },
+    {
+      "width": 320,
+      "theme": "light",
+      "kind": "edit",
+      "modal": true,
+      "title": " Edit product",
+      "overflow": 0,
+      "panel": {
+        "left": 16,
+        "right": 304,
+        "width": 288
+      },
+      "bodyLock": "hidden",
+      "focusInside": true,
+      "axe": []
+    },
+    {
+      "width": 320,
+      "theme": "light",
+      "kind": "delete",
+      "modal": true,
+      "title": "Delete product?",
+      "overflow": 0,
+      "panel": {
+        "left": 16,
+        "right": 304,
+        "width": 288
+      },
+      "bodyLock": "hidden",
+      "focusInside": true,
+      "axe": []
+    },
+    {
+      "width": 320,
+      "theme": "light",
+      "kind": "customer",
+      "modal": true,
+      "title": "Synthetic customer 1",
+      "overflow": 0,
+      "panel": {
+        "left": 16,
+        "right": 304,
+        "width": 288
+      },
+      "bodyLock": "hidden",
+      "focusInside": true,
+      "axe": []
+    },
+    {
+      "width": 1440,
+      "theme": "dark",
+      "kind": "manage",
+      "modal": true,
+      "title": " Restaurants & categories",
+      "overflow": 0,
+      "panel": {
+        "left": 464,
+        "right": 976,
+        "width": 512
+      },
+      "bodyLock": "hidden",
+      "focusInside": true,
+      "axe": []
+    },
+    {
+      "width": 1440,
+      "theme": "dark",
+      "kind": "edit",
+      "modal": true,
+      "title": " Edit product",
+      "overflow": 0,
+      "panel": {
+        "left": 496,
+        "right": 944,
+        "width": 448
+      },
+      "bodyLock": "hidden",
+      "focusInside": true,
+      "axe": []
+    },
+    {
+      "width": 1440,
+      "theme": "dark",
+      "kind": "delete",
+      "modal": true,
+      "title": "Delete product?",
+      "overflow": 0,
+      "panel": {
+        "left": 528,
+        "right": 912,
+        "width": 384
+      },
+      "bodyLock": "hidden",
+      "focusInside": true,
+      "axe": []
+    },
+    {
+      "width": 1440,
+      "theme": "dark",
+      "kind": "customer",
+      "modal": true,
+      "title": "Synthetic customer 1",
+      "overflow": 0,
+      "panel": {
+        "left": 384,
+        "right": 1056,
+        "width": 672
+      },
+      "bodyLock": "hidden",
+      "focusInside": true,
+      "axe": []
+    },
+    {
+      "width": 1440,
+      "theme": "light",
+      "kind": "manage",
+      "modal": true,
+      "title": " Restaurants & categories",
+      "overflow": 0,
+      "panel": {
+        "left": 464,
+        "right": 976,
+        "width": 512
+      },
+      "bodyLock": "hidden",
+      "focusInside": true,
+      "axe": []
+    },
+    {
+      "width": 1440,
+      "theme": "light",
+      "kind": "edit",
+      "modal": true,
+      "title": " Edit product",
+      "overflow": 0,
+      "panel": {
+        "left": 496,
+        "right": 944,
+        "width": 448
+      },
+      "bodyLock": "hidden",
+      "focusInside": true,
+      "axe": []
+    },
+    {
+      "width": 1440,
+      "theme": "light",
+      "kind": "delete",
+      "modal": true,
+      "title": "Delete product?",
+      "overflow": 0,
+      "panel": {
+        "left": 528,
+        "right": 912,
+        "width": 384
+      },
+      "bodyLock": "hidden",
+      "focusInside": true,
+      "axe": []
+    },
+    {
+      "width": 1440,
+      "theme": "light",
+      "kind": "customer",
+      "modal": true,
+      "title": "Synthetic customer 1",
+      "overflow": 0,
+      "panel": {
+        "left": 384,
+        "right": 1056,
+        "width": 672
+      },
+      "bodyLock": "hidden",
+      "focusInside": true,
+      "axe": []
+    }
+  ],
+  "account": [
+    {
+      "width": 320,
+      "rating": {
+        "overflow": 0,
+        "buttons": [
+          {
+            "w": 48,
+            "h": 48,
+            "top": 2391.71875
+          },
+          {
+            "w": 48,
+            "h": 48,
+            "top": 2391.71875
+          },
+          {
+            "w": 48,
+            "h": 48,
+            "top": 2391.71875
+          },
+          {
+            "w": 48,
+            "h": 48,
+            "top": 2391.71875
+          },
+          {
+            "w": 48,
+            "h": 48,
+            "top": 2391.71875
+          }
+        ]
+      }
+    },
+    {
+      "width": 390,
+      "rating": {
+        "overflow": 0,
+        "buttons": [
+          {
+            "w": 48,
+            "h": 48,
+            "top": 2157.84375
+          },
+          {
+            "w": 48,
+            "h": 48,
+            "top": 2157.84375
+          },
+          {
+            "w": 48,
+            "h": 48,
+            "top": 2157.84375
+          },
+          {
+            "w": 48,
+            "h": 48,
+            "top": 2157.84375
+          },
+          {
+            "w": 48,
+            "h": 48,
+            "top": 2157.84375
+          }
+        ]
+      }
+    },
+    {
+      "width": 768,
+      "rating": {
+        "overflow": 0,
+        "buttons": [
+          {
+            "w": 48,
+            "h": 48,
+            "top": 1951.296875
+          },
+          {
+            "w": 48,
+            "h": 48,
+            "top": 1951.296875
+          },
+          {
+            "w": 48,
+            "h": 48,
+            "top": 1951.296875
+          },
+          {
+            "w": 48,
+            "h": 48,
+            "top": 1951.296875
+          },
+          {
+            "w": 48,
+            "h": 48,
+            "top": 1951.296875
+          }
+        ]
+      }
+    },
+    {
+      "width": 1440,
+      "rating": {
+        "overflow": 0,
+        "buttons": [
+          {
+            "w": 48,
+            "h": 48,
+            "top": 1897.203125
+          },
+          {
+            "w": 48,
+            "h": 48,
+            "top": 1897.203125
+          },
+          {
+            "w": 48,
+            "h": 48,
+            "top": 1897.203125
+          },
+          {
+            "w": 48,
+            "h": 48,
+            "top": 1897.203125
+          },
+          {
+            "w": 48,
+            "h": 48,
+            "top": 1897.203125
+          }
+        ]
+      }
+    }
+  ],
+  "checks": [
+    {
+      "port": 3768,
+      "denied": true,
+      "text": "Admins onlyYou need an admin account to view this page.Sign in"
+    },
+    {
+      "port": 3788,
+      "denied": true,
+      "text": "Admins onlyYou need an admin account to view this page.Sign in"
+    }
+  ],
+  "completedAtUTC": "2026-11-12T11:26:30.819Z"
+}

@@ -1,20 +1,22 @@
 # Local review workflow — 12 November 2026
 
-Open **http://localhost:3398/** (Dutch) or **http://localhost:3398/en** (English). The running read-only preview serves build **`BUodo1etC1wSEnAZD_-52`**, Webpack / Next.js16.2.10, `.next-review-shah-grid-perf-20261112`. Frozen combined source SHA-256 is **`68e753609f8298de7db2bae4dae3dfcc0fd3d0898c4ff300651c44d4ef39927e`**,549 inputs, identical before/after the successful build and TypeScript check. All61 routes generated. [Exact build](cinematic-grid-build-2026-11-12.json), [input hashes](cinematic-grid-source-2026-11-12.json).
+Open **http://localhost:3398/** (Dutch) or **http://localhost:3398/en** (English). The running read-only preview serves build **`6zD0ge5SdqAm0X_krXcdr`**, Webpack / Next.js16.2.10, `.next-review-shah-workspaces-mobile-20261112`. Frozen combined source SHA-256 is **`c932fd7a1cbe84c52ab2e1e3d2669b143efcf918c8d252a1322e95e441c4fb71`**,551 inputs, identical before/after the successful build and TypeScript check. All61 routes generated. [Exact build](workspace-build-2026-11-12.json), [input hashes](workspace-source-2026-11-12.json).
 
-Main promotion was verified at2026-11-12T02:19:52Z after candidate HTTP50,24-route payload, feature checks and computed-style equivalence. The app listens only on127.0.0.1:3397 (PID59252), the read-only proxy on127.0.0.1:3398 (PID59076). PID values are a checkpoint, not permission to stop a reused process. The preserved candidate http://localhost:3728/ serves the same artifact and catalog fixture.
+Account/admin workspaces and the wider menu sidebar are included. [Changes, private synthetic previews and validation limits](WORKSPACE-UI-VERIFICATION.md).
+
+Main promotion was verified at2026-11-12T11:28:11.012Z after 50 candidate HTTP checks, 24-route payload accounting, 40 workspace/browser cases and 16 dialog cases. Fresh post-promotion HTTP, LAN-policy and eight playback cases also passed. The app listens only on127.0.0.1:3397 (PID57492), the read-only proxy on127.0.0.1:3398 (PID58604). PID values are a checkpoint, not permission to stop a reused process. The preserved candidate http://localhost:3899/ serves the same artifact and catalog fixture.
 
 ## Start or verify this exact preview
 
 From the repository in PowerShell:
 
 ```powershell
-node "$env:TEMP\shah-preview-20261111\start-shah-grid-perf-main.cjs"
+node "$env:TEMP\shah-preview-20261111\start-shah-workspaces-mobile-main.cjs"
 ```
 
 This checks the frozen build, public/config bytes, runtime-helper hashes and catalog fixture. If the exact preview already runs, it prints a verified URL and exits. It does not rebuild, stop unknown processes, publish or submit transactions. Both ports3397/3398 must be free for a new start; do not stop arbitrary processes to free them.
 
-Frozen runtime guards: `start-shah-grid-perf-runtimes.cjs` SHA256 `774b7fd3aaf3dd991348131d70c94384e08f36bfd5efb91e2946f025759b5e46`, `shah-grid-perf-preview-proxy.cjs` `f4f75cc5995b57cfe2670d70143af4dba220d372028af4e6523d191c482b6581`, catalog transport `b8dfbe7e08522fdd07f77e835ffbe3efc22bfb805b6ae5ba3fbce8724f9fdb9a`.
+Frozen runtime guards: `start-shah-workspaces-mobile-runtimes.cjs` SHA256 `8ab4bebd9f65d3aee4fccc1e1bef422eca14041b8f43faaea398d35b471d29d1`, `shah-workspaces-mobile-preview-proxy.cjs` `7d002c61295417162749b0643c16bed4e46ce2365ab2cb76769209bc25ad99ce`, catalog transport `b8dfbe7e08522fdd07f77e835ffbe3efc22bfb805b6ae5ba3fbce8724f9fdb9a`.
 
 The helpers, fixture and raw QA are local to this PC in Temp. Preserve them together with the build and its `.source.json`/`.tsconfig.json` files. Their loss requires reconstructing a guarded review; this is not a portable deployment command. No environment file or production database was changed.
 

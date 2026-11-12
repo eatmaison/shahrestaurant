@@ -1,0 +1,869 @@
+{
+  "scope": "Sidebar control Preserved BUodo3728 versus promoted3398, build 6zD0ge5SdqAm0X_krXcdr; local read-only catalog.",
+  "cases": [
+    {
+      "which": "before",
+      "width": 1625,
+      "sidebar": 180,
+      "cart": 280,
+      "overflow": 0,
+      "labels": [
+        {
+          "text": "Soups",
+          "ellipsis": "ellipsis",
+          "whiteSpace": "nowrap",
+          "scrollWidth": 39,
+          "clientWidth": 39,
+          "insideButton": true,
+          "height": 20
+        },
+        {
+          "text": "Vegetarian Starters",
+          "ellipsis": "ellipsis",
+          "whiteSpace": "nowrap",
+          "scrollWidth": 122,
+          "clientWidth": 100,
+          "insideButton": false,
+          "height": 20
+        },
+        {
+          "text": "Tandoori Starters",
+          "ellipsis": "ellipsis",
+          "whiteSpace": "nowrap",
+          "scrollWidth": 108,
+          "clientWidth": 100,
+          "insideButton": true,
+          "height": 20
+        },
+        {
+          "text": "Tandoori Mains",
+          "ellipsis": "ellipsis",
+          "whiteSpace": "nowrap",
+          "scrollWidth": 96,
+          "clientWidth": 96,
+          "insideButton": true,
+          "height": 20
+        },
+        {
+          "text": "Curries",
+          "ellipsis": "ellipsis",
+          "whiteSpace": "nowrap",
+          "scrollWidth": 46,
+          "clientWidth": 46,
+          "insideButton": true,
+          "height": 20
+        },
+        {
+          "text": "Vegetarian Mains",
+          "ellipsis": "ellipsis",
+          "whiteSpace": "nowrap",
+          "scrollWidth": 110,
+          "clientWidth": 100,
+          "insideButton": true,
+          "height": 20
+        },
+        {
+          "text": "Biryani",
+          "ellipsis": "ellipsis",
+          "whiteSpace": "nowrap",
+          "scrollWidth": 44,
+          "clientWidth": 44,
+          "insideButton": true,
+          "height": 20
+        },
+        {
+          "text": "Sides",
+          "ellipsis": "ellipsis",
+          "whiteSpace": "nowrap",
+          "scrollWidth": 35,
+          "clientWidth": 35,
+          "insideButton": true,
+          "height": 20
+        },
+        {
+          "text": "Bread",
+          "ellipsis": "ellipsis",
+          "whiteSpace": "nowrap",
+          "scrollWidth": 38,
+          "clientWidth": 38,
+          "insideButton": true,
+          "height": 20
+        },
+        {
+          "text": "Desserts",
+          "ellipsis": "ellipsis",
+          "whiteSpace": "nowrap",
+          "scrollWidth": 54,
+          "clientWidth": 54,
+          "insideButton": true,
+          "height": 20
+        },
+        {
+          "text": "Drinks",
+          "ellipsis": "ellipsis",
+          "whiteSpace": "nowrap",
+          "scrollWidth": 41,
+          "clientWidth": 41,
+          "insideButton": true,
+          "height": 20
+        }
+      ]
+    },
+    {
+      "which": "after",
+      "width": 1625,
+      "sidebar": 240,
+      "cart": 280,
+      "overflow": 0,
+      "labels": [
+        {
+          "text": "Soups",
+          "ellipsis": "clip",
+          "whiteSpace": "normal",
+          "scrollWidth": 39,
+          "clientWidth": 39,
+          "insideButton": true,
+          "height": 20.296875
+        },
+        {
+          "text": "Vegetarian Starters",
+          "ellipsis": "clip",
+          "whiteSpace": "normal",
+          "scrollWidth": 122,
+          "clientWidth": 122,
+          "insideButton": true,
+          "height": 20.296875
+        },
+        {
+          "text": "Tandoori Starters",
+          "ellipsis": "clip",
+          "whiteSpace": "normal",
+          "scrollWidth": 108,
+          "clientWidth": 108,
+          "insideButton": true,
+          "height": 20.296875
+        },
+        {
+          "text": "Tandoori Mains",
+          "ellipsis": "clip",
+          "whiteSpace": "normal",
+          "scrollWidth": 96,
+          "clientWidth": 96,
+          "insideButton": true,
+          "height": 20.296875
+        },
+        {
+          "text": "Curries",
+          "ellipsis": "clip",
+          "whiteSpace": "normal",
+          "scrollWidth": 46,
+          "clientWidth": 46,
+          "insideButton": true,
+          "height": 20.296875
+        },
+        {
+          "text": "Vegetarian Mains",
+          "ellipsis": "clip",
+          "whiteSpace": "normal",
+          "scrollWidth": 110,
+          "clientWidth": 110,
+          "insideButton": true,
+          "height": 20.296875
+        },
+        {
+          "text": "Biryani",
+          "ellipsis": "clip",
+          "whiteSpace": "normal",
+          "scrollWidth": 44,
+          "clientWidth": 44,
+          "insideButton": true,
+          "height": 20.296875
+        },
+        {
+          "text": "Sides",
+          "ellipsis": "clip",
+          "whiteSpace": "normal",
+          "scrollWidth": 35,
+          "clientWidth": 35,
+          "insideButton": true,
+          "height": 20.296875
+        },
+        {
+          "text": "Bread",
+          "ellipsis": "clip",
+          "whiteSpace": "normal",
+          "scrollWidth": 38,
+          "clientWidth": 38,
+          "insideButton": true,
+          "height": 20.296875
+        },
+        {
+          "text": "Desserts",
+          "ellipsis": "clip",
+          "whiteSpace": "normal",
+          "scrollWidth": 54,
+          "clientWidth": 54,
+          "insideButton": true,
+          "height": 20.296875
+        },
+        {
+          "text": "Drinks",
+          "ellipsis": "clip",
+          "whiteSpace": "normal",
+          "scrollWidth": 41,
+          "clientWidth": 41,
+          "insideButton": true,
+          "height": 20.296875
+        }
+      ]
+    },
+    {
+      "which": "before",
+      "width": 1280,
+      "sidebar": 180,
+      "cart": 280,
+      "overflow": 0,
+      "labels": [
+        {
+          "text": "Soups",
+          "ellipsis": "ellipsis",
+          "whiteSpace": "nowrap",
+          "scrollWidth": 39,
+          "clientWidth": 39,
+          "insideButton": true,
+          "height": 20
+        },
+        {
+          "text": "Vegetarian Starters",
+          "ellipsis": "ellipsis",
+          "whiteSpace": "nowrap",
+          "scrollWidth": 122,
+          "clientWidth": 100,
+          "insideButton": false,
+          "height": 20
+        },
+        {
+          "text": "Tandoori Starters",
+          "ellipsis": "ellipsis",
+          "whiteSpace": "nowrap",
+          "scrollWidth": 108,
+          "clientWidth": 100,
+          "insideButton": true,
+          "height": 20
+        },
+        {
+          "text": "Tandoori Mains",
+          "ellipsis": "ellipsis",
+          "whiteSpace": "nowrap",
+          "scrollWidth": 96,
+          "clientWidth": 96,
+          "insideButton": true,
+          "height": 20
+        },
+        {
+          "text": "Curries",
+          "ellipsis": "ellipsis",
+          "whiteSpace": "nowrap",
+          "scrollWidth": 46,
+          "clientWidth": 46,
+          "insideButton": true,
+          "height": 20
+        },
+        {
+          "text": "Vegetarian Mains",
+          "ellipsis": "ellipsis",
+          "whiteSpace": "nowrap",
+          "scrollWidth": 110,
+          "clientWidth": 100,
+          "insideButton": true,
+          "height": 20
+        },
+        {
+          "text": "Biryani",
+          "ellipsis": "ellipsis",
+          "whiteSpace": "nowrap",
+          "scrollWidth": 44,
+          "clientWidth": 44,
+          "insideButton": true,
+          "height": 20
+        },
+        {
+          "text": "Sides",
+          "ellipsis": "ellipsis",
+          "whiteSpace": "nowrap",
+          "scrollWidth": 35,
+          "clientWidth": 35,
+          "insideButton": true,
+          "height": 20
+        },
+        {
+          "text": "Bread",
+          "ellipsis": "ellipsis",
+          "whiteSpace": "nowrap",
+          "scrollWidth": 38,
+          "clientWidth": 38,
+          "insideButton": true,
+          "height": 20
+        },
+        {
+          "text": "Desserts",
+          "ellipsis": "ellipsis",
+          "whiteSpace": "nowrap",
+          "scrollWidth": 54,
+          "clientWidth": 54,
+          "insideButton": true,
+          "height": 20
+        },
+        {
+          "text": "Drinks",
+          "ellipsis": "ellipsis",
+          "whiteSpace": "nowrap",
+          "scrollWidth": 41,
+          "clientWidth": 41,
+          "insideButton": true,
+          "height": 20
+        }
+      ]
+    },
+    {
+      "which": "after",
+      "width": 1280,
+      "sidebar": 240,
+      "cart": 280,
+      "overflow": 0,
+      "labels": [
+        {
+          "text": "Soups",
+          "ellipsis": "clip",
+          "whiteSpace": "normal",
+          "scrollWidth": 39,
+          "clientWidth": 39,
+          "insideButton": true,
+          "height": 20.296875
+        },
+        {
+          "text": "Vegetarian Starters",
+          "ellipsis": "clip",
+          "whiteSpace": "normal",
+          "scrollWidth": 122,
+          "clientWidth": 122,
+          "insideButton": true,
+          "height": 20.296875
+        },
+        {
+          "text": "Tandoori Starters",
+          "ellipsis": "clip",
+          "whiteSpace": "normal",
+          "scrollWidth": 108,
+          "clientWidth": 108,
+          "insideButton": true,
+          "height": 20.296875
+        },
+        {
+          "text": "Tandoori Mains",
+          "ellipsis": "clip",
+          "whiteSpace": "normal",
+          "scrollWidth": 96,
+          "clientWidth": 96,
+          "insideButton": true,
+          "height": 20.296875
+        },
+        {
+          "text": "Curries",
+          "ellipsis": "clip",
+          "whiteSpace": "normal",
+          "scrollWidth": 46,
+          "clientWidth": 46,
+          "insideButton": true,
+          "height": 20.296875
+        },
+        {
+          "text": "Vegetarian Mains",
+          "ellipsis": "clip",
+          "whiteSpace": "normal",
+          "scrollWidth": 110,
+          "clientWidth": 110,
+          "insideButton": true,
+          "height": 20.296875
+        },
+        {
+          "text": "Biryani",
+          "ellipsis": "clip",
+          "whiteSpace": "normal",
+          "scrollWidth": 44,
+          "clientWidth": 44,
+          "insideButton": true,
+          "height": 20.296875
+        },
+        {
+          "text": "Sides",
+          "ellipsis": "clip",
+          "whiteSpace": "normal",
+          "scrollWidth": 35,
+          "clientWidth": 35,
+          "insideButton": true,
+          "height": 20.296875
+        },
+        {
+          "text": "Bread",
+          "ellipsis": "clip",
+          "whiteSpace": "normal",
+          "scrollWidth": 38,
+          "clientWidth": 38,
+          "insideButton": true,
+          "height": 20.296875
+        },
+        {
+          "text": "Desserts",
+          "ellipsis": "clip",
+          "whiteSpace": "normal",
+          "scrollWidth": 54,
+          "clientWidth": 54,
+          "insideButton": true,
+          "height": 20.296875
+        },
+        {
+          "text": "Drinks",
+          "ellipsis": "clip",
+          "whiteSpace": "normal",
+          "scrollWidth": 41,
+          "clientWidth": 41,
+          "insideButton": true,
+          "height": 20.296875
+        }
+      ]
+    },
+    {
+      "which": "before",
+      "width": 1024,
+      "sidebar": 180,
+      "cart": 280,
+      "overflow": 0,
+      "labels": [
+        {
+          "text": "Soups",
+          "ellipsis": "ellipsis",
+          "whiteSpace": "nowrap",
+          "scrollWidth": 39,
+          "clientWidth": 39,
+          "insideButton": true,
+          "height": 20
+        },
+        {
+          "text": "Vegetarian Starters",
+          "ellipsis": "ellipsis",
+          "whiteSpace": "nowrap",
+          "scrollWidth": 122,
+          "clientWidth": 100,
+          "insideButton": false,
+          "height": 20
+        },
+        {
+          "text": "Tandoori Starters",
+          "ellipsis": "ellipsis",
+          "whiteSpace": "nowrap",
+          "scrollWidth": 108,
+          "clientWidth": 100,
+          "insideButton": true,
+          "height": 20
+        },
+        {
+          "text": "Tandoori Mains",
+          "ellipsis": "ellipsis",
+          "whiteSpace": "nowrap",
+          "scrollWidth": 96,
+          "clientWidth": 96,
+          "insideButton": true,
+          "height": 20
+        },
+        {
+          "text": "Curries",
+          "ellipsis": "ellipsis",
+          "whiteSpace": "nowrap",
+          "scrollWidth": 46,
+          "clientWidth": 46,
+          "insideButton": true,
+          "height": 20
+        },
+        {
+          "text": "Vegetarian Mains",
+          "ellipsis": "ellipsis",
+          "whiteSpace": "nowrap",
+          "scrollWidth": 110,
+          "clientWidth": 100,
+          "insideButton": true,
+          "height": 20
+        },
+        {
+          "text": "Biryani",
+          "ellipsis": "ellipsis",
+          "whiteSpace": "nowrap",
+          "scrollWidth": 44,
+          "clientWidth": 44,
+          "insideButton": true,
+          "height": 20
+        },
+        {
+          "text": "Sides",
+          "ellipsis": "ellipsis",
+          "whiteSpace": "nowrap",
+          "scrollWidth": 35,
+          "clientWidth": 35,
+          "insideButton": true,
+          "height": 20
+        },
+        {
+          "text": "Bread",
+          "ellipsis": "ellipsis",
+          "whiteSpace": "nowrap",
+          "scrollWidth": 38,
+          "clientWidth": 38,
+          "insideButton": true,
+          "height": 20
+        },
+        {
+          "text": "Desserts",
+          "ellipsis": "ellipsis",
+          "whiteSpace": "nowrap",
+          "scrollWidth": 54,
+          "clientWidth": 54,
+          "insideButton": true,
+          "height": 20
+        },
+        {
+          "text": "Drinks",
+          "ellipsis": "ellipsis",
+          "whiteSpace": "nowrap",
+          "scrollWidth": 41,
+          "clientWidth": 41,
+          "insideButton": true,
+          "height": 20
+        }
+      ]
+    },
+    {
+      "which": "after",
+      "width": 1024,
+      "sidebar": 220,
+      "cart": 280,
+      "overflow": 0,
+      "labels": [
+        {
+          "text": "Soups",
+          "ellipsis": "clip",
+          "whiteSpace": "normal",
+          "scrollWidth": 39,
+          "clientWidth": 39,
+          "insideButton": true,
+          "height": 20.296875
+        },
+        {
+          "text": "Vegetarian Starters",
+          "ellipsis": "clip",
+          "whiteSpace": "normal",
+          "scrollWidth": 122,
+          "clientWidth": 122,
+          "insideButton": true,
+          "height": 20.296875
+        },
+        {
+          "text": "Tandoori Starters",
+          "ellipsis": "clip",
+          "whiteSpace": "normal",
+          "scrollWidth": 108,
+          "clientWidth": 108,
+          "insideButton": true,
+          "height": 20.296875
+        },
+        {
+          "text": "Tandoori Mains",
+          "ellipsis": "clip",
+          "whiteSpace": "normal",
+          "scrollWidth": 96,
+          "clientWidth": 96,
+          "insideButton": true,
+          "height": 20.296875
+        },
+        {
+          "text": "Curries",
+          "ellipsis": "clip",
+          "whiteSpace": "normal",
+          "scrollWidth": 46,
+          "clientWidth": 46,
+          "insideButton": true,
+          "height": 20.296875
+        },
+        {
+          "text": "Vegetarian Mains",
+          "ellipsis": "clip",
+          "whiteSpace": "normal",
+          "scrollWidth": 110,
+          "clientWidth": 110,
+          "insideButton": true,
+          "height": 20.296875
+        },
+        {
+          "text": "Biryani",
+          "ellipsis": "clip",
+          "whiteSpace": "normal",
+          "scrollWidth": 44,
+          "clientWidth": 44,
+          "insideButton": true,
+          "height": 20.296875
+        },
+        {
+          "text": "Sides",
+          "ellipsis": "clip",
+          "whiteSpace": "normal",
+          "scrollWidth": 35,
+          "clientWidth": 35,
+          "insideButton": true,
+          "height": 20.296875
+        },
+        {
+          "text": "Bread",
+          "ellipsis": "clip",
+          "whiteSpace": "normal",
+          "scrollWidth": 38,
+          "clientWidth": 38,
+          "insideButton": true,
+          "height": 20.296875
+        },
+        {
+          "text": "Desserts",
+          "ellipsis": "clip",
+          "whiteSpace": "normal",
+          "scrollWidth": 54,
+          "clientWidth": 54,
+          "insideButton": true,
+          "height": 20.296875
+        },
+        {
+          "text": "Drinks",
+          "ellipsis": "clip",
+          "whiteSpace": "normal",
+          "scrollWidth": 41,
+          "clientWidth": 41,
+          "insideButton": true,
+          "height": 20.296875
+        }
+      ]
+    },
+    {
+      "which": "before",
+      "width": 390,
+      "sidebar": 0,
+      "cart": 0,
+      "overflow": 0,
+      "labels": [
+        {
+          "text": "Soups",
+          "ellipsis": "ellipsis",
+          "whiteSpace": "nowrap",
+          "scrollWidth": 0,
+          "clientWidth": 0,
+          "insideButton": true,
+          "height": 0
+        },
+        {
+          "text": "Vegetarian Starters",
+          "ellipsis": "ellipsis",
+          "whiteSpace": "nowrap",
+          "scrollWidth": 0,
+          "clientWidth": 0,
+          "insideButton": true,
+          "height": 0
+        },
+        {
+          "text": "Tandoori Starters",
+          "ellipsis": "ellipsis",
+          "whiteSpace": "nowrap",
+          "scrollWidth": 0,
+          "clientWidth": 0,
+          "insideButton": true,
+          "height": 0
+        },
+        {
+          "text": "Tandoori Mains",
+          "ellipsis": "ellipsis",
+          "whiteSpace": "nowrap",
+          "scrollWidth": 0,
+          "clientWidth": 0,
+          "insideButton": true,
+          "height": 0
+        },
+        {
+          "text": "Curries",
+          "ellipsis": "ellipsis",
+          "whiteSpace": "nowrap",
+          "scrollWidth": 0,
+          "clientWidth": 0,
+          "insideButton": true,
+          "height": 0
+        },
+        {
+          "text": "Vegetarian Mains",
+          "ellipsis": "ellipsis",
+          "whiteSpace": "nowrap",
+          "scrollWidth": 0,
+          "clientWidth": 0,
+          "insideButton": true,
+          "height": 0
+        },
+        {
+          "text": "Biryani",
+          "ellipsis": "ellipsis",
+          "whiteSpace": "nowrap",
+          "scrollWidth": 0,
+          "clientWidth": 0,
+          "insideButton": true,
+          "height": 0
+        },
+        {
+          "text": "Sides",
+          "ellipsis": "ellipsis",
+          "whiteSpace": "nowrap",
+          "scrollWidth": 0,
+          "clientWidth": 0,
+          "insideButton": true,
+          "height": 0
+        },
+        {
+          "text": "Bread",
+          "ellipsis": "ellipsis",
+          "whiteSpace": "nowrap",
+          "scrollWidth": 0,
+          "clientWidth": 0,
+          "insideButton": true,
+          "height": 0
+        },
+        {
+          "text": "Desserts",
+          "ellipsis": "ellipsis",
+          "whiteSpace": "nowrap",
+          "scrollWidth": 0,
+          "clientWidth": 0,
+          "insideButton": true,
+          "height": 0
+        },
+        {
+          "text": "Drinks",
+          "ellipsis": "ellipsis",
+          "whiteSpace": "nowrap",
+          "scrollWidth": 0,
+          "clientWidth": 0,
+          "insideButton": true,
+          "height": 0
+        }
+      ]
+    },
+    {
+      "which": "after",
+      "width": 390,
+      "sidebar": 0,
+      "cart": 0,
+      "overflow": 0,
+      "labels": [
+        {
+          "text": "Soups",
+          "ellipsis": "clip",
+          "whiteSpace": "normal",
+          "scrollWidth": 0,
+          "clientWidth": 0,
+          "insideButton": true,
+          "height": 0
+        },
+        {
+          "text": "Vegetarian Starters",
+          "ellipsis": "clip",
+          "whiteSpace": "normal",
+          "scrollWidth": 0,
+          "clientWidth": 0,
+          "insideButton": true,
+          "height": 0
+        },
+        {
+          "text": "Tandoori Starters",
+          "ellipsis": "clip",
+          "whiteSpace": "normal",
+          "scrollWidth": 0,
+          "clientWidth": 0,
+          "insideButton": true,
+          "height": 0
+        },
+        {
+          "text": "Tandoori Mains",
+          "ellipsis": "clip",
+          "whiteSpace": "normal",
+          "scrollWidth": 0,
+          "clientWidth": 0,
+          "insideButton": true,
+          "height": 0
+        },
+        {
+          "text": "Curries",
+          "ellipsis": "clip",
+          "whiteSpace": "normal",
+          "scrollWidth": 0,
+          "clientWidth": 0,
+          "insideButton": true,
+          "height": 0
+        },
+        {
+          "text": "Vegetarian Mains",
+          "ellipsis": "clip",
+          "whiteSpace": "normal",
+          "scrollWidth": 0,
+          "clientWidth": 0,
+          "insideButton": true,
+          "height": 0
+        },
+        {
+          "text": "Biryani",
+          "ellipsis": "clip",
+          "whiteSpace": "normal",
+          "scrollWidth": 0,
+          "clientWidth": 0,
+          "insideButton": true,
+          "height": 0
+        },
+        {
+          "text": "Sides",
+          "ellipsis": "clip",
+          "whiteSpace": "normal",
+          "scrollWidth": 0,
+          "clientWidth": 0,
+          "insideButton": true,
+          "height": 0
+        },
+        {
+          "text": "Bread",
+          "ellipsis": "clip",
+          "whiteSpace": "normal",
+          "scrollWidth": 0,
+          "clientWidth": 0,
+          "insideButton": true,
+          "height": 0
+        },
+        {
+          "text": "Desserts",
+          "ellipsis": "clip",
+          "whiteSpace": "normal",
+          "scrollWidth": 0,
+          "clientWidth": 0,
+          "insideButton": true,
+          "height": 0
+        },
+        {
+          "text": "Drinks",
+          "ellipsis": "clip",
+          "whiteSpace": "normal",
+          "scrollWidth": 0,
+          "clientWidth": 0,
+          "insideButton": true,
+          "height": 0
+        }
+      ]
+    }
+  ]
+}

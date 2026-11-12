@@ -1,0 +1,130 @@
+{
+  "build": "6zD0ge5SdqAm0X_krXcdr",
+  "syntheticOnly": true,
+  "checks": [
+    {
+      "href": "#workspace-progress",
+      "exists": true,
+      "focus": "Daily progressRevenue per dayOrders per dayDec 31, 2025 – Nov 12,",
+      "overflow": 0
+    },
+    {
+      "href": "#workspace-visitors",
+      "exists": true,
+      "focus": "Recently onlineAll registered accounts and guest sessions active ",
+      "expanded": "true",
+      "overflow": 0
+    },
+    {
+      "href": "#workspace-users",
+      "exists": true,
+      "focus": "Registered usersEveryone with an account - full profile details.1",
+      "expanded": "true",
+      "overflow": 0
+    },
+    {
+      "href": "#workspace-orders",
+      "exists": true,
+      "focus": "Order management",
+      "overflow": 0
+    },
+    {
+      "href": "#workspace-products",
+      "exists": true,
+      "focus": "Manage products",
+      "overflow": 0
+    },
+    {
+      "href": "#workspace-reservations",
+      "exists": true,
+      "focus": "Table reservations",
+      "overflow": 0
+    },
+    {
+      "href": "#workspace-vip",
+      "exists": true,
+      "focus": "VIP card requests",
+      "overflow": 0
+    },
+    {
+      "href": "#workspace-social",
+      "exists": true,
+      "focus": "Social media linksAdd your profile links and switch on the icons ",
+      "expanded": "true",
+      "overflow": 0
+    },
+    {
+      "href": "#party-admin",
+      "exists": true,
+      "focus": "Skip to contentRestaurant · AmsterdamHomeReservationsMenuPARTY / ",
+      "overflow": 0
+    },
+    {
+      "href": "#workspace-phone",
+      "exists": true,
+      "focus": "AI phone assistant · settings and availability",
+      "overflow": 0
+    },
+    {
+      "directorySearch": "Registered usersEveryone with an account - full profile details.175 Export usersAll (175)Online now (3)Unverified (0)VIP (0)B2B (0)Most recentOnline nowMost orderspoints Clear filtersShowing 0 of 175No orders match your search."
+    },
+    {
+      "registrationCompany": {
+        "lang": "en",
+        "labels": [
+          "Full name",
+          "Email",
+          "Password",
+          "Confirm password",
+          "Phone (optional)",
+          "BTW (VAT) number",
+          "KVK number",
+          "I agree that once the food is received, the invoice must be paid within 7 days. Invoice details will be sent automatically to the registered email address.",
+          "Admin code (optional)"
+        ],
+        "required": [
+          "account-name",
+          "account-email",
+          "account-password",
+          "account-password-confirm",
+          "account-btw",
+          "account-kvk"
+        ],
+        "password": "account-password",
+        "overflow": 0
+      },
+      "passwordRevealPreservesDraft": true
+    },
+    {
+      "registrationCompany": {
+        "lang": "nl",
+        "labels": [
+          "Volledige naam",
+          "E-mail",
+          "Wachtwoord",
+          "Bevestig wachtwoord",
+          "Telefoon (optioneel)",
+          "BTW-nummer",
+          "KVK-nummer",
+          "Ik ga ermee akkoord dat zodra het eten is ontvangen, de factuur binnen 7 dagen moet worden betaald. Factuurgegevens worden automatisch naar het geregistreerde e-mailadres gestuurd.",
+          "Admincode (optioneel)"
+        ],
+        "required": [
+          "account-name",
+          "account-email",
+          "account-password",
+          "account-password-confirm",
+          "account-btw",
+          "account-kvk"
+        ],
+        "password": "account-password",
+        "overflow": 0
+      },
+      "passwordRevealPreservesDraft": true
+    },
+    {
+      "noJavaScriptExplanation": true
+    }
+  ],
+  "completedAtUTC": "2026-11-12T11:26:00.632Z"
+}

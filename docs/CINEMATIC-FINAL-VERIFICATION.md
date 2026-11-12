@@ -1,3 +1,9 @@
+# Current local build — 12 November 2026
+
+Build `6zD0ge5SdqAm0X_krXcdr` is now active at http://localhost:3398/ and http://192.168.0.122:3618/. It retains the verified public work below and adds the account/admin redesign and wider category sidebar. [Current verification, private synthetic previews and limits](WORKSPACE-UI-VERIFICATION.md), [exact build](workspace-build-2026-11-12.json), [source](workspace-source-2026-11-12.json), [current start commands](LOCAL_PREVIEW.md). No public deployment or production-data change.
+
+The following grid/performance checkpoint is historical; its measurements remain controls rather than new measurements of this release.
+
 # Promoted local preview — 12 November 2026
 
 The verified combined performance build is now active at **http://localhost:3398/** and **http://192.168.0.122:3618/** on the same local network. Add `/en` for English. Both include the approved NL/EN desktop/portrait CapCut intros, all earlier public-site changes, selected-language homepage copy, and responsive menu card rendering. **Nothing was publicly deployed or changed in production data.**
@@ -19,7 +25,7 @@ Two React/Next runtime chunks total123,626B,68.83% of home JS; the observed star
 
 Fifty HTTP/source/access checks pass against the promoted direct app3397 and read-only main3398:24 public URLs/12locale pairs,14event URLs,72sitemap alternatives, robots, redirects and private parties restrictions. [Current HTTP proof](events-visibility-http-20261111.json).
 
-The promoted LAN listener is PID50388, bound only192.168.0.122:3618, serving same-subnet peers.56policy cases, all58 public Next asset HEADs,17route/master/write guards,3guest-only APIs and4video Range/prefix checks pass. All four full media hashes match their previously verified frozen files; those full-body measurements are carried explicitly, not repeated. Private/master/admin/test paths remain excluded and submissions disabled. Only the exact-owned prior listeners were stopped. No firewall, network-profile, router or VPN setting changed. [Phone policy and proof](PHONE-PREVIEW.md).
+The promoted LAN listener is PID49736, bound only192.168.0.122:3618, serving same-subnet peers.56policy cases, all58 public Next asset HEADs,17route/master/write guards,3guest-only APIs and4video Range/prefix checks pass. All four full media hashes match their previously verified frozen files; those full-body measurements are carried explicitly, not repeated. Private/master/admin/test paths remain excluded and submissions disabled. Only the exact-owned prior listeners were stopped. No firewall, network-profile, router or VPN setting changed. [Phone policy and proof](PHONE-PREVIEW.md).
 
 Fresh promoted Chromium checks cover NLdesktop1440×900 on3398 and ENmobile390×844 on the LAN address: actual muted inline playback, advancing native clock, closing transition, menu40/40 visible cards and no intro replay on return. No runtime errors, overflow or write attempts. This is browser emulation on the PC, not a new physical-phone result. The first harness incorrectly treated an intentional blob playback URL as a wrong source; its failed path assertion is archived. Fresh network requests and the selected-source attribute confirm the expected NLdesktop/ENmobile MP4s without changing app code. [Final browser/source evidence](cinematic-promoted-grid-browser-2026-11-12.json).
 

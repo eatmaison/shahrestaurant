@@ -1,0 +1,21 @@
+{
+  "dist": ".next-review-shah-workspaces-mobile-20261112",
+  "startedAtUTC": "2026-11-12T11:23:25.551Z",
+  "before": {
+    "atUTC": "2026-11-12T11:23:26.129Z",
+    "sourceSha256": "c932fd7a1cbe84c52ab2e1e3d2669b143efcf918c8d252a1322e95e441c4fb71",
+    "inputs": 551,
+    "unchanged": true
+  },
+  "productionPublishing": false,
+  "liveDatabaseAccess": false,
+  "exitCode": 0,
+  "finishedAtUTC": "2026-11-12T11:24:23.542Z",
+  "after": {
+    "atUTC": "2026-11-12T11:24:24.089Z",
+    "sourceSha256": "c932fd7a1cbe84c52ab2e1e3d2669b143efcf918c8d252a1322e95e441c4fb71",
+    "inputs": 551,
+    "unchanged": true
+  },
+  "buildId": "6zD0ge5SdqAm0X_krXcdr"
+}
