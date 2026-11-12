@@ -1,0 +1,1359 @@
+{
+  "measuredAt": "2026-11-12T01:54:35.836Z",
+  "buildId": "S_b0mpTvbVmqqJ-ThVCUE",
+  "distDir": ".next-review-shah-copy-perf-20261112",
+  "origin": "http://127.0.0.1:3718",
+  "sourceSha256": "016f7cc73bd7d33e2177c902e0bdf812463c5ce93f737e4a4b59c15e3f2dc906",
+  "methodology": "Initial external assets, distinct per cold route; each file gzip level6; byte-matched to selected build. Excludes HTML, inline scripts, fonts, media, APIs, dynamic imports, prefetch and nomodule legacy.",
+  "routes": [
+    {
+      "route": "/",
+      "httpStatus": 200,
+      "document": {
+        "rawBytes": 131354,
+        "gzipBytes": 29770
+      },
+      "javascript": {
+        "assets": [
+          "/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+          "/_next/static/chunks/3794-c968c786880cae15.js",
+          "/_next/static/chunks/main-app-2f3596a243c31fc0.js",
+          "/_next/static/chunks/8500-3953cc33eeceb44e.js",
+          "/_next/static/chunks/5772-1c5f02be2ece8826.js",
+          "/_next/static/chunks/1398-f6b66c90eacf2ebb.js",
+          "/_next/static/chunks/3573-10dc9902f9ffc746.js",
+          "/_next/static/chunks/app/page-988d08dcf9ca1051.js",
+          "/_next/static/chunks/app/layout-a66bc8f49bcf9b65.js",
+          "/_next/static/chunks/app/error-4e056100a4253fb4.js",
+          "/_next/static/chunks/app/not-found-10fe67176e53b097.js",
+          "/_next/static/chunks/webpack-095aa67f46150012.js"
+        ],
+        "rawBytes": 602793,
+        "gzipBytes": 179609
+      },
+      "css": {
+        "assets": [
+          "/_next/static/css/3c23be31ddd5d099.css",
+          "/_next/static/css/284f689771180a21.css"
+        ],
+        "rawBytes": 224145,
+        "gzipBytes": 39866
+      },
+      "excludedLegacy": {
+        "assets": [
+          "/_next/static/chunks/polyfills-42372ed130431b0a.js"
+        ],
+        "rawBytes": 112594,
+        "gzipBytes": 39627
+      }
+    },
+    {
+      "route": "/en",
+      "httpStatus": 200,
+      "document": {
+        "rawBytes": 129402,
+        "gzipBytes": 28728
+      },
+      "javascript": {
+        "assets": [
+          "/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+          "/_next/static/chunks/3794-c968c786880cae15.js",
+          "/_next/static/chunks/main-app-2f3596a243c31fc0.js",
+          "/_next/static/chunks/8500-3953cc33eeceb44e.js",
+          "/_next/static/chunks/5772-1c5f02be2ece8826.js",
+          "/_next/static/chunks/1398-f6b66c90eacf2ebb.js",
+          "/_next/static/chunks/3573-10dc9902f9ffc746.js",
+          "/_next/static/chunks/app/en/page-c5b83411a588c9b8.js",
+          "/_next/static/chunks/app/layout-a66bc8f49bcf9b65.js",
+          "/_next/static/chunks/app/error-4e056100a4253fb4.js",
+          "/_next/static/chunks/app/not-found-10fe67176e53b097.js",
+          "/_next/static/chunks/webpack-095aa67f46150012.js"
+        ],
+        "rawBytes": 602793,
+        "gzipBytes": 179609
+      },
+      "css": {
+        "assets": [
+          "/_next/static/css/3c23be31ddd5d099.css",
+          "/_next/static/css/284f689771180a21.css"
+        ],
+        "rawBytes": 224145,
+        "gzipBytes": 39866
+      },
+      "excludedLegacy": {
+        "assets": [
+          "/_next/static/chunks/polyfills-42372ed130431b0a.js"
+        ],
+        "rawBytes": 112594,
+        "gzipBytes": 39627
+      }
+    },
+    {
+      "route": "/menukaart",
+      "httpStatus": 200,
+      "document": {
+        "rawBytes": 312887,
+        "gzipBytes": 51068
+      },
+      "javascript": {
+        "assets": [
+          "/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+          "/_next/static/chunks/3794-c968c786880cae15.js",
+          "/_next/static/chunks/main-app-2f3596a243c31fc0.js",
+          "/_next/static/chunks/8500-3953cc33eeceb44e.js",
+          "/_next/static/chunks/1398-f6b66c90eacf2ebb.js",
+          "/_next/static/chunks/app/layout-a66bc8f49bcf9b65.js",
+          "/_next/static/chunks/app/error-4e056100a4253fb4.js",
+          "/_next/static/chunks/app/not-found-10fe67176e53b097.js",
+          "/_next/static/chunks/5772-1c5f02be2ece8826.js",
+          "/_next/static/chunks/7460-7cfa9625a1c44bd7.js",
+          "/_next/static/chunks/app/menukaart/page-8905cbceea65ca27.js",
+          "/_next/static/chunks/webpack-095aa67f46150012.js"
+        ],
+        "rawBytes": 598768,
+        "gzipBytes": 174149
+      },
+      "css": {
+        "assets": [
+          "/_next/static/css/3c23be31ddd5d099.css",
+          "/_next/static/css/5d365a88c493315b.css",
+          "/_next/static/css/3ef47586ac351e86.css"
+        ],
+        "rawBytes": 195977,
+        "gzipBytes": 34211
+      },
+      "excludedLegacy": {
+        "assets": [
+          "/_next/static/chunks/polyfills-42372ed130431b0a.js"
+        ],
+        "rawBytes": 112594,
+        "gzipBytes": 39627
+      }
+    },
+    {
+      "route": "/en/menu",
+      "httpStatus": 200,
+      "document": {
+        "rawBytes": 311169,
+        "gzipBytes": 49991
+      },
+      "javascript": {
+        "assets": [
+          "/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+          "/_next/static/chunks/3794-c968c786880cae15.js",
+          "/_next/static/chunks/main-app-2f3596a243c31fc0.js",
+          "/_next/static/chunks/8500-3953cc33eeceb44e.js",
+          "/_next/static/chunks/1398-f6b66c90eacf2ebb.js",
+          "/_next/static/chunks/app/layout-a66bc8f49bcf9b65.js",
+          "/_next/static/chunks/app/error-4e056100a4253fb4.js",
+          "/_next/static/chunks/app/not-found-10fe67176e53b097.js",
+          "/_next/static/chunks/5772-1c5f02be2ece8826.js",
+          "/_next/static/chunks/7460-7cfa9625a1c44bd7.js",
+          "/_next/static/chunks/app/en/menu/page-8905cbceea65ca27.js",
+          "/_next/static/chunks/webpack-095aa67f46150012.js"
+        ],
+        "rawBytes": 598768,
+        "gzipBytes": 174149
+      },
+      "css": {
+        "assets": [
+          "/_next/static/css/3c23be31ddd5d099.css",
+          "/_next/static/css/5d365a88c493315b.css",
+          "/_next/static/css/3ef47586ac351e86.css"
+        ],
+        "rawBytes": 195977,
+        "gzipBytes": 34211
+      },
+      "excludedLegacy": {
+        "assets": [
+          "/_next/static/chunks/polyfills-42372ed130431b0a.js"
+        ],
+        "rawBytes": 112594,
+        "gzipBytes": 39627
+      }
+    },
+    {
+      "route": "/reserveren",
+      "httpStatus": 200,
+      "document": {
+        "rawBytes": 94150,
+        "gzipBytes": 24161
+      },
+      "javascript": {
+        "assets": [
+          "/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+          "/_next/static/chunks/3794-c968c786880cae15.js",
+          "/_next/static/chunks/main-app-2f3596a243c31fc0.js",
+          "/_next/static/chunks/8500-3953cc33eeceb44e.js",
+          "/_next/static/chunks/1398-f6b66c90eacf2ebb.js",
+          "/_next/static/chunks/6755-1e46919718aad98e.js",
+          "/_next/static/chunks/app/reserveren/page-de4ee2532873c91c.js",
+          "/_next/static/chunks/app/layout-a66bc8f49bcf9b65.js",
+          "/_next/static/chunks/app/error-4e056100a4253fb4.js",
+          "/_next/static/chunks/app/not-found-10fe67176e53b097.js",
+          "/_next/static/chunks/webpack-095aa67f46150012.js"
+        ],
+        "rawBytes": 543417,
+        "gzipBytes": 161076
+      },
+      "css": {
+        "assets": [
+          "/_next/static/css/3c23be31ddd5d099.css",
+          "/_next/static/css/5d365a88c493315b.css",
+          "/_next/static/css/a154b9e50d8d5e3d.css"
+        ],
+        "rawBytes": 190137,
+        "gzipBytes": 32621
+      },
+      "excludedLegacy": {
+        "assets": [
+          "/_next/static/chunks/polyfills-42372ed130431b0a.js"
+        ],
+        "rawBytes": 112594,
+        "gzipBytes": 39627
+      }
+    },
+    {
+      "route": "/en/reservations",
+      "httpStatus": 200,
+      "document": {
+        "rawBytes": 92608,
+        "gzipBytes": 23083
+      },
+      "javascript": {
+        "assets": [
+          "/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+          "/_next/static/chunks/3794-c968c786880cae15.js",
+          "/_next/static/chunks/main-app-2f3596a243c31fc0.js",
+          "/_next/static/chunks/8500-3953cc33eeceb44e.js",
+          "/_next/static/chunks/1398-f6b66c90eacf2ebb.js",
+          "/_next/static/chunks/6755-1e46919718aad98e.js",
+          "/_next/static/chunks/app/en/reservations/page-de4ee2532873c91c.js",
+          "/_next/static/chunks/app/layout-a66bc8f49bcf9b65.js",
+          "/_next/static/chunks/app/error-4e056100a4253fb4.js",
+          "/_next/static/chunks/app/not-found-10fe67176e53b097.js",
+          "/_next/static/chunks/webpack-095aa67f46150012.js"
+        ],
+        "rawBytes": 543417,
+        "gzipBytes": 161076
+      },
+      "css": {
+        "assets": [
+          "/_next/static/css/3c23be31ddd5d099.css",
+          "/_next/static/css/5d365a88c493315b.css",
+          "/_next/static/css/a154b9e50d8d5e3d.css"
+        ],
+        "rawBytes": 190137,
+        "gzipBytes": 32621
+      },
+      "excludedLegacy": {
+        "assets": [
+          "/_next/static/chunks/polyfills-42372ed130431b0a.js"
+        ],
+        "rawBytes": 112594,
+        "gzipBytes": 39627
+      }
+    },
+    {
+      "route": "/privacy",
+      "httpStatus": 200,
+      "document": {
+        "rawBytes": 74938,
+        "gzipBytes": 21186
+      },
+      "javascript": {
+        "assets": [
+          "/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+          "/_next/static/chunks/3794-c968c786880cae15.js",
+          "/_next/static/chunks/main-app-2f3596a243c31fc0.js",
+          "/_next/static/chunks/8500-3953cc33eeceb44e.js",
+          "/_next/static/chunks/app/privacy/layout-0d2da65599dda998.js",
+          "/_next/static/chunks/1398-f6b66c90eacf2ebb.js",
+          "/_next/static/chunks/app/privacy/page-ed178375810fa6e3.js",
+          "/_next/static/chunks/app/layout-a66bc8f49bcf9b65.js",
+          "/_next/static/chunks/app/error-4e056100a4253fb4.js",
+          "/_next/static/chunks/app/not-found-10fe67176e53b097.js",
+          "/_next/static/chunks/webpack-095aa67f46150012.js"
+        ],
+        "rawBytes": 515155,
+        "gzipBytes": 154711
+      },
+      "css": {
+        "assets": [
+          "/_next/static/css/3c23be31ddd5d099.css",
+          "/_next/static/css/5d365a88c493315b.css"
+        ],
+        "rawBytes": 183832,
+        "gzipBytes": 31092
+      },
+      "excludedLegacy": {
+        "assets": [
+          "/_next/static/chunks/polyfills-42372ed130431b0a.js"
+        ],
+        "rawBytes": 112594,
+        "gzipBytes": 39627
+      }
+    },
+    {
+      "route": "/en/privacy",
+      "httpStatus": 200,
+      "document": {
+        "rawBytes": 73345,
+        "gzipBytes": 20214
+      },
+      "javascript": {
+        "assets": [
+          "/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+          "/_next/static/chunks/3794-c968c786880cae15.js",
+          "/_next/static/chunks/main-app-2f3596a243c31fc0.js",
+          "/_next/static/chunks/8500-3953cc33eeceb44e.js",
+          "/_next/static/chunks/1398-f6b66c90eacf2ebb.js",
+          "/_next/static/chunks/app/en/privacy/page-692d8969f86ac465.js",
+          "/_next/static/chunks/app/layout-a66bc8f49bcf9b65.js",
+          "/_next/static/chunks/app/error-4e056100a4253fb4.js",
+          "/_next/static/chunks/app/not-found-10fe67176e53b097.js",
+          "/_next/static/chunks/webpack-095aa67f46150012.js"
+        ],
+        "rawBytes": 515018,
+        "gzipBytes": 154562
+      },
+      "css": {
+        "assets": [
+          "/_next/static/css/3c23be31ddd5d099.css",
+          "/_next/static/css/5d365a88c493315b.css"
+        ],
+        "rawBytes": 183832,
+        "gzipBytes": 31092
+      },
+      "excludedLegacy": {
+        "assets": [
+          "/_next/static/chunks/polyfills-42372ed130431b0a.js"
+        ],
+        "rawBytes": 112594,
+        "gzipBytes": 39627
+      }
+    },
+    {
+      "route": "/voorwaarden",
+      "httpStatus": 200,
+      "document": {
+        "rawBytes": 74496,
+        "gzipBytes": 21122
+      },
+      "javascript": {
+        "assets": [
+          "/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+          "/_next/static/chunks/3794-c968c786880cae15.js",
+          "/_next/static/chunks/main-app-2f3596a243c31fc0.js",
+          "/_next/static/chunks/8500-3953cc33eeceb44e.js",
+          "/_next/static/chunks/1398-f6b66c90eacf2ebb.js",
+          "/_next/static/chunks/app/voorwaarden/page-807694758e16b5d0.js",
+          "/_next/static/chunks/app/layout-a66bc8f49bcf9b65.js",
+          "/_next/static/chunks/app/error-4e056100a4253fb4.js",
+          "/_next/static/chunks/app/not-found-10fe67176e53b097.js",
+          "/_next/static/chunks/webpack-095aa67f46150012.js"
+        ],
+        "rawBytes": 514428,
+        "gzipBytes": 154541
+      },
+      "css": {
+        "assets": [
+          "/_next/static/css/3c23be31ddd5d099.css",
+          "/_next/static/css/5d365a88c493315b.css"
+        ],
+        "rawBytes": 183832,
+        "gzipBytes": 31092
+      },
+      "excludedLegacy": {
+        "assets": [
+          "/_next/static/chunks/polyfills-42372ed130431b0a.js"
+        ],
+        "rawBytes": 112594,
+        "gzipBytes": 39627
+      }
+    },
+    {
+      "route": "/en/terms",
+      "httpStatus": 200,
+      "document": {
+        "rawBytes": 72561,
+        "gzipBytes": 20118
+      },
+      "javascript": {
+        "assets": [
+          "/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+          "/_next/static/chunks/3794-c968c786880cae15.js",
+          "/_next/static/chunks/main-app-2f3596a243c31fc0.js",
+          "/_next/static/chunks/8500-3953cc33eeceb44e.js",
+          "/_next/static/chunks/1398-f6b66c90eacf2ebb.js",
+          "/_next/static/chunks/app/en/terms/page-807694758e16b5d0.js",
+          "/_next/static/chunks/app/layout-a66bc8f49bcf9b65.js",
+          "/_next/static/chunks/app/error-4e056100a4253fb4.js",
+          "/_next/static/chunks/app/not-found-10fe67176e53b097.js",
+          "/_next/static/chunks/webpack-095aa67f46150012.js"
+        ],
+        "rawBytes": 514428,
+        "gzipBytes": 154541
+      },
+      "css": {
+        "assets": [
+          "/_next/static/css/3c23be31ddd5d099.css",
+          "/_next/static/css/5d365a88c493315b.css"
+        ],
+        "rawBytes": 183832,
+        "gzipBytes": 31092
+      },
+      "excludedLegacy": {
+        "assets": [
+          "/_next/static/chunks/polyfills-42372ed130431b0a.js"
+        ],
+        "rawBytes": 112594,
+        "gzipBytes": 39627
+      }
+    },
+    {
+      "route": "/events",
+      "httpStatus": 200,
+      "document": {
+        "rawBytes": 78420,
+        "gzipBytes": 20781
+      },
+      "javascript": {
+        "assets": [
+          "/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+          "/_next/static/chunks/3794-c968c786880cae15.js",
+          "/_next/static/chunks/main-app-2f3596a243c31fc0.js",
+          "/_next/static/chunks/8500-3953cc33eeceb44e.js",
+          "/_next/static/chunks/1398-f6b66c90eacf2ebb.js",
+          "/_next/static/chunks/app/events/page-98efa97963b899d9.js",
+          "/_next/static/chunks/app/layout-a66bc8f49bcf9b65.js",
+          "/_next/static/chunks/app/error-4e056100a4253fb4.js",
+          "/_next/static/chunks/app/not-found-10fe67176e53b097.js",
+          "/_next/static/chunks/webpack-095aa67f46150012.js"
+        ],
+        "rawBytes": 512983,
+        "gzipBytes": 153299
+      },
+      "css": {
+        "assets": [
+          "/_next/static/css/3c23be31ddd5d099.css",
+          "/_next/static/css/fe282cc27672b87e.css"
+        ],
+        "rawBytes": 155525,
+        "gzipBytes": 26601
+      },
+      "excludedLegacy": {
+        "assets": [
+          "/_next/static/chunks/polyfills-42372ed130431b0a.js"
+        ],
+        "rawBytes": 112594,
+        "gzipBytes": 39627
+      }
+    },
+    {
+      "route": "/events/about",
+      "httpStatus": 200,
+      "document": {
+        "rawBytes": 80345,
+        "gzipBytes": 21240
+      },
+      "javascript": {
+        "assets": [
+          "/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+          "/_next/static/chunks/3794-c968c786880cae15.js",
+          "/_next/static/chunks/main-app-2f3596a243c31fc0.js",
+          "/_next/static/chunks/8500-3953cc33eeceb44e.js",
+          "/_next/static/chunks/1398-f6b66c90eacf2ebb.js",
+          "/_next/static/chunks/6587-c761ffd857c2d397.js",
+          "/_next/static/chunks/app/events/about/page-9a919025535bd2ff.js",
+          "/_next/static/chunks/app/layout-a66bc8f49bcf9b65.js",
+          "/_next/static/chunks/app/error-4e056100a4253fb4.js",
+          "/_next/static/chunks/app/not-found-10fe67176e53b097.js",
+          "/_next/static/chunks/webpack-095aa67f46150012.js"
+        ],
+        "rawBytes": 517744,
+        "gzipBytes": 154618
+      },
+      "css": {
+        "assets": [
+          "/_next/static/css/3c23be31ddd5d099.css",
+          "/_next/static/css/fe282cc27672b87e.css"
+        ],
+        "rawBytes": 155525,
+        "gzipBytes": 26601
+      },
+      "excludedLegacy": {
+        "assets": [
+          "/_next/static/chunks/polyfills-42372ed130431b0a.js"
+        ],
+        "rawBytes": 112594,
+        "gzipBytes": 39627
+      }
+    },
+    {
+      "route": "/events/birthdays",
+      "httpStatus": 200,
+      "document": {
+        "rawBytes": 86837,
+        "gzipBytes": 22094
+      },
+      "javascript": {
+        "assets": [
+          "/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+          "/_next/static/chunks/3794-c968c786880cae15.js",
+          "/_next/static/chunks/main-app-2f3596a243c31fc0.js",
+          "/_next/static/chunks/8500-3953cc33eeceb44e.js",
+          "/_next/static/chunks/1398-f6b66c90eacf2ebb.js",
+          "/_next/static/chunks/6708-8baa2fef96d8019e.js",
+          "/_next/static/chunks/app/events/birthdays/page-85e4763ebc6cf7b3.js",
+          "/_next/static/chunks/app/layout-a66bc8f49bcf9b65.js",
+          "/_next/static/chunks/app/error-4e056100a4253fb4.js",
+          "/_next/static/chunks/app/not-found-10fe67176e53b097.js",
+          "/_next/static/chunks/webpack-095aa67f46150012.js"
+        ],
+        "rawBytes": 518908,
+        "gzipBytes": 155237
+      },
+      "css": {
+        "assets": [
+          "/_next/static/css/3c23be31ddd5d099.css",
+          "/_next/static/css/fe282cc27672b87e.css"
+        ],
+        "rawBytes": 155525,
+        "gzipBytes": 26601
+      },
+      "excludedLegacy": {
+        "assets": [
+          "/_next/static/chunks/polyfills-42372ed130431b0a.js"
+        ],
+        "rawBytes": 112594,
+        "gzipBytes": 39627
+      }
+    },
+    {
+      "route": "/events/celebrations",
+      "httpStatus": 200,
+      "document": {
+        "rawBytes": 91675,
+        "gzipBytes": 22782
+      },
+      "javascript": {
+        "assets": [
+          "/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+          "/_next/static/chunks/3794-c968c786880cae15.js",
+          "/_next/static/chunks/main-app-2f3596a243c31fc0.js",
+          "/_next/static/chunks/8500-3953cc33eeceb44e.js",
+          "/_next/static/chunks/1398-f6b66c90eacf2ebb.js",
+          "/_next/static/chunks/7991-4bb5f711ebfd3987.js",
+          "/_next/static/chunks/app/events/celebrations/page-ce352a822cfc5ee3.js",
+          "/_next/static/chunks/app/layout-a66bc8f49bcf9b65.js",
+          "/_next/static/chunks/app/error-4e056100a4253fb4.js",
+          "/_next/static/chunks/app/not-found-10fe67176e53b097.js",
+          "/_next/static/chunks/webpack-095aa67f46150012.js"
+        ],
+        "rawBytes": 519804,
+        "gzipBytes": 155445
+      },
+      "css": {
+        "assets": [
+          "/_next/static/css/3c23be31ddd5d099.css",
+          "/_next/static/css/fe282cc27672b87e.css"
+        ],
+        "rawBytes": 155525,
+        "gzipBytes": 26601
+      },
+      "excludedLegacy": {
+        "assets": [
+          "/_next/static/chunks/polyfills-42372ed130431b0a.js"
+        ],
+        "rawBytes": 112594,
+        "gzipBytes": 39627
+      }
+    },
+    {
+      "route": "/events/company-catering",
+      "httpStatus": 200,
+      "document": {
+        "rawBytes": 86780,
+        "gzipBytes": 22327
+      },
+      "javascript": {
+        "assets": [
+          "/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+          "/_next/static/chunks/3794-c968c786880cae15.js",
+          "/_next/static/chunks/main-app-2f3596a243c31fc0.js",
+          "/_next/static/chunks/8500-3953cc33eeceb44e.js",
+          "/_next/static/chunks/1398-f6b66c90eacf2ebb.js",
+          "/_next/static/chunks/8377-40be304b83dd8703.js",
+          "/_next/static/chunks/app/events/company-catering/page-a1eaa8586daa1551.js",
+          "/_next/static/chunks/app/layout-a66bc8f49bcf9b65.js",
+          "/_next/static/chunks/app/error-4e056100a4253fb4.js",
+          "/_next/static/chunks/app/not-found-10fe67176e53b097.js",
+          "/_next/static/chunks/webpack-095aa67f46150012.js"
+        ],
+        "rawBytes": 520642,
+        "gzipBytes": 155539
+      },
+      "css": {
+        "assets": [
+          "/_next/static/css/3c23be31ddd5d099.css",
+          "/_next/static/css/fe282cc27672b87e.css"
+        ],
+        "rawBytes": 155525,
+        "gzipBytes": 26601
+      },
+      "excludedLegacy": {
+        "assets": [
+          "/_next/static/chunks/polyfills-42372ed130431b0a.js"
+        ],
+        "rawBytes": 112594,
+        "gzipBytes": 39627
+      }
+    },
+    {
+      "route": "/events/company-lunches",
+      "httpStatus": 200,
+      "document": {
+        "rawBytes": 91017,
+        "gzipBytes": 22736
+      },
+      "javascript": {
+        "assets": [
+          "/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+          "/_next/static/chunks/3794-c968c786880cae15.js",
+          "/_next/static/chunks/main-app-2f3596a243c31fc0.js",
+          "/_next/static/chunks/8500-3953cc33eeceb44e.js",
+          "/_next/static/chunks/1398-f6b66c90eacf2ebb.js",
+          "/_next/static/chunks/7296-edafbb8abb4d6d35.js",
+          "/_next/static/chunks/app/events/company-lunches/page-00766b56fd808694.js",
+          "/_next/static/chunks/app/layout-a66bc8f49bcf9b65.js",
+          "/_next/static/chunks/app/error-4e056100a4253fb4.js",
+          "/_next/static/chunks/app/not-found-10fe67176e53b097.js",
+          "/_next/static/chunks/webpack-095aa67f46150012.js"
+        ],
+        "rawBytes": 520290,
+        "gzipBytes": 155481
+      },
+      "css": {
+        "assets": [
+          "/_next/static/css/3c23be31ddd5d099.css",
+          "/_next/static/css/fe282cc27672b87e.css"
+        ],
+        "rawBytes": 155525,
+        "gzipBytes": 26601
+      },
+      "excludedLegacy": {
+        "assets": [
+          "/_next/static/chunks/polyfills-42372ed130431b0a.js"
+        ],
+        "rawBytes": 112594,
+        "gzipBytes": 39627
+      }
+    },
+    {
+      "route": "/events/gallery",
+      "httpStatus": 200,
+      "document": {
+        "rawBytes": 101537,
+        "gzipBytes": 24414
+      },
+      "javascript": {
+        "assets": [
+          "/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+          "/_next/static/chunks/3794-c968c786880cae15.js",
+          "/_next/static/chunks/main-app-2f3596a243c31fc0.js",
+          "/_next/static/chunks/8500-3953cc33eeceb44e.js",
+          "/_next/static/chunks/5772-1c5f02be2ece8826.js",
+          "/_next/static/chunks/1398-f6b66c90eacf2ebb.js",
+          "/_next/static/chunks/5797-8dd431a3f678a5e7.js",
+          "/_next/static/chunks/app/events/gallery/page-5e996223f2fd2a9d.js",
+          "/_next/static/chunks/app/layout-a66bc8f49bcf9b65.js",
+          "/_next/static/chunks/app/error-4e056100a4253fb4.js",
+          "/_next/static/chunks/app/not-found-10fe67176e53b097.js",
+          "/_next/static/chunks/webpack-095aa67f46150012.js"
+        ],
+        "rawBytes": 564005,
+        "gzipBytes": 167581
+      },
+      "css": {
+        "assets": [
+          "/_next/static/css/3c23be31ddd5d099.css",
+          "/_next/static/css/fe282cc27672b87e.css"
+        ],
+        "rawBytes": 155525,
+        "gzipBytes": 26601
+      },
+      "excludedLegacy": {
+        "assets": [
+          "/_next/static/chunks/polyfills-42372ed130431b0a.js"
+        ],
+        "rawBytes": 112594,
+        "gzipBytes": 39627
+      }
+    },
+    {
+      "route": "/en/events",
+      "httpStatus": 200,
+      "document": {
+        "rawBytes": 76987,
+        "gzipBytes": 19793
+      },
+      "javascript": {
+        "assets": [
+          "/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+          "/_next/static/chunks/3794-c968c786880cae15.js",
+          "/_next/static/chunks/main-app-2f3596a243c31fc0.js",
+          "/_next/static/chunks/8500-3953cc33eeceb44e.js",
+          "/_next/static/chunks/1398-f6b66c90eacf2ebb.js",
+          "/_next/static/chunks/app/en/events/page-49aa0d512e96f221.js",
+          "/_next/static/chunks/app/layout-a66bc8f49bcf9b65.js",
+          "/_next/static/chunks/app/error-4e056100a4253fb4.js",
+          "/_next/static/chunks/app/not-found-10fe67176e53b097.js",
+          "/_next/static/chunks/webpack-095aa67f46150012.js"
+        ],
+        "rawBytes": 512983,
+        "gzipBytes": 153296
+      },
+      "css": {
+        "assets": [
+          "/_next/static/css/3c23be31ddd5d099.css",
+          "/_next/static/css/fe282cc27672b87e.css"
+        ],
+        "rawBytes": 155525,
+        "gzipBytes": 26601
+      },
+      "excludedLegacy": {
+        "assets": [
+          "/_next/static/chunks/polyfills-42372ed130431b0a.js"
+        ],
+        "rawBytes": 112594,
+        "gzipBytes": 39627
+      }
+    },
+    {
+      "route": "/en/events/about",
+      "httpStatus": 200,
+      "document": {
+        "rawBytes": 78802,
+        "gzipBytes": 20245
+      },
+      "javascript": {
+        "assets": [
+          "/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+          "/_next/static/chunks/3794-c968c786880cae15.js",
+          "/_next/static/chunks/main-app-2f3596a243c31fc0.js",
+          "/_next/static/chunks/8500-3953cc33eeceb44e.js",
+          "/_next/static/chunks/1398-f6b66c90eacf2ebb.js",
+          "/_next/static/chunks/6587-c761ffd857c2d397.js",
+          "/_next/static/chunks/app/en/events/about/page-8ee4f701b663e7e6.js",
+          "/_next/static/chunks/app/layout-a66bc8f49bcf9b65.js",
+          "/_next/static/chunks/app/error-4e056100a4253fb4.js",
+          "/_next/static/chunks/app/not-found-10fe67176e53b097.js",
+          "/_next/static/chunks/webpack-095aa67f46150012.js"
+        ],
+        "rawBytes": 517744,
+        "gzipBytes": 154618
+      },
+      "css": {
+        "assets": [
+          "/_next/static/css/3c23be31ddd5d099.css",
+          "/_next/static/css/fe282cc27672b87e.css"
+        ],
+        "rawBytes": 155525,
+        "gzipBytes": 26601
+      },
+      "excludedLegacy": {
+        "assets": [
+          "/_next/static/chunks/polyfills-42372ed130431b0a.js"
+        ],
+        "rawBytes": 112594,
+        "gzipBytes": 39627
+      }
+    },
+    {
+      "route": "/en/events/birthdays",
+      "httpStatus": 200,
+      "document": {
+        "rawBytes": 85369,
+        "gzipBytes": 21025
+      },
+      "javascript": {
+        "assets": [
+          "/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+          "/_next/static/chunks/3794-c968c786880cae15.js",
+          "/_next/static/chunks/main-app-2f3596a243c31fc0.js",
+          "/_next/static/chunks/8500-3953cc33eeceb44e.js",
+          "/_next/static/chunks/1398-f6b66c90eacf2ebb.js",
+          "/_next/static/chunks/6708-8baa2fef96d8019e.js",
+          "/_next/static/chunks/app/en/events/birthdays/page-91d65037264f3b10.js",
+          "/_next/static/chunks/app/layout-a66bc8f49bcf9b65.js",
+          "/_next/static/chunks/app/error-4e056100a4253fb4.js",
+          "/_next/static/chunks/app/not-found-10fe67176e53b097.js",
+          "/_next/static/chunks/webpack-095aa67f46150012.js"
+        ],
+        "rawBytes": 518910,
+        "gzipBytes": 155239
+      },
+      "css": {
+        "assets": [
+          "/_next/static/css/3c23be31ddd5d099.css",
+          "/_next/static/css/fe282cc27672b87e.css"
+        ],
+        "rawBytes": 155525,
+        "gzipBytes": 26601
+      },
+      "excludedLegacy": {
+        "assets": [
+          "/_next/static/chunks/polyfills-42372ed130431b0a.js"
+        ],
+        "rawBytes": 112594,
+        "gzipBytes": 39627
+      }
+    },
+    {
+      "route": "/en/events/celebrations",
+      "httpStatus": 200,
+      "document": {
+        "rawBytes": 90275,
+        "gzipBytes": 21680
+      },
+      "javascript": {
+        "assets": [
+          "/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+          "/_next/static/chunks/3794-c968c786880cae15.js",
+          "/_next/static/chunks/main-app-2f3596a243c31fc0.js",
+          "/_next/static/chunks/8500-3953cc33eeceb44e.js",
+          "/_next/static/chunks/1398-f6b66c90eacf2ebb.js",
+          "/_next/static/chunks/7991-4bb5f711ebfd3987.js",
+          "/_next/static/chunks/app/en/events/celebrations/page-40f641f8546181dd.js",
+          "/_next/static/chunks/app/layout-a66bc8f49bcf9b65.js",
+          "/_next/static/chunks/app/error-4e056100a4253fb4.js",
+          "/_next/static/chunks/app/not-found-10fe67176e53b097.js",
+          "/_next/static/chunks/webpack-095aa67f46150012.js"
+        ],
+        "rawBytes": 519806,
+        "gzipBytes": 155447
+      },
+      "css": {
+        "assets": [
+          "/_next/static/css/3c23be31ddd5d099.css",
+          "/_next/static/css/fe282cc27672b87e.css"
+        ],
+        "rawBytes": 155525,
+        "gzipBytes": 26601
+      },
+      "excludedLegacy": {
+        "assets": [
+          "/_next/static/chunks/polyfills-42372ed130431b0a.js"
+        ],
+        "rawBytes": 112594,
+        "gzipBytes": 39627
+      }
+    },
+    {
+      "route": "/en/events/company-catering",
+      "httpStatus": 200,
+      "document": {
+        "rawBytes": 85252,
+        "gzipBytes": 21236
+      },
+      "javascript": {
+        "assets": [
+          "/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+          "/_next/static/chunks/3794-c968c786880cae15.js",
+          "/_next/static/chunks/main-app-2f3596a243c31fc0.js",
+          "/_next/static/chunks/8500-3953cc33eeceb44e.js",
+          "/_next/static/chunks/1398-f6b66c90eacf2ebb.js",
+          "/_next/static/chunks/8377-40be304b83dd8703.js",
+          "/_next/static/chunks/app/en/events/company-catering/page-4c126f5f36296739.js",
+          "/_next/static/chunks/app/layout-a66bc8f49bcf9b65.js",
+          "/_next/static/chunks/app/error-4e056100a4253fb4.js",
+          "/_next/static/chunks/app/not-found-10fe67176e53b097.js",
+          "/_next/static/chunks/webpack-095aa67f46150012.js"
+        ],
+        "rawBytes": 520642,
+        "gzipBytes": 155539
+      },
+      "css": {
+        "assets": [
+          "/_next/static/css/3c23be31ddd5d099.css",
+          "/_next/static/css/fe282cc27672b87e.css"
+        ],
+        "rawBytes": 155525,
+        "gzipBytes": 26601
+      },
+      "excludedLegacy": {
+        "assets": [
+          "/_next/static/chunks/polyfills-42372ed130431b0a.js"
+        ],
+        "rawBytes": 112594,
+        "gzipBytes": 39627
+      }
+    },
+    {
+      "route": "/en/events/company-lunches",
+      "httpStatus": 200,
+      "document": {
+        "rawBytes": 89469,
+        "gzipBytes": 21684
+      },
+      "javascript": {
+        "assets": [
+          "/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+          "/_next/static/chunks/3794-c968c786880cae15.js",
+          "/_next/static/chunks/main-app-2f3596a243c31fc0.js",
+          "/_next/static/chunks/8500-3953cc33eeceb44e.js",
+          "/_next/static/chunks/1398-f6b66c90eacf2ebb.js",
+          "/_next/static/chunks/7296-edafbb8abb4d6d35.js",
+          "/_next/static/chunks/app/en/events/company-lunches/page-d905902f7d0da52c.js",
+          "/_next/static/chunks/app/layout-a66bc8f49bcf9b65.js",
+          "/_next/static/chunks/app/error-4e056100a4253fb4.js",
+          "/_next/static/chunks/app/not-found-10fe67176e53b097.js",
+          "/_next/static/chunks/webpack-095aa67f46150012.js"
+        ],
+        "rawBytes": 520290,
+        "gzipBytes": 155481
+      },
+      "css": {
+        "assets": [
+          "/_next/static/css/3c23be31ddd5d099.css",
+          "/_next/static/css/fe282cc27672b87e.css"
+        ],
+        "rawBytes": 155525,
+        "gzipBytes": 26601
+      },
+      "excludedLegacy": {
+        "assets": [
+          "/_next/static/chunks/polyfills-42372ed130431b0a.js"
+        ],
+        "rawBytes": 112594,
+        "gzipBytes": 39627
+      }
+    },
+    {
+      "route": "/en/events/gallery",
+      "httpStatus": 200,
+      "document": {
+        "rawBytes": 100167,
+        "gzipBytes": 23393
+      },
+      "javascript": {
+        "assets": [
+          "/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+          "/_next/static/chunks/3794-c968c786880cae15.js",
+          "/_next/static/chunks/main-app-2f3596a243c31fc0.js",
+          "/_next/static/chunks/8500-3953cc33eeceb44e.js",
+          "/_next/static/chunks/5772-1c5f02be2ece8826.js",
+          "/_next/static/chunks/1398-f6b66c90eacf2ebb.js",
+          "/_next/static/chunks/5797-8dd431a3f678a5e7.js",
+          "/_next/static/chunks/app/en/events/gallery/page-9913e8e9b965ffe9.js",
+          "/_next/static/chunks/app/layout-a66bc8f49bcf9b65.js",
+          "/_next/static/chunks/app/error-4e056100a4253fb4.js",
+          "/_next/static/chunks/app/not-found-10fe67176e53b097.js",
+          "/_next/static/chunks/webpack-095aa67f46150012.js"
+        ],
+        "rawBytes": 564005,
+        "gzipBytes": 167581
+      },
+      "css": {
+        "assets": [
+          "/_next/static/css/3c23be31ddd5d099.css",
+          "/_next/static/css/fe282cc27672b87e.css"
+        ],
+        "rawBytes": 155525,
+        "gzipBytes": 26601
+      },
+      "excludedLegacy": {
+        "assets": [
+          "/_next/static/chunks/polyfills-42372ed130431b0a.js"
+        ],
+        "rawBytes": 112594,
+        "gzipBytes": 39627
+      }
+    }
+  ],
+  "assets": [
+    {
+      "url": "/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+      "rawBytes": 199865,
+      "gzipBytes": 62877,
+      "sha256": "c44812d818aed0a5034941164dcad78b5bb7d8a00daed7a33efe3ebc6ccfb492",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/3794-c968c786880cae15.js",
+      "rawBytes": 222079,
+      "gzipBytes": 60749,
+      "sha256": "f1c6955ae2d382624a1a4a659ff8b26d4912fd94a4c1bc5d8abf39f1c7f2ac15",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/main-app-2f3596a243c31fc0.js",
+      "rawBytes": 516,
+      "gzipBytes": 223,
+      "sha256": "e377c53a36d180f6aae8c5b44aedd107fd01200dd785ade4fd6216d89c0a8be6",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/5772-1c5f02be2ece8826.js",
+      "rawBytes": 14691,
+      "gzipBytes": 5552,
+      "sha256": "a9dcc02aff485c2455a08ab3beb18c897925b846b1ca9e3e59f03fee392ee733",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/8500-3953cc33eeceb44e.js",
+      "rawBytes": 8698,
+      "gzipBytes": 3531,
+      "sha256": "89cb18e673c5225d6b74e95ff28b3e9c26f6434089c6756ad557d89613ee7450",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/1398-f6b66c90eacf2ebb.js",
+      "rawBytes": 36657,
+      "gzipBytes": 10102,
+      "sha256": "f1192936d909130a25d8a81ead4f7511a9399fdb11bea4b57af64e28aa335c34",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/app/page-988d08dcf9ca1051.js",
+      "rawBytes": 144,
+      "gzipBytes": 135,
+      "sha256": "250c7d312f1185714cc4a482245e3356542e6fbe56c7e455adac82e34c0bb660",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/app/layout-a66bc8f49bcf9b65.js",
+      "rawBytes": 28723,
+      "gzipBytes": 8669,
+      "sha256": "5f5b42f48df69cfcdd16087827ffdb83f42b117df8d43636bea143cf5634f9e1",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/app/error-4e056100a4253fb4.js",
+      "rawBytes": 1259,
+      "gzipBytes": 735,
+      "sha256": "c8167e068d1bbc2511a713a2d22de4c621f3aa31c2f7db5a705a2afeb2f4d90a",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/app/not-found-10fe67176e53b097.js",
+      "rawBytes": 1313,
+      "gzipBytes": 716,
+      "sha256": "08af1affe720d8903fdd4019a44275f625a48cfc22ef69012b5f42342266fdfc",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/webpack-095aa67f46150012.js",
+      "rawBytes": 4919,
+      "gzipBytes": 2405,
+      "sha256": "2056680d1c71404880af16d40f72190693fedcd1e5f5fdec77b83b4304b6cb5a",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/3573-10dc9902f9ffc746.js",
+      "rawBytes": 83929,
+      "gzipBytes": 23915,
+      "sha256": "9ccaf856884d992d6da3bc76737a5620fe634c2102a6783b2118ca7324e91477",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/css/284f689771180a21.css",
+      "rawBytes": 68998,
+      "gzipBytes": 13446,
+      "sha256": "5c3fdca329748918107abd9a3c13eb852064ae0784500ba9d82ba6dc1ba3ad08",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/css/3c23be31ddd5d099.css",
+      "rawBytes": 155147,
+      "gzipBytes": 26420,
+      "sha256": "100532ceb7226359c46e52c95e9b3a82d1a89f48c407d390c39073bc2be08dcb",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/polyfills-42372ed130431b0a.js",
+      "rawBytes": 112594,
+      "gzipBytes": 39627,
+      "sha256": "0973c1d64c88adc8e3c950410cb58b288f72118d5965b78049438deb8f2f9683",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/app/en/page-c5b83411a588c9b8.js",
+      "rawBytes": 144,
+      "gzipBytes": 135,
+      "sha256": "bfd33e86a79f2ffafaa12e544bf6d497752b8dbffb24918af7fdf1eaa0c96951",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/7460-7cfa9625a1c44bd7.js",
+      "rawBytes": 79798,
+      "gzipBytes": 18401,
+      "sha256": "ccfae3b515efff67a3370afa944417a8e279f563eec42b3005911686790982a8",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/app/menukaart/page-8905cbceea65ca27.js",
+      "rawBytes": 250,
+      "gzipBytes": 189,
+      "sha256": "086c9d1ff817a62100ddb5055de9e0cbadc38a95bd1f72eb58690d8ab0eaefb4",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/css/3ef47586ac351e86.css",
+      "rawBytes": 12145,
+      "gzipBytes": 3119,
+      "sha256": "9455c9d9cc8e19ff39db2aa57fa4367004ba02555877fa8270f4b441373c76d4",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/css/5d365a88c493315b.css",
+      "rawBytes": 28685,
+      "gzipBytes": 4672,
+      "sha256": "127f639b8ce25aff5ab9da13d6812133a4c8ae96b55469a183a46a22efe11f3c",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/app/en/menu/page-8905cbceea65ca27.js",
+      "rawBytes": 250,
+      "gzipBytes": 189,
+      "sha256": "086c9d1ff817a62100ddb5055de9e0cbadc38a95bd1f72eb58690d8ab0eaefb4",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/6755-1e46919718aad98e.js",
+      "rawBytes": 39141,
+      "gzipBytes": 10882,
+      "sha256": "75b89de472b1c2e57830b7aaab73d9db0dab9c4d59daf53f6c9d5d175775dc5f",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/app/reserveren/page-de4ee2532873c91c.js",
+      "rawBytes": 247,
+      "gzipBytes": 187,
+      "sha256": "9527da21cd00b040d4b4bad36fff6ce7690b892a7462e02df2d5fbde988b52fc",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/css/a154b9e50d8d5e3d.css",
+      "rawBytes": 6305,
+      "gzipBytes": 1529,
+      "sha256": "0e2a0be57ea52a2534bff6940982d135125d45ab8d108e691596d946f167a812",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/app/en/reservations/page-de4ee2532873c91c.js",
+      "rawBytes": 247,
+      "gzipBytes": 187,
+      "sha256": "9527da21cd00b040d4b4bad36fff6ce7690b892a7462e02df2d5fbde988b52fc",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/app/privacy/layout-0d2da65599dda998.js",
+      "rawBytes": 186,
+      "gzipBytes": 165,
+      "sha256": "9bb1072e32bf341109c77e303b392821498a9973aa5a2c19da63221b5a5fbd94",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/app/privacy/page-ed178375810fa6e3.js",
+      "rawBytes": 10940,
+      "gzipBytes": 4539,
+      "sha256": "67642a5ff0c8693933cf7acec12c9e01786fdaac1c0c8a95b2f82095b26a8d44",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/app/en/privacy/page-692d8969f86ac465.js",
+      "rawBytes": 10989,
+      "gzipBytes": 4555,
+      "sha256": "0da5ab756f4c44d8c2f6ec6dbdd8c6bb2bdd4dea098234b7bd59c1499411b543",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/app/voorwaarden/page-807694758e16b5d0.js",
+      "rawBytes": 10399,
+      "gzipBytes": 4534,
+      "sha256": "695d32de11d593976a35757ecdb7a7d7b4c201c7cacf84730614e639db627587",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/app/en/terms/page-807694758e16b5d0.js",
+      "rawBytes": 10399,
+      "gzipBytes": 4534,
+      "sha256": "695d32de11d593976a35757ecdb7a7d7b4c201c7cacf84730614e639db627587",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/app/events/page-98efa97963b899d9.js",
+      "rawBytes": 8954,
+      "gzipBytes": 3292,
+      "sha256": "5d28e0074311acb4d84cf4196fe0e910fb081bdaed6feed1eec94a72946544c5",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/css/fe282cc27672b87e.css",
+      "rawBytes": 378,
+      "gzipBytes": 181,
+      "sha256": "ba1310efa0160c99f58e9f4ef5f39c618e71f4ae8612647217263a63c56a04cf",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/app/events/about/page-9a919025535bd2ff.js",
+      "rawBytes": 193,
+      "gzipBytes": 170,
+      "sha256": "a6d8a94a573090a957407d79498a8cfed73e5707e007e07ef2e318c522c44634",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/6587-c761ffd857c2d397.js",
+      "rawBytes": 13522,
+      "gzipBytes": 4441,
+      "sha256": "b02947e1fb30aa9acce8935615cefe46c9e15a0dac97719d840a1307dcd14984",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/6708-8baa2fef96d8019e.js",
+      "rawBytes": 14688,
+      "gzipBytes": 5062,
+      "sha256": "783815f8ad1a4590b3faa1dd162d0c5af3c60953462d3c7a714dc3e0a092ede1",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/app/events/birthdays/page-85e4763ebc6cf7b3.js",
+      "rawBytes": 191,
+      "gzipBytes": 168,
+      "sha256": "11b89d8121277d3bd9bbf21ac9c38b5171cfbe4bb5f57ced656f75146d31011d",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/7991-4bb5f711ebfd3987.js",
+      "rawBytes": 15584,
+      "gzipBytes": 5270,
+      "sha256": "f69dd0cb6e0b8be0302fdf59e65d4f6af88c3f69072d6466e0d60d5d0f4b6bbf",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/app/events/celebrations/page-ce352a822cfc5ee3.js",
+      "rawBytes": 191,
+      "gzipBytes": 168,
+      "sha256": "d3b3fba84d54ed26e13e9dd13ed671e11648351475011d054cc3eb97d70a97c8",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/8377-40be304b83dd8703.js",
+      "rawBytes": 16420,
+      "gzipBytes": 5363,
+      "sha256": "a5c631aef21b1823b036589a6bf543234a701e00bd4b3fafb15908ee99023ff9",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/app/events/company-catering/page-a1eaa8586daa1551.js",
+      "rawBytes": 193,
+      "gzipBytes": 169,
+      "sha256": "a6908ce5db91cde59f1a04fea2175a0c061e8dd570590c890174c2c07da8376b",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/7296-edafbb8abb4d6d35.js",
+      "rawBytes": 16068,
+      "gzipBytes": 5304,
+      "sha256": "4be66872b2fc9548098fc2a20a087a06e879d3d3647c313c9d4a8da8c0d4d544",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/app/events/company-lunches/page-00766b56fd808694.js",
+      "rawBytes": 193,
+      "gzipBytes": 170,
+      "sha256": "f641e35d2b16f446de61a136dbfacdda7f4a967efe5204e439681296d7384021",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/5797-8dd431a3f678a5e7.js",
+      "rawBytes": 45087,
+      "gzipBytes": 11849,
+      "sha256": "bf2e40db061745f44e6620a0296370fb38583caa4f277a2b23067bc73c2fd3c3",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/app/events/gallery/page-5e996223f2fd2a9d.js",
+      "rawBytes": 198,
+      "gzipBytes": 173,
+      "sha256": "34609fbca336b93de8a104877eeda09a73f2ca18f106e535ce9be2b2b2596dd7",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/app/en/events/page-49aa0d512e96f221.js",
+      "rawBytes": 8954,
+      "gzipBytes": 3289,
+      "sha256": "2171ba635c0266d6755904edb687924d2b84f0893433b17d9f880aed7f05e4a0",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/app/en/events/about/page-8ee4f701b663e7e6.js",
+      "rawBytes": 193,
+      "gzipBytes": 170,
+      "sha256": "cc68f27fdd66c899372cff5a1da5442cee73ebc051f93de8473582d4f7da3be5",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/app/en/events/birthdays/page-91d65037264f3b10.js",
+      "rawBytes": 193,
+      "gzipBytes": 170,
+      "sha256": "9c7753491b42c35c8315fe76840d262c9ee0882277517ea59e0b9676738f58e8",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/app/en/events/celebrations/page-40f641f8546181dd.js",
+      "rawBytes": 193,
+      "gzipBytes": 170,
+      "sha256": "456b75373ae933844d0cf555e82d43e95d328db0ee978402f16a2b9127a5e8b9",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/app/en/events/company-catering/page-4c126f5f36296739.js",
+      "rawBytes": 193,
+      "gzipBytes": 169,
+      "sha256": "11244ff3784c010901dd6a8ff8745d64c5b5e99d514bd8fe1f080666cf7c9ba3",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/app/en/events/company-lunches/page-d905902f7d0da52c.js",
+      "rawBytes": 193,
+      "gzipBytes": 170,
+      "sha256": "6bd5b7cba623a81d06033a3c97023801e465a27d3d2e178328e5753d5f8547b7",
+      "servedMatchesBuild": true
+    },
+    {
+      "url": "/_next/static/chunks/app/en/events/gallery/page-9913e8e9b965ffe9.js",
+      "rawBytes": 198,
+      "gzipBytes": 173,
+      "sha256": "ff9c1c8978716fd55ed81ac3727a167fb6fa93213b3762124702fcc1ad795b28",
+      "servedMatchesBuild": true
+    }
+  ],
+  "rootMain": {
+    "assets": [
+      {
+        "file": "static/chunks/webpack-095aa67f46150012.js",
+        "rawBytes": 4919,
+        "gzipBytes": 2405
+      },
+      {
+        "file": "static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+        "rawBytes": 199865,
+        "gzipBytes": 62877
+      },
+      {
+        "file": "static/chunks/3794-c968c786880cae15.js",
+        "rawBytes": 222079,
+        "gzipBytes": 60749
+      },
+      {
+        "file": "static/chunks/main-app-2f3596a243c31fc0.js",
+        "rawBytes": 516,
+        "gzipBytes": 223
+      }
+    ],
+    "gzipBytes": 126254
+  }
+}

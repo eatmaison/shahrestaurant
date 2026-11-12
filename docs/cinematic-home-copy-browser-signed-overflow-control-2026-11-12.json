@@ -1,0 +1,2484 @@
+{
+  "atUTC": "2026-11-12T01:56:01.228Z",
+  "controlBuild": "s_2pU6IxrWANtKLhFIf2S",
+  "candidateBuild": "S_b0mpTvbVmqqJ-ThVCUE",
+  "scope": "Local functional parity and bounded CPU4 mobile diagnostics; reduced-motion returning session. Not Lighthouse/field INP, isolated causal speed proof or physical mobile.",
+  "pairs": [
+    {
+      "width": 390,
+      "height": 844,
+      "lang": "nl",
+      "parity": {
+        "copy": true,
+        "faq": true,
+        "jsonld": true,
+        "locale": true,
+        "dialog": true,
+        "noOverflow": true,
+        "noErrors": true,
+        "noWrites": true
+      },
+      "results": [
+        {
+          "kind": "control",
+          "width": 390,
+          "lang": "nl",
+          "state": {
+            "lang": "nl",
+            "h1": "Indiaas restaurant in Amsterdam-Noord",
+            "faq": [
+              "Evenementen Evenementen overzichtOver onsGalerijVerjaardagen & feestenVieringen & bruiloftenBedrijfscateringBedrijfslunches",
+              "01Hoe reserveer ik een tafel?Reserveer online of bel +31 20 341 2995. Neem voor een groter gezelschap of een speciale gelegenheid contact op met ons team.",
+              "02Waar vind ik de menukaart?Onze volledige menukaart en actuele prijzen staan op de bestelpagina. Hierboven vindt u alvast een selectie van onze gerechten.",
+              "03Kunnen jullie rekening houden met dieetwensen?Geef allergieën of dieetwensen vóór het bestellen door aan ons team. We bespreken graag de ingrediënten en mogelijke opties met u.",
+              "04Kan ik zonder reservering langskomen?U bent ook zonder reservering welkom. Bel +31 20 341 2995 voor een gewenst tijdstip of een groter gezelschap.",
+              "05Kan ik een tafel op het terras aanvragen?Bel ons team vóór uw bezoek om te vragen naar terrasplaatsen en de beschikbaarheid.",
+              "06Wat kan ik regelen voor een bezoek met kinderen?Vermeld kinderen bij uw reservering en overleg met ons team over zitplaatsen of bijzondere wensen.",
+              "07Hoe kan ik betalen?Bij online afrekenen ziet u de beschikbare betaalmethoden. Vraag ons team vóór uw bezoek naar betalen in het restaurant.",
+              "08Waar kan ik parkeren?U kunt gratis parkeren aan de overkant bij KARWEI. Volg de borden en voorwaarden op het parkeerterrein.",
+              "09Kan ik een feest organiseren?Neem contact met ons op voor verjaardagen, feesten en bedrijfscatering. Op onze evenementenpagina's vindt u meer informatie voor uw gelegenheid."
+            ],
+            "jsonld": [
+              {
+                "@context": "https://schema.org",
+                "@graph": [
+                  {
+                    "@type": "Restaurant",
+                    "@id": "https://shahrestaurant.nl/#restaurant",
+                    "name": "Shah Restaurant",
+                    "url": "https://shahrestaurant.nl/",
+                    "image": "https://shahrestaurant.nl/brand/shah-room-v1.webp",
+                    "logo": "https://shahrestaurant.nl/brand/shah-landscape-teal-v1.svg",
+                    "telephone": "+31 20 341 2995",
+                    "email": "info@shahrestaurant.nl",
+                    "address": {
+                      "@type": "PostalAddress",
+                      "streetAddress": "Klaprozenweg 36a",
+                      "postalCode": "1032 KL",
+                      "addressLocality": "Amsterdam",
+                      "addressCountry": "NL"
+                    },
+                    "geo": {
+                      "@type": "GeoCoordinates",
+                      "latitude": 52.39763814,
+                      "longitude": 4.91025655
+                    },
+                    "servesCuisine": [
+                      "Indian",
+                      "Tandoori",
+                      "Curry",
+                      "Biryani"
+                    ],
+                    "acceptsReservations": true,
+                    "priceRange": "Circa €35 per persoon",
+                    "menu": "https://shahrestaurant.nl/menukaart",
+                    "hasMap": "https://www.google.com/maps/dir/?api=1&destination=Klaprozenweg+36a+1032+KL+Amsterdam",
+                    "openingHoursSpecification": {
+                      "@type": "OpeningHoursSpecification",
+                      "dayOfWeek": [
+                        "Tuesday",
+                        "Wednesday",
+                        "Thursday",
+                        "Friday",
+                        "Saturday",
+                        "Sunday"
+                      ],
+                      "opens": "15:00",
+                      "closes": "22:00"
+                    }
+                  },
+                  {
+                    "@type": "Organization",
+                    "@id": "https://shahrestaurant.nl/#organization",
+                    "name": "Shah Restaurant",
+                    "url": "https://shahrestaurant.nl/",
+                    "logo": "https://shahrestaurant.nl/brand/shah-landscape-teal-v1.svg"
+                  },
+                  {
+                    "@type": "WebSite",
+                    "@id": "https://shahrestaurant.nl/#website",
+                    "name": "Shah Restaurant",
+                    "url": "https://shahrestaurant.nl/",
+                    "inLanguage": "nl-NL",
+                    "publisher": {
+                      "@id": "https://shahrestaurant.nl/#organization"
+                    },
+                    "potentialAction": {
+                      "@type": "SearchAction",
+                      "target": {
+                        "@type": "EntryPoint",
+                        "urlTemplate": "https://shahrestaurant.nl/menukaart?q={search_term_string}"
+                      },
+                      "query-input": "required name=search_term_string"
+                    }
+                  },
+                  {
+                    "@type": "ImageObject",
+                    "@id": "https://shahrestaurant.nl/#restaurant-image",
+                    "contentUrl": "https://shahrestaurant.nl/brand/shah-room-v1.webp",
+                    "caption": "De eetzaal van Shah Restaurant in Amsterdam-Noord"
+                  }
+                ]
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "Menu",
+                "@id": "https://shahrestaurant.nl/menukaart#menu",
+                "name": "Menukaart van Shah Restaurant",
+                "inLanguage": "nl",
+                "url": "https://shahrestaurant.nl/menukaart",
+                "hasMenuSection": [
+                  {
+                    "@type": "MenuSection",
+                    "name": "Curries",
+                    "hasMenuItem": [
+                      {
+                        "@type": "MenuItem",
+                        "name": "Butter Chicken",
+                        "description": "Tandoori kip in romige boter-tomatensaus.",
+                        "offers": {
+                          "@type": "Offer",
+                          "price": "26.00",
+                          "priceCurrency": "EUR"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "@type": "MenuSection",
+                    "name": "Tandoori Mains",
+                    "hasMenuItem": [
+                      {
+                        "@type": "MenuItem",
+                        "name": "Shah Mixed Grill",
+                        "description": "Selectie van tandoor- en grillgerechten.",
+                        "offers": {
+                          "@type": "Offer",
+                          "price": "34.00",
+                          "priceCurrency": "EUR"
+                        }
+                      },
+                      {
+                        "@type": "MenuItem",
+                        "name": "Tandoori Lamb Chops",
+                        "description": "Malse lamskoteletten met Indiase specerijen.",
+                        "offers": {
+                          "@type": "Offer",
+                          "price": "31.00",
+                          "priceCurrency": "EUR"
+                        }
+                      },
+                      {
+                        "@type": "MenuItem",
+                        "name": "Tandoori Chicken Tikka",
+                        "description": "Gemarineerde kipfilet in yoghurt en \nkruiden, gegrild in de tandoor.",
+                        "offers": {
+                          "@type": "Offer",
+                          "price": "26.99",
+                          "priceCurrency": "EUR"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "@type": "MenuSection",
+                    "name": "Biryani",
+                    "hasMenuItem": [
+                      {
+                        "@type": "MenuItem",
+                        "name": "Biryani Lamb",
+                        "description": "Lamb biryani",
+                        "offers": {
+                          "@type": "Offer",
+                          "price": "26.00",
+                          "priceCurrency": "EUR"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "@type": "MenuSection",
+                    "name": "Vegetarian Starters",
+                    "hasMenuItem": [
+                      {
+                        "@type": "MenuItem",
+                        "name": "Samosa Chaat",
+                        "description": "Krokante samosa met frisse chutneys \nen kruidige toppings.",
+                        "offers": {
+                          "@type": "Offer",
+                          "price": "9.95",
+                          "priceCurrency": "EUR"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": [
+                  {
+                    "@type": "Question",
+                    "name": "Hoe reserveer ik een tafel?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Reserveer online of bel +31 20 341 2995. Neem voor een groter gezelschap of een speciale gelegenheid contact op met ons team."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Waar vind ik de menukaart?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Onze volledige menukaart en actuele prijzen staan op de bestelpagina. Hierboven vindt u alvast een selectie van onze gerechten."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Kunnen jullie rekening houden met dieetwensen?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Geef allergieën of dieetwensen vóór het bestellen door aan ons team. We bespreken graag de ingrediënten en mogelijke opties met u."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Kan ik zonder reservering langskomen?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "U bent ook zonder reservering welkom. Bel +31 20 341 2995 voor een gewenst tijdstip of een groter gezelschap."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Kan ik een tafel op het terras aanvragen?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Bel ons team vóór uw bezoek om te vragen naar terrasplaatsen en de beschikbaarheid."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Wat kan ik regelen voor een bezoek met kinderen?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Vermeld kinderen bij uw reservering en overleg met ons team over zitplaatsen of bijzondere wensen."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Hoe kan ik betalen?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Bij online afrekenen ziet u de beschikbare betaalmethoden. Vraag ons team vóór uw bezoek naar betalen in het restaurant."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Waar kan ik parkeren?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "U kunt gratis parkeren aan de overkant bij KARWEI. Volg de borden en voorwaarden op het parkeerterrein."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Kan ik een feest organiseren?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Neem contact met ons op voor verjaardagen, feesten en bedrijfscatering. Op onze evenementenpagina's vindt u meer informatie voor uw gelegenheid."
+                    }
+                  }
+                ]
+              }
+            ],
+            "overflow": 0,
+            "longTasks": [
+              {
+                "start": 1065.7000000476837,
+                "duration": 270
+              },
+              {
+                "start": 1562.9000000953674,
+                "duration": 163
+              },
+              {
+                "start": 1726.3000001907349,
+                "duration": 52
+              },
+              {
+                "start": 1916,
+                "duration": 83
+              }
+            ],
+            "nav": [
+              {
+                "dcl": 1344.4000000953674,
+                "load": 1348.8000001907349
+              }
+            ],
+            "textHash": "e2809f3b7d0c8ffb56e1a59a4086acf28e3fb558e1df1359df841c8115406f3f"
+          },
+          "dialog": "Butter Chicken",
+          "errors": [],
+          "writes": []
+        },
+        {
+          "kind": "candidate",
+          "width": 390,
+          "lang": "nl",
+          "state": {
+            "lang": "nl",
+            "h1": "Indiaas restaurant in Amsterdam-Noord",
+            "faq": [
+              "Evenementen Evenementen overzichtOver onsGalerijVerjaardagen & feestenVieringen & bruiloftenBedrijfscateringBedrijfslunches",
+              "01Hoe reserveer ik een tafel?Reserveer online of bel +31 20 341 2995. Neem voor een groter gezelschap of een speciale gelegenheid contact op met ons team.",
+              "02Waar vind ik de menukaart?Onze volledige menukaart en actuele prijzen staan op de bestelpagina. Hierboven vindt u alvast een selectie van onze gerechten.",
+              "03Kunnen jullie rekening houden met dieetwensen?Geef allergieën of dieetwensen vóór het bestellen door aan ons team. We bespreken graag de ingrediënten en mogelijke opties met u.",
+              "04Kan ik zonder reservering langskomen?U bent ook zonder reservering welkom. Bel +31 20 341 2995 voor een gewenst tijdstip of een groter gezelschap.",
+              "05Kan ik een tafel op het terras aanvragen?Bel ons team vóór uw bezoek om te vragen naar terrasplaatsen en de beschikbaarheid.",
+              "06Wat kan ik regelen voor een bezoek met kinderen?Vermeld kinderen bij uw reservering en overleg met ons team over zitplaatsen of bijzondere wensen.",
+              "07Hoe kan ik betalen?Bij online afrekenen ziet u de beschikbare betaalmethoden. Vraag ons team vóór uw bezoek naar betalen in het restaurant.",
+              "08Waar kan ik parkeren?U kunt gratis parkeren aan de overkant bij KARWEI. Volg de borden en voorwaarden op het parkeerterrein.",
+              "09Kan ik een feest organiseren?Neem contact met ons op voor verjaardagen, feesten en bedrijfscatering. Op onze evenementenpagina's vindt u meer informatie voor uw gelegenheid."
+            ],
+            "jsonld": [
+              {
+                "@context": "https://schema.org",
+                "@graph": [
+                  {
+                    "@type": "Restaurant",
+                    "@id": "https://shahrestaurant.nl/#restaurant",
+                    "name": "Shah Restaurant",
+                    "url": "https://shahrestaurant.nl/",
+                    "image": "https://shahrestaurant.nl/brand/shah-room-v1.webp",
+                    "logo": "https://shahrestaurant.nl/brand/shah-landscape-teal-v1.svg",
+                    "telephone": "+31 20 341 2995",
+                    "email": "info@shahrestaurant.nl",
+                    "address": {
+                      "@type": "PostalAddress",
+                      "streetAddress": "Klaprozenweg 36a",
+                      "postalCode": "1032 KL",
+                      "addressLocality": "Amsterdam",
+                      "addressCountry": "NL"
+                    },
+                    "geo": {
+                      "@type": "GeoCoordinates",
+                      "latitude": 52.39763814,
+                      "longitude": 4.91025655
+                    },
+                    "servesCuisine": [
+                      "Indian",
+                      "Tandoori",
+                      "Curry",
+                      "Biryani"
+                    ],
+                    "acceptsReservations": true,
+                    "priceRange": "Circa €35 per persoon",
+                    "menu": "https://shahrestaurant.nl/menukaart",
+                    "hasMap": "https://www.google.com/maps/dir/?api=1&destination=Klaprozenweg+36a+1032+KL+Amsterdam",
+                    "openingHoursSpecification": {
+                      "@type": "OpeningHoursSpecification",
+                      "dayOfWeek": [
+                        "Tuesday",
+                        "Wednesday",
+                        "Thursday",
+                        "Friday",
+                        "Saturday",
+                        "Sunday"
+                      ],
+                      "opens": "15:00",
+                      "closes": "22:00"
+                    }
+                  },
+                  {
+                    "@type": "Organization",
+                    "@id": "https://shahrestaurant.nl/#organization",
+                    "name": "Shah Restaurant",
+                    "url": "https://shahrestaurant.nl/",
+                    "logo": "https://shahrestaurant.nl/brand/shah-landscape-teal-v1.svg"
+                  },
+                  {
+                    "@type": "WebSite",
+                    "@id": "https://shahrestaurant.nl/#website",
+                    "name": "Shah Restaurant",
+                    "url": "https://shahrestaurant.nl/",
+                    "inLanguage": "nl-NL",
+                    "publisher": {
+                      "@id": "https://shahrestaurant.nl/#organization"
+                    },
+                    "potentialAction": {
+                      "@type": "SearchAction",
+                      "target": {
+                        "@type": "EntryPoint",
+                        "urlTemplate": "https://shahrestaurant.nl/menukaart?q={search_term_string}"
+                      },
+                      "query-input": "required name=search_term_string"
+                    }
+                  },
+                  {
+                    "@type": "ImageObject",
+                    "@id": "https://shahrestaurant.nl/#restaurant-image",
+                    "contentUrl": "https://shahrestaurant.nl/brand/shah-room-v1.webp",
+                    "caption": "De eetzaal van Shah Restaurant in Amsterdam-Noord"
+                  }
+                ]
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "Menu",
+                "@id": "https://shahrestaurant.nl/menukaart#menu",
+                "name": "Menukaart van Shah Restaurant",
+                "inLanguage": "nl",
+                "url": "https://shahrestaurant.nl/menukaart",
+                "hasMenuSection": [
+                  {
+                    "@type": "MenuSection",
+                    "name": "Curries",
+                    "hasMenuItem": [
+                      {
+                        "@type": "MenuItem",
+                        "name": "Butter Chicken",
+                        "description": "Tandoori kip in romige boter-tomatensaus.",
+                        "offers": {
+                          "@type": "Offer",
+                          "price": "26.00",
+                          "priceCurrency": "EUR"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "@type": "MenuSection",
+                    "name": "Tandoori Mains",
+                    "hasMenuItem": [
+                      {
+                        "@type": "MenuItem",
+                        "name": "Shah Mixed Grill",
+                        "description": "Selectie van tandoor- en grillgerechten.",
+                        "offers": {
+                          "@type": "Offer",
+                          "price": "34.00",
+                          "priceCurrency": "EUR"
+                        }
+                      },
+                      {
+                        "@type": "MenuItem",
+                        "name": "Tandoori Lamb Chops",
+                        "description": "Malse lamskoteletten met Indiase specerijen.",
+                        "offers": {
+                          "@type": "Offer",
+                          "price": "31.00",
+                          "priceCurrency": "EUR"
+                        }
+                      },
+                      {
+                        "@type": "MenuItem",
+                        "name": "Tandoori Chicken Tikka",
+                        "description": "Gemarineerde kipfilet in yoghurt en \nkruiden, gegrild in de tandoor.",
+                        "offers": {
+                          "@type": "Offer",
+                          "price": "26.99",
+                          "priceCurrency": "EUR"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "@type": "MenuSection",
+                    "name": "Biryani",
+                    "hasMenuItem": [
+                      {
+                        "@type": "MenuItem",
+                        "name": "Biryani Lamb",
+                        "description": "Lamb biryani",
+                        "offers": {
+                          "@type": "Offer",
+                          "price": "26.00",
+                          "priceCurrency": "EUR"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "@type": "MenuSection",
+                    "name": "Vegetarian Starters",
+                    "hasMenuItem": [
+                      {
+                        "@type": "MenuItem",
+                        "name": "Samosa Chaat",
+                        "description": "Krokante samosa met frisse chutneys \nen kruidige toppings.",
+                        "offers": {
+                          "@type": "Offer",
+                          "price": "9.95",
+                          "priceCurrency": "EUR"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": [
+                  {
+                    "@type": "Question",
+                    "name": "Hoe reserveer ik een tafel?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Reserveer online of bel +31 20 341 2995. Neem voor een groter gezelschap of een speciale gelegenheid contact op met ons team."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Waar vind ik de menukaart?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Onze volledige menukaart en actuele prijzen staan op de bestelpagina. Hierboven vindt u alvast een selectie van onze gerechten."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Kunnen jullie rekening houden met dieetwensen?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Geef allergieën of dieetwensen vóór het bestellen door aan ons team. We bespreken graag de ingrediënten en mogelijke opties met u."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Kan ik zonder reservering langskomen?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "U bent ook zonder reservering welkom. Bel +31 20 341 2995 voor een gewenst tijdstip of een groter gezelschap."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Kan ik een tafel op het terras aanvragen?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Bel ons team vóór uw bezoek om te vragen naar terrasplaatsen en de beschikbaarheid."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Wat kan ik regelen voor een bezoek met kinderen?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Vermeld kinderen bij uw reservering en overleg met ons team over zitplaatsen of bijzondere wensen."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Hoe kan ik betalen?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Bij online afrekenen ziet u de beschikbare betaalmethoden. Vraag ons team vóór uw bezoek naar betalen in het restaurant."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Waar kan ik parkeren?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "U kunt gratis parkeren aan de overkant bij KARWEI. Volg de borden en voorwaarden op het parkeerterrein."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Kan ik een feest organiseren?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Neem contact met ons op voor verjaardagen, feesten en bedrijfscatering. Op onze evenementenpagina's vindt u meer informatie voor uw gelegenheid."
+                    }
+                  }
+                ]
+              }
+            ],
+            "overflow": 0,
+            "longTasks": [
+              {
+                "start": 989.2999999523163,
+                "duration": 259
+              },
+              {
+                "start": 1478.5999999046326,
+                "duration": 158
+              },
+              {
+                "start": 1637.2999999523163,
+                "duration": 54
+              },
+              {
+                "start": 1823.8999998569489,
+                "duration": 99
+              }
+            ],
+            "nav": [
+              {
+                "dcl": 1282.5,
+                "load": 1287.5999999046326
+              }
+            ],
+            "textHash": "e2809f3b7d0c8ffb56e1a59a4086acf28e3fb558e1df1359df841c8115406f3f"
+          },
+          "dialog": "Butter Chicken",
+          "errors": [],
+          "writes": []
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "lang": "en",
+      "parity": {
+        "copy": true,
+        "faq": true,
+        "jsonld": true,
+        "locale": true,
+        "dialog": true,
+        "noOverflow": true,
+        "noErrors": true,
+        "noWrites": true
+      },
+      "results": [
+        {
+          "kind": "control",
+          "width": 390,
+          "lang": "en",
+          "state": {
+            "lang": "en",
+            "h1": "Indian restaurant in Amsterdam-Noord",
+            "faq": [
+              "Events Events overviewAbout usGalleryBirthdays & partiesCelebrations & weddingsCompany cateringCompany lunches",
+              "01How do I book a table?Reserve a table online or call +31 20 341 2995. For a larger party or a special occasion, contact our team to discuss the details.",
+              "02Where can I find the menu?Our full menu and current prices are available on the order page. You can also explore a selection of dishes above.",
+              "03Can you help with dietary requirements?Please let our team know about allergies or dietary requirements before ordering. We can discuss ingredients and suitable options with you.",
+              "04Can I visit without a reservation?Walk-ins are welcome. Call +31 20 341 2995 if you have a preferred time or are visiting with a group.",
+              "05Can I request a terrace table?Call our team before your visit to ask about terrace seating and its availability.",
+              "06What should I arrange when visiting with children?Mention children when booking and contact our team about seating or any specific requirements.",
+              "07Which payment methods can I use?Online checkout shows the available payment methods. For payment at the restaurant, please check with our team before your visit.",
+              "08Where can I park?Free parking is available across the road by KARWEI. Follow the signs and conditions at the car park.",
+              "09Can I organise a celebration?Contact us about birthdays, celebrations and company catering. Our events pages have more information for your occasion."
+            ],
+            "jsonld": [
+              {
+                "@context": "https://schema.org",
+                "@graph": [
+                  {
+                    "@type": "Restaurant",
+                    "@id": "https://shahrestaurant.nl/#restaurant",
+                    "name": "Shah Restaurant",
+                    "url": "https://shahrestaurant.nl/",
+                    "image": "https://shahrestaurant.nl/brand/shah-room-v1.webp",
+                    "logo": "https://shahrestaurant.nl/brand/shah-landscape-teal-v1.svg",
+                    "telephone": "+31 20 341 2995",
+                    "email": "info@shahrestaurant.nl",
+                    "address": {
+                      "@type": "PostalAddress",
+                      "streetAddress": "Klaprozenweg 36a",
+                      "postalCode": "1032 KL",
+                      "addressLocality": "Amsterdam",
+                      "addressCountry": "NL"
+                    },
+                    "geo": {
+                      "@type": "GeoCoordinates",
+                      "latitude": 52.39763814,
+                      "longitude": 4.91025655
+                    },
+                    "servesCuisine": [
+                      "Indian",
+                      "Tandoori",
+                      "Curry",
+                      "Biryani"
+                    ],
+                    "acceptsReservations": true,
+                    "priceRange": "About €35 per person",
+                    "menu": "https://shahrestaurant.nl/en/menu",
+                    "hasMap": "https://www.google.com/maps/dir/?api=1&destination=Klaprozenweg+36a+1032+KL+Amsterdam",
+                    "openingHoursSpecification": {
+                      "@type": "OpeningHoursSpecification",
+                      "dayOfWeek": [
+                        "Tuesday",
+                        "Wednesday",
+                        "Thursday",
+                        "Friday",
+                        "Saturday",
+                        "Sunday"
+                      ],
+                      "opens": "15:00",
+                      "closes": "22:00"
+                    }
+                  },
+                  {
+                    "@type": "Organization",
+                    "@id": "https://shahrestaurant.nl/#organization",
+                    "name": "Shah Restaurant",
+                    "url": "https://shahrestaurant.nl/",
+                    "logo": "https://shahrestaurant.nl/brand/shah-landscape-teal-v1.svg"
+                  },
+                  {
+                    "@type": "WebSite",
+                    "@id": "https://shahrestaurant.nl/en#website",
+                    "name": "Shah Restaurant",
+                    "url": "https://shahrestaurant.nl/en",
+                    "inLanguage": "en",
+                    "publisher": {
+                      "@id": "https://shahrestaurant.nl/#organization"
+                    },
+                    "potentialAction": {
+                      "@type": "SearchAction",
+                      "target": {
+                        "@type": "EntryPoint",
+                        "urlTemplate": "https://shahrestaurant.nl/en/menu?q={search_term_string}"
+                      },
+                      "query-input": "required name=search_term_string"
+                    }
+                  },
+                  {
+                    "@type": "ImageObject",
+                    "@id": "https://shahrestaurant.nl/#restaurant-image",
+                    "contentUrl": "https://shahrestaurant.nl/brand/shah-room-v1.webp",
+                    "caption": "The dining room at Shah Restaurant in Amsterdam-Noord"
+                  }
+                ]
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "Menu",
+                "@id": "https://shahrestaurant.nl/en/menu#menu",
+                "name": "Shah Restaurant menu",
+                "inLanguage": "en",
+                "url": "https://shahrestaurant.nl/en/menu",
+                "hasMenuSection": [
+                  {
+                    "@type": "MenuSection",
+                    "name": "Curries",
+                    "hasMenuItem": [
+                      {
+                        "@type": "MenuItem",
+                        "name": "Butter Chicken",
+                        "description": "Tandoori chicken in a creamy butter-tomato sauce.",
+                        "offers": {
+                          "@type": "Offer",
+                          "price": "26.00",
+                          "priceCurrency": "EUR"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "@type": "MenuSection",
+                    "name": "Tandoori Mains",
+                    "hasMenuItem": [
+                      {
+                        "@type": "MenuItem",
+                        "name": "Shah Mixed Grill",
+                        "description": "Selection of tandoor and grill dishes.",
+                        "offers": {
+                          "@type": "Offer",
+                          "price": "34.00",
+                          "priceCurrency": "EUR"
+                        }
+                      },
+                      {
+                        "@type": "MenuItem",
+                        "name": "Tandoori Lamb Chops",
+                        "description": "Tender lamb chops with Indian spices.",
+                        "offers": {
+                          "@type": "Offer",
+                          "price": "31.00",
+                          "priceCurrency": "EUR"
+                        }
+                      },
+                      {
+                        "@type": "MenuItem",
+                        "name": "Tandoori Chicken Tikka",
+                        "description": "Chicken breast marinated in yogurt and \nspices, grilled in the tandoor.",
+                        "offers": {
+                          "@type": "Offer",
+                          "price": "26.99",
+                          "priceCurrency": "EUR"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "@type": "MenuSection",
+                    "name": "Biryani",
+                    "hasMenuItem": [
+                      {
+                        "@type": "MenuItem",
+                        "name": "Biryani Lamb",
+                        "description": "Lamb biryani",
+                        "offers": {
+                          "@type": "Offer",
+                          "price": "26.00",
+                          "priceCurrency": "EUR"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "@type": "MenuSection",
+                    "name": "Vegetarian Starters",
+                    "hasMenuItem": [
+                      {
+                        "@type": "MenuItem",
+                        "name": "Samosa Chaat",
+                        "description": "Crispy samosa with fresh chutneys \nand spiced toppings.",
+                        "offers": {
+                          "@type": "Offer",
+                          "price": "9.95",
+                          "priceCurrency": "EUR"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": [
+                  {
+                    "@type": "Question",
+                    "name": "How do I book a table?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Reserve a table online or call +31 20 341 2995. For a larger party or a special occasion, contact our team to discuss the details."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Where can I find the menu?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Our full menu and current prices are available on the order page. You can also explore a selection of dishes above."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Can you help with dietary requirements?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Please let our team know about allergies or dietary requirements before ordering. We can discuss ingredients and suitable options with you."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Can I visit without a reservation?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Walk-ins are welcome. Call +31 20 341 2995 if you have a preferred time or are visiting with a group."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Can I request a terrace table?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Call our team before your visit to ask about terrace seating and its availability."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "What should I arrange when visiting with children?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Mention children when booking and contact our team about seating or any specific requirements."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Which payment methods can I use?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Online checkout shows the available payment methods. For payment at the restaurant, please check with our team before your visit."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Where can I park?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Free parking is available across the road by KARWEI. Follow the signs and conditions at the car park."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Can I organise a celebration?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Contact us about birthdays, celebrations and company catering. Our events pages have more information for your occasion."
+                    }
+                  }
+                ]
+              }
+            ],
+            "overflow": 0,
+            "longTasks": [
+              {
+                "start": 1092.1000001430511,
+                "duration": 278
+              },
+              {
+                "start": 1576.7000000476837,
+                "duration": 161
+              },
+              {
+                "start": 1738.4000000953674,
+                "duration": 52
+              },
+              {
+                "start": 1922.3000001907349,
+                "duration": 88
+              }
+            ],
+            "nav": [
+              {
+                "dcl": 1375.2000000476837,
+                "load": 1379.4000000953674
+              }
+            ],
+            "textHash": "6783ce3a971fe5f85ae2422e946ee704e3e468537b15edec27323f271c2ba0c4"
+          },
+          "dialog": "Butter Chicken",
+          "errors": [],
+          "writes": []
+        },
+        {
+          "kind": "candidate",
+          "width": 390,
+          "lang": "en",
+          "state": {
+            "lang": "en",
+            "h1": "Indian restaurant in Amsterdam-Noord",
+            "faq": [
+              "Events Events overviewAbout usGalleryBirthdays & partiesCelebrations & weddingsCompany cateringCompany lunches",
+              "01How do I book a table?Reserve a table online or call +31 20 341 2995. For a larger party or a special occasion, contact our team to discuss the details.",
+              "02Where can I find the menu?Our full menu and current prices are available on the order page. You can also explore a selection of dishes above.",
+              "03Can you help with dietary requirements?Please let our team know about allergies or dietary requirements before ordering. We can discuss ingredients and suitable options with you.",
+              "04Can I visit without a reservation?Walk-ins are welcome. Call +31 20 341 2995 if you have a preferred time or are visiting with a group.",
+              "05Can I request a terrace table?Call our team before your visit to ask about terrace seating and its availability.",
+              "06What should I arrange when visiting with children?Mention children when booking and contact our team about seating or any specific requirements.",
+              "07Which payment methods can I use?Online checkout shows the available payment methods. For payment at the restaurant, please check with our team before your visit.",
+              "08Where can I park?Free parking is available across the road by KARWEI. Follow the signs and conditions at the car park.",
+              "09Can I organise a celebration?Contact us about birthdays, celebrations and company catering. Our events pages have more information for your occasion."
+            ],
+            "jsonld": [
+              {
+                "@context": "https://schema.org",
+                "@graph": [
+                  {
+                    "@type": "Restaurant",
+                    "@id": "https://shahrestaurant.nl/#restaurant",
+                    "name": "Shah Restaurant",
+                    "url": "https://shahrestaurant.nl/",
+                    "image": "https://shahrestaurant.nl/brand/shah-room-v1.webp",
+                    "logo": "https://shahrestaurant.nl/brand/shah-landscape-teal-v1.svg",
+                    "telephone": "+31 20 341 2995",
+                    "email": "info@shahrestaurant.nl",
+                    "address": {
+                      "@type": "PostalAddress",
+                      "streetAddress": "Klaprozenweg 36a",
+                      "postalCode": "1032 KL",
+                      "addressLocality": "Amsterdam",
+                      "addressCountry": "NL"
+                    },
+                    "geo": {
+                      "@type": "GeoCoordinates",
+                      "latitude": 52.39763814,
+                      "longitude": 4.91025655
+                    },
+                    "servesCuisine": [
+                      "Indian",
+                      "Tandoori",
+                      "Curry",
+                      "Biryani"
+                    ],
+                    "acceptsReservations": true,
+                    "priceRange": "About €35 per person",
+                    "menu": "https://shahrestaurant.nl/en/menu",
+                    "hasMap": "https://www.google.com/maps/dir/?api=1&destination=Klaprozenweg+36a+1032+KL+Amsterdam",
+                    "openingHoursSpecification": {
+                      "@type": "OpeningHoursSpecification",
+                      "dayOfWeek": [
+                        "Tuesday",
+                        "Wednesday",
+                        "Thursday",
+                        "Friday",
+                        "Saturday",
+                        "Sunday"
+                      ],
+                      "opens": "15:00",
+                      "closes": "22:00"
+                    }
+                  },
+                  {
+                    "@type": "Organization",
+                    "@id": "https://shahrestaurant.nl/#organization",
+                    "name": "Shah Restaurant",
+                    "url": "https://shahrestaurant.nl/",
+                    "logo": "https://shahrestaurant.nl/brand/shah-landscape-teal-v1.svg"
+                  },
+                  {
+                    "@type": "WebSite",
+                    "@id": "https://shahrestaurant.nl/en#website",
+                    "name": "Shah Restaurant",
+                    "url": "https://shahrestaurant.nl/en",
+                    "inLanguage": "en",
+                    "publisher": {
+                      "@id": "https://shahrestaurant.nl/#organization"
+                    },
+                    "potentialAction": {
+                      "@type": "SearchAction",
+                      "target": {
+                        "@type": "EntryPoint",
+                        "urlTemplate": "https://shahrestaurant.nl/en/menu?q={search_term_string}"
+                      },
+                      "query-input": "required name=search_term_string"
+                    }
+                  },
+                  {
+                    "@type": "ImageObject",
+                    "@id": "https://shahrestaurant.nl/#restaurant-image",
+                    "contentUrl": "https://shahrestaurant.nl/brand/shah-room-v1.webp",
+                    "caption": "The dining room at Shah Restaurant in Amsterdam-Noord"
+                  }
+                ]
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "Menu",
+                "@id": "https://shahrestaurant.nl/en/menu#menu",
+                "name": "Shah Restaurant menu",
+                "inLanguage": "en",
+                "url": "https://shahrestaurant.nl/en/menu",
+                "hasMenuSection": [
+                  {
+                    "@type": "MenuSection",
+                    "name": "Curries",
+                    "hasMenuItem": [
+                      {
+                        "@type": "MenuItem",
+                        "name": "Butter Chicken",
+                        "description": "Tandoori chicken in a creamy butter-tomato sauce.",
+                        "offers": {
+                          "@type": "Offer",
+                          "price": "26.00",
+                          "priceCurrency": "EUR"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "@type": "MenuSection",
+                    "name": "Tandoori Mains",
+                    "hasMenuItem": [
+                      {
+                        "@type": "MenuItem",
+                        "name": "Shah Mixed Grill",
+                        "description": "Selection of tandoor and grill dishes.",
+                        "offers": {
+                          "@type": "Offer",
+                          "price": "34.00",
+                          "priceCurrency": "EUR"
+                        }
+                      },
+                      {
+                        "@type": "MenuItem",
+                        "name": "Tandoori Lamb Chops",
+                        "description": "Tender lamb chops with Indian spices.",
+                        "offers": {
+                          "@type": "Offer",
+                          "price": "31.00",
+                          "priceCurrency": "EUR"
+                        }
+                      },
+                      {
+                        "@type": "MenuItem",
+                        "name": "Tandoori Chicken Tikka",
+                        "description": "Chicken breast marinated in yogurt and \nspices, grilled in the tandoor.",
+                        "offers": {
+                          "@type": "Offer",
+                          "price": "26.99",
+                          "priceCurrency": "EUR"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "@type": "MenuSection",
+                    "name": "Biryani",
+                    "hasMenuItem": [
+                      {
+                        "@type": "MenuItem",
+                        "name": "Biryani Lamb",
+                        "description": "Lamb biryani",
+                        "offers": {
+                          "@type": "Offer",
+                          "price": "26.00",
+                          "priceCurrency": "EUR"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "@type": "MenuSection",
+                    "name": "Vegetarian Starters",
+                    "hasMenuItem": [
+                      {
+                        "@type": "MenuItem",
+                        "name": "Samosa Chaat",
+                        "description": "Crispy samosa with fresh chutneys \nand spiced toppings.",
+                        "offers": {
+                          "@type": "Offer",
+                          "price": "9.95",
+                          "priceCurrency": "EUR"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": [
+                  {
+                    "@type": "Question",
+                    "name": "How do I book a table?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Reserve a table online or call +31 20 341 2995. For a larger party or a special occasion, contact our team to discuss the details."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Where can I find the menu?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Our full menu and current prices are available on the order page. You can also explore a selection of dishes above."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Can you help with dietary requirements?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Please let our team know about allergies or dietary requirements before ordering. We can discuss ingredients and suitable options with you."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Can I visit without a reservation?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Walk-ins are welcome. Call +31 20 341 2995 if you have a preferred time or are visiting with a group."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Can I request a terrace table?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Call our team before your visit to ask about terrace seating and its availability."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "What should I arrange when visiting with children?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Mention children when booking and contact our team about seating or any specific requirements."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Which payment methods can I use?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Online checkout shows the available payment methods. For payment at the restaurant, please check with our team before your visit."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Where can I park?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Free parking is available across the road by KARWEI. Follow the signs and conditions at the car park."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Can I organise a celebration?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Contact us about birthdays, celebrations and company catering. Our events pages have more information for your occasion."
+                    }
+                  }
+                ]
+              }
+            ],
+            "overflow": 0,
+            "longTasks": [
+              {
+                "start": 1002.5,
+                "duration": 276
+              },
+              {
+                "start": 1559,
+                "duration": 247
+              },
+              {
+                "start": 1807.2999999523163,
+                "duration": 53
+              },
+              {
+                "start": 1998.4000000953674,
+                "duration": 81
+              }
+            ],
+            "nav": [
+              {
+                "dcl": 1309.7999999523163,
+                "load": 1314.1000001430511
+              }
+            ],
+            "textHash": "6783ce3a971fe5f85ae2422e946ee704e3e468537b15edec27323f271c2ba0c4"
+          },
+          "dialog": "Butter Chicken",
+          "errors": [],
+          "writes": []
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "lang": "nl",
+      "parity": {
+        "copy": true,
+        "faq": true,
+        "jsonld": true,
+        "locale": true,
+        "dialog": true,
+        "noOverflow": false,
+        "noErrors": true,
+        "noWrites": true
+      },
+      "results": [
+        {
+          "kind": "control",
+          "width": 1440,
+          "lang": "nl",
+          "state": {
+            "lang": "nl",
+            "h1": "Indiaas restaurant in Amsterdam-Noord",
+            "faq": [
+              "Evenementen Evenementen overzichtOver onsGalerijVerjaardagen & feestenVieringen & bruiloftenBedrijfscateringBedrijfslunches",
+              "01Hoe reserveer ik een tafel?Reserveer online of bel +31 20 341 2995. Neem voor een groter gezelschap of een speciale gelegenheid contact op met ons team.",
+              "02Waar vind ik de menukaart?Onze volledige menukaart en actuele prijzen staan op de bestelpagina. Hierboven vindt u alvast een selectie van onze gerechten.",
+              "03Kunnen jullie rekening houden met dieetwensen?Geef allergieën of dieetwensen vóór het bestellen door aan ons team. We bespreken graag de ingrediënten en mogelijke opties met u.",
+              "04Kan ik zonder reservering langskomen?U bent ook zonder reservering welkom. Bel +31 20 341 2995 voor een gewenst tijdstip of een groter gezelschap.",
+              "05Kan ik een tafel op het terras aanvragen?Bel ons team vóór uw bezoek om te vragen naar terrasplaatsen en de beschikbaarheid.",
+              "06Wat kan ik regelen voor een bezoek met kinderen?Vermeld kinderen bij uw reservering en overleg met ons team over zitplaatsen of bijzondere wensen.",
+              "07Hoe kan ik betalen?Bij online afrekenen ziet u de beschikbare betaalmethoden. Vraag ons team vóór uw bezoek naar betalen in het restaurant.",
+              "08Waar kan ik parkeren?U kunt gratis parkeren aan de overkant bij KARWEI. Volg de borden en voorwaarden op het parkeerterrein.",
+              "09Kan ik een feest organiseren?Neem contact met ons op voor verjaardagen, feesten en bedrijfscatering. Op onze evenementenpagina's vindt u meer informatie voor uw gelegenheid."
+            ],
+            "jsonld": [
+              {
+                "@context": "https://schema.org",
+                "@graph": [
+                  {
+                    "@type": "Restaurant",
+                    "@id": "https://shahrestaurant.nl/#restaurant",
+                    "name": "Shah Restaurant",
+                    "url": "https://shahrestaurant.nl/",
+                    "image": "https://shahrestaurant.nl/brand/shah-room-v1.webp",
+                    "logo": "https://shahrestaurant.nl/brand/shah-landscape-teal-v1.svg",
+                    "telephone": "+31 20 341 2995",
+                    "email": "info@shahrestaurant.nl",
+                    "address": {
+                      "@type": "PostalAddress",
+                      "streetAddress": "Klaprozenweg 36a",
+                      "postalCode": "1032 KL",
+                      "addressLocality": "Amsterdam",
+                      "addressCountry": "NL"
+                    },
+                    "geo": {
+                      "@type": "GeoCoordinates",
+                      "latitude": 52.39763814,
+                      "longitude": 4.91025655
+                    },
+                    "servesCuisine": [
+                      "Indian",
+                      "Tandoori",
+                      "Curry",
+                      "Biryani"
+                    ],
+                    "acceptsReservations": true,
+                    "priceRange": "Circa €35 per persoon",
+                    "menu": "https://shahrestaurant.nl/menukaart",
+                    "hasMap": "https://www.google.com/maps/dir/?api=1&destination=Klaprozenweg+36a+1032+KL+Amsterdam",
+                    "openingHoursSpecification": {
+                      "@type": "OpeningHoursSpecification",
+                      "dayOfWeek": [
+                        "Tuesday",
+                        "Wednesday",
+                        "Thursday",
+                        "Friday",
+                        "Saturday",
+                        "Sunday"
+                      ],
+                      "opens": "15:00",
+                      "closes": "22:00"
+                    }
+                  },
+                  {
+                    "@type": "Organization",
+                    "@id": "https://shahrestaurant.nl/#organization",
+                    "name": "Shah Restaurant",
+                    "url": "https://shahrestaurant.nl/",
+                    "logo": "https://shahrestaurant.nl/brand/shah-landscape-teal-v1.svg"
+                  },
+                  {
+                    "@type": "WebSite",
+                    "@id": "https://shahrestaurant.nl/#website",
+                    "name": "Shah Restaurant",
+                    "url": "https://shahrestaurant.nl/",
+                    "inLanguage": "nl-NL",
+                    "publisher": {
+                      "@id": "https://shahrestaurant.nl/#organization"
+                    },
+                    "potentialAction": {
+                      "@type": "SearchAction",
+                      "target": {
+                        "@type": "EntryPoint",
+                        "urlTemplate": "https://shahrestaurant.nl/menukaart?q={search_term_string}"
+                      },
+                      "query-input": "required name=search_term_string"
+                    }
+                  },
+                  {
+                    "@type": "ImageObject",
+                    "@id": "https://shahrestaurant.nl/#restaurant-image",
+                    "contentUrl": "https://shahrestaurant.nl/brand/shah-room-v1.webp",
+                    "caption": "De eetzaal van Shah Restaurant in Amsterdam-Noord"
+                  }
+                ]
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "Menu",
+                "@id": "https://shahrestaurant.nl/menukaart#menu",
+                "name": "Menukaart van Shah Restaurant",
+                "inLanguage": "nl",
+                "url": "https://shahrestaurant.nl/menukaart",
+                "hasMenuSection": [
+                  {
+                    "@type": "MenuSection",
+                    "name": "Curries",
+                    "hasMenuItem": [
+                      {
+                        "@type": "MenuItem",
+                        "name": "Butter Chicken",
+                        "description": "Tandoori kip in romige boter-tomatensaus.",
+                        "offers": {
+                          "@type": "Offer",
+                          "price": "26.00",
+                          "priceCurrency": "EUR"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "@type": "MenuSection",
+                    "name": "Tandoori Mains",
+                    "hasMenuItem": [
+                      {
+                        "@type": "MenuItem",
+                        "name": "Shah Mixed Grill",
+                        "description": "Selectie van tandoor- en grillgerechten.",
+                        "offers": {
+                          "@type": "Offer",
+                          "price": "34.00",
+                          "priceCurrency": "EUR"
+                        }
+                      },
+                      {
+                        "@type": "MenuItem",
+                        "name": "Tandoori Lamb Chops",
+                        "description": "Malse lamskoteletten met Indiase specerijen.",
+                        "offers": {
+                          "@type": "Offer",
+                          "price": "31.00",
+                          "priceCurrency": "EUR"
+                        }
+                      },
+                      {
+                        "@type": "MenuItem",
+                        "name": "Tandoori Chicken Tikka",
+                        "description": "Gemarineerde kipfilet in yoghurt en \nkruiden, gegrild in de tandoor.",
+                        "offers": {
+                          "@type": "Offer",
+                          "price": "26.99",
+                          "priceCurrency": "EUR"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "@type": "MenuSection",
+                    "name": "Biryani",
+                    "hasMenuItem": [
+                      {
+                        "@type": "MenuItem",
+                        "name": "Biryani Lamb",
+                        "description": "Lamb biryani",
+                        "offers": {
+                          "@type": "Offer",
+                          "price": "26.00",
+                          "priceCurrency": "EUR"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "@type": "MenuSection",
+                    "name": "Vegetarian Starters",
+                    "hasMenuItem": [
+                      {
+                        "@type": "MenuItem",
+                        "name": "Samosa Chaat",
+                        "description": "Krokante samosa met frisse chutneys \nen kruidige toppings.",
+                        "offers": {
+                          "@type": "Offer",
+                          "price": "9.95",
+                          "priceCurrency": "EUR"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": [
+                  {
+                    "@type": "Question",
+                    "name": "Hoe reserveer ik een tafel?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Reserveer online of bel +31 20 341 2995. Neem voor een groter gezelschap of een speciale gelegenheid contact op met ons team."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Waar vind ik de menukaart?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Onze volledige menukaart en actuele prijzen staan op de bestelpagina. Hierboven vindt u alvast een selectie van onze gerechten."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Kunnen jullie rekening houden met dieetwensen?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Geef allergieën of dieetwensen vóór het bestellen door aan ons team. We bespreken graag de ingrediënten en mogelijke opties met u."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Kan ik zonder reservering langskomen?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "U bent ook zonder reservering welkom. Bel +31 20 341 2995 voor een gewenst tijdstip of een groter gezelschap."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Kan ik een tafel op het terras aanvragen?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Bel ons team vóór uw bezoek om te vragen naar terrasplaatsen en de beschikbaarheid."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Wat kan ik regelen voor een bezoek met kinderen?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Vermeld kinderen bij uw reservering en overleg met ons team over zitplaatsen of bijzondere wensen."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Hoe kan ik betalen?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Bij online afrekenen ziet u de beschikbare betaalmethoden. Vraag ons team vóór uw bezoek naar betalen in het restaurant."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Waar kan ik parkeren?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "U kunt gratis parkeren aan de overkant bij KARWEI. Volg de borden en voorwaarden op het parkeerterrein."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Kan ik een feest organiseren?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Neem contact met ons op voor verjaardagen, feesten en bedrijfscatering. Op onze evenementenpagina's vindt u meer informatie voor uw gelegenheid."
+                    }
+                  }
+                ]
+              }
+            ],
+            "overflow": -10,
+            "longTasks": [],
+            "nav": [
+              {
+                "dcl": 241.70000004768372,
+                "load": 383.2999999523163
+              }
+            ],
+            "textHash": "efb9913fa15abf120a7423f17ad644da302b19823010420302e25175f85e5d5a"
+          },
+          "dialog": "Butter Chicken",
+          "errors": [],
+          "writes": []
+        },
+        {
+          "kind": "candidate",
+          "width": 1440,
+          "lang": "nl",
+          "state": {
+            "lang": "nl",
+            "h1": "Indiaas restaurant in Amsterdam-Noord",
+            "faq": [
+              "Evenementen Evenementen overzichtOver onsGalerijVerjaardagen & feestenVieringen & bruiloftenBedrijfscateringBedrijfslunches",
+              "01Hoe reserveer ik een tafel?Reserveer online of bel +31 20 341 2995. Neem voor een groter gezelschap of een speciale gelegenheid contact op met ons team.",
+              "02Waar vind ik de menukaart?Onze volledige menukaart en actuele prijzen staan op de bestelpagina. Hierboven vindt u alvast een selectie van onze gerechten.",
+              "03Kunnen jullie rekening houden met dieetwensen?Geef allergieën of dieetwensen vóór het bestellen door aan ons team. We bespreken graag de ingrediënten en mogelijke opties met u.",
+              "04Kan ik zonder reservering langskomen?U bent ook zonder reservering welkom. Bel +31 20 341 2995 voor een gewenst tijdstip of een groter gezelschap.",
+              "05Kan ik een tafel op het terras aanvragen?Bel ons team vóór uw bezoek om te vragen naar terrasplaatsen en de beschikbaarheid.",
+              "06Wat kan ik regelen voor een bezoek met kinderen?Vermeld kinderen bij uw reservering en overleg met ons team over zitplaatsen of bijzondere wensen.",
+              "07Hoe kan ik betalen?Bij online afrekenen ziet u de beschikbare betaalmethoden. Vraag ons team vóór uw bezoek naar betalen in het restaurant.",
+              "08Waar kan ik parkeren?U kunt gratis parkeren aan de overkant bij KARWEI. Volg de borden en voorwaarden op het parkeerterrein.",
+              "09Kan ik een feest organiseren?Neem contact met ons op voor verjaardagen, feesten en bedrijfscatering. Op onze evenementenpagina's vindt u meer informatie voor uw gelegenheid."
+            ],
+            "jsonld": [
+              {
+                "@context": "https://schema.org",
+                "@graph": [
+                  {
+                    "@type": "Restaurant",
+                    "@id": "https://shahrestaurant.nl/#restaurant",
+                    "name": "Shah Restaurant",
+                    "url": "https://shahrestaurant.nl/",
+                    "image": "https://shahrestaurant.nl/brand/shah-room-v1.webp",
+                    "logo": "https://shahrestaurant.nl/brand/shah-landscape-teal-v1.svg",
+                    "telephone": "+31 20 341 2995",
+                    "email": "info@shahrestaurant.nl",
+                    "address": {
+                      "@type": "PostalAddress",
+                      "streetAddress": "Klaprozenweg 36a",
+                      "postalCode": "1032 KL",
+                      "addressLocality": "Amsterdam",
+                      "addressCountry": "NL"
+                    },
+                    "geo": {
+                      "@type": "GeoCoordinates",
+                      "latitude": 52.39763814,
+                      "longitude": 4.91025655
+                    },
+                    "servesCuisine": [
+                      "Indian",
+                      "Tandoori",
+                      "Curry",
+                      "Biryani"
+                    ],
+                    "acceptsReservations": true,
+                    "priceRange": "Circa €35 per persoon",
+                    "menu": "https://shahrestaurant.nl/menukaart",
+                    "hasMap": "https://www.google.com/maps/dir/?api=1&destination=Klaprozenweg+36a+1032+KL+Amsterdam",
+                    "openingHoursSpecification": {
+                      "@type": "OpeningHoursSpecification",
+                      "dayOfWeek": [
+                        "Tuesday",
+                        "Wednesday",
+                        "Thursday",
+                        "Friday",
+                        "Saturday",
+                        "Sunday"
+                      ],
+                      "opens": "15:00",
+                      "closes": "22:00"
+                    }
+                  },
+                  {
+                    "@type": "Organization",
+                    "@id": "https://shahrestaurant.nl/#organization",
+                    "name": "Shah Restaurant",
+                    "url": "https://shahrestaurant.nl/",
+                    "logo": "https://shahrestaurant.nl/brand/shah-landscape-teal-v1.svg"
+                  },
+                  {
+                    "@type": "WebSite",
+                    "@id": "https://shahrestaurant.nl/#website",
+                    "name": "Shah Restaurant",
+                    "url": "https://shahrestaurant.nl/",
+                    "inLanguage": "nl-NL",
+                    "publisher": {
+                      "@id": "https://shahrestaurant.nl/#organization"
+                    },
+                    "potentialAction": {
+                      "@type": "SearchAction",
+                      "target": {
+                        "@type": "EntryPoint",
+                        "urlTemplate": "https://shahrestaurant.nl/menukaart?q={search_term_string}"
+                      },
+                      "query-input": "required name=search_term_string"
+                    }
+                  },
+                  {
+                    "@type": "ImageObject",
+                    "@id": "https://shahrestaurant.nl/#restaurant-image",
+                    "contentUrl": "https://shahrestaurant.nl/brand/shah-room-v1.webp",
+                    "caption": "De eetzaal van Shah Restaurant in Amsterdam-Noord"
+                  }
+                ]
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "Menu",
+                "@id": "https://shahrestaurant.nl/menukaart#menu",
+                "name": "Menukaart van Shah Restaurant",
+                "inLanguage": "nl",
+                "url": "https://shahrestaurant.nl/menukaart",
+                "hasMenuSection": [
+                  {
+                    "@type": "MenuSection",
+                    "name": "Curries",
+                    "hasMenuItem": [
+                      {
+                        "@type": "MenuItem",
+                        "name": "Butter Chicken",
+                        "description": "Tandoori kip in romige boter-tomatensaus.",
+                        "offers": {
+                          "@type": "Offer",
+                          "price": "26.00",
+                          "priceCurrency": "EUR"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "@type": "MenuSection",
+                    "name": "Tandoori Mains",
+                    "hasMenuItem": [
+                      {
+                        "@type": "MenuItem",
+                        "name": "Shah Mixed Grill",
+                        "description": "Selectie van tandoor- en grillgerechten.",
+                        "offers": {
+                          "@type": "Offer",
+                          "price": "34.00",
+                          "priceCurrency": "EUR"
+                        }
+                      },
+                      {
+                        "@type": "MenuItem",
+                        "name": "Tandoori Lamb Chops",
+                        "description": "Malse lamskoteletten met Indiase specerijen.",
+                        "offers": {
+                          "@type": "Offer",
+                          "price": "31.00",
+                          "priceCurrency": "EUR"
+                        }
+                      },
+                      {
+                        "@type": "MenuItem",
+                        "name": "Tandoori Chicken Tikka",
+                        "description": "Gemarineerde kipfilet in yoghurt en \nkruiden, gegrild in de tandoor.",
+                        "offers": {
+                          "@type": "Offer",
+                          "price": "26.99",
+                          "priceCurrency": "EUR"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "@type": "MenuSection",
+                    "name": "Biryani",
+                    "hasMenuItem": [
+                      {
+                        "@type": "MenuItem",
+                        "name": "Biryani Lamb",
+                        "description": "Lamb biryani",
+                        "offers": {
+                          "@type": "Offer",
+                          "price": "26.00",
+                          "priceCurrency": "EUR"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "@type": "MenuSection",
+                    "name": "Vegetarian Starters",
+                    "hasMenuItem": [
+                      {
+                        "@type": "MenuItem",
+                        "name": "Samosa Chaat",
+                        "description": "Krokante samosa met frisse chutneys \nen kruidige toppings.",
+                        "offers": {
+                          "@type": "Offer",
+                          "price": "9.95",
+                          "priceCurrency": "EUR"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": [
+                  {
+                    "@type": "Question",
+                    "name": "Hoe reserveer ik een tafel?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Reserveer online of bel +31 20 341 2995. Neem voor een groter gezelschap of een speciale gelegenheid contact op met ons team."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Waar vind ik de menukaart?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Onze volledige menukaart en actuele prijzen staan op de bestelpagina. Hierboven vindt u alvast een selectie van onze gerechten."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Kunnen jullie rekening houden met dieetwensen?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Geef allergieën of dieetwensen vóór het bestellen door aan ons team. We bespreken graag de ingrediënten en mogelijke opties met u."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Kan ik zonder reservering langskomen?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "U bent ook zonder reservering welkom. Bel +31 20 341 2995 voor een gewenst tijdstip of een groter gezelschap."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Kan ik een tafel op het terras aanvragen?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Bel ons team vóór uw bezoek om te vragen naar terrasplaatsen en de beschikbaarheid."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Wat kan ik regelen voor een bezoek met kinderen?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Vermeld kinderen bij uw reservering en overleg met ons team over zitplaatsen of bijzondere wensen."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Hoe kan ik betalen?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Bij online afrekenen ziet u de beschikbare betaalmethoden. Vraag ons team vóór uw bezoek naar betalen in het restaurant."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Waar kan ik parkeren?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "U kunt gratis parkeren aan de overkant bij KARWEI. Volg de borden en voorwaarden op het parkeerterrein."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Kan ik een feest organiseren?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Neem contact met ons op voor verjaardagen, feesten en bedrijfscatering. Op onze evenementenpagina's vindt u meer informatie voor uw gelegenheid."
+                    }
+                  }
+                ]
+              }
+            ],
+            "overflow": -10,
+            "longTasks": [],
+            "nav": [
+              {
+                "dcl": 239.09999990463257,
+                "load": 353.09999990463257
+              }
+            ],
+            "textHash": "efb9913fa15abf120a7423f17ad644da302b19823010420302e25175f85e5d5a"
+          },
+          "dialog": "Butter Chicken",
+          "errors": [],
+          "writes": []
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "lang": "en",
+      "parity": {
+        "copy": true,
+        "faq": true,
+        "jsonld": true,
+        "locale": true,
+        "dialog": true,
+        "noOverflow": false,
+        "noErrors": true,
+        "noWrites": true
+      },
+      "results": [
+        {
+          "kind": "control",
+          "width": 1440,
+          "lang": "en",
+          "state": {
+            "lang": "en",
+            "h1": "Indian restaurant in Amsterdam-Noord",
+            "faq": [
+              "Events Events overviewAbout usGalleryBirthdays & partiesCelebrations & weddingsCompany cateringCompany lunches",
+              "01How do I book a table?Reserve a table online or call +31 20 341 2995. For a larger party or a special occasion, contact our team to discuss the details.",
+              "02Where can I find the menu?Our full menu and current prices are available on the order page. You can also explore a selection of dishes above.",
+              "03Can you help with dietary requirements?Please let our team know about allergies or dietary requirements before ordering. We can discuss ingredients and suitable options with you.",
+              "04Can I visit without a reservation?Walk-ins are welcome. Call +31 20 341 2995 if you have a preferred time or are visiting with a group.",
+              "05Can I request a terrace table?Call our team before your visit to ask about terrace seating and its availability.",
+              "06What should I arrange when visiting with children?Mention children when booking and contact our team about seating or any specific requirements.",
+              "07Which payment methods can I use?Online checkout shows the available payment methods. For payment at the restaurant, please check with our team before your visit.",
+              "08Where can I park?Free parking is available across the road by KARWEI. Follow the signs and conditions at the car park.",
+              "09Can I organise a celebration?Contact us about birthdays, celebrations and company catering. Our events pages have more information for your occasion."
+            ],
+            "jsonld": [
+              {
+                "@context": "https://schema.org",
+                "@graph": [
+                  {
+                    "@type": "Restaurant",
+                    "@id": "https://shahrestaurant.nl/#restaurant",
+                    "name": "Shah Restaurant",
+                    "url": "https://shahrestaurant.nl/",
+                    "image": "https://shahrestaurant.nl/brand/shah-room-v1.webp",
+                    "logo": "https://shahrestaurant.nl/brand/shah-landscape-teal-v1.svg",
+                    "telephone": "+31 20 341 2995",
+                    "email": "info@shahrestaurant.nl",
+                    "address": {
+                      "@type": "PostalAddress",
+                      "streetAddress": "Klaprozenweg 36a",
+                      "postalCode": "1032 KL",
+                      "addressLocality": "Amsterdam",
+                      "addressCountry": "NL"
+                    },
+                    "geo": {
+                      "@type": "GeoCoordinates",
+                      "latitude": 52.39763814,
+                      "longitude": 4.91025655
+                    },
+                    "servesCuisine": [
+                      "Indian",
+                      "Tandoori",
+                      "Curry",
+                      "Biryani"
+                    ],
+                    "acceptsReservations": true,
+                    "priceRange": "About €35 per person",
+                    "menu": "https://shahrestaurant.nl/en/menu",
+                    "hasMap": "https://www.google.com/maps/dir/?api=1&destination=Klaprozenweg+36a+1032+KL+Amsterdam",
+                    "openingHoursSpecification": {
+                      "@type": "OpeningHoursSpecification",
+                      "dayOfWeek": [
+                        "Tuesday",
+                        "Wednesday",
+                        "Thursday",
+                        "Friday",
+                        "Saturday",
+                        "Sunday"
+                      ],
+                      "opens": "15:00",
+                      "closes": "22:00"
+                    }
+                  },
+                  {
+                    "@type": "Organization",
+                    "@id": "https://shahrestaurant.nl/#organization",
+                    "name": "Shah Restaurant",
+                    "url": "https://shahrestaurant.nl/",
+                    "logo": "https://shahrestaurant.nl/brand/shah-landscape-teal-v1.svg"
+                  },
+                  {
+                    "@type": "WebSite",
+                    "@id": "https://shahrestaurant.nl/en#website",
+                    "name": "Shah Restaurant",
+                    "url": "https://shahrestaurant.nl/en",
+                    "inLanguage": "en",
+                    "publisher": {
+                      "@id": "https://shahrestaurant.nl/#organization"
+                    },
+                    "potentialAction": {
+                      "@type": "SearchAction",
+                      "target": {
+                        "@type": "EntryPoint",
+                        "urlTemplate": "https://shahrestaurant.nl/en/menu?q={search_term_string}"
+                      },
+                      "query-input": "required name=search_term_string"
+                    }
+                  },
+                  {
+                    "@type": "ImageObject",
+                    "@id": "https://shahrestaurant.nl/#restaurant-image",
+                    "contentUrl": "https://shahrestaurant.nl/brand/shah-room-v1.webp",
+                    "caption": "The dining room at Shah Restaurant in Amsterdam-Noord"
+                  }
+                ]
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "Menu",
+                "@id": "https://shahrestaurant.nl/en/menu#menu",
+                "name": "Shah Restaurant menu",
+                "inLanguage": "en",
+                "url": "https://shahrestaurant.nl/en/menu",
+                "hasMenuSection": [
+                  {
+                    "@type": "MenuSection",
+                    "name": "Curries",
+                    "hasMenuItem": [
+                      {
+                        "@type": "MenuItem",
+                        "name": "Butter Chicken",
+                        "description": "Tandoori chicken in a creamy butter-tomato sauce.",
+                        "offers": {
+                          "@type": "Offer",
+                          "price": "26.00",
+                          "priceCurrency": "EUR"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "@type": "MenuSection",
+                    "name": "Tandoori Mains",
+                    "hasMenuItem": [
+                      {
+                        "@type": "MenuItem",
+                        "name": "Shah Mixed Grill",
+                        "description": "Selection of tandoor and grill dishes.",
+                        "offers": {
+                          "@type": "Offer",
+                          "price": "34.00",
+                          "priceCurrency": "EUR"
+                        }
+                      },
+                      {
+                        "@type": "MenuItem",
+                        "name": "Tandoori Lamb Chops",
+                        "description": "Tender lamb chops with Indian spices.",
+                        "offers": {
+                          "@type": "Offer",
+                          "price": "31.00",
+                          "priceCurrency": "EUR"
+                        }
+                      },
+                      {
+                        "@type": "MenuItem",
+                        "name": "Tandoori Chicken Tikka",
+                        "description": "Chicken breast marinated in yogurt and \nspices, grilled in the tandoor.",
+                        "offers": {
+                          "@type": "Offer",
+                          "price": "26.99",
+                          "priceCurrency": "EUR"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "@type": "MenuSection",
+                    "name": "Biryani",
+                    "hasMenuItem": [
+                      {
+                        "@type": "MenuItem",
+                        "name": "Biryani Lamb",
+                        "description": "Lamb biryani",
+                        "offers": {
+                          "@type": "Offer",
+                          "price": "26.00",
+                          "priceCurrency": "EUR"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "@type": "MenuSection",
+                    "name": "Vegetarian Starters",
+                    "hasMenuItem": [
+                      {
+                        "@type": "MenuItem",
+                        "name": "Samosa Chaat",
+                        "description": "Crispy samosa with fresh chutneys \nand spiced toppings.",
+                        "offers": {
+                          "@type": "Offer",
+                          "price": "9.95",
+                          "priceCurrency": "EUR"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": [
+                  {
+                    "@type": "Question",
+                    "name": "How do I book a table?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Reserve a table online or call +31 20 341 2995. For a larger party or a special occasion, contact our team to discuss the details."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Where can I find the menu?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Our full menu and current prices are available on the order page. You can also explore a selection of dishes above."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Can you help with dietary requirements?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Please let our team know about allergies or dietary requirements before ordering. We can discuss ingredients and suitable options with you."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Can I visit without a reservation?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Walk-ins are welcome. Call +31 20 341 2995 if you have a preferred time or are visiting with a group."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Can I request a terrace table?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Call our team before your visit to ask about terrace seating and its availability."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "What should I arrange when visiting with children?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Mention children when booking and contact our team about seating or any specific requirements."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Which payment methods can I use?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Online checkout shows the available payment methods. For payment at the restaurant, please check with our team before your visit."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Where can I park?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Free parking is available across the road by KARWEI. Follow the signs and conditions at the car park."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Can I organise a celebration?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Contact us about birthdays, celebrations and company catering. Our events pages have more information for your occasion."
+                    }
+                  }
+                ]
+              }
+            ],
+            "overflow": -10,
+            "longTasks": [
+              {
+                "start": 262.2000000476837,
+                "duration": 50
+              },
+              {
+                "start": 351.5,
+                "duration": 55
+              }
+            ],
+            "nav": [
+              {
+                "dcl": 241.5,
+                "load": 351.80000019073486
+              }
+            ],
+            "textHash": "d2397a90884ec689818dd0069481462851feec17c208b493561b7a030358ab68"
+          },
+          "dialog": "Butter Chicken",
+          "errors": [],
+          "writes": []
+        },
+        {
+          "kind": "candidate",
+          "width": 1440,
+          "lang": "en",
+          "state": {
+            "lang": "en",
+            "h1": "Indian restaurant in Amsterdam-Noord",
+            "faq": [
+              "Events Events overviewAbout usGalleryBirthdays & partiesCelebrations & weddingsCompany cateringCompany lunches",
+              "01How do I book a table?Reserve a table online or call +31 20 341 2995. For a larger party or a special occasion, contact our team to discuss the details.",
+              "02Where can I find the menu?Our full menu and current prices are available on the order page. You can also explore a selection of dishes above.",
+              "03Can you help with dietary requirements?Please let our team know about allergies or dietary requirements before ordering. We can discuss ingredients and suitable options with you.",
+              "04Can I visit without a reservation?Walk-ins are welcome. Call +31 20 341 2995 if you have a preferred time or are visiting with a group.",
+              "05Can I request a terrace table?Call our team before your visit to ask about terrace seating and its availability.",
+              "06What should I arrange when visiting with children?Mention children when booking and contact our team about seating or any specific requirements.",
+              "07Which payment methods can I use?Online checkout shows the available payment methods. For payment at the restaurant, please check with our team before your visit.",
+              "08Where can I park?Free parking is available across the road by KARWEI. Follow the signs and conditions at the car park.",
+              "09Can I organise a celebration?Contact us about birthdays, celebrations and company catering. Our events pages have more information for your occasion."
+            ],
+            "jsonld": [
+              {
+                "@context": "https://schema.org",
+                "@graph": [
+                  {
+                    "@type": "Restaurant",
+                    "@id": "https://shahrestaurant.nl/#restaurant",
+                    "name": "Shah Restaurant",
+                    "url": "https://shahrestaurant.nl/",
+                    "image": "https://shahrestaurant.nl/brand/shah-room-v1.webp",
+                    "logo": "https://shahrestaurant.nl/brand/shah-landscape-teal-v1.svg",
+                    "telephone": "+31 20 341 2995",
+                    "email": "info@shahrestaurant.nl",
+                    "address": {
+                      "@type": "PostalAddress",
+                      "streetAddress": "Klaprozenweg 36a",
+                      "postalCode": "1032 KL",
+                      "addressLocality": "Amsterdam",
+                      "addressCountry": "NL"
+                    },
+                    "geo": {
+                      "@type": "GeoCoordinates",
+                      "latitude": 52.39763814,
+                      "longitude": 4.91025655
+                    },
+                    "servesCuisine": [
+                      "Indian",
+                      "Tandoori",
+                      "Curry",
+                      "Biryani"
+                    ],
+                    "acceptsReservations": true,
+                    "priceRange": "About €35 per person",
+                    "menu": "https://shahrestaurant.nl/en/menu",
+                    "hasMap": "https://www.google.com/maps/dir/?api=1&destination=Klaprozenweg+36a+1032+KL+Amsterdam",
+                    "openingHoursSpecification": {
+                      "@type": "OpeningHoursSpecification",
+                      "dayOfWeek": [
+                        "Tuesday",
+                        "Wednesday",
+                        "Thursday",
+                        "Friday",
+                        "Saturday",
+                        "Sunday"
+                      ],
+                      "opens": "15:00",
+                      "closes": "22:00"
+                    }
+                  },
+                  {
+                    "@type": "Organization",
+                    "@id": "https://shahrestaurant.nl/#organization",
+                    "name": "Shah Restaurant",
+                    "url": "https://shahrestaurant.nl/",
+                    "logo": "https://shahrestaurant.nl/brand/shah-landscape-teal-v1.svg"
+                  },
+                  {
+                    "@type": "WebSite",
+                    "@id": "https://shahrestaurant.nl/en#website",
+                    "name": "Shah Restaurant",
+                    "url": "https://shahrestaurant.nl/en",
+                    "inLanguage": "en",
+                    "publisher": {
+                      "@id": "https://shahrestaurant.nl/#organization"
+                    },
+                    "potentialAction": {
+                      "@type": "SearchAction",
+                      "target": {
+                        "@type": "EntryPoint",
+                        "urlTemplate": "https://shahrestaurant.nl/en/menu?q={search_term_string}"
+                      },
+                      "query-input": "required name=search_term_string"
+                    }
+                  },
+                  {
+                    "@type": "ImageObject",
+                    "@id": "https://shahrestaurant.nl/#restaurant-image",
+                    "contentUrl": "https://shahrestaurant.nl/brand/shah-room-v1.webp",
+                    "caption": "The dining room at Shah Restaurant in Amsterdam-Noord"
+                  }
+                ]
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "Menu",
+                "@id": "https://shahrestaurant.nl/en/menu#menu",
+                "name": "Shah Restaurant menu",
+                "inLanguage": "en",
+                "url": "https://shahrestaurant.nl/en/menu",
+                "hasMenuSection": [
+                  {
+                    "@type": "MenuSection",
+                    "name": "Curries",
+                    "hasMenuItem": [
+                      {
+                        "@type": "MenuItem",
+                        "name": "Butter Chicken",
+                        "description": "Tandoori chicken in a creamy butter-tomato sauce.",
+                        "offers": {
+                          "@type": "Offer",
+                          "price": "26.00",
+                          "priceCurrency": "EUR"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "@type": "MenuSection",
+                    "name": "Tandoori Mains",
+                    "hasMenuItem": [
+                      {
+                        "@type": "MenuItem",
+                        "name": "Shah Mixed Grill",
+                        "description": "Selection of tandoor and grill dishes.",
+                        "offers": {
+                          "@type": "Offer",
+                          "price": "34.00",
+                          "priceCurrency": "EUR"
+                        }
+                      },
+                      {
+                        "@type": "MenuItem",
+                        "name": "Tandoori Lamb Chops",
+                        "description": "Tender lamb chops with Indian spices.",
+                        "offers": {
+                          "@type": "Offer",
+                          "price": "31.00",
+                          "priceCurrency": "EUR"
+                        }
+                      },
+                      {
+                        "@type": "MenuItem",
+                        "name": "Tandoori Chicken Tikka",
+                        "description": "Chicken breast marinated in yogurt and \nspices, grilled in the tandoor.",
+                        "offers": {
+                          "@type": "Offer",
+                          "price": "26.99",
+                          "priceCurrency": "EUR"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "@type": "MenuSection",
+                    "name": "Biryani",
+                    "hasMenuItem": [
+                      {
+                        "@type": "MenuItem",
+                        "name": "Biryani Lamb",
+                        "description": "Lamb biryani",
+                        "offers": {
+                          "@type": "Offer",
+                          "price": "26.00",
+                          "priceCurrency": "EUR"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "@type": "MenuSection",
+                    "name": "Vegetarian Starters",
+                    "hasMenuItem": [
+                      {
+                        "@type": "MenuItem",
+                        "name": "Samosa Chaat",
+                        "description": "Crispy samosa with fresh chutneys \nand spiced toppings.",
+                        "offers": {
+                          "@type": "Offer",
+                          "price": "9.95",
+                          "priceCurrency": "EUR"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": [
+                  {
+                    "@type": "Question",
+                    "name": "How do I book a table?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Reserve a table online or call +31 20 341 2995. For a larger party or a special occasion, contact our team to discuss the details."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Where can I find the menu?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Our full menu and current prices are available on the order page. You can also explore a selection of dishes above."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Can you help with dietary requirements?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Please let our team know about allergies or dietary requirements before ordering. We can discuss ingredients and suitable options with you."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Can I visit without a reservation?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Walk-ins are welcome. Call +31 20 341 2995 if you have a preferred time or are visiting with a group."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Can I request a terrace table?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Call our team before your visit to ask about terrace seating and its availability."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "What should I arrange when visiting with children?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Mention children when booking and contact our team about seating or any specific requirements."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Which payment methods can I use?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Online checkout shows the available payment methods. For payment at the restaurant, please check with our team before your visit."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Where can I park?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Free parking is available across the road by KARWEI. Follow the signs and conditions at the car park."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Can I organise a celebration?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Contact us about birthdays, celebrations and company catering. Our events pages have more information for your occasion."
+                    }
+                  }
+                ]
+              }
+            ],
+            "overflow": -10,
+            "longTasks": [],
+            "nav": [
+              {
+                "dcl": 235.29999995231628,
+                "load": 364.59999990463257
+              }
+            ],
+            "textHash": "d2397a90884ec689818dd0069481462851feec17c208b493561b7a030358ab68"
+          },
+          "dialog": "Butter Chicken",
+          "errors": [],
+          "writes": []
+        }
+      ]
+    }
+  ],
+  "video": [
+    {
+      "lang": "nl",
+      "width": 1440,
+      "first": {
+        "time": 0.21194,
+        "source": "blob:http://127.0.0.1:3718/ee95eaef-bc18-4caa-81d9-e579eb83bd0b",
+        "muted": true,
+        "inline": true
+      },
+      "advance": 0.709241,
+      "noReplay": true
+    },
+    {
+      "lang": "en",
+      "width": 390,
+      "first": {
+        "time": 0.217837,
+        "source": "blob:http://127.0.0.1:3718/84b93713-538b-4b18-be92-9bc1e43fd9f7",
+        "muted": true,
+        "inline": true
+      },
+      "advance": 0.714861,
+      "noReplay": true
+    }
+  ],
+  "pass": false
+}

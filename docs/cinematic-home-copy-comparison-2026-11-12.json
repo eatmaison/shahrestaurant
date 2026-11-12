@@ -1,0 +1,39 @@
+{
+  "atUTC": "2026-11-12T01:58:57.216Z",
+  "control": "s_2pU6IxrWANtKLhFIf2S",
+  "candidate": "S_b0mpTvbVmqqJ-ThVCUE",
+  "candidateURL": "http://localhost:3718/",
+  "currentMainUnchanged": "http://localhost:3398/",
+  "currentPhoneUnchanged": "http://192.168.0.122:3618/",
+  "method": "Distinct initial external files gzip6 + separate HTML gzip6. Not measured encoded HTTP total transfer.",
+  "rows": [
+    {
+      "route": "/",
+      "beforeJS": 183621,
+      "afterJS": 179609,
+      "jsSaved": 4012,
+      "beforeHTML": 28466,
+      "afterHTML": 29770,
+      "htmlAdded": 1304,
+      "combinedSaved": 2708,
+      "cssBefore": 39866,
+      "cssAfter": 39866
+    },
+    {
+      "route": "/en",
+      "beforeJS": 183621,
+      "afterJS": 179609,
+      "jsSaved": 4012,
+      "beforeHTML": 27484,
+      "afterHTML": 28728,
+      "htmlAdded": 1244,
+      "combinedSaved": 2768,
+      "cssBefore": 39866,
+      "cssAfter": 39866
+    }
+  ],
+  "remainingJSBudgetExcess": 59609,
+  "fullBudgetPass": false,
+  "promoted": false,
+  "reason": "Preserve already verified main/phone; candidate remains independently reviewable. Whole-site performance targets remain unmet."
+}
