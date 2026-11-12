@@ -164,7 +164,7 @@ const denied = () => { throw new Error('NOT_FOUND'); };
     }
   });
   await test('homepage event links, three-card layout and celebrations FAQ are public', () => {
-    const page = source('app/page.tsx'); assert.doesNotMatch(page, /isAdmin|adminOnly|data-admin|href\.startsWith\("\/events"\)/);
+    const page = source('app/page.tsx') + source('app/HomeExperience.tsx'); assert.doesNotMatch(page, /isAdmin|adminOnly|data-admin|href\.startsWith\("\/events"\)/);
     for (const route of ['/events', '/events/gallery', '/events/about', '/events/birthdays', '/events/celebrations', '/events/company-catering']) assert.ok(page.includes(`"${route}"`));
     const content = load('app/lib/homeContent.ts').homeContent;
     for (const lang of ['nl', 'en']) assert.ok(content[lang].questions.some(question => /evenementenpagina|events pages/.test(question.answer) && !question.adminOnly));
