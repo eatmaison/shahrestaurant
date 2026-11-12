@@ -1,0 +1,21 @@
+{
+  "dist": ".next-review-shah-grid-perf-20261112",
+  "startedAtUTC": "2026-11-12T02:06:50.586Z",
+  "before": {
+    "atUTC": "2026-11-12T02:06:51.003Z",
+    "sourceSha256": "68e753609f8298de7db2bae4dae3dfcc0fd3d0898c4ff300651c44d4ef39927e",
+    "inputs": 549,
+    "unchanged": true
+  },
+  "productionPublishing": false,
+  "liveDatabaseAccess": false,
+  "exitCode": 0,
+  "finishedAtUTC": "2026-11-12T02:07:46.248Z",
+  "after": {
+    "atUTC": "2026-11-12T02:07:46.674Z",
+    "sourceSha256": "68e753609f8298de7db2bae4dae3dfcc0fd3d0898c4ff300651c44d4ef39927e",
+    "inputs": 549,
+    "unchanged": true
+  },
+  "buildId": "BUodo1etC1wSEnAZD_-52"
+}

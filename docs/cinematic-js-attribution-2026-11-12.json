@@ -1,0 +1,379 @@
+{
+  "atUTC": "2026-11-12T02:02:26.547Z",
+  "buildId": "S_b0mpTvbVmqqJ-ThVCUE",
+  "sourceSha256": "016f7cc73bd7d33e2177c902e0bdf812463c5ce93f737e4a4b59c15e3f2dc906",
+  "homeInitialGzip": 179609,
+  "method": "Compiled chunk bytes plus inert webpack registration capture. Module gzip is standalone attribution and must NOT be summed as transfer bytes. Reference names are exact generated RSC manifest mappings; unknown modules retained without guessed labels.",
+  "chunks": [
+    {
+      "url": "/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+      "rawBytes": 199865,
+      "gzipBytes": 62877,
+      "moduleCount": 1
+    },
+    {
+      "url": "/_next/static/chunks/3794-c968c786880cae15.js",
+      "rawBytes": 222079,
+      "gzipBytes": 60749,
+      "moduleCount": 147
+    },
+    {
+      "url": "/_next/static/chunks/3573-10dc9902f9ffc746.js",
+      "rawBytes": 83929,
+      "gzipBytes": 23915,
+      "moduleCount": 24
+    },
+    {
+      "url": "/_next/static/chunks/1398-f6b66c90eacf2ebb.js",
+      "rawBytes": 36657,
+      "gzipBytes": 10102,
+      "moduleCount": 12
+    },
+    {
+      "url": "/_next/static/chunks/app/layout-a66bc8f49bcf9b65.js",
+      "rawBytes": 28723,
+      "gzipBytes": 8669,
+      "moduleCount": 16
+    },
+    {
+      "url": "/_next/static/chunks/5772-1c5f02be2ece8826.js",
+      "rawBytes": 14691,
+      "gzipBytes": 5552,
+      "moduleCount": 12
+    },
+    {
+      "url": "/_next/static/chunks/8500-3953cc33eeceb44e.js",
+      "rawBytes": 8698,
+      "gzipBytes": 3531,
+      "moduleCount": 7
+    },
+    {
+      "url": "/_next/static/chunks/webpack-095aa67f46150012.js",
+      "rawBytes": 4919,
+      "gzipBytes": 2405,
+      "moduleCount": null
+    },
+    {
+      "url": "/_next/static/chunks/app/error-4e056100a4253fb4.js",
+      "rawBytes": 1259,
+      "gzipBytes": 735,
+      "moduleCount": 2
+    },
+    {
+      "url": "/_next/static/chunks/app/not-found-10fe67176e53b097.js",
+      "rawBytes": 1313,
+      "gzipBytes": 716,
+      "moduleCount": 2
+    },
+    {
+      "url": "/_next/static/chunks/main-app-2f3596a243c31fc0.js",
+      "rawBytes": 516,
+      "gzipBytes": 223,
+      "moduleCount": 2
+    },
+    {
+      "url": "/_next/static/chunks/app/page-988d08dcf9ca1051.js",
+      "rawBytes": 144,
+      "gzipBytes": 135,
+      "moduleCount": 0
+    }
+  ],
+  "largestFactories": [
+    {
+      "id": "9248",
+      "rawBytes": 199779,
+      "standaloneGzipBytes": 62830,
+      "references": [],
+      "prefix": "(e,n,t)=>{var r,l=t(1463),a=t(2832),o=t(2115),i=t(7650);function u(e){var n=\"https://react.dev/errors/\"+e;if(1",
+      "chunk": "/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js"
+    },
+    {
+      "id": "3343",
+      "rawBytes": 67713,
+      "standaloneGzipBytes": 17751,
+      "references": [
+        "C:\\Users\\DaviiC\\Downloads\\shahrestaurant\\shahrestaurant\\app\\HomeExperience.tsx"
+      ],
+      "prefix": "(e,t,a)=>{\"use strict\";a.d(t,{default:()=>Z});var r=a(5155);let n={\"/brand/shah-bar-v1.webp\":{width:1200,heigh",
+      "chunk": "/_next/static/chunks/3573-10dc9902f9ffc746.js"
+    },
+    {
+      "id": "9062",
+      "rawBytes": 24282,
+      "standaloneGzipBytes": 7863,
+      "references": [],
+      "prefix": "(e,t,r)=>{\"use strict\";var n=r(7650),a={stream:!0},u=Object.prototype.hasOwnProperty,l=new Map;function o(e){v",
+      "chunk": "/_next/static/chunks/3794-c968c786880cae15.js"
+    },
+    {
+      "id": "2506",
+      "rawBytes": 18943,
+      "standaloneGzipBytes": 5943,
+      "references": [],
+      "prefix": "(e,t,r)=>{\"use strict\";Object.defineProperty(t,\"__esModule\",{value:!0});var n,a={EntryStatus:function(){return",
+      "chunk": "/_next/static/chunks/3794-c968c786880cae15.js"
+    },
+    {
+      "id": "1398",
+      "rawBytes": 16257,
+      "standaloneGzipBytes": 4582,
+      "references": [
+        "C:\\Users\\DaviiC\\Downloads\\shahrestaurant\\shahrestaurant\\app\\providers.tsx"
+      ],
+      "prefix": "(e,t,a)=>{let r;a.d(t,{Providers:()=>N,uU:()=>y,Pj:()=>B,DP:()=>b});var n=a(5155),o=a(3321),i=a(1874),s=a(5793",
+      "chunk": "/_next/static/chunks/1398-f6b66c90eacf2ebb.js"
+    },
+    {
+      "id": "1838",
+      "rawBytes": 10823,
+      "standaloneGzipBytes": 3374,
+      "references": [
+        "C:\\Users\\DaviiC\\Downloads\\shahrestaurant\\shahrestaurant\\app\\components\\header.tsx"
+      ],
+      "prefix": "(e,t,a)=>{\"use strict\";a.d(t,{Header:()=>v});var r=a(5155),n=a(2243),l=a(1874),s=a(8413),o=a(3321),i=a(4428),d",
+      "chunk": "/_next/static/chunks/app/layout-a66bc8f49bcf9b65.js"
+    },
+    {
+      "id": "8331",
+      "rawBytes": 10129,
+      "standaloneGzipBytes": 1766,
+      "references": [],
+      "prefix": "(e,t,a)=>{a.d(t,{$T:()=>i,$l:()=>y,AI:()=>O,Al:()=>b,BH:()=>eb,BJ:()=>X,C:()=>ek,CM:()=>P,DD:()=>ee,DF:()=>E,D",
+      "chunk": "/_next/static/chunks/1398-f6b66c90eacf2ebb.js"
+    },
+    {
+      "id": "7705",
+      "rawBytes": 9977,
+      "standaloneGzipBytes": 3097,
+      "references": [],
+      "prefix": "(e,t,r)=>{\"use strict\";Object.defineProperty(t,\"__esModule\",{value:!0});var n={cancelPrefetchTask:function(){r",
+      "chunk": "/_next/static/chunks/3794-c968c786880cae15.js"
+    },
+    {
+      "id": "2120",
+      "rawBytes": 9215,
+      "standaloneGzipBytes": 3795,
+      "references": [],
+      "prefix": "(e,t,r)=>{\"use strict\";Object.defineProperty(t,\"__esModule\",{value:!0});var n,a={FreshnessPolicy:function(){re",
+      "chunk": "/_next/static/chunks/3794-c968c786880cae15.js"
+    },
+    {
+      "id": "1426",
+      "rawBytes": 7759,
+      "standaloneGzipBytes": 2960,
+      "references": [],
+      "prefix": "(e,t,r)=>{\"use strict\";var n=r(1463),a=Symbol.for(\"react.transitional.element\"),u=Symbol.for(\"react.portal\"),l",
+      "chunk": "/_next/static/chunks/3794-c968c786880cae15.js"
+    },
+    {
+      "id": "1164",
+      "rawBytes": 7735,
+      "standaloneGzipBytes": 2403,
+      "references": [
+        "C:\\Users\\DaviiC\\Downloads\\shahrestaurant\\shahrestaurant\\app\\components\\footer.tsx"
+      ],
+      "prefix": "(e,t,a)=>{\"use strict\";a.d(t,{Footer:()=>h});var r=a(5155),n=a(2243),l=a(8413),s=a(2115),o=a(8331),i=a(1398),d",
+      "chunk": "/_next/static/chunks/app/layout-a66bc8f49bcf9b65.js"
+    },
+    {
+      "id": "7103",
+      "rawBytes": 6550,
+      "standaloneGzipBytes": 2332,
+      "references": [],
+      "prefix": "(e,t)=>{\"use strict\";Object.defineProperty(t,\"__esModule\",{value:!0});var r={ACTION_SUFFIX:function(){return y",
+      "chunk": "/_next/static/chunks/3794-c968c786880cae15.js"
+    },
+    {
+      "id": "4036",
+      "rawBytes": 5907,
+      "standaloneGzipBytes": 2313,
+      "references": [],
+      "prefix": "(e,t,r)=>{\"use strict\";let n,a;Object.defineProperty(t,\"__esModule\",{value:!0}),Object.defineProperty(t,\"defau",
+      "chunk": "/_next/static/chunks/3794-c968c786880cae15.js"
+    },
+    {
+      "id": "354",
+      "rawBytes": 5562,
+      "standaloneGzipBytes": 2340,
+      "references": [],
+      "prefix": "(e,t,r)=>{\"use strict\";Object.defineProperty(t,\"__esModule\",{value:!0});var n={completeHardNavigation:function",
+      "chunk": "/_next/static/chunks/3794-c968c786880cae15.js"
+    },
+    {
+      "id": "7121",
+      "rawBytes": 5281,
+      "standaloneGzipBytes": 2229,
+      "references": [
+        "C:\\Users\\DaviiC\\Downloads\\shahrestaurant\\shahrestaurant\\node_modules\\next\\dist\\client\\components\\layout-router.js",
+        "C:\\Users\\DaviiC\\Downloads\\shahrestaurant\\shahrestaurant\\node_modules\\next\\dist\\esm\\client\\components\\layout-router.js"
+      ],
+      "prefix": "(e,t,r)=>{\"use strict\";Object.defineProperty(t,\"__esModule\",{value:!0});var n={LoadingBoundaryProvider:functio",
+      "chunk": "/_next/static/chunks/3794-c968c786880cae15.js"
+    },
+    {
+      "id": "5413",
+      "rawBytes": 4757,
+      "standaloneGzipBytes": 2268,
+      "references": [],
+      "prefix": "(e,t,r)=>{Object.defineProperty(t,\"__esModule\",{value:!0}),Object.defineProperty(t,\"getImgProps\",{enumerable:!",
+      "chunk": "/_next/static/chunks/5772-1c5f02be2ece8826.js"
+    },
+    {
+      "id": "156",
+      "rawBytes": 4552,
+      "standaloneGzipBytes": 1651,
+      "references": [],
+      "prefix": "(e,t,r)=>{\"use strict\";Object.defineProperty(t,\"__esModule\",{value:!0});var n={createMutableActionQueue:functi",
+      "chunk": "/_next/static/chunks/3794-c968c786880cae15.js"
+    },
+    {
+      "id": "8378",
+      "rawBytes": 4530,
+      "standaloneGzipBytes": 1613,
+      "references": [],
+      "prefix": "(e,t,r)=>{\"use strict\";Object.defineProperty(t,\"__esModule\",{value:!0});var n={discoverKnownRoute:function(){r",
+      "chunk": "/_next/static/chunks/3794-c968c786880cae15.js"
+    },
+    {
+      "id": "7491",
+      "rawBytes": 4488,
+      "standaloneGzipBytes": 2184,
+      "references": [],
+      "prefix": "(e,t,r)=>{\"use strict\";let n;Object.defineProperty(t,\"__esModule\",{value:!0}),Object.defineProperty(t,\"serverA",
+      "chunk": "/_next/static/chunks/3794-c968c786880cae15.js"
+    },
+    {
+      "id": "360",
+      "rawBytes": 4337,
+      "standaloneGzipBytes": 1810,
+      "references": [
+        "C:\\Users\\DaviiC\\Downloads\\shahrestaurant\\shahrestaurant\\app\\components\\CinematicSections.tsx"
+      ],
+      "prefix": "(e,t,a)=>{\"use strict\";a.d(t,{CinematicSections:()=>o});var r=a(2115),n=a(3321),l=a(1874),s=a(6070);function o",
+      "chunk": "/_next/static/chunks/app/layout-a66bc8f49bcf9b65.js"
+    },
+    {
+      "id": "625",
+      "rawBytes": 3898,
+      "standaloneGzipBytes": 1455,
+      "references": [],
+      "prefix": "e=>{e.exports={home:\"home_home__kcaw_\",actions:\"home_actions__r95_w\",primaryButton:\"home_primaryButton__QNgrh\"",
+      "chunk": "/_next/static/chunks/3573-10dc9902f9ffc746.js"
+    },
+    {
+      "id": "2676",
+      "rawBytes": 3716,
+      "standaloneGzipBytes": 1454,
+      "references": [],
+      "prefix": "(e,t,r)=>{\"use strict\";Object.defineProperty(t,\"__esModule\",{value:!0});var n={WarningIcon:function(){return i",
+      "chunk": "/_next/static/chunks/3794-c968c786880cae15.js"
+    },
+    {
+      "id": "8796",
+      "rawBytes": 3680,
+      "standaloneGzipBytes": 1796,
+      "references": [],
+      "prefix": "(e,t,r)=>{\"use strict\";let n;Object.defineProperty(t,\"__esModule\",{value:!0});var a={createFetch:function(){re",
+      "chunk": "/_next/static/chunks/3794-c968c786880cae15.js"
+    },
+    {
+      "id": "5448",
+      "rawBytes": 3603,
+      "standaloneGzipBytes": 1580,
+      "references": [],
+      "prefix": "(e,t,r)=>{\"use strict\";let n,a,u,l;Object.defineProperty(t,\"__esModule\",{value:!0}),Object.defineProperty(t,\"h",
+      "chunk": "/_next/static/chunks/3794-c968c786880cae15.js"
+    },
+    {
+      "id": "2213",
+      "rawBytes": 3452,
+      "standaloneGzipBytes": 1476,
+      "references": [],
+      "prefix": "(e,t)=>{\"use strict\";function r(e,t){var r=e.length;for(e.push(t);0<r;){var n=r-1>>>1,a=e[n];if(0<u(a,t))e[n]=",
+      "chunk": "/_next/static/chunks/3794-c968c786880cae15.js"
+    },
+    {
+      "id": "8730",
+      "rawBytes": 3332,
+      "standaloneGzipBytes": 1232,
+      "references": [],
+      "prefix": "(e,t,r)=>{\"use strict\";var n=r(2115);function a(e){var t=\"https://react.dev/errors/\"+e;if(1<arguments.length){",
+      "chunk": "/_next/static/chunks/3794-c968c786880cae15.js"
+    },
+    {
+      "id": "8437",
+      "rawBytes": 3290,
+      "standaloneGzipBytes": 1558,
+      "references": [],
+      "prefix": "(e,t,r)=>{Object.defineProperty(t,\"__esModule\",{value:!0}),Object.defineProperty(t,\"Image\",{enumerable:!0,get:",
+      "chunk": "/_next/static/chunks/5772-1c5f02be2ece8826.js"
+    },
+    {
+      "id": "8500",
+      "rawBytes": 3282,
+      "standaloneGzipBytes": 1636,
+      "references": [
+        "C:\\Users\\DaviiC\\Downloads\\shahrestaurant\\shahrestaurant\\node_modules\\next\\dist\\client\\app-dir\\link.js",
+        "C:\\Users\\DaviiC\\Downloads\\shahrestaurant\\shahrestaurant\\node_modules\\next\\dist\\esm\\client\\app-dir\\link.js"
+      ],
+      "prefix": "(e,t,r)=>{Object.defineProperty(t,\"__esModule\",{value:!0});var n={default:function(){return m},useLinkStatus:f",
+      "chunk": "/_next/static/chunks/8500-3953cc33eeceb44e.js"
+    },
+    {
+      "id": "4972",
+      "rawBytes": 3045,
+      "standaloneGzipBytes": 1172,
+      "references": [],
+      "prefix": "(e,t,r)=>{\"use strict\";Object.defineProperty(t,\"__esModule\",{value:!0});var n={IDLE_LINK_STATUS:function(){ret",
+      "chunk": "/_next/static/chunks/3794-c968c786880cae15.js"
+    },
+    {
+      "id": "8299",
+      "rawBytes": 2784,
+      "standaloneGzipBytes": 1294,
+      "references": [],
+      "prefix": "(e,t,a)=>{a.d(t,{ay:()=>p,m7:()=>C,eq:()=>O,Uw:()=>h,pg:()=>b,wg:()=>i,v:()=>o,uY:()=>x,Tw:()=>c,fB:()=>T,Cn:(",
+      "chunk": "/_next/static/chunks/1398-f6b66c90eacf2ebb.js"
+    },
+    {
+      "id": "2496",
+      "rawBytes": 2540,
+      "standaloneGzipBytes": 1081,
+      "references": [],
+      "prefix": "(e,t,r)=>{\"use strict\";Object.defineProperty(t,\"__esModule\",{value:!0});var n={computeChangedPath:function(){r",
+      "chunk": "/_next/static/chunks/3794-c968c786880cae15.js"
+    },
+    {
+      "id": "1748",
+      "rawBytes": 2322,
+      "standaloneGzipBytes": 1048,
+      "references": [],
+      "prefix": "(e,t,a)=>{\"use strict\";a.d(t,{i:()=>o});var r=a(5155),n=a(1398),s=a(3600),i=a.n(s);function o(){let{lang:e}=(0",
+      "chunk": "/_next/static/chunks/3573-10dc9902f9ffc746.js"
+    },
+    {
+      "id": "857",
+      "rawBytes": 2297,
+      "standaloneGzipBytes": 1086,
+      "references": [],
+      "prefix": "(e,t)=>{Object.defineProperty(t,\"__esModule\",{value:!0});var r={DecodeError:function(){return g},MiddlewareNot",
+      "chunk": "/_next/static/chunks/8500-3953cc33eeceb44e.js"
+    },
+    {
+      "id": "4645",
+      "rawBytes": 2290,
+      "standaloneGzipBytes": 855,
+      "references": [],
+      "prefix": "(e,t,r)=>{\"use strict\";Object.defineProperty(t,\"__esModule\",{value:!0});var n={ReadonlyURLSearchParams:functio",
+      "chunk": "/_next/static/chunks/3794-c968c786880cae15.js"
+    },
+    {
+      "id": "6849",
+      "rawBytes": 2226,
+      "standaloneGzipBytes": 898,
+      "references": [],
+      "prefix": "(e,t,r)=>{\"use strict\";Object.defineProperty(t,\"__esModule\",{value:!0});var n={Fallback:function(){return l},c",
+      "chunk": "/_next/static/chunks/3794-c968c786880cae15.js"
+    }
+  ]
+}

@@ -1,0 +1,2171 @@
+{
+  "build": "BUodo1etC1wSEnAZD_-52",
+  "source": "68e753609f8298de7db2bae4dae3dfcc0fd3d0898c4ff300651c44d4ef39927e",
+  "cases": [
+    {
+      "lang": "en",
+      "widths": [
+        {
+          "width": 1440,
+          "desktopCards": 40,
+          "mobileCards": 0,
+          "visibleCards": [
+            {
+              "title": "Butter Chicken",
+              "price": "€26.00"
+            },
+            {
+              "title": "Jalfrezi Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Jalfrezi Fish",
+              "price": "€27.00"
+            },
+            {
+              "title": "Jalfrezi Lamb",
+              "price": "€26.70"
+            },
+            {
+              "title": "Jalfrezi Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Karahi Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Karahi Fish",
+              "price": "€27.00"
+            },
+            {
+              "title": "Karahi Lamb",
+              "price": "€26.70"
+            },
+            {
+              "title": "Karahi Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Korma Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Korma Lamb",
+              "price": "€26.70"
+            },
+            {
+              "title": "Korma Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Lemon Curry Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Lemon Curry Fish",
+              "price": "€27.00"
+            },
+            {
+              "title": "Lemon Curry Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Lemon Curry Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Madras Chicken",
+              "price": "€25.55"
+            },
+            {
+              "title": "Madras Fish",
+              "price": "€27.70"
+            },
+            {
+              "title": "Madras Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Madras Prawn",
+              "price": "€28.55"
+            },
+            {
+              "title": "Saag Curry Chicken",
+              "price": "€25.55"
+            },
+            {
+              "title": "Saag Curry Fish",
+              "price": "€26.95"
+            },
+            {
+              "title": "Saag Curry Lamb",
+              "price": "€26.00"
+            },
+            {
+              "title": "Saag Curry Prawn",
+              "price": "€27.95"
+            },
+            {
+              "title": "Sweet Chili Chicken",
+              "price": "€27.00"
+            },
+            {
+              "title": "Tikka Masala Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Tikka Masala Fish",
+              "price": "€26.00"
+            },
+            {
+              "title": "Tikka Masala Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Tikka Masala Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Vindaloo Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Vindaloo Fish",
+              "price": "€26.00"
+            },
+            {
+              "title": "Vindaloo Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Vindaloo Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Dhansak Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Dhansak Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Dhansak Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Balti Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Balti Fish",
+              "price": "€26.00"
+            },
+            {
+              "title": "Balti Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Balti Prawn",
+              "price": "€28.00"
+            }
+          ],
+          "draft": "UNSENT TEST",
+          "cart": {
+            "chicken-tikka-wrap": 5
+          },
+          "upgrades": {
+            "chicken-tikka-wrap": [
+              "p-ci1bmcrmmrqidyre",
+              "p-r84vzx09mrqifjm7"
+            ]
+          },
+          "overflow": 0
+        },
+        {
+          "width": 390,
+          "desktopCards": 0,
+          "mobileCards": 40,
+          "visibleCards": [
+            {
+              "title": "Butter Chicken",
+              "price": "€26.00"
+            },
+            {
+              "title": "Jalfrezi Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Jalfrezi Fish",
+              "price": "€27.00"
+            },
+            {
+              "title": "Jalfrezi Lamb",
+              "price": "€26.70"
+            },
+            {
+              "title": "Jalfrezi Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Karahi Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Karahi Fish",
+              "price": "€27.00"
+            },
+            {
+              "title": "Karahi Lamb",
+              "price": "€26.70"
+            },
+            {
+              "title": "Karahi Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Korma Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Korma Lamb",
+              "price": "€26.70"
+            },
+            {
+              "title": "Korma Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Lemon Curry Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Lemon Curry Fish",
+              "price": "€27.00"
+            },
+            {
+              "title": "Lemon Curry Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Lemon Curry Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Madras Chicken",
+              "price": "€25.55"
+            },
+            {
+              "title": "Madras Fish",
+              "price": "€27.70"
+            },
+            {
+              "title": "Madras Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Madras Prawn",
+              "price": "€28.55"
+            },
+            {
+              "title": "Saag Curry Chicken",
+              "price": "€25.55"
+            },
+            {
+              "title": "Saag Curry Fish",
+              "price": "€26.95"
+            },
+            {
+              "title": "Saag Curry Lamb",
+              "price": "€26.00"
+            },
+            {
+              "title": "Saag Curry Prawn",
+              "price": "€27.95"
+            },
+            {
+              "title": "Sweet Chili Chicken",
+              "price": "€27.00"
+            },
+            {
+              "title": "Tikka Masala Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Tikka Masala Fish",
+              "price": "€26.00"
+            },
+            {
+              "title": "Tikka Masala Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Tikka Masala Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Vindaloo Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Vindaloo Fish",
+              "price": "€26.00"
+            },
+            {
+              "title": "Vindaloo Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Vindaloo Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Dhansak Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Dhansak Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Dhansak Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Balti Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Balti Fish",
+              "price": "€26.00"
+            },
+            {
+              "title": "Balti Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Balti Prawn",
+              "price": "€28.00"
+            }
+          ],
+          "draft": "UNSENT TEST",
+          "cart": {
+            "chicken-tikka-wrap": 5
+          },
+          "upgrades": {
+            "chicken-tikka-wrap": [
+              "p-ci1bmcrmmrqidyre",
+              "p-r84vzx09mrqifjm7"
+            ]
+          },
+          "overflow": 0
+        },
+        {
+          "width": 1023,
+          "desktopCards": 0,
+          "mobileCards": 40,
+          "visibleCards": [
+            {
+              "title": "Butter Chicken",
+              "price": "€26.00"
+            },
+            {
+              "title": "Jalfrezi Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Jalfrezi Fish",
+              "price": "€27.00"
+            },
+            {
+              "title": "Jalfrezi Lamb",
+              "price": "€26.70"
+            },
+            {
+              "title": "Jalfrezi Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Karahi Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Karahi Fish",
+              "price": "€27.00"
+            },
+            {
+              "title": "Karahi Lamb",
+              "price": "€26.70"
+            },
+            {
+              "title": "Karahi Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Korma Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Korma Lamb",
+              "price": "€26.70"
+            },
+            {
+              "title": "Korma Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Lemon Curry Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Lemon Curry Fish",
+              "price": "€27.00"
+            },
+            {
+              "title": "Lemon Curry Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Lemon Curry Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Madras Chicken",
+              "price": "€25.55"
+            },
+            {
+              "title": "Madras Fish",
+              "price": "€27.70"
+            },
+            {
+              "title": "Madras Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Madras Prawn",
+              "price": "€28.55"
+            },
+            {
+              "title": "Saag Curry Chicken",
+              "price": "€25.55"
+            },
+            {
+              "title": "Saag Curry Fish",
+              "price": "€26.95"
+            },
+            {
+              "title": "Saag Curry Lamb",
+              "price": "€26.00"
+            },
+            {
+              "title": "Saag Curry Prawn",
+              "price": "€27.95"
+            },
+            {
+              "title": "Sweet Chili Chicken",
+              "price": "€27.00"
+            },
+            {
+              "title": "Tikka Masala Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Tikka Masala Fish",
+              "price": "€26.00"
+            },
+            {
+              "title": "Tikka Masala Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Tikka Masala Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Vindaloo Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Vindaloo Fish",
+              "price": "€26.00"
+            },
+            {
+              "title": "Vindaloo Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Vindaloo Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Dhansak Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Dhansak Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Dhansak Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Balti Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Balti Fish",
+              "price": "€26.00"
+            },
+            {
+              "title": "Balti Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Balti Prawn",
+              "price": "€28.00"
+            }
+          ],
+          "draft": "UNSENT TEST",
+          "cart": {
+            "chicken-tikka-wrap": 5
+          },
+          "upgrades": {
+            "chicken-tikka-wrap": [
+              "p-ci1bmcrmmrqidyre",
+              "p-r84vzx09mrqifjm7"
+            ]
+          },
+          "overflow": 0
+        },
+        {
+          "width": 1024,
+          "desktopCards": 40,
+          "mobileCards": 0,
+          "visibleCards": [
+            {
+              "title": "Butter Chicken",
+              "price": "€26.00"
+            },
+            {
+              "title": "Jalfrezi Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Jalfrezi Fish",
+              "price": "€27.00"
+            },
+            {
+              "title": "Jalfrezi Lamb",
+              "price": "€26.70"
+            },
+            {
+              "title": "Jalfrezi Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Karahi Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Karahi Fish",
+              "price": "€27.00"
+            },
+            {
+              "title": "Karahi Lamb",
+              "price": "€26.70"
+            },
+            {
+              "title": "Karahi Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Korma Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Korma Lamb",
+              "price": "€26.70"
+            },
+            {
+              "title": "Korma Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Lemon Curry Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Lemon Curry Fish",
+              "price": "€27.00"
+            },
+            {
+              "title": "Lemon Curry Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Lemon Curry Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Madras Chicken",
+              "price": "€25.55"
+            },
+            {
+              "title": "Madras Fish",
+              "price": "€27.70"
+            },
+            {
+              "title": "Madras Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Madras Prawn",
+              "price": "€28.55"
+            },
+            {
+              "title": "Saag Curry Chicken",
+              "price": "€25.55"
+            },
+            {
+              "title": "Saag Curry Fish",
+              "price": "€26.95"
+            },
+            {
+              "title": "Saag Curry Lamb",
+              "price": "€26.00"
+            },
+            {
+              "title": "Saag Curry Prawn",
+              "price": "€27.95"
+            },
+            {
+              "title": "Sweet Chili Chicken",
+              "price": "€27.00"
+            },
+            {
+              "title": "Tikka Masala Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Tikka Masala Fish",
+              "price": "€26.00"
+            },
+            {
+              "title": "Tikka Masala Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Tikka Masala Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Vindaloo Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Vindaloo Fish",
+              "price": "€26.00"
+            },
+            {
+              "title": "Vindaloo Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Vindaloo Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Dhansak Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Dhansak Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Dhansak Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Balti Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Balti Fish",
+              "price": "€26.00"
+            },
+            {
+              "title": "Balti Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Balti Prawn",
+              "price": "€28.00"
+            }
+          ],
+          "draft": "UNSENT TEST",
+          "cart": {
+            "chicken-tikka-wrap": 5
+          },
+          "upgrades": {
+            "chicken-tikka-wrap": [
+              "p-ci1bmcrmmrqidyre",
+              "p-r84vzx09mrqifjm7"
+            ]
+          },
+          "overflow": 0
+        },
+        {
+          "width": 360,
+          "desktopCards": 0,
+          "mobileCards": 40,
+          "visibleCards": [
+            {
+              "title": "Butter Chicken",
+              "price": "€26.00"
+            },
+            {
+              "title": "Jalfrezi Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Jalfrezi Fish",
+              "price": "€27.00"
+            },
+            {
+              "title": "Jalfrezi Lamb",
+              "price": "€26.70"
+            },
+            {
+              "title": "Jalfrezi Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Karahi Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Karahi Fish",
+              "price": "€27.00"
+            },
+            {
+              "title": "Karahi Lamb",
+              "price": "€26.70"
+            },
+            {
+              "title": "Karahi Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Korma Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Korma Lamb",
+              "price": "€26.70"
+            },
+            {
+              "title": "Korma Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Lemon Curry Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Lemon Curry Fish",
+              "price": "€27.00"
+            },
+            {
+              "title": "Lemon Curry Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Lemon Curry Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Madras Chicken",
+              "price": "€25.55"
+            },
+            {
+              "title": "Madras Fish",
+              "price": "€27.70"
+            },
+            {
+              "title": "Madras Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Madras Prawn",
+              "price": "€28.55"
+            },
+            {
+              "title": "Saag Curry Chicken",
+              "price": "€25.55"
+            },
+            {
+              "title": "Saag Curry Fish",
+              "price": "€26.95"
+            },
+            {
+              "title": "Saag Curry Lamb",
+              "price": "€26.00"
+            },
+            {
+              "title": "Saag Curry Prawn",
+              "price": "€27.95"
+            },
+            {
+              "title": "Sweet Chili Chicken",
+              "price": "€27.00"
+            },
+            {
+              "title": "Tikka Masala Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Tikka Masala Fish",
+              "price": "€26.00"
+            },
+            {
+              "title": "Tikka Masala Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Tikka Masala Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Vindaloo Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Vindaloo Fish",
+              "price": "€26.00"
+            },
+            {
+              "title": "Vindaloo Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Vindaloo Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Dhansak Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Dhansak Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Dhansak Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Balti Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Balti Fish",
+              "price": "€26.00"
+            },
+            {
+              "title": "Balti Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Balti Prawn",
+              "price": "€28.00"
+            }
+          ],
+          "draft": "UNSENT TEST",
+          "cart": {
+            "chicken-tikka-wrap": 5
+          },
+          "upgrades": {
+            "chicken-tikka-wrap": [
+              "p-ci1bmcrmmrqidyre",
+              "p-r84vzx09mrqifjm7"
+            ]
+          },
+          "overflow": 0
+        },
+        {
+          "width": 1440,
+          "desktopCards": 40,
+          "mobileCards": 0,
+          "visibleCards": [
+            {
+              "title": "Butter Chicken",
+              "price": "€26.00"
+            },
+            {
+              "title": "Jalfrezi Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Jalfrezi Fish",
+              "price": "€27.00"
+            },
+            {
+              "title": "Jalfrezi Lamb",
+              "price": "€26.70"
+            },
+            {
+              "title": "Jalfrezi Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Karahi Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Karahi Fish",
+              "price": "€27.00"
+            },
+            {
+              "title": "Karahi Lamb",
+              "price": "€26.70"
+            },
+            {
+              "title": "Karahi Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Korma Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Korma Lamb",
+              "price": "€26.70"
+            },
+            {
+              "title": "Korma Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Lemon Curry Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Lemon Curry Fish",
+              "price": "€27.00"
+            },
+            {
+              "title": "Lemon Curry Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Lemon Curry Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Madras Chicken",
+              "price": "€25.55"
+            },
+            {
+              "title": "Madras Fish",
+              "price": "€27.70"
+            },
+            {
+              "title": "Madras Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Madras Prawn",
+              "price": "€28.55"
+            },
+            {
+              "title": "Saag Curry Chicken",
+              "price": "€25.55"
+            },
+            {
+              "title": "Saag Curry Fish",
+              "price": "€26.95"
+            },
+            {
+              "title": "Saag Curry Lamb",
+              "price": "€26.00"
+            },
+            {
+              "title": "Saag Curry Prawn",
+              "price": "€27.95"
+            },
+            {
+              "title": "Sweet Chili Chicken",
+              "price": "€27.00"
+            },
+            {
+              "title": "Tikka Masala Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Tikka Masala Fish",
+              "price": "€26.00"
+            },
+            {
+              "title": "Tikka Masala Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Tikka Masala Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Vindaloo Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Vindaloo Fish",
+              "price": "€26.00"
+            },
+            {
+              "title": "Vindaloo Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Vindaloo Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Dhansak Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Dhansak Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Dhansak Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Balti Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Balti Fish",
+              "price": "€26.00"
+            },
+            {
+              "title": "Balti Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Balti Prawn",
+              "price": "€28.00"
+            }
+          ],
+          "draft": "UNSENT TEST",
+          "cart": {
+            "chicken-tikka-wrap": 5
+          },
+          "upgrades": {
+            "chicken-tikka-wrap": [
+              "p-ci1bmcrmmrqidyre",
+              "p-r84vzx09mrqifjm7"
+            ]
+          },
+          "overflow": 0
+        }
+      ],
+      "pass": true
+    },
+    {
+      "lang": "nl",
+      "widths": [
+        {
+          "width": 1440,
+          "desktopCards": 40,
+          "mobileCards": 0,
+          "visibleCards": [
+            {
+              "title": "Butter Chicken",
+              "price": "€26.00"
+            },
+            {
+              "title": "Jalfrezi Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Jalfrezi Fish",
+              "price": "€27.00"
+            },
+            {
+              "title": "Jalfrezi Lamb",
+              "price": "€26.70"
+            },
+            {
+              "title": "Jalfrezi Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Karahi Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Karahi Fish",
+              "price": "€27.00"
+            },
+            {
+              "title": "Karahi Lamb",
+              "price": "€26.70"
+            },
+            {
+              "title": "Karahi Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Korma Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Korma Lamb",
+              "price": "€26.70"
+            },
+            {
+              "title": "Korma Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Lemon Curry Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Lemon Curry Fish",
+              "price": "€27.00"
+            },
+            {
+              "title": "Lemon Curry Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Lemon Curry Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Madras Chicken",
+              "price": "€25.55"
+            },
+            {
+              "title": "Madras Fish",
+              "price": "€27.70"
+            },
+            {
+              "title": "Madras Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Madras Prawn",
+              "price": "€28.55"
+            },
+            {
+              "title": "Saag Curry Chicken",
+              "price": "€25.55"
+            },
+            {
+              "title": "Saag Curry Fish",
+              "price": "€26.95"
+            },
+            {
+              "title": "Saag Curry Lamb",
+              "price": "€26.00"
+            },
+            {
+              "title": "Saag Curry Prawn",
+              "price": "€27.95"
+            },
+            {
+              "title": "Sweet Chili Chicken",
+              "price": "€27.00"
+            },
+            {
+              "title": "Tikka Masala Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Tikka Masala Fish",
+              "price": "€26.00"
+            },
+            {
+              "title": "Tikka Masala Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Tikka Masala Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Vindaloo Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Vindaloo Fish",
+              "price": "€26.00"
+            },
+            {
+              "title": "Vindaloo Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Vindaloo Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Dhansak Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Dhansak Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Dhansak Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Balti Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Balti Fish",
+              "price": "€26.00"
+            },
+            {
+              "title": "Balti Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Balti Prawn",
+              "price": "€28.00"
+            }
+          ],
+          "draft": "UNSENT TEST",
+          "cart": {
+            "chicken-tikka-wrap": 5
+          },
+          "upgrades": {
+            "chicken-tikka-wrap": [
+              "p-ci1bmcrmmrqidyre",
+              "p-r84vzx09mrqifjm7"
+            ]
+          },
+          "overflow": 0
+        },
+        {
+          "width": 390,
+          "desktopCards": 0,
+          "mobileCards": 40,
+          "visibleCards": [
+            {
+              "title": "Butter Chicken",
+              "price": "€26.00"
+            },
+            {
+              "title": "Jalfrezi Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Jalfrezi Fish",
+              "price": "€27.00"
+            },
+            {
+              "title": "Jalfrezi Lamb",
+              "price": "€26.70"
+            },
+            {
+              "title": "Jalfrezi Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Karahi Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Karahi Fish",
+              "price": "€27.00"
+            },
+            {
+              "title": "Karahi Lamb",
+              "price": "€26.70"
+            },
+            {
+              "title": "Karahi Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Korma Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Korma Lamb",
+              "price": "€26.70"
+            },
+            {
+              "title": "Korma Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Lemon Curry Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Lemon Curry Fish",
+              "price": "€27.00"
+            },
+            {
+              "title": "Lemon Curry Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Lemon Curry Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Madras Chicken",
+              "price": "€25.55"
+            },
+            {
+              "title": "Madras Fish",
+              "price": "€27.70"
+            },
+            {
+              "title": "Madras Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Madras Prawn",
+              "price": "€28.55"
+            },
+            {
+              "title": "Saag Curry Chicken",
+              "price": "€25.55"
+            },
+            {
+              "title": "Saag Curry Fish",
+              "price": "€26.95"
+            },
+            {
+              "title": "Saag Curry Lamb",
+              "price": "€26.00"
+            },
+            {
+              "title": "Saag Curry Prawn",
+              "price": "€27.95"
+            },
+            {
+              "title": "Sweet Chili Chicken",
+              "price": "€27.00"
+            },
+            {
+              "title": "Tikka Masala Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Tikka Masala Fish",
+              "price": "€26.00"
+            },
+            {
+              "title": "Tikka Masala Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Tikka Masala Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Vindaloo Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Vindaloo Fish",
+              "price": "€26.00"
+            },
+            {
+              "title": "Vindaloo Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Vindaloo Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Dhansak Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Dhansak Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Dhansak Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Balti Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Balti Fish",
+              "price": "€26.00"
+            },
+            {
+              "title": "Balti Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Balti Prawn",
+              "price": "€28.00"
+            }
+          ],
+          "draft": "UNSENT TEST",
+          "cart": {
+            "chicken-tikka-wrap": 5
+          },
+          "upgrades": {
+            "chicken-tikka-wrap": [
+              "p-ci1bmcrmmrqidyre",
+              "p-r84vzx09mrqifjm7"
+            ]
+          },
+          "overflow": 0
+        },
+        {
+          "width": 1023,
+          "desktopCards": 0,
+          "mobileCards": 40,
+          "visibleCards": [
+            {
+              "title": "Butter Chicken",
+              "price": "€26.00"
+            },
+            {
+              "title": "Jalfrezi Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Jalfrezi Fish",
+              "price": "€27.00"
+            },
+            {
+              "title": "Jalfrezi Lamb",
+              "price": "€26.70"
+            },
+            {
+              "title": "Jalfrezi Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Karahi Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Karahi Fish",
+              "price": "€27.00"
+            },
+            {
+              "title": "Karahi Lamb",
+              "price": "€26.70"
+            },
+            {
+              "title": "Karahi Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Korma Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Korma Lamb",
+              "price": "€26.70"
+            },
+            {
+              "title": "Korma Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Lemon Curry Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Lemon Curry Fish",
+              "price": "€27.00"
+            },
+            {
+              "title": "Lemon Curry Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Lemon Curry Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Madras Chicken",
+              "price": "€25.55"
+            },
+            {
+              "title": "Madras Fish",
+              "price": "€27.70"
+            },
+            {
+              "title": "Madras Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Madras Prawn",
+              "price": "€28.55"
+            },
+            {
+              "title": "Saag Curry Chicken",
+              "price": "€25.55"
+            },
+            {
+              "title": "Saag Curry Fish",
+              "price": "€26.95"
+            },
+            {
+              "title": "Saag Curry Lamb",
+              "price": "€26.00"
+            },
+            {
+              "title": "Saag Curry Prawn",
+              "price": "€27.95"
+            },
+            {
+              "title": "Sweet Chili Chicken",
+              "price": "€27.00"
+            },
+            {
+              "title": "Tikka Masala Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Tikka Masala Fish",
+              "price": "€26.00"
+            },
+            {
+              "title": "Tikka Masala Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Tikka Masala Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Vindaloo Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Vindaloo Fish",
+              "price": "€26.00"
+            },
+            {
+              "title": "Vindaloo Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Vindaloo Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Dhansak Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Dhansak Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Dhansak Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Balti Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Balti Fish",
+              "price": "€26.00"
+            },
+            {
+              "title": "Balti Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Balti Prawn",
+              "price": "€28.00"
+            }
+          ],
+          "draft": "UNSENT TEST",
+          "cart": {
+            "chicken-tikka-wrap": 5
+          },
+          "upgrades": {
+            "chicken-tikka-wrap": [
+              "p-ci1bmcrmmrqidyre",
+              "p-r84vzx09mrqifjm7"
+            ]
+          },
+          "overflow": 0
+        },
+        {
+          "width": 1024,
+          "desktopCards": 40,
+          "mobileCards": 0,
+          "visibleCards": [
+            {
+              "title": "Butter Chicken",
+              "price": "€26.00"
+            },
+            {
+              "title": "Jalfrezi Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Jalfrezi Fish",
+              "price": "€27.00"
+            },
+            {
+              "title": "Jalfrezi Lamb",
+              "price": "€26.70"
+            },
+            {
+              "title": "Jalfrezi Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Karahi Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Karahi Fish",
+              "price": "€27.00"
+            },
+            {
+              "title": "Karahi Lamb",
+              "price": "€26.70"
+            },
+            {
+              "title": "Karahi Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Korma Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Korma Lamb",
+              "price": "€26.70"
+            },
+            {
+              "title": "Korma Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Lemon Curry Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Lemon Curry Fish",
+              "price": "€27.00"
+            },
+            {
+              "title": "Lemon Curry Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Lemon Curry Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Madras Chicken",
+              "price": "€25.55"
+            },
+            {
+              "title": "Madras Fish",
+              "price": "€27.70"
+            },
+            {
+              "title": "Madras Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Madras Prawn",
+              "price": "€28.55"
+            },
+            {
+              "title": "Saag Curry Chicken",
+              "price": "€25.55"
+            },
+            {
+              "title": "Saag Curry Fish",
+              "price": "€26.95"
+            },
+            {
+              "title": "Saag Curry Lamb",
+              "price": "€26.00"
+            },
+            {
+              "title": "Saag Curry Prawn",
+              "price": "€27.95"
+            },
+            {
+              "title": "Sweet Chili Chicken",
+              "price": "€27.00"
+            },
+            {
+              "title": "Tikka Masala Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Tikka Masala Fish",
+              "price": "€26.00"
+            },
+            {
+              "title": "Tikka Masala Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Tikka Masala Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Vindaloo Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Vindaloo Fish",
+              "price": "€26.00"
+            },
+            {
+              "title": "Vindaloo Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Vindaloo Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Dhansak Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Dhansak Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Dhansak Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Balti Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Balti Fish",
+              "price": "€26.00"
+            },
+            {
+              "title": "Balti Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Balti Prawn",
+              "price": "€28.00"
+            }
+          ],
+          "draft": "UNSENT TEST",
+          "cart": {
+            "chicken-tikka-wrap": 5
+          },
+          "upgrades": {
+            "chicken-tikka-wrap": [
+              "p-ci1bmcrmmrqidyre",
+              "p-r84vzx09mrqifjm7"
+            ]
+          },
+          "overflow": 0
+        },
+        {
+          "width": 360,
+          "desktopCards": 0,
+          "mobileCards": 40,
+          "visibleCards": [
+            {
+              "title": "Butter Chicken",
+              "price": "€26.00"
+            },
+            {
+              "title": "Jalfrezi Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Jalfrezi Fish",
+              "price": "€27.00"
+            },
+            {
+              "title": "Jalfrezi Lamb",
+              "price": "€26.70"
+            },
+            {
+              "title": "Jalfrezi Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Karahi Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Karahi Fish",
+              "price": "€27.00"
+            },
+            {
+              "title": "Karahi Lamb",
+              "price": "€26.70"
+            },
+            {
+              "title": "Karahi Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Korma Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Korma Lamb",
+              "price": "€26.70"
+            },
+            {
+              "title": "Korma Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Lemon Curry Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Lemon Curry Fish",
+              "price": "€27.00"
+            },
+            {
+              "title": "Lemon Curry Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Lemon Curry Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Madras Chicken",
+              "price": "€25.55"
+            },
+            {
+              "title": "Madras Fish",
+              "price": "€27.70"
+            },
+            {
+              "title": "Madras Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Madras Prawn",
+              "price": "€28.55"
+            },
+            {
+              "title": "Saag Curry Chicken",
+              "price": "€25.55"
+            },
+            {
+              "title": "Saag Curry Fish",
+              "price": "€26.95"
+            },
+            {
+              "title": "Saag Curry Lamb",
+              "price": "€26.00"
+            },
+            {
+              "title": "Saag Curry Prawn",
+              "price": "€27.95"
+            },
+            {
+              "title": "Sweet Chili Chicken",
+              "price": "€27.00"
+            },
+            {
+              "title": "Tikka Masala Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Tikka Masala Fish",
+              "price": "€26.00"
+            },
+            {
+              "title": "Tikka Masala Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Tikka Masala Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Vindaloo Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Vindaloo Fish",
+              "price": "€26.00"
+            },
+            {
+              "title": "Vindaloo Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Vindaloo Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Dhansak Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Dhansak Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Dhansak Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Balti Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Balti Fish",
+              "price": "€26.00"
+            },
+            {
+              "title": "Balti Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Balti Prawn",
+              "price": "€28.00"
+            }
+          ],
+          "draft": "UNSENT TEST",
+          "cart": {
+            "chicken-tikka-wrap": 5
+          },
+          "upgrades": {
+            "chicken-tikka-wrap": [
+              "p-ci1bmcrmmrqidyre",
+              "p-r84vzx09mrqifjm7"
+            ]
+          },
+          "overflow": 0
+        },
+        {
+          "width": 1440,
+          "desktopCards": 40,
+          "mobileCards": 0,
+          "visibleCards": [
+            {
+              "title": "Butter Chicken",
+              "price": "€26.00"
+            },
+            {
+              "title": "Jalfrezi Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Jalfrezi Fish",
+              "price": "€27.00"
+            },
+            {
+              "title": "Jalfrezi Lamb",
+              "price": "€26.70"
+            },
+            {
+              "title": "Jalfrezi Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Karahi Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Karahi Fish",
+              "price": "€27.00"
+            },
+            {
+              "title": "Karahi Lamb",
+              "price": "€26.70"
+            },
+            {
+              "title": "Karahi Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Korma Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Korma Lamb",
+              "price": "€26.70"
+            },
+            {
+              "title": "Korma Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Lemon Curry Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Lemon Curry Fish",
+              "price": "€27.00"
+            },
+            {
+              "title": "Lemon Curry Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Lemon Curry Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Madras Chicken",
+              "price": "€25.55"
+            },
+            {
+              "title": "Madras Fish",
+              "price": "€27.70"
+            },
+            {
+              "title": "Madras Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Madras Prawn",
+              "price": "€28.55"
+            },
+            {
+              "title": "Saag Curry Chicken",
+              "price": "€25.55"
+            },
+            {
+              "title": "Saag Curry Fish",
+              "price": "€26.95"
+            },
+            {
+              "title": "Saag Curry Lamb",
+              "price": "€26.00"
+            },
+            {
+              "title": "Saag Curry Prawn",
+              "price": "€27.95"
+            },
+            {
+              "title": "Sweet Chili Chicken",
+              "price": "€27.00"
+            },
+            {
+              "title": "Tikka Masala Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Tikka Masala Fish",
+              "price": "€26.00"
+            },
+            {
+              "title": "Tikka Masala Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Tikka Masala Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Vindaloo Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Vindaloo Fish",
+              "price": "€26.00"
+            },
+            {
+              "title": "Vindaloo Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Vindaloo Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Dhansak Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Dhansak Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Dhansak Prawn",
+              "price": "€28.00"
+            },
+            {
+              "title": "Balti Chicken",
+              "price": "€25.00"
+            },
+            {
+              "title": "Balti Fish",
+              "price": "€26.00"
+            },
+            {
+              "title": "Balti Lamb",
+              "price": "€27.00"
+            },
+            {
+              "title": "Balti Prawn",
+              "price": "€28.00"
+            }
+          ],
+          "draft": "UNSENT TEST",
+          "cart": {
+            "chicken-tikka-wrap": 5
+          },
+          "upgrades": {
+            "chicken-tikka-wrap": [
+              "p-ci1bmcrmmrqidyre",
+              "p-r84vzx09mrqifjm7"
+            ]
+          },
+          "overflow": 0
+        }
+      ],
+      "pass": true
+    }
+  ],
+  "noJS": [
+    {
+      "width": 390,
+      "total": 4,
+      "visible": 2,
+      "h1": "Build your order — Indian menu Amsterdam-Noord"
+    },
+    {
+      "width": 1440,
+      "total": 4,
+      "visible": 2,
+      "h1": "Build your order — Indian menu Amsterdam-Noord"
+    }
+  ],
+  "runtimeErrors": [],
+  "writes": [],
+  "pass": true
+}

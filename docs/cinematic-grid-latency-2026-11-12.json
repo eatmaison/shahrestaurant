@@ -1,0 +1,525 @@
+{
+  "atUTC": "2026-11-12T02:09:07.271Z",
+  "scope": "Six alternating fresh-context trusted touch category diagnostics (three per build) at390x844,DPR1,CPU4,local network. Profiler enabled in every run. No whole-page/field INP/Lighthouse certification.",
+  "cases": [
+    {
+      "port": 3398,
+      "run": 1,
+      "route": "/en/menu",
+      "target": {
+        "x": 153.015625,
+        "y": 474.421875,
+        "text": " Curries",
+        "hitOK": true,
+        "articleCount": 4
+      },
+      "before": {
+        "time": 3214.2999999523163,
+        "events": 0,
+        "long": 3
+      },
+      "after": {
+        "time": 5369.299999952316,
+        "events": [
+          {
+            "name": "pointerup",
+            "startTime": 3217.2000000476837,
+            "duration": 16,
+            "processingStart": 3234.0999999046326,
+            "processingEnd": 3234.5,
+            "interactionId": 5580
+          },
+          {
+            "name": "click",
+            "startTime": 3217.2000000476837,
+            "duration": 408,
+            "processingStart": 3249,
+            "processingEnd": 3407.2999999523163,
+            "interactionId": 5580
+          }
+        ],
+        "long": [
+          {
+            "start": 413,
+            "duration": 127
+          },
+          {
+            "start": 542.0999999046326,
+            "duration": 289
+          },
+          {
+            "start": 1135.3999998569489,
+            "duration": 59
+          },
+          {
+            "start": 3235.899999856949,
+            "duration": 293
+          }
+        ],
+        "articleCount": 80,
+        "heading": [
+          "Build your order — Indian menu Amsterdam-Noord",
+          "Shah Restaurant",
+          " Your order",
+          "Shah Restaurant — Curries"
+        ],
+        "focused": ""
+      },
+      "errors": [],
+      "writes": [],
+      "profilePath": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-home-copy-20261112\\curries-3398-1-followup.cpuprofile"
+    },
+    {
+      "port": 3728,
+      "run": 1,
+      "route": "/en/menu",
+      "target": {
+        "x": 153.015625,
+        "y": 474.421875,
+        "text": " Curries",
+        "hitOK": true,
+        "articleCount": 2
+      },
+      "before": {
+        "time": 3352.5,
+        "events": 0,
+        "long": 3
+      },
+      "after": {
+        "time": 5437.699999809265,
+        "events": [
+          {
+            "name": "pointerup",
+            "startTime": 3354.899999856949,
+            "duration": 16,
+            "processingStart": 3372.899999856949,
+            "processingEnd": 3373.399999856949,
+            "interactionId": 2766
+          },
+          {
+            "name": "click",
+            "startTime": 3354.899999856949,
+            "duration": 296,
+            "processingStart": 3388.699999809265,
+            "processingEnd": 3484.5,
+            "interactionId": 2766
+          }
+        ],
+        "long": [
+          {
+            "start": 468.69999980926514,
+            "duration": 113
+          },
+          {
+            "start": 609,
+            "duration": 282
+          },
+          {
+            "start": 1227,
+            "duration": 60
+          },
+          {
+            "start": 3375.5999999046326,
+            "duration": 227
+          }
+        ],
+        "articleCount": 40,
+        "heading": [
+          "Build your order — Indian menu Amsterdam-Noord",
+          "Shah Restaurant",
+          " Your order",
+          "Shah Restaurant — Curries"
+        ],
+        "focused": ""
+      },
+      "errors": [],
+      "writes": [],
+      "profilePath": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-home-copy-20261112\\curries-3728-1-followup.cpuprofile"
+    },
+    {
+      "port": 3398,
+      "run": 2,
+      "route": "/en/menu",
+      "target": {
+        "x": 153.015625,
+        "y": 474.421875,
+        "text": " Curries",
+        "hitOK": true,
+        "articleCount": 4
+      },
+      "before": {
+        "time": 3231.699999809265,
+        "events": 0,
+        "long": 2
+      },
+      "after": {
+        "time": 5398.5,
+        "events": [
+          {
+            "name": "pointerup",
+            "startTime": 3234.199999809265,
+            "duration": 16,
+            "processingStart": 3252.399999856949,
+            "processingEnd": 3252.7999999523163,
+            "interactionId": 2279
+          },
+          {
+            "name": "click",
+            "startTime": 3234.199999809265,
+            "duration": 384,
+            "processingStart": 3268.5,
+            "processingEnd": 3435.2999999523163,
+            "interactionId": 2279
+          }
+        ],
+        "long": [
+          {
+            "start": 594.0999999046326,
+            "duration": 274
+          },
+          {
+            "start": 1139.8999998569489,
+            "duration": 66
+          },
+          {
+            "start": 3254.0999999046326,
+            "duration": 312
+          }
+        ],
+        "articleCount": 80,
+        "heading": [
+          "Build your order — Indian menu Amsterdam-Noord",
+          "Shah Restaurant",
+          " Your order",
+          "Shah Restaurant — Curries"
+        ],
+        "focused": ""
+      },
+      "errors": [],
+      "writes": [],
+      "profilePath": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-home-copy-20261112\\curries-3398-2-followup.cpuprofile"
+    },
+    {
+      "port": 3728,
+      "run": 2,
+      "route": "/en/menu",
+      "target": {
+        "x": 153.015625,
+        "y": 474.421875,
+        "text": " Curries",
+        "hitOK": true,
+        "articleCount": 2
+      },
+      "before": {
+        "time": 3305.699999809265,
+        "events": 0,
+        "long": 3
+      },
+      "after": {
+        "time": 5398.299999952316,
+        "events": [
+          {
+            "name": "pointerup",
+            "startTime": 3308.0999999046326,
+            "duration": 16,
+            "processingStart": 3325.5999999046326,
+            "processingEnd": 3326,
+            "interactionId": 5519
+          },
+          {
+            "name": "click",
+            "startTime": 3308.0999999046326,
+            "duration": 296,
+            "processingStart": 3341,
+            "processingEnd": 3442.5,
+            "interactionId": 5519
+          }
+        ],
+        "long": [
+          {
+            "start": 413.39999985694885,
+            "duration": 115
+          },
+          {
+            "start": 560,
+            "duration": 262
+          },
+          {
+            "start": 1106.5,
+            "duration": 62
+          },
+          {
+            "start": 3327.5999999046326,
+            "duration": 235
+          }
+        ],
+        "articleCount": 40,
+        "heading": [
+          "Build your order — Indian menu Amsterdam-Noord",
+          "Shah Restaurant",
+          " Your order",
+          "Shah Restaurant — Curries"
+        ],
+        "focused": ""
+      },
+      "errors": [],
+      "writes": [],
+      "profilePath": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-home-copy-20261112\\curries-3728-2-followup.cpuprofile"
+    },
+    {
+      "port": 3398,
+      "run": 3,
+      "route": "/en/menu",
+      "target": {
+        "x": 153.015625,
+        "y": 474.421875,
+        "text": " Curries",
+        "hitOK": true,
+        "articleCount": 4
+      },
+      "before": {
+        "time": 3243.100000143051,
+        "events": 0,
+        "long": 3
+      },
+      "after": {
+        "time": 5411.5,
+        "events": [
+          {
+            "name": "pointerup",
+            "startTime": 3245.5,
+            "duration": 16,
+            "processingStart": 3263.5,
+            "processingEnd": 3264.2000000476837,
+            "interactionId": 874
+          },
+          {
+            "name": "click",
+            "startTime": 3245.5,
+            "duration": 368,
+            "processingStart": 3279.600000143051,
+            "processingEnd": 3445.5,
+            "interactionId": 874
+          }
+        ],
+        "long": [
+          {
+            "start": 439,
+            "duration": 115
+          },
+          {
+            "start": 583.4000000953674,
+            "duration": 272
+          },
+          {
+            "start": 1133.7999999523163,
+            "duration": 61
+          },
+          {
+            "start": 3265.7999999523163,
+            "duration": 303
+          }
+        ],
+        "articleCount": 80,
+        "heading": [
+          "Build your order — Indian menu Amsterdam-Noord",
+          "Shah Restaurant",
+          " Your order",
+          "Shah Restaurant — Curries"
+        ],
+        "focused": ""
+      },
+      "errors": [],
+      "writes": [],
+      "profilePath": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-home-copy-20261112\\curries-3398-3-followup.cpuprofile"
+    },
+    {
+      "port": 3728,
+      "run": 3,
+      "route": "/en/menu",
+      "target": {
+        "x": 153.015625,
+        "y": 474.421875,
+        "text": " Curries",
+        "hitOK": true,
+        "articleCount": 2
+      },
+      "before": {
+        "time": 3316.7999999523163,
+        "events": 0,
+        "long": 3
+      },
+      "after": {
+        "time": 5399.699999809265,
+        "events": [
+          {
+            "name": "pointerup",
+            "startTime": 3319,
+            "duration": 16,
+            "processingStart": 3336.5999999046326,
+            "processingEnd": 3337,
+            "interactionId": 816
+          },
+          {
+            "name": "click",
+            "startTime": 3319,
+            "duration": 280,
+            "processingStart": 3351.2999999523163,
+            "processingEnd": 3448.699999809265,
+            "interactionId": 816
+          }
+        ],
+        "long": [
+          {
+            "start": 534.5999999046326,
+            "duration": 117
+          },
+          {
+            "start": 715.2999999523163,
+            "duration": 291
+          },
+          {
+            "start": 1237.3999998569489,
+            "duration": 60
+          },
+          {
+            "start": 3338.399999856949,
+            "duration": 226
+          }
+        ],
+        "articleCount": 40,
+        "heading": [
+          "Build your order — Indian menu Amsterdam-Noord",
+          "Shah Restaurant",
+          " Your order",
+          "Shah Restaurant — Curries"
+        ],
+        "focused": ""
+      },
+      "errors": [],
+      "writes": [],
+      "profilePath": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-home-copy-20261112\\curries-3728-3-followup.cpuprofile"
+    }
+  ],
+  "builds": {
+    "3398": "s_2pU6IxrWANtKLhFIf2S",
+    "3728": "BUodo1etC1wSEnAZD_-52"
+  },
+  "samples": [
+    {
+      "port": 3398,
+      "run": 1,
+      "eventMs": 408,
+      "processingMs": 158.29999995231628,
+      "inputDelayMs": 31.799999952316284,
+      "presentationRemainderMs": 217.90000009536743,
+      "cards": 80,
+      "errors": [],
+      "writes": []
+    },
+    {
+      "port": 3728,
+      "run": 1,
+      "eventMs": 296,
+      "processingMs": 95.80000019073486,
+      "inputDelayMs": 33.799999952316284,
+      "presentationRemainderMs": 166.39999985694885,
+      "cards": 40,
+      "errors": [],
+      "writes": []
+    },
+    {
+      "port": 3398,
+      "run": 2,
+      "eventMs": 384,
+      "processingMs": 166.79999995231628,
+      "inputDelayMs": 34.30000019073486,
+      "presentationRemainderMs": 182.89999985694885,
+      "cards": 80,
+      "errors": [],
+      "writes": []
+    },
+    {
+      "port": 3728,
+      "run": 2,
+      "eventMs": 296,
+      "processingMs": 101.5,
+      "inputDelayMs": 32.90000009536743,
+      "presentationRemainderMs": 161.59999990463257,
+      "cards": 40,
+      "errors": [],
+      "writes": []
+    },
+    {
+      "port": 3398,
+      "run": 3,
+      "eventMs": 368,
+      "processingMs": 165.89999985694885,
+      "inputDelayMs": 34.10000014305115,
+      "presentationRemainderMs": 168,
+      "cards": 80,
+      "errors": [],
+      "writes": []
+    },
+    {
+      "port": 3728,
+      "run": 3,
+      "eventMs": 280,
+      "processingMs": 97.39999985694885,
+      "inputDelayMs": 32.299999952316284,
+      "presentationRemainderMs": 150.30000019073486,
+      "cards": 40,
+      "errors": [],
+      "writes": []
+    }
+  ],
+  "statistics": {
+    "3398": {
+      "medianEventMs": 384,
+      "medianProcessingMs": 165.89999985694885,
+      "cards": 80
+    },
+    "3728": {
+      "medianEventMs": 296,
+      "medianProcessingMs": 97.39999985694885,
+      "cards": 40
+    }
+  },
+  "rawProfiles": [
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-home-copy-20261112\\curries-3398-1-followup.cpuprofile",
+      "bytes": 132994,
+      "sha256": "1738d5c922baf69682408c2d9c19d014135c2c07101ce3d018ed3599f29f4c05"
+    },
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-home-copy-20261112\\curries-3728-1-followup.cpuprofile",
+      "bytes": 97160,
+      "sha256": "e632480d781b7a18af900df599c6c6faf19ff95c312cf710072634f0e0b8aed8"
+    },
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-home-copy-20261112\\curries-3398-2-followup.cpuprofile",
+      "bytes": 163350,
+      "sha256": "3c89c26e1e47b0528ee34aba27364ef093a5ad0c04bc8011fc8606f6729407b7"
+    },
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-home-copy-20261112\\curries-3728-2-followup.cpuprofile",
+      "bytes": 96778,
+      "sha256": "fade4b6cd113dfdc877d559e4ef73a9a5070b967d4f5fd8402484341be11b2b8"
+    },
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-home-copy-20261112\\curries-3398-3-followup.cpuprofile",
+      "bytes": 131354,
+      "sha256": "3a9f5af56a38a8d166d5fa2c4f861e7ae7a5139fdad70e2345ae83346d07da72"
+    },
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-home-copy-20261112\\curries-3728-3-followup.cpuprofile",
+      "bytes": 126369,
+      "sha256": "04dff2a2d9825bc69ae0029c6040824452a741539591430fe62512386d652d02"
+    }
+  ],
+  "limits": [
+    "Three samples per artifact, shared PC, emulated CPU and profiler overhead; no universal latency guarantee.",
+    "Both event medians exceed original150ms target.",
+    "The earlier exploratory home search attempt stopped at an obscured-target guard; no home interaction result or app defect was inferred."
+  ]
+}

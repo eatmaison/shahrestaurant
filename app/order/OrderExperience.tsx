@@ -240,6 +240,16 @@ export default function OrderExperience({ searchParams, initialCatalog = null }:
     setSearch(submitted);
   };
 
+  // Keep both SSR lists for native/no-JS access; hydrate only the visible cards thereafter.
+  const [desktopViewport, setDesktopViewport] = useState<boolean | null>(null);
+  useEffect(() => {
+    const viewport = window.matchMedia("(min-width: 1024px)");
+    const update = () => setDesktopViewport(viewport.matches);
+    queueMicrotask(update);
+    viewport.addEventListener("change", update);
+    return () => viewport.removeEventListener("change", update);
+  }, []);
+
   const [activeBrand, setActiveBrand] = useState<Brand>(initialSelection.brand);
   const [activeCategory, setActiveCategory] = useState<Category>(initialSelection.category);
   const [activeSubcategory, setActiveSubcategory] = useState<Category | "all">("all");
@@ -1113,7 +1123,7 @@ export default function OrderExperience({ searchParams, initialCatalog = null }:
             </div>
             <div className="gold-rule ml-2 flex-1" />
           </div>
-          {ProductsGrid()}
+          {desktopViewport !== false && ProductsGrid()}
         </section>
 
         {/* Desktop: Cart + Checkout - Right sidebar */}
@@ -1439,7 +1449,7 @@ export default function OrderExperience({ searchParams, initialCatalog = null }:
         {/* Products follow the normal document scroll. */}
         <div className={styles.mobileProducts}>
           <h2 className="sr-only">{searchTerms.length ? (lang === "nl" ? "Zoekresultaten" : "Search results") : `${activeBrandCfg?.name ?? ""} — ${activeCategory}`}</h2>
-          {ProductsGrid()}
+          {desktopViewport !== true && ProductsGrid()}
         </div>
 
         {/* Mobile: Cart Footer - Sticky Bottom */}
