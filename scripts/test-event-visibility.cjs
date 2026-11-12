@@ -154,8 +154,9 @@ const denied = () => { throw new Error('NOT_FOUND'); };
       const navigationAnchors = anchors.filter(tag => !tag.includes('data-language-link'));
       for (const route of eventRoutes) assert.equal(navigationAnchors.filter(tag => tag.includes(`href="${route}"`)).length, 2, route);
       const languageAnchors = anchors.filter(tag => tag.includes('data-language-link'));
-      assert.equal(languageAnchors.length, 4);
-      assert.equal(languageAnchors.filter(tag => tag.includes('href="/events"')).length, 2);
+      // One current-language toggle per desktop/mobile view, switching NL to EN.
+      assert.equal(languageAnchors.length, 2);
+      assert.equal(languageAnchors.filter(tag => tag.includes('href="/events"')).length, 0);
       assert.equal(languageAnchors.filter(tag => tag.includes('href="/en/events"')).length, 2);
       assert.equal(html.includes('href="/parties"'), role === 'admin');
       state = [];
