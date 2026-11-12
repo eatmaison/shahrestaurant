@@ -1,0 +1,100 @@
+{
+  "build": "ROlbbD83zLUL6I7QyZ5_e",
+  "origin": "http://127.0.0.1:3688",
+  "sourceHash": "7eb492cbf906158657701ad23a1917542d543761238171a5cb639c22387d0b92",
+  "inputs": 548,
+  "verdict": "FAILED historical control: compact grid preserved text/hrefs/fonts and reflow, but floating BackTop occluded new right-column legal targets.",
+  "failedOcclusion": {
+    "privacyArea": 1507.5,
+    "termsArea": 412.5,
+    "hitTest": "BackTop button was topmost in both intersections.",
+    "raw": {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-footer-20261112\\ROlbbD83zLUL6I7QyZ5_e\\overlap-contrast.json",
+      "sha256": "73a6d9ecb07771a90d043fb98f125981bccf0aead0130bc36ec6220a2e2c3372"
+    }
+  },
+  "compactGridHeightCases": [
+    {
+      "width": 320,
+      "lang": "nl",
+      "height": 905.140625
+    },
+    {
+      "width": 320,
+      "lang": "en",
+      "height": 881.140625
+    },
+    {
+      "width": 360,
+      "lang": "nl",
+      "height": 869.140625
+    },
+    {
+      "width": 360,
+      "lang": "en",
+      "height": 869.140625
+    },
+    {
+      "width": 390,
+      "lang": "nl",
+      "height": 853.140625
+    },
+    {
+      "width": 390,
+      "lang": "en",
+      "height": 841.140625
+    },
+    {
+      "width": 430,
+      "lang": "nl",
+      "height": 853.140625
+    },
+    {
+      "width": 430,
+      "lang": "en",
+      "height": 813.140625
+    }
+  ],
+  "readabilityRaw": {
+    "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-footer-20261112\\ROlbbD83zLUL6I7QyZ5_e\\footer-readability.json",
+    "sha256": "8d6b22409dd76b637f6fc800b9b23a70bcbf2a4f842484849b20a7226d4f33ac"
+  },
+  "measurements": {
+    "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-footer-20261112\\ROl-after\\footer-measurements.json",
+    "sha256": "a6d149daf16eaa2f17c1159856dfdfd9f07c60d0f0d4f44997c48faa50892e7d"
+  },
+  "screenshots": [
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-footer-20261112\\ROl-after\\footer-320-nl.png",
+      "sha256": "f7a3ead312809d3b353e7ccab404e549e5d60a8a2a8c421a9f8d73394a7c9535"
+    },
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-footer-20261112\\ROl-after\\footer-320-en.png",
+      "sha256": "58a75dc741e0de4b312bade3810b884ae01ce7a406ebadd09408881ff3d1c8e1"
+    },
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-footer-20261112\\ROl-after\\footer-360-nl.png",
+      "sha256": "54e401dfae58e7e394df2d1d4903e46da5f7646e8526bf66d53c97cd1fee0107"
+    },
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-footer-20261112\\ROl-after\\footer-360-en.png",
+      "sha256": "f9c4b3e5bd31e384746dc3caba700ecbe5524b16e48076c7715fa9bdd38afa81"
+    },
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-footer-20261112\\ROl-after\\footer-390-nl.png",
+      "sha256": "2e66c208b6e980bc578791597db7460acf293a7a0be1bc33b8b2f73898a376d4"
+    },
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-footer-20261112\\ROl-after\\footer-390-en.png",
+      "sha256": "0161ee06cab63f83a8dbd327cbee1795563b939ad4053d3910e7082cb1de9cf1"
+    },
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-footer-20261112\\ROl-after\\footer-430-nl.png",
+      "sha256": "4539a7aaf59ca1c91fa8db0ee913584ff19a4e52ac9924e70de7a71c292b08e3"
+    },
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-footer-20261112\\ROl-after\\footer-430-en.png",
+      "sha256": "0ef838f8323222de2205949936a095f1d88b9e4622f5c2ef00f9fc3ae9271931"
+    }
+  ]
+}

@@ -1,0 +1,337 @@
+{
+  "checkedAt": "2026-11-12T00:10:45.978Z",
+  "origin": "http://127.0.0.1:3668",
+  "buildId": "KfLjCFEAboBDf5nZnS0uh",
+  "freshIsolatedContext": true,
+  "skip": {
+    "text": "Film overslaan en naar inhoud",
+    "href": "#intro",
+    "activation": "native Enter key on focused actual skip link"
+  },
+  "default": {
+    "text": "Privacybeleid",
+    "selector": ".dark [data-cookie-notice] p a",
+    "color": "rgb(87, 148, 154)",
+    "background": "rgba(0, 0, 0, 0)",
+    "fontSize": "14px",
+    "fontWeight": "600",
+    "textDecoration": "underline",
+    "outline": "rgb(87, 148, 154) none 3px",
+    "rect": {
+      "x": 250.5,
+      "y": 719,
+      "width": 85.25,
+      "height": 48,
+      "top": 719,
+      "right": 335.75,
+      "bottom": 767,
+      "left": 250.5
+    },
+    "chain": [
+      {
+        "tag": "A",
+        "class": "font-semibold text-emerald-600 underline underline-offset-2 hover:text-emerald-500 dark:text-emerald-400",
+        "color": "rgb(87, 148, 154)",
+        "background": "rgba(0, 0, 0, 0)",
+        "opacity": "1",
+        "filter": "none",
+        "backdropFilter": "none",
+        "mixBlendMode": "normal"
+      },
+      {
+        "tag": "P",
+        "class": "flex-1 text-sm leading-6 text-slate-600 dark:text-slate-300",
+        "color": "rgb(184, 203, 198)",
+        "background": "rgba(0, 0, 0, 0)",
+        "opacity": "1",
+        "filter": "none",
+        "backdropFilter": "none",
+        "mixBlendMode": "normal"
+      },
+      {
+        "tag": "DIV",
+        "class": "card-lux mx-auto flex max-w-3xl flex-col gap-4 rounded-2xl p-5 shadow-2xl sm:flex-row sm:items-center",
+        "color": "rgb(247, 242, 231)",
+        "background": "rgb(10, 53, 64)",
+        "opacity": "1",
+        "filter": "none",
+        "backdropFilter": "none",
+        "mixBlendMode": "normal"
+      },
+      {
+        "tag": "DIV",
+        "class": "fixed inset-x-0 bottom-0 z-50 p-4 sm:p-6",
+        "color": "rgb(247, 242, 231)",
+        "background": "rgba(0, 0, 0, 0)",
+        "opacity": "1",
+        "filter": "none",
+        "backdropFilter": "none",
+        "mixBlendMode": "normal"
+      },
+      {
+        "tag": "BODY",
+        "class": "flex min-h-full flex-col",
+        "color": "rgb(247, 242, 231)",
+        "background": "rgb(6, 43, 50)",
+        "opacity": "1",
+        "filter": "none",
+        "backdropFilter": "none",
+        "mixBlendMode": "normal"
+      },
+      {
+        "tag": "HTML",
+        "class": "dark h-full antialiased",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0)",
+        "opacity": "1",
+        "filter": "none",
+        "backdropFilter": "none",
+        "mixBlendMode": "normal"
+      }
+    ],
+    "dark": true,
+    "filmView": "content",
+    "scrollY": 0,
+    "href": "http://127.0.0.1:3668/#intro",
+    "effectiveBackground": [
+      10,
+      53,
+      64,
+      1
+    ],
+    "effectiveForeground": [
+      87,
+      148,
+      154,
+      1
+    ],
+    "contrast": 3.8265276611328405,
+    "ancestorOpacityProduct": 1,
+    "normalTextThreshold": 4.5,
+    "pass": false
+  },
+  "hover": {
+    "text": "Privacybeleid",
+    "selector": ".dark [data-cookie-notice] p a",
+    "color": "rgb(13, 73, 82)",
+    "background": "rgba(0, 0, 0, 0)",
+    "fontSize": "14px",
+    "fontWeight": "600",
+    "textDecoration": "underline",
+    "outline": "rgb(13, 73, 82) none 3px",
+    "rect": {
+      "x": 250.5,
+      "y": 719,
+      "width": 85.25,
+      "height": 48,
+      "top": 719,
+      "right": 335.75,
+      "bottom": 767,
+      "left": 250.5
+    },
+    "chain": [
+      {
+        "tag": "A",
+        "class": "font-semibold text-emerald-600 underline underline-offset-2 hover:text-emerald-500 dark:text-emerald-400",
+        "color": "rgb(13, 73, 82)",
+        "background": "rgba(0, 0, 0, 0)",
+        "opacity": "1",
+        "filter": "none",
+        "backdropFilter": "none",
+        "mixBlendMode": "normal"
+      },
+      {
+        "tag": "P",
+        "class": "flex-1 text-sm leading-6 text-slate-600 dark:text-slate-300",
+        "color": "rgb(184, 203, 198)",
+        "background": "rgba(0, 0, 0, 0)",
+        "opacity": "1",
+        "filter": "none",
+        "backdropFilter": "none",
+        "mixBlendMode": "normal"
+      },
+      {
+        "tag": "DIV",
+        "class": "card-lux mx-auto flex max-w-3xl flex-col gap-4 rounded-2xl p-5 shadow-2xl sm:flex-row sm:items-center",
+        "color": "rgb(247, 242, 231)",
+        "background": "rgb(10, 53, 64)",
+        "opacity": "1",
+        "filter": "none",
+        "backdropFilter": "none",
+        "mixBlendMode": "normal"
+      },
+      {
+        "tag": "DIV",
+        "class": "fixed inset-x-0 bottom-0 z-50 p-4 sm:p-6",
+        "color": "rgb(247, 242, 231)",
+        "background": "rgba(0, 0, 0, 0)",
+        "opacity": "1",
+        "filter": "none",
+        "backdropFilter": "none",
+        "mixBlendMode": "normal"
+      },
+      {
+        "tag": "BODY",
+        "class": "flex min-h-full flex-col",
+        "color": "rgb(247, 242, 231)",
+        "background": "rgb(6, 43, 50)",
+        "opacity": "1",
+        "filter": "none",
+        "backdropFilter": "none",
+        "mixBlendMode": "normal"
+      },
+      {
+        "tag": "HTML",
+        "class": "dark h-full antialiased",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0)",
+        "opacity": "1",
+        "filter": "none",
+        "backdropFilter": "none",
+        "mixBlendMode": "normal"
+      }
+    ],
+    "dark": true,
+    "filmView": "content",
+    "scrollY": 0,
+    "href": "http://127.0.0.1:3668/#intro",
+    "effectiveBackground": [
+      10,
+      53,
+      64,
+      1
+    ],
+    "effectiveForeground": [
+      13,
+      73,
+      82,
+      1
+    ],
+    "contrast": 1.310609965372234,
+    "ancestorOpacityProduct": 1,
+    "normalTextThreshold": 4.5,
+    "pass": false
+  },
+  "focus": {
+    "text": "Privacybeleid",
+    "selector": ".dark [data-cookie-notice] p a",
+    "color": "rgb(87, 148, 154)",
+    "background": "rgba(0, 0, 0, 0)",
+    "fontSize": "14px",
+    "fontWeight": "600",
+    "textDecoration": "underline",
+    "outline": "rgb(224, 175, 89) solid 3px",
+    "rect": {
+      "x": 250.5,
+      "y": 719,
+      "width": 85.25,
+      "height": 48,
+      "top": 719,
+      "right": 335.75,
+      "bottom": 767,
+      "left": 250.5
+    },
+    "chain": [
+      {
+        "tag": "A",
+        "class": "font-semibold text-emerald-600 underline underline-offset-2 hover:text-emerald-500 dark:text-emerald-400",
+        "color": "rgb(87, 148, 154)",
+        "background": "rgba(0, 0, 0, 0)",
+        "opacity": "1",
+        "filter": "none",
+        "backdropFilter": "none",
+        "mixBlendMode": "normal"
+      },
+      {
+        "tag": "P",
+        "class": "flex-1 text-sm leading-6 text-slate-600 dark:text-slate-300",
+        "color": "rgb(184, 203, 198)",
+        "background": "rgba(0, 0, 0, 0)",
+        "opacity": "1",
+        "filter": "none",
+        "backdropFilter": "none",
+        "mixBlendMode": "normal"
+      },
+      {
+        "tag": "DIV",
+        "class": "card-lux mx-auto flex max-w-3xl flex-col gap-4 rounded-2xl p-5 shadow-2xl sm:flex-row sm:items-center",
+        "color": "rgb(247, 242, 231)",
+        "background": "rgb(10, 53, 64)",
+        "opacity": "1",
+        "filter": "none",
+        "backdropFilter": "none",
+        "mixBlendMode": "normal"
+      },
+      {
+        "tag": "DIV",
+        "class": "fixed inset-x-0 bottom-0 z-50 p-4 sm:p-6",
+        "color": "rgb(247, 242, 231)",
+        "background": "rgba(0, 0, 0, 0)",
+        "opacity": "1",
+        "filter": "none",
+        "backdropFilter": "none",
+        "mixBlendMode": "normal"
+      },
+      {
+        "tag": "BODY",
+        "class": "flex min-h-full flex-col",
+        "color": "rgb(247, 242, 231)",
+        "background": "rgb(6, 43, 50)",
+        "opacity": "1",
+        "filter": "none",
+        "backdropFilter": "none",
+        "mixBlendMode": "normal"
+      },
+      {
+        "tag": "HTML",
+        "class": "dark h-full antialiased",
+        "color": "rgb(0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0)",
+        "opacity": "1",
+        "filter": "none",
+        "backdropFilter": "none",
+        "mixBlendMode": "normal"
+      }
+    ],
+    "dark": true,
+    "filmView": "content",
+    "scrollY": 0,
+    "href": "http://127.0.0.1:3668/#intro",
+    "effectiveBackground": [
+      10,
+      53,
+      64,
+      1
+    ],
+    "effectiveForeground": [
+      87,
+      148,
+      154,
+      1
+    ],
+    "contrast": 3.8265276611328405,
+    "ancestorOpacityProduct": 1,
+    "normalTextThreshold": 4.5,
+    "pass": false
+  },
+  "screenshot": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-theme-default-20261111\\dark-aa-cookie-390.png",
+  "noSourceEdits": true,
+  "failureConfirmed": true,
+  "thresholdReason": "14px/600 is normal text requiring 4.5:1",
+  "source": {
+    "component": "app/components/CookieConsent.tsx:55",
+    "classes": "font-semibold text-emerald-600 underline underline-offset-2 hover:text-emerald-500 dark:text-emerald-400",
+    "colorToken": "app/globals.css:45 --color-emerald-400 #57949a",
+    "hoverToken": "app/globals.css:46 --color-emerald-500 #0D4952",
+    "opaqueSurface": "app/design-system.css:78 background var(--shah-surface), dark token #0a3540"
+  },
+  "proposedMinimalFix": {
+    "path": "app/accessibility.css",
+    "css": ".dark [data-cookie-notice] p a { color: var(--shah-brand-gold); }",
+    "scope": "Dark cookie notice privacy anchor only; selector covers default/hover/focus and outranks existing utility pseudo-class specificity",
+    "expectedColor": "#E0AF59",
+    "calculatedContrast": 6.544186456550035,
+    "status": "Proposed only; no app source modified; capture hold still active"
+  },
+  "cleanup": "Fresh isolated browser context disposed; original order context untouched; Chrome9229 clear"
+}

@@ -1,0 +1,1912 @@
+{
+  "checkedAtUTC": "2026-11-11T20:50:54.461Z",
+  "method": "Offline independent installed-package factory/React serialization comparison, wrapper AST inspection, default-context prop probes, and public static/dynamic source graphs. No browser, network or project build.",
+  "evidenceSha256": "1ae4e4ce54e52a5e599bfab2d09901d3f73b7a5f4825c687815aadb679ff6f9d",
+  "packageVersion": "5.7.0",
+  "groups": [
+    {
+      "group": "common",
+      "glyphs": 25,
+      "bytes": 13664,
+      "sha256": "c96df00c84f03a0f34c135b120889b21ef6d27f243339b9dabe6ee0a115a052a",
+      "recordedBytesAndHashMatch": true
+    },
+    {
+      "group": "catalog",
+      "glyphs": 53,
+      "bytes": 28820,
+      "sha256": "d55cc6a778869b40bc66045333b002658542c8a13fc6d15b2aba331ad7a0935a",
+      "recordedBytesAndHashMatch": true
+    },
+    {
+      "group": "features",
+      "glyphs": 29,
+      "bytes": 17818,
+      "sha256": "8ca8713c792fdae09931dc762af8e613a47bfb1d943607429d6a5d7849b20512",
+      "recordedBytesAndHashMatch": true
+    }
+  ],
+  "glyphs": [
+    {
+      "key": "fa6/FaApple",
+      "group": "common",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "6ea3ba2ed649cae16c59bf13f6f14ef55f57099f1ae78a1baf30daa7d140d3ec",
+      "serializedChildrenSha256": "e65480a884c9348a1aa0cb8848fe9918e4928eed32a463a2a0a0faff6680fdfd",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaAppleWhole",
+      "group": "catalog",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "9b91935ee0ed7d15c4202d54a77e937ea13f1b4821269b5c7011af7edb41a0cc",
+      "serializedChildrenSha256": "d80260d65217e1c37717527e6e4876b59f58a427498cbf19f4d828a7776a70b5",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaArrowDown",
+      "group": "catalog",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "e22bb599b04527311f2fde94e67c208bb2d8eaf3d29f5efc3ef9d48249dda416",
+      "serializedChildrenSha256": "0d4ef93ca06775317f504c7a367ebd38d4e71a221507299f75cd530c794131ea",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaArrowLeft",
+      "group": "catalog",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "88636ab62a4037a4149c48a38a31a867e92c51a079103b96424b29f6c7a060ae",
+      "serializedChildrenSha256": "3c3e56ba240ca69a841560b1b8c7fff2a4891769bad8e31d02e0eac806983825",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaArrowRight",
+      "group": "catalog",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "485ef6fc7fd321d6c5f1ea11b74d53995a73b9a49ca9887313ed29961555cf15",
+      "serializedChildrenSha256": "1506928674158090044ea86cc139fb692ae635fdf48ddee70683bc9d66194923",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaArrowUp",
+      "group": "common",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "8a09eb8cc7ef857645f0f074643976b9129cc18af2cf990a270b36025788db0e",
+      "serializedChildrenSha256": "39b4e7d0fbb4ddc5d30a2fb663af4e71f4e4e9a6e92eed5ce27a6fb49b0ff727",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaAward",
+      "group": "features",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "b28bf1ff5780badcf6fe9aca63f7ce2834dee6bfcb98d61c86a0e92e277dc8f0",
+      "serializedChildrenSha256": "006270a07d5a61fedc44382b6e5daaee6ff1013aeacbc8cae716be117854fec7",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaBacon",
+      "group": "catalog",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "07c09c7666a8cc4f745e71186c433503ed39beffbb97c12cdf5b9ccf690cc295",
+      "serializedChildrenSha256": "896223ccaee8e0ab7734e7a6aa92ca340a4db1cb045105d894fd8ed302d9e2e0",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaBagShopping",
+      "group": "catalog",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "b9c92e0156f4fd9c0d62bc3e9cf51a7eb24c25623a1723f9acbef14359ae403e",
+      "serializedChildrenSha256": "e7e916ba7aea8abcb4d5f9a02762c697ead9f109b9b94ada27579c9a34274e78",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaBars",
+      "group": "common",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "09e2d09777d5258546852b81961a837cb575f59b9fc9e34beb119583e57fd70e",
+      "serializedChildrenSha256": "33f1ef6cd6842ed08593d1c9fb95ecf0fa199bd550d8294add99d89080fd2857",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaBellConcierge",
+      "group": "features",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "86d01f9d08d8aeca6cfcc15a667d5d36d448bfa72b4c946186ffe5e50f3913b4",
+      "serializedChildrenSha256": "39f45a7befb83d931b831f5f0d5931495ab2d61688f946f120f3b66774ff5301",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaBottleDroplet",
+      "group": "catalog",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "54b28d7a628518ba73fd46d9c3cce027b686c6e869a620647ebff23546edb342",
+      "serializedChildrenSha256": "4708c86f04b70838c80531d6099eea47fc8d9086c8f5146ada0d4256f26f3e66",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaBowlFood",
+      "group": "catalog",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "0db24d2336c5b3d1126b5d6fddc62b41f193f833687617beb4b5e6290133fb35",
+      "serializedChildrenSha256": "ac31369705a14bdd4aa39bbd67c76fb7b0c1d7601593a4c309a40705c748fdb2",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaBowlRice",
+      "group": "catalog",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "010b970d2b0ae9b0d21ed2cfd1991bd6a5f1a7a06901aef4c342f01735c3aabe",
+      "serializedChildrenSha256": "30ad03002a98b658bd22fe19e54987a291040663dc3a442fba56cd25cb3cdc7c",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaBoxesStacked",
+      "group": "features",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "de42119f849110b1ffd78db394f4b9fa44ee4f07eb218cdcbea0803c978768b2",
+      "serializedChildrenSha256": "318eaef5dd0763edf0afa7f3f89efbce919be277c0e37031a91ed660c8bb808b",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaBreadSlice",
+      "group": "catalog",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "3fd30dc2a69a54773086621cd960c924cb75057fa220e1bf0155217c2b836230",
+      "serializedChildrenSha256": "8e5d3c0ffac347f16670fdd258734e91ddd6597bbd01e9ea906a9d3e8f00954f",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaBriefcase",
+      "group": "features",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "2a4d494865815e26132b743252beadd34a6d2073930624c73f7e2bbce4be54de",
+      "serializedChildrenSha256": "261c3291c866915cd0b4d448ddc72b96a77ff18d94a1f36e424c0da453b31f32",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaBurger",
+      "group": "catalog",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "641ed35ea0aa1f5fc73411c720177b0c80670955d415a26bf43e13016142bf65",
+      "serializedChildrenSha256": "360902d32229f3fcf325666b5d9d4098d4b1267939b6dd6241628d06b56f01a4",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaCakeCandles",
+      "group": "catalog",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "367679852fb34ec03d3afca6a1c03d92731732756a1c5d6a9b1ab74c3dfe259b",
+      "serializedChildrenSha256": "96f4cde73586e123a1c445f5944849f4b781cf6f9968897cdb779d059a51bd82",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaCalendarCheck",
+      "group": "common",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "3391ad172056a4d90806e9fd9c038dc23506fe8a5a6eb6dde8202b85a02bce40",
+      "serializedChildrenSha256": "165cc4f986b4eeb00096f371aaf152295f50d76508800063bda1666599664452",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaCalendarDays",
+      "group": "catalog",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "c5bcd5e4e7d397e4e4037b62837b39bb032ade46d4357b72cfb2ac26c4db9c3b",
+      "serializedChildrenSha256": "b59f8502d6231694d8601c670b3473a87ada9762b20f2579193031295ee92cf1",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaCamera",
+      "group": "features",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "41c973d8cc9a8ebc664c8a6283f997d905bf50b490203f6cb1b6fdb09ebb203f",
+      "serializedChildrenSha256": "9643614f0d7e13e5be729af15938981c4676ca9b5f309301761c73b0b4eaade4",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaCarrot",
+      "group": "catalog",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "38c0514db21fce497ee4135b299f648ceac7f47fbcd977082b930c93939cf419",
+      "serializedChildrenSha256": "f492064977b55439e7c6b9494a4080ad89853a9fd33d380220d84a8af8c2acfb",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaCartShopping",
+      "group": "common",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "e3129ed94f09165dff9301db542595d3190da2adb4cb2e7f050aee427cdbc096",
+      "serializedChildrenSha256": "1dd7cb70c49da80f8db125718d54896d0c3cc83e335b248348b6a733b2bdddc3",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaChampagneGlasses",
+      "group": "catalog",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "46b37d4dc5f45a961deb2d31d1d39d7c531a496a7248d0f05d000d4261ab4d1b",
+      "serializedChildrenSha256": "30ee19243bb5965a14e25944fc1beb96248876514bac399483174b5284470cd1",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaChartLine",
+      "group": "features",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "82c8395ca82c278db8b2a1cb82013179360698f3af111e88abcc08d199cf8ad3",
+      "serializedChildrenSha256": "2480ff4f72b84b4f71a9dbbc3ad6e0c760a846f925176d9ce89594968b59f0be",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaCheck",
+      "group": "features",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "c2f8c3d5cba7dff5e1c70d2bd14c895af89436fa098939f3866571cb14869f80",
+      "serializedChildrenSha256": "e8ace7c9eec1cc376dec91ec4ab028f8c60a220d92d0c0c4c35a6dd557125791",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaCheese",
+      "group": "catalog",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "152203cb6e42ef050dc085665c15c0307b7f6b380e79e3c854cd78bef5409407",
+      "serializedChildrenSha256": "5470841d6235820495bf28db1f4693d923d90005eb10f41f349a8a690c5f3058",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaChevronDown",
+      "group": "common",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "4a16b55f7955311357649eca715b6229231ebbfe0bc6841c1856b68cbffc04e6",
+      "serializedChildrenSha256": "5bd9258be8133cfd20e322c75d8c3b7e7b7996575af616f87ced1eb840ea279e",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaChevronLeft",
+      "group": "catalog",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "2c3771d18328877293cb695009eaf5d3b4114e4d0bf6e8ecb711b1dcac59ed69",
+      "serializedChildrenSha256": "b8ca5dd9bf560d27f4355bbdaa8e519b59e136eb5f3a5352b13db1bd25dd9ae8",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaChevronRight",
+      "group": "catalog",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "942b91a21cd124e067a6b38e0f453d6496c24342276013f036305cb309f0b4ce",
+      "serializedChildrenSha256": "9366e11c5c6a97d2d9841666c548b0730bc74a8c7c45e51a4ccba97b68ee6b11",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaCircleCheck",
+      "group": "catalog",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "a68254fc2c7ac97595f4d57bd12b32d97904b81bb43821db6cc2a39f804dd267",
+      "serializedChildrenSha256": "049523b51e4877ff86eca8256b65e4d410f5ff0735abe5d775f70cb4a509b2e5",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaCircleExclamation",
+      "group": "catalog",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "30a82de525bffcbef270373de4128dc5c752b14b6e65574d2e7415817a67b51c",
+      "serializedChildrenSha256": "ec95159e493f1f3631d825c723969feb2f57f4956c3a134a1f32957edab9ce7a",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaCircleXmark",
+      "group": "features",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "e99f25cc9b4c89ba99d18875021f5559593393e1c47c6799a688bf90083e4a15",
+      "serializedChildrenSha256": "1b9a6479da3b8e97ba2230b86d793554bac1437cd3ae56256f28aa5843026997",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaClock",
+      "group": "common",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "7e52a063226e0fdaa10c738071e041ac804318392c1ba28ae635032529454d7d",
+      "serializedChildrenSha256": "a7ce455665647fa131779d2048c15ee34f0132852255d557248f8e91f31d5102",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaCookieBite",
+      "group": "catalog",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "fa2fba77767a60ffe3d6c7e2ed84a8813f74f8f4b489d5e6a9e65e912c04f1fd",
+      "serializedChildrenSha256": "7f6865fa54d76978a1c26cff04df1ca54aa976b03b87acc99a299fa0647a162a",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaDrumstickBite",
+      "group": "catalog",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "15a4c27c9b9204df1fb9a595c3e856a90f5069b2570a7d2517f761be4e578eef",
+      "serializedChildrenSha256": "bb733e2873e1eed29af49fc08bd737af5eefe9b09aa6b55238e792fab07ced71",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaEarthEurope",
+      "group": "features",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "727af6281ca6f45888142c05a03ccd84b7d5a32235582409799dae3e354e66e4",
+      "serializedChildrenSha256": "784089864cb93241eb418e12d6af6a6908597f1d1f3c7ae162891b0c76691d1b",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaEgg",
+      "group": "catalog",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "a8ce9761b1a18ef7a44ba78f54f76920ce8d5490f4c91aa41d69e5dd9dfb6827",
+      "serializedChildrenSha256": "ddd387e7541c3c5b1ea75424678eaa3d00aed8687e712f3fc64732c393c7fe9b",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaEnvelope",
+      "group": "common",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "ec02386e95cc0e4aeadf11e471d239cb08dd55789212e4de0df8d590d23815b0",
+      "serializedChildrenSha256": "a836327f0e0479bd72f270de021dbc2db23c50efbcb81b42f1bd2163f9d3ea95",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaExpand",
+      "group": "catalog",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "471a573698ae6d18ad606ee91053b6f614c57324f16c6fa75c1357e9b15f1348",
+      "serializedChildrenSha256": "077b1c7925d205bf97ff6e12a202ae2c4deb28a703e4d18f0da761b22bd6a64e",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaFacebookF",
+      "group": "common",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "91908b3d8c4498632ef4efe6e229eecc8c730baae8884b15b5c530f5b29144a7",
+      "serializedChildrenSha256": "42faff712438e484116fe8e2f875ff175394eefbe67952d2cbf6c582393a32c4",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaFileInvoice",
+      "group": "features",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "19cdd50f886c13de3b9ba1bc225693831f71df99a6766d412a4f6ab9e128ed66",
+      "serializedChildrenSha256": "e49b5da09af747df8bb53175a1f902c1c1385396e8ea9070bdf88b6c00f66adb",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaFire",
+      "group": "catalog",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "cd9c9773cec0b52a38513d34bbba61e6895d8f500a1a9992d7d9c9e7abe9b383",
+      "serializedChildrenSha256": "8d40ee64359c5008dc8409b22ef907be08531e29f7ecf300965dba2e590c856a",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaFireBurner",
+      "group": "catalog",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "4128971967756139045d0f335e1b86a00cf2982ac53718ca960a6ec58254a33f",
+      "serializedChildrenSha256": "f33db56661e32460d2ad678490c9d78519518f20b2c6806fca08d8f698aa263e",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaFish",
+      "group": "catalog",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "d48bcf873598fcbce4f80d73952a973b893edc437c73d3eb9cbb47f7f75110cf",
+      "serializedChildrenSha256": "2c5b5720c5ae032c3bcd06a35fbfdd392c08ede78d5064ec785ede6702aee843",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaGem",
+      "group": "features",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "791b6edf335094a3f0f0fb8f6580eb6df71f20ce374fdaffab9d1a70b7bb0e9e",
+      "serializedChildrenSha256": "dc75b8189abf4ac31b0304b3dc38937a665adb90241bb418d4c8bf6e846d84b3",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaGift",
+      "group": "features",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "efcb51b3892d2d52fcf175f262eb5db3d0484b60122555d2ae00837497ffd87b",
+      "serializedChildrenSha256": "74de14acc4b9a41c12eec045ffd1973d7ea7c3652a19634ad51491858a086888",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaGlassWater",
+      "group": "catalog",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "89099a1c825a3fabf8da574c077762dcc55f41f81ee63c3873d8afa18d8f523a",
+      "serializedChildrenSha256": "8e9e186228b6fae20206bc88f87059ec21cff9892178f4f14e4da19142ec8892",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaGuitar",
+      "group": "features",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "39dd13b6bef11f720ee80e7eed57b9fd0047163afedb139e3e554e7f94d19487",
+      "serializedChildrenSha256": "890f92fc7857ae8f1f33101aaae4b372044a65f501fbcb834ad55cd3d9c12073",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaHandshake",
+      "group": "features",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "3e2b3d95ee145c850a272ec4ee5ed6d4a41c4c3f5ad15d3f32633dbe3b80e94b",
+      "serializedChildrenSha256": "4d9a14733c433b05e2353a56ea58a1d7b1c226937cd2528466775179c964258c",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaHeart",
+      "group": "features",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "14c0ae73214a39e6a9d91662f5d403e3154005da27d1b6489ed991e252548552",
+      "serializedChildrenSha256": "750534cdf231805fbcae8c042db52ed4253ea20a2978b0a739602eef433c4dc2",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaHotdog",
+      "group": "catalog",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "0e47afe7f923ad7c0af00106a390380214c303d9d4a5516afd0c3bd3a3b9f3eb",
+      "serializedChildrenSha256": "cf1f45343e625add445b8f4de3a525bfd5c4ab2c8e93ae9d7b0552dbb1cdaf3a",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaHourglassHalf",
+      "group": "features",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "5f40faccf00a75f603a92cc07664b74306ae735d8b0b83d96a4ccaaba845e1af",
+      "serializedChildrenSha256": "4aded2fb4bc4c9dd096d9f7f2678227527562e9b54f02007591ad0b1c3e8d7f4",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaIceCream",
+      "group": "catalog",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "8550e1468caddaf1784e8679fe586a1b43399f1a9a48142f5c743b12240bc12b",
+      "serializedChildrenSha256": "906bc6882bfa42d3aa4f36236ae4899ed745d444e496f16f41ce23cba91faca9",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaImage",
+      "group": "features",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "183e5dc2236c9273a7ed45fe483ca37fb9ee46a97a01fc087cb0e9f1b1839f93",
+      "serializedChildrenSha256": "2d33035b938d82a193a37663864aab823c56ba27c9ed7c27643c402c3fbd08ad",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaImages",
+      "group": "features",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "b060de50b65a1279cb8d9623e3a32fa288e75b363d46cf040260ca4f4c0d588d",
+      "serializedChildrenSha256": "93eb6352df266124c6c07da32fc6813788db4389015a47dcadfc4bcf67b69534",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaInstagram",
+      "group": "common",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "62cebd67c71b6701fee1246341c6fb588b9beb939dc2b95df7c37d2207a85fa6",
+      "serializedChildrenSha256": "f337464241612251006bb2935f49d452b57cb292637ba8ce740339bfeb9ec862",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaLeaf",
+      "group": "catalog",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "1f189f4352f6eee59e37739dae299b162a6e68937251c402ca0ce2f60b16fb14",
+      "serializedChildrenSha256": "e5efe33213a296ecda2da0008dc11908543a862b899997fafabd4e8cb73df305",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaLemon",
+      "group": "catalog",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "8af4363e1ee6115d7d6c59a049e3025be8c590dac96a055fc36ae74e31b14493",
+      "serializedChildrenSha256": "cdba77d10ae8d452529b538c44b59ee9558118bc9166462a21691bd0b2421e8d",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaLinkedinIn",
+      "group": "common",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "e1f0538ac7da6b3d57e08298acdda9287d52a786917929dc70b938f46749413e",
+      "serializedChildrenSha256": "c7f6622b026f1ab056fd32be8ffe50b335a1e3eaa4505bed2300e49e73676bb2",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaLocationDot",
+      "group": "common",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "54eb7c6259ea39a1f57f8bc9577ce3ed3ca0455162a2b008f0e2fcb43d823b1d",
+      "serializedChildrenSha256": "92472a8aa8e1aea3ce96adde9720677836627d66693373d445abc9a9b4118df7",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaLock",
+      "group": "catalog",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "3e68157ecf0478ad90416f1b433c2797e38c7516559e14e827373e9944a2b722",
+      "serializedChildrenSha256": "7ae6bdd31c87e1bf44cc62e5d63cae59d86d11a638913c1b9b0068a399c57e52",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaMagnifyingGlass",
+      "group": "catalog",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "72b242b7f05595565c86e0ec4e389e8f97523bf677de5ff74f44c73d79fe4647",
+      "serializedChildrenSha256": "6bdcf5313c3744f0217c2ed62c44d812a35407df5f214563f21959574ad5a97c",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaMartiniGlassCitrus",
+      "group": "catalog",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "a73d7bee0b5f2ed9d448a8e6c3a3e9ad36b43690d43947065f5b08056d799a8c",
+      "serializedChildrenSha256": "d44375734e1d7cda0f8069736ab8c15ed21df466dfd4ce35abf55d2c158e4248",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaMinus",
+      "group": "catalog",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "2524b89dde5c4b87dfe8730b9ab1653b6dd02c8aff6714d8f7106532df5a0fde",
+      "serializedChildrenSha256": "23cb867d85ac53218abe4170dbfa39d1a08222c4a5588d610123d18e638306d5",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaMoon",
+      "group": "common",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "850499b473217a343749c72c730cca5ac836261d64119c1b2b3738fb8c268ad8",
+      "serializedChildrenSha256": "abfa934cdc66be33b6913f658e033c93c5e7c286526bdf77b3d798963ebc296d",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaMugHot",
+      "group": "catalog",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "19dbf1d5864ddc85b62793894a675b598b3addc4edf0e72662bc5b9f00a457d0",
+      "serializedChildrenSha256": "c91a3c12a80b7324faeb3bf55ef615ae4fa8287049f062681268c0ef5a856a8f",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaMugSaucer",
+      "group": "features",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "7fec02d18c4430dd98cb4ea2462a0e8ec2ea199473a9cf797d8d6387bc82b7b5",
+      "serializedChildrenSha256": "ce104a5d25c59ccb2ddbc3f13719229876f34d7f84b0dba1313d59da051f6652",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaMusic",
+      "group": "features",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "271d6338c171c680f680e26cded2afca2af061d52f550130604d9f9accfbbd3e",
+      "serializedChildrenSha256": "301f14dd241cd930c7c3ac66ec436f736f1f379b37e300bf9a6043f797eff2ad",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaPeopleGroup",
+      "group": "features",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "dcc66ef1c04e7c5a4836f2db5326c461cedb938780dbc70384c01e8f44aba4ba",
+      "serializedChildrenSha256": "40bddcbc54742ced22e26200da3fd8009592dd5b2b27e1fdef85070f9a25685d",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaPepperHot",
+      "group": "catalog",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "21b638322c21b4e9fba2df8be9adefe6f8da78677f60dfd9d94ee3b02dbd7e13",
+      "serializedChildrenSha256": "1ca88af4812236058c2ae974e84de72ca368a32cb5e0637bc5e641306e003709",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaPhone",
+      "group": "common",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "4a54d705345e1a16ba4cad32ee320c267317090b2fb1d9609fd7574c8e27639b",
+      "serializedChildrenSha256": "0ac240a780bf234323c34f1269bb358ea42056c909decfc1acd837a8c5e7201a",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaPinterestP",
+      "group": "common",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "f58a3aac3dea9a3bc4815418e94e4ac53b260241486a947dadf6c5ec84f581d1",
+      "serializedChildrenSha256": "8d978f9ce8bf982605844ec1d35d3e093e92b8b3660b8a6ff1de607ea873a05e",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaPizzaSlice",
+      "group": "catalog",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "8dacd0ee2ace2df89f2b6a37c86eacf548c19ed2dccde67d5161a260609793f8",
+      "serializedChildrenSha256": "e3342f1a86a350336157a00f50ed9567f9dd8812ee250173776a0d408002ab58",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaPlateWheat",
+      "group": "catalog",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "6a94017d805dbb07a0eb34ba6c457b1f68275ae0c6fa85d215dee4199f07b365",
+      "serializedChildrenSha256": "c34f7c3a3dc79061d596e43f811cd25bf836a10ced5a484f64450fd26fb32656",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaPlus",
+      "group": "catalog",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "9444c7333fcb2437ab520c5f4e47a7228ac384eacb3d2806f02ed0c08d3dc706",
+      "serializedChildrenSha256": "50dd92e327e5d6dac6e9a75250b3658d1ced0c50d869fd16094eafe06c8edd0f",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaReceipt",
+      "group": "features",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "afa7d0491cb50000764b149a41676b8af82a41783f6102c9f2db74931afbdd13",
+      "serializedChildrenSha256": "e8e9b36ac137d3cf1ce2192c9a82cb6f0b30e67fc5b69b5d8916539caa2a37c6",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaRing",
+      "group": "features",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "ec1e79a9e96f7c58f930a016f5aac821771ebc17f5b676af9ef0eb49dadc3f21",
+      "serializedChildrenSha256": "1ab4dcf213e32950306607d8735a3d2f2c4b8b1a8bc4aba5193898683f6f87a8",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaRocket",
+      "group": "features",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "157ba33ea3db28840bbdf5204ec2ffcaaf23e6334f4298f52267e9eedcd83667",
+      "serializedChildrenSha256": "8f717bf12208eabdafa003dd66348c9935d385994a7aa28727aa5f590fd4c8c3",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaSeedling",
+      "group": "catalog",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "004baef9d15bf7d01188a8b85c476f8307a86c24a2ce480419483847852bf69f",
+      "serializedChildrenSha256": "ce480199a3191ee999961dea2de129cb99ea09fb5698a94053267ac8a6790ee1",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaShrimp",
+      "group": "catalog",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "1e88ed0dd1a45af7424481d152bc542d107587bc34201656aba7ba846b4ac380",
+      "serializedChildrenSha256": "4b7c215fddf84840b677a8ea2d455f25612933a1f105ad8eaa1b4f6a42d6159a",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaSnapchat",
+      "group": "common",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "21b7933cfcb3aafcc95ba5c8424c4392ff7e47b2428935dd314567225543260a",
+      "serializedChildrenSha256": "733523f486680d0efc9b5e6e5d91493d280408e2435f9c520fbba823ae8550d6",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaStar",
+      "group": "catalog",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "5c1a1d3b034bdea3801c9f42d4c153148655c3eb62e332abc4068d9467bff974",
+      "serializedChildrenSha256": "76d75f77cda92fe2d04961dda025fb6a83e96d14a056e3deb23429a3b57e68ab",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaStore",
+      "group": "catalog",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "309f9476d6a0dc77db46dece39481717e3ac520a417ce5284911d2516038d2e5",
+      "serializedChildrenSha256": "b6b2bc905b74048d7cb2a22c894e31ec2665127d56694efd777581c08ea3f3dc",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaSun",
+      "group": "common",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "7f544ae472b8d30f6dbbc2f6cea1799ae36770c233fc7e6df01945d4e032aa38",
+      "serializedChildrenSha256": "d62be8293b508d9b1b172c5dcbff0b9d8d36752f2bec6011921b163c5eda1e63",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaTelegram",
+      "group": "common",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "39fd49559b6a23515369d1844e6720d6ef082a379ec0cb13eb9de7ed0da7e3a2",
+      "serializedChildrenSha256": "b55c435f56a0b590aa30c347b5997656160ca19203b6d0ee279a0ac56c893e4d",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaTiktok",
+      "group": "common",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "175786a4d7f0c6bdcf0208a6e704d7abc6530698aa5e61934d2a3cad416ea584",
+      "serializedChildrenSha256": "2eee979be1d87245918728ba3f2bf8af52b85ade8ac99c00a9f28a5aad2642dc",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaTrash",
+      "group": "catalog",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "a435f80e95966648e36a5a209f6a15fe823e739d7bd4cbeab69fc21deb502fc6",
+      "serializedChildrenSha256": "f8d2ea6581564d15d383cc396d341a6d7914a924eca42cce6d890b2198e656a5",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaTruck",
+      "group": "catalog",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "d4f25f0ecb1df03ee0c253223ab910c31dabd445d4cccf8f5636839227277110",
+      "serializedChildrenSha256": "ffeab623b46926fed32154d07a19fe46965b922d2c77408dc3269ef900d7fa6b",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaUser",
+      "group": "common",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "9c984e24d65a0949565ebffe73e20f3299343f7b7c6e0073d0fa8d15869daa85",
+      "serializedChildrenSha256": "60f78d3d0484f61832eeff74b1a639cf305b6384f6b8e82ea86259832093faa8",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaUserGroup",
+      "group": "features",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "6aaa413d462aca7c8f32ab75e1ae237b47eeaf5658d711207497a6b83bca28a2",
+      "serializedChildrenSha256": "dceead6c77e093484c9e42cdb8b9e5525810435b494db529aeb0ba6183918e4c",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaUsers",
+      "group": "catalog",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "d15ee72543b62dc679575e52bb0cb449450f96e8934930b6786df3ba75b7ea56",
+      "serializedChildrenSha256": "3b17466873f95abf5d1860f024e1ee3013dc299a8fe6bd15fd823a2395b3cc75",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaUtensils",
+      "group": "catalog",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "8d5fb818f046a3a893af1b4bbf17da5b950575e605c081f54b217e705859a66a",
+      "serializedChildrenSha256": "0f0fded1a67bf0be8de56dfbe3224b51ac44e290e779fff608fce22d27ab44f5",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaWandMagicSparkles",
+      "group": "features",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "8d18d0ae73ddf418ecbb1811646b39399a310057cdbd401d4d4f26482946da49",
+      "serializedChildrenSha256": "4f6ef53eaf8b8599f4faca2ad3a7f6fcbc5d87df1cf74336cd7326bcfc48fc5d",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaWhatsapp",
+      "group": "common",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "d3efd3354d720f450776c45a5d6267d852acb2b793bca6b6cda2f6e7a8022ab4",
+      "serializedChildrenSha256": "50a3adafdb8befcf118e5c0b93e1a4bc57b929a43e95edf869388b4b282bede7",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaWheatAwn",
+      "group": "catalog",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "669838c8b83ba5f9733d2f1203d25a7846192ac7652ce85d65bca4bdc39c74ac",
+      "serializedChildrenSha256": "32e56c19350dd30f0e106835c9f4d7d6326d850ba937f96c791004e063ff840d",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaWineBottle",
+      "group": "catalog",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "810fa36a4d47c76f66edf91e577a459d286ceb349ebbf688947d7b269c9339c0",
+      "serializedChildrenSha256": "80eb717047b81861c6a84454b11c0edfec5c8e9dfd4e308c3842df7f84b9219d",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaWineGlass",
+      "group": "features",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "201bf6576d67946cba0feb7d5c3a6e3f1a9d820e58e0611d514933db014811f2",
+      "serializedChildrenSha256": "26bd1119d9cb3a5c8e04ac352d74b6f15e5eef4cad17f4a87a4656decfef86a6",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaX",
+      "group": "catalog",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "9a11bd3534ed7bfde2758dce5c7cda6a82ce7dfaa768e5d70e19904f5bacefdd",
+      "serializedChildrenSha256": "4006ae3d4d33b83d6c7d5f4d7b424ebceaabe58f5328db723118616ea45bc0ef",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaXmark",
+      "group": "common",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "7367f39fe6ca6a3c56c7842d9a8a203f683725dfe5273de1f91fa6ebee9ee702",
+      "serializedChildrenSha256": "e14bf1c3e8af54084300d0205abfa10a67a4163558578eef92a4aae50f857902",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaXTwitter",
+      "group": "common",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "54e43ef433270fb5e2746c5cf4ab1ab561816c35761be7a78d9ee8ddced6d088",
+      "serializedChildrenSha256": "0edb653ef6e1ecceb2b8b56da538956a6c9373830897377f25001183b5e43de1",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaYelp",
+      "group": "common",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "58aa1ddab624fa15bd799bf9adc74147b076c8e337baa1179bb0d458860f4cec",
+      "serializedChildrenSha256": "902c44f860854382c7e8337ad2957b55ef25ad36cc9c49887e09dc3ed9192de8",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "fa6/FaYoutube",
+      "group": "common",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "d19bff0b0c19c0de683a635752ac5b9c1373586e4dac0df97f2d28489a6de6a7",
+      "serializedChildrenSha256": "9ff378112671abec2963b5051a3debc396c4744bb1df83d140b50d4894c77980",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "md/MdMenuBook",
+      "group": "catalog",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "e143d816ab091586348534194b3fac37fd5703f634dae3d1ae78127beac38914",
+      "serializedChildrenSha256": "8abf47587cb21e8aaab168fe08079f32e2156f6ccc16c97cf7c07cf8c0b3333f",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "si/SiGooglemaps",
+      "group": "features",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "b2e295fdd75ab27904bbc9f5f32c7e87668ce9a035ddec5b371dfc7699be8e30",
+      "serializedChildrenSha256": "89a2c9c3691fa24b3bd924fe6c855bf04db0627851753366f26441e301bc8475",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    },
+    {
+      "key": "si/SiTripadvisor",
+      "group": "features",
+      "orderedChildrenByteIdentical": true,
+      "recordedGroupMatchesSprite": true,
+      "wrapperRootAttributesExact": true,
+      "wrapperHrefMatches": true,
+      "recordedRootAttributesExact": true,
+      "sourceTreeSha256": "37c482f2792aea505e6f7491aa3b2487036e4d902771cb058112970ac8fc6b89",
+      "serializedChildrenSha256": "076e2ea6adea935198372e993e7b1de97ac4b75ee63d66faa27d0cd9699981e5",
+      "recordedSourceTreeHashMatches": true,
+      "recordedSerializedChildrenHashMatches": true
+    }
+  ],
+  "propSemantics": {
+    "defaultContextCasesPerGlyph": 18,
+    "defaultContextTotalProbes": 1926,
+    "defaultContextPasses": 1926,
+    "caseNames": [
+      "defaults",
+      "numericSize",
+      "stringSize",
+      "zeroSizeFallback",
+      "sizeOverridesDimensions",
+      "className",
+      "emptyClassName",
+      "color",
+      "styleOverridesColor",
+      "emptyColor",
+      "callerSvgAttributes",
+      "attrReplacement",
+      "ownUndefinedAttr",
+      "title",
+      "emptyTitle",
+      "ariaData",
+      "eventsAndRef",
+      "ignoredCallerChildren"
+    ],
+    "failures": [],
+    "eventAndRefIdentityChecked": true,
+    "titleChildChecked": true,
+    "iconContextImplemented": false,
+    "iconContextDifferenceObserved": true,
+    "scope": "Original default IconContext only; public source usage is checked below. Browser CSS inheritance/external-use rendering is separate."
+  },
+  "graph": {
+    "publicRoutes": 17,
+    "entries": [
+      "app/en/menu/page.tsx",
+      "app/en/page.tsx",
+      "app/en/privacy/page.tsx",
+      "app/en/reservations/page.tsx",
+      "app/en/terms/page.tsx",
+      "app/events/about/layout.tsx",
+      "app/events/about/page.tsx",
+      "app/events/birthdays/layout.tsx",
+      "app/events/birthdays/page.tsx",
+      "app/events/celebrations/layout.tsx",
+      "app/events/celebrations/page.tsx",
+      "app/events/company-catering/layout.tsx",
+      "app/events/company-catering/page.tsx",
+      "app/events/company-lunches/layout.tsx",
+      "app/events/company-lunches/page.tsx",
+      "app/events/gallery/layout.tsx",
+      "app/events/gallery/page.tsx",
+      "app/events/layout.tsx",
+      "app/events/page.tsx",
+      "app/layout.tsx",
+      "app/menukaart/page.tsx",
+      "app/page.tsx",
+      "app/privacy/layout.tsx",
+      "app/privacy/page.tsx",
+      "app/reserveren/page.tsx",
+      "app/voorwaarden/page.tsx"
+    ],
+    "initialStaticModules": 89,
+    "asyncReachableModules": 15,
+    "runtimeReactIconImports": [],
+    "erasedTypeOnlyReactIconImports": [
+      {
+        "file": "app/components/SpriteIcon.tsx",
+        "specifier": "react-icons",
+        "kind": "static"
+      },
+      {
+        "file": "app/lib/data.ts",
+        "specifier": "react-icons",
+        "kind": "static"
+      },
+      {
+        "file": "app/components/socialIcons.tsx",
+        "specifier": "react-icons",
+        "kind": "static"
+      }
+    ],
+    "iconContextIdentifierUses": [],
+    "unresolvedLocal": [],
+    "privateBoundaries": [],
+    "computedModuleReferences": [],
+    "scope": "Source reachability overapproximates tree-shaken modules. Includes dynamic modules reachable from public routes; excludes private route bodies. Final emitted production chunk bytes require a build/payload audit."
+  },
+  "failures": [],
+  "limitations": [
+    "External SVG use inherits geometry through a browser-managed instance tree; this offline check does not prove browser rendering, currentColor behavior, accessible-name computation or hit testing. Baseline browser fixture QA is separate.",
+    "IconContext is intentionally unsupported by the helper. No public reachable IconContext use was found; future providers would require explicit support.",
+    "Static source graphs are not a measurement of emitted bundles or production network transfer. Private dynamic route modules are outside this scope."
+  ],
+  "summary": {
+    "glyphs": 107,
+    "sourcePathNodes": 109,
+    "common": 25,
+    "catalog": 53,
+    "features": 29,
+    "all107OrderedChildMarkupExact": true,
+    "all107RootAttributesExact": true,
+    "all107SourceHashesMatch": true,
+    "defaultContextPropProbesPass": true,
+    "publicRuntimeReactIconImports": 0,
+    "publicIconContextUses": 0,
+    "failures": 0
+  },
+  "filesRead": [
+    {
+      "file": "app/components/icons/fa6.tsx",
+      "sha256": "18b1a1a7713de561897b694c31b0175320f94835799104f21651f25e04058c23"
+    },
+    {
+      "file": "app/components/icons/si.tsx",
+      "sha256": "6ca3cdc8622c085e4c21f315c4870aa2d8b75994b0416814da4f971bd67e6d58"
+    },
+    {
+      "file": "app/components/icons/md.tsx",
+      "sha256": "402575e42c672beff5093580fa7b315bd53ea379b07b9a4754f597d2bca958b6"
+    },
+    {
+      "file": "public/brand/icon-sprites-v1/common.svg",
+      "sha256": "c96df00c84f03a0f34c135b120889b21ef6d27f243339b9dabe6ee0a115a052a"
+    },
+    {
+      "file": "public/brand/icon-sprites-v1/catalog.svg",
+      "sha256": "d55cc6a778869b40bc66045333b002658542c8a13fc6d15b2aba331ad7a0935a"
+    },
+    {
+      "file": "public/brand/icon-sprites-v1/features.svg",
+      "sha256": "8ca8713c792fdae09931dc762af8e613a47bfb1d943607429d6a5d7849b20512"
+    },
+    {
+      "file": "app/components/SpriteIcon.tsx",
+      "sha256": "1d0e1db37323fc5f8f23396ef3c744db17d49b9a6d977426be1108606c4df994"
+    },
+    {
+      "file": "app/page.tsx",
+      "sha256": "7e1c12d588c70995adbca040a2502a70ea0fe50d0c8a096963a455b334e4384b"
+    },
+    {
+      "file": "app/components/RestaurantPhoto.tsx",
+      "sha256": "761bd65e452c44826c38d1416d4991ebeba35ba96b4c294de8007d349434ec67"
+    },
+    {
+      "file": "app/lib/restaurantPhotos.ts",
+      "sha256": "9987668cba6f9f1598aa175843e960cdb5ea8a576d07997bf3a2e21ef9215b25"
+    },
+    {
+      "file": "app/lib/restaurantPhotoJpegFallbacks.ts",
+      "sha256": "c09e1f901144455f20a748dda7ac5629031972e7071bdd7f52853ebaf52ff413"
+    },
+    {
+      "file": "app/components/LocaleLink.tsx",
+      "sha256": "b318b4f8d75e0bb0da6990cdd867b96c9c41438055cc1d9b048c865cbdcb85cb"
+    },
+    {
+      "file": "app/providers.tsx",
+      "sha256": "e3bc3484861ac9448d795291a78e4c876ddea98719575043097274e22e099504"
+    },
+    {
+      "file": "app/lib/locale.ts",
+      "sha256": "310b1df534203d270b31456f3a9770f7d13d864ceb256c3bc3477b58c9ea7875"
+    },
+    {
+      "file": "app/lib/clientFetch.ts",
+      "sha256": "1db5370437c3aac3007226d0becf15f92ef6704bee929da4f9ed148ef4041448"
+    },
+    {
+      "file": "app/lib/clientStorage.ts",
+      "sha256": "a042cc3963bf0643ade374336e5d2be9c1eaaeffbb65edd412e6af4d4ada67df"
+    },
+    {
+      "file": "app/lib/checkoutRequest.ts",
+      "sha256": "faf1498dbe2b152ab2f9c014a45038767e98a397e473f8d27a0790a8aaadfc3e"
+    },
+    {
+      "file": "app/lib/brandDefaults.ts",
+      "sha256": "453d87e39976404998775825f484693ea284c66104d8dc57567aa662f2835ded"
+    },
+    {
+      "file": "app/lib/cart.ts",
+      "sha256": "56c6d7e51b25efb0a39a6ccfda3eae3126e4a0df604d10764f50c0d960f4bd91"
+    },
+    {
+      "file": "app/lib/openingHours.ts",
+      "sha256": "e128c0908830ca9569fa6f085527eec559a8a7eb2bb76d49a9955519b7e62030"
+    },
+    {
+      "file": "app/lib/translations.ts",
+      "sha256": "842358b170e3973b04b7b10ab07245a346bc54acc1f21b6badaf6ffedfddc291"
+    },
+    {
+      "file": "app/components/BrandLogo.tsx",
+      "sha256": "267b22cd75a78654ea5b69fa3162965ab27d528f88568d554291631e3eac5eab"
+    },
+    {
+      "file": "app/components/HeroFilm.tsx",
+      "sha256": "fb5d5ccdb0441aa7dff8809affa74005516fba4e9a9b891a22f88c4c82de719d"
+    },
+    {
+      "file": "app/components/HomeDepth.tsx",
+      "sha256": "cfcbfd2f7d0a252bd4feb168aef748ec1360d56556a1ecab5c8d6b93823ba181"
+    },
+    {
+      "file": "app/components/HeroPoster.tsx",
+      "sha256": "1ee2ae1d35b9e6a54886d33623d31bf79f053b36793b90f4ab497073e126ea79"
+    },
+    {
+      "file": "app/lib/heroPosterJpegFallbacks.ts",
+      "sha256": "8848d3770df600d7b1d72e04c1ec5da9f2541f2ce7f950cb96068c31cdbc6fa6"
+    },
+    {
+      "file": "app/components/DrinkPartners.tsx",
+      "sha256": "ed78adab1798f234ad3f318f3c3721b6880e7f7f528f88eda8a3ea5cb9d72972"
+    },
+    {
+      "file": "app/components/ProductImage.tsx",
+      "sha256": "2c6b3138baea016997e8755a5f7c4a14f976f8793519d8128f4c4afa1bf245b3"
+    },
+    {
+      "file": "app/components/CatalogFeedback.tsx",
+      "sha256": "87a691b159eb5c75ad6899093be399f25a7c3cda835847fb71a625a1a05e3b21"
+    },
+    {
+      "file": "app/lib/menuSearch.ts",
+      "sha256": "8053eabf7bfb2ca6fe98141802ea7a7063a61845b44d0363b76e3491c1c2881f"
+    },
+    {
+      "file": "app/lib/data.ts",
+      "sha256": "27c4cceaed8ef1d924d622167f70df7b86a51ad76881c3d9c0e6e5556cd7dadc"
+    },
+    {
+      "file": "app/lib/tandoorProducts.ts",
+      "sha256": "a706000fc7cb4e856d8efc926a049ca037fc4962dc249e205f438734790c8678"
+    },
+    {
+      "file": "app/lib/homeContent.ts",
+      "sha256": "77b0aed2ac818ef1d4ae6f69b14742882d864764fec1e4741fef82aebeb642e1"
+    },
+    {
+      "file": "app/components/MenuSchema.tsx",
+      "sha256": "4508d16da96ff536456798077eacfba9f1e7c52c2d401ef190dd14addaa701eb"
+    },
+    {
+      "file": "app/components/ArrivalInfo.tsx",
+      "sha256": "5824bad7892bcd9adcbe8db925d9279d1bc47019b821d1d66c21e6d4b5418a2f"
+    },
+    {
+      "file": "app/lib/useRestaurantClock.ts",
+      "sha256": "f9f899d8d681964a0756eac282ac417e1e4c3c3b0e85c3b0f739f4442ef22645"
+    },
+    {
+      "file": "app/lib/restaurantClock.ts",
+      "sha256": "5f37ff7af251f497d52be9c8a5d52fcd096d159d087b5c264cc501660886aa55"
+    },
+    {
+      "file": "app/components/HomeChoreography.tsx",
+      "sha256": "7b8b73c71c52889e2e516f1bdc41c56441ae36cd48056a6052ed61d8deb36cc5"
+    },
+    {
+      "file": "app/components/HomeDialog.tsx",
+      "sha256": "c048476f799aeb0945ab4f6eab9c90f60b273b38f558b01ac8851f694ef719fc"
+    },
+    {
+      "file": "app/components/RichDescription.tsx",
+      "sha256": "60c59f9cb471da03d383103fc2f899abfa2c2efdcdf1b67678edb1807987aef6"
+    },
+    {
+      "file": "app/en/page.tsx",
+      "sha256": "b463533b831087d1d0c94435eadcae851db3397f0a03980ab62a4973da4ec087"
+    },
+    {
+      "file": "app/lib/seo.ts",
+      "sha256": "b08e733baae268313a1010f4c864086e70d0c2857582b9474e25574ef6b45cfa"
+    },
+    {
+      "file": "app/menukaart/page.tsx",
+      "sha256": "bea7242cbd687701d73c8dbcfbdbad58baa3c5b605499d3de5ee4873459c1dac"
+    },
+    {
+      "file": "app/components/Breadcrumbs.tsx",
+      "sha256": "bad864347c43d7c4fd39d2992d064871f4389b49e388f76cd6a71d9163be267b"
+    },
+    {
+      "file": "app/order/OrderExperience.tsx",
+      "sha256": "2daab1a383f3fd825ba3c9795294438b0563a8fb6884223530bdaec4087aea08"
+    },
+    {
+      "file": "app/components/OrderConfirmation.tsx",
+      "sha256": "4684dc758f6f18ee589b6b00a95f0d0d35f6fd836bdb7532befae2ec3557dcdb"
+    },
+    {
+      "file": "app/order/OrderSheet.tsx",
+      "sha256": "9d24749fe18b7f1a7116768d8b7c7863081af7a40857821b181b686e567176b7"
+    },
+    {
+      "file": "app/components/OrderTotals.tsx",
+      "sha256": "0f47097bf71ca2d93b1bfeab1be0c7e5227650f9f94d42a10d4fdc10c53dadc6"
+    },
+    {
+      "file": "app/lib/useCinematicPageReady.ts",
+      "sha256": "33c93dcc2c0d4bfbc1062077da8a99eee1c60576f263d1fda89d4817b5f26aa8"
+    },
+    {
+      "file": "app/lib/catalogDisplay.ts",
+      "sha256": "dbd1d17c949e7f8d2b439212ce6a516a600e7edcd8369a185598383be25dd9ee"
+    },
+    {
+      "file": "app/components/ProductDetailsModal.tsx",
+      "sha256": "6c4086facd6191339cfd56605fa5e0ca6c2aee88c54ef296bec04dd25193ab85"
+    },
+    {
+      "file": "app/lib/publicCatalog.server.ts",
+      "sha256": "96c268f9b3436dfb51b424c6302cae42913f515525a29641757a49f6c890258f"
+    },
+    {
+      "file": "app/lib/catalogSnapshot.ts",
+      "sha256": "04e625304746f755173722fa6e7c6a69098902971614cfece8f662801c5ebae8"
+    },
+    {
+      "file": "app/lib/brandMapping.ts",
+      "sha256": "5e59eeb6b44058d53a4e6abe4c007cf8dbd97507343500f4fee0e8a195fe68cf"
+    },
+    {
+      "file": "app/lib/mappers.ts",
+      "sha256": "71de5065b956e66b0ce076fdfa361230298499abebf32cc4ad68200c8b1d904f"
+    },
+    {
+      "file": "app/en/menu/page.tsx",
+      "sha256": "f50a42fd90832438ec75e65b2b215f39951c95164275bcc8fdb80b7643420854"
+    },
+    {
+      "file": "app/reserveren/page.tsx",
+      "sha256": "fb80756aa41bb7adca5a7dc542ee0d95642b7eed97461cafda7b55763d6adf05"
+    },
+    {
+      "file": "app/reservations/page.tsx",
+      "sha256": "91b59cf0a6ff5300e6a6cb5143d2db293ecc240e48c6b7cfc037ec3a80d84559"
+    },
+    {
+      "file": "app/components/LocationMap.tsx",
+      "sha256": "375cdd2035ef9d1c67bd82cd6b7bb1701f23ade00530e214b9793cb8c9417fa8"
+    },
+    {
+      "file": "app/lib/reservationCalendar.ts",
+      "sha256": "6d34ace81e4cb7c783a76f904137f404a26f42496d17a19499153b9efb664aa4"
+    },
+    {
+      "file": "app/en/reservations/page.tsx",
+      "sha256": "2f38427363bb9b169f7ec1c28a35ca83371e46dda0f49f61a495f1282fa815f2"
+    },
+    {
+      "file": "app/privacy/page.tsx",
+      "sha256": "bbaa0c2de18efd31f8f43cb7aa575f1088116e970aea739c8f1d87036c271293"
+    },
+    {
+      "file": "app/en/privacy/page.tsx",
+      "sha256": "bcedbfb7b068de039975a056652b72d643d6deba98c06271dfd535461ace5d7e"
+    },
+    {
+      "file": "app/voorwaarden/page.tsx",
+      "sha256": "3e614f7b04a03bec75850cfd2cc4c56714a58c4b1f37fa458bb9c45fdd71552d"
+    },
+    {
+      "file": "app/terms/page.tsx",
+      "sha256": "fed38d48b79dd4b28b0c7ba4bad786c5a347e7996ef63039276fb4a9a76497fa"
+    },
+    {
+      "file": "app/en/terms/page.tsx",
+      "sha256": "e8d8a7efc33e61a38190b2f3e8e1657ee921565bf002e4d9dbacabb317b1f294"
+    },
+    {
+      "file": "app/events/page.tsx",
+      "sha256": "2c1901bfdbf64e6a910d0ac78283d9ed7c00e3035df6f99e3314951da28253a9"
+    },
+    {
+      "file": "app/components/EventBreadcrumbs.tsx",
+      "sha256": "1df04c2fc46dd12fdf7447fa820b552aeb9d52f595de2485252d11edf612e877"
+    },
+    {
+      "file": "app/events/about/page.tsx",
+      "sha256": "17d5a18715560c76f806e5c30402eca9a4f55b00f886ee1a36a7e2015985cdf4"
+    },
+    {
+      "file": "app/components/EventsContactCta.tsx",
+      "sha256": "ce539cf1a0b28ff14929f46acd052955da5cf94751d7b4eac46bde4266219d06"
+    },
+    {
+      "file": "app/events/birthdays/page.tsx",
+      "sha256": "5d1162f766f7d32723fc0e1a73215c0f6548c418e5d902aa404969ce97d65ddb"
+    },
+    {
+      "file": "app/events/celebrations/page.tsx",
+      "sha256": "75c49b5f58c1b3f2a0322ff93e767223a78b9cd0c50b3c285f3b14925a8a4bdb"
+    },
+    {
+      "file": "app/events/company-catering/page.tsx",
+      "sha256": "04b2568cebe938ea9a358e6cda56540536c69a297bac9fdeb6c6663542021bea"
+    },
+    {
+      "file": "app/events/company-lunches/page.tsx",
+      "sha256": "34b86a25c5b0179e3272c3d943174d90a30d146aeeeca671e95225d6239615d9"
+    },
+    {
+      "file": "app/events/gallery/page.tsx",
+      "sha256": "838611715c3f9c535f96d145df363f47edafb0afa7f1bd353b262188243cbdfd"
+    },
+    {
+      "file": "app/components/EventGalleryPhoto.tsx",
+      "sha256": "1d5e3b1c6f297431b95bf8ed056bbb1374226b69027a96effc8ca8f75c16ecb0"
+    },
+    {
+      "file": "app/lib/eventGalleryPhotos.ts",
+      "sha256": "cb86326adfe1547064e4d0247999344a4ff26f759b3bc11c7a89a11790beae9b"
+    },
+    {
+      "file": "app/lib/eventGalleryJpegFallbacks.ts",
+      "sha256": "83e7540f368517477ba216beeac018377037fa2aef34fe040278f34170958011"
+    },
+    {
+      "file": "app/layout.tsx",
+      "sha256": "507b1422865bd461eff6858540a32010713831b4aa07917a2ab73f3986aa1d13"
+    },
+    {
+      "file": "app/components/CinematicSections.tsx",
+      "sha256": "c7f276b33cc6ba64e24d7c2acd3cf95dd0d979830888d2d7cb25eefe08b45882"
+    },
+    {
+      "file": "app/components/header.tsx",
+      "sha256": "5254d1088edef5ae6bf57d32975a68e8eb0ee9811babf44598ae2becd6698b50"
+    },
+    {
+      "file": "app/components/footer.tsx",
+      "sha256": "a0584954f931a4e1b9aa1216395b4a34f53f9e768874edc78343a431ec46c0b9"
+    },
+    {
+      "file": "app/components/socialIcons.tsx",
+      "sha256": "b4df9a4870637e305f7dbb7b2a1d6d5ab0a9b561d1f0c5d29c97e94b3c7b48e2"
+    },
+    {
+      "file": "app/components/CookieConsent.tsx",
+      "sha256": "c341fa826e2c8463b44175086330304d669d9914ba4dc8651fd9fd9848e8b6c4"
+    },
+    {
+      "file": "app/lib/cookieNotice.ts",
+      "sha256": "746c939d501cd301630dc98f03ccf19f034b2c5c27b5c79ec753643e1224568a"
+    },
+    {
+      "file": "app/privacy/layout.tsx",
+      "sha256": "87f68038cdfc606cecf3f22e4d2d4f2afbe918c777fd7d51b6729ba4e2f2880e"
+    },
+    {
+      "file": "app/events/layout.tsx",
+      "sha256": "0400c4b98304f4355c882cdd363e21aaf23b46a8ada233b1d4397859ba246c0e"
+    },
+    {
+      "file": "app/lib/eventSeo.ts",
+      "sha256": "37800d0a57ee78c5680debec9d0ca2b0bde082caef201c9a165c7e9e5388a9fb"
+    },
+    {
+      "file": "app/components/EventsShell.tsx",
+      "sha256": "3ce412fea0194fd3db3751e08487824d0aaca7597b8de48f5bdf1c6843b62be7"
+    },
+    {
+      "file": "app/events/about/layout.tsx",
+      "sha256": "052d1467427a243ee5557fbd11d91e21f871e7ef66ece864fc7d9ffedd6f521b"
+    },
+    {
+      "file": "app/events/birthdays/layout.tsx",
+      "sha256": "ca2aff2a7cf04ee73a5e2afe3126777a458659e1264e89104022feb733475a19"
+    },
+    {
+      "file": "app/events/celebrations/layout.tsx",
+      "sha256": "fbd374abf93479ea9005b808cc5265ac8983f9f14a6ccb680df9c24b97262cbc"
+    },
+    {
+      "file": "app/events/company-catering/layout.tsx",
+      "sha256": "3da76b56518311b33319df408007cf460318ac4516729e80b94adb634d78f6ca"
+    },
+    {
+      "file": "app/events/company-lunches/layout.tsx",
+      "sha256": "73b1c492f45b822a15ea13fe720d6e9430f93ac15214de0f1ce90ccb956e65ac"
+    },
+    {
+      "file": "app/events/gallery/layout.tsx",
+      "sha256": "72e13a225cf223bd9109bb25c8263b2873d113a2601e31b2cd563ff4bf5d2386"
+    }
+  ],
+  "completedAtUTC": "2026-11-11T20:50:55.315Z"
+}

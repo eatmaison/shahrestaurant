@@ -1,0 +1,508 @@
+{
+  "checkedAt": "2026-11-11T23:21:39.917Z",
+  "phoneUrl": "http://192.168.0.122:3618/",
+  "englishUrl": "http://192.168.0.122:3618/en",
+  "buildId": "n5lZlmRftteZljWg3KVl-",
+  "sourceSha256": "50dc47b44958495088ace0cde911ad36684a249b333ab6ac3683078b27b0c93b",
+  "sourceInputs": 530,
+  "listener": {
+    "ip": "192.168.0.122",
+    "port": 3618,
+    "pid": 26844,
+    "toolSession": 97290,
+    "scope": "Ethernet192.168.0.0/24 peers only; no wildcard listener"
+  },
+  "network": {
+    "physicalAdapter": "Ethernet",
+    "interfaceIndex": 12,
+    "ipv4": "192.168.0.122",
+    "prefixLength": 24,
+    "gateway": "192.168.0.1",
+    "profile": "Public",
+    "vpnAdapter": "ProtonVPN",
+    "vpnIpv4": "10.2.0.2",
+    "firewallEnabled": true,
+    "currentInboundPolicy": "BlockInbound",
+    "existingNodePublicInboundRules": "Enabled TCP/UDP application allow, any local/remote IP/port; unchanged",
+    "ruleReadLimit": "Get-NetFirewallPortFilter returned Access is denied; netsh read-only fallback succeeded"
+  },
+  "script": {
+    "path": "C:/Users/DaviiC/AppData/Local/Temp/shah-phone-preview-20261111/lan-preview.cjs",
+    "sha256": "2f64988d9245b73f2b977c4c05b5d0cc1eef690bab0247f10a7ddb74217cb6f7"
+  },
+  "config": {
+    "path": "C:/Users/DaviiC/AppData/Local/Temp/shah-phone-preview-20261111/lan-config-n5lZlmRftteZljWg3KVl-.json",
+    "sha256": "72f50259ec12f6d1d60be168c69928cf4def551cda1e115717ccda6c9f8ad2a6",
+    "publicRoutes": 24,
+    "nextAssets": 61,
+    "publicAssets": 294,
+    "exactPinnedOptimizerSources": 190
+  },
+  "policyChecks": [
+    {
+      "name": "public /",
+      "passed": true
+    },
+    {
+      "name": "public /en",
+      "passed": true
+    },
+    {
+      "name": "public /menukaart",
+      "passed": true
+    },
+    {
+      "name": "public /en/menu",
+      "passed": true
+    },
+    {
+      "name": "public /reserveren",
+      "passed": true
+    },
+    {
+      "name": "public /en/reservations",
+      "passed": true
+    },
+    {
+      "name": "public /privacy",
+      "passed": true
+    },
+    {
+      "name": "public /en/privacy",
+      "passed": true
+    },
+    {
+      "name": "public /voorwaarden",
+      "passed": true
+    },
+    {
+      "name": "public /en/terms",
+      "passed": true
+    },
+    {
+      "name": "public /events",
+      "passed": true
+    },
+    {
+      "name": "public /en/events",
+      "passed": true
+    },
+    {
+      "name": "public /events/about",
+      "passed": true
+    },
+    {
+      "name": "public /en/events/about",
+      "passed": true
+    },
+    {
+      "name": "public /events/gallery",
+      "passed": true
+    },
+    {
+      "name": "public /en/events/gallery",
+      "passed": true
+    },
+    {
+      "name": "public /events/birthdays",
+      "passed": true
+    },
+    {
+      "name": "public /en/events/birthdays",
+      "passed": true
+    },
+    {
+      "name": "public /events/celebrations",
+      "passed": true
+    },
+    {
+      "name": "public /en/events/celebrations",
+      "passed": true
+    },
+    {
+      "name": "public /events/company-catering",
+      "passed": true
+    },
+    {
+      "name": "public /en/events/company-catering",
+      "passed": true
+    },
+    {
+      "name": "public /events/company-lunches",
+      "passed": true
+    },
+    {
+      "name": "public /en/events/company-lunches",
+      "passed": true
+    },
+    {
+      "name": "denied /admin",
+      "passed": true
+    },
+    {
+      "name": "denied /account",
+      "passed": true
+    },
+    {
+      "name": "denied /parties",
+      "passed": true
+    },
+    {
+      "name": "denied /terminal",
+      "passed": true
+    },
+    {
+      "name": "denied /pay/complete",
+      "passed": true
+    },
+    {
+      "name": "denied /reset-password",
+      "passed": true
+    },
+    {
+      "name": "denied /api/auth/login",
+      "passed": true
+    },
+    {
+      "name": "denied /test",
+      "passed": true
+    },
+    {
+      "name": "denied /.env",
+      "passed": true
+    },
+    {
+      "name": "denied /%2e%2e/admin",
+      "passed": true
+    },
+    {
+      "name": "denied //external.example/",
+      "passed": true
+    },
+    {
+      "name": "denied /events/../admin",
+      "passed": true
+    },
+    {
+      "name": "method POST",
+      "passed": true
+    },
+    {
+      "name": "method PUT",
+      "passed": true
+    },
+    {
+      "name": "method PATCH",
+      "passed": true
+    },
+    {
+      "name": "method DELETE",
+      "passed": true
+    },
+    {
+      "name": "method OPTIONS",
+      "passed": true
+    },
+    {
+      "name": "method CONNECT",
+      "passed": true
+    },
+    {
+      "name": "fixture /api/bootstrap",
+      "passed": true
+    },
+    {
+      "name": "fixture /api/gallery",
+      "passed": true
+    },
+    {
+      "name": "fixture /api/restaurant-status",
+      "passed": true
+    },
+    {
+      "name": "otherAPI",
+      "passed": true
+    },
+    {
+      "name": "offsiteOptimizer",
+      "passed": true
+    },
+    {
+      "name": "oversizeOptimizer",
+      "passed": true
+    },
+    {
+      "name": "knownOptimizer",
+      "passed": true
+    },
+    {
+      "name": "externalRedirect",
+      "passed": true
+    },
+    {
+      "name": "privateRedirect",
+      "passed": true
+    },
+    {
+      "name": "publicRedirect",
+      "passed": true
+    },
+    {
+      "name": "LANpeer",
+      "passed": true
+    },
+    {
+      "name": "VPNpeer",
+      "passed": true
+    },
+    {
+      "name": "otherPrivateSubnet",
+      "passed": true
+    },
+    {
+      "name": "privateAdminChunk",
+      "passed": true
+    }
+  ],
+  "localInterfaceHttp": {
+    "root200": true,
+    "english200": true,
+    "expectedBuild": true,
+    "readOnlyHeader": true,
+    "noSetCookie": true,
+    "privateGet404": 8,
+    "businessPost405": 4,
+    "otherApi503": true,
+    "bootstrap": {
+      "products": 224,
+      "brands": 2,
+      "currentUser": null,
+      "privateRecords": 0
+    }
+  },
+  "rangeChecks": [
+    {
+      "path": "/brand/capcut-luxury-v3/shah-luxury-capcut-mobile-v2.mp4",
+      "status": 206,
+      "contentType": "video/mp4",
+      "contentRange": "bytes 0-4095/14802082",
+      "bytes": 4096,
+      "sha256": "7456f00e969fa820b316e105c87df447a2f35ac3fc2fac9991e5abc155d4316f",
+      "localPrefixMatches": true,
+      "matchesPreviousFullBodyPrefix": true,
+      "fullFileShaUnchangedFromKIb4": true
+    },
+    {
+      "path": "/brand/capcut-luxury-v3/shah-luxury-capcut-desktop-v3.mp4",
+      "status": 206,
+      "contentType": "video/mp4",
+      "contentRange": "bytes 0-4095/22055086",
+      "bytes": 4096,
+      "sha256": "be3c7f3a34e01f36f91f684928c0b2f11ca54006f166b70ebee66de9dd84cf82",
+      "localPrefixMatches": true,
+      "matchesPreviousFullBodyPrefix": true,
+      "fullFileShaUnchangedFromKIb4": true
+    }
+  ],
+  "changes": {
+    "appSource": 0,
+    "firewall": 0,
+    "networkProfile": 0,
+    "vpn": 0,
+    "router": 0,
+    "publicTunnelOrDeployment": 0
+  },
+  "limits": [
+    "Local-interface HTTP success is not a test from the physical phone.",
+    "User-reported physical-phone playback applies to the preceding KIb4 build; this n5l activation has fresh PC-side LAN checks, not a new physical-phone report. Device, OS and actual fps remain unmeasured.",
+    "Phone preview intentionally returns404 for accounts/admin/private/auth/payment/recovery/test routes. Forms may be viewed but all network submissions are405.",
+    "Public catalog is the pinned224-product/two-brand read-only snapshot; uploaded gallery is empty.",
+    "Keep approved loopback3398 running; restart refuses a different build, busy3618 port or missing interface."
+  ],
+  "startCommand": "node \"C:/Users/DaviiC/AppData/Local/Temp/shah-phone-preview-20261111/lan-preview.cjs\" start \"C:/Users/DaviiC/AppData/Local/Temp/shah-phone-preview-20261111/lan-config-n5lZlmRftteZljWg3KVl-.json\"",
+  "approval": "Root approved starting this interface-bound public-only listener after approved main promotion; no network-security change was requested or performed.",
+  "fullMediaHashes": [
+    {
+      "path": "/brand/capcut-luxury-v3/shah-luxury-capcut-mobile-v2.mp4",
+      "status": 200,
+      "contentType": "video/mp4",
+      "bytes": 14802082,
+      "sha256": "de98d395d978de246bf42e97d21fa04cb45753e39354667d7b25c2e340e2ca6b",
+      "matchesApprovedBuildSnapshot": true,
+      "httpMeasuredBuildId": "KIb4T9-xcI_ECXiULLD-H",
+      "carriedToBuildId": "n5lZlmRftteZljWg3KVl-",
+      "carryReason": "Full asset SHA matches new frozen compiled snapshot; activation repeated Range/prefix checks, not full-body download."
+    },
+    {
+      "path": "/brand/capcut-luxury-v3/shah-luxury-capcut-desktop-v3.mp4",
+      "status": 200,
+      "contentType": "video/mp4",
+      "bytes": 22055086,
+      "sha256": "30f8b838d4086e64f0f24bd4385e5512bde8286ba65ca1f597ec0607afca85f3",
+      "matchesApprovedBuildSnapshot": true,
+      "httpMeasuredBuildId": "KIb4T9-xcI_ECXiULLD-H",
+      "carriedToBuildId": "n5lZlmRftteZljWg3KVl-",
+      "carryReason": "Full asset SHA matches new frozen compiled snapshot; activation repeated Range/prefix checks, not full-body download."
+    }
+  ],
+  "independentReview": {
+    "policyChecksPassed": 39,
+    "httpReads": 11,
+    "rootAndEnglishExactBuild200": true,
+    "negativeChecks404": 5,
+    "unknownApi503": true,
+    "guestFixtureApis200": 3,
+    "publicProducts": 224,
+    "publicBrands": 2,
+    "currentUser": null,
+    "privateRows": 0,
+    "uploadedGallery": 0,
+    "noSetCookie": true,
+    "reviewer": "/root/preview_high",
+    "source": "Independent code/policy review and safe read-only HTTP results supplied in team messages; no separate raw file.",
+    "httpMeasuredBuildId": "KIb4T9-xcI_ECXiULLD-H",
+    "carriedToBuildId": "n5lZlmRftteZljWg3KVl-",
+    "frozenPolicyHelperUnchanged": true
+  },
+  "updatedAt": "2026-11-11T23:21:39.920Z",
+  "phoneUserConfirmation": {
+    "recordedAt": "2026-11-11T22:55:12.019Z",
+    "source": "Direct user answer relayed by parent thread; not inferred from HTTP logs",
+    "question": "Does http://192.168.0.122:3618/ open on your phone on the same Wi-Fi, and does the video play after buffering?",
+    "answer": "Yes, the video plays",
+    "physicalPhonePlayback": "user-reported confirmed",
+    "sameWifiPhoneQuestionAnsweredAffirmatively": true,
+    "device": "not recorded",
+    "operatingSystem": "not recorded",
+    "actualFrameRate": "not measured",
+    "instrumentedPhoneCapture": false,
+    "buildContext": "KIb4T9-xcI_ECXiULLD-H"
+  },
+  "nextRevision": {
+    "status": "ACTIVE after explicit approved-main promotion",
+    "buildId": "n5lZlmRftteZljWg3KVl-",
+    "mainBuildVerified": true,
+    "physicalPhoneRerun": "not yet reported"
+  },
+  "allNewPublicNextAssetsPolicyAllowed": 61,
+  "httpAssetAndGuardChecks": [
+    {
+      "path": "/_next/static/chunks/app/layout-78fbf49dffe15c1d.js",
+      "method": "HEAD",
+      "status": 200,
+      "contentType": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/_next/static/chunks/app/en/events/about/page-8a04824a193e6964.js",
+      "method": "HEAD",
+      "status": 200,
+      "contentType": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/_next/static/css/0545e28c5ea95dd1.css",
+      "method": "HEAD",
+      "status": 200,
+      "contentType": "text/css; charset=UTF-8"
+    },
+    {
+      "path": "/fonts/cormorant-garamond-cyrillic-d81372bae1f8-v1.woff2",
+      "method": "HEAD",
+      "status": 200,
+      "contentType": "font/woff2"
+    },
+    {
+      "path": "/brand/icon-sprites-v1/common.svg",
+      "method": "HEAD",
+      "status": 200,
+      "contentType": "image/svg+xml"
+    },
+    {
+      "path": "/brand/capcut-luxury-v3/poster-mobile-360.avif",
+      "method": "HEAD",
+      "status": 200,
+      "contentType": "image/avif"
+    },
+    {
+      "path": "/",
+      "method": "GET",
+      "status": 200,
+      "buildMatches": true
+    },
+    {
+      "path": "/en",
+      "method": "GET",
+      "status": 200,
+      "buildMatches": true
+    },
+    {
+      "path": "/admin",
+      "method": "GET",
+      "status": 404
+    },
+    {
+      "path": "/account",
+      "method": "GET",
+      "status": 404
+    },
+    {
+      "path": "/parties",
+      "method": "GET",
+      "status": 404
+    },
+    {
+      "path": "/terminal",
+      "method": "GET",
+      "status": 404
+    },
+    {
+      "path": "/test",
+      "method": "GET",
+      "status": 404
+    },
+    {
+      "path": "/pay/complete",
+      "method": "GET",
+      "status": 404
+    },
+    {
+      "path": "/reset-password",
+      "method": "GET",
+      "status": 404
+    },
+    {
+      "path": "/api/auth/login",
+      "method": "GET",
+      "status": 404
+    },
+    {
+      "path": "/api/orders",
+      "method": "POST",
+      "status": 405
+    },
+    {
+      "path": "/api/reservations",
+      "method": "POST",
+      "status": 405
+    },
+    {
+      "path": "/api/auth/login",
+      "method": "POST",
+      "status": 405
+    },
+    {
+      "path": "/",
+      "method": "POST",
+      "status": 405
+    }
+  ],
+  "previousVerifiedPhoneReport": "docs/phone-preview-control-KIb4T9-xcI_ECXiULLD-H-2026-11-11.json",
+  "promotion": {
+    "approvedByParent": true,
+    "oldListenerOwnershipVerified": true,
+    "oldListenerPid": 10484,
+    "oldListenerStopped": true,
+    "unknownProcessesStopped": false,
+    "newMainBuildVerified": true,
+    "newLanActive": true
+  }
+}

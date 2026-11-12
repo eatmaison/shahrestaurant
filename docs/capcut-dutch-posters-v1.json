@@ -1,0 +1,261 @@
+{
+  "version": "capcut-luxury-nl-v1",
+  "generatedAtUTC": "2026-11-12T00:51:23.813Z",
+  "sharp": "0.34.5",
+  "vips": "8.17.3",
+  "ffmpeg": "C:/Users/DaviiC/AppData/Local/CapCut/Apps/9.7.1.4203/ffmpeg.exe",
+  "budgetBytesExclusive": 120000,
+  "options": {
+    "resize": {
+      "withoutEnlargement": true,
+      "kernel": "lanczos3"
+    },
+    "avif": {
+      "effort": 6,
+      "chromaSubsampling": "4:2:0",
+      "bitdepth": 8
+    },
+    "webp": {
+      "effort": 6,
+      "smartSubsample": true
+    },
+    "jpeg": {
+      "mozjpeg": true,
+      "progressive": true,
+      "chromaSubsampling": "4:2:0"
+    }
+  },
+  "qualityChoices": {
+    "avif": [
+      68,
+      64,
+      60,
+      56,
+      52,
+      48,
+      44,
+      40,
+      36,
+      32
+    ],
+    "webp": [
+      88,
+      84,
+      80,
+      76,
+      72,
+      68,
+      64,
+      60,
+      56,
+      52
+    ],
+    "jpeg": [
+      88,
+      84,
+      80,
+      76,
+      72,
+      68,
+      64,
+      60,
+      56,
+      52,
+      48,
+      44,
+      40
+    ]
+  },
+  "photos": [
+    {
+      "variant": "desktop",
+      "master": "assets/video-masters/capcut-luxury-nl-v1/shah-luxury-capcut-desktop-nl-v1.mp4",
+      "masterSha256": "841d1add77bebe61588b315c167306b41d938f73a03461042c4f1301e57e1239",
+      "sourceFrameIndex": 43,
+      "sourceFramePtsSeconds": 1.499333,
+      "sourceFramePng": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-capcut-luxury-nl-v1-20261112\\desktop-poster-frame43.png",
+      "sourceFramePngSha256": "5b8bd3daed00b16d545b27d5680a49ce781c0bc1527902853aad5e21e13fce4a",
+      "originalWidth": 1920,
+      "originalHeight": 1080,
+      "outputs": [
+        {
+          "src": "/brand/capcut-luxury-nl-v1/poster-desktop-960.avif",
+          "format": "avif",
+          "width": 960,
+          "height": 540,
+          "bytes": 71789,
+          "quality": 68,
+          "sha256": "e6c1ec6b51a72d7ed47a09fe63064da00bcc17757b38fb9bffcd7d7f800bb383",
+          "metadataStripped": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/capcut-luxury-nl-v1/poster-desktop-1600.avif",
+          "format": "avif",
+          "width": 1600,
+          "height": 900,
+          "bytes": 112998,
+          "quality": 64,
+          "sha256": "2bfe88d2f36d105c3b6b8741efca627fb733fe86432185446ebd757fa1fc6243",
+          "metadataStripped": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/capcut-luxury-nl-v1/poster-desktop-960.webp",
+          "format": "webp",
+          "width": 960,
+          "height": 540,
+          "bytes": 102008,
+          "quality": 88,
+          "sha256": "fb4d508777804cfc2fc144b7b72c61cb5cb466fb91817a630cad6181380825ec",
+          "metadataStripped": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/capcut-luxury-nl-v1/poster-desktop-1600.webp",
+          "format": "webp",
+          "width": 1600,
+          "height": 900,
+          "bytes": 113138,
+          "quality": 76,
+          "sha256": "e3c4461bd3b3157bafb9db511fd6cc505a4000b37eb98935a392091eaea25bbe",
+          "metadataStripped": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/capcut-luxury-nl-v1/poster-desktop-960.jpg",
+          "format": "jpeg",
+          "width": 960,
+          "height": 540,
+          "bytes": 116239,
+          "quality": 88,
+          "sha256": "145ae00404f3fdfdd40f09856d180c3ec061ce277b4468f8dd66c435ea3e6f30",
+          "metadataStripped": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/capcut-luxury-nl-v1/poster-desktop-1600.jpg",
+          "format": "jpeg",
+          "width": 1600,
+          "height": 900,
+          "bytes": 114539,
+          "quality": 56,
+          "sha256": "2aa8194bc0396194f56f6bbba805e309d3a50eedf8071d31c23aa25c3b1ccb44",
+          "metadataStripped": true,
+          "upscaled": false
+        }
+      ]
+    },
+    {
+      "variant": "mobile",
+      "master": "assets/video-masters/capcut-luxury-nl-v1/shah-luxury-capcut-mobile-nl-v1.mp4",
+      "masterSha256": "162d953531a056838038e7046ee81d8f9f57961104a7391c2f04c947be3b1ed5",
+      "sourceFrameIndex": 43,
+      "sourceFramePtsSeconds": 1.499333,
+      "sourceFramePng": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-capcut-luxury-nl-v1-20261112\\mobile-poster-frame43.png",
+      "sourceFramePngSha256": "5ec1d8533df8b7fcaea0ab0e6b8e900b9d4b625ed3ae11599c2db3802123dbf8",
+      "originalWidth": 1080,
+      "originalHeight": 1920,
+      "outputs": [
+        {
+          "src": "/brand/capcut-luxury-nl-v1/poster-mobile-360.avif",
+          "format": "avif",
+          "width": 360,
+          "height": 640,
+          "bytes": 29000,
+          "quality": 68,
+          "sha256": "bf6ae984242330e6e98db7a625a7aebf533d145f5e239d31380a1504fcb0ddd5",
+          "metadataStripped": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/capcut-luxury-nl-v1/poster-mobile-720.avif",
+          "format": "avif",
+          "width": 720,
+          "height": 1280,
+          "bytes": 54286,
+          "quality": 68,
+          "sha256": "6c1d0730fdda4f8f57d719201841042644a7c9885365449a938f3908d520c09e",
+          "metadataStripped": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/capcut-luxury-nl-v1/poster-mobile-360.webp",
+          "format": "webp",
+          "width": 360,
+          "height": 640,
+          "bytes": 43188,
+          "quality": 88,
+          "sha256": "a8ebd01ba6d83913317532642720fcd9580ffd8af34e273c1b5e5d1350d8ac30",
+          "metadataStripped": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/capcut-luxury-nl-v1/poster-mobile-720.webp",
+          "format": "webp",
+          "width": 720,
+          "height": 1280,
+          "bytes": 94272,
+          "quality": 88,
+          "sha256": "820aebb32c16c76d7c1538d5e9f848dae462883845180fd01f6f5288af16c5b7",
+          "metadataStripped": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/capcut-luxury-nl-v1/poster-mobile-360.jpg",
+          "format": "jpeg",
+          "width": 360,
+          "height": 640,
+          "bytes": 51701,
+          "quality": 88,
+          "sha256": "3ebf0ed8a47795225f2da081fbc2f55611d7232b84d1f4a389f7bb2123775294",
+          "metadataStripped": true,
+          "upscaled": false
+        },
+        {
+          "src": "/brand/capcut-luxury-nl-v1/poster-mobile-720.jpg",
+          "format": "jpeg",
+          "width": 720,
+          "height": 1280,
+          "bytes": 113839,
+          "quality": 84,
+          "sha256": "4b1564678435b2950abf0e0b75589ab37d2b15ce64bb4434f435ba7fd1026bfc",
+          "metadataStripped": true,
+          "upscaled": false
+        }
+      ]
+    }
+  ],
+  "manifestSha256": "02722b57274de337affa406750d386ae0f98397b4e8c6283bb3fe473afc0dfe5",
+  "validation": {
+    "outputs": 12,
+    "everyOutputUnderBudget": true,
+    "mastersUnchanged": true,
+    "metadataStripped": true,
+    "noUpscale": true
+  },
+  "visualReview": {
+    "status": "completed-with-scope-limits",
+    "reviewedAtUTC": "2026-11-12T01:00:37.883Z",
+    "reviewer": "photo_inventory",
+    "variants": 12,
+    "method": "Actually viewed both complete matched-source/delivery sheets covering every AVIF/WebP/JPEG width.",
+    "findings": [
+      "No blocking serif readability, composition, crop, color/brightness, inset/border or corruption issue.",
+      "SHAH/RESTAURANT is fully revealed at the selected1.499333-second frame."
+    ],
+    "limits": [
+      "Contact-sheet visual acceptance, not all-pixel identity or browser cover-crop validation."
+    ],
+    "sheets": [
+      {
+        "file": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-capcut-luxury-nl-v1-20261112\\desktop-poster-qa.png",
+        "sha256": "e8de39ac22e2fe58833454ab137943080282a34cf8bf5b434fb6af623d46f5af"
+      },
+      {
+        "file": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-capcut-luxury-nl-v1-20261112\\mobile-poster-qa.png",
+        "sha256": "5102cc99307bd0b6d5570f54c6fadf2d097c36bc026777d340c89fa91a3a58f3"
+      }
+    ]
+  }
+}

@@ -1,0 +1,164 @@
+{
+  "checkedAtUTC": "2026-11-11T22:27:15.885Z",
+  "scope": "Approveddesktopv3/mobilev2exactmastercopiesplusmatchingresponsiveposters; no videotranscode orappbrowser/performanceclaim",
+  "videos": [
+    {
+      "variant": "desktop",
+      "file": "C:/Users/DaviiC/Downloads/shah-luxury-capcut-desktop-v3.mp4",
+      "bytes": 22055086,
+      "sha256": "30f8b838d4086e64f0f24bd4385e5512bde8286ba65ca1f597ec0607afca85f3",
+      "containerDuration": "12.332667",
+      "video": {
+        "codec": "h264",
+        "profile": "High",
+        "width": 1920,
+        "height": 1080,
+        "pixFmt": "yuv420p",
+        "startTime": "0.066000",
+        "duration": "12.266667",
+        "rFrameRate": "30/1",
+        "avgFrameRate": "368000000/12266667",
+        "timeBase": "1/1000000",
+        "nbFrames": "368",
+        "decodedFrames": "368",
+        "colorRange": "tv",
+        "colorSpace": "bt709",
+        "colorTransfer": "bt709",
+        "colorPrimaries": "bt709",
+        "firstFrame": {
+          "key_frame": 1,
+          "best_effort_timestamp": 66000,
+          "best_effort_timestamp_time": "0.066000",
+          "pict_type": "I",
+          "color_range": "tv",
+          "color_space": "bt709",
+          "color_primaries": "bt709",
+          "color_transfer": "bt709",
+          "side_data_list": [
+            {
+              "side_data_type": "H.26[45] User Data Unregistered SEI message"
+            }
+          ]
+        },
+        "lastFrame": {
+          "key_frame": 0,
+          "best_effort_timestamp": 12299333,
+          "best_effort_timestamp_time": "12.299333",
+          "pict_type": "P",
+          "color_range": "tv",
+          "color_space": "bt709",
+          "color_primaries": "bt709",
+          "color_transfer": "bt709"
+        }
+      },
+      "audio": {
+        "codec": "aac",
+        "startTime": "0.000000",
+        "duration": "12.326848",
+        "sampleRate": "44100",
+        "channels": 2
+      },
+      "src": "/brand/capcut-luxury-v3/shah-luxury-capcut-desktop-v3.mp4",
+      "deliveredFile": "public/brand/capcut-luxury-v3/shah-luxury-capcut-desktop-v3.mp4",
+      "deliveredSha256": "30f8b838d4086e64f0f24bd4385e5512bde8286ba65ca1f597ec0607afca85f3",
+      "downloadsMasterUnchanged": true,
+      "byteIdenticalToApprovedMaster": true,
+      "sourceFrame43Pts": "1.499333",
+      "allFramePtsEvidence": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-capcut-luxury-v3-20261111\\desktop-master-frames.json",
+      "allFramePtsSha256": "e6bda4dd6b563e4ec5a77b77441fa2f0d16bf4f26a3957fb94edc30dfa47488e"
+    },
+    {
+      "variant": "mobile",
+      "file": "C:/Users/DaviiC/Downloads/shah-luxury-capcut-mobile-v2.mp4",
+      "bytes": 14802082,
+      "sha256": "de98d395d978de246bf42e97d21fa04cb45753e39354667d7b25c2e340e2ca6b",
+      "containerDuration": "12.332667",
+      "video": {
+        "codec": "h264",
+        "profile": "High",
+        "width": 1080,
+        "height": 1920,
+        "pixFmt": "yuv420p",
+        "startTime": "0.066000",
+        "duration": "12.266667",
+        "rFrameRate": "30/1",
+        "avgFrameRate": "368000000/12266667",
+        "timeBase": "1/1000000",
+        "nbFrames": "368",
+        "decodedFrames": "368",
+        "colorRange": "tv",
+        "colorSpace": "bt709",
+        "colorTransfer": "bt709",
+        "colorPrimaries": "bt709",
+        "firstFrame": {
+          "key_frame": 1,
+          "best_effort_timestamp": 66000,
+          "best_effort_timestamp_time": "0.066000",
+          "pict_type": "I",
+          "color_range": "tv",
+          "color_space": "bt709",
+          "color_primaries": "bt709",
+          "color_transfer": "bt709",
+          "side_data_list": [
+            {
+              "side_data_type": "H.26[45] User Data Unregistered SEI message"
+            }
+          ]
+        },
+        "lastFrame": {
+          "key_frame": 0,
+          "best_effort_timestamp": 12299333,
+          "best_effort_timestamp_time": "12.299333",
+          "pict_type": "P",
+          "color_range": "tv",
+          "color_space": "bt709",
+          "color_primaries": "bt709",
+          "color_transfer": "bt709"
+        }
+      },
+      "audio": {
+        "codec": "aac",
+        "startTime": "0.000000",
+        "duration": "12.326848",
+        "sampleRate": "44100",
+        "channels": 2
+      },
+      "src": "/brand/capcut-luxury-v3/shah-luxury-capcut-mobile-v2.mp4",
+      "deliveredFile": "public/brand/capcut-luxury-v3/shah-luxury-capcut-mobile-v2.mp4",
+      "deliveredSha256": "de98d395d978de246bf42e97d21fa04cb45753e39354667d7b25c2e340e2ca6b",
+      "downloadsMasterUnchanged": true,
+      "byteIdenticalToApprovedMaster": true,
+      "sourceFrame43Pts": "1.499333",
+      "allFramePtsEvidence": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-capcut-luxury-v3-20261111\\mobile-master-frames.json",
+      "allFramePtsSha256": "e885378995c5faba119df02e7b2dd28ed64ae6c75f78bf1443be6ef6e4545745"
+    }
+  ],
+  "protectedV4Originals": [
+    {
+      "file": "public/brand/shah-hero-scroll-desktop-v4.mp4",
+      "sha256": "91934e4fc834e7050f37b3cd2c6ee063779b622c22e8ba61e3c788b1e63d3a2c",
+      "unchanged": true
+    },
+    {
+      "file": "public/brand/shah-hero-scroll-mobile-v4.mp4",
+      "sha256": "685f08858741f06d04bc436c2b633af01d2fb4e56a07c24f2fc5ec0d311b67f0",
+      "unchanged": true
+    }
+  ],
+  "posterProof": "docs/capcut-luxury-posters-v3.json",
+  "sourceEdits": [
+    "app/components/HeroPoster.tsx",
+    "app/lib/capcutLuxuryPosters.ts",
+    "app/layout.tsx:twohomeposterpreloadhref/srcsetstringsonly"
+  ],
+  "sourceChecks": {
+    "typescriptNoEmit": "passed",
+    "targetedEslint": "passed0errors/0warnings"
+  },
+  "limits": [
+    "MastercopiesretainoriginalAACandallapprovedframes/timestamps,intentionalfade/blacktail; nowebdeliverytranscodeperformed.",
+    "SSIM/PSNRtranscodecomparisonnotapplicabletoexactbytecopies; no subjectivelossless orpixels-identicalbrowserclaim.",
+    "Newactualmutedautoplay/playsinline/sourcechoice/currentTimeandtextaspect-fitmustbeverifiedonthecombinedcandidatebyRoot/baseline/review.",
+    "Noencoderdownload,install,paidservice,publicationordeploymentoccurred."
+  ]
+}

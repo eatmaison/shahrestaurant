@@ -1,0 +1,370 @@
+{
+  "atUTC": "2026-11-12T01:42:18.817Z",
+  "build": "tEOo2rX98Fg45gqnRm-1s",
+  "origin": "http://127.0.0.1:3698",
+  "dist": ".next-review-shah-release-20261112",
+  "artifactSourceHash": "a007fa551f112b4de9be3087238ce01fb3ee24ad4589607708952cc07228e4a4",
+  "inputs": 548,
+  "verdict": "PASS compact mobile footer, readability/text enlargement, full legal-link hit areas, docking/floating fallback and keyboard/touch behavior on this compiled artifact.",
+  "implementation": {
+    "files": [
+      {
+        "file": "app/components/footer.module.css",
+        "sha256": "b8aa5b3667e5d8f268138eb2df9f6fed149c4c5718c26a2b9c8acdaf46dbabd7"
+      },
+      {
+        "file": "app/components/footer.tsx",
+        "sha256": "5f48d6e4557dabb97d195758562b3c096755c89d42d1a754adcdc1c33656d38b"
+      }
+    ],
+    "layout": "Contact beside Address/Hours, Restaurants beside Legal below; auto-fit font-relative columns return to1column for enlarged text. No content hiding or font reduction.",
+    "backTop": "Same action docks beside existing logo when footer intersects; fixed outside. IO plus passive scroll/resize measurement fallback. Existing main is focused with preventScroll before reduced-aware top scroll.",
+    "preserved": "All original text, hrefs, logo artwork/palette, locale behavior and target sizes."
+  },
+  "measurements": [
+    {
+      "width": 320,
+      "lang": "nl",
+      "before": 1229.140625,
+      "after": 898.140625,
+      "reduction": 331,
+      "percentageReduction": 26.9293840971207,
+      "textParity": true,
+      "hrefParity": true,
+      "linkFontParity": true,
+      "headingFontParity": true
+    },
+    {
+      "width": 320,
+      "lang": "en",
+      "before": 1213.140625,
+      "after": 874.140625,
+      "reduction": 339,
+      "percentageReduction": 27.94399866050154,
+      "textParity": true,
+      "hrefParity": true,
+      "linkFontParity": true,
+      "headingFontParity": true
+    },
+    {
+      "width": 360,
+      "lang": "nl",
+      "before": 1229.140625,
+      "after": 862.140625,
+      "reduction": 367,
+      "percentageReduction": 29.858259708892138,
+      "textParity": true,
+      "hrefParity": true,
+      "linkFontParity": true,
+      "headingFontParity": true
+    },
+    {
+      "width": 360,
+      "lang": "en",
+      "before": 1213.140625,
+      "after": 862.140625,
+      "reduction": 351,
+      "percentageReduction": 28.933166754678584,
+      "textParity": true,
+      "hrefParity": true,
+      "linkFontParity": true,
+      "headingFontParity": true
+    },
+    {
+      "width": 390,
+      "lang": "nl",
+      "before": 1213.140625,
+      "after": 846.140625,
+      "reduction": 367,
+      "percentageReduction": 30.252057546914646,
+      "textParity": true,
+      "hrefParity": true,
+      "linkFontParity": true,
+      "headingFontParity": true
+    },
+    {
+      "width": 390,
+      "lang": "en",
+      "before": 1213.140625,
+      "after": 834.140625,
+      "reduction": 379,
+      "percentageReduction": 31.24122564109169,
+      "textParity": true,
+      "hrefParity": true,
+      "linkFontParity": true,
+      "headingFontParity": true
+    },
+    {
+      "width": 430,
+      "lang": "nl",
+      "before": 1213.140625,
+      "after": 846.140625,
+      "reduction": 367,
+      "percentageReduction": 30.252057546914646,
+      "textParity": true,
+      "hrefParity": true,
+      "linkFontParity": true,
+      "headingFontParity": true
+    },
+    {
+      "width": 430,
+      "lang": "en",
+      "before": 1185.140625,
+      "after": 806.140625,
+      "reduction": 379,
+      "percentageReduction": 31.979327347756726,
+      "textParity": true,
+      "hrefParity": true,
+      "linkFontParity": true,
+      "headingFontParity": true
+    }
+  ],
+  "beforeControl": {
+    "path": "C:\\Users\\DaviiC\\Downloads\\shahrestaurant\\shahrestaurant\\docs\\footer-mobile-vkl-control-2026-11-12.json",
+    "sha256": "cd9f04331a62df3a08dd6e2dd1de8c663173c380ba2fd7799ef7058bdbb31d12"
+  },
+  "failedIntermediateControl": {
+    "path": "C:\\Users\\DaviiC\\Downloads\\shahrestaurant\\shahrestaurant\\docs\\footer-mobile-rol-control-2026-11-12.json",
+    "sha256": "b3137f6cf4cfc2020529adc81ccf429466a641e97e9408489f6beaf8f7e96ae5"
+  },
+  "readability": {
+    "normalCases": 8,
+    "enlargedTextCases": 8,
+    "normalColumns": 2,
+    "enlargedColumns": 1,
+    "pageOverflow": 0,
+    "textRectanglesOutsideFooterOrOwnGroup": 0,
+    "all11linksMin48": true,
+    "allTextHrefAndFontParity": true,
+    "manual320Review": "NL/EN images inspected: email wraps cleanly before nl; full address/hours/restaurant/legal text is readable and not clipped. BackTop sits beside logo, clear of link columns.",
+    "textEnlargementMethod": "Read each footer element computed font and line-height before mutations, then double each inline at the same viewport. This is controlled200%text magnification, not a physical-device zoom claim.",
+    "raw": {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-footer-20261112\\tEOo2rX98Fg45gqnRm-1s\\footer-readability.json",
+      "sha256": "359469a60d8694869d5e52ea1a0d5e7049231e95ae2db3d653422e722dd09fa8"
+    },
+    "measurements": {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-footer-20261112\\tEO-after\\footer-measurements.json",
+      "sha256": "7cb122c7983c1208a6a54145bde7798c861cc782f587c2ffba9c66dc5d42de1f"
+    },
+    "screenshots": [
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-footer-20261112\\tEO-after\\footer-320-nl.png",
+        "sha256": "dea453d7f58e1b68508ebaa2770f896310831f7343a7c597d13bd524ab55d0f2"
+      },
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-footer-20261112\\tEO-after\\footer-320-en.png",
+        "sha256": "89979fcfa2e783884be9b5917cf971f2bd14fe9a383c382b5746e147d05aaaa8"
+      },
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-footer-20261112\\tEO-after\\footer-360-nl.png",
+        "sha256": "dbdc1b0197b422c7c54c38c015ebaba35ea38d2b9e7ee927287ba7e602ae122f"
+      },
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-footer-20261112\\tEO-after\\footer-360-en.png",
+        "sha256": "3f9ed387cfe1cc8619035dbb373a71ed9d2b2c2b4361e309437f26b43f25ae52"
+      },
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-footer-20261112\\tEO-after\\footer-390-nl.png",
+        "sha256": "8cb383c575277f813a72982ed705197fca38e1c3036a8573601c9b3a9a84edb7"
+      },
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-footer-20261112\\tEO-after\\footer-390-en.png",
+        "sha256": "0792f032bafc2f18536bc493fe6082ecc8bb327b7bd78a371b5e55217f6a5582"
+      },
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-footer-20261112\\tEO-after\\footer-430-nl.png",
+        "sha256": "bcc9e115ce81bccb04d58c11952097a5e91939d7d8ee14c5dfc8d2c9e3477dd3"
+      },
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-footer-20261112\\tEO-after\\footer-430-en.png",
+        "sha256": "476de271027aa987182371322f296f99e0e89d2c7fc4fd1d98a30ae20648da02"
+      }
+    ],
+    "enlargedScreenshots": [
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-footer-20261112\\tEOo2rX98Fg45gqnRm-1s\\text200-320-nl.png",
+        "sha256": "e6dc47d6444db9a6bc64a3c1634974700a48190a4ae3bc18ad97533847a46fd7"
+      },
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-footer-20261112\\tEOo2rX98Fg45gqnRm-1s\\text200-320-en.png",
+        "sha256": "a8c0646bc6e5f30cb3f03011fdbaa711928a6be1e319d625245d2fbb1107bbc8"
+      },
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-footer-20261112\\tEOo2rX98Fg45gqnRm-1s\\text200-360-nl.png",
+        "sha256": "eb811df2972b8a00e15360b98d36805f0e175d1aaf2d61ba45db29994135feaa"
+      },
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-footer-20261112\\tEOo2rX98Fg45gqnRm-1s\\text200-360-en.png",
+        "sha256": "d697962c84ca2101eafd867e39b689a2f718d79ef14542005340233c405d90b7"
+      },
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-footer-20261112\\tEOo2rX98Fg45gqnRm-1s\\text200-390-nl.png",
+        "sha256": "ad918b3fde173d93a465f149cfd044b6c37f595866d4dab8b9a839205c1f4982"
+      },
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-footer-20261112\\tEOo2rX98Fg45gqnRm-1s\\text200-390-en.png",
+        "sha256": "e1519c266e653dbe080818d6f07a72cdaf4931f9e38c43391e7f1dc27e51626e"
+      },
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-footer-20261112\\tEOo2rX98Fg45gqnRm-1s\\text200-430-nl.png",
+        "sha256": "d796c6d4dd7d2d818b4b223ca924fda8002239d1a9a34780b817d58033093c10"
+      },
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-footer-20261112\\tEOo2rX98Fg45gqnRm-1s\\text200-430-en.png",
+        "sha256": "43b4a1571afb0d2b8ae65edf440726efa0c6f1508cbf06253eef51ec5a4928ff"
+      }
+    ]
+  },
+  "docking": {
+    "normalObservations": 28,
+    "cases": 8,
+    "buttonBox": [
+      48,
+      48
+    ],
+    "legalPrivacyNativeHitPoints": 80,
+    "allCorrectAnchorHits": true,
+    "linkOcclusions": 0,
+    "dockHeightDelta": 0,
+    "insideFooterPosition": "static",
+    "outsideFooterPosition": "fixed",
+    "keyboard": {
+      "locales": [
+        "nl",
+        "en"
+      ],
+      "anchorHrefOrderUnchanged": true,
+      "backTopFocusIncludedAfterLogo": true,
+      "enterScrollsTo0": true,
+      "focus": "main-content",
+      "nextTabInsideMainNotFooter": true
+    },
+    "normalAcceptedRaw": {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-footer-20261112\\tEOo2rX98Fg45gqnRm-1s\\docking-normal-accepted.json",
+      "sha256": "d8ab0ea7090de00fc53ce0c041262576e8832533a9cfdf4c2ada2bac73a87299"
+    },
+    "initialSetupRaw": {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-footer-20261112\\tEOo2rX98Fg45gqnRm-1s\\docking-initial-setup-results.json",
+      "sha256": "6a2461a8ce69addeecedcde96f5e04865c23e3dad140108b3fc957bbf485aaaf"
+    },
+    "actualAbsentIO": {
+      "method": "Delete window.IntersectionObserver before page scripts, matching unsupported API absence.",
+      "cases": 2,
+      "passiveDockAndFloatingPassed": true,
+      "raw": {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-footer-20261112\\tEOo2rX98Fg45gqnRm-1s\\docking-noio-results.json",
+        "sha256": "3a2c12bc10878d03b16aa273390573fb1bde7004803ebe0531ceac340a2274b8"
+      },
+      "completion": {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-footer-20261112\\tEOo2rX98Fg45gqnRm-1s\\docking-noio-complete.json",
+        "sha256": "9b3ec1a375c4f9d6fc53ada078e5c9ff654c35b10968912c2ab711c3b11794b7"
+      }
+    }
+  },
+  "contrast": {
+    "scope": "Bounded fresh dark footer Privacy link at12px/400, no site-wide AA claim.",
+    "states": [
+      {
+        "state": "default",
+        "foreground": "rgb(224, 175, 89)",
+        "background": "rgb(13, 73, 82)",
+        "contrast": 4.993237217368008
+      },
+      {
+        "state": "hover",
+        "foreground": "rgb(255, 255, 255)",
+        "background": "rgb(13, 73, 82)",
+        "contrast": 10.038385962896214
+      },
+      {
+        "state": "focus",
+        "foreground": "rgb(224, 175, 89)",
+        "background": "rgb(13, 73, 82)",
+        "contrast": 4.993237217368008
+      }
+    ],
+    "minimumRequired": 4.5,
+    "pass": true,
+    "raw": {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-footer-20261112\\tEOo2rX98Fg45gqnRm-1s\\overlap-contrast.json",
+      "sha256": "f87b0c987fdeb173931b771557b3538a12f6ac12db0d384526271619e6b0eab7"
+    }
+  },
+  "cheapRegressions": {
+    "cases": 4,
+    "scope": "Two native320footer touch scrolls, freshCookiegold action48targets, one mobile EN-to-NL header toggle.",
+    "raw": {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-footer-20261112\\tEOo2rX98Fg45gqnRm-1s\\cheap-smokes.json",
+      "sha256": "8b76e122adf389ded595faab111708c3f256d9687675a419ece6bf81da5dbc1c"
+    }
+  },
+  "ordinaryHeroSmoke": {
+    "cases": 2,
+    "scope": "Fresh ordinary native autoplay/time advance plus paused sought1.5s title; no performance or natural-end claim.",
+    "actualMedia": [
+      {
+        "lang": "nl",
+        "width": 320,
+        "source": "/brand/capcut-luxury-nl-v1/shah-luxury-capcut-mobile-nl-v1-web.mp4",
+        "duration": 12.332666,
+        "native": [
+          1080,
+          1920
+        ],
+        "fit": "contain",
+        "presented": 1.499333
+      },
+      {
+        "lang": "en",
+        "width": 390,
+        "source": "/brand/capcut-luxury-v3/shah-luxury-capcut-mobile-v2.mp4",
+        "duration": 12.332667,
+        "native": [
+          1080,
+          1920
+        ],
+        "fit": "cover",
+        "presented": 1.499333
+      }
+    ],
+    "raw": {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-footer-20261112\\tEOo2rX98Fg45gqnRm-1s\\hero-two-smoke.json",
+      "sha256": "f045e7eca841a82d55e112ee110dce05d479742b821f4932c817532c944f15e2"
+    },
+    "screenshots": [
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-footer-20261112\\tEOo2rX98Fg45gqnRm-1s\\hero-320-nl.png",
+        "sha256": "acecc62ed1fd70ab005f3cbfdea6d7c551d03d8e470432bf0f4265d4b27c3407"
+      },
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-footer-20261112\\tEOo2rX98Fg45gqnRm-1s\\hero-390-en.png",
+        "sha256": "fc73614aa87511cfe1fbbcc5dd1d6c9b3cf3b5974251205c2ee31c734c923571"
+      }
+    ]
+  },
+  "identity": {
+    "currentArtifact": {
+      "path": "C:\\Users\\DaviiC\\Downloads\\shahrestaurant\\shahrestaurant\\.next-review-shah-release-20261112.source.json",
+      "sha256": "3e3d3d451aaeeb863e4eea512c731b710ac93bcc8d5a70f67a562e440098d609"
+    },
+    "intermediateArtifact": {
+      "path": "C:\\Users\\DaviiC\\Downloads\\shahrestaurant\\shahrestaurant\\.next-review-shah-combos-nl-20261112.source.json",
+      "sha256": "ffb9ecabda2ab726dbe12152f4993b44e1d989df59795f0e85cc3d3dc58562c7"
+    },
+    "changedInputsFromROl": 2,
+    "unchangedInputsFromROl": 546,
+    "scope": "Immutable build snapshots only. A later homeCSS-only cleanup artifact3708 is being prepared independently; these observations remain tEO and must not be relabeled."
+  },
+  "validation": {
+    "focusedESLint": "pass",
+    "globalTypeScript": "npx tsc --noEmit pass",
+    "runtimeAndConsoleErrors": "0inaccepted normal, actual-absence fallback and cheap smoke contexts",
+    "businessWrites": 0
+  },
+  "limitations": [
+    "Isolated Chromium/CDP atDPR1; not physical Safari or fieldCWV.",
+    "No performance, stutter-free or natural-full-end claim.",
+    "All9226task pages blank/traffic ended; no source edits during these captures.",
+    "Misconfigured defined-but-undefined IO setup is preserved as excluded diagnostic; proper actual-absence fallback passed separately."
+  ]
+}

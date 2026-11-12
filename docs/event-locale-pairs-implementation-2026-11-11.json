@@ -1,0 +1,148 @@
+{
+  "updatedAt": "2026-11-11T20:42:09.199Z",
+  "status": "source-and-offline-tests-pass; coordinated compiled HTTP/browser proof pending",
+  "scope": {
+    "corePairs": 5,
+    "eventPairs": 7,
+    "publicUrls": 24,
+    "newEnglishEventUrls": [
+      "/en/events",
+      "/en/events/about",
+      "/en/events/gallery",
+      "/en/events/birthdays",
+      "/en/events/celebrations",
+      "/en/events/company-catering",
+      "/en/events/company-lunches"
+    ]
+  },
+  "before": {
+    "recordedAt": "2026-11-11T20:12:49.217Z",
+    "coreLocalizedUrls": 10,
+    "eventNlPages": 7,
+    "eventEnPageDirectoryExists": false,
+    "eventEnglishDestinations": [
+      {
+        "nl": "/events",
+        "actualEnHref": "/events",
+        "expected": "/en/events"
+      },
+      {
+        "nl": "/events/about",
+        "actualEnHref": "/events/about",
+        "expected": "/en/events/about"
+      },
+      {
+        "nl": "/events/gallery",
+        "actualEnHref": "/events/gallery",
+        "expected": "/en/events/gallery"
+      },
+      {
+        "nl": "/events/birthdays",
+        "actualEnHref": "/events/birthdays",
+        "expected": "/en/events/birthdays"
+      },
+      {
+        "nl": "/events/celebrations",
+        "actualEnHref": "/events/celebrations",
+        "expected": "/en/events/celebrations"
+      },
+      {
+        "nl": "/events/company-catering",
+        "actualEnHref": "/events/company-catering",
+        "expected": "/en/events/company-catering"
+      },
+      {
+        "nl": "/events/company-lunches",
+        "actualEnHref": "/events/company-lunches",
+        "expected": "/en/events/company-lunches"
+      }
+    ],
+    "correctEnglishEventDestinations": 0,
+    "historicalHttpProof": {
+      "file": "docs/cinematic-seo-control-Hj2ubUjCMfbacacwFligZ-2026-11-11.json",
+      "buildId": "Hj2ubUjCMfbacacwFligZ",
+      "publicRoutes": 17,
+      "englishEventCanonicals": 0
+    },
+    "noNetworkOrDatabaseCalls": true,
+    "existingProxyCasesPassed": 11,
+    "existingVisibilityGroupsPassed": 11
+  },
+  "after": {
+    "sourceChecks": {
+      "publicRoutes": 24,
+      "realNextRequestSlashRedirects": 23,
+      "realNextRequestCaseRedirects": 23,
+      "pairedEventMetadata": 14,
+      "actualEventServerRenders": 14,
+      "uniqueMetadataSets": 24,
+      "sitemapUrls": 24,
+      "sitemapAlternates": 72,
+      "allPublicUrlsOverrideOppositeStoredPreference": true
+    },
+    "existingProxyCasesPassed": 11,
+    "existingVisibilityGroupsPassed": 11,
+    "typescriptPassed": true,
+    "focusedLintPassed": true,
+    "integratedSpriteWrapperRerun": {
+      "locale24RouteSsrSuitePassed": true,
+      "eventVisibilityGroupsPassed": 11,
+      "realNextRequestProxyCasesPassed": 11,
+      "networkCalls": 0,
+      "productionDatabaseCalls": 0
+    }
+  },
+  "preservation": {
+    "eventPageVisibleCopyPricesAndClasses": [
+      {
+        "file": "app/events/page.tsx",
+        "visibleLiteralAndNumericTokens": 86,
+        "preserved": true
+      },
+      {
+        "file": "app/events/about/page.tsx",
+        "visibleLiteralAndNumericTokens": 91,
+        "preserved": true
+      },
+      {
+        "file": "app/events/gallery/page.tsx",
+        "visibleLiteralAndNumericTokens": 89,
+        "preserved": true
+      },
+      {
+        "file": "app/events/birthdays/page.tsx",
+        "visibleLiteralAndNumericTokens": 136,
+        "preserved": true
+      },
+      {
+        "file": "app/events/celebrations/page.tsx",
+        "visibleLiteralAndNumericTokens": 150,
+        "preserved": true
+      },
+      {
+        "file": "app/events/company-catering/page.tsx",
+        "visibleLiteralAndNumericTokens": 149,
+        "preserved": true
+      },
+      {
+        "file": "app/events/company-lunches/page.tsx",
+        "visibleLiteralAndNumericTokens": 164,
+        "preserved": true
+      }
+    ],
+    "providerOnlyKnownLanguageHunks": true,
+    "rootLayoutEditedByThisBatch": false,
+    "privateGuardsUnchanged": true,
+    "originalEnglishViewsReused": true,
+    "runningHj2PreviewChanged": false
+  },
+  "coordination": {
+    "imageWorker": "Saved public icon imports and pure SpriteIcon pack wrappers; both strict test loaders resolve the actual wrapper modules. Integrated locale/access/proxy reruns passed.",
+    "reviewWorker": "CSS48px changes preserve existing header/event hooks; compiled24route geometry remains a combined-candidate check."
+  },
+  "limitations": [
+    "No build, deployment or commit was performed by this batch.",
+    "No network, live database or business API request occurred; source-render tests isolate browser/data dependencies.",
+    "The running3398Hj2 preview remains the historical17-route artifact;24-route HTTP, client navigation and visual checks require the coordinated new build."
+  ]
+}

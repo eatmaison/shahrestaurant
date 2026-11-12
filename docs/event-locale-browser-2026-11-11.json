@@ -1,0 +1,1143 @@
+{
+  "checkedAt": "2026-11-11T21:02:17.688Z",
+  "buildId": "wUsQV2PkRJMdBoQDSZLxt",
+  "sourceFingerprint": "12a34bb4ce555d9ed30849d07bcac979ffb953c568e734fcf773cebb2bd77c67",
+  "dist": ".next-review-delivery-v1-20261111",
+  "origin": "http://127.0.0.1:3548",
+  "browserPort": 9227,
+  "functionalOnly": true,
+  "reducedMotion": true,
+  "sourceInputHashes": [
+    {
+      "file": "app/components/EventBreadcrumbs.tsx",
+      "sha256": "1df04c2fc46dd12fdf7447fa820b552aeb9d52f595de2485252d11edf612e877"
+    },
+    {
+      "file": "app/components/EventsShell.tsx",
+      "sha256": "3ce412fea0194fd3db3751e08487824d0aaca7597b8de48f5bdf1c6843b62be7"
+    },
+    {
+      "file": "app/components/LocaleLink.tsx",
+      "sha256": "b318b4f8d75e0bb0da6990cdd867b96c9c41438055cc1d9b048c865cbdcb85cb"
+    },
+    {
+      "file": "app/components/footer.tsx",
+      "sha256": "a0584954f931a4e1b9aa1216395b4a34f53f9e768874edc78343a431ec46c0b9"
+    },
+    {
+      "file": "app/components/header.tsx",
+      "sha256": "5254d1088edef5ae6bf57d32975a68e8eb0ee9811babf44598ae2becd6698b50"
+    },
+    {
+      "file": "app/en/events/about/page.tsx",
+      "sha256": "706005be7b9145f04ca19a8257fd398e83ba0453acbe216da25b387251bec23f"
+    },
+    {
+      "file": "app/en/events/birthdays/page.tsx",
+      "sha256": "d007e27e0c434ac4bdbb11c7268bf69e6554b529fd1f3ccf08179b15a400498e"
+    },
+    {
+      "file": "app/en/events/celebrations/page.tsx",
+      "sha256": "70b2b026555a6c209612b78d0791f50d49da6c94842825cfc61193d209230cee"
+    },
+    {
+      "file": "app/en/events/company-catering/page.tsx",
+      "sha256": "fdc8a7ce644ea9539aa10f30c03a65590446732635d3734bfcee871f938f8eb8"
+    },
+    {
+      "file": "app/en/events/company-lunches/page.tsx",
+      "sha256": "1704e5b8abaaaee2cb6bf5a04f0493b020df156748a03a2bc937c4fcb2f228f7"
+    },
+    {
+      "file": "app/en/events/gallery/page.tsx",
+      "sha256": "1a54c239ac9cf1351e881dffdebf5f1f4f0061c6b3892bfead581c85f2453197"
+    },
+    {
+      "file": "app/en/events/layout.tsx",
+      "sha256": "8f277ed9fd56d0e69ec5f0ec9cedb5fb52926726e2993a2c4d87f20a695379df"
+    },
+    {
+      "file": "app/en/events/page.tsx",
+      "sha256": "b3fb349373244ea082e83ed0d4f81ab0d21dcc7ff795ec13f71ec00f51b4215c"
+    },
+    {
+      "file": "app/events/about/layout.tsx",
+      "sha256": "052d1467427a243ee5557fbd11d91e21f871e7ef66ece864fc7d9ffedd6f521b"
+    },
+    {
+      "file": "app/events/about/page.tsx",
+      "sha256": "17d5a18715560c76f806e5c30402eca9a4f55b00f886ee1a36a7e2015985cdf4"
+    },
+    {
+      "file": "app/events/birthdays/layout.tsx",
+      "sha256": "ca2aff2a7cf04ee73a5e2afe3126777a458659e1264e89104022feb733475a19"
+    },
+    {
+      "file": "app/events/birthdays/page.tsx",
+      "sha256": "5d1162f766f7d32723fc0e1a73215c0f6548c418e5d902aa404969ce97d65ddb"
+    },
+    {
+      "file": "app/events/celebrations/layout.tsx",
+      "sha256": "fbd374abf93479ea9005b808cc5265ac8983f9f14a6ccb680df9c24b97262cbc"
+    },
+    {
+      "file": "app/events/celebrations/page.tsx",
+      "sha256": "75c49b5f58c1b3f2a0322ff93e767223a78b9cd0c50b3c285f3b14925a8a4bdb"
+    },
+    {
+      "file": "app/events/company-catering/layout.tsx",
+      "sha256": "3da76b56518311b33319df408007cf460318ac4516729e80b94adb634d78f6ca"
+    },
+    {
+      "file": "app/events/company-catering/page.tsx",
+      "sha256": "04b2568cebe938ea9a358e6cda56540536c69a297bac9fdeb6c6663542021bea"
+    },
+    {
+      "file": "app/events/company-lunches/layout.tsx",
+      "sha256": "73b1c492f45b822a15ea13fe720d6e9430f93ac15214de0f1ce90ccb956e65ac"
+    },
+    {
+      "file": "app/events/company-lunches/page.tsx",
+      "sha256": "34b86a25c5b0179e3272c3d943174d90a30d146aeeeca671e95225d6239615d9"
+    },
+    {
+      "file": "app/events/events.module.css",
+      "sha256": "cb09c1caaaf05b3cad7d6918db4c21a3f62f2ad1e4f355be6abb3b6882cf7f70"
+    },
+    {
+      "file": "app/events/gallery/layout.tsx",
+      "sha256": "72e13a225cf223bd9109bb25c8263b2873d113a2601e31b2cd563ff4bf5d2386"
+    },
+    {
+      "file": "app/events/gallery/page.tsx",
+      "sha256": "838611715c3f9c535f96d145df363f47edafb0afa7f1bd353b262188243cbdfd"
+    },
+    {
+      "file": "app/events/layout.tsx",
+      "sha256": "0400c4b98304f4355c882cdd363e21aaf23b46a8ada233b1d4397859ba246c0e"
+    },
+    {
+      "file": "app/events/page.tsx",
+      "sha256": "2c1901bfdbf64e6a910d0ac78283d9ed7c00e3035df6f99e3314951da28253a9"
+    },
+    {
+      "file": "app/layout.tsx",
+      "sha256": "507b1422865bd461eff6858540a32010713831b4aa07917a2ab73f3986aa1d13"
+    },
+    {
+      "file": "app/lib/eventSeo.ts",
+      "sha256": "37800d0a57ee78c5680debec9d0ca2b0bde082caef201c9a165c7e9e5388a9fb"
+    },
+    {
+      "file": "app/lib/locale.ts",
+      "sha256": "310b1df534203d270b31456f3a9770f7d13d864ceb256c3bc3477b58c9ea7875"
+    },
+    {
+      "file": "app/lib/seo.ts",
+      "sha256": "b08e733baae268313a1010f4c864086e70d0c2857582b9474e25574ef6b45cfa"
+    },
+    {
+      "file": "app/lib/translations.ts",
+      "sha256": "842358b170e3973b04b7b10ab07245a346bc54acc1f21b6badaf6ffedfddc291"
+    },
+    {
+      "file": "app/providers.tsx",
+      "sha256": "e3bc3484861ac9448d795291a78e4c876ddea98719575043097274e22e099504"
+    }
+  ],
+  "dictionaryChunks": [
+    "/_next/static/chunks/5696.ec984454c7a37d63.js"
+  ],
+  "rows": [
+    {
+      "name": "cold-opposite-preference-/",
+      "pathname": "/",
+      "search": "",
+      "hash": "",
+      "htmlLang": "nl",
+      "storedLang": "nl",
+      "h1": [
+        "Indiaas restaurant in Amsterdam-Noord"
+      ],
+      "timeOrigin": 1794430840252.6,
+      "cart": {},
+      "draft": null,
+      "sameDraftNode": null,
+      "dictionaryRequests": 0,
+      "errors": [],
+      "businessWrites": 0
+    },
+    {
+      "name": "cold-opposite-preference-/en",
+      "pathname": "/en",
+      "search": "",
+      "hash": "",
+      "htmlLang": "en",
+      "storedLang": "en",
+      "h1": [
+        "Indian restaurant in Amsterdam-Noord"
+      ],
+      "timeOrigin": 1794430841299,
+      "cart": {},
+      "draft": null,
+      "sameDraftNode": null,
+      "dictionaryRequests": 0,
+      "errors": [],
+      "businessWrites": 0
+    },
+    {
+      "name": "cold-opposite-preference-/menukaart",
+      "pathname": "/menukaart",
+      "search": "",
+      "hash": "",
+      "htmlLang": "nl",
+      "storedLang": "nl",
+      "h1": [
+        "Stel je bestelling samen — Indiase menukaart Amsterdam-Noord"
+      ],
+      "timeOrigin": 1794430842379.9,
+      "cart": {},
+      "draft": null,
+      "sameDraftNode": null,
+      "dictionaryRequests": 0,
+      "errors": [],
+      "businessWrites": 0
+    },
+    {
+      "name": "cold-opposite-preference-/en/menu",
+      "pathname": "/en/menu",
+      "search": "",
+      "hash": "",
+      "htmlLang": "en",
+      "storedLang": "en",
+      "h1": [
+        "Build your order — Indian menu Amsterdam-Noord"
+      ],
+      "timeOrigin": 1794430843256.8,
+      "cart": {},
+      "draft": null,
+      "sameDraftNode": null,
+      "dictionaryRequests": 0,
+      "errors": [],
+      "businessWrites": 0
+    },
+    {
+      "name": "cold-opposite-preference-/reserveren",
+      "pathname": "/reserveren",
+      "search": "",
+      "hash": "",
+      "htmlLang": "nl",
+      "storedLang": "nl",
+      "h1": [
+        "Reserveer uw tafel — Amsterdam-Noord"
+      ],
+      "timeOrigin": 1794430844130.1,
+      "cart": {},
+      "draft": null,
+      "sameDraftNode": null,
+      "dictionaryRequests": 0,
+      "errors": [],
+      "businessWrites": 0
+    },
+    {
+      "name": "cold-opposite-preference-/en/reservations",
+      "pathname": "/en/reservations",
+      "search": "",
+      "hash": "",
+      "htmlLang": "en",
+      "storedLang": "en",
+      "h1": [
+        "Reserve your table — Amsterdam-Noord"
+      ],
+      "timeOrigin": 1794430844891,
+      "cart": {},
+      "draft": null,
+      "sameDraftNode": null,
+      "dictionaryRequests": 0,
+      "errors": [],
+      "businessWrites": 0
+    },
+    {
+      "name": "cold-opposite-preference-/privacy",
+      "pathname": "/privacy",
+      "search": "",
+      "hash": "",
+      "htmlLang": "nl",
+      "storedLang": "nl",
+      "h1": [
+        "Privacybeleid"
+      ],
+      "timeOrigin": 1794430845590,
+      "cart": {},
+      "draft": null,
+      "sameDraftNode": null,
+      "dictionaryRequests": 0,
+      "errors": [],
+      "businessWrites": 0
+    },
+    {
+      "name": "cold-opposite-preference-/en/privacy",
+      "pathname": "/en/privacy",
+      "search": "",
+      "hash": "",
+      "htmlLang": "en",
+      "storedLang": "en",
+      "h1": [
+        "Privacy Policy"
+      ],
+      "timeOrigin": 1794430846219,
+      "cart": {},
+      "draft": null,
+      "sameDraftNode": null,
+      "dictionaryRequests": 0,
+      "errors": [],
+      "businessWrites": 0
+    },
+    {
+      "name": "cold-opposite-preference-/voorwaarden",
+      "pathname": "/voorwaarden",
+      "search": "",
+      "hash": "",
+      "htmlLang": "nl",
+      "storedLang": "nl",
+      "h1": [
+        "Algemene Voorwaarden"
+      ],
+      "timeOrigin": 1794430846842.8,
+      "cart": {},
+      "draft": null,
+      "sameDraftNode": null,
+      "dictionaryRequests": 0,
+      "errors": [],
+      "businessWrites": 0
+    },
+    {
+      "name": "cold-opposite-preference-/en/terms",
+      "pathname": "/en/terms",
+      "search": "",
+      "hash": "",
+      "htmlLang": "en",
+      "storedLang": "en",
+      "h1": [
+        "Terms & Conditions"
+      ],
+      "timeOrigin": 1794430847474.5,
+      "cart": {},
+      "draft": null,
+      "sameDraftNode": null,
+      "dictionaryRequests": 0,
+      "errors": [],
+      "businessWrites": 0
+    },
+    {
+      "name": "cold-opposite-preference-/events",
+      "pathname": "/events",
+      "search": "",
+      "hash": "",
+      "htmlLang": "nl",
+      "storedLang": "nl",
+      "h1": [
+        "Momenten die het vieren waard zijn"
+      ],
+      "timeOrigin": 1794430848161.9,
+      "cart": {},
+      "draft": null,
+      "sameDraftNode": null,
+      "dictionaryRequests": 0,
+      "errors": [],
+      "businessWrites": 0
+    },
+    {
+      "name": "cold-opposite-preference-/en/events",
+      "pathname": "/en/events",
+      "search": "",
+      "hash": "",
+      "htmlLang": "en",
+      "storedLang": "en",
+      "h1": [
+        "Occasions worth celebrating"
+      ],
+      "timeOrigin": 1794430848793.1,
+      "cart": {},
+      "draft": null,
+      "sameDraftNode": null,
+      "dictionaryRequests": 0,
+      "errors": [],
+      "businessWrites": 0
+    },
+    {
+      "name": "cold-opposite-preference-/events/about",
+      "pathname": "/events/about",
+      "search": "",
+      "hash": "",
+      "htmlLang": "nl",
+      "storedLang": "nl",
+      "h1": [
+        "Over Shah Restaurant Amsterdam"
+      ],
+      "timeOrigin": 1794430849463,
+      "cart": {},
+      "draft": null,
+      "sameDraftNode": null,
+      "dictionaryRequests": 0,
+      "errors": [],
+      "businessWrites": 0
+    },
+    {
+      "name": "cold-opposite-preference-/en/events/about",
+      "pathname": "/en/events/about",
+      "search": "",
+      "hash": "",
+      "htmlLang": "en",
+      "storedLang": "en",
+      "h1": [
+        "About Shah Restaurant Amsterdam"
+      ],
+      "timeOrigin": 1794430850249.3,
+      "cart": {},
+      "draft": null,
+      "sameDraftNode": null,
+      "dictionaryRequests": 0,
+      "errors": [],
+      "businessWrites": 0
+    },
+    {
+      "name": "cold-opposite-preference-/events/gallery",
+      "pathname": "/events/gallery",
+      "search": "",
+      "hash": "",
+      "htmlLang": "nl",
+      "storedLang": "nl",
+      "h1": [
+        "Sfeer, gerechten en momenten"
+      ],
+      "timeOrigin": 1794430850927.7,
+      "cart": {},
+      "draft": null,
+      "sameDraftNode": null,
+      "dictionaryRequests": 0,
+      "errors": [],
+      "businessWrites": 0
+    },
+    {
+      "name": "cold-opposite-preference-/en/events/gallery",
+      "pathname": "/en/events/gallery",
+      "search": "",
+      "hash": "",
+      "htmlLang": "en",
+      "storedLang": "en",
+      "h1": [
+        "Ambiance, dishes and moments"
+      ],
+      "timeOrigin": 1794430851732.1,
+      "cart": {},
+      "draft": null,
+      "sameDraftNode": null,
+      "dictionaryRequests": 0,
+      "errors": [],
+      "businessWrites": 0
+    },
+    {
+      "name": "cold-opposite-preference-/events/birthdays",
+      "pathname": "/events/birthdays",
+      "search": "",
+      "hash": "",
+      "htmlLang": "nl",
+      "storedLang": "nl",
+      "h1": [
+        "Vier uw verjaardag bij Shah Restaurant"
+      ],
+      "timeOrigin": 1794430852474,
+      "cart": {},
+      "draft": null,
+      "sameDraftNode": null,
+      "dictionaryRequests": 0,
+      "errors": [],
+      "businessWrites": 0
+    },
+    {
+      "name": "cold-opposite-preference-/en/events/birthdays",
+      "pathname": "/en/events/birthdays",
+      "search": "",
+      "hash": "",
+      "htmlLang": "en",
+      "storedLang": "en",
+      "h1": [
+        "Celebrate your birthday at Shah Restaurant"
+      ],
+      "timeOrigin": 1794430853242.5,
+      "cart": {},
+      "draft": null,
+      "sameDraftNode": null,
+      "dictionaryRequests": 0,
+      "errors": [],
+      "businessWrites": 0
+    },
+    {
+      "name": "cold-opposite-preference-/events/celebrations",
+      "pathname": "/events/celebrations",
+      "search": "",
+      "hash": "",
+      "htmlLang": "nl",
+      "storedLang": "nl",
+      "h1": [
+        "Bruiloften & vieringen bij Shah Restaurant"
+      ],
+      "timeOrigin": 1794430853962.3,
+      "cart": {},
+      "draft": null,
+      "sameDraftNode": null,
+      "dictionaryRequests": 0,
+      "errors": [],
+      "businessWrites": 0
+    },
+    {
+      "name": "cold-opposite-preference-/en/events/celebrations",
+      "pathname": "/en/events/celebrations",
+      "search": "",
+      "hash": "",
+      "htmlLang": "en",
+      "storedLang": "en",
+      "h1": [
+        "Weddings & celebrations at Shah Restaurant"
+      ],
+      "timeOrigin": 1794430854696.1,
+      "cart": {},
+      "draft": null,
+      "sameDraftNode": null,
+      "dictionaryRequests": 0,
+      "errors": [],
+      "businessWrites": 0
+    },
+    {
+      "name": "cold-opposite-preference-/events/company-catering",
+      "pathname": "/events/company-catering",
+      "search": "",
+      "hash": "",
+      "htmlLang": "nl",
+      "storedLang": "nl",
+      "h1": [
+        "Bedrijfscatering"
+      ],
+      "timeOrigin": 1794430855450,
+      "cart": {},
+      "draft": null,
+      "sameDraftNode": null,
+      "dictionaryRequests": 0,
+      "errors": [],
+      "businessWrites": 0
+    },
+    {
+      "name": "cold-opposite-preference-/en/events/company-catering",
+      "pathname": "/en/events/company-catering",
+      "search": "",
+      "hash": "",
+      "htmlLang": "en",
+      "storedLang": "en",
+      "h1": [
+        "Corporate catering"
+      ],
+      "timeOrigin": 1794430856265.6,
+      "cart": {},
+      "draft": null,
+      "sameDraftNode": null,
+      "dictionaryRequests": 0,
+      "errors": [],
+      "businessWrites": 0
+    },
+    {
+      "name": "cold-opposite-preference-/events/company-lunches",
+      "pathname": "/events/company-lunches",
+      "search": "",
+      "hash": "",
+      "htmlLang": "nl",
+      "storedLang": "nl",
+      "h1": [
+        "Bedrijfslunches & kantoor-catering in Amsterdam"
+      ],
+      "timeOrigin": 1794430857063.9,
+      "cart": {},
+      "draft": null,
+      "sameDraftNode": null,
+      "dictionaryRequests": 0,
+      "errors": [],
+      "businessWrites": 0
+    },
+    {
+      "name": "cold-opposite-preference-/en/events/company-lunches",
+      "pathname": "/en/events/company-lunches",
+      "search": "",
+      "hash": "",
+      "htmlLang": "en",
+      "storedLang": "en",
+      "h1": [
+        "Company lunches & office catering in Amsterdam"
+      ],
+      "timeOrigin": 1794430859698.9,
+      "cart": {},
+      "draft": null,
+      "sameDraftNode": null,
+      "dictionaryRequests": 0,
+      "errors": [],
+      "businessWrites": 0
+    },
+    {
+      "name": "native-public-language-query-hash",
+      "pathname": "/events/about",
+      "search": "?qa=one%20two&source=locale",
+      "hash": "#main-content",
+      "htmlLang": "nl",
+      "storedLang": "nl",
+      "h1": [
+        "Over Shah Restaurant Amsterdam"
+      ],
+      "timeOrigin": 1794430861233.5,
+      "cart": {},
+      "draft": null,
+      "sameDraftNode": null,
+      "dictionaryRequests": 0,
+      "errors": [],
+      "businessWrites": 0
+    },
+    {
+      "name": "english-event-sibling-spa",
+      "pathname": "/en/events/gallery",
+      "search": "",
+      "hash": "",
+      "htmlLang": "en",
+      "storedLang": "en",
+      "h1": [
+        "Ambiance, dishes and moments"
+      ],
+      "timeOrigin": 1794430861484.6,
+      "cart": {},
+      "draft": null,
+      "sameDraftNode": null,
+      "dictionaryRequests": 0,
+      "errors": [],
+      "businessWrites": 0
+    },
+    {
+      "name": "english-event-to-core-spa",
+      "pathname": "/en/menu",
+      "search": "",
+      "hash": "",
+      "htmlLang": "en",
+      "storedLang": "en",
+      "h1": [
+        "Build your order — Indian menu Amsterdam-Noord"
+      ],
+      "timeOrigin": 1794430861484.6,
+      "cart": {},
+      "draft": null,
+      "sameDraftNode": null,
+      "dictionaryRequests": 0,
+      "errors": [],
+      "businessWrites": 0
+    },
+    {
+      "name": "draft-nl",
+      "pathname": "/account",
+      "search": "",
+      "hash": "",
+      "htmlLang": "nl",
+      "storedLang": "nl",
+      "h1": [
+        "Welkom terug"
+      ],
+      "timeOrigin": 1794430861484.6,
+      "cart": {},
+      "draft": "qa-unsent@example.test",
+      "sameDraftNode": true,
+      "dictionaryRequests": 1,
+      "errors": [],
+      "businessWrites": 0
+    },
+    {
+      "name": "draft-en",
+      "pathname": "/account",
+      "search": "",
+      "hash": "",
+      "htmlLang": "en",
+      "storedLang": "en",
+      "h1": [
+        "Welcome back"
+      ],
+      "timeOrigin": 1794430861484.6,
+      "cart": {},
+      "draft": "qa-unsent@example.test",
+      "sameDraftNode": true,
+      "dictionaryRequests": 1,
+      "errors": [],
+      "businessWrites": 0
+    },
+    {
+      "name": "draft-nl",
+      "pathname": "/account",
+      "search": "",
+      "hash": "",
+      "htmlLang": "nl",
+      "storedLang": "nl",
+      "h1": [
+        "Welkom terug"
+      ],
+      "timeOrigin": 1794430863231.8,
+      "cart": {},
+      "draft": "qa-unsent@example.test",
+      "sameDraftNode": true,
+      "dictionaryRequests": 1,
+      "errors": [],
+      "businessWrites": 0
+    },
+    {
+      "name": "rapid-en-nl-latest-wins",
+      "pathname": "/account",
+      "search": "",
+      "hash": "",
+      "htmlLang": "nl",
+      "storedLang": "nl",
+      "h1": [
+        "Welkom terug"
+      ],
+      "timeOrigin": 1794430863231.8,
+      "cart": {},
+      "draft": "qa-unsent@example.test",
+      "sameDraftNode": true,
+      "dictionaryRequests": 1,
+      "errors": [],
+      "businessWrites": 0
+    },
+    {
+      "name": "pending-private-language-public-navigation",
+      "pathname": "/privacy",
+      "search": "",
+      "hash": "",
+      "htmlLang": "nl",
+      "storedLang": "nl",
+      "h1": [
+        "Privacybeleid"
+      ],
+      "timeOrigin": 1794430864478.2,
+      "cart": {},
+      "draft": null,
+      "sameDraftNode": false,
+      "dictionaryRequests": 1,
+      "errors": [],
+      "businessWrites": 0
+    },
+    {
+      "name": "draft-nl",
+      "pathname": "/account",
+      "search": "",
+      "hash": "",
+      "htmlLang": "nl",
+      "storedLang": "nl",
+      "h1": [
+        "Welkom terug"
+      ],
+      "timeOrigin": 1794430866192.4,
+      "cart": {},
+      "draft": "qa-unsent@example.test",
+      "sameDraftNode": true,
+      "dictionaryRequests": 1,
+      "errors": [],
+      "businessWrites": 0
+    },
+    {
+      "name": "real-storage-events-en-nl-latest-wins",
+      "pathname": "/account",
+      "search": "",
+      "hash": "",
+      "htmlLang": "nl",
+      "storedLang": "nl",
+      "h1": [
+        "Welkom terug"
+      ],
+      "timeOrigin": 1794430866192.4,
+      "cart": {},
+      "draft": "qa-unsent@example.test",
+      "sameDraftNode": true,
+      "dictionaryRequests": 1,
+      "errors": [],
+      "businessWrites": 0
+    },
+    {
+      "name": "draft-nl",
+      "pathname": "/account",
+      "search": "",
+      "hash": "",
+      "htmlLang": "nl",
+      "storedLang": "nl",
+      "h1": [
+        "Welkom terug"
+      ],
+      "timeOrigin": 1794430868198.7,
+      "cart": {},
+      "draft": "qa-unsent@example.test",
+      "sameDraftNode": true,
+      "dictionaryRequests": 2,
+      "errors": [],
+      "businessWrites": 0
+    },
+    {
+      "name": "blocked-alternate-keeps-form",
+      "pathname": "/account",
+      "search": "",
+      "hash": "",
+      "htmlLang": "nl",
+      "storedLang": "nl",
+      "h1": [
+        "Welkom terug"
+      ],
+      "timeOrigin": 1794430868198.7,
+      "cart": {},
+      "draft": "qa-unsent@example.test",
+      "sameDraftNode": true,
+      "dictionaryRequests": 2,
+      "errors": [],
+      "businessWrites": 0
+    },
+    {
+      "name": "draft-en",
+      "pathname": "/account",
+      "search": "",
+      "hash": "",
+      "htmlLang": "en",
+      "storedLang": "en",
+      "h1": [
+        "Welcome back"
+      ],
+      "timeOrigin": 1794430868198.7,
+      "cart": {},
+      "draft": "qa-unsent@example.test",
+      "sameDraftNode": true,
+      "dictionaryRequests": 3,
+      "errors": [],
+      "businessWrites": 0
+    },
+    {
+      "name": "alternate-retry-recovers-with-same-form",
+      "pathname": "/account",
+      "search": "",
+      "hash": "",
+      "htmlLang": "en",
+      "storedLang": "en",
+      "h1": [
+        "Welcome back"
+      ],
+      "timeOrigin": 1794430868198.7,
+      "cart": {},
+      "draft": "qa-unsent@example.test",
+      "sameDraftNode": true,
+      "dictionaryRequests": 3,
+      "errors": [],
+      "businessWrites": 0
+    },
+    {
+      "name": "cart-real-ui-added",
+      "pathname": "/menukaart",
+      "search": "?q=butter",
+      "hash": "",
+      "htmlLang": "nl",
+      "storedLang": "nl",
+      "h1": [
+        "Stel je bestelling samen — Indiase menukaart Amsterdam-Noord"
+      ],
+      "timeOrigin": 1794430871084.5,
+      "cart": {
+        "tdc-butter-chicken": 1
+      },
+      "draft": null,
+      "sameDraftNode": null,
+      "dictionaryRequests": 0,
+      "errors": [],
+      "businessWrites": 0
+    },
+    {
+      "name": "cart-public-to-private",
+      "pathname": "/account",
+      "search": "",
+      "hash": "",
+      "htmlLang": "nl",
+      "storedLang": "nl",
+      "h1": [
+        "Welkom terug"
+      ],
+      "timeOrigin": 1794430871084.5,
+      "cart": {
+        "tdc-butter-chicken": 1
+      },
+      "draft": "qa-unsent@example.test",
+      "sameDraftNode": true,
+      "dictionaryRequests": 1,
+      "errors": [],
+      "businessWrites": 0
+    },
+    {
+      "name": "draft-en",
+      "pathname": "/account",
+      "search": "",
+      "hash": "",
+      "htmlLang": "en",
+      "storedLang": "en",
+      "h1": [
+        "Welcome back"
+      ],
+      "timeOrigin": 1794430871084.5,
+      "cart": {
+        "tdc-butter-chicken": 1
+      },
+      "draft": "qa-unsent@example.test",
+      "sameDraftNode": true,
+      "dictionaryRequests": 1,
+      "errors": [],
+      "businessWrites": 0
+    },
+    {
+      "name": "cart-real-ui-added",
+      "pathname": "/menukaart",
+      "search": "?q=butter",
+      "hash": "",
+      "htmlLang": "nl",
+      "storedLang": "nl",
+      "h1": [
+        "Stel je bestelling samen — Indiase menukaart Amsterdam-Noord"
+      ],
+      "timeOrigin": 1794430934575,
+      "cart": {
+        "tdc-butter-chicken": 1
+      },
+      "draft": null,
+      "sameDraftNode": null,
+      "dictionaryRequests": 0,
+      "errors": [],
+      "businessWrites": 0
+    },
+    {
+      "name": "cart-public-to-private",
+      "pathname": "/account",
+      "search": "",
+      "hash": "",
+      "htmlLang": "nl",
+      "storedLang": "nl",
+      "h1": [
+        "Welkom terug"
+      ],
+      "timeOrigin": 1794430934575,
+      "cart": {
+        "tdc-butter-chicken": 1
+      },
+      "draft": "qa-unsent@example.test",
+      "sameDraftNode": true,
+      "dictionaryRequests": 1,
+      "errors": [],
+      "businessWrites": 0
+    },
+    {
+      "name": "draft-en",
+      "pathname": "/account",
+      "search": "",
+      "hash": "",
+      "htmlLang": "en",
+      "storedLang": "en",
+      "h1": [
+        "Welcome back"
+      ],
+      "timeOrigin": 1794430934575,
+      "cart": {
+        "tdc-butter-chicken": 1
+      },
+      "draft": "qa-unsent@example.test",
+      "sameDraftNode": true,
+      "dictionaryRequests": 1,
+      "errors": [],
+      "businessWrites": 0
+    },
+    {
+      "name": "cart-private-to-english-event",
+      "pathname": "/en/events/gallery",
+      "search": "",
+      "hash": "",
+      "htmlLang": "en",
+      "storedLang": "en",
+      "h1": [
+        "Ambiance, dishes and moments"
+      ],
+      "timeOrigin": 1794430934575,
+      "cart": {
+        "tdc-butter-chicken": 1
+      },
+      "draft": null,
+      "sameDraftNode": false,
+      "dictionaryRequests": 1,
+      "errors": [],
+      "businessWrites": 0
+    },
+    {
+      "name": "cart-back-private",
+      "pathname": "/account",
+      "search": "",
+      "hash": "",
+      "htmlLang": "en",
+      "storedLang": "en",
+      "h1": [
+        "Welcome back"
+      ],
+      "timeOrigin": 1794430934575,
+      "cart": {
+        "tdc-butter-chicken": 1
+      },
+      "draft": "",
+      "sameDraftNode": false,
+      "dictionaryRequests": 1,
+      "errors": [],
+      "businessWrites": 0
+    },
+    {
+      "name": "cart-forward-public",
+      "pathname": "/en/events/gallery",
+      "search": "",
+      "hash": "",
+      "htmlLang": "en",
+      "storedLang": "en",
+      "h1": [
+        "Ambiance, dishes and moments"
+      ],
+      "timeOrigin": 1794430934575,
+      "cart": {
+        "tdc-butter-chicken": 1
+      },
+      "draft": null,
+      "sameDraftNode": false,
+      "dictionaryRequests": 1,
+      "errors": [],
+      "businessWrites": 0
+    },
+    {
+      "name": "draft-nl",
+      "pathname": "/account",
+      "search": "",
+      "hash": "",
+      "htmlLang": "nl",
+      "storedLang": "nl",
+      "h1": [
+        "Welkom terug"
+      ],
+      "timeOrigin": 1794430936190.3,
+      "cart": {},
+      "draft": "qa-unsent@example.test",
+      "sameDraftNode": true,
+      "dictionaryRequests": 0,
+      "errors": [],
+      "businessWrites": 0
+    },
+    {
+      "name": "draft-en",
+      "pathname": "/account",
+      "search": "",
+      "hash": "",
+      "htmlLang": "en",
+      "storedLang": "en",
+      "h1": [
+        "Welcome back"
+      ],
+      "timeOrigin": 1794430936190.3,
+      "cart": {},
+      "draft": "qa-unsent@example.test",
+      "sameDraftNode": true,
+      "dictionaryRequests": 0,
+      "errors": [],
+      "businessWrites": 0
+    },
+    {
+      "name": "cold-utility-both-dictionaries-nl",
+      "pathname": "/account",
+      "search": "",
+      "hash": "",
+      "htmlLang": "en",
+      "storedLang": "en",
+      "h1": [
+        "Welcome back"
+      ],
+      "timeOrigin": 1794430936190.3,
+      "cart": {},
+      "draft": "qa-unsent@example.test",
+      "sameDraftNode": true,
+      "dictionaryRequests": 0,
+      "errors": [],
+      "businessWrites": 0
+    },
+    {
+      "name": "draft-en",
+      "pathname": "/account",
+      "search": "",
+      "hash": "",
+      "htmlLang": "en",
+      "storedLang": "en",
+      "h1": [
+        "Welcome back"
+      ],
+      "timeOrigin": 1794430937075.9,
+      "cart": {},
+      "draft": "qa-unsent@example.test",
+      "sameDraftNode": true,
+      "dictionaryRequests": 0,
+      "errors": [],
+      "businessWrites": 0
+    },
+    {
+      "name": "draft-nl",
+      "pathname": "/account",
+      "search": "",
+      "hash": "",
+      "htmlLang": "nl",
+      "storedLang": "nl",
+      "h1": [
+        "Welkom terug"
+      ],
+      "timeOrigin": 1794430937075.9,
+      "cart": {},
+      "draft": "qa-unsent@example.test",
+      "sameDraftNode": true,
+      "dictionaryRequests": 0,
+      "errors": [],
+      "businessWrites": 0
+    },
+    {
+      "name": "cold-utility-both-dictionaries-en",
+      "pathname": "/account",
+      "search": "",
+      "hash": "",
+      "htmlLang": "nl",
+      "storedLang": "nl",
+      "h1": [
+        "Welkom terug"
+      ],
+      "timeOrigin": 1794430937075.9,
+      "cart": {},
+      "draft": "qa-unsent@example.test",
+      "sameDraftNode": true,
+      "dictionaryRequests": 0,
+      "errors": [],
+      "businessWrites": 0
+    }
+  ],
+  "failures": [],
+  "totals": {
+    "businessWritesIntercepted": 0,
+    "externalRequestsBlocked": 0,
+    "contextsClosed": 33
+  },
+  "harnessCorrection": {
+    "originalAttempt": "locale-incomplete-selector-attempt.json",
+    "reason": "Test requested a footer event-hub link that does not exist; existing footer Gallery link used for continuation. Application unchanged."
+  },
+  "limits": [
+    "Local isolated guest fixture; no login, checkout, reservation, or business submission.",
+    "No performance or Google CODE-mode validator run; no physical Safari testing.",
+    "Cold tests use reduced motion; cinematic playback is separately tested.",
+    "Native alternate anchor hrefs are crawlable canonical paths; query/hash preservation is tested on the hydrated language action."
+  ],
+  "status": "PASS",
+  "trafficFinishedAt": "2026-11-11T21:02:17.690Z"
+}

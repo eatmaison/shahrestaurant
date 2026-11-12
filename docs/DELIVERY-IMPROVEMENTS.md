@@ -1,0 +1,27 @@
+# Delivery improvements — continuation controls
+
+The table below preserves the U5 byte control, source `022346f521b958992ffa443cfcff84cd4dcddae3a3e6c02dd04ac899971057da` (514 inputs); it is not the current movie/session artifact. Current build `s_2pU6IxrWANtKLhFIf2S` has548 inputs and [fresh24-route payload measurements](cinematic-shah-complete-payload-2026-11-12.json): JS153,296–183,621 gzip bytes still fails the original120,000-byte gate on every route; CSS26,601–39,866 passes40,000 on every route. Removing only unconditionally overridden homepage rules recovered180 gzip bytes from the tEO candidate, preserving the winning design. Current functional proof and older performance controls are distinguished in [final verification](CINEMATIC-FINAL-VERIFICATION.md). No deployment or new field Core Web Vitals result is claimed.
+
+The public site now has **24 URLs in 12 NL/EN pairs**: five core pairs and seven event pairs. Each pair has URL-authoritative SSR language, reciprocal alternates, self-canonical/social metadata, localized navigation and breadcrumbs. The wUs compiled control passed 24 pages, 72 hreflang/sitemap alternates, 22 breadcrumb routes, 678 public links and 34 anchors; FAQ and initial menu prices matched visible content and the pinned 224-product/two-brand snapshot. [Preserved SEO control](cinematic-seo-control-wUsQV2PkRJMdBoQDSZLxt-2026-11-11.json) and [implementation](event-locale-pairs-implementation-2026-11-11.json) record that scope; Google current CODE validators remain **NOT_RUN**.
+
+**Images and controls.** Added 74 responsive JPEG compatibility variants (30 restaurant, 40 gallery, 4 posters), while preserving the existing modern-format priority and protected originals. The verified maxima are 194,989 B/194,717 B for restaurant/gallery and 113,207 B for posters. Lossy visual comparisons and scope limits are in the [JPEG report](jpeg-photo-fallbacks-v1.md). Public control CSS now targets 48px; wUs measured 78 public/guest cases across 320/390/1440 px and 29 input cases. U5 freshly checked 12 home/reservation cases with no measured target below 48px or document overflow. Separate scoped inline/200% probes passed 18 target cases and six text-reflow cases. These are bounded geometry checks, not a universal future-content claim; [source audit](cinematic-touch-target-audit-2026-11-11.json) retains the earlier baseline.
+
+**Icons and language delivery.** Public runtime icon imports became 107 wrappers referencing three same-origin SVG sprites; ordered glyph geometry is preserved. Exact paths, licences and browser limitations are in the [sprite report](icon-sprites-v1.md). Root SSR now supplies one complete selected-language dictionary on public URLs, both on cold utility routes. Missing utility strings load on demand before language state changes. The [wUs browser proof](event-locale-browser-2026-11-11.json) records 53 observations: all 24 cold public pages with opposite saved preferences requested no deferred dictionary; cold utility switches, the same draft DOM/value, delayed/storage/navigation races, failed-chunk retry and local cart/history checks passed without business writes. Reuse on another build requires matching the recorded module hashes.
+
+## Measured bytes and displaced costs
+
+Both inventories sum distinct initial external assets at gzip level 6 and byte-match served files. Decimal bytes below compare the previous 17-page [Hj2 control](cinematic-cookie-ssr-payload-2026-11-11.json) with the [U5 24-page control](cinematic-autoplay-final-payload-2026-11-11.json) on matching routes. They include concurrent continuation changes; they do not isolate one optimization.
+
+| Route | Hj2 JS | U5 JS | Hj2 HTML | U5 HTML | JS + HTML change |
+|---|---:|---:|---:|---:|---:|
+| `/` |225,989|183,519|20,922|27,941|−35,451|
+| `/menukaart` |217,735|174,418|44,251|50,839|−36,729|
+| `/reserveren` |204,015|161,300|15,735|24,065|−34,385|
+| `/privacy` |196,588|152,885|11,653|21,110|−34,246|
+| `/events` |196,174|153,787|13,047|20,748|−34,686|
+
+Dictionary data now travels inside HTML/Flight, so the external JS reduction has an HTML cost. Static SVG bodies are another separate cost: [manifest](icon-sprites-v1.json) gzip sizes are **6,066 B common + 10,000 B catalog + 7,123 B features = 23,189 B** for the complete set. Captured wUs raw home HTML references common and catalog (16,066 B combined); legal HTML references common (6,066 B). Features can add 7,123 B when referenced by an interaction. These are standalone encoded asset sizes, not measured compressed HTTP response totals or additional JS. Cache reuse and server encoding affect actual transfer. Fonts, posters/video, other images, API data, deferred imports, navigation prefetch and legacy polyfills are also outside the external JS/CSS totals; the table is not an all-transfer saving claim.
+
+U5 initial external JS is 152,715–183,520 B: **all 24 routes still fail the original `<120,000B` gate**. CSS is 26,419–39,749 B: **all 24 pass `<40,000B`**. Payload changes alone establish no Lighthouse, LCP, INP, CLS or TBT result.
+
+Task-local 48px control evidence: `Temp/shah-tap-targets-20261111/wUsQV2PkRJMdBoQDSZLxt/{targets-compiled,touch-keyboard-results}.json`, `U5-gxuCUwhE6QFQ1NV8jE/targets-compiled.json` and `U5-gxuCUwhE6QFQ1NV8jE-inline/inline-preview.json`. The Cde native-skip control and newer approved-media framing/Skip checks are recorded separately; neither relabels U5 as the current artifact.

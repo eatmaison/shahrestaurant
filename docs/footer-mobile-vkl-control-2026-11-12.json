@@ -1,0 +1,44 @@
+{
+  "build": "VKLjgu-1RUsSY6wilFOyC",
+  "origin": "http://127.0.0.1:3678",
+  "scope": "Eight320/360/390/430 NL/EN homepage footer baselines. Own footer source read-at-time SHA only; no whole-worktree freeze claim.",
+  "footerSourceSHA": "a0584954f931a4e1b9aa1216395b4a34f53f9e768874edc78343a431ec46c0b9",
+  "raw": {
+    "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-footer-20261112\\VKL-before\\footer-measurements.json",
+    "sha256": "fce83e48070141dca1810fbc838d2a09b4e4d743d2b85eeff8f180ea25c29b92"
+  },
+  "screenshots": [
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-footer-20261112\\VKL-before\\footer-320-nl.png",
+      "sha256": "21e63fd623b16ec5978d4c8240572b229c51a402756fd8ce09dcb427098de186"
+    },
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-footer-20261112\\VKL-before\\footer-320-en.png",
+      "sha256": "1607a1d533195ec9900c2137621e746db036eee3b86ab3550b7c2f299e5a804a"
+    },
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-footer-20261112\\VKL-before\\footer-360-nl.png",
+      "sha256": "202fb8ed96506b9081d6e1bf7c6b2e46708a24035add89a3dd213fb728e178fa"
+    },
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-footer-20261112\\VKL-before\\footer-360-en.png",
+      "sha256": "b3dba88526a50d949e19dd3e5f19b2d6ee98aecfa287898b4ec0d38e1c747ca8"
+    },
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-footer-20261112\\VKL-before\\footer-390-nl.png",
+      "sha256": "5b9ffd365bd720f319eec5149bed31656afb2cfa5a85e70e804acf56a1e414f4"
+    },
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-footer-20261112\\VKL-before\\footer-390-en.png",
+      "sha256": "dd1585069adee71a0fccd84ed75d8f041f18ffe8ecad5a152e889e92178eb676"
+    },
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-footer-20261112\\VKL-before\\footer-430-nl.png",
+      "sha256": "1ba704250e0ad907e848f0b686cdc09acec5fb60fdfbd92c11cfd657014c4c0e"
+    },
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-footer-20261112\\VKL-before\\footer-430-en.png",
+      "sha256": "f3d56037647d3486423ee7667b4789eaa3a9f5582c788e8efb0a8a894771261e"
+    }
+  ]
+}

@@ -1,0 +1,208 @@
+{
+ "schemaVersion": 1,
+ "classification": "NAZ0 failed once-per-tab handoff/session control; not acceptance",
+ "assembledAtUtc": "2026-11-11T23:14:01.615Z",
+ "buildId": "NAZ0-A2z7qMHf_7txzakH",
+ "dist": ".next-review-capcut-handoff-20261111",
+ "sourceFingerprint": "dcb9b5edc19cb5ad927e227c27cc2e9d82ab84f10f2f788e1633231a9383f82c",
+ "recordedSourceInputs": 530,
+ "recordedOrigin": "http://127.0.0.1:3628",
+ "overallAcceptance": false,
+ "desktopPriorityPass": false,
+ "reloadSessionPass": false,
+ "oncePerTabPass": false,
+ "mobileCaseRunForThisControl": false,
+ "newBrowserOrTimingRunForThisReport": false,
+ "contract": "Closing-second smooth handoff, consume/remove hero and release media, once per tab",
+ "sessionFailure": {
+  "key": "shah:intro:desktop-v3-mobile-v2:1",
+  "expectedClaimedValue": "1",
+  "observedValueAtEveryRecordedStep": null,
+  "sameTarget": true,
+  "targetId": "FC2EC9EFF5D7FA7EB66E17125D2B44CD",
+  "sameOrigin": "http://127.0.0.1:3628",
+  "steps": [
+   {
+    "label": "initial",
+    "targetId": "FC2EC9EFF5D7FA7EB66E17125D2B44CD",
+    "path": "/",
+    "origin": "http://127.0.0.1:3628",
+    "timeOrigin": 1794438623014.6,
+    "key": null,
+    "rootConsumed": null,
+    "stage": "waiting",
+    "response": null
+   },
+   {
+    "label": "consumed",
+    "targetId": "FC2EC9EFF5D7FA7EB66E17125D2B44CD",
+    "path": "/",
+    "origin": "http://127.0.0.1:3628",
+    "timeOrigin": 1794438623014.6,
+    "key": null,
+    "rootConsumed": "true",
+    "stage": "consumed",
+    "response": null
+   },
+   {
+    "label": "reload",
+    "targetId": "FC2EC9EFF5D7FA7EB66E17125D2B44CD",
+    "path": "/",
+    "origin": "http://127.0.0.1:3628",
+    "timeOrigin": 1794438624345.4,
+    "key": null,
+    "rootConsumed": "true",
+    "stage": "consumed",
+    "response": {
+     "status": 200,
+     "build": "NAZ0-A2z7qMHf_7txzakH",
+     "clearSiteData": null
+    }
+   },
+   {
+    "label": "menu-immediate",
+    "targetId": "FC2EC9EFF5D7FA7EB66E17125D2B44CD",
+    "path": "/menukaart",
+    "origin": "http://127.0.0.1:3628",
+    "timeOrigin": 1794438624940.1,
+    "key": null,
+    "rootConsumed": null,
+    "stage": null,
+    "response": {
+     "status": 200,
+     "build": "NAZ0-A2z7qMHf_7txzakH",
+     "clearSiteData": null
+    }
+   },
+   {
+    "label": "menu-settled",
+    "targetId": "FC2EC9EFF5D7FA7EB66E17125D2B44CD",
+    "path": "/menukaart",
+    "origin": "http://127.0.0.1:3628",
+    "timeOrigin": 1794438624940.1,
+    "key": null,
+    "rootConsumed": null,
+    "stage": null,
+    "response": null
+   },
+   {
+    "label": "home-immediate",
+    "targetId": "FC2EC9EFF5D7FA7EB66E17125D2B44CD",
+    "path": "/",
+    "origin": "http://127.0.0.1:3628",
+    "timeOrigin": 1794438625995.1,
+    "key": null,
+    "rootConsumed": null,
+    "stage": null,
+    "response": {
+     "status": 200,
+     "build": "NAZ0-A2z7qMHf_7txzakH",
+     "clearSiteData": null
+    }
+   },
+   {
+    "label": "home-settled",
+    "targetId": "FC2EC9EFF5D7FA7EB66E17125D2B44CD",
+    "path": "/",
+    "origin": "http://127.0.0.1:3628",
+    "timeOrigin": 1794438625995.1,
+    "key": null,
+    "rootConsumed": null,
+    "stage": "playing",
+    "response": null
+   }
+  ],
+  "capturedResponseCount": 3,
+  "allCapturedResponseStatuses200": true,
+  "noClearSiteDataInCapturedResponseHeaders": true,
+  "storageEventCount": 0,
+  "homeReturnStage": "playing",
+  "homeReplaysInsteadOfRemainingConsumed": true,
+  "originalRunnerError": "Error: same-tab menu/home return failed {\"state\":{\"at\":13116.700000047684,\"y\":0,\"root\":\"true\",\"track\":{\"filmTrack\":\"true\",\"filmState\":\"dismissed\",\"filmProgress\":\"0.9572\",\"filmComplete\":\"false\",\"filmBypassed\":\"true\",\"filmConsumed\":\"true\",\"filmDismissal\":\"closing-second-handoff\",\"height\":0},\"introTop\":0,\"video\":null,\"header\":true,\"ready\":\"complete\"},\"beforeCount\":1,\"after\":2}",
+  "recordedMediaRequestCounts": {
+   "beforeHomeReturn": 1,
+   "afterHomeReturn": 2
+  },
+  "qualification": "Reload and menu/home return do not pass once-per-tab acceptance. A consumed DOM flag or a later handoff does not substitute for a persisted session key."
+ },
+ "observedClosingSecondMechanics": {
+  "scope": "Observed in the replayed document captured inside the failure trace, not a pass for the entire desktop-priority sequence.",
+  "traceStatePath": "trace.states.19",
+  "duration": 12.332667,
+  "handoffVideoTime": 11.333931,
+  "remainingSeconds": 0.998736000000001,
+  "trackAtHandoff": {
+   "filmTrack": "true",
+   "filmState": "handoff",
+   "filmProgress": "0.919",
+   "filmComplete": "false",
+   "filmBypassed": "true",
+   "filmHandoff": "true",
+   "height": 900
+  },
+  "consumedFailureState": {
+   "at": 13121.300000190735,
+   "scrollY": 0,
+   "rootConsumed": "true",
+   "track": {
+    "filmTrack": "true",
+    "filmState": "dismissed",
+    "filmProgress": "0.9572",
+    "filmComplete": "false",
+    "filmBypassed": "true",
+    "filmConsumed": "true",
+    "filmDismissal": "closing-second-handoff",
+    "height": 0
+   },
+   "introTop": 0,
+   "video": null,
+   "headerVisible": true,
+   "readyState": "complete"
+  },
+  "handoffObserved": true,
+  "heroRemovedHeightZero": true,
+  "videoRemoved": true,
+  "headerVisible": true,
+  "introTopZero": true,
+  "naturalFullVideoEndedClaimed": false
+ },
+ "harnessQualification": {
+  "initialRunnerAcceptedTooWeakAWait": true,
+  "persistedKey1WasNotRequired": true,
+  "laterHandoffOrRestoredScrollCouldSatisfyWait": true,
+  "consequence": "Do not relabel initial desktop, reload or session-once behavior as PASS. The strengthened harness must require key1 and no new film request/playback across same-tab reload and menu/home navigation.",
+  "newBuildVerification": "Pending separately after root fixes the claim timing; no old mobile result is reused for this build."
+ },
+ "diagnosis": {
+  "attribution": "Confirmed source investigation relayed by parent/root; this offline index does not perform a fresh source audit.",
+  "reportedBug": "claimIntroEntry is called only from a child layout effect and can return before the parent ref is set. The observed compiled flow leaves the session claim key absent.",
+  "fixOwner": "root/high owner",
+  "fixAcceptance": "Pending new artifact and separate strengthened-harness verification."
+ },
+ "proofRoot": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cinematic-qa-20261111\\production\\autoplay-NAZ0-A2z7qMHf_7txzakH",
+ "proofs": [
+  {
+   "file": "nl-desktop-priority-failure.json",
+   "bytes": 23171,
+   "sha256": "c8b95cfc50ff1ffc2334fd263867b78329cbeabec2ec74b386f2971fa1d90cde"
+  },
+  {
+   "file": "session-navigation-diagnostic.json",
+   "bytes": 36037,
+   "sha256": "1336a78e770835a8b6c79cbfbf931340aef0920b676320488c862c30516322fe"
+  },
+  {
+   "file": "nl-desktop-consumed.png",
+   "bytes": 184224,
+   "sha256": "1557da57f10e0b6ef66cb0eb13e1fe90b204f69ed1b7ab0358b8a04a82b703aa"
+  }
+ ],
+ "limits": [
+  "Failure evidence only; overall desktop/session acceptance is FALSE even though closing-second mechanics were observed in a replayed document.",
+  "All three captured document response snapshots are200 with matching NAZ0 build and no Clear-Site-Data header; this is not a claim about every unrecorded network response.",
+  "The same target/origin and null key are preserved at initial,consumed,reload,menu-immediate,menu-settled,home-immediate,home-settled steps. Empty storageEvents alone is not proof that no storage API was used.",
+  "No mobile case,physical-device/Safari certification,Lighthouse,fieldCWV or performance guarantee is established by this index.",
+  "The original event/request arrays remain in SHA-bound raw files and are not copied here.",
+  "Current workspace,main preview,pending fixes and future builds are outside this historical identity. No app/config/browser/Git changes were made by this report."
+ ]
+}

@@ -1,71 +1,56 @@
-# Structured data verification — 11 November 2026
+# Structured data verification — 12 November 2026
 
-**Current status: local validation passed for all 17 public pages. Current Google Rich Results Test CODE validation: NOT RUN.** No current Google eligibility, indexing, ranking or rich-result-display claim is made.
+**Local parsing/coherence passed for 24 public URLs in 12 NL/EN pairs. Current external Google Rich Results Test CODE validation: NOT_RUN.** These are local schema facts, not external Google acceptance; runtime evidence is separate.
 
-## Current compiled evidence
+## Latest compiled control
 
-Inspected cookie SSR candidate build: Hj2ubUjCMfbacacwFligZ. Compiled source hash: 1b9a194de54237b2104232c89ce249729ddd466a648d819a1118bcd81717fc62 (418 build inputs). Local HTTP checks started at 2026-11-11T19:29:00.493Z and ended at 2026-11-11T19:29:00.953Z. This build contains cookie SSR and first-gallery rendering changes; the schema payloads and public image bytes were verified unchanged from prior controls. No publication occurred.
+Build: `s_2pU6IxrWANtKLhFIf2S`. Source: `0d98fae249ab1b1516cd84408a7a4725ddaf9dcc0028a3093c28c0b9d5ea670d` (548 inputs). Origin: `http://127.0.0.1:3708`. The 26 GET-only document requests started at 2026-11-12T01:39:21.042Z and ended at 2026-11-12T01:39:21.479Z. This artifact is now promoted to main/LAN. This report verifies raw HTML and schemas; runtime/session interaction results and physical-device reports remain separate. Main/LAN promotion is tracked separately in [local preview](LOCAL_PREVIEW.md).
 
-All 17 server-rendered JSON-LD payloads parse. The seven event pages each contain the exact shared Dutch site graph, with one Restaurant, Organization, WebSite and ImageObject, plus the route breadcrumb. The duplicate About-page Restaurant is gone. Four service pages reference the root Restaurant ID and contain no fixed offer-price fields.
+[Exact current schema evidence](structured-data-local-s_2pU6Ix-2026-11-12.json) records 60 parsed script blocks, per-block/code hashes and 24 prepared CODE snippets in Temp. The [paired SEO proof](cinematic-paired-events-seo-2026-11-11.json) verifies 24 exact-build HTTP 200 responses, URL language, one H1, self-canonical/social metadata, 72 hreflang links, 24 sitemap entries/72 alternates, 654 localized public links and 34 hash anchors. The scope is five core pairs plus seven event pairs, not 24 language pairs.
 
-Both homepages contain nine FAQ questions and answers. Their text and order exactly match the nine server-rendered details panels. All 15 non-home breadcrumb lists have the expected canonical path sequence and positions. Canonical comparisons normalize equivalent homepage URL serialization with or without the final slash.
+Each page contains exactly one same-locale Restaurant/Organization/WebSite/ImageObject graph. The graph matches the captured homepage graph for that language; menu and search destinations use the correct locale. All 22 non-home routes contain one visible breadcrumb navigation and one BreadcrumbList, sequential positions and the correct final canonical URL. No AggregateRating is emitted.
 
-The two canonical menu routes each initially emit two visible Tandoor menu items. Every emitted name/price pair matches the approved immutable public snapshot of 224 products and two brands, captured at 2026-11-11T14:02:15.463Z. Snapshot SHA-256: 66eda306b74cf90dc15ad018cc3064212349151810d8df2e098a06d6e8588892. This is subset verification, not validation of every product as a Google rich result or a fresh live-database price claim.
+Eight service routes (four NL/EN pairs) reference `https://shahrestaurant.nl/#restaurant`, use their own canonical URL and contain no fixed Offer/AggregateOffer pricing. Both gallery routes emit ImageGallery with their own locale URL and ten known highest-delivery WebP image URLs. The historical duplicate About Restaurant node remains absent.
 
-All seventeen code payloads and their individual script blocks are byte-identical to verified CrBm and nlBA, and therefore to the prepared polished SK payloads. The ten core-page snippets also remain identical to qtEl. Compared with the older TFn5 payloads, the two homepage FAQ blocks changed from eight questions to nine. Exact per-block JSON text hashes, script hashes, saved-code hashes and metadata are in [the current cookie SSR local proof](structured-data-local-Hj2ubUjC-2026-11-11.json).
+Both homepages have nine FAQ items whose text/order exactly match the visible details panels. Each canonical menu initially publishes two visible Tandoor dishes; emitted category/name/price/EUR values match the immutable 224-product/two-brand public snapshot captured at 2026-11-11T14:02:15.463Z, SHA-256 `66eda306b74cf90dc15ad018cc3064212349151810d8df2e098a06d6e8588892`. This verifies the initial visible subset, not every catalog item or fresh live-database prices.
 
-| Public route | Local schema checks | CODE SHA-256 prefix | Current Google CODE result |
-|---|---|---|---|
-| / | Pass; FAQPage (9) | 20a1b7957573… | Not run |
-| /en | Pass; FAQPage (9) | aaccbf517ee2… | Not run |
-| /menukaart | Pass; Menu (2 visible items) | 5819906bc1b5… | Not run |
-| /en/menu | Pass; Menu (2 visible items) | e2c6a1ed3ea1… | Not run |
-| /reserveren | Pass | fc6c97c50b01… | Not run |
-| /en/reservations | Pass | ea885de48098… | Not run |
-| /privacy | Pass | bc2650c1cd05… | Not run |
-| /en/privacy | Pass | d6e99a21ddfe… | Not run |
-| /voorwaarden | Pass | c3a8fcb90b27… | Not run |
-| /en/terms | Pass | aa627c3869e3… | Not run |
-| /events | Pass | d013b21204ae… | Not run |
-| /events/about | Pass | 426449171534… | Not run |
-| /events/birthdays | Pass; Service | c9ff32670676… | Not run |
-| /events/celebrations | Pass; Service | 5496cf707e29… | Not run |
-| /events/company-catering | Pass; Service | 16f0b73dae76… | Not run |
-| /events/company-lunches | Pass; Service | 5dd137c579c6… | Not run |
-| /events/gallery | Pass; ImageGallery | 8fa8fe73ee5a… | Not run |
+All 24 saved JSON-LD CODE payloads are byte-identical to the [preceding KIb4 control](cinematic-seo-control-KIb4T9-xcI_ECXiULLD-H-2026-11-11.json). Metadata and the changed intro runtime are separate from that exact schema comparison. Every row below passed local parsing/coherence; **Google CODE is NOT_RUN for every row**.
 
-Every row also contains the shared site graph. Non-home rows include BreadcrumbList. The table's local pass is not an external Google pass.
+| Route | JSON-LD blocks | Specialized local content | CODE SHA-256 prefix |
+|---|---:|---|---|
+| `/` | 2 | FAQPage:9 | `8a316bafbfb1` |
+| `/en` | 2 | FAQPage:9 | `bce70552b737` |
+| `/menukaart` | 3 | Menu:2 visible dishes | `75291938f653` |
+| `/en/menu` | 3 | Menu:2 visible dishes | `9596b31cd4a2` |
+| `/reserveren` | 2 | Shared graph | `aceb6df0f507` |
+| `/en/reservations` | 2 | Shared graph | `1b136d913429` |
+| `/privacy` | 2 | Shared graph | `b6f1fbd2039c` |
+| `/en/privacy` | 2 | Shared graph | `9f5dfd90527f` |
+| `/voorwaarden` | 2 | Shared graph | `b79517b780f3` |
+| `/en/terms` | 2 | Shared graph | `faaaef47794c` |
+| `/events` | 2 | Shared graph | `1d1273cfa59a` |
+| `/en/events` | 2 | Shared graph | `3ea1fa19606c` |
+| `/events/about` | 2 | Shared graph | `1d119052d155` |
+| `/en/events/about` | 2 | Shared graph | `f3357820b44d` |
+| `/events/gallery` | 3 | ImageGallery:10 images | `fd5b9d9bd349` |
+| `/en/events/gallery` | 3 | ImageGallery:10 images | `d0b9b28e27b8` |
+| `/events/birthdays` | 3 | Service | `37e1068f1a76` |
+| `/en/events/birthdays` | 3 | Service | `0a631e16b5c9` |
+| `/events/celebrations` | 3 | Service | `0bf61885ad93` |
+| `/en/events/celebrations` | 3 | Service | `c36e687fbb90` |
+| `/events/company-catering` | 3 | Service | `76896fb7de4f` |
+| `/en/events/company-catering` | 3 | Service | `932a8910ff42` |
+| `/events/company-lunches` | 3 | Service | `853aa9498f69` |
+| `/en/events/company-lunches` | 3 | Service | `41bf04fdb033` |
 
-## Served image evidence
+## Images and verification limits
 
-The ImageGallery schema references the ten highest delivered WebP URLs. On verified nlBA, all 80 gallery variants and three shared schema/social files were fetched: all 83 returned HTTP 200, correct MIME types, bodies below 200,000 bytes and immutable one-year cache headers. Every gallery response matched its recorded size and SHA-256; the largest was 197,878 bytes. For current Hj2, all 83 public files were checked again and matched those exact bytes and hashes. This refresh made 17 schema-page GETs, with zero image/API re-downloads. The image HTTP observations are explicitly carried from nlBA, not reported as fresh Hj2 responses. These are encoded image bodies, not total page transfers.
+The 13 distinct referenced gallery/shared/social/logo files were checked against the frozen compiled input hashes. No image body, business API or live database was requested in this schema refresh. This is file identity, not fresh image HTTP/MIME/cache or browser currentSrc testing. Earlier [gallery delivery](event-gallery-assets-v1.md), [JPEG fallback](jpeg-photo-fallbacks-v1.md) and [historical 17-page local proof](structured-data-local-Hj2ubUjC-2026-11-11.json) keep their original artifact scopes. Unknown uploaded gallery images and future catalog changes are outside this bounded result.
 
-[Gallery generation and visual QA](event-gallery-assets-v1.md) documents preserved originals, EXIF auto-orientation, responsive variants and corrected photograph captions. Unknown future admin-uploaded images retain their existing pipeline and are outside the 80-file guarantee.
+## External Google CODE status
 
-Fresh current Hj2 server HTML contains ten native gallery pictures with AVIF sources before WebP sources and exact 320/640/960/1280 srcsets. Only known gallery index 0 is eager with high fetch priority; the other nine remain lazy and all use async decoding. This HTTP-only pass did not inspect browser currentSrc selection.
+The recorded initialization attempt at 2026-11-11T21:39:46.464Z called `mcp__cua_repl.js` with `await cua.getState()`. It failed before opening Google or submitting code: `node_repl kernel exited unexpectedly`; diagnostic `windows sandbox failed: orchestrator_helper_incomplete: setup helper exited successfully before setup completed`. [Exact attempt record](structured-data-external-validator-attempt-20261111.json). This is a tool/kernel blocker, not a schema validation failure. No new external test was attempted during this HTTP-only refresh.
 
-The previously verified read-only v2 preview fixture returned HTTP 200 for bootstrap with 224 products, two brands and no user; all 224 product names/prices matched the approved snapshot. Its gallery endpoint returned an explicit empty upload fixture with HTTP 200. This does not assert that the production upload gallery is empty. The v2 fixture and approved snapshot were unchanged in this cookie SSR refresh; no new API request was made. The menu schema subsets were freshly parsed and compared against the approved snapshot again. Only GET requests were sent; no write endpoint was exercised.
+No current Google result URL, detected-item count, external warning/error list or screenshot exists for these 24 payloads. Local JSON parsing, visible FAQ equality, Menu price checks and Service/ImageGallery coherence do not establish Google feature eligibility, crawling, indexing, rankings or rich-result display. External validator capabilities were not re-researched here; prior feature-support statements are not treated as current validation.
 
-Previous evidence is retained separately: [CrBm AA proof](structured-data-local-CrBmCcjg-2026-11-11.json), [nlBA usability proof](structured-data-local-nlBAxpm6-2026-11-11.json) and [SK polished proof](structured-data-local-SK_WHU6G-2026-11-11.json).
-
-## Google CODE scope and current limits
-
-No current payload has been submitted in this audit. Current result URLs, detected-item counts, external errors and screenshots therefore remain unrecorded. Isolated browser DOM providers are unavailable in this session, and no coordinated native input window occurred. Current external Google CODE validation is NOT RUN.
-
-Google's [Rich Results Test help](https://support.google.com/webmasters/answer/7445569) permits testing pasted code. Such a test checks supported rich-result markup; it is not a live URL inspection or a deployment, and it does not establish crawling, indexing or actual display. Google also states that valid structured data does not guarantee a particular Search appearance in its [Local Business guidance](https://developers.google.com/search/docs/appearance/structured-data/local-business).
-
-FAQPage remains emitted for semantic consistency, but Google removed FAQ rich results and its Rich Results Test support in 2026; see [Google's documentation updates](https://developers.google.com/search/updates). It must not be reported as a currently validated Google FAQ feature.
-
-Menu, MenuSection and MenuItem are not standalone features in [Google's supported structured-data gallery](https://developers.google.com/search/docs/appearance/structured-data/search-gallery). Local Menu parsing and snapshot price equality do not validate their embedded Offers as Google rich results. Service and ImageGallery parsing likewise carries no standalone rich-result eligibility claim.
-
-The real menu search target is present in SearchAction, but Google removed the sitelinks search-box feature from 21 November 2024; see [Google's announcement](https://developers.google.com/search/blog/2024/10/sitelinks-search-box). The presence of WebSite, SearchAction or a basic ImageObject must not be described as external validation of every schema.org type.
-
-## Historical Google result — not current-build evidence
-
-An earlier Dutch shared business graph was submitted to Google's CODE test earlier on 11 November 2026; its exact UTC test time and block hashes were not recorded. It reported two valid items: one Local Business/Restaurant and one Organization, with a non-critical missing-priceRange warning.
-
-Historical result: [Google CODE result](https://search.google.com/test/rich-results/result?id=nsFbGi_Lng-DoAcVPq8sBw). Historical detail: [Local Business item](https://search.google.com/test/rich-results/result/r%2Flocal-business?id=nsFbGi_Lng-DoAcVPq8sBw). These links can expire.
-
-That submitted payload predates the current priceRange, geo, SearchAction and FAQ changes. Its missing-priceRange warning is obsolete for the current payload, where the field is present. The historical result does not validate the current 17 pages, their Menu/FAQ/Service/ImageGallery types, or the current gallery URLs. No new Google screenshots or result counts are implied.
-
-No Search Console submission, public URL inspection, deployment or publication occurred in this task.
+An earlier report records a [historical Google CODE result](https://search.google.com/test/rich-results/result?id=nsFbGi_Lng-DoAcVPq8sBw) for an older Dutch business graph without an exact current-payload hash link. It is not this current candidate or 24-page evidence and may expire. No Search Console submission, public URL inspection, deployment or publication occurred.

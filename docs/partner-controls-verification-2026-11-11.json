@@ -1,0 +1,243 @@
+{
+  "atUTC": "2026-11-11T23:36:50.586Z",
+  "build": "P0W6dAXCimN14bV35cqxQ",
+  "origin": "http://127.0.0.1:3648",
+  "dist": ".next-review-capcut-reveal-20261111",
+  "artifactSourceHash": "3c72c9410d151c15cc6b8abad30a628ef8702eb4f4baa1011f440d2eccbcaffc",
+  "artifactInputs": 530,
+  "verdict": "PASS requested partner control-row removal and bounded hero/poster regressions on this artifact.",
+  "scope": {
+    "locale": "Dutch homepage / Shah partner block",
+    "normalViewports": [
+      "320x844",
+      "390x844",
+      "1440x844"
+    ],
+    "staticViewports": [
+      "320x844",
+      "390x844"
+    ],
+    "staticModes": [
+      "NoJS",
+      "prefers-reduced-motion"
+    ],
+    "theme": "Current control default light; later requested dark-default build requires separate fresh smoke.",
+    "noAppEditsDuringCapture": true
+  },
+  "implementation": {
+    "files": [
+      {
+        "file": "app/components/DrinkPartners.tsx",
+        "sha256": "09511d141d26c6eeb93479768aa52568c34e864d3ebaabbd6f5c8cc52667636d"
+      },
+      {
+        "file": "app/components/DrinkPartners.module.css",
+        "sha256": "191ff3e8c5db7d672b5cb1e5ed4a8aa951c328e0c0ed2bd1bba94ff61ae4ad92"
+      }
+    ],
+    "visibleRow": "Entire previous left-arrow/Pauzeren/right-arrow row removed, without reserved row space.",
+    "accessibleControl": "Single absolute pause/resume button before rail. Default opacity0/pointer-eventsnone; keyboard focus reveals85.859375x48px button, within mobile viewport. It stays in accessibility tree when enhanced motion is available.",
+    "mouse": "Temporary hover pause, resumes on mouse leave unless explicitly paused.",
+    "manual": "Touch/pointer/rail focus pauses persistently. ArrowLeft/Right/Home/End and native horizontal scrolling remain; vertical page gestures are not captured.",
+    "static": "NoJS/reduced-motion have no pause button/autoplay. Native horizontal rail remains.",
+    "preserved": "Original logo files, four descriptions, one-row layout and menu/reservation links unchanged."
+  },
+  "freshPartnerEvidence": {
+    "observations": 38,
+    "normalDefault": {
+      "cases": 3,
+      "visibleArrowButtons": 0,
+      "buttons": 1,
+      "buttonPosition": "absolute",
+      "buttonOpacity": "0",
+      "pageOverflow": 0,
+      "originalsOneRow": true,
+      "autoplay": "scrollLeft increases; right-to-left card motion"
+    },
+    "keyboard": {
+      "realInputs": [
+        "Tab",
+        "Enter",
+        "Home",
+        "ArrowRight",
+        "End"
+      ],
+      "focusPauses": true,
+      "enterResumesAndPauses": true,
+      "focusButtonMinHeight": 48,
+      "focusButtonWidth": 85.859375,
+      "viewportBoundsPass": true
+    },
+    "touch": {
+      "cases": 2,
+      "widths": [
+        320,
+        390
+      ],
+      "horizontalDelta": 120,
+      "verticalDriftDuringHorizontal": 0,
+      "verticalGesturePageDelta": 85,
+      "persistentPause": true
+    },
+    "hover": {
+      "width": 1440,
+      "pausedStable": true,
+      "leaveResumes": true
+    },
+    "accessibility": {
+      "accessibleBrandHeadings": 4,
+      "duplicateClone": "inert and aria-hidden",
+      "brands": [
+        "Coca-Cola",
+        "Heineken",
+        "De Kuyper",
+        "Chaudfontaine"
+      ]
+    },
+    "static": {
+      "cases": 4,
+      "visibleButtons": 0,
+      "mp4Requests": 0,
+      "stableOffsets": true,
+      "nativeKeyboardWorks": true
+    },
+    "links": {
+      "food": "/menukaart",
+      "reservation": "/reserveren",
+      "normalCasesMinHeight": 48
+    },
+    "normalRuntimeExceptionsAndConsoleErrors": 0,
+    "normalNonGetRequests": 0,
+    "pageOverflowAllCases": 0,
+    "raw": {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-partner-controls-20261111\\P0W6dAXCimN14bV35cqxQ\\partner-controls-raw.json",
+      "sha256": "bf22374a0e838a944aa40cd319185149ce463ba4b6d0c456f0344c5f6f615e08"
+    },
+    "completion": {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-partner-controls-20261111\\P0W6dAXCimN14bV35cqxQ\\complete.json",
+      "sha256": "91ea9231ff817380df62ff632e7958a55d9605c1e2dc21d01aca4639297d080e"
+    },
+    "helper": {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cookie-ssr-20261111\\verify-partner-controls.cjs",
+      "sha256": "4de8265b342f6576e0bb7e6ba42092d01db962f63545760a3102760f618d2ee9"
+    },
+    "screenshots": [
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-partner-controls-20261111\\P0W6dAXCimN14bV35cqxQ\\default-1440.png",
+        "sha256": "6ef7560484b207833d7c1d8244aeb1cabb629991e39f3c8de7b27b2d1f4ba31d"
+      },
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-partner-controls-20261111\\P0W6dAXCimN14bV35cqxQ\\default-320.png",
+        "sha256": "b14fb91bf94e0bebe88d440996e167f9d0ad88c74fbb39340286f8cb8b35b682"
+      },
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-partner-controls-20261111\\P0W6dAXCimN14bV35cqxQ\\default-390.png",
+        "sha256": "c94e9521804c3112f028e1c617712451171bd424bb42a4aecf74a231c15fcf03"
+      },
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-partner-controls-20261111\\P0W6dAXCimN14bV35cqxQ\\focus-1440.png",
+        "sha256": "b97627e5b9b1707e1800b1c171ff06a14686ca744916f6bf88cacb56d20b8e64"
+      },
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-partner-controls-20261111\\P0W6dAXCimN14bV35cqxQ\\focus-320.png",
+        "sha256": "5f1ce13795e150d27dd47de370a7b386a33404e5be99637abfa2946efad7bd94"
+      },
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-partner-controls-20261111\\P0W6dAXCimN14bV35cqxQ\\focus-390.png",
+        "sha256": "19414261fbf617e4d0c58766ac6b8c7fb75ae92dd7835a93e330be2c9cc11b8f"
+      },
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-partner-controls-20261111\\P0W6dAXCimN14bV35cqxQ\\nojs-320.png",
+        "sha256": "725a0c6b23fb5a4b9744449dda155a31bb873613d0e8fdba67efa6625ee54fa6"
+      },
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-partner-controls-20261111\\P0W6dAXCimN14bV35cqxQ\\nojs-390.png",
+        "sha256": "00dab70ab523df6160c7232acd788288227f2c8e1da2c1e5d85933e33c72812c"
+      },
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-partner-controls-20261111\\P0W6dAXCimN14bV35cqxQ\\reduced-320.png",
+        "sha256": "e0de1eb51727745cd53be111d64f8dc7de46d6e88e853758d4097e3bfe5eaefd"
+      },
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-partner-controls-20261111\\P0W6dAXCimN14bV35cqxQ\\reduced-390.png",
+        "sha256": "4578b99dbc5e294a620d885df9af7cd1574d16c2512b368e13bfb55e5affc8bc"
+      }
+    ]
+  },
+  "freshHeroRegression": {
+    "geometry": "New fixed-overlay architecture. No blanket carry of older in-flow geometry.",
+    "playingTitle": {
+      "cases": 2,
+      "widths": [
+        320,
+        390
+      ],
+      "presentedFrameSeconds": 1.499333,
+      "manualVisualVerdict": "Both readable;320contains fullportrait with blackmatte,390remainscover.",
+      "height": 844,
+      "heroDomText": "",
+      "duplicateHeroHeadings": 0,
+      "headerAndNotice": "hidden",
+      "overflow": 0,
+      "observedContainerDuration": 12.332667,
+      "raw": {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\P0W6dAXCimN14bV35cqxQ\\approved-crop-results.json",
+        "sha256": "9c73f2bcef01a9e3f80a438441f4a5d25a1f6501f08de744e462c43faf57e67d"
+      },
+      "screenshots": [
+        {
+          "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\P0W6dAXCimN14bV35cqxQ\\crop-320x844-1.5.png",
+          "sha256": "e1cc5173429107990f0268cc6237e2c94b88c3adfdf45e488d7f7a81d6432d97"
+        },
+        {
+          "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\P0W6dAXCimN14bV35cqxQ\\crop-390x844-1.5.png",
+          "sha256": "fc73614aa87511cfe1fbbcc5dd1d6c9b3cf3b5974251205c2ee31c734c923571"
+        }
+      ]
+    },
+    "static": {
+      "cases": 4,
+      "widths": [
+        320,
+        390
+      ],
+      "modes": [
+        "NoJS",
+        "reduced"
+      ],
+      "posterFit": {
+        "320": "contain/black",
+        "390": "cover"
+      },
+      "nativeTabEnterSkip": true,
+      "skipBox": {
+        "width": 247.609375,
+        "height": 52
+      },
+      "focus": "intro",
+      "introTop": 0,
+      "filmBottom": 0,
+      "overflow": 0,
+      "mp4Requests": 0,
+      "raw": {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\P0W6dAXCimN14bV35cqxQ\\fresh-static\\fresh-static-results.json",
+        "sha256": "7112cce7a73444778c4553b6ba935c4442047326969172c26fec5651fdf4a3c4"
+      }
+    }
+  },
+  "validation": {
+    "focusedESLint": "passed before build",
+    "typeScript": "npx tsc --noEmit passed before build",
+    "artifactManifest": {
+      "path": "C:\\Users\\DaviiC\\Downloads\\shahrestaurant\\shahrestaurant\\.next-review-capcut-reveal-20261111.source.json",
+      "sha256": "b7420da30f0772cf3b023df6d603530d792f773faeeb67a158eadb66e92f3b84"
+    },
+    "harnessNote": "Initial partial End assertion incorrectly assumed desktop End must exceed next offset; all4originals fit desktop, so correct End offset is0. Expectation corrected; final38observations pass. Initial failure.txt is preserved as a harness failure, not an app defect."
+  },
+  "limitations": [
+    "Isolated Chromium/CDP native input, not physical phone/Safari.",
+    "No performance, nativeCLS or whole movie/handoff acceptance claim. Baseline independently owns those current-build checks.",
+    "Prior15frame/media evidence remains historical control; this artifact has fresh two-title framing checks only.",
+    "No business submissions or deployment. All9226 task pages blank and traffic ended before next source edits."
+  ]
+}

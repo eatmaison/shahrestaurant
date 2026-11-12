@@ -1,0 +1,5217 @@
+{
+  "checkedAt": "2026-11-12T00:31:26.634Z",
+  "origin": "http://127.0.0.1:3678",
+  "sourceHashes": {
+    "app/order/OrderExperience.tsx": "9713EFEA31034AD0979F98B5314184F0BF7419990399692D441CAEAFA6696839",
+    "app/order/order.module.css": "23847357A273CE5D1FED900EA8F43774A6808E76E118DD7E719719A184D7C202"
+  },
+  "noBusinessSubmissions": true,
+  "fixture": [
+    {
+      "id": "saag-paneer-wrap",
+      "name": "Saag Paneer Wrap",
+      "price": 9.5,
+      "category": "Wraps"
+    },
+    {
+      "id": "butter-chicken-wrap",
+      "name": "Butter Chicken Wrap",
+      "price": 9.99,
+      "category": "Wraps"
+    },
+    {
+      "id": "p-ci1bmcrmmrqidyre",
+      "name": "Fuze Tea Green mango chamomile",
+      "price": 2.99,
+      "category": "Drinks"
+    }
+  ],
+  "contrastMethod": "WCAG sRGB luminance using computed foreground colors and conservative minimum0.76 teal overlay over pure white; verifies worst possible image luminance in both themes.",
+  "proofs": [
+    {
+      "width": 320,
+      "theme": "default",
+      "mobile": true,
+      "hiddenSheet": {
+        "dialogs": 0,
+        "photos": [
+          {
+            "width": 0,
+            "loaded": false
+          },
+          {
+            "width": 0,
+            "loaded": false
+          },
+          {
+            "width": 0,
+            "loaded": false
+          }
+        ]
+      },
+      "beforeOpenRequests": [],
+      "initial": {
+        "theme": "dark",
+        "photo": {
+          "source": "http://127.0.0.1:3678/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2F6aa2448c-3a93-4039-8618-54c97ca3f5ee.jpg&w=384&q=75",
+          "loaded": true,
+          "loading": "lazy",
+          "priority": "low",
+          "sizes": "(min-width: 1024px) 240px, (min-width: 480px) 384px, calc(100vw - 42px)",
+          "alt": "",
+          "ariaHidden": "true",
+          "pointerEvents": "none",
+          "rect": {
+            "x": 22,
+            "y": 116,
+            "width": 274,
+            "height": 234.1875,
+            "top": 116,
+            "right": 296,
+            "bottom": 350.1875,
+            "left": 22
+          },
+          "overlay": "linear-gradient(110deg, rgba(5, 31, 37, 0.94), rgba(5, 31, 37, 0.84) 55%, rgba(5, 31, 37, 0.76))"
+        },
+        "nameColor": "rgb(255, 247, 231)",
+        "unitColor": "rgb(220, 232, 230)",
+        "priceColor": "rgb(255, 247, 231)",
+        "cardBackground": "rgb(13, 51, 59)",
+        "name": "Saag Paneer Wrap",
+        "price": "€9.50",
+        "upgradeText": "Make it a full menu\n\nAdd\n\n+€4 includes fries and one free soft drink.",
+        "toggle": {
+          "pressed": "false",
+          "label": "Add: Make it a full menu",
+          "text": "Add",
+          "rect": {
+            "x": 227,
+            "y": 256,
+            "width": 48,
+            "height": 48,
+            "top": 256,
+            "right": 275,
+            "bottom": 304,
+            "left": 227
+          }
+        },
+        "select": null,
+        "fallbackHidden": true,
+        "overflow": 0
+      },
+      "contrast": {
+        "name": 7.404427208979907,
+        "unit": 6.284269905090955,
+        "price": 7.404427208979907,
+        "brightestPossibleBackdrop": [
+          65,
+          84.75999999999999,
+          89.32
+        ]
+      },
+      "enabled": {
+        "theme": "dark",
+        "photo": {
+          "source": "http://127.0.0.1:3678/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2F6aa2448c-3a93-4039-8618-54c97ca3f5ee.jpg&w=384&q=75",
+          "loaded": true,
+          "loading": "lazy",
+          "priority": "low",
+          "sizes": "(min-width: 1024px) 240px, (min-width: 480px) 384px, calc(100vw - 42px)",
+          "alt": "",
+          "ariaHidden": "true",
+          "pointerEvents": "none",
+          "rect": {
+            "x": 22,
+            "y": 116,
+            "width": 274,
+            "height": 317.1875,
+            "top": 116,
+            "right": 296,
+            "bottom": 433.1875,
+            "left": 22
+          },
+          "overlay": "linear-gradient(110deg, rgba(5, 31, 37, 0.94), rgba(5, 31, 37, 0.84) 55%, rgba(5, 31, 37, 0.76))"
+        },
+        "nameColor": "rgb(255, 247, 231)",
+        "unitColor": "rgb(220, 232, 230)",
+        "priceColor": "rgb(255, 247, 231)",
+        "cardBackground": "rgb(13, 51, 59)",
+        "name": "Saag Paneer Wrap",
+        "price": "€9.50",
+        "upgradeText": "Make it a full menu\n\nAdded\n\n+€4 includes fries and one free soft drink.\n\nFree soft drink\nFuze Tea Green mango chamomile\nFuze Tea - Black sparkling lemon\nFuze Tea - Black peach hibiscus\nFuze Tea - Green tea\nCoca-Cola Regular\nCoca-Cola Zero\nSprite Zero\nFanta\nFanta Cassis\nFernandes Green\nFernandes Cherry\nFernandes Pineapple\nRedbull\nChaudfontaine Natuurlijk mineraalwater\nChaudfontaine Bruisend natuurlijk mineraalwater\nWhite Chocolate Matcha\nWatermelon Bubble Tea",
+        "toggle": {
+          "pressed": "true",
+          "label": "Remove: Make it a full menu",
+          "text": "Added",
+          "rect": {
+            "x": 198.125,
+            "y": 256,
+            "width": 76.875,
+            "height": 48,
+            "top": 256,
+            "right": 275,
+            "bottom": 304,
+            "left": 198.125
+          }
+        },
+        "select": {
+          "value": "p-ci1bmcrmmrqidyre",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "color": "rgb(8, 45, 53)",
+          "background": "rgb(255, 249, 239)",
+          "options": [
+            {
+              "value": "p-ci1bmcrmmrqidyre",
+              "text": "Fuze Tea Green mango chamomile"
+            },
+            {
+              "value": "p-r84vzx09mrqifjm7",
+              "text": "Fuze Tea - Black sparkling lemon"
+            },
+            {
+              "value": "p-y0038cp3mrqiihy7",
+              "text": "Fuze Tea - Black peach hibiscus"
+            },
+            {
+              "value": "p-73rxt7cvmrqik7xt",
+              "text": "Fuze Tea - Green tea"
+            },
+            {
+              "value": "p-on6zjg4xmrs1rkvc",
+              "text": "Coca-Cola Regular"
+            },
+            {
+              "value": "p-ywxluvwsmrs1s8w7",
+              "text": "Coca-Cola Zero"
+            },
+            {
+              "value": "p-w985jbscmrs1t6a0",
+              "text": "Sprite Zero"
+            },
+            {
+              "value": "p-o2r242f2msagpkop",
+              "text": "Fanta"
+            },
+            {
+              "value": "p-syebexgkmsagq9pu",
+              "text": "Fanta Cassis"
+            },
+            {
+              "value": "p-x1mhaupfmrs1ufui",
+              "text": "Fernandes Green"
+            },
+            {
+              "value": "p-azhbjc65mrs1v8v0",
+              "text": "Fernandes Cherry"
+            },
+            {
+              "value": "p-osxrg5fdmrs1w6j0",
+              "text": "Fernandes Pineapple"
+            },
+            {
+              "value": "p-9yxiqnp9ms4tanjj",
+              "text": "Redbull"
+            },
+            {
+              "value": "p-smbbootwmrt91m01",
+              "text": "Chaudfontaine Natuurlijk mineraalwater"
+            },
+            {
+              "value": "p-1g3cdw0smrt92965",
+              "text": "Chaudfontaine Bruisend natuurlijk mineraalwater"
+            },
+            {
+              "value": "p-8biw2kw8msagu707",
+              "text": "White Chocolate Matcha"
+            },
+            {
+              "value": "p-89p6ogwvmrs4j25p",
+              "text": "Watermelon Bubble Tea"
+            }
+          ],
+          "rect": {
+            "x": 43,
+            "y": 364.1875,
+            "width": 232,
+            "height": 48,
+            "top": 364.1875,
+            "right": 275,
+            "bottom": 412.1875,
+            "left": 43
+          }
+        },
+        "fallbackHidden": true,
+        "overflow": 0
+      },
+      "selected": {
+        "theme": "dark",
+        "photo": {
+          "source": "http://127.0.0.1:3678/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2F6aa2448c-3a93-4039-8618-54c97ca3f5ee.jpg&w=384&q=75",
+          "loaded": true,
+          "loading": "lazy",
+          "priority": "low",
+          "sizes": "(min-width: 1024px) 240px, (min-width: 480px) 384px, calc(100vw - 42px)",
+          "alt": "",
+          "ariaHidden": "true",
+          "pointerEvents": "none",
+          "rect": {
+            "x": 22,
+            "y": 116,
+            "width": 274,
+            "height": 317.1875,
+            "top": 116,
+            "right": 296,
+            "bottom": 433.1875,
+            "left": 22
+          },
+          "overlay": "linear-gradient(110deg, rgba(5, 31, 37, 0.94), rgba(5, 31, 37, 0.84) 55%, rgba(5, 31, 37, 0.76))"
+        },
+        "nameColor": "rgb(255, 247, 231)",
+        "unitColor": "rgb(220, 232, 230)",
+        "priceColor": "rgb(255, 247, 231)",
+        "cardBackground": "rgb(13, 51, 59)",
+        "name": "Saag Paneer Wrap",
+        "price": "€9.50",
+        "upgradeText": "Make it a full menu\n\nAdded\n\n+€4 includes fries and one free soft drink.\n\nFree soft drink\nFuze Tea Green mango chamomile\nFuze Tea - Black sparkling lemon\nFuze Tea - Black peach hibiscus\nFuze Tea - Green tea\nCoca-Cola Regular\nCoca-Cola Zero\nSprite Zero\nFanta\nFanta Cassis\nFernandes Green\nFernandes Cherry\nFernandes Pineapple\nRedbull\nChaudfontaine Natuurlijk mineraalwater\nChaudfontaine Bruisend natuurlijk mineraalwater\nWhite Chocolate Matcha\nWatermelon Bubble Tea",
+        "toggle": {
+          "pressed": "true",
+          "label": "Remove: Make it a full menu",
+          "text": "Added",
+          "rect": {
+            "x": 198.125,
+            "y": 256,
+            "width": 76.875,
+            "height": 48,
+            "top": 256,
+            "right": 275,
+            "bottom": 304,
+            "left": 198.125
+          }
+        },
+        "select": {
+          "value": "p-r84vzx09mrqifjm7",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "color": "rgb(8, 45, 53)",
+          "background": "rgb(255, 249, 239)",
+          "options": [
+            {
+              "value": "p-ci1bmcrmmrqidyre",
+              "text": "Fuze Tea Green mango chamomile"
+            },
+            {
+              "value": "p-r84vzx09mrqifjm7",
+              "text": "Fuze Tea - Black sparkling lemon"
+            },
+            {
+              "value": "p-y0038cp3mrqiihy7",
+              "text": "Fuze Tea - Black peach hibiscus"
+            },
+            {
+              "value": "p-73rxt7cvmrqik7xt",
+              "text": "Fuze Tea - Green tea"
+            },
+            {
+              "value": "p-on6zjg4xmrs1rkvc",
+              "text": "Coca-Cola Regular"
+            },
+            {
+              "value": "p-ywxluvwsmrs1s8w7",
+              "text": "Coca-Cola Zero"
+            },
+            {
+              "value": "p-w985jbscmrs1t6a0",
+              "text": "Sprite Zero"
+            },
+            {
+              "value": "p-o2r242f2msagpkop",
+              "text": "Fanta"
+            },
+            {
+              "value": "p-syebexgkmsagq9pu",
+              "text": "Fanta Cassis"
+            },
+            {
+              "value": "p-x1mhaupfmrs1ufui",
+              "text": "Fernandes Green"
+            },
+            {
+              "value": "p-azhbjc65mrs1v8v0",
+              "text": "Fernandes Cherry"
+            },
+            {
+              "value": "p-osxrg5fdmrs1w6j0",
+              "text": "Fernandes Pineapple"
+            },
+            {
+              "value": "p-9yxiqnp9ms4tanjj",
+              "text": "Redbull"
+            },
+            {
+              "value": "p-smbbootwmrt91m01",
+              "text": "Chaudfontaine Natuurlijk mineraalwater"
+            },
+            {
+              "value": "p-1g3cdw0smrt92965",
+              "text": "Chaudfontaine Bruisend natuurlijk mineraalwater"
+            },
+            {
+              "value": "p-8biw2kw8msagu707",
+              "text": "White Chocolate Matcha"
+            },
+            {
+              "value": "p-89p6ogwvmrs4j25p",
+              "text": "Watermelon Bubble Tea"
+            }
+          ],
+          "rect": {
+            "x": 43,
+            "y": 364.1875,
+            "width": 232,
+            "height": 48,
+            "top": 364.1875,
+            "right": 275,
+            "bottom": 412.1875,
+            "left": 43
+          }
+        },
+        "fallbackHidden": true,
+        "overflow": 0
+      },
+      "disabled": {
+        "theme": "dark",
+        "photo": {
+          "source": "http://127.0.0.1:3678/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2F6aa2448c-3a93-4039-8618-54c97ca3f5ee.jpg&w=384&q=75",
+          "loaded": true,
+          "loading": "lazy",
+          "priority": "low",
+          "sizes": "(min-width: 1024px) 240px, (min-width: 480px) 384px, calc(100vw - 42px)",
+          "alt": "",
+          "ariaHidden": "true",
+          "pointerEvents": "none",
+          "rect": {
+            "x": 22.235952377319336,
+            "y": 119.7823715209961,
+            "width": 273.513916015625,
+            "height": 233.77203369140625,
+            "top": 119.7823715209961,
+            "right": 295.74986839294434,
+            "bottom": 353.55440521240234,
+            "left": 22.235952377319336
+          },
+          "overlay": "linear-gradient(110deg, rgba(5, 31, 37, 0.94), rgba(5, 31, 37, 0.84) 55%, rgba(5, 31, 37, 0.76))"
+        },
+        "nameColor": "rgb(255, 247, 231)",
+        "unitColor": "rgb(220, 232, 230)",
+        "priceColor": "rgb(255, 247, 231)",
+        "cardBackground": "rgb(13, 51, 59)",
+        "name": "Saag Paneer Wrap",
+        "price": "€9.50",
+        "upgradeText": "Make it a full menu\n\nAdd\n\n+€4 includes fries and one free soft drink.",
+        "toggle": {
+          "pressed": "false",
+          "label": "Add: Make it a full menu",
+          "text": "Add",
+          "rect": {
+            "x": 226.8722686767578,
+            "y": 259.53399658203125,
+            "width": 47.91484069824219,
+            "height": 47.91485595703125,
+            "top": 259.53399658203125,
+            "right": 274.787109375,
+            "bottom": 307.4488525390625,
+            "left": 226.8722686767578
+          }
+        },
+        "select": null,
+        "fallbackHidden": true,
+        "overflow": 0
+      },
+      "initialTotal": 24.98,
+      "email": {
+        "placeholder": "Email address",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "label": "Email address for order confirmation",
+        "placeholderColor": "rgba(213, 209, 196, 0.5)",
+        "background": "oklab(0.999994 0.0000455678 0.0000200868 / 0.05)",
+        "rect": {
+          "x": 23.009998321533203,
+          "y": 379.6513977050781,
+          "width": 263.97998046875,
+          "height": 47.279998779296875,
+          "top": 379.6513977050781,
+          "right": 286.9899787902832,
+          "bottom": 426.931396484375,
+          "left": 23.009998321533203
+        },
+        "effectiveBackground": [
+          null,
+          null,
+          null
+        ],
+        "placeholderContrast": 13.746516941690192
+      },
+      "retained": "cart.qa@example.invalid",
+      "sidebar": null,
+      "errors": [],
+      "writes": []
+    },
+    {
+      "width": 320,
+      "theme": "light",
+      "mobile": true,
+      "hiddenSheet": {
+        "dialogs": 0,
+        "photos": [
+          {
+            "width": 0,
+            "loaded": true
+          },
+          {
+            "width": 0,
+            "loaded": true
+          },
+          {
+            "width": 0,
+            "loaded": true
+          }
+        ]
+      },
+      "beforeOpenRequests": [
+        "http://127.0.0.1:3678/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2F6aa2448c-3a93-4039-8618-54c97ca3f5ee.jpg&w=384&q=75",
+        "http://127.0.0.1:3678/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2Fc04ab278-e64a-495e-8ccd-6c8270b0cc8f.jpg&w=384&q=75"
+      ],
+      "initial": {
+        "theme": "light",
+        "photo": {
+          "source": "http://127.0.0.1:3678/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2F6aa2448c-3a93-4039-8618-54c97ca3f5ee.jpg&w=384&q=75",
+          "loaded": true,
+          "loading": "lazy",
+          "priority": "low",
+          "sizes": "(min-width: 1024px) 240px, (min-width: 480px) 384px, calc(100vw - 42px)",
+          "alt": "",
+          "ariaHidden": "true",
+          "pointerEvents": "none",
+          "rect": {
+            "x": 22,
+            "y": 116,
+            "width": 274,
+            "height": 234.1875,
+            "top": 116,
+            "right": 296,
+            "bottom": 350.1875,
+            "left": 22
+          },
+          "overlay": "linear-gradient(110deg, rgba(5, 31, 37, 0.94), rgba(5, 31, 37, 0.84) 55%, rgba(5, 31, 37, 0.76))"
+        },
+        "nameColor": "rgb(255, 247, 231)",
+        "unitColor": "rgb(220, 232, 230)",
+        "priceColor": "rgb(255, 247, 231)",
+        "cardBackground": "rgb(13, 51, 59)",
+        "name": "Saag Paneer Wrap",
+        "price": "€9.50",
+        "upgradeText": "Make it a full menu\n\nAdd\n\n+€4 includes fries and one free soft drink.",
+        "toggle": {
+          "pressed": "false",
+          "label": "Add: Make it a full menu",
+          "text": "Add",
+          "rect": {
+            "x": 227,
+            "y": 256,
+            "width": 48,
+            "height": 48,
+            "top": 256,
+            "right": 275,
+            "bottom": 304,
+            "left": 227
+          }
+        },
+        "select": null,
+        "fallbackHidden": true,
+        "overflow": 0
+      },
+      "contrast": {
+        "name": 7.404427208979907,
+        "unit": 6.284269905090955,
+        "price": 7.404427208979907,
+        "brightestPossibleBackdrop": [
+          65,
+          84.75999999999999,
+          89.32
+        ]
+      },
+      "enabled": {
+        "theme": "light",
+        "photo": {
+          "source": "http://127.0.0.1:3678/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2F6aa2448c-3a93-4039-8618-54c97ca3f5ee.jpg&w=384&q=75",
+          "loaded": true,
+          "loading": "lazy",
+          "priority": "low",
+          "sizes": "(min-width: 1024px) 240px, (min-width: 480px) 384px, calc(100vw - 42px)",
+          "alt": "",
+          "ariaHidden": "true",
+          "pointerEvents": "none",
+          "rect": {
+            "x": 22,
+            "y": 116,
+            "width": 274,
+            "height": 317.1875,
+            "top": 116,
+            "right": 296,
+            "bottom": 433.1875,
+            "left": 22
+          },
+          "overlay": "linear-gradient(110deg, rgba(5, 31, 37, 0.94), rgba(5, 31, 37, 0.84) 55%, rgba(5, 31, 37, 0.76))"
+        },
+        "nameColor": "rgb(255, 247, 231)",
+        "unitColor": "rgb(220, 232, 230)",
+        "priceColor": "rgb(255, 247, 231)",
+        "cardBackground": "rgb(13, 51, 59)",
+        "name": "Saag Paneer Wrap",
+        "price": "€9.50",
+        "upgradeText": "Make it a full menu\n\nAdded\n\n+€4 includes fries and one free soft drink.\n\nFree soft drink\nFuze Tea Green mango chamomile\nFuze Tea - Black sparkling lemon\nFuze Tea - Black peach hibiscus\nFuze Tea - Green tea\nCoca-Cola Regular\nCoca-Cola Zero\nSprite Zero\nFanta\nFanta Cassis\nFernandes Green\nFernandes Cherry\nFernandes Pineapple\nRedbull\nChaudfontaine Natuurlijk mineraalwater\nChaudfontaine Bruisend natuurlijk mineraalwater\nWhite Chocolate Matcha\nWatermelon Bubble Tea",
+        "toggle": {
+          "pressed": "true",
+          "label": "Remove: Make it a full menu",
+          "text": "Added",
+          "rect": {
+            "x": 198.125,
+            "y": 256,
+            "width": 76.875,
+            "height": 48,
+            "top": 256,
+            "right": 275,
+            "bottom": 304,
+            "left": 198.125
+          }
+        },
+        "select": {
+          "value": "p-ci1bmcrmmrqidyre",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "color": "rgb(8, 45, 53)",
+          "background": "rgb(255, 249, 239)",
+          "options": [
+            {
+              "value": "p-ci1bmcrmmrqidyre",
+              "text": "Fuze Tea Green mango chamomile"
+            },
+            {
+              "value": "p-r84vzx09mrqifjm7",
+              "text": "Fuze Tea - Black sparkling lemon"
+            },
+            {
+              "value": "p-y0038cp3mrqiihy7",
+              "text": "Fuze Tea - Black peach hibiscus"
+            },
+            {
+              "value": "p-73rxt7cvmrqik7xt",
+              "text": "Fuze Tea - Green tea"
+            },
+            {
+              "value": "p-on6zjg4xmrs1rkvc",
+              "text": "Coca-Cola Regular"
+            },
+            {
+              "value": "p-ywxluvwsmrs1s8w7",
+              "text": "Coca-Cola Zero"
+            },
+            {
+              "value": "p-w985jbscmrs1t6a0",
+              "text": "Sprite Zero"
+            },
+            {
+              "value": "p-o2r242f2msagpkop",
+              "text": "Fanta"
+            },
+            {
+              "value": "p-syebexgkmsagq9pu",
+              "text": "Fanta Cassis"
+            },
+            {
+              "value": "p-x1mhaupfmrs1ufui",
+              "text": "Fernandes Green"
+            },
+            {
+              "value": "p-azhbjc65mrs1v8v0",
+              "text": "Fernandes Cherry"
+            },
+            {
+              "value": "p-osxrg5fdmrs1w6j0",
+              "text": "Fernandes Pineapple"
+            },
+            {
+              "value": "p-9yxiqnp9ms4tanjj",
+              "text": "Redbull"
+            },
+            {
+              "value": "p-smbbootwmrt91m01",
+              "text": "Chaudfontaine Natuurlijk mineraalwater"
+            },
+            {
+              "value": "p-1g3cdw0smrt92965",
+              "text": "Chaudfontaine Bruisend natuurlijk mineraalwater"
+            },
+            {
+              "value": "p-8biw2kw8msagu707",
+              "text": "White Chocolate Matcha"
+            },
+            {
+              "value": "p-89p6ogwvmrs4j25p",
+              "text": "Watermelon Bubble Tea"
+            }
+          ],
+          "rect": {
+            "x": 43,
+            "y": 364.1875,
+            "width": 232,
+            "height": 48,
+            "top": 364.1875,
+            "right": 275,
+            "bottom": 412.1875,
+            "left": 43
+          }
+        },
+        "fallbackHidden": true,
+        "overflow": 0
+      },
+      "selected": {
+        "theme": "light",
+        "photo": {
+          "source": "http://127.0.0.1:3678/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2F6aa2448c-3a93-4039-8618-54c97ca3f5ee.jpg&w=384&q=75",
+          "loaded": true,
+          "loading": "lazy",
+          "priority": "low",
+          "sizes": "(min-width: 1024px) 240px, (min-width: 480px) 384px, calc(100vw - 42px)",
+          "alt": "",
+          "ariaHidden": "true",
+          "pointerEvents": "none",
+          "rect": {
+            "x": 22,
+            "y": 116,
+            "width": 274,
+            "height": 317.1875,
+            "top": 116,
+            "right": 296,
+            "bottom": 433.1875,
+            "left": 22
+          },
+          "overlay": "linear-gradient(110deg, rgba(5, 31, 37, 0.94), rgba(5, 31, 37, 0.84) 55%, rgba(5, 31, 37, 0.76))"
+        },
+        "nameColor": "rgb(255, 247, 231)",
+        "unitColor": "rgb(220, 232, 230)",
+        "priceColor": "rgb(255, 247, 231)",
+        "cardBackground": "rgb(13, 51, 59)",
+        "name": "Saag Paneer Wrap",
+        "price": "€9.50",
+        "upgradeText": "Make it a full menu\n\nAdded\n\n+€4 includes fries and one free soft drink.\n\nFree soft drink\nFuze Tea Green mango chamomile\nFuze Tea - Black sparkling lemon\nFuze Tea - Black peach hibiscus\nFuze Tea - Green tea\nCoca-Cola Regular\nCoca-Cola Zero\nSprite Zero\nFanta\nFanta Cassis\nFernandes Green\nFernandes Cherry\nFernandes Pineapple\nRedbull\nChaudfontaine Natuurlijk mineraalwater\nChaudfontaine Bruisend natuurlijk mineraalwater\nWhite Chocolate Matcha\nWatermelon Bubble Tea",
+        "toggle": {
+          "pressed": "true",
+          "label": "Remove: Make it a full menu",
+          "text": "Added",
+          "rect": {
+            "x": 198.125,
+            "y": 256,
+            "width": 76.875,
+            "height": 48,
+            "top": 256,
+            "right": 275,
+            "bottom": 304,
+            "left": 198.125
+          }
+        },
+        "select": {
+          "value": "p-r84vzx09mrqifjm7",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "color": "rgb(8, 45, 53)",
+          "background": "rgb(255, 249, 239)",
+          "options": [
+            {
+              "value": "p-ci1bmcrmmrqidyre",
+              "text": "Fuze Tea Green mango chamomile"
+            },
+            {
+              "value": "p-r84vzx09mrqifjm7",
+              "text": "Fuze Tea - Black sparkling lemon"
+            },
+            {
+              "value": "p-y0038cp3mrqiihy7",
+              "text": "Fuze Tea - Black peach hibiscus"
+            },
+            {
+              "value": "p-73rxt7cvmrqik7xt",
+              "text": "Fuze Tea - Green tea"
+            },
+            {
+              "value": "p-on6zjg4xmrs1rkvc",
+              "text": "Coca-Cola Regular"
+            },
+            {
+              "value": "p-ywxluvwsmrs1s8w7",
+              "text": "Coca-Cola Zero"
+            },
+            {
+              "value": "p-w985jbscmrs1t6a0",
+              "text": "Sprite Zero"
+            },
+            {
+              "value": "p-o2r242f2msagpkop",
+              "text": "Fanta"
+            },
+            {
+              "value": "p-syebexgkmsagq9pu",
+              "text": "Fanta Cassis"
+            },
+            {
+              "value": "p-x1mhaupfmrs1ufui",
+              "text": "Fernandes Green"
+            },
+            {
+              "value": "p-azhbjc65mrs1v8v0",
+              "text": "Fernandes Cherry"
+            },
+            {
+              "value": "p-osxrg5fdmrs1w6j0",
+              "text": "Fernandes Pineapple"
+            },
+            {
+              "value": "p-9yxiqnp9ms4tanjj",
+              "text": "Redbull"
+            },
+            {
+              "value": "p-smbbootwmrt91m01",
+              "text": "Chaudfontaine Natuurlijk mineraalwater"
+            },
+            {
+              "value": "p-1g3cdw0smrt92965",
+              "text": "Chaudfontaine Bruisend natuurlijk mineraalwater"
+            },
+            {
+              "value": "p-8biw2kw8msagu707",
+              "text": "White Chocolate Matcha"
+            },
+            {
+              "value": "p-89p6ogwvmrs4j25p",
+              "text": "Watermelon Bubble Tea"
+            }
+          ],
+          "rect": {
+            "x": 43,
+            "y": 364.1875,
+            "width": 232,
+            "height": 48,
+            "top": 364.1875,
+            "right": 275,
+            "bottom": 412.1875,
+            "left": 43
+          }
+        },
+        "fallbackHidden": true,
+        "overflow": 0
+      },
+      "disabled": {
+        "theme": "light",
+        "photo": {
+          "source": "http://127.0.0.1:3678/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2F6aa2448c-3a93-4039-8618-54c97ca3f5ee.jpg&w=384&q=75",
+          "loaded": true,
+          "loading": "lazy",
+          "priority": "low",
+          "sizes": "(min-width: 1024px) 240px, (min-width: 480px) 384px, calc(100vw - 42px)",
+          "alt": "",
+          "ariaHidden": "true",
+          "pointerEvents": "none",
+          "rect": {
+            "x": 22.31910514831543,
+            "y": 121.11549377441406,
+            "width": 273.34259033203125,
+            "height": 233.62559509277344,
+            "top": 121.11549377441406,
+            "right": 295.6616954803467,
+            "bottom": 354.7410888671875,
+            "left": 22.31910514831543
+          },
+          "overlay": "linear-gradient(110deg, rgba(5, 31, 37, 0.94), rgba(5, 31, 37, 0.84) 55%, rgba(5, 31, 37, 0.76))"
+        },
+        "nameColor": "rgb(255, 247, 231)",
+        "unitColor": "rgb(220, 232, 230)",
+        "priceColor": "rgb(255, 247, 231)",
+        "cardBackground": "rgb(13, 51, 59)",
+        "name": "Saag Paneer Wrap",
+        "price": "€9.50",
+        "upgradeText": "Make it a full menu\n\nAdd\n\n+€4 includes fries and one free soft drink.",
+        "toggle": {
+          "pressed": "false",
+          "label": "Add: Make it a full menu",
+          "text": "Add",
+          "rect": {
+            "x": 226.82723999023438,
+            "y": 260.77960205078125,
+            "width": 47.884857177734375,
+            "height": 47.88482666015625,
+            "top": 260.77960205078125,
+            "right": 274.71209716796875,
+            "bottom": 308.6644287109375,
+            "left": 226.82723999023438
+          }
+        },
+        "select": null,
+        "fallbackHidden": true,
+        "overflow": 0
+      },
+      "initialTotal": 24.98,
+      "email": {
+        "placeholder": "Email address",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "label": "Email address for order confirmation",
+        "placeholderColor": "rgb(75, 101, 104)",
+        "background": "rgb(249, 250, 247)",
+        "rect": {
+          "x": 23.009998321533203,
+          "y": 379.6513977050781,
+          "width": 263.97998046875,
+          "height": 47.279998779296875,
+          "top": 379.6513977050781,
+          "right": 286.9899787902832,
+          "bottom": 426.931396484375,
+          "left": 23.009998321533203
+        },
+        "effectiveBackground": [
+          255,
+          255,
+          255
+        ],
+        "placeholderContrast": 6.248998409069909
+      },
+      "retained": "cart.qa@example.invalid",
+      "sidebar": null,
+      "errors": [],
+      "writes": []
+    },
+    {
+      "width": 320,
+      "theme": "dark",
+      "mobile": true,
+      "hiddenSheet": {
+        "dialogs": 0,
+        "photos": [
+          {
+            "width": 0,
+            "loaded": true
+          },
+          {
+            "width": 0,
+            "loaded": true
+          },
+          {
+            "width": 0,
+            "loaded": true
+          }
+        ]
+      },
+      "beforeOpenRequests": [
+        "http://127.0.0.1:3678/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2F6aa2448c-3a93-4039-8618-54c97ca3f5ee.jpg&w=384&q=75",
+        "http://127.0.0.1:3678/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2Fc04ab278-e64a-495e-8ccd-6c8270b0cc8f.jpg&w=384&q=75"
+      ],
+      "initial": {
+        "theme": "dark",
+        "photo": {
+          "source": "http://127.0.0.1:3678/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2F6aa2448c-3a93-4039-8618-54c97ca3f5ee.jpg&w=384&q=75",
+          "loaded": true,
+          "loading": "lazy",
+          "priority": "low",
+          "sizes": "(min-width: 1024px) 240px, (min-width: 480px) 384px, calc(100vw - 42px)",
+          "alt": "",
+          "ariaHidden": "true",
+          "pointerEvents": "none",
+          "rect": {
+            "x": 22,
+            "y": 116,
+            "width": 274,
+            "height": 234.1875,
+            "top": 116,
+            "right": 296,
+            "bottom": 350.1875,
+            "left": 22
+          },
+          "overlay": "linear-gradient(110deg, rgba(5, 31, 37, 0.94), rgba(5, 31, 37, 0.84) 55%, rgba(5, 31, 37, 0.76))"
+        },
+        "nameColor": "rgb(255, 247, 231)",
+        "unitColor": "rgb(220, 232, 230)",
+        "priceColor": "rgb(255, 247, 231)",
+        "cardBackground": "rgb(13, 51, 59)",
+        "name": "Saag Paneer Wrap",
+        "price": "€9.50",
+        "upgradeText": "Make it a full menu\n\nAdd\n\n+€4 includes fries and one free soft drink.",
+        "toggle": {
+          "pressed": "false",
+          "label": "Add: Make it a full menu",
+          "text": "Add",
+          "rect": {
+            "x": 227,
+            "y": 256,
+            "width": 48,
+            "height": 48,
+            "top": 256,
+            "right": 275,
+            "bottom": 304,
+            "left": 227
+          }
+        },
+        "select": null,
+        "fallbackHidden": true,
+        "overflow": 0
+      },
+      "contrast": {
+        "name": 7.404427208979907,
+        "unit": 6.284269905090955,
+        "price": 7.404427208979907,
+        "brightestPossibleBackdrop": [
+          65,
+          84.75999999999999,
+          89.32
+        ]
+      },
+      "enabled": {
+        "theme": "dark",
+        "photo": {
+          "source": "http://127.0.0.1:3678/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2F6aa2448c-3a93-4039-8618-54c97ca3f5ee.jpg&w=384&q=75",
+          "loaded": true,
+          "loading": "lazy",
+          "priority": "low",
+          "sizes": "(min-width: 1024px) 240px, (min-width: 480px) 384px, calc(100vw - 42px)",
+          "alt": "",
+          "ariaHidden": "true",
+          "pointerEvents": "none",
+          "rect": {
+            "x": 22,
+            "y": 116,
+            "width": 274,
+            "height": 317.1875,
+            "top": 116,
+            "right": 296,
+            "bottom": 433.1875,
+            "left": 22
+          },
+          "overlay": "linear-gradient(110deg, rgba(5, 31, 37, 0.94), rgba(5, 31, 37, 0.84) 55%, rgba(5, 31, 37, 0.76))"
+        },
+        "nameColor": "rgb(255, 247, 231)",
+        "unitColor": "rgb(220, 232, 230)",
+        "priceColor": "rgb(255, 247, 231)",
+        "cardBackground": "rgb(13, 51, 59)",
+        "name": "Saag Paneer Wrap",
+        "price": "€9.50",
+        "upgradeText": "Make it a full menu\n\nAdded\n\n+€4 includes fries and one free soft drink.\n\nFree soft drink\nFuze Tea Green mango chamomile\nFuze Tea - Black sparkling lemon\nFuze Tea - Black peach hibiscus\nFuze Tea - Green tea\nCoca-Cola Regular\nCoca-Cola Zero\nSprite Zero\nFanta\nFanta Cassis\nFernandes Green\nFernandes Cherry\nFernandes Pineapple\nRedbull\nChaudfontaine Natuurlijk mineraalwater\nChaudfontaine Bruisend natuurlijk mineraalwater\nWhite Chocolate Matcha\nWatermelon Bubble Tea",
+        "toggle": {
+          "pressed": "true",
+          "label": "Remove: Make it a full menu",
+          "text": "Added",
+          "rect": {
+            "x": 198.125,
+            "y": 256,
+            "width": 76.875,
+            "height": 48,
+            "top": 256,
+            "right": 275,
+            "bottom": 304,
+            "left": 198.125
+          }
+        },
+        "select": {
+          "value": "p-ci1bmcrmmrqidyre",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "color": "rgb(8, 45, 53)",
+          "background": "rgb(255, 249, 239)",
+          "options": [
+            {
+              "value": "p-ci1bmcrmmrqidyre",
+              "text": "Fuze Tea Green mango chamomile"
+            },
+            {
+              "value": "p-r84vzx09mrqifjm7",
+              "text": "Fuze Tea - Black sparkling lemon"
+            },
+            {
+              "value": "p-y0038cp3mrqiihy7",
+              "text": "Fuze Tea - Black peach hibiscus"
+            },
+            {
+              "value": "p-73rxt7cvmrqik7xt",
+              "text": "Fuze Tea - Green tea"
+            },
+            {
+              "value": "p-on6zjg4xmrs1rkvc",
+              "text": "Coca-Cola Regular"
+            },
+            {
+              "value": "p-ywxluvwsmrs1s8w7",
+              "text": "Coca-Cola Zero"
+            },
+            {
+              "value": "p-w985jbscmrs1t6a0",
+              "text": "Sprite Zero"
+            },
+            {
+              "value": "p-o2r242f2msagpkop",
+              "text": "Fanta"
+            },
+            {
+              "value": "p-syebexgkmsagq9pu",
+              "text": "Fanta Cassis"
+            },
+            {
+              "value": "p-x1mhaupfmrs1ufui",
+              "text": "Fernandes Green"
+            },
+            {
+              "value": "p-azhbjc65mrs1v8v0",
+              "text": "Fernandes Cherry"
+            },
+            {
+              "value": "p-osxrg5fdmrs1w6j0",
+              "text": "Fernandes Pineapple"
+            },
+            {
+              "value": "p-9yxiqnp9ms4tanjj",
+              "text": "Redbull"
+            },
+            {
+              "value": "p-smbbootwmrt91m01",
+              "text": "Chaudfontaine Natuurlijk mineraalwater"
+            },
+            {
+              "value": "p-1g3cdw0smrt92965",
+              "text": "Chaudfontaine Bruisend natuurlijk mineraalwater"
+            },
+            {
+              "value": "p-8biw2kw8msagu707",
+              "text": "White Chocolate Matcha"
+            },
+            {
+              "value": "p-89p6ogwvmrs4j25p",
+              "text": "Watermelon Bubble Tea"
+            }
+          ],
+          "rect": {
+            "x": 43,
+            "y": 364.1875,
+            "width": 232,
+            "height": 48,
+            "top": 364.1875,
+            "right": 275,
+            "bottom": 412.1875,
+            "left": 43
+          }
+        },
+        "fallbackHidden": true,
+        "overflow": 0
+      },
+      "selected": {
+        "theme": "dark",
+        "photo": {
+          "source": "http://127.0.0.1:3678/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2F6aa2448c-3a93-4039-8618-54c97ca3f5ee.jpg&w=384&q=75",
+          "loaded": true,
+          "loading": "lazy",
+          "priority": "low",
+          "sizes": "(min-width: 1024px) 240px, (min-width: 480px) 384px, calc(100vw - 42px)",
+          "alt": "",
+          "ariaHidden": "true",
+          "pointerEvents": "none",
+          "rect": {
+            "x": 22,
+            "y": 116,
+            "width": 274,
+            "height": 317.1875,
+            "top": 116,
+            "right": 296,
+            "bottom": 433.1875,
+            "left": 22
+          },
+          "overlay": "linear-gradient(110deg, rgba(5, 31, 37, 0.94), rgba(5, 31, 37, 0.84) 55%, rgba(5, 31, 37, 0.76))"
+        },
+        "nameColor": "rgb(255, 247, 231)",
+        "unitColor": "rgb(220, 232, 230)",
+        "priceColor": "rgb(255, 247, 231)",
+        "cardBackground": "rgb(13, 51, 59)",
+        "name": "Saag Paneer Wrap",
+        "price": "€9.50",
+        "upgradeText": "Make it a full menu\n\nAdded\n\n+€4 includes fries and one free soft drink.\n\nFree soft drink\nFuze Tea Green mango chamomile\nFuze Tea - Black sparkling lemon\nFuze Tea - Black peach hibiscus\nFuze Tea - Green tea\nCoca-Cola Regular\nCoca-Cola Zero\nSprite Zero\nFanta\nFanta Cassis\nFernandes Green\nFernandes Cherry\nFernandes Pineapple\nRedbull\nChaudfontaine Natuurlijk mineraalwater\nChaudfontaine Bruisend natuurlijk mineraalwater\nWhite Chocolate Matcha\nWatermelon Bubble Tea",
+        "toggle": {
+          "pressed": "true",
+          "label": "Remove: Make it a full menu",
+          "text": "Added",
+          "rect": {
+            "x": 198.125,
+            "y": 256,
+            "width": 76.875,
+            "height": 48,
+            "top": 256,
+            "right": 275,
+            "bottom": 304,
+            "left": 198.125
+          }
+        },
+        "select": {
+          "value": "p-r84vzx09mrqifjm7",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "color": "rgb(8, 45, 53)",
+          "background": "rgb(255, 249, 239)",
+          "options": [
+            {
+              "value": "p-ci1bmcrmmrqidyre",
+              "text": "Fuze Tea Green mango chamomile"
+            },
+            {
+              "value": "p-r84vzx09mrqifjm7",
+              "text": "Fuze Tea - Black sparkling lemon"
+            },
+            {
+              "value": "p-y0038cp3mrqiihy7",
+              "text": "Fuze Tea - Black peach hibiscus"
+            },
+            {
+              "value": "p-73rxt7cvmrqik7xt",
+              "text": "Fuze Tea - Green tea"
+            },
+            {
+              "value": "p-on6zjg4xmrs1rkvc",
+              "text": "Coca-Cola Regular"
+            },
+            {
+              "value": "p-ywxluvwsmrs1s8w7",
+              "text": "Coca-Cola Zero"
+            },
+            {
+              "value": "p-w985jbscmrs1t6a0",
+              "text": "Sprite Zero"
+            },
+            {
+              "value": "p-o2r242f2msagpkop",
+              "text": "Fanta"
+            },
+            {
+              "value": "p-syebexgkmsagq9pu",
+              "text": "Fanta Cassis"
+            },
+            {
+              "value": "p-x1mhaupfmrs1ufui",
+              "text": "Fernandes Green"
+            },
+            {
+              "value": "p-azhbjc65mrs1v8v0",
+              "text": "Fernandes Cherry"
+            },
+            {
+              "value": "p-osxrg5fdmrs1w6j0",
+              "text": "Fernandes Pineapple"
+            },
+            {
+              "value": "p-9yxiqnp9ms4tanjj",
+              "text": "Redbull"
+            },
+            {
+              "value": "p-smbbootwmrt91m01",
+              "text": "Chaudfontaine Natuurlijk mineraalwater"
+            },
+            {
+              "value": "p-1g3cdw0smrt92965",
+              "text": "Chaudfontaine Bruisend natuurlijk mineraalwater"
+            },
+            {
+              "value": "p-8biw2kw8msagu707",
+              "text": "White Chocolate Matcha"
+            },
+            {
+              "value": "p-89p6ogwvmrs4j25p",
+              "text": "Watermelon Bubble Tea"
+            }
+          ],
+          "rect": {
+            "x": 43,
+            "y": 364.1875,
+            "width": 232,
+            "height": 48,
+            "top": 364.1875,
+            "right": 275,
+            "bottom": 412.1875,
+            "left": 43
+          }
+        },
+        "fallbackHidden": true,
+        "overflow": 0
+      },
+      "disabled": {
+        "theme": "dark",
+        "photo": {
+          "source": "http://127.0.0.1:3678/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2F6aa2448c-3a93-4039-8618-54c97ca3f5ee.jpg&w=384&q=75",
+          "loaded": true,
+          "loading": "lazy",
+          "priority": "low",
+          "sizes": "(min-width: 1024px) 240px, (min-width: 480px) 384px, calc(100vw - 42px)",
+          "alt": "",
+          "ariaHidden": "true",
+          "pointerEvents": "none",
+          "rect": {
+            "x": 22.236005783081055,
+            "y": 119.78330993652344,
+            "width": 273.5138244628906,
+            "height": 233.7719268798828,
+            "top": 119.78330993652344,
+            "right": 295.7498302459717,
+            "bottom": 353.55523681640625,
+            "left": 22.236005783081055
+          },
+          "overlay": "linear-gradient(110deg, rgba(5, 31, 37, 0.94), rgba(5, 31, 37, 0.84) 55%, rgba(5, 31, 37, 0.76))"
+        },
+        "nameColor": "rgb(255, 247, 231)",
+        "unitColor": "rgb(220, 232, 230)",
+        "priceColor": "rgb(255, 247, 231)",
+        "cardBackground": "rgb(13, 51, 59)",
+        "name": "Saag Paneer Wrap",
+        "price": "€9.50",
+        "upgradeText": "Make it a full menu\n\nAdd\n\n+€4 includes fries and one free soft drink.",
+        "toggle": {
+          "pressed": "false",
+          "label": "Add: Make it a full menu",
+          "text": "Add",
+          "rect": {
+            "x": 226.8722381591797,
+            "y": 259.5348815917969,
+            "width": 47.91481018066406,
+            "height": 47.914825439453125,
+            "top": 259.5348815917969,
+            "right": 274.78704833984375,
+            "bottom": 307.44970703125,
+            "left": 226.8722381591797
+          }
+        },
+        "select": null,
+        "fallbackHidden": true,
+        "overflow": 0
+      },
+      "initialTotal": 24.98,
+      "email": {
+        "placeholder": "Email address",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "label": "Email address for order confirmation",
+        "placeholderColor": "rgba(213, 209, 196, 0.5)",
+        "background": "oklab(0.999994 0.0000455678 0.0000200868 / 0.05)",
+        "rect": {
+          "x": 23.009998321533203,
+          "y": 379.6513977050781,
+          "width": 263.97998046875,
+          "height": 47.279998779296875,
+          "top": 379.6513977050781,
+          "right": 286.9899787902832,
+          "bottom": 426.931396484375,
+          "left": 23.009998321533203
+        },
+        "effectiveBackground": [
+          null,
+          null,
+          null
+        ],
+        "placeholderContrast": 13.746516941690192
+      },
+      "retained": "cart.qa@example.invalid",
+      "sidebar": null,
+      "errors": [],
+      "writes": []
+    },
+    {
+      "width": 390,
+      "theme": "default",
+      "mobile": true,
+      "hiddenSheet": {
+        "dialogs": 0,
+        "photos": [
+          {
+            "width": 0,
+            "loaded": true
+          },
+          {
+            "width": 0,
+            "loaded": true
+          },
+          {
+            "width": 0,
+            "loaded": true
+          }
+        ]
+      },
+      "beforeOpenRequests": [
+        "http://127.0.0.1:3678/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2F6aa2448c-3a93-4039-8618-54c97ca3f5ee.jpg&w=384&q=75",
+        "http://127.0.0.1:3678/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2Fc04ab278-e64a-495e-8ccd-6c8270b0cc8f.jpg&w=384&q=75"
+      ],
+      "initial": {
+        "theme": "dark",
+        "photo": {
+          "source": "http://127.0.0.1:3678/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2F6aa2448c-3a93-4039-8618-54c97ca3f5ee.jpg&w=384&q=75",
+          "loaded": true,
+          "loading": "lazy",
+          "priority": "low",
+          "sizes": "(min-width: 1024px) 240px, (min-width: 480px) 384px, calc(100vw - 42px)",
+          "alt": "",
+          "ariaHidden": "true",
+          "pointerEvents": "none",
+          "rect": {
+            "x": 22,
+            "y": 116,
+            "width": 344,
+            "height": 234.1875,
+            "top": 116,
+            "right": 366,
+            "bottom": 350.1875,
+            "left": 22
+          },
+          "overlay": "linear-gradient(110deg, rgba(5, 31, 37, 0.94), rgba(5, 31, 37, 0.84) 55%, rgba(5, 31, 37, 0.76))"
+        },
+        "nameColor": "rgb(255, 247, 231)",
+        "unitColor": "rgb(220, 232, 230)",
+        "priceColor": "rgb(255, 247, 231)",
+        "cardBackground": "rgb(13, 51, 59)",
+        "name": "Saag Paneer Wrap",
+        "price": "€9.50",
+        "upgradeText": "Make it a full menu\n\nAdd\n\n+€4 includes fries and one free soft drink.",
+        "toggle": {
+          "pressed": "false",
+          "label": "Add: Make it a full menu",
+          "text": "Add",
+          "rect": {
+            "x": 297,
+            "y": 256,
+            "width": 48,
+            "height": 48,
+            "top": 256,
+            "right": 345,
+            "bottom": 304,
+            "left": 297
+          }
+        },
+        "select": null,
+        "fallbackHidden": true,
+        "overflow": 0
+      },
+      "contrast": {
+        "name": 7.404427208979907,
+        "unit": 6.284269905090955,
+        "price": 7.404427208979907,
+        "brightestPossibleBackdrop": [
+          65,
+          84.75999999999999,
+          89.32
+        ]
+      },
+      "enabled": {
+        "theme": "dark",
+        "photo": {
+          "source": "http://127.0.0.1:3678/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2F6aa2448c-3a93-4039-8618-54c97ca3f5ee.jpg&w=384&q=75",
+          "loaded": true,
+          "loading": "lazy",
+          "priority": "low",
+          "sizes": "(min-width: 1024px) 240px, (min-width: 480px) 384px, calc(100vw - 42px)",
+          "alt": "",
+          "ariaHidden": "true",
+          "pointerEvents": "none",
+          "rect": {
+            "x": 22,
+            "y": 116,
+            "width": 344,
+            "height": 317.1875,
+            "top": 116,
+            "right": 366,
+            "bottom": 433.1875,
+            "left": 22
+          },
+          "overlay": "linear-gradient(110deg, rgba(5, 31, 37, 0.94), rgba(5, 31, 37, 0.84) 55%, rgba(5, 31, 37, 0.76))"
+        },
+        "nameColor": "rgb(255, 247, 231)",
+        "unitColor": "rgb(220, 232, 230)",
+        "priceColor": "rgb(255, 247, 231)",
+        "cardBackground": "rgb(13, 51, 59)",
+        "name": "Saag Paneer Wrap",
+        "price": "€9.50",
+        "upgradeText": "Make it a full menu\n\nAdded\n\n+€4 includes fries and one free soft drink.\n\nFree soft drink\nFuze Tea Green mango chamomile\nFuze Tea - Black sparkling lemon\nFuze Tea - Black peach hibiscus\nFuze Tea - Green tea\nCoca-Cola Regular\nCoca-Cola Zero\nSprite Zero\nFanta\nFanta Cassis\nFernandes Green\nFernandes Cherry\nFernandes Pineapple\nRedbull\nChaudfontaine Natuurlijk mineraalwater\nChaudfontaine Bruisend natuurlijk mineraalwater\nWhite Chocolate Matcha\nWatermelon Bubble Tea",
+        "toggle": {
+          "pressed": "true",
+          "label": "Remove: Make it a full menu",
+          "text": "Added",
+          "rect": {
+            "x": 268.125,
+            "y": 256,
+            "width": 76.875,
+            "height": 48,
+            "top": 256,
+            "right": 345,
+            "bottom": 304,
+            "left": 268.125
+          }
+        },
+        "select": {
+          "value": "p-ci1bmcrmmrqidyre",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "color": "rgb(8, 45, 53)",
+          "background": "rgb(255, 249, 239)",
+          "options": [
+            {
+              "value": "p-ci1bmcrmmrqidyre",
+              "text": "Fuze Tea Green mango chamomile"
+            },
+            {
+              "value": "p-r84vzx09mrqifjm7",
+              "text": "Fuze Tea - Black sparkling lemon"
+            },
+            {
+              "value": "p-y0038cp3mrqiihy7",
+              "text": "Fuze Tea - Black peach hibiscus"
+            },
+            {
+              "value": "p-73rxt7cvmrqik7xt",
+              "text": "Fuze Tea - Green tea"
+            },
+            {
+              "value": "p-on6zjg4xmrs1rkvc",
+              "text": "Coca-Cola Regular"
+            },
+            {
+              "value": "p-ywxluvwsmrs1s8w7",
+              "text": "Coca-Cola Zero"
+            },
+            {
+              "value": "p-w985jbscmrs1t6a0",
+              "text": "Sprite Zero"
+            },
+            {
+              "value": "p-o2r242f2msagpkop",
+              "text": "Fanta"
+            },
+            {
+              "value": "p-syebexgkmsagq9pu",
+              "text": "Fanta Cassis"
+            },
+            {
+              "value": "p-x1mhaupfmrs1ufui",
+              "text": "Fernandes Green"
+            },
+            {
+              "value": "p-azhbjc65mrs1v8v0",
+              "text": "Fernandes Cherry"
+            },
+            {
+              "value": "p-osxrg5fdmrs1w6j0",
+              "text": "Fernandes Pineapple"
+            },
+            {
+              "value": "p-9yxiqnp9ms4tanjj",
+              "text": "Redbull"
+            },
+            {
+              "value": "p-smbbootwmrt91m01",
+              "text": "Chaudfontaine Natuurlijk mineraalwater"
+            },
+            {
+              "value": "p-1g3cdw0smrt92965",
+              "text": "Chaudfontaine Bruisend natuurlijk mineraalwater"
+            },
+            {
+              "value": "p-8biw2kw8msagu707",
+              "text": "White Chocolate Matcha"
+            },
+            {
+              "value": "p-89p6ogwvmrs4j25p",
+              "text": "Watermelon Bubble Tea"
+            }
+          ],
+          "rect": {
+            "x": 43,
+            "y": 364.1875,
+            "width": 302,
+            "height": 48,
+            "top": 364.1875,
+            "right": 345,
+            "bottom": 412.1875,
+            "left": 43
+          }
+        },
+        "fallbackHidden": true,
+        "overflow": 0
+      },
+      "selected": {
+        "theme": "dark",
+        "photo": {
+          "source": "http://127.0.0.1:3678/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2F6aa2448c-3a93-4039-8618-54c97ca3f5ee.jpg&w=384&q=75",
+          "loaded": true,
+          "loading": "lazy",
+          "priority": "low",
+          "sizes": "(min-width: 1024px) 240px, (min-width: 480px) 384px, calc(100vw - 42px)",
+          "alt": "",
+          "ariaHidden": "true",
+          "pointerEvents": "none",
+          "rect": {
+            "x": 22,
+            "y": 116,
+            "width": 344,
+            "height": 317.1875,
+            "top": 116,
+            "right": 366,
+            "bottom": 433.1875,
+            "left": 22
+          },
+          "overlay": "linear-gradient(110deg, rgba(5, 31, 37, 0.94), rgba(5, 31, 37, 0.84) 55%, rgba(5, 31, 37, 0.76))"
+        },
+        "nameColor": "rgb(255, 247, 231)",
+        "unitColor": "rgb(220, 232, 230)",
+        "priceColor": "rgb(255, 247, 231)",
+        "cardBackground": "rgb(13, 51, 59)",
+        "name": "Saag Paneer Wrap",
+        "price": "€9.50",
+        "upgradeText": "Make it a full menu\n\nAdded\n\n+€4 includes fries and one free soft drink.\n\nFree soft drink\nFuze Tea Green mango chamomile\nFuze Tea - Black sparkling lemon\nFuze Tea - Black peach hibiscus\nFuze Tea - Green tea\nCoca-Cola Regular\nCoca-Cola Zero\nSprite Zero\nFanta\nFanta Cassis\nFernandes Green\nFernandes Cherry\nFernandes Pineapple\nRedbull\nChaudfontaine Natuurlijk mineraalwater\nChaudfontaine Bruisend natuurlijk mineraalwater\nWhite Chocolate Matcha\nWatermelon Bubble Tea",
+        "toggle": {
+          "pressed": "true",
+          "label": "Remove: Make it a full menu",
+          "text": "Added",
+          "rect": {
+            "x": 268.125,
+            "y": 256,
+            "width": 76.875,
+            "height": 48,
+            "top": 256,
+            "right": 345,
+            "bottom": 304,
+            "left": 268.125
+          }
+        },
+        "select": {
+          "value": "p-r84vzx09mrqifjm7",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "color": "rgb(8, 45, 53)",
+          "background": "rgb(255, 249, 239)",
+          "options": [
+            {
+              "value": "p-ci1bmcrmmrqidyre",
+              "text": "Fuze Tea Green mango chamomile"
+            },
+            {
+              "value": "p-r84vzx09mrqifjm7",
+              "text": "Fuze Tea - Black sparkling lemon"
+            },
+            {
+              "value": "p-y0038cp3mrqiihy7",
+              "text": "Fuze Tea - Black peach hibiscus"
+            },
+            {
+              "value": "p-73rxt7cvmrqik7xt",
+              "text": "Fuze Tea - Green tea"
+            },
+            {
+              "value": "p-on6zjg4xmrs1rkvc",
+              "text": "Coca-Cola Regular"
+            },
+            {
+              "value": "p-ywxluvwsmrs1s8w7",
+              "text": "Coca-Cola Zero"
+            },
+            {
+              "value": "p-w985jbscmrs1t6a0",
+              "text": "Sprite Zero"
+            },
+            {
+              "value": "p-o2r242f2msagpkop",
+              "text": "Fanta"
+            },
+            {
+              "value": "p-syebexgkmsagq9pu",
+              "text": "Fanta Cassis"
+            },
+            {
+              "value": "p-x1mhaupfmrs1ufui",
+              "text": "Fernandes Green"
+            },
+            {
+              "value": "p-azhbjc65mrs1v8v0",
+              "text": "Fernandes Cherry"
+            },
+            {
+              "value": "p-osxrg5fdmrs1w6j0",
+              "text": "Fernandes Pineapple"
+            },
+            {
+              "value": "p-9yxiqnp9ms4tanjj",
+              "text": "Redbull"
+            },
+            {
+              "value": "p-smbbootwmrt91m01",
+              "text": "Chaudfontaine Natuurlijk mineraalwater"
+            },
+            {
+              "value": "p-1g3cdw0smrt92965",
+              "text": "Chaudfontaine Bruisend natuurlijk mineraalwater"
+            },
+            {
+              "value": "p-8biw2kw8msagu707",
+              "text": "White Chocolate Matcha"
+            },
+            {
+              "value": "p-89p6ogwvmrs4j25p",
+              "text": "Watermelon Bubble Tea"
+            }
+          ],
+          "rect": {
+            "x": 43,
+            "y": 364.1875,
+            "width": 302,
+            "height": 48,
+            "top": 364.1875,
+            "right": 345,
+            "bottom": 412.1875,
+            "left": 43
+          }
+        },
+        "fallbackHidden": true,
+        "overflow": 0
+      },
+      "disabled": {
+        "theme": "dark",
+        "photo": {
+          "source": "http://127.0.0.1:3678/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2F6aa2448c-3a93-4039-8618-54c97ca3f5ee.jpg&w=384&q=75",
+          "loaded": true,
+          "loading": "lazy",
+          "priority": "low",
+          "sizes": "(min-width: 1024px) 240px, (min-width: 480px) 384px, calc(100vw - 42px)",
+          "alt": "",
+          "ariaHidden": "true",
+          "pointerEvents": "none",
+          "rect": {
+            "x": 22.29802703857422,
+            "y": 119.73574829101562,
+            "width": 343.38970947265625,
+            "height": 233.77206420898438,
+            "top": 119.73574829101562,
+            "right": 365.68773651123047,
+            "bottom": 353.5078125,
+            "left": 22.29802703857422
+          },
+          "overlay": "linear-gradient(110deg, rgba(5, 31, 37, 0.94), rgba(5, 31, 37, 0.84) 55%, rgba(5, 31, 37, 0.76))"
+        },
+        "nameColor": "rgb(255, 247, 231)",
+        "unitColor": "rgb(220, 232, 230)",
+        "priceColor": "rgb(255, 247, 231)",
+        "cardBackground": "rgb(13, 51, 59)",
+        "name": "Saag Paneer Wrap",
+        "price": "€9.50",
+        "upgradeText": "Make it a full menu\n\nAdd\n\n+€4 includes fries and one free soft drink.",
+        "toggle": {
+          "pressed": "false",
+          "label": "Add: Make it a full menu",
+          "text": "Add",
+          "rect": {
+            "x": 296.8101806640625,
+            "y": 259.48736572265625,
+            "width": 47.91485595703125,
+            "height": 47.91485595703125,
+            "top": 259.48736572265625,
+            "right": 344.72503662109375,
+            "bottom": 307.4022216796875,
+            "left": 296.8101806640625
+          }
+        },
+        "select": null,
+        "fallbackHidden": true,
+        "overflow": 0
+      },
+      "initialTotal": 24.98,
+      "email": {
+        "placeholder": "Email address",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "label": "Email address for order confirmation",
+        "placeholderColor": "rgba(213, 209, 196, 0.5)",
+        "background": "oklab(0.999994 0.0000455678 0.0000200868 / 0.05)",
+        "rect": {
+          "x": 23.534992218017578,
+          "y": 415.6513977050781,
+          "width": 332.92999267578125,
+          "height": 47.279998779296875,
+          "top": 415.6513977050781,
+          "right": 356.4649848937988,
+          "bottom": 462.931396484375,
+          "left": 23.534992218017578
+        },
+        "effectiveBackground": [
+          null,
+          null,
+          null
+        ],
+        "placeholderContrast": 13.746516941690192
+      },
+      "retained": "cart.qa@example.invalid",
+      "sidebar": null,
+      "errors": [],
+      "writes": []
+    },
+    {
+      "width": 390,
+      "theme": "light",
+      "mobile": true,
+      "hiddenSheet": {
+        "dialogs": 0,
+        "photos": [
+          {
+            "width": 0,
+            "loaded": true
+          },
+          {
+            "width": 0,
+            "loaded": true
+          },
+          {
+            "width": 0,
+            "loaded": true
+          }
+        ]
+      },
+      "beforeOpenRequests": [
+        "http://127.0.0.1:3678/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2F6aa2448c-3a93-4039-8618-54c97ca3f5ee.jpg&w=384&q=75",
+        "http://127.0.0.1:3678/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2Fc04ab278-e64a-495e-8ccd-6c8270b0cc8f.jpg&w=384&q=75"
+      ],
+      "initial": {
+        "theme": "light",
+        "photo": {
+          "source": "http://127.0.0.1:3678/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2F6aa2448c-3a93-4039-8618-54c97ca3f5ee.jpg&w=384&q=75",
+          "loaded": true,
+          "loading": "lazy",
+          "priority": "low",
+          "sizes": "(min-width: 1024px) 240px, (min-width: 480px) 384px, calc(100vw - 42px)",
+          "alt": "",
+          "ariaHidden": "true",
+          "pointerEvents": "none",
+          "rect": {
+            "x": 22,
+            "y": 116,
+            "width": 344,
+            "height": 234.1875,
+            "top": 116,
+            "right": 366,
+            "bottom": 350.1875,
+            "left": 22
+          },
+          "overlay": "linear-gradient(110deg, rgba(5, 31, 37, 0.94), rgba(5, 31, 37, 0.84) 55%, rgba(5, 31, 37, 0.76))"
+        },
+        "nameColor": "rgb(255, 247, 231)",
+        "unitColor": "rgb(220, 232, 230)",
+        "priceColor": "rgb(255, 247, 231)",
+        "cardBackground": "rgb(13, 51, 59)",
+        "name": "Saag Paneer Wrap",
+        "price": "€9.50",
+        "upgradeText": "Make it a full menu\n\nAdd\n\n+€4 includes fries and one free soft drink.",
+        "toggle": {
+          "pressed": "false",
+          "label": "Add: Make it a full menu",
+          "text": "Add",
+          "rect": {
+            "x": 297,
+            "y": 256,
+            "width": 48,
+            "height": 48,
+            "top": 256,
+            "right": 345,
+            "bottom": 304,
+            "left": 297
+          }
+        },
+        "select": null,
+        "fallbackHidden": true,
+        "overflow": 0
+      },
+      "contrast": {
+        "name": 7.404427208979907,
+        "unit": 6.284269905090955,
+        "price": 7.404427208979907,
+        "brightestPossibleBackdrop": [
+          65,
+          84.75999999999999,
+          89.32
+        ]
+      },
+      "enabled": {
+        "theme": "light",
+        "photo": {
+          "source": "http://127.0.0.1:3678/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2F6aa2448c-3a93-4039-8618-54c97ca3f5ee.jpg&w=384&q=75",
+          "loaded": true,
+          "loading": "lazy",
+          "priority": "low",
+          "sizes": "(min-width: 1024px) 240px, (min-width: 480px) 384px, calc(100vw - 42px)",
+          "alt": "",
+          "ariaHidden": "true",
+          "pointerEvents": "none",
+          "rect": {
+            "x": 22,
+            "y": 116,
+            "width": 344,
+            "height": 317.1875,
+            "top": 116,
+            "right": 366,
+            "bottom": 433.1875,
+            "left": 22
+          },
+          "overlay": "linear-gradient(110deg, rgba(5, 31, 37, 0.94), rgba(5, 31, 37, 0.84) 55%, rgba(5, 31, 37, 0.76))"
+        },
+        "nameColor": "rgb(255, 247, 231)",
+        "unitColor": "rgb(220, 232, 230)",
+        "priceColor": "rgb(255, 247, 231)",
+        "cardBackground": "rgb(13, 51, 59)",
+        "name": "Saag Paneer Wrap",
+        "price": "€9.50",
+        "upgradeText": "Make it a full menu\n\nAdded\n\n+€4 includes fries and one free soft drink.\n\nFree soft drink\nFuze Tea Green mango chamomile\nFuze Tea - Black sparkling lemon\nFuze Tea - Black peach hibiscus\nFuze Tea - Green tea\nCoca-Cola Regular\nCoca-Cola Zero\nSprite Zero\nFanta\nFanta Cassis\nFernandes Green\nFernandes Cherry\nFernandes Pineapple\nRedbull\nChaudfontaine Natuurlijk mineraalwater\nChaudfontaine Bruisend natuurlijk mineraalwater\nWhite Chocolate Matcha\nWatermelon Bubble Tea",
+        "toggle": {
+          "pressed": "true",
+          "label": "Remove: Make it a full menu",
+          "text": "Added",
+          "rect": {
+            "x": 268.125,
+            "y": 256,
+            "width": 76.875,
+            "height": 48,
+            "top": 256,
+            "right": 345,
+            "bottom": 304,
+            "left": 268.125
+          }
+        },
+        "select": {
+          "value": "p-ci1bmcrmmrqidyre",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "color": "rgb(8, 45, 53)",
+          "background": "rgb(255, 249, 239)",
+          "options": [
+            {
+              "value": "p-ci1bmcrmmrqidyre",
+              "text": "Fuze Tea Green mango chamomile"
+            },
+            {
+              "value": "p-r84vzx09mrqifjm7",
+              "text": "Fuze Tea - Black sparkling lemon"
+            },
+            {
+              "value": "p-y0038cp3mrqiihy7",
+              "text": "Fuze Tea - Black peach hibiscus"
+            },
+            {
+              "value": "p-73rxt7cvmrqik7xt",
+              "text": "Fuze Tea - Green tea"
+            },
+            {
+              "value": "p-on6zjg4xmrs1rkvc",
+              "text": "Coca-Cola Regular"
+            },
+            {
+              "value": "p-ywxluvwsmrs1s8w7",
+              "text": "Coca-Cola Zero"
+            },
+            {
+              "value": "p-w985jbscmrs1t6a0",
+              "text": "Sprite Zero"
+            },
+            {
+              "value": "p-o2r242f2msagpkop",
+              "text": "Fanta"
+            },
+            {
+              "value": "p-syebexgkmsagq9pu",
+              "text": "Fanta Cassis"
+            },
+            {
+              "value": "p-x1mhaupfmrs1ufui",
+              "text": "Fernandes Green"
+            },
+            {
+              "value": "p-azhbjc65mrs1v8v0",
+              "text": "Fernandes Cherry"
+            },
+            {
+              "value": "p-osxrg5fdmrs1w6j0",
+              "text": "Fernandes Pineapple"
+            },
+            {
+              "value": "p-9yxiqnp9ms4tanjj",
+              "text": "Redbull"
+            },
+            {
+              "value": "p-smbbootwmrt91m01",
+              "text": "Chaudfontaine Natuurlijk mineraalwater"
+            },
+            {
+              "value": "p-1g3cdw0smrt92965",
+              "text": "Chaudfontaine Bruisend natuurlijk mineraalwater"
+            },
+            {
+              "value": "p-8biw2kw8msagu707",
+              "text": "White Chocolate Matcha"
+            },
+            {
+              "value": "p-89p6ogwvmrs4j25p",
+              "text": "Watermelon Bubble Tea"
+            }
+          ],
+          "rect": {
+            "x": 43,
+            "y": 364.1875,
+            "width": 302,
+            "height": 48,
+            "top": 364.1875,
+            "right": 345,
+            "bottom": 412.1875,
+            "left": 43
+          }
+        },
+        "fallbackHidden": true,
+        "overflow": 0
+      },
+      "selected": {
+        "theme": "light",
+        "photo": {
+          "source": "http://127.0.0.1:3678/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2F6aa2448c-3a93-4039-8618-54c97ca3f5ee.jpg&w=384&q=75",
+          "loaded": true,
+          "loading": "lazy",
+          "priority": "low",
+          "sizes": "(min-width: 1024px) 240px, (min-width: 480px) 384px, calc(100vw - 42px)",
+          "alt": "",
+          "ariaHidden": "true",
+          "pointerEvents": "none",
+          "rect": {
+            "x": 22,
+            "y": 116,
+            "width": 344,
+            "height": 317.1875,
+            "top": 116,
+            "right": 366,
+            "bottom": 433.1875,
+            "left": 22
+          },
+          "overlay": "linear-gradient(110deg, rgba(5, 31, 37, 0.94), rgba(5, 31, 37, 0.84) 55%, rgba(5, 31, 37, 0.76))"
+        },
+        "nameColor": "rgb(255, 247, 231)",
+        "unitColor": "rgb(220, 232, 230)",
+        "priceColor": "rgb(255, 247, 231)",
+        "cardBackground": "rgb(13, 51, 59)",
+        "name": "Saag Paneer Wrap",
+        "price": "€9.50",
+        "upgradeText": "Make it a full menu\n\nAdded\n\n+€4 includes fries and one free soft drink.\n\nFree soft drink\nFuze Tea Green mango chamomile\nFuze Tea - Black sparkling lemon\nFuze Tea - Black peach hibiscus\nFuze Tea - Green tea\nCoca-Cola Regular\nCoca-Cola Zero\nSprite Zero\nFanta\nFanta Cassis\nFernandes Green\nFernandes Cherry\nFernandes Pineapple\nRedbull\nChaudfontaine Natuurlijk mineraalwater\nChaudfontaine Bruisend natuurlijk mineraalwater\nWhite Chocolate Matcha\nWatermelon Bubble Tea",
+        "toggle": {
+          "pressed": "true",
+          "label": "Remove: Make it a full menu",
+          "text": "Added",
+          "rect": {
+            "x": 268.125,
+            "y": 256,
+            "width": 76.875,
+            "height": 48,
+            "top": 256,
+            "right": 345,
+            "bottom": 304,
+            "left": 268.125
+          }
+        },
+        "select": {
+          "value": "p-r84vzx09mrqifjm7",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "color": "rgb(8, 45, 53)",
+          "background": "rgb(255, 249, 239)",
+          "options": [
+            {
+              "value": "p-ci1bmcrmmrqidyre",
+              "text": "Fuze Tea Green mango chamomile"
+            },
+            {
+              "value": "p-r84vzx09mrqifjm7",
+              "text": "Fuze Tea - Black sparkling lemon"
+            },
+            {
+              "value": "p-y0038cp3mrqiihy7",
+              "text": "Fuze Tea - Black peach hibiscus"
+            },
+            {
+              "value": "p-73rxt7cvmrqik7xt",
+              "text": "Fuze Tea - Green tea"
+            },
+            {
+              "value": "p-on6zjg4xmrs1rkvc",
+              "text": "Coca-Cola Regular"
+            },
+            {
+              "value": "p-ywxluvwsmrs1s8w7",
+              "text": "Coca-Cola Zero"
+            },
+            {
+              "value": "p-w985jbscmrs1t6a0",
+              "text": "Sprite Zero"
+            },
+            {
+              "value": "p-o2r242f2msagpkop",
+              "text": "Fanta"
+            },
+            {
+              "value": "p-syebexgkmsagq9pu",
+              "text": "Fanta Cassis"
+            },
+            {
+              "value": "p-x1mhaupfmrs1ufui",
+              "text": "Fernandes Green"
+            },
+            {
+              "value": "p-azhbjc65mrs1v8v0",
+              "text": "Fernandes Cherry"
+            },
+            {
+              "value": "p-osxrg5fdmrs1w6j0",
+              "text": "Fernandes Pineapple"
+            },
+            {
+              "value": "p-9yxiqnp9ms4tanjj",
+              "text": "Redbull"
+            },
+            {
+              "value": "p-smbbootwmrt91m01",
+              "text": "Chaudfontaine Natuurlijk mineraalwater"
+            },
+            {
+              "value": "p-1g3cdw0smrt92965",
+              "text": "Chaudfontaine Bruisend natuurlijk mineraalwater"
+            },
+            {
+              "value": "p-8biw2kw8msagu707",
+              "text": "White Chocolate Matcha"
+            },
+            {
+              "value": "p-89p6ogwvmrs4j25p",
+              "text": "Watermelon Bubble Tea"
+            }
+          ],
+          "rect": {
+            "x": 43,
+            "y": 364.1875,
+            "width": 302,
+            "height": 48,
+            "top": 364.1875,
+            "right": 345,
+            "bottom": 412.1875,
+            "left": 43
+          }
+        },
+        "fallbackHidden": true,
+        "overflow": 0
+      },
+      "disabled": {
+        "theme": "light",
+        "photo": {
+          "source": "http://127.0.0.1:3678/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2F6aa2448c-3a93-4039-8618-54c97ca3f5ee.jpg&w=384&q=75",
+          "loaded": true,
+          "loading": "lazy",
+          "priority": "low",
+          "sizes": "(min-width: 1024px) 240px, (min-width: 480px) 384px, calc(100vw - 42px)",
+          "alt": "",
+          "ariaHidden": "true",
+          "pointerEvents": "none",
+          "rect": {
+            "x": 22.403076171875,
+            "y": 121.05245208740234,
+            "width": 343.1746520996094,
+            "height": 233.6256103515625,
+            "top": 121.05245208740234,
+            "right": 365.5777282714844,
+            "bottom": 354.67806243896484,
+            "left": 22.403076171875
+          },
+          "overlay": "linear-gradient(110deg, rgba(5, 31, 37, 0.94), rgba(5, 31, 37, 0.84) 55%, rgba(5, 31, 37, 0.76))"
+        },
+        "nameColor": "rgb(255, 247, 231)",
+        "unitColor": "rgb(220, 232, 230)",
+        "priceColor": "rgb(255, 247, 231)",
+        "cardBackground": "rgb(13, 51, 59)",
+        "name": "Saag Paneer Wrap",
+        "price": "€9.50",
+        "upgradeText": "Make it a full menu\n\nAdd\n\n+€4 includes fries and one free soft drink.",
+        "toggle": {
+          "pressed": "false",
+          "label": "Add: Make it a full menu",
+          "text": "Add",
+          "rect": {
+            "x": 296.7432861328125,
+            "y": 260.716552734375,
+            "width": 47.88482666015625,
+            "height": 47.88482666015625,
+            "top": 260.716552734375,
+            "right": 344.62811279296875,
+            "bottom": 308.60137939453125,
+            "left": 296.7432861328125
+          }
+        },
+        "select": null,
+        "fallbackHidden": true,
+        "overflow": 0
+      },
+      "initialTotal": 24.98,
+      "email": {
+        "placeholder": "Email address",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "label": "Email address for order confirmation",
+        "placeholderColor": "rgb(75, 101, 104)",
+        "background": "rgb(249, 250, 247)",
+        "rect": {
+          "x": 23.534992218017578,
+          "y": 415.6513977050781,
+          "width": 332.92999267578125,
+          "height": 47.279998779296875,
+          "top": 415.6513977050781,
+          "right": 356.4649848937988,
+          "bottom": 462.931396484375,
+          "left": 23.534992218017578
+        },
+        "effectiveBackground": [
+          255,
+          255,
+          255
+        ],
+        "placeholderContrast": 6.248998409069909
+      },
+      "retained": "cart.qa@example.invalid",
+      "sidebar": null,
+      "errors": [],
+      "writes": []
+    },
+    {
+      "width": 390,
+      "theme": "dark",
+      "mobile": true,
+      "hiddenSheet": {
+        "dialogs": 0,
+        "photos": [
+          {
+            "width": 0,
+            "loaded": true
+          },
+          {
+            "width": 0,
+            "loaded": true
+          },
+          {
+            "width": 0,
+            "loaded": true
+          }
+        ]
+      },
+      "beforeOpenRequests": [
+        "http://127.0.0.1:3678/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2F6aa2448c-3a93-4039-8618-54c97ca3f5ee.jpg&w=384&q=75",
+        "http://127.0.0.1:3678/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2Fc04ab278-e64a-495e-8ccd-6c8270b0cc8f.jpg&w=384&q=75"
+      ],
+      "initial": {
+        "theme": "dark",
+        "photo": {
+          "source": "http://127.0.0.1:3678/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2F6aa2448c-3a93-4039-8618-54c97ca3f5ee.jpg&w=384&q=75",
+          "loaded": true,
+          "loading": "lazy",
+          "priority": "low",
+          "sizes": "(min-width: 1024px) 240px, (min-width: 480px) 384px, calc(100vw - 42px)",
+          "alt": "",
+          "ariaHidden": "true",
+          "pointerEvents": "none",
+          "rect": {
+            "x": 22,
+            "y": 116,
+            "width": 344,
+            "height": 234.1875,
+            "top": 116,
+            "right": 366,
+            "bottom": 350.1875,
+            "left": 22
+          },
+          "overlay": "linear-gradient(110deg, rgba(5, 31, 37, 0.94), rgba(5, 31, 37, 0.84) 55%, rgba(5, 31, 37, 0.76))"
+        },
+        "nameColor": "rgb(255, 247, 231)",
+        "unitColor": "rgb(220, 232, 230)",
+        "priceColor": "rgb(255, 247, 231)",
+        "cardBackground": "rgb(13, 51, 59)",
+        "name": "Saag Paneer Wrap",
+        "price": "€9.50",
+        "upgradeText": "Make it a full menu\n\nAdd\n\n+€4 includes fries and one free soft drink.",
+        "toggle": {
+          "pressed": "false",
+          "label": "Add: Make it a full menu",
+          "text": "Add",
+          "rect": {
+            "x": 297,
+            "y": 256,
+            "width": 48,
+            "height": 48,
+            "top": 256,
+            "right": 345,
+            "bottom": 304,
+            "left": 297
+          }
+        },
+        "select": null,
+        "fallbackHidden": true,
+        "overflow": 0
+      },
+      "contrast": {
+        "name": 7.404427208979907,
+        "unit": 6.284269905090955,
+        "price": 7.404427208979907,
+        "brightestPossibleBackdrop": [
+          65,
+          84.75999999999999,
+          89.32
+        ]
+      },
+      "enabled": {
+        "theme": "dark",
+        "photo": {
+          "source": "http://127.0.0.1:3678/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2F6aa2448c-3a93-4039-8618-54c97ca3f5ee.jpg&w=384&q=75",
+          "loaded": true,
+          "loading": "lazy",
+          "priority": "low",
+          "sizes": "(min-width: 1024px) 240px, (min-width: 480px) 384px, calc(100vw - 42px)",
+          "alt": "",
+          "ariaHidden": "true",
+          "pointerEvents": "none",
+          "rect": {
+            "x": 22,
+            "y": 116,
+            "width": 344,
+            "height": 317.1875,
+            "top": 116,
+            "right": 366,
+            "bottom": 433.1875,
+            "left": 22
+          },
+          "overlay": "linear-gradient(110deg, rgba(5, 31, 37, 0.94), rgba(5, 31, 37, 0.84) 55%, rgba(5, 31, 37, 0.76))"
+        },
+        "nameColor": "rgb(255, 247, 231)",
+        "unitColor": "rgb(220, 232, 230)",
+        "priceColor": "rgb(255, 247, 231)",
+        "cardBackground": "rgb(13, 51, 59)",
+        "name": "Saag Paneer Wrap",
+        "price": "€9.50",
+        "upgradeText": "Make it a full menu\n\nAdded\n\n+€4 includes fries and one free soft drink.\n\nFree soft drink\nFuze Tea Green mango chamomile\nFuze Tea - Black sparkling lemon\nFuze Tea - Black peach hibiscus\nFuze Tea - Green tea\nCoca-Cola Regular\nCoca-Cola Zero\nSprite Zero\nFanta\nFanta Cassis\nFernandes Green\nFernandes Cherry\nFernandes Pineapple\nRedbull\nChaudfontaine Natuurlijk mineraalwater\nChaudfontaine Bruisend natuurlijk mineraalwater\nWhite Chocolate Matcha\nWatermelon Bubble Tea",
+        "toggle": {
+          "pressed": "true",
+          "label": "Remove: Make it a full menu",
+          "text": "Added",
+          "rect": {
+            "x": 268.125,
+            "y": 256,
+            "width": 76.875,
+            "height": 48,
+            "top": 256,
+            "right": 345,
+            "bottom": 304,
+            "left": 268.125
+          }
+        },
+        "select": {
+          "value": "p-ci1bmcrmmrqidyre",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "color": "rgb(8, 45, 53)",
+          "background": "rgb(255, 249, 239)",
+          "options": [
+            {
+              "value": "p-ci1bmcrmmrqidyre",
+              "text": "Fuze Tea Green mango chamomile"
+            },
+            {
+              "value": "p-r84vzx09mrqifjm7",
+              "text": "Fuze Tea - Black sparkling lemon"
+            },
+            {
+              "value": "p-y0038cp3mrqiihy7",
+              "text": "Fuze Tea - Black peach hibiscus"
+            },
+            {
+              "value": "p-73rxt7cvmrqik7xt",
+              "text": "Fuze Tea - Green tea"
+            },
+            {
+              "value": "p-on6zjg4xmrs1rkvc",
+              "text": "Coca-Cola Regular"
+            },
+            {
+              "value": "p-ywxluvwsmrs1s8w7",
+              "text": "Coca-Cola Zero"
+            },
+            {
+              "value": "p-w985jbscmrs1t6a0",
+              "text": "Sprite Zero"
+            },
+            {
+              "value": "p-o2r242f2msagpkop",
+              "text": "Fanta"
+            },
+            {
+              "value": "p-syebexgkmsagq9pu",
+              "text": "Fanta Cassis"
+            },
+            {
+              "value": "p-x1mhaupfmrs1ufui",
+              "text": "Fernandes Green"
+            },
+            {
+              "value": "p-azhbjc65mrs1v8v0",
+              "text": "Fernandes Cherry"
+            },
+            {
+              "value": "p-osxrg5fdmrs1w6j0",
+              "text": "Fernandes Pineapple"
+            },
+            {
+              "value": "p-9yxiqnp9ms4tanjj",
+              "text": "Redbull"
+            },
+            {
+              "value": "p-smbbootwmrt91m01",
+              "text": "Chaudfontaine Natuurlijk mineraalwater"
+            },
+            {
+              "value": "p-1g3cdw0smrt92965",
+              "text": "Chaudfontaine Bruisend natuurlijk mineraalwater"
+            },
+            {
+              "value": "p-8biw2kw8msagu707",
+              "text": "White Chocolate Matcha"
+            },
+            {
+              "value": "p-89p6ogwvmrs4j25p",
+              "text": "Watermelon Bubble Tea"
+            }
+          ],
+          "rect": {
+            "x": 43,
+            "y": 364.1875,
+            "width": 302,
+            "height": 48,
+            "top": 364.1875,
+            "right": 345,
+            "bottom": 412.1875,
+            "left": 43
+          }
+        },
+        "fallbackHidden": true,
+        "overflow": 0
+      },
+      "selected": {
+        "theme": "dark",
+        "photo": {
+          "source": "http://127.0.0.1:3678/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2F6aa2448c-3a93-4039-8618-54c97ca3f5ee.jpg&w=384&q=75",
+          "loaded": true,
+          "loading": "lazy",
+          "priority": "low",
+          "sizes": "(min-width: 1024px) 240px, (min-width: 480px) 384px, calc(100vw - 42px)",
+          "alt": "",
+          "ariaHidden": "true",
+          "pointerEvents": "none",
+          "rect": {
+            "x": 22,
+            "y": 116,
+            "width": 344,
+            "height": 317.1875,
+            "top": 116,
+            "right": 366,
+            "bottom": 433.1875,
+            "left": 22
+          },
+          "overlay": "linear-gradient(110deg, rgba(5, 31, 37, 0.94), rgba(5, 31, 37, 0.84) 55%, rgba(5, 31, 37, 0.76))"
+        },
+        "nameColor": "rgb(255, 247, 231)",
+        "unitColor": "rgb(220, 232, 230)",
+        "priceColor": "rgb(255, 247, 231)",
+        "cardBackground": "rgb(13, 51, 59)",
+        "name": "Saag Paneer Wrap",
+        "price": "€9.50",
+        "upgradeText": "Make it a full menu\n\nAdded\n\n+€4 includes fries and one free soft drink.\n\nFree soft drink\nFuze Tea Green mango chamomile\nFuze Tea - Black sparkling lemon\nFuze Tea - Black peach hibiscus\nFuze Tea - Green tea\nCoca-Cola Regular\nCoca-Cola Zero\nSprite Zero\nFanta\nFanta Cassis\nFernandes Green\nFernandes Cherry\nFernandes Pineapple\nRedbull\nChaudfontaine Natuurlijk mineraalwater\nChaudfontaine Bruisend natuurlijk mineraalwater\nWhite Chocolate Matcha\nWatermelon Bubble Tea",
+        "toggle": {
+          "pressed": "true",
+          "label": "Remove: Make it a full menu",
+          "text": "Added",
+          "rect": {
+            "x": 268.125,
+            "y": 256,
+            "width": 76.875,
+            "height": 48,
+            "top": 256,
+            "right": 345,
+            "bottom": 304,
+            "left": 268.125
+          }
+        },
+        "select": {
+          "value": "p-r84vzx09mrqifjm7",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "color": "rgb(8, 45, 53)",
+          "background": "rgb(255, 249, 239)",
+          "options": [
+            {
+              "value": "p-ci1bmcrmmrqidyre",
+              "text": "Fuze Tea Green mango chamomile"
+            },
+            {
+              "value": "p-r84vzx09mrqifjm7",
+              "text": "Fuze Tea - Black sparkling lemon"
+            },
+            {
+              "value": "p-y0038cp3mrqiihy7",
+              "text": "Fuze Tea - Black peach hibiscus"
+            },
+            {
+              "value": "p-73rxt7cvmrqik7xt",
+              "text": "Fuze Tea - Green tea"
+            },
+            {
+              "value": "p-on6zjg4xmrs1rkvc",
+              "text": "Coca-Cola Regular"
+            },
+            {
+              "value": "p-ywxluvwsmrs1s8w7",
+              "text": "Coca-Cola Zero"
+            },
+            {
+              "value": "p-w985jbscmrs1t6a0",
+              "text": "Sprite Zero"
+            },
+            {
+              "value": "p-o2r242f2msagpkop",
+              "text": "Fanta"
+            },
+            {
+              "value": "p-syebexgkmsagq9pu",
+              "text": "Fanta Cassis"
+            },
+            {
+              "value": "p-x1mhaupfmrs1ufui",
+              "text": "Fernandes Green"
+            },
+            {
+              "value": "p-azhbjc65mrs1v8v0",
+              "text": "Fernandes Cherry"
+            },
+            {
+              "value": "p-osxrg5fdmrs1w6j0",
+              "text": "Fernandes Pineapple"
+            },
+            {
+              "value": "p-9yxiqnp9ms4tanjj",
+              "text": "Redbull"
+            },
+            {
+              "value": "p-smbbootwmrt91m01",
+              "text": "Chaudfontaine Natuurlijk mineraalwater"
+            },
+            {
+              "value": "p-1g3cdw0smrt92965",
+              "text": "Chaudfontaine Bruisend natuurlijk mineraalwater"
+            },
+            {
+              "value": "p-8biw2kw8msagu707",
+              "text": "White Chocolate Matcha"
+            },
+            {
+              "value": "p-89p6ogwvmrs4j25p",
+              "text": "Watermelon Bubble Tea"
+            }
+          ],
+          "rect": {
+            "x": 43,
+            "y": 364.1875,
+            "width": 302,
+            "height": 48,
+            "top": 364.1875,
+            "right": 345,
+            "bottom": 412.1875,
+            "left": 43
+          }
+        },
+        "fallbackHidden": true,
+        "overflow": 0
+      },
+      "disabled": {
+        "theme": "dark",
+        "photo": {
+          "source": "http://127.0.0.1:3678/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2F6aa2448c-3a93-4039-8618-54c97ca3f5ee.jpg&w=384&q=75",
+          "loaded": true,
+          "loading": "lazy",
+          "priority": "low",
+          "sizes": "(min-width: 1024px) 240px, (min-width: 480px) 384px, calc(100vw - 42px)",
+          "alt": "",
+          "ariaHidden": "true",
+          "pointerEvents": "none",
+          "rect": {
+            "x": 22.29802894592285,
+            "y": 119.7355728149414,
+            "width": 343.3897705078125,
+            "height": 233.77206420898438,
+            "top": 119.7355728149414,
+            "right": 365.68779945373535,
+            "bottom": 353.5076370239258,
+            "left": 22.29802894592285
+          },
+          "overlay": "linear-gradient(110deg, rgba(5, 31, 37, 0.94), rgba(5, 31, 37, 0.84) 55%, rgba(5, 31, 37, 0.76))"
+        },
+        "nameColor": "rgb(255, 247, 231)",
+        "unitColor": "rgb(220, 232, 230)",
+        "priceColor": "rgb(255, 247, 231)",
+        "cardBackground": "rgb(13, 51, 59)",
+        "name": "Saag Paneer Wrap",
+        "price": "€9.50",
+        "upgradeText": "Make it a full menu\n\nAdd\n\n+€4 includes fries and one free soft drink.",
+        "toggle": {
+          "pressed": "false",
+          "label": "Add: Make it a full menu",
+          "text": "Add",
+          "rect": {
+            "x": 296.8101806640625,
+            "y": 259.4872131347656,
+            "width": 47.91485595703125,
+            "height": 47.91485595703125,
+            "top": 259.4872131347656,
+            "right": 344.72503662109375,
+            "bottom": 307.4020690917969,
+            "left": 296.8101806640625
+          }
+        },
+        "select": null,
+        "fallbackHidden": true,
+        "overflow": 0
+      },
+      "initialTotal": 24.98,
+      "email": {
+        "placeholder": "Email address",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "label": "Email address for order confirmation",
+        "placeholderColor": "rgba(213, 209, 196, 0.5)",
+        "background": "oklab(0.999994 0.0000455678 0.0000200868 / 0.05)",
+        "rect": {
+          "x": 23.534992218017578,
+          "y": 415.6513977050781,
+          "width": 332.92999267578125,
+          "height": 47.279998779296875,
+          "top": 415.6513977050781,
+          "right": 356.4649848937988,
+          "bottom": 462.931396484375,
+          "left": 23.534992218017578
+        },
+        "effectiveBackground": [
+          null,
+          null,
+          null
+        ],
+        "placeholderContrast": 13.746516941690192
+      },
+      "retained": "cart.qa@example.invalid",
+      "sidebar": null,
+      "errors": [],
+      "writes": []
+    },
+    {
+      "width": 1440,
+      "theme": "default",
+      "mobile": false,
+      "hiddenSheet": null,
+      "beforeOpenRequests": [],
+      "initial": {
+        "theme": "dark",
+        "photo": {
+          "source": "http://127.0.0.1:3678/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2F6aa2448c-3a93-4039-8618-54c97ca3f5ee.jpg&w=384&q=75",
+          "loaded": true,
+          "loading": "lazy",
+          "priority": "low",
+          "sizes": "(min-width: 1024px) 240px, (min-width: 480px) 384px, calc(100vw - 42px)",
+          "alt": "",
+          "ariaHidden": "true",
+          "pointerEvents": "none",
+          "rect": {
+            "x": 1125,
+            "y": 230.546875,
+            "width": 222,
+            "height": 253.375,
+            "top": 230.546875,
+            "right": 1347,
+            "bottom": 483.921875,
+            "left": 1125
+          },
+          "overlay": "linear-gradient(110deg, rgba(5, 31, 37, 0.94), rgba(5, 31, 37, 0.84) 55%, rgba(5, 31, 37, 0.76))"
+        },
+        "nameColor": "rgb(255, 247, 231)",
+        "unitColor": "rgb(220, 232, 230)",
+        "priceColor": "rgb(255, 247, 231)",
+        "cardBackground": "rgb(13, 51, 59)",
+        "name": "Saag Paneer Wrap",
+        "price": "€9.50",
+        "upgradeText": "Make it a full menu\n\nAdd\n\n+€4 includes fries and one free soft drink.",
+        "toggle": {
+          "pressed": "false",
+          "label": "Add: Make it a full menu",
+          "text": "Add",
+          "rect": {
+            "x": 1278,
+            "y": 370.546875,
+            "width": 48,
+            "height": 48,
+            "top": 370.546875,
+            "right": 1326,
+            "bottom": 418.546875,
+            "left": 1278
+          }
+        },
+        "select": null,
+        "fallbackHidden": true,
+        "overflow": 0
+      },
+      "contrast": {
+        "name": 7.404427208979907,
+        "unit": 6.284269905090955,
+        "price": 7.404427208979907,
+        "brightestPossibleBackdrop": [
+          65,
+          84.75999999999999,
+          89.32
+        ]
+      },
+      "enabled": {
+        "theme": "dark",
+        "photo": {
+          "source": "http://127.0.0.1:3678/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2F6aa2448c-3a93-4039-8618-54c97ca3f5ee.jpg&w=384&q=75",
+          "loaded": true,
+          "loading": "lazy",
+          "priority": "low",
+          "sizes": "(min-width: 1024px) 240px, (min-width: 480px) 384px, calc(100vw - 42px)",
+          "alt": "",
+          "ariaHidden": "true",
+          "pointerEvents": "none",
+          "rect": {
+            "x": 1125,
+            "y": 230.546875,
+            "width": 222,
+            "height": 336.375,
+            "top": 230.546875,
+            "right": 1347,
+            "bottom": 566.921875,
+            "left": 1125
+          },
+          "overlay": "linear-gradient(110deg, rgba(5, 31, 37, 0.94), rgba(5, 31, 37, 0.84) 55%, rgba(5, 31, 37, 0.76))"
+        },
+        "nameColor": "rgb(255, 247, 231)",
+        "unitColor": "rgb(220, 232, 230)",
+        "priceColor": "rgb(255, 247, 231)",
+        "cardBackground": "rgb(13, 51, 59)",
+        "name": "Saag Paneer Wrap",
+        "price": "€9.50",
+        "upgradeText": "Make it a full menu\n\nAdded\n\n+€4 includes fries and one free soft drink.\n\nFree soft drink\nFuze Tea Green mango chamomile\nFuze Tea - Black sparkling lemon\nFuze Tea - Black peach hibiscus\nFuze Tea - Green tea\nCoca-Cola Regular\nCoca-Cola Zero\nSprite Zero\nFanta\nFanta Cassis\nFernandes Green\nFernandes Cherry\nFernandes Pineapple\nRedbull\nChaudfontaine Natuurlijk mineraalwater\nChaudfontaine Bruisend natuurlijk mineraalwater\nWhite Chocolate Matcha\nWatermelon Bubble Tea",
+        "toggle": {
+          "pressed": "true",
+          "label": "Remove: Make it a full menu",
+          "text": "Added",
+          "rect": {
+            "x": 1249.125,
+            "y": 370.546875,
+            "width": 76.875,
+            "height": 48,
+            "top": 370.546875,
+            "right": 1326,
+            "bottom": 418.546875,
+            "left": 1249.125
+          }
+        },
+        "select": {
+          "value": "p-ci1bmcrmmrqidyre",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "color": "rgb(8, 45, 53)",
+          "background": "rgb(255, 249, 239)",
+          "options": [
+            {
+              "value": "p-ci1bmcrmmrqidyre",
+              "text": "Fuze Tea Green mango chamomile"
+            },
+            {
+              "value": "p-r84vzx09mrqifjm7",
+              "text": "Fuze Tea - Black sparkling lemon"
+            },
+            {
+              "value": "p-y0038cp3mrqiihy7",
+              "text": "Fuze Tea - Black peach hibiscus"
+            },
+            {
+              "value": "p-73rxt7cvmrqik7xt",
+              "text": "Fuze Tea - Green tea"
+            },
+            {
+              "value": "p-on6zjg4xmrs1rkvc",
+              "text": "Coca-Cola Regular"
+            },
+            {
+              "value": "p-ywxluvwsmrs1s8w7",
+              "text": "Coca-Cola Zero"
+            },
+            {
+              "value": "p-w985jbscmrs1t6a0",
+              "text": "Sprite Zero"
+            },
+            {
+              "value": "p-o2r242f2msagpkop",
+              "text": "Fanta"
+            },
+            {
+              "value": "p-syebexgkmsagq9pu",
+              "text": "Fanta Cassis"
+            },
+            {
+              "value": "p-x1mhaupfmrs1ufui",
+              "text": "Fernandes Green"
+            },
+            {
+              "value": "p-azhbjc65mrs1v8v0",
+              "text": "Fernandes Cherry"
+            },
+            {
+              "value": "p-osxrg5fdmrs1w6j0",
+              "text": "Fernandes Pineapple"
+            },
+            {
+              "value": "p-9yxiqnp9ms4tanjj",
+              "text": "Redbull"
+            },
+            {
+              "value": "p-smbbootwmrt91m01",
+              "text": "Chaudfontaine Natuurlijk mineraalwater"
+            },
+            {
+              "value": "p-1g3cdw0smrt92965",
+              "text": "Chaudfontaine Bruisend natuurlijk mineraalwater"
+            },
+            {
+              "value": "p-8biw2kw8msagu707",
+              "text": "White Chocolate Matcha"
+            },
+            {
+              "value": "p-89p6ogwvmrs4j25p",
+              "text": "Watermelon Bubble Tea"
+            }
+          ],
+          "rect": {
+            "x": 1146,
+            "y": 497.921875,
+            "width": 180,
+            "height": 48,
+            "top": 497.921875,
+            "right": 1326,
+            "bottom": 545.921875,
+            "left": 1146
+          }
+        },
+        "fallbackHidden": true,
+        "overflow": 0
+      },
+      "selected": {
+        "theme": "dark",
+        "photo": {
+          "source": "http://127.0.0.1:3678/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2F6aa2448c-3a93-4039-8618-54c97ca3f5ee.jpg&w=384&q=75",
+          "loaded": true,
+          "loading": "lazy",
+          "priority": "low",
+          "sizes": "(min-width: 1024px) 240px, (min-width: 480px) 384px, calc(100vw - 42px)",
+          "alt": "",
+          "ariaHidden": "true",
+          "pointerEvents": "none",
+          "rect": {
+            "x": 1125,
+            "y": -45.453125,
+            "width": 222,
+            "height": 336.375,
+            "top": -45.453125,
+            "right": 1347,
+            "bottom": 290.921875,
+            "left": 1125
+          },
+          "overlay": "linear-gradient(110deg, rgba(5, 31, 37, 0.94), rgba(5, 31, 37, 0.84) 55%, rgba(5, 31, 37, 0.76))"
+        },
+        "nameColor": "rgb(255, 247, 231)",
+        "unitColor": "rgb(220, 232, 230)",
+        "priceColor": "rgb(255, 247, 231)",
+        "cardBackground": "rgb(13, 51, 59)",
+        "name": "Saag Paneer Wrap",
+        "price": "€9.50",
+        "upgradeText": "Make it a full menu\n\nAdded\n\n+€4 includes fries and one free soft drink.\n\nFree soft drink\nFuze Tea Green mango chamomile\nFuze Tea - Black sparkling lemon\nFuze Tea - Black peach hibiscus\nFuze Tea - Green tea\nCoca-Cola Regular\nCoca-Cola Zero\nSprite Zero\nFanta\nFanta Cassis\nFernandes Green\nFernandes Cherry\nFernandes Pineapple\nRedbull\nChaudfontaine Natuurlijk mineraalwater\nChaudfontaine Bruisend natuurlijk mineraalwater\nWhite Chocolate Matcha\nWatermelon Bubble Tea",
+        "toggle": {
+          "pressed": "true",
+          "label": "Remove: Make it a full menu",
+          "text": "Added",
+          "rect": {
+            "x": 1249.125,
+            "y": 94.546875,
+            "width": 76.875,
+            "height": 48,
+            "top": 94.546875,
+            "right": 1326,
+            "bottom": 142.546875,
+            "left": 1249.125
+          }
+        },
+        "select": {
+          "value": "p-r84vzx09mrqifjm7",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "color": "rgb(8, 45, 53)",
+          "background": "rgb(255, 249, 239)",
+          "options": [
+            {
+              "value": "p-ci1bmcrmmrqidyre",
+              "text": "Fuze Tea Green mango chamomile"
+            },
+            {
+              "value": "p-r84vzx09mrqifjm7",
+              "text": "Fuze Tea - Black sparkling lemon"
+            },
+            {
+              "value": "p-y0038cp3mrqiihy7",
+              "text": "Fuze Tea - Black peach hibiscus"
+            },
+            {
+              "value": "p-73rxt7cvmrqik7xt",
+              "text": "Fuze Tea - Green tea"
+            },
+            {
+              "value": "p-on6zjg4xmrs1rkvc",
+              "text": "Coca-Cola Regular"
+            },
+            {
+              "value": "p-ywxluvwsmrs1s8w7",
+              "text": "Coca-Cola Zero"
+            },
+            {
+              "value": "p-w985jbscmrs1t6a0",
+              "text": "Sprite Zero"
+            },
+            {
+              "value": "p-o2r242f2msagpkop",
+              "text": "Fanta"
+            },
+            {
+              "value": "p-syebexgkmsagq9pu",
+              "text": "Fanta Cassis"
+            },
+            {
+              "value": "p-x1mhaupfmrs1ufui",
+              "text": "Fernandes Green"
+            },
+            {
+              "value": "p-azhbjc65mrs1v8v0",
+              "text": "Fernandes Cherry"
+            },
+            {
+              "value": "p-osxrg5fdmrs1w6j0",
+              "text": "Fernandes Pineapple"
+            },
+            {
+              "value": "p-9yxiqnp9ms4tanjj",
+              "text": "Redbull"
+            },
+            {
+              "value": "p-smbbootwmrt91m01",
+              "text": "Chaudfontaine Natuurlijk mineraalwater"
+            },
+            {
+              "value": "p-1g3cdw0smrt92965",
+              "text": "Chaudfontaine Bruisend natuurlijk mineraalwater"
+            },
+            {
+              "value": "p-8biw2kw8msagu707",
+              "text": "White Chocolate Matcha"
+            },
+            {
+              "value": "p-89p6ogwvmrs4j25p",
+              "text": "Watermelon Bubble Tea"
+            }
+          ],
+          "rect": {
+            "x": 1146,
+            "y": 221.921875,
+            "width": 180,
+            "height": 48,
+            "top": 221.921875,
+            "right": 1326,
+            "bottom": 269.921875,
+            "left": 1146
+          }
+        },
+        "fallbackHidden": true,
+        "overflow": 0
+      },
+      "disabled": {
+        "theme": "dark",
+        "photo": {
+          "source": "http://127.0.0.1:3678/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2F6aa2448c-3a93-4039-8618-54c97ca3f5ee.jpg&w=384&q=75",
+          "loaded": true,
+          "loading": "lazy",
+          "priority": "low",
+          "sizes": "(min-width: 1024px) 240px, (min-width: 480px) 384px, calc(100vw - 42px)",
+          "alt": "",
+          "ariaHidden": "true",
+          "pointerEvents": "none",
+          "rect": {
+            "x": 1125,
+            "y": 87.546875,
+            "width": 222,
+            "height": 253.375,
+            "top": 87.546875,
+            "right": 1347,
+            "bottom": 340.921875,
+            "left": 1125
+          },
+          "overlay": "linear-gradient(110deg, rgba(5, 31, 37, 0.94), rgba(5, 31, 37, 0.84) 55%, rgba(5, 31, 37, 0.76))"
+        },
+        "nameColor": "rgb(255, 247, 231)",
+        "unitColor": "rgb(220, 232, 230)",
+        "priceColor": "rgb(255, 247, 231)",
+        "cardBackground": "rgb(13, 51, 59)",
+        "name": "Saag Paneer Wrap",
+        "price": "€9.50",
+        "upgradeText": "Make it a full menu\n\nAdd\n\n+€4 includes fries and one free soft drink.",
+        "toggle": {
+          "pressed": "false",
+          "label": "Add: Make it a full menu",
+          "text": "Add",
+          "rect": {
+            "x": 1278,
+            "y": 227.546875,
+            "width": 48,
+            "height": 48,
+            "top": 227.546875,
+            "right": 1326,
+            "bottom": 275.546875,
+            "left": 1278
+          }
+        },
+        "select": null,
+        "fallbackHidden": true,
+        "overflow": 0
+      },
+      "initialTotal": 24.98,
+      "email": {
+        "placeholder": "Email address",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "label": "Email address for order confirmation",
+        "placeholderColor": "rgba(213, 209, 196, 0.5)",
+        "background": "oklab(0.999994 0.0000455678 0.0000200868 / 0.05)",
+        "rect": {
+          "x": 1124,
+          "y": 1048.546875,
+          "width": 238,
+          "height": 48,
+          "top": 1048.546875,
+          "right": 1362,
+          "bottom": 1096.546875,
+          "left": 1124
+        },
+        "effectiveBackground": [
+          null,
+          null,
+          null
+        ],
+        "placeholderContrast": 13.746516941690192
+      },
+      "retained": "cart.qa@example.invalid",
+      "sidebar": {
+        "maxHeight": 771.641,
+        "headerHeight": 102.359375,
+        "top": 118.359,
+        "position": "sticky",
+        "overflowY": "auto",
+        "scrollHeight": 1393,
+        "clientHeight": 772,
+        "viewport": 900
+      },
+      "errors": [],
+      "writes": []
+    },
+    {
+      "width": 1440,
+      "theme": "light",
+      "mobile": false,
+      "hiddenSheet": null,
+      "beforeOpenRequests": [],
+      "initial": {
+        "theme": "light",
+        "photo": {
+          "source": "http://127.0.0.1:3678/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2F6aa2448c-3a93-4039-8618-54c97ca3f5ee.jpg&w=384&q=75",
+          "loaded": true,
+          "loading": "lazy",
+          "priority": "low",
+          "sizes": "(min-width: 1024px) 240px, (min-width: 480px) 384px, calc(100vw - 42px)",
+          "alt": "",
+          "ariaHidden": "true",
+          "pointerEvents": "none",
+          "rect": {
+            "x": 1125,
+            "y": 230.546875,
+            "width": 222,
+            "height": 253.375,
+            "top": 230.546875,
+            "right": 1347,
+            "bottom": 483.921875,
+            "left": 1125
+          },
+          "overlay": "linear-gradient(110deg, rgba(5, 31, 37, 0.94), rgba(5, 31, 37, 0.84) 55%, rgba(5, 31, 37, 0.76))"
+        },
+        "nameColor": "rgb(255, 247, 231)",
+        "unitColor": "rgb(220, 232, 230)",
+        "priceColor": "rgb(255, 247, 231)",
+        "cardBackground": "rgb(13, 51, 59)",
+        "name": "Saag Paneer Wrap",
+        "price": "€9.50",
+        "upgradeText": "Make it a full menu\n\nAdd\n\n+€4 includes fries and one free soft drink.",
+        "toggle": {
+          "pressed": "false",
+          "label": "Add: Make it a full menu",
+          "text": "Add",
+          "rect": {
+            "x": 1278,
+            "y": 370.546875,
+            "width": 48,
+            "height": 48,
+            "top": 370.546875,
+            "right": 1326,
+            "bottom": 418.546875,
+            "left": 1278
+          }
+        },
+        "select": null,
+        "fallbackHidden": true,
+        "overflow": 0
+      },
+      "contrast": {
+        "name": 7.404427208979907,
+        "unit": 6.284269905090955,
+        "price": 7.404427208979907,
+        "brightestPossibleBackdrop": [
+          65,
+          84.75999999999999,
+          89.32
+        ]
+      },
+      "enabled": {
+        "theme": "light",
+        "photo": {
+          "source": "http://127.0.0.1:3678/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2F6aa2448c-3a93-4039-8618-54c97ca3f5ee.jpg&w=384&q=75",
+          "loaded": true,
+          "loading": "lazy",
+          "priority": "low",
+          "sizes": "(min-width: 1024px) 240px, (min-width: 480px) 384px, calc(100vw - 42px)",
+          "alt": "",
+          "ariaHidden": "true",
+          "pointerEvents": "none",
+          "rect": {
+            "x": 1125,
+            "y": 230.546875,
+            "width": 222,
+            "height": 336.375,
+            "top": 230.546875,
+            "right": 1347,
+            "bottom": 566.921875,
+            "left": 1125
+          },
+          "overlay": "linear-gradient(110deg, rgba(5, 31, 37, 0.94), rgba(5, 31, 37, 0.84) 55%, rgba(5, 31, 37, 0.76))"
+        },
+        "nameColor": "rgb(255, 247, 231)",
+        "unitColor": "rgb(220, 232, 230)",
+        "priceColor": "rgb(255, 247, 231)",
+        "cardBackground": "rgb(13, 51, 59)",
+        "name": "Saag Paneer Wrap",
+        "price": "€9.50",
+        "upgradeText": "Make it a full menu\n\nAdded\n\n+€4 includes fries and one free soft drink.\n\nFree soft drink\nFuze Tea Green mango chamomile\nFuze Tea - Black sparkling lemon\nFuze Tea - Black peach hibiscus\nFuze Tea - Green tea\nCoca-Cola Regular\nCoca-Cola Zero\nSprite Zero\nFanta\nFanta Cassis\nFernandes Green\nFernandes Cherry\nFernandes Pineapple\nRedbull\nChaudfontaine Natuurlijk mineraalwater\nChaudfontaine Bruisend natuurlijk mineraalwater\nWhite Chocolate Matcha\nWatermelon Bubble Tea",
+        "toggle": {
+          "pressed": "true",
+          "label": "Remove: Make it a full menu",
+          "text": "Added",
+          "rect": {
+            "x": 1249.125,
+            "y": 370.546875,
+            "width": 76.875,
+            "height": 48,
+            "top": 370.546875,
+            "right": 1326,
+            "bottom": 418.546875,
+            "left": 1249.125
+          }
+        },
+        "select": {
+          "value": "p-ci1bmcrmmrqidyre",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "color": "rgb(8, 45, 53)",
+          "background": "rgb(255, 249, 239)",
+          "options": [
+            {
+              "value": "p-ci1bmcrmmrqidyre",
+              "text": "Fuze Tea Green mango chamomile"
+            },
+            {
+              "value": "p-r84vzx09mrqifjm7",
+              "text": "Fuze Tea - Black sparkling lemon"
+            },
+            {
+              "value": "p-y0038cp3mrqiihy7",
+              "text": "Fuze Tea - Black peach hibiscus"
+            },
+            {
+              "value": "p-73rxt7cvmrqik7xt",
+              "text": "Fuze Tea - Green tea"
+            },
+            {
+              "value": "p-on6zjg4xmrs1rkvc",
+              "text": "Coca-Cola Regular"
+            },
+            {
+              "value": "p-ywxluvwsmrs1s8w7",
+              "text": "Coca-Cola Zero"
+            },
+            {
+              "value": "p-w985jbscmrs1t6a0",
+              "text": "Sprite Zero"
+            },
+            {
+              "value": "p-o2r242f2msagpkop",
+              "text": "Fanta"
+            },
+            {
+              "value": "p-syebexgkmsagq9pu",
+              "text": "Fanta Cassis"
+            },
+            {
+              "value": "p-x1mhaupfmrs1ufui",
+              "text": "Fernandes Green"
+            },
+            {
+              "value": "p-azhbjc65mrs1v8v0",
+              "text": "Fernandes Cherry"
+            },
+            {
+              "value": "p-osxrg5fdmrs1w6j0",
+              "text": "Fernandes Pineapple"
+            },
+            {
+              "value": "p-9yxiqnp9ms4tanjj",
+              "text": "Redbull"
+            },
+            {
+              "value": "p-smbbootwmrt91m01",
+              "text": "Chaudfontaine Natuurlijk mineraalwater"
+            },
+            {
+              "value": "p-1g3cdw0smrt92965",
+              "text": "Chaudfontaine Bruisend natuurlijk mineraalwater"
+            },
+            {
+              "value": "p-8biw2kw8msagu707",
+              "text": "White Chocolate Matcha"
+            },
+            {
+              "value": "p-89p6ogwvmrs4j25p",
+              "text": "Watermelon Bubble Tea"
+            }
+          ],
+          "rect": {
+            "x": 1146,
+            "y": 497.921875,
+            "width": 180,
+            "height": 48,
+            "top": 497.921875,
+            "right": 1326,
+            "bottom": 545.921875,
+            "left": 1146
+          }
+        },
+        "fallbackHidden": true,
+        "overflow": 0
+      },
+      "selected": {
+        "theme": "light",
+        "photo": {
+          "source": "http://127.0.0.1:3678/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2F6aa2448c-3a93-4039-8618-54c97ca3f5ee.jpg&w=384&q=75",
+          "loaded": true,
+          "loading": "lazy",
+          "priority": "low",
+          "sizes": "(min-width: 1024px) 240px, (min-width: 480px) 384px, calc(100vw - 42px)",
+          "alt": "",
+          "ariaHidden": "true",
+          "pointerEvents": "none",
+          "rect": {
+            "x": 1125,
+            "y": -45.453125,
+            "width": 222,
+            "height": 336.375,
+            "top": -45.453125,
+            "right": 1347,
+            "bottom": 290.921875,
+            "left": 1125
+          },
+          "overlay": "linear-gradient(110deg, rgba(5, 31, 37, 0.94), rgba(5, 31, 37, 0.84) 55%, rgba(5, 31, 37, 0.76))"
+        },
+        "nameColor": "rgb(255, 247, 231)",
+        "unitColor": "rgb(220, 232, 230)",
+        "priceColor": "rgb(255, 247, 231)",
+        "cardBackground": "rgb(13, 51, 59)",
+        "name": "Saag Paneer Wrap",
+        "price": "€9.50",
+        "upgradeText": "Make it a full menu\n\nAdded\n\n+€4 includes fries and one free soft drink.\n\nFree soft drink\nFuze Tea Green mango chamomile\nFuze Tea - Black sparkling lemon\nFuze Tea - Black peach hibiscus\nFuze Tea - Green tea\nCoca-Cola Regular\nCoca-Cola Zero\nSprite Zero\nFanta\nFanta Cassis\nFernandes Green\nFernandes Cherry\nFernandes Pineapple\nRedbull\nChaudfontaine Natuurlijk mineraalwater\nChaudfontaine Bruisend natuurlijk mineraalwater\nWhite Chocolate Matcha\nWatermelon Bubble Tea",
+        "toggle": {
+          "pressed": "true",
+          "label": "Remove: Make it a full menu",
+          "text": "Added",
+          "rect": {
+            "x": 1249.125,
+            "y": 94.546875,
+            "width": 76.875,
+            "height": 48,
+            "top": 94.546875,
+            "right": 1326,
+            "bottom": 142.546875,
+            "left": 1249.125
+          }
+        },
+        "select": {
+          "value": "p-r84vzx09mrqifjm7",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "color": "rgb(8, 45, 53)",
+          "background": "rgb(255, 249, 239)",
+          "options": [
+            {
+              "value": "p-ci1bmcrmmrqidyre",
+              "text": "Fuze Tea Green mango chamomile"
+            },
+            {
+              "value": "p-r84vzx09mrqifjm7",
+              "text": "Fuze Tea - Black sparkling lemon"
+            },
+            {
+              "value": "p-y0038cp3mrqiihy7",
+              "text": "Fuze Tea - Black peach hibiscus"
+            },
+            {
+              "value": "p-73rxt7cvmrqik7xt",
+              "text": "Fuze Tea - Green tea"
+            },
+            {
+              "value": "p-on6zjg4xmrs1rkvc",
+              "text": "Coca-Cola Regular"
+            },
+            {
+              "value": "p-ywxluvwsmrs1s8w7",
+              "text": "Coca-Cola Zero"
+            },
+            {
+              "value": "p-w985jbscmrs1t6a0",
+              "text": "Sprite Zero"
+            },
+            {
+              "value": "p-o2r242f2msagpkop",
+              "text": "Fanta"
+            },
+            {
+              "value": "p-syebexgkmsagq9pu",
+              "text": "Fanta Cassis"
+            },
+            {
+              "value": "p-x1mhaupfmrs1ufui",
+              "text": "Fernandes Green"
+            },
+            {
+              "value": "p-azhbjc65mrs1v8v0",
+              "text": "Fernandes Cherry"
+            },
+            {
+              "value": "p-osxrg5fdmrs1w6j0",
+              "text": "Fernandes Pineapple"
+            },
+            {
+              "value": "p-9yxiqnp9ms4tanjj",
+              "text": "Redbull"
+            },
+            {
+              "value": "p-smbbootwmrt91m01",
+              "text": "Chaudfontaine Natuurlijk mineraalwater"
+            },
+            {
+              "value": "p-1g3cdw0smrt92965",
+              "text": "Chaudfontaine Bruisend natuurlijk mineraalwater"
+            },
+            {
+              "value": "p-8biw2kw8msagu707",
+              "text": "White Chocolate Matcha"
+            },
+            {
+              "value": "p-89p6ogwvmrs4j25p",
+              "text": "Watermelon Bubble Tea"
+            }
+          ],
+          "rect": {
+            "x": 1146,
+            "y": 221.921875,
+            "width": 180,
+            "height": 48,
+            "top": 221.921875,
+            "right": 1326,
+            "bottom": 269.921875,
+            "left": 1146
+          }
+        },
+        "fallbackHidden": true,
+        "overflow": 0
+      },
+      "disabled": {
+        "theme": "light",
+        "photo": {
+          "source": "http://127.0.0.1:3678/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2F6aa2448c-3a93-4039-8618-54c97ca3f5ee.jpg&w=384&q=75",
+          "loaded": true,
+          "loading": "lazy",
+          "priority": "low",
+          "sizes": "(min-width: 1024px) 240px, (min-width: 480px) 384px, calc(100vw - 42px)",
+          "alt": "",
+          "ariaHidden": "true",
+          "pointerEvents": "none",
+          "rect": {
+            "x": 1125,
+            "y": 4.546875,
+            "width": 222,
+            "height": 253.375,
+            "top": 4.546875,
+            "right": 1347,
+            "bottom": 257.921875,
+            "left": 1125
+          },
+          "overlay": "linear-gradient(110deg, rgba(5, 31, 37, 0.94), rgba(5, 31, 37, 0.84) 55%, rgba(5, 31, 37, 0.76))"
+        },
+        "nameColor": "rgb(255, 247, 231)",
+        "unitColor": "rgb(220, 232, 230)",
+        "priceColor": "rgb(255, 247, 231)",
+        "cardBackground": "rgb(13, 51, 59)",
+        "name": "Saag Paneer Wrap",
+        "price": "€9.50",
+        "upgradeText": "Make it a full menu\n\nAdd\n\n+€4 includes fries and one free soft drink.",
+        "toggle": {
+          "pressed": "false",
+          "label": "Add: Make it a full menu",
+          "text": "Add",
+          "rect": {
+            "x": 1278,
+            "y": 144.546875,
+            "width": 48,
+            "height": 48,
+            "top": 144.546875,
+            "right": 1326,
+            "bottom": 192.546875,
+            "left": 1278
+          }
+        },
+        "select": null,
+        "fallbackHidden": true,
+        "overflow": 0
+      },
+      "initialTotal": 24.98,
+      "email": {
+        "placeholder": "Email address",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "label": "Email address for order confirmation",
+        "placeholderColor": "rgb(75, 101, 104)",
+        "background": "rgb(249, 250, 247)",
+        "rect": {
+          "x": 1124,
+          "y": 1048.546875,
+          "width": 238,
+          "height": 48,
+          "top": 1048.546875,
+          "right": 1362,
+          "bottom": 1096.546875,
+          "left": 1124
+        },
+        "effectiveBackground": [
+          255,
+          255,
+          255
+        ],
+        "placeholderContrast": 6.248998409069909
+      },
+      "retained": "cart.qa@example.invalid",
+      "sidebar": {
+        "maxHeight": 771.641,
+        "headerHeight": 102.359375,
+        "top": 118.359,
+        "position": "sticky",
+        "overflowY": "auto",
+        "scrollHeight": 1393,
+        "clientHeight": 772,
+        "viewport": 900
+      },
+      "errors": [],
+      "writes": []
+    },
+    {
+      "width": 1440,
+      "theme": "dark",
+      "mobile": false,
+      "hiddenSheet": null,
+      "beforeOpenRequests": [],
+      "initial": {
+        "theme": "dark",
+        "photo": {
+          "source": "http://127.0.0.1:3678/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2F6aa2448c-3a93-4039-8618-54c97ca3f5ee.jpg&w=384&q=75",
+          "loaded": true,
+          "loading": "lazy",
+          "priority": "low",
+          "sizes": "(min-width: 1024px) 240px, (min-width: 480px) 384px, calc(100vw - 42px)",
+          "alt": "",
+          "ariaHidden": "true",
+          "pointerEvents": "none",
+          "rect": {
+            "x": 1125,
+            "y": 230.546875,
+            "width": 222,
+            "height": 253.375,
+            "top": 230.546875,
+            "right": 1347,
+            "bottom": 483.921875,
+            "left": 1125
+          },
+          "overlay": "linear-gradient(110deg, rgba(5, 31, 37, 0.94), rgba(5, 31, 37, 0.84) 55%, rgba(5, 31, 37, 0.76))"
+        },
+        "nameColor": "rgb(255, 247, 231)",
+        "unitColor": "rgb(220, 232, 230)",
+        "priceColor": "rgb(255, 247, 231)",
+        "cardBackground": "rgb(13, 51, 59)",
+        "name": "Saag Paneer Wrap",
+        "price": "€9.50",
+        "upgradeText": "Make it a full menu\n\nAdd\n\n+€4 includes fries and one free soft drink.",
+        "toggle": {
+          "pressed": "false",
+          "label": "Add: Make it a full menu",
+          "text": "Add",
+          "rect": {
+            "x": 1278,
+            "y": 370.546875,
+            "width": 48,
+            "height": 48,
+            "top": 370.546875,
+            "right": 1326,
+            "bottom": 418.546875,
+            "left": 1278
+          }
+        },
+        "select": null,
+        "fallbackHidden": true,
+        "overflow": 0
+      },
+      "contrast": {
+        "name": 7.404427208979907,
+        "unit": 6.284269905090955,
+        "price": 7.404427208979907,
+        "brightestPossibleBackdrop": [
+          65,
+          84.75999999999999,
+          89.32
+        ]
+      },
+      "enabled": {
+        "theme": "dark",
+        "photo": {
+          "source": "http://127.0.0.1:3678/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2F6aa2448c-3a93-4039-8618-54c97ca3f5ee.jpg&w=384&q=75",
+          "loaded": true,
+          "loading": "lazy",
+          "priority": "low",
+          "sizes": "(min-width: 1024px) 240px, (min-width: 480px) 384px, calc(100vw - 42px)",
+          "alt": "",
+          "ariaHidden": "true",
+          "pointerEvents": "none",
+          "rect": {
+            "x": 1125,
+            "y": 230.546875,
+            "width": 222,
+            "height": 336.375,
+            "top": 230.546875,
+            "right": 1347,
+            "bottom": 566.921875,
+            "left": 1125
+          },
+          "overlay": "linear-gradient(110deg, rgba(5, 31, 37, 0.94), rgba(5, 31, 37, 0.84) 55%, rgba(5, 31, 37, 0.76))"
+        },
+        "nameColor": "rgb(255, 247, 231)",
+        "unitColor": "rgb(220, 232, 230)",
+        "priceColor": "rgb(255, 247, 231)",
+        "cardBackground": "rgb(13, 51, 59)",
+        "name": "Saag Paneer Wrap",
+        "price": "€9.50",
+        "upgradeText": "Make it a full menu\n\nAdded\n\n+€4 includes fries and one free soft drink.\n\nFree soft drink\nFuze Tea Green mango chamomile\nFuze Tea - Black sparkling lemon\nFuze Tea - Black peach hibiscus\nFuze Tea - Green tea\nCoca-Cola Regular\nCoca-Cola Zero\nSprite Zero\nFanta\nFanta Cassis\nFernandes Green\nFernandes Cherry\nFernandes Pineapple\nRedbull\nChaudfontaine Natuurlijk mineraalwater\nChaudfontaine Bruisend natuurlijk mineraalwater\nWhite Chocolate Matcha\nWatermelon Bubble Tea",
+        "toggle": {
+          "pressed": "true",
+          "label": "Remove: Make it a full menu",
+          "text": "Added",
+          "rect": {
+            "x": 1249.125,
+            "y": 370.546875,
+            "width": 76.875,
+            "height": 48,
+            "top": 370.546875,
+            "right": 1326,
+            "bottom": 418.546875,
+            "left": 1249.125
+          }
+        },
+        "select": {
+          "value": "p-ci1bmcrmmrqidyre",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "color": "rgb(8, 45, 53)",
+          "background": "rgb(255, 249, 239)",
+          "options": [
+            {
+              "value": "p-ci1bmcrmmrqidyre",
+              "text": "Fuze Tea Green mango chamomile"
+            },
+            {
+              "value": "p-r84vzx09mrqifjm7",
+              "text": "Fuze Tea - Black sparkling lemon"
+            },
+            {
+              "value": "p-y0038cp3mrqiihy7",
+              "text": "Fuze Tea - Black peach hibiscus"
+            },
+            {
+              "value": "p-73rxt7cvmrqik7xt",
+              "text": "Fuze Tea - Green tea"
+            },
+            {
+              "value": "p-on6zjg4xmrs1rkvc",
+              "text": "Coca-Cola Regular"
+            },
+            {
+              "value": "p-ywxluvwsmrs1s8w7",
+              "text": "Coca-Cola Zero"
+            },
+            {
+              "value": "p-w985jbscmrs1t6a0",
+              "text": "Sprite Zero"
+            },
+            {
+              "value": "p-o2r242f2msagpkop",
+              "text": "Fanta"
+            },
+            {
+              "value": "p-syebexgkmsagq9pu",
+              "text": "Fanta Cassis"
+            },
+            {
+              "value": "p-x1mhaupfmrs1ufui",
+              "text": "Fernandes Green"
+            },
+            {
+              "value": "p-azhbjc65mrs1v8v0",
+              "text": "Fernandes Cherry"
+            },
+            {
+              "value": "p-osxrg5fdmrs1w6j0",
+              "text": "Fernandes Pineapple"
+            },
+            {
+              "value": "p-9yxiqnp9ms4tanjj",
+              "text": "Redbull"
+            },
+            {
+              "value": "p-smbbootwmrt91m01",
+              "text": "Chaudfontaine Natuurlijk mineraalwater"
+            },
+            {
+              "value": "p-1g3cdw0smrt92965",
+              "text": "Chaudfontaine Bruisend natuurlijk mineraalwater"
+            },
+            {
+              "value": "p-8biw2kw8msagu707",
+              "text": "White Chocolate Matcha"
+            },
+            {
+              "value": "p-89p6ogwvmrs4j25p",
+              "text": "Watermelon Bubble Tea"
+            }
+          ],
+          "rect": {
+            "x": 1146,
+            "y": 497.921875,
+            "width": 180,
+            "height": 48,
+            "top": 497.921875,
+            "right": 1326,
+            "bottom": 545.921875,
+            "left": 1146
+          }
+        },
+        "fallbackHidden": true,
+        "overflow": 0
+      },
+      "selected": {
+        "theme": "dark",
+        "photo": {
+          "source": "http://127.0.0.1:3678/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2F6aa2448c-3a93-4039-8618-54c97ca3f5ee.jpg&w=384&q=75",
+          "loaded": true,
+          "loading": "lazy",
+          "priority": "low",
+          "sizes": "(min-width: 1024px) 240px, (min-width: 480px) 384px, calc(100vw - 42px)",
+          "alt": "",
+          "ariaHidden": "true",
+          "pointerEvents": "none",
+          "rect": {
+            "x": 1125,
+            "y": -45.453125,
+            "width": 222,
+            "height": 336.375,
+            "top": -45.453125,
+            "right": 1347,
+            "bottom": 290.921875,
+            "left": 1125
+          },
+          "overlay": "linear-gradient(110deg, rgba(5, 31, 37, 0.94), rgba(5, 31, 37, 0.84) 55%, rgba(5, 31, 37, 0.76))"
+        },
+        "nameColor": "rgb(255, 247, 231)",
+        "unitColor": "rgb(220, 232, 230)",
+        "priceColor": "rgb(255, 247, 231)",
+        "cardBackground": "rgb(13, 51, 59)",
+        "name": "Saag Paneer Wrap",
+        "price": "€9.50",
+        "upgradeText": "Make it a full menu\n\nAdded\n\n+€4 includes fries and one free soft drink.\n\nFree soft drink\nFuze Tea Green mango chamomile\nFuze Tea - Black sparkling lemon\nFuze Tea - Black peach hibiscus\nFuze Tea - Green tea\nCoca-Cola Regular\nCoca-Cola Zero\nSprite Zero\nFanta\nFanta Cassis\nFernandes Green\nFernandes Cherry\nFernandes Pineapple\nRedbull\nChaudfontaine Natuurlijk mineraalwater\nChaudfontaine Bruisend natuurlijk mineraalwater\nWhite Chocolate Matcha\nWatermelon Bubble Tea",
+        "toggle": {
+          "pressed": "true",
+          "label": "Remove: Make it a full menu",
+          "text": "Added",
+          "rect": {
+            "x": 1249.125,
+            "y": 94.546875,
+            "width": 76.875,
+            "height": 48,
+            "top": 94.546875,
+            "right": 1326,
+            "bottom": 142.546875,
+            "left": 1249.125
+          }
+        },
+        "select": {
+          "value": "p-r84vzx09mrqifjm7",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "color": "rgb(8, 45, 53)",
+          "background": "rgb(255, 249, 239)",
+          "options": [
+            {
+              "value": "p-ci1bmcrmmrqidyre",
+              "text": "Fuze Tea Green mango chamomile"
+            },
+            {
+              "value": "p-r84vzx09mrqifjm7",
+              "text": "Fuze Tea - Black sparkling lemon"
+            },
+            {
+              "value": "p-y0038cp3mrqiihy7",
+              "text": "Fuze Tea - Black peach hibiscus"
+            },
+            {
+              "value": "p-73rxt7cvmrqik7xt",
+              "text": "Fuze Tea - Green tea"
+            },
+            {
+              "value": "p-on6zjg4xmrs1rkvc",
+              "text": "Coca-Cola Regular"
+            },
+            {
+              "value": "p-ywxluvwsmrs1s8w7",
+              "text": "Coca-Cola Zero"
+            },
+            {
+              "value": "p-w985jbscmrs1t6a0",
+              "text": "Sprite Zero"
+            },
+            {
+              "value": "p-o2r242f2msagpkop",
+              "text": "Fanta"
+            },
+            {
+              "value": "p-syebexgkmsagq9pu",
+              "text": "Fanta Cassis"
+            },
+            {
+              "value": "p-x1mhaupfmrs1ufui",
+              "text": "Fernandes Green"
+            },
+            {
+              "value": "p-azhbjc65mrs1v8v0",
+              "text": "Fernandes Cherry"
+            },
+            {
+              "value": "p-osxrg5fdmrs1w6j0",
+              "text": "Fernandes Pineapple"
+            },
+            {
+              "value": "p-9yxiqnp9ms4tanjj",
+              "text": "Redbull"
+            },
+            {
+              "value": "p-smbbootwmrt91m01",
+              "text": "Chaudfontaine Natuurlijk mineraalwater"
+            },
+            {
+              "value": "p-1g3cdw0smrt92965",
+              "text": "Chaudfontaine Bruisend natuurlijk mineraalwater"
+            },
+            {
+              "value": "p-8biw2kw8msagu707",
+              "text": "White Chocolate Matcha"
+            },
+            {
+              "value": "p-89p6ogwvmrs4j25p",
+              "text": "Watermelon Bubble Tea"
+            }
+          ],
+          "rect": {
+            "x": 1146,
+            "y": 221.921875,
+            "width": 180,
+            "height": 48,
+            "top": 221.921875,
+            "right": 1326,
+            "bottom": 269.921875,
+            "left": 1146
+          }
+        },
+        "fallbackHidden": true,
+        "overflow": 0
+      },
+      "disabled": {
+        "theme": "dark",
+        "photo": {
+          "source": "http://127.0.0.1:3678/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2F6aa2448c-3a93-4039-8618-54c97ca3f5ee.jpg&w=384&q=75",
+          "loaded": true,
+          "loading": "lazy",
+          "priority": "low",
+          "sizes": "(min-width: 1024px) 240px, (min-width: 480px) 384px, calc(100vw - 42px)",
+          "alt": "",
+          "ariaHidden": "true",
+          "pointerEvents": "none",
+          "rect": {
+            "x": 1125,
+            "y": 4.546875,
+            "width": 222,
+            "height": 253.375,
+            "top": 4.546875,
+            "right": 1347,
+            "bottom": 257.921875,
+            "left": 1125
+          },
+          "overlay": "linear-gradient(110deg, rgba(5, 31, 37, 0.94), rgba(5, 31, 37, 0.84) 55%, rgba(5, 31, 37, 0.76))"
+        },
+        "nameColor": "rgb(255, 247, 231)",
+        "unitColor": "rgb(220, 232, 230)",
+        "priceColor": "rgb(255, 247, 231)",
+        "cardBackground": "rgb(13, 51, 59)",
+        "name": "Saag Paneer Wrap",
+        "price": "€9.50",
+        "upgradeText": "Make it a full menu\n\nAdd\n\n+€4 includes fries and one free soft drink.",
+        "toggle": {
+          "pressed": "false",
+          "label": "Add: Make it a full menu",
+          "text": "Add",
+          "rect": {
+            "x": 1278,
+            "y": 144.546875,
+            "width": 48,
+            "height": 48,
+            "top": 144.546875,
+            "right": 1326,
+            "bottom": 192.546875,
+            "left": 1278
+          }
+        },
+        "select": null,
+        "fallbackHidden": true,
+        "overflow": 0
+      },
+      "initialTotal": 24.98,
+      "email": {
+        "placeholder": "Email address",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "label": "Email address for order confirmation",
+        "placeholderColor": "rgba(213, 209, 196, 0.5)",
+        "background": "oklab(0.999994 0.0000455678 0.0000200868 / 0.05)",
+        "rect": {
+          "x": 1124,
+          "y": 1048.546875,
+          "width": 238,
+          "height": 48,
+          "top": 1048.546875,
+          "right": 1362,
+          "bottom": 1096.546875,
+          "left": 1124
+        },
+        "effectiveBackground": [
+          null,
+          null,
+          null
+        ],
+        "placeholderContrast": 13.746516941690192
+      },
+      "retained": "cart.qa@example.invalid",
+      "sidebar": {
+        "maxHeight": 771.641,
+        "headerHeight": 102.359375,
+        "top": 118.359,
+        "position": "sticky",
+        "overflowY": "auto",
+        "scrollHeight": 1393,
+        "clientHeight": 772,
+        "viewport": 900
+      },
+      "errors": [],
+      "writes": []
+    },
+    {
+      "width": 1625,
+      "theme": "default",
+      "mobile": false,
+      "hiddenSheet": null,
+      "beforeOpenRequests": [],
+      "initial": {
+        "theme": "dark",
+        "photo": {
+          "source": "http://127.0.0.1:3678/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2F6aa2448c-3a93-4039-8618-54c97ca3f5ee.jpg&w=384&q=75",
+          "loaded": true,
+          "loading": "lazy",
+          "priority": "low",
+          "sizes": "(min-width: 1024px) 240px, (min-width: 480px) 384px, calc(100vw - 42px)",
+          "alt": "",
+          "ariaHidden": "true",
+          "pointerEvents": "none",
+          "rect": {
+            "x": 1217.5,
+            "y": 230.546875,
+            "width": 222,
+            "height": 253.375,
+            "top": 230.546875,
+            "right": 1439.5,
+            "bottom": 483.921875,
+            "left": 1217.5
+          },
+          "overlay": "linear-gradient(110deg, rgba(5, 31, 37, 0.94), rgba(5, 31, 37, 0.84) 55%, rgba(5, 31, 37, 0.76))"
+        },
+        "nameColor": "rgb(255, 247, 231)",
+        "unitColor": "rgb(220, 232, 230)",
+        "priceColor": "rgb(255, 247, 231)",
+        "cardBackground": "rgb(13, 51, 59)",
+        "name": "Saag Paneer Wrap",
+        "price": "€9.50",
+        "upgradeText": "Make it a full menu\n\nAdd\n\n+€4 includes fries and one free soft drink.",
+        "toggle": {
+          "pressed": "false",
+          "label": "Add: Make it a full menu",
+          "text": "Add",
+          "rect": {
+            "x": 1370.5,
+            "y": 370.546875,
+            "width": 48,
+            "height": 48,
+            "top": 370.546875,
+            "right": 1418.5,
+            "bottom": 418.546875,
+            "left": 1370.5
+          }
+        },
+        "select": null,
+        "fallbackHidden": true,
+        "overflow": 0
+      },
+      "contrast": {
+        "name": 7.404427208979907,
+        "unit": 6.284269905090955,
+        "price": 7.404427208979907,
+        "brightestPossibleBackdrop": [
+          65,
+          84.75999999999999,
+          89.32
+        ]
+      },
+      "enabled": {
+        "theme": "dark",
+        "photo": {
+          "source": "http://127.0.0.1:3678/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2F6aa2448c-3a93-4039-8618-54c97ca3f5ee.jpg&w=384&q=75",
+          "loaded": true,
+          "loading": "lazy",
+          "priority": "low",
+          "sizes": "(min-width: 1024px) 240px, (min-width: 480px) 384px, calc(100vw - 42px)",
+          "alt": "",
+          "ariaHidden": "true",
+          "pointerEvents": "none",
+          "rect": {
+            "x": 1217.5,
+            "y": 230.546875,
+            "width": 222,
+            "height": 336.375,
+            "top": 230.546875,
+            "right": 1439.5,
+            "bottom": 566.921875,
+            "left": 1217.5
+          },
+          "overlay": "linear-gradient(110deg, rgba(5, 31, 37, 0.94), rgba(5, 31, 37, 0.84) 55%, rgba(5, 31, 37, 0.76))"
+        },
+        "nameColor": "rgb(255, 247, 231)",
+        "unitColor": "rgb(220, 232, 230)",
+        "priceColor": "rgb(255, 247, 231)",
+        "cardBackground": "rgb(13, 51, 59)",
+        "name": "Saag Paneer Wrap",
+        "price": "€9.50",
+        "upgradeText": "Make it a full menu\n\nAdded\n\n+€4 includes fries and one free soft drink.\n\nFree soft drink\nFuze Tea Green mango chamomile\nFuze Tea - Black sparkling lemon\nFuze Tea - Black peach hibiscus\nFuze Tea - Green tea\nCoca-Cola Regular\nCoca-Cola Zero\nSprite Zero\nFanta\nFanta Cassis\nFernandes Green\nFernandes Cherry\nFernandes Pineapple\nRedbull\nChaudfontaine Natuurlijk mineraalwater\nChaudfontaine Bruisend natuurlijk mineraalwater\nWhite Chocolate Matcha\nWatermelon Bubble Tea",
+        "toggle": {
+          "pressed": "true",
+          "label": "Remove: Make it a full menu",
+          "text": "Added",
+          "rect": {
+            "x": 1341.625,
+            "y": 370.546875,
+            "width": 76.875,
+            "height": 48,
+            "top": 370.546875,
+            "right": 1418.5,
+            "bottom": 418.546875,
+            "left": 1341.625
+          }
+        },
+        "select": {
+          "value": "p-ci1bmcrmmrqidyre",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "color": "rgb(8, 45, 53)",
+          "background": "rgb(255, 249, 239)",
+          "options": [
+            {
+              "value": "p-ci1bmcrmmrqidyre",
+              "text": "Fuze Tea Green mango chamomile"
+            },
+            {
+              "value": "p-r84vzx09mrqifjm7",
+              "text": "Fuze Tea - Black sparkling lemon"
+            },
+            {
+              "value": "p-y0038cp3mrqiihy7",
+              "text": "Fuze Tea - Black peach hibiscus"
+            },
+            {
+              "value": "p-73rxt7cvmrqik7xt",
+              "text": "Fuze Tea - Green tea"
+            },
+            {
+              "value": "p-on6zjg4xmrs1rkvc",
+              "text": "Coca-Cola Regular"
+            },
+            {
+              "value": "p-ywxluvwsmrs1s8w7",
+              "text": "Coca-Cola Zero"
+            },
+            {
+              "value": "p-w985jbscmrs1t6a0",
+              "text": "Sprite Zero"
+            },
+            {
+              "value": "p-o2r242f2msagpkop",
+              "text": "Fanta"
+            },
+            {
+              "value": "p-syebexgkmsagq9pu",
+              "text": "Fanta Cassis"
+            },
+            {
+              "value": "p-x1mhaupfmrs1ufui",
+              "text": "Fernandes Green"
+            },
+            {
+              "value": "p-azhbjc65mrs1v8v0",
+              "text": "Fernandes Cherry"
+            },
+            {
+              "value": "p-osxrg5fdmrs1w6j0",
+              "text": "Fernandes Pineapple"
+            },
+            {
+              "value": "p-9yxiqnp9ms4tanjj",
+              "text": "Redbull"
+            },
+            {
+              "value": "p-smbbootwmrt91m01",
+              "text": "Chaudfontaine Natuurlijk mineraalwater"
+            },
+            {
+              "value": "p-1g3cdw0smrt92965",
+              "text": "Chaudfontaine Bruisend natuurlijk mineraalwater"
+            },
+            {
+              "value": "p-8biw2kw8msagu707",
+              "text": "White Chocolate Matcha"
+            },
+            {
+              "value": "p-89p6ogwvmrs4j25p",
+              "text": "Watermelon Bubble Tea"
+            }
+          ],
+          "rect": {
+            "x": 1238.5,
+            "y": 497.921875,
+            "width": 180,
+            "height": 48,
+            "top": 497.921875,
+            "right": 1418.5,
+            "bottom": 545.921875,
+            "left": 1238.5
+          }
+        },
+        "fallbackHidden": true,
+        "overflow": 0
+      },
+      "selected": {
+        "theme": "dark",
+        "photo": {
+          "source": "http://127.0.0.1:3678/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2F6aa2448c-3a93-4039-8618-54c97ca3f5ee.jpg&w=384&q=75",
+          "loaded": true,
+          "loading": "lazy",
+          "priority": "low",
+          "sizes": "(min-width: 1024px) 240px, (min-width: 480px) 384px, calc(100vw - 42px)",
+          "alt": "",
+          "ariaHidden": "true",
+          "pointerEvents": "none",
+          "rect": {
+            "x": 1217.5,
+            "y": -45.453125,
+            "width": 222,
+            "height": 336.375,
+            "top": -45.453125,
+            "right": 1439.5,
+            "bottom": 290.921875,
+            "left": 1217.5
+          },
+          "overlay": "linear-gradient(110deg, rgba(5, 31, 37, 0.94), rgba(5, 31, 37, 0.84) 55%, rgba(5, 31, 37, 0.76))"
+        },
+        "nameColor": "rgb(255, 247, 231)",
+        "unitColor": "rgb(220, 232, 230)",
+        "priceColor": "rgb(255, 247, 231)",
+        "cardBackground": "rgb(13, 51, 59)",
+        "name": "Saag Paneer Wrap",
+        "price": "€9.50",
+        "upgradeText": "Make it a full menu\n\nAdded\n\n+€4 includes fries and one free soft drink.\n\nFree soft drink\nFuze Tea Green mango chamomile\nFuze Tea - Black sparkling lemon\nFuze Tea - Black peach hibiscus\nFuze Tea - Green tea\nCoca-Cola Regular\nCoca-Cola Zero\nSprite Zero\nFanta\nFanta Cassis\nFernandes Green\nFernandes Cherry\nFernandes Pineapple\nRedbull\nChaudfontaine Natuurlijk mineraalwater\nChaudfontaine Bruisend natuurlijk mineraalwater\nWhite Chocolate Matcha\nWatermelon Bubble Tea",
+        "toggle": {
+          "pressed": "true",
+          "label": "Remove: Make it a full menu",
+          "text": "Added",
+          "rect": {
+            "x": 1341.625,
+            "y": 94.546875,
+            "width": 76.875,
+            "height": 48,
+            "top": 94.546875,
+            "right": 1418.5,
+            "bottom": 142.546875,
+            "left": 1341.625
+          }
+        },
+        "select": {
+          "value": "p-r84vzx09mrqifjm7",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "color": "rgb(8, 45, 53)",
+          "background": "rgb(255, 249, 239)",
+          "options": [
+            {
+              "value": "p-ci1bmcrmmrqidyre",
+              "text": "Fuze Tea Green mango chamomile"
+            },
+            {
+              "value": "p-r84vzx09mrqifjm7",
+              "text": "Fuze Tea - Black sparkling lemon"
+            },
+            {
+              "value": "p-y0038cp3mrqiihy7",
+              "text": "Fuze Tea - Black peach hibiscus"
+            },
+            {
+              "value": "p-73rxt7cvmrqik7xt",
+              "text": "Fuze Tea - Green tea"
+            },
+            {
+              "value": "p-on6zjg4xmrs1rkvc",
+              "text": "Coca-Cola Regular"
+            },
+            {
+              "value": "p-ywxluvwsmrs1s8w7",
+              "text": "Coca-Cola Zero"
+            },
+            {
+              "value": "p-w985jbscmrs1t6a0",
+              "text": "Sprite Zero"
+            },
+            {
+              "value": "p-o2r242f2msagpkop",
+              "text": "Fanta"
+            },
+            {
+              "value": "p-syebexgkmsagq9pu",
+              "text": "Fanta Cassis"
+            },
+            {
+              "value": "p-x1mhaupfmrs1ufui",
+              "text": "Fernandes Green"
+            },
+            {
+              "value": "p-azhbjc65mrs1v8v0",
+              "text": "Fernandes Cherry"
+            },
+            {
+              "value": "p-osxrg5fdmrs1w6j0",
+              "text": "Fernandes Pineapple"
+            },
+            {
+              "value": "p-9yxiqnp9ms4tanjj",
+              "text": "Redbull"
+            },
+            {
+              "value": "p-smbbootwmrt91m01",
+              "text": "Chaudfontaine Natuurlijk mineraalwater"
+            },
+            {
+              "value": "p-1g3cdw0smrt92965",
+              "text": "Chaudfontaine Bruisend natuurlijk mineraalwater"
+            },
+            {
+              "value": "p-8biw2kw8msagu707",
+              "text": "White Chocolate Matcha"
+            },
+            {
+              "value": "p-89p6ogwvmrs4j25p",
+              "text": "Watermelon Bubble Tea"
+            }
+          ],
+          "rect": {
+            "x": 1238.5,
+            "y": 221.921875,
+            "width": 180,
+            "height": 48,
+            "top": 221.921875,
+            "right": 1418.5,
+            "bottom": 269.921875,
+            "left": 1238.5
+          }
+        },
+        "fallbackHidden": true,
+        "overflow": 0
+      },
+      "disabled": {
+        "theme": "dark",
+        "photo": {
+          "source": "http://127.0.0.1:3678/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2F6aa2448c-3a93-4039-8618-54c97ca3f5ee.jpg&w=384&q=75",
+          "loaded": true,
+          "loading": "lazy",
+          "priority": "low",
+          "sizes": "(min-width: 1024px) 240px, (min-width: 480px) 384px, calc(100vw - 42px)",
+          "alt": "",
+          "ariaHidden": "true",
+          "pointerEvents": "none",
+          "rect": {
+            "x": 1217.5,
+            "y": 15.546875,
+            "width": 222,
+            "height": 253.375,
+            "top": 15.546875,
+            "right": 1439.5,
+            "bottom": 268.921875,
+            "left": 1217.5
+          },
+          "overlay": "linear-gradient(110deg, rgba(5, 31, 37, 0.94), rgba(5, 31, 37, 0.84) 55%, rgba(5, 31, 37, 0.76))"
+        },
+        "nameColor": "rgb(255, 247, 231)",
+        "unitColor": "rgb(220, 232, 230)",
+        "priceColor": "rgb(255, 247, 231)",
+        "cardBackground": "rgb(13, 51, 59)",
+        "name": "Saag Paneer Wrap",
+        "price": "€9.50",
+        "upgradeText": "Make it a full menu\n\nAdd\n\n+€4 includes fries and one free soft drink.",
+        "toggle": {
+          "pressed": "false",
+          "label": "Add: Make it a full menu",
+          "text": "Add",
+          "rect": {
+            "x": 1370.5,
+            "y": 155.546875,
+            "width": 48,
+            "height": 48,
+            "top": 155.546875,
+            "right": 1418.5,
+            "bottom": 203.546875,
+            "left": 1370.5
+          }
+        },
+        "select": null,
+        "fallbackHidden": true,
+        "overflow": 0
+      },
+      "initialTotal": 24.98,
+      "email": {
+        "placeholder": "Email address",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "label": "Email address for order confirmation",
+        "placeholderColor": "rgba(213, 209, 196, 0.5)",
+        "background": "oklab(0.999994 0.0000455678 0.0000200868 / 0.05)",
+        "rect": {
+          "x": 1216.5,
+          "y": 1064.546875,
+          "width": 238,
+          "height": 48,
+          "top": 1064.546875,
+          "right": 1454.5,
+          "bottom": 1112.546875,
+          "left": 1216.5
+        },
+        "effectiveBackground": [
+          null,
+          null,
+          null
+        ],
+        "placeholderContrast": 13.746516941690192
+      },
+      "retained": "cart.qa@example.invalid",
+      "sidebar": {
+        "maxHeight": 803.641,
+        "headerHeight": 102.359375,
+        "top": 118.359,
+        "position": "sticky",
+        "overflowY": "auto",
+        "scrollHeight": 1393,
+        "clientHeight": 804,
+        "viewport": 932
+      },
+      "errors": [],
+      "writes": []
+    },
+    {
+      "width": 1625,
+      "theme": "light",
+      "mobile": false,
+      "hiddenSheet": null,
+      "beforeOpenRequests": [],
+      "initial": {
+        "theme": "light",
+        "photo": {
+          "source": "http://127.0.0.1:3678/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2F6aa2448c-3a93-4039-8618-54c97ca3f5ee.jpg&w=384&q=75",
+          "loaded": true,
+          "loading": "lazy",
+          "priority": "low",
+          "sizes": "(min-width: 1024px) 240px, (min-width: 480px) 384px, calc(100vw - 42px)",
+          "alt": "",
+          "ariaHidden": "true",
+          "pointerEvents": "none",
+          "rect": {
+            "x": 1217.5,
+            "y": 230.546875,
+            "width": 222,
+            "height": 253.375,
+            "top": 230.546875,
+            "right": 1439.5,
+            "bottom": 483.921875,
+            "left": 1217.5
+          },
+          "overlay": "linear-gradient(110deg, rgba(5, 31, 37, 0.94), rgba(5, 31, 37, 0.84) 55%, rgba(5, 31, 37, 0.76))"
+        },
+        "nameColor": "rgb(255, 247, 231)",
+        "unitColor": "rgb(220, 232, 230)",
+        "priceColor": "rgb(255, 247, 231)",
+        "cardBackground": "rgb(13, 51, 59)",
+        "name": "Saag Paneer Wrap",
+        "price": "€9.50",
+        "upgradeText": "Make it a full menu\n\nAdd\n\n+€4 includes fries and one free soft drink.",
+        "toggle": {
+          "pressed": "false",
+          "label": "Add: Make it a full menu",
+          "text": "Add",
+          "rect": {
+            "x": 1370.5,
+            "y": 370.546875,
+            "width": 48,
+            "height": 48,
+            "top": 370.546875,
+            "right": 1418.5,
+            "bottom": 418.546875,
+            "left": 1370.5
+          }
+        },
+        "select": null,
+        "fallbackHidden": true,
+        "overflow": 0
+      },
+      "contrast": {
+        "name": 7.404427208979907,
+        "unit": 6.284269905090955,
+        "price": 7.404427208979907,
+        "brightestPossibleBackdrop": [
+          65,
+          84.75999999999999,
+          89.32
+        ]
+      },
+      "enabled": {
+        "theme": "light",
+        "photo": {
+          "source": "http://127.0.0.1:3678/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2F6aa2448c-3a93-4039-8618-54c97ca3f5ee.jpg&w=384&q=75",
+          "loaded": true,
+          "loading": "lazy",
+          "priority": "low",
+          "sizes": "(min-width: 1024px) 240px, (min-width: 480px) 384px, calc(100vw - 42px)",
+          "alt": "",
+          "ariaHidden": "true",
+          "pointerEvents": "none",
+          "rect": {
+            "x": 1217.5,
+            "y": 230.546875,
+            "width": 222,
+            "height": 336.375,
+            "top": 230.546875,
+            "right": 1439.5,
+            "bottom": 566.921875,
+            "left": 1217.5
+          },
+          "overlay": "linear-gradient(110deg, rgba(5, 31, 37, 0.94), rgba(5, 31, 37, 0.84) 55%, rgba(5, 31, 37, 0.76))"
+        },
+        "nameColor": "rgb(255, 247, 231)",
+        "unitColor": "rgb(220, 232, 230)",
+        "priceColor": "rgb(255, 247, 231)",
+        "cardBackground": "rgb(13, 51, 59)",
+        "name": "Saag Paneer Wrap",
+        "price": "€9.50",
+        "upgradeText": "Make it a full menu\n\nAdded\n\n+€4 includes fries and one free soft drink.\n\nFree soft drink\nFuze Tea Green mango chamomile\nFuze Tea - Black sparkling lemon\nFuze Tea - Black peach hibiscus\nFuze Tea - Green tea\nCoca-Cola Regular\nCoca-Cola Zero\nSprite Zero\nFanta\nFanta Cassis\nFernandes Green\nFernandes Cherry\nFernandes Pineapple\nRedbull\nChaudfontaine Natuurlijk mineraalwater\nChaudfontaine Bruisend natuurlijk mineraalwater\nWhite Chocolate Matcha\nWatermelon Bubble Tea",
+        "toggle": {
+          "pressed": "true",
+          "label": "Remove: Make it a full menu",
+          "text": "Added",
+          "rect": {
+            "x": 1341.625,
+            "y": 370.546875,
+            "width": 76.875,
+            "height": 48,
+            "top": 370.546875,
+            "right": 1418.5,
+            "bottom": 418.546875,
+            "left": 1341.625
+          }
+        },
+        "select": {
+          "value": "p-ci1bmcrmmrqidyre",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "color": "rgb(8, 45, 53)",
+          "background": "rgb(255, 249, 239)",
+          "options": [
+            {
+              "value": "p-ci1bmcrmmrqidyre",
+              "text": "Fuze Tea Green mango chamomile"
+            },
+            {
+              "value": "p-r84vzx09mrqifjm7",
+              "text": "Fuze Tea - Black sparkling lemon"
+            },
+            {
+              "value": "p-y0038cp3mrqiihy7",
+              "text": "Fuze Tea - Black peach hibiscus"
+            },
+            {
+              "value": "p-73rxt7cvmrqik7xt",
+              "text": "Fuze Tea - Green tea"
+            },
+            {
+              "value": "p-on6zjg4xmrs1rkvc",
+              "text": "Coca-Cola Regular"
+            },
+            {
+              "value": "p-ywxluvwsmrs1s8w7",
+              "text": "Coca-Cola Zero"
+            },
+            {
+              "value": "p-w985jbscmrs1t6a0",
+              "text": "Sprite Zero"
+            },
+            {
+              "value": "p-o2r242f2msagpkop",
+              "text": "Fanta"
+            },
+            {
+              "value": "p-syebexgkmsagq9pu",
+              "text": "Fanta Cassis"
+            },
+            {
+              "value": "p-x1mhaupfmrs1ufui",
+              "text": "Fernandes Green"
+            },
+            {
+              "value": "p-azhbjc65mrs1v8v0",
+              "text": "Fernandes Cherry"
+            },
+            {
+              "value": "p-osxrg5fdmrs1w6j0",
+              "text": "Fernandes Pineapple"
+            },
+            {
+              "value": "p-9yxiqnp9ms4tanjj",
+              "text": "Redbull"
+            },
+            {
+              "value": "p-smbbootwmrt91m01",
+              "text": "Chaudfontaine Natuurlijk mineraalwater"
+            },
+            {
+              "value": "p-1g3cdw0smrt92965",
+              "text": "Chaudfontaine Bruisend natuurlijk mineraalwater"
+            },
+            {
+              "value": "p-8biw2kw8msagu707",
+              "text": "White Chocolate Matcha"
+            },
+            {
+              "value": "p-89p6ogwvmrs4j25p",
+              "text": "Watermelon Bubble Tea"
+            }
+          ],
+          "rect": {
+            "x": 1238.5,
+            "y": 497.921875,
+            "width": 180,
+            "height": 48,
+            "top": 497.921875,
+            "right": 1418.5,
+            "bottom": 545.921875,
+            "left": 1238.5
+          }
+        },
+        "fallbackHidden": true,
+        "overflow": 0
+      },
+      "selected": {
+        "theme": "light",
+        "photo": {
+          "source": "http://127.0.0.1:3678/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2F6aa2448c-3a93-4039-8618-54c97ca3f5ee.jpg&w=384&q=75",
+          "loaded": true,
+          "loading": "lazy",
+          "priority": "low",
+          "sizes": "(min-width: 1024px) 240px, (min-width: 480px) 384px, calc(100vw - 42px)",
+          "alt": "",
+          "ariaHidden": "true",
+          "pointerEvents": "none",
+          "rect": {
+            "x": 1217.5,
+            "y": -45.453125,
+            "width": 222,
+            "height": 336.375,
+            "top": -45.453125,
+            "right": 1439.5,
+            "bottom": 290.921875,
+            "left": 1217.5
+          },
+          "overlay": "linear-gradient(110deg, rgba(5, 31, 37, 0.94), rgba(5, 31, 37, 0.84) 55%, rgba(5, 31, 37, 0.76))"
+        },
+        "nameColor": "rgb(255, 247, 231)",
+        "unitColor": "rgb(220, 232, 230)",
+        "priceColor": "rgb(255, 247, 231)",
+        "cardBackground": "rgb(13, 51, 59)",
+        "name": "Saag Paneer Wrap",
+        "price": "€9.50",
+        "upgradeText": "Make it a full menu\n\nAdded\n\n+€4 includes fries and one free soft drink.\n\nFree soft drink\nFuze Tea Green mango chamomile\nFuze Tea - Black sparkling lemon\nFuze Tea - Black peach hibiscus\nFuze Tea - Green tea\nCoca-Cola Regular\nCoca-Cola Zero\nSprite Zero\nFanta\nFanta Cassis\nFernandes Green\nFernandes Cherry\nFernandes Pineapple\nRedbull\nChaudfontaine Natuurlijk mineraalwater\nChaudfontaine Bruisend natuurlijk mineraalwater\nWhite Chocolate Matcha\nWatermelon Bubble Tea",
+        "toggle": {
+          "pressed": "true",
+          "label": "Remove: Make it a full menu",
+          "text": "Added",
+          "rect": {
+            "x": 1341.625,
+            "y": 94.546875,
+            "width": 76.875,
+            "height": 48,
+            "top": 94.546875,
+            "right": 1418.5,
+            "bottom": 142.546875,
+            "left": 1341.625
+          }
+        },
+        "select": {
+          "value": "p-r84vzx09mrqifjm7",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "color": "rgb(8, 45, 53)",
+          "background": "rgb(255, 249, 239)",
+          "options": [
+            {
+              "value": "p-ci1bmcrmmrqidyre",
+              "text": "Fuze Tea Green mango chamomile"
+            },
+            {
+              "value": "p-r84vzx09mrqifjm7",
+              "text": "Fuze Tea - Black sparkling lemon"
+            },
+            {
+              "value": "p-y0038cp3mrqiihy7",
+              "text": "Fuze Tea - Black peach hibiscus"
+            },
+            {
+              "value": "p-73rxt7cvmrqik7xt",
+              "text": "Fuze Tea - Green tea"
+            },
+            {
+              "value": "p-on6zjg4xmrs1rkvc",
+              "text": "Coca-Cola Regular"
+            },
+            {
+              "value": "p-ywxluvwsmrs1s8w7",
+              "text": "Coca-Cola Zero"
+            },
+            {
+              "value": "p-w985jbscmrs1t6a0",
+              "text": "Sprite Zero"
+            },
+            {
+              "value": "p-o2r242f2msagpkop",
+              "text": "Fanta"
+            },
+            {
+              "value": "p-syebexgkmsagq9pu",
+              "text": "Fanta Cassis"
+            },
+            {
+              "value": "p-x1mhaupfmrs1ufui",
+              "text": "Fernandes Green"
+            },
+            {
+              "value": "p-azhbjc65mrs1v8v0",
+              "text": "Fernandes Cherry"
+            },
+            {
+              "value": "p-osxrg5fdmrs1w6j0",
+              "text": "Fernandes Pineapple"
+            },
+            {
+              "value": "p-9yxiqnp9ms4tanjj",
+              "text": "Redbull"
+            },
+            {
+              "value": "p-smbbootwmrt91m01",
+              "text": "Chaudfontaine Natuurlijk mineraalwater"
+            },
+            {
+              "value": "p-1g3cdw0smrt92965",
+              "text": "Chaudfontaine Bruisend natuurlijk mineraalwater"
+            },
+            {
+              "value": "p-8biw2kw8msagu707",
+              "text": "White Chocolate Matcha"
+            },
+            {
+              "value": "p-89p6ogwvmrs4j25p",
+              "text": "Watermelon Bubble Tea"
+            }
+          ],
+          "rect": {
+            "x": 1238.5,
+            "y": 221.921875,
+            "width": 180,
+            "height": 48,
+            "top": 221.921875,
+            "right": 1418.5,
+            "bottom": 269.921875,
+            "left": 1238.5
+          }
+        },
+        "fallbackHidden": true,
+        "overflow": 0
+      },
+      "disabled": {
+        "theme": "light",
+        "photo": {
+          "source": "http://127.0.0.1:3678/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2F6aa2448c-3a93-4039-8618-54c97ca3f5ee.jpg&w=384&q=75",
+          "loaded": true,
+          "loading": "lazy",
+          "priority": "low",
+          "sizes": "(min-width: 1024px) 240px, (min-width: 480px) 384px, calc(100vw - 42px)",
+          "alt": "",
+          "ariaHidden": "true",
+          "pointerEvents": "none",
+          "rect": {
+            "x": 1217.5,
+            "y": -78.453125,
+            "width": 222,
+            "height": 253.375,
+            "top": -78.453125,
+            "right": 1439.5,
+            "bottom": 174.921875,
+            "left": 1217.5
+          },
+          "overlay": "linear-gradient(110deg, rgba(5, 31, 37, 0.94), rgba(5, 31, 37, 0.84) 55%, rgba(5, 31, 37, 0.76))"
+        },
+        "nameColor": "rgb(255, 247, 231)",
+        "unitColor": "rgb(220, 232, 230)",
+        "priceColor": "rgb(255, 247, 231)",
+        "cardBackground": "rgb(13, 51, 59)",
+        "name": "Saag Paneer Wrap",
+        "price": "€9.50",
+        "upgradeText": "Make it a full menu\n\nAdd\n\n+€4 includes fries and one free soft drink.",
+        "toggle": {
+          "pressed": "false",
+          "label": "Add: Make it a full menu",
+          "text": "Add",
+          "rect": {
+            "x": 1370.5,
+            "y": 61.546875,
+            "width": 48,
+            "height": 48,
+            "top": 61.546875,
+            "right": 1418.5,
+            "bottom": 109.546875,
+            "left": 1370.5
+          }
+        },
+        "select": null,
+        "fallbackHidden": true,
+        "overflow": 0
+      },
+      "initialTotal": 24.98,
+      "email": {
+        "placeholder": "Email address",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "label": "Email address for order confirmation",
+        "placeholderColor": "rgb(75, 101, 104)",
+        "background": "rgb(249, 250, 247)",
+        "rect": {
+          "x": 1216.5,
+          "y": 1064.546875,
+          "width": 238,
+          "height": 48,
+          "top": 1064.546875,
+          "right": 1454.5,
+          "bottom": 1112.546875,
+          "left": 1216.5
+        },
+        "effectiveBackground": [
+          255,
+          255,
+          255
+        ],
+        "placeholderContrast": 6.248998409069909
+      },
+      "retained": "cart.qa@example.invalid",
+      "sidebar": {
+        "maxHeight": 803.641,
+        "headerHeight": 102.359375,
+        "top": 118.359,
+        "position": "sticky",
+        "overflowY": "auto",
+        "scrollHeight": 1393,
+        "clientHeight": 804,
+        "viewport": 932
+      },
+      "errors": [],
+      "writes": []
+    },
+    {
+      "width": 1625,
+      "theme": "dark",
+      "mobile": false,
+      "hiddenSheet": null,
+      "beforeOpenRequests": [],
+      "initial": {
+        "theme": "dark",
+        "photo": {
+          "source": "http://127.0.0.1:3678/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2F6aa2448c-3a93-4039-8618-54c97ca3f5ee.jpg&w=384&q=75",
+          "loaded": true,
+          "loading": "lazy",
+          "priority": "low",
+          "sizes": "(min-width: 1024px) 240px, (min-width: 480px) 384px, calc(100vw - 42px)",
+          "alt": "",
+          "ariaHidden": "true",
+          "pointerEvents": "none",
+          "rect": {
+            "x": 1217.5,
+            "y": 230.546875,
+            "width": 222,
+            "height": 253.375,
+            "top": 230.546875,
+            "right": 1439.5,
+            "bottom": 483.921875,
+            "left": 1217.5
+          },
+          "overlay": "linear-gradient(110deg, rgba(5, 31, 37, 0.94), rgba(5, 31, 37, 0.84) 55%, rgba(5, 31, 37, 0.76))"
+        },
+        "nameColor": "rgb(255, 247, 231)",
+        "unitColor": "rgb(220, 232, 230)",
+        "priceColor": "rgb(255, 247, 231)",
+        "cardBackground": "rgb(13, 51, 59)",
+        "name": "Saag Paneer Wrap",
+        "price": "€9.50",
+        "upgradeText": "Make it a full menu\n\nAdd\n\n+€4 includes fries and one free soft drink.",
+        "toggle": {
+          "pressed": "false",
+          "label": "Add: Make it a full menu",
+          "text": "Add",
+          "rect": {
+            "x": 1370.5,
+            "y": 370.546875,
+            "width": 48,
+            "height": 48,
+            "top": 370.546875,
+            "right": 1418.5,
+            "bottom": 418.546875,
+            "left": 1370.5
+          }
+        },
+        "select": null,
+        "fallbackHidden": true,
+        "overflow": 0
+      },
+      "contrast": {
+        "name": 7.404427208979907,
+        "unit": 6.284269905090955,
+        "price": 7.404427208979907,
+        "brightestPossibleBackdrop": [
+          65,
+          84.75999999999999,
+          89.32
+        ]
+      },
+      "enabled": {
+        "theme": "dark",
+        "photo": {
+          "source": "http://127.0.0.1:3678/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2F6aa2448c-3a93-4039-8618-54c97ca3f5ee.jpg&w=384&q=75",
+          "loaded": true,
+          "loading": "lazy",
+          "priority": "low",
+          "sizes": "(min-width: 1024px) 240px, (min-width: 480px) 384px, calc(100vw - 42px)",
+          "alt": "",
+          "ariaHidden": "true",
+          "pointerEvents": "none",
+          "rect": {
+            "x": 1217.5,
+            "y": 230.546875,
+            "width": 222,
+            "height": 336.375,
+            "top": 230.546875,
+            "right": 1439.5,
+            "bottom": 566.921875,
+            "left": 1217.5
+          },
+          "overlay": "linear-gradient(110deg, rgba(5, 31, 37, 0.94), rgba(5, 31, 37, 0.84) 55%, rgba(5, 31, 37, 0.76))"
+        },
+        "nameColor": "rgb(255, 247, 231)",
+        "unitColor": "rgb(220, 232, 230)",
+        "priceColor": "rgb(255, 247, 231)",
+        "cardBackground": "rgb(13, 51, 59)",
+        "name": "Saag Paneer Wrap",
+        "price": "€9.50",
+        "upgradeText": "Make it a full menu\n\nAdded\n\n+€4 includes fries and one free soft drink.\n\nFree soft drink\nFuze Tea Green mango chamomile\nFuze Tea - Black sparkling lemon\nFuze Tea - Black peach hibiscus\nFuze Tea - Green tea\nCoca-Cola Regular\nCoca-Cola Zero\nSprite Zero\nFanta\nFanta Cassis\nFernandes Green\nFernandes Cherry\nFernandes Pineapple\nRedbull\nChaudfontaine Natuurlijk mineraalwater\nChaudfontaine Bruisend natuurlijk mineraalwater\nWhite Chocolate Matcha\nWatermelon Bubble Tea",
+        "toggle": {
+          "pressed": "true",
+          "label": "Remove: Make it a full menu",
+          "text": "Added",
+          "rect": {
+            "x": 1341.625,
+            "y": 370.546875,
+            "width": 76.875,
+            "height": 48,
+            "top": 370.546875,
+            "right": 1418.5,
+            "bottom": 418.546875,
+            "left": 1341.625
+          }
+        },
+        "select": {
+          "value": "p-ci1bmcrmmrqidyre",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "color": "rgb(8, 45, 53)",
+          "background": "rgb(255, 249, 239)",
+          "options": [
+            {
+              "value": "p-ci1bmcrmmrqidyre",
+              "text": "Fuze Tea Green mango chamomile"
+            },
+            {
+              "value": "p-r84vzx09mrqifjm7",
+              "text": "Fuze Tea - Black sparkling lemon"
+            },
+            {
+              "value": "p-y0038cp3mrqiihy7",
+              "text": "Fuze Tea - Black peach hibiscus"
+            },
+            {
+              "value": "p-73rxt7cvmrqik7xt",
+              "text": "Fuze Tea - Green tea"
+            },
+            {
+              "value": "p-on6zjg4xmrs1rkvc",
+              "text": "Coca-Cola Regular"
+            },
+            {
+              "value": "p-ywxluvwsmrs1s8w7",
+              "text": "Coca-Cola Zero"
+            },
+            {
+              "value": "p-w985jbscmrs1t6a0",
+              "text": "Sprite Zero"
+            },
+            {
+              "value": "p-o2r242f2msagpkop",
+              "text": "Fanta"
+            },
+            {
+              "value": "p-syebexgkmsagq9pu",
+              "text": "Fanta Cassis"
+            },
+            {
+              "value": "p-x1mhaupfmrs1ufui",
+              "text": "Fernandes Green"
+            },
+            {
+              "value": "p-azhbjc65mrs1v8v0",
+              "text": "Fernandes Cherry"
+            },
+            {
+              "value": "p-osxrg5fdmrs1w6j0",
+              "text": "Fernandes Pineapple"
+            },
+            {
+              "value": "p-9yxiqnp9ms4tanjj",
+              "text": "Redbull"
+            },
+            {
+              "value": "p-smbbootwmrt91m01",
+              "text": "Chaudfontaine Natuurlijk mineraalwater"
+            },
+            {
+              "value": "p-1g3cdw0smrt92965",
+              "text": "Chaudfontaine Bruisend natuurlijk mineraalwater"
+            },
+            {
+              "value": "p-8biw2kw8msagu707",
+              "text": "White Chocolate Matcha"
+            },
+            {
+              "value": "p-89p6ogwvmrs4j25p",
+              "text": "Watermelon Bubble Tea"
+            }
+          ],
+          "rect": {
+            "x": 1238.5,
+            "y": 497.921875,
+            "width": 180,
+            "height": 48,
+            "top": 497.921875,
+            "right": 1418.5,
+            "bottom": 545.921875,
+            "left": 1238.5
+          }
+        },
+        "fallbackHidden": true,
+        "overflow": 0
+      },
+      "selected": {
+        "theme": "dark",
+        "photo": {
+          "source": "http://127.0.0.1:3678/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2F6aa2448c-3a93-4039-8618-54c97ca3f5ee.jpg&w=384&q=75",
+          "loaded": true,
+          "loading": "lazy",
+          "priority": "low",
+          "sizes": "(min-width: 1024px) 240px, (min-width: 480px) 384px, calc(100vw - 42px)",
+          "alt": "",
+          "ariaHidden": "true",
+          "pointerEvents": "none",
+          "rect": {
+            "x": 1217.5,
+            "y": -45.453125,
+            "width": 222,
+            "height": 336.375,
+            "top": -45.453125,
+            "right": 1439.5,
+            "bottom": 290.921875,
+            "left": 1217.5
+          },
+          "overlay": "linear-gradient(110deg, rgba(5, 31, 37, 0.94), rgba(5, 31, 37, 0.84) 55%, rgba(5, 31, 37, 0.76))"
+        },
+        "nameColor": "rgb(255, 247, 231)",
+        "unitColor": "rgb(220, 232, 230)",
+        "priceColor": "rgb(255, 247, 231)",
+        "cardBackground": "rgb(13, 51, 59)",
+        "name": "Saag Paneer Wrap",
+        "price": "€9.50",
+        "upgradeText": "Make it a full menu\n\nAdded\n\n+€4 includes fries and one free soft drink.\n\nFree soft drink\nFuze Tea Green mango chamomile\nFuze Tea - Black sparkling lemon\nFuze Tea - Black peach hibiscus\nFuze Tea - Green tea\nCoca-Cola Regular\nCoca-Cola Zero\nSprite Zero\nFanta\nFanta Cassis\nFernandes Green\nFernandes Cherry\nFernandes Pineapple\nRedbull\nChaudfontaine Natuurlijk mineraalwater\nChaudfontaine Bruisend natuurlijk mineraalwater\nWhite Chocolate Matcha\nWatermelon Bubble Tea",
+        "toggle": {
+          "pressed": "true",
+          "label": "Remove: Make it a full menu",
+          "text": "Added",
+          "rect": {
+            "x": 1341.625,
+            "y": 94.546875,
+            "width": 76.875,
+            "height": 48,
+            "top": 94.546875,
+            "right": 1418.5,
+            "bottom": 142.546875,
+            "left": 1341.625
+          }
+        },
+        "select": {
+          "value": "p-r84vzx09mrqifjm7",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "color": "rgb(8, 45, 53)",
+          "background": "rgb(255, 249, 239)",
+          "options": [
+            {
+              "value": "p-ci1bmcrmmrqidyre",
+              "text": "Fuze Tea Green mango chamomile"
+            },
+            {
+              "value": "p-r84vzx09mrqifjm7",
+              "text": "Fuze Tea - Black sparkling lemon"
+            },
+            {
+              "value": "p-y0038cp3mrqiihy7",
+              "text": "Fuze Tea - Black peach hibiscus"
+            },
+            {
+              "value": "p-73rxt7cvmrqik7xt",
+              "text": "Fuze Tea - Green tea"
+            },
+            {
+              "value": "p-on6zjg4xmrs1rkvc",
+              "text": "Coca-Cola Regular"
+            },
+            {
+              "value": "p-ywxluvwsmrs1s8w7",
+              "text": "Coca-Cola Zero"
+            },
+            {
+              "value": "p-w985jbscmrs1t6a0",
+              "text": "Sprite Zero"
+            },
+            {
+              "value": "p-o2r242f2msagpkop",
+              "text": "Fanta"
+            },
+            {
+              "value": "p-syebexgkmsagq9pu",
+              "text": "Fanta Cassis"
+            },
+            {
+              "value": "p-x1mhaupfmrs1ufui",
+              "text": "Fernandes Green"
+            },
+            {
+              "value": "p-azhbjc65mrs1v8v0",
+              "text": "Fernandes Cherry"
+            },
+            {
+              "value": "p-osxrg5fdmrs1w6j0",
+              "text": "Fernandes Pineapple"
+            },
+            {
+              "value": "p-9yxiqnp9ms4tanjj",
+              "text": "Redbull"
+            },
+            {
+              "value": "p-smbbootwmrt91m01",
+              "text": "Chaudfontaine Natuurlijk mineraalwater"
+            },
+            {
+              "value": "p-1g3cdw0smrt92965",
+              "text": "Chaudfontaine Bruisend natuurlijk mineraalwater"
+            },
+            {
+              "value": "p-8biw2kw8msagu707",
+              "text": "White Chocolate Matcha"
+            },
+            {
+              "value": "p-89p6ogwvmrs4j25p",
+              "text": "Watermelon Bubble Tea"
+            }
+          ],
+          "rect": {
+            "x": 1238.5,
+            "y": 221.921875,
+            "width": 180,
+            "height": 48,
+            "top": 221.921875,
+            "right": 1418.5,
+            "bottom": 269.921875,
+            "left": 1238.5
+          }
+        },
+        "fallbackHidden": true,
+        "overflow": 0
+      },
+      "disabled": {
+        "theme": "dark",
+        "photo": {
+          "source": "http://127.0.0.1:3678/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2F6aa2448c-3a93-4039-8618-54c97ca3f5ee.jpg&w=384&q=75",
+          "loaded": true,
+          "loading": "lazy",
+          "priority": "low",
+          "sizes": "(min-width: 1024px) 240px, (min-width: 480px) 384px, calc(100vw - 42px)",
+          "alt": "",
+          "ariaHidden": "true",
+          "pointerEvents": "none",
+          "rect": {
+            "x": 1217.5,
+            "y": 4.546875,
+            "width": 222,
+            "height": 253.375,
+            "top": 4.546875,
+            "right": 1439.5,
+            "bottom": 257.921875,
+            "left": 1217.5
+          },
+          "overlay": "linear-gradient(110deg, rgba(5, 31, 37, 0.94), rgba(5, 31, 37, 0.84) 55%, rgba(5, 31, 37, 0.76))"
+        },
+        "nameColor": "rgb(255, 247, 231)",
+        "unitColor": "rgb(220, 232, 230)",
+        "priceColor": "rgb(255, 247, 231)",
+        "cardBackground": "rgb(13, 51, 59)",
+        "name": "Saag Paneer Wrap",
+        "price": "€9.50",
+        "upgradeText": "Make it a full menu\n\nAdd\n\n+€4 includes fries and one free soft drink.",
+        "toggle": {
+          "pressed": "false",
+          "label": "Add: Make it a full menu",
+          "text": "Add",
+          "rect": {
+            "x": 1370.5,
+            "y": 144.546875,
+            "width": 48,
+            "height": 48,
+            "top": 144.546875,
+            "right": 1418.5,
+            "bottom": 192.546875,
+            "left": 1370.5
+          }
+        },
+        "select": null,
+        "fallbackHidden": true,
+        "overflow": 0
+      },
+      "initialTotal": 24.98,
+      "email": {
+        "placeholder": "Email address",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "label": "Email address for order confirmation",
+        "placeholderColor": "rgba(213, 209, 196, 0.5)",
+        "background": "oklab(0.999994 0.0000455678 0.0000200868 / 0.05)",
+        "rect": {
+          "x": 1216.5,
+          "y": 1064.546875,
+          "width": 238,
+          "height": 48,
+          "top": 1064.546875,
+          "right": 1454.5,
+          "bottom": 1112.546875,
+          "left": 1216.5
+        },
+        "effectiveBackground": [
+          null,
+          null,
+          null
+        ],
+        "placeholderContrast": 13.746516941690192
+      },
+      "retained": "cart.qa@example.invalid",
+      "sidebar": {
+        "maxHeight": 803.641,
+        "headerHeight": 102.359375,
+        "top": 118.359,
+        "position": "sticky",
+        "overflowY": "auto",
+        "scrollHeight": 1393,
+        "clientHeight": 804,
+        "viewport": 932
+      },
+      "errors": [],
+      "writes": []
+    }
+  ],
+  "screens": [
+    "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-order-mobile-20261111\\cart-polish\\cart-offer-default-320.png",
+    "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-order-mobile-20261111\\cart-polish\\email-default-320.png",
+    "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-order-mobile-20261111\\cart-polish\\cart-offer-light-320.png",
+    "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-order-mobile-20261111\\cart-polish\\email-light-320.png",
+    "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-order-mobile-20261111\\cart-polish\\cart-offer-dark-320.png",
+    "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-order-mobile-20261111\\cart-polish\\email-dark-320.png",
+    "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-order-mobile-20261111\\cart-polish\\cart-offer-default-390.png",
+    "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-order-mobile-20261111\\cart-polish\\email-default-390.png",
+    "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-order-mobile-20261111\\cart-polish\\cart-offer-light-390.png",
+    "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-order-mobile-20261111\\cart-polish\\email-light-390.png",
+    "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-order-mobile-20261111\\cart-polish\\cart-offer-dark-390.png",
+    "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-order-mobile-20261111\\cart-polish\\email-dark-390.png",
+    "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-order-mobile-20261111\\cart-polish\\cart-offer-default-1440.png",
+    "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-order-mobile-20261111\\cart-polish\\email-default-1440.png",
+    "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-order-mobile-20261111\\cart-polish\\cart-offer-light-1440.png",
+    "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-order-mobile-20261111\\cart-polish\\email-light-1440.png",
+    "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-order-mobile-20261111\\cart-polish\\cart-offer-dark-1440.png",
+    "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-order-mobile-20261111\\cart-polish\\email-dark-1440.png",
+    "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-order-mobile-20261111\\cart-polish\\cart-offer-default-1625.png",
+    "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-order-mobile-20261111\\cart-polish\\email-default-1625.png",
+    "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-order-mobile-20261111\\cart-polish\\cart-offer-light-1625.png",
+    "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-order-mobile-20261111\\cart-polish\\email-light-1625.png",
+    "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-order-mobile-20261111\\cart-polish\\cart-offer-dark-1625.png",
+    "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-order-mobile-20261111\\cart-polish\\email-dark-1625.png",
+    "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-order-mobile-20261111\\cart-polish\\failed-photo-solid-fallback.png"
+  ],
+  "failedImageFallback": {
+    "fallbackDisplay": "none",
+    "solidBackground": "rgb(13, 51, 59)",
+    "ariaHidden": true
+  },
+  "cleanup": {
+    "cart": {},
+    "openSheet": false
+  },
+  "buildId": "VKLjgu-1RUsSY6wilFOyC",
+  "sourceFingerprint": "27f2e054c8ffcc0786c2d420666823e826478e13ce7d060f67976c5e7b8c20b3",
+  "visualInspection": {
+    "method": "Saved Chromium PNGs opened with view_image",
+    "viewed": [
+      "cart-offer-default-320.png",
+      "cart-offer-light-320.png",
+      "email-light-320.png",
+      "cart-offer-dark-1440.png",
+      "cart-offer-light-1625.png",
+      "email-dark-1440.png",
+      "failed-photo-solid-fallback.png"
+    ],
+    "findings": "Actual product photos visible behind high-contrast names/info/controls; clean separate offer panel shows price once, compact desktop field text, usable mobile fields. Failed photo produces a solid background with no question glyph."
+  },
+  "knownPerformanceObservation": "On repeated mobile navigations Chromium may request optimized hidden desktop cart backgrounds despite lazy/low attributes; the mobile dialog itself is unmounted before opening. Zero hidden requests is not claimed. Plan: render decorative images only after IntersectionObserver confirms a visible photo frame in the next batch."
+}

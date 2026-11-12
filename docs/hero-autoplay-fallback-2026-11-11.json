@@ -1,0 +1,1140 @@
+{
+ "kind": "ExactU5boundedautoplayfunctionalproof;notperformancecertification",
+ "capturedAtUtc": "2026-11-11T21:24:34.214Z",
+ "buildId": "U5-gxuCUwhE6QFQ1NV8jE",
+ "sourceIdentity": {
+  "fingerprint": "022346f521b958992ffa443cfcff84cd4dcddae3a3e6c02dd04ac899971057da",
+  "inputCount": 514,
+  "recordedSourceFile": "C:\\Users\\DaviiC\\Downloads\\shahrestaurant\\shahrestaurant\\.next-review-autoplay-final-20261111.source.json",
+  "descriptorSha256": "fda665b10e0611bc520615497fa60e2886ad266d248292ed78ed8b02e50c8d2a",
+  "archive": {
+   "file": "recorded-source.json",
+   "bytes": 79679,
+   "sha256": "fda665b10e0611bc520615497fa60e2886ad266d248292ed78ed8b02e50c8d2a"
+  }
+ },
+ "origin": "http://127.0.0.1:3578",
+ "scope": {
+  "engine": "OwnedheadlessChromium9228",
+  "viewport": "390x844,DPR1,mobiletouch",
+  "freshIsolatedContexts": true,
+  "browserContextsClosed": true,
+  "disconnected": true,
+  "otherProfilesUntouched": true,
+  "appSourceEdited": false,
+  "mainOrCandidateServersChanged": false,
+  "parallelHostLimit": "Parentauthorizedrootreview9226functionalQA inparallel; thesearefunctionalproofs,notscheduling/performancebenchmarks."
+ },
+ "fastNaturalCompletion": {
+  "pass": true,
+  "sourceBefore": {
+   "enabled": true,
+   "verifiedInputs": 514,
+   "allRecordedBytesMatch": true,
+   "kind": "initial-full-hash",
+   "sourceFingerprint": "022346f521b958992ffa443cfcff84cd4dcddae3a3e6c02dd04ac899971057da"
+  },
+  "sourceAfter": {
+   "enabled": true,
+   "verifiedInputs": 514,
+   "allRecordedBytesMatch": true,
+   "kind": "stat-watch-plus-changed-byte-hash",
+   "sourceFingerprint": "022346f521b958992ffa443cfcff84cd4dcddae3a3e6c02dd04ac899971057da"
+  },
+  "downloadedBytes": 11337072,
+  "sourcePath": "/brand/shah-hero-scroll-mobile-v4.mp4",
+  "atRestTimes": [
+   0.1151,
+   1.323
+  ],
+  "firstPlayingAtMs": 1289.9000000953674,
+  "naturalEndedAtMs": 13470.799999952316,
+  "completionPublishedAtMs": 13476.799999952316,
+  "completionAfterEndedMs": 6,
+  "duration": 12.25,
+  "lastObservedVideoFrame": {
+   "at": 13421.6,
+   "mediaTime": 12.208333,
+   "presentedFrames": 294
+  },
+  "finalFrameConfirmed": "true",
+  "nativeQualityAtStart": {
+   "total": 6,
+   "dropped": 1
+  },
+  "nativeQualityAtEnd": {
+   "total": 294,
+   "dropped": 1
+  },
+  "observedWaitingOrStalledDuringPlay": [],
+  "postFilmContent": {
+   "label": "content-access",
+   "visibility": "visible",
+   "active": {
+    "tag": "BODY",
+    "id": "",
+    "href": null
+   },
+   "trackState": "complete",
+   "complete": "true",
+   "bypassed": "false",
+   "fallback": "early-navigation",
+   "stagePhase": "bypassed",
+   "stageAriaHidden": "true",
+   "video": {
+    "currentTime": 12.25,
+    "duration": 12.25,
+    "paused": true,
+    "ended": true,
+    "controls": false,
+    "tabIndex": -1,
+    "autoplay": true,
+    "muted": true,
+    "ariaHidden": "true",
+    "label": null,
+    "width": 608,
+    "height": 1080
+   },
+   "headingPresent": true,
+   "headingVisible": true,
+   "bodyInlineOverflow": "",
+   "unexpectedInert": 0,
+   "horizontalOverflow": 0,
+   "overlaysIntersectingFilm": 0
+  },
+  "runtimeErrors": [],
+  "businessWrites": [],
+  "raw": {
+   "file": "first-u5-fast-nl-mobile.json",
+   "bytes": 41185,
+   "sha256": "1d6a2c939fe5f371292eb882f984898eae94b059d372a7b2ed0fc45a4a27353c"
+  },
+  "finalFrameScreenshot": {
+   "file": "first-u5-fast-nl-mobile-final-frame.png",
+   "bytes": 357767,
+   "sha256": "629a82ac93d5cd0447fbc430780f44dd86528b542305aef3042d3a72998b3829"
+  }
+ },
+ "fallbacks": {
+  "count": 10,
+  "allPass": true,
+  "allSourceGuardsMatch": true,
+  "runtimeErrorCount": 0,
+  "businessWriteCount": 0,
+  "cases": [
+   {
+    "key": "early-wheel-cold",
+    "pass": true,
+    "mode": {
+     "route": "/",
+     "mobile": true,
+     "slow": true,
+     "applicationJavaScript": true
+    },
+    "checkCount": 8,
+    "failedChecks": [],
+    "mp4Requests": 1,
+    "media": [
+     {
+      "event": "Network.loadingFailed",
+      "path": "/brand/shah-hero-scroll-mobile-v4.mp4",
+      "canceled": true,
+      "errorText": "net::ERR_ABORTED"
+     }
+    ],
+    "runtimeErrors": [],
+    "consoleErrors": [],
+    "businessWrites": [],
+    "guardInputCounts": {
+     "before": 514,
+     "after": 514
+    },
+    "actualH1": {
+     "text": "Indiaas restaurant in Amsterdam-Noord",
+     "visible": true,
+     "hiddenOrInert": false,
+     "mainTextLength": 10431
+    },
+    "policyEvidence": null,
+    "finalState": {
+     "label": "content-access",
+     "visibility": "visible",
+     "trackState": "static",
+     "complete": "true",
+     "bypassed": "false",
+     "fallback": "early-navigation",
+     "stagePhase": "static",
+     "video": null,
+     "active": "BODY",
+     "headingVisible": true,
+     "bodyInlineOverflow": "",
+     "unexpectedInert": 0,
+     "horizontalOverflow": 0
+    },
+    "limitations": [],
+    "proof": {
+     "file": "early-wheel-cold.json",
+     "bytes": 10454,
+     "sha256": "f3b77842fefa52999a066c54895a9ceb6ad8f4f4b60dc25aa69d3d1b9e5a7e0d"
+    },
+    "screenshot": {
+     "file": "early-wheel-cold.png",
+     "bytes": 94934,
+     "sha256": "034258e4094dc6fccf89e603ff66c98e10e2168dec8d9f931a263ba152037b88"
+    }
+   },
+   {
+    "key": "initial-hash",
+    "pass": true,
+    "mode": {
+     "route": "/#intro",
+     "mobile": true,
+     "slow": false,
+     "applicationJavaScript": true
+    },
+    "checkCount": 6,
+    "failedChecks": [],
+    "mp4Requests": 0,
+    "media": [],
+    "runtimeErrors": [],
+    "consoleErrors": [],
+    "businessWrites": [],
+    "guardInputCounts": {
+     "before": 514,
+     "after": 514
+    },
+    "actualH1": {
+     "text": "Indiaas restaurant in Amsterdam-Noord",
+     "visible": true,
+     "hiddenOrInert": false,
+     "mainTextLength": 10431
+    },
+    "policyEvidence": null,
+    "finalState": {
+     "label": "initial-hash-static",
+     "visibility": "visible",
+     "trackState": "static",
+     "complete": "true",
+     "bypassed": "false",
+     "fallback": "initial-navigation",
+     "stagePhase": "static",
+     "video": null,
+     "active": "SECTION",
+     "headingVisible": true,
+     "bodyInlineOverflow": "",
+     "unexpectedInert": 0,
+     "horizontalOverflow": 0
+    },
+    "limitations": [],
+    "proof": {
+     "file": "initial-hash.json",
+     "bytes": 6903,
+     "sha256": "c66e443a86913cb922b0b3541859f6d95f14d51b13e4efed2ef8bd5759487b3c"
+    },
+    "screenshot": {
+     "file": "initial-hash.png",
+     "bytes": 159717,
+     "sha256": "25a8671f55ee89463c15cc27127253c8ddd66d7a236acebf0a0d13d2f6b73289"
+    }
+   },
+   {
+    "key": "keyboard-skip",
+    "pass": true,
+    "mode": {
+     "route": "/",
+     "mobile": true,
+     "slow": true,
+     "applicationJavaScript": true
+    },
+    "checkCount": 6,
+    "failedChecks": [],
+    "mp4Requests": 1,
+    "media": [
+     {
+      "event": "Network.loadingFailed",
+      "path": "/brand/shah-hero-scroll-mobile-v4.mp4",
+      "canceled": true,
+      "errorText": "net::ERR_ABORTED"
+     }
+    ],
+    "runtimeErrors": [],
+    "consoleErrors": [],
+    "businessWrites": [],
+    "guardInputCounts": {
+     "before": 514,
+     "after": 514
+    },
+    "actualH1": {
+     "text": "Indiaas restaurant in Amsterdam-Noord",
+     "visible": true,
+     "hiddenOrInert": false,
+     "mainTextLength": 10431
+    },
+    "policyEvidence": null,
+    "finalState": {
+     "label": "after-real-Enter-skip",
+     "visibility": "visible",
+     "trackState": "static",
+     "complete": "true",
+     "bypassed": "false",
+     "fallback": "explicit-navigation",
+     "stagePhase": "static",
+     "video": null,
+     "active": "SECTION",
+     "headingVisible": true,
+     "bodyInlineOverflow": "",
+     "unexpectedInert": 0,
+     "horizontalOverflow": 0
+    },
+    "limitations": [],
+    "proof": {
+     "file": "keyboard-skip.json",
+     "bytes": 10314,
+     "sha256": "ad2ff3ea1b1adbb03d928d5499e5fd655443ce0dca86c8a36affebc0aa01a9a6"
+    },
+    "screenshot": {
+     "file": "keyboard-skip.png",
+     "bytes": 166683,
+     "sha256": "adaf621636222aaf3e2bea68bb090620e0be28119f2574e862a971c75ca560c5"
+    }
+   },
+   {
+    "key": "reduced-motion",
+    "pass": true,
+    "mode": {
+     "route": "/",
+     "mobile": true,
+     "slow": false,
+     "applicationJavaScript": true
+    },
+    "checkCount": 8,
+    "failedChecks": [],
+    "mp4Requests": 0,
+    "media": [],
+    "runtimeErrors": [],
+    "consoleErrors": [],
+    "businessWrites": [],
+    "guardInputCounts": {
+     "before": 514,
+     "after": 514
+    },
+    "actualH1": {
+     "text": "Indiaas restaurant in Amsterdam-Noord",
+     "visible": true,
+     "hiddenOrInert": false,
+     "mainTextLength": 10433
+    },
+    "policyEvidence": null,
+    "finalState": {
+     "label": "content-access",
+     "visibility": "visible",
+     "trackState": "static",
+     "complete": "true",
+     "bypassed": "false",
+     "fallback": "reduced-motion",
+     "stagePhase": "static",
+     "video": null,
+     "active": "BODY",
+     "headingVisible": true,
+     "bodyInlineOverflow": "",
+     "unexpectedInert": 0,
+     "horizontalOverflow": 0
+    },
+    "limitations": [
+     "Actual emulated prefers-reduced-motion media query."
+    ],
+    "proof": {
+     "file": "reduced-motion.json",
+     "bytes": 8427,
+     "sha256": "901ce8662de0a88d70b9b29126ebd402fdb6827cccf4cb5d27a70de9d646481c"
+    },
+    "screenshot": {
+     "file": "reduced-motion.png",
+     "bytes": 86801,
+     "sha256": "b2d1de3182aeeccb7c1228f8f55b45f411417fbb8ec048d7421a5499b86e27a8"
+    }
+   },
+   {
+    "key": "save-data",
+    "pass": true,
+    "mode": {
+     "route": "/",
+     "mobile": true,
+     "slow": false,
+     "applicationJavaScript": true
+    },
+    "checkCount": 8,
+    "failedChecks": [],
+    "mp4Requests": 0,
+    "media": [],
+    "runtimeErrors": [],
+    "consoleErrors": [],
+    "businessWrites": [],
+    "guardInputCounts": {
+     "before": 514,
+     "after": 514
+    },
+    "actualH1": {
+     "text": "Indiaas restaurant in Amsterdam-Noord",
+     "visible": true,
+     "hiddenOrInert": false,
+     "mainTextLength": 10431
+    },
+    "policyEvidence": null,
+    "finalState": {
+     "label": "content-access",
+     "visibility": "visible",
+     "trackState": "static",
+     "complete": "true",
+     "bypassed": "false",
+     "fallback": "data-saving",
+     "stagePhase": "static",
+     "video": null,
+     "active": "BODY",
+     "headingVisible": true,
+     "bodyInlineOverflow": "",
+     "unexpectedInert": 0,
+     "horizontalOverflow": 0
+    },
+    "limitations": [
+     "Explicit navigator.connection capability override via CDP newdocument script; no device/network certification."
+    ],
+    "proof": {
+     "file": "save-data.json",
+     "bytes": 8491,
+     "sha256": "4e1daf9e47ac8197fe313841406907ac61354e18193d4f9b5f3eb91e2b81d181"
+    },
+    "screenshot": {
+     "file": "save-data.png",
+     "bytes": 86801,
+     "sha256": "b2d1de3182aeeccb7c1228f8f55b45f411417fbb8ec048d7421a5499b86e27a8"
+    }
+   },
+   {
+    "key": "connection-2g",
+    "pass": true,
+    "mode": {
+     "route": "/",
+     "mobile": true,
+     "slow": false,
+     "applicationJavaScript": true
+    },
+    "checkCount": 8,
+    "failedChecks": [],
+    "mp4Requests": 0,
+    "media": [],
+    "runtimeErrors": [],
+    "consoleErrors": [],
+    "businessWrites": [],
+    "guardInputCounts": {
+     "before": 514,
+     "after": 514
+    },
+    "actualH1": {
+     "text": "Indiaas restaurant in Amsterdam-Noord",
+     "visible": true,
+     "hiddenOrInert": false,
+     "mainTextLength": 10431
+    },
+    "policyEvidence": null,
+    "finalState": {
+     "label": "content-access",
+     "visibility": "visible",
+     "trackState": "static",
+     "complete": "true",
+     "bypassed": "false",
+     "fallback": "data-saving",
+     "stagePhase": "static",
+     "video": null,
+     "active": "BODY",
+     "headingVisible": true,
+     "bodyInlineOverflow": "",
+     "unexpectedInert": 0,
+     "horizontalOverflow": 0
+    },
+    "limitations": [
+     "Explicit navigator.connection capability override via CDP newdocument script; no device/network certification."
+    ],
+    "proof": {
+     "file": "connection-2g.json",
+     "bytes": 8593,
+     "sha256": "0987cbf9ebe6e6ecc9d671e6e04800c6bfd53f407310d4742ff171cfdabe74ea"
+    },
+    "screenshot": {
+     "file": "connection-2g.png",
+     "bytes": 94967,
+     "sha256": "c22b1191175600146185d64f32f542106c3467ba84d5fd13012b278aa3454829"
+    }
+   },
+   {
+    "key": "no-javascript",
+    "pass": true,
+    "mode": {
+     "route": "/",
+     "mobile": true,
+     "slow": false,
+     "applicationJavaScript": false
+    },
+    "checkCount": 8,
+    "failedChecks": [],
+    "mp4Requests": 0,
+    "media": [],
+    "runtimeErrors": [],
+    "consoleErrors": [],
+    "businessWrites": [],
+    "guardInputCounts": {
+     "before": 514,
+     "after": 514
+    },
+    "actualH1": {
+     "text": "Indiaas restaurant in Amsterdam-Noord",
+     "visible": true,
+     "hiddenOrInert": false,
+     "mainTextLength": 8354
+    },
+    "policyEvidence": null,
+    "finalState": {
+     "label": "content-access",
+     "visibility": "visible",
+     "trackState": "waiting",
+     "complete": "false",
+     "fallback": null,
+     "stagePhase": null,
+     "video": null,
+     "active": "BODY",
+     "headingVisible": true,
+     "bodyInlineOverflow": "",
+     "unexpectedInert": 0,
+     "horizontalOverflow": 0
+    },
+    "limitations": [
+     "Application scripts disabled; QA uses DevTools DOM/screenshotreadbacks and trustedCDPwheel to inspect SSRcontent."
+    ],
+    "proof": {
+     "file": "no-javascript.json",
+     "bytes": 6444,
+     "sha256": "383ba2d3779186f19fb1adf8b02d1aa2b6ce497c8cf2d326f02f5a79b180187d"
+    },
+    "screenshot": {
+     "file": "no-javascript.png",
+     "bytes": 55870,
+     "sha256": "6603a15fd7faa75bec82276a383b7199fc92f181c25acf801ce2193c80c1d15a"
+    }
+   },
+   {
+    "key": "forced-mp4-404",
+    "pass": true,
+    "mode": {
+     "route": "/",
+     "mobile": true,
+     "slow": false,
+     "applicationJavaScript": true
+    },
+    "checkCount": 7,
+    "failedChecks": [],
+    "mp4Requests": 1,
+    "media": [
+     {
+      "event": "Network.loadingFailed",
+      "path": "/brand/shah-hero-scroll-mobile-v4.mp4",
+      "canceled": true,
+      "errorText": "net::ERR_ABORTED"
+     }
+    ],
+    "runtimeErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    ],
+    "businessWrites": [],
+    "guardInputCounts": {
+     "before": 514,
+     "after": 514
+    },
+    "actualH1": {
+     "text": "Indiaas restaurant in Amsterdam-Noord",
+     "visible": true,
+     "hiddenOrInert": false,
+     "mainTextLength": 10431
+    },
+    "policyEvidence": null,
+    "finalState": {
+     "label": "content-access",
+     "visibility": "visible",
+     "trackState": "static",
+     "complete": "true",
+     "bypassed": "false",
+     "fallback": "load-or-decode-error",
+     "stagePhase": "static",
+     "video": null,
+     "active": "BODY",
+     "headingVisible": true,
+     "bodyInlineOverflow": "",
+     "unexpectedInert": 0,
+     "horizontalOverflow": 0
+    },
+    "limitations": [],
+    "proof": {
+     "file": "forced-mp4-404.json",
+     "bytes": 10201,
+     "sha256": "1ccec09ac73fa683d5a9c74944d8debaec29ad2f403d542a575b5c96bace9db2"
+    },
+    "screenshot": {
+     "file": "forced-mp4-404.png",
+     "bytes": 96503,
+     "sha256": "c402cda0b78b12326c9b74f8399d1734195daf825d666d49f565b90ebb312b17"
+    }
+   },
+   {
+    "key": "blocked-policy-native-controls",
+    "pass": true,
+    "mode": {
+     "route": "/",
+     "mobile": true,
+     "slow": false,
+     "applicationJavaScript": true
+    },
+    "checkCount": 10,
+    "failedChecks": [],
+    "mp4Requests": 1,
+    "media": [
+     {
+      "event": "Network.loadingFinished",
+      "path": "/brand/shah-hero-scroll-mobile-v4.mp4",
+      "encodedDataLength": 11337692
+     }
+    ],
+    "runtimeErrors": [],
+    "consoleErrors": [],
+    "businessWrites": [],
+    "guardInputCounts": {
+     "before": 514,
+     "after": 514
+    },
+    "actualH1": null,
+    "policyEvidence": {
+     "artificial": true,
+     "firstPlayRejections": 1,
+     "forcedAutoplayFalse": 2,
+     "restored": true,
+     "autoplayAtDenied": false,
+     "autoplayAttributeAtDenied": false
+    },
+    "finalState": {
+     "label": "foreground-after-background",
+     "visibility": "visible",
+     "trackState": "paused",
+     "complete": "false",
+     "bypassed": "false",
+     "fallback": null,
+     "stagePhase": "playing",
+     "video": {
+      "time": 0.5315,
+      "paused": true,
+      "controls": true,
+      "tabIndex": 0,
+      "ariaHidden": null
+     },
+     "active": "VIDEO",
+     "headingVisible": false,
+     "bodyInlineOverflow": "",
+     "unexpectedInert": 0,
+     "horizontalOverflow": 0
+    },
+    "stateSequence": [
+     {
+      "label": "after-navigation",
+      "visibility": "visible",
+      "trackState": "waiting",
+      "complete": "false",
+      "fallback": null,
+      "stagePhase": null,
+      "video": null,
+      "active": "BODY",
+      "headingVisible": false,
+      "bodyInlineOverflow": "",
+      "unexpectedInert": 0,
+      "horizontalOverflow": 0
+     },
+     {
+      "label": "policy-blocked",
+      "visibility": "visible",
+      "trackState": "blocked",
+      "complete": "false",
+      "bypassed": "false",
+      "fallback": null,
+      "stagePhase": "blocked",
+      "video": {
+       "time": 0,
+       "paused": true,
+       "controls": true,
+       "tabIndex": 0,
+       "ariaHidden": null
+      },
+      "active": "BODY",
+      "headingVisible": false,
+      "bodyInlineOverflow": "",
+      "unexpectedInert": 0,
+      "horizontalOverflow": 0
+     },
+     {
+      "label": "blocked-SkipLink-focus",
+      "visibility": "visible",
+      "trackState": "blocked",
+      "complete": "false",
+      "bypassed": "false",
+      "fallback": null,
+      "stagePhase": "blocked",
+      "video": {
+       "time": 0,
+       "paused": true,
+       "controls": true,
+       "tabIndex": 0,
+       "ariaHidden": null
+      },
+      "active": "A",
+      "headingVisible": false,
+      "bodyInlineOverflow": "",
+      "unexpectedInert": 0,
+      "horizontalOverflow": 0
+     },
+     {
+      "label": "blocked-nativeVideo-focus",
+      "visibility": "visible",
+      "trackState": "blocked",
+      "complete": "false",
+      "bypassed": "false",
+      "fallback": null,
+      "stagePhase": "blocked",
+      "video": {
+       "time": 0,
+       "paused": true,
+       "controls": true,
+       "tabIndex": 0,
+       "ariaHidden": null
+      },
+      "active": "VIDEO",
+      "headingVisible": false,
+      "bodyInlineOverflow": "",
+      "unexpectedInert": 0,
+      "horizontalOverflow": 0
+     },
+     {
+      "label": "native-Space-manual-play",
+      "visibility": "visible",
+      "trackState": "playing",
+      "complete": "false",
+      "bypassed": "false",
+      "fallback": null,
+      "stagePhase": "playing",
+      "video": {
+       "time": 0.2221,
+       "paused": false,
+       "controls": true,
+       "tabIndex": 0,
+       "ariaHidden": null
+      },
+      "active": "VIDEO",
+      "headingVisible": false,
+      "bodyInlineOverflow": "",
+      "unexpectedInert": 0,
+      "horizontalOverflow": 0
+     },
+     {
+      "label": "native-Space-manual-pause",
+      "visibility": "visible",
+      "trackState": "paused",
+      "complete": "false",
+      "bypassed": "false",
+      "fallback": null,
+      "stagePhase": "playing",
+      "video": {
+       "time": 0.5315,
+       "paused": true,
+       "controls": true,
+       "tabIndex": 0,
+       "ariaHidden": null
+      },
+      "active": "VIDEO",
+      "headingVisible": false,
+      "bodyInlineOverflow": "",
+      "unexpectedInert": 0,
+      "horizontalOverflow": 0
+     },
+     {
+      "label": "foreground-before-background",
+      "visibility": "visible",
+      "trackState": "paused",
+      "complete": "false",
+      "bypassed": "false",
+      "fallback": null,
+      "stagePhase": "playing",
+      "video": {
+       "time": 0.5315,
+       "paused": true,
+       "controls": true,
+       "tabIndex": 0,
+       "ariaHidden": null
+      },
+      "active": "VIDEO",
+      "headingVisible": false,
+      "bodyInlineOverflow": "",
+      "unexpectedInert": 0,
+      "horizontalOverflow": 0
+     },
+     {
+      "label": "background",
+      "visibility": "hidden",
+      "trackState": "paused",
+      "complete": "false",
+      "bypassed": "false",
+      "fallback": null,
+      "stagePhase": "playing",
+      "video": {
+       "time": 0.5315,
+       "paused": true,
+       "controls": true,
+       "tabIndex": 0,
+       "ariaHidden": null
+      },
+      "active": "VIDEO",
+      "headingVisible": false,
+      "bodyInlineOverflow": "",
+      "unexpectedInert": 0,
+      "horizontalOverflow": 0
+     },
+     {
+      "label": "background-stable",
+      "visibility": "hidden",
+      "trackState": "paused",
+      "complete": "false",
+      "bypassed": "false",
+      "fallback": null,
+      "stagePhase": "playing",
+      "video": {
+       "time": 0.5315,
+       "paused": true,
+       "controls": true,
+       "tabIndex": 0,
+       "ariaHidden": null
+      },
+      "active": "VIDEO",
+      "headingVisible": false,
+      "bodyInlineOverflow": "",
+      "unexpectedInert": 0,
+      "horizontalOverflow": 0
+     },
+     {
+      "label": "foreground-after-background",
+      "visibility": "visible",
+      "trackState": "paused",
+      "complete": "false",
+      "bypassed": "false",
+      "fallback": null,
+      "stagePhase": "playing",
+      "video": {
+       "time": 0.5315,
+       "paused": true,
+       "controls": true,
+       "tabIndex": 0,
+       "ariaHidden": null
+      },
+      "active": "VIDEO",
+      "headingVisible": false,
+      "bodyInlineOverflow": "",
+      "unexpectedInert": 0,
+      "horizontalOverflow": 0
+     }
+    ],
+    "observedVisibility": [
+     {
+      "at": 2002.5,
+      "state": "hidden"
+     },
+     {
+      "at": 2813.9000000953674,
+      "state": "visible"
+     }
+    ],
+    "trustedInputs": [
+     {
+      "type": "keydown",
+      "key": "Tab",
+      "trusted": true,
+      "target": "BODY",
+      "at": 1325.8000001907349,
+      "scrollY": 0
+     },
+     {
+      "type": "keydown",
+      "key": "Tab",
+      "trusted": true,
+      "target": "A",
+      "at": 1387.7000000476837,
+      "scrollY": 0
+     },
+     {
+      "type": "keydown",
+      "key": " ",
+      "trusted": true,
+      "target": "VIDEO",
+      "at": 1424.3000001907349,
+      "scrollY": 0
+     },
+     {
+      "type": "keydown",
+      "key": " ",
+      "trusted": true,
+      "target": "VIDEO",
+      "at": 1960.2000000476837,
+      "scrollY": 0
+     }
+    ],
+    "limitations": [
+     "Explicit synthetic capability test disables native autoplay first, rejects one JSplay with NotAllowedError, restores prototypes immediately. It is not physicalbrowser autoplaypolicy certification."
+    ],
+    "proof": {
+     "file": "blocked-policy-native-controls.json",
+     "bytes": 31162,
+     "sha256": "c4131d386ab35fef19a389be49eb3d66bd74df8694f59128f5f3e9f857b28136"
+    },
+    "screenshot": {
+     "file": "blocked-policy-native-controls.png",
+     "bytes": 455349,
+     "sha256": "732bf3dcf1fb03d73e7c82e4cef7785cdf31840b31dcf378ef73ecd906da0441"
+    }
+   },
+   {
+    "key": "playing-background-resume",
+    "pass": true,
+    "mode": {
+     "route": "/",
+     "mobile": true,
+     "slow": false,
+     "applicationJavaScript": true
+    },
+    "checkCount": 6,
+    "failedChecks": [],
+    "mp4Requests": 1,
+    "media": [
+     {
+      "event": "Network.loadingFinished",
+      "path": "/brand/shah-hero-scroll-mobile-v4.mp4",
+      "encodedDataLength": 11337692
+     }
+    ],
+    "runtimeErrors": [],
+    "consoleErrors": [],
+    "businessWrites": [],
+    "guardInputCounts": {
+     "before": 514,
+     "after": 514
+    },
+    "actualH1": null,
+    "policyEvidence": null,
+    "finalState": {
+     "label": "foreground-after-background",
+     "visibility": "visible",
+     "trackState": "playing",
+     "complete": "false",
+     "bypassed": "false",
+     "fallback": null,
+     "stagePhase": "playing",
+     "video": {
+      "time": 0.912,
+      "paused": false,
+      "controls": false,
+      "tabIndex": -1,
+      "ariaHidden": "true"
+     },
+     "active": "BODY",
+     "headingVisible": false,
+     "bodyInlineOverflow": "",
+     "unexpectedInert": 0,
+     "horizontalOverflow": 0
+    },
+    "stateSequence": [
+     {
+      "label": "after-navigation",
+      "visibility": "visible",
+      "trackState": "waiting",
+      "complete": "false",
+      "fallback": null,
+      "stagePhase": null,
+      "video": null,
+      "active": "BODY",
+      "headingVisible": false,
+      "bodyInlineOverflow": "",
+      "unexpectedInert": 0,
+      "horizontalOverflow": 0
+     },
+     {
+      "label": "foreground-before-background",
+      "visibility": "visible",
+      "trackState": "playing",
+      "complete": "false",
+      "bypassed": "false",
+      "fallback": null,
+      "stagePhase": "playing",
+      "video": {
+       "time": 0.1075,
+       "paused": false,
+       "controls": false,
+       "tabIndex": -1,
+       "ariaHidden": "true"
+      },
+      "active": "BODY",
+      "headingVisible": false,
+      "bodyInlineOverflow": "",
+      "unexpectedInert": 0,
+      "horizontalOverflow": 0
+     },
+     {
+      "label": "background",
+      "visibility": "hidden",
+      "trackState": "paused",
+      "complete": "false",
+      "bypassed": "false",
+      "fallback": null,
+      "stagePhase": "playing",
+      "video": {
+       "time": 0.1484,
+       "paused": true,
+       "controls": false,
+       "tabIndex": -1,
+       "ariaHidden": "true"
+      },
+      "active": "BODY",
+      "headingVisible": false,
+      "bodyInlineOverflow": "",
+      "unexpectedInert": 0,
+      "horizontalOverflow": 0
+     },
+     {
+      "label": "background-stable",
+      "visibility": "hidden",
+      "trackState": "paused",
+      "complete": "false",
+      "bypassed": "false",
+      "fallback": null,
+      "stagePhase": "playing",
+      "video": {
+       "time": 0.1484,
+       "paused": true,
+       "controls": false,
+       "tabIndex": -1,
+       "ariaHidden": "true"
+      },
+      "active": "BODY",
+      "headingVisible": false,
+      "bodyInlineOverflow": "",
+      "unexpectedInert": 0,
+      "horizontalOverflow": 0
+     },
+     {
+      "label": "foreground-after-background",
+      "visibility": "visible",
+      "trackState": "playing",
+      "complete": "false",
+      "bypassed": "false",
+      "fallback": null,
+      "stagePhase": "playing",
+      "video": {
+       "time": 0.912,
+       "paused": false,
+       "controls": false,
+       "tabIndex": -1,
+       "ariaHidden": "true"
+      },
+      "active": "BODY",
+      "headingVisible": false,
+      "bodyInlineOverflow": "",
+      "unexpectedInert": 0,
+      "horizontalOverflow": 0
+     }
+    ],
+    "observedVisibility": [
+     {
+      "at": 1305.7000000476837,
+      "state": "hidden"
+     },
+     {
+      "at": 2151.9000000953674,
+      "state": "visible"
+     }
+    ],
+    "trustedInputs": [],
+    "limitations": [],
+    "proof": {
+     "file": "playing-background-resume.json",
+     "bytes": 15221,
+     "sha256": "0b70979f50df04dc98c4258346133658b8cc190df1a6502f09e003971210de7e"
+    },
+    "screenshot": {
+     "file": "playing-background-resume.png",
+     "bytes": 469583,
+     "sha256": "0ad04f4523459d2d7bd65a37792cc44a8e85640d4d32ff78295d9edc701dc9d5"
+    }
+   }
+  ],
+  "recordedAssertionPassesOnly": true
+ },
+ "visualInspection": {
+  "reviewed": [
+   "blocked-policy-native-controls.png",
+   "no-javascript.png"
+  ],
+  "finding": "Actualnativevideocontrolsvisibleinblocked/manualpausedcase;NoJSrestaurantH1andintrovisiblewithreadablecontent. ScreenshotreviewdoesnotestablishwholepageAA."
+ },
+ "limits": [
+  "OwnedheadlessChromium9228only, freshisolatedcontexts; noSafari/Firefox/physicaldevicecertification.",
+  "Read-onlyfunctional checks; not performancebenchmarks or fieldINP/LCP.",
+  "Artificialpolicy/2g/SaveData/404 capability cases explicitly labeled; no app/source edits.",
+  "Noform/businesssubmissions. Everycase records actual writes/errors and nativeinput evidence.",
+  "Fastplayobserved294total/1droppedframe; this isnotguaranteedzero-stutterplayback.",
+  "No Safari/nativeWebKit path, Firefox,physicalmobile,screenreader,realautoplaypolicycertification orfieldmetrics.",
+  "ArtificialpolicytestdisablesnativeautoplaybeforeonedeliberateNotAllowedError;actualnativeSpacecontrolsandforegroundvisibilityarethedirectlyobservedoutcomes.",
+  "NoJSappscriptsoff;QADevToolsreadbacksandCDPwheelremaininspectiontools.",
+  "Initialhash intentionallyselectsstatic/complete=true/bypassed=false; itdoesnotpretendfilmplayed.",
+  "Nqhistoricalcontrolsremainseparate; theseproofsareU5only.",
+  "U5 full keyboard-skip landing FAILED existing raw geometry: scrollY565px,844px film track with bottom279px remains visible. The ten recorded assertion passes do not establish full film egress, visible header/cookie chrome or full site acceptance; replacement build required."
+ ],
+ "detailedSummary": {
+  "file": "fallback-functional-detail.json",
+  "sha256": "f33a1c1ec00bad196efe9a41b7dcbd32700bc660d9e0787305f0764f5574e8fc"
+ },
+ "acceptanceQualification": {
+  "status": "U5 full keyboard-skip landing is not accepted; replacement build pending.",
+  "basis": "Existing recorded assertions passed focus/H1visibility/state but never asserted complete film egress or visible header/cookie chrome. Independent parent review flagged the defect; the saved keyboard-skip raw geometry also confirms it.",
+  "actualSavedProof": {
+   "file": "keyboard-skip.json",
+   "sha256": "ad2ff3ea1b1adbb03d928d5499e5fd655443ce0dca86c8a36affebc0aa01a9a6",
+   "scrollY": 565,
+   "trackHeight": 844,
+   "trackTop": -565,
+   "trackBottom": 279,
+   "remainingFilmPixels": 279,
+   "headingVisible": true,
+   "activeId": "intro"
+  },
+  "chromeVisibility": "Header/cookie visibility was not asserted or recorded by this harness; independent parent review reported hidden header after landing.",
+  "pendingChange": "Parent is fixing home.module.css skip target geometry and preparing a replacement build. No replacement result is included here.",
+  "requiredReplacementChecks": [
+   "track.getBoundingClientRect().bottom <= 0 after actual keyboard Skip Tab/Enter",
+   "Actual header and applicable cookie notice visible after landing",
+   "JS/reduced-motion/NoJS landing variants"
+  ],
+  "recordedTenPassesRetained": true,
+  "fullSkipLandingAccepted": false,
+  "siteAcceptanceClaimed": false
+ },
+ "overallAcceptance": false,
+ "documentationKind": "U5 fallback/control evidence with known skip-landing failure; not final acceptance",
+ "proofRoot": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cinematic-qa-20261111\\production\\autoplay-U5-gxuCUwhE6QFQ1NV8jE",
+ "proofResolution": "Relative raw/screenshot/archive references resolve under proofRoot.",
+ "copiedFrom": {
+  "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cinematic-qa-20261111\\production\\autoplay-U5-gxuCUwhE6QFQ1NV8jE\\fallback-functional-summary.json",
+  "sha256": "709e3a96b32b628a1250ce60e7729cb767d85226a948f0e18aebd398d3b64462",
+  "bytes": 30322
+ },
+ "noNewBrowserOrTimingRunForDocumentation": true
+}

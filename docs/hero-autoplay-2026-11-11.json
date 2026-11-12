@@ -1,0 +1,1081 @@
+{
+ "schemaVersion": 1,
+ "kind": "Historical Nq actual autoplay functional evidence, separated from older controls and later U5 fallback checks",
+ "assembledAtUtc": "2026-11-11T21:32:43.812Z",
+ "noNewBrowserOrNetworkOrTimingRun": true,
+ "currentServingPreview": {
+  "checked": false,
+  "reason": "No current3398 serving-build claim is made. These are pinned archived captures, even if a later build is promoted."
+ },
+ "subject": {
+  "buildId": "NqQojW647TtVg7HdEyFgu",
+  "sourceFingerprint": "c6ec281601c8cd329da5c8edc1988dee65a1964695a1e0b08522c90b34f2773d",
+  "inputCount": 514,
+  "recordedOrigin": "http://127.0.0.1:3568",
+  "sourceDescriptor": {
+   "path": "C:\\Users\\DaviiC\\Downloads\\shahrestaurant\\shahrestaurant\\.next-review-autoplay-v1-20261111.source.json",
+   "sha256": "86ab40ee5117586099408b0be4a69dda468e7e63db46075e40bdae5553f0544c",
+   "bytes": 79679
+  },
+  "proofRoot": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cinematic-qa-20261111\\production\\autoplay-NqQojW647TtVg7HdEyFgu"
+ },
+ "settings": {
+  "engine": "Owned headless Chromium9228, fresh isolated contexts, cache disabled",
+  "mobile": {
+   "width": 390,
+   "height": 844,
+   "dpr": 1,
+   "touch": true
+  },
+  "desktop": {
+   "width": 1440,
+   "height": 900,
+   "dpr": 1
+  },
+  "fast": {
+   "network": "Unthrottled CDP",
+   "cpuRate": 1
+  },
+  "coldMobile": {
+   "latencyMs": 150,
+   "downloadBytesPerSecond": 200000,
+   "uploadBytesPerSecond": 93750,
+   "cpuRate": 4
+  },
+  "capabilities": "navigator.connection deliberately emulated4g/saveData=false; light theme/no-preference motion.",
+  "classification": "Functional observations and native event/frame samples; not Lighthouse, field CWV, device certification, guaranteed startup time or zero-stutter proof.",
+  "overlaySnapshotOrder": [
+   "playing-at-rest",
+   "idle-time-advances",
+   "natural-complete"
+  ]
+ },
+ "summary": {
+  "cases": 5,
+  "allRecordedChecksPass": true,
+  "fastNativeDroppedFrames": [
+   {
+    "key": "fast-nl-mobile",
+    "total": 294,
+    "dropped": 0
+   },
+   {
+    "key": "fast-en-mobile",
+    "total": 294,
+    "dropped": 1
+   },
+   {
+    "key": "fast-nl-desktop",
+    "total": 294,
+    "dropped": 2
+   },
+   {
+    "key": "fast-en-desktop",
+    "total": 294,
+    "dropped": 0
+   }
+  ],
+  "cold": {
+   "firstNativePlayingAtMs": 62101.299999952316,
+   "nativeEndedAtMs": 74147.79999995232,
+   "total": 294,
+   "dropped": 5
+  },
+  "durationSeconds": 12.25,
+  "lastDecodedMediaTime": 12.208333,
+  "observedStallsDuringPlayback": 0,
+  "runtimeErrors": 0,
+  "businessWrites": 0,
+  "overlayIntersectionsAtObservedFilmSnapshots": 0,
+  "postFilmContentChecksPass": true
+ },
+ "originalV4Identity": [
+  {
+   "file": "public/brand/shah-hero-scroll-mobile-v4.mp4",
+   "recordedFileSha256": "685f08858741f06d04bc436c2b633af01d2fb4e56a07c24f2fc5ec0d311b67f0",
+   "observedDownloadedBlobBytes": [
+    11337072
+   ],
+   "responseBodySha256": null,
+   "qualification": "SHA256 is the recorded local-file hash from the Nq source manifest, not a browser-response SHA. Blob sizes and network completion are recorded separately."
+  },
+  {
+   "file": "public/brand/shah-hero-scroll-desktop-v4.mp4",
+   "recordedFileSha256": "91934e4fc834e7050f37b3cd2c6ee063779b622c22e8ba61e3c788b1e63d3a2c",
+   "observedDownloadedBlobBytes": [
+    36744691
+   ],
+   "responseBodySha256": null,
+   "qualification": "SHA256 is the recorded local-file hash from the Nq source manifest, not a browser-response SHA. Blob sizes and network completion are recorded separately."
+  }
+ ],
+ "rows": [
+  {
+   "key": "fast-nl-mobile",
+   "route": "/",
+   "mobile": true,
+   "slow": false,
+   "checks": {
+    "atRestClockAdvances": true,
+    "mutedAutoplay": true,
+    "nativeEnded": true,
+    "duration12_25": true,
+    "finalDecodedFrameConfirmed": true,
+    "completeAfterNativeEnded": true,
+    "overlayFreeAtObservedFilmSnapshots": true,
+    "postFilmHeadingVisible": true,
+    "postFilmBodyUnlocked": true,
+    "noRuntimeErrors": true,
+    "noBusinessWrites": true
+   },
+   "observations": {
+    "firstNativePlayingEventAtMs": 1235.3999998569489,
+    "naturalEndedEventAtMs": 13438.200000047684,
+    "completionPublishedAtMs": 13443.299999952316,
+    "completionAfterEndedMs": 5.099999904632568,
+    "atRestVideoTimes": [
+     0.1661,
+     1.3826
+    ],
+    "videoVisibleAtFirstPlayingSnapshot": true,
+    "videoVisibleAtAdvancingSnapshot": true,
+    "duration": 12.25,
+    "nativeEndedCurrentTime": 12.25,
+    "lastObservedRequestVideoFrame": {
+     "at": 13381.7,
+     "mediaTime": 12.208333,
+     "presentedFrames": 294
+    },
+    "finalFrameConfirmed": "true",
+    "downloadedBlobBytes": 11337072,
+    "sourcePath": "/brand/shah-hero-scroll-mobile-v4.mp4",
+    "transport": "blob-prebuffered-autoplay",
+    "videoDimensions": {
+     "width": 608,
+     "height": 1080
+    },
+    "documentVisibleAndFocusedAtSamples": true,
+    "nativeQualityAtStart": {
+     "total": 8,
+     "dropped": 0
+    },
+    "nativeQualityAtEnd": {
+     "total": 294,
+     "dropped": 0
+    },
+    "observedWaitingOrStalledBetweenFirstPlayingAndEnded": [],
+    "postFilmContent": {
+     "headingVisible": true,
+     "bodyInlineOverflow": "",
+     "unexpectedInert": 0,
+     "horizontalOverflow": 0,
+     "filmTrackBottom": -24,
+     "trackState": "complete",
+     "stagePhase": "bypassed"
+    },
+    "runtimeErrors": [],
+    "businessWrites": [],
+    "media": [
+     {
+      "event": "Network.loadingFinished",
+      "path": "/brand/shah-hero-scroll-mobile-v4.mp4",
+      "encodedDataLength": 11337692
+     }
+    ],
+    "overlaySnapshotCounts": [
+     0,
+     0,
+     0
+    ]
+   },
+   "sourceGuard": {
+    "before": {
+     "enabled": true,
+     "verifiedInputs": 514,
+     "allRecordedBytesMatch": true,
+     "kind": "initial-full-hash"
+    },
+    "after": {
+     "enabled": true,
+     "verifiedInputs": 514,
+     "allRecordedBytesMatch": true,
+     "kind": "stat-watch-plus-changed-byte-hash"
+    },
+    "fingerprintMatchesSubject": true
+   },
+   "proofs": {
+    "raw": {
+     "file": "fast-nl-mobile.json",
+     "sha256": "9e3ff491bb42f31aa75d2a43037458c31fbf4f35d528bf3b6b75fbf197065d82",
+     "bytes": 41183
+    },
+    "finalFrameScreenshot": {
+     "file": "fast-nl-mobile-final-frame.png",
+     "sha256": "629a82ac93d5cd0447fbc430780f44dd86528b542305aef3042d3a72998b3829",
+     "bytes": 357767
+    },
+    "postContentScreenshot": {
+     "file": "fast-nl-mobile.png",
+     "sha256": "75fd24b0cea9bc4c017f84c82fe701b39a453bd4ba73dc3485d45406514b6775",
+     "bytes": 96536
+    }
+   }
+  },
+  {
+   "key": "fast-en-mobile",
+   "route": "/en",
+   "mobile": true,
+   "slow": false,
+   "checks": {
+    "atRestClockAdvances": true,
+    "mutedAutoplay": true,
+    "nativeEnded": true,
+    "duration12_25": true,
+    "finalDecodedFrameConfirmed": true,
+    "completeAfterNativeEnded": true,
+    "overlayFreeAtObservedFilmSnapshots": true,
+    "postFilmHeadingVisible": true,
+    "postFilmBodyUnlocked": true,
+    "noRuntimeErrors": true,
+    "noBusinessWrites": true
+   },
+   "observations": {
+    "firstNativePlayingEventAtMs": 1171.7000000476837,
+    "naturalEndedEventAtMs": 13368.099999904633,
+    "completionPublishedAtMs": 13374.099999904633,
+    "completionAfterEndedMs": 6,
+    "atRestVideoTimes": [
+     0.1262,
+     1.3367
+    ],
+    "videoVisibleAtFirstPlayingSnapshot": true,
+    "videoVisibleAtAdvancingSnapshot": true,
+    "duration": 12.25,
+    "nativeEndedCurrentTime": 12.25,
+    "lastObservedRequestVideoFrame": {
+     "at": 13318.8,
+     "mediaTime": 12.208333,
+     "presentedFrames": 293
+    },
+    "finalFrameConfirmed": "true",
+    "downloadedBlobBytes": 11337072,
+    "sourcePath": "/brand/shah-hero-scroll-mobile-v4.mp4",
+    "transport": "blob-prebuffered-autoplay",
+    "videoDimensions": {
+     "width": 608,
+     "height": 1080
+    },
+    "documentVisibleAndFocusedAtSamples": true,
+    "nativeQualityAtStart": {
+     "total": 7,
+     "dropped": 0
+    },
+    "nativeQualityAtEnd": {
+     "total": 294,
+     "dropped": 1
+    },
+    "observedWaitingOrStalledBetweenFirstPlayingAndEnded": [],
+    "postFilmContent": {
+     "headingVisible": true,
+     "bodyInlineOverflow": "",
+     "unexpectedInert": 0,
+     "horizontalOverflow": 0,
+     "filmTrackBottom": -24,
+     "trackState": "complete",
+     "stagePhase": "bypassed"
+    },
+    "runtimeErrors": [],
+    "businessWrites": [],
+    "media": [
+     {
+      "event": "Network.loadingFinished",
+      "path": "/brand/shah-hero-scroll-mobile-v4.mp4",
+      "encodedDataLength": 11337692
+     }
+    ],
+    "overlaySnapshotCounts": [
+     0,
+     0,
+     0
+    ]
+   },
+   "sourceGuard": {
+    "before": {
+     "enabled": true,
+     "verifiedInputs": 514,
+     "allRecordedBytesMatch": true,
+     "kind": "stat-watch-plus-changed-byte-hash"
+    },
+    "after": {
+     "enabled": true,
+     "verifiedInputs": 514,
+     "allRecordedBytesMatch": true,
+     "kind": "stat-watch-plus-changed-byte-hash"
+    },
+    "fingerprintMatchesSubject": true
+   },
+   "proofs": {
+    "raw": {
+     "file": "fast-en-mobile.json",
+     "sha256": "00e4aff21e832f3b3d7f906ee88e2839300f655bc8ce48eafe718771098af5da",
+     "bytes": 41082
+    },
+    "finalFrameScreenshot": {
+     "file": "fast-en-mobile-final-frame.png",
+     "sha256": "629a82ac93d5cd0447fbc430780f44dd86528b542305aef3042d3a72998b3829",
+     "bytes": 357767
+    },
+    "postContentScreenshot": {
+     "file": "fast-en-mobile.png",
+     "sha256": "358ba409bbdc73ceed75f7a8d7273d5c9e867909207d277c696eaed402fa8e8c",
+     "bytes": 91924
+    }
+   }
+  },
+  {
+   "key": "fast-nl-desktop",
+   "route": "/",
+   "mobile": false,
+   "slow": false,
+   "checks": {
+    "atRestClockAdvances": true,
+    "mutedAutoplay": true,
+    "nativeEnded": true,
+    "duration12_25": true,
+    "finalDecodedFrameConfirmed": true,
+    "completeAfterNativeEnded": true,
+    "overlayFreeAtObservedFilmSnapshots": true,
+    "postFilmHeadingVisible": true,
+    "postFilmBodyUnlocked": true,
+    "noRuntimeErrors": true,
+    "noBusinessWrites": true
+   },
+   "observations": {
+    "firstNativePlayingEventAtMs": 1368.6000001430511,
+    "naturalEndedEventAtMs": 13604.400000095367,
+    "completionPublishedAtMs": 13610.300000190735,
+    "completionAfterEndedMs": 5.900000095367432,
+    "atRestVideoTimes": [
+     0.0858,
+     1.2888
+    ],
+    "videoVisibleAtFirstPlayingSnapshot": true,
+    "videoVisibleAtAdvancingSnapshot": true,
+    "duration": 12.25,
+    "nativeEndedCurrentTime": 12.25,
+    "lastObservedRequestVideoFrame": {
+     "at": 13548.9,
+     "mediaTime": 12.208333,
+     "presentedFrames": 292
+    },
+    "finalFrameConfirmed": "true",
+    "downloadedBlobBytes": 36744691,
+    "sourcePath": "/brand/shah-hero-scroll-desktop-v4.mp4",
+    "transport": "blob-prebuffered-autoplay",
+    "videoDimensions": {
+     "width": 1920,
+     "height": 1080
+    },
+    "documentVisibleAndFocusedAtSamples": true,
+    "nativeQualityAtStart": {
+     "total": 6,
+     "dropped": 0
+    },
+    "nativeQualityAtEnd": {
+     "total": 294,
+     "dropped": 2
+    },
+    "observedWaitingOrStalledBetweenFirstPlayingAndEnded": [],
+    "postFilmContent": {
+     "headingVisible": true,
+     "bodyInlineOverflow": "",
+     "unexpectedInert": 0,
+     "horizontalOverflow": 0,
+     "filmTrackBottom": -24,
+     "trackState": "complete",
+     "stagePhase": "bypassed"
+    },
+    "runtimeErrors": [],
+    "businessWrites": [],
+    "media": [
+     {
+      "event": "Network.loadingFinished",
+      "path": "/brand/shah-hero-scroll-desktop-v4.mp4",
+      "encodedDataLength": 36745312
+     }
+    ],
+    "overlaySnapshotCounts": [
+     0,
+     0,
+     0
+    ]
+   },
+   "sourceGuard": {
+    "before": {
+     "enabled": true,
+     "verifiedInputs": 514,
+     "allRecordedBytesMatch": true,
+     "kind": "stat-watch-plus-changed-byte-hash"
+    },
+    "after": {
+     "enabled": true,
+     "verifiedInputs": 514,
+     "allRecordedBytesMatch": true,
+     "kind": "stat-watch-plus-changed-byte-hash"
+    },
+    "fingerprintMatchesSubject": true
+   },
+   "proofs": {
+    "raw": {
+     "file": "fast-nl-desktop.json",
+     "sha256": "9379745ac06d4ebac8db04d554e9aeb956415b73c1434964d8b8a837529fc18e",
+     "bytes": 41075
+    },
+    "finalFrameScreenshot": {
+     "file": "fast-nl-desktop-final-frame.png",
+     "sha256": "0d9327815481409db8d9eddc511a4f67c512f8e51656c2a63d716605105def94",
+     "bytes": 1487536
+    },
+    "postContentScreenshot": {
+     "file": "fast-nl-desktop.png",
+     "sha256": "cc3566ab03ae1f3ab44e0c7eaf251933d658f8343b1bd95823e0ec19b106371a",
+     "bytes": 188922
+    }
+   }
+  },
+  {
+   "key": "fast-en-desktop",
+   "route": "/en",
+   "mobile": false,
+   "slow": false,
+   "checks": {
+    "atRestClockAdvances": true,
+    "mutedAutoplay": true,
+    "nativeEnded": true,
+    "duration12_25": true,
+    "finalDecodedFrameConfirmed": true,
+    "completeAfterNativeEnded": true,
+    "overlayFreeAtObservedFilmSnapshots": true,
+    "postFilmHeadingVisible": true,
+    "postFilmBodyUnlocked": true,
+    "noRuntimeErrors": true,
+    "noBusinessWrites": true
+   },
+   "observations": {
+    "firstNativePlayingEventAtMs": 1427.5999999046326,
+    "naturalEndedEventAtMs": 13653.200000047684,
+    "completionPublishedAtMs": 13655.900000095367,
+    "completionAfterEndedMs": 2.700000047683716,
+    "atRestVideoTimes": [
+     0.103,
+     1.3071
+    ],
+    "videoVisibleAtFirstPlayingSnapshot": true,
+    "videoVisibleAtAdvancingSnapshot": true,
+    "duration": 12.25,
+    "nativeEndedCurrentTime": 12.25,
+    "lastObservedRequestVideoFrame": {
+     "at": 13606.9,
+     "mediaTime": 12.208333,
+     "presentedFrames": 294
+    },
+    "finalFrameConfirmed": "true",
+    "downloadedBlobBytes": 36744691,
+    "sourcePath": "/brand/shah-hero-scroll-desktop-v4.mp4",
+    "transport": "blob-prebuffered-autoplay",
+    "videoDimensions": {
+     "width": 1920,
+     "height": 1080
+    },
+    "documentVisibleAndFocusedAtSamples": true,
+    "nativeQualityAtStart": {
+     "total": 6,
+     "dropped": 0
+    },
+    "nativeQualityAtEnd": {
+     "total": 294,
+     "dropped": 0
+    },
+    "observedWaitingOrStalledBetweenFirstPlayingAndEnded": [],
+    "postFilmContent": {
+     "headingVisible": true,
+     "bodyInlineOverflow": "",
+     "unexpectedInert": 0,
+     "horizontalOverflow": 0,
+     "filmTrackBottom": -24,
+     "trackState": "complete",
+     "stagePhase": "bypassed"
+    },
+    "runtimeErrors": [],
+    "businessWrites": [],
+    "media": [
+     {
+      "event": "Network.loadingFinished",
+      "path": "/brand/shah-hero-scroll-desktop-v4.mp4",
+      "encodedDataLength": 36745312
+     }
+    ],
+    "overlaySnapshotCounts": [
+     0,
+     0,
+     0
+    ]
+   },
+   "sourceGuard": {
+    "before": {
+     "enabled": true,
+     "verifiedInputs": 514,
+     "allRecordedBytesMatch": true,
+     "kind": "stat-watch-plus-changed-byte-hash"
+    },
+    "after": {
+     "enabled": true,
+     "verifiedInputs": 514,
+     "allRecordedBytesMatch": true,
+     "kind": "stat-watch-plus-changed-byte-hash"
+    },
+    "fingerprintMatchesSubject": true
+   },
+   "proofs": {
+    "raw": {
+     "file": "fast-en-desktop.json",
+     "sha256": "db03faff75f3fab5eaa67963b9f683698adf74825d625a520c5e8e729dcadbb6",
+     "bytes": 41268
+    },
+    "finalFrameScreenshot": {
+     "file": "fast-en-desktop-final-frame.png",
+     "sha256": "d213bd75389e32ec89dae37449072d0e3a708432123e4f56b2441f3323cdf90a",
+     "bytes": 1487532
+    },
+    "postContentScreenshot": {
+     "file": "fast-en-desktop.png",
+     "sha256": "7d54c67e43f3a20bf2762909363bfd6845e7b536dceee294cbed4dc8ae61db36",
+     "bytes": 178929
+    }
+   }
+  },
+  {
+   "key": "cold4g-nl-mobile",
+   "route": "/",
+   "mobile": true,
+   "slow": true,
+   "checks": {
+    "atRestClockAdvances": true,
+    "mutedAutoplay": true,
+    "nativeEnded": true,
+    "duration12_25": true,
+    "finalDecodedFrameConfirmed": true,
+    "completeAfterNativeEnded": true,
+    "overlayFreeAtObservedFilmSnapshots": true,
+    "postFilmHeadingVisible": true,
+    "postFilmBodyUnlocked": true,
+    "noRuntimeErrors": true,
+    "noBusinessWrites": true
+   },
+   "observations": {
+    "firstNativePlayingEventAtMs": 62101.299999952316,
+    "naturalEndedEventAtMs": 74147.79999995232,
+    "completionPublishedAtMs": 74155.20000004768,
+    "completionAfterEndedMs": 7.400000095367432,
+    "atRestVideoTimes": [
+     0.2397,
+     1.4579
+    ],
+    "videoVisibleAtFirstPlayingSnapshot": false,
+    "videoVisibleAtAdvancingSnapshot": true,
+    "duration": 12.25,
+    "nativeEndedCurrentTime": 12.25,
+    "lastObservedRequestVideoFrame": {
+     "at": 74112.7,
+     "mediaTime": 12.208333,
+     "presentedFrames": 294
+    },
+    "finalFrameConfirmed": "true",
+    "downloadedBlobBytes": 11337072,
+    "sourcePath": "/brand/shah-hero-scroll-mobile-v4.mp4",
+    "transport": "blob-prebuffered-autoplay",
+    "videoDimensions": {
+     "width": 608,
+     "height": 1080
+    },
+    "documentVisibleAndFocusedAtSamples": true,
+    "nativeQualityAtStart": {
+     "total": 10,
+     "dropped": 4
+    },
+    "nativeQualityAtEnd": {
+     "total": 294,
+     "dropped": 5
+    },
+    "observedWaitingOrStalledBetweenFirstPlayingAndEnded": [],
+    "postFilmContent": {
+     "headingVisible": true,
+     "bodyInlineOverflow": "",
+     "unexpectedInert": 0,
+     "horizontalOverflow": 0,
+     "filmTrackBottom": -24,
+     "trackState": "complete",
+     "stagePhase": "bypassed"
+    },
+    "runtimeErrors": [],
+    "businessWrites": [],
+    "media": [
+     {
+      "event": "Network.loadingFinished",
+      "path": "/brand/shah-hero-scroll-mobile-v4.mp4",
+      "encodedDataLength": 11337692
+     }
+    ],
+    "overlaySnapshotCounts": [
+     0,
+     0,
+     0
+    ]
+   },
+   "sourceGuard": {
+    "before": {
+     "enabled": true,
+     "verifiedInputs": 514,
+     "allRecordedBytesMatch": true,
+     "kind": "initial-full-hash"
+    },
+    "after": {
+     "enabled": true,
+     "verifiedInputs": 514,
+     "allRecordedBytesMatch": true,
+     "kind": "stat-watch-plus-changed-byte-hash"
+    },
+    "fingerprintMatchesSubject": true
+   },
+   "proofs": {
+    "raw": {
+     "file": "cold4g-nl-mobile.json",
+     "sha256": "082f98e4be4221175f493b2e3695e0daf752ad83b82eb48bf0bab65d82245788",
+     "bytes": 40825
+    },
+    "finalFrameScreenshot": {
+     "file": "cold4g-nl-mobile-final-frame.png",
+     "sha256": "629a82ac93d5cd0447fbc430780f44dd86528b542305aef3042d3a72998b3829",
+     "bytes": 357767
+    },
+    "postContentScreenshot": {
+     "file": "cold4g-nl-mobile.png",
+     "sha256": "7c50dbb34cadfaef2d9a246fcb0b0571b0ffb4086911ed2f3c150e8852bcdb06",
+     "bytes": 95753
+    }
+   }
+  }
+ ],
+ "proofMatrices": {
+  "fast": {
+   "file": "autoplay-fast-matrix.json",
+   "sha256": "1c55581fde0c0c2d09d305500a2786b4b285e6df12fc44a4b34cf9bf91511e4e",
+   "bytes": 36215
+  },
+  "cold": {
+   "file": "autoplay-cold.json",
+   "sha256": "862dd8050d75fd773e6781083602c24113d549c468e7ac3cda588a007be8cbac",
+   "bytes": 9412
+  }
+ },
+ "olderScopes": {
+  "Hj2": {
+   "buildId": "Hj2ubUjCMfbacacwFligZ",
+   "sourceFingerprint": "1b9a194de54237b2104232c89ce249729ddd466a648d819a1118bcd81717fc62",
+   "inputCount": 418,
+   "recordedOrigin": "http://127.0.0.1:3398",
+   "role": "Actual prior paused-player control; not the Nq autoplay implementation.",
+   "sourceDescriptor": {
+    "path": "C:\\Users\\DaviiC\\Downloads\\shahrestaurant\\shahrestaurant\\.next-review-cookie-ssr-20261111.source.json",
+    "sha256": "f9fef7d1e333ddbca65197b58d6609185bf984313a18593aec0ae4296195b049",
+    "bytes": 63935
+   },
+   "proofRoot": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cinematic-qa-20261111\\production\\autoplay-control-Hj2ubUjCMfbacacwFligZ",
+   "proof": {
+    "file": "main-autoplay-control.json",
+    "sha256": "4a95f828952026c3f47830e828c2c0189012b76c62a09fb9528e7760914271cc",
+    "bytes": 19741
+   },
+   "cases": [
+    {
+     "variant": "fast-idle",
+     "settings": {
+      "viewport": {
+       "width": 390,
+       "height": 844,
+       "dpr": 1
+      },
+      "freshIsolatedBrowserContext": true,
+      "cacheDisabled": true,
+      "cpuRate": 1,
+      "actualCdpLatencyMs": 0,
+      "actualCdpDownloadBytesPerSecond": null,
+      "navigator4gDeliberatelyEmulated": true
+     },
+     "method": "ReadonlynativeHTMLVideoElement Runtime.queryObjects includesdetachednodes; noVideoFactory/player monkeypatch. Functionalobservations only, not formal performancebenchmark.",
+     "states": [
+      {
+       "label": "ready-or-static",
+       "atMs": 1509.5,
+       "documentVisibility": "visible",
+       "hasFocus": true,
+       "phase": "ready",
+       "state": "ready",
+       "complete": "false",
+       "bypassed": "false",
+       "downloadedBytes": 11337072,
+       "connectedVideos": 0,
+       "scrollY": 0,
+       "bodyInlineOverflow": "",
+       "overlayCount": 0,
+       "nativeVideos": [
+        {
+         "connected": false,
+         "currentTime": 0,
+         "duration": 12.25,
+         "paused": true,
+         "autoplay": false,
+         "muted": true,
+         "readyState": 4,
+         "quality": {
+          "total": 8,
+          "dropped": 0
+         }
+        }
+       ]
+      },
+      {
+       "label": "idle-three-seconds-later",
+       "atMs": 4682.5,
+       "documentVisibility": "visible",
+       "hasFocus": true,
+       "phase": "ready",
+       "state": "ready",
+       "complete": "false",
+       "bypassed": "false",
+       "downloadedBytes": 11337072,
+       "connectedVideos": 0,
+       "scrollY": 0,
+       "bodyInlineOverflow": "",
+       "overlayCount": 0,
+       "nativeVideos": [
+        {
+         "connected": false,
+         "currentTime": 0,
+         "duration": 12.25,
+         "paused": true,
+         "autoplay": false,
+         "muted": true,
+         "readyState": 4,
+         "quality": {
+          "total": 8,
+          "dropped": 0
+         }
+        }
+       ]
+      }
+     ],
+     "media": [
+      {
+       "event": "Network.loadingFinished",
+       "requestId": "3456.116",
+       "timestamp": 1118139.861411,
+       "encodedDataLength": 11337692,
+       "encodedBodyLength": 11337072
+      }
+     ],
+     "runtimeErrors": [],
+     "stateSelection": "Ready/static and last recorded idle/content sample only; full raw timeline is retained at the referenced proof."
+    },
+    {
+     "variant": "cold4g-idle",
+     "settings": {
+      "viewport": {
+       "width": 390,
+       "height": 844,
+       "dpr": 1
+      },
+      "freshIsolatedBrowserContext": true,
+      "cacheDisabled": true,
+      "cpuRate": 1,
+      "actualCdpLatencyMs": 150,
+      "actualCdpDownloadBytesPerSecond": 200000,
+      "navigator4gDeliberatelyEmulated": true
+     },
+     "method": "ReadonlynativeHTMLVideoElement Runtime.queryObjects includesdetachednodes; noVideoFactory/player monkeypatch. Functionalobservations only, not formal performancebenchmark.",
+     "states": [
+      {
+       "label": "ready-or-static",
+       "atMs": 61027.5,
+       "documentVisibility": "visible",
+       "hasFocus": true,
+       "phase": "ready",
+       "state": "ready",
+       "complete": "false",
+       "bypassed": "false",
+       "downloadedBytes": 11337072,
+       "connectedVideos": 0,
+       "scrollY": 0,
+       "bodyInlineOverflow": "",
+       "overlayCount": 0,
+       "nativeVideos": [
+        {
+         "connected": false,
+         "currentTime": 0,
+         "duration": 12.25,
+         "paused": true,
+         "autoplay": false,
+         "muted": true,
+         "readyState": 4,
+         "quality": {
+          "total": 8,
+          "dropped": 0
+         }
+        }
+       ]
+      },
+      {
+       "label": "idle-three-seconds-later",
+       "atMs": 64121.60000014305,
+       "documentVisibility": "visible",
+       "hasFocus": true,
+       "phase": "ready",
+       "state": "ready",
+       "complete": "false",
+       "bypassed": "false",
+       "downloadedBytes": 11337072,
+       "connectedVideos": 0,
+       "scrollY": 0,
+       "bodyInlineOverflow": "",
+       "overlayCount": 0,
+       "nativeVideos": [
+        {
+         "connected": false,
+         "currentTime": 0,
+         "duration": 12.25,
+         "paused": true,
+         "autoplay": false,
+         "muted": true,
+         "readyState": 4,
+         "quality": {
+          "total": 8,
+          "dropped": 0
+         }
+        }
+       ]
+      }
+     ],
+     "media": [
+      {
+       "event": "Network.loadingFinished",
+       "requestId": "31316.107",
+       "timestamp": 1118204.347167,
+       "encodedDataLength": 11337692,
+       "encodedBodyLength": 11337072
+      }
+     ],
+     "runtimeErrors": [],
+     "stateSelection": "Ready/static and last recorded idle/content sample only; full raw timeline is retained at the referenced proof."
+    },
+    {
+     "variant": "cold4g-early-scroll",
+     "settings": {
+      "viewport": {
+       "width": 390,
+       "height": 844,
+       "dpr": 1
+      },
+      "freshIsolatedBrowserContext": true,
+      "cacheDisabled": true,
+      "cpuRate": 1,
+      "actualCdpLatencyMs": 150,
+      "actualCdpDownloadBytesPerSecond": 200000,
+      "navigator4gDeliberatelyEmulated": true
+     },
+     "method": "ReadonlynativeHTMLVideoElement Runtime.queryObjects includesdetachednodes; noVideoFactory/player monkeypatch. Functionalobservations only, not formal performancebenchmark.",
+     "states": [
+      {
+       "label": "ready-or-static",
+       "atMs": 4193.5,
+       "documentVisibility": "visible",
+       "hasFocus": true,
+       "phase": "static",
+       "state": "static",
+       "complete": "true",
+       "bypassed": "false",
+       "downloadedBytes": 0,
+       "connectedVideos": 0,
+       "scrollY": 1000,
+       "bodyInlineOverflow": "",
+       "overlayCount": 0,
+       "nativeVideos": [
+        {
+         "connected": false,
+         "currentTime": 0,
+         "duration": null,
+         "paused": true,
+         "autoplay": false,
+         "muted": true,
+         "readyState": 0,
+         "quality": {
+          "total": 0,
+          "dropped": 0
+         }
+        }
+       ]
+      },
+      {
+       "label": "content-access",
+       "atMs": 9154.100000143051,
+       "documentVisibility": "visible",
+       "hasFocus": true,
+       "phase": "static",
+       "state": "static",
+       "complete": "true",
+       "bypassed": "false",
+       "downloadedBytes": 0,
+       "connectedVideos": 0,
+       "scrollY": 868,
+       "bodyInlineOverflow": "",
+       "overlayCount": 0,
+       "nativeVideos": [
+        {
+         "connected": false,
+         "currentTime": 0,
+         "duration": null,
+         "paused": true,
+         "autoplay": false,
+         "muted": true,
+         "readyState": 0,
+         "quality": {
+          "total": 0,
+          "dropped": 0
+         }
+        }
+       ]
+      }
+     ],
+     "media": [
+      {
+       "event": "Network.loadingFailed",
+       "requestId": "31080.106",
+       "timestamp": 1118211.894878,
+       "type": "Fetch",
+       "errorText": "net::ERR_ABORTED",
+       "canceled": true
+      }
+     ],
+     "runtimeErrors": [],
+     "stateSelection": "Ready/static and last recorded idle/content sample only; full raw timeline is retained at the referenced proof."
+    }
+   ],
+   "conclusion": "In the saved idle-ready samples, native queryObjects finds a detached video at currentTime0/paused=true/autoplay=false, while no video is connected. Early scroll selects static complete=true and aborts fetching; that flag proves content availability, not film playback.",
+   "limits": [
+    "Archived Hj2 compiled build only; later autoplay implementation is not represented.",
+    "Functional state observations, not performance benchmarks. Concurrent bounded9227 sprite/locale QA and build work may affect readiness timestamps.",
+    "Native quality fields are idle/decoder-warmup snapshots, not continuous playback FPS or dropped-frame guarantees.",
+    "Static complete=true means content availability, not proof the film played. Early wheel cancels the original full-buffer fetch."
+   ]
+  },
+  "wUs": {
+   "buildId": "wUsQV2PkRJMdBoQDSZLxt",
+   "sourceFingerprint": "12a34bb4ce555d9ed30849d07bcac979ffb953c568e734fcf773cebb2bd77c67",
+   "inputCount": 514,
+   "role": "Source/build identity control only; this report has no wUs autoplay browser capture.",
+   "buildIdProof": {
+    "path": "C:\\Users\\DaviiC\\Downloads\\shahrestaurant\\shahrestaurant\\.next-review-delivery-v1-20261111\\BUILD_ID",
+    "sha256": "069de53c6a68d98ca89636bbbbadaa4b1be220d1c932824ac40615d43c3285fb",
+    "bytes": 21
+   },
+   "sourceDescriptor": {
+    "path": "C:\\Users\\DaviiC\\Downloads\\shahrestaurant\\shahrestaurant\\.next-review-delivery-v1-20261111.source.json",
+    "sha256": "d583a63f8d97d16c3092d8f66a4bd1b0321c481afc6cb9d2fd56051cecd39fdc",
+    "bytes": 79679
+   },
+   "heroSourceIdentity": [
+    {
+     "file": "app/components/HeroFilm.tsx",
+     "wUsSha256": "fb5d5ccdb0441aa7dff8809affa74005516fba4e9a9b891a22f88c4c82de719d",
+     "Hj2Sha256": "fb5d5ccdb0441aa7dff8809affa74005516fba4e9a9b891a22f88c4c82de719d",
+     "byteIdenticalToHj2": true
+    },
+    {
+     "file": "app/components/HomeChoreography.tsx",
+     "wUsSha256": "7b8b73c71c52889e2e516f1bdc41c56441ae36cd48056a6052ed61d8deb36cc5",
+     "Hj2Sha256": "7b8b73c71c52889e2e516f1bdc41c56441ae36cd48056a6052ed61d8deb36cc5",
+     "byteIdenticalToHj2": true
+    },
+    {
+     "file": "app/components/HomeDepth.tsx",
+     "wUsSha256": "cfcbfd2f7d0a252bd4feb168aef748ec1360d56556a1ecab5c8d6b93823ba181",
+     "Hj2Sha256": "cfcbfd2f7d0a252bd4feb168aef748ec1360d56556a1ecab5c8d6b93823ba181",
+     "byteIdenticalToHj2": true
+    }
+   ],
+   "browserAutoplayClaim": false,
+   "qualification": "Matching source files do not substitute for a browser test or establish all layout/runtime behavior."
+  }
+ },
+ "laterU5": {
+  "buildId": "U5-gxuCUwhE6QFQ1NV8jE",
+  "sourceFingerprint": "022346f521b958992ffa443cfcff84cd4dcddae3a3e6c02dd04ac899971057da",
+  "inputCount": 514,
+  "sourceDescriptor": {
+   "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cinematic-qa-20261111\\production\\autoplay-U5-gxuCUwhE6QFQ1NV8jE\\recorded-source.json",
+   "sha256": "fda665b10e0611bc520615497fa60e2886ad266d248292ed78ed8b02e50c8d2a",
+   "bytes": 79679
+  },
+  "heroSourcesCompared": [
+   {
+    "file": "app/components/HeroFilm.tsx",
+    "NqSha256": "b93c3e978ec2dfaac503ea6b59e8f263553cc845de72bc8508d22b7a01a15210",
+    "U5Sha256": "b93c3e978ec2dfaac503ea6b59e8f263553cc845de72bc8508d22b7a01a15210",
+    "byteIdentical": true
+   },
+   {
+    "file": "app/components/HomeChoreography.tsx",
+    "NqSha256": "6cf6068ff17697dc8de49bb5386527bc7a36b2d366059692b99dad07a6595745",
+    "U5Sha256": "6cf6068ff17697dc8de49bb5386527bc7a36b2d366059692b99dad07a6595745",
+    "byteIdentical": true
+   },
+   {
+    "file": "app/components/HomeDepth.tsx",
+    "NqSha256": "cfcbfd2f7d0a252bd4feb168aef748ec1360d56556a1ecab5c8d6b93823ba181",
+    "U5Sha256": "cfcbfd2f7d0a252bd4feb168aef748ec1360d56556a1ecab5c8d6b93823ba181",
+    "byteIdentical": true
+   },
+   {
+    "file": "app/components/HeroFilm.module.css",
+    "NqSha256": "e35e1bc7d6133a77a5a591add3f5562965eb3f4cb90e87b5befda0be975c976f",
+    "U5Sha256": "e35e1bc7d6133a77a5a591add3f5562965eb3f4cb90e87b5befda0be975c976f",
+    "byteIdentical": true
+   },
+   {
+    "file": "app/home.module.css",
+    "NqSha256": "ec7cea255c4801e525c3c887f6c65a2b0174d37874df7eb57796af184f565526",
+    "U5Sha256": "ec7cea255c4801e525c3c887f6c65a2b0174d37874df7eb57796af184f565526",
+    "byteIdentical": true
+   }
+  ],
+  "completeSourceManifestDeltaFromNq": [
+   {
+    "file": "app/cinematic.css",
+    "Nq": "f1b0ebfc08e8441f91af63b0c7ede690d71153f7505230b9554b5d0c2da6a0cf",
+    "U5": "5a7ca08ceb8c352f5019d4d129258df3535d23ef8d86b8ed769b7c15fbcc8a6a"
+   }
+  ],
+  "separateReport": "hero-autoplay-fallback-2026-11-11.json",
+  "qualification": "U5 fresh-play/fallback observations are separate. Existing U5 keyboard-skip raw geometry leaves279px of film visible; full skip-landing acceptance is false and a replacement build is pending. Nq movie-play/end proofs do not certify skip landing."
+ },
+ "limitations": [
+  "One capture per listed mode; no statistical comparison or guaranteed performance.",
+  "The long cold-mobile full-file wait is observed: first native playing event62101.3ms, native ended74147.8ms. Native playing events are not exact first-painted/full-opacity times; saved first snapshots can still be mid-fade.",
+  "Native dropped-frame counters are0/1/2/0 fast and5 cold out of294; do not claim zero dropped frames or guaranteed stutter-free playback.",
+  "Waiting/stalled counts cover the observed interval between first native playing and native ended. Overlay counts are sampled snapshots, not continuous whole-film monitoring.",
+  "Hj2 cold control uses CPU1; Nq cold capture uses CPU4. They are functional controls with different settings, not a performance before/after comparison.",
+  "No Safari/native-WebKit branch, Firefox, real mobile autoplay-policy certification, screen-reader validation, field INP/LCP or search-ranking guarantee.",
+  "Currentmain runtime is intentionally not queried or relabeled. Nq, Hj2, wUs and U5 identities remain separate.",
+  "This Nq movie report does not assert full keyboard-skip landing; U5 confirms that missing assertion exposed a real defect now awaiting replacement validation.",
+  "Raw proof files reside in the named local Temp roots; availability outside this executor is not implied."
+ ]
+}

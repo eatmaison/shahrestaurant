@@ -1,0 +1,1458 @@
+{
+  "evidenceScope": "INTERIM corrected-skip Cde/original-v4 local control; pending edited v2 is not represented; no field CWV or final video acceptance claim.",
+  "classification": "INTERIM original-v4 corrected-skip control, not final edited-v2 media/site acceptance",
+  "buildId": "CdeRwqsXQrjmVYMGw28vU",
+  "dist": ".next-review-autoplay-skip-20261111",
+  "sourceFingerprint": "46c7f6e9bdd56ccb8fccc939c8b2a407cf6ccc53de90c6b8180797179b67a47f",
+  "sourceInputs": 514,
+  "startedAtUTC": "2026-11-11T22:11:36.083Z",
+  "finishedAtUTC": "2026-11-11T22:14:21.267Z",
+  "origin": "http://127.0.0.1:3588",
+  "method": "Controlled local sampled INP from installed official web-vitals onINP, corroborated with EventTiming interactionId grouping. Not field CWV or a substitute for a real-user INP distribution.",
+  "settings": {
+    "cpuSlowdownMultiplier": 4,
+    "latencyMs": 150,
+    "downloadBytesPerSecond": 200000,
+    "uploadBytesPerSecond": 93750,
+    "deviceScaleFactor": 1,
+    "coldBrowserCache": true,
+    "observerDurationThresholdMs": 16,
+    "webVitalsReportAllChanges": true,
+    "input": "Trusted CDP touch taps on mobile; trusted mouse clicks on desktop; trusted keyDown/up in both",
+    "filmAccess": "Explicit native #intro bypass for post-film home controls",
+    "settle": "Inputs begin after hydration, fonts.ready and1s idle; scroll setup settles1s before a click",
+    "noSubmissions": true,
+    "noCartChanges": true,
+    "actionCadenceMs": 600,
+    "observers": "OfficialonINP+EventTiming+LoAF+longtask+action/lifecycle/focusmarkers;noforcedpaint/continuousrAF"
+  },
+  "webVitals": {
+    "path": "node_modules/next/dist/compiled/web-vitals/web-vitals.js",
+    "sha256": "7c55a2162afe161306f72c45309efd4232c4827cb212e2ca64e36f3828b2f0ff",
+    "license": "Apache-2.0 (installed bundle)"
+  },
+  "firstVisitProtocol": "first-visit-ack-absent-v1",
+  "fixture": {
+    "catalogSourceHash": "66eda306b74cf90dc15ad018cc3064212349151810d8df2e098a06d6e8588892",
+    "products": 224,
+    "brands": 2,
+    "clockUTC": "2026-11-11T12:47:58.379Z",
+    "bootstrapSha256": "87cd9c939a82820c555968a3189d82dca413eecb18d90126add52327a60b3bbf",
+    "version": "2-empty-public-gallery",
+    "publicGallery": {
+      "status": 200,
+      "bodySha256": "23a94afc9afa821a8f50d64375a7a87fa1375b76365658f0d2b86e3e5b6e4a41",
+      "dataKind": "empty-upload-fixture-not-live"
+    }
+  },
+  "thresholds": {
+    "inpMsStrictlyBelow": 150
+  },
+  "summary": {
+    "samples": 6,
+    "failed": 6,
+    "allInputTrusted": true,
+    "runtimeExceptions": 0,
+    "consoleErrors": 0,
+    "businessApiWrites": 0,
+    "positiveOverflowMax": 0,
+    "freshTargetsUnique": 6
+  },
+  "limitations": [
+    "This is a bounded local sample, not field Core Web Vitals or physical-device/Safari testing.",
+    "EventTiming durations are quantized; entries below16ms may be absent. onINP uses official interaction count/percentile handling; reportAllChanges reports metric changes, not every input.",
+    "Per-page sample count stays below50 interactions, so the sample emphasizes the worst interaction rather than a traffic-level98th percentile.",
+    "Instrumentation and this machine/network fixture can affect results. No INP is inferred from Lighthouse TBT.",
+    "The pinned actual224-product snapshot is used; home provides dish/gallery dialog samples, menu samples search and category controls.",
+    "Interactionspanninglateractionsisflagged,notremovedfromofficialonINP;spandoesnotattributecosttoCSS/apphandler.",
+    "EachcaseusesanexplicitfreshCDPtargetwithURL/buildguard;ownedvisibility-flushtabisclosedaftereachcase.",
+    "Shared Windows host: bounded process CPU snapshots did not identify a heavy native encoder. Other Chrome/GPU work, including possible parent CapCut web editing, is not comprehensively attributable/excluded.",
+    "Controls are one bounded pass per case, not repeated-run estimates. Natural presentation gaps are retained, not reinterpreted as application handler cost.",
+    "The home case explicitly bypasses the film to sample content; this is not film/autoplay acceptance.",
+    "First-visit ACK cookie and consent localStorage were absent before server navigation and after hydration, with the visible notice tested before the intentional acknowledgement action."
+  ],
+  "runs": [
+    {
+      "page": "home",
+      "route": "/en#intro",
+      "mode": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "inpMs": 352,
+      "below150ms": false,
+      "interactionCount": 14,
+      "observedGroupsAtLeast16ms": 14,
+      "trustedEvents": 16,
+      "allEventsTrusted": true,
+      "hiddenFlushObserved": true,
+      "freshTargetId": "4CC61D3FB53C5FD321359525F2EBDF41",
+      "flushTargetClosed": true,
+      "documentGuard": {
+        "expectedBuild": "CdeRwqsXQrjmVYMGw28vU",
+        "headerBuild": "CdeRwqsXQrjmVYMGw28vU",
+        "url": "http://127.0.0.1:3588/en#intro",
+        "status": 200,
+        "sourceCheck": {
+          "enabled": true,
+          "verifiedInputs": 514,
+          "allRecordedBytesMatch": true,
+          "kind": "initial-full-hash",
+          "sourceFingerprint": "46c7f6e9bdd56ccb8fccc939c8b2a407cf6ccc53de90c6b8180797179b67a47f"
+        },
+        "firstVisitProtocol": "first-visit-ack-absent-v1",
+        "firstVisitReset": {
+          "startedAtUTC": "2026-11-11T22:11:40.090Z",
+          "completedAtUTC": "2026-11-11T22:11:40.101Z",
+          "ackCookieName": "shah_notice_ack_v1",
+          "ackCookiesRemoved": 0,
+          "ackCookieCountBeforeNavigation": 0,
+          "localStorageKey": "tm.cookieConsent",
+          "localStorageClearScope": "http://127.0.0.1:3588",
+          "localStorageClearCompleted": true,
+          "onlyKnownAckCookiesDeleted": true,
+          "otherCookieValuesLogged": false
+        },
+        "firstVisitState": {
+          "initial": {
+            "localStorageKeyAbsent": true,
+            "ackCookiePresent": false,
+            "at": 233.39999985694885
+          },
+          "localStorageKeyAbsent": true,
+          "ackCookiePresent": false,
+          "noticePresent": true,
+          "noticeVisible": true
+        }
+      },
+      "readyForInput": {
+        "phase": "ready-for-input",
+        "at": 8131.099999904633,
+        "visibility": "visible",
+        "hasFocus": true,
+        "readyState": "complete",
+        "fontStatus": "loaded",
+        "activeElement": "section#intro"
+      },
+      "visibilityChanges": [
+        {
+          "phase": "visibilitychange",
+          "at": 28182.299999952316,
+          "visibility": "hidden",
+          "hasFocus": false,
+          "readyState": "complete",
+          "fontStatus": "loaded",
+          "activeElement": "summary"
+        }
+      ],
+      "overflowPx": 0,
+      "observerErrors": [],
+      "errors": [],
+      "consoleErrors": [],
+      "businessApiWrites": [],
+      "slowest": {
+        "interactionId": 4623,
+        "durationMs": 352,
+        "action": "Open home photo gallery",
+        "startMs": 20982.700000047684,
+        "endMs": 21410.39999985695,
+        "events": [
+          {
+            "name": "pointerdown",
+            "target": "img",
+            "startMs": 20982.700000047684,
+            "durationMs": 88,
+            "inputDelayMs": 80.39999985694885,
+            "processingMs": 0.20000004768371582,
+            "presentationRemainderMs": 7.400000095367432
+          },
+          {
+            "name": "pointerup",
+            "target": "img",
+            "startMs": 21058.39999985695,
+            "durationMs": 352,
+            "inputDelayMs": 15.900000095367432,
+            "processingMs": 0.09999990463256836,
+            "presentationRemainderMs": 336
+          },
+          {
+            "name": "click",
+            "target": "img",
+            "startMs": 21058.39999985695,
+            "durationMs": 352,
+            "inputDelayMs": 52.700000047683716,
+            "processingMs": 223.5,
+            "presentationRemainderMs": 75.79999995231628
+          }
+        ],
+        "laterActionStarts": [],
+        "overlappingOtherInteractionIds": [],
+        "overlappingLoaf": [
+          {
+            "startTime": 20977.099999904633,
+            "duration": 65.90000009536743,
+            "blockingDuration": 0,
+            "renderStart": 21040.599999904633,
+            "styleAndLayoutStart": 21041.200000047684,
+            "firstUIEventTimestamp": 0,
+            "scripts": []
+          },
+          {
+            "startTime": 21073.299999952316,
+            "duration": 287.09999990463257,
+            "blockingDuration": 233.8,
+            "renderStart": 21348.599999904633,
+            "styleAndLayoutStart": 21350.799999952316,
+            "firstUIEventTimestamp": 21058.39999985695,
+            "scripts": [
+              {
+                "duration": 223.20000004768372,
+                "executionStart": 21111.299999952316,
+                "invoker": "#document.onclick",
+                "invokerType": "event-listener",
+                "sourceURL": "http://127.0.0.1:3588/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+                "sourceFunctionName": "fO",
+                "sourceCharPosition": 190203,
+                "forcedStyleAndLayoutDuration": 166.4,
+                "pauseDuration": 0,
+                "windowAttribution": "self"
+              }
+            ]
+          }
+        ],
+        "overlappingLongTasks": [
+          {
+            "startTime": 21076.5,
+            "duration": 365,
+            "name": "self"
+          }
+        ],
+        "maxDurationEvent": "pointerup"
+      },
+      "categoryGroups": []
+    },
+    {
+      "page": "menu",
+      "route": "/en/menu",
+      "mode": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "inpMs": 1712,
+      "below150ms": false,
+      "interactionCount": 9,
+      "observedGroupsAtLeast16ms": 9,
+      "trustedEvents": 9,
+      "allEventsTrusted": true,
+      "hiddenFlushObserved": true,
+      "freshTargetId": "35B23DC59AD2DC9D9409A46E8BA5FD42",
+      "flushTargetClosed": true,
+      "documentGuard": {
+        "expectedBuild": "CdeRwqsXQrjmVYMGw28vU",
+        "headerBuild": "CdeRwqsXQrjmVYMGw28vU",
+        "url": "http://127.0.0.1:3588/en/menu",
+        "status": 200,
+        "sourceCheck": {
+          "enabled": true,
+          "verifiedInputs": 514,
+          "allRecordedBytesMatch": true,
+          "kind": "stat-watch-plus-changed-byte-hash",
+          "sourceFingerprint": "46c7f6e9bdd56ccb8fccc939c8b2a407cf6ccc53de90c6b8180797179b67a47f"
+        },
+        "firstVisitProtocol": "first-visit-ack-absent-v1",
+        "firstVisitReset": {
+          "startedAtUTC": "2026-11-11T22:12:11.840Z",
+          "completedAtUTC": "2026-11-11T22:12:11.848Z",
+          "ackCookieName": "shah_notice_ack_v1",
+          "ackCookiesRemoved": 1,
+          "ackCookieCountBeforeNavigation": 0,
+          "localStorageKey": "tm.cookieConsent",
+          "localStorageClearScope": "http://127.0.0.1:3588",
+          "localStorageClearCompleted": true,
+          "onlyKnownAckCookiesDeleted": true,
+          "otherCookieValuesLogged": false
+        },
+        "firstVisitState": {
+          "initial": {
+            "localStorageKeyAbsent": true,
+            "ackCookiePresent": false,
+            "at": 220.59999990463257
+          },
+          "localStorageKeyAbsent": true,
+          "ackCookiePresent": false,
+          "noticePresent": true,
+          "noticeVisible": true
+        }
+      },
+      "readyForInput": {
+        "phase": "ready-for-input",
+        "at": 4718.299999952316,
+        "visibility": "visible",
+        "hasFocus": true,
+        "readyState": "complete",
+        "fontStatus": "loaded",
+        "activeElement": "body"
+      },
+      "visibilityChanges": [
+        {
+          "phase": "visibilitychange",
+          "at": 18643.5,
+          "visibility": "hidden",
+          "hasFocus": false,
+          "readyState": "complete",
+          "fontStatus": "loaded",
+          "activeElement": "input#order-search[name=q]"
+        }
+      ],
+      "overflowPx": 0,
+      "observerErrors": [],
+      "errors": [],
+      "consoleErrors": [],
+      "businessApiWrites": [],
+      "slowest": {
+        "interactionId": 3052,
+        "durationMs": 1712,
+        "action": "Acknowledge cookie notice",
+        "startMs": 5735.599999904633,
+        "endMs": 7454.399999856949,
+        "events": [
+          {
+            "name": "pointerdown",
+            "target": null,
+            "startMs": 5735.599999904633,
+            "durationMs": 24,
+            "inputDelayMs": 10.599999904632568,
+            "processingMs": 0.20000004768371582,
+            "presentationRemainderMs": 13.200000047683716
+          },
+          {
+            "name": "pointerup",
+            "target": null,
+            "startMs": 5742.399999856949,
+            "durationMs": 1712,
+            "inputDelayMs": 17.200000047683716,
+            "processingMs": 0.40000009536743164,
+            "presentationRemainderMs": 1694.3999998569489
+          },
+          {
+            "name": "click",
+            "target": null,
+            "startMs": 5742.399999856949,
+            "durationMs": 1712,
+            "inputDelayMs": 23.799999952316284,
+            "processingMs": 4.300000190734863,
+            "presentationRemainderMs": 1683.8999998569489
+          }
+        ],
+        "laterActionStarts": [
+          {
+            "label": "Search menu focus",
+            "start": 7395
+          }
+        ],
+        "overlappingOtherInteractionIds": [
+          3059
+        ],
+        "overlappingLoaf": [],
+        "overlappingLongTasks": [],
+        "maxDurationEvent": "pointerup"
+      },
+      "categoryGroups": [
+        {
+          "interactionId": 3094,
+          "durationMs": 544,
+          "action": "Select menu Curries",
+          "startMs": 12927.599999904633,
+          "endMs": 13487,
+          "events": [
+            {
+              "name": "pointerdown",
+              "target": "span",
+              "startMs": 12927.599999904633,
+              "durationMs": 32,
+              "inputDelayMs": 16.90000009536743,
+              "processingMs": 0.2999999523162842,
+              "presentationRemainderMs": 14.799999952316284
+            },
+            {
+              "name": "pointerup",
+              "target": "span",
+              "startMs": 12943,
+              "durationMs": 544,
+              "inputDelayMs": 17,
+              "processingMs": 0.2999999523162842,
+              "presentationRemainderMs": 526.7000000476837
+            },
+            {
+              "name": "click",
+              "target": "span",
+              "startMs": 12943,
+              "durationMs": 544,
+              "inputDelayMs": 44.59999990463257,
+              "processingMs": 294.7999999523163,
+              "presentationRemainderMs": 204.60000014305115
+            }
+          ],
+          "laterActionStarts": [],
+          "overlappingOtherInteractionIds": [],
+          "overlappingLoaf": [
+            {
+              "startTime": 12959,
+              "duration": 482.59999990463257,
+              "blockingDuration": 419,
+              "renderStart": 13430.799999952316,
+              "styleAndLayoutStart": 13440.899999856949,
+              "firstUIEventTimestamp": 12943,
+              "scripts": [
+                {
+                  "duration": 294.39999985694885,
+                  "executionStart": 12988,
+                  "invoker": "#document.onclick",
+                  "invokerType": "event-listener",
+                  "sourceURL": "http://127.0.0.1:3588/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+                  "sourceFunctionName": "fO",
+                  "sourceCharPosition": 190203,
+                  "forcedStyleAndLayoutDuration": 0,
+                  "pauseDuration": 0,
+                  "windowAttribution": "self"
+                },
+                {
+                  "duration": 6.900000095367432,
+                  "executionStart": 13433.899999856949,
+                  "invoker": "FrameRequestCallback",
+                  "invokerType": "user-callback",
+                  "sourceURL": "http://127.0.0.1:3588/_next/static/chunks/app/layout-78fbf49dffe15c1d.js",
+                  "sourceFunctionName": "F",
+                  "sourceCharPosition": 2898,
+                  "forcedStyleAndLayoutDuration": 0,
+                  "pauseDuration": 0,
+                  "windowAttribution": "self"
+                }
+              ]
+            }
+          ],
+          "overlappingLongTasks": [
+            {
+              "startTime": 12971.599999904633,
+              "duration": 458,
+              "name": "self"
+            },
+            {
+              "startTime": 13430,
+              "duration": 157,
+              "name": "self"
+            }
+          ],
+          "maxDurationEvent": "pointerup"
+        },
+        {
+          "interactionId": 3101,
+          "durationMs": 160,
+          "action": "Select menu Biryani",
+          "startMs": 15079,
+          "endMs": 15252.5,
+          "events": [
+            {
+              "name": "pointerdown",
+              "target": "span",
+              "startMs": 15079,
+              "durationMs": 32,
+              "inputDelayMs": 14.899999856948853,
+              "processingMs": 0,
+              "presentationRemainderMs": 17.100000143051147
+            },
+            {
+              "name": "pointerup",
+              "target": "span",
+              "startMs": 15092.5,
+              "durationMs": 160,
+              "inputDelayMs": 16.799999952316284,
+              "processingMs": 0,
+              "presentationRemainderMs": 143.20000004768372
+            },
+            {
+              "name": "click",
+              "target": "span",
+              "startMs": 15092.5,
+              "durationMs": 160,
+              "inputDelayMs": 36.39999985694885,
+              "processingMs": 56.700000047683716,
+              "presentationRemainderMs": 66.90000009536743
+            }
+          ],
+          "laterActionStarts": [],
+          "overlappingOtherInteractionIds": [],
+          "overlappingLoaf": [
+            {
+              "startTime": 15108.399999856949,
+              "duration": 118.5,
+              "blockingDuration": 65.8,
+              "renderStart": 15220.799999952316,
+              "styleAndLayoutStart": 15226.5,
+              "firstUIEventTimestamp": 15092.5,
+              "scripts": [
+                {
+                  "duration": 56.200000047683716,
+                  "executionStart": 15129.299999952316,
+                  "invoker": "#document.onclick",
+                  "invokerType": "event-listener",
+                  "sourceURL": "http://127.0.0.1:3588/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+                  "sourceFunctionName": "fO",
+                  "sourceCharPosition": 190203,
+                  "forcedStyleAndLayoutDuration": 0,
+                  "pauseDuration": 0,
+                  "windowAttribution": "self"
+                }
+              ]
+            }
+          ],
+          "overlappingLongTasks": [
+            {
+              "startTime": 15110.099999904633,
+              "duration": 109,
+              "name": "self"
+            }
+          ],
+          "maxDurationEvent": "pointerup"
+        },
+        {
+          "interactionId": 3108,
+          "durationMs": 128,
+          "action": "Select menu Soups",
+          "startMs": 16848.599999904633,
+          "endMs": 16986.89999985695,
+          "events": [
+            {
+              "name": "pointerdown",
+              "target": "span",
+              "startMs": 16848.599999904633,
+              "durationMs": 24,
+              "inputDelayMs": 11.799999952316284,
+              "processingMs": 0.20000004768371582,
+              "presentationRemainderMs": 12
+            },
+            {
+              "name": "pointerup",
+              "target": "span",
+              "startMs": 16858.89999985695,
+              "durationMs": 128,
+              "inputDelayMs": 18.600000143051147,
+              "processingMs": 0.19999980926513672,
+              "presentationRemainderMs": 109.20000004768372
+            },
+            {
+              "name": "click",
+              "target": "span",
+              "startMs": 16858.89999985695,
+              "durationMs": 128,
+              "inputDelayMs": 42.299999952316284,
+              "processingMs": 36.10000014305115,
+              "presentationRemainderMs": 49.59999990463257
+            }
+          ],
+          "laterActionStarts": [],
+          "overlappingOtherInteractionIds": [],
+          "overlappingLoaf": [
+            {
+              "startTime": 16875.89999985695,
+              "duration": 91,
+              "blockingDuration": 27.3,
+              "renderStart": 16963.599999904633,
+              "styleAndLayoutStart": 16966.799999952316,
+              "firstUIEventTimestamp": 16858.89999985695,
+              "scripts": [
+                {
+                  "duration": 35.799999952316284,
+                  "executionStart": 16901.5,
+                  "invoker": "#document.onclick",
+                  "invokerType": "event-listener",
+                  "sourceURL": "http://127.0.0.1:3588/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+                  "sourceFunctionName": "fO",
+                  "sourceCharPosition": 190203,
+                  "forcedStyleAndLayoutDuration": 0,
+                  "pauseDuration": 0,
+                  "windowAttribution": "self"
+                }
+              ]
+            }
+          ],
+          "overlappingLongTasks": [
+            {
+              "startTime": 16888.89999985695,
+              "duration": 74,
+              "name": "self"
+            }
+          ],
+          "maxDurationEvent": "pointerup"
+        }
+      ]
+    },
+    {
+      "page": "reservations",
+      "route": "/en/reservations",
+      "mode": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "inpMs": 376,
+      "below150ms": false,
+      "interactionCount": 21,
+      "observedGroupsAtLeast16ms": 21,
+      "trustedEvents": 21,
+      "allEventsTrusted": true,
+      "hiddenFlushObserved": true,
+      "freshTargetId": "5192156A03C787A3007BDB5CF7D636AB",
+      "flushTargetClosed": true,
+      "documentGuard": {
+        "expectedBuild": "CdeRwqsXQrjmVYMGw28vU",
+        "headerBuild": "CdeRwqsXQrjmVYMGw28vU",
+        "url": "http://127.0.0.1:3588/en/reservations",
+        "status": 200,
+        "sourceCheck": {
+          "enabled": true,
+          "verifiedInputs": 514,
+          "allRecordedBytesMatch": true,
+          "kind": "stat-watch-plus-changed-byte-hash",
+          "sourceFingerprint": "46c7f6e9bdd56ccb8fccc939c8b2a407cf6ccc53de90c6b8180797179b67a47f"
+        },
+        "firstVisitProtocol": "first-visit-ack-absent-v1",
+        "firstVisitReset": {
+          "startedAtUTC": "2026-11-11T22:12:33.539Z",
+          "completedAtUTC": "2026-11-11T22:12:33.547Z",
+          "ackCookieName": "shah_notice_ack_v1",
+          "ackCookiesRemoved": 1,
+          "ackCookieCountBeforeNavigation": 0,
+          "localStorageKey": "tm.cookieConsent",
+          "localStorageClearScope": "http://127.0.0.1:3588",
+          "localStorageClearCompleted": true,
+          "onlyKnownAckCookiesDeleted": true,
+          "otherCookieValuesLogged": false
+        },
+        "firstVisitState": {
+          "initial": {
+            "localStorageKeyAbsent": true,
+            "ackCookiePresent": false,
+            "at": 223.80000019073486
+          },
+          "localStorageKeyAbsent": true,
+          "ackCookiePresent": false,
+          "noticePresent": true,
+          "noticeVisible": true
+        }
+      },
+      "readyForInput": {
+        "phase": "ready-for-input",
+        "at": 4144.200000047684,
+        "visibility": "visible",
+        "hasFocus": true,
+        "readyState": "complete",
+        "fontStatus": "loaded",
+        "activeElement": "body"
+      },
+      "visibilityChanges": [
+        {
+          "phase": "visibilitychange",
+          "at": 26901.60000014305,
+          "visibility": "hidden",
+          "hasFocus": false,
+          "readyState": "complete",
+          "fontStatus": "loaded",
+          "activeElement": "textarea"
+        }
+      ],
+      "overflowPx": 0,
+      "observerErrors": [],
+      "errors": [],
+      "consoleErrors": [],
+      "businessApiWrites": [],
+      "slowest": {
+        "interactionId": 2558,
+        "durationMs": 376,
+        "action": "Acknowledge cookie notice",
+        "startMs": 5165.900000095367,
+        "endMs": 5553.600000143051,
+        "events": [
+          {
+            "name": "pointerdown",
+            "target": null,
+            "startMs": 5165.900000095367,
+            "durationMs": 24,
+            "inputDelayMs": 17.40000009536743,
+            "processingMs": 0.8999998569488525,
+            "presentationRemainderMs": 5.700000047683716
+          },
+          {
+            "name": "pointerup",
+            "target": null,
+            "startMs": 5177.600000143051,
+            "durationMs": 376,
+            "inputDelayMs": 18,
+            "processingMs": 0.5999999046325684,
+            "presentationRemainderMs": 357.40000009536743
+          },
+          {
+            "name": "click",
+            "target": null,
+            "startMs": 5177.600000143051,
+            "durationMs": 376,
+            "inputDelayMs": 24.899999856948853,
+            "processingMs": 10,
+            "presentationRemainderMs": 341.10000014305115
+          }
+        ],
+        "laterActionStarts": [],
+        "overlappingOtherInteractionIds": [],
+        "overlappingLoaf": [],
+        "overlappingLongTasks": [],
+        "maxDurationEvent": "pointerup"
+      },
+      "categoryGroups": []
+    },
+    {
+      "page": "home",
+      "route": "/en#intro",
+      "mode": "desktop",
+      "viewport": {
+        "width": 1200,
+        "height": 800,
+        "dpr": 1
+      },
+      "inpMs": 664,
+      "below150ms": false,
+      "interactionCount": 14,
+      "observedGroupsAtLeast16ms": 14,
+      "trustedEvents": 16,
+      "allEventsTrusted": true,
+      "hiddenFlushObserved": true,
+      "freshTargetId": "B276F3A3FE7BE1AD6B642B2671827BF8",
+      "flushTargetClosed": true,
+      "documentGuard": {
+        "expectedBuild": "CdeRwqsXQrjmVYMGw28vU",
+        "headerBuild": "CdeRwqsXQrjmVYMGw28vU",
+        "url": "http://127.0.0.1:3588/en#intro",
+        "status": 200,
+        "sourceCheck": {
+          "enabled": true,
+          "verifiedInputs": 514,
+          "allRecordedBytesMatch": true,
+          "kind": "stat-watch-plus-changed-byte-hash",
+          "sourceFingerprint": "46c7f6e9bdd56ccb8fccc939c8b2a407cf6ccc53de90c6b8180797179b67a47f"
+        },
+        "firstVisitProtocol": "first-visit-ack-absent-v1",
+        "firstVisitReset": {
+          "startedAtUTC": "2026-11-11T22:13:04.809Z",
+          "completedAtUTC": "2026-11-11T22:13:04.817Z",
+          "ackCookieName": "shah_notice_ack_v1",
+          "ackCookiesRemoved": 1,
+          "ackCookieCountBeforeNavigation": 0,
+          "localStorageKey": "tm.cookieConsent",
+          "localStorageClearScope": "http://127.0.0.1:3588",
+          "localStorageClearCompleted": true,
+          "onlyKnownAckCookiesDeleted": true,
+          "otherCookieValuesLogged": false
+        },
+        "firstVisitState": {
+          "initial": {
+            "localStorageKeyAbsent": true,
+            "ackCookiePresent": false,
+            "at": 252.69999980926514
+          },
+          "localStorageKeyAbsent": true,
+          "ackCookiePresent": false,
+          "noticePresent": true,
+          "noticeVisible": true
+        }
+      },
+      "readyForInput": {
+        "phase": "ready-for-input",
+        "at": 6561.5,
+        "visibility": "visible",
+        "hasFocus": true,
+        "readyState": "complete",
+        "fontStatus": "loaded",
+        "activeElement": "section#intro"
+      },
+      "visibilityChanges": [
+        {
+          "phase": "visibilitychange",
+          "at": 24663.5,
+          "visibility": "hidden",
+          "hasFocus": false,
+          "readyState": "complete",
+          "fontStatus": "loaded",
+          "activeElement": "summary"
+        }
+      ],
+      "overflowPx": 0,
+      "observerErrors": [],
+      "errors": [],
+      "consoleErrors": [],
+      "businessApiWrites": [],
+      "slowest": {
+        "interactionId": 5034,
+        "durationMs": 664,
+        "action": "Acknowledge cookie notice",
+        "startMs": 7587.599999904633,
+        "endMs": 8269,
+        "events": [
+          {
+            "name": "pointerdown",
+            "target": null,
+            "startMs": 7587.599999904633,
+            "durationMs": 32,
+            "inputDelayMs": 9.5,
+            "processingMs": 1,
+            "presentationRemainderMs": 21.5
+          },
+          {
+            "name": "pointerup",
+            "target": null,
+            "startMs": 7605,
+            "durationMs": 664,
+            "inputDelayMs": 14.5,
+            "processingMs": 1,
+            "presentationRemainderMs": 648.5
+          },
+          {
+            "name": "click",
+            "target": null,
+            "startMs": 7605,
+            "durationMs": 664,
+            "inputDelayMs": 16.09999990463257,
+            "processingMs": 14.099999904632568,
+            "presentationRemainderMs": 633.8000001907349
+          }
+        ],
+        "laterActionStarts": [],
+        "overlappingOtherInteractionIds": [],
+        "overlappingLoaf": [],
+        "overlappingLongTasks": [],
+        "maxDurationEvent": "pointerup"
+      },
+      "categoryGroups": []
+    },
+    {
+      "page": "menu",
+      "route": "/en/menu",
+      "mode": "desktop",
+      "viewport": {
+        "width": 1200,
+        "height": 800,
+        "dpr": 1
+      },
+      "inpMs": 1992,
+      "below150ms": false,
+      "interactionCount": 9,
+      "observedGroupsAtLeast16ms": 9,
+      "trustedEvents": 9,
+      "allEventsTrusted": true,
+      "hiddenFlushObserved": true,
+      "freshTargetId": "EC55370E5C9D2E5346D692D6270A3A43",
+      "flushTargetClosed": true,
+      "documentGuard": {
+        "expectedBuild": "CdeRwqsXQrjmVYMGw28vU",
+        "headerBuild": "CdeRwqsXQrjmVYMGw28vU",
+        "url": "http://127.0.0.1:3588/en/menu",
+        "status": 200,
+        "sourceCheck": {
+          "enabled": true,
+          "verifiedInputs": 514,
+          "allRecordedBytesMatch": true,
+          "kind": "stat-watch-plus-changed-byte-hash",
+          "sourceFingerprint": "46c7f6e9bdd56ccb8fccc939c8b2a407cf6ccc53de90c6b8180797179b67a47f"
+        },
+        "firstVisitProtocol": "first-visit-ack-absent-v1",
+        "firstVisitReset": {
+          "startedAtUTC": "2026-11-11T22:13:32.304Z",
+          "completedAtUTC": "2026-11-11T22:13:32.308Z",
+          "ackCookieName": "shah_notice_ack_v1",
+          "ackCookiesRemoved": 1,
+          "ackCookieCountBeforeNavigation": 0,
+          "localStorageKey": "tm.cookieConsent",
+          "localStorageClearScope": "http://127.0.0.1:3588",
+          "localStorageClearCompleted": true,
+          "onlyKnownAckCookiesDeleted": true,
+          "otherCookieValuesLogged": false
+        },
+        "firstVisitState": {
+          "initial": {
+            "localStorageKeyAbsent": true,
+            "ackCookiePresent": false,
+            "at": 239.90000009536743
+          },
+          "localStorageKeyAbsent": true,
+          "ackCookiePresent": false,
+          "noticePresent": true,
+          "noticeVisible": true
+        }
+      },
+      "readyForInput": {
+        "phase": "ready-for-input",
+        "at": 4538.300000190735,
+        "visibility": "visible",
+        "hasFocus": true,
+        "readyState": "complete",
+        "fontStatus": "loaded",
+        "activeElement": "body"
+      },
+      "visibilityChanges": [
+        {
+          "phase": "visibilitychange",
+          "at": 18325.200000047684,
+          "visibility": "hidden",
+          "hasFocus": false,
+          "readyState": "complete",
+          "fontStatus": "loaded",
+          "activeElement": "button"
+        }
+      ],
+      "overflowPx": 0,
+      "observerErrors": [],
+      "errors": [],
+      "consoleErrors": [],
+      "businessApiWrites": [],
+      "slowest": {
+        "interactionId": 2411,
+        "durationMs": 1992,
+        "action": "Search menu focus",
+        "startMs": 7251.5,
+        "endMs": 9245.200000047684,
+        "events": [
+          {
+            "name": "pointerdown",
+            "target": "input#order-search[name=q]",
+            "startMs": 7251.5,
+            "durationMs": 1992,
+            "inputDelayMs": 3.700000047683716,
+            "processingMs": 0.40000009536743164,
+            "presentationRemainderMs": 1987.8999998569489
+          },
+          {
+            "name": "pointerup",
+            "target": "input#order-search[name=q]",
+            "startMs": 7261.200000047684,
+            "durationMs": 1984,
+            "inputDelayMs": 3.1000001430511475,
+            "processingMs": 0.39999985694885254,
+            "presentationRemainderMs": 1980.5
+          },
+          {
+            "name": "click",
+            "target": "input#order-search[name=q]",
+            "startMs": 7261.200000047684,
+            "durationMs": 1984,
+            "inputDelayMs": 4.5,
+            "processingMs": 0.40000009536743164,
+            "presentationRemainderMs": 1979.0999999046326
+          }
+        ],
+        "laterActionStarts": [
+          {
+            "label": "Search menu b",
+            "start": 7874.800000190735
+          },
+          {
+            "label": "Search menu u",
+            "start": 8556.600000143051
+          }
+        ],
+        "overlappingOtherInteractionIds": [
+          2418,
+          2425
+        ],
+        "overlappingLoaf": [
+          {
+            "startTime": 7872.700000047684,
+            "duration": 51.90000009536743,
+            "blockingDuration": 0,
+            "renderStart": 7921.700000047684,
+            "styleAndLayoutStart": 7924.600000143051,
+            "firstUIEventTimestamp": 7875.300000190735,
+            "scripts": [
+              {
+                "duration": 27.300000190734863,
+                "executionStart": 7890,
+                "invoker": "#document.oninput",
+                "invokerType": "event-listener",
+                "sourceURL": "http://127.0.0.1:3588/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+                "sourceFunctionName": "fO",
+                "sourceCharPosition": 190203,
+                "forcedStyleAndLayoutDuration": 0,
+                "pauseDuration": 0,
+                "windowAttribution": "self"
+              }
+            ]
+          },
+          {
+            "startTime": 8550.600000143051,
+            "duration": 53.799999952316284,
+            "blockingDuration": 0,
+            "renderStart": 8602,
+            "styleAndLayoutStart": 8604.300000190735,
+            "firstUIEventTimestamp": 8557.5,
+            "scripts": [
+              {
+                "duration": 5.599999904632568,
+                "executionStart": 8550.800000190735,
+                "invoker": "MessagePort.onmessage",
+                "invokerType": "event-listener",
+                "sourceURL": "http://127.0.0.1:3588/_next/static/chunks/3794-c968c786880cae15.js",
+                "sourceFunctionName": "A",
+                "sourceCharPosition": 48538,
+                "forcedStyleAndLayoutDuration": 0,
+                "pauseDuration": 0,
+                "windowAttribution": "self"
+              },
+              {
+                "duration": 5.3999998569488525,
+                "executionStart": 8557.300000190735,
+                "invoker": "MessagePort.onmessage",
+                "invokerType": "event-listener",
+                "sourceURL": "http://127.0.0.1:3588/_next/static/chunks/3794-c968c786880cae15.js",
+                "sourceFunctionName": "A",
+                "sourceCharPosition": 48538,
+                "forcedStyleAndLayoutDuration": 0,
+                "pauseDuration": 0,
+                "windowAttribution": "self"
+              },
+              {
+                "duration": 29.40000009536743,
+                "executionStart": 8570.5,
+                "invoker": "#document.oninput",
+                "invokerType": "event-listener",
+                "sourceURL": "http://127.0.0.1:3588/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+                "sourceFunctionName": "fO",
+                "sourceCharPosition": 190203,
+                "forcedStyleAndLayoutDuration": 0,
+                "pauseDuration": 0,
+                "windowAttribution": "self"
+              }
+            ]
+          },
+          {
+            "startTime": 8951.100000143051,
+            "duration": 248.5,
+            "blockingDuration": 142.6,
+            "renderStart": 9175.700000047684,
+            "styleAndLayoutStart": 9199.200000047684,
+            "firstUIEventTimestamp": 0,
+            "scripts": [
+              {
+                "duration": 5.299999952316284,
+                "executionStart": 8951.300000190735,
+                "invoker": "MessagePort.onmessage",
+                "invokerType": "event-listener",
+                "sourceURL": "http://127.0.0.1:3588/_next/static/chunks/3794-c968c786880cae15.js",
+                "sourceFunctionName": "A",
+                "sourceCharPosition": 48538,
+                "forcedStyleAndLayoutDuration": 0,
+                "pauseDuration": 0,
+                "windowAttribution": "self"
+              },
+              {
+                "duration": 50,
+                "executionStart": 8957,
+                "invoker": "MessagePort.onmessage",
+                "invokerType": "event-listener",
+                "sourceURL": "http://127.0.0.1:3588/_next/static/chunks/3794-c968c786880cae15.js",
+                "sourceFunctionName": "A",
+                "sourceCharPosition": 48538,
+                "forcedStyleAndLayoutDuration": 0,
+                "pauseDuration": 0,
+                "windowAttribution": "self"
+              },
+              {
+                "duration": 8.100000143051147,
+                "executionStart": 9191,
+                "invoker": "FrameRequestCallback",
+                "invokerType": "user-callback",
+                "sourceURL": "http://127.0.0.1:3588/_next/static/chunks/app/layout-78fbf49dffe15c1d.js",
+                "sourceFunctionName": "F",
+                "sourceCharPosition": 2898,
+                "forcedStyleAndLayoutDuration": 0,
+                "pauseDuration": 0,
+                "windowAttribution": "self"
+              }
+            ]
+          }
+        ],
+        "overlappingLongTasks": [
+          {
+            "startTime": 8956.700000047684,
+            "duration": 50,
+            "name": "self"
+          },
+          {
+            "startTime": 9007.200000047684,
+            "duration": 332,
+            "name": "self"
+          }
+        ],
+        "maxDurationEvent": "pointerdown"
+      },
+      "categoryGroups": [
+        {
+          "interactionId": 2460,
+          "durationMs": 448,
+          "action": "Select menu Curries",
+          "startMs": 16264.900000095367,
+          "endMs": 16712.900000095367,
+          "events": [
+            {
+              "name": "pointerdown",
+              "target": "span",
+              "startMs": 16264.900000095367,
+              "durationMs": 448,
+              "inputDelayMs": 1.5999999046325684,
+              "processingMs": 0.40000009536743164,
+              "presentationRemainderMs": 446
+            },
+            {
+              "name": "pointerup",
+              "target": "span",
+              "startMs": 16272.400000095367,
+              "durationMs": 440,
+              "inputDelayMs": 0.5999999046325684,
+              "processingMs": 0.10000014305114746,
+              "presentationRemainderMs": 439.2999999523163
+            },
+            {
+              "name": "click",
+              "target": "span",
+              "startMs": 16272.400000095367,
+              "durationMs": 440,
+              "inputDelayMs": 0.9000000953674316,
+              "processingMs": 235.39999985694885,
+              "presentationRemainderMs": 203.70000004768372
+            }
+          ],
+          "laterActionStarts": [],
+          "overlappingOtherInteractionIds": [],
+          "overlappingLoaf": [
+            {
+              "startTime": 16265.5,
+              "duration": 395.90000009536743,
+              "blockingDuration": 337.7,
+              "renderStart": 16653.400000095367,
+              "styleAndLayoutStart": 16661.10000014305,
+              "firstUIEventTimestamp": 16264.900000095367,
+              "scripts": [
+                {
+                  "duration": 235.10000014305115,
+                  "executionStart": 16273.5,
+                  "invoker": "#document.onclick",
+                  "invokerType": "event-listener",
+                  "sourceURL": "http://127.0.0.1:3588/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+                  "sourceFunctionName": "fO",
+                  "sourceCharPosition": 190203,
+                  "forcedStyleAndLayoutDuration": 0,
+                  "pauseDuration": 0,
+                  "windowAttribution": "self"
+                }
+              ]
+            }
+          ],
+          "overlappingLongTasks": [
+            {
+              "startTime": 16272.5,
+              "duration": 379,
+              "name": "self"
+            },
+            {
+              "startTime": 16652.5,
+              "duration": 143,
+              "name": "self"
+            }
+          ],
+          "maxDurationEvent": "pointerdown"
+        },
+        {
+          "interactionId": 2446,
+          "durationMs": 96,
+          "action": "Select menu Biryani",
+          "startMs": 12848.400000095367,
+          "endMs": 12973.800000190735,
+          "events": [
+            {
+              "name": "pointerdown",
+              "target": "span",
+              "startMs": 12848.400000095367,
+              "durationMs": 48,
+              "inputDelayMs": 18.09999990463257,
+              "processingMs": 0.7000000476837158,
+              "presentationRemainderMs": 29.200000047683716
+            },
+            {
+              "name": "pointerup",
+              "target": "span",
+              "startMs": 12877.800000190735,
+              "durationMs": 96,
+              "inputDelayMs": 11.099999904632568,
+              "processingMs": 0.40000009536743164,
+              "presentationRemainderMs": 84.5
+            },
+            {
+              "name": "click",
+              "target": "span",
+              "startMs": 12877.800000190735,
+              "durationMs": 96,
+              "inputDelayMs": 12.099999904632568,
+              "processingMs": 34.799999952316284,
+              "presentationRemainderMs": 49.10000014305115
+            }
+          ],
+          "laterActionStarts": [],
+          "overlappingOtherInteractionIds": [],
+          "overlappingLoaf": [
+            {
+              "startTime": 12884.200000047684,
+              "duration": 68.70000004768372,
+              "blockingDuration": 17.1,
+              "renderStart": 12948.5,
+              "styleAndLayoutStart": 12952.700000047684,
+              "firstUIEventTimestamp": 12877.800000190735,
+              "scripts": [
+                {
+                  "duration": 34.59999990463257,
+                  "executionStart": 12890.100000143051,
+                  "invoker": "#document.onclick",
+                  "invokerType": "event-listener",
+                  "sourceURL": "http://127.0.0.1:3588/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+                  "sourceFunctionName": "fO",
+                  "sourceCharPosition": 190203,
+                  "forcedStyleAndLayoutDuration": 0,
+                  "pauseDuration": 0,
+                  "windowAttribution": "self"
+                }
+              ]
+            }
+          ],
+          "overlappingLongTasks": [
+            {
+              "startTime": 12884.600000143051,
+              "duration": 62,
+              "name": "self"
+            }
+          ],
+          "maxDurationEvent": "pointerup"
+        },
+        {
+          "interactionId": 2453,
+          "durationMs": 96,
+          "action": "Select menu Soups",
+          "startMs": 14581.300000190735,
+          "endMs": 14677.300000190735,
+          "events": [
+            {
+              "name": "pointerdown",
+              "target": "span",
+              "startMs": 14581.300000190735,
+              "durationMs": 96,
+              "inputDelayMs": 1.5999999046325684,
+              "processingMs": 0.2999999523162842,
+              "presentationRemainderMs": 94.10000014305115
+            },
+            {
+              "name": "pointerup",
+              "target": "span",
+              "startMs": 14588.5,
+              "durationMs": 88,
+              "inputDelayMs": 0.7000000476837158,
+              "processingMs": 0.2999999523162842,
+              "presentationRemainderMs": 87
+            },
+            {
+              "name": "click",
+              "target": "span",
+              "startMs": 14588.5,
+              "durationMs": 88,
+              "inputDelayMs": 1.1000001430511475,
+              "processingMs": 28,
+              "presentationRemainderMs": 58.89999985694885
+            }
+          ],
+          "laterActionStarts": [],
+          "overlappingOtherInteractionIds": [],
+          "overlappingLoaf": [
+            {
+              "startTime": 14581.700000047684,
+              "duration": 58,
+              "blockingDuration": 0,
+              "renderStart": 14634.900000095367,
+              "styleAndLayoutStart": 14639.5,
+              "firstUIEventTimestamp": 14581.300000190735,
+              "scripts": [
+                {
+                  "duration": 27.59999990463257,
+                  "executionStart": 14589.800000190735,
+                  "invoker": "#document.onclick",
+                  "invokerType": "event-listener",
+                  "sourceURL": "http://127.0.0.1:3588/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+                  "sourceFunctionName": "fO",
+                  "sourceCharPosition": 190203,
+                  "forcedStyleAndLayoutDuration": 0,
+                  "pauseDuration": 0,
+                  "windowAttribution": "self"
+                }
+              ]
+            }
+          ],
+          "overlappingLongTasks": [],
+          "maxDurationEvent": "pointerdown"
+        }
+      ]
+    },
+    {
+      "page": "reservations",
+      "route": "/en/reservations",
+      "mode": "desktop",
+      "viewport": {
+        "width": 1200,
+        "height": 800,
+        "dpr": 1
+      },
+      "inpMs": 680,
+      "below150ms": false,
+      "interactionCount": 21,
+      "observedGroupsAtLeast16ms": 21,
+      "trustedEvents": 21,
+      "allEventsTrusted": true,
+      "hiddenFlushObserved": true,
+      "freshTargetId": "08CBDEE121D76E220384C018DE389224",
+      "flushTargetClosed": true,
+      "documentGuard": {
+        "expectedBuild": "CdeRwqsXQrjmVYMGw28vU",
+        "headerBuild": "CdeRwqsXQrjmVYMGw28vU",
+        "url": "http://127.0.0.1:3588/en/reservations",
+        "status": 200,
+        "sourceCheck": {
+          "enabled": true,
+          "verifiedInputs": 514,
+          "allRecordedBytesMatch": true,
+          "kind": "stat-watch-plus-changed-byte-hash",
+          "sourceFingerprint": "46c7f6e9bdd56ccb8fccc939c8b2a407cf6ccc53de90c6b8180797179b67a47f"
+        },
+        "firstVisitProtocol": "first-visit-ack-absent-v1",
+        "firstVisitReset": {
+          "startedAtUTC": "2026-11-11T22:13:53.384Z",
+          "completedAtUTC": "2026-11-11T22:13:53.391Z",
+          "ackCookieName": "shah_notice_ack_v1",
+          "ackCookiesRemoved": 1,
+          "ackCookieCountBeforeNavigation": 0,
+          "localStorageKey": "tm.cookieConsent",
+          "localStorageClearScope": "http://127.0.0.1:3588",
+          "localStorageClearCompleted": true,
+          "onlyKnownAckCookiesDeleted": true,
+          "otherCookieValuesLogged": false
+        },
+        "firstVisitState": {
+          "initial": {
+            "localStorageKeyAbsent": true,
+            "ackCookiePresent": false,
+            "at": 241.89999985694885
+          },
+          "localStorageKeyAbsent": true,
+          "ackCookiePresent": false,
+          "noticePresent": true,
+          "noticeVisible": true
+        }
+      },
+      "readyForInput": {
+        "phase": "ready-for-input",
+        "at": 4419.299999952316,
+        "visibility": "visible",
+        "hasFocus": true,
+        "readyState": "complete",
+        "fontStatus": "loaded",
+        "activeElement": "body"
+      },
+      "visibilityChanges": [
+        {
+          "phase": "visibilitychange",
+          "at": 26959.599999904633,
+          "visibility": "hidden",
+          "hasFocus": false,
+          "readyState": "complete",
+          "fontStatus": "loaded",
+          "activeElement": "textarea"
+        }
+      ],
+      "overflowPx": 0,
+      "observerErrors": [],
+      "errors": [],
+      "consoleErrors": [],
+      "businessApiWrites": [],
+      "slowest": {
+        "interactionId": 3664,
+        "durationMs": 680,
+        "action": "Acknowledge cookie notice",
+        "startMs": 5452.700000047684,
+        "endMs": 6132.700000047684,
+        "events": [
+          {
+            "name": "pointerdown",
+            "target": null,
+            "startMs": 5452.700000047684,
+            "durationMs": 680,
+            "inputDelayMs": 4,
+            "processingMs": 1,
+            "presentationRemainderMs": 675
+          },
+          {
+            "name": "pointerup",
+            "target": null,
+            "startMs": 5460.399999856949,
+            "durationMs": 672,
+            "inputDelayMs": 0.3000001907348633,
+            "processingMs": 0.39999985694885254,
+            "presentationRemainderMs": 671.2999999523163
+          },
+          {
+            "name": "click",
+            "target": null,
+            "startMs": 5460.399999856949,
+            "durationMs": 672,
+            "inputDelayMs": 1.4000000953674316,
+            "processingMs": 10.099999904632568,
+            "presentationRemainderMs": 660.5
+          }
+        ],
+        "laterActionStarts": [],
+        "overlappingOtherInteractionIds": [],
+        "overlappingLoaf": [],
+        "overlappingLongTasks": [],
+        "maxDurationEvent": "pointerdown"
+      },
+      "categoryGroups": []
+    }
+  ],
+  "causalInterpretation": {
+    "mobileMenuWorst": "Cookie acknowledgement: 1712ms official latency, 4.3ms click processing and about1683.9ms presentation remainder; no overlapping recorded LoAF/longtask. The span reaches the following focus action, so it cannot attribute 1.7s to cookie or CSS code.",
+    "desktopMenuWorst": "Search focus: 1992ms official latency, about0.4ms pointerdown processing and1987.9ms presentation remainder. It spans the later b/u typing actions. LoAF includes later input/Scheduler work; that does not establish the focus handler caused that work.",
+    "boundedProfileProposal": "One settled visible Curries category click, with CPU4 and current fixed224-item snapshot, traced with Profiler.start/stop plus main-thread trace around that action. Attribute sampled functions and forced-layout stacks before proposing a React/CSS change.",
+    "appCostEvidence": "Curries click processing measured294.8ms mobile and235.4ms desktop; home photo opening measured223.5ms click processing with a LoAF reporting166.4ms forced style/layout. These justify focused attribution, not an invented function-level cause."
+  },
+  "proofs": [
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cinematic-qa-20261111\\production\\measured-CdeRwqsXQrjmVYMGw28vU\\inp-full.json",
+      "bytes": 806139,
+      "sha256": "7d9dabe7f9f12e6ece5d1450101ab3a011036bbe86ccdada9bac12526094832b"
+    },
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cinematic-qa-20261111\\production\\measured-CdeRwqsXQrjmVYMGw28vU\\inp-host-load.json",
+      "bytes": 1474,
+      "sha256": "569ccc17662e33a56b5419f7a739dac64552d072ec1ffe2f7a6af3659f4fa412"
+    },
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cinematic-qa-20261111\\production\\measured-CdeRwqsXQrjmVYMGw28vU\\inp-source-checks.json",
+      "bytes": 525,
+      "sha256": "4cbfcb25b239014e2a702ee7c28975ea99b78cf9429e2845d7fb5b04dac2a1d6"
+    }
+  ]
+}

@@ -1,0 +1,419 @@
+{
+  "checkedAtUTC": "2026-11-12T00:06:02.359Z",
+  "scope": "Namedcurrentcatalog image investigation and boundedresponsive/priorityfix; not universalinstantloading",
+  "sourceImageFile": "app/components/ProductImage.tsx",
+  "sourceImageSha256": "718b353118c532d4e5e958674d106e25ec34a929b2375d0eb88ef6c1190de047",
+  "before": {
+    "buildId": "P0W6dAXCimN14bV35cqxQ",
+    "proof": "docs/product-image-loading-P0-control-2026-11-11.json",
+    "cases": [
+      {
+        "mode": "fast",
+        "viewport": {
+          "width": 390,
+          "height": 844,
+          "dpr": 2
+        },
+        "network": {
+          "throttle": "none"
+        },
+        "cpuThrottle": 1,
+        "photos": [
+          {
+            "name": "Butter Chicken",
+            "width": 1080,
+            "mime": "image/avif",
+            "cache": "MISS",
+            "requestHeaderMs": 983.4630000405014,
+            "requestFinishedMs": 982.3489999398589,
+            "declaredBodyBytes": null,
+            "decoded": true,
+            "fallback": null
+          },
+          {
+            "name": "Jalfrezi Chicken",
+            "width": 1080,
+            "mime": "image/avif",
+            "cache": "MISS",
+            "requestHeaderMs": 994.3520000670105,
+            "requestFinishedMs": 993.5490000061691,
+            "declaredBodyBytes": null,
+            "decoded": true,
+            "fallback": null
+          },
+          {
+            "name": "Jalfrezi Fish",
+            "width": 1080,
+            "mime": "image/avif",
+            "cache": "MISS",
+            "requestHeaderMs": 938.9150000642985,
+            "requestFinishedMs": 937.8319999668747,
+            "declaredBodyBytes": null,
+            "decoded": true,
+            "fallback": null
+          },
+          {
+            "name": "Jalfrezi Lamb",
+            "width": 1080,
+            "mime": "image/avif",
+            "cache": "MISS",
+            "requestHeaderMs": 538.8060000259429,
+            "requestFinishedMs": 528.7330001592636,
+            "declaredBodyBytes": null,
+            "decoded": true,
+            "fallback": null
+          },
+          {
+            "name": "Jalfrezi Prawn",
+            "width": 1080,
+            "mime": "image/avif",
+            "cache": "MISS",
+            "requestHeaderMs": 584.3569999560714,
+            "requestFinishedMs": 582.8579999506474,
+            "declaredBodyBytes": null,
+            "decoded": true,
+            "fallback": null
+          }
+        ],
+        "canceledRequestCount": 0,
+        "runtimeErrors": []
+      },
+      {
+        "mode": "slow4g",
+        "viewport": {
+          "width": 390,
+          "height": 844,
+          "dpr": 2
+        },
+        "network": {
+          "bytesPerSecond": 200000,
+          "latencyMs": 150
+        },
+        "cpuThrottle": 1,
+        "photos": [
+          {
+            "name": "Butter Chicken",
+            "width": 1080,
+            "mime": "image/avif",
+            "cache": "HIT",
+            "requestHeaderMs": 1104.336000047624,
+            "requestFinishedMs": 2375.6550000980496,
+            "declaredBodyBytes": null,
+            "decoded": true,
+            "fallback": null
+          },
+          {
+            "name": "Jalfrezi Chicken",
+            "width": 1080,
+            "mime": "image/avif",
+            "cache": "HIT",
+            "requestHeaderMs": 8039.337000111118,
+            "requestFinishedMs": 8764.443000080064,
+            "declaredBodyBytes": null,
+            "decoded": true,
+            "fallback": null
+          },
+          {
+            "name": "Jalfrezi Fish",
+            "width": 1080,
+            "mime": "image/avif",
+            "cache": "HIT",
+            "requestHeaderMs": 8114.276000065729,
+            "requestFinishedMs": 8824.60099994205,
+            "declaredBodyBytes": null,
+            "decoded": true,
+            "fallback": null
+          },
+          {
+            "name": "Jalfrezi Lamb",
+            "width": 1080,
+            "mime": "image/avif",
+            "cache": "HIT",
+            "requestHeaderMs": 182.58499982766807,
+            "requestFinishedMs": 1283.3030000329018,
+            "declaredBodyBytes": null,
+            "decoded": true,
+            "fallback": null
+          },
+          {
+            "name": "Jalfrezi Prawn",
+            "width": 1080,
+            "mime": "image/avif",
+            "cache": "HIT",
+            "requestHeaderMs": 182.22499988041818,
+            "requestFinishedMs": 1299.1539998911321,
+            "declaredBodyBytes": null,
+            "decoded": true,
+            "fallback": null
+          }
+        ],
+        "canceledRequestCount": 6,
+        "runtimeErrors": []
+      }
+    ]
+  },
+  "after": {
+    "buildId": "bLRxbJQgVTT0eU9T4bPW9",
+    "compiledSourceHashAtBuild": "107ce62610d17ed4875aaa52058b6fed8aaf1b1e889c53b8a05544d8ce3cfb80",
+    "proof": "docs/product-image-loading-final-blr-2026-11-11.json",
+    "cases": [
+      {
+        "mode": "fast",
+        "viewport": {
+          "width": 390,
+          "height": 844,
+          "dpr": 2
+        },
+        "network": {
+          "throttle": "none"
+        },
+        "cpuThrottle": 1,
+        "photos": [
+          {
+            "name": "Butter Chicken",
+            "width": 750,
+            "mime": "image/avif",
+            "cache": "MISS",
+            "requestHeaderMs": 635.4639998171479,
+            "requestFinishedMs": 603.3749999478459,
+            "declaredBodyBytes": 43120,
+            "decoded": true,
+            "fallback": null
+          },
+          {
+            "name": "Jalfrezi Chicken",
+            "width": 750,
+            "mime": "image/avif",
+            "cache": "MISS",
+            "requestHeaderMs": 1091.5709999389946,
+            "requestFinishedMs": 1090.9519998822361,
+            "declaredBodyBytes": 40870,
+            "decoded": true,
+            "fallback": null
+          },
+          {
+            "name": "Jalfrezi Fish",
+            "width": 750,
+            "mime": "image/avif",
+            "cache": "MISS",
+            "requestHeaderMs": 1094.8010000865906,
+            "requestFinishedMs": 1094.2059999797493,
+            "declaredBodyBytes": 44319,
+            "decoded": true,
+            "fallback": null
+          },
+          {
+            "name": "Jalfrezi Lamb",
+            "width": 750,
+            "mime": "image/avif",
+            "cache": "MISS",
+            "requestHeaderMs": 416.1639998201281,
+            "requestFinishedMs": 415.4419999103993,
+            "declaredBodyBytes": 42836,
+            "decoded": true,
+            "fallback": null
+          },
+          {
+            "name": "Jalfrezi Prawn",
+            "width": 750,
+            "mime": "image/avif",
+            "cache": "MISS",
+            "requestHeaderMs": 447.40900001488626,
+            "requestFinishedMs": 446.0200001485646,
+            "declaredBodyBytes": 43917,
+            "decoded": true,
+            "fallback": null
+          }
+        ],
+        "canceledRequestCount": 0,
+        "runtimeErrors": []
+      },
+      {
+        "mode": "slow4g",
+        "viewport": {
+          "width": 390,
+          "height": 844,
+          "dpr": 2
+        },
+        "network": {
+          "bytesPerSecond": 200000,
+          "latencyMs": 150
+        },
+        "cpuThrottle": 1,
+        "photos": [
+          {
+            "name": "Butter Chicken",
+            "width": 750,
+            "mime": "image/avif",
+            "cache": "HIT",
+            "requestHeaderMs": 216.44599991850555,
+            "requestFinishedMs": 1201.1919999495149,
+            "declaredBodyBytes": 43120,
+            "decoded": true,
+            "fallback": null
+          },
+          {
+            "name": "Jalfrezi Chicken",
+            "width": 750,
+            "mime": "image/avif",
+            "cache": "HIT",
+            "requestHeaderMs": 9339.42100009881,
+            "requestFinishedMs": 9815.781000070274,
+            "declaredBodyBytes": 40870,
+            "decoded": true,
+            "fallback": null
+          },
+          {
+            "name": "Jalfrezi Fish",
+            "width": 750,
+            "mime": "image/avif",
+            "cache": "HIT",
+            "requestHeaderMs": 9404.99800001271,
+            "requestFinishedMs": 9861.337000038475,
+            "declaredBodyBytes": 44319,
+            "decoded": true,
+            "fallback": null
+          },
+          {
+            "name": "Jalfrezi Lamb",
+            "width": 750,
+            "mime": "image/avif",
+            "cache": "HIT",
+            "requestHeaderMs": 178.905000211671,
+            "requestFinishedMs": 815.9210002049804,
+            "declaredBodyBytes": 42836,
+            "decoded": true,
+            "fallback": null
+          },
+          {
+            "name": "Jalfrezi Prawn",
+            "width": 750,
+            "mime": "image/avif",
+            "cache": "HIT",
+            "requestHeaderMs": 179.2099999729544,
+            "requestFinishedMs": 830.8149999938905,
+            "declaredBodyBytes": 43917,
+            "decoded": true,
+            "fallback": null
+          }
+        ],
+        "canceledRequestCount": 7,
+        "runtimeErrors": []
+      }
+    ]
+  },
+  "stableView": {
+    "proof": "docs/product-image-loading-stable-view-blr-2026-11-11.json",
+    "targets": [
+      {
+        "name": "Jalfrezi Chicken",
+        "visibleAtStart": true,
+        "sourceWidth": 750,
+        "cache": "HIT",
+        "promotions": [
+          {
+            "priority": "High",
+            "afterRequestMs": 28.565000044181943
+          }
+        ],
+        "preRequestClockGapMs": 28.885999927297235,
+        "headersAfterRequestClockMs": 179.85,
+        "loadAfterCategoryMs": [
+          1915.5999999046326
+        ]
+      },
+      {
+        "name": "Jalfrezi Fish",
+        "visibleAtStart": true,
+        "sourceWidth": 750,
+        "cache": "HIT",
+        "promotions": [
+          {
+            "priority": "High",
+            "afterRequestMs": 28.03199994377792
+          }
+        ],
+        "preRequestClockGapMs": 28.7430000025779,
+        "headersAfterRequestClockMs": 240.804,
+        "loadAfterCategoryMs": [
+          2071.2999999523163
+        ]
+      }
+    ],
+    "currentNarrowSourceHashes": {
+      "app/components/ProductImage.tsx": "718b353118c532d4e5e958674d106e25ec34a929b2375d0eb88ef6c1190de047",
+      "app/cinematic.css": "6aa2a85cb808198bf4ee12b6153e023f9479ecd45a57a267fdf4e2e9dace925d",
+      "app/order/order.module.css": "4a67086cb33e5202f4a387173c6a1f1a82f38fc4b575c47542560f44f5c1931e"
+    },
+    "wholeWorkingTreeUnchangedClaim": false
+  },
+  "bodyComparison": {
+    "proof": "docs/product-image-body-comparison-2026-11-11.json",
+    "uniquePhotoBeforeBytes": 338044,
+    "uniquePhotoAfterBytes": 215062,
+    "reductionPercent": 36.38,
+    "rows": [
+      {
+        "name": "Butter Chicken",
+        "beforeBytes": 68417,
+        "afterBytes": 43120,
+        "savedPercent": 36.97
+      },
+      {
+        "name": "Jalfrezi Chicken",
+        "beforeBytes": 64205,
+        "afterBytes": 40870,
+        "savedPercent": 36.34
+      },
+      {
+        "name": "Jalfrezi Fish",
+        "beforeBytes": 69189,
+        "afterBytes": 44319,
+        "savedPercent": 35.95
+      },
+      {
+        "name": "Jalfrezi Lamb",
+        "beforeBytes": 67107,
+        "afterBytes": 42836,
+        "savedPercent": 36.17
+      },
+      {
+        "name": "Jalfrezi Prawn",
+        "beforeBytes": 69126,
+        "afterBytes": 43917,
+        "savedPercent": 36.47
+      }
+    ]
+  },
+  "dprSelectionProof": "docs/product-image-dpr-selection-2026-11-11.json",
+  "findings": [
+    "AllfiveexactcatalogimagesexistanddecodedHTTP200inthecompletedcases; nosourcemissing/corruption/errorfallbackwasreproduced.",
+    "Blankstatesinthetestedflowarepending/native-lazyimages. CSSimageopacitywas1; no customobserver/decodevisibilitygateexists.",
+    "BelowviewportChicken/Fishslowrequestsqueued~9.2s beforetheHTTPtimingclock. PromptlybringingthemintoviewpromotedthemHighwithin~28ms; queuedgapfellto~29msandactualonLoadwas~1.92/2.07saftercategory. Thisdoesnotestablishaninternalbrowserbug.",
+    "Laterfastscrollbetweenfivecardsdidnotcausetheearlier~9swait:cancellation/reissuestepswerebefore0.8s, andP0Chicken/Fishfinishedbeforefirstscroll.",
+    "Correctedmobiledeclaredslotmatches356pxat390viewportand286pxat320; unchangedquality75candidatebodiesare35.95–36.97%smallerforthesefivevariants.",
+    "Noall40preload, customloadingobserver, extraimage-statefade, codec/qualityreduction orcatalogmutationwasintroduced. Existingstable4:3frameandnative-lazybehaviorremain."
+  ],
+  "limits": [
+    "Sharedhostfunctionalruns, notisolatedcausalperformancestudies. FastservercacheMISS/slowHITareexplicit; timingsmustnotbeattributedsolelytothesizechange.",
+    "Someclientcancels/reissuespersistandwerefollowedbysuccessfuldecodes; thisauditdoesnotprovetheirapplication/browserinternalcause.",
+    "Uniqueencodedphoto-bodyreductionisnottotalpagetrafficsavings; duplicate/canceledrequestsandotherassetsdiffer.",
+    "DPRfixtureusesnativeChromiumcandidatechoicewithallimageHTTPblocked; fullapploadtestsuse390px/DPR2.",
+    "Source/CSSdefaultdarkchangedinthecombinedbuild; screenshotappearanceisnotapixelidentitycomparison. q75/source/cropandneededdensityarepreserved, notaguaranteeofmathematicallylosslessencoding.",
+    "Laterheader/cartworktreeeditswereauthorized; stableviewguardbindsservedbLRandnarrowcurrentfiles,notanunchangedwholeworkingtree.",
+    "Nobusinesswrites,DBqueries,deployment,installationorGitoperationsoccurred."
+  ],
+  "finalMainDelivery": {
+    "proof": "docs/product-image-delivery-final-2026-11-12.json",
+    "buildId": "KfLjCFEAboBDf5nZnS0uh",
+    "origin": "http://127.0.0.1:3398",
+    "compiledSourceHash": "0b3971245151ab7ecade89e5641d50723042b4d22d09ba9647d5c877c416f6ef",
+    "checkedAtUTC": "2026-11-12T00:09:33.961Z",
+    "allFiveBodiesMatchBlr": true,
+    "totalBytes": 215062,
+    "sourceCarryPassed": true,
+    "publicMediaFilesUnchanged": 324,
+    "fixtureImageCarryPassed": true,
+    "scope": "Actualpromotedmainendpointbytebackstop; not new timing measurements."
+  }
+}

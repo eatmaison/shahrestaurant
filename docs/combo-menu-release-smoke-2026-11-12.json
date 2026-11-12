@@ -1,0 +1,186 @@
+{
+  "checkedAt": "2026-11-12T01:31:04.872Z",
+  "origin": "http://127.0.0.1:3698",
+  "buildId": "tEOo2rX98Fg45gqnRm-1s",
+  "sourceFingerprint": "a007fa551f112b4de9be3087238ce01fb3ee24ad4589607708952cc07228e4a4",
+  "sourceCount": 548,
+  "fiveAndReload": {
+    "wrap": "Chicken Tikka Masala Wrap",
+    "unitPrice": 9.99,
+    "qty": 5,
+    "menus": 5,
+    "subtotal": 69.95,
+    "drinks": [
+      {
+        "id": "p-ci1bmcrmmrqidyre",
+        "name": "Fuze Tea Green mango chamomile"
+      },
+      {
+        "id": "p-r84vzx09mrqifjm7",
+        "name": "Fuze Tea - Black sparkling lemon"
+      },
+      {
+        "id": "p-y0038cp3mrqiihy7",
+        "name": "Fuze Tea - Black peach hibiscus"
+      },
+      {
+        "id": "p-73rxt7cvmrqik7xt",
+        "name": "Fuze Tea - Green tea"
+      },
+      {
+        "id": "p-on6zjg4xmrs1rkvc",
+        "name": "Coca-Cola Regular"
+      }
+    ],
+    "reloadPreserved": true,
+    "evidence": "Actual release browser assertions completed and FIRST_CORE_PASS logged before source-binding-only expected-CSS-filename assertion failed. No functional rerun was performed."
+  },
+  "three": {
+    "cart": {
+      "chicken-tikka-wrap": 5
+    },
+    "upgrades": {
+      "chicken-tikka-wrap": [
+        "p-ci1bmcrmmrqidyre",
+        "p-r84vzx09mrqifjm7",
+        "p-y0038cp3mrqiihy7"
+      ]
+    },
+    "count": 3,
+    "drinks": [
+      {
+        "id": "p-ci1bmcrmmrqidyre",
+        "name": "Fuze Tea Green mango chamomile"
+      },
+      {
+        "id": "p-r84vzx09mrqifjm7",
+        "name": "Fuze Tea - Black sparkling lemon"
+      },
+      {
+        "id": "p-y0038cp3mrqiihy7",
+        "name": "Fuze Tea - Black peach hibiscus"
+      }
+    ],
+    "subtotal": 61.95,
+    "total": 61.95,
+    "summary": "Make it a full menu\n\n+€4 includes fries and one free soft drink.\n\nFull menus\n0 / 5\n1 / 5\n2 / 5\n3 / 5\n4 / 5\n5 / 5\n\n3 full menus · 2 without menu\n\nFree soft drink · Menu 1\nFuze Tea Green mango chamomile\nFuze Tea - Black sparkling lemon\nFuze Tea - Black peach hibiscus\nFuze Tea - Green tea\nCoca-Cola Regular\nCoca-Cola Zero\nSprite Zero\nFanta\nFanta Cassis\nFernandes Green\nFernandes Cherry\nFernandes Pineapple\nRedbull\nChaudfontaine Natuurlijk mineraalwater\nChaudfontaine Bruisend natuurlijk mineraalwater\nWhite Chocolate Matcha\nWatermelon Bubble Tea\nFree soft drink · Menu 2\nFuze Tea Green mango chamomile\nFuze Tea - Black sparkling lemon\nFuze Tea - Black peach hibiscus\nFuze Tea - Green tea\nCoca-Cola Regular\nCoca-Cola Zero\nSprite Zero\nFanta\nFanta Cassis\nFernandes Green\nFernandes Cherry\nFernandes Pineapple\nRedbull\nChaudfontaine Natuurlijk mineraalwater\nChaudfontaine Bruisend natuurlijk mineraalwater\nWhite Chocolate Matcha\nWatermelon Bubble Tea\nFree soft drink · Menu 3\nFuze Tea Green mango chamomile\nFuze Tea - Black sparkling lemon\nFuze Tea - Black peach hibiscus\nFuze Tea - Green tea\nCoca-Cola Regular\nCoca-Cola Zero\nSprite Zero\nFanta\nFanta Cassis\nFernandes Green\nFernandes Cherry\nFernandes Pineapple\nRedbull\nChaudfontaine Natuurlijk mineraalwater\nChaudfontaine Bruisend natuurlijk mineraalwater\nWhite Chocolate Matcha\nWatermelon Bubble Tea",
+    "dark": true
+  },
+  "themeAndCookie": {
+    "defaultDarkUnderOsLight": true,
+    "background": "rgb(224, 175, 89)",
+    "text": "rgb(13, 73, 82)",
+    "evidence": "Exact computed-style browser assertions passed in the same bounded smoke; screenshot saved before dismissing notice."
+  },
+  "changedFiles": [
+    "app/components/footer.module.css",
+    "app/components/footer.tsx"
+  ],
+  "sourceBindings": [
+    {
+      "file": "app/order/OrderExperience.tsx",
+      "control": "8aff77c80d072c5a982327278a66cdf43aa3a2811559cf467672f154c3e66318",
+      "release": "8aff77c80d072c5a982327278a66cdf43aa3a2811559cf467672f154c3e66318",
+      "live": "8aff77c80d072c5a982327278a66cdf43aa3a2811559cf467672f154c3e66318",
+      "same": true
+    },
+    {
+      "file": "app/order/order.module.css",
+      "control": "8e6e47d50f3232fe7d63e6013ef93be612ff4cc20e3535ee6a9809dd6920bc50",
+      "release": "8e6e47d50f3232fe7d63e6013ef93be612ff4cc20e3535ee6a9809dd6920bc50",
+      "live": "8e6e47d50f3232fe7d63e6013ef93be612ff4cc20e3535ee6a9809dd6920bc50",
+      "same": true
+    },
+    {
+      "file": "app/lib/menuUpgrades.ts",
+      "control": "5908096c69847a29da0a55764d31728a63390597759b192ef43b25c71ee0c6df",
+      "release": "5908096c69847a29da0a55764d31728a63390597759b192ef43b25c71ee0c6df",
+      "live": "5908096c69847a29da0a55764d31728a63390597759b192ef43b25c71ee0c6df",
+      "same": true
+    },
+    {
+      "file": "app/providers.tsx",
+      "control": "6ae0a14b52cede38e517541ea59ce16063a8ad5f8072a76601a85bb84c9b40dd",
+      "release": "6ae0a14b52cede38e517541ea59ce16063a8ad5f8072a76601a85bb84c9b40dd",
+      "live": "6ae0a14b52cede38e517541ea59ce16063a8ad5f8072a76601a85bb84c9b40dd",
+      "same": true
+    },
+    {
+      "file": "app/lib/types.ts",
+      "control": "213aa8adfc8ca991aa28a3306e8c29ff24a3121db9656c14d6f1ff1f6b72aa59",
+      "release": "213aa8adfc8ca991aa28a3306e8c29ff24a3121db9656c14d6f1ff1f6b72aa59",
+      "live": "213aa8adfc8ca991aa28a3306e8c29ff24a3121db9656c14d6f1ff1f6b72aa59",
+      "same": true
+    },
+    {
+      "file": "app/lib/serverStore.ts",
+      "control": "3db2c455b8085677bc70144bf504f4ca5eedaf33a9da8cba04de1286810784da",
+      "release": "3db2c455b8085677bc70144bf504f4ca5eedaf33a9da8cba04de1286810784da",
+      "live": "3db2c455b8085677bc70144bf504f4ca5eedaf33a9da8cba04de1286810784da",
+      "same": true
+    },
+    {
+      "file": "app/api/orders/route.ts",
+      "control": "1640a3b523c72fe5af2f49fe25330af5f9fefca74611549d6f07f3a0035192c0",
+      "release": "1640a3b523c72fe5af2f49fe25330af5f9fefca74611549d6f07f3a0035192c0",
+      "live": "1640a3b523c72fe5af2f49fe25330af5f9fefca74611549d6f07f3a0035192c0",
+      "same": true
+    },
+    {
+      "file": "app/layout.tsx",
+      "control": "57c717c6352c95e592f4f6093b3686c6bab9688b66c1261dd9951b52e5f49673",
+      "release": "57c717c6352c95e592f4f6093b3686c6bab9688b66c1261dd9951b52e5f49673",
+      "live": "57c717c6352c95e592f4f6093b3686c6bab9688b66c1261dd9951b52e5f49673",
+      "same": true
+    },
+    {
+      "file": "app/accessibility.css",
+      "control": "753b9668d4389e5be44b19bda858b5e27b7be97498cabea831898c8b11ef028b",
+      "release": "753b9668d4389e5be44b19bda858b5e27b7be97498cabea831898c8b11ef028b",
+      "live": "753b9668d4389e5be44b19bda858b5e27b7be97498cabea831898c8b11ef028b",
+      "same": true
+    },
+    {
+      "file": "app/components/CookieConsent.tsx",
+      "control": "c341fa826e2c8463b44175086330304d669d9914ba4dc8651fd9fd9848e8b6c4",
+      "release": "c341fa826e2c8463b44175086330304d669d9914ba4dc8651fd9fd9848e8b6c4",
+      "live": "c341fa826e2c8463b44175086330304d669d9914ba4dc8651fd9fd9848e8b6c4",
+      "same": true
+    },
+    {
+      "file": "app/globals.css",
+      "control": "7771b2dab4dc6124fb040d29d509bb01f136563ef662b18f69a70ade225fc269",
+      "release": "7771b2dab4dc6124fb040d29d509bb01f136563ef662b18f69a70ade225fc269",
+      "live": "7771b2dab4dc6124fb040d29d509bb01f136563ef662b18f69a70ade225fc269",
+      "same": true
+    }
+  ],
+  "carry": {
+    "report": "C:/Users/DaviiC/Downloads/shahrestaurant/shahrestaurant/docs/combo-menu-browser-verification-2026-11-12.json",
+    "sha256": "6a0ddfb10e18e3b6edd0c51153dc98e12fd97c892af773e42fe20dcc356d5dd6",
+    "scope": "Full ROl real cross-page/atomic React and12 width-theme matrix carried via exact unchanged control/release/live module hashes; not rerun here."
+  },
+  "writeSafety": {
+    "method": "Fetch Request-stage interceptor aborts all current-preview API methods except GET/HEAD",
+    "writeAttempts": 0,
+    "noOrdersSubmitted": true
+  },
+  "screens": [
+    "C:/Users/DaviiC/AppData/Local/Temp/shah-order-mobile-20261111/combos/release-default-dark-cookie-gold.png",
+    "C:/Users/DaviiC/AppData/Local/Temp/shah-order-mobile-20261111/combos/release-five-different-combo-drinks.png",
+    "C:/Users/DaviiC/AppData/Local/Temp/shah-order-mobile-20261111/combos/release-three-menus-two-plain.png"
+  ],
+  "harnessNote": "Only evidence expectation corrected from globals.css to footer.module.css; actual changed set contains exactly the two footer files.",
+  "cleanup": {
+    "cart": {},
+    "upgrades": {}
+  },
+  "visualInspection": {
+    "method": "Saved PNGs opened with view_image",
+    "viewed": [
+      "release-default-dark-cookie-gold.png",
+      "release-three-menus-two-plain.png"
+    ],
+    "findings": "Dark default and gold Accept button visually confirmed; final release shows3/5 menu count with2 plain and the preserved native cart layout."
+  }
+}

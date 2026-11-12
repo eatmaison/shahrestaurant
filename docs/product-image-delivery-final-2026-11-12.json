@@ -1,0 +1,252 @@
+{
+  "startedAtUTC": "2026-11-12T00:09:31.004Z",
+  "completedAtUTC": "2026-11-12T00:09:33.961Z",
+  "method": "Main3398identityGET then exactlyfiveapproved750/q75AVIFoptimizerGETs. Deliveredbodylength/SHAcomparedtoexistingbLRcacheproof. No browser, timingclaim, eviction, sourceedit orbusinesswrite.",
+  "identity": {
+    "base": "http://127.0.0.1:3398",
+    "buildId": "KfLjCFEAboBDf5nZnS0uh",
+    "httpStatus": 200,
+    "headerBuildId": "KfLjCFEAboBDf5nZnS0uh",
+    "htmlIncludesBuild": true,
+    "htmlSha256": "be482a7b98cc102ceed28e6734801939584df041d92601ec75dfbdfa876383a8",
+    "compiledSourceHash": "0b3971245151ab7ecade89e5641d50723042b4d22d09ba9647d5c877c416f6ef",
+    "compiledSourceInputCount": 530,
+    "sourceMetadataScope": "Both530-inputsource-manifestaggregatehashesvalidatedoffline;actualpromotedruntimeidentityverifiedviaexactheaderandHTML."
+  },
+  "fixture": {
+    "snapshotSha256": "66eda306b74cf90dc15ad018cc3064212349151810d8df2e098a06d6e8588892",
+    "capturedAt": "2026-11-11T14:02:15.463Z",
+    "products": 224,
+    "brands": 2
+  },
+  "comparisonProof": "docs/product-image-body-comparison-2026-11-11.json",
+  "rows": [
+    {
+      "name": "Butter Chicken",
+      "sourceId": "1f11a2f3acf6be6486cfb9faa275095e9b7a5f14a8972e89e73e20123bc6e5b4",
+      "requestedWidth": 750,
+      "quality": 75,
+      "accept": "image/avif",
+      "status": 200,
+      "mime": "image/avif",
+      "cacheStatus": "MISS",
+      "declaredBodyBytes": 43120,
+      "bytes": 43120,
+      "sha256": "8abd20ae4fb976f1bafbf785ade771e20a8a4565e7bc0ecacbbb565fc3770dbc",
+      "expectedBytes": 43120,
+      "expectedSha256": "8abd20ae4fb976f1bafbf785ade771e20a8a4565e7bc0ecacbbb565fc3770dbc",
+      "bodyMatchesBlr": true,
+      "valid": true
+    },
+    {
+      "name": "Jalfrezi Chicken",
+      "sourceId": "fa4616a47a33e92638addb33e40502a61ac5da62342a9ef38d90c44943bc9a67",
+      "requestedWidth": 750,
+      "quality": 75,
+      "accept": "image/avif",
+      "status": 200,
+      "mime": "image/avif",
+      "cacheStatus": "MISS",
+      "declaredBodyBytes": 40870,
+      "bytes": 40870,
+      "sha256": "78b76f1313e67ceff84ab20f06049470a0684bb9751f42ad94ac4e266e1de408",
+      "expectedBytes": 40870,
+      "expectedSha256": "78b76f1313e67ceff84ab20f06049470a0684bb9751f42ad94ac4e266e1de408",
+      "bodyMatchesBlr": true,
+      "valid": true
+    },
+    {
+      "name": "Jalfrezi Fish",
+      "sourceId": "5ffee0ae02174a9ab621c43de9fbf5fda3227006fb1acc64f18e11ba3c24427b",
+      "requestedWidth": 750,
+      "quality": 75,
+      "accept": "image/avif",
+      "status": 200,
+      "mime": "image/avif",
+      "cacheStatus": "MISS",
+      "declaredBodyBytes": 44319,
+      "bytes": 44319,
+      "sha256": "6ef9ad9a57c2be1b6421f042835e9c6b1d1659556fdfe5aebd89223462aa2a85",
+      "expectedBytes": 44319,
+      "expectedSha256": "6ef9ad9a57c2be1b6421f042835e9c6b1d1659556fdfe5aebd89223462aa2a85",
+      "bodyMatchesBlr": true,
+      "valid": true
+    },
+    {
+      "name": "Jalfrezi Lamb",
+      "sourceId": "87e4ab2fa854f759486f439dce2bd1261055919d0d981017c84fb6e2dd1a74f0",
+      "requestedWidth": 750,
+      "quality": 75,
+      "accept": "image/avif",
+      "status": 200,
+      "mime": "image/avif",
+      "cacheStatus": "MISS",
+      "declaredBodyBytes": 42836,
+      "bytes": 42836,
+      "sha256": "65c9069be4e4fb471bc52a36e26f475a44178b9d8265bfb73b19ecca9ff01fef",
+      "expectedBytes": 42836,
+      "expectedSha256": "65c9069be4e4fb471bc52a36e26f475a44178b9d8265bfb73b19ecca9ff01fef",
+      "bodyMatchesBlr": true,
+      "valid": true
+    },
+    {
+      "name": "Jalfrezi Prawn",
+      "sourceId": "85fa96fa0af666b3d5a29652f420b5ea842b30577c4cfbf92bca5276cb9d32fb",
+      "requestedWidth": 750,
+      "quality": 75,
+      "accept": "image/avif",
+      "status": 200,
+      "mime": "image/avif",
+      "cacheStatus": "MISS",
+      "declaredBodyBytes": 43917,
+      "bytes": 43917,
+      "sha256": "e6b3982673ec796bb07e10e4d2ab83e411f0d96c250e4ea11fb150f2a96622df",
+      "expectedBytes": 43917,
+      "expectedSha256": "e6b3982673ec796bb07e10e4d2ab83e411f0d96c250e4ea11fb150f2a96622df",
+      "bodyMatchesBlr": true,
+      "valid": true
+    }
+  ],
+  "validation": {
+    "identityPassed": true,
+    "photos": 5,
+    "allHttp200": true,
+    "allAvif": true,
+    "allBodiesMatchBlr": true,
+    "totalBytes": 215062,
+    "expectedTotalBytes": 215062,
+    "totalMatches": true,
+    "httpRequests": 6,
+    "sourceCarryPassed": true,
+    "mediaCarryPassed": true,
+    "fixtureImageCarryPassed": true
+  },
+  "sourceCarry": {
+    "status": "verified-offline",
+    "checkedAtUTC": "2026-11-12T00:12:28.630Z",
+    "manifests": {
+      "before": {
+        "file": ".next-review-capcut-final-20261111.source.json",
+        "sha256": "107ce62610d17ed4875aaa52058b6fed8aaf1b1e889c53b8a05544d8ce3cfb80",
+        "files": 530,
+        "fileSha256": "35dd2bc017f4bea8215e4ec8f4311e1b33457e3568d806fb873f66dbe60e33a5"
+      },
+      "final": {
+        "file": ".next-review-shah-final-20261111.source.json",
+        "sha256": "0b3971245151ab7ecade89e5641d50723042b4d22d09ba9647d5c877c416f6ef",
+        "files": 530,
+        "fileSha256": "bdf1908f2effe3d238647c047512b1662c6be2b46bf901d86d3d01f3d1257685"
+      }
+    },
+    "narrowFiles": [
+      {
+        "file": "app/components/ProductImage.tsx",
+        "beforeSha256": "718b353118c532d4e5e958674d106e25ec34a929b2375d0eb88ef6c1190de047",
+        "finalSha256": "718b353118c532d4e5e958674d106e25ec34a929b2375d0eb88ef6c1190de047",
+        "currentSha256": "718b353118c532d4e5e958674d106e25ec34a929b2375d0eb88ef6c1190de047",
+        "unchangedAcrossBuilds": true,
+        "currentMatchesFinal": true
+      },
+      {
+        "file": "app/cinematic.css",
+        "beforeSha256": "6aa2a85cb808198bf4ee12b6153e023f9479ecd45a57a267fdf4e2e9dace925d",
+        "finalSha256": "6aa2a85cb808198bf4ee12b6153e023f9479ecd45a57a267fdf4e2e9dace925d",
+        "currentSha256": "6aa2a85cb808198bf4ee12b6153e023f9479ecd45a57a267fdf4e2e9dace925d",
+        "unchangedAcrossBuilds": true,
+        "currentMatchesFinal": true
+      },
+      {
+        "file": "next.config.ts",
+        "beforeSha256": "ec2fe3e773bf476b806b52b9060208fcd5cc02f5ede56bbca7880750b9417ac3",
+        "finalSha256": "ec2fe3e773bf476b806b52b9060208fcd5cc02f5ede56bbca7880750b9417ac3",
+        "currentSha256": "ec2fe3e773bf476b806b52b9060208fcd5cc02f5ede56bbca7880750b9417ac3",
+        "unchangedAcrossBuilds": true,
+        "currentMatchesFinal": true
+      },
+      {
+        "file": "package.json",
+        "beforeSha256": "6434ddff3b43c9d398e938347d3d58e4ae01278706536d6de4d27e0144000169",
+        "finalSha256": "6434ddff3b43c9d398e938347d3d58e4ae01278706536d6de4d27e0144000169",
+        "currentSha256": "6434ddff3b43c9d398e938347d3d58e4ae01278706536d6de4d27e0144000169",
+        "unchangedAcrossBuilds": true,
+        "currentMatchesFinal": true
+      },
+      {
+        "file": "package-lock.json",
+        "beforeSha256": "52499d65c2e0410669ff987638ef6478dfc1fd8108347b9564bf84e383c68676",
+        "finalSha256": "52499d65c2e0410669ff987638ef6478dfc1fd8108347b9564bf84e383c68676",
+        "currentSha256": "52499d65c2e0410669ff987638ef6478dfc1fd8108347b9564bf84e383c68676",
+        "unchangedAcrossBuilds": true,
+        "currentMatchesFinal": true
+      }
+    ],
+    "publicMedia": {
+      "files": 324,
+      "allRecordedPathsAndHashesUnchanged": true,
+      "beforeAggregateSha256": "0a724db99184b3c03f57c2932fafcd814fd2193dd5ca3f58ea8afd7dec6666a0",
+      "finalAggregateSha256": "0a724db99184b3c03f57c2932fafcd814fd2193dd5ca3f58ea8afd7dec6666a0",
+      "scope": "Build-manifest identity; not a new full-media HTTP audit."
+    },
+    "fixture": {
+      "snapshotSha256": "66eda306b74cf90dc15ad018cc3064212349151810d8df2e098a06d6e8588892",
+      "matchesRecordedBlr": true,
+      "productCount": 224,
+      "brandCount": 2,
+      "fiveImageRefsAndBodyHashesUnchanged": true,
+      "photos": [
+        {
+          "name": "Butter Chicken",
+          "beforeSourceIds": [
+            "1f11a2f3acf6be6486cfb9faa275095e9b7a5f14a8972e89e73e20123bc6e5b4"
+          ],
+          "finalSourceId": "1f11a2f3acf6be6486cfb9faa275095e9b7a5f14a8972e89e73e20123bc6e5b4",
+          "bodyShaMatches": true
+        },
+        {
+          "name": "Jalfrezi Chicken",
+          "beforeSourceIds": [
+            "fa4616a47a33e92638addb33e40502a61ac5da62342a9ef38d90c44943bc9a67"
+          ],
+          "finalSourceId": "fa4616a47a33e92638addb33e40502a61ac5da62342a9ef38d90c44943bc9a67",
+          "bodyShaMatches": true
+        },
+        {
+          "name": "Jalfrezi Fish",
+          "beforeSourceIds": [
+            "5ffee0ae02174a9ab621c43de9fbf5fda3227006fb1acc64f18e11ba3c24427b"
+          ],
+          "finalSourceId": "5ffee0ae02174a9ab621c43de9fbf5fda3227006fb1acc64f18e11ba3c24427b",
+          "bodyShaMatches": true
+        },
+        {
+          "name": "Jalfrezi Lamb",
+          "beforeSourceIds": [
+            "87e4ab2fa854f759486f439dce2bd1261055919d0d981017c84fb6e2dd1a74f0"
+          ],
+          "finalSourceId": "87e4ab2fa854f759486f439dce2bd1261055919d0d981017c84fb6e2dd1a74f0",
+          "bodyShaMatches": true
+        },
+        {
+          "name": "Jalfrezi Prawn",
+          "beforeSourceIds": [
+            "85fa96fa0af666b3d5a29652f420b5ea842b30577c4cfbf92bca5276cb9d32fb"
+          ],
+          "finalSourceId": "85fa96fa0af666b3d5a29652f420b5ea842b30577c4cfbf92bca5276cb9d32fb",
+          "bodyShaMatches": true
+        }
+      ]
+    },
+    "orderExperience": {
+      "beforeSha256": "ec22834d5aa46c617432cddc055f0f69b67bdc373089ce8618b66847c319177e",
+      "finalSha256": "2ee8b49fe7b7a03343f232e5a62aa2c37ab7abfff525eebad39c625a263983c1",
+      "unchanged": false,
+      "scope": "Known cart/sidebar source changes; this file is not claimed byte-identical. Final browser photo checks belong to Root/review separate evidence."
+    },
+    "wholeWorkingTreeUnchangedClaim": false
+  },
+  "limits": [
+    "SixauthorizedGETs only; these can warm optimizer cache. No new loading-time, browser or universal performance claim.",
+    "Main five photo body hashes/lengths match bLR exactly; earlier latency/DPR tests carry only for the unchanged image pipeline and stated conditions.",
+    "OrderExperience and other approved layout/cart changes are not claimed byte-identical; full final browser acceptance remains separate."
+  ]
+}

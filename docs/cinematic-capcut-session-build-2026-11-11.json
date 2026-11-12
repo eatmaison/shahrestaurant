@@ -1,0 +1,21 @@
+{
+  "dist": ".next-review-capcut-session-20261111",
+  "startedAtUTC": "2026-11-11T23:12:22.193Z",
+  "before": {
+    "atUTC": "2026-11-11T23:12:22.695Z",
+    "sourceSha256": "50dc47b44958495088ace0cde911ad36684a249b333ab6ac3683078b27b0c93b",
+    "inputs": 530,
+    "unchanged": true
+  },
+  "productionPublishing": false,
+  "liveDatabaseAccess": false,
+  "exitCode": 0,
+  "finishedAtUTC": "2026-11-11T23:13:38.024Z",
+  "after": {
+    "atUTC": "2026-11-11T23:13:38.516Z",
+    "sourceSha256": "50dc47b44958495088ace0cde911ad36684a249b333ab6ac3683078b27b0c93b",
+    "inputs": 530,
+    "unchanged": true
+  },
+  "buildId": "n5lZlmRftteZljWg3KVl-"
+}

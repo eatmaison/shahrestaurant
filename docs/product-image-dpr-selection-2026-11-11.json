@@ -1,0 +1,170 @@
+{
+  "checkedAtUTC": "2026-11-11T23:53:52.861Z",
+  "method": "Actual Chromium native currentSrc/queued-request selection using installedNextgetImageProps srcsets in isolatedDOMfixture. ALLimage requests intentionally intercepted/aborted beforeHTTP; no optimizerwarming/bytes/productionfailureclaim. Fixture contains the same device-width viewport meta as the app. A fixture-only equivalent Next loader supplies the configured approved-host optimizer URL because standalone getImageProps does not load next.config; this does not modify app host validation. Actual390/DPR2route requests independently confirm1080before/750after.",
+  "oldSizes": "(min-width: 1400px) 266px, (min-width: 1024px) calc(32vw - 182px), (min-width: 701px) calc(50vw - 34px), 512px",
+  "newSizes": "(min-width: 1400px) 266px, (min-width: 1024px) calc(32vw - 182px), (min-width: 701px) calc(50vw - 34px), calc(100vw - 34px)",
+  "cases": [
+    {
+      "viewport": 320,
+      "dpr": 1,
+      "old": {
+        "selectedWidth": 640,
+        "renderedWidth": 286,
+        "sizes": "(min-width: 1400px) 266px, (min-width: 1024px) calc(32vw - 182px), (min-width: 701px) calc(50vw - 34px), 512px"
+      },
+      "new": {
+        "selectedWidth": 384,
+        "renderedWidth": 286,
+        "sizes": "(min-width: 1400px) 266px, (min-width: 1024px) calc(32vw - 182px), (min-width: 701px) calc(50vw - 34px), calc(100vw - 34px)"
+      },
+      "attemptedRequests": [
+        {
+          "width": 640,
+          "quality": 75
+        },
+        {
+          "width": 384,
+          "quality": 75
+        }
+      ],
+      "optimizerRequestsDelivered": 0,
+      "requiredPhysicalWidth": 286,
+      "correctedCandidateMeetsDensity": true
+    },
+    {
+      "viewport": 320,
+      "dpr": 2,
+      "old": {
+        "selectedWidth": 1080,
+        "renderedWidth": 286,
+        "sizes": "(min-width: 1400px) 266px, (min-width: 1024px) calc(32vw - 182px), (min-width: 701px) calc(50vw - 34px), 512px"
+      },
+      "new": {
+        "selectedWidth": 640,
+        "renderedWidth": 286,
+        "sizes": "(min-width: 1400px) 266px, (min-width: 1024px) calc(32vw - 182px), (min-width: 701px) calc(50vw - 34px), calc(100vw - 34px)"
+      },
+      "attemptedRequests": [
+        {
+          "width": 1080,
+          "quality": 75
+        },
+        {
+          "width": 640,
+          "quality": 75
+        }
+      ],
+      "optimizerRequestsDelivered": 0,
+      "requiredPhysicalWidth": 572,
+      "correctedCandidateMeetsDensity": true
+    },
+    {
+      "viewport": 320,
+      "dpr": 3,
+      "old": {
+        "selectedWidth": 1920,
+        "renderedWidth": 286,
+        "sizes": "(min-width: 1400px) 266px, (min-width: 1024px) calc(32vw - 182px), (min-width: 701px) calc(50vw - 34px), 512px"
+      },
+      "new": {
+        "selectedWidth": 1080,
+        "renderedWidth": 286,
+        "sizes": "(min-width: 1400px) 266px, (min-width: 1024px) calc(32vw - 182px), (min-width: 701px) calc(50vw - 34px), calc(100vw - 34px)"
+      },
+      "attemptedRequests": [
+        {
+          "width": 1920,
+          "quality": 75
+        },
+        {
+          "width": 1080,
+          "quality": 75
+        }
+      ],
+      "optimizerRequestsDelivered": 0,
+      "requiredPhysicalWidth": 858,
+      "correctedCandidateMeetsDensity": true
+    },
+    {
+      "viewport": 390,
+      "dpr": 1,
+      "old": {
+        "selectedWidth": 640,
+        "renderedWidth": 356,
+        "sizes": "(min-width: 1400px) 266px, (min-width: 1024px) calc(32vw - 182px), (min-width: 701px) calc(50vw - 34px), 512px"
+      },
+      "new": {
+        "selectedWidth": 384,
+        "renderedWidth": 356,
+        "sizes": "(min-width: 1400px) 266px, (min-width: 1024px) calc(32vw - 182px), (min-width: 701px) calc(50vw - 34px), calc(100vw - 34px)"
+      },
+      "attemptedRequests": [
+        {
+          "width": 640,
+          "quality": 75
+        },
+        {
+          "width": 384,
+          "quality": 75
+        }
+      ],
+      "optimizerRequestsDelivered": 0,
+      "requiredPhysicalWidth": 356,
+      "correctedCandidateMeetsDensity": true
+    },
+    {
+      "viewport": 390,
+      "dpr": 2,
+      "old": {
+        "selectedWidth": 1080,
+        "renderedWidth": 356,
+        "sizes": "(min-width: 1400px) 266px, (min-width: 1024px) calc(32vw - 182px), (min-width: 701px) calc(50vw - 34px), 512px"
+      },
+      "new": {
+        "selectedWidth": 750,
+        "renderedWidth": 356,
+        "sizes": "(min-width: 1400px) 266px, (min-width: 1024px) calc(32vw - 182px), (min-width: 701px) calc(50vw - 34px), calc(100vw - 34px)"
+      },
+      "attemptedRequests": [
+        {
+          "width": 1080,
+          "quality": 75
+        },
+        {
+          "width": 750,
+          "quality": 75
+        }
+      ],
+      "optimizerRequestsDelivered": 0,
+      "requiredPhysicalWidth": 712,
+      "correctedCandidateMeetsDensity": true
+    },
+    {
+      "viewport": 390,
+      "dpr": 3,
+      "old": {
+        "selectedWidth": 1920,
+        "renderedWidth": 356,
+        "sizes": "(min-width: 1400px) 266px, (min-width: 1024px) calc(32vw - 182px), (min-width: 701px) calc(50vw - 34px), 512px"
+      },
+      "new": {
+        "selectedWidth": 1080,
+        "renderedWidth": 356,
+        "sizes": "(min-width: 1400px) 266px, (min-width: 1024px) calc(32vw - 182px), (min-width: 701px) calc(50vw - 34px), calc(100vw - 34px)"
+      },
+      "attemptedRequests": [
+        {
+          "width": 1920,
+          "quality": 75
+        },
+        {
+          "width": 1080,
+          "quality": 75
+        }
+      ],
+      "optimizerRequestsDelivered": 0,
+      "requiredPhysicalWidth": 1068,
+      "correctedCandidateMeetsDensity": true
+    }
+  ]
+}

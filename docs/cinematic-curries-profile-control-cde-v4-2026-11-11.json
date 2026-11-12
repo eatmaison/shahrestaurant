@@ -1,0 +1,631 @@
+{
+  "evidenceScope": "One bounded diagnostic profile, not a replacement/repeat of formal INP or a field metric",
+  "classification": "INTERIM Cde/original-v4; one bounded causal diagnostic after formal capture, not final edited-video acceptance",
+  "buildId": "CdeRwqsXQrjmVYMGw28vU",
+  "sourceFingerprint": "46c7f6e9bdd56ccb8fccc939c8b2a407cf6ccc53de90c6b8180797179b67a47f",
+  "sourceInputs": 514,
+  "origin": "http://127.0.0.1:3588",
+  "startedAtUTC": "2026-11-11T22:18:39.829Z",
+  "finishedAtUTC": "2026-11-11T22:18:58.843Z",
+  "settings": {
+    "width": 390,
+    "height": 844,
+    "mobile": true,
+    "dpr": 1,
+    "cpu4": true,
+    "latencyMs": 150,
+    "downloadBytesPerSecond": 200000,
+    "cpuProfilerSamplingIntervalUs": 1000,
+    "oneTrustedTouchCategoryClick": true,
+    "postClickWaitMs": 2200
+  },
+  "setup": {
+    "search": "",
+    "targetPressed": null,
+    "text": "Curries",
+    "visibleDishNames": [
+      "Chicken Soup€8.35Chicken soup with herbs and mild \nspices. Add",
+      "Golden Lentil Essence€6.95Smooth lentil soup with aromatic \nIndian spices. Add",
+      "Chicken Soup€8.35Chicken soup with herbs and mild \nspices. Add",
+      "Golden Lentil Essence€6.95Smooth lentil soup with aromatic \nIndian spices. Add"
+    ],
+    "visibility": "visible",
+    "hasFocus": true
+  },
+  "point": {
+    "x": 330.015625,
+    "y": 474.421875,
+    "rect": {
+      "x": 293.515625,
+      "y": 450.421875,
+      "width": 73,
+      "height": 48,
+      "top": 450.421875,
+      "right": 366.515625,
+      "bottom": 498.421875,
+      "left": 293.515625
+    }
+  },
+  "sourceChecks": [
+    {
+      "enabled": true,
+      "verifiedInputs": 514,
+      "allRecordedBytesMatch": true,
+      "kind": "initial-full-hash",
+      "sourceFingerprint": "46c7f6e9bdd56ccb8fccc939c8b2a407cf6ccc53de90c6b8180797179b67a47f"
+    },
+    {
+      "enabled": true,
+      "verifiedInputs": 514,
+      "allRecordedBytesMatch": true,
+      "kind": "stat-watch-plus-changed-byte-hash",
+      "sourceFingerprint": "46c7f6e9bdd56ccb8fccc939c8b2a407cf6ccc53de90c6b8180797179b67a47f"
+    }
+  ],
+  "documentGuard": {
+    "expectedBuild": "CdeRwqsXQrjmVYMGw28vU",
+    "headerBuild": "CdeRwqsXQrjmVYMGw28vU",
+    "url": "http://127.0.0.1:3588/en/menu",
+    "status": 200,
+    "sourceCheck": {
+      "enabled": true,
+      "verifiedInputs": 514,
+      "allRecordedBytesMatch": true,
+      "kind": "stat-watch-plus-changed-byte-hash",
+      "sourceFingerprint": "46c7f6e9bdd56ccb8fccc939c8b2a407cf6ccc53de90c6b8180797179b67a47f"
+    },
+    "firstVisitProtocol": "first-visit-ack-absent-v1",
+    "firstVisitReset": {
+      "startedAtUTC": "2026-11-11T22:18:44.580Z",
+      "completedAtUTC": "2026-11-11T22:18:44.587Z",
+      "ackCookieName": "shah_notice_ack_v1",
+      "ackCookiesRemoved": 1,
+      "ackCookieCountBeforeNavigation": 0,
+      "localStorageKey": "tm.cookieConsent",
+      "localStorageClearScope": "http://127.0.0.1:3588",
+      "localStorageClearCompleted": true,
+      "onlyKnownAckCookiesDeleted": true,
+      "otherCookieValuesLogged": false
+    },
+    "firstVisitState": {
+      "initial": {
+        "localStorageKeyAbsent": true,
+        "ackCookiePresent": false,
+        "at": 230.59999990463257
+      },
+      "localStorageKeyAbsent": true,
+      "ackCookiePresent": false,
+      "noticePresent": true,
+      "noticeVisible": true
+    }
+  },
+  "actionMarkers": {
+    "before": {
+      "phase": "profile-Curries-before",
+      "at": 9238,
+      "visibility": "visible",
+      "hasFocus": true,
+      "readyState": "complete",
+      "fontStatus": "loaded",
+      "activeElement": "body"
+    },
+    "after": {
+      "phase": "profile-Curries-after",
+      "at": 11911.299999952316,
+      "visibility": "visible",
+      "hasFocus": true,
+      "readyState": "complete",
+      "fontStatus": "loaded",
+      "activeElement": "body"
+    }
+  },
+  "observedCategoryInteraction": {
+    "interactionId": 3853,
+    "durationMs": 512,
+    "events": [
+      {
+        "name": "pointerdown",
+        "entryType": "event",
+        "startTime": 9239,
+        "duration": 24,
+        "processingStart": 9252.299999952316,
+        "processingEnd": 9252.700000047684,
+        "interactionId": 3853,
+        "target": "span",
+        "inputDelayMs": 13.299999952316284,
+        "processingMs": 0.40000009536743164,
+        "presentationRemainderMs": 10.299999952316284
+      },
+      {
+        "name": "pointerup",
+        "entryType": "event",
+        "startTime": 9249.900000095367,
+        "duration": 512,
+        "processingStart": 9266.599999904633,
+        "processingEnd": 9266.599999904633,
+        "interactionId": 3853,
+        "target": "span",
+        "inputDelayMs": 16.699999809265137,
+        "processingMs": 0,
+        "presentationRemainderMs": 495.30000019073486
+      },
+      {
+        "name": "click",
+        "entryType": "event",
+        "startTime": 9249.900000095367,
+        "duration": 512,
+        "processingStart": 9286.599999904633,
+        "processingEnd": 9540.299999952316,
+        "interactionId": 3853,
+        "target": "span",
+        "inputDelayMs": 36.69999980926514,
+        "processingMs": 253.70000004768372,
+        "presentationRemainderMs": 221.60000014305115
+      }
+    ],
+    "laterActionStarts": [],
+    "overlappingOtherInteractionIds": [],
+    "loaf": [
+      {
+        "startTime": 9265.400000095367,
+        "duration": 459.19999980926514,
+        "blockingDuration": 398.5,
+        "renderStart": 9710.099999904633,
+        "styleAndLayoutStart": 9724.099999904633,
+        "firstUIEventTimestamp": 9249.900000095367,
+        "scripts": [
+          {
+            "duration": 252.69999980926514,
+            "executionStart": 9287.400000095367,
+            "invoker": "#document.onclick",
+            "invokerType": "event-listener",
+            "sourceURL": "http://127.0.0.1:3588/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+            "sourceFunctionName": "fO",
+            "sourceCharPosition": 190203,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "windowAttribution": "self"
+          },
+          {
+            "duration": 5.200000047683716,
+            "executionStart": 9718.799999952316,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceURL": "http://127.0.0.1:3588/_next/static/chunks/app/layout-78fbf49dffe15c1d.js",
+            "sourceFunctionName": "F",
+            "sourceCharPosition": 2898,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "windowAttribution": "self"
+          }
+        ]
+      }
+    ]
+  },
+  "traceHandler": {
+    "durationMs": 253.69,
+    "threadCpuMs": 63.531,
+    "pid": 29008,
+    "tid": 44600,
+    "ts": 1122931513610,
+    "noLayoutOrStyleRecalcInsideHandler": true,
+    "overlappingTypeDurationsMs": {
+      "Layout": 0,
+      "UpdateLayoutTree": 0,
+      "ParseHTML": 4.038,
+      "MinorGC": 5.05,
+      "MajorGC": 0,
+      "FunctionCall": 243.308
+    }
+  },
+  "sampledProfile": {
+    "weightedSampledMs": 253.872,
+    "topSelfFrames": [
+      {
+        "id": 54,
+        "ms": 35.582,
+        "functionName": "setAttribute",
+        "scriptId": "0",
+        "url": "",
+        "lineNumber": -1,
+        "columnNumber": -1
+      },
+      {
+        "id": 56,
+        "ms": 28.779,
+        "functionName": "setAttribute",
+        "scriptId": "0",
+        "url": "",
+        "lineNumber": -1,
+        "columnNumber": -1
+      },
+      {
+        "id": 2,
+        "ms": 12.186,
+        "functionName": "(program)",
+        "scriptId": "0",
+        "url": "",
+        "lineNumber": -1,
+        "columnNumber": -1
+      },
+      {
+        "id": 71,
+        "ms": 12.03,
+        "functionName": "appendChild",
+        "scriptId": "0",
+        "url": "",
+        "lineNumber": -1,
+        "columnNumber": -1
+      },
+      {
+        "id": 51,
+        "ms": 11.927,
+        "functionName": "co",
+        "scriptId": "42",
+        "url": "http://127.0.0.1:3588/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+        "lineNumber": 0,
+        "columnNumber": 159253
+      },
+      {
+        "id": 67,
+        "ms": 10.957,
+        "functionName": "setAttribute",
+        "scriptId": "0",
+        "url": "",
+        "lineNumber": -1,
+        "columnNumber": -1
+      },
+      {
+        "id": 440,
+        "ms": 9.513,
+        "functionName": "iC",
+        "scriptId": "42",
+        "url": "http://127.0.0.1:3588/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+        "lineNumber": 0,
+        "columnNumber": 93914
+      },
+      {
+        "id": 49,
+        "ms": 8.97,
+        "functionName": "",
+        "scriptId": "42",
+        "url": "http://127.0.0.1:3588/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+        "lineNumber": 0,
+        "columnNumber": 131089
+      },
+      {
+        "id": 69,
+        "ms": 8.598,
+        "functionName": "nC",
+        "scriptId": "42",
+        "url": "http://127.0.0.1:3588/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+        "lineNumber": 0,
+        "columnNumber": 15463
+      },
+      {
+        "id": 63,
+        "ms": 8.403,
+        "functionName": "createElement",
+        "scriptId": "0",
+        "url": "",
+        "lineNumber": -1,
+        "columnNumber": -1
+      },
+      {
+        "id": 72,
+        "ms": 7.043,
+        "functionName": "(garbage collector)",
+        "scriptId": "0",
+        "url": "",
+        "lineNumber": -1,
+        "columnNumber": -1
+      },
+      {
+        "id": 70,
+        "ms": 5.685,
+        "functionName": "d",
+        "scriptId": "42",
+        "url": "http://127.0.0.1:3588/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+        "lineNumber": 0,
+        "columnNumber": 44784
+      },
+      {
+        "id": 439,
+        "ms": 5.489,
+        "functionName": "",
+        "scriptId": "51",
+        "url": "http://127.0.0.1:3588/_next/static/chunks/5772-1c5f02be2ece8826.js",
+        "lineNumber": 2,
+        "columnNumber": 4969
+      },
+      {
+        "id": 260,
+        "ms": 4.966,
+        "functionName": "removeChild",
+        "scriptId": "0",
+        "url": "",
+        "lineNumber": -1,
+        "columnNumber": -1
+      },
+      {
+        "id": 245,
+        "ms": 4.795,
+        "functionName": "co",
+        "scriptId": "42",
+        "url": "http://127.0.0.1:3588/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+        "lineNumber": 0,
+        "columnNumber": 159253
+      },
+      {
+        "id": 45,
+        "ms": 4.062,
+        "functionName": "i",
+        "scriptId": "42",
+        "url": "http://127.0.0.1:3588/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+        "lineNumber": 0,
+        "columnNumber": 46291
+      },
+      {
+        "id": 66,
+        "ms": 3.973,
+        "functionName": "URL",
+        "scriptId": "0",
+        "url": "",
+        "lineNumber": -1,
+        "columnNumber": -1
+      },
+      {
+        "id": 64,
+        "ms": 3.972,
+        "functionName": "createTextNode",
+        "scriptId": "0",
+        "url": "",
+        "lineNumber": -1,
+        "columnNumber": -1
+      },
+      {
+        "id": 250,
+        "ms": 3.662,
+        "functionName": "uu",
+        "scriptId": "42",
+        "url": "http://127.0.0.1:3588/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+        "lineNumber": 0,
+        "columnNumber": 108461
+      },
+      {
+        "id": 73,
+        "ms": 3.549,
+        "functionName": "createElementNS",
+        "scriptId": "0",
+        "url": "",
+        "lineNumber": -1,
+        "columnNumber": -1
+      }
+    ],
+    "namedInclusiveMappings": [
+      {
+        "name": "React synchronous root render",
+        "file": "4bd1b696-c2f6e0877b6c10aa.js",
+        "line": 0,
+        "column": 128135,
+        "minified": "sm",
+        "official": "renderRootSync",
+        "inclusiveSampledMs": 192.437,
+        "sourceContext": "(e,n,t){var r=uz;uz|=2;var l=sf(),a=sd();(uP!==e||u_!==n)&&(uK=null,su(e,n)),n=!1;var o=uA;e:for(;;)try{if(0!==uL&&null!==uT){var i=uT,u=uO;switch(uL){case 8:si(),o=6;break e;case "
+      },
+      {
+        "name": "React complete host work",
+        "file": "4bd1b696-c2f6e0877b6c10aa.js",
+        "line": 0,
+        "column": 131089,
+        "minified": "anonymous",
+        "official": "completeWork",
+        "inclusiveSampledMs": 147.77,
+        "sourceContext": "(e,n,t){var r=n.pendingProps;switch(rH(n),n.tag){case 16:case 15:case 0:case 11:case 7:case 8:case 12:case 9:case 14:case 1:return iy(n),null;case 3:return t=n.stateNode,r=null,nul"
+      },
+      {
+        "name": "Initial DOM element properties",
+        "file": "4bd1b696-c2f6e0877b6c10aa.js",
+        "line": 0,
+        "column": 164669,
+        "minified": "cu",
+        "official": "setInitialProperties",
+        "inclusiveSampledMs": 110.846,
+        "sourceContext": "(e,n,t){switch(n){case\"div\":case\"span\":case\"svg\":case\"path\":case\"a\":case\"g\":case\"p\":case\"li\":break;case\"img\":s2(\"error\",e),s2(\"load\",e);var r,l=!1,a=!1;for(r in t)if(t.hasOwnProper"
+      },
+      {
+        "name": "Individual DOM property writes",
+        "file": "4bd1b696-c2f6e0877b6c10aa.js",
+        "line": 0,
+        "column": 159253,
+        "minified": "co",
+        "official": "setProp",
+        "inclusiveSampledMs": 105.811,
+        "sourceContext": "(e,n,t,r,l,a){switch(t){case\"children\":if(\"string\"==typeof r)\"body\"===n||\"textarea\"===n&&\"\"===r||nx(e,r);else{if(\"number\"!=typeof r&&\"bigint\"!=typeof r)return;\"body\"!==n&&nx(e,\"\"+r"
+      },
+      {
+        "name": "React root commit",
+        "file": "4bd1b696-c2f6e0877b6c10aa.js",
+        "line": 0,
+        "column": 138701,
+        "minified": "sk",
+        "official": "commitRoot",
+        "inclusiveSampledMs": 41.611,
+        "sourceContext": "(e,n,t,r,l,a,o,i,s,c,f,d){e.cancelPendingCommit=null;do sz();while(0!==uX);if(0!=(6&uz))throw Error(u(327));if(null!==n){if(n===e.current)throw Error(u(177));e===uP&&(uT=uP=null,u_"
+      },
+      {
+        "name": "OrderExperience",
+        "file": "7460-ce8b86851d1387a0.js",
+        "line": 0,
+        "column": 12218,
+        "minified": "F",
+        "official": null,
+        "inclusiveSampledMs": 6.812,
+        "sourceContext": "({searchParams:e,initialCatalog:t=null}){let r,x=(0,j.use)(e),u=(0,j.useRef)(null);(0,$.Bq)(u,\"menu\");let{t:g,lang:v}=(0,h.uU)(),{products:_,brands:P,cart:L,addToCart:O,removeFromC"
+      },
+      {
+        "name": "NextImage forwardRef",
+        "file": "5772-1c5f02be2ece8826.js",
+        "line": 2,
+        "column": 5710,
+        "minified": "anonymous",
+        "official": null,
+        "inclusiveSampledMs": 8.501,
+        "sourceContext": "(e,t)=>{let r=(0,o.useContext)(f.RouterContext),i=(0,o.useContext)(c.ImageConfigContext),n=(0,o.useMemo)(()=>{let e=m||i||d.imageConfigDefault,t=[...e.deviceSizes,...e.imageSizes]."
+      }
+    ],
+    "nativeSelfSumsMs": {
+      "setAttribute": 75.31800000000001,
+      "appendChild": 15.578999999999999,
+      "createElement": 8.403
+    }
+  },
+  "afterHandlerWithin2point2s": {
+    "layout": {
+      "count": 6,
+      "sumMs": 105.097,
+      "longest": [
+        {
+          "offsetFromClickStartMs": 327.537,
+          "durationMs": 78.421,
+          "threadCpuMs": 19.554,
+          "data": {
+            "dirtyObjects": 1192,
+            "frame": "705B843AFFC86950D0DE56D63A2548D1",
+            "partialLayout": false,
+            "sampleTraceId": 7611189864891344,
+            "totalObjects": 1509
+          }
+        },
+        {
+          "offsetFromClickStartMs": 616.997,
+          "durationMs": 18.727,
+          "threadCpuMs": 4.62,
+          "data": {
+            "dirtyObjects": 436,
+            "frame": "705B843AFFC86950D0DE56D63A2548D1",
+            "partialLayout": false,
+            "sampleTraceId": 7611189864891533,
+            "totalObjects": 1509
+          }
+        },
+        {
+          "offsetFromClickStartMs": 860.722,
+          "durationMs": 2.432,
+          "threadCpuMs": 0.608,
+          "data": {
+            "dirtyObjects": 23,
+            "frame": "705B843AFFC86950D0DE56D63A2548D1",
+            "partialLayout": false,
+            "sampleTraceId": 7611189864892073,
+            "totalObjects": 1509
+          }
+        }
+      ]
+    },
+    "styleRecalc": {
+      "count": 109,
+      "sumMs": 185.591,
+      "longest": [
+        {
+          "offsetFromClickStartMs": 253.697,
+          "durationMs": 72.368,
+          "threadCpuMs": 18.262,
+          "data": {
+            "frame": "705B843AFFC86950D0DE56D63A2548D1",
+            "sampleTraceId": 7611189864891350
+          }
+        },
+        {
+          "offsetFromClickStartMs": 598.939,
+          "durationMs": 18.047,
+          "threadCpuMs": 4.567,
+          "data": {
+            "frame": "705B843AFFC86950D0DE56D63A2548D1",
+            "sampleTraceId": 7611189864891574
+          }
+        },
+        {
+          "offsetFromClickStartMs": 681.07,
+          "durationMs": 4.028,
+          "threadCpuMs": 0.993,
+          "data": {
+            "frame": "705B843AFFC86950D0DE56D63A2548D1",
+            "sampleTraceId": 7611189864891999
+          }
+        }
+      ]
+    },
+    "parseHTML": {
+      "count": 0,
+      "sumMs": 0,
+      "longest": []
+    }
+  },
+  "conclusions": [
+    "The category click reproduced about254ms of processing under CPU4. Most sampled time is synchronous React reconciliation and host DOM creation/property writes; OrderExperience component execution is a small sampled portion.",
+    "There is no Layout/UpdateLayoutTree event inside the measured click dispatch. A forced-layout explanation for this category handler is not supported.",
+    "The category change replaces the initially visible soup result cards with a larger category. DOM creation work is a concrete candidate for reducing synchronous work; this profile alone does not prescribe a safe feature-preserving implementation.",
+    "This action is distinct from the formal mobile-cookie1712ms and desktop-search-focus1992ms cases, whose large presentation remainders do not identify handler CPU cost."
+  ],
+  "limitations": [
+    "One bounded instrumented action; no repeated-run performance claim. Profiler and tracing introduce overhead.",
+    "CPU4 is emulated; sampled durations are weighted wall intervals, not exclusive physical CPU time. Trace thread CPU is reported separately.",
+    "Inclusive frame totals overlap and must not be summed. Native self totals are sample weights, not invocation counts.",
+    "Minified names mapped using emitted source contexts and installed official ReactDOM production source; no source maps were emitted.",
+    "This captures one settled category tap, not a full menu latency/field-INP distribution. No new optimization or application edit was made.",
+    "Shared-host CPU snapshots exclude neither all GPU/I/O work nor possible parent CapCut browser work."
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "businessApiWrites": [],
+  "proofs": [
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cinematic-qa-20261111\\production\\profile-curries-CdeRwqsXQrjmVYMGw28vU\\capture.json",
+      "bytes": 35231,
+      "sha256": "ff3f48f03b9a43345664fb8c4e3e680edecd3f86f2ecc701f5832442f3e0d55c"
+    },
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cinematic-qa-20261111\\production\\profile-curries-CdeRwqsXQrjmVYMGw28vU\\curries.cpuprofile",
+      "bytes": 147336,
+      "sha256": "3c4d19af90dc5cc3777d36a0746e90017a25c6902fee858f16f3f951478f6366"
+    },
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cinematic-qa-20261111\\production\\profile-curries-CdeRwqsXQrjmVYMGw28vU\\curries.trace.json",
+      "bytes": 2047069,
+      "sha256": "abb470c1834311e961363083caae7d4b5a9e0f7f9cecb06cf8eba6eabd79206e"
+    },
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cinematic-qa-20261111\\production\\profile-curries-CdeRwqsXQrjmVYMGw28vU\\profile-analysis-initial.json",
+      "bytes": 18160,
+      "sha256": "d0d05a528c856430708cedc07bd14ec48bac71eed873b094a81642f052ea8a4a"
+    },
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cinematic-qa-20261111\\production\\profile-curries-CdeRwqsXQrjmVYMGw28vU\\host.json",
+      "bytes": 1474,
+      "sha256": "ba1b4b47119615c8db24acfcc16dc92beed9ffb341c80166f6f5a2b7eb413d3a"
+    }
+  ],
+  "sourceProofs": [
+    {
+      "path": "C:\\Users\\DaviiC\\Downloads\\shahrestaurant\\shahrestaurant\\.next-review-autoplay-skip-20261111\\static\\chunks\\4bd1b696-c2f6e0877b6c10aa.js",
+      "bytes": 199865,
+      "sha256": "c44812d818aed0a5034941164dcad78b5bb7d8a00daed7a33efe3ebc6ccfb492"
+    },
+    {
+      "path": "C:\\Users\\DaviiC\\Downloads\\shahrestaurant\\shahrestaurant\\.next-review-autoplay-skip-20261111\\static\\chunks\\7460-ce8b86851d1387a0.js",
+      "bytes": 76392,
+      "sha256": "11b177cc750f553b9a540e9f9b1c0a0fe756ed04515c0dd8a2cbc6cace1780fc"
+    },
+    {
+      "path": "C:\\Users\\DaviiC\\Downloads\\shahrestaurant\\shahrestaurant\\.next-review-autoplay-skip-20261111\\static\\chunks\\5772-1c5f02be2ece8826.js",
+      "bytes": 14691,
+      "sha256": "a9dcc02aff485c2455a08ab3beb18c897925b846b1ca9e3e59f03fee392ee733"
+    }
+  ],
+  "officialSource": {
+    "path": "C:\\Users\\DaviiC\\Downloads\\shahrestaurant\\shahrestaurant\\node_modules\\next\\dist\\compiled\\react-dom\\cjs\\react-dom-client.production.js",
+    "bytes": 612836,
+    "sha256": "f0fce6a185ca88905e72eb887fcd6d605555744363cb921ba44d9eabb36e012e"
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "classification": "INTERIM corrected-skip original-v4 control. The newly approved edited CapCut desktop-v3/mobile-v2 media are not represented by these measurements.",
+  "buildId": "CdeRwqsXQrjmVYMGw28vU",
+  "dist": ".next-review-autoplay-skip-20261111",
+  "sourceFingerprint": "46c7f6e9bdd56ccb8fccc939c8b2a407cf6ccc53de90c6b8180797179b67a47f",
+  "sourceInputs": 514,
+  "origin": "http://127.0.0.1:3588",
+  "capturesFinished": true,
+  "noTimedJobRemains": true,
+  "firstVisitProtocol": "first-visit-ack-absent-v1",
+  "scope": {
+    "publicRoutes": 24,
+    "lighthouseSamples": 48,
+    "officialWebVitalsInpSamples": 6,
+    "boundedCurriesCpuProfiles": 1,
+    "newFilmMeasurements": 0
+  },
+  "results": {
+    "lighthouse": {
+      "performanceFailures": 7,
+      "mobilePerformanceFailures": 6,
+      "desktopPerformanceFailures": 1,
+      "nativeEligibleLcpFailures": 6,
+      "unknownHomeLcp": 4,
+      "tbtFailures": 8,
+      "allAccessibility100": true,
+      "allBestPractices100": true,
+      "allSeo100": true,
+      "allClsZero": true
+    },
+    "inpMs": {
+      "mobile": {
+        "home": 352,
+        "menu": 1712,
+        "reservations": 376
+      },
+      "desktop": {
+        "home": 664,
+        "menu": 1992,
+        "reservations": 680
+      }
+    },
+    "inpFailures": 6
+  },
+  "documents": [
+    {
+      "path": "C:\\Users\\DaviiC\\Downloads\\shahrestaurant\\shahrestaurant\\docs\\cinematic-performance-control-cde-v4-2026-11-11.json",
+      "bytes": 63742,
+      "sha256": "4fc9e3e9657dcf25085be9f360a2e47b8148c8ccf593dc454c63e1a2bf081198"
+    },
+    {
+      "path": "C:\\Users\\DaviiC\\Downloads\\shahrestaurant\\shahrestaurant\\docs\\cinematic-inp-control-cde-v4-2026-11-11.json",
+      "bytes": 52164,
+      "sha256": "cac1949aff71861e68b94c7df4deb1d632fe5fcd99e85ecfc8d207818432e5c4"
+    },
+    {
+      "path": "C:\\Users\\DaviiC\\Downloads\\shahrestaurant\\shahrestaurant\\docs\\cinematic-curries-profile-control-cde-v4-2026-11-11.json",
+      "bytes": 21398,
+      "sha256": "155b1e811b54861b8146b03e4519be6d0d0fc3b31c84bacc8c5a9243b7cce02d"
+    }
+  ],
+  "rawDirectories": [
+    "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cinematic-qa-20261111\\production\\interim-cde-v4-CdeRwqsXQrjmVYMGw28vU",
+    "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cinematic-qa-20261111\\production\\measured-CdeRwqsXQrjmVYMGw28vU",
+    "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cinematic-qa-20261111\\production\\profile-curries-CdeRwqsXQrjmVYMGw28vU"
+  ],
+  "outlierProof": {
+    "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cinematic-route-qa-20261111\\outlier-analysis-Cde.json",
+    "bytes": 16212,
+    "sha256": "174427f9029537e481ff57db2361eac7f4678122c0511406b7b281670ea5af34"
+  },
+  "limitations": [
+    "One bounded local pass per route/device; no field CWV, physical-device or final edited-video acceptance claim.",
+    "One startup preflight ECONNRESET before any LH row; exact process/health/source verified and one bounded resume retained. No app cause inferred.",
+    "Dutch reservation mobile P39/TBT11663ms is retained without selective rerun. Its long wall-time commits have little thread CPU; exact cause remains unproven.",
+    "Home trace has no eligible native LCP candidate in four samples; UKM values remain diagnostic and the LCP gate is null.",
+    "Shared host CPU samples do not certify GPU/I/O/browser isolation. New media encoding started only after formal capture and the separately approved profile ended.",
+    "No business API writes, form submissions, deployment or application edits were performed by this QA agent.",
+    "All source identity claims describe capture-time guards. Current workspace and future compiled media may differ."
+  ]
+}

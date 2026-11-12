@@ -1,0 +1,1008 @@
+{
+  "checkedAt": "2026-11-12T00:29:46.337Z",
+  "pass": true,
+  "origin": "http://127.0.0.1:3678",
+  "buildId": "VKLjgu-1RUsSY6wilFOyC",
+  "buildDirectory": ".next-review-shah-refined-20261112",
+  "buildSourceHash": "27f2e054c8ffcc0786c2d420666823e826478e13ce7d060f67976c5e7b8c20b3",
+  "buildSourceFileCount": 530,
+  "fix": {
+    "path": "app/accessibility.css",
+    "line": 12,
+    "css": ".dark [data-cookie-notice] p a { color: var(--shah-brand-gold); }",
+    "sha256": "753b9668d4389e5be44b19bda858b5e27b7be97498cabea831898c8b11ef028b",
+    "scope": "Dark cookie-notice paragraph anchor; covers normal, hover and focus without changing light theme or other links",
+    "postCssSyntax": "PASS; exact source difference verified as one added line"
+  },
+  "actualCompiledChecks": {
+    "darkCookieLink": {
+      "checkedAt": "2026-11-12T00:28:19.070Z",
+      "origin": "http://127.0.0.1:3678",
+      "buildId": "VKLjgu-1RUsSY6wilFOyC",
+      "freshIsolatedContext": true,
+      "skip": {
+        "text": "Film overslaan en naar inhoud",
+        "href": "#intro",
+        "activation": "native Enter key on focused actual skip link"
+      },
+      "default": {
+        "text": "Privacybeleid",
+        "selector": ".dark [data-cookie-notice] p a",
+        "color": "rgb(224, 175, 89)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "14px",
+        "fontWeight": "600",
+        "textDecoration": "underline",
+        "outline": "rgb(224, 175, 89) none 3px",
+        "rect": {
+          "x": 250.5,
+          "y": 719,
+          "width": 85.25,
+          "height": 48,
+          "top": 719,
+          "right": 335.75,
+          "bottom": 767,
+          "left": 250.5
+        },
+        "chain": [
+          {
+            "tag": "A",
+            "class": "font-semibold text-emerald-600 underline underline-offset-2 hover:text-emerald-500 dark:text-emerald-400",
+            "color": "rgb(224, 175, 89)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1",
+            "filter": "none",
+            "backdropFilter": "none",
+            "mixBlendMode": "normal"
+          },
+          {
+            "tag": "P",
+            "class": "flex-1 text-sm leading-6 text-slate-600 dark:text-slate-300",
+            "color": "rgb(184, 203, 198)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1",
+            "filter": "none",
+            "backdropFilter": "none",
+            "mixBlendMode": "normal"
+          },
+          {
+            "tag": "DIV",
+            "class": "card-lux mx-auto flex max-w-3xl flex-col gap-4 rounded-2xl p-5 shadow-2xl sm:flex-row sm:items-center",
+            "color": "rgb(247, 242, 231)",
+            "background": "rgb(10, 53, 64)",
+            "opacity": "1",
+            "filter": "none",
+            "backdropFilter": "none",
+            "mixBlendMode": "normal"
+          },
+          {
+            "tag": "DIV",
+            "class": "fixed inset-x-0 bottom-0 z-50 p-4 sm:p-6",
+            "color": "rgb(247, 242, 231)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1",
+            "filter": "none",
+            "backdropFilter": "none",
+            "mixBlendMode": "normal"
+          },
+          {
+            "tag": "BODY",
+            "class": "flex min-h-full flex-col",
+            "color": "rgb(247, 242, 231)",
+            "background": "rgb(6, 43, 50)",
+            "opacity": "1",
+            "filter": "none",
+            "backdropFilter": "none",
+            "mixBlendMode": "normal"
+          },
+          {
+            "tag": "HTML",
+            "class": "dark h-full antialiased",
+            "color": "rgb(0, 0, 0)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1",
+            "filter": "none",
+            "backdropFilter": "none",
+            "mixBlendMode": "normal"
+          }
+        ],
+        "dark": true,
+        "filmView": "content",
+        "scrollY": 0,
+        "href": "http://127.0.0.1:3678/#intro",
+        "effectiveBackground": [
+          10,
+          53,
+          64,
+          1
+        ],
+        "effectiveForeground": [
+          224,
+          175,
+          89,
+          1
+        ],
+        "contrast": 6.544186456550035,
+        "ancestorOpacityProduct": 1,
+        "normalTextThreshold": 4.5,
+        "pass": true
+      },
+      "hover": {
+        "text": "Privacybeleid",
+        "selector": ".dark [data-cookie-notice] p a",
+        "color": "rgb(224, 175, 89)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "14px",
+        "fontWeight": "600",
+        "textDecoration": "underline",
+        "outline": "rgb(224, 175, 89) none 3px",
+        "rect": {
+          "x": 250.5,
+          "y": 719,
+          "width": 85.25,
+          "height": 48,
+          "top": 719,
+          "right": 335.75,
+          "bottom": 767,
+          "left": 250.5
+        },
+        "chain": [
+          {
+            "tag": "A",
+            "class": "font-semibold text-emerald-600 underline underline-offset-2 hover:text-emerald-500 dark:text-emerald-400",
+            "color": "rgb(224, 175, 89)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1",
+            "filter": "none",
+            "backdropFilter": "none",
+            "mixBlendMode": "normal"
+          },
+          {
+            "tag": "P",
+            "class": "flex-1 text-sm leading-6 text-slate-600 dark:text-slate-300",
+            "color": "rgb(184, 203, 198)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1",
+            "filter": "none",
+            "backdropFilter": "none",
+            "mixBlendMode": "normal"
+          },
+          {
+            "tag": "DIV",
+            "class": "card-lux mx-auto flex max-w-3xl flex-col gap-4 rounded-2xl p-5 shadow-2xl sm:flex-row sm:items-center",
+            "color": "rgb(247, 242, 231)",
+            "background": "rgb(10, 53, 64)",
+            "opacity": "1",
+            "filter": "none",
+            "backdropFilter": "none",
+            "mixBlendMode": "normal"
+          },
+          {
+            "tag": "DIV",
+            "class": "fixed inset-x-0 bottom-0 z-50 p-4 sm:p-6",
+            "color": "rgb(247, 242, 231)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1",
+            "filter": "none",
+            "backdropFilter": "none",
+            "mixBlendMode": "normal"
+          },
+          {
+            "tag": "BODY",
+            "class": "flex min-h-full flex-col",
+            "color": "rgb(247, 242, 231)",
+            "background": "rgb(6, 43, 50)",
+            "opacity": "1",
+            "filter": "none",
+            "backdropFilter": "none",
+            "mixBlendMode": "normal"
+          },
+          {
+            "tag": "HTML",
+            "class": "dark h-full antialiased",
+            "color": "rgb(0, 0, 0)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1",
+            "filter": "none",
+            "backdropFilter": "none",
+            "mixBlendMode": "normal"
+          }
+        ],
+        "dark": true,
+        "filmView": "content",
+        "scrollY": 0,
+        "href": "http://127.0.0.1:3678/#intro",
+        "effectiveBackground": [
+          10,
+          53,
+          64,
+          1
+        ],
+        "effectiveForeground": [
+          224,
+          175,
+          89,
+          1
+        ],
+        "contrast": 6.544186456550035,
+        "ancestorOpacityProduct": 1,
+        "normalTextThreshold": 4.5,
+        "pass": true
+      },
+      "focus": {
+        "text": "Privacybeleid",
+        "selector": ".dark [data-cookie-notice] p a",
+        "color": "rgb(224, 175, 89)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "14px",
+        "fontWeight": "600",
+        "textDecoration": "underline",
+        "outline": "rgb(224, 175, 89) solid 3px",
+        "rect": {
+          "x": 250.5,
+          "y": 719,
+          "width": 85.25,
+          "height": 48,
+          "top": 719,
+          "right": 335.75,
+          "bottom": 767,
+          "left": 250.5
+        },
+        "chain": [
+          {
+            "tag": "A",
+            "class": "font-semibold text-emerald-600 underline underline-offset-2 hover:text-emerald-500 dark:text-emerald-400",
+            "color": "rgb(224, 175, 89)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1",
+            "filter": "none",
+            "backdropFilter": "none",
+            "mixBlendMode": "normal"
+          },
+          {
+            "tag": "P",
+            "class": "flex-1 text-sm leading-6 text-slate-600 dark:text-slate-300",
+            "color": "rgb(184, 203, 198)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1",
+            "filter": "none",
+            "backdropFilter": "none",
+            "mixBlendMode": "normal"
+          },
+          {
+            "tag": "DIV",
+            "class": "card-lux mx-auto flex max-w-3xl flex-col gap-4 rounded-2xl p-5 shadow-2xl sm:flex-row sm:items-center",
+            "color": "rgb(247, 242, 231)",
+            "background": "rgb(10, 53, 64)",
+            "opacity": "1",
+            "filter": "none",
+            "backdropFilter": "none",
+            "mixBlendMode": "normal"
+          },
+          {
+            "tag": "DIV",
+            "class": "fixed inset-x-0 bottom-0 z-50 p-4 sm:p-6",
+            "color": "rgb(247, 242, 231)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1",
+            "filter": "none",
+            "backdropFilter": "none",
+            "mixBlendMode": "normal"
+          },
+          {
+            "tag": "BODY",
+            "class": "flex min-h-full flex-col",
+            "color": "rgb(247, 242, 231)",
+            "background": "rgb(6, 43, 50)",
+            "opacity": "1",
+            "filter": "none",
+            "backdropFilter": "none",
+            "mixBlendMode": "normal"
+          },
+          {
+            "tag": "HTML",
+            "class": "dark h-full antialiased",
+            "color": "rgb(0, 0, 0)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1",
+            "filter": "none",
+            "backdropFilter": "none",
+            "mixBlendMode": "normal"
+          }
+        ],
+        "dark": true,
+        "filmView": "content",
+        "scrollY": 0,
+        "href": "http://127.0.0.1:3678/#intro",
+        "effectiveBackground": [
+          10,
+          53,
+          64,
+          1
+        ],
+        "effectiveForeground": [
+          224,
+          175,
+          89,
+          1
+        ],
+        "contrast": 6.544186456550035,
+        "ancestorOpacityProduct": 1,
+        "normalTextThreshold": 4.5,
+        "pass": true
+      },
+      "screenshot": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-theme-default-20261111\\dark-aa-cookie-pass-390.png",
+      "noSourceEdits": true
+    },
+    "lightCookieLink": {
+      "checkedAt": "2026-11-12T00:28:41.356Z",
+      "origin": "http://127.0.0.1:3678",
+      "buildId": "VKLjgu-1RUsSY6wilFOyC",
+      "freshIsolatedContext": true,
+      "skip": {
+        "text": "Film overslaan en naar inhoud",
+        "href": "#intro",
+        "activation": "native Enter key on focused actual skip link"
+      },
+      "default": {
+        "text": "Privacybeleid",
+        "selector": "[data-cookie-notice] p a",
+        "color": "rgb(11, 62, 71)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "14px",
+        "fontWeight": "600",
+        "textDecoration": "underline",
+        "outline": "rgb(11, 62, 71) none 3px",
+        "rect": {
+          "x": 250.5,
+          "y": 719,
+          "width": 85.25,
+          "height": 48,
+          "top": 719,
+          "right": 335.75,
+          "bottom": 767,
+          "left": 250.5
+        },
+        "chain": [
+          {
+            "tag": "A",
+            "class": "font-semibold text-emerald-600 underline underline-offset-2 hover:text-emerald-500 dark:text-emerald-400",
+            "color": "rgb(11, 62, 71)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1",
+            "filter": "none",
+            "backdropFilter": "none",
+            "mixBlendMode": "normal"
+          },
+          {
+            "tag": "P",
+            "class": "flex-1 text-sm leading-6 text-slate-600 dark:text-slate-300",
+            "color": "rgb(70, 101, 104)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1",
+            "filter": "none",
+            "backdropFilter": "none",
+            "mixBlendMode": "normal"
+          },
+          {
+            "tag": "DIV",
+            "class": "card-lux mx-auto flex max-w-3xl flex-col gap-4 rounded-2xl p-5 shadow-2xl sm:flex-row sm:items-center",
+            "color": "rgb(13, 73, 82)",
+            "background": "rgb(255, 253, 250)",
+            "opacity": "1",
+            "filter": "none",
+            "backdropFilter": "none",
+            "mixBlendMode": "normal"
+          },
+          {
+            "tag": "DIV",
+            "class": "fixed inset-x-0 bottom-0 z-50 p-4 sm:p-6",
+            "color": "rgb(13, 73, 82)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1",
+            "filter": "none",
+            "backdropFilter": "none",
+            "mixBlendMode": "normal"
+          },
+          {
+            "tag": "BODY",
+            "class": "flex min-h-full flex-col",
+            "color": "rgb(13, 73, 82)",
+            "background": "rgb(251, 247, 239)",
+            "opacity": "1",
+            "filter": "none",
+            "backdropFilter": "none",
+            "mixBlendMode": "normal"
+          },
+          {
+            "tag": "HTML",
+            "class": "h-full antialiased",
+            "color": "rgb(0, 0, 0)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1",
+            "filter": "none",
+            "backdropFilter": "none",
+            "mixBlendMode": "normal"
+          }
+        ],
+        "dark": false,
+        "filmView": "content",
+        "scrollY": 0,
+        "href": "http://127.0.0.1:3678/#intro",
+        "effectiveBackground": [
+          255,
+          253,
+          250,
+          1
+        ],
+        "effectiveForeground": [
+          11,
+          62,
+          71,
+          1
+        ],
+        "contrast": 11.527020377666208,
+        "ancestorOpacityProduct": 1,
+        "normalTextThreshold": 4.5,
+        "pass": true
+      },
+      "hover": {
+        "text": "Privacybeleid",
+        "selector": "[data-cookie-notice] p a",
+        "color": "rgb(13, 73, 82)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "14px",
+        "fontWeight": "600",
+        "textDecoration": "underline",
+        "outline": "rgb(13, 73, 82) none 3px",
+        "rect": {
+          "x": 250.5,
+          "y": 719,
+          "width": 85.25,
+          "height": 48,
+          "top": 719,
+          "right": 335.75,
+          "bottom": 767,
+          "left": 250.5
+        },
+        "chain": [
+          {
+            "tag": "A",
+            "class": "font-semibold text-emerald-600 underline underline-offset-2 hover:text-emerald-500 dark:text-emerald-400",
+            "color": "rgb(13, 73, 82)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1",
+            "filter": "none",
+            "backdropFilter": "none",
+            "mixBlendMode": "normal"
+          },
+          {
+            "tag": "P",
+            "class": "flex-1 text-sm leading-6 text-slate-600 dark:text-slate-300",
+            "color": "rgb(70, 101, 104)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1",
+            "filter": "none",
+            "backdropFilter": "none",
+            "mixBlendMode": "normal"
+          },
+          {
+            "tag": "DIV",
+            "class": "card-lux mx-auto flex max-w-3xl flex-col gap-4 rounded-2xl p-5 shadow-2xl sm:flex-row sm:items-center",
+            "color": "rgb(13, 73, 82)",
+            "background": "rgb(255, 253, 250)",
+            "opacity": "1",
+            "filter": "none",
+            "backdropFilter": "none",
+            "mixBlendMode": "normal"
+          },
+          {
+            "tag": "DIV",
+            "class": "fixed inset-x-0 bottom-0 z-50 p-4 sm:p-6",
+            "color": "rgb(13, 73, 82)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1",
+            "filter": "none",
+            "backdropFilter": "none",
+            "mixBlendMode": "normal"
+          },
+          {
+            "tag": "BODY",
+            "class": "flex min-h-full flex-col",
+            "color": "rgb(13, 73, 82)",
+            "background": "rgb(251, 247, 239)",
+            "opacity": "1",
+            "filter": "none",
+            "backdropFilter": "none",
+            "mixBlendMode": "normal"
+          },
+          {
+            "tag": "HTML",
+            "class": "h-full antialiased",
+            "color": "rgb(0, 0, 0)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1",
+            "filter": "none",
+            "backdropFilter": "none",
+            "mixBlendMode": "normal"
+          }
+        ],
+        "dark": false,
+        "filmView": "content",
+        "scrollY": 0,
+        "href": "http://127.0.0.1:3678/#intro",
+        "effectiveBackground": [
+          255,
+          253,
+          250,
+          1
+        ],
+        "effectiveForeground": [
+          13,
+          73,
+          82,
+          1
+        ],
+        "contrast": 9.886633002551266,
+        "ancestorOpacityProduct": 1,
+        "normalTextThreshold": 4.5,
+        "pass": true
+      },
+      "focus": {
+        "text": "Privacybeleid",
+        "selector": "[data-cookie-notice] p a",
+        "color": "rgb(11, 62, 71)",
+        "background": "rgba(0, 0, 0, 0)",
+        "fontSize": "14px",
+        "fontWeight": "600",
+        "textDecoration": "underline",
+        "outline": "rgb(13, 73, 82) solid 3px",
+        "rect": {
+          "x": 250.5,
+          "y": 719,
+          "width": 85.25,
+          "height": 48,
+          "top": 719,
+          "right": 335.75,
+          "bottom": 767,
+          "left": 250.5
+        },
+        "chain": [
+          {
+            "tag": "A",
+            "class": "font-semibold text-emerald-600 underline underline-offset-2 hover:text-emerald-500 dark:text-emerald-400",
+            "color": "rgb(11, 62, 71)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1",
+            "filter": "none",
+            "backdropFilter": "none",
+            "mixBlendMode": "normal"
+          },
+          {
+            "tag": "P",
+            "class": "flex-1 text-sm leading-6 text-slate-600 dark:text-slate-300",
+            "color": "rgb(70, 101, 104)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1",
+            "filter": "none",
+            "backdropFilter": "none",
+            "mixBlendMode": "normal"
+          },
+          {
+            "tag": "DIV",
+            "class": "card-lux mx-auto flex max-w-3xl flex-col gap-4 rounded-2xl p-5 shadow-2xl sm:flex-row sm:items-center",
+            "color": "rgb(13, 73, 82)",
+            "background": "rgb(255, 253, 250)",
+            "opacity": "1",
+            "filter": "none",
+            "backdropFilter": "none",
+            "mixBlendMode": "normal"
+          },
+          {
+            "tag": "DIV",
+            "class": "fixed inset-x-0 bottom-0 z-50 p-4 sm:p-6",
+            "color": "rgb(13, 73, 82)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1",
+            "filter": "none",
+            "backdropFilter": "none",
+            "mixBlendMode": "normal"
+          },
+          {
+            "tag": "BODY",
+            "class": "flex min-h-full flex-col",
+            "color": "rgb(13, 73, 82)",
+            "background": "rgb(251, 247, 239)",
+            "opacity": "1",
+            "filter": "none",
+            "backdropFilter": "none",
+            "mixBlendMode": "normal"
+          },
+          {
+            "tag": "HTML",
+            "class": "h-full antialiased",
+            "color": "rgb(0, 0, 0)",
+            "background": "rgba(0, 0, 0, 0)",
+            "opacity": "1",
+            "filter": "none",
+            "backdropFilter": "none",
+            "mixBlendMode": "normal"
+          }
+        ],
+        "dark": false,
+        "filmView": "content",
+        "scrollY": 0,
+        "href": "http://127.0.0.1:3678/#intro",
+        "effectiveBackground": [
+          255,
+          253,
+          250,
+          1
+        ],
+        "effectiveForeground": [
+          11,
+          62,
+          71,
+          1
+        ],
+        "contrast": 11.527020377666208,
+        "ancestorOpacityProduct": 1,
+        "normalTextThreshold": 4.5,
+        "pass": true
+      },
+      "screenshot": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-theme-default-20261111\\cookie-light-pass-390.png",
+      "noSourceEdits": true
+    },
+    "firstPaintFreshLightSystemDesktopAndMobile": {
+      "checkedAt": "2026-11-12T00:28:18.452Z",
+      "origin": "http://127.0.0.1:3678",
+      "proofs": [
+        {
+          "type": "server-html",
+          "status": 200,
+          "htmlClass": "dark h-full antialiased"
+        },
+        {
+          "type": "hydrated",
+          "name": "final-smoke-desktop-fresh-light-system",
+          "width": 1440,
+          "system": "light",
+          "saved": null,
+          "blockedStorage": false,
+          "route": "/en/menu",
+          "dark": true,
+          "background": "rgb(6, 43, 50)",
+          "systemDark": false,
+          "overflow": 0,
+          "button": "<button type=\"button\" class=\"grid h-9 w-9 place-items-center rounded-full border border-slate-200 bg-white text-slate-700 transition hover:rotate-12 hover:border-emerald-400/60 hover:text-emerald-600 dark:border-white/10 dark:bg-white/5 dark:text-slate-200 dark:hover:text-emerald-300\" aria-label=\"Light mode\" aria-pressed=\"true\" title=\"Light mode\"><span class=\"grid place-items-center\"><svg stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"0\" viewBox=\"0 0 512 512\" height=\"1em\" width=\"1em\" xmlns=\"http://www.w3.org/2000/svg\"><use href=\"/brand/icon-sprites-v1/common.svg#fa6-FaSun\"></use></svg></span></button>",
+          "probe": {
+            "firstBody": {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 192.70000004768372
+            },
+            "frames": [
+              {
+                "dark": true,
+                "page": "rgb(6, 43, 50)",
+                "time": 194.29999995231628
+              },
+              {
+                "dark": true,
+                "page": "rgb(6, 43, 50)",
+                "time": 252.89999985694885
+              },
+              {
+                "dark": true,
+                "page": "rgb(6, 43, 50)",
+                "time": 340.7999999523163
+              },
+              {
+                "dark": true,
+                "page": "rgb(6, 43, 50)",
+                "time": 456.39999985694885
+              },
+              {
+                "dark": true,
+                "page": "rgb(6, 43, 50)",
+                "time": 477.89999985694885
+              },
+              {
+                "dark": true,
+                "page": "rgb(6, 43, 50)",
+                "time": 484
+              },
+              {
+                "dark": true,
+                "page": "rgb(6, 43, 50)",
+                "time": 489.7999999523163
+              },
+              {
+                "dark": true,
+                "page": "rgb(6, 43, 50)",
+                "time": 501.39999985694885
+              },
+              {
+                "dark": true,
+                "page": "rgb(6, 43, 50)",
+                "time": 516
+              },
+              {
+                "dark": true,
+                "page": "rgb(6, 43, 50)",
+                "time": 531.3999998569489
+              },
+              {
+                "dark": true,
+                "page": "rgb(6, 43, 50)",
+                "time": 565
+              },
+              {
+                "dark": true,
+                "page": "rgb(6, 43, 50)",
+                "time": 577.8999998569489
+              },
+              {
+                "dark": true,
+                "page": "rgb(6, 43, 50)",
+                "time": 592.7999999523163
+              },
+              {
+                "dark": true,
+                "page": "rgb(6, 43, 50)",
+                "time": 609.2999999523163
+              },
+              {
+                "dark": true,
+                "page": "rgb(6, 43, 50)",
+                "time": 648.3999998569489
+              },
+              {
+                "dark": true,
+                "page": "rgb(6, 43, 50)",
+                "time": 665.3999998569489
+              },
+              {
+                "dark": true,
+                "page": "rgb(6, 43, 50)",
+                "time": 681
+              },
+              {
+                "dark": true,
+                "page": "rgb(6, 43, 50)",
+                "time": 697.3999998569489
+              },
+              {
+                "dark": true,
+                "page": "rgb(6, 43, 50)",
+                "time": 715.3999998569489
+              },
+              {
+                "dark": true,
+                "page": "rgb(6, 43, 50)",
+                "time": 730.5
+              }
+            ],
+            "dcl": {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 443.59999990463257
+            }
+          },
+          "stored": "\"dark\"",
+          "exceptions": []
+        },
+        {
+          "type": "hydrated",
+          "name": "final-smoke-mobile390-fresh-light-system",
+          "width": 390,
+          "system": "light",
+          "saved": null,
+          "blockedStorage": false,
+          "route": "/en/menu",
+          "dark": true,
+          "background": "rgb(6, 43, 50)",
+          "systemDark": false,
+          "overflow": 0,
+          "button": "<button type=\"button\" class=\"grid h-9 w-9 place-items-center rounded-full border border-slate-200 bg-white text-slate-700 transition hover:rotate-12 hover:border-emerald-400/60 hover:text-emerald-600 dark:border-white/10 dark:bg-white/5 dark:text-slate-200 dark:hover:text-emerald-300\" aria-label=\"Light mode\" aria-pressed=\"true\" title=\"Light mode\"><span class=\"grid place-items-center\"><svg stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"0\" viewBox=\"0 0 512 512\" height=\"1em\" width=\"1em\" xmlns=\"http://www.w3.org/2000/svg\"><use href=\"/brand/icon-sprites-v1/common.svg#fa6-FaSun\"></use></svg></span></button>",
+          "probe": {
+            "firstBody": {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 92.79999995231628
+            },
+            "frames": [
+              {
+                "dark": true,
+                "page": "rgb(6, 43, 50)",
+                "time": 148.39999985694885
+              },
+              {
+                "dark": true,
+                "page": "rgb(6, 43, 50)",
+                "time": 162.20000004768372
+              },
+              {
+                "dark": true,
+                "page": "rgb(6, 43, 50)",
+                "time": 169.79999995231628
+              },
+              {
+                "dark": true,
+                "page": "rgb(6, 43, 50)",
+                "time": 176.29999995231628
+              },
+              {
+                "dark": true,
+                "page": "rgb(6, 43, 50)",
+                "time": 200.29999995231628
+              },
+              {
+                "dark": true,
+                "page": "rgb(6, 43, 50)",
+                "time": 219.70000004768372
+              },
+              {
+                "dark": true,
+                "page": "rgb(6, 43, 50)",
+                "time": 232.70000004768372
+              },
+              {
+                "dark": true,
+                "page": "rgb(6, 43, 50)",
+                "time": 248.5
+              },
+              {
+                "dark": true,
+                "page": "rgb(6, 43, 50)",
+                "time": 259.5
+              },
+              {
+                "dark": true,
+                "page": "rgb(6, 43, 50)",
+                "time": 276.5
+              },
+              {
+                "dark": true,
+                "page": "rgb(6, 43, 50)",
+                "time": 291.5
+              },
+              {
+                "dark": true,
+                "page": "rgb(6, 43, 50)",
+                "time": 309.5
+              },
+              {
+                "dark": true,
+                "page": "rgb(6, 43, 50)",
+                "time": 326.7000000476837
+              },
+              {
+                "dark": true,
+                "page": "rgb(6, 43, 50)",
+                "time": 341.7000000476837
+              },
+              {
+                "dark": true,
+                "page": "rgb(6, 43, 50)",
+                "time": 359.39999985694885
+              },
+              {
+                "dark": true,
+                "page": "rgb(6, 43, 50)",
+                "time": 375
+              },
+              {
+                "dark": true,
+                "page": "rgb(6, 43, 50)",
+                "time": 392.09999990463257
+              },
+              {
+                "dark": true,
+                "page": "rgb(6, 43, 50)",
+                "time": 408.89999985694885
+              },
+              {
+                "dark": true,
+                "page": "rgb(6, 43, 50)",
+                "time": 424.89999985694885
+              },
+              {
+                "dark": true,
+                "page": "rgb(6, 43, 50)",
+                "time": 441.89999985694885
+              }
+            ],
+            "dcl": {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 129
+            }
+          },
+          "stored": "\"dark\"",
+          "screenshot": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-theme-default-20261111\\final-smoke-mobile390-fresh-light-system.png",
+          "exceptions": []
+        }
+      ]
+    }
+  },
+  "carriedFullThemeMatrix": {
+    "report": "docs/theme-default-verification-2026-11-12.json",
+    "sha256": "c6779a98181627ae87796dd03f0c79b4cb032b12496ef7f8cf85d5aa4a0b4ce9",
+    "controlBuild": "KfLjCFEAboBDf5nZnS0uh",
+    "proofRecords": 27,
+    "notRerunOnCurrentBuild": true,
+    "reason": "Nine source modules controlling theme initialization, storage, toggle, root HTML, cookie and palette are byte-identical in both captured build manifests; current build separately passed fresh 390/1440 first-body, DOMContentLoaded, 20 requestAnimationFrame samples and hydrated state under light OS preference",
+    "unchangedModules": [
+      {
+        "file": "app/layout.tsx",
+        "previous": "0b239ec23cc8107077a57e8376101e361bb793ac9cdea1671f4880d4cd47c3b7",
+        "current": "0b239ec23cc8107077a57e8376101e361bb793ac9cdea1671f4880d4cd47c3b7",
+        "unchanged": true
+      },
+      {
+        "file": "app/providers.tsx",
+        "previous": "1a99332e991cd73afd6c76efa7835ee2890ca2c498d8de2f9abdf70f4a03ade6",
+        "current": "1a99332e991cd73afd6c76efa7835ee2890ca2c498d8de2f9abdf70f4a03ade6",
+        "unchanged": true
+      },
+      {
+        "file": "app/lib/clientStorage.ts",
+        "previous": "a042cc3963bf0643ade374336e5d2be9c1eaaeffbb65edd412e6af4d4ada67df",
+        "current": "a042cc3963bf0643ade374336e5d2be9c1eaaeffbb65edd412e6af4d4ada67df",
+        "unchanged": true
+      },
+      {
+        "file": "app/components/header.tsx",
+        "previous": "6d81c5900a4d8eeedf416ca1c74c8cccec05122c5dc9ae12cb54a5b7c92605cd",
+        "current": "6d81c5900a4d8eeedf416ca1c74c8cccec05122c5dc9ae12cb54a5b7c92605cd",
+        "unchanged": true
+      },
+      {
+        "file": "app/components/header.module.css",
+        "previous": "390dfd002c7b7ba6e13266d9d43bb449db6cb95c6f04bbf3bee9faf2b2dad006",
+        "current": "390dfd002c7b7ba6e13266d9d43bb449db6cb95c6f04bbf3bee9faf2b2dad006",
+        "unchanged": true
+      },
+      {
+        "file": "app/components/CookieConsent.tsx",
+        "previous": "c341fa826e2c8463b44175086330304d669d9914ba4dc8651fd9fd9848e8b6c4",
+        "current": "c341fa826e2c8463b44175086330304d669d9914ba4dc8651fd9fd9848e8b6c4",
+        "unchanged": true
+      },
+      {
+        "file": "app/lib/cookieNotice.ts",
+        "previous": "746c939d501cd301630dc98f03ccf19f034b2c5c27b5c79ec753643e1224568a",
+        "current": "746c939d501cd301630dc98f03ccf19f034b2c5c27b5c79ec753643e1224568a",
+        "unchanged": true
+      },
+      {
+        "file": "app/globals.css",
+        "previous": "7771b2dab4dc6124fb040d29d509bb01f136563ef662b18f69a70ade225fc269",
+        "current": "7771b2dab4dc6124fb040d29d509bb01f136563ef662b18f69a70ade225fc269",
+        "unchanged": true
+      },
+      {
+        "file": "app/design-system.css",
+        "previous": "42297cb734c4c765d0b95a7625ac9da427d19cb49d9a5ce52d3120f8451e7fb7",
+        "current": "42297cb734c4c765d0b95a7625ac9da427d19cb49d9a5ce52d3120f8451e7fb7",
+        "unchanged": true
+      }
+    ]
+  },
+  "priorFailureControl": {
+    "report": "docs/theme-cookie-dark-contrast-verification-2026-11-12.json",
+    "sha256": "661ea987925dea632f7574c3eb98c0e2c65f2d11a122e805b2183b4fc767f8a7",
+    "untouched": true,
+    "normalAndFocus": 3.8265276611328405,
+    "hover": 1.310609965372234
+  },
+  "visualInspection": [
+    "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-theme-default-20261111\\dark-aa-cookie-pass-390.png",
+    "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-theme-default-20261111\\cookie-light-pass-390.png",
+    "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-theme-default-20261111\\final-smoke-mobile390-fresh-light-system.png"
+  ],
+  "browserCleanup": "All newly created isolated contexts disposed; original browser context untouched; Chrome9229 explicitly cleared for order_controls; entire browser left running",
+  "noBusinessSubmissions": true,
+  "noAppEditsDuringVerification": true
+}

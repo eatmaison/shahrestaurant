@@ -1,41 +1,54 @@
-# Local review workflow
+# Local review workflow — 12 November 2026
 
-The current public redesign runs at **http://localhost:3398/**. It is left running. Build `Hj2ubUjCMfbacacwFligZ`, Webpack / Next.js16.2.10, `.next-review-cookie-ssr-20261111`, source `1b9a194de54237b2104232c89ce249729ddd466a648d819a1118bcd81717fc62` (418 inputs). The older Ewy/104-item-seed preview was replaced after its exact process/port identities were verified. No deployment or publication occurred.
+Open **http://localhost:3398/** (Dutch) or **http://localhost:3398/en** (English). The running read-only preview serves build **`s_2pU6IxrWANtKLhFIf2S`**, Webpack / Next.js16.2.10, `.next-review-shah-complete-20261112`. Frozen combined source SHA-256 is **`0d98fae249ab1b1516cd84408a7a4725ddaf9dcc0028a3093c28c0b9d5ea670d`**,548 inputs, identical before/after the successful build and TypeScript check. All61 routes generated. [Exact build](cinematic-shah-complete-build-2026-11-12.json), [input hashes](cinematic-shah-complete-source-2026-11-12.json).
 
-The main preview is a GET/HEAD-only proxy on3398 over the isolated Next app on3397. It serves the actual captured public catalogue (224 products/two brands), with a fixed restaurant-status clock and no private data. Bookings, checkout and account mutations are disabled. Gallery fixture v2 explicitly supplies no administrator uploads; ten supplied restaurant photographs remain. It is not a live operational restaurant-data preview.
+Main promotion was verified at2026-11-12T01:42:33Z after candidate HTTP50,24-route payload, feature checks and computed-style equivalence. The app listens only on127.0.0.1:3397 (PID12796), the read-only proxy on127.0.0.1:3398 (PID57468). PID values are a checkpoint, not permission to stop a reused process. The preserved candidate http://localhost:3708/ serves the same artifact and catalog fixture.
 
-## Exact start/check command
+## Start or verify this exact preview
 
 From the repository in PowerShell:
 
 ```powershell
-$env:QA_REVIEW_CANDIDATE = '0'
-node "$env:TEMP\shah-preview-20261111\start-cookie-ssr-review.cjs"
+node "$env:TEMP\shah-preview-20261111\start-shah-complete-main.cjs"
 ```
 
-This command was checked against the running final build. It verifies the pinned build, public assets/runtime configuration, transport/proxy hashes and catalogue integrity. If the matching preview already runs, it prints the verified URL and exits. It does not rebuild, stop an unknown process, publish or submit a transaction. Both main ports must be free if no matching preview is running; do not stop arbitrary processes to free them.
+This checks the frozen build, public/config bytes, runtime-helper hashes and catalog fixture. If the exact preview already runs, it prints a verified URL and exits. It does not rebuild, stop unknown processes, publish or submit transactions. Both ports3397/3398 must be free for a new start; do not stop arbitrary processes to free them.
 
-This frozen-review helper, captured fixture and raw QA files are local to this computer under Temp. Preserve them together with `.next-review-cookie-ssr-20261111` to reproduce this exact review. Their loss requires reconstructing a new guarded review; the command is not a portable deployment recipe. Environment files were not edited and no secrets are stored in the helper.
+Frozen runtime guards: `start-shah-complete-runtimes.cjs` SHA256 `2d04cea9d6f9a1a9d52285418f01bd640dec31e079c364c0ce71849744829a84`, `shah-complete-preview-proxy.cjs` `5977d30be1bee7473e0cb04e85577cfd0687e3b16a010be03c2899fcbee68d13`, catalog transport `b8dfbe7e08522fdd07f77e835ffbe3efc22bfb805b6ae5ba3fbce8724f9fdb9a`.
 
-The same artifact/fixture used for final tests is also available at http://localhost:3518/ over its direct app3517. This candidate is separate from the established main URL. The parent's older event-review server3482 was preserved.
+The helpers, fixture and raw QA are local to this PC in Temp. Preserve them together with the build and its `.source.json`/`.tsconfig.json` files. Their loss requires reconstructing a guarded review; this is not a portable deployment command. No environment file or production database was changed.
 
-## Public routes
+## Intro viewing and languages
 
-- Dutch core: `/`, `/menukaart`, `/reserveren`, `/privacy`, `/voorwaarden`.
-- English core: `/en`, `/en/menu`, `/en/reservations`, `/en/privacy`, `/en/terms`.
-- Public events: `/events`, `/events/about`, `/events/birthdays`, `/events/celebrations`, `/events/company-catering`, `/events/company-lunches`, `/events/gallery`.
-- `/parties` and nested private pages/APIs remain administrator-only. The read-only fixture does not provide an admin account.
+Dutch homepage entry selects the new Dutch desktop/portrait CapCut pair. English retains approved desktop v3/mobile v2. Matching posters, embedded typography, full-screen framing and accessible fallbacks are retained. [Exact paths and media QA](CAPCUT-DUTCH-ASSETS.md).
 
-Seven separate English event URLs are not implemented. Event pages start consistently in Dutch on a cold visit; explicit English interface choices work during navigation.
+The intro intentionally runs **once per tab session**, shared between languages. Reloading or returning from the menu proceeds to content without another MP4. For a fresh video viewing, open a genuinely new independent tab or private browsing session. Duplicated tabs can inherit session storage; blocked storage only retains the marker in the current document. `localhost`, `127.0.0.1` and the phone IP have separate origin storage.
 
-## Editing source
+The final-second upward film reveal exposes stationary content/header and removes the movie; it uses a transform rather than native page auto-scroll. Ordinary scrolling remains available and cannot reveal the removed video. Reduced motion/data-saving and blocked autoplay retain usable poster/Skip/manual paths. No JavaScript leaves the poster and native Skip.
 
-For an ordinary development build in a fresh terminal:
+## Phone on the same network
+
+Open **http://192.168.0.122:3618/** or **http://192.168.0.122:3618/en** on the router's local network. [Phone instructions](PHONE-PREVIEW.md) record the current exact-build listener, restart command, four-file media allowlist and private/write restrictions. No firewall, network-profile, VPN or router setting was changed. DHCP may later change the PC address.
+
+## Preview data and route boundary
+
+The GET/HEAD-only fixture contains224 captured public products/two brands and a fixed status clock. Uploaded gallery/private user/order/reservation/review data are explicitly empty; ten supplied restaurant photos remain. It is not live availability. Checkout, booking, account and other mutations are disabled. The phone proxy additionally excludes private routes, identity headers and response cookies.
+
+- Dutch: `/`, `/menukaart`, `/reserveren`, `/privacy`, `/voorwaarden`.
+- English: `/en`, `/en/menu`, `/en/reservations`, `/en/privacy`, `/en/terms`.
+- Events: `/events` and six `{about,birthdays,celebrations,company-catering,company-lunches,gallery}` subpaths, with corresponding `/en/events` pairs. All are public.
+- `/parties`, nested pages and private APIs remain administrator-only; the fixture provides no admin account.
+
+All24 public URLs have explicit language, canonical and reciprocal alternatives. Public language changes navigate to the matching URL; utility routes retain in-page language choice/drafts. Menus, independent combo drinks and totals can be reviewed locally without sending an order.
+
+## Ordinary development
+
+Run separately from the frozen review:
 
 ```powershell
 npm run dev -- --hostname 127.0.0.1 --port 3395
 ```
 
-Development mode is separate from the measured frozen build and its read-only data proxy. The production measurements use the installed CLI's `next build --webpack` through `SHAH_REVIEW_DIST_DIR` and an isolated TypeScript configuration; normal `npm run build` selects the framework default compiler. Do not compare development indicators or hot-reload timing to the recorded production results.
+Review builds use installed `next build --webpack` through an isolated `SHAH_REVIEW_DIST_DIR` and TypeScript config. Development/hot-reload timings are not production measurements.
 
-Design details: [CINEMATIC-REVISION.md](CINEMATIC-REVISION.md). Exact results and unmet requirements: [CINEMATIC-FINAL-VERIFICATION.md](CINEMATIC-FINAL-VERIFICATION.md). The owner requested localhost review before any publication; no production change is authorized by this document.
+[Final verification](CINEMATIC-FINAL-VERIFICATION.md) records functional proof, exact carried controls and unresolved JS/performance/tool/device limits. The combined snapshot preserves unrelated working-tree changes; public-feature commits do not claim to reproduce that snapshot alone. No deployment or publication was authorized or performed.

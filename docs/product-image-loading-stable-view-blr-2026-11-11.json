@@ -1,0 +1,4434 @@
+{
+  "currentFileHashes": {
+    "app/components/ProductImage.tsx": "718b353118c532d4e5e958674d106e25ec34a929b2375d0eb88ef6c1190de047",
+    "app/cinematic.css": "6aa2a85cb808198bf4ee12b6153e023f9479ecd45a57a267fdf4e2e9dace925d",
+    "app/order/order.module.css": "4a67086cb33e5202f4a387173c6a1f1a82f38fc4b575c47542560f44f5c1931e"
+  },
+  "compiledSourceHashAtBuild": "107ce62610d17ed4875aaa52058b6fed8aaf1b1e889c53b8a05544d8ce3cfb80",
+  "sourceGuardScope": "ServedcompiledbLRbuild+currentnarrowimage/mediafiles;wholeworkingtreeNOTunchanged(header/cartchangesauthorized). SharedhostcartTSCmayoverlap;notcausalhostisolation.",
+  "buildId": "bLRxbJQgVTT0eU9T4bPW9",
+  "base": "http://127.0.0.1:3658",
+  "snapshotSha": "66eda306b74cf90dc15ad018cc3064212349151810d8df2e098a06d6e8588892",
+  "run": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-product-image-audit-20261111\\bLRxbJQgVTT0eU9T4bPW9-stable-view-blr-1794441446869",
+  "scope": "Shared-host bounded functional image loading diagnostics; browser cache disabled, optimizer cache statuses observed rather than evicted; no app/data edits or business writes",
+  "cases": [
+    {
+      "mode": "slow4g",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 2
+      },
+      "network": {
+        "bytesPerSecond": 200000,
+        "latencyMs": 150
+      },
+      "cpuThrottle": 1,
+      "noticeAcknowledgedBeforeNavigation": true,
+      "servedHeaderBuild": "bLRxbJQgVTT0eU9T4bPW9",
+      "navigationStatus": 200,
+      "clickedEpochMs": 1794441450674,
+      "snapshots": [
+        {
+          "label": "category-render",
+          "elapsedAfterCategoryMs": 141,
+          "at": 3277.2000000476837,
+          "scrollY": 1021,
+          "images": [
+            {
+              "name": "Butter Chicken",
+              "articleCount": 2,
+              "article": {
+                "top": -196.75,
+                "bottom": 237.4375,
+                "width": 358,
+                "height": 434.1875
+              },
+              "imageBox": {
+                "top": -195.75,
+                "bottom": 71.25,
+                "width": 356,
+                "height": 267
+              },
+              "img": {
+                "complete": false,
+                "naturalWidth": 0,
+                "naturalHeight": 0,
+                "loading": "eager",
+                "fetchPriority": "high",
+                "decoding": "async",
+                "sizes": "(min-width: 1400px) 266px, (min-width: 1024px) calc(32vw - 182px), (min-width: 701px) calc(50vw - 34px), calc(100vw - 34px)",
+                "display": "block",
+                "visibility": "visible",
+                "opacity": "1",
+                "objectFit": "contain",
+                "inViewport": true,
+                "selected": {
+                  "sourceId": "cbcc568d3f2cd96eec82ec62880de184c0d3109826746b437bed69281f76dd18",
+                  "host": "127.0.0.1",
+                  "optimizer": false
+                }
+              },
+              "fallbackText": null
+            },
+            {
+              "name": "Jalfrezi Chicken",
+              "articleCount": 2,
+              "article": {
+                "top": 257.4375,
+                "bottom": 691.625,
+                "width": 358,
+                "height": 434.1875
+              },
+              "imageBox": {
+                "top": 258.4375,
+                "bottom": 525.4375,
+                "width": 356,
+                "height": 267
+              },
+              "img": {
+                "complete": false,
+                "naturalWidth": 0,
+                "naturalHeight": 0,
+                "loading": "lazy",
+                "fetchPriority": "auto",
+                "decoding": "async",
+                "sizes": "(min-width: 1400px) 266px, (min-width: 1024px) calc(32vw - 182px), (min-width: 701px) calc(50vw - 34px), calc(100vw - 34px)",
+                "display": "block",
+                "visibility": "visible",
+                "opacity": "1",
+                "objectFit": "contain",
+                "inViewport": true,
+                "selected": {
+                  "sourceId": "cbcc568d3f2cd96eec82ec62880de184c0d3109826746b437bed69281f76dd18",
+                  "host": "127.0.0.1",
+                  "optimizer": false
+                }
+              },
+              "fallbackText": null
+            },
+            {
+              "name": "Jalfrezi Fish",
+              "articleCount": 2,
+              "article": {
+                "top": 711.625,
+                "bottom": 1145.8125,
+                "width": 358,
+                "height": 434.1875
+              },
+              "imageBox": {
+                "top": 712.625,
+                "bottom": 979.625,
+                "width": 356,
+                "height": 267
+              },
+              "img": {
+                "complete": false,
+                "naturalWidth": 0,
+                "naturalHeight": 0,
+                "loading": "lazy",
+                "fetchPriority": "auto",
+                "decoding": "async",
+                "sizes": "(min-width: 1400px) 266px, (min-width: 1024px) calc(32vw - 182px), (min-width: 701px) calc(50vw - 34px), calc(100vw - 34px)",
+                "display": "block",
+                "visibility": "visible",
+                "opacity": "1",
+                "objectFit": "contain",
+                "inViewport": true,
+                "selected": {
+                  "sourceId": "cbcc568d3f2cd96eec82ec62880de184c0d3109826746b437bed69281f76dd18",
+                  "host": "127.0.0.1",
+                  "optimizer": false
+                }
+              },
+              "fallbackText": null
+            },
+            {
+              "name": "Jalfrezi Lamb",
+              "articleCount": 2,
+              "article": {
+                "top": 1165.8125,
+                "bottom": 1600,
+                "width": 358,
+                "height": 434.1875
+              },
+              "imageBox": {
+                "top": 1166.8125,
+                "bottom": 1433.8125,
+                "width": 356,
+                "height": 267
+              },
+              "img": {
+                "complete": false,
+                "naturalWidth": 0,
+                "naturalHeight": 0,
+                "loading": "lazy",
+                "fetchPriority": "auto",
+                "decoding": "async",
+                "sizes": "(min-width: 1400px) 266px, (min-width: 1024px) calc(32vw - 182px), (min-width: 701px) calc(50vw - 34px), calc(100vw - 34px)",
+                "display": "block",
+                "visibility": "visible",
+                "opacity": "1",
+                "objectFit": "contain",
+                "inViewport": false,
+                "selected": {
+                  "sourceId": "cbcc568d3f2cd96eec82ec62880de184c0d3109826746b437bed69281f76dd18",
+                  "host": "127.0.0.1",
+                  "optimizer": false
+                }
+              },
+              "fallbackText": null
+            },
+            {
+              "name": "Jalfrezi Prawn",
+              "articleCount": 2,
+              "article": {
+                "top": 1620,
+                "bottom": 2054.1875,
+                "width": 358,
+                "height": 434.1875
+              },
+              "imageBox": {
+                "top": 1621,
+                "bottom": 1888,
+                "width": 356,
+                "height": 267
+              },
+              "img": {
+                "complete": false,
+                "naturalWidth": 0,
+                "naturalHeight": 0,
+                "loading": "lazy",
+                "fetchPriority": "auto",
+                "decoding": "async",
+                "sizes": "(min-width: 1400px) 266px, (min-width: 1024px) calc(32vw - 182px), (min-width: 701px) calc(50vw - 34px), calc(100vw - 34px)",
+                "display": "block",
+                "visibility": "visible",
+                "opacity": "1",
+                "objectFit": "contain",
+                "inViewport": false,
+                "selected": {
+                  "sourceId": "cbcc568d3f2cd96eec82ec62880de184c0d3109826746b437bed69281f76dd18",
+                  "host": "127.0.0.1",
+                  "optimizer": false
+                }
+              },
+              "fallbackText": null
+            }
+          ]
+        },
+        {
+          "label": "after1s",
+          "elapsedAfterCategoryMs": 1154,
+          "at": 4291.099999904633,
+          "scrollY": 1021,
+          "images": [
+            {
+              "name": "Butter Chicken",
+              "articleCount": 2,
+              "article": {
+                "top": -196.75,
+                "bottom": 237.4375,
+                "width": 358,
+                "height": 434.1875
+              },
+              "imageBox": {
+                "top": -195.75,
+                "bottom": 71.25,
+                "width": 356,
+                "height": 267
+              },
+              "img": {
+                "complete": false,
+                "naturalWidth": 356,
+                "naturalHeight": 265,
+                "loading": "eager",
+                "fetchPriority": "high",
+                "decoding": "async",
+                "sizes": "(min-width: 1400px) 266px, (min-width: 1024px) calc(32vw - 182px), (min-width: 701px) calc(50vw - 34px), calc(100vw - 34px)",
+                "display": "block",
+                "visibility": "visible",
+                "opacity": "1",
+                "objectFit": "contain",
+                "inViewport": true,
+                "selected": {
+                  "sourceId": "1f11a2f3acf6be6486cfb9faa275095e9b7a5f14a8972e89e73e20123bc6e5b4",
+                  "host": "horica-media.ams3.cdn.digitaloceanspaces.com",
+                  "width": 750,
+                  "quality": 75,
+                  "optimizer": true
+                }
+              },
+              "fallbackText": null
+            },
+            {
+              "name": "Jalfrezi Chicken",
+              "articleCount": 2,
+              "article": {
+                "top": 257.4375,
+                "bottom": 691.625,
+                "width": 358,
+                "height": 434.1875
+              },
+              "imageBox": {
+                "top": 258.4375,
+                "bottom": 525.4375,
+                "width": 356,
+                "height": 267
+              },
+              "img": {
+                "complete": false,
+                "naturalWidth": 356,
+                "naturalHeight": 265,
+                "loading": "lazy",
+                "fetchPriority": "auto",
+                "decoding": "async",
+                "sizes": "(min-width: 1400px) 266px, (min-width: 1024px) calc(32vw - 182px), (min-width: 701px) calc(50vw - 34px), calc(100vw - 34px)",
+                "display": "block",
+                "visibility": "visible",
+                "opacity": "1",
+                "objectFit": "contain",
+                "inViewport": true,
+                "selected": {
+                  "sourceId": "fa4616a47a33e92638addb33e40502a61ac5da62342a9ef38d90c44943bc9a67",
+                  "host": "horica-media.ams3.cdn.digitaloceanspaces.com",
+                  "width": 750,
+                  "quality": 75,
+                  "optimizer": true
+                }
+              },
+              "fallbackText": null
+            },
+            {
+              "name": "Jalfrezi Fish",
+              "articleCount": 2,
+              "article": {
+                "top": 711.625,
+                "bottom": 1145.8125,
+                "width": 358,
+                "height": 434.1875
+              },
+              "imageBox": {
+                "top": 712.625,
+                "bottom": 979.625,
+                "width": 356,
+                "height": 267
+              },
+              "img": {
+                "complete": false,
+                "naturalWidth": 356,
+                "naturalHeight": 265,
+                "loading": "lazy",
+                "fetchPriority": "auto",
+                "decoding": "async",
+                "sizes": "(min-width: 1400px) 266px, (min-width: 1024px) calc(32vw - 182px), (min-width: 701px) calc(50vw - 34px), calc(100vw - 34px)",
+                "display": "block",
+                "visibility": "visible",
+                "opacity": "1",
+                "objectFit": "contain",
+                "inViewport": true,
+                "selected": {
+                  "sourceId": "5ffee0ae02174a9ab621c43de9fbf5fda3227006fb1acc64f18e11ba3c24427b",
+                  "host": "horica-media.ams3.cdn.digitaloceanspaces.com",
+                  "width": 750,
+                  "quality": 75,
+                  "optimizer": true
+                }
+              },
+              "fallbackText": null
+            },
+            {
+              "name": "Jalfrezi Lamb",
+              "articleCount": 2,
+              "article": {
+                "top": 1165.8125,
+                "bottom": 1600,
+                "width": 358,
+                "height": 434.1875
+              },
+              "imageBox": {
+                "top": 1166.8125,
+                "bottom": 1433.8125,
+                "width": 356,
+                "height": 267
+              },
+              "img": {
+                "complete": false,
+                "naturalWidth": 0,
+                "naturalHeight": 0,
+                "loading": "lazy",
+                "fetchPriority": "auto",
+                "decoding": "async",
+                "sizes": "(min-width: 1400px) 266px, (min-width: 1024px) calc(32vw - 182px), (min-width: 701px) calc(50vw - 34px), calc(100vw - 34px)",
+                "display": "block",
+                "visibility": "visible",
+                "opacity": "1",
+                "objectFit": "contain",
+                "inViewport": false,
+                "selected": {
+                  "sourceId": "cbcc568d3f2cd96eec82ec62880de184c0d3109826746b437bed69281f76dd18",
+                  "host": "127.0.0.1",
+                  "optimizer": false
+                }
+              },
+              "fallbackText": null
+            },
+            {
+              "name": "Jalfrezi Prawn",
+              "articleCount": 2,
+              "article": {
+                "top": 1620,
+                "bottom": 2054.1875,
+                "width": 358,
+                "height": 434.1875
+              },
+              "imageBox": {
+                "top": 1621,
+                "bottom": 1888,
+                "width": 356,
+                "height": 267
+              },
+              "img": {
+                "complete": false,
+                "naturalWidth": 0,
+                "naturalHeight": 0,
+                "loading": "lazy",
+                "fetchPriority": "auto",
+                "decoding": "async",
+                "sizes": "(min-width: 1400px) 266px, (min-width: 1024px) calc(32vw - 182px), (min-width: 701px) calc(50vw - 34px), calc(100vw - 34px)",
+                "display": "block",
+                "visibility": "visible",
+                "opacity": "1",
+                "objectFit": "contain",
+                "inViewport": false,
+                "selected": {
+                  "sourceId": "cbcc568d3f2cd96eec82ec62880de184c0d3109826746b437bed69281f76dd18",
+                  "host": "127.0.0.1",
+                  "optimizer": false
+                }
+              },
+              "fallbackText": null
+            }
+          ]
+        },
+        {
+          "label": "after10s",
+          "elapsedAfterCategoryMs": 10166,
+          "at": 13302.299999952316,
+          "scrollY": 1021,
+          "images": [
+            {
+              "name": "Butter Chicken",
+              "articleCount": 2,
+              "article": {
+                "top": -196.75,
+                "bottom": 237.4375,
+                "width": 358,
+                "height": 434.1875
+              },
+              "imageBox": {
+                "top": -195.75,
+                "bottom": 71.25,
+                "width": 356,
+                "height": 267
+              },
+              "img": {
+                "complete": true,
+                "naturalWidth": 356,
+                "naturalHeight": 265,
+                "loading": "eager",
+                "fetchPriority": "high",
+                "decoding": "async",
+                "sizes": "(min-width: 1400px) 266px, (min-width: 1024px) calc(32vw - 182px), (min-width: 701px) calc(50vw - 34px), calc(100vw - 34px)",
+                "display": "block",
+                "visibility": "visible",
+                "opacity": "1",
+                "objectFit": "contain",
+                "inViewport": true,
+                "selected": {
+                  "sourceId": "1f11a2f3acf6be6486cfb9faa275095e9b7a5f14a8972e89e73e20123bc6e5b4",
+                  "host": "horica-media.ams3.cdn.digitaloceanspaces.com",
+                  "width": 750,
+                  "quality": 75,
+                  "optimizer": true
+                }
+              },
+              "fallbackText": null
+            },
+            {
+              "name": "Jalfrezi Chicken",
+              "articleCount": 2,
+              "article": {
+                "top": 257.4375,
+                "bottom": 691.625,
+                "width": 358,
+                "height": 434.1875
+              },
+              "imageBox": {
+                "top": 258.4375,
+                "bottom": 525.4375,
+                "width": 356,
+                "height": 267
+              },
+              "img": {
+                "complete": true,
+                "naturalWidth": 356,
+                "naturalHeight": 265,
+                "loading": "lazy",
+                "fetchPriority": "auto",
+                "decoding": "async",
+                "sizes": "(min-width: 1400px) 266px, (min-width: 1024px) calc(32vw - 182px), (min-width: 701px) calc(50vw - 34px), calc(100vw - 34px)",
+                "display": "block",
+                "visibility": "visible",
+                "opacity": "1",
+                "objectFit": "contain",
+                "inViewport": true,
+                "selected": {
+                  "sourceId": "fa4616a47a33e92638addb33e40502a61ac5da62342a9ef38d90c44943bc9a67",
+                  "host": "horica-media.ams3.cdn.digitaloceanspaces.com",
+                  "width": 750,
+                  "quality": 75,
+                  "optimizer": true
+                }
+              },
+              "fallbackText": null
+            },
+            {
+              "name": "Jalfrezi Fish",
+              "articleCount": 2,
+              "article": {
+                "top": 711.625,
+                "bottom": 1145.8125,
+                "width": 358,
+                "height": 434.1875
+              },
+              "imageBox": {
+                "top": 712.625,
+                "bottom": 979.625,
+                "width": 356,
+                "height": 267
+              },
+              "img": {
+                "complete": true,
+                "naturalWidth": 356,
+                "naturalHeight": 265,
+                "loading": "lazy",
+                "fetchPriority": "auto",
+                "decoding": "async",
+                "sizes": "(min-width: 1400px) 266px, (min-width: 1024px) calc(32vw - 182px), (min-width: 701px) calc(50vw - 34px), calc(100vw - 34px)",
+                "display": "block",
+                "visibility": "visible",
+                "opacity": "1",
+                "objectFit": "contain",
+                "inViewport": true,
+                "selected": {
+                  "sourceId": "5ffee0ae02174a9ab621c43de9fbf5fda3227006fb1acc64f18e11ba3c24427b",
+                  "host": "horica-media.ams3.cdn.digitaloceanspaces.com",
+                  "width": 750,
+                  "quality": 75,
+                  "optimizer": true
+                }
+              },
+              "fallbackText": null
+            },
+            {
+              "name": "Jalfrezi Lamb",
+              "articleCount": 2,
+              "article": {
+                "top": 1165.8125,
+                "bottom": 1600,
+                "width": 358,
+                "height": 434.1875
+              },
+              "imageBox": {
+                "top": 1166.8125,
+                "bottom": 1433.8125,
+                "width": 356,
+                "height": 267
+              },
+              "img": {
+                "complete": false,
+                "naturalWidth": 0,
+                "naturalHeight": 0,
+                "loading": "lazy",
+                "fetchPriority": "auto",
+                "decoding": "async",
+                "sizes": "(min-width: 1400px) 266px, (min-width: 1024px) calc(32vw - 182px), (min-width: 701px) calc(50vw - 34px), calc(100vw - 34px)",
+                "display": "block",
+                "visibility": "visible",
+                "opacity": "1",
+                "objectFit": "contain",
+                "inViewport": false,
+                "selected": {
+                  "sourceId": "cbcc568d3f2cd96eec82ec62880de184c0d3109826746b437bed69281f76dd18",
+                  "host": "127.0.0.1",
+                  "optimizer": false
+                }
+              },
+              "fallbackText": null
+            },
+            {
+              "name": "Jalfrezi Prawn",
+              "articleCount": 2,
+              "article": {
+                "top": 1620,
+                "bottom": 2054.1875,
+                "width": 358,
+                "height": 434.1875
+              },
+              "imageBox": {
+                "top": 1621,
+                "bottom": 1888,
+                "width": 356,
+                "height": 267
+              },
+              "img": {
+                "complete": false,
+                "naturalWidth": 0,
+                "naturalHeight": 0,
+                "loading": "lazy",
+                "fetchPriority": "auto",
+                "decoding": "async",
+                "sizes": "(min-width: 1400px) 266px, (min-width: 1024px) calc(32vw - 182px), (min-width: 701px) calc(50vw - 34px), calc(100vw - 34px)",
+                "display": "block",
+                "visibility": "visible",
+                "opacity": "1",
+                "objectFit": "contain",
+                "inViewport": false,
+                "selected": {
+                  "sourceId": "cbcc568d3f2cd96eec82ec62880de184c0d3109826746b437bed69281f76dd18",
+                  "host": "127.0.0.1",
+                  "optimizer": false
+                }
+              },
+              "fallbackText": null
+            }
+          ]
+        },
+        {
+          "label": "after15s-stable",
+          "elapsedAfterCategoryMs": 15636,
+          "at": 18772.099999904633,
+          "scrollY": 1021,
+          "images": [
+            {
+              "name": "Butter Chicken",
+              "articleCount": 2,
+              "article": {
+                "top": -196.75,
+                "bottom": 237.4375,
+                "width": 358,
+                "height": 434.1875
+              },
+              "imageBox": {
+                "top": -195.75,
+                "bottom": 71.25,
+                "width": 356,
+                "height": 267
+              },
+              "img": {
+                "complete": true,
+                "naturalWidth": 356,
+                "naturalHeight": 265,
+                "loading": "eager",
+                "fetchPriority": "high",
+                "decoding": "async",
+                "sizes": "(min-width: 1400px) 266px, (min-width: 1024px) calc(32vw - 182px), (min-width: 701px) calc(50vw - 34px), calc(100vw - 34px)",
+                "display": "block",
+                "visibility": "visible",
+                "opacity": "1",
+                "objectFit": "contain",
+                "inViewport": true,
+                "selected": {
+                  "sourceId": "1f11a2f3acf6be6486cfb9faa275095e9b7a5f14a8972e89e73e20123bc6e5b4",
+                  "host": "horica-media.ams3.cdn.digitaloceanspaces.com",
+                  "width": 750,
+                  "quality": 75,
+                  "optimizer": true
+                }
+              },
+              "fallbackText": null
+            },
+            {
+              "name": "Jalfrezi Chicken",
+              "articleCount": 2,
+              "article": {
+                "top": 257.4375,
+                "bottom": 691.625,
+                "width": 358,
+                "height": 434.1875
+              },
+              "imageBox": {
+                "top": 258.4375,
+                "bottom": 525.4375,
+                "width": 356,
+                "height": 267
+              },
+              "img": {
+                "complete": true,
+                "naturalWidth": 356,
+                "naturalHeight": 265,
+                "loading": "lazy",
+                "fetchPriority": "auto",
+                "decoding": "async",
+                "sizes": "(min-width: 1400px) 266px, (min-width: 1024px) calc(32vw - 182px), (min-width: 701px) calc(50vw - 34px), calc(100vw - 34px)",
+                "display": "block",
+                "visibility": "visible",
+                "opacity": "1",
+                "objectFit": "contain",
+                "inViewport": true,
+                "selected": {
+                  "sourceId": "fa4616a47a33e92638addb33e40502a61ac5da62342a9ef38d90c44943bc9a67",
+                  "host": "horica-media.ams3.cdn.digitaloceanspaces.com",
+                  "width": 750,
+                  "quality": 75,
+                  "optimizer": true
+                }
+              },
+              "fallbackText": null
+            },
+            {
+              "name": "Jalfrezi Fish",
+              "articleCount": 2,
+              "article": {
+                "top": 711.625,
+                "bottom": 1145.8125,
+                "width": 358,
+                "height": 434.1875
+              },
+              "imageBox": {
+                "top": 712.625,
+                "bottom": 979.625,
+                "width": 356,
+                "height": 267
+              },
+              "img": {
+                "complete": true,
+                "naturalWidth": 356,
+                "naturalHeight": 265,
+                "loading": "lazy",
+                "fetchPriority": "auto",
+                "decoding": "async",
+                "sizes": "(min-width: 1400px) 266px, (min-width: 1024px) calc(32vw - 182px), (min-width: 701px) calc(50vw - 34px), calc(100vw - 34px)",
+                "display": "block",
+                "visibility": "visible",
+                "opacity": "1",
+                "objectFit": "contain",
+                "inViewport": true,
+                "selected": {
+                  "sourceId": "5ffee0ae02174a9ab621c43de9fbf5fda3227006fb1acc64f18e11ba3c24427b",
+                  "host": "horica-media.ams3.cdn.digitaloceanspaces.com",
+                  "width": 750,
+                  "quality": 75,
+                  "optimizer": true
+                }
+              },
+              "fallbackText": null
+            },
+            {
+              "name": "Jalfrezi Lamb",
+              "articleCount": 2,
+              "article": {
+                "top": 1165.8125,
+                "bottom": 1600,
+                "width": 358,
+                "height": 434.1875
+              },
+              "imageBox": {
+                "top": 1166.8125,
+                "bottom": 1433.8125,
+                "width": 356,
+                "height": 267
+              },
+              "img": {
+                "complete": true,
+                "naturalWidth": 356,
+                "naturalHeight": 265,
+                "loading": "lazy",
+                "fetchPriority": "auto",
+                "decoding": "async",
+                "sizes": "(min-width: 1400px) 266px, (min-width: 1024px) calc(32vw - 182px), (min-width: 701px) calc(50vw - 34px), calc(100vw - 34px)",
+                "display": "block",
+                "visibility": "visible",
+                "opacity": "1",
+                "objectFit": "contain",
+                "inViewport": false,
+                "selected": {
+                  "sourceId": "87e4ab2fa854f759486f439dce2bd1261055919d0d981017c84fb6e2dd1a74f0",
+                  "host": "horica-media.ams3.cdn.digitaloceanspaces.com",
+                  "width": 750,
+                  "quality": 75,
+                  "optimizer": true
+                }
+              },
+              "fallbackText": null
+            },
+            {
+              "name": "Jalfrezi Prawn",
+              "articleCount": 2,
+              "article": {
+                "top": 1620,
+                "bottom": 2054.1875,
+                "width": 358,
+                "height": 434.1875
+              },
+              "imageBox": {
+                "top": 1621,
+                "bottom": 1888,
+                "width": 356,
+                "height": 267
+              },
+              "img": {
+                "complete": true,
+                "naturalWidth": 356,
+                "naturalHeight": 265,
+                "loading": "lazy",
+                "fetchPriority": "auto",
+                "decoding": "async",
+                "sizes": "(min-width: 1400px) 266px, (min-width: 1024px) calc(32vw - 182px), (min-width: 701px) calc(50vw - 34px), calc(100vw - 34px)",
+                "display": "block",
+                "visibility": "visible",
+                "opacity": "1",
+                "objectFit": "contain",
+                "inViewport": false,
+                "selected": {
+                  "sourceId": "85fa96fa0af666b3d5a29652f420b5ea842b30577c4cfbf92bca5276cb9d32fb",
+                  "host": "horica-media.ams3.cdn.digitaloceanspaces.com",
+                  "width": 750,
+                  "quality": 75,
+                  "optimizer": true
+                }
+              },
+              "fallbackText": null
+            }
+          ]
+        }
+      ],
+      "namedRequests": [
+        {
+          "requestId": "45888.266",
+          "sourceId": "1f11a2f3acf6be6486cfb9faa275095e9b7a5f14a8972e89e73e20123bc6e5b4",
+          "host": "horica-media.ams3.cdn.digitaloceanspaces.com",
+          "width": 750,
+          "quality": 75,
+          "optimizer": true,
+          "name": "Butter Chicken",
+          "startEpochMs": 1794441450764.0679,
+          "startMono": 1128848.395259,
+          "initialPriority": "High",
+          "initiator": "parser",
+          "status": 200,
+          "mime": "image/avif",
+          "cacheStatus": "HIT",
+          "declaredBodyBytes": 43120,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "headersAfterMs": 217.0120000373572,
+          "responseTiming": {
+            "requestTime": 1128848.39567,
+            "proxyStart": -1,
+            "proxyEnd": -1,
+            "dnsStart": -1,
+            "dnsEnd": -1,
+            "connectStart": -1,
+            "connectEnd": -1,
+            "sslStart": -1,
+            "sslEnd": -1,
+            "workerStart": -1,
+            "workerReady": -1,
+            "workerFetchStart": -1,
+            "workerRespondWithSettled": -1,
+            "sendStart": 46.133,
+            "sendEnd": 46.196,
+            "pushStart": 0,
+            "pushEnd": 0,
+            "receiveHeadersStart": 196.196,
+            "receiveHeadersEnd": 215.826
+          },
+          "failure": "net::ERR_ABORTED",
+          "canceled": true,
+          "failedAfterMs": 538.0230001173913,
+          "blockedReason": null,
+          "startedAfterCategoryMs": 90.06787109375
+        },
+        {
+          "requestId": "45888.306",
+          "sourceId": "1f11a2f3acf6be6486cfb9faa275095e9b7a5f14a8972e89e73e20123bc6e5b4",
+          "host": "horica-media.ams3.cdn.digitaloceanspaces.com",
+          "width": 750,
+          "quality": 75,
+          "optimizer": true,
+          "name": "Butter Chicken",
+          "startEpochMs": 1794441450764.741,
+          "startMono": 1128848.395987,
+          "initialPriority": "High",
+          "initiator": "parser",
+          "status": 200,
+          "mime": "image/avif",
+          "cacheStatus": "HIT",
+          "declaredBodyBytes": 43120,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "headersAfterMs": 246.29499996080995,
+          "responseTiming": {
+            "requestTime": 1128848.396323,
+            "proxyStart": -1,
+            "proxyEnd": -1,
+            "dnsStart": -1,
+            "dnsEnd": -1,
+            "connectStart": -1,
+            "connectEnd": -1,
+            "sslStart": -1,
+            "sslEnd": -1,
+            "workerStart": -1,
+            "workerReady": -1,
+            "workerFetchStart": -1,
+            "workerRespondWithSettled": -1,
+            "sendStart": 59.732,
+            "sendEnd": 59.815,
+            "pushStart": 0,
+            "pushEnd": 0,
+            "receiveHeadersStart": 209.815,
+            "receiveHeadersEnd": 245.131
+          },
+          "finishedAfterMs": 1031.4289999660105,
+          "encodedDataLength": 43891,
+          "startedAfterCategoryMs": 90.740966796875
+        },
+        {
+          "requestId": "45888.346",
+          "sourceId": "fa4616a47a33e92638addb33e40502a61ac5da62342a9ef38d90c44943bc9a67",
+          "host": "horica-media.ams3.cdn.digitaloceanspaces.com",
+          "width": 750,
+          "quality": 75,
+          "optimizer": true,
+          "name": "Jalfrezi Chicken",
+          "startEpochMs": 1794441450801.268,
+          "startMono": 1128848.432485,
+          "initialPriority": "Low",
+          "initiator": "parser",
+          "priorityChanges": [
+            {
+              "priority": "High",
+              "afterRequestMs": 22.79300009831786
+            }
+          ],
+          "failure": "net::ERR_ABORTED",
+          "canceled": true,
+          "failedAfterMs": 501.0810000821948,
+          "blockedReason": null,
+          "startedAfterCategoryMs": 127.26806640625
+        },
+        {
+          "requestId": "45888.347",
+          "sourceId": "5ffee0ae02174a9ab621c43de9fbf5fda3227006fb1acc64f18e11ba3c24427b",
+          "host": "horica-media.ams3.cdn.digitaloceanspaces.com",
+          "width": 750,
+          "quality": 75,
+          "optimizer": true,
+          "name": "Jalfrezi Fish",
+          "startEpochMs": 1794441450801.369,
+          "startMono": 1128848.432611,
+          "initialPriority": "Low",
+          "initiator": "parser",
+          "priorityChanges": [
+            {
+              "priority": "High",
+              "afterRequestMs": 22.656999994069338
+            }
+          ],
+          "status": 200,
+          "mime": "image/avif",
+          "cacheStatus": "HIT",
+          "declaredBodyBytes": 44319,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "headersAfterMs": 239.85300003550947,
+          "responseTiming": {
+            "requestTime": 1128848.455885,
+            "proxyStart": -1,
+            "proxyEnd": -1,
+            "dnsStart": -1,
+            "dnsEnd": -1,
+            "connectStart": -1,
+            "connectEnd": -1,
+            "sslStart": -1,
+            "sslEnd": -1,
+            "workerStart": -1,
+            "workerReady": -1,
+            "workerFetchStart": -1,
+            "workerRespondWithSettled": -1,
+            "sendStart": 32.362,
+            "sendEnd": 32.438,
+            "pushStart": 0,
+            "pushEnd": 0,
+            "receiveHeadersStart": 182.438,
+            "receiveHeadersEnd": 215.574
+          },
+          "failure": "net::ERR_ABORTED",
+          "canceled": true,
+          "failedAfterMs": 501.1309999972582,
+          "blockedReason": null,
+          "startedAfterCategoryMs": 127.368896484375
+        },
+        {
+          "requestId": "45888.348",
+          "sourceId": "87e4ab2fa854f759486f439dce2bd1261055919d0d981017c84fb6e2dd1a74f0",
+          "host": "horica-media.ams3.cdn.digitaloceanspaces.com",
+          "width": 750,
+          "quality": 75,
+          "optimizer": true,
+          "name": "Jalfrezi Lamb",
+          "startEpochMs": 1794441450827.55,
+          "startMono": 1128848.458768,
+          "initialPriority": "Low",
+          "initiator": "parser",
+          "failure": "net::ERR_ABORTED",
+          "canceled": true,
+          "failedAfterMs": 475.08600004948676,
+          "blockedReason": null,
+          "startedAfterCategoryMs": 153.550048828125
+        },
+        {
+          "requestId": "45888.349",
+          "sourceId": "85fa96fa0af666b3d5a29652f420b5ea842b30577c4cfbf92bca5276cb9d32fb",
+          "host": "horica-media.ams3.cdn.digitaloceanspaces.com",
+          "width": 750,
+          "quality": 75,
+          "optimizer": true,
+          "name": "Jalfrezi Prawn",
+          "startEpochMs": 1794441450827.6802,
+          "startMono": 1128848.45892,
+          "initialPriority": "Low",
+          "initiator": "parser",
+          "failure": "net::ERR_ABORTED",
+          "canceled": true,
+          "failedAfterMs": 474.98000017367303,
+          "blockedReason": null,
+          "startedAfterCategoryMs": 153.68017578125
+        },
+        {
+          "requestId": "45888.351",
+          "sourceId": "1f11a2f3acf6be6486cfb9faa275095e9b7a5f14a8972e89e73e20123bc6e5b4",
+          "host": "horica-media.ams3.cdn.digitaloceanspaces.com",
+          "width": 750,
+          "quality": 75,
+          "optimizer": true,
+          "name": "Butter Chicken",
+          "startEpochMs": 1794441451280.021,
+          "startMono": 1128848.910855,
+          "initialPriority": "High",
+          "initiator": "script",
+          "failure": "net::ERR_ABORTED",
+          "canceled": true,
+          "failedAfterMs": 81.925000064075,
+          "blockedReason": null,
+          "startedAfterCategoryMs": 606.02099609375
+        },
+        {
+          "requestId": "45888.391",
+          "sourceId": "1f11a2f3acf6be6486cfb9faa275095e9b7a5f14a8972e89e73e20123bc6e5b4",
+          "host": "horica-media.ams3.cdn.digitaloceanspaces.com",
+          "width": 750,
+          "quality": 75,
+          "optimizer": true,
+          "name": "Butter Chicken",
+          "startEpochMs": 1794441451282.961,
+          "startMono": 1128848.913812,
+          "initialPriority": "High",
+          "initiator": "script",
+          "failure": "net::ERR_ABORTED",
+          "canceled": true,
+          "failedAfterMs": 79.20199981890619,
+          "blockedReason": null,
+          "startedAfterCategoryMs": 608.9609375
+        },
+        {
+          "requestId": "45888.392",
+          "sourceId": "fa4616a47a33e92638addb33e40502a61ac5da62342a9ef38d90c44943bc9a67",
+          "host": "horica-media.ams3.cdn.digitaloceanspaces.com",
+          "width": 750,
+          "quality": 75,
+          "optimizer": true,
+          "name": "Jalfrezi Chicken",
+          "startEpochMs": 1794441451283.556,
+          "startMono": 1128848.914447,
+          "initialPriority": "Low",
+          "initiator": "script",
+          "priorityChanges": [
+            {
+              "priority": "High",
+              "afterRequestMs": 15.919999917969108
+            }
+          ],
+          "failure": "net::ERR_ABORTED",
+          "canceled": true,
+          "failedAfterMs": 78.61500000581145,
+          "blockedReason": null,
+          "startedAfterCategoryMs": 609.555908203125
+        },
+        {
+          "requestId": "45888.393",
+          "sourceId": "5ffee0ae02174a9ab621c43de9fbf5fda3227006fb1acc64f18e11ba3c24427b",
+          "host": "horica-media.ams3.cdn.digitaloceanspaces.com",
+          "width": 750,
+          "quality": 75,
+          "optimizer": true,
+          "name": "Jalfrezi Fish",
+          "startEpochMs": 1794441451284.063,
+          "startMono": 1128848.914997,
+          "initialPriority": "Low",
+          "initiator": "script",
+          "priorityChanges": [
+            {
+              "priority": "High",
+              "afterRequestMs": 15.34499996341765
+            }
+          ],
+          "failure": "net::ERR_ABORTED",
+          "canceled": true,
+          "failedAfterMs": 78.11199990101159,
+          "blockedReason": null,
+          "startedAfterCategoryMs": 610.06298828125
+        },
+        {
+          "requestId": "45888.394",
+          "sourceId": "87e4ab2fa854f759486f439dce2bd1261055919d0d981017c84fb6e2dd1a74f0",
+          "host": "horica-media.ams3.cdn.digitaloceanspaces.com",
+          "width": 750,
+          "quality": 75,
+          "optimizer": true,
+          "name": "Jalfrezi Lamb",
+          "startEpochMs": 1794441451284.569,
+          "startMono": 1128848.915485,
+          "initialPriority": "Low",
+          "initiator": "script",
+          "failure": "net::ERR_ABORTED",
+          "canceled": true,
+          "failedAfterMs": 77.86300010047853,
+          "blockedReason": null,
+          "startedAfterCategoryMs": 610.569091796875
+        },
+        {
+          "requestId": "45888.395",
+          "sourceId": "85fa96fa0af666b3d5a29652f420b5ea842b30577c4cfbf92bca5276cb9d32fb",
+          "host": "horica-media.ams3.cdn.digitaloceanspaces.com",
+          "width": 750,
+          "quality": 75,
+          "optimizer": true,
+          "name": "Jalfrezi Prawn",
+          "startEpochMs": 1794441451285.034,
+          "startMono": 1128848.915986,
+          "initialPriority": "Low",
+          "initiator": "script",
+          "failure": "net::ERR_ABORTED",
+          "canceled": true,
+          "failedAfterMs": 77.63899979181588,
+          "blockedReason": null,
+          "startedAfterCategoryMs": 611.033935546875
+        },
+        {
+          "requestId": "45888.431",
+          "sourceId": "1f11a2f3acf6be6486cfb9faa275095e9b7a5f14a8972e89e73e20123bc6e5b4",
+          "host": "horica-media.ams3.cdn.digitaloceanspaces.com",
+          "width": 750,
+          "quality": 75,
+          "optimizer": true,
+          "name": "Butter Chicken",
+          "startEpochMs": 1794441451322.789,
+          "startMono": 1128848.953555,
+          "initialPriority": "High",
+          "initiator": "script",
+          "status": 200,
+          "mime": "image/avif",
+          "cacheStatus": "HIT",
+          "declaredBodyBytes": 43120,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "headersAfterMs": 214.26400006748736,
+          "responseTiming": {
+            "requestTime": 1128848.954714,
+            "proxyStart": -1,
+            "proxyEnd": -1,
+            "dnsStart": 40.477,
+            "dnsEnd": 40.494,
+            "connectStart": 40.494,
+            "connectEnd": 43.062,
+            "sslStart": -1,
+            "sslEnd": -1,
+            "workerStart": -1,
+            "workerReady": -1,
+            "workerFetchStart": -1,
+            "workerRespondWithSettled": -1,
+            "sendStart": 43.279,
+            "sendEnd": 43.384,
+            "pushStart": 0,
+            "pushEnd": 0,
+            "receiveHeadersStart": 193.384,
+            "receiveHeadersEnd": 212.054
+          },
+          "finishedAfterMs": 1356.9739998783916,
+          "encodedDataLength": 43891,
+          "startedAfterCategoryMs": 648.7890625
+        },
+        {
+          "requestId": "45888.471",
+          "sourceId": "1f11a2f3acf6be6486cfb9faa275095e9b7a5f14a8972e89e73e20123bc6e5b4",
+          "host": "horica-media.ams3.cdn.digitaloceanspaces.com",
+          "width": 750,
+          "quality": 75,
+          "optimizer": true,
+          "name": "Butter Chicken",
+          "startEpochMs": 1794441451326.3062,
+          "startMono": 1128848.957109,
+          "initialPriority": "High",
+          "initiator": "script",
+          "status": 200,
+          "mime": "image/avif",
+          "cacheStatus": "HIT",
+          "declaredBodyBytes": 43120,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "headersAfterMs": 225.98799993284047,
+          "responseTiming": {
+            "requestTime": 1128848.958008,
+            "proxyStart": -1,
+            "proxyEnd": -1,
+            "dnsStart": 38.312,
+            "dnsEnd": 38.333,
+            "connectStart": 38.333,
+            "connectEnd": 39.868,
+            "sslStart": -1,
+            "sslEnd": -1,
+            "workerStart": -1,
+            "workerReady": -1,
+            "workerFetchStart": -1,
+            "workerRespondWithSettled": -1,
+            "sendStart": 40.146,
+            "sendEnd": 40.21,
+            "pushStart": 0,
+            "pushEnd": 0,
+            "receiveHeadersStart": 190.21,
+            "receiveHeadersEnd": 224.419
+          },
+          "finishedAfterMs": 1359.140999848023,
+          "encodedDataLength": 43891,
+          "startedAfterCategoryMs": 652.30615234375
+        },
+        {
+          "requestId": "45888.472",
+          "sourceId": "fa4616a47a33e92638addb33e40502a61ac5da62342a9ef38d90c44943bc9a67",
+          "host": "horica-media.ams3.cdn.digitaloceanspaces.com",
+          "width": 750,
+          "quality": 75,
+          "optimizer": true,
+          "name": "Jalfrezi Chicken",
+          "startEpochMs": 1794441451326.8882,
+          "startMono": 1128848.957773,
+          "initialPriority": "Low",
+          "initiator": "script",
+          "priorityChanges": [
+            {
+              "priority": "High",
+              "afterRequestMs": 28.565000044181943
+            }
+          ],
+          "status": 200,
+          "mime": "image/avif",
+          "cacheStatus": "HIT",
+          "declaredBodyBytes": 40870,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "headersAfterMs": 209.60800000466406,
+          "responseTiming": {
+            "requestTime": 1128848.986659,
+            "proxyStart": -1,
+            "proxyEnd": -1,
+            "dnsStart": 10.511,
+            "dnsEnd": 10.521,
+            "connectStart": 10.521,
+            "connectEnd": 11.245,
+            "sslStart": -1,
+            "sslEnd": -1,
+            "workerStart": -1,
+            "workerReady": -1,
+            "workerFetchStart": -1,
+            "workerRespondWithSettled": -1,
+            "sendStart": 11.611,
+            "sendEnd": 11.676,
+            "pushStart": 0,
+            "pushEnd": 0,
+            "receiveHeadersStart": 161.676,
+            "receiveHeadersEnd": 179.85
+          },
+          "finishedAfterMs": 1259.0059998910874,
+          "encodedDataLength": 41641,
+          "startedAfterCategoryMs": 652.88818359375
+        },
+        {
+          "requestId": "45888.473",
+          "sourceId": "5ffee0ae02174a9ab621c43de9fbf5fda3227006fb1acc64f18e11ba3c24427b",
+          "host": "horica-media.ams3.cdn.digitaloceanspaces.com",
+          "width": 750,
+          "quality": 75,
+          "optimizer": true,
+          "name": "Jalfrezi Fish",
+          "startEpochMs": 1794441451327.416,
+          "startMono": 1128848.958321,
+          "initialPriority": "Low",
+          "initiator": "script",
+          "priorityChanges": [
+            {
+              "priority": "High",
+              "afterRequestMs": 28.03199994377792
+            }
+          ],
+          "status": 200,
+          "mime": "image/avif",
+          "cacheStatus": "HIT",
+          "declaredBodyBytes": 44319,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "headersAfterMs": 270.27099998667836,
+          "responseTiming": {
+            "requestTime": 1128848.987064,
+            "proxyStart": -1,
+            "proxyEnd": -1,
+            "dnsStart": -1,
+            "dnsEnd": -1,
+            "connectStart": -1,
+            "connectEnd": -1,
+            "sslStart": -1,
+            "sslEnd": -1,
+            "workerStart": -1,
+            "workerReady": -1,
+            "workerFetchStart": -1,
+            "workerRespondWithSettled": -1,
+            "sendStart": 54.949,
+            "sendEnd": 55.069,
+            "pushStart": 0,
+            "pushEnd": 0,
+            "receiveHeadersStart": 205.069,
+            "receiveHeadersEnd": 240.804
+          },
+          "finishedAfterMs": 1416.181999957189,
+          "encodedDataLength": 45090,
+          "startedAfterCategoryMs": 653.416015625
+        },
+        {
+          "requestId": "45888.474",
+          "sourceId": "87e4ab2fa854f759486f439dce2bd1261055919d0d981017c84fb6e2dd1a74f0",
+          "host": "horica-media.ams3.cdn.digitaloceanspaces.com",
+          "width": 750,
+          "quality": 75,
+          "optimizer": true,
+          "name": "Jalfrezi Lamb",
+          "startEpochMs": 1794441451327.908,
+          "startMono": 1128848.958843,
+          "initialPriority": "Low",
+          "initiator": "script",
+          "status": 200,
+          "mime": "image/avif",
+          "cacheStatus": "HIT",
+          "declaredBodyBytes": 42836,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "headersAfterMs": 10140.029999893159,
+          "responseTiming": {
+            "requestTime": 1128858.922369,
+            "proxyStart": -1,
+            "proxyEnd": -1,
+            "dnsStart": -1,
+            "dnsEnd": -1,
+            "connectStart": -1,
+            "connectEnd": -1,
+            "sslStart": -1,
+            "sslEnd": -1,
+            "workerStart": -1,
+            "workerReady": -1,
+            "workerFetchStart": -1,
+            "workerRespondWithSettled": -1,
+            "sendStart": 0.264,
+            "sendEnd": 0.389,
+            "pushStart": 0,
+            "pushEnd": 0,
+            "receiveHeadersStart": 150.389,
+            "receiveHeadersEnd": 172.81
+          },
+          "finishedAfterMs": 10814.008000073954,
+          "encodedDataLength": 43607,
+          "startedAfterCategoryMs": 653.907958984375
+        },
+        {
+          "requestId": "45888.475",
+          "sourceId": "85fa96fa0af666b3d5a29652f420b5ea842b30577c4cfbf92bca5276cb9d32fb",
+          "host": "horica-media.ams3.cdn.digitaloceanspaces.com",
+          "width": 750,
+          "quality": 75,
+          "optimizer": true,
+          "name": "Jalfrezi Prawn",
+          "startEpochMs": 1794441451328.391,
+          "startMono": 1128848.95933,
+          "initialPriority": "Low",
+          "initiator": "script",
+          "status": 200,
+          "mime": "image/avif",
+          "cacheStatus": "HIT",
+          "declaredBodyBytes": 43917,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "headersAfterMs": 10202.56599993445,
+          "responseTiming": {
+            "requestTime": 1128858.983277,
+            "proxyStart": -1,
+            "proxyEnd": -1,
+            "dnsStart": -1,
+            "dnsEnd": -1,
+            "connectStart": -1,
+            "connectEnd": -1,
+            "sslStart": -1,
+            "sslEnd": -1,
+            "workerStart": -1,
+            "workerReady": -1,
+            "workerFetchStart": -1,
+            "workerRespondWithSettled": -1,
+            "sendStart": 0.181,
+            "sendEnd": 0.243,
+            "pushStart": 0,
+            "pushEnd": 0,
+            "receiveHeadersStart": 150.243,
+            "receiveHeadersEnd": 174.547
+          },
+          "finishedAfterMs": 10861.575999995694,
+          "encodedDataLength": 44688,
+          "startedAfterCategoryMs": 654.39111328125
+        }
+      ],
+      "allOptimizerRequests": [
+        {
+          "sourceId": "aeff3e8ca1d69829e631f56299629c0b038ece51cb0f1ea5bc249711b62b1c48",
+          "width": 750,
+          "quality": 75,
+          "status": 200,
+          "cacheStatus": "HIT",
+          "headersAfterMs": 743.468000087887,
+          "finishedAfterMs": 1264.225000049919,
+          "encodedDataLength": 25453
+        },
+        {
+          "sourceId": "aeff3e8ca1d69829e631f56299629c0b038ece51cb0f1ea5bc249711b62b1c48",
+          "width": 750,
+          "quality": 75,
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "sourceId": "aeff3e8ca1d69829e631f56299629c0b038ece51cb0f1ea5bc249711b62b1c48",
+          "width": 750,
+          "quality": 75,
+          "status": 200,
+          "cacheStatus": "HIT",
+          "headersAfterMs": 437.188999960199,
+          "finishedAfterMs": 1080.7670000940561,
+          "encodedDataLength": 25453
+        },
+        {
+          "sourceId": "aeff3e8ca1d69829e631f56299629c0b038ece51cb0f1ea5bc249711b62b1c48",
+          "width": 750,
+          "quality": 75,
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "sourceId": "aeff3e8ca1d69829e631f56299629c0b038ece51cb0f1ea5bc249711b62b1c48",
+          "width": 750,
+          "quality": 75,
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "sourceId": "aeff3e8ca1d69829e631f56299629c0b038ece51cb0f1ea5bc249711b62b1c48",
+          "width": 750,
+          "quality": 75,
+          "status": 200,
+          "cacheStatus": "HIT",
+          "headersAfterMs": 495.9519999101758,
+          "finishedAfterMs": 1166.7760000564158,
+          "encodedDataLength": 25453
+        },
+        {
+          "sourceId": "9fed40cb2c85cae0e2e842f71a22c83cc712f8c2591e9abab45301bb6dbdf1e5",
+          "width": 48,
+          "quality": 75,
+          "status": 200,
+          "cacheStatus": "HIT",
+          "headersAfterMs": 962.422999786213,
+          "finishedAfterMs": 1037.6359999645501,
+          "encodedDataLength": 3121
+        },
+        {
+          "sourceId": "04cc19b9b1e941774b5185fc4997d98736485ba18bf3784dfc76230578b813ea",
+          "width": 48,
+          "quality": 75,
+          "status": 200,
+          "cacheStatus": "HIT",
+          "headersAfterMs": 1069.724999833852,
+          "finishedAfterMs": 1100.764999864623,
+          "encodedDataLength": 2863
+        },
+        {
+          "sourceId": "a23b126ec47b855f6ece547b9864630d93fd9702eeef4aea294c5de2b37bba22",
+          "width": 750,
+          "quality": 75,
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "sourceId": "aeff3e8ca1d69829e631f56299629c0b038ece51cb0f1ea5bc249711b62b1c48",
+          "width": 750,
+          "quality": 75,
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "sourceId": "aeff3e8ca1d69829e631f56299629c0b038ece51cb0f1ea5bc249711b62b1c48",
+          "width": 750,
+          "quality": 75,
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "sourceId": "a23b126ec47b855f6ece547b9864630d93fd9702eeef4aea294c5de2b37bba22",
+          "width": 750,
+          "quality": 75,
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "sourceId": "aeff3e8ca1d69829e631f56299629c0b038ece51cb0f1ea5bc249711b62b1c48",
+          "width": 750,
+          "quality": 75,
+          "status": 200,
+          "cacheStatus": "HIT",
+          "headersAfterMs": 219.43699987605214,
+          "finishedAfterMs": 726.3650000095367,
+          "encodedDataLength": 25453
+        },
+        {
+          "sourceId": "aeff3e8ca1d69829e631f56299629c0b038ece51cb0f1ea5bc249711b62b1c48",
+          "width": 750,
+          "quality": 75,
+          "status": 200,
+          "cacheStatus": "HIT",
+          "headersAfterMs": 280.3440000861883,
+          "finishedAfterMs": 773.5150000080466,
+          "encodedDataLength": 25453
+        },
+        {
+          "sourceId": "a23b126ec47b855f6ece547b9864630d93fd9702eeef4aea294c5de2b37bba22",
+          "width": 750,
+          "quality": 75,
+          "status": 200,
+          "cacheStatus": "HIT",
+          "headersAfterMs": 4462.303000036627,
+          "finishedAfterMs": 4741.538999835029,
+          "encodedDataLength": 23298
+        },
+        {
+          "sourceId": "1f11a2f3acf6be6486cfb9faa275095e9b7a5f14a8972e89e73e20123bc6e5b4",
+          "width": 750,
+          "quality": 75,
+          "status": 200,
+          "cacheStatus": "HIT",
+          "headersAfterMs": 217.0120000373572,
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "sourceId": "1f11a2f3acf6be6486cfb9faa275095e9b7a5f14a8972e89e73e20123bc6e5b4",
+          "width": 750,
+          "quality": 75,
+          "status": 200,
+          "cacheStatus": "HIT",
+          "headersAfterMs": 246.29499996080995,
+          "finishedAfterMs": 1031.4289999660105,
+          "encodedDataLength": 43891
+        },
+        {
+          "sourceId": "fa4616a47a33e92638addb33e40502a61ac5da62342a9ef38d90c44943bc9a67",
+          "width": 750,
+          "quality": 75,
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "sourceId": "5ffee0ae02174a9ab621c43de9fbf5fda3227006fb1acc64f18e11ba3c24427b",
+          "width": 750,
+          "quality": 75,
+          "status": 200,
+          "cacheStatus": "HIT",
+          "headersAfterMs": 239.85300003550947,
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "sourceId": "87e4ab2fa854f759486f439dce2bd1261055919d0d981017c84fb6e2dd1a74f0",
+          "width": 750,
+          "quality": 75,
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "sourceId": "85fa96fa0af666b3d5a29652f420b5ea842b30577c4cfbf92bca5276cb9d32fb",
+          "width": 750,
+          "quality": 75,
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "sourceId": "b284543a4719d346a062b5a6e9ead764c131f1fb072707dc720fb168bcaeb4e7",
+          "width": 750,
+          "quality": 75,
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "sourceId": "1f11a2f3acf6be6486cfb9faa275095e9b7a5f14a8972e89e73e20123bc6e5b4",
+          "width": 750,
+          "quality": 75,
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "sourceId": "1f11a2f3acf6be6486cfb9faa275095e9b7a5f14a8972e89e73e20123bc6e5b4",
+          "width": 750,
+          "quality": 75,
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "sourceId": "fa4616a47a33e92638addb33e40502a61ac5da62342a9ef38d90c44943bc9a67",
+          "width": 750,
+          "quality": 75,
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "sourceId": "5ffee0ae02174a9ab621c43de9fbf5fda3227006fb1acc64f18e11ba3c24427b",
+          "width": 750,
+          "quality": 75,
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "sourceId": "87e4ab2fa854f759486f439dce2bd1261055919d0d981017c84fb6e2dd1a74f0",
+          "width": 750,
+          "quality": 75,
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "sourceId": "85fa96fa0af666b3d5a29652f420b5ea842b30577c4cfbf92bca5276cb9d32fb",
+          "width": 750,
+          "quality": 75,
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "sourceId": "b284543a4719d346a062b5a6e9ead764c131f1fb072707dc720fb168bcaeb4e7",
+          "width": 750,
+          "quality": 75,
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "sourceId": "1f11a2f3acf6be6486cfb9faa275095e9b7a5f14a8972e89e73e20123bc6e5b4",
+          "width": 750,
+          "quality": 75,
+          "status": 200,
+          "cacheStatus": "HIT",
+          "headersAfterMs": 214.26400006748736,
+          "finishedAfterMs": 1356.9739998783916,
+          "encodedDataLength": 43891
+        },
+        {
+          "sourceId": "1f11a2f3acf6be6486cfb9faa275095e9b7a5f14a8972e89e73e20123bc6e5b4",
+          "width": 750,
+          "quality": 75,
+          "status": 200,
+          "cacheStatus": "HIT",
+          "headersAfterMs": 225.98799993284047,
+          "finishedAfterMs": 1359.140999848023,
+          "encodedDataLength": 43891
+        },
+        {
+          "sourceId": "fa4616a47a33e92638addb33e40502a61ac5da62342a9ef38d90c44943bc9a67",
+          "width": 750,
+          "quality": 75,
+          "status": 200,
+          "cacheStatus": "HIT",
+          "headersAfterMs": 209.60800000466406,
+          "finishedAfterMs": 1259.0059998910874,
+          "encodedDataLength": 41641
+        },
+        {
+          "sourceId": "5ffee0ae02174a9ab621c43de9fbf5fda3227006fb1acc64f18e11ba3c24427b",
+          "width": 750,
+          "quality": 75,
+          "status": 200,
+          "cacheStatus": "HIT",
+          "headersAfterMs": 270.27099998667836,
+          "finishedAfterMs": 1416.181999957189,
+          "encodedDataLength": 45090
+        },
+        {
+          "sourceId": "87e4ab2fa854f759486f439dce2bd1261055919d0d981017c84fb6e2dd1a74f0",
+          "width": 750,
+          "quality": 75,
+          "status": 200,
+          "cacheStatus": "HIT",
+          "headersAfterMs": 10140.029999893159,
+          "finishedAfterMs": 10814.008000073954,
+          "encodedDataLength": 43607
+        },
+        {
+          "sourceId": "85fa96fa0af666b3d5a29652f420b5ea842b30577c4cfbf92bca5276cb9d32fb",
+          "width": 750,
+          "quality": 75,
+          "status": 200,
+          "cacheStatus": "HIT",
+          "headersAfterMs": 10202.56599993445,
+          "finishedAfterMs": 10861.575999995694,
+          "encodedDataLength": 44688
+        },
+        {
+          "sourceId": "b284543a4719d346a062b5a6e9ead764c131f1fb072707dc720fb168bcaeb4e7",
+          "width": 750,
+          "quality": 75,
+          "status": 200,
+          "cacheStatus": "HIT",
+          "headersAfterMs": 10264.947000192478,
+          "finishedAfterMs": 10892.214999999851,
+          "encodedDataLength": 45241
+        }
+      ],
+      "imageEvents": [
+        {
+          "event": "load",
+          "alt": "Jalfrezi Chicken",
+          "at": 5051.799999952316,
+          "naturalWidth": 356,
+          "naturalHeight": 265
+        },
+        {
+          "event": "load",
+          "alt": "Butter Chicken",
+          "at": 5143.799999952316,
+          "naturalWidth": 356,
+          "naturalHeight": 265
+        },
+        {
+          "event": "load",
+          "alt": "Butter Chicken",
+          "at": 5149.400000095367,
+          "naturalWidth": 356,
+          "naturalHeight": 265
+        },
+        {
+          "event": "load",
+          "alt": "Jalfrezi Fish",
+          "at": 5207.5,
+          "naturalWidth": 356,
+          "naturalHeight": 265
+        },
+        {
+          "event": "load",
+          "alt": "Jalfrezi Lamb",
+          "at": 14605.799999952316,
+          "naturalWidth": 356,
+          "naturalHeight": 265
+        },
+        {
+          "event": "load",
+          "alt": "Jalfrezi Prawn",
+          "at": 14653.900000095367,
+          "naturalWidth": 356,
+          "naturalHeight": 265
+        }
+      ],
+      "runtimeErrors": [],
+      "stableScrollEpochMs": 1794441450810,
+      "resourceCounts": [
+        {
+          "event": "start",
+          "timestamp": 1128845.168872,
+          "active": 1,
+          "activeOptimizer": 0
+        },
+        {
+          "event": "start",
+          "timestamp": 1128845.350261,
+          "active": 2,
+          "activeOptimizer": 0
+        },
+        {
+          "event": "start",
+          "timestamp": 1128845.350567,
+          "active": 3,
+          "activeOptimizer": 0
+        },
+        {
+          "event": "start",
+          "timestamp": 1128845.350753,
+          "active": 4,
+          "activeOptimizer": 0
+        },
+        {
+          "event": "start",
+          "timestamp": 1128845.350935,
+          "active": 5,
+          "activeOptimizer": 0
+        },
+        {
+          "event": "start",
+          "timestamp": 1128845.356094,
+          "active": 6,
+          "activeOptimizer": 0
+        },
+        {
+          "event": "start",
+          "timestamp": 1128845.356318,
+          "active": 7,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "start",
+          "timestamp": 1128845.356439,
+          "active": 8,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "start",
+          "timestamp": 1128845.356576,
+          "active": 9,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "start",
+          "timestamp": 1128845.356686,
+          "active": 10,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "start",
+          "timestamp": 1128845.356912,
+          "active": 11,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "start",
+          "timestamp": 1128845.357049,
+          "active": 12,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "start",
+          "timestamp": 1128845.357145,
+          "active": 13,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "start",
+          "timestamp": 1128845.357259,
+          "active": 14,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "start",
+          "timestamp": 1128845.357348,
+          "active": 15,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "start",
+          "timestamp": 1128845.357435,
+          "active": 16,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "start",
+          "timestamp": 1128845.357543,
+          "active": 17,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "start",
+          "timestamp": 1128845.357652,
+          "active": 18,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "start",
+          "timestamp": 1128845.357728,
+          "active": 19,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "start",
+          "timestamp": 1128845.357815,
+          "active": 20,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "start",
+          "timestamp": 1128845.357901,
+          "active": 21,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "start",
+          "timestamp": 1128845.357987,
+          "active": 22,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "start",
+          "timestamp": 1128845.358074,
+          "active": 23,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128845.675816,
+          "active": 22,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128845.917167,
+          "active": 21,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128846.130385,
+          "active": 20,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128846.236427,
+          "active": 19,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.241723,
+          "active": 20,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.241957,
+          "active": 21,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.242057,
+          "active": 22,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.242158,
+          "active": 23,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.242262,
+          "active": 24,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.242487,
+          "active": 25,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.242598,
+          "active": 26,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.242825,
+          "active": 27,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.242969,
+          "active": 28,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.243122,
+          "active": 29,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.243219,
+          "active": 30,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.243318,
+          "active": 31,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.243661,
+          "active": 32,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.243779,
+          "active": 33,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.243881,
+          "active": 34,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.243993,
+          "active": 35,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.244109,
+          "active": 36,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.24422,
+          "active": 37,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.244333,
+          "active": 38,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.244437,
+          "active": 39,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.244533,
+          "active": 40,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.244636,
+          "active": 41,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.244721,
+          "active": 42,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.244987,
+          "active": 43,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.245167,
+          "active": 44,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.245316,
+          "active": 45,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.245448,
+          "active": 46,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.245558,
+          "active": 47,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.245677,
+          "active": 48,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.245807,
+          "active": 49,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.245909,
+          "active": 50,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.246005,
+          "active": 51,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.246118,
+          "active": 52,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.246228,
+          "active": 53,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.246613,
+          "active": 54,
+          "activeOptimizer": 2
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.246693,
+          "active": 55,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.246862,
+          "active": 56,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.247093,
+          "active": 57,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.2472,
+          "active": 58,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.247317,
+          "active": 59,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.247485,
+          "active": 60,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.247619,
+          "active": 61,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.247747,
+          "active": 62,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.248309,
+          "active": 63,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.24854,
+          "active": 64,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.248648,
+          "active": 65,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.248814,
+          "active": 66,
+          "activeOptimizer": 4
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.248899,
+          "active": 67,
+          "activeOptimizer": 5
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.24899,
+          "active": 68,
+          "activeOptimizer": 6
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.249114,
+          "active": 69,
+          "activeOptimizer": 6
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.249343,
+          "active": 70,
+          "activeOptimizer": 6
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.249547,
+          "active": 71,
+          "activeOptimizer": 6
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.249651,
+          "active": 72,
+          "activeOptimizer": 6
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.249758,
+          "active": 73,
+          "activeOptimizer": 6
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.249876,
+          "active": 74,
+          "activeOptimizer": 6
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.250033,
+          "active": 75,
+          "activeOptimizer": 6
+        },
+        {
+          "event": "Network.loadingFailed",
+          "timestamp": 1128846.252687,
+          "active": 74,
+          "activeOptimizer": 5
+        },
+        {
+          "event": "Network.loadingFailed",
+          "timestamp": 1128846.252836,
+          "active": 73,
+          "activeOptimizer": 4
+        },
+        {
+          "event": "Network.loadingFailed",
+          "timestamp": 1128846.252901,
+          "active": 72,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.261692,
+          "active": 73,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128846.261753,
+          "active": 72,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.264831,
+          "active": 73,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.266132,
+          "active": 74,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.266352,
+          "active": 75,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128846.242704,
+          "active": 74,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128846.46847,
+          "active": 73,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128846.483593,
+          "active": 72,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.533584,
+          "active": 73,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.533741,
+          "active": 74,
+          "activeOptimizer": 4
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.533832,
+          "active": 75,
+          "activeOptimizer": 5
+        },
+        {
+          "event": "start",
+          "timestamp": 1128846.533928,
+          "active": 76,
+          "activeOptimizer": 6
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128846.513379,
+          "active": 75,
+          "activeOptimizer": 6
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128846.574361,
+          "active": 74,
+          "activeOptimizer": 6
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128846.620543,
+          "active": 73,
+          "activeOptimizer": 5
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128846.66742,
+          "active": 72,
+          "activeOptimizer": 5
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128847.32746,
+          "active": 71,
+          "activeOptimizer": 4
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128847.415766,
+          "active": 70,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128847.556589,
+          "active": 69,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128847.571377,
+          "active": 68,
+          "activeOptimizer": 2
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128847.602578,
+          "active": 67,
+          "activeOptimizer": 2
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128847.634597,
+          "active": 66,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128847.730806,
+          "active": 65,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128847.806547,
+          "active": 64,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128847.902551,
+          "active": 63,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128847.91887,
+          "active": 62,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128847.982274,
+          "active": 61,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128848.012596,
+          "active": 60,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128848.105492,
+          "active": 59,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128848.120453,
+          "active": 58,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128848.135438,
+          "active": 57,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128848.165464,
+          "active": 56,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128848.181682,
+          "active": 55,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128848.257523,
+          "active": 54,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.282991,
+          "active": 55,
+          "activeOptimizer": 2
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.285115,
+          "active": 56,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.285568,
+          "active": 57,
+          "activeOptimizer": 4
+        },
+        {
+          "event": "Network.loadingFailed",
+          "timestamp": 1128848.28858,
+          "active": 56,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.298514,
+          "active": 57,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.301431,
+          "active": 58,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.301608,
+          "active": 59,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.315284,
+          "active": 60,
+          "activeOptimizer": 4
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.315892,
+          "active": 61,
+          "activeOptimizer": 5
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.316452,
+          "active": 62,
+          "activeOptimizer": 6
+        },
+        {
+          "event": "Network.loadingFailed",
+          "timestamp": 1128848.319279,
+          "active": 61,
+          "activeOptimizer": 5
+        },
+        {
+          "event": "Network.loadingFailed",
+          "timestamp": 1128848.319346,
+          "active": 60,
+          "activeOptimizer": 4
+        },
+        {
+          "event": "Network.loadingFailed",
+          "timestamp": 1128848.3194,
+          "active": 59,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128848.320251,
+          "active": 58,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.349054,
+          "active": 59,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.350992,
+          "active": 60,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.351305,
+          "active": 61,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.351549,
+          "active": 62,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.351746,
+          "active": 63,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.351933,
+          "active": 64,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.352117,
+          "active": 65,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.352332,
+          "active": 66,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.352536,
+          "active": 67,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.352726,
+          "active": 68,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.352916,
+          "active": 69,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.353098,
+          "active": 70,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.353331,
+          "active": 71,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.353731,
+          "active": 72,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.353926,
+          "active": 73,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.354112,
+          "active": 74,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.354346,
+          "active": 75,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.354532,
+          "active": 76,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.354713,
+          "active": 77,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.354902,
+          "active": 78,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.35508,
+          "active": 79,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.355261,
+          "active": 80,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.355459,
+          "active": 81,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.355639,
+          "active": 82,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.356847,
+          "active": 83,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.357337,
+          "active": 84,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.357761,
+          "active": 85,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.358173,
+          "active": 86,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.358598,
+          "active": 87,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.359022,
+          "active": 88,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.359451,
+          "active": 89,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.359869,
+          "active": 90,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.360295,
+          "active": 91,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.360686,
+          "active": 92,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.36108,
+          "active": 93,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.361483,
+          "active": 94,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.361878,
+          "active": 95,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.362295,
+          "active": 96,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.362759,
+          "active": 97,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.363429,
+          "active": 98,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.363886,
+          "active": 99,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.364289,
+          "active": 100,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.364701,
+          "active": 101,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.365095,
+          "active": 102,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.365665,
+          "active": 103,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.366183,
+          "active": 104,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.366808,
+          "active": 105,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.367218,
+          "active": 106,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.367946,
+          "active": 107,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.36869,
+          "active": 108,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.369266,
+          "active": 109,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.369754,
+          "active": 110,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.370178,
+          "active": 111,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.370567,
+          "active": 112,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.37094,
+          "active": 113,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.37129,
+          "active": 114,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.371671,
+          "active": 115,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.37204,
+          "active": 116,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.372448,
+          "active": 117,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.372832,
+          "active": 118,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.373223,
+          "active": 119,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.373588,
+          "active": 120,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.373979,
+          "active": 121,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.37437,
+          "active": 122,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.375115,
+          "active": 123,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.375474,
+          "active": 124,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.375837,
+          "active": 125,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.376204,
+          "active": 126,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.376564,
+          "active": 127,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.376942,
+          "active": 128,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.377287,
+          "active": 129,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.377639,
+          "active": 130,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.377987,
+          "active": 131,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.378387,
+          "active": 132,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.378769,
+          "active": 133,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.379138,
+          "active": 134,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.379513,
+          "active": 135,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.37991,
+          "active": 136,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.380253,
+          "active": 137,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.38075,
+          "active": 138,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.38114,
+          "active": 139,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.381491,
+          "active": 140,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.381871,
+          "active": 141,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.382209,
+          "active": 142,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.382568,
+          "active": 143,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.382953,
+          "active": 144,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.383307,
+          "active": 145,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.383702,
+          "active": 146,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.384241,
+          "active": 147,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.384695,
+          "active": 148,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.385186,
+          "active": 149,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.385665,
+          "active": 150,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.386037,
+          "active": 151,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.386427,
+          "active": 152,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.386773,
+          "active": 153,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.387139,
+          "active": 154,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.387484,
+          "active": 155,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.387809,
+          "active": 156,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.388147,
+          "active": 157,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.388489,
+          "active": 158,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.388816,
+          "active": 159,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.389166,
+          "active": 160,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.389515,
+          "active": 161,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.38992,
+          "active": 162,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.395259,
+          "active": 163,
+          "activeOptimizer": 4
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.395987,
+          "active": 164,
+          "activeOptimizer": 5
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.432485,
+          "active": 165,
+          "activeOptimizer": 6
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.432611,
+          "active": 166,
+          "activeOptimizer": 7
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128848.365629,
+          "active": 165,
+          "activeOptimizer": 7
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128848.42696,
+          "active": 164,
+          "activeOptimizer": 7
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128848.441482,
+          "active": 163,
+          "activeOptimizer": 7
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.458768,
+          "active": 164,
+          "activeOptimizer": 8
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.45892,
+          "active": 165,
+          "activeOptimizer": 9
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.459014,
+          "active": 166,
+          "activeOptimizer": 10
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128848.4557,
+          "active": 165,
+          "activeOptimizer": 10
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128848.487896,
+          "active": 164,
+          "activeOptimizer": 10
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128848.888738,
+          "active": 163,
+          "activeOptimizer": 10
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.910855,
+          "active": 164,
+          "activeOptimizer": 11
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.913812,
+          "active": 165,
+          "activeOptimizer": 12
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.914447,
+          "active": 166,
+          "activeOptimizer": 13
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.914997,
+          "active": 167,
+          "activeOptimizer": 14
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.915485,
+          "active": 168,
+          "activeOptimizer": 15
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.915986,
+          "active": 169,
+          "activeOptimizer": 16
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.916491,
+          "active": 170,
+          "activeOptimizer": 17
+        },
+        {
+          "event": "Network.loadingFailed",
+          "timestamp": 1128848.933282,
+          "active": 169,
+          "activeOptimizer": 16
+        },
+        {
+          "event": "Network.loadingFailed",
+          "timestamp": 1128848.933566,
+          "active": 168,
+          "activeOptimizer": 15
+        },
+        {
+          "event": "Network.loadingFailed",
+          "timestamp": 1128848.933742,
+          "active": 167,
+          "activeOptimizer": 14
+        },
+        {
+          "event": "Network.loadingFailed",
+          "timestamp": 1128848.933854,
+          "active": 166,
+          "activeOptimizer": 13
+        },
+        {
+          "event": "Network.loadingFailed",
+          "timestamp": 1128848.9339,
+          "active": 165,
+          "activeOptimizer": 12
+        },
+        {
+          "event": "Network.loadingFailed",
+          "timestamp": 1128848.933946,
+          "active": 164,
+          "activeOptimizer": 11
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.953555,
+          "active": 165,
+          "activeOptimizer": 12
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.957109,
+          "active": 166,
+          "activeOptimizer": 13
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.957773,
+          "active": 167,
+          "activeOptimizer": 14
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.958321,
+          "active": 168,
+          "activeOptimizer": 15
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.958843,
+          "active": 169,
+          "activeOptimizer": 16
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.95933,
+          "active": 170,
+          "activeOptimizer": 17
+        },
+        {
+          "event": "start",
+          "timestamp": 1128848.95981,
+          "active": 171,
+          "activeOptimizer": 18
+        },
+        {
+          "event": "Network.loadingFailed",
+          "timestamp": 1128848.99278,
+          "active": 170,
+          "activeOptimizer": 17
+        },
+        {
+          "event": "Network.loadingFailed",
+          "timestamp": 1128848.993014,
+          "active": 169,
+          "activeOptimizer": 16
+        },
+        {
+          "event": "Network.loadingFailed",
+          "timestamp": 1128848.993062,
+          "active": 168,
+          "activeOptimizer": 15
+        },
+        {
+          "event": "Network.loadingFailed",
+          "timestamp": 1128848.993109,
+          "active": 167,
+          "activeOptimizer": 14
+        },
+        {
+          "event": "Network.loadingFailed",
+          "timestamp": 1128848.993348,
+          "active": 166,
+          "activeOptimizer": 13
+        },
+        {
+          "event": "Network.loadingFailed",
+          "timestamp": 1128848.993625,
+          "active": 165,
+          "activeOptimizer": 12
+        },
+        {
+          "event": "Network.loadingFailed",
+          "timestamp": 1128848.993685,
+          "active": 164,
+          "activeOptimizer": 11
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128849.041649,
+          "active": 163,
+          "activeOptimizer": 10
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128849.089407,
+          "active": 162,
+          "activeOptimizer": 9
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128849.427416,
+          "active": 161,
+          "activeOptimizer": 8
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128849.566961,
+          "active": 160,
+          "activeOptimizer": 8
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128849.909955,
+          "active": 159,
+          "activeOptimizer": 8
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128850.045902,
+          "active": 158,
+          "activeOptimizer": 8
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128850.216779,
+          "active": 157,
+          "activeOptimizer": 7
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128850.310529,
+          "active": 156,
+          "activeOptimizer": 6
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128850.31625,
+          "active": 155,
+          "activeOptimizer": 5
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128850.358546,
+          "active": 154,
+          "activeOptimizer": 5
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128850.374503,
+          "active": 153,
+          "activeOptimizer": 4
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128850.406591,
+          "active": 152,
+          "activeOptimizer": 4
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128850.452915,
+          "active": 151,
+          "activeOptimizer": 4
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128850.666832,
+          "active": 150,
+          "activeOptimizer": 4
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128850.698746,
+          "active": 149,
+          "activeOptimizer": 4
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128850.790823,
+          "active": 148,
+          "activeOptimizer": 4
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128850.791208,
+          "active": 147,
+          "activeOptimizer": 4
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128850.820736,
+          "active": 146,
+          "activeOptimizer": 4
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128850.836869,
+          "active": 145,
+          "activeOptimizer": 4
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128850.916375,
+          "active": 144,
+          "activeOptimizer": 4
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128850.947287,
+          "active": 143,
+          "activeOptimizer": 4
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128851.161278,
+          "active": 142,
+          "activeOptimizer": 4
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128851.190786,
+          "active": 141,
+          "activeOptimizer": 4
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128851.236718,
+          "active": 140,
+          "activeOptimizer": 4
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128851.253,
+          "active": 139,
+          "activeOptimizer": 4
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128851.29783,
+          "active": 138,
+          "activeOptimizer": 4
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128851.313606,
+          "active": 137,
+          "activeOptimizer": 4
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128851.406026,
+          "active": 136,
+          "activeOptimizer": 4
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128851.528799,
+          "active": 135,
+          "activeOptimizer": 4
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128851.622932,
+          "active": 134,
+          "activeOptimizer": 4
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128851.654822,
+          "active": 133,
+          "activeOptimizer": 4
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128851.703174,
+          "active": 132,
+          "activeOptimizer": 4
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128851.718779,
+          "active": 131,
+          "activeOptimizer": 4
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128851.766864,
+          "active": 130,
+          "activeOptimizer": 4
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128851.829152,
+          "active": 129,
+          "activeOptimizer": 4
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128851.921256,
+          "active": 128,
+          "activeOptimizer": 4
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128851.997283,
+          "active": 127,
+          "activeOptimizer": 4
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128851.997737,
+          "active": 126,
+          "activeOptimizer": 4
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128852.012988,
+          "active": 125,
+          "activeOptimizer": 4
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128852.106916,
+          "active": 124,
+          "activeOptimizer": 4
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128852.13688,
+          "active": 123,
+          "activeOptimizer": 4
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128852.21479,
+          "active": 122,
+          "activeOptimizer": 4
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128852.276108,
+          "active": 121,
+          "activeOptimizer": 4
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128852.37087,
+          "active": 120,
+          "activeOptimizer": 4
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128852.371159,
+          "active": 119,
+          "activeOptimizer": 4
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128852.480806,
+          "active": 118,
+          "activeOptimizer": 4
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128852.495888,
+          "active": 117,
+          "activeOptimizer": 4
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128852.511868,
+          "active": 116,
+          "activeOptimizer": 4
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128852.526877,
+          "active": 115,
+          "activeOptimizer": 4
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128852.588031,
+          "active": 114,
+          "activeOptimizer": 4
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128852.597176,
+          "active": 113,
+          "activeOptimizer": 4
+        },
+        {
+          "event": "start",
+          "timestamp": 1128852.698023,
+          "active": 114,
+          "activeOptimizer": 4
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128852.695255,
+          "active": 113,
+          "activeOptimizer": 4
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128852.726185,
+          "active": 112,
+          "activeOptimizer": 4
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128852.773949,
+          "active": 111,
+          "activeOptimizer": 4
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128852.784614,
+          "active": 110,
+          "activeOptimizer": 4
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128852.805973,
+          "active": 109,
+          "activeOptimizer": 4
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128853.057991,
+          "active": 108,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128853.073952,
+          "active": 107,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128853.135985,
+          "active": 106,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128853.182041,
+          "active": 105,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128853.19697,
+          "active": 104,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128853.20413,
+          "active": 103,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128853.32015,
+          "active": 102,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128853.39803,
+          "active": 101,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128853.494092,
+          "active": 100,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128853.572042,
+          "active": 99,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128853.603718,
+          "active": 98,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128853.618982,
+          "active": 97,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128853.681434,
+          "active": 96,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128853.727048,
+          "active": 95,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128853.804165,
+          "active": 94,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128853.897585,
+          "active": 93,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128853.991508,
+          "active": 92,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128854.007563,
+          "active": 91,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128854.086466,
+          "active": 90,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128854.116439,
+          "active": 89,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128854.147356,
+          "active": 88,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128854.226088,
+          "active": 87,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128854.3031,
+          "active": 86,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128854.35025,
+          "active": 85,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128854.459147,
+          "active": 84,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128854.505229,
+          "active": 83,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128854.535488,
+          "active": 82,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128854.597158,
+          "active": 81,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128854.64334,
+          "active": 80,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128854.689308,
+          "active": 79,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128854.796292,
+          "active": 78,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128854.87467,
+          "active": 77,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128854.905324,
+          "active": 76,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128854.967327,
+          "active": 75,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128855.028271,
+          "active": 74,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128855.059328,
+          "active": 73,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128855.135291,
+          "active": 72,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128855.227213,
+          "active": 71,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128855.258375,
+          "active": 70,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128855.319396,
+          "active": 69,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128855.394958,
+          "active": 68,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128855.427141,
+          "active": 67,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128855.504329,
+          "active": 66,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128855.581179,
+          "active": 65,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128855.612478,
+          "active": 64,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128855.674887,
+          "active": 63,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128855.765895,
+          "active": 62,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128855.798227,
+          "active": 61,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128855.846115,
+          "active": 60,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128855.938968,
+          "active": 59,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128855.984342,
+          "active": 58,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128856.030876,
+          "active": 57,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128856.123978,
+          "active": 56,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128856.155973,
+          "active": 55,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128856.218312,
+          "active": 54,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128856.29497,
+          "active": 53,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128856.341237,
+          "active": 52,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128856.388063,
+          "active": 51,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128856.482019,
+          "active": 50,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128856.513214,
+          "active": 49,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128856.574072,
+          "active": 48,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128856.653334,
+          "active": 47,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128856.700371,
+          "active": 46,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128856.748076,
+          "active": 45,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128856.842195,
+          "active": 44,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128856.874209,
+          "active": 43,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128856.922628,
+          "active": 42,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128857.017248,
+          "active": 41,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128857.063175,
+          "active": 40,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128857.110386,
+          "active": 39,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128857.205483,
+          "active": 38,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128857.236475,
+          "active": 37,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128857.28257,
+          "active": 36,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128857.376497,
+          "active": 35,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128857.424774,
+          "active": 34,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128857.472529,
+          "active": 33,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128857.566426,
+          "active": 32,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128857.598576,
+          "active": 31,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128857.64455,
+          "active": 30,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128857.738697,
+          "active": 29,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128857.785858,
+          "active": 28,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128857.831509,
+          "active": 27,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128857.909715,
+          "active": 26,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128857.97284,
+          "active": 25,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128858.002833,
+          "active": 24,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128858.096108,
+          "active": 23,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128858.158032,
+          "active": 22,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128858.188015,
+          "active": 21,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128858.265125,
+          "active": 20,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128858.326816,
+          "active": 19,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128858.358878,
+          "active": 18,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128858.452901,
+          "active": 17,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128858.515111,
+          "active": 16,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128858.562817,
+          "active": 15,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128858.624939,
+          "active": 14,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128858.686983,
+          "active": 13,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128858.718004,
+          "active": 12,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128858.812935,
+          "active": 11,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128858.87589,
+          "active": 10,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128858.922001,
+          "active": 9,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128858.982903,
+          "active": 8,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128859.047097,
+          "active": 7,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128859.094913,
+          "active": 6,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128859.158214,
+          "active": 5,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128859.220961,
+          "active": 4,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128859.29905,
+          "active": 3,
+          "activeOptimizer": 3
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128859.772851,
+          "active": 2,
+          "activeOptimizer": 2
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128859.820906,
+          "active": 1,
+          "activeOptimizer": 1
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128859.852025,
+          "active": 0,
+          "activeOptimizer": 0
+        },
+        {
+          "event": "start",
+          "timestamp": 1128859.857225,
+          "active": 1,
+          "activeOptimizer": 0
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128860.068286,
+          "active": 0,
+          "activeOptimizer": 0
+        },
+        {
+          "event": "start",
+          "timestamp": 1128863.297721,
+          "active": 1,
+          "activeOptimizer": 0
+        },
+        {
+          "event": "Network.loadingFinished",
+          "timestamp": 1128863.466833,
+          "active": 0,
+          "activeOptimizer": 0
+        }
+      ]
+    }
+  ],
+  "completedAtUTC": "2026-11-11T23:57:46.612Z"
+}

@@ -1,0 +1,670 @@
+{
+ "schemaVersion": 1,
+ "kind": "Offline runtime-budget investigation evidence index; no migration adopted",
+ "assembledAtUtc": "2026-11-11T21:40:20.881Z",
+ "decision": {
+  "esmAdopted": false,
+  "pagesMigrationAdopted": false,
+  "actualFeaturePrototypeMeetsJavascriptBudget": false,
+  "homePrototypeMeetsCssBudget": false,
+  "universalFrameworkMinimumClaimSupported": false,
+  "reason": "Supported plain Pages probe is below120000bytes, but actual-feature Pages routes still exceed it. Failed ESM emissions cannot count as valid savings."
+ },
+ "budget": {
+  "units": "decimal bytes",
+  "javascriptExclusiveLimit": 120000,
+  "cssExclusiveLimit": 40000,
+  "method": "Distinct initial external JS/CSS URLs from saved SSR HTML, independently gzip-compressed at level6 and byte-matched to compiled files. Not HTTP transfer totals or runtime performance.",
+  "excluded": [
+   "HTML/inline scripts",
+   "fonts",
+   "media",
+   "API data",
+   "dynamic imports",
+   "prefetch",
+   "legacy nomodule polyfills"
+  ]
+ },
+ "proofRoots": {
+  "esm": "C:/Users/DaviiC/AppData/Local/Temp/shah-esm-experiment-20261111T202641312Z",
+  "feature": "C:/Users/DaviiC/AppData/Local/Temp/shah-pages-feature-20261111T205224194Z",
+  "production": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cinematic-qa-20261111\\production",
+  "docs": "C:\\Users\\DaviiC\\Downloads\\shahrestaurant\\shahrestaurant\\docs"
+ },
+ "artifacts": [
+  {
+   "id": "esm-capture",
+   "root": "esm",
+   "file": "capture.json",
+   "bytes": 80256,
+   "sha256": "095ea395e0fea5e1502aa26555c81f77c98ab83110e78bdc2baee117e347965d"
+  },
+  {
+   "id": "esm-builds",
+   "root": "esm",
+   "file": "build-results.json",
+   "bytes": 1777,
+   "sha256": "0832c7934ae54b5c3960b4f944b92ef49e449b4ee64eb1bf2fc7338f2667183c"
+  },
+  {
+   "id": "esm-retry-build",
+   "root": "esm",
+   "file": "fallback-build-results.json",
+   "bytes": 928,
+   "sha256": "c3c0c3a2122f0ed41ab935c5ebf5f37923057532a0666da83dff9c6cfe21571b"
+  },
+  {
+   "id": "esm-partial-analysis",
+   "root": "esm",
+   "file": "partial-compiled-comparison.json",
+   "bytes": 6073,
+   "sha256": "5332d4506e05656ceb008494af662c96071f550729350c0dd87e6d45dd67aedd"
+  },
+  {
+   "id": "esm-first-failure-log",
+   "root": "esm",
+   "file": "esm-build.log",
+   "bytes": 1091,
+   "sha256": "e7761a3381f2263e1e59bf43bbd13cc4e224f2a81f040ba119aee08c6d926e52"
+  },
+  {
+   "id": "esm-retry-failure-log",
+   "root": "esm",
+   "file": "esm-fallback-build.log",
+   "bytes": 2357,
+   "sha256": "6a6ce7e53d1eabcf04395bb9ed1b15f34235bf5bfe0fc361ff3c260e47d62115"
+  },
+  {
+   "id": "esm-control-stats",
+   "root": "esm",
+   "file": "control-client-stats.json",
+   "bytes": 3119224,
+   "sha256": "5a77d1018d83a4d8c4dc44c87f8034727bc14dc32cf9bd5cdda0ae3a09c44b7d"
+  },
+  {
+   "id": "esm-retry-stats",
+   "root": "esm",
+   "file": "esm-fallback-client-stats.json",
+   "bytes": 3043808,
+   "sha256": "3a37d40ae78cb4997871d2b1356cd84ddcb04fba8875a4f1751d47b825e60bd5"
+  },
+  {
+   "id": "control24-payload",
+   "root": "esm",
+   "file": "control24-payload.json",
+   "bytes": 45757,
+   "sha256": "44cd4e84f3c2c08328410eb6be761c98d8b77acf1f3e7bf9a8be697a82474950"
+  },
+  {
+   "id": "pages-probe-build",
+   "root": "esm",
+   "file": "pages-probes-build-results.json",
+   "bytes": 925,
+   "sha256": "3ec371d512bef05f1fe52b36c26bedad7d898e46d15e085d9d5aebf90cee26ab"
+  },
+  {
+   "id": "pages-probe-payload",
+   "root": "esm",
+   "file": "pages-probes-payload.json",
+   "bytes": 6288,
+   "sha256": "8d30a757ae8d990ab76444df848fb31d810f80a36fa80a8e4556e2308a9fd005"
+  },
+  {
+   "id": "pages-probe-native",
+   "root": "esm",
+   "file": "pages-native-hydration.json",
+   "bytes": 6280,
+   "sha256": "385f7817da89dd73574742cc865e2e1f937155652dfc8f68b045847be7d9a38d"
+  },
+  {
+   "id": "pages-compatibility",
+   "root": "esm",
+   "file": "pages-nullable-compat-adaptations.json",
+   "bytes": 2569,
+   "sha256": "8b9a6a3a89c7da4537a847a6a1759ccd1c1ded37a7346ff81a65d2ec21b13482"
+  },
+  {
+   "id": "feature-capture",
+   "root": "feature",
+   "file": "capture.json",
+   "bytes": 81433,
+   "sha256": "3f9b2bb9f1ce3050ad981e5826b3436ab3f5d487e257c25bb6fb9fc3069330af"
+  },
+  {
+   "id": "feature-prepared",
+   "root": "feature",
+   "file": "feature-prepared-manifest.json",
+   "bytes": 100731,
+   "sha256": "9d103bc4d187ce2cf738dd848d700c7f91b45ceb101d301733987e7afd898b16"
+  },
+  {
+   "id": "feature-deltas",
+   "root": "feature",
+   "file": "feature-setup-deltas.json",
+   "bytes": 9673,
+   "sha256": "a92f62fb66ba0fab57d1e0f8b195a73f35863c673a99653eba19a26b69aedec5"
+  },
+  {
+   "id": "feature-build",
+   "root": "feature",
+   "file": "feature-build-results.json",
+   "bytes": 927,
+   "sha256": "56a5e4b88d9cbe91f5712458c23c38589f0e8f4448483832fd35ca17b72c7cdc"
+  },
+  {
+   "id": "feature-payload",
+   "root": "feature",
+   "file": "pages-feature-payload.json",
+   "bytes": 5854,
+   "sha256": "4a728051133dfada2f68710f42c271342409111d2ba0d67a9383cb6fedbb6fc9"
+  },
+  {
+   "id": "feature-native",
+   "root": "feature",
+   "file": "feature-native-proof.json",
+   "bytes": 9919,
+   "sha256": "4d4e05a7a11436e806b5f24a444828ff939de56e99054c7225bee16c3029264c"
+  },
+  {
+   "id": "cleanup",
+   "root": "production",
+   "file": "isolated-runtime-cleanup-20261111.json",
+   "bytes": 1514,
+   "sha256": "4ed5ffb3f9bd7b02253f169710c57329eb9519ae5d78e9af54c709f244af9448"
+  },
+  {
+   "id": "archived-hj2-payload",
+   "root": "docs",
+   "file": "cinematic-final-payload-2026-11-11.json",
+   "bytes": 38306,
+   "sha256": "c31565dcb7ddf67832f5ee12795e8ba94b68e4b0b7dd017787adc7b707bb09c7"
+  },
+  {
+   "id": "archived-u5-payload",
+   "root": "docs",
+   "file": "cinematic-autoplay-final-payload-2026-11-11.json",
+   "bytes": 48445,
+   "sha256": "2420849d16162bc8f4b85a011623faf6b395f9232a509bb58d89cacd2d68a71b"
+  }
+ ],
+ "esmExperiment": {
+  "capturedOriginal": {
+   "sourceFiles": 506,
+   "sourceHash": "93eae3323677933810ae4dc9b177a2eca2f13ecd76549327b5b596f1861642f6",
+   "artifact": "esm-capture"
+  },
+  "validControl": {
+   "buildId": "Jc_qK5zAfu1fA46EPIc1q",
+   "preparedSourceHash": "5b42319b3ba4d1edec5a0b8d64ea3939b7f99bfba2dc1f0a69628ace336416d3",
+   "files": 506,
+   "exitCode": 0,
+   "javascriptGzipRange": {
+    "min": 196517,
+    "max": 226295
+   },
+   "cssGzipRange": {
+    "min": 26290,
+    "max": 39601
+   },
+   "routeCount": 24,
+   "allRouteStatuses200": true,
+   "gzipRootMain": 126372,
+   "rootMainModuleFactories": 150,
+   "proofs": [
+    "esm-builds",
+    "control24-payload",
+    "esm-control-stats"
+   ]
+  },
+  "attempts": [
+   {
+    "variant": "client-esm",
+    "exitCode": 1,
+    "buildId": null,
+    "stage": "Compile failure",
+    "failure": "Missing ../build/polyfills/polyfill-module from Next dist/esm client entry resolution.",
+    "gzipPartialRootMain": 112659,
+    "validRoutePayload": false,
+    "proofs": [
+     "esm-builds",
+     "esm-first-failure-log"
+    ]
+   },
+   {
+    "variant": "client-esm-polyfill-fallback",
+    "exitCode": 1,
+    "buildId": "UhgMTjaS_w4BHR-Ll2qzi",
+    "preparedSourceHash": "a4efd0574637100cfca03f0ddfdebf7dc026210e47069bbbd78969413ae3816c",
+    "stage": "Compiled and type-checked; failed SSR/prerender",
+    "failure": {
+     "routes": [
+      "/_not-found",
+      "/en/events/about"
+     ],
+     "digest": "3141378460"
+    },
+    "gzipPartialRootMain": 113923,
+    "rootMainModuleFactories": 96,
+    "validRoutePayload": false,
+    "proofs": [
+     "esm-retry-build",
+     "esm-retry-failure-log",
+     "esm-retry-stats"
+    ]
+   }
+  ],
+  "partialSizeQualification": "113923-byte retry root-main output versus126372-byte valid control is only a partial compiled diagnostic; it is not accepted route payload, runtime, hydration or performance evidence.",
+  "officialPolyfillEvidence": {
+   "path": "C:\\Users\\DaviiC\\Downloads\\shahrestaurant\\shahrestaurant\\node_modules\\next\\dist\\build\\polyfills\\polyfill-module.js",
+   "bytes": 1380,
+   "sha256": "94c8008b70e41ac5b0360fd6f35ea7a59c20c6927aca7731ef8c6a3c26b9cddf",
+   "unchanged": true
+  },
+  "noEsmRuntimeStarted": true,
+  "mainPreviewUnchanged": true,
+  "frameworkFilesChanged": false,
+  "dependencyJunctionReadOnly": true,
+  "proof": "esm-partial-analysis"
+ },
+ "supportedPagesProbes": {
+  "buildId": "swFwGIce5PVj2fQkFQQtd",
+  "sourceHash": "c6026d4eff8fa76f7cf376abf590d06f8b365f48a27f23f5b6d952b75db201b5",
+  "preparedFiles": 509,
+  "exitCode": 0,
+  "cleanOriginalNextConfig": true,
+  "nativeAdaptersNoInternalNextAlias": true,
+  "routes": [
+   {
+    "route": "/__framework_probe",
+    "status": 200,
+    "javascriptGzipBytes": 102732,
+    "cssGzipBytes": 29572,
+    "javascriptBudgetPass": true,
+    "cssBudgetPass": true
+   },
+   {
+    "route": "/__framework_shell_probe",
+    "status": 200,
+    "javascriptGzipBytes": 143616,
+    "cssGzipBytes": 30906,
+    "javascriptBudgetPass": false,
+    "cssBudgetPass": true
+   }
+  ],
+  "nativeCases": [
+   {
+    "route": "/__framework_probe",
+    "mode": {
+     "width": 1440,
+     "height": 900,
+     "js": true
+    },
+    "status": 200,
+    "counterHydrated": true,
+    "sameDocument": true,
+    "horizontalOverflow": 0,
+    "runtimeErrors": 0,
+    "consoleErrors": 0,
+    "failedResponses": 0,
+    "businessWrites": 0,
+    "screenshot": "plain-1440-hydrated.png"
+   },
+   {
+    "route": "/__framework_probe",
+    "mode": {
+     "width": 390,
+     "height": 844,
+     "js": true
+    },
+    "status": 200,
+    "counterHydrated": true,
+    "sameDocument": true,
+    "horizontalOverflow": 0,
+    "runtimeErrors": 0,
+    "consoleErrors": 0,
+    "failedResponses": 0,
+    "businessWrites": 0,
+    "screenshot": "plain-390-hydrated.png"
+   },
+   {
+    "route": "/__framework_probe",
+    "mode": {
+     "width": 390,
+     "height": 844,
+     "js": false
+    },
+    "status": 200,
+    "counterHydrated": null,
+    "sameDocument": true,
+    "horizontalOverflow": 0,
+    "runtimeErrors": 0,
+    "consoleErrors": 0,
+    "failedResponses": 0,
+    "businessWrites": 0,
+    "screenshot": "plain-390-nojs.png"
+   },
+   {
+    "route": "/__framework_shell_probe",
+    "mode": {
+     "width": 1440,
+     "height": 900,
+     "js": true
+    },
+    "status": 200,
+    "counterHydrated": true,
+    "sameDocument": true,
+    "horizontalOverflow": 0,
+    "runtimeErrors": 0,
+    "consoleErrors": 0,
+    "failedResponses": 0,
+    "businessWrites": 0,
+    "screenshot": "shell-1440-hydrated.png"
+   },
+   {
+    "route": "/__framework_shell_probe",
+    "mode": {
+     "width": 390,
+     "height": 844,
+     "js": true
+    },
+    "status": 200,
+    "counterHydrated": true,
+    "sameDocument": true,
+    "horizontalOverflow": 0,
+    "runtimeErrors": 0,
+    "consoleErrors": 0,
+    "failedResponses": 0,
+    "businessWrites": 0,
+    "screenshot": "shell-390-hydrated.png"
+   },
+   {
+    "route": "/__framework_shell_probe",
+    "mode": {
+     "width": 390,
+     "height": 844,
+     "js": false
+    },
+    "status": 200,
+    "counterHydrated": null,
+    "sameDocument": true,
+    "horizontalOverflow": 0,
+    "runtimeErrors": 0,
+    "consoleErrors": 0,
+    "failedResponses": 0,
+    "businessWrites": 0,
+    "screenshot": "shell-390-nojs.png"
+   }
+  ],
+  "fixture": {
+   "products": 224,
+   "brands": 2,
+   "catalogSourceHash": "66eda306b74cf90dc15ad018cc3064212349151810d8df2e098a06d6e8588892",
+   "bootstrapSha256": "87cd9c939a82820c555968a3189d82dca413eecb18d90126add52327a60b3bbf",
+   "clockUTC": "2026-11-11T12:47:58.379Z"
+  },
+  "limitations": [
+   "Privateprobe routesdonotcontainmenu/reservation/film/eventfunctionalflows.",
+   "Capturedoldcommon-sourceshellpredatesongoingSVG/localizationchanges.",
+   "NativePagesadaptersused; noAppRouterContextshim/internalNextalias."
+  ],
+  "proofs": [
+   "pages-probe-build",
+   "pages-probe-payload",
+   "pages-probe-native",
+   "pages-compatibility"
+  ]
+ },
+ "actualFeaturePages": {
+  "buildId": "R0vCOEzItaKE77Z8FHUwX",
+  "capturedOriginal": {
+   "sourceHash": "12a34bb4ce555d9ed30849d07bcac979ffb953c568e734fcf773cebb2bd77c67",
+   "files": 514,
+   "role": "Old scroll-intro control; not Nq/U5 or later autoplay/skip-landing implementation."
+  },
+  "prepared": {
+   "sourceHash": "e8d15a0ac96b9cb3af90536988d8a6ede1d12ae6b338a2b64129828707396a35",
+   "files": 519
+  },
+  "build": {
+   "exitCode": 0,
+   "before": {
+    "atUTC": "2026-11-11T21:15:47.141Z",
+    "files": 519,
+    "allRecordedBytesMatch": true,
+    "preparedSourceHash": "e8d15a0ac96b9cb3af90536988d8a6ede1d12ae6b338a2b64129828707396a35"
+   },
+   "after": {
+    "atUTC": "2026-11-11T21:18:02.852Z",
+    "files": 519,
+    "allRecordedBytesMatch": true,
+    "preparedSourceHash": "e8d15a0ac96b9cb3af90536988d8a6ede1d12ae6b338a2b64129828707396a35"
+   }
+  },
+  "preservation": {
+   "homeMove": {
+    "from": "app/page.tsx",
+    "to": "app/HomeExperience.tsx",
+    "beforeSha256": "7e1c12d588c70995adbca040a2502a70ea0fe50d0c8a096963a455b334e4384b",
+    "afterSha256": "7e1c12d588c70995adbca040a2502a70ea0fe50d0c8a096963a455b334e4384b",
+    "byteIdentical": true
+   },
+   "reservationsRouteMove": {
+    "from": "app/reserveren/page.tsx",
+    "to": "app/reserveren/RootRoutePage.original.tsx",
+    "beforeSha256": "fb80756aa41bb7adca5a7dc542ee0d95642b7eed97461cafda7b55763d6adf05",
+    "afterSha256": "fb80756aa41bb7adca5a7dc542ee0d95642b7eed97461cafda7b55763d6adf05",
+    "byteIdentical": true
+   },
+   "reservationsFeatureOnlyGlobalCssImportMoved": true,
+   "publicAssetsUnchanged": true,
+   "publicCount": 310,
+   "nextConfigUnchanged": true,
+   "sharedCompatibility": "Five nullable pathname reads and four nullable search-params reads; exact file deltas retained in feature-deltas. Pages root-wrapper display:contents preserves shell formatting."
+  },
+  "routes": [
+   {
+    "route": "/",
+    "status": 200,
+    "javascriptGzipBytes": 151856,
+    "cssGzipBytes": 43417,
+    "javascriptBudgetPass": false,
+    "cssBudgetPass": false
+   },
+   {
+    "route": "/reserveren",
+    "status": 200,
+    "javascriptGzipBytes": 133891,
+    "cssGzipBytes": 31546,
+    "javascriptBudgetPass": false,
+    "cssBudgetPass": true
+   }
+  ],
+  "native": {
+   "scope": "390px JS/NoJS for NL home/reservations only; four bounded recorded passes, not whole-site acceptance.",
+   "cases": [
+    {
+     "route": "/",
+     "applicationJavaScript": true,
+     "recordedPass": true,
+     "header": true,
+     "footer": true,
+     "horizontalOverflow": 0,
+     "runtimeErrors": 0,
+     "consoleErrors": 19,
+     "businessWrites": 0,
+     "failedOptimizerResponses": 19,
+     "actions": [
+      "native acknowledgement of necessary-cookie notice",
+      "actual home dish search typed",
+      "actual category changed to Curries",
+      "actual dish dialog opened and closed by Escape",
+      "actual photo dialog opened and closed by Escape"
+     ],
+     "screenshot": "home-native.png"
+    },
+    {
+     "route": "/",
+     "applicationJavaScript": false,
+     "recordedPass": true,
+     "header": true,
+     "footer": true,
+     "horizontalOverflow": 0,
+     "runtimeErrors": 0,
+     "consoleErrors": 0,
+     "businessWrites": 0,
+     "failedOptimizerResponses": 0,
+     "actions": [],
+     "screenshot": "home-nojs.png"
+    },
+    {
+     "route": "/reserveren",
+     "applicationJavaScript": true,
+     "recordedPass": true,
+     "header": true,
+     "footer": true,
+     "horizontalOverflow": 0,
+     "runtimeErrors": 0,
+     "consoleErrors": 0,
+     "businessWrites": 0,
+     "failedOptimizerResponses": 0,
+     "actions": [
+      "native acknowledgement of necessary-cookie notice",
+      "actual reservation name/note retained when3 guests selected; no submit"
+     ],
+     "screenshot": "reservations-native.png"
+    },
+    {
+     "route": "/reserveren",
+     "applicationJavaScript": false,
+     "recordedPass": true,
+     "header": true,
+     "footer": true,
+     "horizontalOverflow": 0,
+     "runtimeErrors": 0,
+     "consoleErrors": 0,
+     "businessWrites": 0,
+     "failedOptimizerResponses": 0,
+     "actions": [],
+     "screenshot": "reservations-nojs.png"
+    }
+   ],
+   "allRecordedChecksPass": true,
+   "runtimeErrorCount": 0,
+   "businessWriteCount": 0,
+   "horizontalOverflowCases": 0,
+   "visualQualification": "Home JS recorded19 optimizer500 responses/19 console errors because external catalog image GETs were deliberately disabled in the isolated proxy. Images/visual appearance are not fully accepted. Raw catalog storage URLs are not repeated here.",
+   "reservationDraft": "Dummy name/note retained after selecting3guests; no submit or backend reservation acceptance."
+  },
+  "limitations": [
+   "Old514scroll-intro control; latestautoplay andskiplandingfixesnotrepresented.",
+   "No formalmetrics orform/businesssubmissions. Dummyunsentdraftonly;freshownedcontextsclosed.",
+   "PrototypeexternalcatalogimageGETs deliberatelydisabled; optimizer500resources/consoleerrorsarepreservedandlimitimageappearancevalidation. Localoriginalhero/gallery/publicspriteassetsunchanged.",
+   "No broadlocale/payment/auth/orders/reservationacceptance, andmeasuredJS/CSSbudgetsfailed; notadopted."
+  ],
+  "setupManifestIsPhaseSpecific": true,
+  "setupManifestStatusQualification": "Prepared manifest describes setup and may retain build-held flags; later feature-build record and native proof determine the later completed phases.",
+  "siteAcceptance": false,
+  "newAutoplayAcceptance": false,
+  "migrationAdopted": false,
+  "proofs": [
+   "feature-capture",
+   "feature-prepared",
+   "feature-deltas",
+   "feature-build",
+   "feature-payload",
+   "feature-native"
+  ]
+ },
+ "archivedAppPayloads": {
+  "Hj2": {
+   "matchedExpectedIdentity": true,
+   "buildId": "Hj2ubUjCMfbacacwFligZ",
+   "sourceFingerprint": "1b9a194de54237b2104232c89ce249729ddd466a648d819a1118bcd81717fc62",
+   "routeCount": 17,
+   "rootMainGzipBytes": 126236,
+   "qualification": "126236bytes is this saved App Router graph composition, not a universal framework lower bound or a current U5 total.",
+   "proof": "archived-hj2-payload"
+  },
+  "U5": {
+   "matchedExpectedIdentity": true,
+   "buildId": "U5-gxuCUwhE6QFQ1NV8jE",
+   "sourceFingerprint": "022346f521b958992ffa443cfcff84cd4dcddae3a3e6c02dd04ac899971057da",
+   "routeCount": 24,
+   "initialJavascriptGzipRange": {
+    "min": 152715,
+    "max": 183520
+   },
+   "initialCssGzipRange": {
+    "min": 26419,
+    "max": 39749
+   },
+   "allJavascriptRoutesFail": true,
+   "allCssRoutesPass": true,
+   "rootMainGzipBytes": 126254,
+   "qualification": "Pinned archived U5 only. It is not this old Pages copy or a later replacement build; no live preview query was performed.",
+   "proof": "archived-u5-payload"
+  }
+ },
+ "cleanup": {
+  "recordedAtUtc": "2026-11-11T21:33:56.6645285Z",
+  "verifiedStoppedCount": 6,
+  "stoppedExperimentServers": [
+   {
+    "pid": 40628,
+    "port": 3527,
+    "verified": true
+   },
+   {
+    "pid": 37500,
+    "port": 3528,
+    "verified": true
+   },
+   {
+    "pid": 28980,
+    "port": 3537,
+    "verified": true
+   },
+   {
+    "pid": 38648,
+    "port": 3538,
+    "verified": true
+   },
+   {
+    "pid": 36096,
+    "port": 3557,
+    "verified": true
+   },
+   {
+    "pid": 43068,
+    "port": 3558,
+    "verified": true
+   }
+  ],
+  "mainPreviewTouched": false,
+  "browsersTouched": false,
+  "artifactsPreserved": true,
+  "proof": "cleanup",
+  "qualification": "Historical cleanup record; no process stop or live listener check was performed during this documentation pass."
+ },
+ "documentationOnly": {
+  "browser": false,
+  "build": false,
+  "sourceConfigEdits": false,
+  "frameworkEdits": false,
+  "git": false,
+  "newPerformanceTiming": false,
+  "externalCatalogUrlsPublished": false
+ },
+ "limits": [
+  "Snapshots, route sets, compilers and feature coverage differ; these rows are not a controlled cross-version performance comparison.",
+  "Byte accounting cannot establish LCP/CLS/INP/TBT, Lighthouse scores or physical-device/browser correctness.",
+  "Private plain/shell probes are not the restaurant feature set. The actual Pages copy predates new autoplay and skip fixes.",
+  "No full locale/payment/auth/orders/reservation submission/SEO acceptance or migration adoption is implied.",
+  "Local Temp artifacts are retained at listed roots; availability outside this executor is not implied."
+ ],
+ "markdown": {
+  "file": "RUNTIME-BUDGET-INVESTIGATION.md",
+  "bytes": 5242,
+  "sha256": "9e79949efe1c3870d57636af27cb6e9ecc9538e1cdc11b54432e79fcc97ae202"
+ }
+}

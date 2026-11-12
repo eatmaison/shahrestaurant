@@ -1,0 +1,2716 @@
+{
+  "checkedAt": "2026-11-12T00:04:31.426Z",
+  "pass": true,
+  "origin": "http://127.0.0.1:3668",
+  "buildId": "KfLjCFEAboBDf5nZnS0uh",
+  "buildDirectory": ".next-review-shah-final-20261111",
+  "buildSourceHash": "0b3971245151ab7ecade89e5641d50723042b4d22d09ba9647d5c877c416f6ef",
+  "buildSourceFileCount": 530,
+  "sourceHashes": {
+    "app/layout.tsx": "0b239ec23cc8107077a57e8376101e361bb793ac9cdea1671f4880d4cd47c3b7",
+    "app/providers.tsx": "1a99332e991cd73afd6c76efa7835ee2890ca2c498d8de2f9abdf70f4a03ade6"
+  },
+  "implementation": {
+    "modifiedLines": 3,
+    "paths": [
+      "app/layout.tsx",
+      "app/providers.tsx"
+    ],
+    "default": "dark for missing/invalid/unknown/unavailable tm.theme; independent of prefers-color-scheme",
+    "savedChoices": "Existing JSON light/dark values respected before body paint by synchronous head script",
+    "toggle": "Existing provider/header toggle retained",
+    "serverFallback": "HTML class dark provides first-visit dark rendering with JavaScript disabled"
+  },
+  "validation": {
+    "targetedEslint": "PASS app/layout.tsx app/providers.tsx",
+    "typescript": "PASS full tsc --noEmit --incremental false",
+    "browser": "Existing disposable Chrome9229 via CDP, final combined production artifact",
+    "frameworkJavaScriptBlocked": "Nine 320/390/1440 fresh/light/dark preference cases prove synchronous theme before hydration; first body, DOMContentLoaded and observed requestAnimationFrame states match expected",
+    "runtimeExceptions": 0,
+    "hydrationErrors": 0,
+    "horizontalOverflow": 0,
+    "visualInspection": [
+      "mobile-fresh-390.png",
+      "head-390-light.png",
+      "nojs-mobile-320.png"
+    ],
+    "noBusinessSubmissions": true
+  },
+  "matrix": {
+    "checkedAt": "2026-11-12T00:02:55.093Z",
+    "origin": "http://127.0.0.1:3668",
+    "proofs": [
+      {
+        "type": "server-html",
+        "status": 200,
+        "htmlClass": "dark h-full antialiased"
+      },
+      {
+        "type": "hydrated",
+        "name": "checkpoint-desktop-fresh-light-system",
+        "width": 1440,
+        "system": "light",
+        "saved": null,
+        "blockedStorage": false,
+        "route": "/en/menu",
+        "dark": true,
+        "background": "rgb(6, 43, 50)",
+        "systemDark": false,
+        "overflow": 0,
+        "button": "<button type=\"button\" class=\"grid h-9 w-9 place-items-center rounded-full border border-slate-200 bg-white text-slate-700 transition hover:rotate-12 hover:border-emerald-400/60 hover:text-emerald-600 dark:border-white/10 dark:bg-white/5 dark:text-slate-200 dark:hover:text-emerald-300\" aria-label=\"Light mode\" aria-pressed=\"true\" title=\"Light mode\"><span class=\"grid place-items-center\"><svg stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"0\" viewBox=\"0 0 512 512\" height=\"1em\" width=\"1em\" xmlns=\"http://www.w3.org/2000/svg\"><use href=\"/brand/icon-sprites-v1/common.svg#fa6-FaSun\"></use></svg></span></button>",
+        "probe": {
+          "firstBody": {
+            "dark": true,
+            "page": "rgb(6, 43, 50)",
+            "time": 147.5
+          },
+          "frames": [
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 158.30000019073486
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 197.70000004768372
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 299.60000014305115
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 310.90000009536743
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 323.30000019073486
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 332.5
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 364
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 380
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 407.7000000476837
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 434.7000000476837
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 446.30000019073486
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 463.10000014305115
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 480
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 496.2000000476837
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 513.2000000476837
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 529.2000000476837
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 546.3000001907349
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 563.2000000476837
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 579.2000000476837
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 596.6000001430511
+            }
+          ],
+          "dcl": {
+            "dark": true,
+            "page": "rgb(6, 43, 50)",
+            "time": 220.20000004768372
+          }
+        },
+        "stored": "\"dark\"",
+        "exceptions": []
+      },
+      {
+        "type": "hydrated",
+        "name": "checkpoint-mobile390-fresh-light-system",
+        "width": 390,
+        "system": "light",
+        "saved": null,
+        "blockedStorage": false,
+        "route": "/en/menu",
+        "dark": true,
+        "background": "rgb(6, 43, 50)",
+        "systemDark": false,
+        "overflow": 0,
+        "button": "<button type=\"button\" class=\"grid h-9 w-9 place-items-center rounded-full border border-slate-200 bg-white text-slate-700 transition hover:rotate-12 hover:border-emerald-400/60 hover:text-emerald-600 dark:border-white/10 dark:bg-white/5 dark:text-slate-200 dark:hover:text-emerald-300\" aria-label=\"Light mode\" aria-pressed=\"true\" title=\"Light mode\"><span class=\"grid place-items-center\"><svg stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"0\" viewBox=\"0 0 512 512\" height=\"1em\" width=\"1em\" xmlns=\"http://www.w3.org/2000/svg\"><use href=\"/brand/icon-sprites-v1/common.svg#fa6-FaSun\"></use></svg></span></button>",
+        "probe": {
+          "firstBody": {
+            "dark": true,
+            "page": "rgb(6, 43, 50)",
+            "time": 61.299999952316284
+          },
+          "frames": [
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 105.39999985694885
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 116.20000004768372
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 131.79999995231628
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 148.09999990463257
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 162.09999990463257
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 171.29999995231628
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 188.29999995231628
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 204.89999985694885
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 222.20000004768372
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 238.39999985694885
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 254.29999995231628
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 271.59999990463257
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 288.2000000476837
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 305.89999985694885
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 321.7000000476837
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 338.59999990463257
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 355.2000000476837
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 371.7000000476837
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 388.59999990463257
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 404.7000000476837
+            }
+          ],
+          "dcl": {
+            "dark": true,
+            "page": "rgb(6, 43, 50)",
+            "time": 92.09999990463257
+          }
+        },
+        "stored": "\"dark\"",
+        "screenshot": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-theme-default-20261111\\checkpoint-mobile390-fresh-light-system.png",
+        "exceptions": []
+      },
+      {
+        "type": "head-before-hydration",
+        "name": "head-320-fresh",
+        "width": 320,
+        "system": "light",
+        "saved": null,
+        "blockedStorage": false,
+        "route": "/en/menu",
+        "dark": true,
+        "background": "rgb(6, 43, 50)",
+        "systemDark": false,
+        "overflow": 0,
+        "button": "<button type=\"button\" class=\"grid h-9 w-9 place-items-center rounded-full border border-slate-200 bg-white text-slate-700 transition hover:rotate-12 hover:border-emerald-400/60 hover:text-emerald-600 dark:border-white/10 dark:bg-white/5 dark:text-slate-200 dark:hover:text-emerald-300\" aria-label=\"Light mode\" aria-pressed=\"true\" title=\"Light mode\"><span class=\"grid place-items-center\"><svg stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"0\" viewBox=\"0 0 512 512\" height=\"1em\" width=\"1em\" xmlns=\"http://www.w3.org/2000/svg\"><use href=\"/brand/icon-sprites-v1/common.svg#fa6-FaSun\"></use></svg></span></button>",
+        "probe": {
+          "firstBody": {
+            "dark": true,
+            "page": "rgb(6, 43, 50)",
+            "time": 48.5
+          },
+          "frames": [
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 67.39999985694885
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 72.29999995231628
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 87
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 103.29999995231628
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 120.29999995231628
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 137.39999985694885
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 154.20000004768372
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 170.59999990463257
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 186.79999995231628
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 203.89999985694885
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 219.89999985694885
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 237.09999990463257
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 254
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 270
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 286.89999985694885
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 303.7999999523163
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 319.7999999523163
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 337.7999999523163
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 353.2999999523163
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 370.39999985694885
+            }
+          ],
+          "dcl": {
+            "dark": true,
+            "page": "rgb(6, 43, 50)",
+            "time": 62
+          }
+        },
+        "stored": null,
+        "screenshot": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-theme-default-20261111\\head-320-fresh.png",
+        "exceptions": []
+      },
+      {
+        "type": "head-before-hydration",
+        "name": "head-320-light",
+        "width": 320,
+        "system": "dark",
+        "saved": "\"light\"",
+        "blockedStorage": false,
+        "route": "/en/menu",
+        "dark": false,
+        "background": "rgb(251, 247, 239)",
+        "systemDark": true,
+        "overflow": 0,
+        "button": "<button type=\"button\" class=\"grid h-9 w-9 place-items-center rounded-full border border-slate-200 bg-white text-slate-700 transition hover:rotate-12 hover:border-emerald-400/60 hover:text-emerald-600 dark:border-white/10 dark:bg-white/5 dark:text-slate-200 dark:hover:text-emerald-300\" aria-label=\"Light mode\" aria-pressed=\"true\" title=\"Light mode\"><span class=\"grid place-items-center\"><svg stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"0\" viewBox=\"0 0 512 512\" height=\"1em\" width=\"1em\" xmlns=\"http://www.w3.org/2000/svg\"><use href=\"/brand/icon-sprites-v1/common.svg#fa6-FaSun\"></use></svg></span></button>",
+        "probe": {
+          "firstBody": {
+            "dark": false,
+            "page": "rgb(251, 247, 239)",
+            "time": 53.799999952316284
+          },
+          "frames": [
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 78.09999990463257
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 85.29999995231628
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 100.19999980926514
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 111.5
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 127.5
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 145.5
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 161.59999990463257
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 177.59999990463257
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 195.39999985694885
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 211.29999995231628
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 228.19999980926514
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 244.5
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 261.2999999523163
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 277.39999985694885
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 294.89999985694885
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 311.5
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 327.39999985694885
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 345.39999985694885
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 361.5
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 378.5
+            }
+          ],
+          "dcl": {
+            "dark": false,
+            "page": "rgb(251, 247, 239)",
+            "time": 72.09999990463257
+          }
+        },
+        "stored": "\"light\"",
+        "screenshot": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-theme-default-20261111\\head-320-light.png",
+        "exceptions": []
+      },
+      {
+        "type": "head-before-hydration",
+        "name": "head-320-dark",
+        "width": 320,
+        "system": "light",
+        "saved": "\"dark\"",
+        "blockedStorage": false,
+        "route": "/en/menu",
+        "dark": true,
+        "background": "rgb(6, 43, 50)",
+        "systemDark": false,
+        "overflow": 0,
+        "button": "<button type=\"button\" class=\"grid h-9 w-9 place-items-center rounded-full border border-slate-200 bg-white text-slate-700 transition hover:rotate-12 hover:border-emerald-400/60 hover:text-emerald-600 dark:border-white/10 dark:bg-white/5 dark:text-slate-200 dark:hover:text-emerald-300\" aria-label=\"Light mode\" aria-pressed=\"true\" title=\"Light mode\"><span class=\"grid place-items-center\"><svg stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"0\" viewBox=\"0 0 512 512\" height=\"1em\" width=\"1em\" xmlns=\"http://www.w3.org/2000/svg\"><use href=\"/brand/icon-sprites-v1/common.svg#fa6-FaSun\"></use></svg></span></button>",
+        "probe": {
+          "firstBody": {
+            "dark": true,
+            "page": "rgb(6, 43, 50)",
+            "time": 64.79999995231628
+          },
+          "frames": [
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 82.40000009536743
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 95.29999995231628
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 109.70000004768372
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 127.09999990463257
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 143.09999990463257
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 159.09999990463257
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 176.20000004768372
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 193.09999990463257
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 209.09999990463257
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 226.20000004768372
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 242.20000004768372
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 259.5
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 276.2999999523163
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 292.2999999523163
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 310.09999990463257
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 326.5
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 342.40000009536743
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 360.90000009536743
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 375.90000009536743
+            }
+          ],
+          "dcl": {
+            "dark": true,
+            "page": "rgb(6, 43, 50)",
+            "time": 91.79999995231628
+          }
+        },
+        "stored": "\"dark\"",
+        "screenshot": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-theme-default-20261111\\head-320-dark.png",
+        "exceptions": []
+      },
+      {
+        "type": "head-before-hydration",
+        "name": "head-390-fresh",
+        "width": 390,
+        "system": "dark",
+        "saved": null,
+        "blockedStorage": false,
+        "route": "/en/menu",
+        "dark": true,
+        "background": "rgb(6, 43, 50)",
+        "systemDark": true,
+        "overflow": 0,
+        "button": "<button type=\"button\" class=\"grid h-9 w-9 place-items-center rounded-full border border-slate-200 bg-white text-slate-700 transition hover:rotate-12 hover:border-emerald-400/60 hover:text-emerald-600 dark:border-white/10 dark:bg-white/5 dark:text-slate-200 dark:hover:text-emerald-300\" aria-label=\"Light mode\" aria-pressed=\"true\" title=\"Light mode\"><span class=\"grid place-items-center\"><svg stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"0\" viewBox=\"0 0 512 512\" height=\"1em\" width=\"1em\" xmlns=\"http://www.w3.org/2000/svg\"><use href=\"/brand/icon-sprites-v1/common.svg#fa6-FaSun\"></use></svg></span></button>",
+        "probe": {
+          "firstBody": {
+            "dark": true,
+            "page": "rgb(6, 43, 50)",
+            "time": 72.20000004768372
+          },
+          "frames": [
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 101.20000004768372
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 110.5
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 127.60000014305115
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 139.20000004768372
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 156
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 172.20000004768372
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 189.10000014305115
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 206.10000014305115
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 222.40000009536743
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 239.29999995231628
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 255.60000014305115
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 272.2000000476837
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 289.2000000476837
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 305.10000014305115
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 322.2000000476837
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 339.2999999523163
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 355.2000000476837
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 372.2000000476837
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 389.2000000476837
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 405.2000000476837
+            }
+          ],
+          "dcl": {
+            "dark": true,
+            "page": "rgb(6, 43, 50)",
+            "time": 94.29999995231628
+          }
+        },
+        "stored": null,
+        "screenshot": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-theme-default-20261111\\head-390-fresh.png",
+        "exceptions": []
+      },
+      {
+        "type": "head-before-hydration",
+        "name": "head-390-light",
+        "width": 390,
+        "system": "dark",
+        "saved": "\"light\"",
+        "blockedStorage": false,
+        "route": "/en/menu",
+        "dark": false,
+        "background": "rgb(251, 247, 239)",
+        "systemDark": true,
+        "overflow": 0,
+        "button": "<button type=\"button\" class=\"grid h-9 w-9 place-items-center rounded-full border border-slate-200 bg-white text-slate-700 transition hover:rotate-12 hover:border-emerald-400/60 hover:text-emerald-600 dark:border-white/10 dark:bg-white/5 dark:text-slate-200 dark:hover:text-emerald-300\" aria-label=\"Light mode\" aria-pressed=\"true\" title=\"Light mode\"><span class=\"grid place-items-center\"><svg stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"0\" viewBox=\"0 0 512 512\" height=\"1em\" width=\"1em\" xmlns=\"http://www.w3.org/2000/svg\"><use href=\"/brand/icon-sprites-v1/common.svg#fa6-FaSun\"></use></svg></span></button>",
+        "probe": {
+          "firstBody": {
+            "dark": false,
+            "page": "rgb(251, 247, 239)",
+            "time": 47.90000009536743
+          },
+          "frames": [
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 66.5
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 73
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 87.40000009536743
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 102.70000004768372
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 119.80000019073486
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 136.80000019073486
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 153.40000009536743
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 169.40000009536743
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 186.60000014305115
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 203.40000009536743
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 219.40000009536743
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 235.70000004768372
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 253
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 269.30000019073486
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 285.80000019073486
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 303.2000000476837
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 319.90000009536743
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 335.90000009536743
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 352.80000019073486
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 369.90000009536743
+            }
+          ],
+          "dcl": {
+            "dark": false,
+            "page": "rgb(251, 247, 239)",
+            "time": 61.5
+          }
+        },
+        "stored": "\"light\"",
+        "screenshot": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-theme-default-20261111\\head-390-light.png",
+        "exceptions": []
+      },
+      {
+        "type": "head-before-hydration",
+        "name": "head-390-dark",
+        "width": 390,
+        "system": "light",
+        "saved": "\"dark\"",
+        "blockedStorage": false,
+        "route": "/en/menu",
+        "dark": true,
+        "background": "rgb(6, 43, 50)",
+        "systemDark": false,
+        "overflow": 0,
+        "button": "<button type=\"button\" class=\"grid h-9 w-9 place-items-center rounded-full border border-slate-200 bg-white text-slate-700 transition hover:rotate-12 hover:border-emerald-400/60 hover:text-emerald-600 dark:border-white/10 dark:bg-white/5 dark:text-slate-200 dark:hover:text-emerald-300\" aria-label=\"Light mode\" aria-pressed=\"true\" title=\"Light mode\"><span class=\"grid place-items-center\"><svg stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"0\" viewBox=\"0 0 512 512\" height=\"1em\" width=\"1em\" xmlns=\"http://www.w3.org/2000/svg\"><use href=\"/brand/icon-sprites-v1/common.svg#fa6-FaSun\"></use></svg></span></button>",
+        "probe": {
+          "firstBody": {
+            "dark": true,
+            "page": "rgb(6, 43, 50)",
+            "time": 73.20000004768372
+          },
+          "frames": [
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 93.90000009536743
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 98.70000004768372
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 110.20000004768372
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 114.90000009536743
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 132
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 147.90000009536743
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 164.90000009536743
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 181.90000009536743
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 198.20000004768372
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 215.20000004768372
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 231
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 248.80000019073486
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 265.60000014305115
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 281.90000009536743
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 299.60000014305115
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 315.60000014305115
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 331.7000000476837
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 348.40000009536743
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 365
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 381.90000009536743
+            }
+          ],
+          "dcl": {
+            "dark": true,
+            "page": "rgb(6, 43, 50)",
+            "time": 89
+          }
+        },
+        "stored": "\"dark\"",
+        "screenshot": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-theme-default-20261111\\head-390-dark.png",
+        "exceptions": []
+      },
+      {
+        "type": "head-before-hydration",
+        "name": "head-1440-fresh",
+        "width": 1440,
+        "system": "light",
+        "saved": null,
+        "blockedStorage": false,
+        "route": "/en/menu",
+        "dark": true,
+        "background": "rgb(6, 43, 50)",
+        "systemDark": false,
+        "overflow": 0,
+        "button": "<button type=\"button\" class=\"grid h-9 w-9 place-items-center rounded-full border border-slate-200 bg-white text-slate-700 transition hover:rotate-12 hover:border-emerald-400/60 hover:text-emerald-600 dark:border-white/10 dark:bg-white/5 dark:text-slate-200 dark:hover:text-emerald-300\" aria-label=\"Light mode\" aria-pressed=\"true\" title=\"Light mode\"><span class=\"grid place-items-center\"><svg stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"0\" viewBox=\"0 0 512 512\" height=\"1em\" width=\"1em\" xmlns=\"http://www.w3.org/2000/svg\"><use href=\"/brand/icon-sprites-v1/common.svg#fa6-FaSun\"></use></svg></span></button>",
+        "probe": {
+          "firstBody": {
+            "dark": true,
+            "page": "rgb(6, 43, 50)",
+            "time": 51.59999990463257
+          },
+          "frames": [
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 75.09999990463257
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 80.5
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 85.70000004768372
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 102.79999995231628
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 119.5
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 135.59999990463257
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 152.70000004768372
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 169.59999990463257
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 186.59999990463257
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 203
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 219.59999990463257
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 235.59999990463257
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 253.70000004768372
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 270.7999999523163
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 285.90000009536743
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 303.7000000476837
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 319.7999999523163
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 335.7000000476837
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 352.7000000476837
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 368.7000000476837
+            }
+          ],
+          "dcl": {
+            "dark": true,
+            "page": "rgb(6, 43, 50)",
+            "time": 66.90000009536743
+          }
+        },
+        "stored": null,
+        "exceptions": []
+      },
+      {
+        "type": "head-before-hydration",
+        "name": "head-1440-light",
+        "width": 1440,
+        "system": "dark",
+        "saved": "\"light\"",
+        "blockedStorage": false,
+        "route": "/en/menu",
+        "dark": false,
+        "background": "rgb(251, 247, 239)",
+        "systemDark": true,
+        "overflow": 0,
+        "button": "<button type=\"button\" class=\"grid h-9 w-9 place-items-center rounded-full border border-slate-200 bg-white text-slate-700 transition hover:rotate-12 hover:border-emerald-400/60 hover:text-emerald-600 dark:border-white/10 dark:bg-white/5 dark:text-slate-200 dark:hover:text-emerald-300\" aria-label=\"Light mode\" aria-pressed=\"true\" title=\"Light mode\"><span class=\"grid place-items-center\"><svg stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"0\" viewBox=\"0 0 512 512\" height=\"1em\" width=\"1em\" xmlns=\"http://www.w3.org/2000/svg\"><use href=\"/brand/icon-sprites-v1/common.svg#fa6-FaSun\"></use></svg></span></button>",
+        "probe": {
+          "firstBody": {
+            "dark": false,
+            "page": "rgb(251, 247, 239)",
+            "time": 60.700000047683716
+          },
+          "frames": [
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 86.29999995231628
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 93.5
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 131.59999990463257
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 139.70000004768372
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 156.89999985694885
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 173.59999990463257
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 189.5
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 206.89999985694885
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 223.59999990463257
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 239.59999990463257
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 257.5
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 273.59999990463257
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 289.5
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 306.7999999523163
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 323.59999990463257
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 339.5
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 356.5
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 373.5
+            }
+          ],
+          "dcl": {
+            "dark": false,
+            "page": "rgb(251, 247, 239)",
+            "time": 78.5
+          }
+        },
+        "stored": "\"light\"",
+        "exceptions": []
+      },
+      {
+        "type": "head-before-hydration",
+        "name": "head-1440-dark",
+        "width": 1440,
+        "system": "light",
+        "saved": "\"dark\"",
+        "blockedStorage": false,
+        "route": "/en/menu",
+        "dark": true,
+        "background": "rgb(6, 43, 50)",
+        "systemDark": false,
+        "overflow": 0,
+        "button": "<button type=\"button\" class=\"grid h-9 w-9 place-items-center rounded-full border border-slate-200 bg-white text-slate-700 transition hover:rotate-12 hover:border-emerald-400/60 hover:text-emerald-600 dark:border-white/10 dark:bg-white/5 dark:text-slate-200 dark:hover:text-emerald-300\" aria-label=\"Light mode\" aria-pressed=\"true\" title=\"Light mode\"><span class=\"grid place-items-center\"><svg stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"0\" viewBox=\"0 0 512 512\" height=\"1em\" width=\"1em\" xmlns=\"http://www.w3.org/2000/svg\"><use href=\"/brand/icon-sprites-v1/common.svg#fa6-FaSun\"></use></svg></span></button>",
+        "probe": {
+          "firstBody": {
+            "dark": true,
+            "page": "rgb(6, 43, 50)",
+            "time": 62
+          },
+          "frames": [
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 82.79999995231628
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 96.79999995231628
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 177.69999980926514
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 183.29999995231628
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 198.39999985694885
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 215
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 232
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 248
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 266
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 282
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 298
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 316
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 332.09999990463257
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 348
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 365.19999980926514
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 382.09999990463257
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 399
+            }
+          ],
+          "dcl": {
+            "dark": true,
+            "page": "rgb(6, 43, 50)",
+            "time": 103.69999980926514
+          }
+        },
+        "stored": "\"dark\"",
+        "exceptions": []
+      },
+      {
+        "type": "hydrated",
+        "name": "fresh-light-system",
+        "width": 1440,
+        "system": "light",
+        "saved": null,
+        "blockedStorage": false,
+        "route": "/en/menu",
+        "dark": true,
+        "background": "rgb(6, 43, 50)",
+        "systemDark": false,
+        "overflow": 0,
+        "button": "<button type=\"button\" class=\"grid h-9 w-9 place-items-center rounded-full border border-slate-200 bg-white text-slate-700 transition hover:rotate-12 hover:border-emerald-400/60 hover:text-emerald-600 dark:border-white/10 dark:bg-white/5 dark:text-slate-200 dark:hover:text-emerald-300\" aria-label=\"Light mode\" aria-pressed=\"true\" title=\"Light mode\"><span class=\"grid place-items-center\"><svg stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"0\" viewBox=\"0 0 512 512\" height=\"1em\" width=\"1em\" xmlns=\"http://www.w3.org/2000/svg\"><use href=\"/brand/icon-sprites-v1/common.svg#fa6-FaSun\"></use></svg></span></button>",
+        "probe": {
+          "firstBody": {
+            "dark": true,
+            "page": "rgb(6, 43, 50)",
+            "time": 52
+          },
+          "frames": [
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 83.59999990463257
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 106.79999995231628
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 160.59999990463257
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 177.89999985694885
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 211.39999985694885
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 233.39999985694885
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 238.5
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 255.69999980926514
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 272.69999980926514
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 288.69999980926514
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 306.59999990463257
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 322.69999980926514
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 339.59999990463257
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 355.69999980926514
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 374.09999990463257
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 388.59999990463257
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 405.89999985694885
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 423.7999999523163
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 438.59999990463257
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 455.7999999523163
+            }
+          ],
+          "dcl": {
+            "dark": true,
+            "page": "rgb(6, 43, 50)",
+            "time": 70.79999995231628
+          }
+        },
+        "stored": "\"dark\"",
+        "exceptions": []
+      },
+      {
+        "type": "hydrated",
+        "name": "fresh-dark-system",
+        "width": 1440,
+        "system": "dark",
+        "saved": null,
+        "blockedStorage": false,
+        "route": "/en/menu",
+        "dark": true,
+        "background": "rgb(6, 43, 50)",
+        "systemDark": true,
+        "overflow": 0,
+        "button": "<button type=\"button\" class=\"grid h-9 w-9 place-items-center rounded-full border border-slate-200 bg-white text-slate-700 transition hover:rotate-12 hover:border-emerald-400/60 hover:text-emerald-600 dark:border-white/10 dark:bg-white/5 dark:text-slate-200 dark:hover:text-emerald-300\" aria-label=\"Light mode\" aria-pressed=\"true\" title=\"Light mode\"><span class=\"grid place-items-center\"><svg stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"0\" viewBox=\"0 0 512 512\" height=\"1em\" width=\"1em\" xmlns=\"http://www.w3.org/2000/svg\"><use href=\"/brand/icon-sprites-v1/common.svg#fa6-FaSun\"></use></svg></span></button>",
+        "probe": {
+          "firstBody": {
+            "dark": true,
+            "page": "rgb(6, 43, 50)",
+            "time": 90.09999990463257
+          },
+          "frames": [
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 118.89999985694885
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 158
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 210.69999980926514
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 230.29999995231628
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 263.39999985694885
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 297.7999999523163
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 332.5
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 355.39999985694885
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 369
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 387
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 399.09999990463257
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 414.39999985694885
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 431.2999999523163
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 448.69999980926514
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 464.59999990463257
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 481.59999990463257
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 498.5
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 514.3999998569489
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 531.5
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 548.3999998569489
+            }
+          ],
+          "dcl": {
+            "dark": true,
+            "page": "rgb(6, 43, 50)",
+            "time": 146.79999995231628
+          }
+        },
+        "stored": "\"dark\"",
+        "exceptions": []
+      },
+      {
+        "type": "hydrated",
+        "name": "saved-light-system-dark",
+        "width": 1440,
+        "system": "dark",
+        "saved": "\"light\"",
+        "blockedStorage": false,
+        "route": "/en/menu",
+        "dark": false,
+        "background": "rgb(251, 247, 239)",
+        "systemDark": true,
+        "overflow": 0,
+        "button": "<button type=\"button\" class=\"grid h-9 w-9 place-items-center rounded-full border border-slate-200 bg-white text-slate-700 transition hover:rotate-12 hover:border-emerald-400/60 hover:text-emerald-600 dark:border-white/10 dark:bg-white/5 dark:text-slate-200 dark:hover:text-emerald-300\" aria-label=\"Dark mode\" aria-pressed=\"false\" title=\"Dark mode\"><span class=\"grid place-items-center\"><svg stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"0\" viewBox=\"0 0 384 512\" height=\"1em\" width=\"1em\" xmlns=\"http://www.w3.org/2000/svg\"><use href=\"/brand/icon-sprites-v1/common.svg#fa6-FaMoon\"></use></svg></span></button>",
+        "probe": {
+          "firstBody": {
+            "dark": false,
+            "page": "rgb(251, 247, 239)",
+            "time": 52.10000014305115
+          },
+          "frames": [
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 84.90000009536743
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 99
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 105.20000004768372
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 143.70000004768372
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 164
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 193.60000014305115
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 213
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 221.60000014305115
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 236.80000019073486
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 254.5
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 270.90000009536743
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 287
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 304
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 320.7000000476837
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 336.60000014305115
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 353.60000014305115
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 370.60000014305115
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 386.10000014305115
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 403.2000000476837
+            },
+            {
+              "dark": false,
+              "page": "rgb(251, 247, 239)",
+              "time": 420.40000009536743
+            }
+          ],
+          "dcl": {
+            "dark": false,
+            "page": "rgb(251, 247, 239)",
+            "time": 76
+          }
+        },
+        "stored": "\"light\"",
+        "exceptions": []
+      },
+      {
+        "type": "hydrated",
+        "name": "saved-dark-system-light",
+        "width": 1440,
+        "system": "light",
+        "saved": "\"dark\"",
+        "blockedStorage": false,
+        "route": "/en/menu",
+        "dark": true,
+        "background": "rgb(6, 43, 50)",
+        "systemDark": false,
+        "overflow": 0,
+        "button": "<button type=\"button\" class=\"grid h-9 w-9 place-items-center rounded-full border border-slate-200 bg-white text-slate-700 transition hover:rotate-12 hover:border-emerald-400/60 hover:text-emerald-600 dark:border-white/10 dark:bg-white/5 dark:text-slate-200 dark:hover:text-emerald-300\" aria-label=\"Light mode\" aria-pressed=\"true\" title=\"Light mode\"><span class=\"grid place-items-center\"><svg stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"0\" viewBox=\"0 0 512 512\" height=\"1em\" width=\"1em\" xmlns=\"http://www.w3.org/2000/svg\"><use href=\"/brand/icon-sprites-v1/common.svg#fa6-FaSun\"></use></svg></span></button>",
+        "probe": {
+          "firstBody": {
+            "dark": true,
+            "page": "rgb(6, 43, 50)",
+            "time": 65.90000009536743
+          },
+          "frames": [
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 81.80000019073486
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 107.60000014305115
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 131.60000014305115
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 158.40000009536743
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 184.60000014305115
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 204.10000014305115
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 236.5
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 240.5
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 258.40000009536743
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 273.2000000476837
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 290.2000000476837
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 307.40000009536743
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 323.30000019073486
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 341.7000000476837
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 357
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 373.2000000476837
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 390.2000000476837
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 406.90000009536743
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 424
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 439.90000009536743
+            }
+          ],
+          "dcl": {
+            "dark": true,
+            "page": "rgb(6, 43, 50)",
+            "time": 102.20000004768372
+          }
+        },
+        "stored": "\"dark\"",
+        "exceptions": []
+      },
+      {
+        "type": "hydrated",
+        "name": "invalid-json",
+        "width": 1440,
+        "system": "light",
+        "saved": "broken",
+        "blockedStorage": false,
+        "route": "/en/menu",
+        "dark": true,
+        "background": "rgb(6, 43, 50)",
+        "systemDark": false,
+        "overflow": 0,
+        "button": "<button type=\"button\" class=\"grid h-9 w-9 place-items-center rounded-full border border-slate-200 bg-white text-slate-700 transition hover:rotate-12 hover:border-emerald-400/60 hover:text-emerald-600 dark:border-white/10 dark:bg-white/5 dark:text-slate-200 dark:hover:text-emerald-300\" aria-label=\"Light mode\" aria-pressed=\"true\" title=\"Light mode\"><span class=\"grid place-items-center\"><svg stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"0\" viewBox=\"0 0 512 512\" height=\"1em\" width=\"1em\" xmlns=\"http://www.w3.org/2000/svg\"><use href=\"/brand/icon-sprites-v1/common.svg#fa6-FaSun\"></use></svg></span></button>",
+        "probe": {
+          "firstBody": {
+            "dark": true,
+            "page": "rgb(6, 43, 50)",
+            "time": 52.59999990463257
+          },
+          "frames": [
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 84.5
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 99.09999990463257
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 110.79999995231628
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 135.39999985694885
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 146.5
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 185.79999995231628
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 203.39999985694885
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 207.59999990463257
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 223.89999985694885
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 238.89999985694885
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 256.89999985694885
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 273.89999985694885
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 288.7999999523163
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 305.89999985694885
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 322.89999985694885
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 338.89999985694885
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 355.89999985694885
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 374
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 388.89999985694885
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 406.39999985694885
+            }
+          ],
+          "dcl": {
+            "dark": true,
+            "page": "rgb(6, 43, 50)",
+            "time": 76.5
+          }
+        },
+        "stored": "\"dark\"",
+        "exceptions": []
+      },
+      {
+        "type": "hydrated",
+        "name": "unknown-choice",
+        "width": 1440,
+        "system": "light",
+        "saved": "\"system\"",
+        "blockedStorage": false,
+        "route": "/en/menu",
+        "dark": true,
+        "background": "rgb(6, 43, 50)",
+        "systemDark": false,
+        "overflow": 0,
+        "button": "<button type=\"button\" class=\"grid h-9 w-9 place-items-center rounded-full border border-slate-200 bg-white text-slate-700 transition hover:rotate-12 hover:border-emerald-400/60 hover:text-emerald-600 dark:border-white/10 dark:bg-white/5 dark:text-slate-200 dark:hover:text-emerald-300\" aria-label=\"Light mode\" aria-pressed=\"true\" title=\"Light mode\"><span class=\"grid place-items-center\"><svg stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"0\" viewBox=\"0 0 512 512\" height=\"1em\" width=\"1em\" xmlns=\"http://www.w3.org/2000/svg\"><use href=\"/brand/icon-sprites-v1/common.svg#fa6-FaSun\"></use></svg></span></button>",
+        "probe": {
+          "firstBody": {
+            "dark": true,
+            "page": "rgb(6, 43, 50)",
+            "time": 46.799999952316284
+          },
+          "frames": [
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 77
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 91
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 97.79999995231628
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 129.59999990463257
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 140.5
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 176.29999995231628
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 196
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 211
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 228.59999990463257
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 246
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 261
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 279.09999990463257
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 296
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 311
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 328
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 345.09999990463257
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 361
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 378
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 396
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 411
+            }
+          ],
+          "dcl": {
+            "dark": true,
+            "page": "rgb(6, 43, 50)",
+            "time": 69.09999990463257
+          }
+        },
+        "stored": "\"dark\"",
+        "exceptions": []
+      },
+      {
+        "type": "hydrated",
+        "name": "blocked-storage",
+        "width": 1440,
+        "system": "light",
+        "saved": null,
+        "blockedStorage": true,
+        "route": "/en/menu",
+        "dark": true,
+        "background": "rgb(6, 43, 50)",
+        "systemDark": false,
+        "overflow": 0,
+        "button": "<button type=\"button\" class=\"grid h-9 w-9 place-items-center rounded-full border border-slate-200 bg-white text-slate-700 transition hover:rotate-12 hover:border-emerald-400/60 hover:text-emerald-600 dark:border-white/10 dark:bg-white/5 dark:text-slate-200 dark:hover:text-emerald-300\" aria-label=\"Light mode\" aria-pressed=\"true\" title=\"Light mode\"><span class=\"grid place-items-center\"><svg stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"0\" viewBox=\"0 0 512 512\" height=\"1em\" width=\"1em\" xmlns=\"http://www.w3.org/2000/svg\"><use href=\"/brand/icon-sprites-v1/common.svg#fa6-FaSun\"></use></svg></span></button>",
+        "probe": {
+          "firstBody": {
+            "dark": true,
+            "page": "rgb(6, 43, 50)",
+            "time": 50
+          },
+          "frames": [
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 75.09999990463257
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 89.79999995231628
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 126.39999985694885
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 137.09999990463257
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 170.20000004768372
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 189.20000004768372
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 199.29999995231628
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 216.09999990463257
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 232.09999990463257
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 249.29999995231628
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 266.09999990463257
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 282.2000000476837
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 299.2000000476837
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 316.2000000476837
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 332.09999990463257
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 349.2999999523163
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 366.39999985694885
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 382.09999990463257
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 399.2000000476837
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 417.09999990463257
+            }
+          ],
+          "dcl": {
+            "dark": true,
+            "page": "rgb(6, 43, 50)",
+            "time": 66.89999985694885
+          }
+        },
+        "stored": "blocked",
+        "exceptions": []
+      },
+      {
+        "type": "hydrated",
+        "name": "mobile-fresh-320",
+        "width": 320,
+        "system": "light",
+        "saved": null,
+        "blockedStorage": false,
+        "route": "/en/menu",
+        "dark": true,
+        "background": "rgb(6, 43, 50)",
+        "systemDark": false,
+        "overflow": 0,
+        "button": "<button type=\"button\" class=\"grid h-9 w-9 place-items-center rounded-full border border-slate-200 bg-white text-slate-700 transition hover:rotate-12 hover:border-emerald-400/60 hover:text-emerald-600 dark:border-white/10 dark:bg-white/5 dark:text-slate-200 dark:hover:text-emerald-300\" aria-label=\"Light mode\" aria-pressed=\"true\" title=\"Light mode\"><span class=\"grid place-items-center\"><svg stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"0\" viewBox=\"0 0 512 512\" height=\"1em\" width=\"1em\" xmlns=\"http://www.w3.org/2000/svg\"><use href=\"/brand/icon-sprites-v1/common.svg#fa6-FaSun\"></use></svg></span></button>",
+        "probe": {
+          "firstBody": {
+            "dark": true,
+            "page": "rgb(6, 43, 50)",
+            "time": 63.59999990463257
+          },
+          "frames": [
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 88.39999985694885
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 100.5
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 106.29999995231628
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 111.39999985694885
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 135.59999990463257
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 150.09999990463257
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 164.5
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 177.19999980926514
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 194
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 209.69999980926514
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 227.19999980926514
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 243.69999980926514
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 259.69999980926514
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 277.39999985694885
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 293.89999985694885
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 310.19999980926514
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 327
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 344
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 359.7999999523163
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 377.89999985694885
+            }
+          ],
+          "dcl": {
+            "dark": true,
+            "page": "rgb(6, 43, 50)",
+            "time": 83.5
+          }
+        },
+        "stored": "\"dark\"",
+        "screenshot": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-theme-default-20261111\\mobile-fresh-320.png",
+        "exceptions": []
+      },
+      {
+        "type": "hydrated",
+        "name": "mobile-fresh-390",
+        "width": 390,
+        "system": "light",
+        "saved": null,
+        "blockedStorage": false,
+        "route": "/en/menu",
+        "dark": true,
+        "background": "rgb(6, 43, 50)",
+        "systemDark": false,
+        "overflow": 0,
+        "button": "<button type=\"button\" class=\"grid h-9 w-9 place-items-center rounded-full border border-slate-200 bg-white text-slate-700 transition hover:rotate-12 hover:border-emerald-400/60 hover:text-emerald-600 dark:border-white/10 dark:bg-white/5 dark:text-slate-200 dark:hover:text-emerald-300\" aria-label=\"Light mode\" aria-pressed=\"true\" title=\"Light mode\"><span class=\"grid place-items-center\"><svg stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"0\" viewBox=\"0 0 512 512\" height=\"1em\" width=\"1em\" xmlns=\"http://www.w3.org/2000/svg\"><use href=\"/brand/icon-sprites-v1/common.svg#fa6-FaSun\"></use></svg></span></button>",
+        "probe": {
+          "firstBody": {
+            "dark": true,
+            "page": "rgb(6, 43, 50)",
+            "time": 42.39999985694885
+          },
+          "frames": [
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 68.39999985694885
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 79.69999980926514
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 86.89999985694885
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 103.19999980926514
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 119.5
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 135.29999995231628
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 148.29999995231628
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 165.39999985694885
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 181.19999980926514
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 198.29999995231628
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 215.5
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 231.09999990463257
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 248.39999985694885
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 265.19999980926514
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 281.39999985694885
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 298.59999990463257
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 315.2999999523163
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 331.19999980926514
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 349
+            },
+            {
+              "dark": true,
+              "page": "rgb(6, 43, 50)",
+              "time": 365
+            }
+          ],
+          "dcl": {
+            "dark": true,
+            "page": "rgb(6, 43, 50)",
+            "time": 62.299999952316284
+          }
+        },
+        "stored": "\"dark\"",
+        "screenshot": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-theme-default-20261111\\mobile-fresh-390.png",
+        "exceptions": []
+      },
+      {
+        "type": "toggle-light",
+        "dark": false,
+        "stored": "\"light\""
+      },
+      {
+        "type": "toggle-light-reload",
+        "dark": false
+      },
+      {
+        "type": "toggle-dark",
+        "dark": true,
+        "stored": "\"dark\""
+      },
+      {
+        "type": "cross-route-dark",
+        "route": "/en/reservations",
+        "dark": true
+      }
+    ]
+  },
+  "noJavaScript": {
+    "checkedAt": "2026-11-12T00:03:46.470Z",
+    "origin": "http://127.0.0.1:3668",
+    "proofs": [
+      {
+        "type": "javascript-disabled-fresh",
+        "checkedAt": "2026-11-12T00:03:45.882Z",
+        "width": 320,
+        "system": "light",
+        "htmlClass": "dark h-full antialiased",
+        "background": "rgb(6, 43, 50)",
+        "screenshot": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-theme-default-20261111\\nojs-mobile-320.png"
+      },
+      {
+        "type": "javascript-disabled-fresh",
+        "checkedAt": "2026-11-12T00:03:46.415Z",
+        "width": 390,
+        "system": "light",
+        "htmlClass": "dark h-full antialiased",
+        "background": "rgb(6, 43, 50)",
+        "screenshot": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-theme-default-20261111\\nojs-mobile-390.png"
+      }
+    ],
+    "browserCleanup": "own page blank; scripts enabled; metrics/media/touch/network overrides reset"
+  },
+  "totalProofRecords": 27,
+  "proofArtifacts": [
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-theme-default-20261111\\verify.cjs",
+      "sha256": "42e79190575a54ae3125f0fcb7946f8e15979757e0498a1b8084fc95f8c2cd29"
+    },
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-theme-default-20261111\\nojs.cjs",
+      "sha256": "362b1c8066ce757a4bd49d9627c95db733f5a58ed6a183362ba2bd6dc79331ff"
+    },
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-theme-default-20261111\\verification.json",
+      "sha256": "4143000bc8f8857ee770f7d3d81c9f237512bb55dfa1b34e49fe20db940cc89b"
+    },
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-theme-default-20261111\\nojs-verification.json",
+      "sha256": "5be67906d2ca1f6ab089b4768106d506d099f0dd5a707fd16c652c352407dd33"
+    },
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-theme-default-20261111\\theme-only.patch",
+      "sha256": "3d7edef0fe074a982577bd867191f5e3a6b72864e4f231b6189228ee797e6399"
+    },
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-theme-default-20261111\\layout.before.tsx",
+      "sha256": "67e94adec40a8721865a24619d7c610061221c65550173cdfa9c9097eba3b821"
+    },
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-theme-default-20261111\\layout.after.tsx",
+      "sha256": "0b239ec23cc8107077a57e8376101e361bb793ac9cdea1671f4880d4cd47c3b7"
+    },
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-theme-default-20261111\\providers.before.tsx",
+      "sha256": "e3bc3484861ac9448d795291a78e4c876ddea98719575043097274e22e099504"
+    },
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-theme-default-20261111\\providers.after.tsx",
+      "sha256": "1a99332e991cd73afd6c76efa7835ee2890ca2c498d8de2f9abdf70f4a03ade6"
+    }
+  ],
+  "browserCleanup": "CLEAR9229 sent to root and order_controls after own page navigated about:blank; JS enabled, network/media/metrics/touch overrides reset; entire browser left running",
+  "limitations": [
+    "This report checks theme behavior; general page, cart and hero interaction checks are owned by other reviewers."
+  ]
+}

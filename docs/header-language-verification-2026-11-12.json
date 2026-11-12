@@ -1,0 +1,504 @@
+{
+  "atUTC": "2026-11-12T00:11:21.188Z",
+  "build": "KfLjCFEAboBDf5nZnS0uh",
+  "origin": "http://127.0.0.1:3668",
+  "dist": ".next-review-shah-final-20261111",
+  "artifactSourceHash": "0b3971245151ab7ecade89e5641d50723042b4d22d09ba9647d5c877c416f6ef",
+  "artifactInputs": 530,
+  "verdict": "PASS requested desktop Events alignment and single current-language control, with bounded current dark partner and hero/static regressions.",
+  "sourceChanges": {
+    "files": {
+      "app/components/header.tsx": "6d81c5900a4d8eeedf416ca1c74c8cccec05122c5dc9ae12cb54a5b7c92605cd",
+      "app/components/header.module.css": "390dfd002c7b7ba6e13266d9d43bb449db6cb95c6f04bbf3bee9faf2b2dad006"
+    },
+    "eventsAlignment": "Direct desktop anchors now use flex vertical centering matching the existing summary. No pixel nudge or native details markup change.",
+    "language": "One round48px current EN/NL control replaces two-choice selectors. Public native anchor points to opposite locale; normal click reuses setLang. Utility button reuses in-place language handler. Current and target are explicit in aria-label/title.",
+    "breakpoints": "Toolbar circle at>=640; mobile-panel circle at<640. Panel copy hidden>=640 so only one is visible.",
+    "preserved": "Provider/locale helpers, query/hash routing, utility drafts, public Events links and private admin/Parties visibility unchanged."
+  },
+  "freshHeader": {
+    "observations": 130,
+    "desktop": {
+      "widths": [
+        1625,
+        1440
+      ],
+      "height": 932,
+      "glyphCenterDelta": 0,
+      "matchedLabels": [
+        "Home",
+        "Reservations",
+        "Menu",
+        "Events",
+        "Account"
+      ],
+      "nativeKeyboard": [
+        "Enter opens details",
+        "Tab enters first event link",
+        "Escape closes and returns summary focus"
+      ],
+      "publicEventLinks": 7,
+      "rows": [
+        {
+          "name": "desktop-alignment-1625",
+          "pathname": "/en",
+          "search": "",
+          "hash": "#main-content",
+          "timeOrigin": 1794441864351.2,
+          "lang": "en",
+          "dark": true,
+          "overflow": 0,
+          "visible": 1,
+          "control": {
+            "tag": "A",
+            "text": "EN",
+            "href": "/",
+            "label": "Current language: English. Switch to Dutch.",
+            "title": "Current language: English. Switch to Dutch.",
+            "width": 48,
+            "height": 48,
+            "left": 1142.6875,
+            "right": 1190.6875,
+            "top": 26.671875,
+            "bottom": 74.671875,
+            "borderRadius": "50%"
+          },
+          "privateGuestLinks": [],
+          "glyphs": [
+            {
+              "text": "Home",
+              "glyphTop": 40.390625,
+              "glyphHeight": 19,
+              "center": 49.890625,
+              "boxTop": 26.671875,
+              "boxHeight": 48,
+              "display": "flex",
+              "align": "center",
+              "font": "13px",
+              "lineHeight": "18.5714px"
+            },
+            {
+              "text": "Reservations",
+              "glyphTop": 40.390625,
+              "glyphHeight": 19,
+              "center": 49.890625,
+              "boxTop": 26.671875,
+              "boxHeight": 48,
+              "display": "flex",
+              "align": "center",
+              "font": "13px",
+              "lineHeight": "18.5714px"
+            },
+            {
+              "text": "Menu",
+              "glyphTop": 40.390625,
+              "glyphHeight": 19,
+              "center": 49.890625,
+              "boxTop": 26.671875,
+              "boxHeight": 48,
+              "display": "flex",
+              "align": "center",
+              "font": "13px",
+              "lineHeight": "18.5714px"
+            },
+            {
+              "text": "Events",
+              "glyphTop": 40.390625,
+              "glyphHeight": 19,
+              "center": 49.890625,
+              "boxTop": 26.671875,
+              "boxHeight": 48,
+              "display": "flex",
+              "align": "center",
+              "font": "13px",
+              "lineHeight": "18.5714px"
+            },
+            {
+              "text": "Account",
+              "glyphTop": 40.390625,
+              "glyphHeight": 19,
+              "center": 49.890625,
+              "boxTop": 26.671875,
+              "boxHeight": 48,
+              "display": "flex",
+              "align": "center",
+              "font": "13px",
+              "lineHeight": "18.5714px"
+            }
+          ],
+          "screenshot": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-header-toggle-20261112\\KfLjCFEAboBDf5nZnS0uh\\header-1625.png"
+        },
+        {
+          "name": "desktop-events-keyboard-1625",
+          "pathname": "/en",
+          "search": "",
+          "hash": "#main-content",
+          "timeOrigin": 1794441864351.2,
+          "lang": "en",
+          "dark": true,
+          "overflow": 0,
+          "visible": 1,
+          "control": {
+            "tag": "A",
+            "text": "EN",
+            "href": "/",
+            "label": "Current language: English. Switch to Dutch.",
+            "title": "Current language: English. Switch to Dutch.",
+            "width": 48,
+            "height": 48,
+            "left": 1142.6875,
+            "right": 1190.6875,
+            "top": 26.671875,
+            "bottom": 74.671875,
+            "borderRadius": "50%"
+          },
+          "privateGuestLinks": [],
+          "eventLinks": [
+            "/en/events",
+            "/en/events/about",
+            "/en/events/gallery",
+            "/en/events/birthdays",
+            "/en/events/celebrations",
+            "/en/events/company-catering",
+            "/en/events/company-lunches"
+          ]
+        },
+        {
+          "name": "desktop-alignment-1440",
+          "pathname": "/en",
+          "search": "",
+          "hash": "#main-content",
+          "timeOrigin": 1794441865895.2,
+          "lang": "en",
+          "dark": true,
+          "overflow": 0,
+          "visible": 1,
+          "control": {
+            "tag": "A",
+            "text": "EN",
+            "href": "/",
+            "label": "Current language: English. Switch to Dutch.",
+            "title": "Current language: English. Switch to Dutch.",
+            "width": 48,
+            "height": 48,
+            "left": 1050.1875,
+            "right": 1098.1875,
+            "top": 26.671875,
+            "bottom": 74.671875,
+            "borderRadius": "50%"
+          },
+          "privateGuestLinks": [],
+          "glyphs": [
+            {
+              "text": "Home",
+              "glyphTop": 40.390625,
+              "glyphHeight": 19,
+              "center": 49.890625,
+              "boxTop": 26.671875,
+              "boxHeight": 48,
+              "display": "flex",
+              "align": "center",
+              "font": "13px",
+              "lineHeight": "18.5714px"
+            },
+            {
+              "text": "Reservations",
+              "glyphTop": 40.390625,
+              "glyphHeight": 19,
+              "center": 49.890625,
+              "boxTop": 26.671875,
+              "boxHeight": 48,
+              "display": "flex",
+              "align": "center",
+              "font": "13px",
+              "lineHeight": "18.5714px"
+            },
+            {
+              "text": "Menu",
+              "glyphTop": 40.390625,
+              "glyphHeight": 19,
+              "center": 49.890625,
+              "boxTop": 26.671875,
+              "boxHeight": 48,
+              "display": "flex",
+              "align": "center",
+              "font": "13px",
+              "lineHeight": "18.5714px"
+            },
+            {
+              "text": "Events",
+              "glyphTop": 40.390625,
+              "glyphHeight": 19,
+              "center": 49.890625,
+              "boxTop": 26.671875,
+              "boxHeight": 48,
+              "display": "flex",
+              "align": "center",
+              "font": "13px",
+              "lineHeight": "18.5714px"
+            },
+            {
+              "text": "Account",
+              "glyphTop": 40.390625,
+              "glyphHeight": 19,
+              "center": 49.890625,
+              "boxTop": 26.671875,
+              "boxHeight": 48,
+              "display": "flex",
+              "align": "center",
+              "font": "13px",
+              "lineHeight": "18.5714px"
+            }
+          ],
+          "screenshot": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-header-toggle-20261112\\KfLjCFEAboBDf5nZnS0uh\\header-1440.png"
+        },
+        {
+          "name": "desktop-events-keyboard-1440",
+          "pathname": "/en",
+          "search": "",
+          "hash": "#main-content",
+          "timeOrigin": 1794441865895.2,
+          "lang": "en",
+          "dark": true,
+          "overflow": 0,
+          "visible": 1,
+          "control": {
+            "tag": "A",
+            "text": "EN",
+            "href": "/",
+            "label": "Current language: English. Switch to Dutch.",
+            "title": "Current language: English. Switch to Dutch.",
+            "width": 48,
+            "height": 48,
+            "left": 1050.1875,
+            "right": 1098.1875,
+            "top": 26.671875,
+            "bottom": 74.671875,
+            "borderRadius": "50%"
+          },
+          "privateGuestLinks": [],
+          "eventLinks": [
+            "/en/events",
+            "/en/events/about",
+            "/en/events/gallery",
+            "/en/events/birthdays",
+            "/en/events/celebrations",
+            "/en/events/company-catering",
+            "/en/events/company-lunches"
+          ]
+        }
+      ]
+    },
+    "mobile": {
+      "widths": [
+        320,
+        390
+      ],
+      "height": 844,
+      "routePairs": 12,
+      "publicNormalClickSwitches": 48,
+      "bothDirections": true,
+      "query": "?qa=language-round",
+      "hash": "#main-content",
+      "queryHashRetained": true,
+      "currentLabelMatchesURL": true,
+      "singleVisibleControlWhenPanelOpen": true,
+      "controlBox": [
+        48,
+        48
+      ],
+      "borderRadius": "50%",
+      "overflow": 0
+    },
+    "tablet": {
+      "widths": [
+        640,
+        1024
+      ],
+      "panelOpen": true,
+      "visibleCircles": 1
+    },
+    "utility": {
+      "route": "/account",
+      "widths": [
+        320,
+        390
+      ],
+      "switches": 4,
+      "dummyEmailRetained": true,
+      "sameTimeOrigin": true,
+      "pathQueryHashUnchanged": true,
+      "noSubmission": true
+    },
+    "allCheckedContexts": {
+      "runtimeAndConsoleErrors": 0,
+      "nonGetRequests": 0,
+      "guestAdminPartiesLinks": 0
+    },
+    "raw": {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-header-toggle-20261112\\KfLjCFEAboBDf5nZnS0uh\\header-raw.json",
+      "sha256": "d8084bd2a54cc7e2769af62be759c229cf1b8f5cb8379c4713841476f4aa45a2"
+    },
+    "completion": {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-header-toggle-20261112\\KfLjCFEAboBDf5nZnS0uh\\complete.json",
+      "sha256": "6b3061bd1cd2b21f26114de1d02c6db898b324c9c78371d9ed441ffedfcbb072"
+    },
+    "mobileDisplay": {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-header-toggle-20261112\\KfLjCFEAboBDf5nZnS0uh\\mobile-display.json",
+      "sha256": "c258144e595073df911fd8f63cf4a6388bd43ec477ecdb2614021da69bef7a87"
+    },
+    "helper": {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cookie-ssr-20261111\\verify-final2-header.cjs",
+      "sha256": "62f0428646e72bfa3030cfad4f986f6b7ae136fa97ac15ccf9b4c58d49e7bfb1"
+    },
+    "screenshots": [
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-header-toggle-20261112\\KfLjCFEAboBDf5nZnS0uh\\header-1440.png",
+        "sha256": "c7f3b5d79852bcec5e403745e0bfb882ec5cae528a6c6f0f1259362cf0ad1deb"
+      },
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-header-toggle-20261112\\KfLjCFEAboBDf5nZnS0uh\\header-1625.png",
+        "sha256": "d1337d64ff47f93efed3cd25c76252ff8bbfedcfa5720e255b1b0eb62c79f60e"
+      },
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-header-toggle-20261112\\KfLjCFEAboBDf5nZnS0uh\\mobile-language-320.png",
+        "sha256": "dbaf6f986cd07d8fc52afa547589652284c437dabd9855d72d91f1abd944189f"
+      },
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-header-toggle-20261112\\KfLjCFEAboBDf5nZnS0uh\\mobile-language-390.png",
+        "sha256": "73b535db65c5f99a02256aed51203e33cdba69dad93532a9920d99bed942b018"
+      },
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-header-toggle-20261112\\KfLjCFEAboBDf5nZnS0uh\\tablet-1024.png",
+        "sha256": "385a0a87e0fec47466a26718ccf4577ca80dfc59901b16b64caf577b0117604c"
+      },
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-header-toggle-20261112\\KfLjCFEAboBDf5nZnS0uh\\tablet-640.png",
+        "sha256": "4fec8788b36cf64eb85e723a8beb3c49d018be6ce043949f1deace369b91f1aa"
+      }
+    ]
+  },
+  "freshDarkPartner": {
+    "build": "KfLjCFEAboBDf5nZnS0uh",
+    "observations": 10,
+    "width": 320,
+    "htmlDark": true,
+    "visibleRowRemoved": true,
+    "defaultPauseButton": "absolute/opacity0/pointer-eventsnone",
+    "focusPauseButtonMinHeight": 48,
+    "nativeKeyboardAndTouch": true,
+    "accessibleOriginalBrands": 4,
+    "overflow": 0,
+    "raw": {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-partner-controls-20261111\\KfLjCFEAboBDf5nZnS0uh\\partner-controls-raw.json",
+      "sha256": "9ae2caacea3c5d9b304417c4b34e0fc516fcafb6ef46278c0b2b2b252e993a87"
+    },
+    "completion": {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-partner-controls-20261111\\KfLjCFEAboBDf5nZnS0uh\\complete.json",
+      "sha256": "713785557ddc7d11b204f6e7b42067f4bafa09cb172bd0f4ff73e9537e67e48d"
+    },
+    "screenshots": [
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-partner-controls-20261111\\KfLjCFEAboBDf5nZnS0uh\\default-320.png",
+        "sha256": "77f854d0568952efa8a3dc9187320c35785080ac7d45deda347d09f75bb8f355"
+      },
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-partner-controls-20261111\\KfLjCFEAboBDf5nZnS0uh\\focus-320.png",
+        "sha256": "2908256c91fc125daf7171c040e14c555585ec8fa07ac6d8117fe595c561c02f"
+      }
+    ]
+  },
+  "historicalPartnerControl": {
+    "build": "P0W6dAXCimN14bV35cqxQ",
+    "observations": 38,
+    "report": {
+      "path": "C:\\Users\\DaviiC\\Downloads\\shahrestaurant\\shahrestaurant\\docs\\partner-controls-verification-2026-11-11.json",
+      "sha256": "a2c36d9862165d311b306c7dc62fd63a6d55aabd5838eb26f4ed213afe4be31e"
+    },
+    "scope": "P0 full320/390/1440, hover, static and keyboard/touch proof remains P0. It is not relabeled as current38states.",
+    "identicalComponentSources": [
+      {
+        "file": "app/components/DrinkPartners.tsx",
+        "sha256": "09511d141d26c6eeb93479768aa52568c34e864d3ebaabbd6f5c8cc52667636d",
+        "currentSha256": "09511d141d26c6eeb93479768aa52568c34e864d3ebaabbd6f5c8cc52667636d"
+      },
+      {
+        "file": "app/components/DrinkPartners.module.css",
+        "sha256": "191ff3e8c5db7d672b5cb1e5ed4a8aa951c328e0c0ed2bd1bba94ff61ae4ad92",
+        "currentSha256": "191ff3e8c5db7d672b5cb1e5ed4a8aa951c328e0c0ed2bd1bba94ff61ae4ad92"
+      }
+    ],
+    "geometry": "Global header/theme changed; current dark context receives fresh bounded checks above."
+  },
+  "freshHeroRegression": {
+    "titleCases": 2,
+    "widths": [
+      320,
+      390
+    ],
+    "presentedSeconds": 1.499333,
+    "fit": {
+      "320": "contain with black matte",
+      "390": "cover"
+    },
+    "observedContainerDuration": 12.332667,
+    "cleanPlayingDOM": true,
+    "headerAndNoticeHidden": true,
+    "overflow": 0,
+    "raw": {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\KfLjCFEAboBDf5nZnS0uh\\approved-crop-results.json",
+      "sha256": "312391f3be6aa95a9d28a797bc6d2911a14976423adeb00a26fa40eb63e0059a"
+    },
+    "screenshots": [
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\KfLjCFEAboBDf5nZnS0uh\\crop-320x844-1.5.png",
+        "sha256": "e1cc5173429107990f0268cc6237e2c94b88c3adfdf45e488d7f7a81d6432d97"
+      },
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\KfLjCFEAboBDf5nZnS0uh\\crop-390x844-1.5.png",
+        "sha256": "fc73614aa87511cfe1fbbcc5dd1d6c9b3cf3b5974251205c2ee31c734c923571"
+      }
+    ],
+    "static": {
+      "cases": 4,
+      "widths": [
+        320,
+        390
+      ],
+      "modes": [
+        "NoJS",
+        "reduced"
+      ],
+      "videoElements": 0,
+      "mp4Requests": 0,
+      "posterFitCorrect": true,
+      "realTabEnterSkip": true,
+      "skipBox": {
+        "width": 247.609375,
+        "height": 52
+      },
+      "introFocus": true,
+      "filmOffscreen": true,
+      "overflow": 0,
+      "raw": {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\KfLjCFEAboBDf5nZnS0uh\\fresh-static\\fresh-static-results.json",
+        "sha256": "5f56544282f3348137a9b2082640710a440e7821d88a12411a86370a19591fb0"
+      }
+    }
+  },
+  "validation": {
+    "focusedHeaderESLint": "pass before build",
+    "typeScript": "npx tsc --noEmit pass before build",
+    "artifactManifest": {
+      "path": "C:\\Users\\DaviiC\\Downloads\\shahrestaurant\\shahrestaurant\\.next-review-shah-final-20261111.source.json",
+      "sha256": "bdf1908f2effe3d238647c047512b1662c6be2b46bf901d86d3d01f3d1257685"
+    }
+  },
+  "limitations": [
+    "Isolated Chromium at DPR1 with native CDP keyboard/pointer/touch, not physical device/Safari.",
+    "Other functional workers ran in parallel; no isolated performance or CLS claim.",
+    "Public normal clicks preserve query/hash via existing handler. Native opposite-locale href remains the existing bare-path fallback behavior.",
+    "Current hero check is title/static smoke only; full film flow and performance are baseline-owned.",
+    "No app edits or business submissions during QA; all9226task pages blank and traffic ended."
+  ]
+}

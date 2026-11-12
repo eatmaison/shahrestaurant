@@ -1,0 +1,2715 @@
+{
+  "version": "jpeg-fallback-v1",
+  "generatedAtUTC": "2026-11-11T20:17:17.777Z",
+  "pinnedEncoders": {
+    "sharp": "0.34.5",
+    "vips": "8.17.3",
+    "mozjpeg": "0826579"
+  },
+  "options": {
+    "resize": {
+      "withoutEnlargement": true,
+      "kernel": "lanczos3"
+    },
+    "jpeg": {
+      "mozjpeg": true,
+      "progressive": true,
+      "chromaSubsampling": "4:2:0"
+    }
+  },
+  "qualityChoices": [
+    88,
+    84,
+    80,
+    76,
+    72,
+    68,
+    64,
+    60,
+    56,
+    52,
+    48,
+    44,
+    40
+  ],
+  "originalFormatScope": "Gallery sources are JPEG. Restaurant/photo poster sources are WebP; their new JPEG is a compatibility delivery alternative, not an assertion that their source format was JPEG.",
+  "sourcePolicy": "Original files, modern AVIF/WebP deliveries, logos and videos are preserved. JPEG pixels auto-oriented before metadata removal; no upscaling.",
+  "photos": [
+    {
+      "group": "restaurant",
+      "source": "/brand/shah-bar-v1.webp",
+      "originalFormat": "webp",
+      "originalSha256": "b18de848e01c5bf3624187bc7cfde6258f0f1038cbdfa5e209f3d5d7c41f6442",
+      "originalBytes": 220768,
+      "originalWidth": 1200,
+      "originalHeight": 1800,
+      "originalOrientation": 1,
+      "orientedWidth": 1200,
+      "orientedHeight": 1800,
+      "widths": [
+        160,
+        320,
+        640,
+        960,
+        1200
+      ],
+      "outputs": [
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-bar-160.jpg",
+          "format": "jpeg",
+          "width": 160,
+          "height": 240,
+          "bytes": 13924,
+          "quality": 88,
+          "sha256": "acdd3c0860f32431bd37304e3dea9afede3219d4e98321912449486e2db841b4",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        },
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-bar-320.jpg",
+          "format": "jpeg",
+          "width": 320,
+          "height": 480,
+          "bytes": 44224,
+          "quality": 88,
+          "sha256": "bc42621e9961b3964165538b202c9ca40111e0fbedae720f1b5f2bc5e5e5b872",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        },
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-bar-640.jpg",
+          "format": "jpeg",
+          "width": 640,
+          "height": 960,
+          "bytes": 131847,
+          "quality": 88,
+          "sha256": "3fbfe174f316f36086d5a5dd3b1dda9d961bc76ed8000f8181b2e9c15c618f2d",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        },
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-bar-960.jpg",
+          "format": "jpeg",
+          "width": 960,
+          "height": 1440,
+          "bytes": 179123,
+          "quality": 80,
+          "sha256": "a2353d54f2b386aa2ec6bf9e529bcf7603b699e2ad6f104783dd5dd57145e0e8",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        },
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-bar-1200.jpg",
+          "format": "jpeg",
+          "width": 1200,
+          "height": 1800,
+          "bytes": 194989,
+          "quality": 68,
+          "sha256": "fb99f90968a0c62165ecd7f0031fac142db618c31324a5f28ec5332fc4daa95d",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        }
+      ]
+    },
+    {
+      "group": "restaurant",
+      "source": "/brand/shah-room-v1.webp",
+      "originalFormat": "webp",
+      "originalSha256": "d583b7815079e66e4925fb004ffec42079c21968ee2256fb7d75caf2cd3a2098",
+      "originalBytes": 153334,
+      "originalWidth": 1200,
+      "originalHeight": 1800,
+      "originalOrientation": 1,
+      "orientedWidth": 1200,
+      "orientedHeight": 1800,
+      "widths": [
+        160,
+        320,
+        640,
+        960,
+        1200
+      ],
+      "outputs": [
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-room-160.jpg",
+          "format": "jpeg",
+          "width": 160,
+          "height": 240,
+          "bytes": 11688,
+          "quality": 88,
+          "sha256": "6475d988fb284f52439df257b8fee00259191c0a3d607fb94587c4541ea4c7ef",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        },
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-room-320.jpg",
+          "format": "jpeg",
+          "width": 320,
+          "height": 480,
+          "bytes": 35116,
+          "quality": 88,
+          "sha256": "f33c176b0f9ad2ec764828f4cb34f0e4c1eba0370edce48e68b8fe6060fbed9c",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        },
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-room-640.jpg",
+          "format": "jpeg",
+          "width": 640,
+          "height": 960,
+          "bytes": 101365,
+          "quality": 88,
+          "sha256": "9d4c66ba22c059dc1a5bc1e172a2a43fe06645d8c4cbbe64e4c9fc53c4dac9ae",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        },
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-room-960.jpg",
+          "format": "jpeg",
+          "width": 960,
+          "height": 1440,
+          "bytes": 175832,
+          "quality": 88,
+          "sha256": "f4317da73e5536969fbb83f690babc4c71ca848c406f9052a77908894a6bb395",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        },
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-room-1200.jpg",
+          "format": "jpeg",
+          "width": 1200,
+          "height": 1800,
+          "bytes": 190636,
+          "quality": 80,
+          "sha256": "e025dda9d8cf43cbe8eb8cc92e9b1b7027c536888dd26fa71c7bb989f582c197",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        }
+      ]
+    },
+    {
+      "group": "restaurant",
+      "source": "/brand/shah-table-v1.webp",
+      "originalFormat": "webp",
+      "originalSha256": "591f0933839f9311243b142892b73dd95cb3f3683a38df3819bf006551a4ba33",
+      "originalBytes": 76786,
+      "originalWidth": 1400,
+      "originalHeight": 933,
+      "originalOrientation": 1,
+      "orientedWidth": 1400,
+      "orientedHeight": 933,
+      "widths": [
+        160,
+        320,
+        640,
+        960,
+        1400
+      ],
+      "outputs": [
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-table-160.jpg",
+          "format": "jpeg",
+          "width": 160,
+          "height": 107,
+          "bytes": 5877,
+          "quality": 88,
+          "sha256": "0a35dda8d86a73be081119ce210c6e07472e457c81020350f2fc9f72ff9e423c",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        },
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-table-320.jpg",
+          "format": "jpeg",
+          "width": 320,
+          "height": 213,
+          "bytes": 16371,
+          "quality": 88,
+          "sha256": "24e5397977975a4ec7a4d571da6d01eaa20b074515bf6f9bb145eb4560f8a863",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        },
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-table-640.jpg",
+          "format": "jpeg",
+          "width": 640,
+          "height": 427,
+          "bytes": 44614,
+          "quality": 88,
+          "sha256": "393e4276fb9fd5cce1b33822e59c4532af0b46bf4772c8f688a8610a8bcdae8a",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        },
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-table-960.jpg",
+          "format": "jpeg",
+          "width": 960,
+          "height": 640,
+          "bytes": 80720,
+          "quality": 88,
+          "sha256": "bc60ba492c3141a3773bf6025d35594d5a1251284fc2537d54d71a76f7ce82f7",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        },
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-table-1400.jpg",
+          "format": "jpeg",
+          "width": 1400,
+          "height": 933,
+          "bytes": 135558,
+          "quality": 88,
+          "sha256": "41896d920a50e5f76414fa8cd9313d0fa8adb95562d2a7facdb67f0d55092dc1",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        }
+      ]
+    },
+    {
+      "group": "restaurant",
+      "source": "/brand/shah-dining-v1.webp",
+      "originalFormat": "webp",
+      "originalSha256": "d289a0be63c2724e8a9859e9a4ae8c73bf491a72fde26db0254bf2a317777497",
+      "originalBytes": 63426,
+      "originalWidth": 1400,
+      "originalHeight": 933,
+      "originalOrientation": 1,
+      "orientedWidth": 1400,
+      "orientedHeight": 933,
+      "widths": [
+        160,
+        320,
+        640,
+        960,
+        1400
+      ],
+      "outputs": [
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-dining-160.jpg",
+          "format": "jpeg",
+          "width": 160,
+          "height": 107,
+          "bytes": 5623,
+          "quality": 88,
+          "sha256": "ae04fa2124bdf4d6b4a293710f807bb81dd9e022484ac22a1350fe265f9d89e2",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        },
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-dining-320.jpg",
+          "format": "jpeg",
+          "width": 320,
+          "height": 213,
+          "bytes": 15412,
+          "quality": 88,
+          "sha256": "9a58e8e27adfa30a02b1b364340ad94d268ece8b0319d4c7a8b8d469830a1f6d",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        },
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-dining-640.jpg",
+          "format": "jpeg",
+          "width": 640,
+          "height": 427,
+          "bytes": 40598,
+          "quality": 88,
+          "sha256": "93ee0537ccf758b2d041a1ee57b09b9924faf6f5e76d0d4d2b8d00a4e972fcf9",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        },
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-dining-960.jpg",
+          "format": "jpeg",
+          "width": 960,
+          "height": 640,
+          "bytes": 72045,
+          "quality": 88,
+          "sha256": "ef5f0d7e336b6ffa9482fa106783afb599355caefb1a129642c27375cda257e7",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        },
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-dining-1400.jpg",
+          "format": "jpeg",
+          "width": 1400,
+          "height": 933,
+          "bytes": 118561,
+          "quality": 88,
+          "sha256": "c73ab77bd86ba08926f77e0b8e9b83922873cb4982fb1f9f987b1c820cfa2fab",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        }
+      ]
+    },
+    {
+      "group": "restaurant",
+      "source": "/brand/shah-cocktail-v1.webp",
+      "originalFormat": "webp",
+      "originalSha256": "70ff50e8897738e8a9989399e3ea0bcc45211f44585353312fdc352216bf56c5",
+      "originalBytes": 57866,
+      "originalWidth": 1200,
+      "originalHeight": 1800,
+      "originalOrientation": 1,
+      "orientedWidth": 1200,
+      "orientedHeight": 1800,
+      "widths": [
+        160,
+        320,
+        640,
+        960,
+        1200
+      ],
+      "outputs": [
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-cocktail-160.jpg",
+          "format": "jpeg",
+          "width": 160,
+          "height": 240,
+          "bytes": 6815,
+          "quality": 88,
+          "sha256": "aee524c550f40eb99450e3e1712f165271e75fcd57bf36b5f33635b8db495c39",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        },
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-cocktail-320.jpg",
+          "format": "jpeg",
+          "width": 320,
+          "height": 480,
+          "bytes": 18380,
+          "quality": 88,
+          "sha256": "2fb16ac2917508c9c461682347c32695f9357e25f5b362426a80e5fab51f2e08",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        },
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-cocktail-640.jpg",
+          "format": "jpeg",
+          "width": 640,
+          "height": 960,
+          "bytes": 51876,
+          "quality": 88,
+          "sha256": "a998c1f26733997ee92924e3a308016dcedd6b917db9139b141b58ec6888057e",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        },
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-cocktail-960.jpg",
+          "format": "jpeg",
+          "width": 960,
+          "height": 1440,
+          "bytes": 90496,
+          "quality": 88,
+          "sha256": "12d706fd00258343f1e35325ca92512c0454ced3b063bfbcc4c98bf340f9acd6",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        },
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-cocktail-1200.jpg",
+          "format": "jpeg",
+          "width": 1200,
+          "height": 1800,
+          "bytes": 130871,
+          "quality": 88,
+          "sha256": "dc8f09dfc693dbc1c9ebec0b99f9379d0d7712afa9e1ce21216d2d45ccca3ec9",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        }
+      ]
+    },
+    {
+      "group": "restaurant",
+      "source": "/brand/shah-atmosphere-v1.webp",
+      "originalFormat": "webp",
+      "originalSha256": "2489b5c877c7e46b6bea2ca37dd5e7f52c5dccdb6fb463ba81544f0b4193156b",
+      "originalBytes": 173104,
+      "originalWidth": 1200,
+      "originalHeight": 1800,
+      "originalOrientation": 1,
+      "orientedWidth": 1200,
+      "orientedHeight": 1800,
+      "widths": [
+        160,
+        320,
+        640,
+        960,
+        1200
+      ],
+      "outputs": [
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-atmosphere-160.jpg",
+          "format": "jpeg",
+          "width": 160,
+          "height": 240,
+          "bytes": 10988,
+          "quality": 88,
+          "sha256": "c56f9552e9ddcf972b6bbd7925fe5b093379beb6d659df58506ce50cac3bb6e5",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        },
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-atmosphere-320.jpg",
+          "format": "jpeg",
+          "width": 320,
+          "height": 480,
+          "bytes": 33273,
+          "quality": 88,
+          "sha256": "64f3436209244a36fc0841abea0c7296fb5403a1dde55a5cc70111ecf4f87bd3",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        },
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-atmosphere-640.jpg",
+          "format": "jpeg",
+          "width": 640,
+          "height": 960,
+          "bytes": 100155,
+          "quality": 88,
+          "sha256": "6574d1cf6e67aa2c19f72af4046b3f1e460197ae0201e9dd1bf702ede821e146",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        },
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-atmosphere-960.jpg",
+          "format": "jpeg",
+          "width": 960,
+          "height": 1440,
+          "bytes": 179940,
+          "quality": 88,
+          "sha256": "31076499e4e663b335c9ed19e0d77aaa40711bf0c37d433132e30db91fdba15f",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        },
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-atmosphere-1200.jpg",
+          "format": "jpeg",
+          "width": 1200,
+          "height": 1800,
+          "bytes": 175166,
+          "quality": 76,
+          "sha256": "2a62ad2b4227160fce323cd28194d6c599b229364241438af9ef5fe42d2b2b6e",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        }
+      ]
+    },
+    {
+      "group": "gallery",
+      "source": "/photos/687A0402.jpeg",
+      "originalFormat": "jpeg",
+      "originalSha256": "654ffdf491fecde247a3a9926165137c60cf73d73911eddf84a4aee2a0089341",
+      "originalBytes": 2404514,
+      "originalWidth": 6960,
+      "originalHeight": 4640,
+      "originalOrientation": 1,
+      "orientedWidth": 6960,
+      "orientedHeight": 4640,
+      "widths": [
+        320,
+        640,
+        960,
+        1280
+      ],
+      "outputs": [
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-gallery-687a0402-320.jpg",
+          "format": "jpeg",
+          "width": 320,
+          "height": 213,
+          "bytes": 15867,
+          "quality": 88,
+          "sha256": "ee9410e860d8772392593dd0e406272eb3ef2dc2c3e1866ef888bfea071c3a86",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        },
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-gallery-687a0402-640.jpg",
+          "format": "jpeg",
+          "width": 640,
+          "height": 427,
+          "bytes": 41233,
+          "quality": 88,
+          "sha256": "f21c3617f250ff7a8bcfef4c21ccd4cd129fe6292c7288c8ecab692836f82801",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        },
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-gallery-687a0402-960.jpg",
+          "format": "jpeg",
+          "width": 960,
+          "height": 640,
+          "bytes": 71638,
+          "quality": 88,
+          "sha256": "6e992d2fcf85c2f5a32d0ad80ca16ed328da69c1db28ae86a7e214c34b793c74",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        },
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-gallery-687a0402-1280.jpg",
+          "format": "jpeg",
+          "width": 1280,
+          "height": 853,
+          "bytes": 106095,
+          "quality": 88,
+          "sha256": "55223c2c84ca7c43871fd3a4da3ebc259b4b386f9a95921fca81ae2659e0e78f",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        }
+      ]
+    },
+    {
+      "group": "gallery",
+      "source": "/photos/687A0210.jpeg",
+      "originalFormat": "jpeg",
+      "originalSha256": "09b371e2044d80aa9f9e26ca5f13b110173436b065d7c180a80c96bdb18e775f",
+      "originalBytes": 9370303,
+      "originalWidth": 6960,
+      "originalHeight": 4640,
+      "originalOrientation": 6,
+      "orientedWidth": 4640,
+      "orientedHeight": 6960,
+      "widths": [
+        320,
+        640,
+        960,
+        1280
+      ],
+      "outputs": [
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-gallery-687a0210-320.jpg",
+          "format": "jpeg",
+          "width": 320,
+          "height": 480,
+          "bytes": 36220,
+          "quality": 88,
+          "sha256": "23210b9fd556e39e988ed9c922e0e7eae3a2cade823ad3644586a2e16b38cdef",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        },
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-gallery-687a0210-640.jpg",
+          "format": "jpeg",
+          "width": 640,
+          "height": 960,
+          "bytes": 105013,
+          "quality": 88,
+          "sha256": "ea0b7e1502c91bd1c004d15975c2ad59be977454eea412ede9e85ddc66926123",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        },
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-gallery-687a0210-960.jpg",
+          "format": "jpeg",
+          "width": 960,
+          "height": 1440,
+          "bytes": 194717,
+          "quality": 88,
+          "sha256": "d33d50638d949052c113a1bc662a0de50e6d90bd2c0fa84ebc0ab05662a6d057",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        },
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-gallery-687a0210-1280.jpg",
+          "format": "jpeg",
+          "width": 1280,
+          "height": 1920,
+          "bytes": 189478,
+          "quality": 76,
+          "sha256": "719d74655b9eeacd62cdc73fe02c1e312ebde49edc681d29b0ec78b09c910b6e",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        }
+      ]
+    },
+    {
+      "group": "gallery",
+      "source": "/photos/687A0211.jpeg",
+      "originalFormat": "jpeg",
+      "originalSha256": "b4ebc33ad018bfe44c1a8f2e6ad94c7f1a0547dcdba5f2300072719d665a0ceb",
+      "originalBytes": 4976025,
+      "originalWidth": 4800,
+      "originalHeight": 3200,
+      "originalOrientation": 6,
+      "orientedWidth": 3200,
+      "orientedHeight": 4800,
+      "widths": [
+        320,
+        640,
+        960,
+        1280
+      ],
+      "outputs": [
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-gallery-687a0211-320.jpg",
+          "format": "jpeg",
+          "width": 320,
+          "height": 480,
+          "bytes": 35799,
+          "quality": 88,
+          "sha256": "6f9e54d4e6ac4c52f6e3ac9384eda1fe6b224ed6f6c76bdd33b2e21b5ff7dfee",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        },
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-gallery-687a0211-640.jpg",
+          "format": "jpeg",
+          "width": 640,
+          "height": 960,
+          "bytes": 104277,
+          "quality": 88,
+          "sha256": "4c92b292eb952b1b21ee89a0409e1c34236b4399503d709dc21dcf0fe914d779",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        },
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-gallery-687a0211-960.jpg",
+          "format": "jpeg",
+          "width": 960,
+          "height": 1440,
+          "bytes": 194688,
+          "quality": 88,
+          "sha256": "2442595b22e436214dff2a9fc505642cfcd7b48d53384b9994f3c9d81bfef7a3",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        },
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-gallery-687a0211-1280.jpg",
+          "format": "jpeg",
+          "width": 1280,
+          "height": 1920,
+          "bytes": 192213,
+          "quality": 76,
+          "sha256": "e5d541e47749da0df258445c17484bc33caee39adf9436033d92a79d91232828",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        }
+      ]
+    },
+    {
+      "group": "gallery",
+      "source": "/photos/687A0260.jpeg",
+      "originalFormat": "jpeg",
+      "originalSha256": "f8d64e444f7d129016b756aed36c0193caedd8a482f17dc0b561e03299a6b825",
+      "originalBytes": 1721983,
+      "originalWidth": 6960,
+      "originalHeight": 4640,
+      "originalOrientation": 8,
+      "orientedWidth": 4640,
+      "orientedHeight": 6960,
+      "widths": [
+        320,
+        640,
+        960,
+        1280
+      ],
+      "outputs": [
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-gallery-687a0260-320.jpg",
+          "format": "jpeg",
+          "width": 320,
+          "height": 480,
+          "bytes": 18671,
+          "quality": 88,
+          "sha256": "3e421293c2038e8250e7f6a06fbd3ed88f2af11354718aa2c7db521a12aed55a",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        },
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-gallery-687a0260-640.jpg",
+          "format": "jpeg",
+          "width": 640,
+          "height": 960,
+          "bytes": 51577,
+          "quality": 88,
+          "sha256": "f6a33e83b021cf26f34cb3c6027f63511e094d591b4b8bf300f7d4bd95773c88",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        },
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-gallery-687a0260-960.jpg",
+          "format": "jpeg",
+          "width": 960,
+          "height": 1440,
+          "bytes": 94652,
+          "quality": 88,
+          "sha256": "0851c947d4174b0c32efcd33e4899335fc992ea0ee0c165190ade586694b7391",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        },
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-gallery-687a0260-1280.jpg",
+          "format": "jpeg",
+          "width": 1280,
+          "height": 1920,
+          "bytes": 147139,
+          "quality": 88,
+          "sha256": "d0d39c9b590d1e8a65e57fa6a9eada37f62709c5cbaf8b1e6b1c5c2fd71b0f85",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        }
+      ]
+    },
+    {
+      "group": "gallery",
+      "source": "/photos/687A0216.jpeg",
+      "originalFormat": "jpeg",
+      "originalSha256": "71476b22ce3191ef58734eb7d1cf4559175b2d0268a0d34d04d599f1f4f257b1",
+      "originalBytes": 5348284,
+      "originalWidth": 4800,
+      "originalHeight": 3200,
+      "originalOrientation": 8,
+      "orientedWidth": 3200,
+      "orientedHeight": 4800,
+      "widths": [
+        320,
+        640,
+        960,
+        1280
+      ],
+      "outputs": [
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-gallery-687a0216-320.jpg",
+          "format": "jpeg",
+          "width": 320,
+          "height": 480,
+          "bytes": 39517,
+          "quality": 88,
+          "sha256": "71de17f45f8904f260e3704f2fcc72b237e2b2796824df0f08be6a75ca197286",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        },
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-gallery-687a0216-640.jpg",
+          "format": "jpeg",
+          "width": 640,
+          "height": 960,
+          "bytes": 114179,
+          "quality": 88,
+          "sha256": "18cf628a90abdfbe6a6ff15f9c49339016fbdf73752d029f2853aa88f34be0ba",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        },
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-gallery-687a0216-960.jpg",
+          "format": "jpeg",
+          "width": 960,
+          "height": 1440,
+          "bytes": 182558,
+          "quality": 84,
+          "sha256": "2e63fdf9c3ca9ae97d386a33d4594569261efdfa0b6dcaf109120826d665d53d",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        },
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-gallery-687a0216-1280.jpg",
+          "format": "jpeg",
+          "width": 1280,
+          "height": 1920,
+          "bytes": 184109,
+          "quality": 68,
+          "sha256": "93ded3bbccd28ec8a4145792926d406467c400a9293d65d41a8fed381e72c022",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        }
+      ]
+    },
+    {
+      "group": "gallery",
+      "source": "/photos/687A0321.jpeg",
+      "originalFormat": "jpeg",
+      "originalSha256": "e6aaf9f7ab13c33a832cafb36aca1ecf3249180906c248fa35e9550b4499dd69",
+      "originalBytes": 4057491,
+      "originalWidth": 6960,
+      "originalHeight": 4640,
+      "originalOrientation": 8,
+      "orientedWidth": 4640,
+      "orientedHeight": 6960,
+      "widths": [
+        320,
+        640,
+        960,
+        1280
+      ],
+      "outputs": [
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-gallery-687a0321-320.jpg",
+          "format": "jpeg",
+          "width": 320,
+          "height": 480,
+          "bytes": 34452,
+          "quality": 88,
+          "sha256": "cf4178c9dc7d00b88458b6fe7afee997659bfc65d64700b1625be514462b6b60",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        },
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-gallery-687a0321-640.jpg",
+          "format": "jpeg",
+          "width": 640,
+          "height": 960,
+          "bytes": 117354,
+          "quality": 88,
+          "sha256": "5900573ba066ff146929526165f23035a237861ca9ff706d58c856b93793afcb",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        },
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-gallery-687a0321-960.jpg",
+          "format": "jpeg",
+          "width": 960,
+          "height": 1440,
+          "bytes": 178277,
+          "quality": 80,
+          "sha256": "ae301d5da59d68019bd34cdf9bcd08b8a6d892a55f663a49b2bf3d2a5de7ec61",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        },
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-gallery-687a0321-1280.jpg",
+          "format": "jpeg",
+          "width": 1280,
+          "height": 1920,
+          "bytes": 193552,
+          "quality": 64,
+          "sha256": "5c937b3dcbb037c579ed1766a546718dc232338eb699309d547006a9b02cd127",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        }
+      ]
+    },
+    {
+      "group": "gallery",
+      "source": "/photos/687A0090.jpeg",
+      "originalFormat": "jpeg",
+      "originalSha256": "f366528546ed464ca0ddc47ab1385ba9b7275ef87a7f847ec7a67372c906019d",
+      "originalBytes": 380204,
+      "originalWidth": 1620,
+      "originalHeight": 1080,
+      "originalOrientation": 1,
+      "orientedWidth": 1620,
+      "orientedHeight": 1080,
+      "widths": [
+        320,
+        640,
+        960,
+        1280
+      ],
+      "outputs": [
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-gallery-687a0090-320.jpg",
+          "format": "jpeg",
+          "width": 320,
+          "height": 213,
+          "bytes": 18740,
+          "quality": 88,
+          "sha256": "6a525989938599a721fb9d93cb2fc2522844b88993b42cbe218d66cef0058761",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        },
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-gallery-687a0090-640.jpg",
+          "format": "jpeg",
+          "width": 640,
+          "height": 427,
+          "bytes": 55648,
+          "quality": 88,
+          "sha256": "9855994924ba13c501bbccda2bfd47c4e55f45e279c6396b943474e8a250c9c4",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        },
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-gallery-687a0090-960.jpg",
+          "format": "jpeg",
+          "width": 960,
+          "height": 640,
+          "bytes": 101001,
+          "quality": 88,
+          "sha256": "c9972ac58bbab42a7c33d37c1b7fc2ab8dbfb07588df7806f52ab0e2cf095b03",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        },
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-gallery-687a0090-1280.jpg",
+          "format": "jpeg",
+          "width": 1280,
+          "height": 853,
+          "bytes": 154435,
+          "quality": 88,
+          "sha256": "46911d8a8f87de9d60665f521a8692f3fcddb56d70f1030549058795d4be52b0",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        }
+      ]
+    },
+    {
+      "group": "gallery",
+      "source": "/photos/687A0336.jpeg",
+      "originalFormat": "jpeg",
+      "originalSha256": "f1fe8dba5da900050a223a0bc4f51edf13cfde300eb82de0302d18de7ef95306",
+      "originalBytes": 3194173,
+      "originalWidth": 6960,
+      "originalHeight": 4640,
+      "originalOrientation": 8,
+      "orientedWidth": 4640,
+      "orientedHeight": 6960,
+      "widths": [
+        320,
+        640,
+        960,
+        1280
+      ],
+      "outputs": [
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-gallery-687a0336-320.jpg",
+          "format": "jpeg",
+          "width": 320,
+          "height": 480,
+          "bytes": 34097,
+          "quality": 88,
+          "sha256": "eaa67c5adb24206238a977cad5482f6716fe91142288bf1938f74f57c4833165",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        },
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-gallery-687a0336-640.jpg",
+          "format": "jpeg",
+          "width": 640,
+          "height": 960,
+          "bytes": 104149,
+          "quality": 88,
+          "sha256": "8e9c05751d9c637c02fb88b2d9368fb111b7b94199c994def13cd0671f38f4f2",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        },
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-gallery-687a0336-960.jpg",
+          "format": "jpeg",
+          "width": 960,
+          "height": 1440,
+          "bytes": 170029,
+          "quality": 84,
+          "sha256": "bfb2a833f4e94054d017ea1e64b49b27ec6033aefae99f573719a54c18a62444",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        },
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-gallery-687a0336-1280.jpg",
+          "format": "jpeg",
+          "width": 1280,
+          "height": 1920,
+          "bytes": 185290,
+          "quality": 72,
+          "sha256": "2707e4fb781e5400f4bc98f3d9cd459b9c35728eb9237bc0eb2fb759c9f50298",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        }
+      ]
+    },
+    {
+      "group": "gallery",
+      "source": "/photos/687A0343.jpeg",
+      "originalFormat": "jpeg",
+      "originalSha256": "799a7f46f906e07471da4c5545f387fea8d88d0c69ee24d1ffaa3de5351a1bab",
+      "originalBytes": 3562388,
+      "originalWidth": 6960,
+      "originalHeight": 4640,
+      "originalOrientation": 8,
+      "orientedWidth": 4640,
+      "orientedHeight": 6960,
+      "widths": [
+        320,
+        640,
+        960,
+        1280
+      ],
+      "outputs": [
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-gallery-687a0343-320.jpg",
+          "format": "jpeg",
+          "width": 320,
+          "height": 480,
+          "bytes": 45223,
+          "quality": 88,
+          "sha256": "610179e4303eee3137e1a0698d2a7146fcc9eac9e55f912c1226821aae77ac17",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        },
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-gallery-687a0343-640.jpg",
+          "format": "jpeg",
+          "width": 640,
+          "height": 960,
+          "bytes": 136651,
+          "quality": 88,
+          "sha256": "a9760c96c7852db7b5504fd8faeb92d43415d171e027ce033a45ac62e0009bab",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        },
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-gallery-687a0343-960.jpg",
+          "format": "jpeg",
+          "width": 960,
+          "height": 1440,
+          "bytes": 194234,
+          "quality": 80,
+          "sha256": "6d52ce0ed7d767b7712ed1b7393fdc0198d437439c1b4ae02067d101b38b1031",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        },
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-gallery-687a0343-1280.jpg",
+          "format": "jpeg",
+          "width": 1280,
+          "height": 1920,
+          "bytes": 191839,
+          "quality": 60,
+          "sha256": "d0262ba0e492df6d098a4a444e6a1eaf342eecb52bb1ecb6d115042744a72911",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        }
+      ]
+    },
+    {
+      "group": "gallery",
+      "source": "/photos/687A0412.jpeg",
+      "originalFormat": "jpeg",
+      "originalSha256": "fc78116a1357a2829b18194e5d0df5f8dbf1bce18a0707ebd65a8b839a71b8bf",
+      "originalBytes": 2537772,
+      "originalWidth": 6960,
+      "originalHeight": 4640,
+      "originalOrientation": 1,
+      "orientedWidth": 6960,
+      "orientedHeight": 4640,
+      "widths": [
+        320,
+        640,
+        960,
+        1280
+      ],
+      "outputs": [
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-gallery-687a0412-320.jpg",
+          "format": "jpeg",
+          "width": 320,
+          "height": 213,
+          "bytes": 16892,
+          "quality": 88,
+          "sha256": "de23955d968a81db1b108d33cd1397da080d7ceabe59aad98485cf42ead21d45",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        },
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-gallery-687a0412-640.jpg",
+          "format": "jpeg",
+          "width": 640,
+          "height": 427,
+          "bytes": 45500,
+          "quality": 88,
+          "sha256": "0f1668b712e2e1c3370cfc6533b0ba078c32447749afd07404de0910641672ac",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        },
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-gallery-687a0412-960.jpg",
+          "format": "jpeg",
+          "width": 960,
+          "height": 640,
+          "bytes": 81455,
+          "quality": 88,
+          "sha256": "57f87956f4888d5239feaf9523528d1415e0fcdf23596e420ca74466c1f9f0f6",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        },
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-gallery-687a0412-1280.jpg",
+          "format": "jpeg",
+          "width": 1280,
+          "height": 853,
+          "bytes": 122401,
+          "quality": 88,
+          "sha256": "8cfe0e490be22b5e5127d2438d713a2d0a2107d580d86f379a01aab362a5f44c",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 200000,
+          "withinBudget": true
+        }
+      ]
+    },
+    {
+      "group": "hero",
+      "source": "/brand/shah-hero-poster-desktop-v4.webp",
+      "originalFormat": "webp",
+      "originalSha256": "d5df0ef28042faa40f0c4f2d6680cf74b43fcc436aa0ec817c80f29cee8e2447",
+      "originalBytes": 410246,
+      "originalWidth": 1920,
+      "originalHeight": 1080,
+      "originalOrientation": 1,
+      "orientedWidth": 1920,
+      "orientedHeight": 1080,
+      "widths": [
+        960,
+        1600
+      ],
+      "outputs": [
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-hero-poster-desktop-960.jpg",
+          "format": "jpeg",
+          "width": 960,
+          "height": 540,
+          "bytes": 110358,
+          "quality": 84,
+          "sha256": "7fa20c3cf77ddcb6f2d1e0f2540d14721934eed305d1a5a4eadb931682cecde4",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 120000,
+          "withinBudget": true
+        },
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-hero-poster-desktop-1600.jpg",
+          "format": "jpeg",
+          "width": 1600,
+          "height": 900,
+          "bytes": 113207,
+          "quality": 48,
+          "sha256": "72f734989579a37f1d8e81fdbb2492273b608599338a26bbf2115f64d96057c5",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 120000,
+          "withinBudget": true
+        }
+      ]
+    },
+    {
+      "group": "hero",
+      "source": "/brand/shah-hero-poster-mobile-v4.webp",
+      "originalFormat": "webp",
+      "originalSha256": "acb9c9be758294404f973731394a7ebd1e551c2c3501df03ac6461c2113933a7",
+      "originalBytes": 138306,
+      "originalWidth": 608,
+      "originalHeight": 1080,
+      "originalOrientation": 1,
+      "orientedWidth": 608,
+      "orientedHeight": 1080,
+      "widths": [
+        360,
+        608
+      ],
+      "outputs": [
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-hero-poster-mobile-360.jpg",
+          "format": "jpeg",
+          "width": 360,
+          "height": 639,
+          "bytes": 56491,
+          "quality": 88,
+          "sha256": "df1ca378e7af8e65e635f0c8445c2e66248194e98cd0d95cd5468ffc05220781",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 120000,
+          "withinBudget": true
+        },
+        {
+          "src": "/brand/jpeg-fallback-v1/shah-hero-poster-mobile-608.jpg",
+          "format": "jpeg",
+          "width": 608,
+          "height": 1080,
+          "bytes": 108982,
+          "quality": 84,
+          "sha256": "f48cf92daad918c9630211596582ef83905ed25688f9670bd67ef950021e033d",
+          "metadataStripped": true,
+          "autoOriented": true,
+          "upscaled": false,
+          "budgetBytesExclusive": 120000,
+          "withinBudget": true
+        }
+      ]
+    }
+  ],
+  "protectedFiles": [
+    {
+      "src": "/brand/shah-bar-v1.webp",
+      "bytes": 220768,
+      "sha256": "b18de848e01c5bf3624187bc7cfde6258f0f1038cbdfa5e209f3d5d7c41f6442",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/shah-room-v1.webp",
+      "bytes": 153334,
+      "sha256": "d583b7815079e66e4925fb004ffec42079c21968ee2256fb7d75caf2cd3a2098",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/shah-table-v1.webp",
+      "bytes": 76786,
+      "sha256": "591f0933839f9311243b142892b73dd95cb3f3683a38df3819bf006551a4ba33",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/shah-dining-v1.webp",
+      "bytes": 63426,
+      "sha256": "d289a0be63c2724e8a9859e9a4ae8c73bf491a72fde26db0254bf2a317777497",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/shah-cocktail-v1.webp",
+      "bytes": 57866,
+      "sha256": "70ff50e8897738e8a9989399e3ea0bcc45211f44585353312fdc352216bf56c5",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/shah-atmosphere-v1.webp",
+      "bytes": 173104,
+      "sha256": "2489b5c877c7e46b6bea2ca37dd5e7f52c5dccdb6fb463ba81544f0b4193156b",
+      "unchanged": true
+    },
+    {
+      "src": "/photos/687A0402.jpeg",
+      "bytes": 2404514,
+      "sha256": "654ffdf491fecde247a3a9926165137c60cf73d73911eddf84a4aee2a0089341",
+      "unchanged": true
+    },
+    {
+      "src": "/photos/687A0210.jpeg",
+      "bytes": 9370303,
+      "sha256": "09b371e2044d80aa9f9e26ca5f13b110173436b065d7c180a80c96bdb18e775f",
+      "unchanged": true
+    },
+    {
+      "src": "/photos/687A0211.jpeg",
+      "bytes": 4976025,
+      "sha256": "b4ebc33ad018bfe44c1a8f2e6ad94c7f1a0547dcdba5f2300072719d665a0ceb",
+      "unchanged": true
+    },
+    {
+      "src": "/photos/687A0260.jpeg",
+      "bytes": 1721983,
+      "sha256": "f8d64e444f7d129016b756aed36c0193caedd8a482f17dc0b561e03299a6b825",
+      "unchanged": true
+    },
+    {
+      "src": "/photos/687A0216.jpeg",
+      "bytes": 5348284,
+      "sha256": "71476b22ce3191ef58734eb7d1cf4559175b2d0268a0d34d04d599f1f4f257b1",
+      "unchanged": true
+    },
+    {
+      "src": "/photos/687A0321.jpeg",
+      "bytes": 4057491,
+      "sha256": "e6aaf9f7ab13c33a832cafb36aca1ecf3249180906c248fa35e9550b4499dd69",
+      "unchanged": true
+    },
+    {
+      "src": "/photos/687A0090.jpeg",
+      "bytes": 380204,
+      "sha256": "f366528546ed464ca0ddc47ab1385ba9b7275ef87a7f847ec7a67372c906019d",
+      "unchanged": true
+    },
+    {
+      "src": "/photos/687A0336.jpeg",
+      "bytes": 3194173,
+      "sha256": "f1fe8dba5da900050a223a0bc4f51edf13cfde300eb82de0302d18de7ef95306",
+      "unchanged": true
+    },
+    {
+      "src": "/photos/687A0343.jpeg",
+      "bytes": 3562388,
+      "sha256": "799a7f46f906e07471da4c5545f387fea8d88d0c69ee24d1ffaa3de5351a1bab",
+      "unchanged": true
+    },
+    {
+      "src": "/photos/687A0412.jpeg",
+      "bytes": 2537772,
+      "sha256": "fc78116a1357a2829b18194e5d0df5f8dbf1bce18a0707ebd65a8b839a71b8bf",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/shah-hero-poster-desktop-v4.webp",
+      "bytes": 410246,
+      "sha256": "d5df0ef28042faa40f0c4f2d6680cf74b43fcc436aa0ec817c80f29cee8e2447",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/shah-hero-poster-mobile-v4.webp",
+      "bytes": 138306,
+      "sha256": "acb9c9be758294404f973731394a7ebd1e551c2c3501df03ac6461c2113933a7",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/restaurant-photos-v1/shah-bar-160.avif",
+      "bytes": 11215,
+      "sha256": "9213e623c4a1edff5da82aa6bf0fd07ed5f90e77b919dd59ecd89db7a404732e",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/restaurant-photos-v1/shah-bar-160.webp",
+      "bytes": 9810,
+      "sha256": "7881dec05ac2f560dcf278557ef5ec2d65487ff2d93e5f3e4d57bca25f877c0b",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/restaurant-photos-v1/shah-bar-320.avif",
+      "bytes": 30612,
+      "sha256": "19fc534c472adb1f08780fc8bd3b41f140cf075754130150be30ba9d3adf01b0",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/restaurant-photos-v1/shah-bar-320.webp",
+      "bytes": 28304,
+      "sha256": "2b97b6e3855c6a09a41da088d6c05326b3091a0969257a7f5db342b5b8b29f93",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/restaurant-photos-v1/shah-bar-640.avif",
+      "bytes": 73660,
+      "sha256": "173ef852db74bd1d8b232dd4ae919277567645f995baa95b9c778a421797c480",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/restaurant-photos-v1/shah-bar-640.webp",
+      "bytes": 76188,
+      "sha256": "4ccb44aa41067b3dab1e18115273afd6d380cf850ac7e184d490b3e4d26e210a",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/restaurant-photos-v1/shah-bar-960.avif",
+      "bytes": 112723,
+      "sha256": "b4dd34accef2f23ac05d1c109363508af6858da2e8edb03db1d351e9f58816d1",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/restaurant-photos-v1/shah-bar-960.webp",
+      "bytes": 118970,
+      "sha256": "4ce20a4021f423be7c0c92071f5a7d07bba86d57ae49181bc753064a5e1f8e24",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/restaurant-photos-v1/shah-bar-1200.avif",
+      "bytes": 161047,
+      "sha256": "24aa7d0f1a092d0b687425109eec6ba74ff39190087141a1ba26b4c7b2af7189",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/restaurant-photos-v1/shah-bar-1200.webp",
+      "bytes": 176090,
+      "sha256": "d20177627248005cb418c85f3c4427b91b96359c93351b4b1aac6578fc86051b",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/restaurant-photos-v1/shah-room-160.avif",
+      "bytes": 8834,
+      "sha256": "24bebc2dcab05c47960e8fc497d1e11926741c26750480730e7c632743a949f6",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/restaurant-photos-v1/shah-room-160.webp",
+      "bytes": 12192,
+      "sha256": "f908d0b7cbfbb449c52d421e011ee92e75c107b452053a1a6972074828fab051",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/restaurant-photos-v1/shah-room-320.avif",
+      "bytes": 21555,
+      "sha256": "8f68ef76cbc3c91a4570110ca6e1392edf4755855d51e5d359e16dab1b1a11e1",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/restaurant-photos-v1/shah-room-320.webp",
+      "bytes": 34474,
+      "sha256": "8a510cdfbf17c3c60c46199555b11e95f9ab6b2263b45fe148dc1ef328614eee",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/restaurant-photos-v1/shah-room-640.avif",
+      "bytes": 48545,
+      "sha256": "56a2dbe8969b5bac8aa4c3d90ef2790096a2680e465c63035242353fcce8c49b",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/restaurant-photos-v1/shah-room-640.webp",
+      "bytes": 88290,
+      "sha256": "e1683f833afeb6c883a010853a9e28cabdc2c7eb88028bf9ac4432a9dc28d89b",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/restaurant-photos-v1/shah-room-960.avif",
+      "bytes": 72248,
+      "sha256": "537ed45ee37089153f37c144628ce0078e0dcbbe327c5323a8127134e375af19",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/restaurant-photos-v1/shah-room-960.webp",
+      "bytes": 133050,
+      "sha256": "7ade79aade3237bb4e63c5bbe65bd96fa6c7feb7db8eed073d42b896ad6a407d",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/restaurant-photos-v1/shah-room-1200.avif",
+      "bytes": 100144,
+      "sha256": "eecf902468063614c5b90c3e6d89f305fe128d775d777452384b44ff7b43a31c",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/restaurant-photos-v1/shah-room-1200.webp",
+      "bytes": 153334,
+      "sha256": "d583b7815079e66e4925fb004ffec42079c21968ee2256fb7d75caf2cd3a2098",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/restaurant-photos-v1/shah-table-160.avif",
+      "bytes": 4503,
+      "sha256": "0d3d6bb8af4257481fcbf1a6b92b96b4cafbca995f220f670ddbe30aedc4b66e",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/restaurant-photos-v1/shah-table-160.webp",
+      "bytes": 5866,
+      "sha256": "e58ded80a0e2b852d5eaf5ab1aebb05d4ecba2b7c5978063bb2b12ba9da30026",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/restaurant-photos-v1/shah-table-320.avif",
+      "bytes": 10173,
+      "sha256": "5a99f1029c92c6563c8163893765e1034d01a1146eb9bead16d2a0b044327e46",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/restaurant-photos-v1/shah-table-320.webp",
+      "bytes": 15916,
+      "sha256": "8f899299613d12d39c3a9edfa71143d7863055ff5b2cd47f95209c426334fa0b",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/restaurant-photos-v1/shah-table-640.avif",
+      "bytes": 21261,
+      "sha256": "08e2501fe13a94ed0de6007f1bef039b5a4b0146dfa69ec35cbfe77245cfffb6",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/restaurant-photos-v1/shah-table-640.webp",
+      "bytes": 38720,
+      "sha256": "c83c61ba4cc8d49bc9f3da73df86b01e75324a7049a663460d3870b15bbb39e1",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/restaurant-photos-v1/shah-table-960.avif",
+      "bytes": 32600,
+      "sha256": "bf4dceee9785820639b7f344b4cba0e34b591472db740772a29dc18038d63b79",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/restaurant-photos-v1/shah-table-960.webp",
+      "bytes": 63570,
+      "sha256": "e2babcd6276c56936ee2907c087fce1baa946ec659c031d189835528144b4c36",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/restaurant-photos-v1/shah-table-1400.avif",
+      "bytes": 50353,
+      "sha256": "123bd26393da9ca38486c46d3bde18b5ffcf37ee0bcb6a2a166585aea69d560d",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/restaurant-photos-v1/shah-table-1400.webp",
+      "bytes": 76786,
+      "sha256": "591f0933839f9311243b142892b73dd95cb3f3683a38df3819bf006551a4ba33",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/restaurant-photos-v1/shah-dining-160.avif",
+      "bytes": 4226,
+      "sha256": "7ddae75b497e3df839479d564f6ef557aba552e0dbef1050ccabaddd891ab09b",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/restaurant-photos-v1/shah-dining-160.webp",
+      "bytes": 5606,
+      "sha256": "5b9d5b4aa16245e436c01b0aca34d0b00c7048f8bb06803af2ba2f8f9d8e949d",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/restaurant-photos-v1/shah-dining-320.avif",
+      "bytes": 9188,
+      "sha256": "9b04774186c9c21d396eb48e94487e3a813e48a13902220f553c40aa176c1f2d",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/restaurant-photos-v1/shah-dining-320.webp",
+      "bytes": 14186,
+      "sha256": "37eef1587a699952642ffe0d66ea09d91d2448990df5b680c7dcbd24393fce40",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/restaurant-photos-v1/shah-dining-640.avif",
+      "bytes": 18123,
+      "sha256": "8b2f3b15cda0ae3841c81b68eef9974750d3a08efaa1f47879781f71751ef925",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/restaurant-photos-v1/shah-dining-640.webp",
+      "bytes": 34268,
+      "sha256": "5e8e329bf98e75924ff81bd627a29105805969dc8331a0fb226945e921f7fd8d",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/restaurant-photos-v1/shah-dining-960.avif",
+      "bytes": 27157,
+      "sha256": "5b175718126469a69300a9c6f2ac2f720960baf2b45868a0f3453605adf2295a",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/restaurant-photos-v1/shah-dining-960.webp",
+      "bytes": 54646,
+      "sha256": "f57759ad7b22621b4a1c0bb34ce85a20a1d6eb3f560ec9f242f84c7e10450c63",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/restaurant-photos-v1/shah-dining-1400.avif",
+      "bytes": 39069,
+      "sha256": "32f7eb567d6ebbb13558484fe409eb069dc86662e2e6a5d7bbdd6ee729f6bbe0",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/restaurant-photos-v1/shah-dining-1400.webp",
+      "bytes": 63426,
+      "sha256": "d289a0be63c2724e8a9859e9a4ae8c73bf491a72fde26db0254bf2a317777497",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/restaurant-photos-v1/shah-cocktail-160.avif",
+      "bytes": 3632,
+      "sha256": "d01b1a2cc37f1be3bed296b7951d03e1020bb737d1a9d7814acb8471c6ef3158",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/restaurant-photos-v1/shah-cocktail-160.webp",
+      "bytes": 5564,
+      "sha256": "90263c68290fb78c43037dee20e8bfb8c15b69a83ddd3ee1a93bcaff4ecd4dda",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/restaurant-photos-v1/shah-cocktail-320.avif",
+      "bytes": 7856,
+      "sha256": "e17e9b58fe97e147f7552b6ecad93a0d29dd934add91a386e36f06ad5d204323",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/restaurant-photos-v1/shah-cocktail-320.webp",
+      "bytes": 13480,
+      "sha256": "d5f73805ea8f2322d9b74a0295198fa9de4b37649ebcb0f458945874c9cc7f42",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/restaurant-photos-v1/shah-cocktail-640.avif",
+      "bytes": 17600,
+      "sha256": "dc3d12d2d22cffdb0aa5bbc86174a7d2577374a1fe242dffdb2081570fc0ec40",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/restaurant-photos-v1/shah-cocktail-640.webp",
+      "bytes": 34550,
+      "sha256": "b2b263c141425f884d4c328d5dc95bfbb7c05dfaae1516890de9dbc6a5256281",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/restaurant-photos-v1/shah-cocktail-960.avif",
+      "bytes": 26177,
+      "sha256": "e48f8a3d2945aee452e2f92b7149accbf2deefd1f198a4d01dc143354db83422",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/restaurant-photos-v1/shah-cocktail-960.webp",
+      "bytes": 51558,
+      "sha256": "4b49e53c1de756d653ab89b6196ba50389371ac9d0378180fa5ff1807b8f696f",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/restaurant-photos-v1/shah-cocktail-1200.avif",
+      "bytes": 37011,
+      "sha256": "a0d53ebea1fa0d950ec4a75a013f9ebb1e4912a370878ae3112b48909bbc0738",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/restaurant-photos-v1/shah-cocktail-1200.webp",
+      "bytes": 57866,
+      "sha256": "70ff50e8897738e8a9989399e3ea0bcc45211f44585353312fdc352216bf56c5",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/restaurant-photos-v1/shah-atmosphere-160.avif",
+      "bytes": 7961,
+      "sha256": "c7c14eb5f62f43d1f721b369e714d32a79fb76432af76ceecaf19ad239c90ba2",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/restaurant-photos-v1/shah-atmosphere-160.webp",
+      "bytes": 11232,
+      "sha256": "c5addd0f6cbd8ff88d05d8c44bbe3bb4effee73988d19bb6d9be41d55079dafa",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/restaurant-photos-v1/shah-atmosphere-320.avif",
+      "bytes": 20913,
+      "sha256": "52d6e3b74d11b37d17fadf34960fc0be03f3933ab1d18d3bd22516df11842181",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/restaurant-photos-v1/shah-atmosphere-320.webp",
+      "bytes": 31778,
+      "sha256": "486527f1b217a9f2d8c2531b6e2d6734f5359c16d695b98cf35eca614ad68d5a",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/restaurant-photos-v1/shah-atmosphere-640.avif",
+      "bytes": 54234,
+      "sha256": "22af8dc44ea6779d539640d790de40ae6119bcd74ae742999226bdd145a80ab4",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/restaurant-photos-v1/shah-atmosphere-640.webp",
+      "bytes": 89808,
+      "sha256": "43847df86a75a94a5ce68af9f3630ce95c79c7972034fb93af4af7d0e65a361d",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/restaurant-photos-v1/shah-atmosphere-960.avif",
+      "bytes": 87981,
+      "sha256": "1fb633aae1f0dadd27bc881850544e3132503c0d3c823ba42d2d62f97d63d00b",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/restaurant-photos-v1/shah-atmosphere-960.webp",
+      "bytes": 138276,
+      "sha256": "d8417d3b140ae69fe12f892e37b20a71487d27387be7fe17f70486815e9ddebd",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/restaurant-photos-v1/shah-atmosphere-1200.avif",
+      "bytes": 132589,
+      "sha256": "e577f4062c84d1631d0b63394223afa2c1fbee1698a46b678b432a833f913a98",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/restaurant-photos-v1/shah-atmosphere-1200.webp",
+      "bytes": 173104,
+      "sha256": "2489b5c877c7e46b6bea2ca37dd5e7f52c5dccdb6fb463ba81544f0b4193156b",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0402-320.avif",
+      "bytes": 9637,
+      "sha256": "cac73557b86700382df2c44054adad44f481b38af8ce9ebc9a86b5e126c10640",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0402-320.webp",
+      "bytes": 14942,
+      "sha256": "25cc4fc06daa0be49bc28ce88e2e7b6e68e3597dbe0e4221f4629d6d98f3054a",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0402-640.avif",
+      "bytes": 18596,
+      "sha256": "3e6830705445c85e9ff674b9416c090a75f1e6eea7d0c8c6b9a6b7fd7034062e",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0402-640.webp",
+      "bytes": 34614,
+      "sha256": "4dfd532ab2f64cffbaa405761b75135aca6d611537a037c7f7f3c84d16cd1374",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0402-960.avif",
+      "bytes": 27539,
+      "sha256": "8e5b1671b650d9a70e83d59d4001a8734ac143714c50084a5daa7e5de076c142",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0402-960.webp",
+      "bytes": 55496,
+      "sha256": "44e9d7676b3514883b6190c6a6be962d99dc489d68f7fe800fd199c71d4c1ece",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0402-1280.avif",
+      "bytes": 35637,
+      "sha256": "7f9bcecfffe7dc10e1a5936b89370b6f449e286043bb1b510a279dc0bb564120",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0402-1280.webp",
+      "bytes": 77794,
+      "sha256": "3f653af69cd6290a62eb75905dfe8da1f94265a7d1d6563a5fe46c72707f9aec",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0210-320.avif",
+      "bytes": 22405,
+      "sha256": "a371da2c01b5d976aa6458d982d446337ec7ae54f29e8253a5c56e4f0384cf21",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0210-320.webp",
+      "bytes": 36582,
+      "sha256": "9adae96ca319529497d6fea0b5db76d8c9036e564f502b51bd06beedc236763a",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0210-640.avif",
+      "bytes": 51240,
+      "sha256": "b22df6d42a03949c016d2b4dfcd008dc8d93cac33c3b1d7b878b8aa9358eed3b",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0210-640.webp",
+      "bytes": 93288,
+      "sha256": "66eac519c3323f1361c60ec5e71520854a000bd12fdaeb60e30ff0f36b7f2ad8",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0210-960.avif",
+      "bytes": 82699,
+      "sha256": "7db87973185b90575dc15a1bef161d4495700fd63143de36eaabed16f139df28",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0210-960.webp",
+      "bytes": 169568,
+      "sha256": "9328d7a39aa7db7955227e8cb768d749fbfaea20e6e28a6a5779e0e192c278bb",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0210-1280.avif",
+      "bytes": 113428,
+      "sha256": "87b29ab7a40d3e8aeb370754dd61202a7cc187c719e913bbd2c92be5b5e466eb",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0210-1280.webp",
+      "bytes": 191090,
+      "sha256": "cea5b633f763a9a99d7dda1261b7850d22dec594488fdec5076b48ab6240cfec",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0211-320.avif",
+      "bytes": 21725,
+      "sha256": "0c06ff83bdcb132daac87a1c960bef147632338822c280a87c643ed3ab5d4d14",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0211-320.webp",
+      "bytes": 34410,
+      "sha256": "56de71a8d4ec430f378ff1f7ac204065dd974b9204eae6163ac8e89ea421a005",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0211-640.avif",
+      "bytes": 50124,
+      "sha256": "8bbd95db5407f66649b12fce3ffc5c5126c84b2258348cf9fff64e8577b1ef59",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0211-640.webp",
+      "bytes": 91662,
+      "sha256": "91bc7f70f46d1ca5bca49edf4c3aeaa6e31ca94d4c02ddfc1747416f780791e9",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0211-960.avif",
+      "bytes": 82376,
+      "sha256": "1583407da4742a69f449e74ada4a6171956c5b3792c87524e99c501a1f6d9a6c",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0211-960.webp",
+      "bytes": 162180,
+      "sha256": "dfd26b2779cf066f06ade5f547f0e72f0884324c52112446ad76015e122b8a2f",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0211-1280.avif",
+      "bytes": 115152,
+      "sha256": "ffc5249a9ed09a6ff5ac23f1e6d3bbb49e934f48af010bd34b56d1b9e5574915",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0211-1280.webp",
+      "bytes": 192314,
+      "sha256": "2e3abb56020e12a5abe8e22ab07148a6bb171c24912abebac00317f0848568a6",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0260-320.avif",
+      "bytes": 8027,
+      "sha256": "dbd2653c206905a2e4e9ad2e4a8ce8ec8a9112e032823dda64df1483f4676a8f",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0260-320.webp",
+      "bytes": 13824,
+      "sha256": "a542621a085ae396ea0fd1386212af23157558a6b7e17c82eeacc33abbc43bb0",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0260-640.avif",
+      "bytes": 18300,
+      "sha256": "fb15da81f2ebbed72a7676e43e0ce0938d4b1ec25c74f50dd10134a33761f223",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0260-640.webp",
+      "bytes": 34532,
+      "sha256": "52d322a6751f7e02b26e1092321119b167b444fcb0de20da3f0a9b87bc7063cf",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0260-960.avif",
+      "bytes": 30449,
+      "sha256": "3a3965e565b49e1bd8d693e10c2f69bc4b4184e74b4bdb2c3b24b567b73afec9",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0260-960.webp",
+      "bytes": 60910,
+      "sha256": "a960cdc4cf2aca11f300c0cfa5616df9254ddadaedb75272f52f5490b9984800",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0260-1280.avif",
+      "bytes": 43410,
+      "sha256": "35c7da7e92c0a295a9764b236fcf09c587fecc62ad8ec39de1bd2b0c306e6f71",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0260-1280.webp",
+      "bytes": 90552,
+      "sha256": "09785f0d6d3bc8d5fd4edeeb6ba2df0acfa9b10b93b82e8c4c524d4cd20b5a5b",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0216-320.avif",
+      "bytes": 25758,
+      "sha256": "0b5a573266770a2ed124df9e3345ae7fb6786a63ae509dfed553222eec9b233f",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0216-320.webp",
+      "bytes": 39356,
+      "sha256": "812c178f8558a0fe8591414307c9cffa78845ad9f64ec296c0ddb776ed779031",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0216-640.avif",
+      "bytes": 59932,
+      "sha256": "d7a3e8bc9716e5f9825deed3f845b5d72d62c4df1b57b3dd021c92bad5e704aa",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0216-640.webp",
+      "bytes": 100288,
+      "sha256": "bb69082a645c3b29be052135d985d0138f63d6e18fda597dbf0d46b73e484cac",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0216-960.avif",
+      "bytes": 98960,
+      "sha256": "1248517848c8d22dcd942a5b3d005caf01383c2505e3f742fad5854c86ed2368",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0216-960.webp",
+      "bytes": 180088,
+      "sha256": "19821259c717e0252c92d1cc15a770e98882ae4d2c9ec3340dac295989a19d9e",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0216-1280.avif",
+      "bytes": 141479,
+      "sha256": "b0f0835147cbd9e6b760cd80b59decc20a94c681458b1f2d804757e943c3ce42",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0216-1280.webp",
+      "bytes": 178672,
+      "sha256": "e8a76c8e8d33318381ac82df75804eea4ac1ffdb582a4bfd470c21a700baaf80",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0321-320.avif",
+      "bytes": 22702,
+      "sha256": "c6823a9f2f019b5a516ab8e36a1b958344d908e0ae4ad7b26010b15ae0ff6a08",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0321-320.webp",
+      "bytes": 35526,
+      "sha256": "93a9896e954546b42755fb749cdfa3e1d35754a2780baba3b2514c876d46d7a0",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0321-640.avif",
+      "bytes": 71732,
+      "sha256": "5be8d0b61b8d1ef1049af3b29f63f8060f3318f6fc0daf4fafa3f454f8cc7f83",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0321-640.webp",
+      "bytes": 118960,
+      "sha256": "6086655d0dc23c636385b21708a3918af586e3147163e9465e9deff70c8f35e1",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0321-960.avif",
+      "bytes": 137121,
+      "sha256": "285e0513b12f1c1a949409f47714fc1bfe6699d4078bdaeb487b54162a7cb3dc",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0321-960.webp",
+      "bytes": 189970,
+      "sha256": "ddf9fc43c01ece0455fe3c359ded229f46c7153fab83be99953070db182ec0df",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0321-1280.avif",
+      "bytes": 192305,
+      "sha256": "dfa363da84402eab7b218919c91b31dde346a46172c9a78410d59e62879e1149",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0321-1280.webp",
+      "bytes": 192860,
+      "sha256": "1bcc3124fbe5854b9745a362384e211c2d02dad69754b332e04bf915f8c76ad6",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0090-320.avif",
+      "bytes": 12987,
+      "sha256": "d1d0aab0368d875053a2e67c6dba38f3df87fda6b3d01a1565d20f4ab319905a",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0090-320.webp",
+      "bytes": 18616,
+      "sha256": "1bfebeacb2b46a14737c8317d4555e13a7881467c2d58114a85c4572de572a19",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0090-640.avif",
+      "bytes": 32332,
+      "sha256": "8f2dfbca8b127462b121c4c9b841511729629ae435a26da5afbcd3b99b32c7ea",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0090-640.webp",
+      "bytes": 51864,
+      "sha256": "a94727f5c684dc887f269c34dec52929675ed25edc2dc976d31798b12519337f",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0090-960.avif",
+      "bytes": 51242,
+      "sha256": "addfca370a19371d8d2048e272f96f70f6ac1e6c65ba146ed1139af4e95d9fe8",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0090-960.webp",
+      "bytes": 85470,
+      "sha256": "f97824abc393a10ee7128d06cc8ce840eeab6d394c8522e4b288b06345701c9a",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0090-1280.avif",
+      "bytes": 69761,
+      "sha256": "1b109d89aa9b4431085eca60e45b3eedafde288800713f5ebd7ac8a7669f0def",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0090-1280.webp",
+      "bytes": 125786,
+      "sha256": "44ae89c0a78ccade6ec5485823026394bca4f5a0e8dcc7f8e50ae401629f4d86",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0336-320.avif",
+      "bytes": 21330,
+      "sha256": "0c6a0899dde4a6b03e0fe9c92aadb6ea4e8cc4a2624570226be69d0b30ad6d90",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0336-320.webp",
+      "bytes": 33192,
+      "sha256": "28fac8a11e9a6448f038b1492e26c6e61ab9eccb21cb142f24640a9f99f98cf4",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0336-640.avif",
+      "bytes": 57016,
+      "sha256": "411af6ecc54d7bc09038767d60bc8debb08c69c4bb3929214dc73ac80fd7f76e",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0336-640.webp",
+      "bytes": 93942,
+      "sha256": "e4949cde3751f97c41505bd975403b33b7742a7aecee7c736b5e30a197a90915",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0336-960.avif",
+      "bytes": 103737,
+      "sha256": "21bc0e09ebe8c3c2e30fd3771ead2eab5ecdf411d9dc4c8ff1d3991985dbeb92",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0336-960.webp",
+      "bytes": 177664,
+      "sha256": "64121e2cf6b1d99efccd030879adf770ce7b5ce7320238dde4106a58a6af1e70",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0336-1280.avif",
+      "bytes": 153751,
+      "sha256": "62f4587ccbb735fa5cc282ee31c04570c702b94a9bb5a45548c38e534baa4d57",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0336-1280.webp",
+      "bytes": 177064,
+      "sha256": "ad39fc043877faf848c2daa5c949cf1890a532b602adaa97d061b1b8a3db0c27",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0343-320.avif",
+      "bytes": 31272,
+      "sha256": "c1313543d418efe30aee7425c298489eb84ffd75608e6b3bbb31277d10b3f4cd",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0343-320.webp",
+      "bytes": 46450,
+      "sha256": "fd4bb64308be9d8078f1aba8e216fed51f8e3dd5de1054937ccff37350ee2ec5",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0343-640.avif",
+      "bytes": 77507,
+      "sha256": "864cacc737aac4f46f28ade4c76e008482173053632c5f5a416e05d155c191a5",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0343-640.webp",
+      "bytes": 128080,
+      "sha256": "8d887ed9816d7d21404471faac2e1d3ac83fbc9537c35ed9c9290c9b58087b58",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0343-960.avif",
+      "bytes": 126753,
+      "sha256": "9d33634c3372e02437a726ea22e01044ef279a898c16d4b5fb702d734701d3ae",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0343-960.webp",
+      "bytes": 192410,
+      "sha256": "42a1345ca552530cdfd74c5cd1724ab06e62e9b14b99ba2b77ab2364be23275d",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0343-1280.avif",
+      "bytes": 173183,
+      "sha256": "9ee3207b7804a74d74dc6030dcbe8e4b57781fae8853dd2fd317fa3a34cba219",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0343-1280.webp",
+      "bytes": 197878,
+      "sha256": "748826828f75c435034c2b4498017850b5319a463405c8af394e21c2fb27c3ba",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0412-320.avif",
+      "bytes": 10810,
+      "sha256": "8e43a75808728908f3fce34c262d3f04a7b3a6955684751e164515220ec397f3",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0412-320.webp",
+      "bytes": 16164,
+      "sha256": "27cd5a37edae19e74890cb67e578c0bdb720c2e5a38f2372de137b60a5af10c5",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0412-640.avif",
+      "bytes": 21817,
+      "sha256": "1f3690f20baeb17a6d974ff34cfb9d15c8483f1acf6472665e46c7c08ef43720",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0412-640.webp",
+      "bytes": 39546,
+      "sha256": "0f4ef9783db2596c188ebe82d29a53819973de47fb54a4f23ec12e596f264ed3",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0412-960.avif",
+      "bytes": 34267,
+      "sha256": "0de00323330c4c6e1af890498222c8091c850f0f7e3ec92d97797fba12e81f70",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0412-960.webp",
+      "bytes": 68326,
+      "sha256": "8e0d0225e010aaedb10c4c987cc4d414b3bea5a35b18c0cc384300b4fd41f961",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0412-1280.avif",
+      "bytes": 45453,
+      "sha256": "c5911cbec5d541c8d71cc8e880b05ed42d85485e8561b600dc47e0f027b466c9",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/event-gallery-v1/shah-gallery-687a0412-1280.webp",
+      "bytes": 94218,
+      "sha256": "eada4dd1e0e36a4293c48fb3e39aef90fefaf38655082318bb627ec1956f8190",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/shah-arrival-day-v1.mp4",
+      "bytes": 1217706,
+      "sha256": "3beee269ebf17ce6e83374677126deed3e86b580d0392c6dbc9cbc3cba97906d",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/shah-arrival-night-v1.mp4",
+      "bytes": 1209754,
+      "sha256": "3fb17b4207e18146807f4bf407681cd9572a0367e6e2599f41d473c80c901eac",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/shah-favicon-v1.svg",
+      "bytes": 15121,
+      "sha256": "83bdc7102d01c019adf8befc4e90af7e351656b3613cf2d02b2037480fd54275",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/shah-hero-poster-desktop-delivery-v1-960.avif",
+      "bytes": 82537,
+      "sha256": "741c16f9380dea0e9bbf4dd879f92d99ed79f7545a49e74e4c229b6d30498a99",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/shah-hero-poster-desktop-delivery-v1-960.webp",
+      "bytes": 92946,
+      "sha256": "089602bfd31f9725a3606071791e9cbe7a158d2e2426e0c82a617def9e5c6f37",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/shah-hero-poster-desktop-delivery-v1.avif",
+      "bytes": 109653,
+      "sha256": "20d629001454e56190e23265e18ae8d59999a0c8f1c80fe680988936f2172d53",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/shah-hero-poster-desktop-delivery-v1.webp",
+      "bytes": 113000,
+      "sha256": "9fead770ae8bd2bac15fb0107fa3f8b59a9e8f98ce575c23d70b3648c40376c8",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/shah-hero-poster-mobile-delivery-v1-360.avif",
+      "bytes": 37243,
+      "sha256": "8f87bec6761439b35060f867eccd047fcb07be3abffdd96f89fe8e900857fd6c",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/shah-hero-poster-mobile-delivery-v1-360.webp",
+      "bytes": 37440,
+      "sha256": "f71ddaadb92240afddf6f6c92664a6ab336e2484fc697710403ee7fc5cc35135",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/shah-hero-poster-mobile-delivery-v1.avif",
+      "bytes": 64406,
+      "sha256": "76b754fd614c9324176bd81b94db150f56c3d86d8d0a1603e6e68300c4d575cc",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/shah-hero-poster-mobile-delivery-v1.webp",
+      "bytes": 76500,
+      "sha256": "236881257fdb2fcf56f87aecc74cecc2798377bd1be0a30ab4818d781788241b",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/shah-hero-scroll-desktop-v3.mp4",
+      "bytes": 5860776,
+      "sha256": "0b45c2e38911207930dc0d38f8c053679769172537a560bdbc154fd8784cf085",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/shah-hero-scroll-desktop-v4.mp4",
+      "bytes": 36744691,
+      "sha256": "91934e4fc834e7050f37b3cd2c6ee063779b622c22e8ba61e3c788b1e63d3a2c",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/shah-hero-scroll-mobile-v3.mp4",
+      "bytes": 2072240,
+      "sha256": "39b6f496ad0af602abc46e6a8c44c854a03b43dc7108538584db0cc8ea30f1ef",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/shah-hero-scroll-mobile-v4.mp4",
+      "bytes": 11337072,
+      "sha256": "685f08858741f06d04bc436c2b633af01d2fb4e56a07c24f2fc5ec0d311b67f0",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/shah-landscape-gold-v1.svg",
+      "bytes": 17100,
+      "sha256": "13de955bae005cdcbd680adaf6be1546e2aedc1452791f7640700ae73138e46b",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/shah-landscape-teal-v1.svg",
+      "bytes": 17099,
+      "sha256": "b543b5ee55804b9044c7d8a570e859bf4977ffd673256a4124f22445139685b7",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/shah-mark-gold-v1.svg",
+      "bytes": 14985,
+      "sha256": "6c4df0831303068d9a64569eb38b91469e74e00d62eb7905cc3a5c2ad1225117",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/shah-mark-teal-v1.svg",
+      "bytes": 14985,
+      "sha256": "6e981b010672e03c8584024f75a3f377f704fac0b15f896ca167fb9f8b7b2242",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/shah-scroll-day-desktop-v2.mp4",
+      "bytes": 3578589,
+      "sha256": "ca57affb9f06cb1522e84e79aceb7087a5c25c4ea64081a4dfa43a1b39bf6ff7",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/shah-scroll-day-mobile-v2.mp4",
+      "bytes": 1193921,
+      "sha256": "fb12d8457c98412d4f56464f8affb2dfaf76075a3831526292f2978cc628e7e1",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/shah-scroll-night-desktop-v2.mp4",
+      "bytes": 2983492,
+      "sha256": "fe9fb0321dea7e98a2cba9e8c225e3d7c543db62a63b42ed0dcd35b11d3067e0",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/shah-scroll-night-mobile-v2.mp4",
+      "bytes": 945111,
+      "sha256": "32266a1c170b6476fb9aa6e8475cb86fd2974e421c2a3cb5f1a9eb01cd3c7605",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/shah-wordmark-gold-v1.svg",
+      "bytes": 2356,
+      "sha256": "55807b63a8e3bcfdcb661a305d241e278f0d04053dcb62c6138c9de73f9d4cd1",
+      "unchanged": true
+    },
+    {
+      "src": "/brand/shah-wordmark-teal-v1.svg",
+      "bytes": 2356,
+      "sha256": "ddefa17233b668cebd4697e73f61285e344bbacb78640ca2fc0800823a5e54e9",
+      "unchanged": true
+    }
+  ],
+  "manifests": [
+    {
+      "file": "app/lib/restaurantPhotoJpegFallbacks.ts",
+      "sha256": "c09e1f901144455f20a748dda7ac5629031972e7071bdd7f52853ebaf52ff413"
+    },
+    {
+      "file": "app/lib/eventGalleryJpegFallbacks.ts",
+      "sha256": "83e7540f368517477ba216beeac018377037fa2aef34fe040278f34170958011"
+    },
+    {
+      "file": "app/lib/heroPosterJpegFallbacks.ts",
+      "sha256": "8848d3770df600d7b1d72e04c1ec5da9f2541f2ce7f950cb96068c31cdbc6fa6"
+    }
+  ],
+  "validation": {
+    "sourceCount": 18,
+    "outputCount": 74,
+    "everyOutputUnderBudget": true,
+    "everyOutputMetadataStripped": true,
+    "everyOriginalAndModernProtectedFileUnchanged": true,
+    "maxPhotoJpegBytes": 194989,
+    "maxPosterJpegBytes": 113207
+  },
+  "visualReview": {
+    "status": "completed-with-scope-limits",
+    "reviewedAtUTC": "2026-11-11T20:19:26.727Z",
+    "variantCount": 74,
+    "restaurantVariantCount": 30,
+    "galleryVariantCount": 40,
+    "posterVariantCount": 4,
+    "sheetCount": 18,
+    "method": "Manually viewed all18matched sheets: original/max-variant full composition plus everywidth source-reference/JPEG native center crops, without crop enlargement.",
+    "reviewers": [
+      "audit_assets: six restaurant and two poster sheets (34 variants)",
+      "photo_inventory: ten gallery sheets (40 variants)"
+    ],
+    "findings": [
+      "No content substitution, rotation/crop mismatch, major color shift or blocking artifact found in this comparison scope.",
+      "Expected lossy softness/ringing is visible in fine-detail/native crops, including1600poster q48, gallery0321 q64 and0343 q60. Modern AVIF/WebP files stay unchanged and first priority."
+    ],
+    "limits": [
+      "Manual visual review is not pixel equality, a guarantee for every display, or an188CDN-JPEG visual review.",
+      "JPEG assets are source-validated here; final compiled-route HTTP/browser format selection must be verified by the combined-build QA owner."
+    ],
+    "sheets": [
+      {
+        "source": "/brand/shah-bar-v1.webp",
+        "group": "restaurant",
+        "file": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-jpeg-fallback-qa-20261111\\restaurant-shah-bar-v1.png",
+        "variants": 5,
+        "sha256": "3cfb90a137ca8af27d6c87097b35b15e06471e51d53f6639c5718098d44508eb"
+      },
+      {
+        "source": "/brand/shah-room-v1.webp",
+        "group": "restaurant",
+        "file": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-jpeg-fallback-qa-20261111\\restaurant-shah-room-v1.png",
+        "variants": 5,
+        "sha256": "03a21bb3d2d63e50620564d98db62e2be614f910892a200c388530cc68535094"
+      },
+      {
+        "source": "/brand/shah-table-v1.webp",
+        "group": "restaurant",
+        "file": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-jpeg-fallback-qa-20261111\\restaurant-shah-table-v1.png",
+        "variants": 5,
+        "sha256": "d2a3c5dabca820c3d261c9222ed5cef223f1180f5bcd66f040ea0121d2da0fb1"
+      },
+      {
+        "source": "/brand/shah-dining-v1.webp",
+        "group": "restaurant",
+        "file": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-jpeg-fallback-qa-20261111\\restaurant-shah-dining-v1.png",
+        "variants": 5,
+        "sha256": "a55cc7a6fe8f56473f4acb7d2cbf8e0fcb01ff2074befb0be3ac6ca8a9931f30"
+      },
+      {
+        "source": "/brand/shah-cocktail-v1.webp",
+        "group": "restaurant",
+        "file": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-jpeg-fallback-qa-20261111\\restaurant-shah-cocktail-v1.png",
+        "variants": 5,
+        "sha256": "08eac913a0a3a8f0a131ef2ea2ad2c5d2466880723f514252e6b72628f73afa5"
+      },
+      {
+        "source": "/brand/shah-atmosphere-v1.webp",
+        "group": "restaurant",
+        "file": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-jpeg-fallback-qa-20261111\\restaurant-shah-atmosphere-v1.png",
+        "variants": 5,
+        "sha256": "1adbfaec0b8b1549dd3f5e5f2dc1441dbfa151a975c06a3865e7667aaf8639a4"
+      },
+      {
+        "source": "/photos/687A0402.jpeg",
+        "group": "gallery",
+        "file": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-jpeg-fallback-qa-20261111\\gallery-687A0402.png",
+        "variants": 4,
+        "sha256": "6c38219a1b6ff767d84c2f75855cf017f1af8a4138f57a80f93e670c193bf622"
+      },
+      {
+        "source": "/photos/687A0210.jpeg",
+        "group": "gallery",
+        "file": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-jpeg-fallback-qa-20261111\\gallery-687A0210.png",
+        "variants": 4,
+        "sha256": "896e89d24ab0f8fe3e7ce625cb33e2d8f917ec7ceb6b54ef859d200b109cf732"
+      },
+      {
+        "source": "/photos/687A0211.jpeg",
+        "group": "gallery",
+        "file": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-jpeg-fallback-qa-20261111\\gallery-687A0211.png",
+        "variants": 4,
+        "sha256": "58904394ff856ebb9df0a78aa57d065e2b5a1d21e91a67518e03c7b508ab8d28"
+      },
+      {
+        "source": "/photos/687A0260.jpeg",
+        "group": "gallery",
+        "file": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-jpeg-fallback-qa-20261111\\gallery-687A0260.png",
+        "variants": 4,
+        "sha256": "8197c7e931067622f8be090f6fb4fea25a50d1ad5e6d4bf050a1f753dcb6c3ee"
+      },
+      {
+        "source": "/photos/687A0216.jpeg",
+        "group": "gallery",
+        "file": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-jpeg-fallback-qa-20261111\\gallery-687A0216.png",
+        "variants": 4,
+        "sha256": "d6ed2aee66ca6105c7850953008d668ae9f3ab88e30b65a8fa9d39f7d123c839"
+      },
+      {
+        "source": "/photos/687A0321.jpeg",
+        "group": "gallery",
+        "file": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-jpeg-fallback-qa-20261111\\gallery-687A0321.png",
+        "variants": 4,
+        "sha256": "eb134fa77879f5bb2f5da53d739de72094594651db87e228169513b479babb05"
+      },
+      {
+        "source": "/photos/687A0090.jpeg",
+        "group": "gallery",
+        "file": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-jpeg-fallback-qa-20261111\\gallery-687A0090.png",
+        "variants": 4,
+        "sha256": "3cd6fb7b51e84bd268aecf0783938ec092d37d4342b39101768b81f71ac1748d"
+      },
+      {
+        "source": "/photos/687A0336.jpeg",
+        "group": "gallery",
+        "file": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-jpeg-fallback-qa-20261111\\gallery-687A0336.png",
+        "variants": 4,
+        "sha256": "a235f5be90f2ca3b5bd35c5a68fb8d48819b54aa06f6f74854f412a58d9b598b"
+      },
+      {
+        "source": "/photos/687A0343.jpeg",
+        "group": "gallery",
+        "file": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-jpeg-fallback-qa-20261111\\gallery-687A0343.png",
+        "variants": 4,
+        "sha256": "981f2e906a779a3ce6f3f79dd055c71252ef13d23a4b33ed6a89ad943d542ecd"
+      },
+      {
+        "source": "/photos/687A0412.jpeg",
+        "group": "gallery",
+        "file": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-jpeg-fallback-qa-20261111\\gallery-687A0412.png",
+        "variants": 4,
+        "sha256": "d1f0a55cb5982302b1b881feff725d004f027791b5b878be2178314dcd55d980"
+      },
+      {
+        "source": "/brand/shah-hero-poster-desktop-v4.webp",
+        "group": "hero",
+        "file": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-jpeg-fallback-qa-20261111\\hero-shah-hero-poster-desktop-v4.png",
+        "variants": 2,
+        "sha256": "08a9cd709fa9968657aabbd5bdbae37095809e8233109ce54170681b3548d183"
+      },
+      {
+        "source": "/brand/shah-hero-poster-mobile-v4.webp",
+        "group": "hero",
+        "file": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-jpeg-fallback-qa-20261111\\hero-shah-hero-poster-mobile-v4.png",
+        "variants": 2,
+        "sha256": "b476025d38fd9e14e7353128a2af9c8fef31def3e40a12af0e453b0f7ef8aa06"
+      }
+    ]
+  },
+  "sourceChecks": {
+    "typescript": "node node_modules/typescript/bin/tsc --noEmit: passed",
+    "eslint": "Targeted8TS/TSX/MJS files: passed with0errors/0warnings",
+    "generatorSecondRun": "Passed; all74existingJPEGs and protected input/modern files verified unchanged; no regeneration needed."
+  }
+}

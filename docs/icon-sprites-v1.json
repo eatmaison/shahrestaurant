@@ -1,0 +1,2130 @@
+{
+  "version": "icon-sprites-v1",
+  "generatedAtUTC": "2026-11-11T20:48:24.586Z",
+  "package": {
+    "name": "react-icons",
+    "version": "5.7.0"
+  },
+  "groups": [
+    {
+      "src": "/brand/icon-sprites-v1/common.svg",
+      "glyphs": 25,
+      "bytes": 13664,
+      "gzipBytes": 6066,
+      "sha256": "c96df00c84f03a0f34c135b120889b21ef6d27f243339b9dabe6ee0a115a052a"
+    },
+    {
+      "src": "/brand/icon-sprites-v1/catalog.svg",
+      "glyphs": 53,
+      "bytes": 28820,
+      "gzipBytes": 10000,
+      "sha256": "d55cc6a778869b40bc66045333b002658542c8a13fc6d15b2aba331ad7a0935a"
+    },
+    {
+      "src": "/brand/icon-sprites-v1/features.svg",
+      "glyphs": 29,
+      "bytes": 17818,
+      "gzipBytes": 7123,
+      "sha256": "8ca8713c792fdae09931dc762af8e613a47bfb1d943607429d6a5d7849b20512"
+    }
+  ],
+  "modules": [
+    {
+      "file": "app/components/icons/fa6.tsx",
+      "bytes": 14720,
+      "gzipBytes": 1451,
+      "sha256": "18b1a1a7713de561897b694c31b0175320f94835799104f21651f25e04058c23"
+    },
+    {
+      "file": "app/components/icons/md.tsx",
+      "bytes": 291,
+      "gzipBytes": 220,
+      "sha256": "402575e42c672beff5093580fa7b315bd53ea379b07b9a4754f597d2bca958b6"
+    },
+    {
+      "file": "app/components/icons/si.tsx",
+      "bytes": 466,
+      "gzipBytes": 245,
+      "sha256": "6ca3cdc8622c085e4c21f315c4870aa2d8b75994b0416814da4f971bd67e6d58"
+    }
+  ],
+  "icons": [
+    {
+      "key": "fa6/FaApple",
+      "pack": "fa6",
+      "name": "FaApple",
+      "id": "fa6-FaApple",
+      "group": "common",
+      "attributes": {
+        "viewBox": "0 0 384 512"
+      },
+      "files": [
+        "app/components/socialIcons.tsx"
+      ],
+      "sourceTreeSha256": "6ea3ba2ed649cae16c59bf13f6f14ef55f57099f1ae78a1baf30daa7d140d3ec",
+      "serializedChildrenSha256": "e65480a884c9348a1aa0cb8848fe9918e4928eed32a463a2a0a0faff6680fdfd",
+      "href": "/brand/icon-sprites-v1/common.svg#fa6-FaApple"
+    },
+    {
+      "key": "fa6/FaAppleWhole",
+      "pack": "fa6",
+      "name": "FaAppleWhole",
+      "id": "fa6-FaAppleWhole",
+      "group": "catalog",
+      "attributes": {
+        "viewBox": "0 0 448 512"
+      },
+      "files": [
+        "app/lib/data.ts"
+      ],
+      "sourceTreeSha256": "9b91935ee0ed7d15c4202d54a77e937ea13f1b4821269b5c7011af7edb41a0cc",
+      "serializedChildrenSha256": "d80260d65217e1c37717527e6e4876b59f58a427498cbf19f4d828a7776a70b5",
+      "href": "/brand/icon-sprites-v1/catalog.svg#fa6-FaAppleWhole"
+    },
+    {
+      "key": "fa6/FaArrowDown",
+      "pack": "fa6",
+      "name": "FaArrowDown",
+      "id": "fa6-FaArrowDown",
+      "group": "catalog",
+      "attributes": {
+        "viewBox": "0 0 384 512"
+      },
+      "files": [
+        "app/page.tsx"
+      ],
+      "sourceTreeSha256": "e22bb599b04527311f2fde94e67c208bb2d8eaf3d29f5efc3ef9d48249dda416",
+      "serializedChildrenSha256": "0d4ef93ca06775317f504c7a367ebd38d4e71a221507299f75cd530c794131ea",
+      "href": "/brand/icon-sprites-v1/catalog.svg#fa6-FaArrowDown"
+    },
+    {
+      "key": "fa6/FaArrowLeft",
+      "pack": "fa6",
+      "name": "FaArrowLeft",
+      "id": "fa6-FaArrowLeft",
+      "group": "catalog",
+      "attributes": {
+        "viewBox": "0 0 448 512"
+      },
+      "files": [
+        "app/page.tsx"
+      ],
+      "sourceTreeSha256": "88636ab62a4037a4149c48a38a31a867e92c51a079103b96424b29f6c7a060ae",
+      "serializedChildrenSha256": "3c3e56ba240ca69a841560b1b8c7fff2a4891769bad8e31d02e0eac806983825",
+      "href": "/brand/icon-sprites-v1/catalog.svg#fa6-FaArrowLeft"
+    },
+    {
+      "key": "fa6/FaArrowRight",
+      "pack": "fa6",
+      "name": "FaArrowRight",
+      "id": "fa6-FaArrowRight",
+      "group": "catalog",
+      "attributes": {
+        "viewBox": "0 0 448 512"
+      },
+      "files": [
+        "app/components/EventsContactCta.tsx",
+        "app/events/about/page.tsx",
+        "app/events/celebrations/page.tsx",
+        "app/events/page.tsx",
+        "app/order/OrderExperience.tsx",
+        "app/page.tsx"
+      ],
+      "sourceTreeSha256": "485ef6fc7fd321d6c5f1ea11b74d53995a73b9a49ca9887313ed29961555cf15",
+      "serializedChildrenSha256": "1506928674158090044ea86cc139fb692ae635fdf48ddee70683bc9d66194923",
+      "href": "/brand/icon-sprites-v1/catalog.svg#fa6-FaArrowRight"
+    },
+    {
+      "key": "fa6/FaArrowUp",
+      "pack": "fa6",
+      "name": "FaArrowUp",
+      "id": "fa6-FaArrowUp",
+      "group": "common",
+      "attributes": {
+        "viewBox": "0 0 384 512"
+      },
+      "files": [
+        "app/components/footer.tsx"
+      ],
+      "sourceTreeSha256": "8a09eb8cc7ef857645f0f074643976b9129cc18af2cf990a270b36025788db0e",
+      "serializedChildrenSha256": "39b4e7d0fbb4ddc5d30a2fb663af4e71f4e4e9a6e92eed5ce27a6fb49b0ff727",
+      "href": "/brand/icon-sprites-v1/common.svg#fa6-FaArrowUp"
+    },
+    {
+      "key": "fa6/FaAward",
+      "pack": "fa6",
+      "name": "FaAward",
+      "id": "fa6-FaAward",
+      "group": "features",
+      "attributes": {
+        "viewBox": "0 0 384 512"
+      },
+      "files": [
+        "app/events/about/page.tsx"
+      ],
+      "sourceTreeSha256": "b28bf1ff5780badcf6fe9aca63f7ce2834dee6bfcb98d61c86a0e92e277dc8f0",
+      "serializedChildrenSha256": "006270a07d5a61fedc44382b6e5daaee6ff1013aeacbc8cae716be117854fec7",
+      "href": "/brand/icon-sprites-v1/features.svg#fa6-FaAward"
+    },
+    {
+      "key": "fa6/FaBacon",
+      "pack": "fa6",
+      "name": "FaBacon",
+      "id": "fa6-FaBacon",
+      "group": "catalog",
+      "attributes": {
+        "viewBox": "0 0 576 512"
+      },
+      "files": [
+        "app/lib/data.ts"
+      ],
+      "sourceTreeSha256": "07c09c7666a8cc4f745e71186c433503ed39beffbb97c12cdf5b9ccf690cc295",
+      "serializedChildrenSha256": "896223ccaee8e0ab7734e7a6aa92ca340a4db1cb045105d894fd8ed302d9e2e0",
+      "href": "/brand/icon-sprites-v1/catalog.svg#fa6-FaBacon"
+    },
+    {
+      "key": "fa6/FaBagShopping",
+      "pack": "fa6",
+      "name": "FaBagShopping",
+      "id": "fa6-FaBagShopping",
+      "group": "catalog",
+      "attributes": {
+        "viewBox": "0 0 448 512"
+      },
+      "files": [
+        "app/order/OrderExperience.tsx",
+        "app/page.tsx"
+      ],
+      "sourceTreeSha256": "b9c92e0156f4fd9c0d62bc3e9cf51a7eb24c25623a1723f9acbef14359ae403e",
+      "serializedChildrenSha256": "e7e916ba7aea8abcb4d5f9a02762c697ead9f109b9b94ada27579c9a34274e78",
+      "href": "/brand/icon-sprites-v1/catalog.svg#fa6-FaBagShopping"
+    },
+    {
+      "key": "fa6/FaBars",
+      "pack": "fa6",
+      "name": "FaBars",
+      "id": "fa6-FaBars",
+      "group": "common",
+      "attributes": {
+        "viewBox": "0 0 448 512"
+      },
+      "files": [
+        "app/components/header.tsx"
+      ],
+      "sourceTreeSha256": "09e2d09777d5258546852b81961a837cb575f59b9fc9e34beb119583e57fd70e",
+      "serializedChildrenSha256": "33f1ef6cd6842ed08593d1c9fb95ecf0fa199bd550d8294add99d89080fd2857",
+      "href": "/brand/icon-sprites-v1/common.svg#fa6-FaBars"
+    },
+    {
+      "key": "fa6/FaBellConcierge",
+      "pack": "fa6",
+      "name": "FaBellConcierge",
+      "id": "fa6-FaBellConcierge",
+      "group": "features",
+      "attributes": {
+        "viewBox": "0 0 512 512"
+      },
+      "files": [
+        "app/reservations/page.tsx"
+      ],
+      "sourceTreeSha256": "86d01f9d08d8aeca6cfcc15a667d5d36d448bfa72b4c946186ffe5e50f3913b4",
+      "serializedChildrenSha256": "39f45a7befb83d931b831f5f0d5931495ab2d61688f946f120f3b66774ff5301",
+      "href": "/brand/icon-sprites-v1/features.svg#fa6-FaBellConcierge"
+    },
+    {
+      "key": "fa6/FaBottleDroplet",
+      "pack": "fa6",
+      "name": "FaBottleDroplet",
+      "id": "fa6-FaBottleDroplet",
+      "group": "catalog",
+      "attributes": {
+        "viewBox": "0 0 320 512"
+      },
+      "files": [
+        "app/lib/data.ts"
+      ],
+      "sourceTreeSha256": "54b28d7a628518ba73fd46d9c3cce027b686c6e869a620647ebff23546edb342",
+      "serializedChildrenSha256": "4708c86f04b70838c80531d6099eea47fc8d9086c8f5146ada0d4256f26f3e66",
+      "href": "/brand/icon-sprites-v1/catalog.svg#fa6-FaBottleDroplet"
+    },
+    {
+      "key": "fa6/FaBowlFood",
+      "pack": "fa6",
+      "name": "FaBowlFood",
+      "id": "fa6-FaBowlFood",
+      "group": "catalog",
+      "attributes": {
+        "viewBox": "0 0 512 512"
+      },
+      "files": [
+        "app/lib/data.ts"
+      ],
+      "sourceTreeSha256": "0db24d2336c5b3d1126b5d6fddc62b41f193f833687617beb4b5e6290133fb35",
+      "serializedChildrenSha256": "ac31369705a14bdd4aa39bbd67c76fb7b0c1d7601593a4c309a40705c748fdb2",
+      "href": "/brand/icon-sprites-v1/catalog.svg#fa6-FaBowlFood"
+    },
+    {
+      "key": "fa6/FaBowlRice",
+      "pack": "fa6",
+      "name": "FaBowlRice",
+      "id": "fa6-FaBowlRice",
+      "group": "catalog",
+      "attributes": {
+        "viewBox": "0 0 512 512"
+      },
+      "files": [
+        "app/lib/data.ts"
+      ],
+      "sourceTreeSha256": "010b970d2b0ae9b0d21ed2cfd1991bd6a5f1a7a06901aef4c342f01735c3aabe",
+      "serializedChildrenSha256": "30ad03002a98b658bd22fe19e54987a291040663dc3a442fba56cd25cb3cdc7c",
+      "href": "/brand/icon-sprites-v1/catalog.svg#fa6-FaBowlRice"
+    },
+    {
+      "key": "fa6/FaBoxesStacked",
+      "pack": "fa6",
+      "name": "FaBoxesStacked",
+      "id": "fa6-FaBoxesStacked",
+      "group": "features",
+      "attributes": {
+        "viewBox": "0 0 576 512"
+      },
+      "files": [
+        "app/events/company-lunches/page.tsx"
+      ],
+      "sourceTreeSha256": "de42119f849110b1ffd78db394f4b9fa44ee4f07eb218cdcbea0803c978768b2",
+      "serializedChildrenSha256": "318eaef5dd0763edf0afa7f3f89efbce919be277c0e37031a91ed660c8bb808b",
+      "href": "/brand/icon-sprites-v1/features.svg#fa6-FaBoxesStacked"
+    },
+    {
+      "key": "fa6/FaBreadSlice",
+      "pack": "fa6",
+      "name": "FaBreadSlice",
+      "id": "fa6-FaBreadSlice",
+      "group": "catalog",
+      "attributes": {
+        "viewBox": "0 0 512 512"
+      },
+      "files": [
+        "app/events/company-lunches/page.tsx",
+        "app/lib/data.ts"
+      ],
+      "sourceTreeSha256": "3fd30dc2a69a54773086621cd960c924cb75057fa220e1bf0155217c2b836230",
+      "serializedChildrenSha256": "8e5d3c0ffac347f16670fdd258734e91ddd6597bbd01e9ea906a9d3e8f00954f",
+      "href": "/brand/icon-sprites-v1/catalog.svg#fa6-FaBreadSlice"
+    },
+    {
+      "key": "fa6/FaBriefcase",
+      "pack": "fa6",
+      "name": "FaBriefcase",
+      "id": "fa6-FaBriefcase",
+      "group": "features",
+      "attributes": {
+        "viewBox": "0 0 512 512"
+      },
+      "files": [
+        "app/events/company-catering/page.tsx",
+        "app/events/page.tsx"
+      ],
+      "sourceTreeSha256": "2a4d494865815e26132b743252beadd34a6d2073930624c73f7e2bbce4be54de",
+      "serializedChildrenSha256": "261c3291c866915cd0b4d448ddc72b96a77ff18d94a1f36e424c0da453b31f32",
+      "href": "/brand/icon-sprites-v1/features.svg#fa6-FaBriefcase"
+    },
+    {
+      "key": "fa6/FaBurger",
+      "pack": "fa6",
+      "name": "FaBurger",
+      "id": "fa6-FaBurger",
+      "group": "catalog",
+      "attributes": {
+        "viewBox": "0 0 512 512"
+      },
+      "files": [
+        "app/lib/data.ts"
+      ],
+      "sourceTreeSha256": "641ed35ea0aa1f5fc73411c720177b0c80670955d415a26bf43e13016142bf65",
+      "serializedChildrenSha256": "360902d32229f3fcf325666b5d9d4098d4b1267939b6dd6241628d06b56f01a4",
+      "href": "/brand/icon-sprites-v1/catalog.svg#fa6-FaBurger"
+    },
+    {
+      "key": "fa6/FaCakeCandles",
+      "pack": "fa6",
+      "name": "FaCakeCandles",
+      "id": "fa6-FaCakeCandles",
+      "group": "catalog",
+      "attributes": {
+        "viewBox": "0 0 448 512"
+      },
+      "files": [
+        "app/events/birthdays/page.tsx",
+        "app/events/page.tsx",
+        "app/lib/data.ts"
+      ],
+      "sourceTreeSha256": "367679852fb34ec03d3afca6a1c03d92731732756a1c5d6a9b1ab74c3dfe259b",
+      "serializedChildrenSha256": "96f4cde73586e123a1c445f5944849f4b781cf6f9968897cdb779d059a51bd82",
+      "href": "/brand/icon-sprites-v1/catalog.svg#fa6-FaCakeCandles"
+    },
+    {
+      "key": "fa6/FaCalendarCheck",
+      "pack": "fa6",
+      "name": "FaCalendarCheck",
+      "id": "fa6-FaCalendarCheck",
+      "group": "common",
+      "attributes": {
+        "viewBox": "0 0 448 512"
+      },
+      "files": [
+        "app/components/header.tsx",
+        "app/page.tsx",
+        "app/reservations/page.tsx"
+      ],
+      "sourceTreeSha256": "3391ad172056a4d90806e9fd9c038dc23506fe8a5a6eb6dde8202b85a02bce40",
+      "serializedChildrenSha256": "165cc4f986b4eeb00096f371aaf152295f50d76508800063bda1666599664452",
+      "href": "/brand/icon-sprites-v1/common.svg#fa6-FaCalendarCheck"
+    },
+    {
+      "key": "fa6/FaCalendarDays",
+      "pack": "fa6",
+      "name": "FaCalendarDays",
+      "id": "fa6-FaCalendarDays",
+      "group": "catalog",
+      "attributes": {
+        "viewBox": "0 0 448 512"
+      },
+      "files": [
+        "app/events/company-lunches/page.tsx",
+        "app/order/OrderExperience.tsx"
+      ],
+      "sourceTreeSha256": "c5bcd5e4e7d397e4e4037b62837b39bb032ade46d4357b72cfb2ac26c4db9c3b",
+      "serializedChildrenSha256": "b59f8502d6231694d8601c670b3473a87ada9762b20f2579193031295ee92cf1",
+      "href": "/brand/icon-sprites-v1/catalog.svg#fa6-FaCalendarDays"
+    },
+    {
+      "key": "fa6/FaCamera",
+      "pack": "fa6",
+      "name": "FaCamera",
+      "id": "fa6-FaCamera",
+      "group": "features",
+      "attributes": {
+        "viewBox": "0 0 512 512"
+      },
+      "files": [
+        "app/events/gallery/page.tsx"
+      ],
+      "sourceTreeSha256": "41c973d8cc9a8ebc664c8a6283f997d905bf50b490203f6cb1b6fdb09ebb203f",
+      "serializedChildrenSha256": "9643614f0d7e13e5be729af15938981c4676ca9b5f309301761c73b0b4eaade4",
+      "href": "/brand/icon-sprites-v1/features.svg#fa6-FaCamera"
+    },
+    {
+      "key": "fa6/FaCarrot",
+      "pack": "fa6",
+      "name": "FaCarrot",
+      "id": "fa6-FaCarrot",
+      "group": "catalog",
+      "attributes": {
+        "viewBox": "0 0 512 512"
+      },
+      "files": [
+        "app/events/company-lunches/page.tsx",
+        "app/lib/data.ts"
+      ],
+      "sourceTreeSha256": "38c0514db21fce497ee4135b299f648ceac7f47fbcd977082b930c93939cf419",
+      "serializedChildrenSha256": "f492064977b55439e7c6b9494a4080ad89853a9fd33d380220d84a8af8c2acfb",
+      "href": "/brand/icon-sprites-v1/catalog.svg#fa6-FaCarrot"
+    },
+    {
+      "key": "fa6/FaCartShopping",
+      "pack": "fa6",
+      "name": "FaCartShopping",
+      "id": "fa6-FaCartShopping",
+      "group": "common",
+      "attributes": {
+        "viewBox": "0 0 576 512"
+      },
+      "files": [
+        "app/components/header.tsx",
+        "app/order/OrderExperience.tsx"
+      ],
+      "sourceTreeSha256": "e3129ed94f09165dff9301db542595d3190da2adb4cb2e7f050aee427cdbc096",
+      "serializedChildrenSha256": "1dd7cb70c49da80f8db125718d54896d0c3cc83e335b248348b6a733b2bdddc3",
+      "href": "/brand/icon-sprites-v1/common.svg#fa6-FaCartShopping"
+    },
+    {
+      "key": "fa6/FaChampagneGlasses",
+      "pack": "fa6",
+      "name": "FaChampagneGlasses",
+      "id": "fa6-FaChampagneGlasses",
+      "group": "catalog",
+      "attributes": {
+        "viewBox": "0 0 640 512"
+      },
+      "files": [
+        "app/events/celebrations/page.tsx",
+        "app/events/page.tsx",
+        "app/lib/data.ts",
+        "app/reservations/page.tsx"
+      ],
+      "sourceTreeSha256": "46b37d4dc5f45a961deb2d31d1d39d7c531a496a7248d0f05d000d4261ab4d1b",
+      "serializedChildrenSha256": "30ee19243bb5965a14e25944fc1beb96248876514bac399483174b5284470cd1",
+      "href": "/brand/icon-sprites-v1/catalog.svg#fa6-FaChampagneGlasses"
+    },
+    {
+      "key": "fa6/FaChartLine",
+      "pack": "fa6",
+      "name": "FaChartLine",
+      "id": "fa6-FaChartLine",
+      "group": "features",
+      "attributes": {
+        "viewBox": "0 0 512 512"
+      },
+      "files": [
+        "app/events/company-catering/page.tsx"
+      ],
+      "sourceTreeSha256": "82c8395ca82c278db8b2a1cb82013179360698f3af111e88abcc08d199cf8ad3",
+      "serializedChildrenSha256": "2480ff4f72b84b4f71a9dbbc3ad6e0c760a846f925176d9ce89594968b59f0be",
+      "href": "/brand/icon-sprites-v1/features.svg#fa6-FaChartLine"
+    },
+    {
+      "key": "fa6/FaCheck",
+      "pack": "fa6",
+      "name": "FaCheck",
+      "id": "fa6-FaCheck",
+      "group": "features",
+      "attributes": {
+        "viewBox": "0 0 448 512"
+      },
+      "files": [
+        "app/events/birthdays/page.tsx",
+        "app/events/celebrations/page.tsx",
+        "app/events/company-catering/page.tsx",
+        "app/events/company-lunches/page.tsx"
+      ],
+      "sourceTreeSha256": "c2f8c3d5cba7dff5e1c70d2bd14c895af89436fa098939f3866571cb14869f80",
+      "serializedChildrenSha256": "e8ace7c9eec1cc376dec91ec4ab028f8c60a220d92d0c0c4c35a6dd557125791",
+      "href": "/brand/icon-sprites-v1/features.svg#fa6-FaCheck"
+    },
+    {
+      "key": "fa6/FaCheese",
+      "pack": "fa6",
+      "name": "FaCheese",
+      "id": "fa6-FaCheese",
+      "group": "catalog",
+      "attributes": {
+        "viewBox": "0 0 512 512"
+      },
+      "files": [
+        "app/lib/data.ts"
+      ],
+      "sourceTreeSha256": "152203cb6e42ef050dc085665c15c0307b7f6b380e79e3c854cd78bef5409407",
+      "serializedChildrenSha256": "5470841d6235820495bf28db1f4693d923d90005eb10f41f349a8a690c5f3058",
+      "href": "/brand/icon-sprites-v1/catalog.svg#fa6-FaCheese"
+    },
+    {
+      "key": "fa6/FaChevronDown",
+      "pack": "fa6",
+      "name": "FaChevronDown",
+      "id": "fa6-FaChevronDown",
+      "group": "common",
+      "attributes": {
+        "viewBox": "0 0 512 512"
+      },
+      "files": [
+        "app/components/header.tsx",
+        "app/page.tsx"
+      ],
+      "sourceTreeSha256": "4a16b55f7955311357649eca715b6229231ebbfe0bc6841c1856b68cbffc04e6",
+      "serializedChildrenSha256": "5bd9258be8133cfd20e322c75d8c3b7e7b7996575af616f87ced1eb840ea279e",
+      "href": "/brand/icon-sprites-v1/common.svg#fa6-FaChevronDown"
+    },
+    {
+      "key": "fa6/FaChevronLeft",
+      "pack": "fa6",
+      "name": "FaChevronLeft",
+      "id": "fa6-FaChevronLeft",
+      "group": "catalog",
+      "attributes": {
+        "viewBox": "0 0 320 512"
+      },
+      "files": [
+        "app/order/OrderExperience.tsx"
+      ],
+      "sourceTreeSha256": "2c3771d18328877293cb695009eaf5d3b4114e4d0bf6e8ecb711b1dcac59ed69",
+      "serializedChildrenSha256": "b8ca5dd9bf560d27f4355bbdaa8e519b59e136eb5f3a5352b13db1bd25dd9ae8",
+      "href": "/brand/icon-sprites-v1/catalog.svg#fa6-FaChevronLeft"
+    },
+    {
+      "key": "fa6/FaChevronRight",
+      "pack": "fa6",
+      "name": "FaChevronRight",
+      "id": "fa6-FaChevronRight",
+      "group": "catalog",
+      "attributes": {
+        "viewBox": "0 0 320 512"
+      },
+      "files": [
+        "app/order/OrderExperience.tsx"
+      ],
+      "sourceTreeSha256": "942b91a21cd124e067a6b38e0f453d6496c24342276013f036305cb309f0b4ce",
+      "serializedChildrenSha256": "9366e11c5c6a97d2d9841666c548b0730bc74a8c7c45e51a4ccba97b68ee6b11",
+      "href": "/brand/icon-sprites-v1/catalog.svg#fa6-FaChevronRight"
+    },
+    {
+      "key": "fa6/FaCircleCheck",
+      "pack": "fa6",
+      "name": "FaCircleCheck",
+      "id": "fa6-FaCircleCheck",
+      "group": "catalog",
+      "attributes": {
+        "viewBox": "0 0 512 512"
+      },
+      "files": [
+        "app/order/OrderExperience.tsx",
+        "app/reservations/page.tsx"
+      ],
+      "sourceTreeSha256": "a68254fc2c7ac97595f4d57bd12b32d97904b81bb43821db6cc2a39f804dd267",
+      "serializedChildrenSha256": "049523b51e4877ff86eca8256b65e4d410f5ff0735abe5d775f70cb4a509b2e5",
+      "href": "/brand/icon-sprites-v1/catalog.svg#fa6-FaCircleCheck"
+    },
+    {
+      "key": "fa6/FaCircleExclamation",
+      "pack": "fa6",
+      "name": "FaCircleExclamation",
+      "id": "fa6-FaCircleExclamation",
+      "group": "catalog",
+      "attributes": {
+        "viewBox": "0 0 512 512"
+      },
+      "files": [
+        "app/order/OrderExperience.tsx"
+      ],
+      "sourceTreeSha256": "30a82de525bffcbef270373de4128dc5c752b14b6e65574d2e7415817a67b51c",
+      "serializedChildrenSha256": "ec95159e493f1f3631d825c723969feb2f57f4956c3a134a1f32957edab9ce7a",
+      "href": "/brand/icon-sprites-v1/catalog.svg#fa6-FaCircleExclamation"
+    },
+    {
+      "key": "fa6/FaCircleXmark",
+      "pack": "fa6",
+      "name": "FaCircleXmark",
+      "id": "fa6-FaCircleXmark",
+      "group": "features",
+      "attributes": {
+        "viewBox": "0 0 512 512"
+      },
+      "files": [
+        "app/reservations/page.tsx"
+      ],
+      "sourceTreeSha256": "e99f25cc9b4c89ba99d18875021f5559593393e1c47c6799a688bf90083e4a15",
+      "serializedChildrenSha256": "1b9a6479da3b8e97ba2230b86d793554bac1437cd3ae56256f28aa5843026997",
+      "href": "/brand/icon-sprites-v1/features.svg#fa6-FaCircleXmark"
+    },
+    {
+      "key": "fa6/FaClock",
+      "pack": "fa6",
+      "name": "FaClock",
+      "id": "fa6-FaClock",
+      "group": "common",
+      "attributes": {
+        "viewBox": "0 0 512 512"
+      },
+      "files": [
+        "app/components/footer.tsx",
+        "app/events/company-lunches/page.tsx",
+        "app/order/OrderExperience.tsx",
+        "app/page.tsx",
+        "app/reservations/page.tsx"
+      ],
+      "sourceTreeSha256": "7e52a063226e0fdaa10c738071e041ac804318392c1ba28ae635032529454d7d",
+      "serializedChildrenSha256": "a7ce455665647fa131779d2048c15ee34f0132852255d557248f8e91f31d5102",
+      "href": "/brand/icon-sprites-v1/common.svg#fa6-FaClock"
+    },
+    {
+      "key": "fa6/FaCookieBite",
+      "pack": "fa6",
+      "name": "FaCookieBite",
+      "id": "fa6-FaCookieBite",
+      "group": "catalog",
+      "attributes": {
+        "viewBox": "0 0 512 512"
+      },
+      "files": [
+        "app/lib/data.ts"
+      ],
+      "sourceTreeSha256": "fa2fba77767a60ffe3d6c7e2ed84a8813f74f8f4b489d5e6a9e65e912c04f1fd",
+      "serializedChildrenSha256": "7f6865fa54d76978a1c26cff04df1ca54aa976b03b87acc99a299fa0647a162a",
+      "href": "/brand/icon-sprites-v1/catalog.svg#fa6-FaCookieBite"
+    },
+    {
+      "key": "fa6/FaDrumstickBite",
+      "pack": "fa6",
+      "name": "FaDrumstickBite",
+      "id": "fa6-FaDrumstickBite",
+      "group": "catalog",
+      "attributes": {
+        "viewBox": "0 0 512 512"
+      },
+      "files": [
+        "app/lib/data.ts"
+      ],
+      "sourceTreeSha256": "15a4c27c9b9204df1fb9a595c3e856a90f5069b2570a7d2517f761be4e578eef",
+      "serializedChildrenSha256": "bb733e2873e1eed29af49fc08bd737af5eefe9b09aa6b55238e792fab07ced71",
+      "href": "/brand/icon-sprites-v1/catalog.svg#fa6-FaDrumstickBite"
+    },
+    {
+      "key": "fa6/FaEarthEurope",
+      "pack": "fa6",
+      "name": "FaEarthEurope",
+      "id": "fa6-FaEarthEurope",
+      "group": "features",
+      "attributes": {
+        "viewBox": "0 0 512 512"
+      },
+      "files": [
+        "app/events/company-catering/page.tsx"
+      ],
+      "sourceTreeSha256": "727af6281ca6f45888142c05a03ccd84b7d5a32235582409799dae3e354e66e4",
+      "serializedChildrenSha256": "784089864cb93241eb418e12d6af6a6908597f1d1f3c7ae162891b0c76691d1b",
+      "href": "/brand/icon-sprites-v1/features.svg#fa6-FaEarthEurope"
+    },
+    {
+      "key": "fa6/FaEgg",
+      "pack": "fa6",
+      "name": "FaEgg",
+      "id": "fa6-FaEgg",
+      "group": "catalog",
+      "attributes": {
+        "viewBox": "0 0 384 512"
+      },
+      "files": [
+        "app/lib/data.ts"
+      ],
+      "sourceTreeSha256": "a8ce9761b1a18ef7a44ba78f54f76920ce8d5490f4c91aa41d69e5dd9dfb6827",
+      "serializedChildrenSha256": "ddd387e7541c3c5b1ea75424678eaa3d00aed8687e712f3fc64732c393c7fe9b",
+      "href": "/brand/icon-sprites-v1/catalog.svg#fa6-FaEgg"
+    },
+    {
+      "key": "fa6/FaEnvelope",
+      "pack": "fa6",
+      "name": "FaEnvelope",
+      "id": "fa6-FaEnvelope",
+      "group": "common",
+      "attributes": {
+        "viewBox": "0 0 512 512"
+      },
+      "files": [
+        "app/components/EventsContactCta.tsx",
+        "app/components/footer.tsx",
+        "app/events/page.tsx",
+        "app/page.tsx",
+        "app/reservations/page.tsx"
+      ],
+      "sourceTreeSha256": "ec02386e95cc0e4aeadf11e471d239cb08dd55789212e4de0df8d590d23815b0",
+      "serializedChildrenSha256": "a836327f0e0479bd72f270de021dbc2db23c50efbcb81b42f1bd2163f9d3ea95",
+      "href": "/brand/icon-sprites-v1/common.svg#fa6-FaEnvelope"
+    },
+    {
+      "key": "fa6/FaExpand",
+      "pack": "fa6",
+      "name": "FaExpand",
+      "id": "fa6-FaExpand",
+      "group": "catalog",
+      "attributes": {
+        "viewBox": "0 0 448 512"
+      },
+      "files": [
+        "app/page.tsx"
+      ],
+      "sourceTreeSha256": "471a573698ae6d18ad606ee91053b6f614c57324f16c6fa75c1357e9b15f1348",
+      "serializedChildrenSha256": "077b1c7925d205bf97ff6e12a202ae2c4deb28a703e4d18f0da761b22bd6a64e",
+      "href": "/brand/icon-sprites-v1/catalog.svg#fa6-FaExpand"
+    },
+    {
+      "key": "fa6/FaFacebookF",
+      "pack": "fa6",
+      "name": "FaFacebookF",
+      "id": "fa6-FaFacebookF",
+      "group": "common",
+      "attributes": {
+        "viewBox": "0 0 320 512"
+      },
+      "files": [
+        "app/components/socialIcons.tsx"
+      ],
+      "sourceTreeSha256": "91908b3d8c4498632ef4efe6e229eecc8c730baae8884b15b5c530f5b29144a7",
+      "serializedChildrenSha256": "42faff712438e484116fe8e2f875ff175394eefbe67952d2cbf6c582393a32c4",
+      "href": "/brand/icon-sprites-v1/common.svg#fa6-FaFacebookF"
+    },
+    {
+      "key": "fa6/FaFileInvoice",
+      "pack": "fa6",
+      "name": "FaFileInvoice",
+      "id": "fa6-FaFileInvoice",
+      "group": "features",
+      "attributes": {
+        "viewBox": "0 0 384 512"
+      },
+      "files": [
+        "app/events/company-lunches/page.tsx"
+      ],
+      "sourceTreeSha256": "19cdd50f886c13de3b9ba1bc225693831f71df99a6766d412a4f6ab9e128ed66",
+      "serializedChildrenSha256": "e49b5da09af747df8bb53175a1f902c1c1385396e8ea9070bdf88b6c00f66adb",
+      "href": "/brand/icon-sprites-v1/features.svg#fa6-FaFileInvoice"
+    },
+    {
+      "key": "fa6/FaFire",
+      "pack": "fa6",
+      "name": "FaFire",
+      "id": "fa6-FaFire",
+      "group": "catalog",
+      "attributes": {
+        "viewBox": "0 0 448 512"
+      },
+      "files": [
+        "app/lib/data.ts"
+      ],
+      "sourceTreeSha256": "cd9c9773cec0b52a38513d34bbba61e6895d8f500a1a9992d7d9c9e7abe9b383",
+      "serializedChildrenSha256": "8d40ee64359c5008dc8409b22ef907be08531e29f7ecf300965dba2e590c856a",
+      "href": "/brand/icon-sprites-v1/catalog.svg#fa6-FaFire"
+    },
+    {
+      "key": "fa6/FaFireBurner",
+      "pack": "fa6",
+      "name": "FaFireBurner",
+      "id": "fa6-FaFireBurner",
+      "group": "catalog",
+      "attributes": {
+        "viewBox": "0 0 640 512"
+      },
+      "files": [
+        "app/page.tsx"
+      ],
+      "sourceTreeSha256": "4128971967756139045d0f335e1b86a00cf2982ac53718ca960a6ec58254a33f",
+      "serializedChildrenSha256": "f33db56661e32460d2ad678490c9d78519518f20b2c6806fca08d8f698aa263e",
+      "href": "/brand/icon-sprites-v1/catalog.svg#fa6-FaFireBurner"
+    },
+    {
+      "key": "fa6/FaFish",
+      "pack": "fa6",
+      "name": "FaFish",
+      "id": "fa6-FaFish",
+      "group": "catalog",
+      "attributes": {
+        "viewBox": "0 0 576 512"
+      },
+      "files": [
+        "app/lib/data.ts"
+      ],
+      "sourceTreeSha256": "d48bcf873598fcbce4f80d73952a973b893edc437c73d3eb9cbb47f7f75110cf",
+      "serializedChildrenSha256": "2c5b5720c5ae032c3bcd06a35fbfdd392c08ede78d5064ec785ede6702aee843",
+      "href": "/brand/icon-sprites-v1/catalog.svg#fa6-FaFish"
+    },
+    {
+      "key": "fa6/FaGem",
+      "pack": "fa6",
+      "name": "FaGem",
+      "id": "fa6-FaGem",
+      "group": "features",
+      "attributes": {
+        "viewBox": "0 0 512 512"
+      },
+      "files": [
+        "app/events/celebrations/page.tsx"
+      ],
+      "sourceTreeSha256": "791b6edf335094a3f0f0fb8f6580eb6df71f20ce374fdaffab9d1a70b7bb0e9e",
+      "serializedChildrenSha256": "dc75b8189abf4ac31b0304b3dc38937a665adb90241bb418d4c8bf6e846d84b3",
+      "href": "/brand/icon-sprites-v1/features.svg#fa6-FaGem"
+    },
+    {
+      "key": "fa6/FaGift",
+      "pack": "fa6",
+      "name": "FaGift",
+      "id": "fa6-FaGift",
+      "group": "features",
+      "attributes": {
+        "viewBox": "0 0 512 512"
+      },
+      "files": [
+        "app/events/birthdays/page.tsx"
+      ],
+      "sourceTreeSha256": "efcb51b3892d2d52fcf175f262eb5db3d0484b60122555d2ae00837497ffd87b",
+      "serializedChildrenSha256": "74de14acc4b9a41c12eec045ffd1973d7ea7c3652a19634ad51491858a086888",
+      "href": "/brand/icon-sprites-v1/features.svg#fa6-FaGift"
+    },
+    {
+      "key": "fa6/FaGlassWater",
+      "pack": "fa6",
+      "name": "FaGlassWater",
+      "id": "fa6-FaGlassWater",
+      "group": "catalog",
+      "attributes": {
+        "viewBox": "0 0 384 512"
+      },
+      "files": [
+        "app/lib/data.ts"
+      ],
+      "sourceTreeSha256": "89099a1c825a3fabf8da574c077762dcc55f41f81ee63c3873d8afa18d8f523a",
+      "serializedChildrenSha256": "8e9e186228b6fae20206bc88f87059ec21cff9892178f4f14e4da19142ec8892",
+      "href": "/brand/icon-sprites-v1/catalog.svg#fa6-FaGlassWater"
+    },
+    {
+      "key": "fa6/FaGuitar",
+      "pack": "fa6",
+      "name": "FaGuitar",
+      "id": "fa6-FaGuitar",
+      "group": "features",
+      "attributes": {
+        "viewBox": "0 0 512 512"
+      },
+      "files": [
+        "app/events/birthdays/page.tsx"
+      ],
+      "sourceTreeSha256": "39dd13b6bef11f720ee80e7eed57b9fd0047163afedb139e3e554e7f94d19487",
+      "serializedChildrenSha256": "890f92fc7857ae8f1f33101aaae4b372044a65f501fbcb834ad55cd3d9c12073",
+      "href": "/brand/icon-sprites-v1/features.svg#fa6-FaGuitar"
+    },
+    {
+      "key": "fa6/FaHandshake",
+      "pack": "fa6",
+      "name": "FaHandshake",
+      "id": "fa6-FaHandshake",
+      "group": "features",
+      "attributes": {
+        "viewBox": "0 0 640 512"
+      },
+      "files": [
+        "app/events/celebrations/page.tsx",
+        "app/events/company-catering/page.tsx"
+      ],
+      "sourceTreeSha256": "3e2b3d95ee145c850a272ec4ee5ed6d4a41c4c3f5ad15d3f32633dbe3b80e94b",
+      "serializedChildrenSha256": "4d9a14733c433b05e2353a56ea58a1d7b1c226937cd2528466775179c964258c",
+      "href": "/brand/icon-sprites-v1/features.svg#fa6-FaHandshake"
+    },
+    {
+      "key": "fa6/FaHeart",
+      "pack": "fa6",
+      "name": "FaHeart",
+      "id": "fa6-FaHeart",
+      "group": "features",
+      "attributes": {
+        "viewBox": "0 0 512 512"
+      },
+      "files": [
+        "app/events/about/page.tsx",
+        "app/events/birthdays/page.tsx",
+        "app/events/celebrations/page.tsx"
+      ],
+      "sourceTreeSha256": "14c0ae73214a39e6a9d91662f5d403e3154005da27d1b6489ed991e252548552",
+      "serializedChildrenSha256": "750534cdf231805fbcae8c042db52ed4253ea20a2978b0a739602eef433c4dc2",
+      "href": "/brand/icon-sprites-v1/features.svg#fa6-FaHeart"
+    },
+    {
+      "key": "fa6/FaHotdog",
+      "pack": "fa6",
+      "name": "FaHotdog",
+      "id": "fa6-FaHotdog",
+      "group": "catalog",
+      "attributes": {
+        "viewBox": "0 0 512 512"
+      },
+      "files": [
+        "app/lib/data.ts"
+      ],
+      "sourceTreeSha256": "0e47afe7f923ad7c0af00106a390380214c303d9d4a5516afd0c3bd3a3b9f3eb",
+      "serializedChildrenSha256": "cf1f45343e625add445b8f4de3a525bfd5c4ab2c8e93ae9d7b0552dbb1cdaf3a",
+      "href": "/brand/icon-sprites-v1/catalog.svg#fa6-FaHotdog"
+    },
+    {
+      "key": "fa6/FaHourglassHalf",
+      "pack": "fa6",
+      "name": "FaHourglassHalf",
+      "id": "fa6-FaHourglassHalf",
+      "group": "features",
+      "attributes": {
+        "viewBox": "0 0 384 512"
+      },
+      "files": [
+        "app/reservations/page.tsx"
+      ],
+      "sourceTreeSha256": "5f40faccf00a75f603a92cc07664b74306ae735d8b0b83d96a4ccaaba845e1af",
+      "serializedChildrenSha256": "4aded2fb4bc4c9dd096d9f7f2678227527562e9b54f02007591ad0b1c3e8d7f4",
+      "href": "/brand/icon-sprites-v1/features.svg#fa6-FaHourglassHalf"
+    },
+    {
+      "key": "fa6/FaIceCream",
+      "pack": "fa6",
+      "name": "FaIceCream",
+      "id": "fa6-FaIceCream",
+      "group": "catalog",
+      "attributes": {
+        "viewBox": "0 0 448 512"
+      },
+      "files": [
+        "app/lib/data.ts"
+      ],
+      "sourceTreeSha256": "8550e1468caddaf1784e8679fe586a1b43399f1a9a48142f5c743b12240bc12b",
+      "serializedChildrenSha256": "906bc6882bfa42d3aa4f36236ae4899ed745d444e496f16f41ce23cba91faca9",
+      "href": "/brand/icon-sprites-v1/catalog.svg#fa6-FaIceCream"
+    },
+    {
+      "key": "fa6/FaImage",
+      "pack": "fa6",
+      "name": "FaImage",
+      "id": "fa6-FaImage",
+      "group": "features",
+      "attributes": {
+        "viewBox": "0 0 512 512"
+      },
+      "files": [
+        "app/events/gallery/page.tsx"
+      ],
+      "sourceTreeSha256": "183e5dc2236c9273a7ed45fe483ca37fb9ee46a97a01fc087cb0e9f1b1839f93",
+      "serializedChildrenSha256": "2d33035b938d82a193a37663864aab823c56ba27c9ed7c27643c402c3fbd08ad",
+      "href": "/brand/icon-sprites-v1/features.svg#fa6-FaImage"
+    },
+    {
+      "key": "fa6/FaImages",
+      "pack": "fa6",
+      "name": "FaImages",
+      "id": "fa6-FaImages",
+      "group": "features",
+      "attributes": {
+        "viewBox": "0 0 576 512"
+      },
+      "files": [
+        "app/events/page.tsx"
+      ],
+      "sourceTreeSha256": "b060de50b65a1279cb8d9623e3a32fa288e75b363d46cf040260ca4f4c0d588d",
+      "serializedChildrenSha256": "93eb6352df266124c6c07da32fc6813788db4389015a47dcadfc4bcf67b69534",
+      "href": "/brand/icon-sprites-v1/features.svg#fa6-FaImages"
+    },
+    {
+      "key": "fa6/FaInstagram",
+      "pack": "fa6",
+      "name": "FaInstagram",
+      "id": "fa6-FaInstagram",
+      "group": "common",
+      "attributes": {
+        "viewBox": "0 0 448 512"
+      },
+      "files": [
+        "app/components/socialIcons.tsx"
+      ],
+      "sourceTreeSha256": "62cebd67c71b6701fee1246341c6fb588b9beb939dc2b95df7c37d2207a85fa6",
+      "serializedChildrenSha256": "f337464241612251006bb2935f49d452b57cb292637ba8ce740339bfeb9ec862",
+      "href": "/brand/icon-sprites-v1/common.svg#fa6-FaInstagram"
+    },
+    {
+      "key": "fa6/FaLeaf",
+      "pack": "fa6",
+      "name": "FaLeaf",
+      "id": "fa6-FaLeaf",
+      "group": "catalog",
+      "attributes": {
+        "viewBox": "0 0 512 512"
+      },
+      "files": [
+        "app/events/about/page.tsx",
+        "app/events/company-lunches/page.tsx",
+        "app/lib/data.ts"
+      ],
+      "sourceTreeSha256": "1f189f4352f6eee59e37739dae299b162a6e68937251c402ca0ce2f60b16fb14",
+      "serializedChildrenSha256": "e5efe33213a296ecda2da0008dc11908543a862b899997fafabd4e8cb73df305",
+      "href": "/brand/icon-sprites-v1/catalog.svg#fa6-FaLeaf"
+    },
+    {
+      "key": "fa6/FaLemon",
+      "pack": "fa6",
+      "name": "FaLemon",
+      "id": "fa6-FaLemon",
+      "group": "catalog",
+      "attributes": {
+        "viewBox": "0 0 448 512"
+      },
+      "files": [
+        "app/lib/data.ts"
+      ],
+      "sourceTreeSha256": "8af4363e1ee6115d7d6c59a049e3025be8c590dac96a055fc36ae74e31b14493",
+      "serializedChildrenSha256": "cdba77d10ae8d452529b538c44b59ee9558118bc9166462a21691bd0b2421e8d",
+      "href": "/brand/icon-sprites-v1/catalog.svg#fa6-FaLemon"
+    },
+    {
+      "key": "fa6/FaLinkedinIn",
+      "pack": "fa6",
+      "name": "FaLinkedinIn",
+      "id": "fa6-FaLinkedinIn",
+      "group": "common",
+      "attributes": {
+        "viewBox": "0 0 448 512"
+      },
+      "files": [
+        "app/components/socialIcons.tsx"
+      ],
+      "sourceTreeSha256": "e1f0538ac7da6b3d57e08298acdda9287d52a786917929dc70b938f46749413e",
+      "serializedChildrenSha256": "c7f6622b026f1ab056fd32be8ffe50b335a1e3eaa4505bed2300e49e73676bb2",
+      "href": "/brand/icon-sprites-v1/common.svg#fa6-FaLinkedinIn"
+    },
+    {
+      "key": "fa6/FaLocationDot",
+      "pack": "fa6",
+      "name": "FaLocationDot",
+      "id": "fa6-FaLocationDot",
+      "group": "common",
+      "attributes": {
+        "viewBox": "0 0 384 512"
+      },
+      "files": [
+        "app/components/EventsContactCta.tsx",
+        "app/components/footer.tsx",
+        "app/events/page.tsx",
+        "app/order/OrderExperience.tsx",
+        "app/page.tsx",
+        "app/reservations/page.tsx"
+      ],
+      "sourceTreeSha256": "54eb7c6259ea39a1f57f8bc9577ce3ed3ca0455162a2b008f0e2fcb43d823b1d",
+      "serializedChildrenSha256": "92472a8aa8e1aea3ce96adde9720677836627d66693373d445abc9a9b4118df7",
+      "href": "/brand/icon-sprites-v1/common.svg#fa6-FaLocationDot"
+    },
+    {
+      "key": "fa6/FaLock",
+      "pack": "fa6",
+      "name": "FaLock",
+      "id": "fa6-FaLock",
+      "group": "catalog",
+      "attributes": {
+        "viewBox": "0 0 448 512"
+      },
+      "files": [
+        "app/order/OrderExperience.tsx"
+      ],
+      "sourceTreeSha256": "3e68157ecf0478ad90416f1b433c2797e38c7516559e14e827373e9944a2b722",
+      "serializedChildrenSha256": "7ae6bdd31c87e1bf44cc62e5d63cae59d86d11a638913c1b9b0068a399c57e52",
+      "href": "/brand/icon-sprites-v1/catalog.svg#fa6-FaLock"
+    },
+    {
+      "key": "fa6/FaMagnifyingGlass",
+      "pack": "fa6",
+      "name": "FaMagnifyingGlass",
+      "id": "fa6-FaMagnifyingGlass",
+      "group": "catalog",
+      "attributes": {
+        "viewBox": "0 0 512 512"
+      },
+      "files": [
+        "app/order/OrderExperience.tsx",
+        "app/page.tsx"
+      ],
+      "sourceTreeSha256": "72b242b7f05595565c86e0ec4e389e8f97523bf677de5ff74f44c73d79fe4647",
+      "serializedChildrenSha256": "6bdcf5313c3744f0217c2ed62c44d812a35407df5f214563f21959574ad5a97c",
+      "href": "/brand/icon-sprites-v1/catalog.svg#fa6-FaMagnifyingGlass"
+    },
+    {
+      "key": "fa6/FaMartiniGlassCitrus",
+      "pack": "fa6",
+      "name": "FaMartiniGlassCitrus",
+      "id": "fa6-FaMartiniGlassCitrus",
+      "group": "catalog",
+      "attributes": {
+        "viewBox": "0 0 576 512"
+      },
+      "files": [
+        "app/lib/data.ts"
+      ],
+      "sourceTreeSha256": "a73d7bee0b5f2ed9d448a8e6c3a3e9ad36b43690d43947065f5b08056d799a8c",
+      "serializedChildrenSha256": "d44375734e1d7cda0f8069736ab8c15ed21df466dfd4ce35abf55d2c158e4248",
+      "href": "/brand/icon-sprites-v1/catalog.svg#fa6-FaMartiniGlassCitrus"
+    },
+    {
+      "key": "fa6/FaMinus",
+      "pack": "fa6",
+      "name": "FaMinus",
+      "id": "fa6-FaMinus",
+      "group": "catalog",
+      "attributes": {
+        "viewBox": "0 0 448 512"
+      },
+      "files": [
+        "app/order/OrderExperience.tsx"
+      ],
+      "sourceTreeSha256": "2524b89dde5c4b87dfe8730b9ab1653b6dd02c8aff6714d8f7106532df5a0fde",
+      "serializedChildrenSha256": "23cb867d85ac53218abe4170dbfa39d1a08222c4a5588d610123d18e638306d5",
+      "href": "/brand/icon-sprites-v1/catalog.svg#fa6-FaMinus"
+    },
+    {
+      "key": "fa6/FaMoon",
+      "pack": "fa6",
+      "name": "FaMoon",
+      "id": "fa6-FaMoon",
+      "group": "common",
+      "attributes": {
+        "viewBox": "0 0 384 512"
+      },
+      "files": [
+        "app/components/header.tsx"
+      ],
+      "sourceTreeSha256": "850499b473217a343749c72c730cca5ac836261d64119c1b2b3738fb8c268ad8",
+      "serializedChildrenSha256": "abfa934cdc66be33b6913f658e033c93c5e7c286526bdf77b3d798963ebc296d",
+      "href": "/brand/icon-sprites-v1/common.svg#fa6-FaMoon"
+    },
+    {
+      "key": "fa6/FaMugHot",
+      "pack": "fa6",
+      "name": "FaMugHot",
+      "id": "fa6-FaMugHot",
+      "group": "catalog",
+      "attributes": {
+        "viewBox": "0 0 512 512"
+      },
+      "files": [
+        "app/lib/data.ts"
+      ],
+      "sourceTreeSha256": "19dbf1d5864ddc85b62793894a675b598b3addc4edf0e72662bc5b9f00a457d0",
+      "serializedChildrenSha256": "c91a3c12a80b7324faeb3bf55ef615ae4fa8287049f062681268c0ef5a856a8f",
+      "href": "/brand/icon-sprites-v1/catalog.svg#fa6-FaMugHot"
+    },
+    {
+      "key": "fa6/FaMugSaucer",
+      "pack": "fa6",
+      "name": "FaMugSaucer",
+      "id": "fa6-FaMugSaucer",
+      "group": "features",
+      "attributes": {
+        "viewBox": "0 0 640 512"
+      },
+      "files": [
+        "app/events/company-lunches/page.tsx",
+        "app/events/page.tsx"
+      ],
+      "sourceTreeSha256": "7fec02d18c4430dd98cb4ea2462a0e8ec2ea199473a9cf797d8d6387bc82b7b5",
+      "serializedChildrenSha256": "ce104a5d25c59ccb2ddbc3f13719229876f34d7f84b0dba1313d59da051f6652",
+      "href": "/brand/icon-sprites-v1/features.svg#fa6-FaMugSaucer"
+    },
+    {
+      "key": "fa6/FaMusic",
+      "pack": "fa6",
+      "name": "FaMusic",
+      "id": "fa6-FaMusic",
+      "group": "features",
+      "attributes": {
+        "viewBox": "0 0 512 512"
+      },
+      "files": [
+        "app/events/birthdays/page.tsx",
+        "app/events/celebrations/page.tsx"
+      ],
+      "sourceTreeSha256": "271d6338c171c680f680e26cded2afca2af061d52f550130604d9f9accfbbd3e",
+      "serializedChildrenSha256": "301f14dd241cd930c7c3ac66ec436f736f1f379b37e300bf9a6043f797eff2ad",
+      "href": "/brand/icon-sprites-v1/features.svg#fa6-FaMusic"
+    },
+    {
+      "key": "fa6/FaPeopleGroup",
+      "pack": "fa6",
+      "name": "FaPeopleGroup",
+      "id": "fa6-FaPeopleGroup",
+      "group": "features",
+      "attributes": {
+        "viewBox": "0 0 640 512"
+      },
+      "files": [
+        "app/events/company-catering/page.tsx"
+      ],
+      "sourceTreeSha256": "dcc66ef1c04e7c5a4836f2db5326c461cedb938780dbc70384c01e8f44aba4ba",
+      "serializedChildrenSha256": "40bddcbc54742ced22e26200da3fd8009592dd5b2b27e1fdef85070f9a25685d",
+      "href": "/brand/icon-sprites-v1/features.svg#fa6-FaPeopleGroup"
+    },
+    {
+      "key": "fa6/FaPepperHot",
+      "pack": "fa6",
+      "name": "FaPepperHot",
+      "id": "fa6-FaPepperHot",
+      "group": "catalog",
+      "attributes": {
+        "viewBox": "0 0 512 512"
+      },
+      "files": [
+        "app/lib/data.ts"
+      ],
+      "sourceTreeSha256": "21b638322c21b4e9fba2df8be9adefe6f8da78677f60dfd9d94ee3b02dbd7e13",
+      "serializedChildrenSha256": "1ca88af4812236058c2ae974e84de72ca368a32cb5e0637bc5e641306e003709",
+      "href": "/brand/icon-sprites-v1/catalog.svg#fa6-FaPepperHot"
+    },
+    {
+      "key": "fa6/FaPhone",
+      "pack": "fa6",
+      "name": "FaPhone",
+      "id": "fa6-FaPhone",
+      "group": "common",
+      "attributes": {
+        "viewBox": "0 0 512 512"
+      },
+      "files": [
+        "app/components/EventsContactCta.tsx",
+        "app/components/footer.tsx",
+        "app/events/page.tsx",
+        "app/page.tsx",
+        "app/reservations/page.tsx"
+      ],
+      "sourceTreeSha256": "4a54d705345e1a16ba4cad32ee320c267317090b2fb1d9609fd7574c8e27639b",
+      "serializedChildrenSha256": "0ac240a780bf234323c34f1269bb358ea42056c909decfc1acd837a8c5e7201a",
+      "href": "/brand/icon-sprites-v1/common.svg#fa6-FaPhone"
+    },
+    {
+      "key": "fa6/FaPinterestP",
+      "pack": "fa6",
+      "name": "FaPinterestP",
+      "id": "fa6-FaPinterestP",
+      "group": "common",
+      "attributes": {
+        "viewBox": "0 0 384 512"
+      },
+      "files": [
+        "app/components/socialIcons.tsx"
+      ],
+      "sourceTreeSha256": "f58a3aac3dea9a3bc4815418e94e4ac53b260241486a947dadf6c5ec84f581d1",
+      "serializedChildrenSha256": "8d978f9ce8bf982605844ec1d35d3e093e92b8b3660b8a6ff1de607ea873a05e",
+      "href": "/brand/icon-sprites-v1/common.svg#fa6-FaPinterestP"
+    },
+    {
+      "key": "fa6/FaPizzaSlice",
+      "pack": "fa6",
+      "name": "FaPizzaSlice",
+      "id": "fa6-FaPizzaSlice",
+      "group": "catalog",
+      "attributes": {
+        "viewBox": "0 0 512 512"
+      },
+      "files": [
+        "app/lib/data.ts"
+      ],
+      "sourceTreeSha256": "8dacd0ee2ace2df89f2b6a37c86eacf548c19ed2dccde67d5161a260609793f8",
+      "serializedChildrenSha256": "e3342f1a86a350336157a00f50ed9567f9dd8812ee250173776a0d408002ab58",
+      "href": "/brand/icon-sprites-v1/catalog.svg#fa6-FaPizzaSlice"
+    },
+    {
+      "key": "fa6/FaPlateWheat",
+      "pack": "fa6",
+      "name": "FaPlateWheat",
+      "id": "fa6-FaPlateWheat",
+      "group": "catalog",
+      "attributes": {
+        "viewBox": "0 0 512 512"
+      },
+      "files": [
+        "app/lib/data.ts"
+      ],
+      "sourceTreeSha256": "6a94017d805dbb07a0eb34ba6c457b1f68275ae0c6fa85d215dee4199f07b365",
+      "serializedChildrenSha256": "c34f7c3a3dc79061d596e43f811cd25bf836a10ced5a484f64450fd26fb32656",
+      "href": "/brand/icon-sprites-v1/catalog.svg#fa6-FaPlateWheat"
+    },
+    {
+      "key": "fa6/FaPlus",
+      "pack": "fa6",
+      "name": "FaPlus",
+      "id": "fa6-FaPlus",
+      "group": "catalog",
+      "attributes": {
+        "viewBox": "0 0 448 512"
+      },
+      "files": [
+        "app/order/OrderExperience.tsx"
+      ],
+      "sourceTreeSha256": "9444c7333fcb2437ab520c5f4e47a7228ac384eacb3d2806f02ed0c08d3dc706",
+      "serializedChildrenSha256": "50dd92e327e5d6dac6e9a75250b3658d1ced0c50d869fd16094eafe06c8edd0f",
+      "href": "/brand/icon-sprites-v1/catalog.svg#fa6-FaPlus"
+    },
+    {
+      "key": "fa6/FaReceipt",
+      "pack": "fa6",
+      "name": "FaReceipt",
+      "id": "fa6-FaReceipt",
+      "group": "features",
+      "attributes": {
+        "viewBox": "0 0 384 512"
+      },
+      "files": [
+        "app/events/company-catering/page.tsx"
+      ],
+      "sourceTreeSha256": "afa7d0491cb50000764b149a41676b8af82a41783f6102c9f2db74931afbdd13",
+      "serializedChildrenSha256": "e8e9b36ac137d3cf1ce2192c9a82cb6f0b30e67fc5b69b5d8916539caa2a37c6",
+      "href": "/brand/icon-sprites-v1/features.svg#fa6-FaReceipt"
+    },
+    {
+      "key": "fa6/FaRing",
+      "pack": "fa6",
+      "name": "FaRing",
+      "id": "fa6-FaRing",
+      "group": "features",
+      "attributes": {
+        "viewBox": "0 0 512 512"
+      },
+      "files": [
+        "app/events/celebrations/page.tsx"
+      ],
+      "sourceTreeSha256": "ec1e79a9e96f7c58f930a016f5aac821771ebc17f5b676af9ef0eb49dadc3f21",
+      "serializedChildrenSha256": "1ab4dcf213e32950306607d8735a3d2f2c4b8b1a8bc4aba5193898683f6f87a8",
+      "href": "/brand/icon-sprites-v1/features.svg#fa6-FaRing"
+    },
+    {
+      "key": "fa6/FaRocket",
+      "pack": "fa6",
+      "name": "FaRocket",
+      "id": "fa6-FaRocket",
+      "group": "features",
+      "attributes": {
+        "viewBox": "0 0 512 512"
+      },
+      "files": [
+        "app/events/company-catering/page.tsx"
+      ],
+      "sourceTreeSha256": "157ba33ea3db28840bbdf5204ec2ffcaaf23e6334f4298f52267e9eedcd83667",
+      "serializedChildrenSha256": "8f717bf12208eabdafa003dd66348c9935d385994a7aa28727aa5f590fd4c8c3",
+      "href": "/brand/icon-sprites-v1/features.svg#fa6-FaRocket"
+    },
+    {
+      "key": "fa6/FaSeedling",
+      "pack": "fa6",
+      "name": "FaSeedling",
+      "id": "fa6-FaSeedling",
+      "group": "catalog",
+      "attributes": {
+        "viewBox": "0 0 512 512"
+      },
+      "files": [
+        "app/events/company-lunches/page.tsx",
+        "app/lib/data.ts"
+      ],
+      "sourceTreeSha256": "004baef9d15bf7d01188a8b85c476f8307a86c24a2ce480419483847852bf69f",
+      "serializedChildrenSha256": "ce480199a3191ee999961dea2de129cb99ea09fb5698a94053267ac8a6790ee1",
+      "href": "/brand/icon-sprites-v1/catalog.svg#fa6-FaSeedling"
+    },
+    {
+      "key": "fa6/FaShrimp",
+      "pack": "fa6",
+      "name": "FaShrimp",
+      "id": "fa6-FaShrimp",
+      "group": "catalog",
+      "attributes": {
+        "viewBox": "0 0 512 512"
+      },
+      "files": [
+        "app/lib/data.ts"
+      ],
+      "sourceTreeSha256": "1e88ed0dd1a45af7424481d152bc542d107587bc34201656aba7ba846b4ac380",
+      "serializedChildrenSha256": "4b7c215fddf84840b677a8ea2d455f25612933a1f105ad8eaa1b4f6a42d6159a",
+      "href": "/brand/icon-sprites-v1/catalog.svg#fa6-FaShrimp"
+    },
+    {
+      "key": "fa6/FaSnapchat",
+      "pack": "fa6",
+      "name": "FaSnapchat",
+      "id": "fa6-FaSnapchat",
+      "group": "common",
+      "attributes": {
+        "viewBox": "0 0 512 512"
+      },
+      "files": [
+        "app/components/socialIcons.tsx"
+      ],
+      "sourceTreeSha256": "21b7933cfcb3aafcc95ba5c8424c4392ff7e47b2428935dd314567225543260a",
+      "serializedChildrenSha256": "733523f486680d0efc9b5e6e5d91493d280408e2435f9c520fbba823ae8550d6",
+      "href": "/brand/icon-sprites-v1/common.svg#fa6-FaSnapchat"
+    },
+    {
+      "key": "fa6/FaStar",
+      "pack": "fa6",
+      "name": "FaStar",
+      "id": "fa6-FaStar",
+      "group": "catalog",
+      "attributes": {
+        "viewBox": "0 0 576 512"
+      },
+      "files": [
+        "app/events/about/page.tsx",
+        "app/events/birthdays/page.tsx",
+        "app/events/celebrations/page.tsx",
+        "app/order/OrderExperience.tsx",
+        "app/page.tsx",
+        "app/reservations/page.tsx"
+      ],
+      "sourceTreeSha256": "5c1a1d3b034bdea3801c9f42d4c153148655c3eb62e332abc4068d9467bff974",
+      "serializedChildrenSha256": "76d75f77cda92fe2d04961dda025fb6a83e96d14a056e3deb23429a3b57e68ab",
+      "href": "/brand/icon-sprites-v1/catalog.svg#fa6-FaStar"
+    },
+    {
+      "key": "fa6/FaStore",
+      "pack": "fa6",
+      "name": "FaStore",
+      "id": "fa6-FaStore",
+      "group": "catalog",
+      "attributes": {
+        "viewBox": "0 0 576 512"
+      },
+      "files": [
+        "app/order/OrderExperience.tsx"
+      ],
+      "sourceTreeSha256": "309f9476d6a0dc77db46dece39481717e3ac520a417ce5284911d2516038d2e5",
+      "serializedChildrenSha256": "b6b2bc905b74048d7cb2a22c894e31ec2665127d56694efd777581c08ea3f3dc",
+      "href": "/brand/icon-sprites-v1/catalog.svg#fa6-FaStore"
+    },
+    {
+      "key": "fa6/FaSun",
+      "pack": "fa6",
+      "name": "FaSun",
+      "id": "fa6-FaSun",
+      "group": "common",
+      "attributes": {
+        "viewBox": "0 0 512 512"
+      },
+      "files": [
+        "app/components/header.tsx"
+      ],
+      "sourceTreeSha256": "7f544ae472b8d30f6dbbc2f6cea1799ae36770c233fc7e6df01945d4e032aa38",
+      "serializedChildrenSha256": "d62be8293b508d9b1b172c5dcbff0b9d8d36752f2bec6011921b163c5eda1e63",
+      "href": "/brand/icon-sprites-v1/common.svg#fa6-FaSun"
+    },
+    {
+      "key": "fa6/FaTelegram",
+      "pack": "fa6",
+      "name": "FaTelegram",
+      "id": "fa6-FaTelegram",
+      "group": "common",
+      "attributes": {
+        "viewBox": "0 0 496 512"
+      },
+      "files": [
+        "app/components/socialIcons.tsx"
+      ],
+      "sourceTreeSha256": "39fd49559b6a23515369d1844e6720d6ef082a379ec0cb13eb9de7ed0da7e3a2",
+      "serializedChildrenSha256": "b55c435f56a0b590aa30c347b5997656160ca19203b6d0ee279a0ac56c893e4d",
+      "href": "/brand/icon-sprites-v1/common.svg#fa6-FaTelegram"
+    },
+    {
+      "key": "fa6/FaTiktok",
+      "pack": "fa6",
+      "name": "FaTiktok",
+      "id": "fa6-FaTiktok",
+      "group": "common",
+      "attributes": {
+        "viewBox": "0 0 448 512"
+      },
+      "files": [
+        "app/components/socialIcons.tsx"
+      ],
+      "sourceTreeSha256": "175786a4d7f0c6bdcf0208a6e704d7abc6530698aa5e61934d2a3cad416ea584",
+      "serializedChildrenSha256": "2eee979be1d87245918728ba3f2bf8af52b85ade8ac99c00a9f28a5aad2642dc",
+      "href": "/brand/icon-sprites-v1/common.svg#fa6-FaTiktok"
+    },
+    {
+      "key": "fa6/FaTrash",
+      "pack": "fa6",
+      "name": "FaTrash",
+      "id": "fa6-FaTrash",
+      "group": "catalog",
+      "attributes": {
+        "viewBox": "0 0 448 512"
+      },
+      "files": [
+        "app/order/OrderExperience.tsx"
+      ],
+      "sourceTreeSha256": "a435f80e95966648e36a5a209f6a15fe823e739d7bd4cbeab69fc21deb502fc6",
+      "serializedChildrenSha256": "f8d2ea6581564d15d383cc396d341a6d7914a924eca42cce6d890b2198e656a5",
+      "href": "/brand/icon-sprites-v1/catalog.svg#fa6-FaTrash"
+    },
+    {
+      "key": "fa6/FaTruck",
+      "pack": "fa6",
+      "name": "FaTruck",
+      "id": "fa6-FaTruck",
+      "group": "catalog",
+      "attributes": {
+        "viewBox": "0 0 640 512"
+      },
+      "files": [
+        "app/events/company-lunches/page.tsx",
+        "app/order/OrderExperience.tsx"
+      ],
+      "sourceTreeSha256": "d4f25f0ecb1df03ee0c253223ab910c31dabd445d4cccf8f5636839227277110",
+      "serializedChildrenSha256": "ffeab623b46926fed32154d07a19fe46965b922d2c77408dc3269ef900d7fa6b",
+      "href": "/brand/icon-sprites-v1/catalog.svg#fa6-FaTruck"
+    },
+    {
+      "key": "fa6/FaUser",
+      "pack": "fa6",
+      "name": "FaUser",
+      "id": "fa6-FaUser",
+      "group": "common",
+      "attributes": {
+        "viewBox": "0 0 448 512"
+      },
+      "files": [
+        "app/components/header.tsx",
+        "app/reservations/page.tsx"
+      ],
+      "sourceTreeSha256": "9c984e24d65a0949565ebffe73e20f3299343f7b7c6e0073d0fa8d15869daa85",
+      "serializedChildrenSha256": "60f78d3d0484f61832eeff74b1a639cf305b6384f6b8e82ea86259832093faa8",
+      "href": "/brand/icon-sprites-v1/common.svg#fa6-FaUser"
+    },
+    {
+      "key": "fa6/FaUserGroup",
+      "pack": "fa6",
+      "name": "FaUserGroup",
+      "id": "fa6-FaUserGroup",
+      "group": "features",
+      "attributes": {
+        "viewBox": "0 0 640 512"
+      },
+      "files": [
+        "app/reservations/page.tsx"
+      ],
+      "sourceTreeSha256": "6aaa413d462aca7c8f32ab75e1ae237b47eeaf5658d711207497a6b83bca28a2",
+      "serializedChildrenSha256": "dceead6c77e093484c9e42cdb8b9e5525810435b494db529aeb0ba6183918e4c",
+      "href": "/brand/icon-sprites-v1/features.svg#fa6-FaUserGroup"
+    },
+    {
+      "key": "fa6/FaUsers",
+      "pack": "fa6",
+      "name": "FaUsers",
+      "id": "fa6-FaUsers",
+      "group": "catalog",
+      "attributes": {
+        "viewBox": "0 0 640 512"
+      },
+      "files": [
+        "app/events/birthdays/page.tsx",
+        "app/events/page.tsx",
+        "app/page.tsx"
+      ],
+      "sourceTreeSha256": "d15ee72543b62dc679575e52bb0cb449450f96e8934930b6786df3ba75b7ea56",
+      "serializedChildrenSha256": "3b17466873f95abf5d1860f024e1ee3013dc299a8fe6bd15fd823a2395b3cc75",
+      "href": "/brand/icon-sprites-v1/catalog.svg#fa6-FaUsers"
+    },
+    {
+      "key": "fa6/FaUtensils",
+      "pack": "fa6",
+      "name": "FaUtensils",
+      "id": "fa6-FaUtensils",
+      "group": "catalog",
+      "attributes": {
+        "viewBox": "0 0 448 512"
+      },
+      "files": [
+        "app/events/about/page.tsx",
+        "app/events/birthdays/page.tsx",
+        "app/lib/data.ts",
+        "app/page.tsx"
+      ],
+      "sourceTreeSha256": "8d5fb818f046a3a893af1b4bbf17da5b950575e605c081f54b217e705859a66a",
+      "serializedChildrenSha256": "0f0fded1a67bf0be8de56dfbe3224b51ac44e290e779fff608fce22d27ab44f5",
+      "href": "/brand/icon-sprites-v1/catalog.svg#fa6-FaUtensils"
+    },
+    {
+      "key": "fa6/FaWandMagicSparkles",
+      "pack": "fa6",
+      "name": "FaWandMagicSparkles",
+      "id": "fa6-FaWandMagicSparkles",
+      "group": "features",
+      "attributes": {
+        "viewBox": "0 0 576 512"
+      },
+      "files": [
+        "app/events/page.tsx",
+        "app/reservations/page.tsx"
+      ],
+      "sourceTreeSha256": "8d18d0ae73ddf418ecbb1811646b39399a310057cdbd401d4d4f26482946da49",
+      "serializedChildrenSha256": "4f6ef53eaf8b8599f4faca2ad3a7f6fcbc5d87df1cf74336cd7326bcfc48fc5d",
+      "href": "/brand/icon-sprites-v1/features.svg#fa6-FaWandMagicSparkles"
+    },
+    {
+      "key": "fa6/FaWhatsapp",
+      "pack": "fa6",
+      "name": "FaWhatsapp",
+      "id": "fa6-FaWhatsapp",
+      "group": "common",
+      "attributes": {
+        "viewBox": "0 0 448 512"
+      },
+      "files": [
+        "app/components/socialIcons.tsx"
+      ],
+      "sourceTreeSha256": "d3efd3354d720f450776c45a5d6267d852acb2b793bca6b6cda2f6e7a8022ab4",
+      "serializedChildrenSha256": "50a3adafdb8befcf118e5c0b93e1a4bc57b929a43e95edf869388b4b282bede7",
+      "href": "/brand/icon-sprites-v1/common.svg#fa6-FaWhatsapp"
+    },
+    {
+      "key": "fa6/FaWheatAwn",
+      "pack": "fa6",
+      "name": "FaWheatAwn",
+      "id": "fa6-FaWheatAwn",
+      "group": "catalog",
+      "attributes": {
+        "viewBox": "0 0 512 512"
+      },
+      "files": [
+        "app/lib/data.ts"
+      ],
+      "sourceTreeSha256": "669838c8b83ba5f9733d2f1203d25a7846192ac7652ce85d65bca4bdc39c74ac",
+      "serializedChildrenSha256": "32e56c19350dd30f0e106835c9f4d7d6326d850ba937f96c791004e063ff840d",
+      "href": "/brand/icon-sprites-v1/catalog.svg#fa6-FaWheatAwn"
+    },
+    {
+      "key": "fa6/FaWineBottle",
+      "pack": "fa6",
+      "name": "FaWineBottle",
+      "id": "fa6-FaWineBottle",
+      "group": "catalog",
+      "attributes": {
+        "viewBox": "0 0 512 512"
+      },
+      "files": [
+        "app/lib/data.ts"
+      ],
+      "sourceTreeSha256": "810fa36a4d47c76f66edf91e577a459d286ceb349ebbf688947d7b269c9339c0",
+      "serializedChildrenSha256": "80eb717047b81861c6a84454b11c0edfec5c8e9dfd4e308c3842df7f84b9219d",
+      "href": "/brand/icon-sprites-v1/catalog.svg#fa6-FaWineBottle"
+    },
+    {
+      "key": "fa6/FaWineGlass",
+      "pack": "fa6",
+      "name": "FaWineGlass",
+      "id": "fa6-FaWineGlass",
+      "group": "features",
+      "attributes": {
+        "viewBox": "0 0 320 512"
+      },
+      "files": [
+        "app/events/company-catering/page.tsx"
+      ],
+      "sourceTreeSha256": "201bf6576d67946cba0feb7d5c3a6e3f1a9d820e58e0611d514933db014811f2",
+      "serializedChildrenSha256": "26bd1119d9cb3a5c8e04ac352d74b6f15e5eef4cad17f4a87a4656decfef86a6",
+      "href": "/brand/icon-sprites-v1/features.svg#fa6-FaWineGlass"
+    },
+    {
+      "key": "fa6/FaX",
+      "pack": "fa6",
+      "name": "FaX",
+      "id": "fa6-FaX",
+      "group": "catalog",
+      "attributes": {
+        "viewBox": "0 0 384 512"
+      },
+      "files": [
+        "app/components/ProductDetailsModal.tsx"
+      ],
+      "sourceTreeSha256": "9a11bd3534ed7bfde2758dce5c7cda6a82ce7dfaa768e5d70e19904f5bacefdd",
+      "serializedChildrenSha256": "4006ae3d4d33b83d6c7d5f4d7b424ebceaabe58f5328db723118616ea45bc0ef",
+      "href": "/brand/icon-sprites-v1/catalog.svg#fa6-FaX"
+    },
+    {
+      "key": "fa6/FaXmark",
+      "pack": "fa6",
+      "name": "FaXmark",
+      "id": "fa6-FaXmark",
+      "group": "common",
+      "attributes": {
+        "viewBox": "0 0 384 512"
+      },
+      "files": [
+        "app/components/header.tsx",
+        "app/components/HomeDialog.tsx",
+        "app/order/OrderExperience.tsx",
+        "app/page.tsx"
+      ],
+      "sourceTreeSha256": "7367f39fe6ca6a3c56c7842d9a8a203f683725dfe5273de1f91fa6ebee9ee702",
+      "serializedChildrenSha256": "e14bf1c3e8af54084300d0205abfa10a67a4163558578eef92a4aae50f857902",
+      "href": "/brand/icon-sprites-v1/common.svg#fa6-FaXmark"
+    },
+    {
+      "key": "fa6/FaXTwitter",
+      "pack": "fa6",
+      "name": "FaXTwitter",
+      "id": "fa6-FaXTwitter",
+      "group": "common",
+      "attributes": {
+        "viewBox": "0 0 512 512"
+      },
+      "files": [
+        "app/components/socialIcons.tsx"
+      ],
+      "sourceTreeSha256": "54e43ef433270fb5e2746c5cf4ab1ab561816c35761be7a78d9ee8ddced6d088",
+      "serializedChildrenSha256": "0edb653ef6e1ecceb2b8b56da538956a6c9373830897377f25001183b5e43de1",
+      "href": "/brand/icon-sprites-v1/common.svg#fa6-FaXTwitter"
+    },
+    {
+      "key": "fa6/FaYelp",
+      "pack": "fa6",
+      "name": "FaYelp",
+      "id": "fa6-FaYelp",
+      "group": "common",
+      "attributes": {
+        "viewBox": "0 0 384 512"
+      },
+      "files": [
+        "app/components/socialIcons.tsx"
+      ],
+      "sourceTreeSha256": "58aa1ddab624fa15bd799bf9adc74147b076c8e337baa1179bb0d458860f4cec",
+      "serializedChildrenSha256": "902c44f860854382c7e8337ad2957b55ef25ad36cc9c49887e09dc3ed9192de8",
+      "href": "/brand/icon-sprites-v1/common.svg#fa6-FaYelp"
+    },
+    {
+      "key": "fa6/FaYoutube",
+      "pack": "fa6",
+      "name": "FaYoutube",
+      "id": "fa6-FaYoutube",
+      "group": "common",
+      "attributes": {
+        "viewBox": "0 0 576 512"
+      },
+      "files": [
+        "app/components/socialIcons.tsx"
+      ],
+      "sourceTreeSha256": "d19bff0b0c19c0de683a635752ac5b9c1373586e4dac0df97f2d28489a6de6a7",
+      "serializedChildrenSha256": "9ff378112671abec2963b5051a3debc396c4744bb1df83d140b50d4894c77980",
+      "href": "/brand/icon-sprites-v1/common.svg#fa6-FaYoutube"
+    },
+    {
+      "key": "md/MdMenuBook",
+      "pack": "md",
+      "name": "MdMenuBook",
+      "id": "md-MdMenuBook",
+      "group": "catalog",
+      "attributes": {
+        "viewBox": "0 0 24 24"
+      },
+      "files": [
+        "app/order/OrderExperience.tsx"
+      ],
+      "sourceTreeSha256": "e143d816ab091586348534194b3fac37fd5703f634dae3d1ae78127beac38914",
+      "serializedChildrenSha256": "8abf47587cb21e8aaab168fe08079f32e2156f6ccc16c97cf7c07cf8c0b3333f",
+      "href": "/brand/icon-sprites-v1/catalog.svg#md-MdMenuBook"
+    },
+    {
+      "key": "si/SiGooglemaps",
+      "pack": "si",
+      "name": "SiGooglemaps",
+      "id": "si-SiGooglemaps",
+      "group": "features",
+      "attributes": {
+        "role": "img",
+        "viewBox": "0 0 24 24"
+      },
+      "files": [
+        "app/components/socialIcons.tsx"
+      ],
+      "sourceTreeSha256": "b2e295fdd75ab27904bbc9f5f32c7e87668ce9a035ddec5b371dfc7699be8e30",
+      "serializedChildrenSha256": "89a2c9c3691fa24b3bd924fe6c855bf04db0627851753366f26441e301bc8475",
+      "href": "/brand/icon-sprites-v1/features.svg#si-SiGooglemaps"
+    },
+    {
+      "key": "si/SiTripadvisor",
+      "pack": "si",
+      "name": "SiTripadvisor",
+      "id": "si-SiTripadvisor",
+      "group": "features",
+      "attributes": {
+        "role": "img",
+        "viewBox": "0 0 24 24"
+      },
+      "files": [
+        "app/components/socialIcons.tsx"
+      ],
+      "sourceTreeSha256": "37c482f2792aea505e6f7491aa3b2487036e4d902771cb058112970ac8fc6b89",
+      "serializedChildrenSha256": "076e2ea6adea935198372e993e7b1de97ac4b75ee63d66faa27d0cd9699981e5",
+      "href": "/brand/icon-sprites-v1/features.svg#si-SiTripadvisor"
+    }
+  ],
+  "imports": [
+    {
+      "file": "app/components/EventsContactCta.tsx",
+      "pack": "fa6",
+      "names": [
+        "FaArrowRight",
+        "FaEnvelope",
+        "FaLocationDot",
+        "FaPhone"
+      ]
+    },
+    {
+      "file": "app/components/footer.tsx",
+      "pack": "fa6",
+      "names": [
+        "FaArrowUp",
+        "FaClock",
+        "FaEnvelope",
+        "FaLocationDot",
+        "FaPhone"
+      ]
+    },
+    {
+      "file": "app/components/header.tsx",
+      "pack": "fa6",
+      "names": [
+        "FaBars",
+        "FaCalendarCheck",
+        "FaCartShopping",
+        "FaChevronDown",
+        "FaMoon",
+        "FaSun",
+        "FaUser",
+        "FaXmark"
+      ]
+    },
+    {
+      "file": "app/components/HomeDialog.tsx",
+      "pack": "fa6",
+      "names": [
+        "FaXmark"
+      ]
+    },
+    {
+      "file": "app/components/ProductDetailsModal.tsx",
+      "pack": "fa6",
+      "names": [
+        "FaX"
+      ]
+    },
+    {
+      "file": "app/components/socialIcons.tsx",
+      "pack": "fa6",
+      "names": [
+        "FaApple",
+        "FaFacebookF",
+        "FaInstagram",
+        "FaLinkedinIn",
+        "FaPinterestP",
+        "FaSnapchat",
+        "FaTelegram",
+        "FaTiktok",
+        "FaWhatsapp",
+        "FaXTwitter",
+        "FaYelp",
+        "FaYoutube"
+      ]
+    },
+    {
+      "file": "app/components/socialIcons.tsx",
+      "pack": "si",
+      "names": [
+        "SiGooglemaps",
+        "SiTripadvisor"
+      ]
+    },
+    {
+      "file": "app/events/about/page.tsx",
+      "pack": "fa6",
+      "names": [
+        "FaArrowRight",
+        "FaAward",
+        "FaHeart",
+        "FaLeaf",
+        "FaStar",
+        "FaUtensils"
+      ]
+    },
+    {
+      "file": "app/events/birthdays/page.tsx",
+      "pack": "fa6",
+      "names": [
+        "FaCakeCandles",
+        "FaCheck",
+        "FaGift",
+        "FaGuitar",
+        "FaHeart",
+        "FaMusic",
+        "FaStar",
+        "FaUsers",
+        "FaUtensils"
+      ]
+    },
+    {
+      "file": "app/events/celebrations/page.tsx",
+      "pack": "fa6",
+      "names": [
+        "FaArrowRight",
+        "FaChampagneGlasses",
+        "FaCheck",
+        "FaGem",
+        "FaHandshake",
+        "FaHeart",
+        "FaMusic",
+        "FaRing",
+        "FaStar"
+      ]
+    },
+    {
+      "file": "app/events/company-catering/page.tsx",
+      "pack": "fa6",
+      "names": [
+        "FaBriefcase",
+        "FaCheck",
+        "FaChartLine",
+        "FaEarthEurope",
+        "FaHandshake",
+        "FaPeopleGroup",
+        "FaReceipt",
+        "FaRocket",
+        "FaWineGlass"
+      ]
+    },
+    {
+      "file": "app/events/company-lunches/page.tsx",
+      "pack": "fa6",
+      "names": [
+        "FaBoxesStacked",
+        "FaBreadSlice",
+        "FaCalendarDays",
+        "FaCarrot",
+        "FaCheck",
+        "FaClock",
+        "FaFileInvoice",
+        "FaLeaf",
+        "FaMugSaucer",
+        "FaSeedling",
+        "FaTruck"
+      ]
+    },
+    {
+      "file": "app/events/gallery/page.tsx",
+      "pack": "fa6",
+      "names": [
+        "FaCamera",
+        "FaImage"
+      ]
+    },
+    {
+      "file": "app/events/page.tsx",
+      "pack": "fa6",
+      "names": [
+        "FaArrowRight",
+        "FaBriefcase",
+        "FaCakeCandles",
+        "FaChampagneGlasses",
+        "FaEnvelope",
+        "FaImages",
+        "FaLocationDot",
+        "FaMugSaucer",
+        "FaPhone",
+        "FaUsers",
+        "FaWandMagicSparkles"
+      ]
+    },
+    {
+      "file": "app/lib/data.ts",
+      "pack": "fa6",
+      "names": [
+        "FaAppleWhole",
+        "FaBacon",
+        "FaBottleDroplet",
+        "FaBowlFood",
+        "FaBowlRice",
+        "FaBreadSlice",
+        "FaBurger",
+        "FaCarrot",
+        "FaCakeCandles",
+        "FaChampagneGlasses",
+        "FaCheese",
+        "FaCookieBite",
+        "FaDrumstickBite",
+        "FaEgg",
+        "FaFire",
+        "FaFish",
+        "FaGlassWater",
+        "FaHotdog",
+        "FaIceCream",
+        "FaLeaf",
+        "FaLemon",
+        "FaMartiniGlassCitrus",
+        "FaMugHot",
+        "FaPepperHot",
+        "FaPizzaSlice",
+        "FaPlateWheat",
+        "FaSeedling",
+        "FaShrimp",
+        "FaUtensils",
+        "FaWheatAwn",
+        "FaWineBottle"
+      ]
+    },
+    {
+      "file": "app/order/OrderExperience.tsx",
+      "pack": "fa6",
+      "names": [
+        "FaArrowRight",
+        "FaBagShopping",
+        "FaCalendarDays",
+        "FaCartShopping",
+        "FaChevronLeft",
+        "FaChevronRight",
+        "FaCircleCheck",
+        "FaCircleExclamation",
+        "FaClock",
+        "FaLocationDot",
+        "FaLock",
+        "FaMagnifyingGlass",
+        "FaMinus",
+        "FaPlus",
+        "FaStar",
+        "FaStore",
+        "FaTrash",
+        "FaTruck",
+        "FaXmark"
+      ]
+    },
+    {
+      "file": "app/order/OrderExperience.tsx",
+      "pack": "md",
+      "names": [
+        "MdMenuBook"
+      ]
+    },
+    {
+      "file": "app/page.tsx",
+      "pack": "fa6",
+      "names": [
+        "FaArrowDown",
+        "FaArrowLeft",
+        "FaArrowRight",
+        "FaBagShopping",
+        "FaCalendarCheck",
+        "FaChevronDown",
+        "FaClock",
+        "FaEnvelope",
+        "FaExpand",
+        "FaFireBurner",
+        "FaLocationDot",
+        "FaMagnifyingGlass",
+        "FaPhone",
+        "FaStar",
+        "FaUtensils",
+        "FaUsers",
+        "FaXmark"
+      ]
+    },
+    {
+      "file": "app/reservations/page.tsx",
+      "pack": "fa6",
+      "names": [
+        "FaBellConcierge",
+        "FaCalendarCheck",
+        "FaChampagneGlasses",
+        "FaCircleCheck",
+        "FaCircleXmark",
+        "FaClock",
+        "FaEnvelope",
+        "FaHourglassHalf",
+        "FaLocationDot",
+        "FaPhone",
+        "FaStar",
+        "FaUser",
+        "FaUserGroup",
+        "FaWandMagicSparkles"
+      ]
+    }
+  ],
+  "policy": "Exact ordered vendor SVGchild markup copied into external defs/g fragments; root viewBox/attrs remain on outer SVG. No SVGO, path simplification, coordinate changes or individual-icon HTTP requests. Common is measured legal25; catalog is public home/menu/category usage; features is remaining public events/reservation/social-extra usage.",
+  "validation": {
+    "publicGlyphs": 107,
+    "commonGlyphs": 25,
+    "sourceTreesRecorded": 107,
+    "unchangedGlyphGeometry": true
+  },
+  "limitations": [
+    "Generator evidence is not a production payload saving measurement or browser render/interaction pass. Combined-build initial JS and native SVG network transfer must be measured separately."
+  ]
+}

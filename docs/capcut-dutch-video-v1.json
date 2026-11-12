@@ -1,0 +1,349 @@
+{
+  "checkedAtUTC": "2026-11-12T00:53:28.349Z",
+  "version": "capcut-luxury-nl-v1",
+  "method": "Exactapprovedmastercopies; All-stream-copy remux with faststart; silentAACretained as authorizedfallback. No visualtranscoding/retiming/scaling/grading/cuts.",
+  "ffmpegVersion": "ffmpeg version 1.0.0-401a53202a Copyright (c) 2000-2024 the FFmpeg developers",
+  "videos": [
+    {
+      "variant": "desktop",
+      "source": "C:\\Users\\DaviiC\\Downloads\\shah-luxury-capcut-desktop-nl-v1.mp4",
+      "masterCopy": "assets/video-masters/capcut-luxury-nl-v1/shah-luxury-capcut-desktop-nl-v1.mp4",
+      "masterBytes": 21596473,
+      "masterSha256": "841d1add77bebe61588b315c167306b41d938f73a03461042c4f1301e57e1239",
+      "src": "/brand/capcut-luxury-nl-v1/shah-luxury-capcut-desktop-nl-v1-web.mp4",
+      "bytes": 21595932,
+      "sha256": "2f6d1d21801835892aa2d176df8fa02b1e0eeeb054ce58371ec92b82b1d608ad",
+      "video": {
+        "codec_name": "h264",
+        "profile": "High",
+        "width": 1920,
+        "height": 1080,
+        "pix_fmt": "yuv420p",
+        "r_frame_rate": "30/1",
+        "time_base": "1/1000000",
+        "start_time": "0.066000",
+        "color_range": "tv",
+        "color_space": "bt709",
+        "color_transfer": "bt709",
+        "color_primaries": "bt709",
+        "duration": "12.266666",
+        "masterDuration": "12.266667",
+        "durationDeltaSeconds": -9.999999992515995e-7
+      },
+      "containerDuration": "12.332666",
+      "masterContainerDuration": "12.332667",
+      "decodedFrames": 368,
+      "firstFramePts": "0.066000",
+      "lastFramePts": "12.299333",
+      "allDecodedFrameMd5Unchanged": true,
+      "frameMd5ListSha256": "b076e5f148bc02dea07fed7a488c1b2b12630c97f1ac3a79ddbd31ddf631e39d",
+      "audioRemoved": false,
+      "audioRetained": true,
+      "videoStreamCopied": true,
+      "fastStart": true,
+      "topLevelAtoms": [
+        {
+          "type": "ftyp",
+          "offset": 0,
+          "bytes": 32
+        },
+        {
+          "type": "moov",
+          "offset": 32,
+          "bytes": 16680
+        },
+        {
+          "type": "free",
+          "offset": 16712,
+          "bytes": 8
+        },
+        {
+          "type": "mdat",
+          "offset": 16720,
+          "bytes": 21579212
+        }
+      ],
+      "masterUnchanged": true,
+      "command": {
+        "executable": "C:\\Users\\DaviiC\\AppData\\Local\\CapCut\\Apps\\9.7.1.4203\\ffmpeg.exe",
+        "arguments": [
+          "-v",
+          "error",
+          "-xerror",
+          "-copyts",
+          "-i",
+          "C:\\Users\\DaviiC\\Downloads\\shahrestaurant\\shahrestaurant\\assets\\video-masters\\capcut-luxury-nl-v1\\shah-luxury-capcut-desktop-nl-v1.mp4",
+          "-map",
+          "0",
+          "-c",
+          "copy",
+          "-map_metadata",
+          "0",
+          "-avoid_negative_ts",
+          "disabled",
+          "-video_track_timescale",
+          "1000000",
+          "-movflags",
+          "+faststart",
+          "-n",
+          "C:\\Users\\DaviiC\\Downloads\\shahrestaurant\\shahrestaurant\\public\\brand\\capcut-luxury-nl-v1\\shah-luxury-capcut-desktop-nl-v1-web.mp4"
+        ]
+      },
+      "allFramePtsUnchanged": true,
+      "timingScope": "All368presentationtimestampsareequal;container/video-trackdurationheadersrounddown1microsecondasaccepted,notallmetadataisbyteidentical."
+    },
+    {
+      "variant": "mobile",
+      "source": "C:\\Users\\DaviiC\\Downloads\\shah-luxury-capcut-mobile-nl-v1.mp4",
+      "masterCopy": "assets/video-masters/capcut-luxury-nl-v1/shah-luxury-capcut-mobile-nl-v1.mp4",
+      "masterBytes": 14768153,
+      "masterSha256": "162d953531a056838038e7046ee81d8f9f57961104a7391c2f04c947be3b1ed5",
+      "src": "/brand/capcut-luxury-nl-v1/shah-luxury-capcut-mobile-nl-v1-web.mp4",
+      "bytes": 14767612,
+      "sha256": "f1daccbe2856904ee673227169d32a356653ab67f22922d56895f944d69c335a",
+      "video": {
+        "codec_name": "h264",
+        "profile": "High",
+        "width": 1080,
+        "height": 1920,
+        "pix_fmt": "yuv420p",
+        "r_frame_rate": "30/1",
+        "time_base": "1/1000000",
+        "start_time": "0.066000",
+        "color_range": "tv",
+        "color_space": "bt709",
+        "color_transfer": "bt709",
+        "color_primaries": "bt709",
+        "duration": "12.266666",
+        "masterDuration": "12.266667",
+        "durationDeltaSeconds": -9.999999992515995e-7
+      },
+      "containerDuration": "12.332666",
+      "masterContainerDuration": "12.332667",
+      "decodedFrames": 368,
+      "firstFramePts": "0.066000",
+      "lastFramePts": "12.299333",
+      "allDecodedFrameMd5Unchanged": true,
+      "frameMd5ListSha256": "39d26ae9c0d29c527da3aea66cfe1b02249a62b7b5b6ea3781c912f751a64783",
+      "audioRemoved": false,
+      "audioRetained": true,
+      "videoStreamCopied": true,
+      "fastStart": true,
+      "topLevelAtoms": [
+        {
+          "type": "ftyp",
+          "offset": 0,
+          "bytes": 32
+        },
+        {
+          "type": "moov",
+          "offset": 32,
+          "bytes": 16728
+        },
+        {
+          "type": "free",
+          "offset": 16760,
+          "bytes": 8
+        },
+        {
+          "type": "mdat",
+          "offset": 16768,
+          "bytes": 14750844
+        }
+      ],
+      "masterUnchanged": true,
+      "command": {
+        "executable": "C:\\Users\\DaviiC\\AppData\\Local\\CapCut\\Apps\\9.7.1.4203\\ffmpeg.exe",
+        "arguments": [
+          "-v",
+          "error",
+          "-xerror",
+          "-copyts",
+          "-i",
+          "C:\\Users\\DaviiC\\Downloads\\shahrestaurant\\shahrestaurant\\assets\\video-masters\\capcut-luxury-nl-v1\\shah-luxury-capcut-mobile-nl-v1.mp4",
+          "-map",
+          "0",
+          "-c",
+          "copy",
+          "-map_metadata",
+          "0",
+          "-avoid_negative_ts",
+          "disabled",
+          "-video_track_timescale",
+          "1000000",
+          "-movflags",
+          "+faststart",
+          "-n",
+          "C:\\Users\\DaviiC\\Downloads\\shahrestaurant\\shahrestaurant\\public\\brand\\capcut-luxury-nl-v1\\shah-luxury-capcut-mobile-nl-v1-web.mp4"
+        ]
+      },
+      "allFramePtsUnchanged": true,
+      "timingScope": "All368presentationtimestampsareequal;container/video-trackdurationheadersrounddown1microsecondasaccepted,notallmetadataisbyteidentical."
+    }
+  ],
+  "protectedFiles": [
+    {
+      "file": "public/brand/shah-hero-scroll-desktop-v4.mp4",
+      "bytes": 36744691,
+      "sha256": "91934e4fc834e7050f37b3cd2c6ee063779b622c22e8ba61e3c788b1e63d3a2c",
+      "unchanged": true
+    },
+    {
+      "file": "public/brand/shah-hero-scroll-mobile-v4.mp4",
+      "bytes": 11337072,
+      "sha256": "685f08858741f06d04bc436c2b633af01d2fb4e56a07c24f2fc5ec0d311b67f0",
+      "unchanged": true
+    },
+    {
+      "file": "public/brand/capcut-luxury-v3/poster-desktop-1600.avif",
+      "bytes": 112879,
+      "sha256": "fd973389dda60d37936958b998c599992ab604bdf7fe292291431708f5e49eb7",
+      "unchanged": true
+    },
+    {
+      "file": "public/brand/capcut-luxury-v3/poster-desktop-1600.jpg",
+      "bytes": 114269,
+      "sha256": "4569950bff39be3a3937e773f330d33a2b72385a7fa92d7f87bbb0d00f617bd1",
+      "unchanged": true
+    },
+    {
+      "file": "public/brand/capcut-luxury-v3/poster-desktop-1600.webp",
+      "bytes": 113408,
+      "sha256": "860a27579dcf472c79bd78733784c3873f15254398571db99b47d85e7a5799ba",
+      "unchanged": true
+    },
+    {
+      "file": "public/brand/capcut-luxury-v3/poster-desktop-960.avif",
+      "bytes": 71427,
+      "sha256": "f1523567344fe5b6ae7e78607a53212a136f39763b40d15da24e12044f1c4cd0",
+      "unchanged": true
+    },
+    {
+      "file": "public/brand/capcut-luxury-v3/poster-desktop-960.jpg",
+      "bytes": 116162,
+      "sha256": "666efb60e0d3806c9075e443178b2e69d02ae89d3ed94235f76902e7f23818ff",
+      "unchanged": true
+    },
+    {
+      "file": "public/brand/capcut-luxury-v3/poster-desktop-960.webp",
+      "bytes": 102104,
+      "sha256": "f468f8cd2f213fc6e26203f66434f798747c77eefd487daf9e3c29aec2c04d57",
+      "unchanged": true
+    },
+    {
+      "file": "public/brand/capcut-luxury-v3/poster-mobile-360.avif",
+      "bytes": 29098,
+      "sha256": "6acb014f6af6af9470abc55f3505bf8522c7061a0174d469dc48671cbff8346f",
+      "unchanged": true
+    },
+    {
+      "file": "public/brand/capcut-luxury-v3/poster-mobile-360.jpg",
+      "bytes": 51764,
+      "sha256": "bb20c6234cf5f8760247da5a5574c5624fbc2c45e596824961abecf9a5b9e2f5",
+      "unchanged": true
+    },
+    {
+      "file": "public/brand/capcut-luxury-v3/poster-mobile-360.webp",
+      "bytes": 43304,
+      "sha256": "3c493c98c2e7e33a47d782f280fca54f00b7acfeaa2931cfc1afb2872e36e9aa",
+      "unchanged": true
+    },
+    {
+      "file": "public/brand/capcut-luxury-v3/poster-mobile-720.avif",
+      "bytes": 54371,
+      "sha256": "ec9a51f006a584f6af793aefcf1cb2fc2b35a56cea7ca97bad2e4a72fba06b39",
+      "unchanged": true
+    },
+    {
+      "file": "public/brand/capcut-luxury-v3/poster-mobile-720.jpg",
+      "bytes": 113874,
+      "sha256": "f13fb7171a56e88f287516585ff8e9788cf18de9991fbcc434ad05b118da3242",
+      "unchanged": true
+    },
+    {
+      "file": "public/brand/capcut-luxury-v3/poster-mobile-720.webp",
+      "bytes": 94398,
+      "sha256": "2eaf08a4ad6c558ce77bddb06245d2a21ca9a1e3edd0e9eb0a74e5ddcd9e7304",
+      "unchanged": true
+    },
+    {
+      "file": "public/brand/capcut-luxury-v3/shah-luxury-capcut-desktop-v3.mp4",
+      "bytes": 22055086,
+      "sha256": "30f8b838d4086e64f0f24bd4385e5512bde8286ba65ca1f597ec0607afca85f3",
+      "unchanged": true
+    },
+    {
+      "file": "public/brand/capcut-luxury-v3/shah-luxury-capcut-mobile-v2.mp4",
+      "bytes": 14802082,
+      "sha256": "de98d395d978de246bf42e97d21fa04cb45753e39354667d7b25c2e340e2ca6b",
+      "unchanged": true
+    }
+  ],
+  "validation": {
+    "videos": 2,
+    "allFramePtsUnchanged": true,
+    "allDecodedFrameMd5Unchanged": true,
+    "allFastStart": true,
+    "audioRemoved": false,
+    "audioRetained": true,
+    "allMastersAndENOriginalsUnchanged": true
+  },
+  "evidenceDirectory": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-capcut-luxury-nl-v1-20261112",
+  "limits": [
+    "Stilllargeoriginal-qualityH264streams with silentAAC; no instantloading or compressionratio/performanceclaim.",
+    "Installedmuxerroundscontainer/video-trackdurationdownby1microsecond; presentationtimestampsanddecodedpixelsmustmatchall368frames.",
+    "FramehashidentityisdecodedFFmpegpixelidentity, not a browserphysicaldisplay/perceptionguarantee.",
+    "Finallocale/responsive/autoplay/text-cover browsertests belong to the codeintegration owner."
+  ],
+  "rejectedPrototype": {
+    "status": "Preservedoutsidepublic,notreferenced",
+    "file": "C:/Users/DaviiC/AppData/Local/Temp/shah-capcut-luxury-nl-v1-20261112/diagnostics/desktop-aacdrop-unverified.mp4",
+    "sha256": "c69f82a11b875e8c89f9dcfbf1dcac6c90818ccefe5de3366ea51fa761ea2fc3",
+    "reason": "AAC-removalprototypehadshortenedcontainerduration;acceptedpairretainssilentAAC."
+  },
+  "posterEvidence": "docs/capcut-dutch-posters-v1.json",
+  "sourceChecks": {
+    "targetedEslint": "passed,0errors/0warnings",
+    "uiSourceEditsByThisAgent": 0,
+    "uiTypeScriptOwner": "preview_high"
+  },
+  "qaArtifacts": [
+    {
+      "file": "C:/Users/DaviiC/Downloads/shah-luxury-capcut-desktop-nl-v1-preview.png",
+      "bytes": 2124570,
+      "sha256": "8828e27135129152b363148c42612dacd23c9556ac7b7bc582c26e529836eb94"
+    },
+    {
+      "file": "C:/Users/DaviiC/Downloads/shah-luxury-capcut-desktop-nl-v1-tail-preview.png",
+      "bytes": 1177505,
+      "sha256": "04c3378d26162973fdb738c69cbffb2f9714e6184b52fef0edbec640bfee3299"
+    },
+    {
+      "file": "C:/Users/DaviiC/Downloads/shah-luxury-capcut-desktop-nl-v1-verification.txt",
+      "bytes": 2919,
+      "sha256": "fde58f6c5e0991e0ef1c11cb63fbc4d2d3ccc6ac1d7526453322bcd72524d072"
+    },
+    {
+      "file": "C:/Users/DaviiC/Downloads/shah-luxury-capcut-mobile-nl-v1-preview.png",
+      "bytes": 2623969,
+      "sha256": "24a59dbb3e39a0a6ff3705f67316d85eac092b4e2a19c8a5db41172f86c45402"
+    },
+    {
+      "file": "C:/Users/DaviiC/Downloads/shah-luxury-capcut-mobile-nl-v1-tail-preview.png",
+      "bytes": 955511,
+      "sha256": "ad8649187214e4fa2a5b9e9ba9526bb78cfc4ee4cb1c6f066dbd7e4d524196c8"
+    },
+    {
+      "file": "C:/Users/DaviiC/Downloads/shah-luxury-capcut-mobile-nl-v1-verification.txt",
+      "bytes": 3145,
+      "sha256": "e115fd7870ef61a6c607e903a26cbfb82e6e72493c57a3fe5863e4fc552f80bc"
+    }
+  ],
+  "finalChecks": {
+    "checkedAtUTC": "2026-11-12T01:00:37.897Z",
+    "webBodiesStillMatchRecordedSha256": true,
+    "masterCopiesStillMatchApproved": true,
+    "protectedEnglishPublicAndV4StillMatch": true,
+    "posterBodiesStillMatchRecordedSha256": true
+  }
+}

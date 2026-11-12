@@ -1,0 +1,1333 @@
+{
+  "checkedAt": "2026-11-11T23:17:13.130Z",
+  "buildId": "n5lZlmRftteZljWg3KVl-",
+  "compiledSourceHash": "50dc47b44958495088ace0cde911ad36684a249b333ab6ac3683078b27b0c93b",
+  "compiledInputCount": 530,
+  "origin": "http://127.0.0.1:3638",
+  "scope": "Current promoted n5l raw-HTML/schema verification; runtime/session interaction and physical-device results remain separate",
+  "publicUrls": 24,
+  "languagePairs": 12,
+  "corePairs": 5,
+  "eventPairs": 7,
+  "localParseAndCoherencePassed": true,
+  "routes": [
+    {
+      "route": "/",
+      "language": "nl",
+      "httpStatus": 200,
+      "servedBuildMatches": true,
+      "schemaScripts": 2,
+      "typeCounts": {
+        "Restaurant": 1,
+        "PostalAddress": 1,
+        "GeoCoordinates": 1,
+        "OpeningHoursSpecification": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "SearchAction": 1,
+        "EntryPoint": 1,
+        "ImageObject": 1,
+        "FAQPage": 1,
+        "Question": 9,
+        "Answer": 9
+      },
+      "sharedLocaleGraphExact": true,
+      "breadcrumbPositionsSequential": null,
+      "codeSha256": "8a316bafbfb17a87a9678fb7966d539632f55efe021fbb96d64903b5dbe53b6f",
+      "schemaSha256": "369b3522e49c173b282471119367f685a49571b9519e6244efaad6df58d20e57",
+      "scriptBlocks": [
+        {
+          "index": 0,
+          "rootType": "@graph",
+          "jsonTextSha256": "38e87afd3c28520aa10b1c15c87f804a118abf07aa758fa0f2fe51c30c3566fd",
+          "htmlSha256": "7774bf852ff7cbb488b4fd91fca7bc19f0cb9009fb45863aca6f8be46d49afff"
+        },
+        {
+          "index": 1,
+          "rootType": "FAQPage",
+          "jsonTextSha256": "3d70099920b6c9e7d790694da4d336bdbb80451a2af6ec0b9b8a412919ffcfb0",
+          "htmlSha256": "e9094944f0559c6058b7ce5992ff319d92ab7f164d782b7d243d98a4a853289e"
+        }
+      ],
+      "codeFile": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-event-locale-qa-20261111\\schema-n5lZlmRftteZljWg3KVl-\\nl-home.html",
+      "schemaFile": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-event-locale-qa-20261111\\schema-n5lZlmRftteZljWg3KVl-\\nl-home.json",
+      "codeByteIdenticalToKIb4": true,
+      "specializedSchemaUrlIsCanonical": true,
+      "googleCodeResult": "NOT_RUN",
+      "codeByteIdenticalToNAZ0": true
+    },
+    {
+      "route": "/en",
+      "language": "en",
+      "httpStatus": 200,
+      "servedBuildMatches": true,
+      "schemaScripts": 2,
+      "typeCounts": {
+        "Restaurant": 1,
+        "PostalAddress": 1,
+        "GeoCoordinates": 1,
+        "OpeningHoursSpecification": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "SearchAction": 1,
+        "EntryPoint": 1,
+        "ImageObject": 1,
+        "FAQPage": 1,
+        "Question": 9,
+        "Answer": 9
+      },
+      "sharedLocaleGraphExact": true,
+      "breadcrumbPositionsSequential": null,
+      "codeSha256": "bce70552b73706161221e106fa1b73779c9660a0a0459c4c865405452fe40b2a",
+      "schemaSha256": "1e4e531359e57d78758cb49ba5f51cf4bfae65d404e0ddda06d1a30e20adf610",
+      "scriptBlocks": [
+        {
+          "index": 0,
+          "rootType": "@graph",
+          "jsonTextSha256": "a3ccdeff2aabd35e5b5390e46af89d40ccef60e07083e2b951257b60a480e694",
+          "htmlSha256": "86101ff5f03e6ba4c4362eafb8c1a43963e4b302e9f7346912bd000a76e8ebe0"
+        },
+        {
+          "index": 1,
+          "rootType": "FAQPage",
+          "jsonTextSha256": "15c9a8575aab83f62cc947c93023236a1ec9ae5a6073b0d6040cb7667cccf0ff",
+          "htmlSha256": "69398d742279b28be50c05eb8757388dc68383dca639ac56bd41152d9a5e4f2f"
+        }
+      ],
+      "codeFile": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-event-locale-qa-20261111\\schema-n5lZlmRftteZljWg3KVl-\\en-home.html",
+      "schemaFile": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-event-locale-qa-20261111\\schema-n5lZlmRftteZljWg3KVl-\\en-home.json",
+      "codeByteIdenticalToKIb4": true,
+      "specializedSchemaUrlIsCanonical": true,
+      "googleCodeResult": "NOT_RUN",
+      "codeByteIdenticalToNAZ0": true
+    },
+    {
+      "route": "/menukaart",
+      "language": "nl",
+      "httpStatus": 200,
+      "servedBuildMatches": true,
+      "schemaScripts": 3,
+      "typeCounts": {
+        "Restaurant": 1,
+        "PostalAddress": 1,
+        "GeoCoordinates": 1,
+        "OpeningHoursSpecification": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "SearchAction": 1,
+        "EntryPoint": 1,
+        "ImageObject": 1,
+        "BreadcrumbList": 1,
+        "ListItem": 2,
+        "Menu": 1,
+        "MenuSection": 1,
+        "MenuItem": 2,
+        "Offer": 2
+      },
+      "sharedLocaleGraphExact": true,
+      "breadcrumbPositionsSequential": true,
+      "codeSha256": "75291938f653636d842128342fffa8c76d4a2e74875f11073190f90fa746247d",
+      "schemaSha256": "a347310351e2ad8737bbd0ca3c5db5a4ddccc3547585bb166ccd04afce68bb0b",
+      "scriptBlocks": [
+        {
+          "index": 0,
+          "rootType": "@graph",
+          "jsonTextSha256": "38e87afd3c28520aa10b1c15c87f804a118abf07aa758fa0f2fe51c30c3566fd",
+          "htmlSha256": "7774bf852ff7cbb488b4fd91fca7bc19f0cb9009fb45863aca6f8be46d49afff"
+        },
+        {
+          "index": 1,
+          "rootType": "BreadcrumbList",
+          "jsonTextSha256": "3231aa8b8dab1e5cc048132567232d58379e236affa3858d3851b8962c835daf",
+          "htmlSha256": "684b9c0c0663ab6293d457b078937d21d2125595e5df8c0fe011e4fd40b5ecca"
+        },
+        {
+          "index": 2,
+          "rootType": "Menu",
+          "jsonTextSha256": "2f55118cea79991e4e989f8bff3eb585556574d0db291179093ae602eec6a23e",
+          "htmlSha256": "bbc41cc5a743de6e464cdeac0ba11481119e6057e3e54cf909f9eac2262e0c5c"
+        }
+      ],
+      "codeFile": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-event-locale-qa-20261111\\schema-n5lZlmRftteZljWg3KVl-\\menukaart.html",
+      "schemaFile": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-event-locale-qa-20261111\\schema-n5lZlmRftteZljWg3KVl-\\menukaart.json",
+      "codeByteIdenticalToKIb4": true,
+      "specializedSchemaUrlIsCanonical": true,
+      "googleCodeResult": "NOT_RUN",
+      "codeByteIdenticalToNAZ0": true
+    },
+    {
+      "route": "/en/menu",
+      "language": "en",
+      "httpStatus": 200,
+      "servedBuildMatches": true,
+      "schemaScripts": 3,
+      "typeCounts": {
+        "Restaurant": 1,
+        "PostalAddress": 1,
+        "GeoCoordinates": 1,
+        "OpeningHoursSpecification": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "SearchAction": 1,
+        "EntryPoint": 1,
+        "ImageObject": 1,
+        "BreadcrumbList": 1,
+        "ListItem": 2,
+        "Menu": 1,
+        "MenuSection": 1,
+        "MenuItem": 2,
+        "Offer": 2
+      },
+      "sharedLocaleGraphExact": true,
+      "breadcrumbPositionsSequential": true,
+      "codeSha256": "9596b31cd4a2879502f9fbebc92ac2a077dc70820dc791a905e316bde1843c30",
+      "schemaSha256": "6a04f07c20d0600cbe964983d25f648635d325dcee38f00dd51bb76d56e07ea6",
+      "scriptBlocks": [
+        {
+          "index": 0,
+          "rootType": "@graph",
+          "jsonTextSha256": "a3ccdeff2aabd35e5b5390e46af89d40ccef60e07083e2b951257b60a480e694",
+          "htmlSha256": "86101ff5f03e6ba4c4362eafb8c1a43963e4b302e9f7346912bd000a76e8ebe0"
+        },
+        {
+          "index": 1,
+          "rootType": "BreadcrumbList",
+          "jsonTextSha256": "03602fbad00aa9385d77b664e3fc00fb7f86c840cd82515c4738ddc583c8a35d",
+          "htmlSha256": "5d29d73fd96f130a5d87e1a504c152a4d5d8be944422e424a650f3ba05284b8e"
+        },
+        {
+          "index": 2,
+          "rootType": "Menu",
+          "jsonTextSha256": "a16bb4b0e1191d5455f95a196c09919097b4d0c31f9a30f600b7226d238d5139",
+          "htmlSha256": "5594be6f4d6b76fd2cde00cff96663488a688ca6a427407d201b300710248f63"
+        }
+      ],
+      "codeFile": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-event-locale-qa-20261111\\schema-n5lZlmRftteZljWg3KVl-\\en-menu.html",
+      "schemaFile": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-event-locale-qa-20261111\\schema-n5lZlmRftteZljWg3KVl-\\en-menu.json",
+      "codeByteIdenticalToKIb4": true,
+      "specializedSchemaUrlIsCanonical": true,
+      "googleCodeResult": "NOT_RUN",
+      "codeByteIdenticalToNAZ0": true
+    },
+    {
+      "route": "/reserveren",
+      "language": "nl",
+      "httpStatus": 200,
+      "servedBuildMatches": true,
+      "schemaScripts": 2,
+      "typeCounts": {
+        "Restaurant": 1,
+        "PostalAddress": 1,
+        "GeoCoordinates": 1,
+        "OpeningHoursSpecification": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "SearchAction": 1,
+        "EntryPoint": 1,
+        "ImageObject": 1,
+        "BreadcrumbList": 1,
+        "ListItem": 2
+      },
+      "sharedLocaleGraphExact": true,
+      "breadcrumbPositionsSequential": true,
+      "codeSha256": "aceb6df0f507d256d20e6f481cafa890c9d63e0a49eeb9b9c44bc0359b9cd6a7",
+      "schemaSha256": "6c2b2abbe85cbe43331591a8a3137078fba60d63739ed0b0049fb52ca06ffe0a",
+      "scriptBlocks": [
+        {
+          "index": 0,
+          "rootType": "@graph",
+          "jsonTextSha256": "38e87afd3c28520aa10b1c15c87f804a118abf07aa758fa0f2fe51c30c3566fd",
+          "htmlSha256": "7774bf852ff7cbb488b4fd91fca7bc19f0cb9009fb45863aca6f8be46d49afff"
+        },
+        {
+          "index": 1,
+          "rootType": "BreadcrumbList",
+          "jsonTextSha256": "86ef25bfa9b6fd02d9290ceac4f96a529561a294a920985ee9d0ec23eb7ceb04",
+          "htmlSha256": "f47ae1752ff51e192c88128f0fcb55812e4f6789815264a54ab13d1f6107814a"
+        }
+      ],
+      "codeFile": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-event-locale-qa-20261111\\schema-n5lZlmRftteZljWg3KVl-\\reserveren.html",
+      "schemaFile": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-event-locale-qa-20261111\\schema-n5lZlmRftteZljWg3KVl-\\reserveren.json",
+      "codeByteIdenticalToKIb4": true,
+      "specializedSchemaUrlIsCanonical": true,
+      "googleCodeResult": "NOT_RUN",
+      "codeByteIdenticalToNAZ0": true
+    },
+    {
+      "route": "/en/reservations",
+      "language": "en",
+      "httpStatus": 200,
+      "servedBuildMatches": true,
+      "schemaScripts": 2,
+      "typeCounts": {
+        "Restaurant": 1,
+        "PostalAddress": 1,
+        "GeoCoordinates": 1,
+        "OpeningHoursSpecification": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "SearchAction": 1,
+        "EntryPoint": 1,
+        "ImageObject": 1,
+        "BreadcrumbList": 1,
+        "ListItem": 2
+      },
+      "sharedLocaleGraphExact": true,
+      "breadcrumbPositionsSequential": true,
+      "codeSha256": "1b136d913429c36d1f0e112de0163b4ab04c7c8b10f985c5a44dd42b25f43edb",
+      "schemaSha256": "e505afcea14e603f5fc47d1d4e26c7f855245459ed4c95991106e2df88cc7969",
+      "scriptBlocks": [
+        {
+          "index": 0,
+          "rootType": "@graph",
+          "jsonTextSha256": "a3ccdeff2aabd35e5b5390e46af89d40ccef60e07083e2b951257b60a480e694",
+          "htmlSha256": "86101ff5f03e6ba4c4362eafb8c1a43963e4b302e9f7346912bd000a76e8ebe0"
+        },
+        {
+          "index": 1,
+          "rootType": "BreadcrumbList",
+          "jsonTextSha256": "713d05f90656d3b2eb0c941fb657267a00bc8e3193c8a6c9e9697b9b7ef23fba",
+          "htmlSha256": "1960650a348f3b35b847cd4849c7b0be0455e551c8a4dfd5dc3e93aca76374d8"
+        }
+      ],
+      "codeFile": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-event-locale-qa-20261111\\schema-n5lZlmRftteZljWg3KVl-\\en-reservations.html",
+      "schemaFile": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-event-locale-qa-20261111\\schema-n5lZlmRftteZljWg3KVl-\\en-reservations.json",
+      "codeByteIdenticalToKIb4": true,
+      "specializedSchemaUrlIsCanonical": true,
+      "googleCodeResult": "NOT_RUN",
+      "codeByteIdenticalToNAZ0": true
+    },
+    {
+      "route": "/privacy",
+      "language": "nl",
+      "httpStatus": 200,
+      "servedBuildMatches": true,
+      "schemaScripts": 2,
+      "typeCounts": {
+        "Restaurant": 1,
+        "PostalAddress": 1,
+        "GeoCoordinates": 1,
+        "OpeningHoursSpecification": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "SearchAction": 1,
+        "EntryPoint": 1,
+        "ImageObject": 1,
+        "BreadcrumbList": 1,
+        "ListItem": 2
+      },
+      "sharedLocaleGraphExact": true,
+      "breadcrumbPositionsSequential": true,
+      "codeSha256": "b6f1fbd2039c62594e2c680b9cc0114bead256c51f9c1bb365e7154f38a1960a",
+      "schemaSha256": "ce370973b278e3cc307665adb99735671b567998ca523a85f6e6c74a22d276e1",
+      "scriptBlocks": [
+        {
+          "index": 0,
+          "rootType": "@graph",
+          "jsonTextSha256": "38e87afd3c28520aa10b1c15c87f804a118abf07aa758fa0f2fe51c30c3566fd",
+          "htmlSha256": "7774bf852ff7cbb488b4fd91fca7bc19f0cb9009fb45863aca6f8be46d49afff"
+        },
+        {
+          "index": 1,
+          "rootType": "BreadcrumbList",
+          "jsonTextSha256": "6440ec6554b236d9e1e49c35be142beddfe8438ccefbafe3d599e20b44f62ba2",
+          "htmlSha256": "ed1251bed8bd5366220ac308eddc400f71f8598dda8621cb5c0cd3d23b750c87"
+        }
+      ],
+      "codeFile": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-event-locale-qa-20261111\\schema-n5lZlmRftteZljWg3KVl-\\privacy.html",
+      "schemaFile": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-event-locale-qa-20261111\\schema-n5lZlmRftteZljWg3KVl-\\privacy.json",
+      "codeByteIdenticalToKIb4": true,
+      "specializedSchemaUrlIsCanonical": true,
+      "googleCodeResult": "NOT_RUN",
+      "codeByteIdenticalToNAZ0": true
+    },
+    {
+      "route": "/en/privacy",
+      "language": "en",
+      "httpStatus": 200,
+      "servedBuildMatches": true,
+      "schemaScripts": 2,
+      "typeCounts": {
+        "Restaurant": 1,
+        "PostalAddress": 1,
+        "GeoCoordinates": 1,
+        "OpeningHoursSpecification": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "SearchAction": 1,
+        "EntryPoint": 1,
+        "ImageObject": 1,
+        "BreadcrumbList": 1,
+        "ListItem": 2
+      },
+      "sharedLocaleGraphExact": true,
+      "breadcrumbPositionsSequential": true,
+      "codeSha256": "9f5dfd90527f5f9ab014b0927c182ed547b7881070ff577374af6c877d5640d1",
+      "schemaSha256": "16b0af2f494080b934143cde726fe028a6dd94e239081d458be58c9d5b9d3b3a",
+      "scriptBlocks": [
+        {
+          "index": 0,
+          "rootType": "@graph",
+          "jsonTextSha256": "a3ccdeff2aabd35e5b5390e46af89d40ccef60e07083e2b951257b60a480e694",
+          "htmlSha256": "86101ff5f03e6ba4c4362eafb8c1a43963e4b302e9f7346912bd000a76e8ebe0"
+        },
+        {
+          "index": 1,
+          "rootType": "BreadcrumbList",
+          "jsonTextSha256": "8adff49a5868e3f71f2d0430786b04f69a168af6e15fd9233fe42325d41ec4f8",
+          "htmlSha256": "baa69178a73ceafaa67266fbb7f96f42ccc3fb2a684afb9e55848cf6951ec90a"
+        }
+      ],
+      "codeFile": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-event-locale-qa-20261111\\schema-n5lZlmRftteZljWg3KVl-\\en-privacy.html",
+      "schemaFile": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-event-locale-qa-20261111\\schema-n5lZlmRftteZljWg3KVl-\\en-privacy.json",
+      "codeByteIdenticalToKIb4": true,
+      "specializedSchemaUrlIsCanonical": true,
+      "googleCodeResult": "NOT_RUN",
+      "codeByteIdenticalToNAZ0": true
+    },
+    {
+      "route": "/voorwaarden",
+      "language": "nl",
+      "httpStatus": 200,
+      "servedBuildMatches": true,
+      "schemaScripts": 2,
+      "typeCounts": {
+        "Restaurant": 1,
+        "PostalAddress": 1,
+        "GeoCoordinates": 1,
+        "OpeningHoursSpecification": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "SearchAction": 1,
+        "EntryPoint": 1,
+        "ImageObject": 1,
+        "BreadcrumbList": 1,
+        "ListItem": 2
+      },
+      "sharedLocaleGraphExact": true,
+      "breadcrumbPositionsSequential": true,
+      "codeSha256": "b79517b780f35a3272bbbb88fcfb05d617513de911ec91dd58b9283e5bf4026b",
+      "schemaSha256": "4feb486b240e9a030e8057eb83ad81ea2df26fb733613c5fd50a28d0cb16ae79",
+      "scriptBlocks": [
+        {
+          "index": 0,
+          "rootType": "@graph",
+          "jsonTextSha256": "38e87afd3c28520aa10b1c15c87f804a118abf07aa758fa0f2fe51c30c3566fd",
+          "htmlSha256": "7774bf852ff7cbb488b4fd91fca7bc19f0cb9009fb45863aca6f8be46d49afff"
+        },
+        {
+          "index": 1,
+          "rootType": "BreadcrumbList",
+          "jsonTextSha256": "1de4192edb64341dccd89a3400440079d9e1212ce3e738860abad6731af863dc",
+          "htmlSha256": "2e92018f2abc396886f9bb4bc4b6abc55027be88d59a47766503d6e4c7673174"
+        }
+      ],
+      "codeFile": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-event-locale-qa-20261111\\schema-n5lZlmRftteZljWg3KVl-\\voorwaarden.html",
+      "schemaFile": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-event-locale-qa-20261111\\schema-n5lZlmRftteZljWg3KVl-\\voorwaarden.json",
+      "codeByteIdenticalToKIb4": true,
+      "specializedSchemaUrlIsCanonical": true,
+      "googleCodeResult": "NOT_RUN",
+      "codeByteIdenticalToNAZ0": true
+    },
+    {
+      "route": "/en/terms",
+      "language": "en",
+      "httpStatus": 200,
+      "servedBuildMatches": true,
+      "schemaScripts": 2,
+      "typeCounts": {
+        "Restaurant": 1,
+        "PostalAddress": 1,
+        "GeoCoordinates": 1,
+        "OpeningHoursSpecification": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "SearchAction": 1,
+        "EntryPoint": 1,
+        "ImageObject": 1,
+        "BreadcrumbList": 1,
+        "ListItem": 2
+      },
+      "sharedLocaleGraphExact": true,
+      "breadcrumbPositionsSequential": true,
+      "codeSha256": "faaaef47794cce26b3205fe717908af1112274b79a0fe839e04c2377bf169c58",
+      "schemaSha256": "a578d48c9378a45edc060975d5f4085d132dea1209b7afed115a71d152b938f9",
+      "scriptBlocks": [
+        {
+          "index": 0,
+          "rootType": "@graph",
+          "jsonTextSha256": "a3ccdeff2aabd35e5b5390e46af89d40ccef60e07083e2b951257b60a480e694",
+          "htmlSha256": "86101ff5f03e6ba4c4362eafb8c1a43963e4b302e9f7346912bd000a76e8ebe0"
+        },
+        {
+          "index": 1,
+          "rootType": "BreadcrumbList",
+          "jsonTextSha256": "9e0a012c1559deacbe7a52994ed59452af0ef75e4addce47c39bb4cef33b1c5e",
+          "htmlSha256": "d5adae58ff830a8491856217289590ed5ec166d0f8b308ae548967883f77195d"
+        }
+      ],
+      "codeFile": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-event-locale-qa-20261111\\schema-n5lZlmRftteZljWg3KVl-\\en-terms.html",
+      "schemaFile": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-event-locale-qa-20261111\\schema-n5lZlmRftteZljWg3KVl-\\en-terms.json",
+      "codeByteIdenticalToKIb4": true,
+      "specializedSchemaUrlIsCanonical": true,
+      "googleCodeResult": "NOT_RUN",
+      "codeByteIdenticalToNAZ0": true
+    },
+    {
+      "route": "/events",
+      "language": "nl",
+      "httpStatus": 200,
+      "servedBuildMatches": true,
+      "schemaScripts": 2,
+      "typeCounts": {
+        "Restaurant": 1,
+        "PostalAddress": 1,
+        "GeoCoordinates": 1,
+        "OpeningHoursSpecification": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "SearchAction": 1,
+        "EntryPoint": 1,
+        "ImageObject": 1,
+        "BreadcrumbList": 1,
+        "ListItem": 2
+      },
+      "sharedLocaleGraphExact": true,
+      "breadcrumbPositionsSequential": true,
+      "codeSha256": "1d1273cfa59a416ac886b74be691351f84cd3b2589949d0a03aaa07bab67d6a7",
+      "schemaSha256": "a01a24f1b09d5255e2ccd85623ba8b5f54fd2e2e1a3765c47f990a6bfccb5d6f",
+      "scriptBlocks": [
+        {
+          "index": 0,
+          "rootType": "@graph",
+          "jsonTextSha256": "38e87afd3c28520aa10b1c15c87f804a118abf07aa758fa0f2fe51c30c3566fd",
+          "htmlSha256": "7774bf852ff7cbb488b4fd91fca7bc19f0cb9009fb45863aca6f8be46d49afff"
+        },
+        {
+          "index": 1,
+          "rootType": "BreadcrumbList",
+          "jsonTextSha256": "0bd7a616dcaac257185f7e6aafc892b25e4dcf9dbbc491a212cfd62d21a393c6",
+          "htmlSha256": "098bb2a66d8bda27aa8cdbd16f262bd80d747ff1288ee411d07a34375b508217"
+        }
+      ],
+      "codeFile": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-event-locale-qa-20261111\\schema-n5lZlmRftteZljWg3KVl-\\events.html",
+      "schemaFile": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-event-locale-qa-20261111\\schema-n5lZlmRftteZljWg3KVl-\\events.json",
+      "codeByteIdenticalToKIb4": true,
+      "specializedSchemaUrlIsCanonical": true,
+      "googleCodeResult": "NOT_RUN",
+      "codeByteIdenticalToNAZ0": true
+    },
+    {
+      "route": "/en/events",
+      "language": "en",
+      "httpStatus": 200,
+      "servedBuildMatches": true,
+      "schemaScripts": 2,
+      "typeCounts": {
+        "Restaurant": 1,
+        "PostalAddress": 1,
+        "GeoCoordinates": 1,
+        "OpeningHoursSpecification": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "SearchAction": 1,
+        "EntryPoint": 1,
+        "ImageObject": 1,
+        "BreadcrumbList": 1,
+        "ListItem": 2
+      },
+      "sharedLocaleGraphExact": true,
+      "breadcrumbPositionsSequential": true,
+      "codeSha256": "3ea1fa19606c920b1d63966b77a6f23f73ac8848785ee5d8f82d21d2b153bd16",
+      "schemaSha256": "8bd3af7a82d65f98c14d08220388bcbe0dc6af12450be104529646d6ab8e6aee",
+      "scriptBlocks": [
+        {
+          "index": 0,
+          "rootType": "@graph",
+          "jsonTextSha256": "a3ccdeff2aabd35e5b5390e46af89d40ccef60e07083e2b951257b60a480e694",
+          "htmlSha256": "86101ff5f03e6ba4c4362eafb8c1a43963e4b302e9f7346912bd000a76e8ebe0"
+        },
+        {
+          "index": 1,
+          "rootType": "BreadcrumbList",
+          "jsonTextSha256": "ee065cd8aa35110808fceca047ca7964e65ad78280294ed58394b921ace6ec5d",
+          "htmlSha256": "5dbca0438c40ad8c72aba2d21df6acc84d8a875ac277128ebeb35b134b255c64"
+        }
+      ],
+      "codeFile": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-event-locale-qa-20261111\\schema-n5lZlmRftteZljWg3KVl-\\en-events.html",
+      "schemaFile": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-event-locale-qa-20261111\\schema-n5lZlmRftteZljWg3KVl-\\en-events.json",
+      "codeByteIdenticalToKIb4": true,
+      "specializedSchemaUrlIsCanonical": true,
+      "googleCodeResult": "NOT_RUN",
+      "codeByteIdenticalToNAZ0": true
+    },
+    {
+      "route": "/events/about",
+      "language": "nl",
+      "httpStatus": 200,
+      "servedBuildMatches": true,
+      "schemaScripts": 2,
+      "typeCounts": {
+        "Restaurant": 1,
+        "PostalAddress": 1,
+        "GeoCoordinates": 1,
+        "OpeningHoursSpecification": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "SearchAction": 1,
+        "EntryPoint": 1,
+        "ImageObject": 1,
+        "BreadcrumbList": 1,
+        "ListItem": 3
+      },
+      "sharedLocaleGraphExact": true,
+      "breadcrumbPositionsSequential": true,
+      "codeSha256": "1d119052d15528112db232a2eb3227adde8a040bc93a2872601bb712b7bc665a",
+      "schemaSha256": "bdaf048c6cf36f6be9acb163845e4cd31540464b3fb8a9d61961a0851c00c8b4",
+      "scriptBlocks": [
+        {
+          "index": 0,
+          "rootType": "@graph",
+          "jsonTextSha256": "38e87afd3c28520aa10b1c15c87f804a118abf07aa758fa0f2fe51c30c3566fd",
+          "htmlSha256": "7774bf852ff7cbb488b4fd91fca7bc19f0cb9009fb45863aca6f8be46d49afff"
+        },
+        {
+          "index": 1,
+          "rootType": "BreadcrumbList",
+          "jsonTextSha256": "0c5f9c844c2e3b32dc9aca115162dabb11171f18dbfcebd3fe1690355b1ff35f",
+          "htmlSha256": "82abb6b9552e0442bbc36af6d4c3eb1cf9910acefb140dd3ac0e7fdf64b4f6c7"
+        }
+      ],
+      "codeFile": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-event-locale-qa-20261111\\schema-n5lZlmRftteZljWg3KVl-\\events-about.html",
+      "schemaFile": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-event-locale-qa-20261111\\schema-n5lZlmRftteZljWg3KVl-\\events-about.json",
+      "codeByteIdenticalToKIb4": true,
+      "specializedSchemaUrlIsCanonical": true,
+      "googleCodeResult": "NOT_RUN",
+      "codeByteIdenticalToNAZ0": true
+    },
+    {
+      "route": "/en/events/about",
+      "language": "en",
+      "httpStatus": 200,
+      "servedBuildMatches": true,
+      "schemaScripts": 2,
+      "typeCounts": {
+        "Restaurant": 1,
+        "PostalAddress": 1,
+        "GeoCoordinates": 1,
+        "OpeningHoursSpecification": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "SearchAction": 1,
+        "EntryPoint": 1,
+        "ImageObject": 1,
+        "BreadcrumbList": 1,
+        "ListItem": 3
+      },
+      "sharedLocaleGraphExact": true,
+      "breadcrumbPositionsSequential": true,
+      "codeSha256": "f3357820b44d60a48a2d12f1ca3ca3574044b0ba67735976661d211a4f33cdb4",
+      "schemaSha256": "3fd4f7076b6fa92518462cf51751975c4448fd5ebda3fe3daab7964581814fbc",
+      "scriptBlocks": [
+        {
+          "index": 0,
+          "rootType": "@graph",
+          "jsonTextSha256": "a3ccdeff2aabd35e5b5390e46af89d40ccef60e07083e2b951257b60a480e694",
+          "htmlSha256": "86101ff5f03e6ba4c4362eafb8c1a43963e4b302e9f7346912bd000a76e8ebe0"
+        },
+        {
+          "index": 1,
+          "rootType": "BreadcrumbList",
+          "jsonTextSha256": "d06b2a852cd4375228431b6fa27df664747cc3093bf3fa0d5c0120e59532f2d0",
+          "htmlSha256": "fd6314373184bf58ea2aff3beca37f904c8ce50ba87d0640ac7588fcae73d481"
+        }
+      ],
+      "codeFile": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-event-locale-qa-20261111\\schema-n5lZlmRftteZljWg3KVl-\\en-events-about.html",
+      "schemaFile": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-event-locale-qa-20261111\\schema-n5lZlmRftteZljWg3KVl-\\en-events-about.json",
+      "codeByteIdenticalToKIb4": true,
+      "specializedSchemaUrlIsCanonical": true,
+      "googleCodeResult": "NOT_RUN",
+      "codeByteIdenticalToNAZ0": true
+    },
+    {
+      "route": "/events/gallery",
+      "language": "nl",
+      "httpStatus": 200,
+      "servedBuildMatches": true,
+      "schemaScripts": 3,
+      "typeCounts": {
+        "Restaurant": 1,
+        "PostalAddress": 1,
+        "GeoCoordinates": 1,
+        "OpeningHoursSpecification": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "SearchAction": 1,
+        "EntryPoint": 1,
+        "ImageObject": 1,
+        "BreadcrumbList": 1,
+        "ListItem": 3,
+        "ImageGallery": 1
+      },
+      "sharedLocaleGraphExact": true,
+      "breadcrumbPositionsSequential": true,
+      "codeSha256": "fd5b9d9bd3497df2bead9b804ee0618723b052bd9cacf0b3cf2ec790535e0988",
+      "schemaSha256": "1180308cedf1369d1108dd8942cd34fa567a33bf9810f1c5049fe1e31c6f35cf",
+      "scriptBlocks": [
+        {
+          "index": 0,
+          "rootType": "@graph",
+          "jsonTextSha256": "38e87afd3c28520aa10b1c15c87f804a118abf07aa758fa0f2fe51c30c3566fd",
+          "htmlSha256": "7774bf852ff7cbb488b4fd91fca7bc19f0cb9009fb45863aca6f8be46d49afff"
+        },
+        {
+          "index": 1,
+          "rootType": "BreadcrumbList",
+          "jsonTextSha256": "9afad2e287de8c3a641d1fb2ade10140467748a593f663bd96a04dd4a7b37080",
+          "htmlSha256": "170c1aba000d90b4d12d5eae2483bedfbde322a944f4a0259b9a7ba9907ee223"
+        },
+        {
+          "index": 2,
+          "rootType": "ImageGallery",
+          "jsonTextSha256": "e1863fe78c87c4973434cbafc902df07a155463670854d2ed6bd404fdca611ff",
+          "htmlSha256": "193f0af2d34841bc535f91ac79f3eee0dcee7bc43a78ab03f369b87b7c42b6cd"
+        }
+      ],
+      "codeFile": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-event-locale-qa-20261111\\schema-n5lZlmRftteZljWg3KVl-\\events-gallery.html",
+      "schemaFile": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-event-locale-qa-20261111\\schema-n5lZlmRftteZljWg3KVl-\\events-gallery.json",
+      "codeByteIdenticalToKIb4": true,
+      "specializedSchemaUrlIsCanonical": true,
+      "googleCodeResult": "NOT_RUN",
+      "codeByteIdenticalToNAZ0": true
+    },
+    {
+      "route": "/en/events/gallery",
+      "language": "en",
+      "httpStatus": 200,
+      "servedBuildMatches": true,
+      "schemaScripts": 3,
+      "typeCounts": {
+        "Restaurant": 1,
+        "PostalAddress": 1,
+        "GeoCoordinates": 1,
+        "OpeningHoursSpecification": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "SearchAction": 1,
+        "EntryPoint": 1,
+        "ImageObject": 1,
+        "BreadcrumbList": 1,
+        "ListItem": 3,
+        "ImageGallery": 1
+      },
+      "sharedLocaleGraphExact": true,
+      "breadcrumbPositionsSequential": true,
+      "codeSha256": "d0b9b28e27b8b3b46b4ee7bed309cd31d976d65bf86e8a47cd729b76f701505b",
+      "schemaSha256": "c1ba2e246b6e46f5d8b89566452f8a8558eb90f92bd85cc8a1b5d8f15ad62183",
+      "scriptBlocks": [
+        {
+          "index": 0,
+          "rootType": "@graph",
+          "jsonTextSha256": "a3ccdeff2aabd35e5b5390e46af89d40ccef60e07083e2b951257b60a480e694",
+          "htmlSha256": "86101ff5f03e6ba4c4362eafb8c1a43963e4b302e9f7346912bd000a76e8ebe0"
+        },
+        {
+          "index": 1,
+          "rootType": "BreadcrumbList",
+          "jsonTextSha256": "16063f118308e0e6b28db214a63952aa0c4295e84e73566e8ff1a2c5183d7995",
+          "htmlSha256": "df7cd14b1592b9bd7b965cbeca8be62f711769195a28e7a8c72dd446490787ae"
+        },
+        {
+          "index": 2,
+          "rootType": "ImageGallery",
+          "jsonTextSha256": "d9b8acf74a19b999aa5dd4045e8721a408ca91d3cc4dc3b0a7ea7b05a006518b",
+          "htmlSha256": "c468bbafb12f5699a8173b8157617a51f04c295adbd8ad67cab4e00236fdb402"
+        }
+      ],
+      "codeFile": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-event-locale-qa-20261111\\schema-n5lZlmRftteZljWg3KVl-\\en-events-gallery.html",
+      "schemaFile": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-event-locale-qa-20261111\\schema-n5lZlmRftteZljWg3KVl-\\en-events-gallery.json",
+      "codeByteIdenticalToKIb4": true,
+      "specializedSchemaUrlIsCanonical": true,
+      "googleCodeResult": "NOT_RUN",
+      "codeByteIdenticalToNAZ0": true
+    },
+    {
+      "route": "/events/birthdays",
+      "language": "nl",
+      "httpStatus": 200,
+      "servedBuildMatches": true,
+      "schemaScripts": 3,
+      "typeCounts": {
+        "Restaurant": 1,
+        "PostalAddress": 1,
+        "GeoCoordinates": 1,
+        "OpeningHoursSpecification": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "SearchAction": 1,
+        "EntryPoint": 1,
+        "ImageObject": 1,
+        "BreadcrumbList": 1,
+        "ListItem": 3,
+        "Service": 1,
+        "City": 1,
+        "PeopleAudience": 1
+      },
+      "sharedLocaleGraphExact": true,
+      "breadcrumbPositionsSequential": true,
+      "codeSha256": "37e1068f1a767473e5790e3d80d1019cd7a310a09b1fcf0faf4430f0c463539c",
+      "schemaSha256": "3a72cc49b319a6b5add6bbbc1145481327f02163e230c42ea4c576b13532f701",
+      "scriptBlocks": [
+        {
+          "index": 0,
+          "rootType": "@graph",
+          "jsonTextSha256": "38e87afd3c28520aa10b1c15c87f804a118abf07aa758fa0f2fe51c30c3566fd",
+          "htmlSha256": "7774bf852ff7cbb488b4fd91fca7bc19f0cb9009fb45863aca6f8be46d49afff"
+        },
+        {
+          "index": 1,
+          "rootType": "BreadcrumbList",
+          "jsonTextSha256": "b68cae361239a8dbe6c5ba9f34d9a41f5cc9fddf0cccea430ad3bd62c6ac64d0",
+          "htmlSha256": "25e629adaf6367469dd0aab2c040a43f71ecbca72dff64b0796986995d3eca65"
+        },
+        {
+          "index": 2,
+          "rootType": "Service",
+          "jsonTextSha256": "f5cd6e4c4bc354df86e7184d243c3c376c4a3249be6b79000952f47139e361e9",
+          "htmlSha256": "8cae9878b57234a4a6587727659d593a8d92b0d287770154d6c6264eaf411160"
+        }
+      ],
+      "codeFile": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-event-locale-qa-20261111\\schema-n5lZlmRftteZljWg3KVl-\\events-birthdays.html",
+      "schemaFile": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-event-locale-qa-20261111\\schema-n5lZlmRftteZljWg3KVl-\\events-birthdays.json",
+      "codeByteIdenticalToKIb4": true,
+      "specializedSchemaUrlIsCanonical": true,
+      "googleCodeResult": "NOT_RUN",
+      "codeByteIdenticalToNAZ0": true
+    },
+    {
+      "route": "/en/events/birthdays",
+      "language": "en",
+      "httpStatus": 200,
+      "servedBuildMatches": true,
+      "schemaScripts": 3,
+      "typeCounts": {
+        "Restaurant": 1,
+        "PostalAddress": 1,
+        "GeoCoordinates": 1,
+        "OpeningHoursSpecification": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "SearchAction": 1,
+        "EntryPoint": 1,
+        "ImageObject": 1,
+        "BreadcrumbList": 1,
+        "ListItem": 3,
+        "Service": 1,
+        "City": 1,
+        "PeopleAudience": 1
+      },
+      "sharedLocaleGraphExact": true,
+      "breadcrumbPositionsSequential": true,
+      "codeSha256": "0a631e16b5c95bbe5f6fedbf87ee148b38e59143dd133e3f260dd6166f3cf66c",
+      "schemaSha256": "04289477181665b08b87f220d30d478c4c442dc2af084964296ab1d928790107",
+      "scriptBlocks": [
+        {
+          "index": 0,
+          "rootType": "@graph",
+          "jsonTextSha256": "a3ccdeff2aabd35e5b5390e46af89d40ccef60e07083e2b951257b60a480e694",
+          "htmlSha256": "86101ff5f03e6ba4c4362eafb8c1a43963e4b302e9f7346912bd000a76e8ebe0"
+        },
+        {
+          "index": 1,
+          "rootType": "BreadcrumbList",
+          "jsonTextSha256": "5f3524d9587b3defd09a128ce13e1d456d467689973be146c47e52b641320288",
+          "htmlSha256": "07c405b1df8967f3a26b77786c148be932f482e68da99323fc4b1a160d891afc"
+        },
+        {
+          "index": 2,
+          "rootType": "Service",
+          "jsonTextSha256": "ea49ce3f9d86e8f73310fac44c60e0520d43282d2c6e30df2fcbe65440fc04ab",
+          "htmlSha256": "f4aa0f0d53a661649e9867838cb0ae385a19bfe7fbd861053072fff29e9942ed"
+        }
+      ],
+      "codeFile": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-event-locale-qa-20261111\\schema-n5lZlmRftteZljWg3KVl-\\en-events-birthdays.html",
+      "schemaFile": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-event-locale-qa-20261111\\schema-n5lZlmRftteZljWg3KVl-\\en-events-birthdays.json",
+      "codeByteIdenticalToKIb4": true,
+      "specializedSchemaUrlIsCanonical": true,
+      "googleCodeResult": "NOT_RUN",
+      "codeByteIdenticalToNAZ0": true
+    },
+    {
+      "route": "/events/celebrations",
+      "language": "nl",
+      "httpStatus": 200,
+      "servedBuildMatches": true,
+      "schemaScripts": 3,
+      "typeCounts": {
+        "Restaurant": 1,
+        "PostalAddress": 1,
+        "GeoCoordinates": 1,
+        "OpeningHoursSpecification": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "SearchAction": 1,
+        "EntryPoint": 1,
+        "ImageObject": 1,
+        "BreadcrumbList": 1,
+        "ListItem": 3,
+        "Service": 1,
+        "City": 1,
+        "PeopleAudience": 1
+      },
+      "sharedLocaleGraphExact": true,
+      "breadcrumbPositionsSequential": true,
+      "codeSha256": "0bf61885ad934eaa4b4e0ae844d78567ea3f8e29fb83f538a986a9c945a415af",
+      "schemaSha256": "9a8da3c141e3129d707fdf588be9662c946627eb091dec868a86be60914e0430",
+      "scriptBlocks": [
+        {
+          "index": 0,
+          "rootType": "@graph",
+          "jsonTextSha256": "38e87afd3c28520aa10b1c15c87f804a118abf07aa758fa0f2fe51c30c3566fd",
+          "htmlSha256": "7774bf852ff7cbb488b4fd91fca7bc19f0cb9009fb45863aca6f8be46d49afff"
+        },
+        {
+          "index": 1,
+          "rootType": "BreadcrumbList",
+          "jsonTextSha256": "2c19c414eb0f8520ef178e5d4eac4cfd4af153d4836037b5628336ad059ef105",
+          "htmlSha256": "bdec06d6c49df648f551c6fcfa58b6eeaff7ef2ba167c88e5589055d301eb474"
+        },
+        {
+          "index": 2,
+          "rootType": "Service",
+          "jsonTextSha256": "0c1b83ed669d6c69ea45ed57303e7ae75263d6339b2094e93f901080d5658d11",
+          "htmlSha256": "31873f25ac9764f4ed33eee02f0d98586cd4b6e55a73e034447f9aeaae344a57"
+        }
+      ],
+      "codeFile": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-event-locale-qa-20261111\\schema-n5lZlmRftteZljWg3KVl-\\events-celebrations.html",
+      "schemaFile": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-event-locale-qa-20261111\\schema-n5lZlmRftteZljWg3KVl-\\events-celebrations.json",
+      "codeByteIdenticalToKIb4": true,
+      "specializedSchemaUrlIsCanonical": true,
+      "googleCodeResult": "NOT_RUN",
+      "codeByteIdenticalToNAZ0": true
+    },
+    {
+      "route": "/en/events/celebrations",
+      "language": "en",
+      "httpStatus": 200,
+      "servedBuildMatches": true,
+      "schemaScripts": 3,
+      "typeCounts": {
+        "Restaurant": 1,
+        "PostalAddress": 1,
+        "GeoCoordinates": 1,
+        "OpeningHoursSpecification": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "SearchAction": 1,
+        "EntryPoint": 1,
+        "ImageObject": 1,
+        "BreadcrumbList": 1,
+        "ListItem": 3,
+        "Service": 1,
+        "City": 1,
+        "PeopleAudience": 1
+      },
+      "sharedLocaleGraphExact": true,
+      "breadcrumbPositionsSequential": true,
+      "codeSha256": "c36e687fbb90f86a9963bc5d8bcfdf46943f65f51e28dfb1fd6321d913c3da3e",
+      "schemaSha256": "9a83d4668bc959b23fa53e8b046cb25f01be038f3d881f4065bc4d658179267a",
+      "scriptBlocks": [
+        {
+          "index": 0,
+          "rootType": "@graph",
+          "jsonTextSha256": "a3ccdeff2aabd35e5b5390e46af89d40ccef60e07083e2b951257b60a480e694",
+          "htmlSha256": "86101ff5f03e6ba4c4362eafb8c1a43963e4b302e9f7346912bd000a76e8ebe0"
+        },
+        {
+          "index": 1,
+          "rootType": "BreadcrumbList",
+          "jsonTextSha256": "0840ce37f5967ce90086e0208fe0044602ba9ac97cfb707f2ef9a60b8397405c",
+          "htmlSha256": "c6b4930bc0f62308a8ad3f43141f514420d9f9447eee55f062201555fb120efc"
+        },
+        {
+          "index": 2,
+          "rootType": "Service",
+          "jsonTextSha256": "d1260dba3258ce279c73bdb542e8a2e5d11c4791745f576c62c17e7a02856c0c",
+          "htmlSha256": "fc895238985adde09d4f31d4e6a9e961637de9a6c1b5f6617126e59794b00f8f"
+        }
+      ],
+      "codeFile": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-event-locale-qa-20261111\\schema-n5lZlmRftteZljWg3KVl-\\en-events-celebrations.html",
+      "schemaFile": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-event-locale-qa-20261111\\schema-n5lZlmRftteZljWg3KVl-\\en-events-celebrations.json",
+      "codeByteIdenticalToKIb4": true,
+      "specializedSchemaUrlIsCanonical": true,
+      "googleCodeResult": "NOT_RUN",
+      "codeByteIdenticalToNAZ0": true
+    },
+    {
+      "route": "/events/company-catering",
+      "language": "nl",
+      "httpStatus": 200,
+      "servedBuildMatches": true,
+      "schemaScripts": 3,
+      "typeCounts": {
+        "Restaurant": 1,
+        "PostalAddress": 1,
+        "GeoCoordinates": 1,
+        "OpeningHoursSpecification": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "SearchAction": 1,
+        "EntryPoint": 1,
+        "ImageObject": 1,
+        "BreadcrumbList": 1,
+        "ListItem": 3,
+        "Service": 1,
+        "City": 1,
+        "BusinessAudience": 1
+      },
+      "sharedLocaleGraphExact": true,
+      "breadcrumbPositionsSequential": true,
+      "codeSha256": "76896fb7de4f553c10ee3f4f21e1fa9c7a916f830ee1fbf9db2d2d8116241bd7",
+      "schemaSha256": "27e8a7cc233dac544101d8fdaf67f2804aecfd64ee821586780cfa60b07ce199",
+      "scriptBlocks": [
+        {
+          "index": 0,
+          "rootType": "@graph",
+          "jsonTextSha256": "38e87afd3c28520aa10b1c15c87f804a118abf07aa758fa0f2fe51c30c3566fd",
+          "htmlSha256": "7774bf852ff7cbb488b4fd91fca7bc19f0cb9009fb45863aca6f8be46d49afff"
+        },
+        {
+          "index": 1,
+          "rootType": "BreadcrumbList",
+          "jsonTextSha256": "0bc10b503477e15c038c229f7baf4ae0e8a0c3233ca59816720a60816764d3b7",
+          "htmlSha256": "a162aafaa35724a866b7739f69b2345b79d8a82ec8712ce379f0a314f69695db"
+        },
+        {
+          "index": 2,
+          "rootType": "Service",
+          "jsonTextSha256": "419e4ffde8c30eb3cb84ffb44c98133d501d57a20b81da250e31c5bd1453f335",
+          "htmlSha256": "d5d414acb633f83a3efe68a70f5ee731561b75f52b5f7cafd1d273438980e5f7"
+        }
+      ],
+      "codeFile": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-event-locale-qa-20261111\\schema-n5lZlmRftteZljWg3KVl-\\events-company-catering.html",
+      "schemaFile": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-event-locale-qa-20261111\\schema-n5lZlmRftteZljWg3KVl-\\events-company-catering.json",
+      "codeByteIdenticalToKIb4": true,
+      "specializedSchemaUrlIsCanonical": true,
+      "googleCodeResult": "NOT_RUN",
+      "codeByteIdenticalToNAZ0": true
+    },
+    {
+      "route": "/en/events/company-catering",
+      "language": "en",
+      "httpStatus": 200,
+      "servedBuildMatches": true,
+      "schemaScripts": 3,
+      "typeCounts": {
+        "Restaurant": 1,
+        "PostalAddress": 1,
+        "GeoCoordinates": 1,
+        "OpeningHoursSpecification": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "SearchAction": 1,
+        "EntryPoint": 1,
+        "ImageObject": 1,
+        "BreadcrumbList": 1,
+        "ListItem": 3,
+        "Service": 1,
+        "City": 1,
+        "BusinessAudience": 1
+      },
+      "sharedLocaleGraphExact": true,
+      "breadcrumbPositionsSequential": true,
+      "codeSha256": "932a8910ff42a986f19ea87687f226aac0ef2f7a36a51cc9b6c8c34d230b6590",
+      "schemaSha256": "db932e0e43f7b4973a797da8770525931feb98de3c207ef359d42c7df2185078",
+      "scriptBlocks": [
+        {
+          "index": 0,
+          "rootType": "@graph",
+          "jsonTextSha256": "a3ccdeff2aabd35e5b5390e46af89d40ccef60e07083e2b951257b60a480e694",
+          "htmlSha256": "86101ff5f03e6ba4c4362eafb8c1a43963e4b302e9f7346912bd000a76e8ebe0"
+        },
+        {
+          "index": 1,
+          "rootType": "BreadcrumbList",
+          "jsonTextSha256": "3a06dfe913dc9543f0445ed0911c1c770d8eb44fcf05b445735abe6fe541d653",
+          "htmlSha256": "2e415e9caecd0b64e83b40902aef8bae4c34b98d91ed4c1afd4bb6f4f947927a"
+        },
+        {
+          "index": 2,
+          "rootType": "Service",
+          "jsonTextSha256": "5f652943d3661ea0db2671dfa06aeed11e3bb962159b96b9b03a45f2d2257fca",
+          "htmlSha256": "48d8ebdd575e788e38ea344cb009ea35fd0f56d48832d036594b679b77cf321b"
+        }
+      ],
+      "codeFile": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-event-locale-qa-20261111\\schema-n5lZlmRftteZljWg3KVl-\\en-events-company-catering.html",
+      "schemaFile": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-event-locale-qa-20261111\\schema-n5lZlmRftteZljWg3KVl-\\en-events-company-catering.json",
+      "codeByteIdenticalToKIb4": true,
+      "specializedSchemaUrlIsCanonical": true,
+      "googleCodeResult": "NOT_RUN",
+      "codeByteIdenticalToNAZ0": true
+    },
+    {
+      "route": "/events/company-lunches",
+      "language": "nl",
+      "httpStatus": 200,
+      "servedBuildMatches": true,
+      "schemaScripts": 3,
+      "typeCounts": {
+        "Restaurant": 1,
+        "PostalAddress": 1,
+        "GeoCoordinates": 1,
+        "OpeningHoursSpecification": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "SearchAction": 1,
+        "EntryPoint": 1,
+        "ImageObject": 1,
+        "BreadcrumbList": 1,
+        "ListItem": 3,
+        "Service": 1,
+        "City": 1
+      },
+      "sharedLocaleGraphExact": true,
+      "breadcrumbPositionsSequential": true,
+      "codeSha256": "853aa9498f693f98063b18f6229066d317ccdca8c6f8351ca4a016a0590f84da",
+      "schemaSha256": "98dff7bafeafac84eb6d194a83941f88f8b7bee7d5b8b6f7d40a6ffe33a073d5",
+      "scriptBlocks": [
+        {
+          "index": 0,
+          "rootType": "@graph",
+          "jsonTextSha256": "38e87afd3c28520aa10b1c15c87f804a118abf07aa758fa0f2fe51c30c3566fd",
+          "htmlSha256": "7774bf852ff7cbb488b4fd91fca7bc19f0cb9009fb45863aca6f8be46d49afff"
+        },
+        {
+          "index": 1,
+          "rootType": "BreadcrumbList",
+          "jsonTextSha256": "ed8addd56ad9909ccd4085224b6a5a9414a481652bc5b1323b9b0ce3c0ef5bfc",
+          "htmlSha256": "fb0dadd047c5825ccce6c7b62b64346be44de58fe9f1756bf6d62884ffd469d9"
+        },
+        {
+          "index": 2,
+          "rootType": "Service",
+          "jsonTextSha256": "d23a60628b04094f197468d958ea3addee4af80c024a6e857949cca444a54d99",
+          "htmlSha256": "afc6d7ba74d405149fec159adcbf772efda5621e5c05d9dec89f66a28717667d"
+        }
+      ],
+      "codeFile": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-event-locale-qa-20261111\\schema-n5lZlmRftteZljWg3KVl-\\events-company-lunches.html",
+      "schemaFile": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-event-locale-qa-20261111\\schema-n5lZlmRftteZljWg3KVl-\\events-company-lunches.json",
+      "codeByteIdenticalToKIb4": true,
+      "specializedSchemaUrlIsCanonical": true,
+      "googleCodeResult": "NOT_RUN",
+      "codeByteIdenticalToNAZ0": true
+    },
+    {
+      "route": "/en/events/company-lunches",
+      "language": "en",
+      "httpStatus": 200,
+      "servedBuildMatches": true,
+      "schemaScripts": 3,
+      "typeCounts": {
+        "Restaurant": 1,
+        "PostalAddress": 1,
+        "GeoCoordinates": 1,
+        "OpeningHoursSpecification": 1,
+        "Organization": 1,
+        "WebSite": 1,
+        "SearchAction": 1,
+        "EntryPoint": 1,
+        "ImageObject": 1,
+        "BreadcrumbList": 1,
+        "ListItem": 3,
+        "Service": 1,
+        "City": 1
+      },
+      "sharedLocaleGraphExact": true,
+      "breadcrumbPositionsSequential": true,
+      "codeSha256": "41bf04fdb0330e73adaebe9940999797927b0d4e047febfe95e6bc325181d020",
+      "schemaSha256": "132e0a611b2b808a3d029bf1d293d3da6bd40f8e7e068bd43674a22713ac0360",
+      "scriptBlocks": [
+        {
+          "index": 0,
+          "rootType": "@graph",
+          "jsonTextSha256": "a3ccdeff2aabd35e5b5390e46af89d40ccef60e07083e2b951257b60a480e694",
+          "htmlSha256": "86101ff5f03e6ba4c4362eafb8c1a43963e4b302e9f7346912bd000a76e8ebe0"
+        },
+        {
+          "index": 1,
+          "rootType": "BreadcrumbList",
+          "jsonTextSha256": "758c73f0874820a090eb22da57756215f8450419fd2d4b207ad218d629397bc7",
+          "htmlSha256": "1fab7397865457d5dcfe204a48e1250fcaf3d62272c1e2eb354b2b29e434b890"
+        },
+        {
+          "index": 2,
+          "rootType": "Service",
+          "jsonTextSha256": "35dde923792b03ea66bb0c099c9fefe8d956e8d6890bc37156b2eaa504753dbd",
+          "htmlSha256": "9e7f763b46b7357d4223dcdf1d4734e37f8c57b66f70768bbd6e5ff9fd70c9e2"
+        }
+      ],
+      "codeFile": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-event-locale-qa-20261111\\schema-n5lZlmRftteZljWg3KVl-\\en-events-company-lunches.html",
+      "schemaFile": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-event-locale-qa-20261111\\schema-n5lZlmRftteZljWg3KVl-\\en-events-company-lunches.json",
+      "codeByteIdenticalToKIb4": true,
+      "specializedSchemaUrlIsCanonical": true,
+      "googleCodeResult": "NOT_RUN",
+      "codeByteIdenticalToNAZ0": true
+    }
+  ],
+  "sharedBusinessGraphs": 24,
+  "breadcrumbRoutes": 22,
+  "serviceRoutes": 8,
+  "imageGalleryRoutes": 2,
+  "faq": [
+    {
+      "route": "/",
+      "visibleQuestions": 9,
+      "structuredQuestions": 9,
+      "exactTextEquality": true,
+      "visibleContentSha256": "2fc5bf4d9e47e00d9500966b6bfcb590b41926973137f8127ff1721a9cb3d9a6"
+    },
+    {
+      "route": "/en",
+      "visibleQuestions": 9,
+      "structuredQuestions": 9,
+      "exactTextEquality": true,
+      "visibleContentSha256": "0c3a9b62f11bb1e9cb031be6110aafdf9cef900ee215d942a3842f1b37909e62"
+    }
+  ],
+  "menuSnapshotVerification": {
+    "capturedAt": "2026-11-11T14:02:15.463Z",
+    "sourceHash": "66eda306b74cf90dc15ad018cc3064212349151810d8df2e098a06d6e8588892",
+    "sourceHashVerified": true,
+    "products": 224,
+    "brands": 2,
+    "comparison": "Fresh visible schema dishes match pinned snapshot category/name/two-decimal price/EUR and distinct responsive HTML cards; raw storage URLs/product rows are not copied into this repository report.",
+    "menus": [
+      {
+        "route": "/menukaart",
+        "menuSchemas": 1,
+        "totalTandoorCatalogItems": 140,
+        "publishedMenuItems": 2,
+        "renderedResponsiveArticleCopies": 4,
+        "distinctRenderedDishes": 2,
+        "allPublishedMenuItemsMatchSnapshotPrices": true,
+        "exactVisibleNamePriceCurrencyMatch": true,
+        "allRenderedCopiesMatchSchema": true,
+        "passed": true,
+        "priceTableSha256": "17aa2f2927677f333f16bf18ab20a88a0e2f0f7b18dceddf4b357f124ad08b6a"
+      },
+      {
+        "route": "/en/menu",
+        "menuSchemas": 1,
+        "totalTandoorCatalogItems": 140,
+        "publishedMenuItems": 2,
+        "renderedResponsiveArticleCopies": 4,
+        "distinctRenderedDishes": 2,
+        "allPublishedMenuItemsMatchSnapshotPrices": true,
+        "exactVisibleNamePriceCurrencyMatch": true,
+        "allRenderedCopiesMatchSchema": true,
+        "passed": true,
+        "priceTableSha256": "17aa2f2927677f333f16bf18ab20a88a0e2f0f7b18dceddf4b357f124ad08b6a"
+      }
+    ]
+  },
+  "referencedPublicImageFiles": [
+    {
+      "file": "public/brand/shah-social-v1.png",
+      "bytes": 41551,
+      "sha256": "c1c5693902db1732593718a64d50af11ee2fc23601d4c9a08426bdb7b4886032",
+      "matchesCompiledInputSnapshot": true
+    },
+    {
+      "file": "public/brand/shah-landscape-teal-v1.svg",
+      "bytes": 17099,
+      "sha256": "b543b5ee55804b9044c7d8a570e859bf4977ffd673256a4124f22445139685b7",
+      "matchesCompiledInputSnapshot": true
+    },
+    {
+      "file": "public/brand/shah-room-v1.webp",
+      "bytes": 153334,
+      "sha256": "d583b7815079e66e4925fb004ffec42079c21968ee2256fb7d75caf2cd3a2098",
+      "matchesCompiledInputSnapshot": true
+    },
+    {
+      "file": "public/brand/event-gallery-v1/shah-gallery-687a0402-1280.webp",
+      "bytes": 77794,
+      "sha256": "3f653af69cd6290a62eb75905dfe8da1f94265a7d1d6563a5fe46c72707f9aec",
+      "matchesCompiledInputSnapshot": true
+    },
+    {
+      "file": "public/brand/event-gallery-v1/shah-gallery-687a0210-1280.webp",
+      "bytes": 191090,
+      "sha256": "cea5b633f763a9a99d7dda1261b7850d22dec594488fdec5076b48ab6240cfec",
+      "matchesCompiledInputSnapshot": true
+    },
+    {
+      "file": "public/brand/event-gallery-v1/shah-gallery-687a0211-1280.webp",
+      "bytes": 192314,
+      "sha256": "2e3abb56020e12a5abe8e22ab07148a6bb171c24912abebac00317f0848568a6",
+      "matchesCompiledInputSnapshot": true
+    },
+    {
+      "file": "public/brand/event-gallery-v1/shah-gallery-687a0260-1280.webp",
+      "bytes": 90552,
+      "sha256": "09785f0d6d3bc8d5fd4edeeb6ba2df0acfa9b10b93b82e8c4c524d4cd20b5a5b",
+      "matchesCompiledInputSnapshot": true
+    },
+    {
+      "file": "public/brand/event-gallery-v1/shah-gallery-687a0216-1280.webp",
+      "bytes": 178672,
+      "sha256": "e8a76c8e8d33318381ac82df75804eea4ac1ffdb582a4bfd470c21a700baaf80",
+      "matchesCompiledInputSnapshot": true
+    },
+    {
+      "file": "public/brand/event-gallery-v1/shah-gallery-687a0321-1280.webp",
+      "bytes": 192860,
+      "sha256": "1bcc3124fbe5854b9745a362384e211c2d02dad69754b332e04bf915f8c76ad6",
+      "matchesCompiledInputSnapshot": true
+    },
+    {
+      "file": "public/brand/event-gallery-v1/shah-gallery-687a0090-1280.webp",
+      "bytes": 125786,
+      "sha256": "44ae89c0a78ccade6ec5485823026394bca4f5a0e8dcc7f8e50ae401629f4d86",
+      "matchesCompiledInputSnapshot": true
+    },
+    {
+      "file": "public/brand/event-gallery-v1/shah-gallery-687a0336-1280.webp",
+      "bytes": 177064,
+      "sha256": "ad39fc043877faf848c2daa5c949cf1890a532b602adaa97d061b1b8a3db0c27",
+      "matchesCompiledInputSnapshot": true
+    },
+    {
+      "file": "public/brand/event-gallery-v1/shah-gallery-687a0343-1280.webp",
+      "bytes": 197878,
+      "sha256": "748826828f75c435034c2b4498017850b5319a463405c8af394e21c2fb27c3ba",
+      "matchesCompiledInputSnapshot": true
+    },
+    {
+      "file": "public/brand/event-gallery-v1/shah-gallery-687a0412-1280.webp",
+      "bytes": 94218,
+      "sha256": "eada4dd1e0e36a4293c48fb3e39aef90fefaf38655082318bb627ec1956f8190",
+      "matchesCompiledInputSnapshot": true
+    }
+  ],
+  "imageBodiesRequested": 0,
+  "apisRequested": 0,
+  "liveDatabaseRequests": 0,
+  "rawHttpCrawl": {
+    "requests": 26,
+    "capturedAt": "2026-11-11T23:15:33.318Z",
+    "trafficFinishedAt": "2026-11-11T23:15:33.918Z",
+    "proof": "docs/cinematic-paired-events-seo-2026-11-11.json"
+  },
+  "all24CodePayloadsIdenticalToKIb4": true,
+  "externalGoogleCode": "NOT_RUN",
+  "externalValidatorAttempt": "docs/structured-data-external-validator-attempt-20261111.json",
+  "externalFailureIsSchemaFailure": false,
+  "sourceEdits": 0,
+  "publication": false,
+  "all24CodePayloadsIdenticalToNAZ0": true,
+  "promotion": {
+    "mainAndLanPromoted": true,
+    "reportedByParent": true
+  }
+}

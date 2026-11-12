@@ -1,8 +1,8 @@
 {
-  "checkedAt": "2026-11-11T19:33:06.996Z",
-  "buildId": "Hj2ubUjCMfbacacwFligZ",
-  "dist": ".next-review-cookie-ssr-20261111",
-  "sourceSha256": "1b9a194de54237b2104232c89ce249729ddd466a648d819a1118bcd81717fc62",
+  "checkedAt": "2026-11-12T01:38:10.649Z",
+  "buildId": "s_2pU6IxrWANtKLhFIf2S",
+  "dist": ".next-review-shah-complete-20261112",
+  "sourceSha256": "0d98fae249ab1b1516cd84408a7a4725ddaf9dcc0028a3093c28c0b9d5ea670d",
   "sourceUnchangedAfterBuild": true,
   "sourceChanges": [],
   "loopbackOnly": true,
@@ -10,87 +10,255 @@
   "results": [
     {
       "route": "/events",
+      "locale": "nl",
       "session": "guest",
       "status": 200,
-      "indexable": true
+      "indexable": true,
+      "selfCanonical": true,
+      "reciprocalAlternates": 3
     },
     {
       "route": "/events/about",
+      "locale": "nl",
       "session": "guest",
       "status": 200,
-      "indexable": true
+      "indexable": true,
+      "selfCanonical": true,
+      "reciprocalAlternates": 3
     },
     {
       "route": "/events/birthdays",
+      "locale": "nl",
       "session": "guest",
       "status": 200,
-      "indexable": true
+      "indexable": true,
+      "selfCanonical": true,
+      "reciprocalAlternates": 3
     },
     {
       "route": "/events/celebrations",
+      "locale": "nl",
       "session": "guest",
       "status": 200,
-      "indexable": true
+      "indexable": true,
+      "selfCanonical": true,
+      "reciprocalAlternates": 3
     },
     {
       "route": "/events/company-catering",
+      "locale": "nl",
       "session": "guest",
       "status": 200,
-      "indexable": true
+      "indexable": true,
+      "selfCanonical": true,
+      "reciprocalAlternates": 3
     },
     {
       "route": "/events/company-lunches",
+      "locale": "nl",
       "session": "guest",
       "status": 200,
-      "indexable": true
+      "indexable": true,
+      "selfCanonical": true,
+      "reciprocalAlternates": 3
     },
     {
       "route": "/events/gallery",
+      "locale": "nl",
       "session": "guest",
       "status": 200,
-      "indexable": true
+      "indexable": true,
+      "selfCanonical": true,
+      "reciprocalAlternates": 3
+    },
+    {
+      "route": "/en/events",
+      "locale": "en",
+      "session": "guest",
+      "status": 200,
+      "indexable": true,
+      "selfCanonical": true,
+      "reciprocalAlternates": 3
+    },
+    {
+      "route": "/en/events/about",
+      "locale": "en",
+      "session": "guest",
+      "status": 200,
+      "indexable": true,
+      "selfCanonical": true,
+      "reciprocalAlternates": 3
+    },
+    {
+      "route": "/en/events/birthdays",
+      "locale": "en",
+      "session": "guest",
+      "status": 200,
+      "indexable": true,
+      "selfCanonical": true,
+      "reciprocalAlternates": 3
+    },
+    {
+      "route": "/en/events/celebrations",
+      "locale": "en",
+      "session": "guest",
+      "status": 200,
+      "indexable": true,
+      "selfCanonical": true,
+      "reciprocalAlternates": 3
+    },
+    {
+      "route": "/en/events/company-catering",
+      "locale": "en",
+      "session": "guest",
+      "status": 200,
+      "indexable": true,
+      "selfCanonical": true,
+      "reciprocalAlternates": 3
+    },
+    {
+      "route": "/en/events/company-lunches",
+      "locale": "en",
+      "session": "guest",
+      "status": 200,
+      "indexable": true,
+      "selfCanonical": true,
+      "reciprocalAlternates": 3
+    },
+    {
+      "route": "/en/events/gallery",
+      "locale": "en",
+      "session": "guest",
+      "status": 200,
+      "indexable": true,
+      "selfCanonical": true,
+      "reciprocalAlternates": 3
     },
     {
       "route": "/events",
+      "locale": "nl",
       "session": "invalid",
       "status": 200,
-      "indexable": true
+      "indexable": true,
+      "selfCanonical": true,
+      "reciprocalAlternates": 3
     },
     {
       "route": "/events/about",
+      "locale": "nl",
       "session": "invalid",
       "status": 200,
-      "indexable": true
+      "indexable": true,
+      "selfCanonical": true,
+      "reciprocalAlternates": 3
     },
     {
       "route": "/events/birthdays",
+      "locale": "nl",
       "session": "invalid",
       "status": 200,
-      "indexable": true
+      "indexable": true,
+      "selfCanonical": true,
+      "reciprocalAlternates": 3
     },
     {
       "route": "/events/celebrations",
+      "locale": "nl",
       "session": "invalid",
       "status": 200,
-      "indexable": true
+      "indexable": true,
+      "selfCanonical": true,
+      "reciprocalAlternates": 3
     },
     {
       "route": "/events/company-catering",
+      "locale": "nl",
       "session": "invalid",
       "status": 200,
-      "indexable": true
+      "indexable": true,
+      "selfCanonical": true,
+      "reciprocalAlternates": 3
     },
     {
       "route": "/events/company-lunches",
+      "locale": "nl",
       "session": "invalid",
       "status": 200,
-      "indexable": true
+      "indexable": true,
+      "selfCanonical": true,
+      "reciprocalAlternates": 3
     },
     {
       "route": "/events/gallery",
+      "locale": "nl",
       "session": "invalid",
       "status": 200,
-      "indexable": true
+      "indexable": true,
+      "selfCanonical": true,
+      "reciprocalAlternates": 3
+    },
+    {
+      "route": "/en/events",
+      "locale": "en",
+      "session": "invalid",
+      "status": 200,
+      "indexable": true,
+      "selfCanonical": true,
+      "reciprocalAlternates": 3
+    },
+    {
+      "route": "/en/events/about",
+      "locale": "en",
+      "session": "invalid",
+      "status": 200,
+      "indexable": true,
+      "selfCanonical": true,
+      "reciprocalAlternates": 3
+    },
+    {
+      "route": "/en/events/birthdays",
+      "locale": "en",
+      "session": "invalid",
+      "status": 200,
+      "indexable": true,
+      "selfCanonical": true,
+      "reciprocalAlternates": 3
+    },
+    {
+      "route": "/en/events/celebrations",
+      "locale": "en",
+      "session": "invalid",
+      "status": 200,
+      "indexable": true,
+      "selfCanonical": true,
+      "reciprocalAlternates": 3
+    },
+    {
+      "route": "/en/events/company-catering",
+      "locale": "en",
+      "session": "invalid",
+      "status": 200,
+      "indexable": true,
+      "selfCanonical": true,
+      "reciprocalAlternates": 3
+    },
+    {
+      "route": "/en/events/company-lunches",
+      "locale": "en",
+      "session": "invalid",
+      "status": 200,
+      "indexable": true,
+      "selfCanonical": true,
+      "reciprocalAlternates": 3
+    },
+    {
+      "route": "/en/events/gallery",
+      "locale": "en",
+      "session": "invalid",
+      "status": 200,
+      "indexable": true,
+      "selfCanonical": true,
+      "reciprocalAlternates": 3
     },
     {
       "route": "/parties",
@@ -143,10 +311,6 @@
       "status": 403
     },
     {
-      "route": "/EVENTS",
-      "status": 404
-    },
-    {
       "route": "/PARTIES",
       "status": 404
     },
@@ -156,6 +320,14 @@
     },
     {
       "route": "/events/not-a-real-page",
+      "status": 404
+    },
+    {
+      "route": "/en/events/not-a-real-page",
+      "status": 404
+    },
+    {
+      "route": "/en/parties",
       "status": 404
     },
     {
@@ -171,14 +343,42 @@
       "destinationStatus": 200
     },
     {
+      "route": "/en/events/",
+      "status": 308,
+      "destination": "/en/events",
+      "destinationStatus": 200
+    },
+    {
+      "route": "/en/events/gallery/",
+      "status": 308,
+      "destination": "/en/events/gallery",
+      "destinationStatus": 200
+    },
+    {
+      "route": "/EVENTS",
+      "status": 308,
+      "destination": "/events",
+      "destinationStatus": 200
+    },
+    {
+      "route": "/EN/EVENTS",
+      "status": 308,
+      "destination": "/en/events",
+      "destinationStatus": 200
+    },
+    {
       "route": "/parties/",
       "status": 308,
       "destination": "/parties",
       "destinationStatus": 404
     }
   ],
+  "eventUrls": 14,
+  "publicUrls": 24,
+  "sitemapUrls": 24,
+  "sitemapAlternates": 72,
   "sitemap": true,
   "robots": true,
-  "publicHomeCards": 3,
-  "readOnlyPreview": "http://127.0.0.1:3398/events"
+  "publicHomeCardsPerLocale": 3,
+  "readOnlyPreview": "http://127.0.0.1:3708/events"
 }

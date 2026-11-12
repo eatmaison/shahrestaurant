@@ -1,0 +1,263 @@
+{
+  "atUTC": "2026-11-11T21:57:14.437Z",
+  "status": "Compiled control scopes PASS; new CapCut master/poster artifact still requires its fresh home/media smoke. No whole-workspace or final-media acceptance claim.",
+  "artifacts": {
+    "broad": {
+      "build": "wUsQV2PkRJMdBoQDSZLxt",
+      "sourceSha256": "12a34bb4ce555d9ed30849d07bcac979ffb953c568e734fcf773cebb2bd77c67",
+      "origin": "http://127.0.0.1:3548"
+    },
+    "reflow": {
+      "build": "U5-gxuCUwhE6QFQ1NV8jE",
+      "sourceSha256": "022346f521b958992ffa443cfcff84cd4dcddae3a3e6c02dd04ac899971057da",
+      "origin": "http://127.0.0.1:3578"
+    },
+    "native": {
+      "build": "CdeRwqsXQrjmVYMGw28vU",
+      "sourcePrefixProvidedByOwner": "46c7f6",
+      "origin": "http://127.0.0.1:3588",
+      "scope": "Compiled native-anchor fix; old v4 movie remains a control."
+    }
+  },
+  "checks": {
+    "broadPublicAndGuestGeometry": {
+      "cases": 78,
+      "viewports": [
+        320,
+        390,
+        1440
+      ],
+      "controlObservations": 2573,
+      "smallTargets": 0,
+      "positiveDocumentOverflowCases": 0,
+      "scope": "24 public NL/EN routes plus guest Account/recovery, each at320/390/1440."
+    },
+    "actualTouchAndKeyboard": {
+      "cases": 29,
+      "viewports": [
+        320,
+        390
+      ],
+      "nonGetRequests": 0,
+      "runtimeExceptions": 0,
+      "consoleErrors": 0,
+      "scope": "Keyboard mobile menu, real touch event submenu/categoryrail/Add/quantity/cart/pickup/checkout fields/Tab focus, Cookie necessary/reload and lightbox arrows/Escape/focusreturn. No order/authentication/reset submission."
+    },
+    "freshReflowHomeGeometry": {
+      "cases": 12,
+      "viewports": [
+        320,
+        390,
+        1440
+      ],
+      "controlObservations": 760,
+      "smallTargets": 0,
+      "positiveDocumentOverflowCases": 0
+    },
+    "compiledInlineAndText200": {
+      "cases": 18,
+      "edgeFailures": 0,
+      "interactiveOverlapCases": 0,
+      "overflowCases": 0,
+      "reflowCases": 6,
+      "clippedGlyphRanges": 0,
+      "scope": "Compiled source CSS; no target-rule injection. 200% mode doubles pre-read computed font/line-height pixels."
+    },
+    "nativeAnchor": {
+      "cases": 15,
+      "nonGetRequests": 0,
+      "errors": 0,
+      "scope": "Fresh document for each normal/reduced/NoJS mode. Real Tab/Enter at320/390/1440 and direct/#intro navigation; filmBottom0/introTop0, hash#intro, focusintro, H1 safe. JS/reduced header and notice visible. NoJS retains intentional normal-flow header and hidden home notice.",
+      "skipCases": [
+        {
+          "name": "320-keyboard-skip",
+          "width": 247.609375,
+          "height": 52,
+          "introTop": 0,
+          "filmBottom": 0,
+          "focus": "intro",
+          "headerVisibility": "visible",
+          "noticeVisibility": "visible",
+          "otherMenuMargin": "174px"
+        },
+        {
+          "name": "390-keyboard-skip",
+          "width": 247.609375,
+          "height": 52,
+          "introTop": 0,
+          "filmBottom": 0,
+          "focus": "intro",
+          "headerVisibility": "visible",
+          "noticeVisibility": "visible",
+          "otherMenuMargin": "174px"
+        },
+        {
+          "name": "1440-keyboard-skip",
+          "width": 247.609375,
+          "height": 52,
+          "introTop": 0,
+          "filmBottom": 0,
+          "focus": "intro",
+          "headerVisibility": "visible",
+          "noticeVisibility": "visible",
+          "otherMenuMargin": "187.359px"
+        },
+        {
+          "name": "390-reduced-native-skip",
+          "width": 247.609375,
+          "height": 52,
+          "introTop": 0,
+          "filmBottom": 0,
+          "focus": "intro",
+          "headerVisibility": "visible",
+          "noticeVisibility": "visible",
+          "otherMenuMargin": "174px"
+        },
+        {
+          "name": "390-nojs-native-skip",
+          "width": 247.609375,
+          "height": 52,
+          "introTop": 0,
+          "filmBottom": 0,
+          "focus": "intro",
+          "headerVisibility": "visible",
+          "noticeVisibility": "hidden",
+          "otherMenuMargin": "161px"
+        }
+      ],
+      "directHash": [
+        {
+          "name": "390-direct-js-hash",
+          "introTop": 0,
+          "filmBottom": 0,
+          "hash": "#intro",
+          "headerVisibility": "visible"
+        },
+        {
+          "name": "390-direct-reduced-hash",
+          "introTop": 0,
+          "filmBottom": 0,
+          "hash": "#intro",
+          "headerVisibility": "visible"
+        },
+        {
+          "name": "390-direct-nojs-hash",
+          "introTop": 0,
+          "filmBottom": 0,
+          "hash": "#intro",
+          "headerVisibility": "visible"
+        }
+      ],
+      "autoplay": [
+        {
+          "name": "390-native-muted-autoplay-smoke",
+          "before": {
+            "paused": false,
+            "currentTime": 0.1033,
+            "readyState": 4,
+            "muted": true,
+            "playsInline": true
+          },
+          "after": {
+            "paused": false,
+            "currentTime": 0.6137,
+            "readyState": 4,
+            "muted": true,
+            "playsInline": true
+          },
+          "note": "Functional time progression, not a playback benchmark or natural-end proof."
+        }
+      ]
+    }
+  },
+  "sourceChanges": [
+    "Five targeted control stylesheets increase confirmed standalone target boxes to48px, including short footer links, reservation directions/contact, event breadcrumbs/CTAs, home address, partner links and guest recovery destinations.",
+    "Cookie Privacy and sentence SignIn anchors have actual positioned48px inline-flex boxes; scoped negative block margins retain paragraph rhythm without overlapping interactive neighbors.",
+    "Cookie actions wrap safely with font growth; header caption follows unchanged logo artwork widths and font-relative navigation padding retains12px normally, reducing only as text grows.",
+    "Three reservation-scoped cinematic.css rules constrain the info grid child, wrap the long address and wrap the overline, preventing verified200% glyph clipping.",
+    "One home.module.css rule uses section.opening[id] specificity and negative exact HTML scroll padding for native intro navigation, leaving other anchor offsets intact."
+  ],
+  "sourceCarry": {
+    "fromBroadToLater": "Four of the five original target CSS files were byte-identical. home.module.css separately changed ready movie-track height360svh→100svh and then the intro anchor correction; its48px CTA rules remained identical. No claim of whole-file home equality.",
+    "fromReflowToNative": "Owner reports the only U5→Cde application delta is the single home intro scroll-margin rule. Reservation and inline target evidence remains explicitly bound to U5; it is not relabeled as Cde.",
+    "newCapCut": "New unreferenced masters/delivery/posters and later source refs may be added concurrently. These controls do not certify their playback, decode, layout or performance; fresh media/header/home smoke is required."
+  },
+  "rejectedControl": {
+    "build": "U5-gxuCUwhE6QFQ1NV8jE",
+    "scope": "Old native Skip focused intro but left279px of film/header masking. This control was rejected and is retained honestly.",
+    "computedHtmlPadding": "105px",
+    "computedIntroMargin": "174px",
+    "introTop": 279,
+    "filmBottom": 279
+  },
+  "servedCssBinding": {
+    "build": "CdeRwqsXQrjmVYMGw28vU",
+    "origin": "http://127.0.0.1:3588",
+    "atUTC": "2026-11-11T21:51:51.156Z",
+    "scope": "Hashes bind actual immutable compiled CSS served by this artifact. Current home source hash is a read-at-time observation only; no whole-workspace identity claim while new CapCut assets/source refs are added.",
+    "htmlStatus": 200,
+    "css": [
+      {
+        "url": "http://127.0.0.1:3588/_next/static/css/eea2b36acc4174f5.css",
+        "status": 200,
+        "type": "text/css; charset=UTF-8",
+        "etag": "W/\"25dad-1a1cc8ab7df\"",
+        "decodedBytes": 155053,
+        "decodedBodySha256": "5d993b4f2273f0beb5b09ae777d05de8b2dd66e8ce353f68a557cedb0d578eff",
+        "nativeIntroRules": []
+      },
+      {
+        "url": "http://127.0.0.1:3588/_next/static/css/6a8c8e14723e6584.css",
+        "status": 200,
+        "type": "text/css; charset=UTF-8",
+        "etag": "W/\"10da1-1a1cc8ab890\"",
+        "decodedBytes": 69025,
+        "decodedBodySha256": "4f5fefa0f7da5de7d763f31cf306fc973f0772c688c9eacd841461d91b6cb1a6",
+        "nativeIntroRules": [
+          ".home_home__kcaw_ section.home_opening__YRHkC[id]{scroll-margin-top:calc(-1 * var(--site-header-height, 76px) - 16px)}"
+        ]
+      }
+    ],
+    "currentHomeSource": {
+      "path": "C:\\Users\\DaviiC\\Downloads\\shahrestaurant\\shahrestaurant\\app\\home.module.css",
+      "sha256": "bc3b6752e01ecaaae46a21a1f64fdfb59485f9b79567723511bd77b94721cbd4"
+    }
+  },
+  "limits": [
+    "0.01CSSpx floating-point tolerance; existing entrance transforms are allowed to settle before target-size assertions.",
+    "Text200% mode doubles pre-read computed font sizes and line heights; this is isolated Chromium lab text enlargement, not physical Safari/device testing.",
+    "Visible authored controls and label hitboxes were measured; OS-native picker internals, authenticated business flows and future dynamic rich-description links are outside this proof.",
+    "Live fixture rows and conditional product-option states are limited to the provided read-only fixture; no universal every-business-state claim.",
+    "No Lighthouse, field Web Vitals, ranking, natural-end playback or stutter-free guarantee follows from these functional checks."
+  ],
+  "raw": [
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\wUsQV2PkRJMdBoQDSZLxt\\targets-compiled.json",
+      "sha256": "187a4df41f73502248257d0a0398ee12c325404ed49e43c20dccb588a0b424a2"
+    },
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\wUsQV2PkRJMdBoQDSZLxt\\touch-keyboard-results.json",
+      "sha256": "f8265c0c394b4ccb267ef68c87258266c8d7f5f8a20eb4ea60fe3f5ff50d7efd"
+    },
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\U5-gxuCUwhE6QFQ1NV8jE\\targets-compiled.json",
+      "sha256": "02ab7064ec4745fd202447ed67a92659f4d42bcde4cbb15a6ec87acdd9838def"
+    },
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\U5-gxuCUwhE6QFQ1NV8jE-inline\\inline-preview.json",
+      "sha256": "8538cde048eac9e155c19b703e671d0f5ccf2fa11a38edf961f3520afa769e52"
+    },
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\CdeRwqsXQrjmVYMGw28vU\\final-smoke-results.json",
+      "sha256": "851494a7dbf4dce3ae4a12e5af8b8a4c4fb3918264b6b64d6f0b1b380bbba727"
+    },
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\CdeRwqsXQrjmVYMGw28vU\\served-css-bindings.json",
+      "sha256": "4aad69ec9d4925d4a527e4580c6534666af87a933fd2dc850441bfdb20c63e64"
+    },
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\U5-gxuCUwhE6QFQ1NV8jE\\skip-diagnostic.json",
+      "sha256": "76c344ef28d3a2414ed91f5def4f7497b5c1049e9d69cef326b04e1407f06870"
+    }
+  ]
+}

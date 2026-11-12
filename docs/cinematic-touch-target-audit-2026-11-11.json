@@ -1,0 +1,843 @@
+{
+  "atUTC": "2026-11-11T20:52:37.101Z",
+  "status": "Source fixes frozen; compiled production acceptance pending",
+  "control": {
+    "build": "Hj2ubUjCMfbacacwFligZ",
+    "sourceSha256": "1b9a194de54237b2104232c89ce249729ddd466a648d819a1118bcd81717fc62",
+    "origin": "http://127.0.0.1:3518"
+  },
+  "scope": "Public marketing controls and guest account/recovery controls; no authenticated workflow or business submission.",
+  "before": {
+    "viewports": [
+      320,
+      390,
+      1440
+    ],
+    "marketingPageCases": 51,
+    "guestAccountCases": 3,
+    "guestRecoveryCases": 3,
+    "openStateCases": 21,
+    "documentOverflowCases": 0,
+    "controlObservations": 3227,
+    "knownSmallTargets": [
+      {
+        "tag": "A",
+        "label": "Klaprozenweg 36a, Amsterdam-Noord",
+        "class": "",
+        "href": "https://www.google.com/maps/dir/?api=1&destination=Klaprozenweg+36a+1032+KL+Amsterdam",
+        "region": "main",
+        "beforeDimensions": [
+          {
+            "width": 236.72,
+            "height": 36
+          }
+        ],
+        "cases": [
+          "320/",
+          "320/en",
+          "390/",
+          "390/en",
+          "1440/",
+          "1440/en",
+          "320-home-lightbox",
+          "320-home-dish-dialog",
+          "390-home-lightbox",
+          "390-home-dish-dialog",
+          "1440-home-lightbox",
+          "1440-home-dish-dialog"
+        ]
+      },
+      {
+        "tag": "A",
+        "label": "Bekijk eten & drinken↗",
+        "class": "",
+        "href": "/menukaart",
+        "region": "main",
+        "beforeDimensions": [
+          {
+            "width": 163.97,
+            "height": 44
+          }
+        ],
+        "cases": [
+          "320/",
+          "390/",
+          "1440/",
+          "320-home-lightbox",
+          "320-home-dish-dialog",
+          "390-home-lightbox",
+          "390-home-dish-dialog",
+          "1440-home-lightbox",
+          "1440-home-dish-dialog"
+        ]
+      },
+      {
+        "tag": "A",
+        "label": "Reserveer een tafel→",
+        "class": "",
+        "href": "/reserveren",
+        "region": "main",
+        "beforeDimensions": [
+          {
+            "width": 152.63,
+            "height": 44
+          }
+        ],
+        "cases": [
+          "320/",
+          "390/",
+          "1440/",
+          "320-home-lightbox",
+          "320-home-dish-dialog",
+          "390-home-lightbox",
+          "390-home-dish-dialog",
+          "1440-home-lightbox",
+          "1440-home-dish-dialog"
+        ]
+      },
+      {
+        "tag": "A",
+        "label": "Galerij",
+        "class": "",
+        "href": "/events/gallery",
+        "region": "footer",
+        "beforeDimensions": [
+          {
+            "width": 39.97,
+            "height": 48
+          }
+        ],
+        "cases": [
+          "320/",
+          "320/menukaart",
+          "320/reserveren",
+          "320/privacy",
+          "320/voorwaarden",
+          "320/events",
+          "320/events/about",
+          "320/events/gallery",
+          "320/events/birthdays",
+          "320/events/celebrations",
+          "320/events/company-catering",
+          "320/events/company-lunches",
+          "390/",
+          "390/menukaart",
+          "390/reserveren",
+          "390/privacy",
+          "390/voorwaarden",
+          "390/events",
+          "390/events/about",
+          "390/events/gallery",
+          "390/events/birthdays",
+          "390/events/celebrations",
+          "390/events/company-catering",
+          "390/events/company-lunches",
+          "1440/",
+          "1440/menukaart",
+          "1440/reserveren",
+          "1440/privacy",
+          "1440/voorwaarden",
+          "1440/events",
+          "1440/events/about",
+          "1440/events/gallery",
+          "1440/events/birthdays",
+          "1440/events/celebrations",
+          "1440/events/company-catering",
+          "1440/events/company-lunches",
+          "320-cookie",
+          "320-mobile-nav-events",
+          "320-menu-quantity",
+          "320-cart-sheet",
+          "320-home-lightbox",
+          "320-home-dish-dialog",
+          "320-reservation-travel-open",
+          "390-cookie",
+          "390-mobile-nav-events",
+          "390-menu-quantity",
+          "390-cart-sheet",
+          "390-home-lightbox",
+          "390-home-dish-dialog",
+          "390-reservation-travel-open",
+          "1440-cookie",
+          "1440-desktop-nav-events",
+          "1440-menu-quantity",
+          "1440-desktop-checkout",
+          "1440-home-lightbox",
+          "1440-home-dish-dialog",
+          "1440-reservation-travel-open",
+          "320/account",
+          "390/account",
+          "1440/account",
+          "320/forgot-password",
+          "390/forgot-password",
+          "1440/forgot-password"
+        ]
+      },
+      {
+        "tag": "A",
+        "label": "Explore food & drinks↗",
+        "class": "",
+        "href": "/en/menu",
+        "region": "main",
+        "beforeDimensions": [
+          {
+            "width": 165.58,
+            "height": 44
+          }
+        ],
+        "cases": [
+          "320/en",
+          "390/en",
+          "1440/en"
+        ]
+      },
+      {
+        "tag": "A",
+        "label": "Book a table→",
+        "class": "",
+        "href": "/en/reservations",
+        "region": "main",
+        "beforeDimensions": [
+          {
+            "width": 108.81,
+            "height": 44
+          }
+        ],
+        "cases": [
+          "320/en",
+          "390/en",
+          "1440/en"
+        ]
+      },
+      {
+        "tag": "A",
+        "label": "Menu",
+        "class": "",
+        "href": "/en/menu",
+        "region": "footer",
+        "beforeDimensions": [
+          {
+            "width": 33.25,
+            "height": 48
+          }
+        ],
+        "cases": [
+          "320/en",
+          "320/en/menu",
+          "320/en/reservations",
+          "320/en/privacy",
+          "320/en/terms",
+          "390/en",
+          "390/en/menu",
+          "390/en/reservations",
+          "390/en/privacy",
+          "390/en/terms",
+          "1440/en",
+          "1440/en/menu",
+          "1440/en/reservations",
+          "1440/en/privacy",
+          "1440/en/terms"
+        ]
+      },
+      {
+        "tag": "A",
+        "label": "Gallery",
+        "class": "",
+        "href": "/events/gallery",
+        "region": "footer",
+        "beforeDimensions": [
+          {
+            "width": 42.63,
+            "height": 48
+          }
+        ],
+        "cases": [
+          "320/en",
+          "320/en/menu",
+          "320/en/reservations",
+          "320/en/privacy",
+          "320/en/terms",
+          "390/en",
+          "390/en/menu",
+          "390/en/reservations",
+          "390/en/privacy",
+          "390/en/terms",
+          "1440/en",
+          "1440/en/menu",
+          "1440/en/reservations",
+          "1440/en/privacy",
+          "1440/en/terms"
+        ]
+      },
+      {
+        "tag": "A",
+        "label": "+31 20 341 2995",
+        "class": "inline-flex min-h-11 items-center font-semibold underline",
+        "href": "tel:+31203412995",
+        "region": "main",
+        "beforeDimensions": [
+          {
+            "width": 98.34,
+            "height": 44
+          }
+        ],
+        "cases": [
+          "320/reserveren",
+          "320/en/reservations",
+          "390/reserveren",
+          "390/en/reservations",
+          "1440/reserveren",
+          "1440/en/reservations",
+          "320-reservation-travel-open",
+          "390-reservation-travel-open",
+          "1440-reservation-travel-open"
+        ]
+      },
+      {
+        "tag": "A",
+        "label": "+31 20 341 2995",
+        "class": "transition hover:text-emerald-300",
+        "href": "tel:+31203412995",
+        "region": "main",
+        "beforeDimensions": [
+          {
+            "width": 105.63,
+            "height": 24
+          },
+          {
+            "width": 90.53,
+            "height": 44
+          }
+        ],
+        "cases": [
+          "320/reserveren",
+          "320/en/reservations",
+          "320/events",
+          "320/events/about",
+          "320/events/gallery",
+          "320/events/birthdays",
+          "320/events/celebrations",
+          "320/events/company-catering",
+          "320/events/company-lunches",
+          "390/reserveren",
+          "390/en/reservations",
+          "390/events",
+          "390/events/about",
+          "390/events/gallery",
+          "390/events/birthdays",
+          "390/events/celebrations",
+          "390/events/company-catering",
+          "390/events/company-lunches",
+          "1440/reserveren",
+          "1440/en/reservations",
+          "1440/events",
+          "1440/events/about",
+          "1440/events/gallery",
+          "1440/events/birthdays",
+          "1440/events/celebrations",
+          "1440/events/company-catering",
+          "1440/events/company-lunches",
+          "320-reservation-travel-open",
+          "390-reservation-travel-open",
+          "1440-reservation-travel-open"
+        ]
+      },
+      {
+        "tag": "A",
+        "label": "Inloggen →",
+        "class": "font-semibold text-emerald-700 underline-offset-4 hover:underline dark:text-emerald-400",
+        "href": "/account",
+        "region": "main",
+        "beforeDimensions": [
+          {
+            "width": 73.64,
+            "height": 20
+          }
+        ],
+        "cases": [
+          "320/reserveren",
+          "390/reserveren",
+          "1440/reserveren",
+          "320-reservation-travel-open",
+          "390-reservation-travel-open",
+          "1440-reservation-travel-open"
+        ]
+      },
+      {
+        "tag": "A",
+        "label": "Routebeschrijving",
+        "class": "btn-ember btn-shine inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-bold text-white",
+        "href": "https://www.google.com/maps/dir/?api=1&destination=Klaprozenweg+36a,+1032+KL+Amsterdam",
+        "region": "main",
+        "beforeDimensions": [
+          {
+            "width": 117.95,
+            "height": 32.66
+          },
+          {
+            "width": 134.31,
+            "height": 34
+          }
+        ],
+        "cases": [
+          "320/reserveren",
+          "390/reserveren",
+          "1440/reserveren",
+          "320-reservation-travel-open",
+          "390-reservation-travel-open",
+          "1440-reservation-travel-open"
+        ]
+      },
+      {
+        "tag": "A",
+        "label": "Routebeschrijving openen",
+        "class": "underline",
+        "href": "https://www.google.com/maps/dir/?api=1&destination=Klaprozenweg+36a+1032+KL+Amsterdam",
+        "region": "main",
+        "beforeDimensions": [
+          {
+            "width": 176.34,
+            "height": 24
+          }
+        ],
+        "cases": [
+          "320/reserveren",
+          "390/reserveren",
+          "1440/reserveren",
+          "320-reservation-travel-open",
+          "390-reservation-travel-open",
+          "1440-reservation-travel-open"
+        ]
+      },
+      {
+        "tag": "A",
+        "label": "Get directions",
+        "class": "btn-ember btn-shine inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-bold text-white",
+        "href": "https://www.google.com/maps/dir/?api=1&destination=Klaprozenweg+36a,+1032+KL+Amsterdam",
+        "region": "main",
+        "beforeDimensions": [
+          {
+            "width": 98.34,
+            "height": 32.66
+          },
+          {
+            "width": 112.92,
+            "height": 34
+          }
+        ],
+        "cases": [
+          "320/en/reservations",
+          "390/en/reservations",
+          "1440/en/reservations"
+        ]
+      },
+      {
+        "tag": "A",
+        "label": "Open directions",
+        "class": "underline",
+        "href": "https://www.google.com/maps/dir/?api=1&destination=Klaprozenweg+36a+1032+KL+Amsterdam",
+        "region": "main",
+        "beforeDimensions": [
+          {
+            "width": 109.2,
+            "height": 24
+          }
+        ],
+        "cases": [
+          "320/en/reservations",
+          "390/en/reservations",
+          "1440/en/reservations"
+        ]
+      },
+      {
+        "tag": "A",
+        "label": "Shah Restaurant",
+        "class": "inline-flex min-h-12 items-center underline underline-offset-4",
+        "href": "/",
+        "region": "navigation",
+        "beforeDimensions": [
+          {
+            "width": 93.7,
+            "height": 44
+          }
+        ],
+        "cases": [
+          "320/events",
+          "320/events/about",
+          "320/events/gallery",
+          "320/events/birthdays",
+          "320/events/celebrations",
+          "320/events/company-catering",
+          "320/events/company-lunches",
+          "390/events",
+          "390/events/about",
+          "390/events/gallery",
+          "390/events/birthdays",
+          "390/events/celebrations",
+          "390/events/company-catering",
+          "390/events/company-lunches",
+          "1440/events",
+          "1440/events/about",
+          "1440/events/gallery",
+          "1440/events/birthdays",
+          "1440/events/celebrations",
+          "1440/events/company-catering",
+          "1440/events/company-lunches"
+        ]
+      },
+      {
+        "tag": "A",
+        "label": "Evenementen en catering",
+        "class": "inline-flex min-h-12 items-center underline underline-offset-4",
+        "href": "/events",
+        "region": "navigation",
+        "beforeDimensions": [
+          {
+            "width": 149.56,
+            "height": 44
+          }
+        ],
+        "cases": [
+          "320/events/about",
+          "320/events/gallery",
+          "320/events/birthdays",
+          "320/events/celebrations",
+          "320/events/company-catering",
+          "320/events/company-lunches",
+          "390/events/about",
+          "390/events/gallery",
+          "390/events/birthdays",
+          "390/events/celebrations",
+          "390/events/company-catering",
+          "390/events/company-lunches",
+          "1440/events/about",
+          "1440/events/gallery",
+          "1440/events/birthdays",
+          "1440/events/celebrations",
+          "1440/events/company-catering",
+          "1440/events/company-lunches"
+        ]
+      },
+      {
+        "tag": "A",
+        "label": "info@shahrestaurant.nl",
+        "class": "transition hover:text-emerald-300",
+        "href": "mailto:info@shahrestaurant.nl",
+        "region": "main",
+        "beforeDimensions": [
+          {
+            "width": 113.48,
+            "height": 18
+          }
+        ],
+        "cases": [
+          "320/events/about",
+          "320/events/gallery",
+          "320/events/birthdays",
+          "320/events/celebrations",
+          "320/events/company-catering",
+          "320/events/company-lunches",
+          "390/events/about",
+          "390/events/gallery",
+          "390/events/birthdays",
+          "390/events/celebrations",
+          "390/events/company-catering",
+          "390/events/company-lunches",
+          "1440/events/about",
+          "1440/events/gallery",
+          "1440/events/birthdays",
+          "1440/events/celebrations",
+          "1440/events/company-catering",
+          "1440/events/company-lunches"
+        ]
+      },
+      {
+        "tag": "A",
+        "label": "Reserveer nu",
+        "class": "mt-5 inline-flex items-center justify-center gap-2 rounded-full bg-emerald-600 px-4 py-2.5 text-xs font-semibold text-white shadow-md shadow-emerald-600/20 transition hover:-translate-y-0.5 hover:bg-emerald-500",
+        "href": "/reserveren",
+        "region": "main",
+        "beforeDimensions": [
+          {
+            "width": 230,
+            "height": 44
+          },
+          {
+            "width": 300,
+            "height": 44
+          },
+          {
+            "width": 334,
+            "height": 44
+          }
+        ],
+        "cases": [
+          "320/events/celebrations",
+          "320/events/celebrations",
+          "320/events/celebrations",
+          "320/events/celebrations",
+          "320/events/celebrations",
+          "320/events/celebrations",
+          "390/events/celebrations",
+          "390/events/celebrations",
+          "390/events/celebrations",
+          "390/events/celebrations",
+          "390/events/celebrations",
+          "390/events/celebrations",
+          "1440/events/celebrations",
+          "1440/events/celebrations",
+          "1440/events/celebrations",
+          "1440/events/celebrations",
+          "1440/events/celebrations",
+          "1440/events/celebrations"
+        ]
+      },
+      {
+        "tag": "A",
+        "label": "Sign in →",
+        "class": "font-semibold text-emerald-700 underline-offset-4 hover:underline dark:text-emerald-400",
+        "href": "/account",
+        "region": "main",
+        "beforeDimensions": [
+          {
+            "width": 61.88,
+            "height": 20
+          }
+        ],
+        "cases": [
+          "390/en/reservations"
+        ]
+      },
+      {
+        "tag": "A",
+        "label": "Reserveer",
+        "class": "btn-shine hidden h-9 items-center gap-2 rounded-full bg-emerald-600 px-4 text-sm font-semibold text-white shadow-md shadow-emerald-600/25 transition hover:-translate-y-0.5 hover:bg-emerald-500 sm:flex",
+        "href": "/reserveren",
+        "region": "header",
+        "beforeDimensions": [
+          {
+            "width": 118.05,
+            "height": 44
+          }
+        ],
+        "cases": [
+          "1440/menukaart",
+          "1440/reserveren",
+          "1440/privacy",
+          "1440/voorwaarden",
+          "1440/events",
+          "1440/events/about",
+          "1440/events/gallery",
+          "1440/events/birthdays",
+          "1440/events/celebrations",
+          "1440/events/company-catering",
+          "1440/events/company-lunches",
+          "1440-cookie",
+          "1440-desktop-nav-events",
+          "1440-menu-quantity",
+          "1440-desktop-checkout",
+          "1440-home-lightbox",
+          "1440-home-dish-dialog",
+          "1440-reservation-travel-open",
+          "1440/account",
+          "1440/forgot-password"
+        ]
+      },
+      {
+        "tag": "A",
+        "label": "Reserve",
+        "class": "btn-shine hidden h-9 items-center gap-2 rounded-full bg-emerald-600 px-4 text-sm font-semibold text-white shadow-md shadow-emerald-600/25 transition hover:-translate-y-0.5 hover:bg-emerald-500 sm:flex",
+        "href": "/en/reservations",
+        "region": "header",
+        "beforeDimensions": [
+          {
+            "width": 104.81,
+            "height": 44
+          }
+        ],
+        "cases": [
+          "1440/en/menu",
+          "1440/en/reservations",
+          "1440/en/privacy",
+          "1440/en/terms"
+        ]
+      },
+      {
+        "tag": "A",
+        "label": "Privacybeleid",
+        "class": "font-semibold text-emerald-600 underline underline-offset-2 hover:text-emerald-500 dark:text-emerald-400",
+        "href": "/privacy",
+        "region": "cookie",
+        "beforeDimensions": [
+          {
+            "width": 85.25,
+            "height": 20
+          }
+        ],
+        "cases": [
+          "320-cookie",
+          "390-cookie",
+          "1440-cookie"
+        ]
+      },
+      {
+        "tag": "A",
+        "label": "Inloggen",
+        "class": "font-semibold text-emerald-700 dark:text-emerald-400",
+        "href": "/account",
+        "region": "main",
+        "beforeDimensions": [
+          {
+            "width": 48,
+            "height": 18
+          }
+        ],
+        "cases": [
+          "320-cart-sheet",
+          "390-cart-sheet",
+          "1440-menu-quantity",
+          "1440-desktop-checkout"
+        ]
+      },
+      {
+        "tag": "A",
+        "label": "Wachtwoord vergeten?",
+        "class": "text-sm font-semibold text-slate-500 transition hover:text-emerald-600 dark:text-slate-400",
+        "href": "/forgot-password",
+        "region": "main",
+        "beforeDimensions": [
+          {
+            "width": 147.66,
+            "height": 20
+          }
+        ],
+        "cases": [
+          "320/account",
+          "390/account",
+          "1440/account"
+        ]
+      },
+      {
+        "tag": "A",
+        "label": "Terug naar inloggen",
+        "class": "mt-4 block text-center text-sm font-semibold text-slate-500 hover:text-emerald-600 dark:text-slate-400",
+        "href": "/account",
+        "region": "main",
+        "beforeDimensions": [
+          {
+            "width": 222,
+            "height": 20
+          },
+          {
+            "width": 292,
+            "height": 20
+          },
+          {
+            "width": 350,
+            "height": 20
+          }
+        ],
+        "cases": [
+          "320/forgot-password",
+          "390/forgot-password",
+          "1440/forgot-password"
+        ]
+      }
+    ]
+  },
+  "changes": [
+    "Desktop header reservation CTA44→48px; home address36→48px; partner destination links44→48px.",
+    "Footer quick-link anchors now have minimum48px width, including short Menu/Gallery labels.",
+    "Event interactive minimum44→48px repairs the shared cascade override affecting breadcrumbs and celebration reservation CTAs.",
+    "Standalone event telephone/email and reservation telephone/directions links have centered real48px boxes.",
+    "Guest password-recovery and return-to-sign-in destination links have real48px boxes.",
+    "Cookie Privacy and menu/reservation sentence SignIn links use real positioned48px inline-flex anchors. Scoped negative block margins retain sentence rhythm; margins fall back to normal iflh math is unsupported.",
+    "Cookie action buttons wrap using a font-relative8em basis and overflow-wrap:anywhere, keeping enlarged labels readable.",
+    "Header caption width follows unchanged logo widths114/132/154/170px; tracking retains normal7/8px appearance and stops growing excessively with enlarged text. Desktop navigation padding remains12px at its normal13px font and reduces toward6px as text grows."
+  ],
+  "checks": {
+    "globalTypeScript": "PASS",
+    "postCssSyntax": "5 changed stylesheets PASS",
+    "gitDiffWhitespace": "PASS",
+    "newClientJavaScriptBytes": 0,
+    "jsxChanges": 0,
+    "copyChanges": 0,
+    "businessApiWrites": 0
+  },
+  "inlinePrototype": {
+    "scope": "Latest bounded1440px Cookie/header prototype subset, using transient CSS on Hj2; not compiled new-source proof. Earlier all-scenario iterations were interim. Fresh production acceptance supersedes these source-development checks.",
+    "cases": 4,
+    "normalAndEnlargedModes": [
+      "negative margins",
+      "ordinary flow",
+      "ordinary flow at200% text enlargement",
+      "negative margins at200% text enlargement"
+    ],
+    "textEnlargement": "Pre-read computed font sizes and numeric line heights doubled in one batch; actual anchor fonts14→28px. This is lab text-enlargement emulation, not physical browser/device validation.",
+    "allFourEdgeHits": true,
+    "adjacentInteractiveOverlapCases": 0,
+    "documentOverflowCases": 0,
+    "headerObservations": 44,
+    "header48pxOrViewportOrHitFailures": 0,
+    "sourceChoice": "position:relative + actual inline-flex minimum48px; negative block margins only on the known sentence links. No pseudo-only hit areas."
+  },
+  "exceptionsAndLimits": [
+    "No universal48px production claim before a fresh compiled candidate is measured. The before artifact remains immutable.",
+    "Inline links supplied by dynamic rich descriptions or future external content require content-specific inspection; no legal prose copy was rewritten.",
+    "OS-native date/select picker internals are outside authored DOM sizing; the authored input/select boxes were measured.",
+    "Disabled or inert controls were excluded; this audit does not submit orders, reservations, password recovery or authentication.",
+    "New English event routes are not present in the Hj2 control. They share the fixed event styles and must be measured on the next artifact.",
+    "Physical Safari/device testing and performance scores are not part of this evidence.",
+    "The200% development prototype also exposed clipped non-control text in the reservation location heading/overline. This requires a compiled-artifact check before any separate narrow text-reflow fix; it is not hidden by a zero-document-overflow claim."
+  ],
+  "nextAcceptance": [
+    "All24 public NL/EN marketing routes×320/390/1440 actual geometry.",
+    "Open mobile/desktop navigation, lightbox, cart/checkout and real pointer/keyboard flows with no business submission.",
+    "Compiled inline box-edge hit tests, neighboring-target overlap,200% text enlargement and no320px overflow.",
+    "Cleanfilm opening, NoJS/reduced-motion smoke and screenshots."
+  ],
+  "sources": [
+    {
+      "path": "app/accessibility.css",
+      "sha256": "da42c4b7f49e210f5bbc7bdab8adecf0eca74cf78cc6a06c53a8d9156642ef55"
+    },
+    {
+      "path": "app/design-system.css",
+      "sha256": "42297cb734c4c765d0b95a7625ac9da427d19cb49d9a5ce52d3120f8451e7fb7"
+    },
+    {
+      "path": "app/components/header.module.css",
+      "sha256": "e168a621b155f06f16664535ec30caa8e266ba6517b35ab1a1f558780400b6d8"
+    },
+    {
+      "path": "app/components/DrinkPartners.module.css",
+      "sha256": "e3ae6027936fe9f4615b3d728107e9dce2ce497c1b92a5b3bb43ebe88fb63cc6"
+    },
+    {
+      "path": "app/home.module.css",
+      "sha256": "17556441946dbccc67d66d86d1167897936b2daf1d12ed06d8b8a1d104379b00"
+    }
+  ],
+  "raw": [
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\Hj2-before\\targets-before.json",
+      "sha256": "d617a2c4435d6dfc9cf84fc04d1dd49b6dea47c4535b75fb0e85dc855574ab91"
+    },
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\Hj2-before\\target-states-before.json",
+      "sha256": "ac5083df51e11ba2b0b93076529c5a065628530e8bc7d1ca801de8ac10dedd45"
+    },
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\Hj2-before-account\\targets-before.json",
+      "sha256": "a532fb070de7ea09f7693c75ce5a193cedbd4f7eda515cb0250e0fe76a7057ee"
+    },
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\Hj2-before-forgot\\targets-before.json",
+      "sha256": "aa7e2ffd8a00854a0d118b847be56bd7fdb12146781e8bdc516a8150b8fd4d88"
+    },
+    {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\Hj2-inline-preview\\inline-preview.json",
+      "sha256": "4be7aa0ac3188efd79a66ec881518b5dcc4d16961a56d3fd0e17bc902d3f081e"
+    }
+  ]
+}

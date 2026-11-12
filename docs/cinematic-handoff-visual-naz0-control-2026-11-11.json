@@ -1,0 +1,224 @@
+{
+  "atUTC": "2026-11-11T23:10:33.392Z",
+  "build": "NAZ0-A2z7qMHf_7txzakH",
+  "dist": ".next-review-capcut-handoff-20261111",
+  "origin": "http://127.0.0.1:3628",
+  "suppliedArtifactSourceHash": "dcb9b5edc19cb5ad927e227c27cc2e9d82ab84f10f2f788e1633231a9383f82c",
+  "suppliedSourceInputs": 530,
+  "verdict": "PASS bounded responsive framing, static-poster and native Skip scope. Automatic closing-second handoff and per-tab return behavior are owned by baseline, not asserted here.",
+  "controls": {
+    "previousBuild": "KIb4T9-xcI_ECXiULLD-H",
+    "previousProof": "docs/cinematic-approved-media-crop-2026-11-11.json",
+    "previous320Clipping": "Preserved as failed control; not relabeled.",
+    "mediaIdentity": "Parent confirmed approved desktop-v3/mobile-v2 MP4 and poster bytes unchanged. Current browser confirms correct intrinsic dimensions, duration and selected paths."
+  },
+  "currentContract": {
+    "playing": "Approved burned-in text only; no duplicate DOM titles, navigation/notice hidden over actual playing-film stage.",
+    "ultratall": "At max-width767px and max-aspect-ratio9/20, contain full mobile frame with black matte;100svh playing stage retained.",
+    "normal": "390x844 and1440x900 remain cover.",
+    "staticReduced": "No autoplay/video/MP4 requests. Header and cookie notice visible and usable, as confirmed intended by root.",
+    "noJS": "Native static poster and Skip remain available; initial notice hidden, normal-flow header retained.",
+    "handoff": "New user requirement automatically scrolls in closing second, removes media/hero space and remembers entry per tab. This review pauses before that phase; older full-natural-end evidence is historical and does not describe the new normal path."
+  },
+  "freshFrameReview": {
+    "captures": 15,
+    "manuallyInspected": 11,
+    "mobile320x844": {
+      "verdict": "PASS all five requested holds",
+      "inspectedSeconds": [
+        1.5,
+        4.8,
+        6,
+        9.8,
+        11
+      ],
+      "fit": "contain",
+      "background": "rgb(0, 0, 0)",
+      "nativeFrameVisible": [
+        0,
+        1080,
+        0,
+        1920
+      ],
+      "stageHeight": 844
+    },
+    "mobile390x844": {
+      "verdict": "PASS title/message/endline; unchanged cover framing",
+      "inspectedSeconds": [
+        1.5,
+        4.8,
+        11
+      ],
+      "fit": "cover",
+      "nativeCropX": [
+        96.39810426540282,
+        983.6018957345972
+      ],
+      "stageHeight": 844
+    },
+    "desktop1440x900": {
+      "verdict": "PASS title/message/endline representative fresh frames; earlier full5hold control retained separately",
+      "inspectedSeconds": [
+        1.5,
+        4.8,
+        11
+      ],
+      "fit": "cover",
+      "actualVideoBox": [
+        1430,
+        900
+      ],
+      "nativeCropX": [
+        102,
+        1818
+      ],
+      "stageHeight": 900
+    },
+    "shared": {
+      "observedContainerDuration": 12.332667,
+      "nativeMobile": [
+        1080,
+        1920
+      ],
+      "nativeDesktop": [
+        1920,
+        1080
+      ],
+      "heroDomText": "",
+      "duplicateHeroHeadings": 0,
+      "overflow": 0
+    },
+    "method": "Fresh target first entry; remove exact session key before each new document. Pause immediately after actual native autoplay starts, seek1.5/4.8/6/9.8/11s, bind requestVideoFrameCallback presented mediaTime, then capture. No inspector CSS injected.",
+    "raw": {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\NAZ0-A2z7qMHf_7txzakH\\approved-crop-results.json",
+      "sha256": "1d0a1098f0c52e077389cf196715a830db3b2a5029cc8ff7f6adfb8d11cc7270"
+    },
+    "screenshots": [
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\NAZ0-A2z7qMHf_7txzakH\\crop-320x844-1.5.png",
+        "sha256": "e1cc5173429107990f0268cc6237e2c94b88c3adfdf45e488d7f7a81d6432d97"
+      },
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\NAZ0-A2z7qMHf_7txzakH\\crop-320x844-4.8.png",
+        "sha256": "76c7396f712d60b52c6b451c3af8c8c9ef727d51e641d4640e00410d64560abe"
+      },
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\NAZ0-A2z7qMHf_7txzakH\\crop-320x844-6.0.png",
+        "sha256": "88729dae69a91fcd68c326ee3f5606b75fa2a3d619bde9c1e467eb6f62053d4a"
+      },
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\NAZ0-A2z7qMHf_7txzakH\\crop-320x844-9.8.png",
+        "sha256": "d0cf2db061593dd899691e9514d629ab905d2070353eccd6c739d31594e76c50"
+      },
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\NAZ0-A2z7qMHf_7txzakH\\crop-320x844-11.0.png",
+        "sha256": "444cfd850675506317c2220ac3fc553c57ae746bee4655e47a53a35fb0274ede"
+      },
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\NAZ0-A2z7qMHf_7txzakH\\crop-390x844-1.5.png",
+        "sha256": "fc73614aa87511cfe1fbbcc5dd1d6c9b3cf3b5974251205c2ee31c734c923571"
+      },
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\NAZ0-A2z7qMHf_7txzakH\\crop-390x844-4.8.png",
+        "sha256": "90e1f8d8cdee432b3f4c94b388b2be463c837bbc3bfd77dea15b518d85e45c10"
+      },
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\NAZ0-A2z7qMHf_7txzakH\\crop-390x844-6.0.png",
+        "sha256": "a27bb59fb518580e927328fec9b02aa3cd67c0f3ad4ff95930ca7290391e305d"
+      },
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\NAZ0-A2z7qMHf_7txzakH\\crop-390x844-9.8.png",
+        "sha256": "f81b42028921b76647962b775915ef5c21dc969e9e7fd1b04393722044193bc1"
+      },
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\NAZ0-A2z7qMHf_7txzakH\\crop-390x844-11.0.png",
+        "sha256": "81a311c06cdc574fa36215ea3e28e33ef34f9ba1c76214c6b9e13881ac1df9ec"
+      },
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\NAZ0-A2z7qMHf_7txzakH\\crop-1440x900-1.5.png",
+        "sha256": "7b81c647639ee849e19db0a893a1e9f69f8fd4ba9b5be86b0c0e1a1506781eca"
+      },
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\NAZ0-A2z7qMHf_7txzakH\\crop-1440x900-4.8.png",
+        "sha256": "0fe927b1a3cc65b024a12a3dfba3c1280f98f7f49e47de149d3ef9258c8e406a"
+      },
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\NAZ0-A2z7qMHf_7txzakH\\crop-1440x900-6.0.png",
+        "sha256": "3cb7a14f6868190c5a274bdbafdf054d98eb80f73c913278e7d47f759e05e04b"
+      },
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\NAZ0-A2z7qMHf_7txzakH\\crop-1440x900-9.8.png",
+        "sha256": "96dd39f24c0714fb244bc6af44d54e1e0a1c01c12cb401bb26777be524c42fce"
+      },
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\NAZ0-A2z7qMHf_7txzakH\\crop-1440x900-11.0.png",
+        "sha256": "58eedb4a82d31741118f28e57b6669f4e0d233ea838092918ea902f0fe644d6a"
+      }
+    ]
+  },
+  "freshStaticReview": {
+    "cases": 4,
+    "freshTargetPerCase": true,
+    "injectedStyles": false,
+    "widths": [
+      320,
+      390
+    ],
+    "modes": [
+      "nojs",
+      "reduced"
+    ],
+    "fits": {
+      "320": "contain/black",
+      "390": "cover"
+    },
+    "mp4Requests": 0,
+    "videoElements": 0,
+    "errors": 0,
+    "overflow": 0,
+    "skip": {
+      "input": "real Tab then Enter",
+      "clickableWidth": 247.609375,
+      "clickableHeight": 52,
+      "withinViewport": true,
+      "focus": "intro",
+      "filmOffscreen": true
+    },
+    "raw": {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\NAZ0-A2z7qMHf_7txzakH\\fresh-static\\fresh-static-results.json",
+      "sha256": "31ab1e26cc4634052261227e31c8a2e6bfb8aa8165812dd0fc1d17761bc8db9d"
+    },
+    "screenshots": [
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\NAZ0-A2z7qMHf_7txzakH\\fresh-static\\320-nojs.png",
+        "sha256": "8139eb5f87943ef3777850167a84a9f6b47896b38d2e39b268e542e6cff5e122"
+      },
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\NAZ0-A2z7qMHf_7txzakH\\fresh-static\\320-reduced.png",
+        "sha256": "a1fe9ac67be88d946493250d0d0ae496711f82ebb964c3059a6accf1d1344ddc"
+      },
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\NAZ0-A2z7qMHf_7txzakH\\fresh-static\\390-nojs.png",
+        "sha256": "109e36368bfd63054e07f81add3ee38b74b42b6ba9dd53a2541012e1e0884df2"
+      },
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\NAZ0-A2z7qMHf_7txzakH\\fresh-static\\390-reduced.png",
+        "sha256": "6ec9948d10810536ba0e10dc5e29cc547d8304451fdb5ba9c1ab98533f24be52"
+      }
+    ]
+  },
+  "servedCSS": {
+    "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\NAZ0-A2z7qMHf_7txzakH\\served-css-bindings.json",
+    "sha256": "a7da6187aa00bf1545758dc0d049c77bb8b109c657c8ed6736cd5a5a0473b042"
+  },
+  "setupNotes": [
+    "An earlier helper reused the first open task tab; it was discarded and replaced by exact fresh target per static case.",
+    "The earlier hidden-notice assertion for reduced motion belonged to the old contract. Root explicitly confirmed visible usable navigation/notice for static reduced/data-saving mode; raw actual attributes are preserved."
+  ],
+  "limitations": [
+    "No app source edits or business submissions.",
+    "No performance measurement, physical-device/Safari, network-stall guarantee or natural-end claim.",
+    "Automatic handoff, user scroll interruption, reload and Back/forward are independently tested by baseline.",
+    "All task-owned9226 pages left about:blank after checks."
+  ]
+}

@@ -1,117 +1,75 @@
-# Cinematic verification — 11 November 2026
+# Local release verification — 12 November 2026
 
-The public redesign and verification work is complete for the build below. **The full requested definition of done is not met:** route JavaScript, several mobile loading/interaction targets and the remaining validation items below are unresolved. Nothing was deployed, published or pushed.
+The approved English and Dutch CapCut intros, cinematic page sequence, menu/cart refinements and compact mobile footer are implemented locally. **The full original performance definition of done remains unmet.** Nothing was deployed, published, pushed, or submitted as a real order or booking.
 
-Review: **http://localhost:3398/**, left running. Build **Hj2ubUjCMfbacacwFligZ**, Webpack / Next.js 16.2.10, .next-review-cookie-ssr-20261111. Source SHA-256: 1b9a194de54237b2104232c89ce249729ddd466a648d819a1118bcd81717fc62, **418 inputs**. Compilation 24.0s, TypeScript 11.4s and all 54 routes pass. Latest source commits: 013b7f1 (initial notice/critical gallery visibility), 068fc07 (locale/contrast/category access), following the earlier public-source work. The measured candidate on 3518 and main preview on 3398 serve the same artifact and fixture. [Exact start command](LOCAL_PREVIEW.md).
+Review: **http://localhost:3398/** (Dutch), **http://localhost:3398/en** (English). Same-network phone: **http://192.168.0.122:3618/**, with `/en` for English. [Exact start commands, current promotion status and fixture limits](LOCAL_PREVIEW.md); [phone policy](PHONE-PREVIEW.md).
 
-## Scope and data boundary
+## Frozen combined candidate
 
-Seventeen public URLs are covered: five NL/EN pairs for home, menu, reservations, privacy and terms, plus seven Dutch event URLs. All /events marketing sections are public. /parties, its nested pages and private APIs remain administrator-only; the exact existing payment-webhook exception remains. English event interface choices work, but seven English URL/hreflang pairs are missing.
+Build **`s_2pU6IxrWANtKLhFIf2S`**, Next.js 16.2.10 / Webpack, `.next-review-shah-complete-20261112`. Source SHA-256 **`0d98fae249ab1b1516cd84408a7a4725ddaf9dcc0028a3093c28c0b9d5ea670d`**, **548 inputs**, identical before and after the successful build/TypeScript check. It generates 61 routes. Public source/media and narrow shared-feature hunks are saved in local commit `277a47b1e25a4d40d0ae982faaa329e1d57a17c8`; no push occurred. The candidate is http://localhost:3708/ over direct app3707; main3398 was promoted and its exact build/read-only headers verified; the phone listener record is maintained separately in PHONE-PREVIEW.
 
-The read-only preview uses an actual public-catalogue snapshot: 224 products/two brands, captured 2026-11-11T14:02:15.463Z, SHA-256 66eda306b74cf90dc15ad018cc3064212349151810d8df2e098a06d6e8588892. Restaurant-status fixture clock: 2026-11-11T12:47:58.379Z. Bootstrap 144159 raw/23914 gzip bytes, SHA-256 87cd9c939a82820c555968a3189d82dca413eecb18d90126add52327a60b3bbf. It is not the old 104-product seed or a live availability claim.
+The combined snapshot intentionally preserves parallel admin, guest recognition, API and phone-agent work. Local public-feature commits exclude their unrelated hunks; a clean checkout of those commits alone is not asserted to reproduce this combined snapshot. The archived [n5 milestone](cinematic-n5-session-milestone-report-2026-11-11.md) records its old layout-shift failure; that failed implementation is no longer the release controller.
 
-Users, orders, bookings and reviews are empty. The isolated transport allows only the exact two bounded read-only public SELECTs and 190 public image URLs. Preview business mutations are blocked. Gallery fixture v2 explicitly returns an empty administrator-upload list, labelled empty-upload-fixture-not-live; the ten supplied photographs remain. This corrected a preview-only 503, not the live API. No business records, orders, reservations, payments or emails were changed. Live transactional and account flows remain unverified.
+The final artifact differs from the preceding tEO candidate only by removing obsolete homepage CSS. All436 emitted module factory variant sets are byte-identical; eight local browser pages and12 paired computed-style states show zero differences across desktop/mobile, dark/light, hover/active, selection and pseudo-elements. Intro/cart/footer results below retain their actual tEO/ROl identities and are carried with that proof. [CSS comparison](cinematic-css-equivalence-complete-2026-11-12.json), [final live/source checkpoint](cinematic-final-live-checkpoint-2026-11-12.json).
 
-## Design and functional results
+## Intro, languages and accessibility
 
-The fullscreen opening has no ordinary text, navigation, cookie notice or booking/phone overlay. Information starts in the separate introduction; a focus-only keyboard skip remains. Native scrolling scrubs the original 24fps timeline, holds its decoded final frame and supports reverse scrolling. Reduced motion, Save-Data, 2G, early scrolling, fragments and error/timeout paths preserve access to content. Bypass is distinguished from watched completion.
+A fresh homepage tab selects the URL's language, then the desktop or portrait variant at the existing767px breakpoint. Opposite saved language preferences cannot override a public URL. All files retain their approved burned-in typography; no duplicate HTML titles overlay the film.
 
-The introduction, menu chapter, stepped gallery/lightbox, teal story, three public evening cards, reviews, visit/FAQ, partner rail and closing/footer were reviewed. The four original partner cards stay on one horizontal row, drift right to left and support pause, keyboard and touch; reduced motion disables autoplay. Original logo artwork, palette, menu/prices and contact details remain. [Per-section implementation](CINEMATIC-REVISION.md).
+| Locale | Delivered public MP4 | Bytes |
+|---|---|---:|
+| EN desktop | `/brand/capcut-luxury-v3/shah-luxury-capcut-desktop-v3.mp4` |22,055,086|
+| EN mobile | `/brand/capcut-luxury-v3/shah-luxury-capcut-mobile-v2.mp4` |14,802,082|
+| NL desktop | `/brand/capcut-luxury-nl-v1/shah-luxury-capcut-desktop-nl-v1-web.mp4` |21,595,932|
+| NL mobile | `/brand/capcut-luxury-nl-v1/shah-luxury-capcut-mobile-nl-v1-web.mp4` |14,767,612|
 
-Dutch event URLs now remain Dutch during initial rendering despite a saved English preference. Explicit English choices survive rerenders, sibling navigation and Back/Forward. Scoped event contrast fixes passed 24 compiled cases/360 observations in the preceding matching-style control; all 94 dark failures were corrected. The final34 audits independently score Accessibility100. Sidebar Tab/Enter access after expanding Curries passed three desktop sizes; two mobile layouts passed with no page overflow. [Event proof](cinematic-event-usability-verification-2026-11-11.json), [fresh sidebar proof](cinematic-menu-sidebar-2026-11-11.json).
+English approved master copies are unchanged. Dutch originals are also preserved in `assets/video-masters/capcut-luxury-nl-v1/`; their delivery derivatives are lossless fast-start stream copies, retaining silent AAC. All368 decoded frames and presentation timestamps match the Dutch masters. A1µs container-duration rounding difference is documented. Separate portrait footage is used, not a crop of the landscape export. Matching AVIF/WebP/JPEG posters use a visible frame rather than the intentionally dark ending; all24 EN/NL posters are below120,000B. [Exact media hashes and QA](CAPCUT-DUTCH-ASSETS.md), [English master delivery](capcut-luxury-v3-delivery.md).
 
-The notice now renders in initial HTML for a first visit. A non-sensitive host-only acknowledgement cookie omits it on subsequent requests; a small head bootstrap respects existing local-storage acknowledgements before paint and migrates them without changing stored choice values. Copy and both actions are unchanged. It remains hidden over the film before hydration and with JavaScript disabled. Acceptance passed 18 SSR cases plus 27 browser/keyboard states, including blocked storage, legacy migration, both Enter actions, reload/cross-route persistence, and real privacy links. The first gallery photo is now visible immediately, eager/High; nine others retain entrances. [Cookie/first-paint proof](cinematic-cookie-ssr-verification-2026-11-11.json).
+In the final second, a fixed film layer moves upward to reveal the stationary page/header; it is then removed. This implements the requested cinematic transition **without changing window scroll position**, avoiding the measured layout shift of the earlier in-flow approach. The user cannot scroll back into a removed film, while ordinary page scrolling remains available. A shared once-per-tab marker prevents replay on reload, menu-to-home or language returns. A new independent tab can play it. Duplicated tabs can inherit storage; blocked session storage only preserves the marker within the current document.
 
-Fresh final-build core checks pass: 12 photo-preload cases, fonts on three routes, two NoJS cases, header geometry, SSR/query/ready-empty precedence, navigation fallbacks and 13 search/draft/history states. Dummy cart/draft data was cleared. The offline catalogue 6, font 13-route/eight-file/25-face, real-NextRequest 11, event/JWT 11 and final main-preview HTTP 31 checks pass. [Core proof](cinematic-cookie-ssr-preflight-2026-11-11.json), [search proof](cinematic-final-search-2026-11-11.json), [access/source proof](events-visibility-http-20261111.json).
+Reduced motion, Save-Data/2G, native Skip, hash links, blocked autoplay/manual controls, backgrounding and early interruption have usable paths. No-JavaScript retains a poster and native Skip. A running film keeps its selected source/clock during rotation and uses containment if its aspect no longer matches; a resize before loading chooses the current breakpoint. Changing language dismisses old media rather than replaying another intro.
 
-Whole-repository ESLint: 197 files, 22 prior errors/six warnings in unchanged terminal, phone-agent tests and utility/test scripts. Changed public files have zero lint errors; two existing menu dependency warnings remain. Parallel admin/guest/API/status/package/phone-agent work is preserved and excluded from these feature commits.
+Fresh preceding tEO NL-desktop and EN-mobile natural flows record initial native **CLS0**, actual playback, handoff at about11.33s of12.3327s,33 intermediate transform samples, removed media and zero new MP4 requests on same-tab returns. The preceding ROl's27 lifecycle and5 responsive/language cases are explicitly carried through unchanged controller/provider/media hashes and emitted-module comparisons, not relabeled as fresh release captures. Six ROl NL/EN desktop/390×844/360×800 cases show actual natural currentTime advancement of0.655–0.665s and eighteen manually inspected title/message/closing frames. [Release flow and control bindings](hero-intro-handoff-verification-2026-11-11.json), [locale source and visual proof](intro-locales-browser-verification-2026-11-12.json).
 
-## SEO, schema and facts
+## Requested interface changes
 
-All 17 current HTTP checks pass: exact build/language, one H1, unique titles 50–56/descriptions 144–154, canonicals, social metadata, 15 breadcrumbs, 468 internal links, 27 anchors, 17 sitemap entries and 30 core language alternatives. Both nine-question FAQs match visible copy. The two initially visible Menu subsets match pinned names/prices; all 224 bootstrap names/prices match the snapshot. Four Service graphs refer to the shared Restaurant; displayed package prices remain unchanged. [Final SEO](cinematic-final-seo-2026-11-11.json), [local schema inventory and external-test limits](STRUCTURED-DATA-VALIDATION.md).
+The Events label aligns with adjacent desktop navigation. A single round EN/NL control shows the current language and switches to the other; public route/query/hash pairing and utility-page draft preservation were checked. New visitors receive dark mode before paint regardless of system preference; saved explicit light/dark choices and the theme toggle remain. The dark cookie Privacy link was corrected to the palette's gold after an actual contrast failure; measured contrast is6.544.
 
-Owner-confirmed approximate EUR 35 spend, walk-in welcome, no social profiles and KARWEI parking guidance are distinguished from sourced BAG coordinates/bus 38 facts in [LOCAL-FACTS.md](LOCAL-FACTS.md). Unknown nearest-stop walking times, bike parking, accessibility, terrace/kids/payment facilities and certifications were not invented. No capacity or ranking guarantee is made.
+Partners stay on one horizontal right-to-left rail. The requested visible arrow/pause row is gone; native touch scrolling, keyboard navigation, a focus-visible pause control and reduced-motion behavior remain. Restaurant, category and third-level Drinks side arrows are removed without removing their selectors.
 
-## Lighthouse and sampled interactions
+Restaurant names wrap fully in the sidebar, whose available height increases6px. Mobile food photographs use the full card width with4:3 containment. Cart names remain visible; smaller visible quantity discs retain48px hit targets and sit above the price. Cart product-photo backgrounds load lazily at low priority under a readable overlay with solid fallback. Hidden mobile desktop-cart branches request zero photo bodies in the measured cases. Menu offers have clearer quantity/pricing and per-combo labels; desktop drink text is14px, mobile native selects16px. The English email placeholder is exactly **Email address**.
 
-Lighthouse 13.6.0 uses simulated mobile 4G/CPU 4x and desktop 10Mbps/CPU 1x. Runs were sequential, with explicit first-visit cookie/local-storage absence before server navigation and after hydration, fresh targets and visible notice checks (home opening deliberately hides it). The prior CrBm control lacked these explicit per-route assertions; comparisons are bounded observations, not isolated causal experiments or field CWV. Host/source guards remained clean.
+Each wrap can independently be plain or a paid menu with its own drink. Five actual Chicken Tikka Masala Wraps at€9.99 with five distinct€4 menus total **€69.95**; three menus plus two plain wraps total **€61.95**. Fresh preceding tEO UI checks verify both quotes and reload persistence. The preceding full12-width/theme, actual11-event cross-tab, editing, removal, legacy migration, unavailable-drink, quantity clamp and hidden-image cases carry through exact unchanged modules. No real order was submitted. [Full cart proof](combo-menu-browser-verification-2026-11-12.json), [fresh release smoke](combo-menu-release-smoke-2026-11-12.json).
 
-All 34 runs have **Accessibility100, BestPractices100, SEO100 and unrounded raw CLS0**. Mobile Performance 70–100; desktop 98–100. Original strict gates remain P>=92 mobile, LCP<1800ms, CLS<.02, TBT<150ms, INP<150ms. Displayed times below are rounded; raw JSON retains precision.
+Twenty-three offline contracts exercise real route validation/store calculation with all database, payment and email effects stubbed. Server financial rules are preserved; the UI now follows the same menu-fee ordering and rounding, including the caught€30-versus€32.49 free-delivery boundary. Older scalar drink choices migrate to arrays. Positive unknown products reject before persistence; zero-quantity legacy keys remain ignored. Existing Zod removal of an own `__proto__` key is an explicitly documented exception, not a claim that every raw key rejects. Shared files were staged by feature-only hunks.
 
-| Route | Mobile P | Mobile LCP ms | Mobile TBT ms | Desktop P | Desktop LCP ms |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| / | 72 | 4607* | 465.0 | 98 | 1050* |
-| /en | 70 | 4738* | 515.0 | 99 | 1026* |
-| /menukaart | 88 | 3900 | 59.0 | 99 | 850 |
-| /en/menu | 88 | 3902 | 60.5 | 99 | 847 |
-| /reserveren | 90 | 3582 | 53.5 | 100 | 762 |
-| /en/reservations | 90 | 3566 | 48.5 | 100 | 797 |
-| /privacy | 100 | 923 | 60.5 | 100 | 265 |
-| /en/privacy | 100 | 920 | 57.0 | 100 | 263 |
-| /voorwaarden | 99 | 920 | 124.9 | 100 | 270 |
-| /en/terms | 99 | 920 | 117.0 | 100 | 266 |
-| /events | 100 | 1074 | 59.5 | 100 | 307 |
-| /events/about | 100 | 1075 | 51.5 | 100 | 302 |
-| /events/birthdays | 100 | 1080 | 63.5 | 100 | 305 |
-| /events/celebrations | 100 | 1070 | 59.0 | 100 | 303 |
-| /events/company-catering | 100 | 1070 | 77.0 | 100 | 303 |
-| /events/company-lunches | 100 | 1071 | 74.0 | 100 | 303 |
-| /events/gallery | 92 | 3343 | 73.0 | 100 | 549 |
+The mobile footer uses two columns where they fit, with all copy, links, readable fonts and48px targets retained. The final tEO320–430px NL/EN controls are331–379px shorter (about27–32%), carried to the unchanged final footer module. A detected320px floating Back-to-top overlap was fixed by docking that same button beside the footer logo while the footer is visible; all footer-link intersection/hit checks pass with no docking height jump. Back-to-top focuses the main landmark and respects reduced motion. [Final footer evidence](footer-mobile-verification-2026-11-12.json).
 
-* Four home LCP values are UKM fallbacks with zero eligible native candidates. They do not validate poster LCP. Five native mobile LCP values fail 1800ms; six mobile Performance values fail 92; both mobile home TBT values fail 150ms. [All 34 raw-bound rows](cinematic-final-performance-2026-11-11.json).
+## Whole-site, images and local SEO
 
-Official web-vitals sampled INP used actual 1.6Mbps/150ms network emulation, CPU 4x for both viewport sizes, cold browser cache, trusted inputs and 600ms action cadence. EventTiming/LoAF/action/focus markers and overlapping groups are retained. No business writes or runtime errors occurred.
+Cinematic entrances/movement cover the introduction, menu, gallery, story, three public event cards, reviews, visit/FAQ, partners and footer. Existing logo, palette, prices and contact details are retained. Owner-confirmed approximate€35 spend, no social profiles, walk-in welcome and qualified KARWEI parking guidance are distinguished from sourced facts. Facilities, accessibility, capacity, rankings and guaranteed availability were not invented.
 
-| Page | Mobile INP ms | Desktop INP ms |
-| --- | ---: | ---: |
-| home | 224 | 208 |
-| menu | 1712 | 1720 |
-| reservations | 72 | 368 |
+All **24 public URLs in12 NL/EN pairs**, including every event section, have URL-authoritative SSR language, canonical/social metadata and reciprocal alternatives. `/parties` and private APIs retain admin restrictions. Fifty exact-build HTTP/source/access checks pass. Fresh24-route SEO/schema checks pass:72hreflang/sitemap alternatives,22breadcrumbs,654localized public links,34anchors, two visible nine-question FAQs and initial menu prices matching the pinned catalog. [SEO proof](cinematic-paired-events-seo-2026-11-11.json), [schema scope](STRUCTURED-DATA-VALIDATION.md).
 
-Five of six samples fail 150ms. These local samples are not a field distribution or TBT inference. Control traces show quick commits followed by long native-presentation gaps on some menu actions; later typing also has long framework tasks. This does not identify a specific CSS/component cause. [Current INP](cinematic-final-inp-2026-11-11.json), [causal investigation](cinematic-inp-causal-NUcp9-2026-11-11.md).
+The five specifically reported curry photos are valid separate images, not missing files. Correct mobile responsive sizing reduces those five unique AVIF bodies from338,044 to215,062B (**36.38%**); this is not a whole-page saving. First visible image priority, native lazy loading and stable placeholders remain. Delayed offscreen requests were distinguished from image failure; no guaranteed instant-loading claim is made. Added74 JPEG compatibility variants preserve modern format priority; a bounded188-source optimizer audit tops out at176,830B. Future uploads and optimizer failure passthrough are outside a universal size guarantee. [Image delivery evidence](PRODUCT-IMAGE-LOADING.md).
 
-The corrective batch changed celebrations mobile P86/LCP4052ms to P100/1070ms and gallery P78/5901ms to P92/3343ms in the recorded runs. New native LCP targets are an initially rendered notice paragraph and the visible first gallery image respectively. Cookie timing, critical image visibility and the explicit first-visit protocol changed together; no broader before/after claim follows. There is no valid pre-project baseline or evidence that every section became measurably faster. [Archived CrBm controls](cinematic-crbm-control-index-2026-11-11.json).
+## Original budgets and remaining limitations
 
-## Film loading and quality tradeoff
+[Current24-route external payload inventory](cinematic-shah-complete-payload-2026-11-12.json), individually gzip level6, excludes HTML/Flight, inline code, media, fonts, SVG bodies, API data, deferred imports, prefetch and legacy nomodule:
 
-All eight fast sequence/fallback cases and two actual cold4G cases completed with zero runtime errors. Unthrottled readiness was 1497.1ms desktop/719.2ms mobile; cache was not purged, so these are not cold-fast guarantees. Original compressed files remain36744691/11337072 bytes. Normal completion reaches currentTime 12.249/12.25s with decoded mediaTime 12.208333; reverse, wheel, touch, keyboard, reduced motion, Save-Data and2G paths were checked.
+| Scope | Initial JS gzip B | Initial CSS gzip B |
+|---|---:|---:|
+| Home NL/EN |183,621|39,866|
+| Menu NL/EN |174,149|34,211|
+| Reservations NL/EN |161,076|32,621|
+| All24 public URLs |153,296–183,621|26,601–39,866|
 
-Cold mobile 4G full buffering took **60.77s**. Early scrolling canceled media and selected the static fallback at **4.57s**, with visible content, unlocked body and no unexpected inert/overflow. Full buffering removes further network demand during scrubbing while retaining the original file; it cannot guarantee smooth decoding. Dropped-frame counters were not collected. Physical Safari/iPhone/iPad/GPU playback remains unverified. The separate CapCut edit was not delivered or integrated. [Exact film cases](cinematic-final-film-2026-11-11.json).
+Every route still fails the original JS<120,000B gate. All24 routes pass CSS<40,000B after removing only obsolete, unconditionally overridden homepage rules. Dictionary delivery moves some bytes into HTML and SVG sprites add their own cost, so external JS savings are not total-transfer savings. [Qualified historical comparison](DELIVERY-IMPROVEMENTS.md), [bounded runtime investigation](RUNTIME-BUDGET-INVESTIGATION.md).
 
-## Assets and payload
+The latest full48-run Lighthouse matrix belongs to the older **Cde original-v4 control**, not this NL/dark release. All its A/BestPractices/SEO scores are100, but7Performance cases,6eligible LCP cases and8TBT cases fail the original gates; four home LCPs lack eligible native candidates. The Dutch reservation outlier P39/TBT11,663ms is retained. All six sampled INPs fail150ms (mobile home/menu/reservations352/1712/376ms; desktop664/1992/680ms). No full final-film Lighthouse/INP matrix or field CWV claim is made. [Exact historical control index](cinematic-cde-v4-control-index-2026-11-11.json).
 
-The four protected movie/logo hashes still match the initial audit. Eight poster variants are below 120000 bytes; 60 restaurant-photo variants below 200000 (maximum 176090); 376 menu-image AVIF/WebP responses and four brand-logo responses pass 200000. All 80 controlled gallery variants pass: AVIF maximum 192305, WebP 197878. Original photos remain; orientation/metadata and contact-sheet/native-crop checks are recorded in the asset reports. Eight byte-identical WOFF2 files preserve all 25 faces/fallback metrics and both licenses. [Font pipeline](FONT-PIPELINE.md).
+Full buffering preserves the approved video quality but imposes startup cost. The older byte-identical English mobile master control at1.6Mbps/150ms/CPU4 needed **80.095s** before playback and recorded six dropped frames. New Dutch fast-start files remain substantial; their cold-link timing was not remeasured. Fast local playback does not establish instant loading, zero dropped frames or guaranteed smoothness on every connection. Physical Safari/iPhone/iPad coverage is unavailable; the owner's earlier phone-playback confirmation applies to that earlier build.
 
-These are modern-format delivery checks for the named snapshots. Raw originals can be larger; native gallery pictures fall back to WebP while original JPEGs remain separate, so the literal original-format picture-fallback requirement is incomplete. Unknown uploads and original-JPEG optimizer responses are not covered. Lossy encoding review does not guarantee pixel identity or 4K quality.
+Google current CODE validators remain **NOT_RUN**. CUA failed during browser initialization before Google navigation or code submission; the bounded12November retry timed out twice after about33s and31s. This is a tool blocker, not failed schema acceptance. [Exact retry record](structured-data-external-validator-retry-20261112.json). Local schema parsing proves neither indexing nor rich-result display.
 
-Initial external files are distinct per cold route, each gzip level 6 and byte-matched to the served build. HTML is recorded separately; inline/Flight scripts, fonts, media, APIs, dynamic imports, prefetch and legacy nomodule are excluded from external JS/CSS. These are not total-transfer figures.
-
-| Route | JS gzip B | CSS gzip B | HTML raw/gzip B |
-| --- | ---: | ---: | ---: |
-| / | 225989 | 39440 | 107921 / 20922 |
-| /en | 225989 | 39440 | 108035 / 20656 |
-| /menukaart | 217735 | 32779 | 297985 / 44251 |
-| /en/menu | 217735 | 32779 | 298115 / 44038 |
-| /reserveren | 204015 | 32004 | 69137 / 15735 |
-| /en/reservations | 204015 | 32004 | 69426 / 15551 |
-| /privacy | 196588 | 30475 | 45112 / 11653 |
-| /en/privacy | 196439 | 30475 | 45348 / 11537 |
-| /voorwaarden | 196426 | 30475 | 44674 / 11632 |
-| /en/terms | 196426 | 30475 | 44562 / 11338 |
-| /events | 196174 | 26127 | 54419 / 13047 |
-| /events/about | 197861 | 26127 | 54893 / 13180 |
-| /events/birthdays | 198553 | 26127 | 63323 / 14892 |
-| /events/celebrations | 198834 | 26127 | 70589 / 14865 |
-| /events/company-catering | 198861 | 26127 | 63140 / 15183 |
-| /events/company-lunches | 198817 | 26127 | 67935 / 14403 |
-| /events/gallery | 210003 | 26127 | 75411 / 14601 |
-
-External CSS passes 40000 bytes on all 17; external JS fails 120000 on all 17. This artifact's shared startup/runtime files alone total 126236 gzip bytes, not a universal framework minimum. [Exact memberships](cinematic-cookie-ssr-payload-2026-11-11.json).
-
-## Remaining requirements and boundaries
-
-The definition of done is incomplete: JavaScript, six mobile performance scores, five native mobile LCPs, two TBT values and five sampled INPs remain over target; four home LCPs are unvalidated. Google Rich Results CODE tests are **NOT RUN**: browser DOM providers were unavailable and native-input testing was not completed. Local schema checks and historical external results do not establish a current Google pass.
-
-Seven English event URL pairs, a universal original-format picture fallback and comprehensive 48px target certification remain absent; preserved rules include 44px minima. No real-device Safari, field CWV/rankings, company scheduling or live booking/order/payment/email success is certified. Live catalogue success inside 750ms is unproven; a five-second diagnostic read succeeded. A JavaScript-disabled visitor with only an old local-storage acknowledgement cannot be recognized server-side until migration; HTTPS Secure behaviour was source-tested only.
-
-The full 112-line Library brief was read before the original audit/map. Local materialization failed on Windows os.setxattr; complete Library text retrieval succeeded. The prior local-commit approval block was resolved by explicit owner approval; no approval is pending. Originals and unrelated work are preserved. [Shipped intent map](../KEYWORD-MAP.md), [historical audit](../AUDIT.md), [start/review instructions](LOCAL_PREVIEW.md).
+Changed-feature checks,23 mocked contracts, TypeScript/build and focused lint pass with zero errors/two pre-existing warnings. Whole-repository lint retains22 prior errors/six warnings in unrelated paths. No live transactional, account, email or payment success is certified. The preview is GET/HEAD-only with a pinned224-product/two-brand public fixture, fixed status clock, empty uploaded-gallery/private data and disabled submissions; it is not live restaurant availability. No firewall, network-profile, router or VPN change was made.

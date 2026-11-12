@@ -1,0 +1,777 @@
+{
+ "schemaVersion": 4,
+ "classification": "s_2 CSS-only final-artifact hero milestone wrapper - qualified tEO2 and RO27+5 carry",
+ "requestedFilenameDate": "2026-11-11",
+ "finalReservedWriteAuthorized": true,
+ "milestoneOnly": true,
+ "definitionOfDone": false,
+ "fullTaskComplete": false,
+ "overallPublicSiteAcceptance": false,
+ "identity": {
+  "buildId": "s_2pU6IxrWANtKLhFIf2S",
+  "origin": "http://127.0.0.1:3708",
+  "dist": ".next-review-shah-complete-20261112",
+  "sourceFingerprint": "0d98fae249ab1b1516cd84408a7a4725ddaf9dcc0028a3093c28c0b9d5ea670d",
+  "sourceInputs": 548,
+  "sourceRecordedAtUTC": "2026-11-12T01:36:31.722Z"
+ },
+ "currentWorkspaceIdentityClaimed": false,
+ "currentMainPromotionClaimed": true,
+ "freshHeroBrowserRunsOnThisBuild": 0,
+ "contract": {
+  "description": "Release footer dock; unchanged locale-aware one-time transform intro",
+  "closingWindowSeconds": 1,
+  "naturalEndedCriterionUsed": false,
+  "qualification": "Fixed overlay transforms during the final1second,then removes media/hero and preserves the per-tab claim. Normal flow intentionally precedes natural ended; no full368-frame watched claim."
+ },
+ "proofClearance": {
+  "ready": true,
+  "basis": "Explicit parent proof-clear instruction plus offline identity/hash validation of compiled style,module,footer and current payload reports.",
+  "newHeroOrPerformanceRun": false
+ },
+ "sourceDescriptorComparison": {
+  "sourceChanges": [
+   {
+    "file": "app/home.module.css",
+    "old": "ecacf90a3433d9f1cd7173b6d70000373e8d5b14281d9125177a02bc378e53f8",
+    "new": "27ffa529514334cb478578996ce7b00e0bfe9c40697035cf133a0721f602e47e"
+   }
+  ],
+  "removedFiles": [],
+  "oldSourceFingerprint": "a007fa551f112b4de9be3087238ce01fb3ee24ad4589607708952cc07228e4a4",
+  "newSourceFingerprint": "0d98fae249ab1b1516cd84408a7a4725ddaf9dcc0028a3093c28c0b9d5ea670d",
+  "recordedInputsEach": 548,
+  "newDescriptor": {
+   "file": ".next-review-shah-complete-20261112.source.json",
+   "bytes": 85277,
+   "sha256": "843a03894a1075f34e15dcbd85103c94f06b563d8a5b1ce0cc694a6fef307111",
+   "evidenceWrittenUTC": "2026-11-12T01:36:31.724Z"
+  },
+  "oldDescriptor": {
+   "file": ".next-review-shah-release-20261112.source.json",
+   "bytes": 85277,
+   "sha256": "3e3d3d451aaeeb863e4eea512c731b710ac93bcc8d5a70f67a562e440098d609",
+   "evidenceWrittenUTC": "2026-11-12T01:22:54.458Z"
+  },
+  "parentReportedEdit": "Six early fully overridden home.module.css rules removed,696raw bytes; later winning declarations retained. Compiled style equivalence and raw emitted-module proof are linked below."
+ },
+ "qualifiedHistoricalHeroEvidence": {
+  "carryRequestedByParent": true,
+  "carryAcceptancePendingCompiledProof": false,
+  "releasePriority": {
+   "recordedBuildId": "tEOo2rX98Fg45gqnRm-1s",
+   "recordedOrigin": "http://127.0.0.1:3698",
+   "recordedSourceFingerprint": "a007fa551f112b4de9be3087238ce01fb3ee24ad4589607708952cc07228e4a4",
+   "recordedFreshPasses": 2,
+   "remeasuredOnS2": false,
+   "summary": {
+    "freshReleasePriorityPasses": 2,
+    "qualifiedRoLifecyclePasses": 27,
+    "qualifiedRoResponsiveLanguagePasses": 5,
+    "lifecycleAndResponsiveRemeasuredOnRelease": false,
+    "initialNativeCls": {
+     "nlDesktop": 0,
+     "enMobile": 0
+    },
+    "overlayIntermediateSamples": {
+     "nlDesktop": 33,
+     "enMobile": 33
+    },
+    "handoffTimesSeconds": {
+     "nlDesktop": 11.333067,
+     "enMobile": 11.338125
+    },
+    "nativeDurationsSeconds": {
+     "nlDesktop": 12.332666,
+     "enMobile": 12.332667
+    },
+    "freshRuntimeExceptions": 0,
+    "freshBusinessWrites": 0
+   },
+   "freshPriorityRawRoot": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cinematic-qa-20261111\\production\\autoplay-tEOo2rX98Fg45gqnRm-1s",
+   "freshPriorityMatrix": {
+    "file": "priority-handoff-matrix.json",
+    "bytes": 148851,
+    "sha256": "b76b61e1dde1691be103c700bb2e92b9af875187127b2bada23995cb7f227893",
+    "evidenceWrittenUTC": "2026-11-12T01:30:20.388Z"
+   },
+   "preservedTeoReport": {
+    "path": "C:\\Users\\DaviiC\\Downloads\\shahrestaurant\\shahrestaurant\\docs\\hero-intro-handoff-teo-milestone-2026-11-11.json",
+    "bytes": 79482,
+    "sha256": "ca7c7a6747d89d615bc9e2a36aeda059df415f5013c642fb9f2d69a4ece5ba24",
+    "evidenceWrittenUTC": "2026-11-12T01:45:09.684Z"
+   }
+  },
+  "lifecycleAndResponsive": {
+   "recordedBuildId": "ROlbbD83zLUL6I7QyZ5_e",
+   "recordedOrigin": "http://127.0.0.1:3688",
+   "recordedSourceFingerprint": "7eb492cbf906158657701ad23a1917542d543761238171a5cb639c22387d0b92",
+   "lifecycleOriginalPasses": 27,
+   "responsiveLanguagePasses": 5,
+   "remeasuredOnTeo": false,
+   "remeasuredOnS2": false,
+   "roArchive": "docs/hero-intro-handoff-rol-milestone-2026-11-11.json",
+   "sourceModuleChain": "RO-to-tEO canonical proof in exact tEO archive; tEO-to-s_2 exact raw module variants identical,only home.module.css changed,compiled style comparisons match."
+  },
+  "qualifications": [
+   "tEO2 priority and RO27+5 retain original build/source/raw identities. No new hero/browser/Lighthouse/INP/cold measurement is made for s_2.",
+   "Actual lifecycle persisted flags and blocked-storage document-only fallback limits remain in archived RO evidence.",
+   "Controlled NotAllowed,forced404,SaveData/2G/reduced-motion cases remain labeled simulations; runtime exceptions are separate from deliberate network/console errors.",
+   "Normal closing-last-second transform handoff intentionally precedes natural ended; no full368-frame playback acceptance claim."
+  ],
+  "qualifiedCarryAcceptedForThisScope": true,
+  "exactTeoArchive": {
+   "path": "C:\\Users\\DaviiC\\Downloads\\shahrestaurant\\shahrestaurant\\docs\\hero-intro-handoff-teo-milestone-2026-11-11.json",
+   "bytes": 79482,
+   "sha256": "ca7c7a6747d89d615bc9e2a36aeda059df415f5013c642fb9f2d69a4ece5ba24",
+   "evidenceWrittenUTC": "2026-11-12T01:45:09.684Z"
+  }
+ },
+ "payloadBudget": {
+  "method": "Initial external assets, distinct per cold route; each file gzip level6; byte-matched to selected build. Excludes HTML, inline scripts, fonts, media, APIs, dynamic imports, prefetch and nomodule legacy.",
+  "measuredAtUTC": "2026-11-12T01:38:10.970Z",
+  "buildId": "s_2pU6IxrWANtKLhFIf2S",
+  "sourceFingerprint": "0d98fae249ab1b1516cd84408a7a4725ddaf9dcc0028a3093c28c0b9d5ea670d",
+  "cssStrictBudgetBytes": 40000,
+  "javascriptStrictBudgetBytes": 120000,
+  "all24RoutesCssPass": true,
+  "all24RoutesJavascriptPass": false,
+  "home": {
+   "cssBytes": 39866,
+   "cssPass": true,
+   "javascriptBytes": 183621,
+   "javascriptPass": false
+  },
+  "routes": [
+   {
+    "route": "/",
+    "httpStatus": 200,
+    "javascriptGzipBytes": 183621,
+    "javascriptPass": false,
+    "cssGzipBytes": 39866,
+    "cssPass": true
+   },
+   {
+    "route": "/en",
+    "httpStatus": 200,
+    "javascriptGzipBytes": 183621,
+    "javascriptPass": false,
+    "cssGzipBytes": 39866,
+    "cssPass": true
+   },
+   {
+    "route": "/menukaart",
+    "httpStatus": 200,
+    "javascriptGzipBytes": 174149,
+    "javascriptPass": false,
+    "cssGzipBytes": 34211,
+    "cssPass": true
+   },
+   {
+    "route": "/en/menu",
+    "httpStatus": 200,
+    "javascriptGzipBytes": 174149,
+    "javascriptPass": false,
+    "cssGzipBytes": 34211,
+    "cssPass": true
+   },
+   {
+    "route": "/reserveren",
+    "httpStatus": 200,
+    "javascriptGzipBytes": 161076,
+    "javascriptPass": false,
+    "cssGzipBytes": 32621,
+    "cssPass": true
+   },
+   {
+    "route": "/en/reservations",
+    "httpStatus": 200,
+    "javascriptGzipBytes": 161076,
+    "javascriptPass": false,
+    "cssGzipBytes": 32621,
+    "cssPass": true
+   },
+   {
+    "route": "/privacy",
+    "httpStatus": 200,
+    "javascriptGzipBytes": 154711,
+    "javascriptPass": false,
+    "cssGzipBytes": 31092,
+    "cssPass": true
+   },
+   {
+    "route": "/en/privacy",
+    "httpStatus": 200,
+    "javascriptGzipBytes": 154562,
+    "javascriptPass": false,
+    "cssGzipBytes": 31092,
+    "cssPass": true
+   },
+   {
+    "route": "/voorwaarden",
+    "httpStatus": 200,
+    "javascriptGzipBytes": 154541,
+    "javascriptPass": false,
+    "cssGzipBytes": 31092,
+    "cssPass": true
+   },
+   {
+    "route": "/en/terms",
+    "httpStatus": 200,
+    "javascriptGzipBytes": 154541,
+    "javascriptPass": false,
+    "cssGzipBytes": 31092,
+    "cssPass": true
+   },
+   {
+    "route": "/events",
+    "httpStatus": 200,
+    "javascriptGzipBytes": 153299,
+    "javascriptPass": false,
+    "cssGzipBytes": 26601,
+    "cssPass": true
+   },
+   {
+    "route": "/events/about",
+    "httpStatus": 200,
+    "javascriptGzipBytes": 154618,
+    "javascriptPass": false,
+    "cssGzipBytes": 26601,
+    "cssPass": true
+   },
+   {
+    "route": "/events/birthdays",
+    "httpStatus": 200,
+    "javascriptGzipBytes": 155237,
+    "javascriptPass": false,
+    "cssGzipBytes": 26601,
+    "cssPass": true
+   },
+   {
+    "route": "/events/celebrations",
+    "httpStatus": 200,
+    "javascriptGzipBytes": 155445,
+    "javascriptPass": false,
+    "cssGzipBytes": 26601,
+    "cssPass": true
+   },
+   {
+    "route": "/events/company-catering",
+    "httpStatus": 200,
+    "javascriptGzipBytes": 155539,
+    "javascriptPass": false,
+    "cssGzipBytes": 26601,
+    "cssPass": true
+   },
+   {
+    "route": "/events/company-lunches",
+    "httpStatus": 200,
+    "javascriptGzipBytes": 155481,
+    "javascriptPass": false,
+    "cssGzipBytes": 26601,
+    "cssPass": true
+   },
+   {
+    "route": "/events/gallery",
+    "httpStatus": 200,
+    "javascriptGzipBytes": 167581,
+    "javascriptPass": false,
+    "cssGzipBytes": 26601,
+    "cssPass": true
+   },
+   {
+    "route": "/en/events",
+    "httpStatus": 200,
+    "javascriptGzipBytes": 153296,
+    "javascriptPass": false,
+    "cssGzipBytes": 26601,
+    "cssPass": true
+   },
+   {
+    "route": "/en/events/about",
+    "httpStatus": 200,
+    "javascriptGzipBytes": 154618,
+    "javascriptPass": false,
+    "cssGzipBytes": 26601,
+    "cssPass": true
+   },
+   {
+    "route": "/en/events/birthdays",
+    "httpStatus": 200,
+    "javascriptGzipBytes": 155239,
+    "javascriptPass": false,
+    "cssGzipBytes": 26601,
+    "cssPass": true
+   },
+   {
+    "route": "/en/events/celebrations",
+    "httpStatus": 200,
+    "javascriptGzipBytes": 155447,
+    "javascriptPass": false,
+    "cssGzipBytes": 26601,
+    "cssPass": true
+   },
+   {
+    "route": "/en/events/company-catering",
+    "httpStatus": 200,
+    "javascriptGzipBytes": 155539,
+    "javascriptPass": false,
+    "cssGzipBytes": 26601,
+    "cssPass": true
+   },
+   {
+    "route": "/en/events/company-lunches",
+    "httpStatus": 200,
+    "javascriptGzipBytes": 155481,
+    "javascriptPass": false,
+    "cssGzipBytes": 26601,
+    "cssPass": true
+   },
+   {
+    "route": "/en/events/gallery",
+    "httpStatus": 200,
+    "javascriptGzipBytes": 167581,
+    "javascriptPass": false,
+    "cssGzipBytes": 26601,
+    "cssPass": true
+   }
+  ],
+  "proof": {
+   "path": "C:\\Users\\DaviiC\\Downloads\\shahrestaurant\\shahrestaurant\\docs\\cinematic-shah-complete-payload-2026-11-12.json",
+   "bytes": 46914,
+   "sha256": "1bab813a623da028c9c4cd07a241d1293e91dd764a346e7e3fc1ca5e9a350256",
+   "evidenceWrittenUTC": "2026-11-12T01:38:10.973Z"
+  },
+  "qualification": "Offline index of parent-generated byte-matched payload proof,not a new HTTP/performance run. These budget totals do not establish LCP/CLS/INP/TBT or field performance.",
+  "all24RoutesJavascriptFail": true,
+  "scope": "Current s_2 24route byte-matched payload proof; allCSSpass,allinitialJSfail."
+ },
+ "footerAcceptance": {
+  "ownerCompiledReportPass": true,
+  "recordedBuildId": "tEOo2rX98Fg45gqnRm-1s",
+  "recordedSourceFingerprint": "a007fa551f112b4de9be3087238ce01fb3ee24ad4589607708952cc07228e4a4",
+  "recordedOrigin": "http://127.0.0.1:3698",
+  "remeasuredOnS2": false,
+  "qualifiedCarryToS2": true,
+  "independentlyBrowserVerifiedByThisReportAuthor": false,
+  "basis": "Compiled tEO footer owner proof plus tEO-to-s_2 source-only homeCSS delta and identical emittedJS; observations retain tEO identity.",
+  "verdict": "PASS compact mobile footer, readability/text enlargement, full legal-link hit areas, docking/floating fallback and keyboard/touch behavior on this compiled artifact.",
+  "normalMeasurements": [
+   {
+    "width": 320,
+    "lang": "nl",
+    "before": 1229.140625,
+    "after": 898.140625,
+    "reduction": 331,
+    "percentageReduction": 26.9293840971207,
+    "textParity": true,
+    "hrefParity": true,
+    "linkFontParity": true,
+    "headingFontParity": true
+   },
+   {
+    "width": 320,
+    "lang": "en",
+    "before": 1213.140625,
+    "after": 874.140625,
+    "reduction": 339,
+    "percentageReduction": 27.94399866050154,
+    "textParity": true,
+    "hrefParity": true,
+    "linkFontParity": true,
+    "headingFontParity": true
+   },
+   {
+    "width": 360,
+    "lang": "nl",
+    "before": 1229.140625,
+    "after": 862.140625,
+    "reduction": 367,
+    "percentageReduction": 29.858259708892138,
+    "textParity": true,
+    "hrefParity": true,
+    "linkFontParity": true,
+    "headingFontParity": true
+   },
+   {
+    "width": 360,
+    "lang": "en",
+    "before": 1213.140625,
+    "after": 862.140625,
+    "reduction": 351,
+    "percentageReduction": 28.933166754678584,
+    "textParity": true,
+    "hrefParity": true,
+    "linkFontParity": true,
+    "headingFontParity": true
+   },
+   {
+    "width": 390,
+    "lang": "nl",
+    "before": 1213.140625,
+    "after": 846.140625,
+    "reduction": 367,
+    "percentageReduction": 30.252057546914646,
+    "textParity": true,
+    "hrefParity": true,
+    "linkFontParity": true,
+    "headingFontParity": true
+   },
+   {
+    "width": 390,
+    "lang": "en",
+    "before": 1213.140625,
+    "after": 834.140625,
+    "reduction": 379,
+    "percentageReduction": 31.24122564109169,
+    "textParity": true,
+    "hrefParity": true,
+    "linkFontParity": true,
+    "headingFontParity": true
+   },
+   {
+    "width": 430,
+    "lang": "nl",
+    "before": 1213.140625,
+    "after": 846.140625,
+    "reduction": 367,
+    "percentageReduction": 30.252057546914646,
+    "textParity": true,
+    "hrefParity": true,
+    "linkFontParity": true,
+    "headingFontParity": true
+   },
+   {
+    "width": 430,
+    "lang": "en",
+    "before": 1185.140625,
+    "after": 806.140625,
+    "reduction": 379,
+    "percentageReduction": 31.979327347756726,
+    "textParity": true,
+    "hrefParity": true,
+    "linkFontParity": true,
+    "headingFontParity": true
+   }
+  ],
+  "readability": {
+   "normalCases": 8,
+   "enlargedTextCases": 8,
+   "normalColumns": 2,
+   "enlargedColumns": 1,
+   "pageOverflow": 0,
+   "textRectanglesOutsideFooterOrOwnGroup": 0,
+   "all11linksMin48": true,
+   "allTextHrefAndFontParity": true,
+   "textEnlargementMethod": "Read each footer element computed font and line-height before mutations, then double each inline at the same viewport. This is controlled200%text magnification, not a physical-device zoom claim."
+  },
+  "docking": {
+   "normalObservations": 28,
+   "cases": 8,
+   "legalPrivacyNativeHitPoints": 80,
+   "allCorrectAnchorHits": true,
+   "linkOcclusions": 0,
+   "dockHeightDelta": 0,
+   "insideFooterPosition": "static",
+   "outsideFooterPosition": "fixed",
+   "keyboard": {
+    "locales": [
+     "nl",
+     "en"
+    ],
+    "anchorHrefOrderUnchanged": true,
+    "backTopFocusIncludedAfterLogo": true,
+    "enterScrollsTo0": true,
+    "focus": "main-content",
+    "nextTabInsideMainNotFooter": true
+   },
+   "actualAbsentIoCases": 2,
+   "actualAbsentIoPass": true
+  },
+  "contrast": {
+   "scope": "Bounded fresh dark footer Privacy link at12px/400, no site-wide AA claim.",
+   "states": [
+    {
+     "state": "default",
+     "foreground": "rgb(224, 175, 89)",
+     "background": "rgb(13, 73, 82)",
+     "contrast": 4.993237217368008
+    },
+    {
+     "state": "hover",
+     "foreground": "rgb(255, 255, 255)",
+     "background": "rgb(13, 73, 82)",
+     "contrast": 10.038385962896214
+    },
+    {
+     "state": "focus",
+     "foreground": "rgb(224, 175, 89)",
+     "background": "rgb(13, 73, 82)",
+     "contrast": 4.993237217368008
+    }
+   ],
+   "minimumRequired": 4.5,
+   "pass": true
+  },
+  "cheapRegressionCases": 4,
+  "ordinaryHeroSmoke": {
+   "cases": 2,
+   "scope": "Fresh ordinary native autoplay/time advance plus paused sought1.5s title; no performance or natural-end claim.",
+   "qualification": "Recorded tEO owner smoke,not a new s_2 playback test."
+  },
+  "ownerLimits": [
+   "Isolated Chromium/CDP atDPR1; not physical Safari or fieldCWV.",
+   "No performance, stutter-free or natural-full-end claim.",
+   "All9226task pages blank/traffic ended; no source edits during these captures.",
+   "Misconfigured defined-but-undefined IO setup is preserved as excluded diagnostic; proper actual-absence fallback passed separately."
+  ],
+  "proof": {
+   "path": "C:\\Users\\DaviiC\\Downloads\\shahrestaurant\\shahrestaurant\\docs\\footer-mobile-verification-2026-11-12.json",
+   "bytes": 14802,
+   "sha256": "d57d4137f70e6a3c9fea63cb77719d1cd670be9e89ac4142fd0833cad1d471c4",
+   "evidenceWrittenUTC": "2026-11-12T01:42:18.839Z"
+  },
+  "historicalRo320Issue": "RO control link occlusion is preserved in its original report. tEO compiled owner verification records0occlusion;this is qualified carry to CSS-only s_2,not fresh s_2 footer capture."
+ },
+ "media": {
+  "localePairs": {
+   "en": {
+    "desktop": {
+     "path": "/brand/capcut-luxury-v3/shah-luxury-capcut-desktop-v3.mp4",
+     "bytes": 22055086,
+     "sha256": "30f8b838d4086e64f0f24bd4385e5512bde8286ba65ca1f597ec0607afca85f3",
+     "width": 1920,
+     "height": 1080
+    },
+    "mobile": {
+     "path": "/brand/capcut-luxury-v3/shah-luxury-capcut-mobile-v2.mp4",
+     "bytes": 14802082,
+     "sha256": "de98d395d978de246bf42e97d21fa04cb45753e39354667d7b25c2e340e2ca6b",
+     "width": 1080,
+     "height": 1920
+    }
+   },
+   "nl": {
+    "desktop": {
+     "path": "/brand/capcut-luxury-nl-v1/shah-luxury-capcut-desktop-nl-v1-web.mp4",
+     "bytes": 21595932,
+     "sha256": "2f6d1d21801835892aa2d176df8fa02b1e0eeeb054ce58371ec92b82b1d608ad",
+     "width": 1920,
+     "height": 1080
+    },
+    "mobile": {
+     "path": "/brand/capcut-luxury-nl-v1/shah-luxury-capcut-mobile-nl-v1-web.mp4",
+     "bytes": 14767612,
+     "sha256": "f1daccbe2856904ee673227169d32a356653ab67f22922d56895f944d69c335a",
+     "width": 1080,
+     "height": 1920
+    }
+   }
+  },
+  "allPairsUnchangedFromRo": true,
+  "nativeDurationsSeconds": {
+   "nl": 12.332666,
+   "en": 12.332667
+  },
+  "fps": 30,
+  "localFileHashesNotBrowserResponseHashes": true,
+  "browserResponseSHA256Captured": false,
+  "metadataQualification": "Top-level identity metadata describes original EN pair. Locale-specific pairs and actual native durations govern selected NL/EN playback.",
+  "proof": {
+   "file": "approved-shah-release-identity.json",
+   "bytes": 2223,
+   "sha256": "d6ac4045881d39011396256ac36b1e811d00c903e2b210a950ec0ab4fb51073d",
+   "evidenceWrittenUTC": "2026-11-12T01:29:21.845Z"
+  }
+ },
+ "historicalColdAndFullEnd": {
+  "report": "docs/hero-capcut-approved-verification-2026-11-11.json",
+  "buildId": "KIb4T9-xcI_ECXiULLD-H",
+  "approximately80sColdAndNaturalEndHistoricalOnly": true,
+  "releaseColdRemeasured": false,
+  "qualification": "Only EN media remains the historical pair; NL is localizednew. Current flow/requestmix/shared-host conditions differ. No cold-fast,full-end or stutter guarantee."
+ },
+ "limits": [
+  "Definition of Done/fullTaskComplete/overallPublicSiteAcceptance remainfalse. The initial JS budget is still exceeded on all24routes; older unmet performance targets are not remeasured or declared passed.",
+  "This wrapper contains no new s_2 hero,video,CLS,LCP,INP,Lighthouse,cold or field capture. tEO2priority and RO27+5 retain their actual source/build identities.",
+  "Computed-style equivalence is bounded to4viewport/theme pairs with12normal-hover-active comparisons,not every route/state/device.",
+  "Footer functional/contrast report remains compiled tEO evidence,carried with unchanged footer source/emittedJS; not whole-site AA or physical-browser certification.",
+  "Normal overlay handoff precedes natural ended; historical KIb cold/full-end captures do not become current-build remeasurements.",
+  "Native initial no-input CLS0 belongs to the original two tEO contexts; lifecycle/reload native shift entries and actual BFCache persisted flags remain in exact archives.",
+  "Storage-blocked memory fallback is document-scoped; syntheticpolicy/network/capability tests do not certify physical-device behavior.",
+  "Shared-host,device/Safari/tooling and field-metric limitations in preserved reports remain applicable.",
+  "Main3398promotion is parent-reported and was not independently re-fetched by this offline report author.",
+  "No browser,new timing,network,app/config,build or Git work was performed in this assembly."
+ ],
+ "assembledAtUTC": "2026-11-12T01:45:09.685Z",
+ "mainPromotion": {
+  "parentReported": true,
+  "independentlyHttpCheckedByThisReportAuthor": false,
+  "origin": "http://127.0.0.1:3398",
+  "buildId": "s_2pU6IxrWANtKLhFIf2S",
+  "appPid": 12796,
+  "proxyPid": 57468,
+  "qualification": "Parent relayed verified promotion. No new GET was performed by this offline report author."
+ },
+ "compiledStyleEquivalence": {
+  "scope": "Computed-style equivalence only; no CLS or video replay measurement",
+  "pass": true,
+  "comparedPages": 8,
+  "pairedViewportThemeCases": [
+   {
+    "width": 1440,
+    "height": 900,
+    "theme": "dark"
+   },
+   {
+    "width": 1440,
+    "height": 900,
+    "theme": "light"
+   },
+   {
+    "width": 390,
+    "height": 844,
+    "theme": "dark"
+   },
+   {
+    "width": 390,
+    "height": 844,
+    "theme": "light"
+   }
+  ],
+  "normalHoverActiveComparisons": 12,
+  "differences": [],
+  "buildIdentity": [
+   {
+    "which": "before",
+    "status": 200,
+    "expectedBuild": "tEOo2rX98Fg45gqnRm-1s",
+    "headerBuild": "tEOo2rX98Fg45gqnRm-1s",
+    "htmlBuildMatches": true
+   },
+   {
+    "which": "after",
+    "status": 200,
+    "expectedBuild": "s_2pU6IxrWANtKLhFIf2S",
+    "headerBuild": "s_2pU6IxrWANtKLhFIf2S",
+    "htmlBuildMatches": true
+   }
+  ],
+  "frozenSourceComparison": {
+   "before": {
+    "build": "tEOo2rX98Fg45gqnRm-1s",
+    "dist": ".next-review-shah-release-20261112",
+    "sourceSha256": "a007fa551f112b4de9be3087238ce01fb3ee24ad4589607708952cc07228e4a4"
+   },
+   "after": {
+    "build": "s_2pU6IxrWANtKLhFIf2S",
+    "dist": ".next-review-shah-complete-20261112",
+    "sourceSha256": "0d98fae249ab1b1516cd84408a7a4725ddaf9dcc0028a3093c28c0b9d5ea670d"
+   },
+   "appFilesCompared": 204,
+   "changedAppFiles": [
+    "app/home.module.css"
+   ],
+   "onlyHomeCssChanged": true
+  },
+  "unchangedIntroSources": [
+   {
+    "file": "app/components/HeroFilm.tsx",
+    "sha256": "7c7f7e080d6b2151ebac08e723ea4aac782b75e26af9f2815ac5ccb4aa0635a0"
+   },
+   {
+    "file": "app/components/HeroPoster.tsx",
+    "sha256": "2e2bd072534debe5d4278020ecae63eae54603e7b50ab9d12f238c4d11f595cf"
+   },
+   {
+    "file": "app/lib/introMedia.ts",
+    "sha256": "f6840a5a9430a80cb8d91abe3d821ea90f88e36d57484ad051a3692dbd9336f5"
+   },
+   {
+    "file": "app/lib/introSession.ts",
+    "sha256": "85d8e6aacf7350d4780655cdf1b0e2b9fa26cc13f3c740110722a75a6a4bd997"
+   }
+  ],
+  "appWrites": 0,
+  "businessActions": 0,
+  "disposedOwnedContexts": 8,
+  "proof": {
+   "path": "C:/Users/DaviiC/AppData/Local/Temp/shah-phone-preview-20261111/css-equivalence-complete.json",
+   "bytes": 95742,
+   "sha256": "d20bccc356ccc092a7d226cec308641a16c3f832454dc59b032c77f7fcea3011",
+   "evidenceWrittenUTC": "2026-11-12T01:41:53.824Z"
+  },
+  "qualification": "Bounded computed-style equivalence only. This is not a new video replay,CLS/LCP/INP,Lighthouse,cold or field measurement."
+ },
+ "emittedModuleCarryProof": {
+  "method": "Own emitted Webpack registration evaluated in an isolated no-browser VM; factory bodies never executed. Exact raw function variant HASH SETS compared by deterministic module ID; duplicate emitted variants retained, no normalization hides changes.",
+  "recordedAtUTC": "2026-11-12T01:43:01.670Z",
+  "old": {
+   "dist": "C:\\Users\\DaviiC\\Downloads\\shahrestaurant\\shahrestaurant\\.next-review-shah-release-20261112",
+   "buildId": "tEOo2rX98Fg45gqnRm-1s",
+   "sourceFingerprint": "a007fa551f112b4de9be3087238ce01fb3ee24ad4589607708952cc07228e4a4",
+   "sourceInputs": 548,
+   "descriptorSha256": "3e3d3d451aaeeb863e4eea512c731b710ac93bcc8d5a70f67a562e440098d609",
+   "moduleCount": 436
+  },
+  "new": {
+   "dist": "C:\\Users\\DaviiC\\Downloads\\shahrestaurant\\shahrestaurant\\.next-review-shah-complete-20261112",
+   "buildId": "s_2pU6IxrWANtKLhFIf2S",
+   "sourceFingerprint": "0d98fae249ab1b1516cd84408a7a4725ddaf9dcc0028a3093c28c0b9d5ea670d",
+   "sourceInputs": 548,
+   "descriptorSha256": "843a03894a1075f34e15dcbd85103c94f06b563d8a5b1ce0cc694a6fef307111",
+   "moduleCount": 436
+  },
+  "sourceChanges": [
+   {
+    "file": "app/home.module.css",
+    "old": "ecacf90a3433d9f1cd7173b6d70000373e8d5b14281d9125177a02bc378e53f8",
+    "new": "27ffa529514334cb478578996ce7b00e0bfe9c40697035cf133a0721f602e47e"
+   }
+  ],
+  "moduleIdsEach": 436,
+  "exactRawVariantSetsIdentical": 436,
+  "changedModules": [],
+  "removedModuleIds": [],
+  "parseErrorCount": 0,
+  "allCriticalSourcesIdentical": false,
+  "expectedCriticalDifference": [
+   {
+    "file": "app/home.module.css",
+    "old": "ecacf90a3433d9f1cd7173b6d70000373e8d5b14281d9125177a02bc378e53f8",
+    "new": "27ffa529514334cb478578996ce7b00e0bfe9c40697035cf133a0721f602e47e",
+    "identical": false
+   }
+  ],
+  "criticalFilesCompared": 41,
+  "allOtherCriticalFilesIdentical": true,
+  "qualification": "The allCriticalSourcesIdentical flag is honestlyfalse because home.module.css is intentionally changed. Hero,locale,session,provider,footer,media and posters are otherwise unchanged;0rawfactory variant changes support scoped carry,not identical globalCSS or field performance.",
+  "limitations": [
+   "Unmapped module factories may be dependencies or concatenated modules; source hashes remain the direct per-file proof.",
+   "Changed module IDs/factories require review and are not presumed semantically identical.",
+   "Same controller bytes do not prove identical global CSS, photo request mix, host load, field performance, or whole-site acceptance."
+  ],
+  "proof": {
+   "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cinematic-qa-20261111\\production\\tEO-to-s2-controller-variant-comparison.json",
+   "bytes": 39672,
+   "sha256": "f1e5354144ef2995c24ee2377e98dc6f87efbd7f8b0957362677f81a1e5f37c0",
+   "evidenceWrittenUTC": "2026-11-12T01:43:01.673Z"
+  }
+ },
+ "summary": {
+  "currentBuildFreshHeroCaptures": 0,
+  "qualifiedTeoPriorityPasses": 2,
+  "qualifiedRoLifecycleOriginalPasses": 27,
+  "qualifiedRoResponsiveLanguagePasses": 5,
+  "currentCompiledStylePairs": 4,
+  "currentCompiledStyleComparisons": 12,
+  "currentRawModuleVariantChanges": 0,
+  "currentHomeCssGzipBytes": 39866,
+  "currentHomeCssStrictBudgetPass": true,
+  "currentHomeJavascriptGzipBytes": 183621,
+  "currentHomeJavascriptStrictBudgetPass": false,
+  "all24CssPass": true,
+  "all24InitialJsFail": true,
+  "definitionOfDone": false
+ }
+}

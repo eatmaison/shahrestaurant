@@ -1,0 +1,22 @@
+{
+  "recordedAtUTC": "2026-11-12T01:19:40.086Z",
+  "purpose": "Check supported browser availability for current Google Rich Results CODE validation",
+  "tool": "mcp__cua_repl.js",
+  "action": "await cua.getState();",
+  "status": "NOT_RUN",
+  "attempts": [
+    {
+      "result": "js execution timed out; kernel reset, rerun your request",
+      "wallTimeSeconds": 32.9692
+    },
+    {
+      "result": "js execution timed out; kernel reset, rerun your request",
+      "wallTimeSeconds": 31.3113
+    }
+  ],
+  "recovery": "One bounded retry after the first automatic kernel reset; stopped after the second timeout/reset.",
+  "browserInventoryOutcome": "Unknown: no inventory result was returned.",
+  "googleNavigationCallsMade": 0,
+  "codeSubmitted": false,
+  "qualification": "Tool initialization failed before any Google test action. This is not a schema validation failure; website-local headless browser QA and local JSON-LD parsing are separate."
+}

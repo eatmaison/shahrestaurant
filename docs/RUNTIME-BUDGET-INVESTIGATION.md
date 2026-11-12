@@ -1,0 +1,26 @@
+# Runtime budget investigation
+
+No runtime migration was adopted. The isolated client-ESM attempts failed, and the supported Pages prototype containing the actual restaurant features still exceeded the JavaScript budget. A plain Pages probe did fit below the gate, so an observed App Router chunk total must not be called a universal framework minimum.
+
+All figures below are saved build results, not new measurements. Initial distinct external JS and stylesheet files were matched to compiled bytes and independently gzip-compressed at level 6. Limits are JS <120,000 and CSS <40,000 decimal bytes. HTML/inline scripts, fonts, API data, media, dynamic imports, prefetch and legacy nomodule files are excluded. Exact build/source identities, local proof paths and SHA-256 hashes are in the [evidence index](runtime-budget-investigation-2026-11-11.json).
+
+| Saved scope | Build | Initial JS gzip B | Initial CSS gzip B | Byte gates |
+| --- | --- | ---: | ---: | --- |
+| Valid old App control, 24 routes | `Jc_qK5zAfu1fA46EPIc1q` | 196,517–226,295 | 26,290–39,601 | JS fails; CSS passes |
+| Supported plain Pages counter probe | `swFwGIce5PVj2fQkFQQtd` | 102,732 | 29,572 | Both pass for this probe |
+| Pages probe with old Providers/Header/Footer | `swFwGIce5PVj2fQkFQQtd` | 143,616 | 30,906 | JS fails |
+| Actual NL home Pages prototype | `R0vCOEzItaKE77Z8FHUwX` | 151,856 | 43,417 | Both fail |
+| Actual NL reservations Pages prototype | `R0vCOEzItaKE77Z8FHUwX` | 133,891 | 31,546 | JS fails |
+| Archived U5 App build, 24 routes | `U5-gxuCUwhE6QFQ1NV8jE` | 152,715–183,520 | 26,419–39,749 | JS fails; CSS passes |
+
+The old ESM experiment began from 506 source files (`93eae3323677933810ae4dc9b177a2eca2f13ecd76549327b5b596f1861642f6`). Its valid control was `Jc_qK5zAfu1fA46EPIc1q`. The first client-ESM resolution rewrite could not resolve `../build/polyfills/polyfill-module`. A bounded fallback compiled and passed type checking, but `UhgMTjaS_w4BHR-Ll2qzi` exited 1 while prerendering `/_not-found` and `/en/events/about`, digest `3141378460`. Its partial root-main emission was 113,923 bytes versus the valid control’s 126,372 bytes. These are different partial/core compositions, not valid ESM route savings: no ESM runtime, hydration or route payload was accepted. Changes stayed in the Temp copy; ESM was never integrated and dependency/framework files were used read only.
+
+The supported Pages build used native Next adapters and retained the original Next config, without internal Next aliases. Six recorded headless Chromium checks covered both private probes at 1440px/390px with JavaScript and 390px without it; counters hydrated where enabled, documents stayed intact, and no runtime errors, failed responses, business writes or horizontal overflow were recorded. Neither probe contained the full menu, reservation, film or event flows.
+
+The separate actual-feature copy started from 514 files (`12a34bb4ce555d9ed30849d07bcac979ffb953c568e734fcf773cebb2bd77c67`) and built 519 prepared inputs (`e8d15a0ac96b9cb3af90536988d8a6ede1d12ae6b338a2b64129828707396a35`) as `R0vCOEzItaKE77Z8FHUwX`. It rendered the actual NL home at `/` and reservations at `/reserveren`, with the actual shell, dictionaries, schema and preloads. Home’s component bytes were preserved by rename; the reservations component changed only by moving its global CSS import. Shared nullable navigation-hook compatibility and the Pages root-wrapper adapter are recorded explicitly. This is the older scroll-intro control, not Nq/U5 or the later autoplay/skip-landing work.
+
+Four 390px JS/NoJS checks recorded intact SSR headings/header/footer and no runtime errors, business writes or horizontal overflow. The JS home check exercised search, category selection, dish/photo dialogs and Escape. Reservations retained a dummy unsent name/note when three guests were selected; no reservation was submitted. Home also recorded 19 image-optimizer 500 responses and 19 console errors because the isolated proxy deliberately disabled external catalog image GETs. That limits image/visual validation; the bounded pass flags do not establish complete site acceptance. Both actual-feature routes still fail the JS gate, and home fails CSS.
+
+The file named `cinematic-final-payload-2026-11-11.json` is pinned to Hj2, not U5. Its 126,236-byte root-main sum is the observed composition of that build. The separately matched U5 payload report has a 126,254-byte root-main sum and the route totals above. Neither sum is an unavoidable lower bound for every supported Next architecture; the 102,732-byte plain Pages result demonstrates that distinction without proving that the complete restaurant can meet the gate. Snapshot and feature differences prevent treating this table as a causal before/after performance comparison.
+
+The cleanup record verifies that six isolated experiment server/proxy PIDs were stopped, their artifacts retained, and the main preview and browsers left untouched. This documentation pass ran no build, browser, new timing, process cleanup or Git operation and changed no app/config/framework source. There is no full-site, locale, payment/auth, reservation-submission, new-autoplay, SEO or performance acceptance from these prototypes.

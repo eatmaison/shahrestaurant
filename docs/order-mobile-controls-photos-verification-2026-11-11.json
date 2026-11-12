@@ -1,0 +1,1177 @@
+{
+  "checkedAt": "2026-11-11T23:33:18.839Z",
+  "origin": "http://127.0.0.1:3648",
+  "noBusinessSubmissions": true,
+  "sourceHashes": {
+    "app/order/OrderExperience.tsx": "EB1ABB758BFE447687190F18E62D0E7EDF8B112E03F4A0C17E8E2638AB2EC482",
+    "app/cinematic.css": "6AA2A85CB808198BF4EE12B6153E023F9479ECD45A57A267FDF4E2E9DACE925D"
+  },
+  "proofs": [
+    {
+      "width": 320,
+      "locale": "nl",
+      "type": "photo",
+      "name": "Saag Paneer Wrap",
+      "card": {
+        "x": 16,
+        "y": 220.25,
+        "width": 288,
+        "height": 457.25,
+        "top": 220.25,
+        "right": 304,
+        "bottom": 677.5,
+        "left": 16
+      },
+      "photo": {
+        "x": 17,
+        "y": 221.25,
+        "width": 286,
+        "height": 214.5,
+        "top": 221.25,
+        "right": 303,
+        "bottom": 435.75,
+        "left": 17
+      },
+      "objectFit": "contain",
+      "transform": "none",
+      "source": "http://127.0.0.1:3648/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2F6aa2448c-3a93-4039-8618-54c97ca3f5ee.jpg&w=640&q=75",
+      "text": "Saag Paneer Wrap\n€9.50\n\nVersgebakken naan gevuld met romige saag paneer, spinazie, Indiase kruiden en knapperige groenten. Authentieke vegetarische streetfood.\n\nToevoegen",
+      "button": {
+        "x": 34,
+        "y": 608.5,
+        "width": 252,
+        "height": 48,
+        "top": 608.5,
+        "right": 286,
+        "bottom": 656.5,
+        "left": 34
+      },
+      "grid": "286px",
+      "screenshot": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-order-mobile-20261111\\saag-paneer-wrap-nl-320.png",
+      "domNaturalDimensions": [
+        512,
+        409
+      ]
+    },
+    {
+      "width": 320,
+      "locale": "nl",
+      "type": "photo",
+      "name": "Butter Chicken Wrap",
+      "card": {
+        "x": 16,
+        "y": 217.59872436523438,
+        "width": 288,
+        "height": 518.46875,
+        "top": 217.59872436523438,
+        "right": 304,
+        "bottom": 736.0674743652344,
+        "left": 16
+      },
+      "photo": {
+        "x": 17,
+        "y": 218.59872436523438,
+        "width": 286,
+        "height": 214.50003051757812,
+        "top": 218.59872436523438,
+        "right": 303,
+        "bottom": 433.0987548828125,
+        "left": 17
+      },
+      "objectFit": "contain",
+      "transform": "none",
+      "source": "http://127.0.0.1:3648/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2Fc04ab278-e64a-495e-8ccd-6c8270b0cc8f.jpg&w=640&q=75",
+      "text": "Butter Chicken Wrap\nPOPULAR\n€9.99\n\nVersgebakken naan gevuld met romige butter chicken, malse kip, Indiase kruiden en verse groenten. Authentieke Indiase streetfood.\n\nToevoegen",
+      "button": {
+        "x": 34,
+        "y": 667.0675048828125,
+        "width": 252,
+        "height": 48,
+        "top": 667.0675048828125,
+        "right": 286,
+        "bottom": 715.0675048828125,
+        "left": 34
+      },
+      "grid": "286px",
+      "screenshot": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-order-mobile-20261111\\butter-chicken-wrap-nl-320.png",
+      "domNaturalDimensions": [
+        512,
+        409
+      ]
+    },
+    {
+      "width": 320,
+      "locale": "nl",
+      "type": "controls",
+      "brandTabFocus": "Shah to go",
+      "categoryTabFocus": "Burgers",
+      "keyboardBrand": {
+        "language": "nl",
+        "path": "/menukaart",
+        "overflow": 0,
+        "rows": [
+          {
+            "buttons": [
+              "Shah Restaurant",
+              "Shah to go"
+            ],
+            "arrows": 0,
+            "clientWidth": 320,
+            "scrollWidth": 320,
+            "scrollLeft": 0,
+            "overflowX": "scroll"
+          },
+          {
+            "buttons": [
+              "Wraps",
+              "Burgers",
+              "Pizzas",
+              "Drinks",
+              "Snacks",
+              "Souces"
+            ],
+            "arrows": 0,
+            "clientWidth": 320,
+            "scrollWidth": 488,
+            "scrollLeft": 12,
+            "overflowX": "scroll"
+          }
+        ],
+        "dishes": [
+          "Saag Paneer Wrap",
+          "Butter Chicken Wrap",
+          "Chicken Tikka Masala Wrap",
+          "Sweet Chili Chicken Wrap",
+          "Chicken Madras Wrap",
+          "Lamb Madras Wrap"
+        ],
+        "activeFocus": "Shah to go"
+      },
+      "keyboardCategory": {
+        "language": "nl",
+        "path": "/menukaart",
+        "overflow": 0,
+        "rows": [
+          {
+            "buttons": [
+              "Shah Restaurant",
+              "Shah to go"
+            ],
+            "arrows": 0,
+            "clientWidth": 320,
+            "scrollWidth": 320,
+            "scrollLeft": 0,
+            "overflowX": "scroll"
+          },
+          {
+            "buttons": [
+              "Wraps",
+              "Burgers",
+              "Pizzas",
+              "Drinks",
+              "Snacks",
+              "Souces"
+            ],
+            "arrows": 0,
+            "clientWidth": 320,
+            "scrollWidth": 488,
+            "scrollLeft": 12,
+            "overflowX": "scroll"
+          }
+        ],
+        "dishes": [
+          "Chicken Rosti Burger",
+          "Chicken Burger",
+          "Vega Burger",
+          "Spicy Chicken Tender Burger",
+          "Cheese Burger",
+          "Dubbel Cheese Burger",
+          "Hamburger"
+        ],
+        "activeFocus": "Burgers"
+      },
+      "beforeSwipe": {
+        "language": "nl",
+        "path": "/menukaart",
+        "overflow": 0,
+        "rows": [
+          {
+            "buttons": [
+              "Shah Restaurant",
+              "Shah to go"
+            ],
+            "arrows": 0,
+            "clientWidth": 320,
+            "scrollWidth": 320,
+            "scrollLeft": 0,
+            "overflowX": "scroll"
+          },
+          {
+            "buttons": [
+              "Wraps",
+              "Burgers",
+              "Pizzas",
+              "Drinks",
+              "Snacks",
+              "Souces"
+            ],
+            "arrows": 0,
+            "clientWidth": 320,
+            "scrollWidth": 488,
+            "scrollLeft": 12,
+            "overflowX": "scroll"
+          }
+        ],
+        "dishes": [
+          "Saag Paneer Wrap",
+          "Butter Chicken Wrap",
+          "Chicken Tikka Masala Wrap",
+          "Sweet Chili Chicken Wrap",
+          "Chicken Madras Wrap",
+          "Lamb Madras Wrap"
+        ],
+        "activeFocus": "Burgers"
+      },
+      "afterSwipe": {
+        "language": "nl",
+        "path": "/menukaart",
+        "overflow": 0,
+        "rows": [
+          {
+            "buttons": [
+              "Shah Restaurant",
+              "Shah to go"
+            ],
+            "arrows": 0,
+            "clientWidth": 320,
+            "scrollWidth": 320,
+            "scrollLeft": 0,
+            "overflowX": "scroll"
+          },
+          {
+            "buttons": [
+              "Wraps",
+              "Burgers",
+              "Pizzas",
+              "Drinks",
+              "Snacks",
+              "Souces"
+            ],
+            "arrows": 0,
+            "clientWidth": 320,
+            "scrollWidth": 488,
+            "scrollLeft": 168,
+            "overflowX": "scroll"
+          }
+        ],
+        "dishes": [
+          "Saag Paneer Wrap",
+          "Butter Chicken Wrap",
+          "Chicken Tikka Masala Wrap",
+          "Sweet Chili Chicken Wrap",
+          "Chicken Madras Wrap",
+          "Lamb Madras Wrap"
+        ],
+        "activeFocus": "Burgers"
+      },
+      "controlsShot": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-order-mobile-20261111\\controls-nl-320.png",
+      "errors": [],
+      "writes": []
+    },
+    {
+      "width": 320,
+      "locale": "en",
+      "type": "photo",
+      "name": "Saag Paneer Wrap",
+      "card": {
+        "x": 16,
+        "y": 220.25,
+        "width": 288,
+        "height": 457.25,
+        "top": 220.25,
+        "right": 304,
+        "bottom": 677.5,
+        "left": 16
+      },
+      "photo": {
+        "x": 17,
+        "y": 221.25,
+        "width": 286,
+        "height": 214.5,
+        "top": 221.25,
+        "right": 303,
+        "bottom": 435.75,
+        "left": 17
+      },
+      "objectFit": "contain",
+      "transform": "none",
+      "source": "http://127.0.0.1:3648/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2F6aa2448c-3a93-4039-8618-54c97ca3f5ee.jpg&w=640&q=75",
+      "text": "Saag Paneer Wrap\n€9.50\n\nFresh naan wrap filled with creamy saag paneer, spinach, Indian spices and crunchy vegetables. Authentic vegetarian Indian street food.\n\nAdd",
+      "button": {
+        "x": 34,
+        "y": 608.5,
+        "width": 252,
+        "height": 48,
+        "top": 608.5,
+        "right": 286,
+        "bottom": 656.5,
+        "left": 34
+      },
+      "grid": "286px",
+      "screenshot": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-order-mobile-20261111\\saag-paneer-wrap-en-320.png",
+      "domNaturalDimensions": [
+        512,
+        409
+      ]
+    },
+    {
+      "width": 320,
+      "locale": "en",
+      "type": "photo",
+      "name": "Butter Chicken Wrap",
+      "card": {
+        "x": 16,
+        "y": 217.59866333007812,
+        "width": 288,
+        "height": 518.46875,
+        "top": 217.59866333007812,
+        "right": 304,
+        "bottom": 736.0674133300781,
+        "left": 16
+      },
+      "photo": {
+        "x": 17,
+        "y": 218.59866333007812,
+        "width": 286,
+        "height": 214.49996948242188,
+        "top": 218.59866333007812,
+        "right": 303,
+        "bottom": 433.0986328125,
+        "left": 17
+      },
+      "objectFit": "contain",
+      "transform": "none",
+      "source": "http://127.0.0.1:3648/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2Fc04ab278-e64a-495e-8ccd-6c8270b0cc8f.jpg&w=640&q=75",
+      "text": "Butter Chicken Wrap\nPOPULAR\n€9.99\n\nFresh naan wrap filled with creamy butter chicken, tender chicken pieces, Indian spices and fresh vegetables. Authentic Indian street food.\n\nAdd",
+      "button": {
+        "x": 34,
+        "y": 667.0673828125,
+        "width": 252,
+        "height": 48,
+        "top": 667.0673828125,
+        "right": 286,
+        "bottom": 715.0673828125,
+        "left": 34
+      },
+      "grid": "286px",
+      "screenshot": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-order-mobile-20261111\\butter-chicken-wrap-en-320.png",
+      "domNaturalDimensions": [
+        512,
+        409
+      ]
+    },
+    {
+      "width": 320,
+      "locale": "en",
+      "type": "controls",
+      "brandTabFocus": "Shah to go",
+      "categoryTabFocus": "Burgers",
+      "keyboardBrand": {
+        "language": "en",
+        "path": "/en/menu",
+        "overflow": 0,
+        "rows": [
+          {
+            "buttons": [
+              "Shah Restaurant",
+              "Shah to go"
+            ],
+            "arrows": 0,
+            "clientWidth": 320,
+            "scrollWidth": 320,
+            "scrollLeft": 0,
+            "overflowX": "scroll"
+          },
+          {
+            "buttons": [
+              "Wraps",
+              "Burgers",
+              "Pizzas",
+              "Drinks",
+              "Snacks",
+              "Souces"
+            ],
+            "arrows": 0,
+            "clientWidth": 320,
+            "scrollWidth": 488,
+            "scrollLeft": 12,
+            "overflowX": "scroll"
+          }
+        ],
+        "dishes": [
+          "Saag Paneer Wrap",
+          "Butter Chicken Wrap",
+          "Chicken Tikka Masala Wrap",
+          "Sweet Chili Chicken Wrap",
+          "Chicken Madras Wrap",
+          "Lamb Madras Wrap"
+        ],
+        "activeFocus": "Shah to go"
+      },
+      "keyboardCategory": {
+        "language": "en",
+        "path": "/en/menu",
+        "overflow": 0,
+        "rows": [
+          {
+            "buttons": [
+              "Shah Restaurant",
+              "Shah to go"
+            ],
+            "arrows": 0,
+            "clientWidth": 320,
+            "scrollWidth": 320,
+            "scrollLeft": 0,
+            "overflowX": "scroll"
+          },
+          {
+            "buttons": [
+              "Wraps",
+              "Burgers",
+              "Pizzas",
+              "Drinks",
+              "Snacks",
+              "Souces"
+            ],
+            "arrows": 0,
+            "clientWidth": 320,
+            "scrollWidth": 488,
+            "scrollLeft": 12,
+            "overflowX": "scroll"
+          }
+        ],
+        "dishes": [
+          "Chicken Rosti Burger",
+          "Chicken Burger",
+          "Vega Burger",
+          "Spicy Chicken Tender Burger",
+          "Cheese Burger",
+          "Dubbel Cheese Burger",
+          "Hamburger"
+        ],
+        "activeFocus": "Burgers"
+      },
+      "beforeSwipe": {
+        "language": "en",
+        "path": "/en/menu",
+        "overflow": 0,
+        "rows": [
+          {
+            "buttons": [
+              "Shah Restaurant",
+              "Shah to go"
+            ],
+            "arrows": 0,
+            "clientWidth": 320,
+            "scrollWidth": 320,
+            "scrollLeft": 0,
+            "overflowX": "scroll"
+          },
+          {
+            "buttons": [
+              "Wraps",
+              "Burgers",
+              "Pizzas",
+              "Drinks",
+              "Snacks",
+              "Souces"
+            ],
+            "arrows": 0,
+            "clientWidth": 320,
+            "scrollWidth": 488,
+            "scrollLeft": 12,
+            "overflowX": "scroll"
+          }
+        ],
+        "dishes": [
+          "Saag Paneer Wrap",
+          "Butter Chicken Wrap",
+          "Chicken Tikka Masala Wrap",
+          "Sweet Chili Chicken Wrap",
+          "Chicken Madras Wrap",
+          "Lamb Madras Wrap"
+        ],
+        "activeFocus": "Burgers"
+      },
+      "afterSwipe": {
+        "language": "en",
+        "path": "/en/menu",
+        "overflow": 0,
+        "rows": [
+          {
+            "buttons": [
+              "Shah Restaurant",
+              "Shah to go"
+            ],
+            "arrows": 0,
+            "clientWidth": 320,
+            "scrollWidth": 320,
+            "scrollLeft": 0,
+            "overflowX": "scroll"
+          },
+          {
+            "buttons": [
+              "Wraps",
+              "Burgers",
+              "Pizzas",
+              "Drinks",
+              "Snacks",
+              "Souces"
+            ],
+            "arrows": 0,
+            "clientWidth": 320,
+            "scrollWidth": 488,
+            "scrollLeft": 168,
+            "overflowX": "scroll"
+          }
+        ],
+        "dishes": [
+          "Saag Paneer Wrap",
+          "Butter Chicken Wrap",
+          "Chicken Tikka Masala Wrap",
+          "Sweet Chili Chicken Wrap",
+          "Chicken Madras Wrap",
+          "Lamb Madras Wrap"
+        ],
+        "activeFocus": "Burgers"
+      },
+      "controlsShot": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-order-mobile-20261111\\controls-en-320.png",
+      "errors": [],
+      "writes": []
+    },
+    {
+      "width": 390,
+      "locale": "nl",
+      "type": "photo",
+      "name": "Saag Paneer Wrap",
+      "card": {
+        "x": 16,
+        "y": 220.25,
+        "width": 358,
+        "height": 484.5625,
+        "top": 220.25,
+        "right": 374,
+        "bottom": 704.8125,
+        "left": 16
+      },
+      "photo": {
+        "x": 17,
+        "y": 221.25,
+        "width": 356,
+        "height": 267,
+        "top": 221.25,
+        "right": 373,
+        "bottom": 488.25,
+        "left": 17
+      },
+      "objectFit": "contain",
+      "transform": "none",
+      "source": "http://127.0.0.1:3648/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2F6aa2448c-3a93-4039-8618-54c97ca3f5ee.jpg&w=640&q=75",
+      "text": "Saag Paneer Wrap\n€9.50\n\nVersgebakken naan gevuld met romige saag paneer, spinazie, Indiase kruiden en knapperige groenten. Authentieke vegetarische streetfood.\n\nToevoegen",
+      "button": {
+        "x": 34,
+        "y": 635.8125,
+        "width": 322,
+        "height": 48,
+        "top": 635.8125,
+        "right": 356,
+        "bottom": 683.8125,
+        "left": 34
+      },
+      "grid": "356px",
+      "screenshot": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-order-mobile-20261111\\saag-paneer-wrap-nl-390.png",
+      "domNaturalDimensions": [
+        512,
+        409
+      ]
+    },
+    {
+      "width": 390,
+      "locale": "nl",
+      "type": "photo",
+      "name": "Butter Chicken Wrap",
+      "card": {
+        "x": 16,
+        "y": 218.88763427734375,
+        "width": 358,
+        "height": 518.78125,
+        "top": 218.88763427734375,
+        "right": 374,
+        "bottom": 737.6688842773438,
+        "left": 16
+      },
+      "photo": {
+        "x": 17,
+        "y": 219.88763427734375,
+        "width": 356,
+        "height": 267,
+        "top": 219.88763427734375,
+        "right": 373,
+        "bottom": 486.88763427734375,
+        "left": 17
+      },
+      "objectFit": "contain",
+      "transform": "none",
+      "source": "http://127.0.0.1:3648/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2Fc04ab278-e64a-495e-8ccd-6c8270b0cc8f.jpg&w=640&q=75",
+      "text": "Butter Chicken Wrap\nPOPULAR\n€9.99\n\nVersgebakken naan gevuld met romige butter chicken, malse kip, Indiase kruiden en verse groenten. Authentieke Indiase streetfood.\n\nToevoegen",
+      "button": {
+        "x": 34,
+        "y": 668.6688842773438,
+        "width": 322,
+        "height": 48,
+        "top": 668.6688842773438,
+        "right": 356,
+        "bottom": 716.6688842773438,
+        "left": 34
+      },
+      "grid": "356px",
+      "screenshot": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-order-mobile-20261111\\butter-chicken-wrap-nl-390.png",
+      "domNaturalDimensions": [
+        512,
+        409
+      ]
+    },
+    {
+      "width": 390,
+      "locale": "nl",
+      "type": "controls",
+      "brandTabFocus": "Shah to go",
+      "categoryTabFocus": "Burgers",
+      "keyboardBrand": {
+        "language": "nl",
+        "path": "/menukaart",
+        "overflow": 0,
+        "rows": [
+          {
+            "buttons": [
+              "Shah Restaurant",
+              "Shah to go"
+            ],
+            "arrows": 0,
+            "clientWidth": 390,
+            "scrollWidth": 390,
+            "scrollLeft": 0,
+            "overflowX": "scroll"
+          },
+          {
+            "buttons": [
+              "Wraps",
+              "Burgers",
+              "Pizzas",
+              "Drinks",
+              "Snacks",
+              "Souces"
+            ],
+            "arrows": 0,
+            "clientWidth": 390,
+            "scrollWidth": 488,
+            "scrollLeft": 12,
+            "overflowX": "scroll"
+          }
+        ],
+        "dishes": [
+          "Saag Paneer Wrap",
+          "Butter Chicken Wrap",
+          "Chicken Tikka Masala Wrap",
+          "Sweet Chili Chicken Wrap",
+          "Chicken Madras Wrap",
+          "Lamb Madras Wrap"
+        ],
+        "activeFocus": "Shah to go"
+      },
+      "keyboardCategory": {
+        "language": "nl",
+        "path": "/menukaart",
+        "overflow": 0,
+        "rows": [
+          {
+            "buttons": [
+              "Shah Restaurant",
+              "Shah to go"
+            ],
+            "arrows": 0,
+            "clientWidth": 390,
+            "scrollWidth": 390,
+            "scrollLeft": 0,
+            "overflowX": "scroll"
+          },
+          {
+            "buttons": [
+              "Wraps",
+              "Burgers",
+              "Pizzas",
+              "Drinks",
+              "Snacks",
+              "Souces"
+            ],
+            "arrows": 0,
+            "clientWidth": 390,
+            "scrollWidth": 488,
+            "scrollLeft": 12,
+            "overflowX": "scroll"
+          }
+        ],
+        "dishes": [
+          "Chicken Rosti Burger",
+          "Chicken Burger",
+          "Vega Burger",
+          "Spicy Chicken Tender Burger",
+          "Cheese Burger",
+          "Dubbel Cheese Burger",
+          "Hamburger"
+        ],
+        "activeFocus": "Burgers"
+      },
+      "beforeSwipe": {
+        "language": "nl",
+        "path": "/menukaart",
+        "overflow": 0,
+        "rows": [
+          {
+            "buttons": [
+              "Shah Restaurant",
+              "Shah to go"
+            ],
+            "arrows": 0,
+            "clientWidth": 390,
+            "scrollWidth": 390,
+            "scrollLeft": 0,
+            "overflowX": "scroll"
+          },
+          {
+            "buttons": [
+              "Wraps",
+              "Burgers",
+              "Pizzas",
+              "Drinks",
+              "Snacks",
+              "Souces"
+            ],
+            "arrows": 0,
+            "clientWidth": 390,
+            "scrollWidth": 488,
+            "scrollLeft": 12,
+            "overflowX": "scroll"
+          }
+        ],
+        "dishes": [
+          "Saag Paneer Wrap",
+          "Butter Chicken Wrap",
+          "Chicken Tikka Masala Wrap",
+          "Sweet Chili Chicken Wrap",
+          "Chicken Madras Wrap",
+          "Lamb Madras Wrap"
+        ],
+        "activeFocus": "Burgers"
+      },
+      "afterSwipe": {
+        "language": "nl",
+        "path": "/menukaart",
+        "overflow": 0,
+        "rows": [
+          {
+            "buttons": [
+              "Shah Restaurant",
+              "Shah to go"
+            ],
+            "arrows": 0,
+            "clientWidth": 390,
+            "scrollWidth": 390,
+            "scrollLeft": 0,
+            "overflowX": "scroll"
+          },
+          {
+            "buttons": [
+              "Wraps",
+              "Burgers",
+              "Pizzas",
+              "Drinks",
+              "Snacks",
+              "Souces"
+            ],
+            "arrows": 0,
+            "clientWidth": 390,
+            "scrollWidth": 488,
+            "scrollLeft": 98,
+            "overflowX": "scroll"
+          }
+        ],
+        "dishes": [
+          "Saag Paneer Wrap",
+          "Butter Chicken Wrap",
+          "Chicken Tikka Masala Wrap",
+          "Sweet Chili Chicken Wrap",
+          "Chicken Madras Wrap",
+          "Lamb Madras Wrap"
+        ],
+        "activeFocus": "Burgers"
+      },
+      "controlsShot": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-order-mobile-20261111\\controls-nl-390.png",
+      "errors": [],
+      "writes": []
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "type": "photo",
+      "name": "Saag Paneer Wrap",
+      "card": {
+        "x": 16,
+        "y": 220.421875,
+        "width": 358,
+        "height": 484.5625,
+        "top": 220.421875,
+        "right": 374,
+        "bottom": 704.984375,
+        "left": 16
+      },
+      "photo": {
+        "x": 17,
+        "y": 221.421875,
+        "width": 356,
+        "height": 267,
+        "top": 221.421875,
+        "right": 373,
+        "bottom": 488.421875,
+        "left": 17
+      },
+      "objectFit": "contain",
+      "transform": "none",
+      "source": "http://127.0.0.1:3648/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2F6aa2448c-3a93-4039-8618-54c97ca3f5ee.jpg&w=640&q=75",
+      "text": "Saag Paneer Wrap\n€9.50\n\nFresh naan wrap filled with creamy saag paneer, spinach, Indian spices and crunchy vegetables. Authentic vegetarian Indian street food.\n\nAdd",
+      "button": {
+        "x": 34,
+        "y": 635.984375,
+        "width": 322,
+        "height": 48,
+        "top": 635.984375,
+        "right": 356,
+        "bottom": 683.984375,
+        "left": 34
+      },
+      "grid": "356px",
+      "screenshot": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-order-mobile-20261111\\saag-paneer-wrap-en-390.png",
+      "domNaturalDimensions": [
+        512,
+        409
+      ]
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "type": "photo",
+      "name": "Butter Chicken Wrap",
+      "card": {
+        "x": 16,
+        "y": 218.05950927734375,
+        "width": 358,
+        "height": 518.78125,
+        "top": 218.05950927734375,
+        "right": 374,
+        "bottom": 736.8407592773438,
+        "left": 16
+      },
+      "photo": {
+        "x": 17,
+        "y": 219.05950927734375,
+        "width": 356,
+        "height": 267,
+        "top": 219.05950927734375,
+        "right": 373,
+        "bottom": 486.05950927734375,
+        "left": 17
+      },
+      "objectFit": "contain",
+      "transform": "none",
+      "source": "http://127.0.0.1:3648/_next/image?url=https%3A%2F%2Fhorica-media.ams3.cdn.digitaloceanspaces.com%2Fproducts%2Fc04ab278-e64a-495e-8ccd-6c8270b0cc8f.jpg&w=640&q=75",
+      "text": "Butter Chicken Wrap\nPOPULAR\n€9.99\n\nFresh naan wrap filled with creamy butter chicken, tender chicken pieces, Indian spices and fresh vegetables. Authentic Indian street food.\n\nAdd",
+      "button": {
+        "x": 34,
+        "y": 667.8407592773438,
+        "width": 322,
+        "height": 48,
+        "top": 667.8407592773438,
+        "right": 356,
+        "bottom": 715.8407592773438,
+        "left": 34
+      },
+      "grid": "356px",
+      "screenshot": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-order-mobile-20261111\\butter-chicken-wrap-en-390.png",
+      "domNaturalDimensions": [
+        512,
+        409
+      ]
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "type": "controls",
+      "brandTabFocus": "Shah to go",
+      "categoryTabFocus": "Burgers",
+      "keyboardBrand": {
+        "language": "en",
+        "path": "/en/menu",
+        "overflow": 0,
+        "rows": [
+          {
+            "buttons": [
+              "Shah Restaurant",
+              "Shah to go"
+            ],
+            "arrows": 0,
+            "clientWidth": 390,
+            "scrollWidth": 390,
+            "scrollLeft": 0,
+            "overflowX": "scroll"
+          },
+          {
+            "buttons": [
+              "Wraps",
+              "Burgers",
+              "Pizzas",
+              "Drinks",
+              "Snacks",
+              "Souces"
+            ],
+            "arrows": 0,
+            "clientWidth": 390,
+            "scrollWidth": 488,
+            "scrollLeft": 12,
+            "overflowX": "scroll"
+          }
+        ],
+        "dishes": [
+          "Saag Paneer Wrap",
+          "Butter Chicken Wrap",
+          "Chicken Tikka Masala Wrap",
+          "Sweet Chili Chicken Wrap",
+          "Chicken Madras Wrap",
+          "Lamb Madras Wrap"
+        ],
+        "activeFocus": "Shah to go"
+      },
+      "keyboardCategory": {
+        "language": "en",
+        "path": "/en/menu",
+        "overflow": 0,
+        "rows": [
+          {
+            "buttons": [
+              "Shah Restaurant",
+              "Shah to go"
+            ],
+            "arrows": 0,
+            "clientWidth": 390,
+            "scrollWidth": 390,
+            "scrollLeft": 0,
+            "overflowX": "scroll"
+          },
+          {
+            "buttons": [
+              "Wraps",
+              "Burgers",
+              "Pizzas",
+              "Drinks",
+              "Snacks",
+              "Souces"
+            ],
+            "arrows": 0,
+            "clientWidth": 390,
+            "scrollWidth": 488,
+            "scrollLeft": 12,
+            "overflowX": "scroll"
+          }
+        ],
+        "dishes": [
+          "Chicken Rosti Burger",
+          "Chicken Burger",
+          "Vega Burger",
+          "Spicy Chicken Tender Burger",
+          "Cheese Burger",
+          "Dubbel Cheese Burger",
+          "Hamburger"
+        ],
+        "activeFocus": "Burgers"
+      },
+      "beforeSwipe": {
+        "language": "en",
+        "path": "/en/menu",
+        "overflow": 0,
+        "rows": [
+          {
+            "buttons": [
+              "Shah Restaurant",
+              "Shah to go"
+            ],
+            "arrows": 0,
+            "clientWidth": 390,
+            "scrollWidth": 390,
+            "scrollLeft": 0,
+            "overflowX": "scroll"
+          },
+          {
+            "buttons": [
+              "Wraps",
+              "Burgers",
+              "Pizzas",
+              "Drinks",
+              "Snacks",
+              "Souces"
+            ],
+            "arrows": 0,
+            "clientWidth": 390,
+            "scrollWidth": 488,
+            "scrollLeft": 12,
+            "overflowX": "scroll"
+          }
+        ],
+        "dishes": [
+          "Saag Paneer Wrap",
+          "Butter Chicken Wrap",
+          "Chicken Tikka Masala Wrap",
+          "Sweet Chili Chicken Wrap",
+          "Chicken Madras Wrap",
+          "Lamb Madras Wrap"
+        ],
+        "activeFocus": "Burgers"
+      },
+      "afterSwipe": {
+        "language": "en",
+        "path": "/en/menu",
+        "overflow": 0,
+        "rows": [
+          {
+            "buttons": [
+              "Shah Restaurant",
+              "Shah to go"
+            ],
+            "arrows": 0,
+            "clientWidth": 390,
+            "scrollWidth": 390,
+            "scrollLeft": 0,
+            "overflowX": "scroll"
+          },
+          {
+            "buttons": [
+              "Wraps",
+              "Burgers",
+              "Pizzas",
+              "Drinks",
+              "Snacks",
+              "Souces"
+            ],
+            "arrows": 0,
+            "clientWidth": 390,
+            "scrollWidth": 488,
+            "scrollLeft": 98,
+            "overflowX": "scroll"
+          }
+        ],
+        "dishes": [
+          "Saag Paneer Wrap",
+          "Butter Chicken Wrap",
+          "Chicken Tikka Masala Wrap",
+          "Sweet Chili Chicken Wrap",
+          "Chicken Madras Wrap",
+          "Lamb Madras Wrap"
+        ],
+        "activeFocus": "Burgers"
+      },
+      "controlsShot": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-order-mobile-20261111\\controls-en-390.png",
+      "errors": [],
+      "writes": []
+    },
+    {
+      "width": 768,
+      "type": "desktop-tablet-regression",
+      "baseline": {
+        "width": 768,
+        "overflow": 0,
+        "grid": "none",
+        "photo": [
+          345,
+          259
+        ],
+        "fit": "cover"
+      },
+      "candidate": {
+        "width": 768,
+        "overflow": 0,
+        "grid": "none",
+        "photo": [
+          345,
+          259
+        ],
+        "fit": "cover"
+      }
+    },
+    {
+      "width": 1440,
+      "type": "desktop-tablet-regression",
+      "baseline": {
+        "width": 1440,
+        "overflow": 0,
+        "grid": "265.594px 564.406px",
+        "photo": [
+          266,
+          190
+        ],
+        "fit": "cover"
+      },
+      "candidate": {
+        "width": 1440,
+        "overflow": 0,
+        "grid": "265.594px 564.406px",
+        "photo": [
+          266,
+          190
+        ],
+        "fit": "cover"
+      }
+    }
+  ],
+  "images": [
+    "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-order-mobile-20261111\\saag-paneer-wrap-nl-320.png",
+    "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-order-mobile-20261111\\butter-chicken-wrap-nl-320.png",
+    "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-order-mobile-20261111\\saag-paneer-wrap-en-320.png",
+    "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-order-mobile-20261111\\butter-chicken-wrap-en-320.png",
+    "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-order-mobile-20261111\\saag-paneer-wrap-nl-390.png",
+    "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-order-mobile-20261111\\butter-chicken-wrap-nl-390.png",
+    "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-order-mobile-20261111\\saag-paneer-wrap-en-390.png",
+    "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-order-mobile-20261111\\butter-chicken-wrap-en-390.png"
+  ],
+  "buildId": "P0W6dAXCimN14bV35cqxQ",
+  "sourceFingerprint": "3c72c9410d151c15cc6b8abad30a628ef8702eb4f4baa1011f440d2eccbcaffc530",
+  "visualInspection": {
+    "method": "Saved browser PNGs opened with view_image",
+    "viewed": [
+      "saag-paneer-wrap-nl-320.png",
+      "butter-chicken-wrap-nl-320.png",
+      "saag-paneer-wrap-en-390.png",
+      "butter-chicken-wrap-en-390.png"
+    ],
+    "findings": "Both entire wrap photographs visible at320/390, comfortable full-width photos above readable product details, prices and add controls; no narrow side crop."
+  },
+  "sourcePhotoAudit": {
+    "file": "docs/live-delivered-image-audit-2026-11-11.csv",
+    "SaagPaneerWrap": [
+      1200,
+      960
+    ],
+    "ButterChickenWrap": [
+      1200,
+      960
+    ]
+  },
+  "dimensionMeasurementNote": "domNaturalDimensions are browser DOM naturalWidth/naturalHeight values, which may be density-corrected for srcset. Encoded response-file dimensions were not probed in this verification. Source photo dimensions1200x960 are from the previous delivered-image audit."
+}

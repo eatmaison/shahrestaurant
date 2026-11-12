@@ -1,0 +1,183 @@
+{
+  "atUTC": "2026-11-11T22:45:31.493Z",
+  "build": "KIb4T9-xcI_ECXiULLD-H",
+  "dist": ".next-review-capcut-approved-20261111",
+  "suppliedArtifactSourceHash": "814b2639dda690cac3bdd06c2a0e6f722c4765818c6241a530cdccf631e93af9",
+  "suppliedInputs": 529,
+  "scope": "Actual isolated Chromium screenshots of approved video at settled holds. No app source edits. Conditional CSS prototype injected through inspector; it is not a rebuilt-artifact acceptance proof.",
+  "actualMedia": {
+    "containerDuration": 12.332667,
+    "videoTrackDuration": 12.266667,
+    "frames": 368,
+    "fps": 30,
+    "firstPTS": 0.066,
+    "lastPTS": 12.299333,
+    "metadataSource": "Root/asset-worker verified probe; browser observed container duration and native dimensions independently."
+  },
+  "original": {
+    "desktop1440x900": {
+      "visualVerdict": "PASS all five settled holds",
+      "nativeCropX": [
+        102,
+        1818
+      ],
+      "actualVideoBox": [
+        1430,
+        900
+      ]
+    },
+    "mobile320x844": {
+      "visualVerdict": "FAIL settled title framing",
+      "nativeCropX": [
+        176.01895734597156,
+        903.9810426540284
+      ],
+      "issues": [
+        "SHAH is cut on both sides at 1.5,9.8,11 seconds.",
+        "First and last letters of kind of evening are clipped at4.8,6 seconds."
+      ],
+      "entranceAnimation": false
+    },
+    "shared": {
+      "heroDOMText": "",
+      "duplicateHeroHeadings": 0,
+      "overflow": 0,
+      "jsStageHeight": "100svh",
+      "firstFilmHeaderAndCookie": "hidden"
+    },
+    "raw": {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\KIb4T9-xcI_ECXiULLD-H\\approved-crop-results.json",
+      "sha256": "561f9d1dc0d0c5a4d5a398553829f713808209348918e3ccdd2d57d50f5eaf25"
+    },
+    "screenshots": [
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\KIb4T9-xcI_ECXiULLD-H\\crop-320x844-1.5.png",
+        "sha256": "f837c201cc9454ad586c3a8f8676390950fcfe811200cfde80189c74bdf3babc"
+      },
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\KIb4T9-xcI_ECXiULLD-H\\crop-320x844-4.8.png",
+        "sha256": "875ff97bfe3698bf261e08401167d10c812999e4255290588957ef331206206d"
+      },
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\KIb4T9-xcI_ECXiULLD-H\\crop-320x844-6.0.png",
+        "sha256": "f4b4451c1db483e67c2a9c96ae1fbb2563c91204f65746b8d8fbca06fa3f6abf"
+      },
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\KIb4T9-xcI_ECXiULLD-H\\crop-320x844-9.8.png",
+        "sha256": "b76f191443af2c5b36ddd8fcf5b3cabc5e05b9fe6198dfe51783f89b66242944"
+      },
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\KIb4T9-xcI_ECXiULLD-H\\crop-320x844-11.0.png",
+        "sha256": "6495fc57ecd32f7df022ee0bfeae2bfd8c3f339a6b3037e00be0aabc95f38932"
+      },
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\KIb4T9-xcI_ECXiULLD-H\\crop-1440x900-1.5.png",
+        "sha256": "7b81c647639ee849e19db0a893a1e9f69f8fd4ba9b5be86b0c0e1a1506781eca"
+      },
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\KIb4T9-xcI_ECXiULLD-H\\crop-1440x900-4.8.png",
+        "sha256": "0fe927b1a3cc65b024a12a3dfba3c1280f98f7f49e47de149d3ef9258c8e406a"
+      },
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\KIb4T9-xcI_ECXiULLD-H\\crop-1440x900-6.0.png",
+        "sha256": "3cb7a14f6868190c5a274bdbafdf054d98eb80f73c913278e7d47f759e05e04b"
+      },
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\KIb4T9-xcI_ECXiULLD-H\\crop-1440x900-9.8.png",
+        "sha256": "96dd39f24c0714fb244bc6af44d54e1e0a1c01c12cb401bb26777be524c42fce"
+      },
+      {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\KIb4T9-xcI_ECXiULLD-H\\crop-1440x900-11.0.png",
+        "sha256": "58eedb4a82d31741118f28e57b6669f4e0d233ea838092918ea902f0fe644d6a"
+      }
+    ]
+  },
+  "nativeInputSmoke": {
+    "cases": 15,
+    "verdict": "PASS",
+    "scope": "Fresh Tab/Enter Skip320/390/1440; reduced and NoJS static poster/Skip; direct intro hash JS/reduced/NoJS; NoJS secondary notice48px; native autoplay time progression only.",
+    "raw": {
+      "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\KIb4T9-xcI_ECXiULLD-H\\final-smoke-results.json",
+      "sha256": "b718f2d9ca97e6f8ae502febab23a3547bdfa4fca406d0146668c904ad79d484"
+    }
+  },
+  "proposedFix": {
+    "conditional": "(max-width:767px) and (max-aspect-ratio:9/20)",
+    "files": {
+      "app/components/HeroFilm.module.css": ".film { object-fit:contain } .film[data-ready=\"true\"] { background:#000 }",
+      "app/home.module.css": ".home .heroImage { object-fit:contain!important; background:#000 }"
+    },
+    "appAppliedByThisReview": false,
+    "prototype": {
+      "verdict": "PASS all five320 settled holds visually inspected;390 remains cover outside query",
+      "normalStage844": true,
+      "noJSGeometry": "Existing normal-flow header102px plus static film742px fills viewport844px.",
+      "fallbackPosters": "NoJS and reduced-motion posters fully readable, inspected.",
+      "nativeSkip": "All four prototype cases: introTop0,filmBottom0,focusintro",
+      "errors": 0,
+      "nonGetRequests": 0,
+      "overflow": 0,
+      "raw": {
+        "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\KIb4T9-xcI_ECXiULLD-H\\tall-matte-prototype\\prototype-results.json",
+        "sha256": "080043138dc0bf7ea1ffaccbd3b8823ea9bb96a5806112bbbf42920d96efc4db"
+      },
+      "screenshots": [
+        {
+          "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\KIb4T9-xcI_ECXiULLD-H\\tall-matte-prototype\\320-1.5.png",
+          "sha256": "e1cc5173429107990f0268cc6237e2c94b88c3adfdf45e488d7f7a81d6432d97"
+        },
+        {
+          "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\KIb4T9-xcI_ECXiULLD-H\\tall-matte-prototype\\320-4.8.png",
+          "sha256": "76c7396f712d60b52c6b451c3af8c8c9ef727d51e641d4640e00410d64560abe"
+        },
+        {
+          "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\KIb4T9-xcI_ECXiULLD-H\\tall-matte-prototype\\320-6.0.png",
+          "sha256": "88729dae69a91fcd68c326ee3f5606b75fa2a3d619bde9c1e467eb6f62053d4a"
+        },
+        {
+          "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\KIb4T9-xcI_ECXiULLD-H\\tall-matte-prototype\\320-9.8.png",
+          "sha256": "d0cf2db061593dd899691e9514d629ab905d2070353eccd6c739d31594e76c50"
+        },
+        {
+          "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\KIb4T9-xcI_ECXiULLD-H\\tall-matte-prototype\\320-11.0.png",
+          "sha256": "444cfd850675506317c2220ac3fc553c57ae746bee4655e47a53a35fb0274ede"
+        },
+        {
+          "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\KIb4T9-xcI_ECXiULLD-H\\tall-matte-prototype\\390-1.5.png",
+          "sha256": "fc73614aa87511cfe1fbbcc5dd1d6c9b3cf3b5974251205c2ee31c734c923571"
+        },
+        {
+          "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\KIb4T9-xcI_ECXiULLD-H\\tall-matte-prototype\\390-4.8.png",
+          "sha256": "90e1f8d8cdee432b3f4c94b388b2be463c837bbc3bfd77dea15b518d85e45c10"
+        },
+        {
+          "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\KIb4T9-xcI_ECXiULLD-H\\tall-matte-prototype\\390-6.0.png",
+          "sha256": "a27bb59fb518580e927328fec9b02aa3cd67c0f3ad4ff95930ca7290391e305d"
+        },
+        {
+          "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\KIb4T9-xcI_ECXiULLD-H\\tall-matte-prototype\\390-9.8.png",
+          "sha256": "f81b42028921b76647962b775915ef5c21dc969e9e7fd1b04393722044193bc1"
+        },
+        {
+          "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\KIb4T9-xcI_ECXiULLD-H\\tall-matte-prototype\\390-11.0.png",
+          "sha256": "81a311c06cdc574fa36215ea3e28e33ef34f9ba1c76214c6b9e13881ac1df9ec"
+        },
+        {
+          "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\KIb4T9-xcI_ECXiULLD-H\\tall-matte-prototype\\320-nojs-poster.png",
+          "sha256": "528049e8a4cd982f2430c5a3c6ff05511908d3e8576dd25bc7e2ad659e3e6a1c"
+        },
+        {
+          "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-tap-targets-20261111\\KIb4T9-xcI_ECXiULLD-H\\tall-matte-prototype\\320-reduced-poster.png",
+          "sha256": "6249353469f364ff230daf885bf6d33e308ee72cc61f0a62b49fe4c837aec555"
+        }
+      ]
+    }
+  },
+  "remainingAcceptance": "Parent must apply approved CSS, build, then verify actual served CSS/framing before promoting updated main/LAN. Original KIb320 visual acceptance remains failed; prototype does not relabel it.",
+  "limitations": [
+    "Seeked/paused frame inspection is not playback performance or natural-end evidence.",
+    "No physical Safari/device proof.",
+    "No app or security/firewall edits.",
+    "Root/baseline own independent playback/end/network transport evidence."
+  ]
+}

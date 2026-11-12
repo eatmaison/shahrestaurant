@@ -1,0 +1,226 @@
+{
+  "checkedAtUTC": "2026-11-12T00:01:31.010Z",
+  "method": "Offline existingNextimage-cache body reads keyed by installedNext16ImageOptimizerCache.getCacheKey(CACHE_VERSION4,exactapprovedURL,width,q75,image/avif). No newHTTP/encode/eviction. Allmatching cacheentries must agree or bytes remainunknown. New750bodylengthcrosscheckedagainstfinalcapturedContent-Length; P0loadingFinishedencodedDataLengthincludesheadersandisnotcalledbodybytes.",
+  "oldBuildId": "P0W6dAXCimN14bV35cqxQ",
+  "finalBuildId": "bLRxbJQgVTT0eU9T4bPW9",
+  "rows": [
+    {
+      "name": "Butter Chicken",
+      "variants": [
+        {
+          "width": 1080,
+          "cacheKey": "4KS7uDoyrK0ONR-a2bhq_c-psyEoVo0ZDlBQKqVTKzM",
+          "cacheMatches": [
+            {
+              "file": ".next-review-capcut-reveal-20261111\\cache\\images\\4KS7uDoyrK0ONR-a2bhq_c-psyEoVo0ZDlBQKqVTKzM\\31536000.1825976328573.xT72cmrVfrRl6KfUlYgSYxEe5E32NL_rLaPc2kW_lXM.IjFjN2M2YWMzODhiMDIxZTZkYTcyMTY5NDMxNzY3MWE5Ig.avif",
+              "bytes": 68417,
+              "sha256": "c53ef6726ad57eb465e8a7d495881263111ee44df634bfeb2da3dcda45bf9573"
+            }
+          ],
+          "distinctBodies": 1,
+          "bodyBytes": 68417,
+          "sha256": "c53ef6726ad57eb465e8a7d495881263111ee44df634bfeb2da3dcda45bf9573",
+          "controlTransferBytes": 69189,
+          "finalDeclaredBodyBytes": null,
+          "finalBodyMatchesHeader": null
+        },
+        {
+          "width": 750,
+          "cacheKey": "olZHQukpncceYP3X8z7EqJJN4bOeesUoxUy8N7yszfk",
+          "cacheMatches": [
+            {
+              "file": ".next-review-capcut-final-20261111\\cache\\images\\olZHQukpncceYP3X8z7EqJJN4bOeesUoxUy8N7yszfk\\31536000.1825976973636.ir0grk-5dvG6-_eFredx4gqKRWXnvA7Ky7tWX8N3Dbw.IjFjN2M2YWMzODhiMDIxZTZkYTcyMTY5NDMxNzY3MWE5Ig.avif",
+              "bytes": 43120,
+              "sha256": "8abd20ae4fb976f1bafbf785ade771e20a8a4565e7bc0ecacbbb565fc3770dbc"
+            }
+          ],
+          "distinctBodies": 1,
+          "bodyBytes": 43120,
+          "sha256": "8abd20ae4fb976f1bafbf785ade771e20a8a4565e7bc0ecacbbb565fc3770dbc",
+          "controlTransferBytes": null,
+          "finalDeclaredBodyBytes": 43120,
+          "finalBodyMatchesHeader": true
+        }
+      ],
+      "beforeBytes": 68417,
+      "afterBytes": 43120,
+      "savedBytes": 25297,
+      "savedPercent": 36.97
+    },
+    {
+      "name": "Jalfrezi Chicken",
+      "variants": [
+        {
+          "width": 1080,
+          "cacheKey": "oqO1EP1NHL0475_lZCiZw39VZgfXIXgw1zdWVnmB7l8",
+          "cacheMatches": [
+            {
+              "file": ".next-review-capcut-reveal-20261111\\cache\\images\\oqO1EP1NHL0475_lZCiZw39VZgfXIXgw1zdWVnmB7l8\\31536000.1825976328587.LK55lUFr2tlyLNZsQGaeqWa8ZLY34xV9up3gzkp9YfM.ImVjNmFhMzU4MDA3NTdjMzYwMzgyMWQzMDg5MmQyY2RiIg.avif",
+              "bytes": 64205,
+              "sha256": "2cae7995416bdad9722cd66c40669ea966bc64b637e3157dba9de0ce4a7d61f3"
+            }
+          ],
+          "distinctBodies": 1,
+          "bodyBytes": 64205,
+          "sha256": "2cae7995416bdad9722cd66c40669ea966bc64b637e3157dba9de0ce4a7d61f3",
+          "controlTransferBytes": 64977,
+          "finalDeclaredBodyBytes": null,
+          "finalBodyMatchesHeader": null
+        },
+        {
+          "width": 750,
+          "cacheKey": "B73BmzDUMQT2raytES1ZWnBNbaOzh_hSEI9OeXswrSE",
+          "cacheMatches": [
+            {
+              "file": ".next-review-capcut-final-20261111\\cache\\images\\B73BmzDUMQT2raytES1ZWnBNbaOzh_hSEI9OeXswrSE\\31536000.1825976974178.eLdvExPmfO_4SrIPBgSUcKBoS7l1H0KtlKxOJm4d5Ag.ImVjNmFhMzU4MDA3NTdjMzYwMzgyMWQzMDg5MmQyY2RiIg.avif",
+              "bytes": 40870,
+              "sha256": "78b76f1313e67ceff84ab20f06049470a0684bb9751f42ad94ac4e266e1de408"
+            }
+          ],
+          "distinctBodies": 1,
+          "bodyBytes": 40870,
+          "sha256": "78b76f1313e67ceff84ab20f06049470a0684bb9751f42ad94ac4e266e1de408",
+          "controlTransferBytes": null,
+          "finalDeclaredBodyBytes": 40870,
+          "finalBodyMatchesHeader": true
+        }
+      ],
+      "beforeBytes": 64205,
+      "afterBytes": 40870,
+      "savedBytes": 23335,
+      "savedPercent": 36.34
+    },
+    {
+      "name": "Jalfrezi Fish",
+      "variants": [
+        {
+          "width": 1080,
+          "cacheKey": "HiXLCZwdKdVpBkAar6EQZDuoCZ65rDFjdVVh0bR4JO0",
+          "cacheMatches": [
+            {
+              "file": ".next-review-capcut-reveal-20261111\\cache\\images\\HiXLCZwdKdVpBkAar6EQZDuoCZ65rDFjdVVh0bR4JO0\\31536000.1825976328527.IGoHWKBFiis-G8Av_FYzPbhLshdkyrTzUzlw-OkWGyU.IjAwZjFmYTQ5YjgyOTdiNDA5Mjg5MzJjZmVlNTU0NmJkIg.avif",
+              "bytes": 69189,
+              "sha256": "206a0758a0458a2b3e1bc02ffc56333db84bb21764cab4f3533970f8e9161b25"
+            }
+          ],
+          "distinctBodies": 1,
+          "bodyBytes": 69189,
+          "sha256": "206a0758a0458a2b3e1bc02ffc56333db84bb21764cab4f3533970f8e9161b25",
+          "controlTransferBytes": 69961,
+          "finalDeclaredBodyBytes": null,
+          "finalBodyMatchesHeader": null
+        },
+        {
+          "width": 750,
+          "cacheKey": "1TxvKbZ4ihSXCFIAXUXAKw3Iv4xK5WhXjUZZc9f61iQ",
+          "cacheMatches": [
+            {
+              "file": ".next-review-capcut-final-20261111\\cache\\images\\1TxvKbZ4ihSXCFIAXUXAKw3Iv4xK5WhXjUZZc9f61iQ\\31536000.1825976974182.bvmtmlfCvhtkIfBCg16cax0WWVVv3-WuvYkiNGKqKoU.IjAwZjFmYTQ5YjgyOTdiNDA5Mjg5MzJjZmVlNTU0NmJkIg.avif",
+              "bytes": 44319,
+              "sha256": "6ef9ad9a57c2be1b6421f042835e9c6b1d1659556fdfe5aebd89223462aa2a85"
+            }
+          ],
+          "distinctBodies": 1,
+          "bodyBytes": 44319,
+          "sha256": "6ef9ad9a57c2be1b6421f042835e9c6b1d1659556fdfe5aebd89223462aa2a85",
+          "controlTransferBytes": null,
+          "finalDeclaredBodyBytes": 44319,
+          "finalBodyMatchesHeader": true
+        }
+      ],
+      "beforeBytes": 69189,
+      "afterBytes": 44319,
+      "savedBytes": 24870,
+      "savedPercent": 35.95
+    },
+    {
+      "name": "Jalfrezi Lamb",
+      "variants": [
+        {
+          "width": 1080,
+          "cacheKey": "i54kVSmThT4mfWzAKbnEMP2XqsXfhbhDXGiVs3w-_v4",
+          "cacheMatches": [
+            {
+              "file": ".next-review-capcut-reveal-20261111\\cache\\images\\i54kVSmThT4mfWzAKbnEMP2XqsXfhbhDXGiVs3w-_v4\\31536000.1825976333318.RVyy4OO-TrEhkMYS0rUKVOHs8DRnGBF0HUAz3GXrd0k.ImFlNTFmY2NhNzU5ZTEwMGMyYWM4YjI5NjZkOGI2ZGQ2Ig.avif",
+              "bytes": 67107,
+              "sha256": "455cb2e0e3be4eb12190c612d2b50a54e1ecf034671811741d4033dc65eb7749"
+            }
+          ],
+          "distinctBodies": 1,
+          "bodyBytes": 67107,
+          "sha256": "455cb2e0e3be4eb12190c612d2b50a54e1ecf034671811741d4033dc65eb7749",
+          "controlTransferBytes": 67879,
+          "finalDeclaredBodyBytes": null,
+          "finalBodyMatchesHeader": null
+        },
+        {
+          "width": 750,
+          "cacheKey": "GjLqTgIRsK4IprQ5uNWrUbQ4vrNwhsuQw-ENzMbdxxY",
+          "cacheMatches": [
+            {
+              "file": ".next-review-capcut-final-20261111\\cache\\images\\GjLqTgIRsK4IprQ5uNWrUbQ4vrNwhsuQw-ENzMbdxxY\\31536000.1825976978090.ZckGm-Tk-0cbxSo24m9HWkQXi52CZb-3Oxnsyp_wH-8.ImFlNTFmY2NhNzU5ZTEwMGMyYWM4YjI5NjZkOGI2ZGQ2Ig.avif",
+              "bytes": 42836,
+              "sha256": "65c9069be4e4fb471bc52a36e26f475a44178b9d8265bfb73b19ecca9ff01fef"
+            }
+          ],
+          "distinctBodies": 1,
+          "bodyBytes": 42836,
+          "sha256": "65c9069be4e4fb471bc52a36e26f475a44178b9d8265bfb73b19ecca9ff01fef",
+          "controlTransferBytes": null,
+          "finalDeclaredBodyBytes": 42836,
+          "finalBodyMatchesHeader": true
+        }
+      ],
+      "beforeBytes": 67107,
+      "afterBytes": 42836,
+      "savedBytes": 24271,
+      "savedPercent": 36.17
+    },
+    {
+      "name": "Jalfrezi Prawn",
+      "variants": [
+        {
+          "width": 1080,
+          "cacheKey": "l7gXHvsv1ESKhq8ctyKuf-3-c_zVtzpuKBNbnuXhFS0",
+          "cacheMatches": [
+            {
+              "file": ".next-review-capcut-reveal-20261111\\cache\\images\\l7gXHvsv1ESKhq8ctyKuf-3-c_zVtzpuKBNbnuXhFS0\\31536000.1825976333356.Z7SkkTSbHk43hlejvuVdvJ41PoO5xNSwSNaoRGpQmaI.IjNmMjM3NDc2YWQyYjJkNmU4ZTYzZjVhYzAxOThlMTMyIg.avif",
+              "bytes": 69126,
+              "sha256": "67b4a491349b1e4e378657a3bee55dbc9e353e83b9c4d4b048d6a8446a5099a2"
+            }
+          ],
+          "distinctBodies": 1,
+          "bodyBytes": 69126,
+          "sha256": "67b4a491349b1e4e378657a3bee55dbc9e353e83b9c4d4b048d6a8446a5099a2",
+          "controlTransferBytes": 69898,
+          "finalDeclaredBodyBytes": null,
+          "finalBodyMatchesHeader": null
+        },
+        {
+          "width": 750,
+          "cacheKey": "S0UnjCP_oECqbg2CORqc6pgZbZzcQRyH1LhvcXDTHJ0",
+          "cacheMatches": [
+            {
+              "file": ".next-review-capcut-final-20261111\\cache\\images\\S0UnjCP_oECqbg2CORqc6pgZbZzcQRyH1LhvcXDTHJ0\\31536000.1825976978121.5rOYJnPseWuwfhDk0quD5BHw2WwlDk6hH7FQ8qlmIt8.IjNmMjM3NDc2YWQyYjJkNmU4ZTYzZjVhYzAxOThlMTMyIg.avif",
+              "bytes": 43917,
+              "sha256": "e6b3982673ec796bb07e10e4d2ab83e411f0d96c250e4ea11fb150f2a96622df"
+            }
+          ],
+          "distinctBodies": 1,
+          "bodyBytes": 43917,
+          "sha256": "e6b3982673ec796bb07e10e4d2ab83e411f0d96c250e4ea11fb150f2a96622df",
+          "controlTransferBytes": null,
+          "finalDeclaredBodyBytes": 43917,
+          "finalBodyMatchesHeader": true
+        }
+      ],
+      "beforeBytes": 69126,
+      "afterBytes": 43917,
+      "savedBytes": 25209,
+      "savedPercent": 36.47
+    }
+  ],
+  "totalBefore": 338044,
+  "totalAfter": 215062,
+  "totalSavedPercent": 36.38
+}

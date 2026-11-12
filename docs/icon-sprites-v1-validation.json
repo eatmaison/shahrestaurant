@@ -1,0 +1,519 @@
+{
+  "checkedAtUTC": "2026-11-11T21:01:53.483Z",
+  "scope": "Public SVGsprite source/SSR and isolatedChromiumfixture validation; not finalcompiledapp/performance proof",
+  "sourceEvidence": {
+    "file": "docs/icon-sprites-v1.json",
+    "sha256": "1ae4e4ce54e52a5e599bfab2d09901d3f73b7a5f4825c687815aadb679ff6f9d"
+  },
+  "independentReview": {
+    "file": "docs/icon-sprites-v1-review.json",
+    "sha256": "7b5a10dbbba6e08fcf9eec20b91da3135447a27515e36c97211b0009d4daa21b"
+  },
+  "checks": {
+    "publicGlyphs": 107,
+    "orderedPathNodes": 109,
+    "groups": {
+      "common": 25,
+      "catalog": 53,
+      "features": 29
+    },
+    "outerSsrComparisons": 749,
+    "independentDefaultContextPropChecks": 1926,
+    "publicRuntimeReactIconsEdges": 0,
+    "typeOnlyReactIconsImports": 3,
+    "typescriptNoEmit": "passed",
+    "targetedEslint": "passed,0errors/0warnings",
+    "generatorIdempotence": "passed,all3acceptedSVGfilesbyteidentical",
+    "realModuleLocaleSsrSuite": "24routes/14eventSSRpassed",
+    "visibilitySuite": "11/11passed",
+    "realNextRequestProxySuite": "11/11passed"
+  },
+  "ssr": {
+    "file": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-icon-sprite-qa-20261111\\ssr-checks.json",
+    "sha256": "eda68387a55c9455e433c4487d4d1545fa5db1c24a55cbf9f9f4446ed3f3d481",
+    "comparisons": 749,
+    "allPassed": true,
+    "interactiveProbeRenderer": "renderToString (corrected from non-hydratable renderToStaticMarkup)"
+  },
+  "browserInitial": {
+    "file": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cinematic-qa-20261111\\sprite\\sprite-browser-qa-compact.json",
+    "sha256": "b90ae7448be4e489725f05295a4746497ca137f059061417084ae4d00928be76",
+    "result": {
+      "schemaVersion": 1,
+      "capturedAtUtc": "2026-11-11T20:56:48.640Z",
+      "scope": "Isolated loopback SSR fixture only, actual Chromium screenshot pixels and recovered React probe interactions. No app integration, performance measurements or cross-engine claim.",
+      "fixture": {
+        "fixtureOnly": true,
+        "pid": 23108,
+        "runId": "199b1c7e-fc41-44de-8964-2b48025c2c80",
+        "port": 60158,
+        "url": "http://127.0.0.1:60158/fixture.html",
+        "startedAtUTC": "2026-11-11T20:46:52.159Z",
+        "scope": "IsolatedSSR/Reacthydration comparison; no business APIs or app routes"
+      },
+      "chrome": {
+        "pid": 31428,
+        "profile": "c:\\users\\daviic\\appdata\\local\\temp\\shah-cinematic-chrome-20261111"
+      },
+      "summary": {
+        "glyphs": 107,
+        "scenarios": 4,
+        "allPixelPairsExact": false,
+        "totalDifferentPixels": 10,
+        "refsBothSvg": true,
+        "buttonCountsEqual": true,
+        "svgCurrentTargetForwarding": true,
+        "allRecordedClicksTrusted": true,
+        "nativeAnchorWorksJs": true,
+        "nativeAnchorWorksNoJs": true,
+        "noJsHydrationAbsent": true
+      },
+      "scenarios": [
+        {
+          "label": "sprite-js-light",
+          "theme": "light",
+          "glyphPairs": 107,
+          "exactPairs": 106,
+          "allSameDimensions": true,
+          "differentPixels": 2,
+          "pixelsOver8": 2,
+          "pixelsOver32": 0,
+          "nonzeroDifferences": [
+            {
+              "key": "fa6/FaTelegram",
+              "sameDimensions": true,
+              "width": 48,
+              "height": 48,
+              "differentPixels": 2,
+              "pixelsOver8": 2,
+              "pixelsOver32": 0,
+              "maxChannelDelta": 31,
+              "identicalRgba": false
+            }
+          ],
+          "fixtureHydrated": true,
+          "runtimeErrors": [
+            "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "blockedRequests": [],
+          "screenshot": {
+            "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cinematic-qa-20261111\\sprite\\sprite-js-light.png",
+            "sha256": "3cf713ca2a053b67158250b7a4d53edce067b9cfee05b04ad247a2f2ad96a6e1",
+            "bytes": 182614
+          }
+        },
+        {
+          "label": "sprite-js-dark",
+          "theme": "dark",
+          "glyphPairs": 107,
+          "exactPairs": 105,
+          "allSameDimensions": true,
+          "differentPixels": 3,
+          "pixelsOver8": 2,
+          "pixelsOver32": 0,
+          "nonzeroDifferences": [
+            {
+              "key": "fa6/FaMinus",
+              "sameDimensions": true,
+              "width": 48,
+              "height": 48,
+              "differentPixels": 1,
+              "pixelsOver8": 0,
+              "pixelsOver32": 0,
+              "maxChannelDelta": 1,
+              "identicalRgba": false
+            },
+            {
+              "key": "fa6/FaTelegram",
+              "sameDimensions": true,
+              "width": 48,
+              "height": 48,
+              "differentPixels": 2,
+              "pixelsOver8": 2,
+              "pixelsOver32": 0,
+              "maxChannelDelta": 27,
+              "identicalRgba": false
+            }
+          ],
+          "fixtureHydrated": true,
+          "runtimeErrors": [
+            "Error: Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+          ],
+          "blockedRequests": [],
+          "screenshot": {
+            "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cinematic-qa-20261111\\sprite\\sprite-js-dark.png",
+            "sha256": "c8360670ea2bdd68fb0206059da53ca9b0d9b02bca1c356751371460a355ee14",
+            "bytes": 188781
+          }
+        },
+        {
+          "label": "sprite-nojs-light",
+          "theme": "light",
+          "glyphPairs": 107,
+          "exactPairs": 106,
+          "allSameDimensions": true,
+          "differentPixels": 2,
+          "pixelsOver8": 2,
+          "pixelsOver32": 0,
+          "nonzeroDifferences": [
+            {
+              "key": "fa6/FaTelegram",
+              "sameDimensions": true,
+              "width": 48,
+              "height": 48,
+              "differentPixels": 2,
+              "pixelsOver8": 2,
+              "pixelsOver32": 0,
+              "maxChannelDelta": 31,
+              "identicalRgba": false
+            }
+          ],
+          "fixtureHydrated": false,
+          "runtimeErrors": [],
+          "blockedRequests": [],
+          "screenshot": {
+            "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cinematic-qa-20261111\\sprite\\sprite-nojs-light.png",
+            "sha256": "550c0b894eac1a7f56e2bb89315f32fd70dbf108c177a878acfbc37d656c1096",
+            "bytes": 182577
+          }
+        },
+        {
+          "label": "sprite-nojs-dark",
+          "theme": "dark",
+          "glyphPairs": 107,
+          "exactPairs": 105,
+          "allSameDimensions": true,
+          "differentPixels": 3,
+          "pixelsOver8": 2,
+          "pixelsOver32": 0,
+          "nonzeroDifferences": [
+            {
+              "key": "fa6/FaMinus",
+              "sameDimensions": true,
+              "width": 48,
+              "height": 48,
+              "differentPixels": 1,
+              "pixelsOver8": 0,
+              "pixelsOver32": 0,
+              "maxChannelDelta": 1,
+              "identicalRgba": false
+            },
+            {
+              "key": "fa6/FaTelegram",
+              "sameDimensions": true,
+              "width": 48,
+              "height": 48,
+              "differentPixels": 2,
+              "pixelsOver8": 2,
+              "pixelsOver32": 0,
+              "maxChannelDelta": 27,
+              "identicalRgba": false
+            }
+          ],
+          "fixtureHydrated": false,
+          "runtimeErrors": [],
+          "blockedRequests": [],
+          "screenshot": {
+            "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cinematic-qa-20261111\\sprite\\sprite-nojs-dark.png",
+            "sha256": "db0f8b875aac076d9613a45b4e3f994e5c747eb05d057784e5d59ae521a86d30",
+            "bytes": 188767
+          }
+        }
+      ],
+      "currentColor": {
+        "changedGlyphs": 107,
+        "equalLeftRightEveryTheme": true
+      },
+      "probe": {
+        "refs": {
+          "reference": "svg",
+          "sprite": "svg"
+        },
+        "initialCounts": {
+          "reference": 0,
+          "sprite": 0
+        },
+        "finalCounts": {
+          "reference": 3,
+          "sprite": 3
+        },
+        "actualSvgEvents": [
+          {
+            "kind": "reference",
+            "currentTarget": "svg",
+            "target": "path"
+          },
+          {
+            "kind": "sprite",
+            "currentTarget": "svg",
+            "target": "use"
+          }
+        ],
+        "trustedNativeClicks": [
+          {
+            "trusted": true,
+            "target": "path",
+            "owner": "reference-action"
+          },
+          {
+            "trusted": true,
+            "target": "use",
+            "owner": "sprite-action"
+          },
+          {
+            "trusted": true,
+            "target": "BUTTON",
+            "owner": "reference-action"
+          },
+          {
+            "trusted": true,
+            "target": "BUTTON",
+            "owner": "reference-action"
+          },
+          {
+            "trusted": true,
+            "target": "BUTTON",
+            "owner": "sprite-action"
+          },
+          {
+            "trusted": true,
+            "target": "BUTTON",
+            "owner": "sprite-action"
+          },
+          {
+            "trusted": true,
+            "target": "A",
+            "owner": "sprite-link"
+          }
+        ],
+        "tabOrder": [
+          "reference-action",
+          "sprite-action",
+          "sprite-link"
+        ],
+        "accessible": {
+          "reference": [
+            {
+              "role": "image",
+              "name": "Star",
+              "ignored": false,
+              "properties": []
+            }
+          ],
+          "sprite": [
+            {
+              "role": "image",
+              "name": "Star",
+              "ignored": false,
+              "properties": []
+            }
+          ]
+        },
+        "rootSvgReference": {
+          "tag": "svg",
+          "attrs": {
+            "viewBox": "0 0 576 512",
+            "width": "24",
+            "height": "24",
+            "fill": "currentColor",
+            "stroke": "currentColor",
+            "stroke-width": "0",
+            "class": "probe-icon",
+            "role": null,
+            "aria-hidden": null,
+            "aria-label": "Star",
+            "tabindex": null,
+            "focusable": null,
+            "style": "color: blue;"
+          },
+          "title": "Star action",
+          "computed": {
+            "color": "rgb(0, 0, 255)",
+            "fill": "rgb(0, 0, 255)",
+            "stroke": "rgb(0, 0, 255)",
+            "fontSize": "13.3333px",
+            "display": "inline",
+            "visibility": "visible",
+            "opacity": "1"
+          },
+          "rect": {
+            "x": 30.625,
+            "y": 170.75,
+            "width": 24,
+            "height": 24
+          },
+          "bbox": {
+            "x": 24.1435546875,
+            "y": 0,
+            "width": 528.0565795898438,
+            "height": 512.0573120117188
+          },
+          "bboxError": null,
+          "inlinePaths": 1,
+          "useCount": 0,
+          "useHref": null
+        },
+        "rootSvgSprite": {
+          "tag": "svg",
+          "attrs": {
+            "viewBox": "0 0 576 512",
+            "width": "24",
+            "height": "24",
+            "fill": "currentColor",
+            "stroke": "currentColor",
+            "stroke-width": "0",
+            "class": "probe-icon",
+            "role": null,
+            "aria-hidden": null,
+            "aria-label": "Star",
+            "tabindex": null,
+            "focusable": null,
+            "style": "color: blue;"
+          },
+          "title": "Star action",
+          "computed": {
+            "color": "rgb(0, 0, 255)",
+            "fill": "rgb(0, 0, 255)",
+            "stroke": "rgb(0, 0, 255)",
+            "fontSize": "13.3333px",
+            "display": "inline",
+            "visibility": "visible",
+            "opacity": "1"
+          },
+          "rect": {
+            "x": 218.484375,
+            "y": 170.75,
+            "width": 24,
+            "height": 24
+          },
+          "bbox": {
+            "x": 24.1435546875,
+            "y": 0,
+            "width": 528.0565795898438,
+            "height": 512.0573120117188
+          },
+          "bboxError": null,
+          "inlinePaths": 0,
+          "useCount": 1,
+          "useHref": "/brand/icon-sprites-v1/catalog.svg#fa6-FaStar"
+        },
+        "refsBothSvg": true,
+        "styleOverridesColorBothBlue": true,
+        "buttonCountsEqual": true,
+        "svgClickCurrentTargetsMatch": true,
+        "nativeAnchorReached": true
+      },
+      "noJsNativeAnchor": {
+        "hash": "#fixture-target",
+        "siteFixtureHydrated": false,
+        "themeChangeMethod": "CDPbodyattribute only; applicationJavaScript disabled; QA DOM/canvas readback runs viaDevTools"
+      },
+      "visualInspection": {
+        "reviewed": [
+          "sprite-js-light.png",
+          "sprite-probe-dark.png"
+        ],
+        "finding": "No obvious missing or altered glyph geometry in reviewed screenshots. Full screenshot pixel comparisons cover all107 glyphs in four scenarios.",
+        "probeScreenshotLimit": "The saved probe-dark viewport is scrolled to the native anchor target; raw SVG/AX/event records establish the probe checks."
+      },
+      "limits": [
+        "Chromium own headless profile only; not Safari/Firefox or external app integration.",
+        "Static107SVG and hydratedStarProbe only; event.target path→use differs legitimately while outer currentTarget/owner actions are compared.",
+        "NoJS means fixture scripts disabled; QA screenshot/DOM/canvas inspection usesDevTools.",
+        "SSR749 prop/title checks belong to assets agent separate artifact; this report covers actual browser rendering/ref/events.",
+        "JS fixture recorded React minified error418(text hydration mismatch); recovered client tree then passed refs/events. This does not establish clean SSR hydration. NoJS scenarios recorded no errors.",
+        "Actual AX partial trees report both named icons as role=image/name=Star/not ignored; screen-reader output was not tested.",
+        "Only default107 static icons plus one interactive Star probe were raster/interaction tested; custom fill/stroke/viewBox variants were not browser tested.",
+        "Pixel equality is not exact:10 pixels total across428 pairs, all channel deltas<=31. Tiny differing edge pixels are reported without assuming a cause."
+      ],
+      "proofs": {
+        "raw": {
+          "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cinematic-qa-20261111\\sprite\\sprite-browser-qa.json",
+          "sha256": "a01b457ffbf52a97168f60a03e72487cc2ab97889c3d366b828845c307322cff",
+          "bytes": 573579
+        },
+        "runner": {
+          "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cinematic-qa-20261111\\sprite\\run-sprite-browser-qa.cjs",
+          "sha256": "4b2fa33a5bf1acc845704403a43c2c5e61ab0cb2f7f022bd24ce4285ec7ebdcf",
+          "bytes": 9307
+        },
+        "utilities": {
+          "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cinematic-qa-20261111\\sprite\\sprite-qa-utils.cjs",
+          "sha256": "e2ea176b7eccdcd18ecb74e18f78dc0a997e7373edac2f66f85fee2bd41be3d6",
+          "bytes": 5946
+        },
+        "fixtureClient": {
+          "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-icon-sprite-qa-20261111\\client.tsx",
+          "sha256": "cd27a02debe8f00d6bca0f91c46fe1030f7e2b860bea6d67ab218a2df1ad7d13",
+          "bytes": 2427
+        }
+      },
+      "browserRelease": {
+        "port": 9227,
+        "ownContextsClosed": true,
+        "disconnected": true,
+        "mainBrowserNotClosed": true,
+        "otherProfilesUntouched": true
+      }
+    }
+  },
+  "browserCorrectedHydration": {
+    "file": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-cinematic-qa-20261111\\sprite\\sprite-hydration-corrected-fixture.json",
+    "sha256": "41d3a24272310fff74d995c4722bdade6579ac95ca755aa64c10c606b2166b00",
+    "result": {
+      "fixtureUrl": "http://127.0.0.1:60158/fixture.html",
+      "fixtureHtmlSha256": "9018bc49d10729bb6f313733ef0dd3dd3f64b84c4c1f741879c98ba543ecda06",
+      "ownership": {
+        "pid": 31428,
+        "profile": "c:\\users\\daviic\\appdata\\local\\temp\\shah-cinematic-chrome-20261111"
+      },
+      "scope": "Bounded corrected-fixture clean hydration/ref/events/buttons retry only; no pixel modes/app preview/performance.",
+      "initial": {
+        "hydrated": true,
+        "refTags": {
+          "reference": "svg",
+          "sprite": "svg"
+        },
+        "events": [],
+        "counts": {
+          "reference": 0,
+          "sprite": 0
+        }
+      },
+      "final": {
+        "hydrated": true,
+        "refTags": {
+          "reference": "svg",
+          "sprite": "svg"
+        },
+        "events": [
+          {
+            "kind": "reference",
+            "currentTarget": "svg",
+            "target": "path"
+          },
+          {
+            "kind": "sprite",
+            "currentTarget": "svg",
+            "target": "use"
+          }
+        ],
+        "counts": {
+          "reference": 3,
+          "sprite": 3
+        }
+      },
+      "errorsBeforeInteractions": [],
+      "errorsAfterInteractions": [],
+      "blockedRequests": [],
+      "pass": true
+    }
+  },
+  "limits": [
+    "No IconContext consumer/provider occurs in the public graph. The new helper implements default-context semantics and does not consume ReactIcons IconContext for hypothetical future usage.",
+    "The initial interactive fixture used non-hydratable renderToStaticMarkup and recovered from React418. Its107glyph/NoJSresults are retained as earlier-fixture evidence; cleanhydration is proved separately after onlyProbeSSR changed to renderToString.",
+    "428glyphmodecomparisons are not pixel-exact:10differentpixels total,maximumchanneldelta31. No glyphpair had a dimension mismatch and no difference exceeded32.",
+    "Browser scope is isolatedChromium only. It is not a realSafari/Firefox pass or currentcombinedappintegrationproof.",
+    "Production initialJS, actualrouteSVGfetches and totalcompressedroutepayload require the combinedbuild native-asset audit; isolatedgzip values are not additive production savings."
+  ]
+}

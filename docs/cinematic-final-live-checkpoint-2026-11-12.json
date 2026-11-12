@@ -1,0 +1,30 @@
+{
+  "checkedAtUTC": "2026-11-12T01:46:37.579Z",
+  "dist": ".next-review-shah-complete-20261112",
+  "buildId": "s_2pU6IxrWANtKLhFIf2S",
+  "sourceSha256": "0d98fae249ab1b1516cd84408a7a4725ddaf9dcc0028a3093c28c0b9d5ea670d",
+  "sourceInputs": 548,
+  "allRecordedSourceBytesUnchanged": true,
+  "sourceCommit": "277a47b1e25a4d40d0ae982faaa329e1d57a17c8",
+  "httpIdentity": [
+    {
+      "url": "http://127.0.0.1:3398/",
+      "status": 200,
+      "buildId": "s_2pU6IxrWANtKLhFIf2S",
+      "readOnlyFixture": "actual-public-catalog-read-only"
+    },
+    {
+      "url": "http://127.0.0.1:3398/en",
+      "status": 200,
+      "buildId": "s_2pU6IxrWANtKLhFIf2S",
+      "readOnlyFixture": "actual-public-catalog-read-only"
+    },
+    {
+      "url": "http://192.168.0.122:3618/",
+      "status": 200,
+      "buildId": "s_2pU6IxrWANtKLhFIf2S",
+      "readOnlyFixture": null
+    }
+  ],
+  "scope": "Final byte and live-preview identity checkpoint only; not a new browser/performance or physical phone test"
+}
