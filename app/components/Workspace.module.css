@@ -4,7 +4,7 @@
 .page h2 { font-family:var(--font-cormorant),Georgia,serif; font-size:26px; font-weight:600; line-height:1.2; }
 .page [aria-expanded] h2 { font-family:inherit; font-size:17px; font-weight:650; }
 .page :is(h1,h2,h3,p,span,a) { overflow-wrap:anywhere; }
-.page :is([id^="workspace-"],[id^="account-"],#party-admin) { scroll-margin-top:calc(var(--site-header-height,80px) + 92px); }
+.page :is([id^="workspace-"],[id^="account-"],:global(#party-admin)) { scroll-margin-top:calc(var(--site-header-height,80px) + 92px); }
 .page :is([id^="workspace-"],[id^="account-"]):target { outline:2px solid var(--shah-gold); outline-offset:6px; }
 .eyebrow { margin-bottom:16px; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.22em; color:var(--shah-gold); }
 .hero { padding-bottom:24px; border-bottom:1px solid var(--shah-line); }
@@ -101,4 +101,4 @@
 .page button[aria-label$="/5"] { min-width:48px; min-height:48px; }
 .page div:has(> button[aria-label$="/5"]) { flex-wrap:wrap; }
 @media(min-width:640px) { .dialog[open] { align-items:center; } }
-@media(max-width:359px) { .page > div:has(> #account-orders) { padding:8px; } .page #account-order-list > li { padding:8px; } .page div:has(> button[aria-label$="/5"]) { gap:0; } }
+@media(max-width:359px) { .page > div:has(> :global(#account-orders)) { padding:8px; } .page :global(#account-order-list) > li { padding:8px; } .page div:has(> button[aria-label$="/5"]) { gap:0; } }
