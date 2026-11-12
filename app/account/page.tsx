@@ -1,4 +1,5 @@
 "use client";
+import workspace from "../components/Workspace.module.css";
 
 import Link from "next/link";
 import { fetchJSON } from "../lib/clientFetch";
@@ -101,6 +102,7 @@ export default function AccountPage() {
     }
   };
   const [reviewingId, setReviewingId] = useState<string | null>(null);
+  const [showAllOrders, setShowAllOrders] = useState(false);
   const [rating, setRating] = useState(5);
   const [reviewText, setReviewText] = useState("");
 
@@ -205,11 +207,12 @@ export default function AccountPage() {
 
   if (!hydrated) {
     return (
-      <div className="page-stage cinematic-hero mx-auto flex max-w-md flex-col justify-center px-4 py-12 sm:px-6">
+      <div role="status" aria-label={lang === "nl" ? "Account laden" : "Loading account"} className={`${workspace.page} ${workspace.loading} page-stage cinematic-hero mx-auto flex max-w-md flex-col justify-center px-4 py-12 sm:px-6`}>
         <div className="premium-panel ember-border lux-sweep rounded-3xl p-8 text-center">
           <span className="mx-auto grid h-14 w-14 place-items-center rounded-2xl border border-emerald-500/25 bg-emerald-500/10 text-2xl text-emerald-600 dark:text-emerald-400">
             <FaUser />
           </span>
+          <noscript><p>{lang === "nl" ? "Schakel JavaScript in om uw account te gebruiken." : "Enable JavaScript to use your account."}</p></noscript>
           <div className="mx-auto mt-6 h-2 w-40 overflow-hidden rounded-full bg-emerald-500/10">
             <span className="progress-ember block h-full w-2/3 rounded-full" />
           </div>
@@ -226,8 +229,10 @@ export default function AccountPage() {
     const pendingVipRequest = vipRequests.find((r) => r.userId === currentUser.id && r.status === "pending");
 
     return (
-      <div className="page-stage mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
-        <div className="premium-panel ember-border lux-sweep flex flex-wrap items-center justify-between gap-4 rounded-[2rem] p-5 sm:p-7">
+      <div data-workspace="account" className={`${workspace.page} ${workspace.accountDashboard} page-stage mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8`}>
+        <p className={workspace.eyebrow}>SHAH / {t.nav.account}</p>
+        <nav className={workspace.accountNav} aria-label={lang === "nl" ? "Accountsecties" : "Account sections"}><a href="#account-overview">{lang === "nl" ? "Overzicht" : "Overview"}</a><a href="#account-membership">{lang === "nl" ? "Voordelen" : "Benefits"}</a><a href="#account-orders">{t.admin.recentOrders}</a></nav>
+        <div id="account-overview" tabIndex={-1} className={`${workspace.hero} premium-panel ember-border lux-sweep flex flex-wrap items-center justify-between gap-4 rounded-[2rem] p-5 sm:p-7`}>
           <div className="flex items-center gap-4">
             <span
               className={`grid h-14 w-14 place-items-center rounded-2xl text-2xl ${
@@ -310,7 +315,7 @@ export default function AccountPage() {
           </div>
         )}
 
-        <div className="stagger-rise mt-8 grid gap-4 sm:grid-cols-3">
+        <div data-account-metrics className="stagger-rise mt-8 grid gap-4 sm:grid-cols-3">
           <div className="premium-panel magnetic-card lux-sweep rounded-3xl p-5">
             <FaReceipt className="text-xl text-emerald-600 dark:text-emerald-400" />
             <p className="mt-3 text-3xl font-black text-slate-900 dark:text-white">{currentUser.orderCount}</p>
@@ -330,7 +335,7 @@ export default function AccountPage() {
 
         {/* VIP / Company membership */}
         {isCompany ? (
-          <div className="premium-panel lux-sweep mt-4 overflow-hidden rounded-3xl p-5">
+          <div id="account-membership" tabIndex={-1} data-account-support className="premium-panel lux-sweep mt-4 overflow-hidden rounded-3xl p-5">
             <div className="flex items-center gap-3">
               <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-sky-500 to-indigo-600 text-xl text-white shadow-lg shadow-sky-500/30">
                 <FaBuilding />
@@ -342,7 +347,7 @@ export default function AccountPage() {
             </div>
           </div>
         ) : currentUser.isVip ? (
-          <div className="premium-panel lux-sweep mt-4 overflow-hidden rounded-3xl p-5">
+          <div id="account-membership" tabIndex={-1} data-account-support className="premium-panel lux-sweep mt-4 overflow-hidden rounded-3xl p-5">
             <div className="flex items-center gap-3">
               <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-amber-400 to-yellow-600 text-xl text-white shadow-lg shadow-amber-500/30">
                 <FaCrown />
@@ -354,7 +359,7 @@ export default function AccountPage() {
             </div>
           </div>
         ) : pendingVipRequest ? (
-          <div className="premium-panel lux-sweep mt-4 overflow-hidden rounded-3xl p-5">
+          <div id="account-membership" tabIndex={-1} data-account-support className="premium-panel lux-sweep mt-4 overflow-hidden rounded-3xl p-5">
             <div className="flex items-center gap-3">
               <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-amber-400/20 text-xl text-amber-600 dark:text-amber-400">
                 <FaHourglassHalf />
@@ -366,7 +371,7 @@ export default function AccountPage() {
             </div>
           </div>
         ) : (
-          <div className="premium-panel ember-border lux-sweep mt-4 overflow-hidden rounded-3xl p-5">
+          <div id="account-membership" tabIndex={-1} data-account-support className="premium-panel ember-border lux-sweep mt-4 overflow-hidden rounded-3xl p-5">
             <div className="flex flex-wrap items-center justify-between gap-4">
               <div className="flex items-center gap-3">
                 <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-amber-400 to-yellow-600 text-xl text-white shadow-lg shadow-amber-500/30">
@@ -420,18 +425,19 @@ export default function AccountPage() {
           </div>
         )}
 
-        <div className="premium-panel lux-sweep mt-4 rounded-3xl p-5">
+        <div data-account-support className="premium-panel lux-sweep mt-4 rounded-3xl p-5">
           <p className="text-sm font-semibold text-slate-900 dark:text-white">{t.auth.loyaltyPoints}</p>
           <p className="mt-1 text-sm leading-7 text-slate-600 dark:text-slate-400">{t.auth.loyaltyExplain}</p>
         </div>
 
         <div className="premium-panel lux-sweep mt-4 rounded-3xl p-5">
-          <h2 className="text-lg font-black text-slate-900 dark:text-white">{t.admin.recentOrders}</h2>
+          <h2 id="account-orders" tabIndex={-1} className="text-lg font-black text-slate-900 dark:text-white">{t.admin.recentOrders}</h2>
           {myOrders.length === 0 ? (
             <p className="mt-3 text-sm text-slate-500 dark:text-slate-400">{t.admin.noOrders}</p>
           ) : (
-            <ul className="mt-3 space-y-2">
-              {myOrders.slice(0, 8).map((o) => {
+            <>
+            <ul id="account-order-list" className="mt-3 space-y-2">
+              {(showAllOrders ? myOrders : myOrders.slice(0, 8)).map((o) => {
                 const existing = reviews.find((r) => r.orderId === o.id);
                 return (
                   <li key={o.id} className="magnetic-card rounded-2xl border border-emerald-500/10 bg-white/65 px-4 py-3 backdrop-blur dark:border-white/5 dark:bg-white/5">
@@ -577,6 +583,8 @@ export default function AccountPage() {
                 );
               })}
             </ul>
+            {myOrders.length > 8 && <button type="button" className="mt-4 rounded-full border border-emerald-500/30 px-5 py-3 text-sm font-semibold" aria-controls="account-order-list" aria-expanded={showAllOrders} onClick={() => setShowAllOrders(value => !value)}>{showAllOrders ? (lang === "nl" ? "Minder tonen" : "Show fewer") : (lang === "nl" ? `Toon nog ${myOrders.length - 8} bestellingen` : `Show ${myOrders.length - 8} more orders`)}</button>}
+            </>
           )}
         </div>
       </div>
@@ -585,8 +593,8 @@ export default function AccountPage() {
 
   /* Auth form */
   return (
-    <div className="page-stage cinematic-hero mx-auto grid max-w-5xl items-center gap-6 px-4 py-12 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:px-8">
-      <aside className="account-intro premium-panel relative hidden min-h-[520px] overflow-hidden p-8 lg:block">
+    <div data-workspace="auth" className={`${workspace.page} ${workspace.authRoot} page-stage cinematic-hero mx-auto grid max-w-5xl items-center gap-6 px-4 py-12 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:px-8`}>
+      <aside className={`${workspace.authIntro} account-intro premium-panel relative hidden min-h-[520px] overflow-hidden p-8 lg:block`}>
         <div className="spice-dots pointer-events-none absolute inset-0 opacity-25" />
         <div className="flame-glow pointer-events-none absolute -inset-20 opacity-80" />
         <div className="relative flex h-full flex-col justify-between">
@@ -662,7 +670,8 @@ export default function AccountPage() {
                   {t.company.badge}: −20% 
                 </p>
               )}
-              <input aria-label={t.auth.name}
+              <label className={workspace.fieldLabel} htmlFor="account-name">{t.auth.name}</label>
+              <input id="account-name" aria-label={t.auth.name}
                 required
                 maxLength={100}
                 autoComplete="name"
@@ -673,7 +682,8 @@ export default function AccountPage() {
               />
             </>
           )}
-          <input aria-label={t.auth.email} inputMode="email" autoCapitalize="none" spellCheck={false}
+          <label className={workspace.fieldLabel} htmlFor="account-email">{t.auth.email}</label>
+              <input id="account-email" aria-label={t.auth.email} inputMode="email" autoCapitalize="none" spellCheck={false}
             type="email"
             required
             maxLength={254}
@@ -683,6 +693,7 @@ export default function AccountPage() {
             placeholder={t.auth.email}
             className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-3 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/5 dark:text-white"
           />
+          <label className={workspace.fieldLabel} htmlFor="account-password">{t.auth.password}</label>
           <input id="account-password" aria-label={t.auth.password}
             type={showPassword ? "text" : "password"} autoCapitalize="none" spellCheck={false}
             required
@@ -699,7 +710,8 @@ export default function AccountPage() {
             <>
               <label className="block text-sm font-semibold" htmlFor="account-password-confirm">{t.email.confirmPassword}</label>
               <input id="account-password-confirm" type={showPassword ? "text" : "password"} required minLength={6} maxLength={200} autoComplete="new-password" autoCapitalize="none" spellCheck={false} value={confirmPassword} onChange={event => setConfirmPassword(event.target.value)} className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-3 dark:border-white/10 dark:bg-white/5" />
-              <input aria-label={t.auth.phone} type="tel" inputMode="tel" autoComplete="tel" maxLength={30}
+              <label className={workspace.fieldLabel} htmlFor="account-phone">{t.auth.phone}</label>
+              <input id="account-phone" aria-label={t.auth.phone} type="tel" inputMode="tel" autoComplete="tel" maxLength={30}
                 value={form.phone}
                 onChange={(e) => setForm({ ...form, phone: e.target.value })}
                 placeholder={t.auth.phone}
@@ -707,13 +719,15 @@ export default function AccountPage() {
               />
               {form.accountType === "company" && (
                 <>
-                  <input aria-label={t.company.btw} required maxLength={30}
+                  <label className={workspace.fieldLabel} htmlFor="account-btw">{t.company.btw}</label>
+              <input id="account-btw" aria-label={t.company.btw} required maxLength={30}
                     value={form.btw}
                     onChange={(e) => setForm({ ...form, btw: e.target.value })}
                     placeholder={t.company.btw}
                     className="w-full rounded-xl border border-sky-300/60 bg-sky-500/5 px-3.5 py-3 text-sm outline-none transition focus:border-sky-500 dark:border-sky-400/30 dark:bg-white/5 dark:text-white"
                   />
-                  <input aria-label={t.company.kvk} required maxLength={30} inputMode="numeric"
+                  <label className={workspace.fieldLabel} htmlFor="account-kvk">{t.company.kvk}</label>
+              <input id="account-kvk" aria-label={t.company.kvk} required maxLength={30} inputMode="numeric"
                     value={form.kvk}
                     onChange={(e) => setForm({ ...form, kvk: e.target.value })}
                     placeholder={t.company.kvk}
@@ -730,7 +744,8 @@ export default function AccountPage() {
                   </label>
                 </>
               )}
-              <input aria-label={t.auth.adminCode} maxLength={100} autoComplete="off" spellCheck={false}
+              <label className={workspace.fieldLabel} htmlFor="account-admin-code">{t.auth.adminCode}</label>
+              <input id="account-admin-code" aria-label={t.auth.adminCode} maxLength={100} autoComplete="off" spellCheck={false}
                 value={form.adminCode}
                 onChange={(e) => setForm({ ...form, adminCode: e.target.value })}
                 placeholder={t.auth.adminCode}

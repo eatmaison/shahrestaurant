@@ -187,7 +187,7 @@ body:is([data-cinematic-page="privacy"], [data-cinematic-page="terms"]) main > d
   body:is([data-cinematic-page="privacy"], [data-cinematic-page="terms"]) main > div > section > ul { margin-top: 0; }
 }
 @media (min-width: 1024px) {
-  body[data-cinematic-page="menu"] main [data-menu-desktop] { max-width: 1400px; grid-template-columns: 180px minmax(0, 1fr) 280px; gap: 22px; }
+  body[data-cinematic-page="menu"] main [data-menu-desktop] { max-width: 1400px; grid-template-columns: 240px minmax(0, 1fr) 280px; gap: 22px; }
   body[data-cinematic-page="menu"] main [data-menu-products] { grid-template-columns: minmax(0, 1fr); gap: 22px; }
   body[data-cinematic-page="menu"] main article[data-menu-dish] { display: grid; grid-template-columns: minmax(130px, 32%) minmax(0, 1fr); align-items: stretch; }
   body[data-cinematic-page="menu"] main article[data-menu-dish] .dish-img { height: 100%; min-height: 190px; aspect-ratio: auto; border-bottom: 0; border-right: 1px solid var(--shah-line); }
@@ -251,3 +251,5 @@ body:is([data-cinematic-page="privacy"], [data-cinematic-page="terms"]) main > d
   body[data-cinematic-page] main :is(.order-hero-strip, .reservation-hero-strip, .reservation-location)::before { transform: none; }
   body[data-cinematic-page="menu"] main article .dish-img img { transition: none; transform: none; }
 }
+
+@media (1024px <= width < 1200px) { body[data-cinematic-page="menu"] main [data-menu-desktop] { grid-template-columns: 220px minmax(0, 1fr) 280px; } }

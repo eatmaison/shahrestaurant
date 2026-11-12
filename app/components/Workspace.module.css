@@ -1,0 +1,104 @@
+.page { --workspace-space:24px; color:var(--shah-ink); }
+.page, .page * { min-width:0; }
+.page h1 { font-family:var(--font-cormorant),Georgia,serif; font-size:clamp(34px,4vw,52px); font-weight:500; line-height:1.08; letter-spacing:-.025em; overflow-wrap:anywhere; }
+.page h2 { font-family:var(--font-cormorant),Georgia,serif; font-size:26px; font-weight:600; line-height:1.2; }
+.page [aria-expanded] h2 { font-family:inherit; font-size:17px; font-weight:650; }
+.page :is(h1,h2,h3,p,span,a) { overflow-wrap:anywhere; }
+.page :is([id^="workspace-"],[id^="account-"],#party-admin) { scroll-margin-top:calc(var(--site-header-height,80px) + 92px); }
+.page :is([id^="workspace-"],[id^="account-"]):target { outline:2px solid var(--shah-gold); outline-offset:6px; }
+.eyebrow { margin-bottom:16px; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.22em; color:var(--shah-gold); }
+.hero { padding-bottom:24px; border-bottom:1px solid var(--shah-line); }
+.page :global(.premium-panel), .page :global(.rounded-3xl.border) { background:var(--shah-surface); border-color:var(--shah-line); border-radius:12px; box-shadow:0 6px 24px #001c2110; }
+.page :global(.magnetic-card) { border-color:var(--shah-line); box-shadow:none; }
+.page :global(.flame-glow), .page :global(.spice-dots) { display:none; }
+.page :is(button,a[class*="rounded"]) { min-height:48px; touch-action:manipulation; }
+.page button { white-space:normal; }
+.page :is(button,a,input,select,textarea):focus-visible { outline:2px solid var(--shah-gold); outline-offset:3px; }
+.page :is(button,a)[aria-pressed="true"] { box-shadow:inset 0 -2px 0 var(--shah-gold); }
+.page :is(input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]):not([type="file"]),select,textarea) { min-height:48px; max-width:100%; border-color:var(--shah-line); border-radius:7px; font-size:14px; line-height:1.5; }
+.page input[type="checkbox"],.page input[type="radio"] { width:20px; height:20px; accent-color:var(--shah-accent); }
+.page label:has(> input[type="checkbox"]),.page label:has(> input[type="radio"]) { min-height:48px; align-items:center; }
+.page label:has(> input[type="checkbox"]) { padding-block:12px; }
+.page input[type="file"] { max-width:100%; }
+.page :global(.truncate) { overflow-wrap:anywhere; white-space:normal; text-overflow:clip; overflow:visible; }
+.sectionNav { position:sticky; z-index:35; top:var(--site-header-height,80px); display:flex; gap:6px; overflow-x:auto; max-width:100%; padding:8px; margin:24px 0; border:1px solid var(--shah-line); border-radius:10px; background:var(--shah-page); scrollbar-width:thin; overscroll-behavior-x:contain; }
+.sectionNav a,.accountNav a { display:inline-flex; align-items:center; justify-content:center; flex:0 0 auto; min-height:48px; padding:10px 16px; border:1px solid transparent; border-radius:6px; color:var(--shah-ink); font-size:13px; font-weight:600; text-decoration:none; white-space:nowrap; }
+.sectionNav a:hover,.accountNav a:hover { background:var(--shah-soft); border-color:var(--shah-line); color:var(--shah-gold); }
+.accountNav { display:flex; gap:8px; flex-wrap:wrap; padding-bottom:8px; border-bottom:1px solid var(--shah-line); }
+.accountDashboard { display:grid; grid-template-columns:1fr; gap:20px; }
+.accountDashboard > * { grid-column:1 / -1; margin-top:0; margin-bottom:0; }
+.accountDashboard .hero { padding:clamp(20px,3vw,32px); border-top:3px solid var(--shah-brand-gold); }
+.accountDashboard :is(h1,p) { max-width:100%; }
+.accountDashboard :global(.truncate) { overflow:visible; text-overflow:clip; white-space:normal; }
+.authRoot { align-items:start; gap:32px; }
+.page .authIntro { display:block; min-height:0; padding:32px; background:var(--shah-brand-teal) url('/brand/shah-mark-gold-v1.svg') 120% 10% / 240px no-repeat; color:#f7f2e7; border:1px solid #34636a; }
+.authIntro > div { gap:32px; }
+.authIntro h2 { max-width:12ch; color:#f7f2e7; font-size:clamp(30px,4vw,46px); font-weight:500; }
+.authIntro :global(.ember-text) { color:#f7f2e7; background:none; -webkit-text-fill-color:currentColor; }
+.authIntro :global(.magnetic-card) { background:#0a3540; border-color:#34636a; border-radius:8px; padding:12px; }
+.fieldLabel { display:block; padding-top:4px; color:var(--shah-ink); font-size:13px; font-weight:600; }
+.loading { min-height:45vh; display:grid; place-content:center; color:var(--shah-muted); }
+.denied { margin-block:48px; border:1px solid var(--shah-line); background:var(--shah-surface); border-radius:12px; }
+@media(min-width:900px) { .accountDashboard { grid-template-columns:repeat(2,minmax(0,1fr)); } .accountDashboard > [data-account-support] { grid-column:auto; } .page .authIntro { min-height:520px; } }
+@media(max-width:639px) {
+  .page { padding-top:28px; padding-bottom:36px; }
+  .page h1 { font-size:36px; }
+  .page h2 { font-size:23px; }
+  .page :global(.rounded-3xl.border),.page :global(.premium-panel) { padding:18px; border-radius:10px; }
+  .page :is(input:not([type="checkbox"]):not([type="radio"]),select,textarea) { font-size:16px; }
+  .sectionNav { margin:16px 0 24px; padding:5px; border-radius:8px; }
+  .sectionNav a { padding:8px 12px; }
+  .page .authIntro { padding:22px; background-size:160px; background-position:125% -20px; }
+  .authIntro > div { gap:16px; }
+  .authIntro h2 { max-width:none; font-size:32px; }
+  .authIntro :global(.grid.gap-3) { grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; }
+  .authIntro :global(.magnetic-card) { flex-direction:column; align-items:flex-start; gap:8px; padding:10px; }
+  .authIntro :global(.magnetic-card) > span:last-child { font-size:11px; line-height:1.4; }
+  .accountDashboard > :first-child { margin-bottom:0; }
+  .accountDashboard .hero > :first-child { gap:12px; align-items:flex-start; }
+  .accountDashboard .hero > :first-child > div { overflow-wrap:anywhere; }
+  .accountDashboard .hero > :last-child { flex-wrap:wrap; }
+}
+@media(prefers-reduced-motion:reduce) { .page *, .page *::before, .page *::after { scroll-behavior:auto!important; animation-duration:.01ms!important; transition-duration:.01ms!important; } }
+/* Workspaces use the established palette with stronger readable utility text. */
+.page[data-workspace] :is(:global(.text-slate-400),:global(.text-slate-500),:global(.text-slate-600),:global(.text-slate-700)) { color:var(--shah-muted); }
+.page[data-workspace] :global(.text-emerald-700) { color:var(--shah-accent); }
+.page[data-workspace] :global(.text-amber-700) { color:var(--shah-gold); }
+.page[data-workspace] :is(:global(.text-red-500),:global(.text-rose-700)) { color:#b91c1c; }
+:global(.dark) .page[data-workspace] :is(:global(.text-red-500),:global(.text-rose-700)) { color:#fca5a5; }
+.page[data-workspace] :is(:global(.bg-sky-600),[class*="from-sky-"],[class*="from-indigo-"]) { background-image:none; background-color:#0D4952; color:#f7f2e7; }
+.page[data-workspace] [class*="from-amber-"] { background-image:none; background-color:#E0AF59; color:#0D4952; }
+.page button :global(.opacity-60) { opacity:1; }
+.page a { display:inline-flex; align-items:center; min-height:48px; max-width:100%; }
+.page[data-workspace] .hero > a { background:#E0AF59; border-color:#E0AF59; color:#0D4952; }
+.page :global(.stagger-rise) > * { animation:none; opacity:1; transform:none; }
+.sectionNav { scrollbar-color:var(--shah-gold) transparent; }
+.sectionNav::-webkit-scrollbar { height:5px; }
+.sectionNav::-webkit-scrollbar-track { background:transparent; }
+.sectionNav::-webkit-scrollbar-thumb { background:var(--shah-gold); border-radius:8px; }
+.page [data-workspace-metrics] { grid-template-columns:repeat(2,minmax(0,1fr)); }
+.page [data-workspace-metric] > p:first-of-type { font-size:clamp(26px,3vw,36px); font-family:var(--font-cormorant),Georgia,serif; font-variant-numeric:tabular-nums; font-weight:600; line-height:1.2; }
+.page.authRoot aside.authIntro { background:linear-gradient(90deg,#0D4952ed,#0D4952a8),url('/brand/jpeg-fallback-v1/shah-room-960.jpg') center / cover; }
+.page.authRoot aside.authIntro > div { min-height:0; }
+@supports (background-image:image-set(url("") type("image/avif"))) { .page.authRoot aside.authIntro { background-image:linear-gradient(90deg,#0D4952ed,#0D4952a8),image-set(url('/brand/restaurant-photos-v1/shah-room-960.avif') type('image/avif'),url('/brand/restaurant-photos-v1/shah-room-960.webp') type('image/webp'),url('/brand/jpeg-fallback-v1/shah-room-960.jpg') type('image/jpeg')); } }
+@media(min-width:1024px) { .page [data-workspace-metrics] { grid-template-columns:repeat(4,minmax(0,1fr)); } }
+@media(max-width:1023px) {
+  .page.authRoot > aside { order:2; }
+  .page.authRoot > div { order:1; }
+  .page.authRoot aside.authIntro { min-height:0; background:#0D4952 url('/brand/shah-mark-gold-v1.svg') 110% 5% / 150px no-repeat; }
+  .page.authRoot aside.authIntro > div { min-height:0; gap:20px; }
+}
+@media(max-width:639px) { .page [data-account-metrics] { grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; } .page [data-account-metrics] > div { padding:12px 10px; } .page [data-account-metrics] p { overflow-wrap:anywhere; } }
+.page[data-workspace] :global(.bg-red-500) { background-color:#b91c1c; color:#fff; }
+.page[data-workspace] :global([class~="bg-amber-400/15"]) { background:#0D4952; color:#E0AF59; }
+.page[data-workspace] :global(.text-amber-600) { color:var(--shah-gold); }
+.page[data-workspace] :global(.text-sky-600) { color:var(--shah-accent); }
+.page[data-workspace] :is(:global([class~="text-sky-700/80"]),:global([class~="text-amber-700/80"])) { color:var(--shah-muted); }
+.dialog { position:fixed; inset:0; width:100%; max-width:none; height:100%; max-height:none; margin:0; padding:16px; border:0; background:transparent; color:var(--shah-ink); overflow:auto; }
+.dialog[open] { display:flex; align-items:flex-end; justify-content:center; }
+.dialog::backdrop { background:#0009; }
+.page .dialog button { min-width:48px; }
+.page button[aria-label$="/5"] { min-width:48px; min-height:48px; }
+.page div:has(> button[aria-label$="/5"]) { flex-wrap:wrap; }
+@media(min-width:640px) { .dialog[open] { align-items:center; } }
+@media(max-width:359px) { .page > div:has(> #account-orders) { padding:8px; } .page #account-order-list > li { padding:8px; } .page div:has(> button[aria-label$="/5"]) { gap:0; } }

@@ -125,3 +125,5 @@
 .menuUpgradeRemove { margin-bottom: 0; }
 .menuUpgradeRemoveDisc { background: #e2b660; color: #082d35; font-size: 12px; }
 .menuUpgradeError { grid-column: 1 / -1; color: #ffe0a8; margin-top: 6px; font-size: 12px; line-height: 1.5; }
+
+.categorySidebar :global(.truncate) { white-space: normal; overflow: visible; text-overflow: clip; line-height: 1.45; overflow-wrap: anywhere; }

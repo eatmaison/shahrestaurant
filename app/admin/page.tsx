@@ -1,4 +1,6 @@
 "use client";
+import workspace from "../components/Workspace.module.css";
+import { WorkspaceDialog } from "../components/WorkspaceDialog";
 
 import { OrderTotals } from "../components/OrderTotals";
 
@@ -207,7 +209,7 @@ function DailySalesChart({ data, revenueLabel, ordersLabel, title, noData }: { d
         </div>
       </div>
       {data.length === 0 ? <p className="mt-8 text-center text-sm text-slate-500 dark:text-slate-400">{noData}</p> : (
-        <div className="mt-4 overflow-x-auto">
+        <div tabIndex={0} role="group" aria-label={title} className="mt-4 overflow-x-auto">
           <svg viewBox={`0 0 ${width} ${height}`} role="img" aria-label={title} className="min-w-[560px] w-full overflow-visible">
             {[0, 0.5, 1].map((ratio) => {
               const y = pad.top + plotHeight * ratio;
@@ -387,24 +389,6 @@ export default function AdminPage() {
   // Product pending deletion (shown in a confirmation dialog).
   const [deleting, setDeleting] = useState<Product | null>(null);
 
-  /** Escape closes whichever admin modal/dialog is open, and locks background scroll while any is open. */
-  useEffect(() => {
-    const anyOpen = !!editing || manageOpen || !!deleting;
-    if (!anyOpen) return;
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key !== "Escape") return;
-      if (deleting) setDeleting(null);
-      else if (editing) setEditing(null);
-      else if (manageOpen) setManageOpen(false);
-    };
-    document.addEventListener("keydown", handleKeyDown);
-    return () => {
-      document.body.style.overflow = previousOverflow;
-      document.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [editing, manageOpen, deleting]);
   const [productSearch, setProductSearch] = useState("");
   const [productBrandFilter, setProductBrandFilter] = useState<Brand | "all">("all");
   const [productCategoryFilter, setProductCategoryFilter] = useState<Category | "all">("all");
@@ -974,12 +958,12 @@ export default function AdminPage() {
   );
 
   if (!hydrated) {
-    return <div className="mx-auto max-w-md px-4 py-20 text-center text-sm text-slate-500">…</div>;
+    return <div role="status" className={`${workspace.page} ${workspace.loading} mx-auto max-w-md px-4 py-20 text-center`}>{lang === "nl" ? "Dashboard laden…" : "Loading dashboard…"}<noscript><p>{lang === "nl" ? "JavaScript is vereist voor het beheer." : "JavaScript is required for admin tools."}</p></noscript></div>;
   }
 
   if (!currentUser || currentUser.role !== "admin") {
     return (
-      <div className="mx-auto max-w-md px-4 py-20 text-center">
+      <div data-workspace="denied" className={`${workspace.page} ${workspace.denied} mx-auto max-w-md px-4 py-20 text-center`}>
         <span className="mx-auto grid h-16 w-16 place-items-center rounded-2xl bg-red-500/10 text-2xl text-red-500">
           <FaLock />
         </span>
@@ -1669,11 +1653,11 @@ export default function AdminPage() {
   };
 
   return (
-    <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-      <div className="mb-6 flex flex-wrap items-end justify-between gap-3">
+    <div data-workspace="admin" className={`${workspace.page} mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8`}>
+      <p className={workspace.eyebrow}>SHAH / {lang === "nl" ? "Beheer" : "Workspace"}</p>
+      <div id="workspace-overview" tabIndex={-1} className={`${workspace.hero} mb-6 flex flex-wrap items-end justify-between gap-3`}>
         <div>
           <h1 className="text-3xl font-black tracking-tight text-slate-900 dark:text-white">{t.admin.title}</h1>
-          <a href="#party-admin" className="mt-2 inline-flex items-center gap-2 py-2 text-sm font-semibold text-emerald-700 dark:text-emerald-300"><FaCalendarCheck /> PARTIES / EVENTS</a>
           <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">{t.admin.subtitle}</p>
           <div className="mt-4 flex flex-wrap items-center gap-2" aria-label="Admin tools">
             <button type="button" onClick={() => void handleAdminRefresh()} disabled={adminRefreshing} className="inline-flex items-center gap-2 rounded-full border border-slate-200 px-3 py-2 text-xs font-bold text-slate-700 transition hover:border-emerald-400 disabled:opacity-50 dark:border-white/10 dark:text-slate-200"><FaArrowsRotate className={adminRefreshing ? "animate-spin" : ""} /> {t.admin.refreshDashboard}</button>
@@ -1689,6 +1673,22 @@ export default function AdminPage() {
           <FaReceipt /> {t.terminal.title} →
         </Link>
       </div>
+
+      <nav className={workspace.sectionNav} aria-label={lang === "nl" ? "Beheersecties" : "Admin sections"}>
+        {[
+          { id: "workspace-overview", label: lang === "nl" ? "Overzicht" : "Overview" },
+          { id: "workspace-progress", label: t.admin.dailyProgress },
+          { id: "workspace-visitors", label: t.admin.recentlyOnline, open: () => setRecentlyOnlineOpen(true) },
+          { id: "workspace-users", label: t.admin.registeredUsers, open: () => setRegisteredUsersOpen(true) },
+          { id: "workspace-orders", label: t.fulfillment.orderManagement },
+          { id: "workspace-products", label: t.admin.manageProducts },
+          { id: "workspace-reservations", label: t.admin.reservationsTitle },
+          { id: "workspace-vip", label: t.admin.vipRequests },
+          { id: "workspace-social", label: t.admin.socialTitle, open: () => setSocialOpen(true) },
+          { id: "party-admin", label: "PARTIES / EVENTS" },
+          { id: "workspace-phone", label: lang === "nl" ? "Telefoon" : "Phone" },
+        ].map(link => <a key={link.id} href={"#" + link.id} onClick={() => { link.open?.(); requestAnimationFrame(() => { const target = document.getElementById(link.id); (target?.closest("button") ?? target)?.focus({ preventScroll: true }); }); }}>{link.label}</a>)}
+      </nav>
 
       <section className="mb-4 rounded-3xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-white/5">
         <div className="flex flex-wrap items-center justify-between gap-4">
@@ -1729,15 +1729,17 @@ export default function AdminPage() {
         </div>
       </section>
 
+
+
       {/* Stat cards */}
       <div className="mb-4">{renderRangeFilter(statsRange, setStatsRange)}</div>
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div data-workspace-metrics className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {cards.map((c) => {
           const Icon = c.icon;
           return (
-            <div key={c.label} className="rounded-3xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-white/5">
+            <div data-workspace-metric key={c.label} className="rounded-3xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-white/5">
               <span className="grid h-10 w-10 place-items-center rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
-                <Icon />
+                <Icon aria-hidden="true" />
               </span>
               <p className="mt-3 text-2xl font-black text-slate-900 dark:text-white">{c.value}</p>
               <p className="text-sm text-slate-500 dark:text-slate-400">{c.label}</p>
@@ -1757,13 +1759,14 @@ export default function AdminPage() {
           {dashboardSignals.map((signal) => {
             const Icon = signal.icon;
             return <div key={signal.label} className="flex min-w-0 items-center gap-3 border-l-2 border-slate-200 pl-3 dark:border-white/10">
-              <span className={`grid h-9 w-9 shrink-0 place-items-center rounded-lg ${signal.surface} ${signal.tone}`}><Icon /></span>
+              <span className={`grid h-9 w-9 shrink-0 place-items-center rounded-lg ${signal.surface} ${signal.tone}`}><Icon aria-hidden="true" /></span>
               <div className="min-w-0"><p className={`text-xl font-black ${signal.tone}`}>{signal.value}</p><p className="truncate text-xs font-semibold text-slate-500 dark:text-slate-400">{signal.label}</p></div>
             </div>;
           })}
         </div>
       </section>
 
+      <div id="workspace-progress" tabIndex={-1}>
       <DailySalesChart
         data={dailyMetrics}
         title={t.admin.dailyProgress}
@@ -1771,6 +1774,7 @@ export default function AdminPage() {
         ordersLabel={t.admin.dailyOrders}
         noData={t.admin.noDailyData}
       />
+      </div>
 
       <div className="mt-6 grid gap-6 lg:grid-cols-2">
         {/* Sales by category (collapsible) */}
@@ -1794,7 +1798,7 @@ export default function AdminPage() {
                     <div key={cat}>
                       <div className="flex items-center justify-between text-sm">
                         <span className="flex items-center gap-2 font-semibold text-slate-700 dark:text-slate-200">
-                          <Icon className="text-emerald-600 dark:text-emerald-400" /> {cat}
+                          <Icon aria-hidden="true" className="text-emerald-600 dark:text-emerald-400" /> {cat}
                         </span>
                         <span className="font-bold text-slate-900 dark:text-white">€{val.toFixed(2)}</span>
                       </div>
@@ -1967,7 +1971,7 @@ export default function AdminPage() {
               <FaUsers />
             </span>
             <div className="flex-1">
-              <h2 className="text-lg font-black text-slate-900 dark:text-white">{t.admin.recentlyOnline}</h2>
+              <h2 id="workspace-visitors" className="text-lg font-black text-slate-900 dark:text-white">{t.admin.recentlyOnline}</h2>
               <p className="text-xs text-slate-500 dark:text-slate-400">{t.admin.recentlyOnlineSub}</p>
             </div>
             <FaChevronDown className={`shrink-0 text-slate-400 transition-transform duration-300 ${recentlyOnlineOpen ? "rotate-180" : ""}`} />
@@ -2245,7 +2249,7 @@ export default function AdminPage() {
             <FaUserGroup />
           </span>
           <div className="flex-1">
-            <h2 className="text-lg font-black text-slate-900 dark:text-white">{t.admin.registeredUsers}</h2>
+            <h2 id="workspace-users" className="text-lg font-black text-slate-900 dark:text-white">{t.admin.registeredUsers}</h2>
             <p className="text-xs text-slate-500 dark:text-slate-400">{t.admin.registeredUsersSub}</p>
           </div>
           <span className="rounded-full bg-slate-100 px-2.5 py-1 text-xs font-bold text-slate-600 dark:bg-white/10 dark:text-slate-300">
@@ -2457,7 +2461,7 @@ export default function AdminPage() {
             <FaShareNodes />
           </span>
           <div className="flex-1">
-            <h2 className="text-lg font-black text-slate-900 dark:text-white">{t.admin.socialTitle}</h2>
+            <h2 id="workspace-social" className="text-lg font-black text-slate-900 dark:text-white">{t.admin.socialTitle}</h2>
             <p className="text-xs text-slate-500 dark:text-slate-400">{t.admin.socialSub}</p>
           </div>
           <FaChevronDown
@@ -2490,7 +2494,7 @@ export default function AdminPage() {
                     className="grid h-10 w-10 shrink-0 place-items-center rounded-full text-white shadow-md"
                     style={{ backgroundColor: p.color }}
                   >
-                    <Icon className={p.id === "snapchat" ? "text-slate-900" : undefined} />
+                    <Icon aria-hidden="true" className={p.id === "snapchat" ? "text-slate-900" : undefined} />
                   </span>
                   <div className="min-w-0 flex-1">
                     <p className="truncate text-sm font-black text-slate-900 dark:text-white">{p.label}</p>
@@ -2553,7 +2557,7 @@ export default function AdminPage() {
               <FaCrown />
             </span>
             <div>
-              <h2 className="text-lg font-black text-slate-900 dark:text-white">{t.admin.vipRequests}</h2>
+              <h2 id="workspace-vip" tabIndex={-1} className="text-lg font-black text-slate-900 dark:text-white">{t.admin.vipRequests}</h2>
               <p className="text-xs text-slate-500 dark:text-slate-400">{t.admin.vipRequestsSub}</p>
             </div>
             <span className="rounded-full bg-amber-400/20 px-2.5 py-1 text-xs font-bold text-amber-700 dark:text-amber-300">
@@ -2600,7 +2604,7 @@ export default function AdminPage() {
 
       <PartyAdmin processImageFile={processImageFile} />
 
-      <PhoneAgentPanel />
+      <div id="workspace-phone" tabIndex={-1}><PhoneAgentPanel /></div>
 
       {/* Reservations management */}
       <div className="mt-6 rounded-3xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-white/5">
@@ -2609,7 +2613,7 @@ export default function AdminPage() {
             <FaCalendarCheck />
           </span>
           <div className="flex-1">
-            <h2 className="text-lg font-black text-slate-900 dark:text-white">{t.admin.reservationsTitle}</h2>
+            <h2 id="workspace-reservations" tabIndex={-1} className="text-lg font-black text-slate-900 dark:text-white">{t.admin.reservationsTitle}</h2>
             <p className="text-xs text-slate-500 dark:text-slate-400">{t.admin.reservationsSub}</p>
           </div>
           <div className="flex rounded-full border border-slate-200 p-0.5 text-xs font-bold dark:border-white/10">
@@ -2913,11 +2917,8 @@ export default function AdminPage() {
                   <label className="inline-flex items-center gap-2 text-xs font-black text-rose-700"><input type="checkbox" checked={draft.bogoEnabled} onChange={(e) => setDraft({ ...draft, bogoEnabled: e.target.checked })} /> BUY 1 GET 1 FREE</label>
                 </div>
               </div>
-              <div className="col-span-2 flex flex-wrap gap-2">
-                <label className="inline-flex items-center gap-2 rounded-full bg-amber-500/10 px-3 py-2 text-xs font-bold text-amber-700"><input type="checkbox" checked={draft.isPopular} onChange={(e) => setDraft({ ...draft, isPopular: e.target.checked })} /> Popular</label>
-                <label className="inline-flex items-center gap-2 rounded-full bg-emerald-500/10 px-3 py-2 text-xs font-bold text-emerald-700"><input type="checkbox" checked={draft.isNew} onChange={(e) => setDraft({ ...draft, isNew: e.target.checked })} /> New</label>
-              </div>
-              <select
+
+              <select aria-label={t.admin.productCategory}
                 value={draft.category}
                 onChange={(e) => {
                   const category = e.target.value as Category;
@@ -3001,7 +3002,7 @@ export default function AdminPage() {
         {/* Product list */}
         <div className="min-w-0 rounded-3xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-white/5">
           <div className="flex items-center justify-between">
-            <h2 className="text-lg font-black text-slate-900 dark:text-white">{t.admin.manageProducts}</h2>
+            <h2 id="workspace-products" tabIndex={-1} className="text-lg font-black text-slate-900 dark:text-white">{t.admin.manageProducts}</h2>
             <div className="flex items-center gap-2">
               <button type="button" onClick={exportProducts} className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 px-2.5 py-1 text-xs font-bold text-slate-600 transition hover:border-emerald-400 dark:border-white/10 dark:text-slate-300"><FaDownload /> {t.admin.exportProducts}</button>
               <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600 dark:bg-white/10 dark:text-slate-300">
@@ -3093,7 +3094,7 @@ export default function AdminPage() {
                         : "bg-white text-slate-600 ring-1 ring-slate-200 hover:text-emerald-700 dark:bg-white/10 dark:text-slate-300 dark:ring-white/10"
                     }`}
                   >
-                    <Icon className="text-[11px]" /> {cat}
+                    <Icon aria-hidden="true" className="text-[11px]" /> {cat}
                   </button>
                 );
               })}
@@ -3125,7 +3126,7 @@ export default function AdminPage() {
                           : "bg-white text-slate-600 ring-1 ring-slate-200 hover:text-sky-700 dark:bg-white/10 dark:text-slate-300 dark:ring-white/10"
                       }`}
                     >
-                      <Icon className="text-[11px]" /> {sub}
+                      <Icon aria-hidden="true" className="text-[11px]" /> {sub}
                     </button>
                   );
                 })}
@@ -3164,7 +3165,7 @@ export default function AdminPage() {
                     {isMoving ? <FaSpinner className="animate-spin text-xs" /> : <FaGripVertical className="text-xs" />}
                   </span>
                   <span className="relative grid h-11 w-11 shrink-0 place-items-center overflow-hidden rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
-                    {p.image ? <Image src={p.image} alt={p.name} fill sizes="44px" className="object-cover" /> : <Icon />}
+                    {p.image ? <Image src={p.image} alt={p.name} fill sizes="44px" className="object-cover" /> : <Icon aria-hidden="true" />}
                   </span>
                   <div className="min-w-0 flex-1">
                     <p className="flex flex-wrap items-center gap-1.5 text-sm font-bold text-slate-900 dark:text-white">
@@ -3213,12 +3214,11 @@ export default function AdminPage() {
 
       {/* Restaurants & categories manager */}
       {manageOpen && (
-        <div role="dialog" aria-modal="true" className="fixed inset-0 z-50 flex items-end justify-center sm:items-center">
-          <div className="fixed inset-0 bg-black/40" onClick={() => setManageOpen(false)} />
+        <WorkspaceDialog titleId="workspace-manage-title" onClose={() => setManageOpen(false)}>
           <div className="relative flex max-h-[85vh] w-full max-w-lg flex-col rounded-t-3xl bg-white shadow-2xl dark:bg-[#170d04] sm:rounded-3xl">
             <div className="flex items-center justify-between border-b border-slate-200 px-5 py-4 dark:border-white/10">
               <div>
-                <h2 className="flex items-center gap-2 text-lg font-black text-slate-900 dark:text-white">
+                <h2 id="workspace-manage-title" className="flex items-center gap-2 text-lg font-black text-slate-900 dark:text-white">
                   <FaSliders className="text-emerald-600 dark:text-emerald-400" /> {t.admin.manageMenus}
                 </h2>
                 <p className="mt-0.5 text-xs text-slate-500 dark:text-slate-400">{t.admin.manageMenusSub}</p>
@@ -3371,7 +3371,7 @@ export default function AdminPage() {
                             </div>
                           ) : (
                             <span className="inline-flex items-center gap-1.5">
-                              <Icon className="text-emerald-600 dark:text-emerald-400" /> {c.name}
+                              <Icon aria-hidden="true" className="text-emerald-600 dark:text-emerald-400" /> {c.name}
                               <button
                                 onClick={() => startEditCategory(manageBrandId, c)}
                                 className="grid h-5 w-5 place-items-center rounded-full text-slate-400 transition hover:bg-emerald-500/15 hover:text-emerald-600"
@@ -3476,6 +3476,7 @@ export default function AdminPage() {
                       <div className="grid gap-2 sm:grid-cols-[0.8fr_1fr_auto]">
                         <select
                           value={activeNewSubcatCategory}
+                            aria-label={t.admin.productCategory}
                           onChange={(e) => setNewSubcatCategory(e.target.value)}
                           className="rounded-xl border border-sky-200 bg-white px-3.5 py-2.5 text-sm font-semibold outline-none transition focus:border-sky-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
                         >
@@ -3525,7 +3526,7 @@ export default function AdminPage() {
                                 : "border-slate-200 text-slate-500 hover:border-emerald-400 dark:border-white/10 dark:text-slate-300"
                             }`}
                           >
-                            <Icon />
+                            <Icon aria-hidden="true" />
                           </button>
                         ))}
                       </div>
@@ -3553,16 +3554,15 @@ export default function AdminPage() {
               )}
             </div>
           </div>
-        </div>
+        </WorkspaceDialog>
       )}
 
       {/* Edit product modal */}
       {editing && (
-        <div role="dialog" aria-modal="true" className="fixed inset-0 z-50 flex items-end justify-center sm:items-center">
-          <div className="fixed inset-0 bg-black/40" onClick={closeEditor} />
+        <WorkspaceDialog titleId="workspace-edit-title" onClose={closeEditor}>
           <div className="relative flex max-h-[90vh] w-full max-w-md flex-col rounded-t-3xl bg-white shadow-2xl dark:bg-[#170d04] sm:rounded-3xl">
             <div className="flex items-center justify-between border-b border-slate-200 px-5 py-4 dark:border-white/10">
-              <h2 className="flex items-center gap-2 text-lg font-black text-slate-900 dark:text-white">
+              <h2 id="workspace-edit-title" className="flex items-center gap-2 text-lg font-black text-slate-900 dark:text-white">
                 <FaPen className="text-emerald-600 dark:text-emerald-400" /> {t.admin.editProduct}
               </h2>
               <button
@@ -3795,18 +3795,17 @@ export default function AdminPage() {
               </div>
             </div>
           </div>
-        </div>
+        </WorkspaceDialog>
       )}
 
       {/* Delete product confirmation */}
       {deleting && (
-        <div role="dialog" aria-modal="true" className="fixed inset-0 z-50 flex items-end justify-center sm:items-center">
-          <div className="fixed inset-0 bg-black/40" onClick={() => setDeleting(null)} />
+        <WorkspaceDialog titleId="workspace-delete-title" onClose={() => setDeleting(null)}>
           <div className="relative w-full max-w-sm rounded-t-3xl bg-white p-6 shadow-2xl dark:bg-[#170d04] sm:rounded-3xl">
             <div className="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-red-500/10 text-2xl text-red-500">
               <FaTrash />
             </div>
-            <h2 className="mt-4 text-center text-lg font-black text-slate-900 dark:text-white">{t.admin.deleteConfirmTitle}</h2>
+            <h2 id="workspace-delete-title" className="mt-4 text-center text-lg font-black text-slate-900 dark:text-white">{t.admin.deleteConfirmTitle}</h2>
             <p className="mt-2 text-center text-sm text-slate-500 dark:text-slate-400">{t.admin.deleteConfirmText}</p>
             <div className="mt-4 flex items-center justify-center gap-2 rounded-xl bg-slate-50 px-3 py-2 dark:bg-white/5">
               <span className="text-sm font-bold text-slate-900 dark:text-white">{deleting.name}</span>
@@ -3830,7 +3829,7 @@ export default function AdminPage() {
               </button>
             </div>
           </div>
-        </div>
+        </WorkspaceDialog>
       )}
 
       {/* Order management */}
@@ -3840,7 +3839,7 @@ export default function AdminPage() {
             <FaReceipt />
           </span>
           <div>
-            <h2 className="text-lg font-black text-slate-900 dark:text-white">{t.fulfillment.orderManagement}</h2>
+            <h2 id="workspace-orders" tabIndex={-1} className="text-lg font-black text-slate-900 dark:text-white">{t.fulfillment.orderManagement}</h2>
             <p className="text-xs text-slate-500 dark:text-slate-400">{t.fulfillment.orderManagementSub}</p>
           </div>
         </div>
@@ -3937,14 +3936,14 @@ export default function AdminPage() {
       </div>
 
       {selectedCustomer && (
-        <div role="dialog" aria-modal="true" className="fixed inset-0 z-50 flex items-end justify-center bg-black/40 sm:items-center" onClick={() => setSelectedCustomer(null)}>
+        <WorkspaceDialog titleId="workspace-customer-title" onClose={() => setSelectedCustomer(null)}>
           <div className="relative flex max-h-[85vh] w-full max-w-2xl flex-col rounded-t-3xl bg-white p-5 shadow-2xl dark:bg-[#0c1420] sm:rounded-3xl" onClick={(event) => event.stopPropagation()}>
-            <div className="flex items-start justify-between gap-3"><div className="min-w-0"><h2 className="truncate text-xl font-black text-slate-900 dark:text-white">{selectedCustomer.name}</h2><p className="mt-1 text-xs text-slate-500 dark:text-slate-400">{selectedCustomer.userId ? t.admin.registeredCustomer : `${t.admin.guestCustomer} · ${t.admin.addressMatch}`}</p><p className="mt-1 truncate text-xs text-slate-500 dark:text-slate-400">{selectedCustomer.address || "-"}</p></div><button type="button" onClick={() => setSelectedCustomer(null)} aria-label={t.admin.closeCustomerHistory} className="grid h-9 w-9 shrink-0 place-items-center rounded-full text-slate-400 hover:bg-slate-100 dark:hover:bg-white/10"><FaXmark /></button></div>
+            <div className="flex items-start justify-between gap-3"><div className="min-w-0"><h2 id="workspace-customer-title" className="truncate text-xl font-black text-slate-900 dark:text-white">{selectedCustomer.name}</h2><p className="mt-1 text-xs text-slate-500 dark:text-slate-400">{selectedCustomer.userId ? t.admin.registeredCustomer : `${t.admin.guestCustomer} · ${t.admin.addressMatch}`}</p><p className="mt-1 truncate text-xs text-slate-500 dark:text-slate-400">{selectedCustomer.address || "-"}</p></div><button type="button" onClick={() => setSelectedCustomer(null)} aria-label={t.admin.closeCustomerHistory} className="grid h-9 w-9 shrink-0 place-items-center rounded-full text-slate-400 hover:bg-slate-100 dark:hover:bg-white/10"><FaXmark /></button></div>
             <p className="mt-3 rounded-xl bg-emerald-500/10 px-3 py-2 text-sm font-bold text-emerald-700 dark:text-emerald-300">{customerOrdersForSelection.length} {t.admin.ordersLabel} · {t.admin.reservationsSummary.replace("{maison}", String(selectedCustomerVisitor?.maisonReservationCount ?? 0)).replace("{tandoor}", String(selectedCustomerVisitor?.tandoorReservationCount ?? 0)).replace("{arrived}", String((selectedCustomerVisitor?.maisonArrivedCount ?? 0) + (selectedCustomerVisitor?.tandoorArrivedCount ?? 0)))}</p>
-            <ul className="mt-4 space-y-2 overflow-y-auto pr-1">{customerOrdersForSelection.map((order) => <li key={order.id} className="rounded-xl border border-slate-200 bg-slate-50 p-3 dark:border-white/10 dark:bg-white/5"><div className="flex flex-wrap items-center justify-between gap-2 text-sm"><span className="font-black">{formatOrderNumber(order.orderNumber)}</span><span className="font-bold">€{order.total.toFixed(2)}</span><span className="text-xs text-slate-500">{new Date(order.createdAt).toLocaleString()}</span></div><p className="mt-1 text-xs text-slate-600 dark:text-slate-300">{order.items.map((item) => `${item.qty}x ${item.name}`).join(", ")}</p></li>)}</ul>
+            <ul tabIndex={0} aria-labelledby="workspace-customer-title" className="mt-4 space-y-2 overflow-y-auto pr-1">{customerOrdersForSelection.map((order) => <li key={order.id} className="rounded-xl border border-slate-200 bg-slate-50 p-3 dark:border-white/10 dark:bg-white/5"><div className="flex flex-wrap items-center justify-between gap-2 text-sm"><span className="font-black">{formatOrderNumber(order.orderNumber)}</span><span className="font-bold">€{order.total.toFixed(2)}</span><span className="text-xs text-slate-500">{new Date(order.createdAt).toLocaleString()}</span></div><p className="mt-1 text-xs text-slate-600 dark:text-slate-300">{order.items.map((item) => `${item.qty}x ${item.name}`).join(", ")}</p></li>)}</ul>
             <button type="button" onClick={() => setSelectedCustomer(null)} className="mt-4 rounded-full bg-emerald-600 py-2.5 text-sm font-bold text-white hover:bg-emerald-500">{t.admin.closeCustomerHistory}</button>
           </div>
-        </div>
+        </WorkspaceDialog>
       )}
     </div>
   );
