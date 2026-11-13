@@ -1,0 +1,31 @@
+{
+  "build": "xAq9sMM06TxZlpVjSRdv3",
+  "checks": [
+    "Failed image request resolves to an accessible thumbnail fallback",
+    "Dirty admin draft can cancel navigation with native confirmation",
+    "Draft survives SPA navigation to public homepage and browser Back",
+    "No event/photo draft or search contacts are persisted to local/session storage",
+    "Gallery refresh failure retains existing records and unsaved caption; recovery works",
+    "Unconfirmed reconciliation cannot repeat until explicit event refresh; only one mocked POST",
+    "Real Next route error boundary recovers through unstable_retry after corrected synthetic response",
+    "Admin session-reset event clears in-memory editor drafts",
+    "401 on admin account mutation immediately clears private user/order/visitor snapshot"
+  ],
+  "writes": [
+    "/api/parties/admin",
+    "/api/auth"
+  ],
+  "expectedBoundaryErrors": [],
+  "axe": [],
+  "storageKeys": {
+    "local": [
+      "tm.lang",
+      "tm.cart",
+      "tm.menuUpgrades",
+      "tm.theme"
+    ],
+    "session": [
+      "shah:intro:desktop-v3-mobile-v2:1"
+    ]
+  }
+}

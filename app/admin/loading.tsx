@@ -1,1 +1,3 @@
-export { default } from "../components/RouteLoading";
+"use client";
+import { AdminSkeleton } from "./AdminShell";
+export default AdminSkeleton;

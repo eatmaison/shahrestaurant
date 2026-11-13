@@ -7,6 +7,7 @@ import "./fonts.css";
 import "./design-system.css";
 import "./optimizations.css";
 import "./accessibility.css";
+import "./light-gold.css";
 import { CinematicSections } from "./components/CinematicSections";
 import { Providers } from "./providers";
 import { Header } from "./components/header";

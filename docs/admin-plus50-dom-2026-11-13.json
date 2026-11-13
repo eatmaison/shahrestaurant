@@ -1,0 +1,39 @@
+{
+  "atUTC": "2026-11-13T16:08:02.527Z",
+  "beforeCapturedAtUTC": "2026-11-13T15:48:46.746Z",
+  "method": "Same synthetic fixture, EN/dark, PC Chrome, DOM/control counts after loading. Not an INP or real-device speed benchmark.",
+  "records": [
+    {
+      "label": "before",
+      "width": 1440,
+      "build": "Q2nFHmc8z6XlftjRttVYU",
+      "elements": 5175,
+      "controls": 539,
+      "overflow": 0
+    },
+    {
+      "label": "before",
+      "width": 390,
+      "build": "Q2nFHmc8z6XlftjRttVYU",
+      "elements": 5179,
+      "controls": 539,
+      "overflow": 0
+    },
+    {
+      "label": "after",
+      "width": 1440,
+      "build": "xAq9sMM06TxZlpVjSRdv3",
+      "elements": 1736,
+      "controls": 107,
+      "overflow": 0
+    },
+    {
+      "label": "after",
+      "width": 390,
+      "build": "xAq9sMM06TxZlpVjSRdv3",
+      "elements": 1741,
+      "controls": 107,
+      "overflow": 0
+    }
+  ]
+}

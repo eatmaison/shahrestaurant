@@ -29,6 +29,10 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ ok: false, error }, { status: 400 });
     }
     const body = parsed.data;
+    if (["setUserEmailVerified", "setUserAccountType"].includes(body.action)) {
+      const expected = process.env.APP_URL ? new URL(process.env.APP_URL).origin : req.nextUrl.origin;
+      if (req.headers.get("origin") !== expected) return NextResponse.json({ ok: false, error: "invalidOrigin" }, { status: 403 });
+    }
 
     // Rate limit per IP: 10 sensitive attempts / 10 min, 60 other calls / 10 min.
     const limited = SENSITIVE_ACTIONS.has(body.action)
@@ -55,8 +59,8 @@ export async function POST(req: NextRequest) {
       return NextResponse.json(res);
     }
     if (body.action === "setUserEmailVerified") {
-      const res = await setUserEmailVerified(body.userId, body.verified);
-      return NextResponse.json(res);
+      const res = await setUserEmailVerified(body.userId, body.verified, body.expectedVerified, body.expectedEmail);
+      return NextResponse.json(res, { status: res.ok ? 200 : res.error === "stale" ? 409 : 404 });
     }
     if (body.action === "setUserAccountType") {
       const res = await setUserAccountType(body.userId, body.expectedAccountType, body.accountType);
@@ -75,7 +79,8 @@ export async function POST(req: NextRequest) {
       return NextResponse.json(res);
     }
     return NextResponse.json({ ok: false, error: "unknownAction" }, { status: 400 });
-  } catch {
+  } catch (error) {
+    if (error instanceof Error && error.message === "Unauthorized") return NextResponse.json({ ok: false, error: "unauthorized" }, { status: 401 });
     return NextResponse.json(
       { ok: false, error: "temporarilyUnavailable" },
       { status: 500 }

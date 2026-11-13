@@ -1,14 +1,17 @@
+import { finiteDate } from "../lib/adminList";
 export function money(value: number, lang: "en" | "nl") {
   return new Intl.NumberFormat(lang === "nl" ? "nl-NL" : "en-IE", { style: "currency", currency: "EUR" }).format(value);
 }
 export function absoluteTime(value: number | undefined, lang: "en" | "nl") {
-  return value && Number.isFinite(value) ? new Intl.DateTimeFormat(lang === "nl" ? "nl-NL" : "en-GB", {
+  return finiteDate(value) ? new Intl.DateTimeFormat(lang === "nl" ? "nl-NL" : "en-GB", {
     timeZone: "Europe/Amsterdam", dateStyle: "medium", timeStyle: "short",
   }).format(value) : lang === "nl" ? "Nog niet waargenomen" : "Not yet observed";
 }
 export function relativeTime(value: number | undefined, now: number, lang: "en" | "nl") {
-  if (!value || !Number.isFinite(value)) return lang === "nl" ? "Niet waargenomen" : "Not observed";
-  const minutes = Math.max(0, Math.floor((now - value) / 60_000));
+  if (!finiteDate(value)) return lang === "nl" ? "Niet waargenomen" : "Not observed";
+  if (!now) return absoluteTime(value, lang);
+  if (value! > now + 60_000) return lang === "nl" ? "Tijdstip in de toekomst" : "Timestamp is in the future";
+  const minutes = Math.max(0, Math.floor((now - value!) / 60_000));
   if (!minutes) return lang === "nl" ? "Zojuist" : "Just now";
   if (minutes < 60) return lang === "nl" ? `${minutes} min geleden` : `${minutes} min ago`;
   if (minutes < 1440) return lang === "nl" ? `${Math.floor(minutes / 60)} u geleden` : `${Math.floor(minutes / 60)} h ago`;

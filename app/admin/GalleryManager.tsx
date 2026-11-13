@@ -1,243 +1,56 @@
 "use client";
-import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useDeferredValue, useEffect, useMemo, useRef, useState, type FormEvent } from "react";
 import { useLang } from "../providers";
-import { FaImage, FaPlus, FaTrash, FaSpinner, FaCircleCheck, FaCircleExclamation, FaXmark } from "react-icons/fa6";
 import { WorkspaceDialog } from "../components/WorkspaceDialog";
 import { fetchJSON } from "../lib/clientFetch";
-import adminStyles from "./admin.module.css";
-import { processImageFile } from "./adminImage";
-type SaveState = { status: "idle" | "saving" | "success" | "error"; message?: string };
-
-type AdminGalleryImage = {
-  id: string;
-  url: string;
-  alt: string;
-  altNl: string;
-  category: string;
-  portrait: boolean;
-  createdAt: number;
-};
-
-/** Upload, list and delete the photos shown on /events/gallery. */
+import { adminMatches, listPage } from "../lib/adminList";
+import { processImageFile, type PreparedImage } from "./adminImage";
+import { useAdminDraft } from "./AdminDrafts";
+import { AdminPagination, usePageSize } from "./AdminPagination";
+import { AdminThumbnail } from "./AdminThumbnail";
+import { absoluteTime } from "./adminFormat";
+import styles from "./admin.module.css";
+type GalleryImage = { id: string; url: string; alt: string; altNl: string; category: string; portrait: boolean; createdAt: number };
+const blank = { image: "", alt: "", altNl: "", category: "ambiance", portrait: false };
 export default function GalleryManager() {
-  const { lang } = useLang();
-  const nl = lang === "nl";
-  const [images, setImages] = useState<AdminGalleryImage[]>([]);
-  const [draft, setDraft] = useState({ image: "", alt: "", altNl: "", category: "ambiance", portrait: false });
-  const [state, setState] = useState<SaveState>({ status: "idle" });
-  const [deletingId, setDeletingId] = useState<string | null>(null);
-  const pickRef = useRef<HTMLInputElement>(null);
-  const [confirmDelete, setConfirmDelete] = useState<AdminGalleryImage>();
-  const [loading, setLoading] = useState(true), [loadError, setLoadError] = useState(false), [loadVersion, setLoadVersion] = useState(0);
-
-  useEffect(() => {
-    let mounted = true;
-    const controller = new AbortController();
-    void fetchJSON<{ ok: boolean; images: AdminGalleryImage[] }>("/api/gallery", { cache: "no-store", signal: controller.signal }).then(({ response, data }) => {
-      if (!response.ok || !data?.ok || !Array.isArray(data.images)) throw new Error("load");
-      if (mounted) { setImages(data.images); setLoadError(false); }
-    }).catch(() => { if (mounted) setLoadError(true); }).finally(() => { if (mounted) setLoading(false); });
-    return () => { mounted = false; controller.abort(); };
-  }, [loadVersion]);
-
-  const catLabel = (key: string): string =>
-    (
-      {
-        dishes: nl ? "Gerechten" : "Dishes",
-        interior: nl ? "Interieur" : "Interior",
-        bar: nl ? "Bar & Drankjes" : "Bar & Drinks",
-        ambiance: nl ? "Sfeer" : "Ambiance",
-      } as Record<string, string>
-    )[key] ?? key;
-
-  const onPick = async (file?: File) => {
-    if (!file) return;
-    try {
-      const image = await processImageFile(file, { maxDim: 1600 });
-      setDraft((d) => ({ ...d, image }));
-      setState({ status: "idle" });
-    } catch {
-      if (pickRef.current) pickRef.current.value = "";
-      setState({ status: "error", message: nl ? "Kon de foto niet lezen." : "Could not read the photo." });
-    }
-  };
-
-  const upload = async () => {
-    if (!draft.image || state.status === "saving") return;
-    setState({ status: "saving" });
-    try {
-      const res = await fetch("/api/gallery", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(draft),
-      });
-      const data = await res.json();
-      if (!res.ok || !data.ok || !data.image) throw new Error(data.error || "error");
-      setImages((list) => [data.image, ...list]);
-      setDraft({ image: "", alt: "", altNl: "", category: "ambiance", portrait: false });
-      if (pickRef.current) pickRef.current.value = "";
-      setState({ status: "success", message: nl ? "Foto toegevoegd aan de galerij." : "Photo added to the gallery." });
-      setTimeout(() => setState((s) => (s.status === "success" ? { status: "idle" } : s)), 4000);
-    } catch {
-      setState({ status: "error", message: nl ? "Uploaden mislukt. Probeer het opnieuw." : "Upload failed. Please try again." });
-    }
-  };
-
-  const remove = async (id: string) => {
-    if (deletingId) return;
-    setDeletingId(id);
-    try {
-      const { response, data } = await fetchJSON<{ ok: boolean }>(`/api/gallery?id=${encodeURIComponent(id)}`, { method: "DELETE" });
-      if (!response.ok || !data?.ok) throw new Error("delete");
-      setImages(list => list.filter(image => image.id !== id));
-      setConfirmDelete(undefined);
-      setState({ status: "success", message: nl ? "Foto verwijderd." : "Photo deleted." });
-    } catch {
-      setState({ status: "error", message: nl ? "Verwijderen mislukt. De foto blijft zichtbaar." : "Deletion failed. The photo remains visible." });
-    } finally { setDeletingId(null); }
-  };
-
-  return (
-    <div className="rounded-3xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-white/5">
-      <div className="flex items-center justify-between gap-3">
-        <div>
-          <h2 className="flex items-center gap-2 text-lg font-black text-slate-900 dark:text-white">
-            <FaImage className="text-emerald-600 dark:text-emerald-400" /> {nl ? "Galerij" : "Gallery"}
-          </h2>
-          <p className="mt-0.5 text-xs text-slate-500 dark:text-slate-400">
-            {nl
-              ? "Beheer de foto's op de openbare galerijpagina. Foto's worden opgeslagen in DigitalOcean Spaces."
-              : "Manage the photos on the public gallery page. Photos are stored in DigitalOcean Spaces."}
-          </p>
-        </div>
-        <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600 dark:bg-white/10 dark:text-slate-300">
-          {loading || loadError ? "—" : images.length}
-        </span>
-      </div>
-
-      {loading && <p role="status">{nl ? "Foto's laden." : "Loading photos."}</p>}
-      {loadError && <div role="alert" className={adminStyles.notice}>{nl ? "Foto's konden niet worden geladen. Dit betekent niet dat de galerij leeg is." : "Photos could not be loaded. This does not mean the gallery is empty."}<button type="button" className={adminStyles.button} onClick={() => { setLoading(true); setLoadVersion(value => value + 1); }}>{nl ? "Opnieuw proberen" : "Try again"}</button></div>}
-      {/* Upload form */}
-      <div className="mt-4 space-y-3">
-        <div className="flex items-center gap-3">
-          <button
-            onClick={() => pickRef.current?.click()}
-            className="inline-flex items-center gap-2 rounded-xl border border-dashed border-slate-300 px-4 py-2.5 text-sm font-semibold text-slate-600 transition hover:border-emerald-400 hover:text-emerald-700 dark:border-white/15 dark:text-slate-300"
-          >
-            <FaPlus /> {nl ? "Foto kiezen" : "Choose photo"}
-          </button>
-          {draft.image && (
-            <span className="relative h-12 w-12 shrink-0 overflow-hidden rounded-xl border border-slate-200 dark:border-white/10">
-              <Image src={draft.image} alt="preview" fill sizes="48px" className="object-cover" />
-              <button
-                type="button"
-                onClick={() => {
-                  setDraft((d) => ({ ...d, image: "" }));
-                  if (pickRef.current) pickRef.current.value = "";
-                }}
-                className="absolute right-0 top-0 grid h-5 w-5 place-items-center rounded-bl-lg bg-black/60 text-[10px] text-white transition hover:bg-red-600"
-                aria-label="remove"
-              >
-                <FaXmark />
-              </button>
-            </span>
-          )}
-          <input ref={pickRef} type="file" accept="image/*" className="hidden" onChange={(e) => onPick(e.target.files?.[0])} />
-        </div>
-        <div className="grid gap-3 sm:grid-cols-2">
-          <input
-            aria-label={nl ? "Beschrijving (Engels)" : "Description (English)"}
-            value={draft.alt}
-            onChange={(e) => setDraft({ ...draft, alt: e.target.value })}
-            placeholder={nl ? "Beschrijving (Engels)" : "Description (English)"}
-            className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
-          />
-          <input
-            aria-label={nl ? "Beschrijving (Nederlands)" : "Description (Dutch)"}
-            value={draft.altNl}
-            onChange={(e) => setDraft({ ...draft, altNl: e.target.value })}
-            placeholder={nl ? "Beschrijving (Nederlands)" : "Description (Dutch)"}
-            className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
-          />
-        </div>
-        <div className="flex flex-wrap items-center gap-3">
-          <select 
-            value={draft.category}
-            onChange={(e) => setDraft({ ...draft, category: e.target.value })}
-            aria-label={nl ? "Categorie" : "Category"}
-            className="rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm font-semibold outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
-          >
-            {["ambiance", "dishes", "interior", "bar"].map((c) => (
-              <option key={c} value={c}>
-                {catLabel(c)}
-              </option>
-            ))}
-          </select>
-          <label className="inline-flex cursor-pointer items-center gap-2 text-sm font-semibold text-slate-600 dark:text-slate-300">
-            <input
-              type="checkbox"
-              checked={draft.portrait}
-              onChange={(e) => setDraft({ ...draft, portrait: e.target.checked })}
-              className="h-4 w-4 accent-emerald-600"
-            />
-            {nl ? "Staande foto (portret)" : "Portrait photo (tall)"}
-          </label>
-        </div>
-
-        {state.status === "error" && (
-          <p role="alert" className="flex items-start gap-2 rounded-xl bg-red-500/10 px-3.5 py-2.5 text-xs font-semibold text-red-600 dark:text-red-400">
-            <FaCircleExclamation className="mt-0.5 shrink-0" /> {state.message}
-          </p>
-        )}
-        {state.status === "success" && (
-          <p role="status" className="flex items-center gap-2 rounded-xl bg-emerald-500/10 px-3.5 py-2.5 text-xs font-semibold text-emerald-700 dark:text-emerald-400">
-            <FaCircleCheck className="shrink-0" /> {state.message}
-          </p>
-        )}
-
-        <button
-          onClick={upload}
-          disabled={!draft.image || state.status === "saving"}
-          className="rounded-full bg-emerald-600 px-6 py-2.5 text-sm font-bold text-white transition hover:bg-emerald-500 disabled:cursor-not-allowed disabled:opacity-60"
-        >
-          {state.status === "saving" ? (
-            <span className="inline-flex items-center gap-2">
-              <FaSpinner className="animate-spin" /> {nl ? "Uploaden…" : "Uploading…"}
-            </span>
-          ) : nl ? (
-            "Toevoegen aan galerij"
-          ) : (
-            "Add to gallery"
-          )}
-        </button>
-      </div>
-
-      {/* Existing photos */}
-      {images.length > 0 && (
-        <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
-          {images.map((img) => (
-            <div key={img.id} className="group relative overflow-hidden rounded-2xl border border-slate-200 dark:border-white/10">
-              <div className="relative aspect-[4/3] w-full bg-slate-100 dark:bg-black/20">
-                <Image src={img.url} alt={img.alt || "gallery"} fill sizes="200px" className="object-cover" />
-              </div>
-              <span className="absolute left-2 top-2 rounded-full bg-black/50 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white backdrop-blur">
-                {catLabel(img.category)}
-              </span>
-              <button
-                onClick={() => { setState({ status: "idle" }); setConfirmDelete(img); }}
-                disabled={deletingId === img.id}
-                className="absolute right-2 top-2 grid h-7 w-7 place-items-center rounded-full bg-black/50 text-xs text-white backdrop-blur transition hover:bg-red-600 disabled:opacity-60"
-                aria-label={nl ? "Verwijderen" : "Delete"}
-                title={nl ? "Verwijderen" : "Delete"}
-              >
-                {deletingId === img.id ? <FaSpinner className="animate-spin" /> : <FaTrash />}
-              </button>
-            </div>
-          ))}
-        </div>
-      )}
-      {confirmDelete && <WorkspaceDialog titleId="gallery-delete-title" onClose={() => { if (!deletingId) setConfirmDelete(undefined); }}><div className={adminStyles.dialogBody}><h2 id="gallery-delete-title">{nl ? "Foto verwijderen?" : "Delete photo?"}</h2><p>{nl ? "Dit verwijdert de foto uit de openbare galerij en de opgeslagen upload." : "This removes the photo from the public gallery and deletes the stored upload."}</p><p>{confirmDelete.alt || confirmDelete.altNl || catLabel(confirmDelete.category)}</p>{state.status === "error" && <p role="alert" className={adminStyles.error}>{state.message}</p>}<div className={adminStyles.actions}><button type="button" className={adminStyles.button} disabled={!!deletingId} onClick={() => setConfirmDelete(undefined)}>{nl ? "Annuleren" : "Cancel"}</button><button type="button" className={adminStyles.button} disabled={!!deletingId} onClick={() => void remove(confirmDelete.id)}>{deletingId ? (nl ? "Verwijderen." : "Deleting.") : (nl ? "Verwijderen" : "Delete")}</button></div></div></WorkspaceDialog>}
-    </div>
-  );
+  const { lang } = useLang(), nl = lang === "nl";
+  const [images, setImages] = useState<GalleryImage[]>([]), [draft, setDraft] = useAdminDraft("gallery", blank), [meta, setMeta] = useAdminDraft<PreparedImage | null>("galleryMeta", null), [unconfirmed, setUnconfirmed] = useAdminDraft("galleryUnconfirmed", false);
+  const [state, setState] = useState<{ error: boolean; text: string }>(), [loading, setLoading] = useState(true), [loadError, setLoadError] = useState(false), [version, setVersion] = useState(0), [saving, setSaving] = useState(false), [preparing, setPreparing] = useState(false), [deleting, setDeleting] = useState<string>(), [confirmDelete, setConfirmDelete] = useState<GalleryImage>();
+  const [query, setQuery] = useState(""), deferred = useDeferredValue(query), [category, setCategory] = useState("all"), [sort, setSort] = useState("newest"), [page, setPage] = useState(1), [size, setSize] = usePageSize("gallery", 10), [editor, setEditor] = useState(Boolean(draft.image || draft.alt || draft.altNl));
+  const file = useRef<HTMLInputElement>(null), mounted = useRef(true), preparation = useRef<AbortController | undefined>(undefined), sequence = useRef(0), request = useRef<AbortController | undefined>(undefined), checked = useRef(false);
+  useEffect(() => { mounted.current = true; return () => { mounted.current = false; preparation.current?.abort(); request.current?.abort(); }; }, []);
+  useEffect(() => { let active = true; const controller = new AbortController(); void fetchJSON<{ ok: boolean; images: GalleryImage[] }>("/api/gallery", { cache: "no-store", signal: controller.signal }).then(({response,data}) => { if (!response.ok || !data?.ok || !Array.isArray(data.images)) throw new Error("load"); if (active) { setImages(data.images); setLoadError(false); if (checked.current) { setUnconfirmed(false); checked.current = false; } } }).catch(() => { if (active) setLoadError(true); }).finally(() => { if (active) setLoading(false); }); return () => { active = false; controller.abort(); }; }, [version, setUnconfirmed]);
+  const reload = () => { checked.current = true; setLoading(true); setVersion(value => value + 1); };
+  const label = (key: string) => ({ dishes:nl?"Gerechten":"Dishes",interior:nl?"Interieur":"Interior",bar:nl?"Bar & dranken":"Bar & drinks",ambiance:nl?"Sfeer":"Atmosphere" }[key] || key);
+  const filtered = useMemo(() => images.filter(image => (category === "all" || image.category === category) && adminMatches(deferred,[image.alt,image.altNl,image.id,image.category])).sort((a,b) => (sort === "name" ? (nl?a.altNl||a.alt:a.alt||a.altNl).localeCompare(nl?b.altNl||b.alt:b.alt||b.altNl,lang) : (sort === "oldest" ? 1 : -1) * (a.createdAt-b.createdAt)) || a.id.localeCompare(b.id)), [images,category,deferred,sort,nl,lang]);
+  const result = listPage(filtered,page,size), busy = saving || Boolean(deleting), hasDraft = Boolean(draft.image || draft.alt || draft.altNl || draft.portrait || draft.category !== "ambiance");
+  async function pick(selected?: File) {
+    if (!selected || saving) return;
+    const id = ++sequence.current; preparation.current?.abort(); const controller = new AbortController(); preparation.current = controller; setPreparing(true); setState(undefined);
+    try { const image = await processImageFile(selected,{maxDim:1600,signal:controller.signal,onPrepared:value=>{if(id===sequence.current&&mounted.current)setMeta(value);}}); if(id===sequence.current&&mounted.current){setDraft(value=>({...value,image}));setEditor(true);} }
+    catch(error){if(mounted.current&&id===sequence.current&&!(error instanceof DOMException&&error.name==="AbortError")){const code=error instanceof Error?error.message:"decode";setState({error:true,text:code==="size"?(nl?"Kies een bestand van maximaal 10 MB.":"Choose a non-empty file up to 10 MB."):code==="pixels"?(nl?"De afbeelding mag maximaal 40 megapixels bevatten.":"The image must be no larger than 40 megapixels."):(nl?"Dit afbeeldingsbestand kon niet worden voorbereid. Kies JPEG, PNG, WebP, AVIF, GIF of SVG.":"This image could not be prepared. Choose JPEG, PNG, WebP, AVIF, GIF or SVG.")});}}
+    finally{if(mounted.current&&id===sequence.current)setPreparing(false);if(file.current)file.current.value="";}
+  }
+  async function upload(event:FormEvent<HTMLFormElement>){
+    event.preventDefault();if(!draft.image||busy||preparing||unconfirmed)return;
+    setSaving(true);setState(undefined);setUnconfirmed(true);const controller=new AbortController();request.current=controller;
+    try{const{response,data}=await fetchJSON<{ok:boolean;image:GalleryImage}>("/api/gallery",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(draft),signal:controller.signal},30_000);if(!response.ok||!data?.ok||!data.image)throw Error("upload");if(mounted.current){setImages(previous=>[data.image,...previous.filter(image=>image.id!==data.image.id)]);setDraft({...blank});setMeta(null);setUnconfirmed(false);setState({error:false,text:nl?"Foto toegevoegd aan de galerij.":"Photo added to the gallery."});}}
+    catch{if(mounted.current)setState({error:true,text:nl?"De upload is niet bevestigd. Ververs de galerij en controleer de foto's vóór u opnieuw probeert.":"The upload was not confirmed. Refresh the gallery and check the photos before retrying."});}
+    finally{if(mounted.current)setSaving(false);if(request.current===controller)request.current=undefined;}
+  }
+  async function remove(image:GalleryImage){if(busy)return;setDeleting(image.id);setState(undefined);try{const{response,data}=await fetchJSON<{ok:boolean}>(`/api/gallery?id=${encodeURIComponent(image.id)}`,{method:"DELETE"});if(!response.ok||!data?.ok)throw Error("delete");if(mounted.current){setImages(list=>list.filter(value=>value.id!==image.id));setConfirmDelete(undefined);setState({error:false,text:nl?"Foto verwijderd.":"Photo deleted."});}}catch{if(mounted.current)setState({error:true,text:nl?"Verwijderen niet bevestigd. De foto blijft zichtbaar; ververs om de serverstatus te controleren.":"Deletion was not confirmed. The photo remains visible; refresh to check the server state."});}finally{if(mounted.current)setDeleting(undefined);}}
+  function discard(){if(hasDraft&&!window.confirm(nl?"Dit fotoconcept verwijderen?":"Discard this photo draft?"))return;preparation.current?.abort();setDraft({...blank});setMeta(null);setState(undefined);setEditor(false);}
+  return <section className={styles.panel} aria-labelledby="gallery-title">
+    <div className={styles.panelHeader}><div><h2 id="gallery-title">{nl?"Openbare fotogalerij":"Public photo gallery"}</h2><p className={styles.muted}>{nl?"Uploads verschijnen openbaar. Concepten blijven alleen in het geheugen van dit beheertabblad.":"Uploads appear publicly. Drafts remain only in this admin tab’s memory."}</p></div><div className={styles.tools}><button type="button" className={styles.button} disabled={busy||loading} onClick={reload}>{loading?(nl?"Laden…":"Loading…"):(nl?"Galerij verversen":"Refresh gallery")}</button><button type="button" className={`${styles.button} ${styles.primary}`} onClick={()=>setEditor(!editor)} aria-expanded={editor} aria-controls="gallery-editor">{nl?"Foto toevoegen":"Add photo"}{hasDraft?" · "+(nl?"concept":"draft"):""}</button></div></div>
+    {state&&<p role={state.error?"alert":"status"} className={`${styles.notice} ${state.error?styles.error:""}`}>{state.text}</p>}{loadError&&<p role="alert" className={styles.notice}>{nl?"Galerij niet geladen; dit betekent niet dat de galerij leeg is. Eerder geladen foto's blijven staan.":"Gallery could not load; this does not mean it is empty. Previously loaded photos remain."}<button type="button" className={styles.button} disabled={loading} onClick={reload}>{nl?"Opnieuw proberen":"Try again"}</button></p>}
+    <div id="gallery-editor" hidden={!editor}>{editor&&<form onSubmit={upload} className={`${styles.details} mt-4`} data-admin-draft><fieldset disabled={saving}><legend>{nl?"Nieuw fotoconcept":"New photo draft"}</legend>{hasDraft&&<p className={styles.muted}>{nl?"Niet opgeslagen. Het concept wordt hersteld wanneer u terugkeert naar deze pagina.":"Unsaved. This draft is restored when you return to this page."}</p>}<div className={styles.actions}><label className={styles.button}>{nl?"Afbeelding kiezen":"Choose image"}<input ref={file} type="file" accept="image/jpeg,image/png,image/webp,image/avif,image/gif,image/svg+xml" onChange={event=>void pick(event.target.files?.[0])}/></label>{preparing&&<button type="button" className={styles.button} onClick={()=>{preparation.current?.abort();setPreparing(false);}}>{nl?"Voorbereiding annuleren":"Cancel preparation"}</button>}</div><p className={styles.muted}>{nl?"Maximaal 10 MB en 40 megapixels; verkleind tot maximaal 1600 px. Nog niet geüpload.":"Up to 10 MB and 40 megapixels; prepared at up to 1600 px. Not uploaded yet."}</p>{preparing&&<p role="status">{nl?"Afbeelding voorbereiden…":"Preparing image…"}</p>}
+    {draft.image&&<div className={styles.uploadPreview}><div className={styles.previewPhoto}><AdminThumbnail key={draft.image} src={draft.image} alt={nl?"Fotoconcept":"Photo draft"} sizes="200px"/></div><div>{meta&&<p className={styles.muted}>{meta.originalWidth}×{meta.originalHeight} → {meta.width}×{meta.height}<br/>{Math.round(meta.inputBytes/1024)} KB → {Math.round(meta.outputBytes/1024)} KB</p>}<button type="button" className={styles.button} onClick={()=>{setDraft(value=>({...value,image:""}));setMeta(null);}}>{nl?"Afbeelding uit concept verwijderen":"Remove image from draft"}</button></div></div>}
+    <div className={`${styles.filters} mt-4`}><label className={styles.search}>{nl?"Beschrijving (Engels)":"Description (English)"}<input value={draft.alt} required minLength={3} maxLength={240} onChange={event=>setDraft(value=>({...value,alt:event.target.value}))}/><span className={styles.muted}>{draft.alt.length}/240</span></label><label className={styles.search}>{nl?"Beschrijving (Nederlands)":"Description (Dutch)"}<input value={draft.altNl} required minLength={3} maxLength={240} onChange={event=>setDraft(value=>({...value,altNl:event.target.value}))}/><span className={styles.muted}>{draft.altNl.length}/240</span></label><label>{nl?"Categorie":"Category"}<select value={draft.category} onChange={event=>setDraft(value=>({...value,category:event.target.value}))}>{["ambiance","dishes","interior","bar"].map(key=><option key={key} value={key}>{label(key)}</option>)}</select></label><label className={styles.button}><input type="checkbox" checked={draft.portrait} onChange={event=>setDraft(value=>({...value,portrait:event.target.checked}))}/>{nl?"Portretfoto":"Portrait photo"}</label></div><p className={styles.muted}>{nl?"Beschrijf wat zichtbaar is, zonder zoekwoordherhaling. Beide talen zijn vereist voor toegankelijke bijschriften.":"Describe what is visible, without repeated keywords. Both languages are required for accessible captions."}</p></fieldset>
+    {unconfirmed&&<p role="status" className={`${styles.notice} mt-3`}>{nl?"Controleer eerst het uploadresultaat via ‘Galerij verversen’. Automatisch opnieuw uploaden is uitgeschakeld.":"Check the upload result using ‘Refresh gallery’ first. Automatic upload retries are disabled."}</p>}<div className={styles.actions}><button type="submit" className={`${styles.button} ${styles.primary}`} disabled={!draft.image||busy||preparing||unconfirmed}>{saving?(nl?"Uploaden…":"Uploading…"):(nl?"Toevoegen aan galerij":"Add to gallery")}</button><button type="button" className={styles.button} disabled={saving} onClick={discard}>{nl?"Concept verwijderen":"Discard draft"}</button></div></form>}</div>
+    <div className={`${styles.filters} mt-4`}><label className={styles.search}>{nl?"Foto zoeken":"Search photos"}<input type="search" value={query} onChange={event=>{setQuery(event.target.value);setPage(1);}}/></label><label>{nl?"Categorie":"Category"}<select value={category} onChange={event=>{setCategory(event.target.value);setPage(1);}}><option value="all">{nl?"Alle categorieën":"All categories"}</option>{["ambiance","dishes","interior","bar"].map(key=><option key={key} value={key}>{label(key)}</option>)}</select></label><label>{nl?"Volgorde":"Order"}<select value={sort} onChange={event=>{setSort(event.target.value);setPage(1);}}><option value="newest">{nl?"Nieuwste eerst":"Newest first"}</option><option value="oldest">{nl?"Oudste eerst":"Oldest first"}</option><option value="name">{nl?"Bijschrift A–Z":"Caption A–Z"}</option></select></label></div>
+    <h3 id="gallery-results" tabIndex={-1} className={styles.resultHeading}>{loading?(nl?"Foto's laden…":"Loading photos…"):`${filtered.length} / ${images.length} ${nl?"foto's":"photos"}`}</h3><ul className={styles.galleryGrid} aria-busy={loading||query!==deferred}>{result.items.map(image=><li key={image.id} className={styles.galleryCard}><div className={styles.galleryPhoto}><AdminThumbnail key={image.url} src={image.url} alt={(nl?image.altNl||image.alt:image.alt||image.altNl)||(nl?"Galerijfoto":"Gallery photo")} sizes="(max-width:639px) 80vw,(max-width:1000px) 40vw,250px"/></div><div><strong>{(nl?image.altNl||image.alt:image.alt||image.altNl)||(nl?"Geen beschrijving":"No description")}</strong><p className={styles.muted}>{label(image.category)} · {absoluteTime(image.createdAt,lang)}</p><button type="button" className={styles.button} disabled={busy} aria-label={`${nl?"Verwijder foto":"Delete photo"}: ${image.alt||image.altNl||image.id}`} onClick={()=>{setState(undefined);setConfirmDelete(image);}}>{nl?"Verwijderen":"Delete"}</button></div></li>)}</ul>
+    {!loading&&!loadError&&!result.total&&<div className={styles.empty}><p>{images.length?(nl?"Geen foto's voor dit filter.":"No photos match this filter."):(nl?"Er zijn nog geen uploads. De vaste restaurantfoto's worden elders beheerd.":"There are no uploaded photos yet. Fixed restaurant photos are managed separately.")}</p>{images.length>0&&<button type="button" className={styles.button} onClick={()=>{setQuery("");setCategory("all");setPage(1);}}>{nl?"Filters wissen":"Clear filters"}</button>}</div>}
+    <AdminPagination {...result} size={size} onPage={setPage} onSize={setSize} target="gallery-results" label={nl?"Foto's":"Photos"}/>
+    {confirmDelete&&<WorkspaceDialog titleId="gallery-delete-title" onClose={()=>{if(!deleting)setConfirmDelete(undefined);}}><div className={styles.dialogBody}><h2 id="gallery-delete-title">{nl?"Foto verwijderen?":"Delete photo?"}</h2><p>{nl?"Dit verwijdert de upload uit de openbare galerij en de opslag. Het is geen tijdelijke verberging.":"This removes the uploaded photo from the public gallery and storage. It does not merely hide it."}</p><p>{confirmDelete.alt||confirmDelete.altNl||confirmDelete.id}</p>{state?.error&&<p role="alert" className={styles.error}>{state.text}</p>}<div className={styles.actions}><button type="button" className={styles.button} disabled={Boolean(deleting)} onClick={()=>setConfirmDelete(undefined)}>{nl?"Annuleren":"Cancel"}</button><button type="button" className={styles.button} disabled={Boolean(deleting)} onClick={()=>void remove(confirmDelete)}>{deleting?(nl?"Verwijderen…":"Deleting…"):(nl?"Verwijderen":"Delete")}</button></div></div></WorkspaceDialog>}
+  </section>;
 }

@@ -1,8 +1,9 @@
+import { uniqueAdminOrders, validOrderAmount, validOrderItem } from "./adminOrderQuality";
 import type { Order, Product, User } from "./types";
 
 export type CustomerMetric = {
   key: string; name: string; email?: string; userId?: string;
-  basis: "account" | "session" | "order";
+  basis: "account" | "session" | "order"; nameStatus?: "recorded" | "missing" | "conflicting";
   orderCount: number; paidOrders: number; paidValue: number;
   bookedValue: number; unpaidCompanyValue: number; averageValue: number;
   firstOrder: number; lastOrder: number; favourite?: { name: string; quantity: number };
@@ -16,8 +17,8 @@ const normalized = (value: string) => value.normalize("NFC").trim().replace(/\s+
 export function buildCustomerMetrics(orders: readonly Order[], users: readonly User[], matches: (time: number) => boolean): CustomerMetric[] {
   const accounts = new Map(users.map(user => [user.id, user]));
   const groups = new Map<string, { metric: CustomerMetric; names: Set<string>; products: Map<string, { name: string; quantity: number; at: number }> }>();
-  for (const order of new Map(orders.map(order => [order.id, order])).values()) {
-    if (!isBookedOrder(order) || !matches(order.createdAt)) continue;
+  for (const order of uniqueAdminOrders(orders)) {
+    if (!validOrderAmount(order.total) || !isBookedOrder(order) || !matches(order.createdAt)) continue;
     const basis = order.userId ? "account" : order.visitorSessionId ? "session" : "order";
     const key = `${basis}:${order.userId || order.visitorSessionId || order.id}`;
     const account = order.userId ? accounts.get(order.userId) : undefined;
@@ -37,6 +38,7 @@ export function buildCustomerMetrics(orders: readonly Order[], users: readonly U
     metric.firstOrder = Math.min(metric.firstOrder, order.createdAt);
     metric.lastOrder = Math.max(metric.lastOrder, order.createdAt);
     for (const item of order.items) {
+      if (!validOrderItem(item)) continue;
       const current = group.products.get(item.productId) || { name: item.name, quantity: 0, at: order.createdAt };
       current.quantity += item.qty;
       if (order.createdAt >= current.at) { current.name = item.name; current.at = order.createdAt; }
@@ -47,6 +49,7 @@ export function buildCustomerMetrics(orders: readonly Order[], users: readonly U
     ...metric,
     // Conflicting submission names within a browser are not a verified identity.
     name: metric.basis !== "account" && names.size !== 1 ? "" : metric.name,
+    nameStatus: metric.basis !== "account" && names.size !== 1 ? "conflicting" as const : metric.name.trim() ? "recorded" as const : "missing" as const,
     bookedValue: metric.bookedValue / 100, paidValue: metric.paidValue / 100,
     unpaidCompanyValue: metric.unpaidCompanyValue / 100,
     averageValue: metric.orderCount ? metric.bookedValue / 100 / metric.orderCount : 0,
@@ -59,12 +62,13 @@ export function summarizeOrders(orders: readonly Order[], products: readonly Pro
   let paid = 0, company = 0, count = 0, excluded = 0;
   const categories = new Map<string, number>();
   const items = new Map<string, { name: string; quantity: number; gross: number }>();
-  for (const order of new Map(orders.map(order => [order.id, order])).values()) {
-    if (!matches(order.createdAt)) continue;
+  for (const order of uniqueAdminOrders(orders)) {
+    if (!validOrderAmount(order.total) || !matches(order.createdAt)) continue;
     if (!isBookedOrder(order)) { excluded++; continue; }
     count++;
     if (order.paid) paid += cents(order.total); else company += cents(order.total);
     for (const item of order.items) {
+      if (!validOrderItem(item)) continue;
       const gross = cents(item.price) * item.qty;
       // Prefer the category captured with the order, not today's renamed catalogue.
       const category = item.category || catalogue.get(item.productId)?.category || "Other";

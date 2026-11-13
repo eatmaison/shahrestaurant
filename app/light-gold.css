@@ -1,0 +1,48 @@
+/* The richer day palette is scoped to explicit light mode. Night tokens are untouched. */
+:root:not(.dark) {
+  --shah-page: #cfb16c;
+  --shah-surface: #e0c183;
+  --shah-soft: #c2a05b;
+  --shah-ink: #102f36;
+  --shah-muted: #243d3e;
+  --shah-line: #6b4a19;
+  --shah-gold: #4c3207;
+  --shah-accent: #0b3b43;
+  --shah-danger: #771b1b;
+  --shah-shadow: 0 10px 32px #64400b20;
+  --shah-edge: #f0cf8f80;
+  --shah-metal: #d6ab54;
+  --shah-press-shadow: inset 0 2px 5px #6a480d33;
+  --color-slate-50: #e0c183;
+  --color-slate-100: #d6b576;
+  --color-slate-200: #bb9956;
+  --color-slate-300: #977132;
+  --color-slate-400: #263b35;
+  --color-slate-500: #243d3e;
+  --color-slate-600: #20383a;
+  --color-slate-700: #234248;
+  --color-slate-800: #173940;
+  --color-slate-900: #102f36;
+  --color-stone-50: #e0c183;
+  --color-stone-100: #d6b576;
+  --color-emerald-50: #e0c183;
+  --color-emerald-100: #d4b675;
+  --color-amber-50: #e0c183;
+  --color-amber-100: #d6b576;
+  --color-violet-50: #d8bb7f;
+  --color-blue-50: #d8bb7f;
+  --color-indigo-50: #d8bb7f;
+  --color-rose-50: #dfbc7b;
+  --color-red-50: #dfbc7b;
+  --color-sky-700: #184663;
+}
+:root:not(.dark) :is(.bg-white,[class~="bg-white/95"],[class~="bg-white/90"],[class~="bg-white/80"],[class~="bg-white/70"],[class~="bg-white/60"]) { background-color:var(--shah-surface); }
+:root:not(.dark) main :is(input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="hidden"]),select,textarea) { background-color:var(--shah-surface); color:var(--shah-ink); border-color:var(--shah-line); }
+:root:not(.dark) main :is(input,textarea)::placeholder { color:var(--shah-muted); opacity:1; }
+:root:not(.dark) select option { background:var(--shah-surface); color:var(--shah-ink); }
+:root:not(.dark) :is([data-cookie-notice],[data-site-header]) :is(.bg-white,[class~="bg-white/90"]) { background:var(--shah-surface); }
+:root:not(.dark) [data-cookie-notice] button { border-color:var(--shah-line); }
+:root:not(.dark) [data-cookie-notice] p { color:var(--shah-muted); }
+:root:not(.dark) [data-cookie-notice] p a { color:var(--shah-ink); }
+:root:not(.dark) .page-stage { background:var(--shah-page); }
+:root:not(.dark) [data-workspace] :is([class~="text-red-500"],[class~="text-rose-700"]) { color:var(--shah-danger); }

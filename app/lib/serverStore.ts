@@ -188,11 +188,17 @@ export async function verifyEmail(token: string): Promise<{ ok: boolean }> {
 }
 
 /** Admin-only override for manually registered users whose email cannot be confirmed via token. */
-export async function setUserEmailVerified(userId: string, verified: boolean): Promise<{ ok: boolean }> {
+export async function setUserEmailVerified(userId: string, verified: boolean, expectedVerified?: boolean, expectedEmail?: string): Promise<{ ok: boolean; error?: "notFound" | "stale" }> {
   await ensureReady();
   await requireAdmin();
-  await sql.query(`UPDATE users SET email_verified = $1 WHERE id = $2`, [verified, userId]);
-  return { ok: true };
+  const changed = await sql.query(`UPDATE users SET email_verified = $1 WHERE id = $2
+    AND ($3::boolean IS NULL OR COALESCE(email_verified, false) = $3)
+    AND ($4::text IS NULL OR email = $4) RETURNING id`, [verified, userId, expectedVerified ?? null, expectedEmail ?? null]);
+  if (changed.length) return { ok: true };
+  const current = await sql.query("SELECT email, email_verified FROM users WHERE id = $1", [userId]);
+  if (!current[0]) return { ok: false, error: "notFound" };
+  if ((!expectedEmail || current[0].email === expectedEmail) && Boolean(current[0].email_verified) === verified) return { ok: true };
+  return { ok: false, error: "stale" };
 }
 
 /** Change a customer's account type for future orders without altering historical order snapshots. */

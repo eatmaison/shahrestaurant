@@ -7,7 +7,7 @@
 .header .bar :global(.btn-shine) { min-height: 48px; background: #E0AF59; border: 1px solid #E0AF59; color: #0D4952; box-shadow: none; }
 .header :is(button, a[title], [data-language-link]) { min-width: 48px; min-height: 48px; }
 .header [data-language-toggle] { display: grid; place-items: center; text-align: center; width: 48px; height: 48px; border-radius: 50%; flex-shrink: 0; }
-.desktopNav :is(a, summary) { font-weight: 500; font-size: 13px; border-radius: 3px; padding-inline: clamp(6px, calc(28px - 1em), 12px); min-height: 48px; }
+.desktopNav :is(a, summary) { font-weight: 600; font-size: 15px; line-height: 1.4; border-radius: 3px; padding-inline: clamp(6px, calc(28px - 1em), 12px); min-height: 48px; }
 .desktopNav > a { display: flex; align-items: center; }
 .desktopNav > a[data-active="true"], .dropdown > summary[data-active="true"] { background: var(--shah-soft); color: var(--shah-accent); }
 .desktopNav > a:not([data-active="true"]):hover, .dropdown > summary:hover { background: var(--shah-soft); }
@@ -39,3 +39,8 @@
 }
 @media (max-width: 350px) { .brand { width: 114px; } .brand .brandArtwork { width: 114px; } .bar { padding-inline: 12px; } }
 @media (prefers-reduced-motion: reduce) { .header *, .header *::after { animation: none !important; transition: none !important; } }
+
+/* Larger navigation remains readable in the dropdown and collapsed menu. */
+.desktopNav { column-gap:2px; }
+.header .dropdown a { font-size:15px; line-height:1.5; }
+.mobilePanel :is(a,button) { font-size:16px; line-height:1.5; }

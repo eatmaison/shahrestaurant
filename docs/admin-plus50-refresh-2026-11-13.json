@@ -1,0 +1,54 @@
+{
+  "build": "xAq9sMM06TxZlpVjSRdv3",
+  "syntheticClock": true,
+  "checks": [
+    "Auto-refresh pause suppresses accelerated scheduled requests",
+    "Stale snapshot warning appears after 90 seconds using a simulated clock",
+    "Successful manual refresh resets the stale timestamp while auto refresh is paused",
+    "Failed automatic refresh backs off for 60 and 120 seconds; no request loop",
+    "Manual recovery clears backoff and resumes periodic refresh",
+    "Offline mode disables refresh and scheduled requests; reconnect refreshes"
+  ],
+  "requests": [
+    {
+      "fail": false,
+      "at": 1794585336905
+    },
+    {
+      "fail": false,
+      "at": 1794585338222
+    },
+    {
+      "fail": true,
+      "at": 1794585338558
+    },
+    {
+      "fail": true,
+      "at": 1794585339532
+    },
+    {
+      "fail": true,
+      "at": 1794585340531
+    },
+    {
+      "fail": false,
+      "at": 1794585340727
+    },
+    {
+      "fail": false,
+      "at": 1794585340785
+    },
+    {
+      "fail": false,
+      "at": 1794585341040
+    },
+    {
+      "fail": false,
+      "at": 1794585342279
+    },
+    {
+      "fail": false,
+      "at": 1794585342606
+    }
+  ]
+}

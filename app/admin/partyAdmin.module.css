@@ -66,4 +66,9 @@
   .table td::before { content: attr(data-label); position: absolute; left: 0; top: 7px; width: 90px; font-family: var(--font-jost),sans-serif; color: var(--shah-muted); font-size: 11px; }
   .eventImage { width: 55px; height: 80px; }.event { padding: 12px; gap: 12px; }.event h3 { font-size: 14px; }
   .section :is(input:not([type=checkbox]),select,textarea) { font-size: 16px; }
+}.editor { scroll-margin-top:calc(var(--site-header-height,80px) + 24px); }
+.event button { width:auto; min-width:48px; padding:10px; }
+.tableWrap { outline-offset:4px; }
+@media(max-width:760px) {
+  .table thead { display:table-header-group; position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; }
 }

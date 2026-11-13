@@ -1,3 +1,4 @@
+import { uniqueAdminOrders, validOrderAmount } from "./adminOrderQuality";
 import { arrivalUtc } from "./restaurantClock";
 
 /** Calendar-day filters use the restaurant's timezone, not the admin device's. */
@@ -7,7 +8,7 @@ export type RangeFilter = {
   endDate?: string;
 };
 export type DailyMetric = { date: string; revenue: number; orders: number };
-type MetricOrder = { createdAt: number; total: number; paid: boolean; accountType: string };
+type MetricOrder = { id?: string; createdAt: number; total: number; paid: boolean; accountType: string };
 
 const dateFormatter = new Intl.DateTimeFormat("en-CA", {
   timeZone: "Europe/Amsterdam", year: "numeric", month: "2-digit", day: "2-digit",
@@ -38,16 +39,17 @@ export function shiftCalendarDate(date: string, days: number): string {
   return value.toISOString().slice(0, 10);
 }
 
-export function rangeFilterError(filter: RangeFilter): "incomplete" | "invalid" | null {
+export function rangeFilterError(filter: RangeFilter, now?: number): "incomplete" | "invalid" | "future" | null {
   if (filter.preset !== "date") return null;
   if (!filter.startDate || !filter.endDate) return "incomplete";
   if (!validDate(filter.startDate) || !validDate(filter.endDate) || filter.startDate > filter.endDate) return "invalid";
   if (!validDate(shiftCalendarDate(filter.endDate, 1))) return "invalid";
+  if (now && filter.endDate > amsterdamDateKey(now)) return "future";
   return null;
 }
 
 function dateWindow(filter: RangeFilter, now: number): { startDate?: string; endDate: string } | null {
-  if (rangeFilterError(filter)) return null;
+  if (rangeFilterError(filter, now)) return null;
   const today = amsterdamDateKey(now);
   switch (filter.preset) {
     case "all": return { endDate: today };
@@ -74,7 +76,7 @@ export function buildDailyMetrics(orders: readonly MetricOrder[], filter: RangeF
   let startDate = window.startDate;
   if (!startDate) {
     let first = Infinity;
-    for (const order of orders) {
+    for (const order of uniqueAdminOrders(orders)) {
       if (Number.isFinite(order.createdAt) && order.createdAt <= now && order.createdAt < first) first = order.createdAt;
     }
     if (!Number.isFinite(first)) return [];
@@ -86,8 +88,8 @@ export function buildDailyMetrics(orders: readonly MetricOrder[], filter: RangeF
   for (let date = startDate; date <= window.endDate; date = shiftCalendarDate(date, 1)) {
     totals.set(date, { date, revenue: 0, orders: 0 });
   }
-  for (const order of orders) {
-    if (!(order.paid || order.accountType === "company") || !matches(order.createdAt)) continue;
+  for (const order of uniqueAdminOrders(orders)) {
+    if (!validOrderAmount(order.total) || !(order.paid || order.accountType === "company") || !matches(order.createdAt)) continue;
     const metric = totals.get(amsterdamDateKey(order.createdAt));
     if (metric) { metric.revenue = Math.round(metric.revenue * 100 + Math.round(order.total * 100)) / 100; metric.orders += 1; }
   }

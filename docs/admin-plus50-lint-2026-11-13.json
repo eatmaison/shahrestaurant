@@ -1,0 +1,226 @@
+{
+  "atUTC": "2026-11-13T15:52:16.487Z",
+  "errors": 22,
+  "warnings": 4,
+  "findings": [
+    {
+      "file": "app/lib/serverStore.ts",
+      "errors": 0,
+      "warnings": 1,
+      "messages": [
+        {
+          "line": 338,
+          "rule": "@typescript-eslint/no-unused-vars",
+          "severity": 1,
+          "text": "'status' is assigned a value but never used."
+        }
+      ]
+    },
+    {
+      "file": "app/order/OrderExperience.tsx",
+      "errors": 0,
+      "warnings": 1,
+      "messages": [
+        {
+          "line": 381,
+          "rule": "react-hooks/exhaustive-deps",
+          "severity": 1,
+          "text": "React Hook useEffect has missing dependencies: 'categoryMatchesProduct' and 'subcategoriesOf'. Either include them or remove the dependency array."
+        }
+      ]
+    },
+    {
+      "file": "app/terminal/page.tsx",
+      "errors": 2,
+      "warnings": 0,
+      "messages": [
+        {
+          "line": 256,
+          "rule": "react-hooks/refs",
+          "severity": 2,
+          "text": "Error: Cannot access refs during render\n\nReact refs are values that are not needed for rendering. Refs should only be accessed outside of render, such as in event handlers or effects. Accessing a ref value (the `current` property) during render can cause your component not to update as expected (https://react.dev/reference/react/useRef).\n\nC:\\Users\\DaviiC\\Downloads\\shahrestaurant\\shahrestaurant\\app\\terminal\\page.tsx:256:3\n  254 |   const audioRef = useRef<AudioContext | null>(null);\n  255 |   const autoPrintRef = useRef(false);\n> 256 |   autoPrintRef.current = autoPrint;\n      |   ^^^^^^^^^^^^^^^^^^^^ Cannot update ref during render\n  257 |\n  258 |   const isStaff = currentUser?.role === \"admin\";\n  259 |"
+        },
+        {
+          "line": 281,
+          "rule": "react-hooks/set-state-in-effect",
+          "severity": 2,
+          "text": "Error: Calling setState synchronously within an effect can trigger cascading renders\n\nEffects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:\n* Update external systems with the latest state from React.\n* Subscribe for updates from some external system, calling setState in a callback function when external state changes.\n\nCalling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).\n\nC:\\Users\\DaviiC\\Downloads\\shahrestaurant\\shahrestaurant\\app\\terminal\\page.tsx:281:7\n  279 |     try {\n  280 |       seenRef.current = new Set(JSON.parse(localStorage.getItem(LS_SEEN) ?? \"[]\"));\n> 281 |       setAutoPrint(localStorage.getItem(LS_AUTOPRINT) === \"1\");\n      |       ^^^^^^^^^^^^ Avoid calling setState() directly within an effect\n  282 |     } catch {\n  283 |       /* ignore */\n  284 |     }"
+        }
+      ]
+    },
+    {
+      "file": "phone-agent/src/agent.mjs",
+      "errors": 0,
+      "warnings": 2,
+      "messages": [
+        {
+          "line": 96,
+          "rule": "@typescript-eslint/no-unused-vars",
+          "severity": 1,
+          "text": "'number' is assigned a value but never used."
+        },
+        {
+          "line": 96,
+          "rule": "@typescript-eslint/no-unused-vars",
+          "severity": 1,
+          "text": "'reservation_number' is assigned a value but never used."
+        }
+      ]
+    },
+    {
+      "file": "phone-agent/test/realtime.test.mjs",
+      "errors": 3,
+      "warnings": 0,
+      "messages": [
+        {
+          "line": 21,
+          "rule": "@typescript-eslint/no-this-alias",
+          "severity": 2,
+          "text": "Unexpected aliasing of 'this' to local variable."
+        },
+        {
+          "line": 42,
+          "rule": "@typescript-eslint/no-this-alias",
+          "severity": 2,
+          "text": "Unexpected aliasing of 'this' to local variable."
+        },
+        {
+          "line": 104,
+          "rule": "@typescript-eslint/no-this-alias",
+          "severity": 2,
+          "text": "Unexpected aliasing of 'this' to local variable."
+        }
+      ]
+    },
+    {
+      "file": "scripts/delete-test-order.js",
+      "errors": 3,
+      "warnings": 0,
+      "messages": [
+        {
+          "line": 1,
+          "rule": "@typescript-eslint/no-require-imports",
+          "severity": 2,
+          "text": "A `require()` style import is forbidden."
+        },
+        {
+          "line": 2,
+          "rule": "@typescript-eslint/no-require-imports",
+          "severity": 2,
+          "text": "A `require()` style import is forbidden."
+        },
+        {
+          "line": 3,
+          "rule": "@typescript-eslint/no-require-imports",
+          "severity": 2,
+          "text": "A `require()` style import is forbidden."
+        }
+      ]
+    },
+    {
+      "file": "scripts/seed-test-order.js",
+      "errors": 3,
+      "warnings": 0,
+      "messages": [
+        {
+          "line": 6,
+          "rule": "@typescript-eslint/no-require-imports",
+          "severity": 2,
+          "text": "A `require()` style import is forbidden."
+        },
+        {
+          "line": 7,
+          "rule": "@typescript-eslint/no-require-imports",
+          "severity": 2,
+          "text": "A `require()` style import is forbidden."
+        },
+        {
+          "line": 8,
+          "rule": "@typescript-eslint/no-require-imports",
+          "severity": 2,
+          "text": "A `require()` style import is forbidden."
+        }
+      ]
+    },
+    {
+      "file": "scripts/test-brand-name.cjs",
+      "errors": 8,
+      "warnings": 0,
+      "messages": [
+        {
+          "line": 1,
+          "rule": "@typescript-eslint/no-require-imports",
+          "severity": 2,
+          "text": "A `require()` style import is forbidden."
+        },
+        {
+          "line": 2,
+          "rule": "@typescript-eslint/no-require-imports",
+          "severity": 2,
+          "text": "A `require()` style import is forbidden."
+        },
+        {
+          "line": 3,
+          "rule": "@typescript-eslint/no-require-imports",
+          "severity": 2,
+          "text": "A `require()` style import is forbidden."
+        },
+        {
+          "line": 4,
+          "rule": "@typescript-eslint/no-require-imports",
+          "severity": 2,
+          "text": "A `require()` style import is forbidden."
+        },
+        {
+          "line": 5,
+          "rule": "@typescript-eslint/no-require-imports",
+          "severity": 2,
+          "text": "A `require()` style import is forbidden."
+        },
+        {
+          "line": 6,
+          "rule": "@typescript-eslint/no-require-imports",
+          "severity": 2,
+          "text": "A `require()` style import is forbidden."
+        },
+        {
+          "line": 7,
+          "rule": "@typescript-eslint/no-require-imports",
+          "severity": 2,
+          "text": "A `require()` style import is forbidden."
+        },
+        {
+          "line": 13,
+          "rule": "@typescript-eslint/no-require-imports",
+          "severity": 2,
+          "text": "A `require()` style import is forbidden."
+        }
+      ]
+    },
+    {
+      "file": "scripts/test-email.js",
+      "errors": 3,
+      "warnings": 0,
+      "messages": [
+        {
+          "line": 4,
+          "rule": "@typescript-eslint/no-require-imports",
+          "severity": 2,
+          "text": "A `require()` style import is forbidden."
+        },
+        {
+          "line": 5,
+          "rule": "@typescript-eslint/no-require-imports",
+          "severity": 2,
+          "text": "A `require()` style import is forbidden."
+        },
+        {
+          "line": 6,
+          "rule": "@typescript-eslint/no-require-imports",
+          "severity": 2,
+          "text": "A `require()` style import is forbidden."
+        }
+      ]
+    }
+  ]
+}

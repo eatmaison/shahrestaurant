@@ -132,7 +132,7 @@ interface StoreCtx {
   }>;
   login: (email: string, password: string) => Promise<{ ok: boolean; error?: string }>;
   logout: () => Promise<void>;
-  setUserEmailVerified: (userId: string, verified: boolean) => Promise<{ ok: boolean }>;
+  setUserEmailVerified: (userId: string, verified: boolean, expectedVerified?: boolean, expectedEmail?: string) => Promise<{ ok: boolean; error?: string }>;
   setUserAccountType: (userId: string, expectedAccountType: AccountType, accountType: AccountType) => Promise<{ ok: boolean; error?: string }>;
 
   orders: Order[];
@@ -211,7 +211,7 @@ interface StoreCtx {
   /** Recent signed-in and guest visitors shown in the admin visitor overview. */
   recentVisitors: RecentVisitor[];
 
-  refresh: () => Promise<void>;
+  refresh: () => Promise<boolean | undefined>;
 
   hydrated: boolean;
   catalogStatus: "loading" | "ready" | "error";
@@ -267,6 +267,7 @@ export function Providers({ children, initialLang = "nl", initialDictionaries }:
   const [catalogStatus, setCatalogStatus] = useState<"loading" | "ready" | "error">("loading");
   const checkoutBusy = useRef(false);
   const bootstrapController = useRef<AbortController | null>(null);
+  const adminIdentity = useRef<string | undefined>(undefined);
   const statusController = useRef<AbortController | null>(null);
 
   const [theme, setTheme] = useState<Theme>("dark");
@@ -339,6 +340,13 @@ export function Providers({ children, initialLang = "nl", initialDictionaries }:
   const [reservations, setReservations] = useState<Reservation[]>([]);
   const [restaurantStatus, setRestaurantStatus] = useState<RestaurantStatus>(() => getRestaurantStatus());
 
+  const invalidateAdminSnapshot = useCallback(() => {
+    window.dispatchEvent(new Event("shah:admin-session-reset"));
+    adminIdentity.current = undefined;
+    setCurrentUser(null); setOrders([]); setUsers([]); setVipRequests([]); setVipPurchases([]);
+    setReservations([]); setRecentVisitors([]); setOnlineVisitors(0); setAdminView(undefined);
+  }, []);
+
   // Load server-backed data (products, session user, orders, reviews, VIP requests).
   const refresh = useCallback(async () => {
     bootstrapController.current?.abort();
@@ -352,6 +360,9 @@ export function Providers({ children, initialLang = "nl", initialDictionaries }:
       const { response: res, data } = await fetchJSON<Bootstrap>(url, { cache: "no-store", signal: controller.signal });
       if (controller.signal.aborted) return;
       if (!res.ok || !Array.isArray(data?.products) || !Array.isArray(data?.brands)) throw new Error("Invalid catalogue response");
+      const nextAdmin = data.currentUser?.role === "admin" ? data.currentUser.id : undefined;
+      if (adminIdentity.current && adminIdentity.current !== nextAdmin) window.dispatchEvent(new Event("shah:admin-session-reset"));
+      adminIdentity.current = nextAdmin;
       setCatalogStatus("ready");
       setProducts(data.products ?? []);
       setBrands(data.brands ?? []);
@@ -370,9 +381,11 @@ export function Providers({ children, initialLang = "nl", initialDictionaries }:
       setReservations(data.reservations ?? []);
       const status = data.restaurantStatus;
       setRestaurantStatus(previous => stableRestaurantStatus(previous, getRestaurantStatus(status?.override ?? "auto", status?.overrideDate)));
+      return true;
     } catch {
       if (!controller.signal.aborted) setCatalogStatus("error");
       // Keep the current cart/catalogue during transient failures.
+      return controller.signal.aborted ? undefined : false;
     } finally {
       if (bootstrapController.current === controller) bootstrapController.current = null;
     }
@@ -633,43 +646,31 @@ export function Providers({ children, initialLang = "nl", initialDictionaries }:
   const logout = useCallback<StoreCtx["logout"]>(async () => {
     const { response, data } = await fetchJSON<{ ok?: boolean }>("/api/auth", { method: "POST", headers: JSON_HEADERS, body: JSON.stringify({ action: "logout" }) });
     if (!response.ok || !data?.ok) throw new Error("Sign out failed");
-    setCurrentUser(null);
-    setOrders([]);
-    setUsers([]);
-    setVipRequests([]);
-    setVipPurchases([]);
-    setReservations([]);
+    invalidateAdminSnapshot();
     await refresh();
-  }, [refresh]);
+  }, [refresh, invalidateAdminSnapshot]);
 
-  const setUserEmailVerified = useCallback<StoreCtx["setUserEmailVerified"]>(async (userId, verified) => {
-    const res = await fetch("/api/auth", {
-      method: "POST",
-      headers: JSON_HEADERS,
-      body: JSON.stringify({ action: "setUserEmailVerified", userId, verified }),
-    });
-    const json = await res.json().catch(() => null);
-    if (json?.ok) await refresh();
-    return { ok: !!json?.ok };
-  }, [refresh]);
+  const setUserEmailVerified = useCallback<StoreCtx["setUserEmailVerified"]>(async (userId, verified, expectedVerified, expectedEmail) => {
+    try {
+      const { response, data } = await fetchJSON<{ ok: boolean; error?: string }>("/api/auth", {
+        method: "POST", headers: JSON_HEADERS, body: JSON.stringify({ action: "setUserEmailVerified", userId, verified, expectedVerified, expectedEmail }),
+      });
+      if (response.status === 401) invalidateAdminSnapshot();
+      if (data?.ok) await refresh();
+      return { ok: response.ok && Boolean(data?.ok), error: response.status === 401 ? "unauthorized" : data?.error };
+    } catch { return { ok: false, error: "unconfirmed" }; }
+  }, [refresh, invalidateAdminSnapshot]);
 
   const setUserAccountType = useCallback<StoreCtx["setUserAccountType"]>(async (userId, expectedAccountType, accountType) => {
     try {
-      const res = await fetch("/api/auth", {
-        method: "POST",
-        headers: JSON_HEADERS,
-        body: JSON.stringify({ action: "setUserAccountType", userId, expectedAccountType, accountType }),
+      const { response, data } = await fetchJSON<{ ok: boolean; user?: User; error?: string }>("/api/auth", {
+        method: "POST", headers: JSON_HEADERS, body: JSON.stringify({ action: "setUserAccountType", userId, expectedAccountType, accountType }),
       });
-      const json = await res.json().catch(() => null);
-      if (json?.ok && json.user) {
-        setUsers((previous) => previous.map((user) => user.id === userId ? json.user : user));
-        await refresh();
-      }
-      return { ok: !!json?.ok, error: json?.error };
-    } catch {
-      return { ok: false, error: "server" };
-    }
-  }, [refresh]);
+      if (response.status === 401) invalidateAdminSnapshot();
+      if (response.ok && data?.ok && data.user) { setUsers(previous => previous.map(user => user.id === userId ? data.user! : user)); await refresh(); }
+      return { ok: response.ok && Boolean(data?.ok), error: response.status === 401 ? "unauthorized" : data?.error };
+    } catch { return { ok: false, error: "unconfirmed" }; }
+  }, [refresh, invalidateAdminSnapshot]);
 
   const buyVip = useCallback<StoreCtx["buyVip"]>(async () => {
     try {

@@ -11,7 +11,7 @@ function load(file) {
   const code = ts.transpileModule(fs.readFileSync(filename, 'utf8'), { compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022 } }).outputText;
   const mod = { exports: {} };
   vm.runInThisContext(`(function(require,module,exports){${code}\n})`, { filename })(
-    name => name === './restaurantClock' ? load('app/lib/restaurantClock.ts') : require(name), mod, mod.exports,
+    name => name.startsWith('.') ? load(path.relative(path.resolve(__dirname, '..'), path.resolve(path.dirname(filename), name + '.ts'))) : require(name), mod, mod.exports,
   );
   return mod.exports;
 }

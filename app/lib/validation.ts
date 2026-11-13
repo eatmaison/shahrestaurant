@@ -32,6 +32,8 @@ export const authSchema = z.discriminatedUnion("action", [
     action: z.literal("setUserEmailVerified"),
     userId: z.string().uuid(),
     verified: z.boolean(),
+    expectedVerified: z.boolean().optional(),
+    expectedEmail: z.string().email().max(254).optional(),
   }),
   z.object({
     action: z.literal("setUserAccountType"),

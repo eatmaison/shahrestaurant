@@ -1,3 +1,4 @@
+import { adminMatches } from "./adminList";
 import type { RecentVisitor } from "./types";
 
 export interface VisitorFilters {
@@ -12,9 +13,9 @@ export function filterVisitors(visitors: RecentVisitor[], filters: VisitorFilter
   const list = visitors.filter((entry) => {
     if (filters.kind !== "all" && entry.kind !== filters.kind) return false;
     if (filters.onlineOnly && !entry.isOnline) return false;
-    return !query || [entry.name, entry.email, entry.phone, entry.sessionId, entry.observation?.source.label,
+    return adminMatches(query, [entry.name, entry.email, entry.phone, entry.sessionId, entry.id, entry.observation?.source.label,
       entry.observation?.source.referrerHost, entry.observation?.source.campaign, entry.observation?.source.medium,
-      entry.observation?.lastPath].filter(Boolean).join(" ").toLowerCase().includes(query);
+      entry.observation?.lastPath]);
   });
   const recent = (a: RecentVisitor, b: RecentVisitor) => b.lastSeenAt - a.lastSeenAt || a.kind.localeCompare(b.kind) || a.id.localeCompare(b.id);
   const visits = (entry: RecentVisitor) => entry.visitCount ?? (entry.kind === "user" ? entry.orderCount ?? 0 : 1);

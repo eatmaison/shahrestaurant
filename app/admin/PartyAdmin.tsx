@@ -1,121 +1,101 @@
 "use client";
-
-import Image from "next/image";
-import { useEffect, useState, type FormEvent } from "react";
-import { FaArrowsRotate, FaArrowUpRightFromSquare, FaFloppyDisk, FaImage, FaMagnifyingGlass, FaPen, FaPlus, FaTicket, FaXmark } from "react-icons/fa6";
-import { partyDate, partyMoney, type PartyBooking, type PartyEvent } from "../lib/partyTypes";
+import { useDeferredValue, useEffect, useMemo, useRef, useState, type FormEvent } from "react";
+import { useLang } from "../providers";
+import { fetchJSON } from "../lib/clientFetch";
+import type { PartyBooking, PartyEvent } from "../lib/partyTypes";
 import { BAR_PHOTO_SRC, currentBarPhoto } from "../lib/barPhoto";
+import { adminMatches, listPage } from "../lib/adminList";
+import { emptyEventDraft, eventDraftErrors, eventSlug, type EventDraft } from "../lib/adminEventTools";
+import { WorkspaceDialog } from "../components/WorkspaceDialog";
+import { useAdminDraft } from "./AdminDrafts";
+import { AdminExport } from "./AdminExport";
+import { AdminPagination, usePageSize } from "./AdminPagination";
+import { AdminThumbnail } from "./AdminThumbnail";
+import { absoluteTime, money } from "./adminFormat";
+import type { processImageFile as prepareImage } from "./adminImage";
 import styles from "./partyAdmin.module.css";
-
-type EventDraft = Pick<PartyEvent,"slug" | "title" | "description" | "event_date" | "start_time" | "end_time" | "price_cents" | "capacity" | "image" | "status" | "published"> & { id?: string };
-const emptyEvent: EventDraft = { slug: "", title: "", description: "", event_date: "", start_time: "22:00", end_time: "03:00", price_cents: 1699, capacity: 100, image: BAR_PHOTO_SRC, status: "active", published: false };
-const timestamp = (value: string) => new Date(value).toLocaleString("en-GB", { timeZone: "Europe/Amsterdam", dateStyle: "medium", timeStyle: "short" });
-
-export default function PartyAdmin({ processImageFile }: { processImageFile: (file: File) => Promise<string> }) {
-  const [events,setEvents] = useState<PartyEvent[]>([]);
-  const [bookings,setBookings] = useState<PartyBooking[]>([]);
-  const [loaded,setLoaded] = useState(false);
-  const [error,setError] = useState("");
-  const [message,setMessage] = useState("");
-  const [eventFilter,setEventFilter] = useState("");
-  const [statusFilter,setStatusFilter] = useState("");
-  const [query,setQuery] = useState("");
-  const [sort,setSort] = useState("newest");
-  const [draft,setDraft] = useState<EventDraft | null>(null);
-  const [busy,setBusy] = useState(false);
-  const [page,setPage] = useState(0);
-
-  async function refresh() {
-    const response = await fetch("/api/parties/admin", { cache: "no-store" });
-    const result = await response.json();
-    if (!response.ok) throw new Error(result.error || "Unable to load events");
-    setEvents(result.events); setBookings(result.bookings); setLoaded(true);
-  }
-
-  useEffect(() => {
-    let active = true;
-    const load = async () => {
-      try {
-        const response = await fetch("/api/parties/admin", { cache: "no-store" });
-        const result = await response.json();
-        if (!response.ok) throw new Error(result.error || "Unable to load events");
-        if (active) { setEvents(result.events); setBookings(result.bookings); setLoaded(true); }
-      } catch (failure) { if (active) setError(failure instanceof Error ? failure.message : "Unable to load events"); }
-    };
-    void load();
-    const timer = setInterval(() => { if (!document.hidden) void load(); },30_000);
-    return () => { active = false; clearInterval(timer); };
-  },[]);
-
-  async function post(body: unknown) {
-    const response = await fetch("/api/parties/admin", { method: "POST", headers: { "Content-Type":"application/json" }, body: JSON.stringify(body) });
-    const result = await response.json();
-    if (!response.ok) throw new Error(result.error || "Unable to save");
-    return result;
-  }
-
-  async function save(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    if (!draft || busy) return;
-    setBusy(true); setError(""); setMessage("");
-    try { await post(draft); await refresh(); setDraft(null); setMessage("Event saved."); }
-    catch (failure) { setError(failure instanceof Error ? failure.message : "Unable to save event"); }
-    finally { setBusy(false); }
-  }
-
-  async function reconcile() {
-    setBusy(true); setError(""); setMessage("");
-    try { const result = await post({ action:"reconcile" }); await refresh(); setMessage(`Checked ${result.checked} payments. ${result.failed} require another retry or attention in Mollie.`); }
-    catch (failure) { setError(failure instanceof Error ? failure.message : "Unable to check payments"); }
-    finally { setBusy(false); }
-  }
-
-  async function upload(file?: File) {
-    if (!file) return;
-    if (!/^image\/(jpeg|png|webp)$/.test(file.type) || file.size > 10_000_000) { setError("Choose a JPEG, PNG or WebP image under 10 MB."); return; }
-    setBusy(true); setError("");
-    try { const image = await processImageFile(file); setDraft(value => value ? { ...value,image } : value); }
-    catch { setError("Unable to read this image."); }
-    finally { setBusy(false); }
-  }
-
-  const displayedEvents = events.filter(event => !eventFilter || event.id === eventFilter);
-  const totals = displayedEvents.reduce((sum,event) => ({ sold:sum.sold+event.tickets_sold, capacity:sum.capacity+event.capacity, remaining:sum.remaining+event.remaining, revenue:sum.revenue+event.revenue_cents }),{ sold:0,capacity:0,remaining:0,revenue:0 });
-  const search = query.trim().toLowerCase();
-  const guests = bookings.filter(booking => (!eventFilter || booking.event_id === eventFilter) &&
-    (!statusFilter || (statusFilter.startsWith("ticket:") ? booking.ticket_status === statusFilter.slice(7) : booking.payment_status === statusFilter)) &&
-    (!search || `${booking.first_name} ${booking.last_name} ${booking.email} ${booking.phone} ${booking.id}`.toLowerCase().includes(search) || (/^[+\d ()-]+$/.test(search) && booking.phone.replace(/\D/g,"").includes(search.replace(/\D/g,"")))))
-    .sort((first,second) => (sort === "newest" ? -1 : 1)*(new Date(first.created_at).getTime()-new Date(second.created_at).getTime()));
-  const currentPage = Math.min(page,Math.max(0,Math.ceil(guests.length/25)-1));
-  const visibleGuests = guests.slice(currentPage*25,(currentPage+1)*25);
-
-  return <section id="party-admin" className={styles.section} aria-labelledby="party-admin-title">
-    <header className={styles.heading}><div><p>SHAH AFTER HOURS</p><h2 id="party-admin-title"><FaTicket /> PARTIES / EVENTS</h2></div><div className={styles.actions}><a href="/parties" target="_blank" rel="noreferrer" title="Preview private party page" aria-label="Preview private party page"><FaArrowUpRightFromSquare /></a><button type="button" disabled={busy} onClick={reconcile}><FaArrowsRotate /> Check payments</button><button type="button" disabled={busy} onClick={() => { setDraft({ ...emptyEvent }); setError(""); setMessage(""); }}><FaPlus /> Create event</button></div></header>
-    {error && <p role="alert" className={styles.error}>{error}</p>}{message && <p role="status" className={styles.message}>{message}</p>}
-    {!loaded && !error && <p role="status">Loading parties and guest lists...</p>}
-    <div className={styles.events}>{events.map(event => <article key={event.id} className={styles.event}><div className={styles.eventImage}><Image src={event.image} alt="" fill sizes="100px" unoptimized /></div><div><h3>{event.title}</h3><p>{partyDate(event.event_date)} / {event.start_time.slice(0,5)} - {event.end_time.slice(0,5)}</p><span>{event.published ? "Published" : "Unpublished"} / {event.status.replace("_"," ")} / {partyMoney(event.price_cents)}</span></div><button title={`Edit ${event.title}`} aria-label={`Edit ${event.title}`} onClick={() => { setDraft({ ...event,start_time:event.start_time.slice(0,5),end_time:event.end_time.slice(0,5) }); setError(""); setMessage(""); }} disabled={busy}><FaPen /></button></article>)}</div>
-
-    {draft && <form className={styles.editor} onSubmit={save}><div className={styles.editorTitle}><h3>{draft.id ? "Edit event" : "New event"}</h3><button type="button" aria-label="Close event editor" title="Close editor" disabled={busy} onClick={() => setDraft(null)}><FaXmark /></button></div><fieldset disabled={busy}>
-      <label>Event title<input value={draft.title} required minLength={3} maxLength={120} onChange={change => setDraft({ ...draft,title:change.target.value })} /></label>
-      <label>URL slug<input value={draft.slug} required minLength={3} maxLength={100} pattern="[a-z0-9]+(-[a-z0-9]+)*" onChange={change => setDraft({ ...draft,slug:change.target.value })} /></label>
-      <label className={styles.wide}>Description<textarea value={draft.description} required minLength={10} maxLength={4000} rows={4} onChange={change => setDraft({ ...draft,description:change.target.value })} /></label>
-      <label>Date<input type="date" value={draft.event_date} required onChange={change => setDraft({ ...draft,event_date:change.target.value })} /></label>
-      <div className={styles.timeFields}><label>Start time<input type="time" value={draft.start_time} required onChange={change => setDraft({ ...draft,start_time:change.target.value })} /></label><label>End time<input type="time" value={draft.end_time} required onChange={change => setDraft({ ...draft,end_time:change.target.value })} /></label></div>
-      <label>Ticket price (EUR)<input type="number" step="0.01" min="1" max="1000" value={draft.price_cents/100} required onChange={change => setDraft({ ...draft,price_cents:Math.round(Number(change.target.value)*100) })} /></label>
-      <label>Maximum capacity<input type="number" min={1} max={10000} value={draft.capacity} required onChange={change => setDraft({ ...draft,capacity:Number(change.target.value) })} /></label>
-      <label>Status<select value={draft.status} onChange={change => setDraft({ ...draft,status:change.target.value as PartyEvent["status"] })}><option value="active">Active</option><option value="sold_out">Sold out (close sales)</option><option value="cancelled">Cancelled</option></select></label>
-      <label className={styles.checkbox}><input type="checkbox" checked={draft.published} onChange={change => setDraft({ ...draft,published:change.target.checked })} /> Published on website</label>
-      <label className={styles.wide}>Event image URL<input value={draft.image.startsWith("data:") ? "" : draft.image} placeholder={draft.image.startsWith("data:") ? "Uploaded image ready" : "https://..."} onChange={change => setDraft({ ...draft,image:change.target.value })} /></label>
-      <label className={styles.upload}><FaImage /> Upload event image<input type="file" accept="image/jpeg,image/png,image/webp" onChange={change => void upload(change.target.files?.[0])} /></label>
-      <div className={styles.preview}><Image src={currentBarPhoto(draft.image || BAR_PHOTO_SRC)} alt="Event image preview" fill sizes="200px" unoptimized /></div>
-      <button className={styles.save} type="submit"><FaFloppyDisk />{busy ? "Saving..." : "Save event"}</button>
-    </fieldset><p className={styles.hint}>Amsterdam local time. An end time before the start time means the following day. Existing bookings retain their purchased details. Cancelling closes sales; refunds for previously confirmed guests must be arranged in Mollie.</p></form>}
-
-    <div className={styles.filters}><label>Event<select value={eventFilter} onChange={change => { setEventFilter(change.target.value); setPage(0); }}><option value="">All events</option>{events.map(event => <option key={event.id} value={event.id}>{event.title} / {event.event_date}</option>)}</select></label></div>
-    <dl className={styles.stats}><div><dt>Tickets sold</dt><dd>{totals.sold} <small>/ {totals.capacity}</small></dd></div><div><dt>Tickets remaining</dt><dd>{totals.remaining}</dd></div><div><dt>Confirmed revenue</dt><dd>{partyMoney(totals.revenue)}</dd></div></dl>
-    <div className={styles.filters}><label className={styles.search}><span><FaMagnifyingGlass /> Search guests</span><input type="search" value={query} placeholder="Name, email, phone or ticket ID" onChange={change => { setQuery(change.target.value); setPage(0); }} /></label><label>Payment / ticket status<select value={statusFilter} onChange={change => { setStatusFilter(change.target.value); setPage(0); }}><option value="">All statuses</option>{["paid","open","pending","authorized","failed","canceled","expired"].map(status => <option key={status} value={status}>{status}</option>)}<option value="ticket:confirmed">Confirmed tickets</option><option value="ticket:refund_pending">Refund pending</option><option value="ticket:refunded">Refunded</option></select></label><label>Purchase date<select value={sort} onChange={change => { setSort(change.target.value); setPage(0); }}><option value="newest">Newest first</option><option value="oldest">Oldest first</option></select></label></div>
-    <div className={styles.tableWrap}><table className={styles.table}><caption>{guests.length} purchases / Amsterdam local time</caption><thead><tr><th>Guest</th><th>Contact</th><th>Tickets</th><th>Event / date</th><th>Purchased</th><th>Amount paid</th><th>Payment / ticket</th><th>Ticket / payment ID</th></tr></thead><tbody>{visibleGuests.map(booking => <tr key={booking.id}><td data-label="Guest"><strong>{booking.first_name} {booking.last_name}</strong></td><td data-label="Contact"><a href={`mailto:${booking.email}`}>{booking.email}</a><a href={`tel:${booking.phone}`}>{booking.phone}</a></td><td data-label="Tickets">{booking.quantity}</td><td data-label="Event / date">{booking.event_title}<small>{booking.event_date} / {booking.start_time.slice(0,5)}</small></td><td data-label="Purchased">{timestamp(booking.created_at)}</td><td data-label="Amount paid">{partyMoney(booking.payment_status === "paid" ? booking.total_cents : 0)}<small>Total: {partyMoney(booking.total_cents)}</small></td><td data-label="Status"><span className={booking.ticket_status === "confirmed" ? styles.confirmed : styles.badge}>{booking.payment_status}</span><small>{booking.ticket_status.replace("_"," ")}</small>{booking.ticket_status === "confirmed" && <small>{booking.email_sent_at ? "Email sent" : "Email pending"}</small>}</td><td data-label="Ticket / payment ID" className={styles.identifier}>{booking.id}<small>{booking.mollie_payment_id || "Payment not started"}</small></td></tr>)}</tbody></table></div>
-    {loaded && !guests.length && <p className={styles.noGuests}>No purchases match these filters.</p>}
-    <div className={styles.pagination}><button disabled={currentPage===0} onClick={() => setPage(currentPage-1)}>Previous</button><span>Page {currentPage+1} of {Math.max(1,Math.ceil(guests.length/25))}</span><button disabled={(currentPage+1)*25>=guests.length} onClick={() => setPage(currentPage+1)}>Next</button></div>
+import shared from "./admin.module.css";
+export default function PartyAdmin({ processImageFile }: { processImageFile: typeof prepareImage }) {
+  const {lang}=useLang();
+  const nl=lang==="nl";
+  const t=(en:string,nlText:string)=>nl?nlText:en;
+  const [events,setEvents]=useState<PartyEvent[]>([]);
+  const [bookings,setBookings]=useState<PartyBooking[]>([]);
+  const [loaded,setLoaded]=useState(false);
+  const [loading,setLoading]=useState(true);
+  const [version,setVersion]=useState(0);
+  const [error,setError]=useState("");
+  const [message,setMessage]=useState("");
+  const [eventFilter,setEventFilter]=useState("");
+  const [statusFilter,setStatusFilter]=useState("");
+  const [query,setQuery]=useState("");
+  const deferred=useDeferredValue(query);
+  const [sort,setSort]=useState("newest");
+  const [page,setPage]=useState(1);
+  const [size,setSize]=usePageSize("party-guests");
+  const [eventQuery,setEventQuery]=useState("");
+  const [eventStatus,setEventStatus]=useState("all");
+  const [draft,setDraft]=useAdminDraft<EventDraft|null>("event",null);
+  const [baseline,setBaseline]=useAdminDraft("eventBaseline","");
+  const [busy,setBusy]=useState(false);
+  const [unconfirmed,setUnconfirmed]=useAdminDraft("eventUnconfirmed",false);
+  const [confirmation,setConfirmation]=useState<"save"|"reconcile">();
+  const [errors,setErrors]=useState<ReturnType<typeof eventDraftErrors>>([]);
+  const [slugEdited,setSlugEdited]=useState(Boolean(draft?.slug));
+  const mounted=useRef(true);
+  const loadController=useRef<AbortController|undefined>(undefined);
+  const operation=useRef<AbortController|undefined>(undefined);
+  const editor=useRef<HTMLFormElement>(null);
+  const file=useRef<HTMLInputElement>(null);
+  const checked=useRef(false);
+  const dirty=Boolean(draft&&JSON.stringify(draft)!==baseline);
+  useEffect(()=>{mounted.current=true;return()=>{mounted.current=false;loadController.current?.abort();operation.current?.abort();};},[]);
+  useEffect(()=>{
+    let active=true,pending=false;
+    const load=async()=>{if(pending||document.hidden||!navigator.onLine)return;pending=true;const controller=new AbortController();loadController.current=controller;
+      try{const{response,data}=await fetchJSON<{events:PartyEvent[];bookings:PartyBooking[]}>("/api/parties/admin",{cache:"no-store",signal:controller.signal});if(!response.ok||!Array.isArray(data?.events)||!Array.isArray(data?.bookings))throw Error("load");if(active){setEvents(data.events);setBookings(data.bookings);setLoaded(true);setError("");if(checked.current){setUnconfirmed(false);checked.current=false;}}}
+      catch{if(active)setError(nl?"Evenementen konden niet worden ververst. Eerder geladen gegevens blijven zichtbaar.":"Events could not refresh. Previously loaded data remains visible.");}
+      finally{pending=false;if(active)setLoading(false);if(loadController.current===controller)loadController.current=undefined;}};
+    void load();const timer=setInterval(()=>void load(),30_000),resume=()=>void load();document.addEventListener("visibilitychange",resume);window.addEventListener("online",resume);
+    return()=>{active=false;clearInterval(timer);loadController.current?.abort();document.removeEventListener("visibilitychange",resume);window.removeEventListener("online",resume);};
+  },[version,nl,setUnconfirmed]);
+  const reload=()=>{checked.current=true;setLoading(true);setVersion(value=>value+1);};
+  const statusName=(value:string)=>({active:t("Active","Actief"),sold_out:t("Sold out / sales closed","Uitverkocht / verkoop gesloten"),cancelled:t("Cancelled","Geannuleerd"),paid:t("Paid","Betaald"),open:t("Open","Open"),pending:t("Pending","In afwachting"),authorized:t("Authorized","Geautoriseerd"),failed:t("Failed","Mislukt"),canceled:t("Canceled","Geannuleerd"),expired:t("Expired","Verlopen"),confirmed:t("Confirmed","Bevestigd"),refund_pending:t("Refund pending","Terugbetaling in afwachting"),refunded:t("Refunded","Terugbetaald")}[value]||value.replaceAll("_"," "));
+  const friendly=(code:string)=>({title:t("Use 3–120 characters for the title.","Gebruik 3–120 tekens voor de titel."),slug:t("Use a unique 3–100 character URL slug with lowercase letters, numbers and single hyphens.","Gebruik een unieke URL van 3–100 tekens met kleine letters, cijfers en enkele koppeltekens."),duplicateSlug:t("Another event already uses this URL slug.","Een ander evenement gebruikt deze URL al."),description:t("Use 10–4000 characters for the description.","Gebruik 10–4000 tekens voor de beschrijving."),date:t("Choose a valid calendar date.","Kies een geldige kalenderdatum."),time:t("Choose a valid 24-hour time.","Kies een geldige 24-uurs tijd."),sameTime:t("Start and end times must differ; earlier end times mean the next day.","Begin- en eindtijd moeten verschillen; een eerdere eindtijd betekent de volgende dag."),price:t("Ticket price must be €1–€1000.","Ticketprijs moet €1–€1000 zijn."),capacity:t("Capacity must be a whole number between 1 and 10000.","Capaciteit moet een geheel getal van 1 tot 10000 zijn."),soldCapacity:t("Capacity cannot be below the already recorded ticket count.","Capaciteit kan niet lager zijn dan het geregistreerde aantal verkochte tickets."),image:t("Choose a local, uploaded or HTTPS image without embedded credentials.","Kies een lokale, geüploade of HTTPS-afbeelding zonder inloggegevens."),status:t("Choose a supported event status.","Kies een geldige evenementstatus.")}[code]||t("Check this field.","Controleer dit veld."));
+  const openEditor=(value:EventDraft)=>{if(dirty&&!window.confirm(t("Discard changes to the current event draft?","Wijzigingen in het huidige evenementconcept verwijderen?")))return;setDraft(value);setBaseline(JSON.stringify(value));setSlugEdited(Boolean(value.id||value.slug));setErrors([]);setError("");setMessage("");requestAnimationFrame(()=>{editor.current?.scrollIntoView({block:"start",behavior:"instant"});editor.current?.querySelector<HTMLInputElement>("input")?.focus({preventScroll:true});});};
+  const closeEditor=()=>{if(dirty&&!window.confirm(t("Discard unsaved event changes?","Niet-opgeslagen evenementwijzigingen verwijderen?")))return;setDraft(null);setBaseline("");setErrors([]);};
+  const validate=()=>{if(!draft)return false;const found=eventDraftErrors(draft,events);setErrors(found);if(found.length){requestAnimationFrame(()=>document.getElementById(`event-${found[0].field}`)?.focus());return false;}return true;};
+  async function post(body:unknown){const controller=new AbortController();operation.current=controller;try{const{response,data}=await fetchJSON<Record<string,unknown>>("/api/parties/admin",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body),signal:controller.signal},30_000);if(!response.ok)throw Error(response.status===401||response.status===403?"unauthorized":response.status===429?"rate":"unconfirmed");return data;}finally{if(operation.current===controller)operation.current=undefined;}}
+  async function saveNow(){if(!draft||busy||!validate()||unconfirmed)return;setBusy(true);setError("");setMessage("");setUnconfirmed(true);try{const data=await post(draft);if(data.ok!==true)throw Error("unconfirmed");if(mounted.current){setDraft(null);setBaseline("");setUnconfirmed(false);setConfirmation(undefined);setMessage(t("Event saved. Refreshing the displayed list…","Evenement opgeslagen. De lijst wordt ververst…"));setVersion(value=>value+1);}}catch(failure){if(mounted.current)setError(failure instanceof Error&&failure.message==="unauthorized"?t("Your session is not authorized. Refresh or sign in again.","Uw sessie is niet bevoegd. Ververs of log opnieuw in."):t("Save response was not confirmed. Refresh events and check the actual record before retrying.","Opslaan is niet bevestigd. Ververs en controleer het werkelijke record vóór u opnieuw probeert."));}finally{if(mounted.current)setBusy(false);}}
+  function submit(event:FormEvent){event.preventDefault();if(!draft||busy||unconfirmed||!validate())return;const existing=events.find(value=>value.id===draft.id);if(draft.published&&!existing?.published||draft.status==="cancelled"&&existing?.status!=="cancelled")setConfirmation("save");else void saveNow();}
+  async function reconcile(){if(busy||unconfirmed)return;setBusy(true);setError("");setMessage("");setUnconfirmed(true);try{const data=await post({action:"reconcile"});if(!Number.isFinite(data.checked)||!Number.isFinite(data.failed))throw Error("unconfirmed");if(mounted.current){setUnconfirmed(false);setConfirmation(undefined);setMessage(`${t("Checked","Gecontroleerd")}: ${data.checked}. ${t("Still requiring attention","Nog aandacht nodig")}: ${data.failed}.`);setVersion(value=>value+1);}}catch{if(mounted.current)setError(t("Payment check was not confirmed. Refresh before starting another check.","Betalingscontrole is niet bevestigd. Ververs vóór u een nieuwe controle start."));}finally{if(mounted.current)setBusy(false);}}
+  async function upload(selected?:File){if(!selected||!draft||busy)return;setBusy(true);setError("");const controller=new AbortController();operation.current=controller;try{const image=await processImageFile(selected,{signal:controller.signal});if(mounted.current)setDraft(value=>value?{...value,image}:value);}catch{if(mounted.current)setError(t("Image preparation failed. Choose a valid image up to 10 MB and 40 megapixels.","Afbeelding voorbereiden mislukt. Kies een geldige afbeelding van maximaal 10 MB en 40 megapixels."));}finally{if(mounted.current)setBusy(false);if(file.current)file.current.value="";if(operation.current===controller)operation.current=undefined;}}
+  const shownEvents=useMemo(()=>events.filter(event=>(eventStatus==="all"||eventStatus==="published"?eventStatus!=="published"||event.published:eventStatus==="draft"?!event.published:event.status===eventStatus)&&adminMatches(eventQuery,[event.title,event.slug,event.event_date])),[events,eventStatus,eventQuery]);
+  const selectedEvents=events.filter(event=>!eventFilter||event.id===eventFilter);
+  const totals=selectedEvents.reduce((sum,event)=>({sold:sum.sold+event.tickets_sold,capacity:sum.capacity+event.capacity,remaining:sum.remaining+event.remaining,value:sum.value+event.revenue_cents}),{sold:0,capacity:0,remaining:0,value:0});
+  const guests=useMemo(()=>bookings.filter(booking=>(!eventFilter||booking.event_id===eventFilter)&&(!statusFilter||(statusFilter.startsWith("ticket:")?booking.ticket_status===statusFilter.slice(7):booking.payment_status===statusFilter))&&adminMatches(deferred,[booking.first_name,booking.last_name,`${booking.first_name} ${booking.last_name}`,booking.email,booking.phone,booking.id,booking.mollie_payment_id])).sort((a,b)=>(sort==="newest"?-1:1)*(Date.parse(a.created_at)-Date.parse(b.created_at))||a.id.localeCompare(b.id)),[bookings,eventFilter,statusFilter,deferred,sort]);
+  const result=listPage(guests,page,size);
+  const dateLabel=(date:string)=>{try{return new Intl.DateTimeFormat(lang,{weekday:"long",day:"numeric",month:"long",year:"numeric",timeZone:"Europe/Amsterdam"}).format(new Date(date.slice(0,10)+"T12:00:00Z"));}catch{return t("Date unavailable","Datum niet beschikbaar");}};
+  const invalid=(field:string)=>errors.some(error=>error.field===field);
+  return <section id="party-admin" className={styles.section} aria-labelledby="party-admin-title"><header className={styles.heading}><div><p>SHAH AFTER HOURS</p><h2 id="party-admin-title">{t("Events & guest purchases","Evenementen & ticketaankopen")}</h2></div><div className={styles.actions}><a href="/parties" target="_blank" rel="noreferrer">{t("Preview private page","Besloten pagina bekijken")} ↗</a><button type="button" disabled={busy||loading} onClick={reload}>{t("Refresh events","Evenementen verversen")}</button><button type="button" disabled={busy||!loaded} onClick={()=>setConfirmation("reconcile")}>{t("Check payments","Betalingen controleren")}</button><button type="button" disabled={busy} onClick={()=>openEditor(emptyEventDraft(BAR_PHOTO_SRC))}>{t("Create event","Evenement maken")}</button></div></header>
+    {error&&<p role="alert" className={shared.notice}>{error}<button type="button" className={shared.button} disabled={busy||loading} onClick={reload}>{t("Retry / verify records","Opnieuw proberen / controleren")}</button></p>}{message&&<p role="status" className={shared.notice}>{message}</p>}{loading&&<p role="status">{t("Loading events and guest lists…","Evenementen en gastenlijsten laden…")}</p>}
+    <div className={styles.filters}><label>{t("Find an event","Evenement zoeken")}<input type="search" value={eventQuery} onChange={event=>setEventQuery(event.target.value)}/></label><label>{t("Event visibility / status","Zichtbaarheid / status")}<select value={eventStatus} onChange={event=>setEventStatus(event.target.value)}><option value="all">{t("All events","Alle evenementen")}</option><option value="published">{t("Published","Gepubliceerd")}</option><option value="draft">{t("Unpublished","Niet gepubliceerd")}</option>{["active","sold_out","cancelled"].map(value=><option key={value} value={value}>{statusName(value)}</option>)}</select></label></div>
+    <p className={shared.muted}>{shownEvents.length} / {events.length} {t("events shown. Guest filters below are independent.","evenementen getoond. Gastenfilters hieronder werken afzonderlijk.")}</p><div className={styles.events}>{shownEvents.map(event=><article key={event.id} className={styles.event}><div className={styles.eventImage}><AdminThumbnail key={event.image} src={currentBarPhoto(event.image)} alt={event.title} sizes="90px"/></div><div><h3>{event.title}</h3><p>{dateLabel(event.event_date)} / {event.start_time.slice(0,5)}–{event.end_time.slice(0,5)}</p><span>{event.published?t("Published","Gepubliceerd"):t("Unpublished","Niet gepubliceerd")} · {statusName(event.status)} · {money(event.price_cents/100,lang)}</span><p>{event.tickets_sold} / {event.capacity} {t("tickets recorded","tickets geregistreerd")}</p></div><button type="button" aria-label={`${t("Edit","Bewerken")}: ${event.title}`} disabled={busy} onClick={()=>openEditor({id:event.id,slug:event.slug,title:event.title,description:event.description,event_date:event.event_date,start_time:event.start_time.slice(0,5),end_time:event.end_time.slice(0,5),price_cents:event.price_cents,capacity:event.capacity,image:event.image,status:event.status,published:event.published})}>{t("Edit","Bewerk")}</button></article>)}</div>{loaded&&!shownEvents.length&&<p className={styles.noGuests}>{t("No events match these filters.","Geen evenementen voor deze filters.")}</p>}
+    {draft&&<form ref={editor} className={styles.editor} onSubmit={submit} noValidate data-admin-draft><div className={styles.editorTitle}><h3>{draft.id?t("Edit event","Evenement bewerken"):t("New event","Nieuw evenement")}{dirty?" · "+t("Unsaved draft","Niet-opgeslagen concept"):""}</h3><button type="button" disabled={busy} onClick={closeEditor}>{t("Close editor","Editor sluiten")}</button></div>{errors.length>0&&<div id="event-errors" role="alert" className={shared.notice}><ul>{errors.map(error=><li key={error.field+error.code}><a href={`#event-${error.field}`} onClick={()=>document.getElementById(`event-${error.field}`)?.focus()}>{friendly(error.code)}</a></li>)}</ul></div>}<fieldset disabled={busy}>
+      <label>{t("Event title","Evenementtitel")}<input id="event-title" value={draft.title} required minLength={3} maxLength={120} aria-invalid={invalid("title")} aria-describedby={invalid("title")?"event-errors":undefined} onChange={event=>{const title=event.target.value;setDraft({...draft,title,...(!draft.id&&!slugEdited?{slug:eventSlug(title)}:{})});}}/></label>
+      <label>{t("URL slug","URL-naam")}<input id="event-slug" value={draft.slug} required minLength={3} maxLength={100} pattern="[a-z0-9]+(-[a-z0-9]+)*" aria-invalid={invalid("slug")} aria-describedby="event-slug-help" onChange={event=>{setSlugEdited(true);setDraft({...draft,slug:event.target.value});}}/><small id="event-slug-help">{t("Lowercase letters, numbers and single hyphens. Editing keeps the event’s booking ID.","Kleine letters, cijfers en enkele koppeltekens. Het boekings-ID blijft behouden.")}</small></label>
+      <label className={styles.wide}>{t("Description","Beschrijving")}<textarea id="event-description" value={draft.description} required minLength={10} maxLength={4000} rows={4} aria-invalid={invalid("description")} onChange={event=>setDraft({...draft,description:event.target.value})}/><small>{draft.description.length}/4000</small></label>
+      <label>{t("Date","Datum")}<input id="event-event_date" type="date" value={draft.event_date} required aria-invalid={invalid("event_date")} onChange={event=>setDraft({...draft,event_date:event.target.value})}/></label>
+      <div className={styles.timeFields}><label>{t("Start time","Begintijd")}<input id="event-start_time" type="time" value={draft.start_time} required aria-invalid={invalid("start_time")} onChange={event=>setDraft({...draft,start_time:event.target.value})}/></label><label>{t("End time","Eindtijd")}<input id="event-end_time" type="time" value={draft.end_time} required aria-invalid={invalid("end_time")} onChange={event=>setDraft({...draft,end_time:event.target.value})}/></label></div>
+      <label>{t("Ticket price (EUR)","Ticketprijs (EUR)")}<input id="event-price_cents" type="number" step="0.01" min={1} max={1000} value={Number.isFinite(draft.price_cents)?draft.price_cents/100:""} required aria-invalid={invalid("price_cents")} onChange={event=>setDraft({...draft,price_cents:event.target.value===""?NaN:Math.round(Number(event.target.value)*100)})}/></label>
+      <label>{t("Maximum capacity","Maximale capaciteit")}<input id="event-capacity" type="number" min={Math.max(1,events.find(event=>event.id===draft.id)?.tickets_sold||1)} max={10000} value={Number.isFinite(draft.capacity)?draft.capacity:""} required aria-invalid={invalid("capacity")} onChange={event=>setDraft({...draft,capacity:event.target.value===""?NaN:Number(event.target.value)})}/><small>{t("Must cover already recorded tickets.","Moet reeds geregistreerde tickets kunnen dekken.")}</small></label>
+      <label>{t("Status","Status")}<select id="event-status" value={draft.status} aria-invalid={invalid("status")} onChange={event=>setDraft({...draft,status:event.target.value as PartyEvent["status"]})}>{["active","sold_out","cancelled"].map(value=><option key={value} value={value}>{statusName(value)}</option>)}</select></label><label className={styles.checkbox}><input type="checkbox" checked={draft.published} onChange={event=>setDraft({...draft,published:event.target.checked})}/>{t("Published on private ticket page","Gepubliceerd op besloten ticketpagina")}</label>
+      <label className={styles.wide}>{t("Event image URL","URL evenementafbeelding")}<input id="event-image" value={draft.image.startsWith("data:")?"":draft.image} aria-invalid={invalid("image")} placeholder={draft.image.startsWith("data:")?t("Prepared image ready","Voorbereide afbeelding gereed"):"https://…"} onChange={event=>setDraft({...draft,image:event.target.value})}/></label><label className={styles.upload}>{t("Prepare event image","Evenementafbeelding voorbereiden")}<input ref={file} type="file" accept="image/jpeg,image/png,image/webp,image/avif,image/gif,image/svg+xml" onChange={event=>void upload(event.target.files?.[0])}/></label><div className={styles.preview}><AdminThumbnail key={draft.image} src={currentBarPhoto(draft.image||BAR_PHOTO_SRC)} alt={t("Event draft image","Afbeelding evenementconcept")} sizes="220px"/></div><button className={styles.save} type="submit" disabled={unconfirmed}>{busy?t("Saving…","Opslaan…"):t("Save event","Evenement opslaan")}</button>
+    </fieldset>{unconfirmed&&<p role="status" className={styles.hint}>{t("An earlier save was not confirmed. Refresh and check the server record before retrying.","Een eerdere opslag is niet bevestigd. Ververs en controleer het serverrecord vóór een nieuwe poging.")}</p>}<p className={styles.hint}>{t("Amsterdam local time. An end time before the start means the next day. Existing bookings retain their purchased details. Cancelling closes sales; refunds and guest communications must be arranged separately.","Lokale tijd Amsterdam. Een eerdere eindtijd betekent de volgende dag. Bestaande boekingen behouden hun aankoopgegevens. Annuleren sluit de verkoop; terugbetalingen en communicatie moeten afzonderlijk worden geregeld.")}</p></form>}
+    <div className={styles.filters}><label>{t("Guest list for event","Gastenlijst voor evenement")}<select value={eventFilter} onChange={event=>{setEventFilter(event.target.value);setPage(1);}}><option value="">{t("All events","Alle evenementen")}</option>{events.map(event=><option key={event.id} value={event.id}>{event.title} / {event.event_date}</option>)}</select></label></div><dl className={styles.stats}><div><dt>{t("Recorded tickets","Geregistreerde tickets")}</dt><dd>{totals.sold} <small>/ {totals.capacity}</small></dd></div><div><dt>{t("Remaining capacity","Resterende capaciteit")}</dt><dd>{totals.remaining}</dd></div><div><dt>{t("Recorded confirmed ticket value","Geregistreerde bevestigde ticketwaarde")}</dt><dd>{money(totals.value/100,lang)}</dd></div></dl><p className={styles.hint}>{t("These are recorded ticket/payment states, not net bank receipts or a refund ledger.","Dit zijn geregistreerde ticket- en betaalstatussen, geen netto bankontvangsten of terugbetalingsboekhouding.")}</p>
+    <div className={styles.filters}><label className={styles.search}>{t("Search guests","Gasten zoeken")}<input type="search" value={query} placeholder={t("Name, email, phone, ticket or payment ID","Naam, e-mail, telefoon, ticket- of betaal-ID")} onChange={event=>{setQuery(event.target.value);setPage(1);}}/></label><label>{t("Payment / ticket status","Betaal- / ticketstatus")}<select value={statusFilter} onChange={event=>{setStatusFilter(event.target.value);setPage(1);}}><option value="">{t("All statuses","Alle statussen")}</option>{["paid","open","pending","authorized","failed","canceled","expired"].map(value=><option value={value} key={value}>{statusName(value)}</option>)}{["confirmed","refund_pending","refunded"].map(value=><option value={`ticket:${value}`} key={value}>{statusName(value)}</option>)}</select></label><label>{t("Purchase date","Aankoopdatum")}<select value={sort} onChange={event=>{setSort(event.target.value);setPage(1);}}><option value="newest">{t("Newest first","Nieuwste eerst")}</option><option value="oldest">{t("Oldest first","Oudste eerst")}</option></select></label></div>
+    <div className={shared.panelHeader}><h3 id="party-guest-results" className={shared.resultHeading} tabIndex={-1}>{guests.length} / {bookings.length} {t("purchases","aankopen")}</h3><AdminExport personal filename={`event-guests-${eventFilter||"all"}.csv`} title={t("Export guests","Gasten exporteren")} description={t("The filtered guest list, contact details, ticket quantities and recorded payment states.","De gefilterde gastenlijst, contactgegevens, aantallen tickets en geregistreerde betaalstatussen.")} rows={[["Ticket ID","First name","Last name","Email","Phone","Quantity","Event","Date","Total EUR","Payment status","Ticket status"],...guests.map(booking=>[booking.id,booking.first_name,booking.last_name,booking.email,booking.phone,booking.quantity,booking.event_title,booking.event_date,(booking.total_cents/100).toFixed(2),booking.payment_status,booking.ticket_status])]}/></div>
+    <div className={styles.tableWrap} tabIndex={0} role="region" aria-label={t("Guest purchases table","Tabel ticketaankopen")}><table className={styles.table} role="table"><caption>{t("Recorded purchases / Amsterdam local time","Geregistreerde aankopen / lokale tijd Amsterdam")}</caption><thead><tr>{[t("Guest","Gast"),t("Contact","Contact"),t("Tickets","Tickets"),t("Event / date","Evenement / datum"),t("Purchased","Aangekocht"),t("Recorded paid value","Geregistreerde betaalde waarde"),t("Payment / ticket","Betaling / ticket"),t("Ticket / payment ID","Ticket- / betaal-ID")].map((value,index)=><th key={index} id={`guest-heading-${index}`} scope="col">{value}</th>)}</tr></thead><tbody aria-busy={query!==deferred}>{result.items.map(booking=><tr key={booking.id}><td headers="guest-heading-0" data-label={t("Guest","Gast")}><strong>{booking.first_name} {booking.last_name}</strong></td><td headers="guest-heading-1" data-label={t("Contact","Contact")}><a href={`mailto:${booking.email}`}>{booking.email}</a><a href={`tel:${booking.phone.replace(/[^\d+]/g,"")}`}>{booking.phone}</a></td><td headers="guest-heading-2" data-label={t("Tickets","Tickets")}>{booking.quantity}</td><td headers="guest-heading-3" data-label={t("Event / date","Evenement / datum")}>{booking.event_title}<small>{booking.event_date} / {booking.start_time.slice(0,5)}</small></td><td headers="guest-heading-4" data-label={t("Purchased","Aangekocht")}>{absoluteTime(Date.parse(booking.created_at),lang)}</td><td headers="guest-heading-5" data-label={t("Recorded value","Geregistreerd")}>{money(booking.payment_status==="paid"?booking.total_cents/100:0,lang)}<small>{t("Order total","Besteltotaal")}: {money(booking.total_cents/100,lang)}</small></td><td headers="guest-heading-6" data-label={t("Status","Status")}><span className={booking.ticket_status==="confirmed"?styles.confirmed:styles.badge}>{statusName(booking.payment_status)}</span><small>{statusName(booking.ticket_status)}</small>{booking.ticket_status==="confirmed"&&<small>{booking.email_sent_at?t("Email sent","E-mail verzonden"):t("Email pending","E-mail in afwachting")}</small>}</td><td headers="guest-heading-7" data-label={t("Reference","Referentie")} className={styles.identifier}>{booking.id}<small>{booking.mollie_payment_id||t("Payment not started","Betaling niet gestart")}</small></td></tr>)}</tbody></table></div>{loaded&&!result.total&&<p className={styles.noGuests}>{t("No purchases match these filters.","Geen aankopen voor deze filters.")}</p>}<AdminPagination {...result} size={size} onPage={setPage} onSize={setSize} target="party-guest-results" label={t("Purchases","Aankopen")}/>
+    {confirmation&&<WorkspaceDialog titleId="event-confirm-title" onClose={()=>{if(!busy)setConfirmation(undefined);}}><div className={shared.dialogBody}><h2 id="event-confirm-title">{confirmation==="reconcile"?t("Check external payment states?","Externe betaalstatussen controleren?"):t("Confirm event publication / cancellation","Publicatie / annulering bevestigen")}</h2><p>{confirmation==="reconcile"?t("This requests the provider’s current payment states and may update bookings or send pending confirmations. It does not start new customer payments. Do not repeat while a prior check is uncertain.","Dit vraagt actuele betaalstatussen bij de provider op en kan boekingen bijwerken of bevestigingen versturen. Er worden geen nieuwe klantbetalingen gestart. Herhaal niet zolang een eerdere controle onzeker is."):t("This changes future visibility or sales. Purchased ticket details stay intact. Cancelling does not automatically refund or notify existing guests.","Dit wijzigt toekomstige zichtbaarheid of verkoop. Aankoopgegevens blijven behouden. Annuleren betaalt of informeert bestaande gasten niet automatisch.")}</p>{draft&&confirmation==="save"&&<p><strong>{draft.title}</strong> · {draft.event_date} · {statusName(draft.status)}</p>}{error&&<p role="alert" className={shared.error}>{error}</p>}<div className={shared.actions}><button type="button" className={shared.button} disabled={busy} onClick={()=>setConfirmation(undefined)}>{t("Cancel","Annuleren")}</button><button type="button" className={`${shared.button} ${shared.primary}`} disabled={busy||unconfirmed} onClick={()=>void(confirmation==="reconcile"?reconcile():saveNow())}>{busy?t("Working…","Bezig…"):t("Confirm","Bevestigen")}</button></div></div></WorkspaceDialog>}
   </section>;
 }

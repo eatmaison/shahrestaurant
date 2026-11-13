@@ -1,0 +1,469 @@
+{
+  "build": "xAq9sMM06TxZlpVjSRdv3",
+  "checks": [
+    {
+      "type": "initial-theme",
+      "os": "light",
+      "saved": null,
+      "expectedDark": true,
+      "firstFrameDark": true,
+      "dark": true
+    },
+    {
+      "type": "initial-theme",
+      "os": "light",
+      "saved": "light",
+      "expectedDark": false,
+      "firstFrameDark": false,
+      "dark": false
+    },
+    {
+      "type": "initial-theme",
+      "os": "light",
+      "saved": "dark",
+      "expectedDark": true,
+      "firstFrameDark": true,
+      "dark": true
+    },
+    {
+      "type": "initial-theme",
+      "os": "dark",
+      "saved": null,
+      "expectedDark": true,
+      "firstFrameDark": true,
+      "dark": true
+    },
+    {
+      "type": "initial-theme",
+      "os": "dark",
+      "saved": "light",
+      "expectedDark": false,
+      "firstFrameDark": false,
+      "dark": false
+    },
+    {
+      "type": "initial-theme",
+      "os": "dark",
+      "saved": "dark",
+      "expectedDark": true,
+      "firstFrameDark": true,
+      "dark": true
+    },
+    {
+      "type": "admin-header",
+      "theme": "light",
+      "lang": "nl",
+      "width": 1280,
+      "overflow": 0,
+      "nav": [
+        {
+          "label": "Home",
+          "font": 15,
+          "x": 244.78125,
+          "right": 309.328125
+        },
+        {
+          "label": "Reserveren",
+          "font": 15,
+          "x": 311.328125,
+          "right": 412.109375
+        },
+        {
+          "label": "Menukaart",
+          "font": 15,
+          "x": 414.109375,
+          "right": 510.109375
+        },
+        {
+          "label": "PARTY / EVENTS",
+          "font": 15,
+          "x": 512.109375,
+          "right": 656.59375
+        },
+        {
+          "label": "Evenementen",
+          "font": 15,
+          "x": 658.59375,
+          "right": 787.25
+        },
+        {
+          "label": "Account",
+          "font": 15,
+          "x": 789.25,
+          "right": 868.40625
+        },
+        {
+          "label": "Admin",
+          "font": 15,
+          "x": 870.40625,
+          "right": 938.671875
+        }
+      ],
+      "headerRight": 1248
+    },
+    {
+      "type": "admin-header",
+      "theme": "light",
+      "lang": "nl",
+      "width": 1440,
+      "overflow": 0,
+      "nav": [
+        {
+          "label": "Home",
+          "font": 15,
+          "x": 324.78125,
+          "right": 389.328125
+        },
+        {
+          "label": "Reserveren",
+          "font": 15,
+          "x": 391.328125,
+          "right": 492.109375
+        },
+        {
+          "label": "Menukaart",
+          "font": 15,
+          "x": 494.109375,
+          "right": 590.109375
+        },
+        {
+          "label": "PARTY / EVENTS",
+          "font": 15,
+          "x": 592.109375,
+          "right": 736.59375
+        },
+        {
+          "label": "Evenementen",
+          "font": 15,
+          "x": 738.59375,
+          "right": 867.25
+        },
+        {
+          "label": "Account",
+          "font": 15,
+          "x": 869.25,
+          "right": 948.40625
+        },
+        {
+          "label": "Admin",
+          "font": 15,
+          "x": 950.40625,
+          "right": 1018.671875
+        }
+      ],
+      "headerRight": 1328
+    },
+    {
+      "type": "admin-header",
+      "theme": "light",
+      "lang": "en",
+      "width": 1280,
+      "overflow": 0,
+      "nav": [
+        {
+          "label": "Home",
+          "font": 15,
+          "x": 280.640625,
+          "right": 345.1875
+        },
+        {
+          "label": "Reservations",
+          "font": 15,
+          "x": 347.1875,
+          "right": 457.4375
+        },
+        {
+          "label": "Menu",
+          "font": 15,
+          "x": 459.4375,
+          "right": 521.53125
+        },
+        {
+          "label": "PARTY / EVENTS",
+          "font": 15,
+          "x": 523.53125,
+          "right": 668.015625
+        },
+        {
+          "label": "Events",
+          "font": 15,
+          "x": 670.015625,
+          "right": 751.390625
+        },
+        {
+          "label": "Account",
+          "font": 15,
+          "x": 753.390625,
+          "right": 832.546875
+        },
+        {
+          "label": "Admin",
+          "font": 15,
+          "x": 834.546875,
+          "right": 902.8125
+        }
+      ],
+      "headerRight": 1248
+    },
+    {
+      "type": "admin-header",
+      "theme": "light",
+      "lang": "en",
+      "width": 1440,
+      "overflow": 0,
+      "nav": [
+        {
+          "label": "Home",
+          "font": 15,
+          "x": 360.640625,
+          "right": 425.1875
+        },
+        {
+          "label": "Reservations",
+          "font": 15,
+          "x": 427.1875,
+          "right": 537.4375
+        },
+        {
+          "label": "Menu",
+          "font": 15,
+          "x": 539.4375,
+          "right": 601.53125
+        },
+        {
+          "label": "PARTY / EVENTS",
+          "font": 15,
+          "x": 603.53125,
+          "right": 748.015625
+        },
+        {
+          "label": "Events",
+          "font": 15,
+          "x": 750.015625,
+          "right": 831.390625
+        },
+        {
+          "label": "Account",
+          "font": 15,
+          "x": 833.390625,
+          "right": 912.546875
+        },
+        {
+          "label": "Admin",
+          "font": 15,
+          "x": 914.546875,
+          "right": 982.8125
+        }
+      ],
+      "headerRight": 1328
+    },
+    {
+      "type": "admin-header",
+      "theme": "dark",
+      "lang": "nl",
+      "width": 1280,
+      "overflow": 0,
+      "nav": [
+        {
+          "label": "Home",
+          "font": 15,
+          "x": 244.78125,
+          "right": 309.328125
+        },
+        {
+          "label": "Reserveren",
+          "font": 15,
+          "x": 311.328125,
+          "right": 412.109375
+        },
+        {
+          "label": "Menukaart",
+          "font": 15,
+          "x": 414.109375,
+          "right": 510.109375
+        },
+        {
+          "label": "PARTY / EVENTS",
+          "font": 15,
+          "x": 512.109375,
+          "right": 656.59375
+        },
+        {
+          "label": "Evenementen",
+          "font": 15,
+          "x": 658.59375,
+          "right": 787.25
+        },
+        {
+          "label": "Account",
+          "font": 15,
+          "x": 789.25,
+          "right": 868.40625
+        },
+        {
+          "label": "Admin",
+          "font": 15,
+          "x": 870.40625,
+          "right": 938.671875
+        }
+      ],
+      "headerRight": 1248
+    },
+    {
+      "type": "admin-header",
+      "theme": "dark",
+      "lang": "nl",
+      "width": 1440,
+      "overflow": 0,
+      "nav": [
+        {
+          "label": "Home",
+          "font": 15,
+          "x": 324.78125,
+          "right": 389.328125
+        },
+        {
+          "label": "Reserveren",
+          "font": 15,
+          "x": 391.328125,
+          "right": 492.109375
+        },
+        {
+          "label": "Menukaart",
+          "font": 15,
+          "x": 494.109375,
+          "right": 590.109375
+        },
+        {
+          "label": "PARTY / EVENTS",
+          "font": 15,
+          "x": 592.109375,
+          "right": 736.59375
+        },
+        {
+          "label": "Evenementen",
+          "font": 15,
+          "x": 738.59375,
+          "right": 867.25
+        },
+        {
+          "label": "Account",
+          "font": 15,
+          "x": 869.25,
+          "right": 948.40625
+        },
+        {
+          "label": "Admin",
+          "font": 15,
+          "x": 950.40625,
+          "right": 1018.671875
+        }
+      ],
+      "headerRight": 1328
+    },
+    {
+      "type": "admin-header",
+      "theme": "dark",
+      "lang": "en",
+      "width": 1280,
+      "overflow": 0,
+      "nav": [
+        {
+          "label": "Home",
+          "font": 15,
+          "x": 280.640625,
+          "right": 345.1875
+        },
+        {
+          "label": "Reservations",
+          "font": 15,
+          "x": 347.1875,
+          "right": 457.4375
+        },
+        {
+          "label": "Menu",
+          "font": 15,
+          "x": 459.4375,
+          "right": 521.53125
+        },
+        {
+          "label": "PARTY / EVENTS",
+          "font": 15,
+          "x": 523.53125,
+          "right": 668.015625
+        },
+        {
+          "label": "Events",
+          "font": 15,
+          "x": 670.015625,
+          "right": 751.390625
+        },
+        {
+          "label": "Account",
+          "font": 15,
+          "x": 753.390625,
+          "right": 832.546875
+        },
+        {
+          "label": "Admin",
+          "font": 15,
+          "x": 834.546875,
+          "right": 902.8125
+        }
+      ],
+      "headerRight": 1248
+    },
+    {
+      "type": "admin-header",
+      "theme": "dark",
+      "lang": "en",
+      "width": 1440,
+      "overflow": 0,
+      "nav": [
+        {
+          "label": "Home",
+          "font": 15,
+          "x": 360.640625,
+          "right": 425.1875
+        },
+        {
+          "label": "Reservations",
+          "font": 15,
+          "x": 427.1875,
+          "right": 537.4375
+        },
+        {
+          "label": "Menu",
+          "font": 15,
+          "x": 539.4375,
+          "right": 601.53125
+        },
+        {
+          "label": "PARTY / EVENTS",
+          "font": 15,
+          "x": 603.53125,
+          "right": 748.015625
+        },
+        {
+          "label": "Events",
+          "font": 15,
+          "x": 750.015625,
+          "right": 831.390625
+        },
+        {
+          "label": "Account",
+          "font": 15,
+          "x": 833.390625,
+          "right": 912.546875
+        },
+        {
+          "label": "Admin",
+          "font": 15,
+          "x": 914.546875,
+          "right": 982.8125
+        }
+      ],
+      "headerRight": 1328
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "atUTC": "2026-11-13T16:14:02.232Z",
+  "build": "xAq9sMM06TxZlpVjSRdv3",
+  "sourceSha256": "c5dfe68d113f96ab7cd28782fd427392cf2002332990b14ad4b06cb993b1cd62",
+  "productionChanges": false,
+  "productionMigrations": false,
+  "publicAssetChanges": 0,
+  "typeScript": "passed",
+  "focusedLint": {
+    "errors": 0,
+    "warnings": 0
+  },
+  "fullRepositoryLint": {
+    "errors": 22,
+    "warnings": 4,
+    "scope": "pre-existing/unrelated; see lint record"
+  },
+  "offline": {
+    "newSyntheticCases": 10,
+    "existingRedesignCases": 6,
+    "guestRecognitionCases": 21,
+    "proxyCases": 16,
+    "dailyMetrics": "passed, including DST, full history, 100k synthetic orders",
+    "chartAndDateRendering": "passed"
+  },
+  "browser": {
+    "adminLayouts": 48,
+    "adminAutomatedViolations": 0,
+    "workflows": 23,
+    "lifecycle": 9,
+    "simulatedRefresh": 6,
+    "resilience": 4,
+    "publicThemeAndHeader": 52,
+    "defaultAndAdminHeader": 14,
+    "publicGoldViolations": 0,
+    "whiteAppSurfaces": 0,
+    "retainedPriorDarkContrastGroups": 3,
+    "actualPlaybackCases": 4
+  },
+  "authorizationCases": 25,
+  "publicHttpCases": 50,
+  "preview": {
+    "public": "http://localhost:3398/en",
+    "syntheticAdmin": "http://localhost:4068/admin",
+    "sameWifi": "http://192.168.0.122:3618/en"
+  },
+  "limits": [
+    "No real customer/order/payment/mail/storage mutation",
+    "No production migration/deployment",
+    "No new physical-phone/Safari/screen-reader or production-load measurement",
+    "Admin initial JavaScript increases; rendered catalogue work is reduced",
+    "Three retained public dark contrast groups reproduce in the previous release"
+  ],
+  "buildCheck": {
+    "exitCode": 0,
+    "routes": 65,
+    "unchangedInputs": 496
+  }
+}

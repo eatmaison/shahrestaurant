@@ -1,0 +1,14 @@
+{
+  "atUTC": "2026-11-13T16:08:02.050Z",
+  "method": "Initial HTML external JS/script preloads, gzip6; excludes API/media/HTML/deferred imports. Preserved measured prior release is the baseline.",
+  "baselineRecord": "admin-redesign-public-bundle-2026-11-13.json",
+  "before": {
+    "build": "Q2nFHmc8z6XlftjRttVYU",
+    "jsGzip": 184219
+  },
+  "after": {
+    "build": "xAq9sMM06TxZlpVjSRdv3",
+    "jsGzip": 184385
+  },
+  "changeBytes": 166
+}

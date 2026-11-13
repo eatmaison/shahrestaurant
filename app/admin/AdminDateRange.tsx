@@ -1,14 +1,13 @@
+import { useId } from "react";
 import { amsterdamDateKey, rangeFilterError, type RangeFilter } from "../lib/adminMetrics";
+import { previousMonth, rangeBounds } from "../lib/adminComparison";
 import styles from "./admin.module.css";
-
 export function AdminDateRange({ value, onChange, now, lang }: { value: RangeFilter; onChange: (value: RangeFilter) => void; now: number; lang: "en" | "nl" }) {
-  const nl = lang === "nl", error = rangeFilterError(value);
+  const nl = lang === "nl", error = rangeFilterError(value, now), id = useId(), today = amsterdamDateKey(now), bounds = rangeBounds(value, now);
   return <div className={styles.filters}>
-    <div className={styles.filterTabs} aria-label={nl ? "Periode" : "Period"}>{([
-      ["all", nl ? "Alle tijd" : "All time"], ["today", nl ? "Vandaag" : "Today"], ["7d", "7 " + (nl ? "dagen" : "days")], ["30d", "30 " + (nl ? "dagen" : "days")],
-    ] as const).map(([preset, label]) => <button type="button" key={preset} className={styles.button} aria-pressed={value.preset === preset} onClick={() => onChange({ preset })}>{label}</button>)}</div>
-    {(["startDate", "endDate"] as const).map(field => <label key={field}>{field === "startDate" ? (nl ? "Vanaf" : "From") : (nl ? "Tot en met" : "Through")}<input type="date" max={amsterdamDateKey(now)} min={field === "endDate" ? value.startDate : undefined} value={value.preset === "date" ? value[field] || "" : ""} aria-invalid={Boolean(error)} onChange={event => onChange({ ...(value.preset === "date" ? value : {}), preset: "date", [field]: event.target.value })} /></label>)}
-    <span className={styles.muted}>Europe/Amsterdam</span>
-    {error && <p role="status" className={styles.notice}>{error === "incomplete" ? (nl ? "Vul beide datums in." : "Enter both dates.") : (nl ? "Controleer de datums en hun volgorde." : "Check the dates and their order.")}</p>}
+    <div className={styles.filterTabs} role="group" aria-label={nl ? "Periode" : "Period"}>{([ ["all", nl ? "Alle tijd" : "All time"], ["today", nl ? "Vandaag" : "Today"], ["7d", nl ? "7 dagen" : "7 days"], ["30d", nl ? "30 dagen" : "30 days"] ] as const).map(([preset, label]) => <button type="button" key={preset} className={styles.button} aria-pressed={value.preset === preset} onClick={() => onChange({ preset })}>{label}</button>)}<button type="button" className={styles.button} onClick={() => onChange(previousMonth(now))}>{nl ? "Vorige maand" : "Previous month"}</button></div>
+    {(["startDate", "endDate"] as const).map(field => <label key={field} htmlFor={`${id}-${field}`}>{field === "startDate" ? (nl ? "Vanaf" : "From") : (nl ? "Tot en met" : "Through")}<input id={`${id}-${field}`} type="date" max={field === "startDate" && value.preset === "date" && value.endDate ? value.endDate < today ? value.endDate : today : today} min={field === "endDate" && value.preset === "date" ? value.startDate : undefined} value={value.preset === "date" ? value[field] || "" : ""} aria-invalid={error === "incomplete" ? !value[field] : Boolean(error)} aria-describedby={`${id}-summary${error ? ` ${id}-error` : ""}`} onChange={event => onChange({ ...(value.preset === "date" ? value : {}), preset: "date", [field]: event.target.value })} /></label>)}
+    <p id={`${id}-summary`} className={styles.muted}>{bounds ? `${bounds.start} – ${bounds.end} · ${bounds.days} ${nl ? "kalenderdagen" : "calendar days"}` : value.preset === "all" ? (nl ? "Alle geladen historie" : "All loaded history") : ""}<br />Europe/Amsterdam · {nl ? "Einddatum inbegrepen; toekomstige waarnemingen uitgesloten." : "Inclusive end date; future observations excluded."}</p>
+    {error && <p id={`${id}-error`} role="status" className={styles.notice}>{error === "incomplete" ? (nl ? "Vul beide datums in." : "Enter both dates.") : error === "future" ? (nl ? "Kies een einddatum van vandaag of eerder." : "Choose an end date of today or earlier.") : (nl ? "Controleer de datums en hun volgorde." : "Check the dates and their order.")}</p>}
   </div>;
 }

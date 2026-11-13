@@ -414,6 +414,8 @@ export default function AdminPage() {
   const [socialDrafts, setSocialDrafts] = useState<Record<string, string>>({});
   const [socialSavedFor, setSocialSavedFor] = useState<string | null>(null);
   const lastSeenSiteLabel = (site?: string): string | null => site ? ({ eattogo: "Eat to go", themaison: "The Maison", tandoor: "Shah Restaurant" }[site] ?? site) : null;
+  const [catalogOpen, setCatalogOpen] = useState(false);
+  useEffect(() => { if (location.hash === "#workspace-products") queueMicrotask(() => setCatalogOpen(true)); }, []);
   const [socialOpen, setSocialOpen] = useState(false);
   const socialUrl = (platform: string): string =>
     socialDrafts[platform] ?? socialLinks.find((l) => l.platform === platform)?.url ?? "";
@@ -1129,7 +1131,7 @@ export default function AdminPage() {
 
   return (
     <div data-workspace="admin" className="admin-operations">
-      <nav className={adminStyles.sectionLinks} aria-label={lang === "nl" ? "Dagelijkse onderdelen" : "Daily operation sections"}>{[ ["workspace-orders", t.fulfillment.orderManagement], ["workspace-reservations", t.admin.reservationsTitle], ["workspace-products", t.admin.manageProducts], ["workspace-vip", t.admin.vipRequests], ["workspace-social", t.admin.socialTitle], ["workspace-phone", lang === "nl" ? "Telefoon" : "Phone"] ].map(([id,label]) => <a key={id} href={"#"+id} onClick={() => { if(id === "workspace-social")setSocialOpen(true); const node=document.getElementById(id); const details=node?.closest("details"); if(details)details.open=true; requestAnimationFrame(()=>node?.focus({preventScroll:true})); }}>{label}</a>)}</nav>
+      <nav className={adminStyles.sectionLinks} aria-label={lang === "nl" ? "Dagelijkse onderdelen" : "Daily operation sections"}>{[ ["workspace-orders", t.fulfillment.orderManagement], ["workspace-reservations", t.admin.reservationsTitle], ["workspace-products", t.admin.manageProducts], ["workspace-vip", t.admin.vipRequests], ["workspace-social", t.admin.socialTitle], ["workspace-phone", lang === "nl" ? "Telefoon" : "Phone"] ].map(([id,label]) => <a key={id} href={"#"+id} onClick={() => { if(id === "workspace-social")setSocialOpen(true); if(id === "workspace-products")setCatalogOpen(true); const node=document.getElementById(id); const details=node?.closest("details"); if(details)details.open=true; requestAnimationFrame(()=>node?.focus({preventScroll:true})); }}>{label}</a>)}</nav>
 
       <section className="mb-4 rounded-3xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-white/5">
         <div className="flex flex-wrap items-center justify-between gap-4">
@@ -1587,7 +1589,7 @@ export default function AdminPage() {
       <div id="workspace-phone" tabIndex={-1}><PhoneAgentPanel /></div>
 
       {/* Reservations management */}
-      
+
 
       {/* VIP purchase and activation audit */}
       <div className="mt-6 rounded-3xl border border-violet-200 bg-violet-50/60 p-5 dark:border-violet-400/20 dark:bg-violet-500/5">
@@ -1596,7 +1598,9 @@ export default function AdminPage() {
       </div>
 
       {/* Product management */}
-      <div className="mt-6 grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
+      <section className={`${adminStyles.panel} mt-6`}>
+        <div className={adminStyles.panelHeader}><div><h2 id="workspace-products" tabIndex={-1}>{t.admin.manageProducts}</h2><p className={adminStyles.muted}>{lang === "nl" ? "Open de catalogus om producten, restaurants en categorieën te beheren. Formulierinvoer blijft bewaard zolang u op deze pagina blijft." : "Open the catalogue to manage products, restaurants and categories. Form inputs are retained while you stay on this page."}</p></div><button type="button" className={adminStyles.button} aria-expanded={catalogOpen} aria-controls="admin-catalog-content" onClick={() => setCatalogOpen(!catalogOpen)}>{catalogOpen ? (lang === "nl" ? "Catalogus sluiten" : "Close catalogue") : (lang === "nl" ? "Catalogus openen" : "Open catalogue")} · {products.length}</button></div>
+        <div id="admin-catalog-content" hidden={!catalogOpen}>{catalogOpen && (<div className="mt-6 grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
         {/* Add product */}
         <div className="min-w-0 rounded-3xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-white/5">
           <div className="flex items-center justify-between gap-2">
@@ -1746,7 +1750,7 @@ export default function AdminPage() {
                   <label className="inline-flex items-center gap-2 text-xs font-black text-rose-700"><input type="checkbox" checked={draft.bogoEnabled} onChange={(e) => setDraft({ ...draft, bogoEnabled: e.target.checked })} /> BUY 1 GET 1 FREE</label>
                 </div>
               </div>
-              
+
               <select aria-label={t.admin.productCategory}
                 value={draft.category}
                 onChange={(e) => {
@@ -1831,7 +1835,7 @@ export default function AdminPage() {
         {/* Product list */}
         <div className="min-w-0 rounded-3xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-white/5">
           <div className="flex items-center justify-between">
-            <h2 id="workspace-products" tabIndex={-1} className="text-lg font-black text-slate-900 dark:text-white">{t.admin.manageProducts}</h2>
+            <h2  className="text-lg font-black text-slate-900 dark:text-white">{t.admin.manageProducts}</h2>
             <div className="flex items-center gap-2">
               <button type="button" onClick={exportProducts} className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 px-2.5 py-1 text-xs font-bold text-slate-600 transition hover:border-emerald-400 dark:border-white/10 dark:text-slate-300"><FaDownload /> {t.admin.exportProducts}</button>
               <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600 dark:bg-white/10 dark:text-slate-300">
@@ -2036,7 +2040,8 @@ export default function AdminPage() {
             })}
           </div>
         </div>
-      </div>
+      </div>)}</div>
+      </section>
 
       {/* Gallery photos (public /events/gallery page) */}
 
@@ -2081,7 +2086,7 @@ export default function AdminPage() {
                           <span className="text-[11px] text-slate-500 dark:text-slate-400">{b.categories.length} {t.admin.productCategory.toLowerCase()}</span>
                         </span>
                       </button>
-                      <BrandNameEditor brandId={b.id} name={b.name} onSaved={refresh} />
+                      <BrandNameEditor brandId={b.id} name={b.name} onSaved={async () => { await refresh(); }} />
                       {/* Logo: click to upload/replace, × to remove */}
                       <span className="relative shrink-0">
                         <button
@@ -2538,7 +2543,7 @@ export default function AdminPage() {
                   <label className="inline-flex items-center gap-2 rounded-full bg-amber-500/10 px-3 py-2 text-xs font-bold text-amber-700"><input type="checkbox" checked={editDraft.isPopular} onChange={(e) => setEditDraft({ ...editDraft, isPopular: e.target.checked })} /> Popular</label>
                   <label className="inline-flex items-center gap-2 rounded-full bg-emerald-500/10 px-3 py-2 text-xs font-bold text-emerald-700"><input type="checkbox" checked={editDraft.isNew} onChange={(e) => setEditDraft({ ...editDraft, isNew: e.target.checked })} /> New</label>
                 </div>
-                <select 
+                <select
                   value={editDraft.category}
                   onChange={(e) => {
                     const category = e.target.value as Category;
@@ -2662,7 +2667,7 @@ export default function AdminPage() {
       )}
 
       {/* Order management */}
-      
+
 
       {selectedCustomer && (
         <WorkspaceDialog titleId="workspace-customer-title" onClose={() => setSelectedCustomer(null)}>
@@ -2677,4 +2682,3 @@ export default function AdminPage() {
     </div>
   );
 }
-

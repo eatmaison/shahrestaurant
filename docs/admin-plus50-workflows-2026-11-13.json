@@ -1,0 +1,78 @@
+{
+  "build": "xAq9sMM06TxZlpVjSRdv3",
+  "syntheticOnly": true,
+  "checks": [
+    "All 175 accounts remain reachable; paging preserves full directory",
+    "Per-page preference stores only bounded page size in session storage",
+    "Accent and formatted-telephone searches match the correct account",
+    "Filtered personal export requires a cancelable one-row confirmation",
+    "Lazy order history pages all linked orders, filters unpaid rows and searches order numbers",
+    "Clipboard success and permission-denied fallback provide accessible feedback",
+    "Verification sends captured state/email; stale conflict remains visible without optimistic change",
+    "Visitor source absence and recent activity filters operate independently",
+    "Daily table sorts full history and filters active dates before pagination",
+    "Customer insights exposes explicit grouping basis, average ranking and concentration",
+    "Product editor mounts on demand and can collapse; DOM 1766 -> 5154 -> collapsed",
+    "Daily attention queue exposes pending reservations and VIP requests",
+    "Event guest export includes all 57 filtered purchases rather than one page",
+    "New event auto-slug respects manual edits and invalid fields receive accessible feedback",
+    "Event and gallery drafts both survive section changes without server writes",
+    "Actual browser upload rejects unsupported file types and oversized intrinsic images before canvas work",
+    "Real browser image decoding produces bounded raster metadata and preview",
+    "Uncertain gallery write cannot repeat until explicit successful refresh/check",
+    "Confirmed gallery upload adds exactly one returned item and clears draft",
+    "Gallery search/category/sort apply before bounded pagination and preserve all uploaded records",
+    "Payment reconciliation explains effects and Escape cancels without a request",
+    "Publication change requires a separate impact confirmation",
+    "Expanded event editor and populated guest table fit 360px without page overflow"
+  ],
+  "writes": [
+    {
+      "path": "/api/auth",
+      "body": {
+        "action": "setUserEmailVerified",
+        "userId": "fixture-user-000",
+        "verified": true,
+        "expectedVerified": false,
+        "expectedEmail": "synthetic-0@example.invalid"
+      }
+    },
+    {
+      "path": "/api/gallery",
+      "body": {
+        "image": {
+          "kind": "prepared-image-data-URL",
+          "characters": 255023,
+          "encodingOmitted": true
+        },
+        "alt": "Synthetic captionSynthetic English caption",
+        "altNl": "Synthetisch Nederlands bijschrift",
+        "category": "ambiance",
+        "portrait": false
+      }
+    },
+    {
+      "path": "/api/gallery",
+      "body": {
+        "image": {
+          "kind": "prepared-image-data-URL",
+          "characters": 255023,
+          "encodingOmitted": true
+        },
+        "alt": "Synthetic captionSynthetic English caption",
+        "altNl": "Synthetisch Nederlands bijschrift",
+        "category": "ambiance",
+        "portrait": false
+      }
+    }
+  ],
+  "errors": [],
+  "galleryButtons": [
+    "Remove image from draft",
+    "Add to gallery",
+    "Discard draft"
+  ],
+  "expandedViolations": [],
+  "directoryText": null,
+  "finalText": "guest13@example.invalid\n+31 (6) 1234-0013\n1\nLOCAL DEMO synthetic event\n2026-12-01 / 22:00\n13 Nov 2026, 17:11\n€16.99\nOrder total: €16.99\nPaid\nConfirmed\nEmail pending\nbooking-13\ntest-payment-13\nSynthetic Guest 14\nguest14@example.invalid\n+31 (6) 1234-0014\n1\nLOCAL DEMO synthetic event\n2026-12-01 / 22:00\n13 Nov 2026, 17:11\n€0.00\nOrder total: €16.99\nPending\nPending\nbooking-14\ntest-payment-14\nSynthetic Guest 15\nguest15@example.invalid\n+31 (6) 1234-0015\n1\nLOCAL DEMO synthetic event\n2026-12-01 / 22:00\n13 Nov 2026, 17:11\n€16.99\nOrder total: €16.99\nPaid\nConfirmed\nEmail pending\nbooking-15\ntest-payment-15\nSynthetic Guest 16\nguest16@example.invalid\n+31 (6) 1234-0016\n1\nLOCAL DEMO synthetic event\n2026-12-01 / 22:00\n13 Nov 2026, 17:11\n€0.00\nOrder total: €16.99\nPending\nPending\nbooking-16\ntest-payment-16\nSynthetic Guest 17\nguest17@example.invalid\n+31 (6) 1234-0017\n1\nLOCAL DEMO synthetic event\n2026-12-01 / 22:00\n13 Nov 2026, 17:11\n€16.99\nOrder total: €16.99\nPaid\nConfirmed\nEmail pending\nbooking-17\ntest-payment-17\nSynthetic Guest 18\nguest18@example.invalid\n+31 (6) 1234-0018\n1\nLOCAL DEMO synthetic event\n2026-12-01 / 22:00\n13 Nov 2026, 17:11\n€0.00\nOrder total: €16.99\nPending\nPending\nbooking-18\ntest-payment-18\nSynthetic Guest 19\nguest19@example.invalid\n+31 (6) 1234-0019\n1\nLOCAL DEMO synthetic event\n2026-12-01 / 22:00\n13 Nov 2026, 17:11\n€16.99\nOrder total: €16.99\nPaid\nConfirmed\nEmail pending\nbooking-19\ntest-payment-19\nSynthetic Guest 20\nguest20@example.invalid\n+31 (6) 1234-0020\n1\nLOCAL DEMO synthetic event\n2026-12-01 / 22:00\n13 Nov 2026, 17:11\n€0.00\nOrder total: €16.99\nPending\nPending\nbooking-20\ntest-payment-20\nSynthetic Guest 21\nguest21@example.invalid\n+31 (6) 1234-0021\n1\nLOCAL DEMO synthetic event\n2026-12-01 / 22:00\n13 Nov 2026, 17:11\n€16.99\nOrder total: €16.99\nPaid\nConfirmed\nEmail pending\nbooking-21\ntest-payment-21\nSynthetic Guest 22\nguest22@example.invalid\n+31 (6) 1234-0022\n1\nLOCAL DEMO synthetic event\n2026-12-01 / 22:00\n13 Nov 2026, 17:11\n€0.00\nOrder total: €16.99\nPending\nPending\nbooking-22\ntest-payment-22\nSynthetic Guest 23\nguest23@example.invalid\n+31 (6) 1234-0023\n1\nLOCAL DEMO synthetic event\n2026-12-01 / 22:00\n13 Nov 2026, 17:11\n€16.99\nOrder total: €16.99\nPaid\nConfirmed\nEmail pending\nbooking-23\ntest-payment-23\nSynthetic Guest 24\nguest24@example.invalid\n+31 (6) 1234-0024\n1\nLOCAL DEMO synthetic event\n2026-12-01 / 22:00\n13 Nov 2026, 17:11\n€0.00\nOrder total: €16.99\nPending\nPending\nbooking-24\ntest-payment-24\n\n1–25 / 57 · Purchases\n\nPer page\n10\n25\n50\n«\nPrevious\nNext\n»\nPage\n/ 3\nGo"
+}

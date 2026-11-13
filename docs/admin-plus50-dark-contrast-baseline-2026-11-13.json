@@ -1,0 +1,102 @@
+{
+  "build": "Q2nFHmc8z6XlftjRttVYU",
+  "purpose": "Preserved prior-release dark contrast baseline; no source changes.",
+  "routes": [
+    {
+      "route": "/en/menu",
+      "violations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".text-\\[11px\\].text-emerald-600.dark\\:text-emerald-400"
+              ],
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #57949a, background color: #0a3540, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".tracking-wider.uppercase.text-emerald-600"
+              ],
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.36 (foreground color: #57949a, background color: #062b32, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/en/reservations",
+      "violations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".hover\\:underline"
+              ],
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #57949a, background color: #0a3540, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/en/events",
+      "violations": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".lux-overline"
+              ],
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.36 (foreground color: #57949a, background color: #062b32, font size: 8.4pt (11.2px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".animate-fade-up.rounded-3xl[href$=\"about\"] > .group-hover\\:gap-3\\.5.text-emerald-700.inline-flex"
+              ],
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #57949a, background color: #0a3540, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".animate-fade-up.rounded-3xl[href$=\"gallery\"] > .group-hover\\:gap-3\\.5.text-emerald-700.inline-flex"
+              ],
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #57949a, background color: #0a3540, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".animate-fade-up.rounded-3xl[href$=\"birthdays\"] > .group-hover\\:gap-3\\.5.text-emerald-700.inline-flex"
+              ],
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #57949a, background color: #0a3540, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".animate-fade-up.rounded-3xl[href$=\"celebrations\"] > .group-hover\\:gap-3\\.5.text-emerald-700.inline-flex"
+              ],
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #57949a, background color: #0a3540, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".animate-fade-up.rounded-3xl[href$=\"company-catering\"] > .group-hover\\:gap-3\\.5.text-emerald-700.inline-flex"
+              ],
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #57949a, background color: #0a3540, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".animate-fade-up.rounded-3xl[href$=\"company-lunches\"] > .group-hover\\:gap-3\\.5.text-emerald-700.inline-flex"
+              ],
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #57949a, background color: #0a3540, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".px-6.py-3\\.5.shadow-emerald-600\\/25"
+              ],
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.8 (foreground color: #f7f2e7, background color: #e0af59, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
