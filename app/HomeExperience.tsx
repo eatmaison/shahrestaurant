@@ -180,7 +180,7 @@ export default function HomeExperience({ copy }: { copy: HomeCopy }) {
       <section id="story" tabIndex={-1} data-section data-scene="story" className={styles.storySection} aria-labelledby="story-title">
         <div className={styles.storyInner}>
           <div className={styles.storyContent} data-reveal="visible" data-reveal-kind="left"><p className={styles.eyebrow}>03 / {copy.story}</p><h2 id="story-title">{t.home.storyTitle}</h2><p>{t.home.storyText}</p><blockquote>{t.home.storyQuote}</blockquote><Link href="/events/about" className={styles.textLink}>{copy.storyLink}<FaArrowRight aria-hidden="true" /></Link></div>
-          <figure className={styles.storyPhoto} data-reveal="visible" data-reveal-kind="right"><div data-tilt><RestaurantPhoto data-parallax src="/brand/shah-room-v1.webp" alt={copy.interiorAlt} fill sizes="(min-width: 900px) 45vw, 100vw" /><BrandLogo variant="wordmark" tone="gold" className={styles.storyPhotoMark} alt="" /></div><figcaption><span>{copy.storyAside}</span><FaFireBurner aria-hidden="true" /></figcaption></figure>
+          <figure className={styles.storyPhoto} data-reveal="visible" data-reveal-kind="right"><div data-tilt><RestaurantPhoto data-parallax src="/brand/shah-room-v1.webp" alt={copy.interiorAlt} fill sizes="(min-width: 900px) 45vw, 100vw" /><BrandLogo variant="wordmark" tone="adaptive" className={styles.storyPhotoMark} alt="" /></div><figcaption><span>{copy.storyAside}</span><FaFireBurner aria-hidden="true" /></figcaption></figure>
         </div>
       </section>
 
@@ -209,7 +209,7 @@ export default function HomeExperience({ copy }: { copy: HomeCopy }) {
 
       <DrinkPartners site="shah" />
 
-      <section className={styles.closing} data-scene="closing" aria-labelledby="closing-title"><RestaurantPhoto data-parallax src="/brand/shah-dining-v1.webp" alt="" fill sizes="100vw" className={styles.closingImage} /><div className={styles.closingShade} /><div className={styles.closingContent} data-reveal="visible"><BrandLogo variant="mark" tone="gold" className={styles.closingMark} alt="" /><p className={styles.heroEyebrow}>Shah Restaurant</p><h2 id="closing-title">{copy.closing}</h2><p>{copy.closingText}</p><div className={styles.actions}><Link href="/reservations" className={styles.primaryButton}><FaCalendarCheck aria-hidden="true" />{copy.reserve}</Link><a href="tel:+31203412995" className={styles.heroSecondary}><FaPhone aria-hidden="true" />{copy.call}</a></div></div></section>
+      <section className={styles.closing} data-scene="closing" aria-labelledby="closing-title"><RestaurantPhoto data-parallax src="/brand/shah-dining-v1.webp" alt="" fill sizes="100vw" className={styles.closingImage} /><div className={styles.closingShade} /><div className={styles.closingContent} data-reveal="visible"><BrandLogo variant="mark" tone="adaptive" className={styles.closingMark} alt="" /><p className={styles.heroEyebrow}>Shah Restaurant</p><h2 id="closing-title">{copy.closing}</h2><p>{copy.closingText}</p><div className={styles.actions}><Link href="/reservations" className={styles.primaryButton}><FaCalendarCheck aria-hidden="true" />{copy.reserve}</Link><a href="tel:+31203412995" className={styles.heroSecondary}><FaPhone aria-hidden="true" />{copy.call}</a></div></div></section>
 
       <div className={styles.mobileActions}><Link href="/order"><FaUtensils aria-hidden="true" />{copy.order}</Link><Link href="/reservations"><FaCalendarCheck aria-hidden="true" />{copy.reserve}</Link></div>
 

@@ -1,0 +1,150 @@
+{
+  "atUTC": "2026-11-13T20:27:04.330Z",
+  "build": "XAvWn1WCfZVojo1yazM5b",
+  "sourceSha256": "4e64b8014550ddfc066e2d10e82784d940fa32939e18943c9b73b5c0c8eefdc0",
+  "sourceInputs": 496,
+  "unchangedPublicAssets": 244,
+  "changedApplicationFiles": [
+    "app/HomeExperience.tsx",
+    "app/components/BrandLogo.module.css",
+    "app/components/footer.tsx",
+    "app/dark-gold.css",
+    "app/home.module.css"
+  ],
+  "method": "Same fresh Chromium instance, interleaved old/new cases, 4x CPU, no network throttling, 120 native scroll steps per run.",
+  "physicalDevice": false,
+  "productionCoreWebVitals": false,
+  "newAnimationJavaScript": false,
+  "rows": [
+    {
+      "width": 390,
+      "theme": "teal",
+      "before": {
+        "runs": 3,
+        "medianRafP95Ms": 54,
+        "minRafP95Ms": 42,
+        "maxRafP95Ms": 56.90000009536743,
+        "longTaskCounts": [
+          0,
+          4,
+          5
+        ]
+      },
+      "after": {
+        "runs": 3,
+        "medianRafP95Ms": 41.59999990463257,
+        "minRafP95Ms": 37.299999952316284,
+        "maxRafP95Ms": 49,
+        "longTaskCounts": [
+          1,
+          0,
+          2
+        ]
+      }
+    },
+    {
+      "width": 390,
+      "theme": "gold",
+      "before": {
+        "runs": 3,
+        "medianRafP95Ms": 44.5,
+        "minRafP95Ms": 39.200000047683716,
+        "maxRafP95Ms": 50.5,
+        "longTaskCounts": [
+          0,
+          1,
+          2
+        ]
+      },
+      "after": {
+        "runs": 3,
+        "medianRafP95Ms": 51.299999952316284,
+        "minRafP95Ms": 41.799999952316284,
+        "maxRafP95Ms": 56.299999952316284,
+        "longTaskCounts": [
+          3,
+          5,
+          0
+        ]
+      }
+    },
+    {
+      "width": 1440,
+      "theme": "teal",
+      "before": {
+        "runs": 3,
+        "medianRafP95Ms": 42.299999952316284,
+        "minRafP95Ms": 39.89999985694885,
+        "maxRafP95Ms": 59.799999952316284,
+        "longTaskCounts": [
+          0,
+          2,
+          9
+        ]
+      },
+      "after": {
+        "runs": 3,
+        "medianRafP95Ms": 61,
+        "minRafP95Ms": 43.799999952316284,
+        "maxRafP95Ms": 61.80000019073486,
+        "longTaskCounts": [
+          6,
+          7,
+          1
+        ]
+      }
+    },
+    {
+      "width": 1440,
+      "theme": "gold",
+      "before": {
+        "runs": 3,
+        "medianRafP95Ms": 42.700000047683716,
+        "minRafP95Ms": 39.89999985694885,
+        "maxRafP95Ms": 59.700000047683716,
+        "longTaskCounts": [
+          0,
+          1,
+          8
+        ]
+      },
+      "after": {
+        "runs": 3,
+        "medianRafP95Ms": 58.200000047683716,
+        "minRafP95Ms": 47.59999990463257,
+        "maxRafP95Ms": 65.19999980926514,
+        "longTaskCounts": [
+          5,
+          9,
+          1
+        ]
+      }
+    }
+  ],
+  "payload": {
+    "before": {
+      "js": {
+        "files": 13,
+        "rawBytes": 614516,
+        "gzip6Bytes": 184413
+      },
+      "css": {
+        "files": 2,
+        "rawBytes": 227201,
+        "gzip6Bytes": 40496
+      }
+    },
+    "after": {
+      "js": {
+        "files": 13,
+        "rawBytes": 614614,
+        "gzip6Bytes": 184443
+      },
+      "css": {
+        "files": 2,
+        "rawBytes": 234412,
+        "gzip6Bytes": 41583
+      }
+    }
+  }
+}

@@ -3,3 +3,9 @@
 .logo[data-tone="adaptive"] .gold { display: none; }
 :global(.dark) .logo[data-tone="adaptive"] .teal { display: none; }
 :global(.dark) .logo[data-tone="adaptive"] .gold { display: block; }
+
+/* Opposite brand artwork in each dark theme; the vector files remain unchanged. */
+:global(:root.dark[data-shah-theme="gold"]) .logo[data-tone="adaptive"] { isolation:isolate; }
+:global(:root.dark[data-shah-theme="gold"]) .logo[data-tone="adaptive"] .gold { display:none; }
+:global(:root.dark[data-shah-theme="gold"]) .logo[data-tone="adaptive"] .teal { display:block; }
+:global(:root.dark[data-shah-theme="gold"]) .logo[data-tone="adaptive"]:not([data-variant="mark"])::before { content:""; position:absolute; inset:-6px -8px; z-index:-1; border-radius:3px; background:#E0AF59; box-shadow:inset 0 1px 0 #f5dcaa; pointer-events:none; }

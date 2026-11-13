@@ -1,13 +1,13 @@
 # Phone preview on the local network
 
-Current preview: http://192.168.0.122:3618/ (Dutch) and http://192.168.0.122:3618/en (English), build TnGIIful8W70dmhVNZaHd, source 146f3a39a49bc2a0d6ccd8699d1a2a6c6b373a55598d59a3e6a055e0868f15f1, 496 inputs. Same build at localhost:3398. Both themes are dark: original teal and new dark gold. [Theme verification](DARK-GOLD-THEME.md), [fresh LAN policy/asset/route/media checks](phone-preview-2026-11-11.json). No network-security settings changed.
+Current: http://192.168.0.122:3618/ (Dutch) and http://192.168.0.122:3618/en (English), build **XAvWn1WCfZVojo1yazM5b**, source 4e64b8014550ddfc066e2d10e82784d940fa32939e18943c9b73b5c0c8eefdc0, 496 inputs. Same build at localhost:3398. Both themes are dark: established teal and refined graphite/gold, with gold/teal UI logos respectively. [Changes, test evidence and limitations](GOLD-CINEMA-POLISH.md), [current LAN verification](phone-preview-2026-11-11.json).
 
-Admin remains loopback-only at http://localhost:4068/admin using labelled synthetic data. The LAN listener blocks admin/account/private routes and submissions. Four actual browser playback cases passed after promotion, including both languages at phone width over the LAN URL. These are desktop Chromium emulation/PC-side checks; no new physical-phone result is claimed.
+Admin stays loopback-only at http://localhost:4068/admin with labelled test data. LAN private routes and all submissions remain blocked. Current playback/layout checks use desktop Chromium emulation and PC-side LAN requests, not a new physical-phone test. No network-security setting changed.
 
-Current start/verify command (PowerShell, task-local fixtures required):
+Current guarded start/verify (PowerShell; matching build and local fixtures required):
 
 ```powershell
-node "$env:TEMP\shah-phone-preview-20261111\launch-lan-nl-v2-detached.cjs" "$env:TEMP\shah-phone-preview-20261111\lan-config-TnGIIful8W70dmhVNZaHd.json"
+node "$env:TEMP\shah-phone-preview-20261111\launch-lan-nl-v2-detached.cjs" "$env:TEMP\shah-phone-preview-20261111\lan-config-XAvWn1WCfZVojo1yazM5b.json"
 ```
 
 ## Historical 12 November baseline and policy explanation

@@ -1,0 +1,1414 @@
+{
+  "build": "XAvWn1WCfZVojo1yazM5b",
+  "checks": [
+    {
+      "theme": "teal",
+      "lang": "en",
+      "width": 1440,
+      "logo": [
+        {
+          "src": "/brand/shah-landscape-gold-v1.svg",
+          "width": 170,
+          "height": 69.359375,
+          "natural": 2.451
+        }
+      ],
+      "allLogos": [
+        {
+          "variant": "landscape",
+          "visible": [
+            "/brand/shah-landscape-gold-v1.svg"
+          ]
+        },
+        {
+          "variant": "wordmark",
+          "visible": [
+            "/brand/shah-wordmark-gold-v1.svg"
+          ]
+        },
+        {
+          "variant": "mark",
+          "visible": [
+            "/brand/shah-mark-gold-v1.svg"
+          ]
+        },
+        {
+          "variant": "landscape",
+          "visible": [
+            "/brand/shah-landscape-gold-v1.svg"
+          ]
+        }
+      ],
+      "logoFocus": {
+        "outline": "none",
+        "color": "rgb(247, 242, 231)",
+        "width": "3px",
+        "offset": "0px"
+      },
+      "stages": [
+        {
+          "fraction": 0.18,
+          "pinned": "true",
+          "step": "1",
+          "stageTop": 102.359375,
+          "overflow": 0,
+          "cards": [
+            {
+              "hidden": "false",
+              "inert": false,
+              "transform": "matrix(0.991237, 0.00830523, -0.00830523, 0.991237, 408.48, 4.07)"
+            },
+            {
+              "hidden": "true",
+              "inert": true,
+              "transform": "matrix(0.969598, 0.0279301, -0.0279301, 0.969598, 744, 14)"
+            },
+            {
+              "hidden": "true",
+              "inert": true,
+              "transform": "matrix(0.969598, 0.0279301, -0.0279301, 0.969598, 402, 14)"
+            }
+          ],
+          "images": [
+            {
+              "complete": true,
+              "width": 720,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/dining-960.avif"
+            },
+            {
+              "complete": true,
+              "width": 360,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/kitchen-640.avif"
+            },
+            {
+              "complete": true,
+              "width": 360,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/bar-shine-640.avif"
+            }
+          ]
+        },
+        {
+          "fraction": 0.5,
+          "pinned": "true",
+          "step": "2",
+          "stageTop": 102.359375,
+          "overflow": 0,
+          "cards": [
+            {
+              "hidden": "false",
+              "inert": false,
+              "transform": "matrix(1, 0, 0, 1, 0, 0)"
+            },
+            {
+              "hidden": "false",
+              "inert": false,
+              "transform": "matrix(0.9892, 0.0102054, -0.0102054, 0.9892, 266.53, 5.02)"
+            },
+            {
+              "hidden": "true",
+              "inert": true,
+              "transform": "matrix(0.969598, 0.0279301, -0.0279301, 0.969598, 402, 14)"
+            }
+          ],
+          "images": [
+            {
+              "complete": true,
+              "width": 720,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/dining-960.avif"
+            },
+            {
+              "complete": true,
+              "width": 360,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/kitchen-640.avif"
+            },
+            {
+              "complete": true,
+              "width": 360,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/bar-shine-640.avif"
+            }
+          ]
+        },
+        {
+          "fraction": 0.86,
+          "pinned": "true",
+          "step": "3",
+          "stageTop": 102.359375,
+          "overflow": 0,
+          "cards": [
+            {
+              "hidden": "false",
+              "inert": false,
+              "transform": "matrix(1, 0, 0, 1, 0, 0)"
+            },
+            {
+              "hidden": "false",
+              "inert": false,
+              "transform": "matrix(1, 0, 0, 1, 0, 0)"
+            },
+            {
+              "hidden": "false",
+              "inert": false,
+              "transform": "matrix(0.993152, 0.006508, -0.006508, 0.993152, 91.47, 3.19)"
+            }
+          ],
+          "images": [
+            {
+              "complete": true,
+              "width": 720,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/dining-960.avif"
+            },
+            {
+              "complete": true,
+              "width": 360,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/kitchen-640.avif"
+            },
+            {
+              "complete": true,
+              "width": 360,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/bar-shine-640.avif"
+            }
+          ]
+        }
+      ],
+      "focus": {
+        "tag": "A",
+        "outline": "solid"
+      }
+    },
+    {
+      "theme": "teal",
+      "lang": "en",
+      "width": 390,
+      "logo": [
+        {
+          "src": "/brand/shah-landscape-gold-v1.svg",
+          "width": 132,
+          "height": 53.84375,
+          "natural": 2.451
+        }
+      ],
+      "allLogos": [
+        {
+          "variant": "landscape",
+          "visible": [
+            "/brand/shah-landscape-gold-v1.svg"
+          ]
+        },
+        {
+          "variant": "wordmark",
+          "visible": [
+            "/brand/shah-wordmark-gold-v1.svg"
+          ]
+        },
+        {
+          "variant": "mark",
+          "visible": [
+            "/brand/shah-mark-gold-v1.svg"
+          ]
+        },
+        {
+          "variant": "landscape",
+          "visible": [
+            "/brand/shah-landscape-gold-v1.svg"
+          ]
+        }
+      ],
+      "logoFocus": {
+        "outline": "none",
+        "color": "rgb(247, 242, 231)",
+        "width": "3px",
+        "offset": "0px"
+      },
+      "stages": [
+        {
+          "fraction": 0.18,
+          "pinned": "true",
+          "step": "1",
+          "stageTop": 89,
+          "overflow": 0,
+          "cards": [
+            {
+              "hidden": "false",
+              "inert": false,
+              "transform": "matrix(0.991213, 0, 0, 0.991213, 114.81, 4.1)"
+            },
+            {
+              "hidden": "true",
+              "inert": true,
+              "transform": "matrix(0.97, 0, 0, 0.97, 392, 14)"
+            },
+            {
+              "hidden": "true",
+              "inert": true,
+              "transform": "matrix(0.97, 0, 0, 0.97, 392, 14)"
+            }
+          ],
+          "images": [
+            {
+              "complete": true,
+              "width": 390,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/dining-640.avif"
+            },
+            {
+              "complete": true,
+              "width": 195,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/kitchen-320.avif"
+            },
+            {
+              "complete": true,
+              "width": 195,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/bar-shine-320.avif"
+            }
+          ]
+        },
+        {
+          "fraction": 0.5,
+          "pinned": "true",
+          "step": "2",
+          "stageTop": 89,
+          "overflow": 0,
+          "cards": [
+            {
+              "hidden": "true",
+              "inert": true,
+              "transform": "matrix(1, 0, 0, 1, 0, 0)"
+            },
+            {
+              "hidden": "false",
+              "inert": false,
+              "transform": "matrix(0.989261, 0, 0, 0.989261, 140.32, 5.01)"
+            },
+            {
+              "hidden": "true",
+              "inert": true,
+              "transform": "matrix(0.97, 0, 0, 0.97, 392, 14)"
+            }
+          ],
+          "images": [
+            {
+              "complete": true,
+              "width": 390,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/dining-640.avif"
+            },
+            {
+              "complete": true,
+              "width": 195,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/kitchen-320.avif"
+            },
+            {
+              "complete": true,
+              "width": 195,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/bar-shine-320.avif"
+            }
+          ]
+        },
+        {
+          "fraction": 0.86,
+          "pinned": "true",
+          "step": "3",
+          "stageTop": 89,
+          "overflow": 0,
+          "cards": [
+            {
+              "hidden": "true",
+              "inert": true,
+              "transform": "matrix(1, 0, 0, 1, 0, 0)"
+            },
+            {
+              "hidden": "true",
+              "inert": true,
+              "transform": "matrix(1, 0, 0, 1, 0, 0)"
+            },
+            {
+              "hidden": "false",
+              "inert": false,
+              "transform": "matrix(0.993143, 0, 0, 0.993143, 89.6, 3.2)"
+            }
+          ],
+          "images": [
+            {
+              "complete": true,
+              "width": 390,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/dining-640.avif"
+            },
+            {
+              "complete": true,
+              "width": 195,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/kitchen-320.avif"
+            },
+            {
+              "complete": true,
+              "width": 195,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/bar-shine-320.avif"
+            }
+          ]
+        }
+      ],
+      "focus": {
+        "tag": "A",
+        "outline": "solid"
+      }
+    },
+    {
+      "theme": "teal",
+      "lang": "nl",
+      "width": 1440,
+      "logo": [
+        {
+          "src": "/brand/shah-landscape-gold-v1.svg",
+          "width": 170,
+          "height": 69.359375,
+          "natural": 2.451
+        }
+      ],
+      "allLogos": [
+        {
+          "variant": "landscape",
+          "visible": [
+            "/brand/shah-landscape-gold-v1.svg"
+          ]
+        },
+        {
+          "variant": "wordmark",
+          "visible": [
+            "/brand/shah-wordmark-gold-v1.svg"
+          ]
+        },
+        {
+          "variant": "mark",
+          "visible": [
+            "/brand/shah-mark-gold-v1.svg"
+          ]
+        },
+        {
+          "variant": "landscape",
+          "visible": [
+            "/brand/shah-landscape-gold-v1.svg"
+          ]
+        }
+      ],
+      "logoFocus": {
+        "outline": "none",
+        "color": "rgb(247, 242, 231)",
+        "width": "3px",
+        "offset": "0px"
+      },
+      "stages": [
+        {
+          "fraction": 0.18,
+          "pinned": "true",
+          "step": "1",
+          "stageTop": 102.359375,
+          "overflow": 0,
+          "cards": [
+            {
+              "hidden": "false",
+              "inert": false,
+              "transform": "matrix(0.991237, 0.00830523, -0.00830523, 0.991237, 408.48, 4.07)"
+            },
+            {
+              "hidden": "true",
+              "inert": true,
+              "transform": "matrix(0.969598, 0.0279301, -0.0279301, 0.969598, 744, 14)"
+            },
+            {
+              "hidden": "true",
+              "inert": true,
+              "transform": "matrix(0.969598, 0.0279301, -0.0279301, 0.969598, 402, 14)"
+            }
+          ],
+          "images": [
+            {
+              "complete": true,
+              "width": 720,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/dining-960.avif"
+            },
+            {
+              "complete": true,
+              "width": 360,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/kitchen-640.avif"
+            },
+            {
+              "complete": true,
+              "width": 360,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/bar-shine-640.avif"
+            }
+          ]
+        },
+        {
+          "fraction": 0.5,
+          "pinned": "true",
+          "step": "2",
+          "stageTop": 102.359375,
+          "overflow": 0,
+          "cards": [
+            {
+              "hidden": "false",
+              "inert": false,
+              "transform": "matrix(1, 0, 0, 1, 0, 0)"
+            },
+            {
+              "hidden": "false",
+              "inert": false,
+              "transform": "matrix(0.9892, 0.0102054, -0.0102054, 0.9892, 266.53, 5.02)"
+            },
+            {
+              "hidden": "true",
+              "inert": true,
+              "transform": "matrix(0.969598, 0.0279301, -0.0279301, 0.969598, 402, 14)"
+            }
+          ],
+          "images": [
+            {
+              "complete": true,
+              "width": 720,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/dining-960.avif"
+            },
+            {
+              "complete": true,
+              "width": 360,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/kitchen-640.avif"
+            },
+            {
+              "complete": true,
+              "width": 360,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/bar-shine-640.avif"
+            }
+          ]
+        },
+        {
+          "fraction": 0.86,
+          "pinned": "true",
+          "step": "3",
+          "stageTop": 102.359375,
+          "overflow": 0,
+          "cards": [
+            {
+              "hidden": "false",
+              "inert": false,
+              "transform": "matrix(1, 0, 0, 1, 0, 0)"
+            },
+            {
+              "hidden": "false",
+              "inert": false,
+              "transform": "matrix(1, 0, 0, 1, 0, 0)"
+            },
+            {
+              "hidden": "false",
+              "inert": false,
+              "transform": "matrix(0.993152, 0.006508, -0.006508, 0.993152, 91.47, 3.19)"
+            }
+          ],
+          "images": [
+            {
+              "complete": true,
+              "width": 720,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/dining-960.avif"
+            },
+            {
+              "complete": true,
+              "width": 360,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/kitchen-640.avif"
+            },
+            {
+              "complete": true,
+              "width": 360,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/bar-shine-640.avif"
+            }
+          ]
+        }
+      ],
+      "focus": {
+        "tag": "A",
+        "outline": "solid"
+      }
+    },
+    {
+      "theme": "teal",
+      "lang": "nl",
+      "width": 390,
+      "logo": [
+        {
+          "src": "/brand/shah-landscape-gold-v1.svg",
+          "width": 132,
+          "height": 53.84375,
+          "natural": 2.451
+        }
+      ],
+      "allLogos": [
+        {
+          "variant": "landscape",
+          "visible": [
+            "/brand/shah-landscape-gold-v1.svg"
+          ]
+        },
+        {
+          "variant": "wordmark",
+          "visible": [
+            "/brand/shah-wordmark-gold-v1.svg"
+          ]
+        },
+        {
+          "variant": "mark",
+          "visible": [
+            "/brand/shah-mark-gold-v1.svg"
+          ]
+        },
+        {
+          "variant": "landscape",
+          "visible": [
+            "/brand/shah-landscape-gold-v1.svg"
+          ]
+        }
+      ],
+      "logoFocus": {
+        "outline": "none",
+        "color": "rgb(247, 242, 231)",
+        "width": "3px",
+        "offset": "0px"
+      },
+      "stages": [
+        {
+          "fraction": 0.18,
+          "pinned": "true",
+          "step": "1",
+          "stageTop": 89,
+          "overflow": 0,
+          "cards": [
+            {
+              "hidden": "false",
+              "inert": false,
+              "transform": "matrix(0.991246, 0, 0, 0.991246, 114.38, 4.09)"
+            },
+            {
+              "hidden": "true",
+              "inert": true,
+              "transform": "matrix(0.97, 0, 0, 0.97, 392, 14)"
+            },
+            {
+              "hidden": "true",
+              "inert": true,
+              "transform": "matrix(0.97, 0, 0, 0.97, 392, 14)"
+            }
+          ],
+          "images": [
+            {
+              "complete": true,
+              "width": 390,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/dining-640.avif"
+            },
+            {
+              "complete": true,
+              "width": 195,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/kitchen-320.avif"
+            },
+            {
+              "complete": true,
+              "width": 195,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/bar-shine-320.avif"
+            }
+          ]
+        },
+        {
+          "fraction": 0.5,
+          "pinned": "true",
+          "step": "2",
+          "stageTop": 89,
+          "overflow": 0,
+          "cards": [
+            {
+              "hidden": "true",
+              "inert": true,
+              "transform": "matrix(1, 0, 0, 1, 0, 0)"
+            },
+            {
+              "hidden": "false",
+              "inert": false,
+              "transform": "matrix(0.989199, 0, 0, 0.989199, 141.13, 5.04)"
+            },
+            {
+              "hidden": "true",
+              "inert": true,
+              "transform": "matrix(0.97, 0, 0, 0.97, 392, 14)"
+            }
+          ],
+          "images": [
+            {
+              "complete": true,
+              "width": 390,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/dining-640.avif"
+            },
+            {
+              "complete": true,
+              "width": 195,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/kitchen-320.avif"
+            },
+            {
+              "complete": true,
+              "width": 195,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/bar-shine-320.avif"
+            }
+          ]
+        },
+        {
+          "fraction": 0.86,
+          "pinned": "true",
+          "step": "3",
+          "stageTop": 89,
+          "overflow": 0,
+          "cards": [
+            {
+              "hidden": "true",
+              "inert": true,
+              "transform": "matrix(1, 0, 0, 1, 0, 0)"
+            },
+            {
+              "hidden": "true",
+              "inert": true,
+              "transform": "matrix(1, 0, 0, 1, 0, 0)"
+            },
+            {
+              "hidden": "false",
+              "inert": false,
+              "transform": "matrix(0.993174, 0, 0, 0.993174, 89.19, 3.19)"
+            }
+          ],
+          "images": [
+            {
+              "complete": true,
+              "width": 390,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/dining-640.avif"
+            },
+            {
+              "complete": true,
+              "width": 195,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/kitchen-320.avif"
+            },
+            {
+              "complete": true,
+              "width": 195,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/bar-shine-320.avif"
+            }
+          ]
+        }
+      ],
+      "focus": {
+        "tag": "A",
+        "outline": "solid"
+      }
+    },
+    {
+      "theme": "gold",
+      "lang": "en",
+      "width": 1440,
+      "logo": [
+        {
+          "src": "/brand/shah-landscape-teal-v1.svg",
+          "width": 170,
+          "height": 69.359375,
+          "natural": 2.451
+        }
+      ],
+      "allLogos": [
+        {
+          "variant": "landscape",
+          "visible": [
+            "/brand/shah-landscape-teal-v1.svg"
+          ]
+        },
+        {
+          "variant": "wordmark",
+          "visible": [
+            "/brand/shah-wordmark-teal-v1.svg"
+          ]
+        },
+        {
+          "variant": "mark",
+          "visible": [
+            "/brand/shah-mark-teal-v1.svg"
+          ]
+        },
+        {
+          "variant": "landscape",
+          "visible": [
+            "/brand/shah-landscape-teal-v1.svg"
+          ]
+        }
+      ],
+      "logoFocus": {
+        "outline": "solid",
+        "color": "rgb(13, 73, 82)",
+        "width": "3px",
+        "offset": "-4px"
+      },
+      "stages": [
+        {
+          "fraction": 0.18,
+          "pinned": "true",
+          "step": "1",
+          "stageTop": 102.359375,
+          "overflow": 0,
+          "cards": [
+            {
+              "hidden": "false",
+              "inert": false,
+              "transform": "matrix(0.991237, 0.00830523, -0.00830523, 0.991237, 408.48, 4.07)"
+            },
+            {
+              "hidden": "true",
+              "inert": true,
+              "transform": "matrix(0.969598, 0.0279301, -0.0279301, 0.969598, 744, 14)"
+            },
+            {
+              "hidden": "true",
+              "inert": true,
+              "transform": "matrix(0.969598, 0.0279301, -0.0279301, 0.969598, 402, 14)"
+            }
+          ],
+          "images": [
+            {
+              "complete": true,
+              "width": 720,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/dining-960.avif"
+            },
+            {
+              "complete": true,
+              "width": 360,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/kitchen-640.avif"
+            },
+            {
+              "complete": true,
+              "width": 360,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/bar-shine-640.avif"
+            }
+          ]
+        },
+        {
+          "fraction": 0.5,
+          "pinned": "true",
+          "step": "2",
+          "stageTop": 102.359375,
+          "overflow": 0,
+          "cards": [
+            {
+              "hidden": "false",
+              "inert": false,
+              "transform": "matrix(1, 0, 0, 1, 0, 0)"
+            },
+            {
+              "hidden": "false",
+              "inert": false,
+              "transform": "matrix(0.9892, 0.0102054, -0.0102054, 0.9892, 266.53, 5.02)"
+            },
+            {
+              "hidden": "true",
+              "inert": true,
+              "transform": "matrix(0.969598, 0.0279301, -0.0279301, 0.969598, 402, 14)"
+            }
+          ],
+          "images": [
+            {
+              "complete": true,
+              "width": 720,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/dining-960.avif"
+            },
+            {
+              "complete": true,
+              "width": 360,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/kitchen-640.avif"
+            },
+            {
+              "complete": true,
+              "width": 360,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/bar-shine-640.avif"
+            }
+          ]
+        },
+        {
+          "fraction": 0.86,
+          "pinned": "true",
+          "step": "3",
+          "stageTop": 102.359375,
+          "overflow": 0,
+          "cards": [
+            {
+              "hidden": "false",
+              "inert": false,
+              "transform": "matrix(1, 0, 0, 1, 0, 0)"
+            },
+            {
+              "hidden": "false",
+              "inert": false,
+              "transform": "matrix(1, 0, 0, 1, 0, 0)"
+            },
+            {
+              "hidden": "false",
+              "inert": false,
+              "transform": "matrix(0.993152, 0.006508, -0.006508, 0.993152, 91.47, 3.19)"
+            }
+          ],
+          "images": [
+            {
+              "complete": true,
+              "width": 720,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/dining-960.avif"
+            },
+            {
+              "complete": true,
+              "width": 360,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/kitchen-640.avif"
+            },
+            {
+              "complete": true,
+              "width": 360,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/bar-shine-640.avif"
+            }
+          ]
+        }
+      ],
+      "focus": {
+        "tag": "A",
+        "outline": "solid"
+      }
+    },
+    {
+      "theme": "gold",
+      "lang": "en",
+      "width": 390,
+      "logo": [
+        {
+          "src": "/brand/shah-landscape-teal-v1.svg",
+          "width": 132,
+          "height": 53.84375,
+          "natural": 2.451
+        }
+      ],
+      "allLogos": [
+        {
+          "variant": "landscape",
+          "visible": [
+            "/brand/shah-landscape-teal-v1.svg"
+          ]
+        },
+        {
+          "variant": "wordmark",
+          "visible": [
+            "/brand/shah-wordmark-teal-v1.svg"
+          ]
+        },
+        {
+          "variant": "mark",
+          "visible": [
+            "/brand/shah-mark-teal-v1.svg"
+          ]
+        },
+        {
+          "variant": "landscape",
+          "visible": [
+            "/brand/shah-landscape-teal-v1.svg"
+          ]
+        }
+      ],
+      "logoFocus": {
+        "outline": "solid",
+        "color": "rgb(13, 73, 82)",
+        "width": "3px",
+        "offset": "-4px"
+      },
+      "stages": [
+        {
+          "fraction": 0.18,
+          "pinned": "true",
+          "step": "1",
+          "stageTop": 89,
+          "overflow": 0,
+          "cards": [
+            {
+              "hidden": "false",
+              "inert": false,
+              "transform": "matrix(0.991213, 0, 0, 0.991213, 114.81, 4.1)"
+            },
+            {
+              "hidden": "true",
+              "inert": true,
+              "transform": "matrix(0.97, 0, 0, 0.97, 392, 14)"
+            },
+            {
+              "hidden": "true",
+              "inert": true,
+              "transform": "matrix(0.97, 0, 0, 0.97, 392, 14)"
+            }
+          ],
+          "images": [
+            {
+              "complete": true,
+              "width": 390,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/dining-640.avif"
+            },
+            {
+              "complete": true,
+              "width": 195,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/kitchen-320.avif"
+            },
+            {
+              "complete": true,
+              "width": 195,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/bar-shine-320.avif"
+            }
+          ]
+        },
+        {
+          "fraction": 0.5,
+          "pinned": "true",
+          "step": "2",
+          "stageTop": 89,
+          "overflow": 0,
+          "cards": [
+            {
+              "hidden": "true",
+              "inert": true,
+              "transform": "matrix(1, 0, 0, 1, 0, 0)"
+            },
+            {
+              "hidden": "false",
+              "inert": false,
+              "transform": "matrix(0.989261, 0, 0, 0.989261, 140.32, 5.01)"
+            },
+            {
+              "hidden": "true",
+              "inert": true,
+              "transform": "matrix(0.97, 0, 0, 0.97, 392, 14)"
+            }
+          ],
+          "images": [
+            {
+              "complete": true,
+              "width": 390,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/dining-640.avif"
+            },
+            {
+              "complete": true,
+              "width": 195,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/kitchen-320.avif"
+            },
+            {
+              "complete": true,
+              "width": 195,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/bar-shine-320.avif"
+            }
+          ]
+        },
+        {
+          "fraction": 0.86,
+          "pinned": "true",
+          "step": "3",
+          "stageTop": 89,
+          "overflow": 0,
+          "cards": [
+            {
+              "hidden": "true",
+              "inert": true,
+              "transform": "matrix(1, 0, 0, 1, 0, 0)"
+            },
+            {
+              "hidden": "true",
+              "inert": true,
+              "transform": "matrix(1, 0, 0, 1, 0, 0)"
+            },
+            {
+              "hidden": "false",
+              "inert": false,
+              "transform": "matrix(0.993143, 0, 0, 0.993143, 89.6, 3.2)"
+            }
+          ],
+          "images": [
+            {
+              "complete": true,
+              "width": 390,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/dining-640.avif"
+            },
+            {
+              "complete": true,
+              "width": 195,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/kitchen-320.avif"
+            },
+            {
+              "complete": true,
+              "width": 195,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/bar-shine-320.avif"
+            }
+          ]
+        }
+      ],
+      "focus": {
+        "tag": "A",
+        "outline": "solid"
+      }
+    },
+    {
+      "theme": "gold",
+      "lang": "nl",
+      "width": 1440,
+      "logo": [
+        {
+          "src": "/brand/shah-landscape-teal-v1.svg",
+          "width": 170,
+          "height": 69.359375,
+          "natural": 2.451
+        }
+      ],
+      "allLogos": [
+        {
+          "variant": "landscape",
+          "visible": [
+            "/brand/shah-landscape-teal-v1.svg"
+          ]
+        },
+        {
+          "variant": "wordmark",
+          "visible": [
+            "/brand/shah-wordmark-teal-v1.svg"
+          ]
+        },
+        {
+          "variant": "mark",
+          "visible": [
+            "/brand/shah-mark-teal-v1.svg"
+          ]
+        },
+        {
+          "variant": "landscape",
+          "visible": [
+            "/brand/shah-landscape-teal-v1.svg"
+          ]
+        }
+      ],
+      "logoFocus": {
+        "outline": "solid",
+        "color": "rgb(13, 73, 82)",
+        "width": "3px",
+        "offset": "-4px"
+      },
+      "stages": [
+        {
+          "fraction": 0.18,
+          "pinned": "true",
+          "step": "1",
+          "stageTop": 102.359375,
+          "overflow": 0,
+          "cards": [
+            {
+              "hidden": "false",
+              "inert": false,
+              "transform": "matrix(0.991237, 0.00830523, -0.00830523, 0.991237, 408.48, 4.07)"
+            },
+            {
+              "hidden": "true",
+              "inert": true,
+              "transform": "matrix(0.969598, 0.0279301, -0.0279301, 0.969598, 744, 14)"
+            },
+            {
+              "hidden": "true",
+              "inert": true,
+              "transform": "matrix(0.969598, 0.0279301, -0.0279301, 0.969598, 402, 14)"
+            }
+          ],
+          "images": [
+            {
+              "complete": true,
+              "width": 720,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/dining-960.avif"
+            },
+            {
+              "complete": true,
+              "width": 360,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/kitchen-640.avif"
+            },
+            {
+              "complete": true,
+              "width": 360,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/bar-shine-640.avif"
+            }
+          ]
+        },
+        {
+          "fraction": 0.5,
+          "pinned": "true",
+          "step": "2",
+          "stageTop": 102.359375,
+          "overflow": 0,
+          "cards": [
+            {
+              "hidden": "false",
+              "inert": false,
+              "transform": "matrix(1, 0, 0, 1, 0, 0)"
+            },
+            {
+              "hidden": "false",
+              "inert": false,
+              "transform": "matrix(0.9892, 0.0102054, -0.0102054, 0.9892, 266.53, 5.02)"
+            },
+            {
+              "hidden": "true",
+              "inert": true,
+              "transform": "matrix(0.969598, 0.0279301, -0.0279301, 0.969598, 402, 14)"
+            }
+          ],
+          "images": [
+            {
+              "complete": true,
+              "width": 720,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/dining-960.avif"
+            },
+            {
+              "complete": true,
+              "width": 360,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/kitchen-640.avif"
+            },
+            {
+              "complete": true,
+              "width": 360,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/bar-shine-640.avif"
+            }
+          ]
+        },
+        {
+          "fraction": 0.86,
+          "pinned": "true",
+          "step": "3",
+          "stageTop": 102.359375,
+          "overflow": 0,
+          "cards": [
+            {
+              "hidden": "false",
+              "inert": false,
+              "transform": "matrix(1, 0, 0, 1, 0, 0)"
+            },
+            {
+              "hidden": "false",
+              "inert": false,
+              "transform": "matrix(1, 0, 0, 1, 0, 0)"
+            },
+            {
+              "hidden": "false",
+              "inert": false,
+              "transform": "matrix(0.993152, 0.006508, -0.006508, 0.993152, 91.47, 3.19)"
+            }
+          ],
+          "images": [
+            {
+              "complete": true,
+              "width": 720,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/dining-960.avif"
+            },
+            {
+              "complete": true,
+              "width": 360,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/kitchen-640.avif"
+            },
+            {
+              "complete": true,
+              "width": 360,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/bar-shine-640.avif"
+            }
+          ]
+        }
+      ],
+      "focus": {
+        "tag": "A",
+        "outline": "solid"
+      }
+    },
+    {
+      "theme": "gold",
+      "lang": "nl",
+      "width": 390,
+      "logo": [
+        {
+          "src": "/brand/shah-landscape-teal-v1.svg",
+          "width": 132,
+          "height": 53.84375,
+          "natural": 2.451
+        }
+      ],
+      "allLogos": [
+        {
+          "variant": "landscape",
+          "visible": [
+            "/brand/shah-landscape-teal-v1.svg"
+          ]
+        },
+        {
+          "variant": "wordmark",
+          "visible": [
+            "/brand/shah-wordmark-teal-v1.svg"
+          ]
+        },
+        {
+          "variant": "mark",
+          "visible": [
+            "/brand/shah-mark-teal-v1.svg"
+          ]
+        },
+        {
+          "variant": "landscape",
+          "visible": [
+            "/brand/shah-landscape-teal-v1.svg"
+          ]
+        }
+      ],
+      "logoFocus": {
+        "outline": "solid",
+        "color": "rgb(13, 73, 82)",
+        "width": "3px",
+        "offset": "-4px"
+      },
+      "stages": [
+        {
+          "fraction": 0.18,
+          "pinned": "true",
+          "step": "1",
+          "stageTop": 89,
+          "overflow": 0,
+          "cards": [
+            {
+              "hidden": "false",
+              "inert": false,
+              "transform": "matrix(0.991246, 0, 0, 0.991246, 114.38, 4.09)"
+            },
+            {
+              "hidden": "true",
+              "inert": true,
+              "transform": "matrix(0.97, 0, 0, 0.97, 392, 14)"
+            },
+            {
+              "hidden": "true",
+              "inert": true,
+              "transform": "matrix(0.97, 0, 0, 0.97, 392, 14)"
+            }
+          ],
+          "images": [
+            {
+              "complete": true,
+              "width": 390,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/dining-640.avif"
+            },
+            {
+              "complete": true,
+              "width": 195,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/kitchen-320.avif"
+            },
+            {
+              "complete": true,
+              "width": 195,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/bar-shine-320.avif"
+            }
+          ]
+        },
+        {
+          "fraction": 0.5,
+          "pinned": "true",
+          "step": "2",
+          "stageTop": 89,
+          "overflow": 0,
+          "cards": [
+            {
+              "hidden": "true",
+              "inert": true,
+              "transform": "matrix(1, 0, 0, 1, 0, 0)"
+            },
+            {
+              "hidden": "false",
+              "inert": false,
+              "transform": "matrix(0.989199, 0, 0, 0.989199, 141.13, 5.04)"
+            },
+            {
+              "hidden": "true",
+              "inert": true,
+              "transform": "matrix(0.97, 0, 0, 0.97, 392, 14)"
+            }
+          ],
+          "images": [
+            {
+              "complete": true,
+              "width": 390,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/dining-640.avif"
+            },
+            {
+              "complete": true,
+              "width": 195,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/kitchen-320.avif"
+            },
+            {
+              "complete": true,
+              "width": 195,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/bar-shine-320.avif"
+            }
+          ]
+        },
+        {
+          "fraction": 0.86,
+          "pinned": "true",
+          "step": "3",
+          "stageTop": 89,
+          "overflow": 0,
+          "cards": [
+            {
+              "hidden": "true",
+              "inert": true,
+              "transform": "matrix(1, 0, 0, 1, 0, 0)"
+            },
+            {
+              "hidden": "true",
+              "inert": true,
+              "transform": "matrix(1, 0, 0, 1, 0, 0)"
+            },
+            {
+              "hidden": "false",
+              "inert": false,
+              "transform": "matrix(0.993174, 0, 0, 0.993174, 89.19, 3.19)"
+            }
+          ],
+          "images": [
+            {
+              "complete": true,
+              "width": 390,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/dining-640.avif"
+            },
+            {
+              "complete": true,
+              "width": 195,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/kitchen-320.avif"
+            },
+            {
+              "complete": true,
+              "width": 195,
+              "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/bar-shine-320.avif"
+            }
+          ]
+        }
+      ],
+      "focus": {
+        "tag": "A",
+        "outline": "solid"
+      }
+    },
+    {
+      "mode": "reduce",
+      "motion": "off",
+      "pinned": null,
+      "pending": 0,
+      "decorativeAnimations": 0
+    },
+    {
+      "mode": "save-data",
+      "motion": "off",
+      "pinned": null,
+      "pending": 0,
+      "decorativeAnimations": 0
+    }
+  ],
+  "errors": [],
+  "violations": [],
+  "physicalDevice": false
+}

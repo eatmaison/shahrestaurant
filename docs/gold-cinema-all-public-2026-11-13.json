@@ -1,0 +1,204 @@
+{
+  "build": "XAvWn1WCfZVojo1yazM5b",
+  "checks": [
+    {
+      "route": "/",
+      "overflow": 0,
+      "scheme": "dark",
+      "violations": 0
+    },
+    {
+      "route": "/en",
+      "overflow": 0,
+      "scheme": "dark",
+      "violations": 0
+    },
+    {
+      "route": "/menukaart",
+      "overflow": 0,
+      "scheme": "dark",
+      "violations": 0
+    },
+    {
+      "route": "/en/menu",
+      "overflow": 0,
+      "scheme": "dark",
+      "violations": 0
+    },
+    {
+      "route": "/reserveren",
+      "overflow": 0,
+      "scheme": "dark",
+      "violations": 0
+    },
+    {
+      "route": "/en/reservations",
+      "overflow": 0,
+      "scheme": "dark",
+      "violations": 0
+    },
+    {
+      "route": "/privacy",
+      "overflow": 0,
+      "scheme": "dark",
+      "violations": 0
+    },
+    {
+      "route": "/en/privacy",
+      "overflow": 0,
+      "scheme": "dark",
+      "violations": 0
+    },
+    {
+      "route": "/voorwaarden",
+      "overflow": 0,
+      "scheme": "dark",
+      "violations": 0
+    },
+    {
+      "route": "/en/terms",
+      "overflow": 0,
+      "scheme": "dark",
+      "violations": 0
+    },
+    {
+      "route": "/events",
+      "overflow": 0,
+      "scheme": "dark",
+      "violations": 0
+    },
+    {
+      "route": "/en/events",
+      "overflow": 0,
+      "scheme": "dark",
+      "violations": 0
+    },
+    {
+      "route": "/events/about",
+      "overflow": 0,
+      "scheme": "dark",
+      "violations": 0
+    },
+    {
+      "route": "/en/events/about",
+      "overflow": 0,
+      "scheme": "dark",
+      "violations": 0
+    },
+    {
+      "route": "/events/gallery",
+      "overflow": 0,
+      "scheme": "dark",
+      "violations": 0
+    },
+    {
+      "route": "/en/events/gallery",
+      "overflow": 0,
+      "scheme": "dark",
+      "violations": 0
+    },
+    {
+      "route": "/events/birthdays",
+      "overflow": 0,
+      "scheme": "dark",
+      "violations": 0
+    },
+    {
+      "route": "/en/events/birthdays",
+      "overflow": 0,
+      "scheme": "dark",
+      "violations": 0
+    },
+    {
+      "route": "/events/celebrations",
+      "overflow": 0,
+      "scheme": "dark",
+      "violations": 0
+    },
+    {
+      "route": "/en/events/celebrations",
+      "overflow": 0,
+      "scheme": "dark",
+      "violations": 0
+    },
+    {
+      "route": "/events/company-catering",
+      "overflow": 0,
+      "scheme": "dark",
+      "violations": 0
+    },
+    {
+      "route": "/en/events/company-catering",
+      "overflow": 0,
+      "scheme": "dark",
+      "violations": 0
+    },
+    {
+      "route": "/events/company-lunches",
+      "overflow": 0,
+      "scheme": "dark",
+      "violations": 0
+    },
+    {
+      "route": "/en/events/company-lunches",
+      "overflow": 0,
+      "scheme": "dark",
+      "violations": 0
+    }
+  ],
+  "violations": [],
+  "brightPanels": [
+    {
+      "route": "/",
+      "tag": "DIV",
+      "class": "DrinkPartners_logoPanel__tdZbS",
+      "background": "rgb(251, 247, 239)"
+    },
+    {
+      "route": "/",
+      "tag": "DIV",
+      "class": "DrinkPartners_logoPanel__tdZbS",
+      "background": "rgb(251, 247, 239)"
+    },
+    {
+      "route": "/",
+      "tag": "DIV",
+      "class": "DrinkPartners_logoPanel__tdZbS",
+      "background": "rgb(251, 247, 239)"
+    },
+    {
+      "route": "/",
+      "tag": "DIV",
+      "class": "DrinkPartners_logoPanel__tdZbS",
+      "background": "rgb(251, 247, 239)"
+    },
+    {
+      "route": "/en",
+      "tag": "DIV",
+      "class": "DrinkPartners_logoPanel__tdZbS",
+      "background": "rgb(251, 247, 239)"
+    },
+    {
+      "route": "/en",
+      "tag": "DIV",
+      "class": "DrinkPartners_logoPanel__tdZbS",
+      "background": "rgb(251, 247, 239)"
+    },
+    {
+      "route": "/en",
+      "tag": "DIV",
+      "class": "DrinkPartners_logoPanel__tdZbS",
+      "background": "rgb(251, 247, 239)"
+    },
+    {
+      "route": "/en",
+      "tag": "DIV",
+      "class": "DrinkPartners_logoPanel__tdZbS",
+      "background": "rgb(251, 247, 239)"
+    }
+  ],
+  "errors": [],
+  "preservedBrandPlates": 8,
+  "unexpectedBrightPanels": 0,
+  "brandPlateNote": "Four original neutral partner-logo plates per homepage locale remain unchanged for brand readability."
+}

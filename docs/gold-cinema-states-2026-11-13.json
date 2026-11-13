@@ -1,0 +1,306 @@
+{
+  "build": "XAvWn1WCfZVojo1yazM5b",
+  "syntheticOnly": true,
+  "checks": [
+    {
+      "name": "login-error",
+      "lang": "en",
+      "width": 1440,
+      "overflow": 0,
+      "violations": 0
+    },
+    {
+      "name": "registration",
+      "lang": "en",
+      "width": 1440,
+      "overflow": 0,
+      "violations": 0
+    },
+    {
+      "name": "company-registration",
+      "lang": "en",
+      "width": 1440,
+      "overflow": 0,
+      "violations": 0
+    },
+    {
+      "name": "registered-account",
+      "lang": "en",
+      "width": 1440,
+      "overflow": 0,
+      "violations": 0
+    },
+    {
+      "name": "account-review",
+      "lang": "en",
+      "width": 1440,
+      "overflow": 0,
+      "violations": 0
+    },
+    {
+      "name": "account-confirmation",
+      "lang": "en",
+      "width": 1440,
+      "overflow": 0,
+      "violations": 0
+    },
+    {
+      "name": "export-confirmation",
+      "lang": "en",
+      "width": 1440,
+      "overflow": 0,
+      "violations": 0
+    },
+    {
+      "name": "event-validation",
+      "lang": "en",
+      "width": 1440,
+      "overflow": 0,
+      "violations": 0
+    },
+    {
+      "name": "reconcile-confirmation",
+      "lang": "en",
+      "width": 1440,
+      "overflow": 0,
+      "violations": 0
+    },
+    {
+      "name": "gallery-error",
+      "lang": "en",
+      "width": 1440,
+      "overflow": 0,
+      "violations": 0
+    },
+    {
+      "name": "login-error",
+      "lang": "en",
+      "width": 390,
+      "overflow": 0,
+      "violations": 0
+    },
+    {
+      "name": "registration",
+      "lang": "en",
+      "width": 390,
+      "overflow": 0,
+      "violations": 0
+    },
+    {
+      "name": "company-registration",
+      "lang": "en",
+      "width": 390,
+      "overflow": 0,
+      "violations": 0
+    },
+    {
+      "name": "registered-account",
+      "lang": "en",
+      "width": 390,
+      "overflow": 0,
+      "violations": 0
+    },
+    {
+      "name": "account-review",
+      "lang": "en",
+      "width": 390,
+      "overflow": 0,
+      "violations": 0
+    },
+    {
+      "name": "account-confirmation",
+      "lang": "en",
+      "width": 390,
+      "overflow": 0,
+      "violations": 0
+    },
+    {
+      "name": "export-confirmation",
+      "lang": "en",
+      "width": 390,
+      "overflow": 0,
+      "violations": 0
+    },
+    {
+      "name": "event-validation",
+      "lang": "en",
+      "width": 390,
+      "overflow": 0,
+      "violations": 0
+    },
+    {
+      "name": "reconcile-confirmation",
+      "lang": "en",
+      "width": 390,
+      "overflow": 0,
+      "violations": 0
+    },
+    {
+      "name": "gallery-error",
+      "lang": "en",
+      "width": 390,
+      "overflow": 0,
+      "violations": 0
+    },
+    {
+      "name": "login-error",
+      "lang": "nl",
+      "width": 1440,
+      "overflow": 0,
+      "violations": 0
+    },
+    {
+      "name": "registration",
+      "lang": "nl",
+      "width": 1440,
+      "overflow": 0,
+      "violations": 0
+    },
+    {
+      "name": "company-registration",
+      "lang": "nl",
+      "width": 1440,
+      "overflow": 0,
+      "violations": 0
+    },
+    {
+      "name": "registered-account",
+      "lang": "nl",
+      "width": 1440,
+      "overflow": 0,
+      "violations": 0
+    },
+    {
+      "name": "account-review",
+      "lang": "nl",
+      "width": 1440,
+      "overflow": 0,
+      "violations": 0
+    },
+    {
+      "name": "account-confirmation",
+      "lang": "nl",
+      "width": 1440,
+      "overflow": 0,
+      "violations": 0
+    },
+    {
+      "name": "export-confirmation",
+      "lang": "nl",
+      "width": 1440,
+      "overflow": 0,
+      "violations": 0
+    },
+    {
+      "name": "event-validation",
+      "lang": "nl",
+      "width": 1440,
+      "overflow": 0,
+      "violations": 0
+    },
+    {
+      "name": "reconcile-confirmation",
+      "lang": "nl",
+      "width": 1440,
+      "overflow": 0,
+      "violations": 0
+    },
+    {
+      "name": "gallery-error",
+      "lang": "nl",
+      "width": 1440,
+      "overflow": 0,
+      "violations": 0
+    },
+    {
+      "name": "login-error",
+      "lang": "nl",
+      "width": 390,
+      "overflow": 0,
+      "violations": 0
+    },
+    {
+      "name": "registration",
+      "lang": "nl",
+      "width": 390,
+      "overflow": 0,
+      "violations": 0
+    },
+    {
+      "name": "company-registration",
+      "lang": "nl",
+      "width": 390,
+      "overflow": 0,
+      "violations": 0
+    },
+    {
+      "name": "registered-account",
+      "lang": "nl",
+      "width": 390,
+      "overflow": 0,
+      "violations": 0
+    },
+    {
+      "name": "account-review",
+      "lang": "nl",
+      "width": 390,
+      "overflow": 0,
+      "violations": 0
+    },
+    {
+      "name": "account-confirmation",
+      "lang": "nl",
+      "width": 390,
+      "overflow": 0,
+      "violations": 0
+    },
+    {
+      "name": "export-confirmation",
+      "lang": "nl",
+      "width": 390,
+      "overflow": 0,
+      "violations": 0
+    },
+    {
+      "name": "event-validation",
+      "lang": "nl",
+      "width": 390,
+      "overflow": 0,
+      "violations": 0
+    },
+    {
+      "name": "reconcile-confirmation",
+      "lang": "nl",
+      "width": 390,
+      "overflow": 0,
+      "violations": 0
+    },
+    {
+      "name": "gallery-error",
+      "lang": "nl",
+      "width": 390,
+      "overflow": 0,
+      "violations": 0
+    }
+  ],
+  "violations": [],
+  "errors": [],
+  "writesIntercepted": [
+    {
+      "path": "/api/auth",
+      "method": "POST"
+    },
+    {
+      "path": "/api/auth",
+      "method": "POST"
+    },
+    {
+      "path": "/api/auth",
+      "method": "POST"
+    },
+    {
+      "path": "/api/auth",
+      "method": "POST"
+    }
+  ]
+}

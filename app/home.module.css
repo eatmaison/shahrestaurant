@@ -777,3 +777,54 @@
   .home .gallerySection[data-gallery-pinned] .galleryProgress { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
   .home .gallerySection[data-gallery-pinned] .galleryItem figcaption > :first-child { font-size: 21px; }
 }
+
+/* Gold art direction is scoped; the established teal base stays intact. */
+:global(:root[data-shah-theme="gold"]) .home :is(.storySection,.closing) { background:var(--shah-surface); --muted:var(--shah-muted); }
+:global(:root[data-shah-theme="gold"]) .home .gallerySection { background:linear-gradient(125deg, #E0AF5910, transparent 45%), var(--shah-page); }
+:global(:root[data-shah-theme="gold"]) .home .opening { background:radial-gradient(ellipse at 90% 0%, #E0AF590a, transparent 65%); }
+:global(:root[data-shah-theme="gold"]) .home .primaryButton { background:var(--shah-foil); color:var(--shah-button-ink); border-color:var(--shah-gold); }
+:global(:root[data-shah-theme="gold"]) .home .photoLabel { background:var(--shah-surface); color:var(--shah-ink); border-color:var(--shah-line); box-shadow:none; }
+:global(:root[data-shah-theme="gold"]) .home :is(.galleryPhotoNumber,.eveningNumber) { background:#0D4952ed; color:#f7f1df; }
+:global(:root[data-shah-theme="gold"]) .home :is(.menuPhoto,.storyPhoto > div,.eveningPhoto)::before { border-color:#E0AF5980; }
+
+/* Shared cinematic detailing: visible content first, with no new JS or media. */
+.home .eyebrow::before { transform-origin:left; background:linear-gradient(90deg,var(--gold),#f4d694); }
+.home .textLink { position:relative; }
+.home .textLink::after { content:""; position:absolute; bottom:-1px; inset-inline:0; height:1px; background:var(--gold); transform:scaleX(.2); transform-origin:left; opacity:0; transition:transform .5s var(--ease-out),opacity .25s; pointer-events:none; }
+.home .textLink:is(:hover,:focus-visible)::after { transform:scaleX(1); opacity:1; }
+.home .galleryStage { position:relative; }
+.home .gallerySection[data-gallery-pinned] .galleryItem { transform:translate3d(var(--gallery-x,0px),var(--gallery-y,0px),0) scale(var(--gallery-scale,1)) rotate(calc((1 - var(--gallery-scale,1)) * 55deg)); }
+@media (prefers-reduced-motion:no-preference) {
+  .home[data-choreography="ready"][data-motion="on"] [data-reveal]:not([data-reveal-instant]) { transition:transform 1s var(--ease-out) var(--reveal-delay,0ms); }
+  .home[data-choreography="ready"][data-motion="on"] [data-evening-card][data-reveal="pending"] { transform:translate3d(54px,32px,0) rotate(1deg); }
+  .home[data-choreography="ready"][data-motion="on"] [data-reveal-kind="frame"][data-reveal="pending"] { transform:translate3d(0,44px,0) rotate(-1deg) scale(.96); }
+  @supports (animation-timeline:view()) {
+    .home[data-motion="on"] .eyebrow::before { animation:chapter-line linear both; animation-timeline:view(); animation-range:entry 0% cover 30%; }
+    .home[data-motion="on"] :is(.menuPhoto,.storyPhoto > div,.eveningPhoto)::before { animation:frame-arrival linear both; animation-timeline:view(); animation-range:entry 0% cover 35%; }
+  }
+}
+@keyframes chapter-line { from { transform:scaleX(.15); opacity:.35; } to { transform:scaleX(1); opacity:1; } }
+@keyframes frame-arrival { from { transform:scale(.96); opacity:.25; } to { transform:scale(1); opacity:1; } }
+@media (max-width:700px) {
+  .home[data-choreography="ready"][data-motion="on"] [data-evening-card][data-reveal="pending"] { transform:translate3d(22px,24px,0); }
+}
+@media (prefers-reduced-motion:reduce) {
+  .home .gallerySection[data-gallery-pinned] .galleryItem { transform:none; }
+  .home .eyebrow::before,.home .textLink::after { animation:none !important; transition:none !important; transform:none; }
+}
+
+/* Phone delivery keeps the choreography but avoids large decorative paint layers. */
+@media (max-width:700px) {
+  :global(:root[data-shah-theme="gold"]) .home .opening { background:none; }
+  :global(:root[data-shah-theme="gold"]) .home .gallerySection { background:var(--shah-page); }
+  .home .gallerySection[data-gallery-pinned] .galleryItem { transform:translate3d(var(--gallery-x,0px),var(--gallery-y,0px),0) scale(var(--gallery-scale,1)); }
+  .home[data-motion="on"] :is(.menuPhoto,.storyPhoto > div,.eveningPhoto)::before { animation:none; }
+}
+
+/* Paired 4x-CPU phone profiling favored short transform entrances over extra fades. */
+@media (max-width:700px) {
+  .home[data-motion="on"] .eyebrow::before { animation:none; }
+  .home[data-choreography="ready"][data-motion="on"] [data-reveal]:not([data-reveal-instant]) { transition-property:transform; }
+}
+
+:global(:root[data-shah-theme="gold"]) .home .storySection::before { background-image:url("/brand/shah-mark-teal-v1.svg"); opacity:.18; }

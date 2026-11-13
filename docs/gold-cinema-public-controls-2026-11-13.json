@@ -1,0 +1,114 @@
+{
+  "build": "XAvWn1WCfZVojo1yazM5b",
+  "checks": [
+    {
+      "theme": "teal",
+      "route": "/en",
+      "mode": "hover",
+      "color": "rgb(13, 73, 82)",
+      "background": "rgb(224, 175, 89)",
+      "outline": "none",
+      "violations": []
+    },
+    {
+      "theme": "teal",
+      "route": "/en",
+      "mode": "focus",
+      "color": "rgb(13, 73, 82)",
+      "background": "rgb(224, 175, 89)",
+      "outline": "solid",
+      "violations": []
+    },
+    {
+      "theme": "teal",
+      "route": "/en/reservations",
+      "mode": "hover",
+      "color": "rgb(13, 73, 82)",
+      "background": "rgb(224, 175, 89)",
+      "outline": "none",
+      "violations": []
+    },
+    {
+      "theme": "teal",
+      "route": "/en/reservations",
+      "mode": "focus",
+      "color": "rgb(13, 73, 82)",
+      "background": "rgb(224, 175, 89)",
+      "outline": "solid",
+      "violations": []
+    },
+    {
+      "theme": "teal",
+      "route": "/en/events",
+      "mode": "hover",
+      "color": "rgb(13, 73, 82)",
+      "background": "rgb(237, 197, 129)",
+      "outline": "none",
+      "violations": []
+    },
+    {
+      "theme": "teal",
+      "route": "/en/events",
+      "mode": "focus",
+      "color": "rgb(13, 73, 82)",
+      "background": "rgb(237, 197, 129)",
+      "outline": "solid",
+      "violations": []
+    },
+    {
+      "theme": "gold",
+      "route": "/en",
+      "mode": "hover",
+      "color": "rgb(11, 36, 41)",
+      "background": "rgba(0, 0, 0, 0)",
+      "outline": "none",
+      "violations": []
+    },
+    {
+      "theme": "gold",
+      "route": "/en",
+      "mode": "focus",
+      "color": "rgb(11, 36, 41)",
+      "background": "rgba(0, 0, 0, 0)",
+      "outline": "solid",
+      "violations": []
+    },
+    {
+      "theme": "gold",
+      "route": "/en/reservations",
+      "mode": "hover",
+      "color": "rgb(224, 175, 89)",
+      "background": "rgb(32, 38, 39)",
+      "outline": "none",
+      "violations": []
+    },
+    {
+      "theme": "gold",
+      "route": "/en/reservations",
+      "mode": "focus",
+      "color": "rgb(224, 175, 89)",
+      "background": "rgb(32, 38, 39)",
+      "outline": "solid",
+      "violations": []
+    },
+    {
+      "theme": "gold",
+      "route": "/en/events",
+      "mode": "hover",
+      "color": "rgb(11, 36, 41)",
+      "background": "rgb(224, 175, 89)",
+      "outline": "none",
+      "violations": []
+    },
+    {
+      "theme": "gold",
+      "route": "/en/events",
+      "mode": "focus",
+      "color": "rgb(11, 36, 41)",
+      "background": "rgb(224, 175, 89)",
+      "outline": "solid",
+      "violations": []
+    }
+  ],
+  "violations": []
+}

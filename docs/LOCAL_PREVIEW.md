@@ -1,24 +1,12 @@
-# Current local preview - 13 November 2026
+# Current local preview — 13 November 2026
 
-Public: http://localhost:3398/en (English) or http://localhost:3398/ (Dutch). Same Wi-Fi: http://192.168.0.122:3618/en or / for Dutch. The rejected light mode is now a second dark-gold palette; original dark teal is retained. Saved legacy light choices automatically select dark gold. [Theme changes, screenshots, tests and limitations](DARK-GOLD-THEME.md).
+Public: http://localhost:3398/en (English) or http://localhost:3398/ (Dutch). Same Wi-Fi: http://192.168.0.122:3618/en or / for Dutch. [Latest gold/teal logos, cinematic details, verification, measurements and start commands](GOLD-CINEMA-POLISH.md).
 
-Synthetic read-only admin: http://localhost:4068/admin with separate customers, stats and events pages. No admin data or transactions are exposed on the phone listener.
+Current build **XAvWn1WCfZVojo1yazM5b**, .next-review-shah-gold-cinema-polish-v5-20261113, frozen source 4e64b8014550ddfc066e2d10e82784d940fa32939e18943c9b73b5c0c8eefdc0, 496 inputs, 65 routes. The second dark theme uses graphite with the actual logo gold; original teal base tokens remain. UI logos are gold on teal, teal on dark gold. Both themes have optional cinematic details and motion-safe fallbacks. Reload the open preview to update cached CSS.
 
-Current build: TnGIIful8W70dmhVNZaHd, .next-review-shah-dark-gold-final-20261113; frozen source 146f3a39a49bc2a0d6ccd8699d1a2a6c6b373a55598d59a3e6a055e0868f15f1, 496 inputs, 65 routes. All 244 public media files are byte-identical to the preceding build. Build/typecheck, focused lint, first-paint/persistence, 48 admin layouts, 24 public routes, form/dialog/cart states, 50 final HTTP checks and four actual EN/NL desktop/mobile playback cases passed. These theme changes are local only: no GitHub push, deployment or production migration.
+Synthetic read-only admin: http://localhost:4068/admin, plus customers/stats/events. The LAN listener blocks private routes and submissions. No production data, migration, deployment or GitHub push is part of this local polish. Earlier commit 1bafbed was published separately. All 244 public media files remain unchanged.
 
-Guarded public start/verify: node "$env:TEMP\shah-preview-20261111\start-shah-dark-gold-final-main.cjs". Admin: node "$env:TEMP\shah-dark-gold-20261113\start-or-verify-private-final.cjs". Run in PowerShell from this checkout. These task-local helpers require their matching build and Temp fixtures and do not replace unknown listeners.
-
-## Previous published admin checkpoint - 13 November 2026
-
-Public site: http://localhost:3398/en or http://localhost:3398/. Same Wi-Fi: http://192.168.0.122:3618/en or `/`. The approved photographs, bilingual intro, menu and public events are retained.
-
-The restructured admin demo is **http://localhost:4068/admin** with separate `/admin/customers`, `/admin/stats` and `/admin/events` pages. This loopback-only preview contains labelled synthetic data; writes are blocked. Admin is never exposed through the phone listener.
-
-Build `xAq9sMM06TxZlpVjSRdv3`, `.next-review-shah-admin-plus50-final-20261113`, frozen source `c5dfe68d113f96ab7cd28782fd427392cf2002332990b14ad4b06cb993b1cd62`, 496 inputs. This includes the second admin round, richer gold light mode and larger header text; dark tokens and all 244 public assets are retained. Build/TypeScript, focused lint, regression tests, 48 admin layouts, 25 authorization cases, 50 public HTTP checks and LAN checks passed. Full repository lint retains 22 errors/4 warnings outside the new changes. [60 additional admin changes, measurements and limitations](ADMIN-PLUS50.md). [Prior admin release](ADMIN-REDESIGN.md).
-
-Start/verify public: `node "$env:TEMP\shah-preview-20261111\start-shah-admin-plus50-main.cjs"`. Start/verify admin demo: `node "$env:TEMP\shah-admin-plus50-20261113\start-or-verify-private-main.cjs"`. These are task-local guarded helpers; keep the build and Temp fixtures together. They do not stop unknown listeners or deploy. No production deployment or production migration was performed. Unrelated listeners and phone-agent edits are preserved.
-
-The earlier interior-photo build `0QM01vrtIDTCaYpYCCdXf` is preserved as historical verification in [INTERIOR-PHOTO-VERIFICATION.md](INTERIOR-PHOTO-VERIFICATION.md).
+Guarded public start/verify: node "$env:TEMP\shah-preview-20261111\start-shah-gold-cinema-polish-v5-main.cjs". Admin: node "$env:TEMP\shah-gold-cinema-20261113\start-or-verify-private-polish-v5.cjs". Run from this checkout in PowerShell; matching build and Temp fixtures are required. [Phone instructions](PHONE-PREVIEW.md). [Previous dark-gold checkpoint](DARK-GOLD-THEME.md).
 
 ## Historical workspace baseline - 12 November 2026
 

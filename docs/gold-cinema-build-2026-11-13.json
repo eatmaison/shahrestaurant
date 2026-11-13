@@ -1,0 +1,21 @@
+{
+  "dist": ".next-review-shah-gold-cinema-polish-v5-20261113",
+  "startedAtUTC": "2026-11-13T20:05:04.271Z",
+  "before": {
+    "atUTC": "2026-11-13T20:05:04.686Z",
+    "sourceSha256": "4e64b8014550ddfc066e2d10e82784d940fa32939e18943c9b73b5c0c8eefdc0",
+    "inputs": 496,
+    "unchanged": true
+  },
+  "productionPublishing": false,
+  "liveDatabaseAccess": false,
+  "exitCode": 0,
+  "finishedAtUTC": "2026-11-13T20:06:02.011Z",
+  "after": {
+    "atUTC": "2026-11-13T20:06:02.416Z",
+    "sourceSha256": "4e64b8014550ddfc066e2d10e82784d940fa32939e18943c9b73b5c0c8eefdc0",
+    "inputs": 496,
+    "unchanged": true
+  },
+  "buildId": "XAvWn1WCfZVojo1yazM5b"
+}

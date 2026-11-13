@@ -57,7 +57,7 @@ export function Footer() {
         <div>
           <p className="text-[0.6rem] font-semibold uppercase tracking-[0.3em] text-emerald-600 dark:text-emerald-400">Fine Indian Dining · Amsterdam-Noord</p>
           <div className={styles.brandRow}>
-            <Link href="/" aria-label="Shah Restaurant" className="inline-block"><BrandLogo tone="gold" className="shah-footer-brand" alt="" /></Link>
+            <Link href="/" aria-label="Shah Restaurant" className="inline-block"><BrandLogo tone="adaptive" className="shah-footer-brand" alt="" /></Link>
             <button
               type="button"
               onClick={() => {

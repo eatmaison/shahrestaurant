@@ -1,0 +1,40 @@
+{
+  "atUTC": "2026-11-13T20:27:04.406Z",
+  "build": "XAvWn1WCfZVojo1yazM5b",
+  "sourceSha256": "4e64b8014550ddfc066e2d10e82784d940fa32939e18943c9b73b5c0c8eefdc0",
+  "sourceInputs": 496,
+  "sourceUnchanged": true,
+  "publicAssetsUnchanged": 244,
+  "changedApplicationFiles": [
+    "app/HomeExperience.tsx",
+    "app/components/BrandLogo.module.css",
+    "app/components/footer.tsx",
+    "app/dark-gold.css",
+    "app/home.module.css"
+  ],
+  "buildCheck": {
+    "exitCode": 0,
+    "routes": 65,
+    "typecheck": true
+  },
+  "focusedLint": {
+    "errors": 0,
+    "warnings": 0
+  },
+  "bootstrapCases": 8,
+  "publicBrowserChecks": 52,
+  "adminLayouts": 48,
+  "publicRoutes": 24,
+  "persistenceCases": 10,
+  "stateCases": 40,
+  "cartCases": 4,
+  "motionLogoPreferenceCases": 10,
+  "primaryControlCases": 12,
+  "postPromotionHttpCases": 50,
+  "playbackCases": 4,
+  "performanceRuns": 24,
+  "physicalPhoneTest": false,
+  "githubPush": false,
+  "deployment": false,
+  "productionMigration": false
+}
