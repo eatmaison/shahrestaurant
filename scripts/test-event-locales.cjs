@@ -48,7 +48,9 @@ const crumbs = load("app/components/EventBreadcrumbs.tsx", { "./LocaleLink": { d
 const cta = load("app/components/EventsContactCta.tsx", { "./LocaleLink": { default: Link }, "../providers": providers });
 const galleryPhotos = load("app/lib/eventGalleryPhotos.ts");
 const galleryFallbacks = load("app/lib/eventGalleryJpegFallbacks.ts");
+const editedPhotos = load("app/lib/editedRestaurantPhotos.ts");
 const galleryPhoto = load("app/components/EventGalleryPhoto.tsx", {
+  "../lib/editedRestaurantPhotos": editedPhotos,
   "../lib/eventGalleryPhotos": galleryPhotos,
   "../lib/eventGalleryJpegFallbacks": galleryFallbacks,
   "next/image": { default: ({ src, alt }) => React.createElement("img", { src, alt }) },
@@ -143,7 +145,7 @@ const stats = { publicRoutes: 0, slashRedirects: 0, caseRedirects: 0, eventMetad
       [segment ? "../../components/EventBreadcrumbs" : "../components/EventBreadcrumbs"]: crumbs,
       [segment ? "../../components/LocaleLink" : "../components/LocaleLink"]: { default: Link },
       [segment ? "../../providers" : "../providers"]: providers,
-      "../../lib/locale": locale, "../../lib/seo": site,
+      "../../lib/locale": locale, "../../lib/seo": site, "../../lib/editedRestaurantPhotos": editedPhotos,
       "../../components/EventsContactCta": cta, "../../components/EventGalleryPhoto": galleryPhoto, "../../lib/eventGalleryPhotos": galleryPhotos,
     });
     let Page = view.default;

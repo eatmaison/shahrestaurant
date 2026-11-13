@@ -1,0 +1,295 @@
+{
+  "reason": "User requested replacement and deletion of both old table photographs; the approved edited PNG masters replace them",
+  "files": [
+    {
+      "url": "/brand/shah-dining-v1.webp",
+      "bytes": 63426,
+      "sha256": "d289a0be63c2724e8a9859e9a4ae8c73bf491a72fde26db0254bf2a317777497"
+    },
+    {
+      "url": "/brand/shah-table-v1.webp",
+      "bytes": 76786,
+      "sha256": "591f0933839f9311243b142892b73dd95cb3f3683a38df3819bf006551a4ba33"
+    },
+    {
+      "url": "/photos/687A0402.jpeg",
+      "bytes": 2404514,
+      "sha256": "654ffdf491fecde247a3a9926165137c60cf73d73911eddf84a4aee2a0089341"
+    },
+    {
+      "url": "/photos/687A0412.jpeg",
+      "bytes": 2537772,
+      "sha256": "fc78116a1357a2829b18194e5d0df5f8dbf1bce18a0707ebd65a8b839a71b8bf"
+    },
+    {
+      "url": "/brand/restaurant-photos-v1/shah-dining-1400.webp",
+      "bytes": 63426,
+      "sha256": "d289a0be63c2724e8a9859e9a4ae8c73bf491a72fde26db0254bf2a317777497"
+    },
+    {
+      "url": "/brand/restaurant-photos-v1/shah-dining-160.avif",
+      "bytes": 4226,
+      "sha256": "7ddae75b497e3df839479d564f6ef557aba552e0dbef1050ccabaddd891ab09b"
+    },
+    {
+      "url": "/brand/restaurant-photos-v1/shah-dining-320.avif",
+      "bytes": 9188,
+      "sha256": "9b04774186c9c21d396eb48e94487e3a813e48a13902220f553c40aa176c1f2d"
+    },
+    {
+      "url": "/brand/restaurant-photos-v1/shah-dining-640.avif",
+      "bytes": 18123,
+      "sha256": "8b2f3b15cda0ae3841c81b68eef9974750d3a08efaa1f47879781f71751ef925"
+    },
+    {
+      "url": "/brand/restaurant-photos-v1/shah-dining-960.avif",
+      "bytes": 27157,
+      "sha256": "5b175718126469a69300a9c6f2ac2f720960baf2b45868a0f3453605adf2295a"
+    },
+    {
+      "url": "/brand/restaurant-photos-v1/shah-dining-1400.avif",
+      "bytes": 39069,
+      "sha256": "32f7eb567d6ebbb13558484fe409eb069dc86662e2e6a5d7bbdd6ee729f6bbe0"
+    },
+    {
+      "url": "/brand/restaurant-photos-v1/shah-dining-160.webp",
+      "bytes": 5606,
+      "sha256": "5b9d5b4aa16245e436c01b0aca34d0b00c7048f8bb06803af2ba2f8f9d8e949d"
+    },
+    {
+      "url": "/brand/restaurant-photos-v1/shah-dining-320.webp",
+      "bytes": 14186,
+      "sha256": "37eef1587a699952642ffe0d66ea09d91d2448990df5b680c7dcbd24393fce40"
+    },
+    {
+      "url": "/brand/restaurant-photos-v1/shah-dining-640.webp",
+      "bytes": 34268,
+      "sha256": "5e8e329bf98e75924ff81bd627a29105805969dc8331a0fb226945e921f7fd8d"
+    },
+    {
+      "url": "/brand/restaurant-photos-v1/shah-dining-960.webp",
+      "bytes": 54646,
+      "sha256": "f57759ad7b22621b4a1c0bb34ce85a20a1d6eb3f560ec9f242f84c7e10450c63"
+    },
+    {
+      "url": "/brand/restaurant-photos-v1/shah-table-1400.webp",
+      "bytes": 76786,
+      "sha256": "591f0933839f9311243b142892b73dd95cb3f3683a38df3819bf006551a4ba33"
+    },
+    {
+      "url": "/brand/restaurant-photos-v1/shah-table-160.avif",
+      "bytes": 4503,
+      "sha256": "0d3d6bb8af4257481fcbf1a6b92b96b4cafbca995f220f670ddbe30aedc4b66e"
+    },
+    {
+      "url": "/brand/restaurant-photos-v1/shah-table-320.avif",
+      "bytes": 10173,
+      "sha256": "5a99f1029c92c6563c8163893765e1034d01a1146eb9bead16d2a0b044327e46"
+    },
+    {
+      "url": "/brand/restaurant-photos-v1/shah-table-640.avif",
+      "bytes": 21261,
+      "sha256": "08e2501fe13a94ed0de6007f1bef039b5a4b0146dfa69ec35cbfe77245cfffb6"
+    },
+    {
+      "url": "/brand/restaurant-photos-v1/shah-table-960.avif",
+      "bytes": 32600,
+      "sha256": "bf4dceee9785820639b7f344b4cba0e34b591472db740772a29dc18038d63b79"
+    },
+    {
+      "url": "/brand/restaurant-photos-v1/shah-table-1400.avif",
+      "bytes": 50353,
+      "sha256": "123bd26393da9ca38486c46d3bde18b5ffcf37ee0bcb6a2a166585aea69d560d"
+    },
+    {
+      "url": "/brand/restaurant-photos-v1/shah-table-160.webp",
+      "bytes": 5866,
+      "sha256": "e58ded80a0e2b852d5eaf5ab1aebb05d4ecba2b7c5978063bb2b12ba9da30026"
+    },
+    {
+      "url": "/brand/restaurant-photos-v1/shah-table-320.webp",
+      "bytes": 15916,
+      "sha256": "8f899299613d12d39c3a9edfa71143d7863055ff5b2cd47f95209c426334fa0b"
+    },
+    {
+      "url": "/brand/restaurant-photos-v1/shah-table-640.webp",
+      "bytes": 38720,
+      "sha256": "c83c61ba4cc8d49bc9f3da73df86b01e75324a7049a663460d3870b15bbb39e1"
+    },
+    {
+      "url": "/brand/restaurant-photos-v1/shah-table-960.webp",
+      "bytes": 63570,
+      "sha256": "e2babcd6276c56936ee2907c087fce1baa946ec659c031d189835528144b4c36"
+    },
+    {
+      "url": "/brand/jpeg-fallback-v1/shah-dining-1400.jpg",
+      "bytes": 118561,
+      "sha256": "c73ab77bd86ba08926f77e0b8e9b83922873cb4982fb1f9f987b1c820cfa2fab"
+    },
+    {
+      "url": "/brand/jpeg-fallback-v1/shah-dining-160.jpg",
+      "bytes": 5623,
+      "sha256": "ae04fa2124bdf4d6b4a293710f807bb81dd9e022484ac22a1350fe265f9d89e2"
+    },
+    {
+      "url": "/brand/jpeg-fallback-v1/shah-dining-320.jpg",
+      "bytes": 15412,
+      "sha256": "9a58e8e27adfa30a02b1b364340ad94d268ece8b0319d4c7a8b8d469830a1f6d"
+    },
+    {
+      "url": "/brand/jpeg-fallback-v1/shah-dining-640.jpg",
+      "bytes": 40598,
+      "sha256": "93ee0537ccf758b2d041a1ee57b09b9924faf6f5e76d0d4d2b8d00a4e972fcf9"
+    },
+    {
+      "url": "/brand/jpeg-fallback-v1/shah-dining-960.jpg",
+      "bytes": 72045,
+      "sha256": "ef5f0d7e336b6ffa9482fa106783afb599355caefb1a129642c27375cda257e7"
+    },
+    {
+      "url": "/brand/jpeg-fallback-v1/shah-table-1400.jpg",
+      "bytes": 135558,
+      "sha256": "41896d920a50e5f76414fa8cd9313d0fa8adb95562d2a7facdb67f0d55092dc1"
+    },
+    {
+      "url": "/brand/jpeg-fallback-v1/shah-table-160.jpg",
+      "bytes": 5877,
+      "sha256": "0a35dda8d86a73be081119ce210c6e07472e457c81020350f2fc9f72ff9e423c"
+    },
+    {
+      "url": "/brand/jpeg-fallback-v1/shah-table-320.jpg",
+      "bytes": 16371,
+      "sha256": "24e5397977975a4ec7a4d571da6d01eaa20b074515bf6f9bb145eb4560f8a863"
+    },
+    {
+      "url": "/brand/jpeg-fallback-v1/shah-table-640.jpg",
+      "bytes": 44614,
+      "sha256": "393e4276fb9fd5cce1b33822e59c4532af0b46bf4772c8f688a8610a8bcdae8a"
+    },
+    {
+      "url": "/brand/jpeg-fallback-v1/shah-table-960.jpg",
+      "bytes": 80720,
+      "sha256": "bc60ba492c3141a3773bf6025d35594d5a1251284fc2537d54d71a76f7ce82f7"
+    },
+    {
+      "url": "/brand/event-gallery-v1/shah-gallery-687a0402-1280.webp",
+      "bytes": 77794,
+      "sha256": "3f653af69cd6290a62eb75905dfe8da1f94265a7d1d6563a5fe46c72707f9aec"
+    },
+    {
+      "url": "/brand/event-gallery-v1/shah-gallery-687a0402-320.avif",
+      "bytes": 9637,
+      "sha256": "cac73557b86700382df2c44054adad44f481b38af8ce9ebc9a86b5e126c10640"
+    },
+    {
+      "url": "/brand/event-gallery-v1/shah-gallery-687a0402-640.avif",
+      "bytes": 18596,
+      "sha256": "3e6830705445c85e9ff674b9416c090a75f1e6eea7d0c8c6b9a6b7fd7034062e"
+    },
+    {
+      "url": "/brand/event-gallery-v1/shah-gallery-687a0402-960.avif",
+      "bytes": 27539,
+      "sha256": "8e5b1671b650d9a70e83d59d4001a8734ac143714c50084a5daa7e5de076c142"
+    },
+    {
+      "url": "/brand/event-gallery-v1/shah-gallery-687a0402-1280.avif",
+      "bytes": 35637,
+      "sha256": "7f9bcecfffe7dc10e1a5936b89370b6f449e286043bb1b510a279dc0bb564120"
+    },
+    {
+      "url": "/brand/event-gallery-v1/shah-gallery-687a0402-320.webp",
+      "bytes": 14942,
+      "sha256": "25cc4fc06daa0be49bc28ce88e2e7b6e68e3597dbe0e4221f4629d6d98f3054a"
+    },
+    {
+      "url": "/brand/event-gallery-v1/shah-gallery-687a0402-640.webp",
+      "bytes": 34614,
+      "sha256": "4dfd532ab2f64cffbaa405761b75135aca6d611537a037c7f7f3c84d16cd1374"
+    },
+    {
+      "url": "/brand/event-gallery-v1/shah-gallery-687a0402-960.webp",
+      "bytes": 55496,
+      "sha256": "44e9d7676b3514883b6190c6a6be962d99dc489d68f7fe800fd199c71d4c1ece"
+    },
+    {
+      "url": "/brand/event-gallery-v1/shah-gallery-687a0412-1280.webp",
+      "bytes": 94218,
+      "sha256": "eada4dd1e0e36a4293c48fb3e39aef90fefaf38655082318bb627ec1956f8190"
+    },
+    {
+      "url": "/brand/event-gallery-v1/shah-gallery-687a0412-320.avif",
+      "bytes": 10810,
+      "sha256": "8e43a75808728908f3fce34c262d3f04a7b3a6955684751e164515220ec397f3"
+    },
+    {
+      "url": "/brand/event-gallery-v1/shah-gallery-687a0412-640.avif",
+      "bytes": 21817,
+      "sha256": "1f3690f20baeb17a6d974ff34cfb9d15c8483f1acf6472665e46c7c08ef43720"
+    },
+    {
+      "url": "/brand/event-gallery-v1/shah-gallery-687a0412-960.avif",
+      "bytes": 34267,
+      "sha256": "0de00323330c4c6e1af890498222c8091c850f0f7e3ec92d97797fba12e81f70"
+    },
+    {
+      "url": "/brand/event-gallery-v1/shah-gallery-687a0412-1280.avif",
+      "bytes": 45453,
+      "sha256": "c5911cbec5d541c8d71cc8e880b05ed42d85485e8561b600dc47e0f027b466c9"
+    },
+    {
+      "url": "/brand/event-gallery-v1/shah-gallery-687a0412-320.webp",
+      "bytes": 16164,
+      "sha256": "27cd5a37edae19e74890cb67e578c0bdb720c2e5a38f2372de137b60a5af10c5"
+    },
+    {
+      "url": "/brand/event-gallery-v1/shah-gallery-687a0412-640.webp",
+      "bytes": 39546,
+      "sha256": "0f4ef9783db2596c188ebe82d29a53819973de47fb54a4f23ec12e596f264ed3"
+    },
+    {
+      "url": "/brand/event-gallery-v1/shah-gallery-687a0412-960.webp",
+      "bytes": 68326,
+      "sha256": "8e0d0225e010aaedb10c4c987cc4d414b3bea5a35b18c0cc384300b4fd41f961"
+    },
+    {
+      "url": "/brand/jpeg-fallback-v1/shah-gallery-687a0402-1280.jpg",
+      "bytes": 106095,
+      "sha256": "55223c2c84ca7c43871fd3a4da3ebc259b4b386f9a95921fca81ae2659e0e78f"
+    },
+    {
+      "url": "/brand/jpeg-fallback-v1/shah-gallery-687a0402-320.jpg",
+      "bytes": 15867,
+      "sha256": "ee9410e860d8772392593dd0e406272eb3ef2dc2c3e1866ef888bfea071c3a86"
+    },
+    {
+      "url": "/brand/jpeg-fallback-v1/shah-gallery-687a0402-640.jpg",
+      "bytes": 41233,
+      "sha256": "f21c3617f250ff7a8bcfef4c21ccd4cd129fe6292c7288c8ecab692836f82801"
+    },
+    {
+      "url": "/brand/jpeg-fallback-v1/shah-gallery-687a0402-960.jpg",
+      "bytes": 71638,
+      "sha256": "6e992d2fcf85c2f5a32d0ad80ca16ed328da69c1db28ae86a7e214c34b793c74"
+    },
+    {
+      "url": "/brand/jpeg-fallback-v1/shah-gallery-687a0412-1280.jpg",
+      "bytes": 122401,
+      "sha256": "8cfe0e490be22b5e5127d2438d713a2d0a2107d580d86f379a01aab362a5f44c"
+    },
+    {
+      "url": "/brand/jpeg-fallback-v1/shah-gallery-687a0412-320.jpg",
+      "bytes": 16892,
+      "sha256": "de23955d968a81db1b108d33cd1397da080d7ceabe59aad98485cf42ead21d45"
+    },
+    {
+      "url": "/brand/jpeg-fallback-v1/shah-gallery-687a0412-640.jpg",
+      "bytes": 45500,
+      "sha256": "0f1668b712e2e1c3370cfc6533b0ba078c32447749afd07404de0910641672ac"
+    },
+    {
+      "url": "/brand/jpeg-fallback-v1/shah-gallery-687a0412-960.jpg",
+      "bytes": 81455,
+      "sha256": "57f87956f4888d5239feaf9523528d1415e0fcdf23596e420ca74466c1f9f0f6"
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "cases": [
+    {
+      "lang": "en",
+      "width": 1232,
+      "actions": [
+        {
+          "href": "/en/reservations",
+          "height": 57.890625,
+          "width": 172.4375,
+          "navigated": true
+        },
+        {
+          "href": "/en/menu",
+          "height": 57.890625,
+          "width": 169.9375,
+          "navigated": true
+        }
+      ],
+      "payment": "At the restaurant, you can always pay in cash or by card (PIN). Online checkout shows the available online payment methods.",
+      "overflow": 0
+    },
+    {
+      "lang": "en",
+      "width": 320,
+      "actions": [
+        {
+          "href": "/en/reservations",
+          "height": 56,
+          "width": 148.6875,
+          "navigated": true
+        },
+        {
+          "href": "/en/menu",
+          "height": 56,
+          "width": 146.359375,
+          "navigated": true
+        }
+      ],
+      "payment": "At the restaurant, you can always pay in cash or by card (PIN). Online checkout shows the available online payment methods.",
+      "overflow": 0
+    },
+    {
+      "lang": "nl",
+      "width": 390,
+      "actions": [
+        {
+          "href": "/reserveren",
+          "height": 56,
+          "width": 171.375,
+          "navigated": true
+        },
+        {
+          "href": "/menukaart",
+          "height": 56,
+          "width": 177.328125,
+          "navigated": true
+        }
+      ],
+      "payment": "In het restaurant kunt u altijd contant of met pin betalen. Bij online afrekenen ziet u welke online betaalmethoden beschikbaar zijn.",
+      "overflow": 0
+    }
+  ],
+  "build": "s6DGqOfaobcTNZMY4qQDK",
+  "origin": "http://127.0.0.1:4009",
+  "atUTC": "2026-11-13T00:39:35.593Z"
+}

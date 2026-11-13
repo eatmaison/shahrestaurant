@@ -1,0 +1,532 @@
+{
+  "build": "s6DGqOfaobcTNZMY4qQDK",
+  "cases": [
+    {
+      "lang": "en",
+      "width": 1232,
+      "home": {
+        "photoWidth": 80,
+        "imageSizes": "(max-width: 700px) 64px, 80px",
+        "leftPadding": "8px",
+        "aboveSearch": 14,
+        "belowSearch": 24,
+        "overflow": 0,
+        "eveningCards": 3,
+        "removedImage": false
+      },
+      "event": {
+        "figures": 9,
+        "editedSources": [
+          "http://127.0.0.1:4009/brand/edited-restaurant-photos-v1/dining-1400.jpg",
+          "http://127.0.0.1:4009/brand/edited-restaurant-photos-v1/kitchen-1400.jpg"
+        ],
+        "removedImage": false,
+        "schemaImages": [
+          "https://shahrestaurant.nl/brand/edited-restaurant-photos-v1/dining-1400.webp",
+          "https://shahrestaurant.nl/brand/event-gallery-v1/shah-gallery-687a0210-1280.webp",
+          "https://shahrestaurant.nl/brand/event-gallery-v1/shah-gallery-687a0211-1280.webp",
+          "https://shahrestaurant.nl/brand/event-gallery-v1/shah-gallery-687a0216-1280.webp",
+          "https://shahrestaurant.nl/brand/event-gallery-v1/shah-gallery-687a0321-1280.webp",
+          "https://shahrestaurant.nl/brand/event-gallery-v1/shah-gallery-687a0090-1280.webp",
+          "https://shahrestaurant.nl/brand/event-gallery-v1/shah-gallery-687a0336-1280.webp",
+          "https://shahrestaurant.nl/brand/event-gallery-v1/shah-gallery-687a0343-1280.webp",
+          "https://shahrestaurant.nl/brand/edited-restaurant-photos-v1/kitchen-1400.webp"
+        ],
+        "overflow": 0
+      },
+      "errors": []
+    },
+    {
+      "lang": "en",
+      "width": 1147,
+      "home": {
+        "photoWidth": 80,
+        "imageSizes": "(max-width: 700px) 64px, 80px",
+        "leftPadding": "8px",
+        "aboveSearch": 14,
+        "belowSearch": 24,
+        "overflow": 0,
+        "eveningCards": 3,
+        "removedImage": false,
+        "lightboxShowsEditedDining": true
+      },
+      "event": {
+        "figures": 9,
+        "editedSources": [
+          "http://127.0.0.1:4009/brand/edited-restaurant-photos-v1/dining-1400.jpg",
+          "http://127.0.0.1:4009/brand/edited-restaurant-photos-v1/kitchen-1400.jpg"
+        ],
+        "removedImage": false,
+        "schemaImages": [
+          "https://shahrestaurant.nl/brand/edited-restaurant-photos-v1/dining-1400.webp",
+          "https://shahrestaurant.nl/brand/event-gallery-v1/shah-gallery-687a0210-1280.webp",
+          "https://shahrestaurant.nl/brand/event-gallery-v1/shah-gallery-687a0211-1280.webp",
+          "https://shahrestaurant.nl/brand/event-gallery-v1/shah-gallery-687a0216-1280.webp",
+          "https://shahrestaurant.nl/brand/event-gallery-v1/shah-gallery-687a0321-1280.webp",
+          "https://shahrestaurant.nl/brand/event-gallery-v1/shah-gallery-687a0090-1280.webp",
+          "https://shahrestaurant.nl/brand/event-gallery-v1/shah-gallery-687a0336-1280.webp",
+          "https://shahrestaurant.nl/brand/event-gallery-v1/shah-gallery-687a0343-1280.webp",
+          "https://shahrestaurant.nl/brand/edited-restaurant-photos-v1/kitchen-1400.webp"
+        ],
+        "overflow": 0
+      },
+      "errors": []
+    },
+    {
+      "lang": "en",
+      "width": 390,
+      "home": {
+        "photoWidth": 64,
+        "imageSizes": "(max-width: 700px) 64px, 80px",
+        "leftPadding": "8px",
+        "aboveSearch": 14,
+        "belowSearch": 24,
+        "overflow": 0,
+        "eveningCards": 3,
+        "removedImage": false
+      },
+      "event": {
+        "figures": 9,
+        "editedSources": [
+          "http://127.0.0.1:4009/brand/edited-restaurant-photos-v1/dining-1400.jpg",
+          "http://127.0.0.1:4009/brand/edited-restaurant-photos-v1/kitchen-1400.jpg"
+        ],
+        "removedImage": false,
+        "schemaImages": [
+          "https://shahrestaurant.nl/brand/edited-restaurant-photos-v1/dining-1400.webp",
+          "https://shahrestaurant.nl/brand/event-gallery-v1/shah-gallery-687a0210-1280.webp",
+          "https://shahrestaurant.nl/brand/event-gallery-v1/shah-gallery-687a0211-1280.webp",
+          "https://shahrestaurant.nl/brand/event-gallery-v1/shah-gallery-687a0216-1280.webp",
+          "https://shahrestaurant.nl/brand/event-gallery-v1/shah-gallery-687a0321-1280.webp",
+          "https://shahrestaurant.nl/brand/event-gallery-v1/shah-gallery-687a0090-1280.webp",
+          "https://shahrestaurant.nl/brand/event-gallery-v1/shah-gallery-687a0336-1280.webp",
+          "https://shahrestaurant.nl/brand/event-gallery-v1/shah-gallery-687a0343-1280.webp",
+          "https://shahrestaurant.nl/brand/edited-restaurant-photos-v1/kitchen-1400.webp"
+        ],
+        "overflow": 0
+      },
+      "errors": []
+    },
+    {
+      "lang": "en",
+      "width": 320,
+      "home": {
+        "photoWidth": 0,
+        "imageSizes": "(max-width: 700px) 64px, 80px",
+        "leftPadding": "8px",
+        "aboveSearch": 14,
+        "belowSearch": 24,
+        "overflow": 0,
+        "eveningCards": 3,
+        "removedImage": false
+      },
+      "event": {
+        "figures": 9,
+        "editedSources": [
+          "http://127.0.0.1:4009/brand/edited-restaurant-photos-v1/dining-1400.jpg",
+          "http://127.0.0.1:4009/brand/edited-restaurant-photos-v1/kitchen-1400.jpg"
+        ],
+        "removedImage": false,
+        "schemaImages": [
+          "https://shahrestaurant.nl/brand/edited-restaurant-photos-v1/dining-1400.webp",
+          "https://shahrestaurant.nl/brand/event-gallery-v1/shah-gallery-687a0210-1280.webp",
+          "https://shahrestaurant.nl/brand/event-gallery-v1/shah-gallery-687a0211-1280.webp",
+          "https://shahrestaurant.nl/brand/event-gallery-v1/shah-gallery-687a0216-1280.webp",
+          "https://shahrestaurant.nl/brand/event-gallery-v1/shah-gallery-687a0321-1280.webp",
+          "https://shahrestaurant.nl/brand/event-gallery-v1/shah-gallery-687a0090-1280.webp",
+          "https://shahrestaurant.nl/brand/event-gallery-v1/shah-gallery-687a0336-1280.webp",
+          "https://shahrestaurant.nl/brand/event-gallery-v1/shah-gallery-687a0343-1280.webp",
+          "https://shahrestaurant.nl/brand/edited-restaurant-photos-v1/kitchen-1400.webp"
+        ],
+        "overflow": 0
+      },
+      "errors": []
+    },
+    {
+      "lang": "nl",
+      "width": 1147,
+      "home": {
+        "photoWidth": 80,
+        "imageSizes": "(max-width: 700px) 64px, 80px",
+        "leftPadding": "8px",
+        "aboveSearch": 14,
+        "belowSearch": 24,
+        "overflow": 0,
+        "eveningCards": 3,
+        "removedImage": false
+      },
+      "event": {
+        "figures": 9,
+        "editedSources": [
+          "http://127.0.0.1:4009/brand/edited-restaurant-photos-v1/dining-1400.jpg",
+          "http://127.0.0.1:4009/brand/edited-restaurant-photos-v1/kitchen-1400.jpg"
+        ],
+        "removedImage": false,
+        "schemaImages": [
+          "https://shahrestaurant.nl/brand/edited-restaurant-photos-v1/dining-1400.webp",
+          "https://shahrestaurant.nl/brand/event-gallery-v1/shah-gallery-687a0210-1280.webp",
+          "https://shahrestaurant.nl/brand/event-gallery-v1/shah-gallery-687a0211-1280.webp",
+          "https://shahrestaurant.nl/brand/event-gallery-v1/shah-gallery-687a0216-1280.webp",
+          "https://shahrestaurant.nl/brand/event-gallery-v1/shah-gallery-687a0321-1280.webp",
+          "https://shahrestaurant.nl/brand/event-gallery-v1/shah-gallery-687a0090-1280.webp",
+          "https://shahrestaurant.nl/brand/event-gallery-v1/shah-gallery-687a0336-1280.webp",
+          "https://shahrestaurant.nl/brand/event-gallery-v1/shah-gallery-687a0343-1280.webp",
+          "https://shahrestaurant.nl/brand/edited-restaurant-photos-v1/kitchen-1400.webp"
+        ],
+        "overflow": 0
+      },
+      "errors": []
+    }
+  ],
+  "withdrawnAssetChecks": [
+    {
+      "url": "/brand/shah-cocktail-v1.webp",
+      "status": 404
+    },
+    {
+      "url": "/photos/687A0260.jpeg",
+      "status": 404
+    },
+    {
+      "url": "/brand/restaurant-photos-v1/shah-cocktail-1200.webp",
+      "status": 404
+    },
+    {
+      "url": "/brand/restaurant-photos-v1/shah-cocktail-160.avif",
+      "status": 404
+    },
+    {
+      "url": "/brand/restaurant-photos-v1/shah-cocktail-320.avif",
+      "status": 404
+    },
+    {
+      "url": "/brand/restaurant-photos-v1/shah-cocktail-640.avif",
+      "status": 404
+    },
+    {
+      "url": "/brand/restaurant-photos-v1/shah-cocktail-960.avif",
+      "status": 404
+    },
+    {
+      "url": "/brand/restaurant-photos-v1/shah-cocktail-1200.avif",
+      "status": 404
+    },
+    {
+      "url": "/brand/restaurant-photos-v1/shah-cocktail-160.webp",
+      "status": 404
+    },
+    {
+      "url": "/brand/restaurant-photos-v1/shah-cocktail-320.webp",
+      "status": 404
+    },
+    {
+      "url": "/brand/restaurant-photos-v1/shah-cocktail-640.webp",
+      "status": 404
+    },
+    {
+      "url": "/brand/restaurant-photos-v1/shah-cocktail-960.webp",
+      "status": 404
+    },
+    {
+      "url": "/brand/jpeg-fallback-v1/shah-cocktail-1200.jpg",
+      "status": 404
+    },
+    {
+      "url": "/brand/jpeg-fallback-v1/shah-cocktail-160.jpg",
+      "status": 404
+    },
+    {
+      "url": "/brand/jpeg-fallback-v1/shah-cocktail-320.jpg",
+      "status": 404
+    },
+    {
+      "url": "/brand/jpeg-fallback-v1/shah-cocktail-640.jpg",
+      "status": 404
+    },
+    {
+      "url": "/brand/jpeg-fallback-v1/shah-cocktail-960.jpg",
+      "status": 404
+    },
+    {
+      "url": "/brand/event-gallery-v1/shah-gallery-687a0260-1280.webp",
+      "status": 404
+    },
+    {
+      "url": "/brand/event-gallery-v1/shah-gallery-687a0260-320.avif",
+      "status": 404
+    },
+    {
+      "url": "/brand/event-gallery-v1/shah-gallery-687a0260-640.avif",
+      "status": 404
+    },
+    {
+      "url": "/brand/event-gallery-v1/shah-gallery-687a0260-960.avif",
+      "status": 404
+    },
+    {
+      "url": "/brand/event-gallery-v1/shah-gallery-687a0260-1280.avif",
+      "status": 404
+    },
+    {
+      "url": "/brand/event-gallery-v1/shah-gallery-687a0260-320.webp",
+      "status": 404
+    },
+    {
+      "url": "/brand/event-gallery-v1/shah-gallery-687a0260-640.webp",
+      "status": 404
+    },
+    {
+      "url": "/brand/event-gallery-v1/shah-gallery-687a0260-960.webp",
+      "status": 404
+    },
+    {
+      "url": "/brand/jpeg-fallback-v1/shah-gallery-687a0260-1280.jpg",
+      "status": 404
+    },
+    {
+      "url": "/brand/jpeg-fallback-v1/shah-gallery-687a0260-320.jpg",
+      "status": 404
+    },
+    {
+      "url": "/brand/jpeg-fallback-v1/shah-gallery-687a0260-640.jpg",
+      "status": 404
+    },
+    {
+      "url": "/brand/jpeg-fallback-v1/shah-gallery-687a0260-960.jpg",
+      "status": 404
+    },
+    {
+      "url": "/brand/shah-dining-v1.webp",
+      "status": 404
+    },
+    {
+      "url": "/brand/shah-table-v1.webp",
+      "status": 404
+    },
+    {
+      "url": "/photos/687A0402.jpeg",
+      "status": 404
+    },
+    {
+      "url": "/photos/687A0412.jpeg",
+      "status": 404
+    },
+    {
+      "url": "/brand/restaurant-photos-v1/shah-dining-1400.webp",
+      "status": 404
+    },
+    {
+      "url": "/brand/restaurant-photos-v1/shah-dining-160.avif",
+      "status": 404
+    },
+    {
+      "url": "/brand/restaurant-photos-v1/shah-dining-320.avif",
+      "status": 404
+    },
+    {
+      "url": "/brand/restaurant-photos-v1/shah-dining-640.avif",
+      "status": 404
+    },
+    {
+      "url": "/brand/restaurant-photos-v1/shah-dining-960.avif",
+      "status": 404
+    },
+    {
+      "url": "/brand/restaurant-photos-v1/shah-dining-1400.avif",
+      "status": 404
+    },
+    {
+      "url": "/brand/restaurant-photos-v1/shah-dining-160.webp",
+      "status": 404
+    },
+    {
+      "url": "/brand/restaurant-photos-v1/shah-dining-320.webp",
+      "status": 404
+    },
+    {
+      "url": "/brand/restaurant-photos-v1/shah-dining-640.webp",
+      "status": 404
+    },
+    {
+      "url": "/brand/restaurant-photos-v1/shah-dining-960.webp",
+      "status": 404
+    },
+    {
+      "url": "/brand/restaurant-photos-v1/shah-table-1400.webp",
+      "status": 404
+    },
+    {
+      "url": "/brand/restaurant-photos-v1/shah-table-160.avif",
+      "status": 404
+    },
+    {
+      "url": "/brand/restaurant-photos-v1/shah-table-320.avif",
+      "status": 404
+    },
+    {
+      "url": "/brand/restaurant-photos-v1/shah-table-640.avif",
+      "status": 404
+    },
+    {
+      "url": "/brand/restaurant-photos-v1/shah-table-960.avif",
+      "status": 404
+    },
+    {
+      "url": "/brand/restaurant-photos-v1/shah-table-1400.avif",
+      "status": 404
+    },
+    {
+      "url": "/brand/restaurant-photos-v1/shah-table-160.webp",
+      "status": 404
+    },
+    {
+      "url": "/brand/restaurant-photos-v1/shah-table-320.webp",
+      "status": 404
+    },
+    {
+      "url": "/brand/restaurant-photos-v1/shah-table-640.webp",
+      "status": 404
+    },
+    {
+      "url": "/brand/restaurant-photos-v1/shah-table-960.webp",
+      "status": 404
+    },
+    {
+      "url": "/brand/jpeg-fallback-v1/shah-dining-1400.jpg",
+      "status": 404
+    },
+    {
+      "url": "/brand/jpeg-fallback-v1/shah-dining-160.jpg",
+      "status": 404
+    },
+    {
+      "url": "/brand/jpeg-fallback-v1/shah-dining-320.jpg",
+      "status": 404
+    },
+    {
+      "url": "/brand/jpeg-fallback-v1/shah-dining-640.jpg",
+      "status": 404
+    },
+    {
+      "url": "/brand/jpeg-fallback-v1/shah-dining-960.jpg",
+      "status": 404
+    },
+    {
+      "url": "/brand/jpeg-fallback-v1/shah-table-1400.jpg",
+      "status": 404
+    },
+    {
+      "url": "/brand/jpeg-fallback-v1/shah-table-160.jpg",
+      "status": 404
+    },
+    {
+      "url": "/brand/jpeg-fallback-v1/shah-table-320.jpg",
+      "status": 404
+    },
+    {
+      "url": "/brand/jpeg-fallback-v1/shah-table-640.jpg",
+      "status": 404
+    },
+    {
+      "url": "/brand/jpeg-fallback-v1/shah-table-960.jpg",
+      "status": 404
+    },
+    {
+      "url": "/brand/event-gallery-v1/shah-gallery-687a0402-1280.webp",
+      "status": 404
+    },
+    {
+      "url": "/brand/event-gallery-v1/shah-gallery-687a0402-320.avif",
+      "status": 404
+    },
+    {
+      "url": "/brand/event-gallery-v1/shah-gallery-687a0402-640.avif",
+      "status": 404
+    },
+    {
+      "url": "/brand/event-gallery-v1/shah-gallery-687a0402-960.avif",
+      "status": 404
+    },
+    {
+      "url": "/brand/event-gallery-v1/shah-gallery-687a0402-1280.avif",
+      "status": 404
+    },
+    {
+      "url": "/brand/event-gallery-v1/shah-gallery-687a0402-320.webp",
+      "status": 404
+    },
+    {
+      "url": "/brand/event-gallery-v1/shah-gallery-687a0402-640.webp",
+      "status": 404
+    },
+    {
+      "url": "/brand/event-gallery-v1/shah-gallery-687a0402-960.webp",
+      "status": 404
+    },
+    {
+      "url": "/brand/event-gallery-v1/shah-gallery-687a0412-1280.webp",
+      "status": 404
+    },
+    {
+      "url": "/brand/event-gallery-v1/shah-gallery-687a0412-320.avif",
+      "status": 404
+    },
+    {
+      "url": "/brand/event-gallery-v1/shah-gallery-687a0412-640.avif",
+      "status": 404
+    },
+    {
+      "url": "/brand/event-gallery-v1/shah-gallery-687a0412-960.avif",
+      "status": 404
+    },
+    {
+      "url": "/brand/event-gallery-v1/shah-gallery-687a0412-1280.avif",
+      "status": 404
+    },
+    {
+      "url": "/brand/event-gallery-v1/shah-gallery-687a0412-320.webp",
+      "status": 404
+    },
+    {
+      "url": "/brand/event-gallery-v1/shah-gallery-687a0412-640.webp",
+      "status": 404
+    },
+    {
+      "url": "/brand/event-gallery-v1/shah-gallery-687a0412-960.webp",
+      "status": 404
+    },
+    {
+      "url": "/brand/jpeg-fallback-v1/shah-gallery-687a0402-1280.jpg",
+      "status": 404
+    },
+    {
+      "url": "/brand/jpeg-fallback-v1/shah-gallery-687a0402-320.jpg",
+      "status": 404
+    },
+    {
+      "url": "/brand/jpeg-fallback-v1/shah-gallery-687a0402-640.jpg",
+      "status": 404
+    },
+    {
+      "url": "/brand/jpeg-fallback-v1/shah-gallery-687a0402-960.jpg",
+      "status": 404
+    },
+    {
+      "url": "/brand/jpeg-fallback-v1/shah-gallery-687a0412-1280.jpg",
+      "status": 404
+    },
+    {
+      "url": "/brand/jpeg-fallback-v1/shah-gallery-687a0412-320.jpg",
+      "status": 404
+    },
+    {
+      "url": "/brand/jpeg-fallback-v1/shah-gallery-687a0412-640.jpg",
+      "status": 404
+    },
+    {
+      "url": "/brand/jpeg-fallback-v1/shah-gallery-687a0412-960.jpg",
+      "status": 404
+    }
+  ],
+  "completedAtUTC": "2026-11-13T00:35:58.124Z"
+}

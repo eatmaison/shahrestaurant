@@ -23,16 +23,13 @@ const OPTIONS = {
   lqip: { width: 20, sigma: 0.6, quality: 28, effort: 6 },
 };
 const SOURCES = {
-  "/photos/687A0402.jpeg": "654ffdf491fecde247a3a9926165137c60cf73d73911eddf84a4aee2a0089341",
   "/photos/687A0210.jpeg": "09b371e2044d80aa9f9e26ca5f13b110173436b065d7c180a80c96bdb18e775f",
   "/photos/687A0211.jpeg": "b4ebc33ad018bfe44c1a8f2e6ad94c7f1a0547dcdba5f2300072719d665a0ceb",
-  "/photos/687A0260.jpeg": "f8d64e444f7d129016b756aed36c0193caedd8a482f17dc0b561e03299a6b825",
   "/photos/687A0216.jpeg": "71476b22ce3191ef58734eb7d1cf4559175b2d0268a0d34d04d599f1f4f257b1",
   "/photos/687A0321.jpeg": "e6aaf9f7ab13c33a832cafb36aca1ecf3249180906c248fa35e9550b4499dd69",
   "/photos/687A0090.jpeg": "f366528546ed464ca0ddc47ab1385ba9b7275ef87a7f847ec7a67372c906019d",
   "/photos/687A0336.jpeg": "f1fe8dba5da900050a223a0bc4f51edf13cfde300eb82de0302d18de7ef95306",
   "/photos/687A0343.jpeg": "799a7f46f906e07471da4c5545f387fea8d88d0c69ee24d1ffaa3de5351a1bab",
-  "/photos/687A0412.jpeg": "fc78116a1357a2829b18194e5d0df5f8dbf1bce18a0707ebd65a8b839a71b8bf",
 };
 const hash = bytes => crypto.createHash("sha256").update(bytes).digest("hex");
 const stripped = metadata => !metadata.exif && !metadata.xmp && !metadata.iptc && !metadata.icc && !metadata.hasProfile && !metadata.orientation;

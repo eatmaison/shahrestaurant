@@ -3,6 +3,7 @@
 import type { CSSProperties, ImgHTMLAttributes } from "react";
 import { getRestaurantPhoto } from "../lib/restaurantPhotos";
 import { getRestaurantPhotoJpegFallback } from "../lib/restaurantPhotoJpegFallbacks";
+import { getEditedRestaurantPhoto } from "../lib/editedRestaurantPhotos";
 
 type Props = Omit<ImgHTMLAttributes<HTMLImageElement>, "src" | "srcSet" | "sizes" | "alt" | "width" | "height"> & {
   src: string;
@@ -19,8 +20,9 @@ export function RestaurantPhoto({
   src, alt, sizes, fill = false, width, height, placeholderFit = "cover",
   loading = "lazy", decoding = "async", style, onLoad, ...attributes
 }: Props) {
-  const photo = getRestaurantPhoto(src);
-  const jpegFallback = getRestaurantPhotoJpegFallback(src);
+  const edited = getEditedRestaurantPhoto(src);
+  const photo = edited ?? getRestaurantPhoto(src);
+  const jpegFallback = edited?.jpeg ?? getRestaurantPhotoJpegFallback(src);
   const imageStyle: CSSProperties = {
     ...(fill ? { position: "absolute", inset: 0, width: "100%", height: "100%" } : {}),
     ...(photo ? { backgroundImage: `url("${photo.blurDataURL}")`, backgroundSize: placeholderFit, backgroundPosition: "center", backgroundRepeat: "no-repeat" } : {}),

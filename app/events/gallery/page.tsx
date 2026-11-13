@@ -3,6 +3,7 @@
 import { EventBreadcrumbs } from "../../components/EventBreadcrumbs";
 import { EventGalleryPhoto } from "../../components/EventGalleryPhoto";
 import { getEventGalleryPhoto } from "../../lib/eventGalleryPhotos";
+import { getEditedRestaurantPhoto } from "../../lib/editedRestaurantPhotos";
 import { useEffect, useState } from "react";
 import { FaCamera, FaImage } from "../../components/icons/fa6";
 import { useLang } from "../../providers";
@@ -17,6 +18,11 @@ import type { GalleryImage } from "../../lib/types";
  * critical for SEO and accessibility.
  */
 type GalleryItem = { src: string; alt: string; category: string; portrait?: boolean };
+
+function editedPhotoAspect(src: string) {
+  const photo = getEditedRestaurantPhoto(src);
+  return photo ? { aspectRatio: photo.width / photo.height } : undefined;
+}
 
 export default function GalleryPage() {
   const { lang } = useLang();
@@ -54,10 +60,9 @@ export default function GalleryPage() {
         portrait: g.portrait,
       };
     }),
-    { src: "/photos/687A0402.jpeg", alt: nl ? "Gedekte tafel met naan, gouden bestek en dipsauzen" : "Table setting with naan, golden cutlery and dipping sauces", category: cat.dishes },
+    { src: "/photos/687A0402.jpeg", alt: nl ? "Naan, curry, rijst en een drankje op tafel bij Shah Restaurant" : "Naan, curry, rice and a drink on the table at Shah Restaurant", category: cat.dishes },
     { src: "/photos/687A0210.jpeg", alt: nl ? "Modern restaurantinterieur met een warme sfeer" : "Modern restaurant interior with a warm atmosphere", category: cat.interior },
     { src: "/photos/687A0211.jpeg", alt: nl ? "Eetzaal van Shah Restaurant met tafels en gestoffeerde stoelen" : "Shah Restaurant dining room with tables and upholstered chairs", category: cat.interior },
-    { src: "/photos/687A0260.jpeg", alt: nl ? "Gelaagde signatuurcocktail met granaatappel" : "Layered signature cocktail with pomegranate", category: cat.bar, portrait: true },
     { src: "/photos/687A0216.jpeg", alt: nl ? "Tafels en hanglampen in de eetzaal van Shah Restaurant" : "Tables and pendant lights in the Shah Restaurant dining room", category: cat.interior },
     { src: "/photos/687A0321.jpeg", alt: nl ? "Eethoek met tafels, stoelen en zicht op de bar" : "Dining area with tables, chairs and a view of the bar", category: cat.interior },
     { src: "/photos/687A0090.jpeg", alt: nl ? "Zwevende wijnfles aan de bar van Shah Restaurant" : "Floating wine bottle at the bar of Shah Restaurant", category: cat.bar },
@@ -75,7 +80,7 @@ export default function GalleryPage() {
       : "Photos of Shah Restaurant Amsterdam: interior, dishes and events.",
     url: `https://shahrestaurant.nl${localePath("/events/gallery", lang)}`,
     image: items.map((item) => {
-      const src = getEventGalleryPhoto(item.src)?.src ?? item.src;
+      const src = getEditedRestaurantPhoto(item.src)?.src ?? getEventGalleryPhoto(item.src)?.src ?? item.src;
       return src.startsWith("http") ? src : `https://shahrestaurant.nl${src}`;
     }),
   };
@@ -114,6 +119,7 @@ export default function GalleryPage() {
               style={{ animationDelay: `${Math.min(i, 8) * 0.06}s`, animationName: i === 0 ? "none" : undefined }}
             >
               <div
+                style={editedPhotoAspect(item.src)}
                 className={`relative w-full overflow-hidden bg-gradient-to-br from-emerald-500/10 to-amber-500/10 ${
                   item.portrait ? "aspect-[3/4]" : "aspect-[4/3]"
                 }`}

@@ -17,6 +17,7 @@ import { SITE_ID } from "./lib/data";
 import type { Product } from "./lib/types";
 import type { homeContent } from "./lib/homeContent";
 type HomeCopy = (typeof homeContent)["nl"] | (typeof homeContent)["en"];
+type HomeQuestion = { question: string; answer: string; href?: string; action?: string };
 import { MenuSchema } from "./components/MenuSchema";
 import { ArrivalInfo } from "./components/ArrivalInfo";
 import { useRestaurantClock } from "./lib/useRestaurantClock";
@@ -24,6 +25,7 @@ const HomeDialog = dynamic(() => import("./components/HomeDialog").then(module =
 const RichDescription = dynamic(() => import("./components/RichDescription"), { ssr: false });
 import { useHomeTilt, useRichMedia } from "./components/HomeDepth";
 import { useHomeChoreography } from "./components/HomeChoreography";
+import { usePinnedGallery } from "./components/usePinnedGallery";
 import styles from "./home.module.css";
 
 const SIGNATURE_IDS = ["tdc-butter-chicken", "tdc-tandoori-mixed-grill", "tdc-tandoori-lamb-chops", "tdc-biryani-lamb", "tdc-tandoori-chicken-tikka", "tdc-samosa-chaat"];
@@ -31,7 +33,7 @@ const DIRECTIONS = "https://www.google.com/maps/dir/?api=1&destination=Klaprozen
 
 function DishPhoto({ product, large = false }: { product: Product; large?: boolean }) {
   return <span className={large ? styles.productPhoto : styles.dishPhoto}>{product.image
-    ? <ProductImage src={product.image} alt={large ? product.name : ""} sizes={large ? "(min-width: 700px) 540px, 90vw" : "72px"} />
+    ? <ProductImage src={product.image} alt={large ? product.name : ""} sizes={large ? "(min-width: 700px) 540px, 90vw" : "(max-width: 700px) 64px, 80px"} />
     : <FaUtensils aria-hidden="true" />}</span>;
 }
 
@@ -77,7 +79,6 @@ export default function HomeExperience({ copy }: { copy: HomeCopy }) {
     { src: "/brand/shah-dining-v1.webp", title: copy.table, alt: copy.tableAlt },
     { src: "/brand/shah-table-v1.webp", title: copy.tandoor, alt: copy.dishAlt },
     { src: "/brand/shah-bar-v1.webp", title: copy.bar, alt: copy.barAlt },
-    { src: "/brand/shah-cocktail-v1.webp", title: copy.drinks, alt: copy.drinksAlt },
     { src: "/brand/shah-atmosphere-v1.webp", title: copy.room, alt: copy.interiorAlt },
   ];
   const currentPhoto = photoIndex === null ? null : photos[photoIndex];
@@ -85,6 +86,7 @@ export default function HomeExperience({ copy }: { copy: HomeCopy }) {
   const allergens = selectedProduct && ((lang === "nl" && selectedProduct.allergensNl?.length ? selectedProduct.allergensNl : selectedProduct.allergens) || []);
 
   useHomeChoreography(rootRef, heroScrollRef, richMedia, setActiveSection);
+  usePinnedGallery(rootRef, richMedia);
 
   function resetMenu() {
     setSearch("");
@@ -163,15 +165,19 @@ export default function HomeExperience({ copy }: { copy: HomeCopy }) {
         </div>
       </section>
 
-      <section id="atmosphere" data-section data-scene="gallery" className={styles.gallerySection} aria-labelledby="gallery-title">
+      <section id="atmosphere" data-section data-scene="gallery" data-pinned-gallery className={styles.gallerySection} aria-labelledby="gallery-title">
+        <div className={styles.galleryStage} data-gallery-stage>
         <div className={styles.sectionHeading} data-reveal="visible"><div><p className={styles.eyebrow}>02 / {copy.atmosphere}</p><h2 id="gallery-title">{copy.galleryTitle}</h2></div><p>{copy.galleryText}</p></div>
-        <div className={styles.galleryGrid}>
-          {photos.slice(0, 3).map((photo, index) => <figure key={photo.src} className={styles.galleryItem} data-reveal="visible" data-reveal-kind="frame" data-reveal-delay={index * 110}><button type="button" data-tilt onClick={() => setPhotoIndex(index)} aria-label={`${copy.enlarge}: ${photo.title}`} title={`${copy.enlarge}: ${photo.title}`}><RestaurantPhoto data-parallax src={photo.src} alt={photo.alt} fill sizes={index === 0 ? "(min-width: 800px) 50vw, 100vw" : "(min-width: 800px) 25vw, 50vw"} /><span className={styles.galleryPhotoNumber}>0{index + 1}</span><span className={styles.expandIcon}><FaExpand aria-hidden="true" /></span></button><figcaption><span>{photo.title}</span><span>0{index + 1}</span></figcaption></figure>)}
+        <div className={styles.galleryWindow}>
+        <div className={styles.galleryGrid} data-gallery-grid>
+          {photos.slice(0, 3).map((photo, index) => <figure key={photo.src} className={styles.galleryItem} data-gallery-card><button type="button" data-tilt onClick={() => setPhotoIndex(index)} aria-label={`${copy.enlarge}: ${photo.title}`} title={`${copy.enlarge}: ${photo.title}`}><RestaurantPhoto data-parallax src={photo.src} alt={photo.alt} fill sizes={index === 0 ? "(min-width: 800px) 50vw, 100vw" : "(min-width: 800px) 25vw, 50vw"} /><span className={styles.galleryPhotoNumber}>0{index + 1}</span><span className={styles.expandIcon}><FaExpand aria-hidden="true" /></span></button><figcaption><span>{photo.title}</span><span>0{index + 1}</span></figcaption></figure>)}
         </div>
-        <div className={styles.galleryFooter}><Link href="/events/gallery" className={styles.textLink}>{copy.fullGallery}<FaArrowRight aria-hidden="true" /></Link></div>
+        </div>
+        <div className={styles.galleryFooter} data-gallery-footer><a href="#story" data-gallery-continue className={`${styles.textLink} ${styles.galleryContinue}`} aria-label={lang === "nl" ? "Verder naar ons verhaal" : "Continue to our story"}>{lang === "nl" ? "Verder" : "Continue"}<FaArrowDown aria-hidden="true" /></a><span className={styles.galleryProgress} role="status" aria-label={lang === "nl" ? "Galerijfoto" : "Gallery photo"}><span data-gallery-counter>01</span><span aria-hidden="true"> / 03</span></span><Link href="/events/gallery" className={styles.textLink}>{copy.fullGallery}<FaArrowRight aria-hidden="true" /></Link></div>
+        </div>
       </section>
 
-      <section id="story" data-section data-scene="story" className={styles.storySection} aria-labelledby="story-title">
+      <section id="story" tabIndex={-1} data-section data-scene="story" className={styles.storySection} aria-labelledby="story-title">
         <div className={styles.storyInner}>
           <div className={styles.storyContent} data-reveal="visible" data-reveal-kind="left"><p className={styles.eyebrow}>03 / {copy.story}</p><h2 id="story-title">{t.home.storyTitle}</h2><p>{t.home.storyText}</p><blockquote>{t.home.storyQuote}</blockquote><Link href="/events/about" className={styles.textLink}>{copy.storyLink}<FaArrowRight aria-hidden="true" /></Link></div>
           <figure className={styles.storyPhoto} data-reveal="visible" data-reveal-kind="right"><div data-tilt><RestaurantPhoto data-parallax src="/brand/shah-room-v1.webp" alt={copy.interiorAlt} fill sizes="(min-width: 900px) 45vw, 100vw" /><BrandLogo variant="wordmark" tone="gold" className={styles.storyPhotoMark} alt="" /></div><figcaption><span>{copy.storyAside}</span><FaFireBurner aria-hidden="true" /></figcaption></figure>
@@ -183,7 +189,7 @@ export default function HomeExperience({ copy }: { copy: HomeCopy }) {
         <div className={styles.eveningGrid}>{[
           { href: "/reservations", title: copy.dine, text: copy.dineText, action: copy.reserve, image: photos[0], Icon: FaCalendarCheck },
           { href: "/order", title: copy.takeaway, text: copy.takeawayText, action: copy.order, image: photos[1], Icon: FaBagShopping },
-          { href: "/events", title: copy.gather, text: copy.gatherText, action: copy.exploreEvents, image: photos[4], Icon: FaUsers },
+          { href: "/events", title: copy.gather, text: copy.gatherText, action: copy.exploreEvents, image: photos[photos.length - 1], Icon: FaUsers },
         ].map(({ href, title, text, action, image, Icon }, index) => <article key={href} className={styles.eveningItem} data-evening-card data-reveal="visible"><Link href={href} className={styles.eveningPhoto} data-tilt aria-label={action}><RestaurantPhoto data-parallax src={image.src} alt={image.alt} fill sizes={eveningPhotoSizes} /><span><Icon aria-hidden="true" /></span><span className={styles.eveningNumber}>0{index + 1}</span></Link><h3>{title}</h3><p>{text}</p><Link href={href} className={styles.textLink}>{action}<FaArrowRight aria-hidden="true" /></Link></article>)}</div>
       </section>
 
@@ -199,7 +205,7 @@ export default function HomeExperience({ copy }: { copy: HomeCopy }) {
         <div className={styles.visitDetails}><div className={styles.hoursHeading}><h3><FaClock aria-hidden="true" />{copy.hours}</h3>{diningOpen !== null && <span className={styles.openStatus} data-open={diningOpen}>{diningOpen ? (lang === "nl" ? "Open volgens openingstijden" : "Open during scheduled hours") : (lang === "nl" ? "Gesloten volgens openingstijden" : "Closed during scheduled hours")}</span>}</div><dl className={styles.hours}><div><dt>{t.hours.tueSun}</dt><dd>15:00–22:00</dd></div><div><dt>{t.hours.monday}</dt><dd>{t.hours.closed}</dd></div></dl><ArrivalInfo /><h3>{copy.contact}</h3><a href="tel:+31203412995" className={styles.contactLink}><FaPhone aria-hidden="true" />+31 20 341 2995</a><a href="mailto:info@shahrestaurant.nl" className={styles.contactLink}><FaEnvelope aria-hidden="true" />info@shahrestaurant.nl</a><Link href="/reservations" className={styles.primaryButton}><FaCalendarCheck aria-hidden="true" />{copy.reserve}<FaArrowRight aria-hidden="true" /></Link></div>
       </section>
 
-      <section className={`${styles.section} ${styles.faq}`} data-scene="faq" aria-labelledby="faq-title"><div data-reveal="visible"><p className={styles.eyebrow}>{copy.faq}</p><h2 id="faq-title">{copy.faqTitle}</h2><a className={styles.faqContact} href="mailto:info@shahrestaurant.nl"><FaEnvelope aria-hidden="true" />{copy.email}<FaArrowRight aria-hidden="true" /></a></div><div className={styles.faqList}>{copy.questions.map((item, index) => <details key={item.question} name="visit-questions"><summary><span className={styles.faqNumber}>0{index + 1}</span><span>{item.question}</span><FaChevronDown aria-hidden="true" /></summary><p>{item.answer}</p></details>)}</div></section>
+      <section className={`${styles.section} ${styles.faq}`} data-scene="faq" aria-labelledby="faq-title"><div data-reveal="visible"><p className={styles.eyebrow}>{copy.faq}</p><h2 id="faq-title">{copy.faqTitle}</h2><a className={styles.faqContact} href="mailto:info@shahrestaurant.nl"><FaEnvelope aria-hidden="true" />{copy.email}<FaArrowRight aria-hidden="true" /></a></div><div className={styles.faqList}>{copy.questions.map((item: HomeQuestion, index) => <details key={item.question} name="visit-questions"><summary><span className={styles.faqNumber}>0{index + 1}</span><span>{item.question}</span><FaChevronDown aria-hidden="true" /></summary><p>{item.answer}{item.href && item.action && <span className={styles.faqActions}><Link href={item.href} className={styles.primaryButton}>{item.action}<FaArrowRight aria-hidden="true" /></Link></span>}</p></details>)}</div></section>
 
       <DrinkPartners site="shah" />
 

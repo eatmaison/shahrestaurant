@@ -4,6 +4,7 @@ import Image from "next/image";
 import type { CSSProperties, ImgHTMLAttributes } from "react";
 import { getEventGalleryPhoto } from "../lib/eventGalleryPhotos";
 import { getEventGalleryJpegFallback } from "../lib/eventGalleryJpegFallbacks";
+import { getEditedRestaurantPhoto } from "../lib/editedRestaurantPhotos";
 
 type Props = Omit<ImgHTMLAttributes<HTMLImageElement>, "src" | "srcSet" | "sizes" | "alt" | "width" | "height"> & {
   src: string;
@@ -23,8 +24,9 @@ export function EventGalleryPhoto({
   placeholderFit = "cover", loading = "lazy", decoding = "async", style, onLoad,
   fetchPriority, ...attributes
 }: Props) {
-  const photo = getEventGalleryPhoto(src);
-  const jpegFallback = getEventGalleryJpegFallback(src);
+  const edited = getEditedRestaurantPhoto(src);
+  const photo = edited ?? getEventGalleryPhoto(src);
+  const jpegFallback = edited?.jpeg ?? getEventGalleryJpegFallback(src);
   const eager = priority || preload || loading === "eager";
   if (!photo) {
     return <Image {...attributes} src={src} alt={alt} sizes={sizes} fill={fill}

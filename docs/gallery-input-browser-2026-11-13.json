@@ -1,0 +1,7 @@
+{
+  "minimalControlSyntheticTouch": 0,
+  "minimalControlWheel": 350,
+  "galleryBeforeWheel": 2927,
+  "galleryAfterWheel": 3277,
+  "touchSimulationLimitation": true
+}

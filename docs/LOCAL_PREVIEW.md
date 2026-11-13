@@ -1,8 +1,10 @@
 # Current local preview - 13 November 2026
 
-The homepage dish rows now have an 8 px left inset and an 8 px arrow inset, with space reserved between the price and arrow. The updated read-only preview remains http://localhost:3398/en (Dutch: `/`). Build `-T_rvpAlEyxNegUz9zyMe`, `.next-review-shah-home-padding-20261113`, source `a5bcac46051fd91a3b1b8c027e7a92890d53bb3626180501dc105ff9e58ef44a`; build and TypeScript passed with all 551 source inputs unchanged. Browser checks at 1147, 390 and 320 px verified the padding, 6 px price/arrow separation and no document overflow.
+Open http://localhost:3398/en (English) or http://localhost:3398/ (Dutch). The approved food-focused photographs, wider dish thumbnails, tighter menu spacing, FAQ links/payment wording and sequential pinned atmosphere gallery are included. The same read-only build is available at http://192.168.0.122:3618/ on the local network.
 
-Start or verify this followup with `node "$env:TEMP\shah-preview-20261111\start-shah-home-padding-main.cjs"`. It retains the read-only catalog and existing functionality. This followup has not been pushed to GitHub or deployed publicly.
+Build `s6DGqOfaobcTNZMY4qQDK`, `.next-review-shah-pinned-gallery-v3-20261113`, frozen source `b3cd7a0df1bbd2e02b6add29a73a52fd0b4b9dde1209b73a70c6f157ccaff176` (490 inputs). Build, TypeScript, focused lint, 50 HTTP checks and desktop/mobile browser cases passed. [Changes, evidence and limitations](HOME-PHOTO-GALLERY-VERIFICATION.md).
+
+Start or verify the frozen preview in PowerShell: `node "$env:TEMP\shah-preview-20261111\start-shah-pinned-gallery-v3-main.cjs"`. It verifies the build/public/config/fixture and helper identity; it never stops an unknown listener. Ports3397/3398 must be free for a fresh start. The app and proxy remain loopback-only. This followup has not been pushed or deployed publicly.
 
 ## Historical workspace baseline - 12 November 2026
 

@@ -101,7 +101,7 @@ export default function PartyExperience() {
     </section>
 
     <section className={styles.interlude} data-reveal>
-      <Image src="/photos/687A0260.jpeg" alt="A freshly prepared cocktail at Shah Restaurant" fill sizes="100vw" />
+      <Image src="/brand/shah-bar-v1.webp" alt="The bar at Shah Restaurant" fill sizes="100vw" />
       <div><p className={styles.eyebrow}>THE FIRST ROUND IS OURS</p><h2>Good taste.<br /><em>Great company.</em></h2><p>One cocktail per guest, included in every ticket.</p></div>
     </section>
 

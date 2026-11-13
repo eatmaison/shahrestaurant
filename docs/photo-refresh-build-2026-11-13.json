@@ -1,0 +1,21 @@
+{
+  "dist": ".next-review-shah-pinned-gallery-v3-20261113",
+  "startedAtUTC": "2026-11-13T00:33:26.652Z",
+  "before": {
+    "atUTC": "2026-11-13T00:33:27.173Z",
+    "sourceSha256": "b3cd7a0df1bbd2e02b6add29a73a52fd0b4b9dde1209b73a70c6f157ccaff176",
+    "inputs": 490,
+    "unchanged": true
+  },
+  "productionPublishing": false,
+  "liveDatabaseAccess": false,
+  "exitCode": 0,
+  "finishedAtUTC": "2026-11-13T00:34:27.424Z",
+  "after": {
+    "atUTC": "2026-11-13T00:34:27.933Z",
+    "sourceSha256": "b3cd7a0df1bbd2e02b6add29a73a52fd0b4b9dde1209b73a70c6f157ccaff176",
+    "inputs": 490,
+    "unchanged": true
+  },
+  "buildId": "s6DGqOfaobcTNZMY4qQDK"
+}

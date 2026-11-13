@@ -1,0 +1,1349 @@
+{
+  "build": "s6DGqOfaobcTNZMY4qQDK",
+  "cases": [
+    {
+      "lang": "en",
+      "width": 1232,
+      "height": 932,
+      "reduced": false,
+      "geometry": {
+        "pinned": "true",
+        "top": 2615.484375,
+        "stageTop": 95.8281,
+        "distance": 1771,
+        "stageHeight": 836,
+        "footerBottom": 751.796875
+      },
+      "samples": [
+        {
+          "progress": 0,
+          "stageTop": 95.828125,
+          "counter": "01",
+          "cards": [
+            {
+              "opacity": 0,
+              "x": 1224,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 0,
+              "x": 645,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 0,
+              "x": 343,
+              "inert": true,
+              "ariaHidden": "true"
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "progress": 0.15,
+          "stageTop": 95.828125,
+          "counter": "01",
+          "cards": [
+            {
+              "opacity": 0.5526,
+              "x": 547.67,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            {
+              "opacity": 0,
+              "x": 645,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 0,
+              "x": 343,
+              "inert": true,
+              "ariaHidden": "true"
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "progress": 0.3,
+          "stageTop": 95.828125,
+          "counter": "01",
+          "cards": [
+            {
+              "opacity": 1,
+              "x": 0,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            {
+              "opacity": 0,
+              "x": 645,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 0,
+              "x": 343,
+              "inert": true,
+              "ariaHidden": "true"
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "progress": 0.48,
+          "stageTop": 95.828125,
+          "counter": "02",
+          "cards": [
+            {
+              "opacity": 1,
+              "x": 0,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            {
+              "opacity": 0.5365,
+              "x": 298.97,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            {
+              "opacity": 0,
+              "x": 343,
+              "inert": true,
+              "ariaHidden": "true"
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "progress": 0.63,
+          "stageTop": 95.828125,
+          "counter": "02",
+          "cards": [
+            {
+              "opacity": 1,
+              "x": 0,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            {
+              "opacity": 1,
+              "x": 0,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            {
+              "opacity": 0,
+              "x": 343,
+              "inert": true,
+              "ariaHidden": "true"
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "progress": 0.82,
+          "stageTop": 95.828125,
+          "counter": "03",
+          "cards": [
+            {
+              "opacity": 1,
+              "x": 0,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            {
+              "opacity": 1,
+              "x": 0,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            {
+              "opacity": 0.5716,
+              "x": 146.95,
+              "inert": false,
+              "ariaHidden": "false"
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "progress": 1,
+          "stageTop": 95.484375,
+          "counter": "03",
+          "cards": [
+            {
+              "opacity": 1,
+              "x": 0,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            {
+              "opacity": 1,
+              "x": 0,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            {
+              "opacity": 1,
+              "x": 0,
+              "inert": false,
+              "ariaHidden": "false"
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "progress": 1.12,
+          "stageTop": -116.515625,
+          "counter": "03",
+          "cards": [
+            {
+              "opacity": 1,
+              "x": 0,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            {
+              "opacity": 1,
+              "x": 0,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            {
+              "opacity": 1,
+              "x": 0,
+              "inert": false,
+              "ariaHidden": "false"
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "progress": 0.48,
+          "stageTop": 95.828125,
+          "counter": "02",
+          "cards": [
+            {
+              "opacity": 1,
+              "x": 0,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            {
+              "opacity": 0.5365,
+              "x": 298.97,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            {
+              "opacity": 0,
+              "x": 343,
+              "inert": true,
+              "ariaHidden": "true"
+            }
+          ],
+          "overflow": 0
+        }
+      ],
+      "galleryLinkUnobstructed": true,
+      "skip": {
+        "top": 292.65625,
+        "focus": true
+      },
+      "liveReducedMotionCleanup": true,
+      "errors": []
+    },
+    {
+      "lang": "en",
+      "width": 1147,
+      "height": 932,
+      "reduced": false,
+      "geometry": {
+        "pinned": "true",
+        "top": 2579.484375,
+        "stageTop": 95.8281,
+        "distance": 1771,
+        "stageHeight": 836,
+        "footerBottom": 733
+      },
+      "samples": [
+        {
+          "progress": 0,
+          "stageTop": 95.828125,
+          "counter": "01",
+          "cards": [
+            {
+              "opacity": 0,
+              "x": 1139,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 0,
+              "x": 602,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 0,
+              "x": 322,
+              "inert": true,
+              "ariaHidden": "true"
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "progress": 0.15,
+          "stageTop": 95.828125,
+          "counter": "01",
+          "cards": [
+            {
+              "opacity": 0.5526,
+              "x": 509.64,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            {
+              "opacity": 0,
+              "x": 602,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 0,
+              "x": 322,
+              "inert": true,
+              "ariaHidden": "true"
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "progress": 0.3,
+          "stageTop": 95.828125,
+          "counter": "01",
+          "cards": [
+            {
+              "opacity": 1,
+              "x": 0,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            {
+              "opacity": 0,
+              "x": 602,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 0,
+              "x": 322,
+              "inert": true,
+              "ariaHidden": "true"
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "progress": 0.48,
+          "stageTop": 95.828125,
+          "counter": "02",
+          "cards": [
+            {
+              "opacity": 1,
+              "x": 0,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            {
+              "opacity": 0.5365,
+              "x": 279.04,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            {
+              "opacity": 0,
+              "x": 322,
+              "inert": true,
+              "ariaHidden": "true"
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "progress": 0.63,
+          "stageTop": 95.828125,
+          "counter": "02",
+          "cards": [
+            {
+              "opacity": 1,
+              "x": 0,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            {
+              "opacity": 1,
+              "x": 0,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            {
+              "opacity": 0,
+              "x": 322,
+              "inert": true,
+              "ariaHidden": "true"
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "progress": 0.82,
+          "stageTop": 95.828125,
+          "counter": "03",
+          "cards": [
+            {
+              "opacity": 1,
+              "x": 0,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            {
+              "opacity": 1,
+              "x": 0,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            {
+              "opacity": 0.5716,
+              "x": 137.95,
+              "inert": false,
+              "ariaHidden": "false"
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "progress": 1,
+          "stageTop": 95.484375,
+          "counter": "03",
+          "cards": [
+            {
+              "opacity": 1,
+              "x": 0,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            {
+              "opacity": 1,
+              "x": 0,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            {
+              "opacity": 1,
+              "x": 0,
+              "inert": false,
+              "ariaHidden": "false"
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "progress": 1.12,
+          "stageTop": -116.515625,
+          "counter": "03",
+          "cards": [
+            {
+              "opacity": 1,
+              "x": 0,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            {
+              "opacity": 1,
+              "x": 0,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            {
+              "opacity": 1,
+              "x": 0,
+              "inert": false,
+              "ariaHidden": "false"
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "progress": 0.48,
+          "stageTop": 95.828125,
+          "counter": "02",
+          "cards": [
+            {
+              "opacity": 1,
+              "x": 0,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            {
+              "opacity": 0.5365,
+              "x": 279.04,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            {
+              "opacity": 0,
+              "x": 322,
+              "inert": true,
+              "ariaHidden": "true"
+            }
+          ],
+          "overflow": 0
+        }
+      ],
+      "galleryLinkUnobstructed": true,
+      "skip": {
+        "top": 292.65625,
+        "focus": true
+      },
+      "liveReducedMotionCleanup": true,
+      "errors": []
+    },
+    {
+      "lang": "en",
+      "width": 320,
+      "height": 800,
+      "reduced": false,
+      "geometry": {
+        "pinned": "true",
+        "top": 3147.359375,
+        "stageTop": 89,
+        "distance": 1520,
+        "stageHeight": 711,
+        "footerBottom": 620.765625
+      },
+      "samples": [
+        {
+          "progress": 0,
+          "stageTop": 89.359375,
+          "counter": "01",
+          "cards": [
+            {
+              "opacity": 0,
+              "x": 322,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 0,
+              "x": 322,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 0,
+              "x": 322,
+              "inert": true,
+              "ariaHidden": "true"
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "progress": 0.15,
+          "stageTop": 89,
+          "counter": "01",
+          "cards": [
+            {
+              "opacity": 0.5522,
+              "x": 144.19,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            {
+              "opacity": 0,
+              "x": 322,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 0,
+              "x": 322,
+              "inert": true,
+              "ariaHidden": "true"
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "progress": 0.3,
+          "stageTop": 89,
+          "counter": "01",
+          "cards": [
+            {
+              "opacity": 1,
+              "x": 0,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            {
+              "opacity": 0,
+              "x": 322,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 0,
+              "x": 322,
+              "inert": true,
+              "ariaHidden": "true"
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "progress": 0.48,
+          "stageTop": 89,
+          "counter": "02",
+          "cards": [
+            {
+              "opacity": 0.4642,
+              "x": 0,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 0.5358,
+              "x": 149.46,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            {
+              "opacity": 0,
+              "x": 322,
+              "inert": true,
+              "ariaHidden": "true"
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "progress": 0.63,
+          "stageTop": 89,
+          "counter": "02",
+          "cards": [
+            {
+              "opacity": 0,
+              "x": 0,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 1,
+              "x": 0,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            {
+              "opacity": 0,
+              "x": 322,
+              "inert": true,
+              "ariaHidden": "true"
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "progress": 0.82,
+          "stageTop": 89,
+          "counter": "03",
+          "cards": [
+            {
+              "opacity": 0,
+              "x": 0,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 0.4279,
+              "x": 0,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 0.5721,
+              "x": 137.8,
+              "inert": false,
+              "ariaHidden": "false"
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "progress": 1,
+          "stageTop": 89,
+          "counter": "03",
+          "cards": [
+            {
+              "opacity": 0,
+              "x": 0,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 0,
+              "x": 0,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 1,
+              "x": 0,
+              "inert": false,
+              "ariaHidden": "false"
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "progress": 1.12,
+          "stageTop": -93.640625,
+          "counter": "03",
+          "cards": [
+            {
+              "opacity": 0,
+              "x": 0,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 0,
+              "x": 0,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 1,
+              "x": 0,
+              "inert": false,
+              "ariaHidden": "false"
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "progress": 0.48,
+          "stageTop": 89,
+          "counter": "02",
+          "cards": [
+            {
+              "opacity": 0.4642,
+              "x": 0,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 0.5358,
+              "x": 149.46,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            {
+              "opacity": 0,
+              "x": 322,
+              "inert": true,
+              "ariaHidden": "true"
+            }
+          ],
+          "overflow": 0
+        }
+      ],
+      "galleryLinkUnobstructed": true,
+      "skip": {
+        "top": 279.359375,
+        "focus": true
+      },
+      "liveReducedMotionCleanup": true,
+      "errors": []
+    },
+    {
+      "lang": "en",
+      "width": 390,
+      "height": 844,
+      "reduced": false,
+      "geometry": {
+        "pinned": "true",
+        "top": 3016.71875,
+        "stageTop": 89,
+        "distance": 1604,
+        "stageHeight": 755,
+        "footerBottom": 671.921875
+      },
+      "samples": [
+        {
+          "progress": 0,
+          "stageTop": 89,
+          "counter": "01",
+          "cards": [
+            {
+              "opacity": 0,
+              "x": 392,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 0,
+              "x": 392,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 0,
+              "x": 392,
+              "inert": true,
+              "ariaHidden": "true"
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "progress": 0.15,
+          "stageTop": 89,
+          "counter": "01",
+          "cards": [
+            {
+              "opacity": 0.5524,
+              "x": 175.45,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            {
+              "opacity": 0,
+              "x": 392,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 0,
+              "x": 392,
+              "inert": true,
+              "ariaHidden": "true"
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "progress": 0.3,
+          "stageTop": 89,
+          "counter": "01",
+          "cards": [
+            {
+              "opacity": 1,
+              "x": 0,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            {
+              "opacity": 0,
+              "x": 392,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 0,
+              "x": 392,
+              "inert": true,
+              "ariaHidden": "true"
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "progress": 0.48,
+          "stageTop": 89,
+          "counter": "02",
+          "cards": [
+            {
+              "opacity": 0.4631,
+              "x": 0,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 0.5369,
+              "x": 181.54,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            {
+              "opacity": 0,
+              "x": 392,
+              "inert": true,
+              "ariaHidden": "true"
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "progress": 0.63,
+          "stageTop": 89,
+          "counter": "02",
+          "cards": [
+            {
+              "opacity": 0,
+              "x": 0,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 1,
+              "x": 0,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            {
+              "opacity": 0,
+              "x": 392,
+              "inert": true,
+              "ariaHidden": "true"
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "progress": 0.82,
+          "stageTop": 89,
+          "counter": "03",
+          "cards": [
+            {
+              "opacity": 0,
+              "x": 0,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 0.4288,
+              "x": 0,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 0.5712,
+              "x": 168.08,
+              "inert": false,
+              "ariaHidden": "false"
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "progress": 1,
+          "stageTop": 88.71875,
+          "counter": "03",
+          "cards": [
+            {
+              "opacity": 0,
+              "x": 0,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 0,
+              "x": 0,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 1,
+              "x": 0,
+              "inert": false,
+              "ariaHidden": "false"
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "progress": 1.12,
+          "stageTop": -103.28125,
+          "counter": "03",
+          "cards": [
+            {
+              "opacity": 0,
+              "x": 0,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 0,
+              "x": 0,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 1,
+              "x": 0,
+              "inert": false,
+              "ariaHidden": "false"
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "progress": 0.48,
+          "stageTop": 89,
+          "counter": "02",
+          "cards": [
+            {
+              "opacity": 0.4631,
+              "x": 0,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 0.5369,
+              "x": 181.54,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            {
+              "opacity": 0,
+              "x": 392,
+              "inert": true,
+              "ariaHidden": "true"
+            }
+          ],
+          "overflow": 0
+        }
+      ],
+      "galleryLinkUnobstructed": true,
+      "skip": {
+        "top": 278.71875,
+        "focus": true
+      },
+      "liveReducedMotionCleanup": true,
+      "errors": []
+    },
+    {
+      "lang": "nl",
+      "width": 360,
+      "height": 800,
+      "reduced": false,
+      "geometry": {
+        "pinned": "true",
+        "top": 3010,
+        "stageTop": 89,
+        "distance": 1520,
+        "stageHeight": 711,
+        "footerBottom": 618.921875
+      },
+      "samples": [
+        {
+          "progress": 0,
+          "stageTop": 89,
+          "counter": "01",
+          "cards": [
+            {
+              "opacity": 0,
+              "x": 362,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 0,
+              "x": 362,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 0,
+              "x": 362,
+              "inert": true,
+              "ariaHidden": "true"
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "progress": 0.15,
+          "stageTop": 89,
+          "counter": "01",
+          "cards": [
+            {
+              "opacity": 0.5535,
+              "x": 161.64,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            {
+              "opacity": 0,
+              "x": 362,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 0,
+              "x": 362,
+              "inert": true,
+              "ariaHidden": "true"
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "progress": 0.3,
+          "stageTop": 89,
+          "counter": "01",
+          "cards": [
+            {
+              "opacity": 1,
+              "x": 0,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            {
+              "opacity": 0,
+              "x": 362,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 0,
+              "x": 362,
+              "inert": true,
+              "ariaHidden": "true"
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "progress": 0.48,
+          "stageTop": 89,
+          "counter": "02",
+          "cards": [
+            {
+              "opacity": 0.4629,
+              "x": 0,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 0.5371,
+              "x": 167.57,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            {
+              "opacity": 0,
+              "x": 362,
+              "inert": true,
+              "ariaHidden": "true"
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "progress": 0.63,
+          "stageTop": 89,
+          "counter": "02",
+          "cards": [
+            {
+              "opacity": 0,
+              "x": 0,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 1,
+              "x": 0,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            {
+              "opacity": 0,
+              "x": 362,
+              "inert": true,
+              "ariaHidden": "true"
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "progress": 0.82,
+          "stageTop": 89,
+          "counter": "03",
+          "cards": [
+            {
+              "opacity": 0,
+              "x": 0,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 0.4302,
+              "x": 0,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 0.5698,
+              "x": 155.73,
+              "inert": false,
+              "ariaHidden": "false"
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "progress": 1,
+          "stageTop": 89,
+          "counter": "03",
+          "cards": [
+            {
+              "opacity": 0,
+              "x": 0,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 0,
+              "x": 0,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 1,
+              "x": 0,
+              "inert": false,
+              "ariaHidden": "false"
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "progress": 1.12,
+          "stageTop": -93,
+          "counter": "03",
+          "cards": [
+            {
+              "opacity": 0,
+              "x": 0,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 0,
+              "x": 0,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 1,
+              "x": 0,
+              "inert": false,
+              "ariaHidden": "false"
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "progress": 0.48,
+          "stageTop": 89,
+          "counter": "02",
+          "cards": [
+            {
+              "opacity": 0.4629,
+              "x": 0,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 0.5371,
+              "x": 167.57,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            {
+              "opacity": 0,
+              "x": 362,
+              "inert": true,
+              "ariaHidden": "true"
+            }
+          ],
+          "overflow": 0
+        }
+      ],
+      "galleryLinkUnobstructed": true,
+      "skip": {
+        "top": 279,
+        "focus": true
+      },
+      "liveReducedMotionCleanup": true,
+      "errors": []
+    },
+    {
+      "lang": "en",
+      "width": 844,
+      "height": 390,
+      "reduced": false,
+      "geometry": {
+        "top": 2564.640625,
+        "stageTop": 0,
+        "distance": 180,
+        "stageHeight": 765,
+        "footerBottom": 764.65625
+      },
+      "samples": [],
+      "staticCards": [
+        {
+          "inert": false,
+          "opacity": "1"
+        },
+        {
+          "inert": false,
+          "opacity": "1"
+        },
+        {
+          "inert": false,
+          "opacity": "1"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "lang": "en",
+      "width": 390,
+      "height": 844,
+      "reduced": true,
+      "geometry": {
+        "top": 3016.71875,
+        "stageTop": 0,
+        "distance": 156,
+        "stageHeight": 1013,
+        "footerBottom": 1013.453125
+      },
+      "samples": [],
+      "staticCards": [
+        {
+          "inert": false,
+          "opacity": "1"
+        },
+        {
+          "inert": false,
+          "opacity": "1"
+        },
+        {
+          "inert": false,
+          "opacity": "1"
+        }
+      ],
+      "errors": []
+    }
+  ],
+  "atUTC": "2026-11-13T00:35:51.487Z"
+}

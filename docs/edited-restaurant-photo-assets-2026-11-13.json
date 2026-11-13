@@ -1,0 +1,222 @@
+{
+  "encoder": "0.34.5",
+  "maximumDeliveryBytes": 200000,
+  "photos": [
+    {
+      "name": "dining",
+      "alias": "/brand/shah-dining-v1.webp",
+      "master": "assets/imagegen/shah-dining-focus-v3.png",
+      "originalDimensions": {
+        "width": 1402,
+        "height": 1122
+      },
+      "masterSha256": "834baaef85423b72de26fee874023a66b2d97823590905557a30c449c8bfd7b4",
+      "outputs": [
+        {
+          "src": "/brand/edited-restaurant-photos-v1/dining-320.avif",
+          "width": 320,
+          "height": 256,
+          "bytes": 20297,
+          "quality": 62,
+          "sha256": "8c0992783f3a7c5d4efadd22b82d277e4df4d8daada95476004b3a3b84752951"
+        },
+        {
+          "src": "/brand/edited-restaurant-photos-v1/dining-320.webp",
+          "width": 320,
+          "height": 256,
+          "bytes": 19560,
+          "quality": 84,
+          "sha256": "660a8ae634441a1dd84bf2bfbd1efbd576cd6390dc8ecc5c8a66357efa5489d1"
+        },
+        {
+          "src": "/brand/edited-restaurant-photos-v1/dining-320.jpg",
+          "width": 320,
+          "height": 256,
+          "bytes": 20555,
+          "quality": 84,
+          "sha256": "922fa8759f9dd5f85bc587f04dc19f9e8dbb7160f66a6db241a23fadacb2e730"
+        },
+        {
+          "src": "/brand/edited-restaurant-photos-v1/dining-640.avif",
+          "width": 640,
+          "height": 512,
+          "bytes": 45702,
+          "quality": 62,
+          "sha256": "c23d576e4b7ec082a36d2f88427d7ece073025459e1ca0bb8d4d90231c37ddf5"
+        },
+        {
+          "src": "/brand/edited-restaurant-photos-v1/dining-640.webp",
+          "width": 640,
+          "height": 512,
+          "bytes": 51702,
+          "quality": 84,
+          "sha256": "d858d4051e4d68a389b62d6ff2860fbeab2f2fece2735be80ea59a06ee0d1777"
+        },
+        {
+          "src": "/brand/edited-restaurant-photos-v1/dining-640.jpg",
+          "width": 640,
+          "height": 512,
+          "bytes": 60145,
+          "quality": 84,
+          "sha256": "8b54bb031308ad9a0ac970f6b3975c5671d5cacbddaf65b6e39ef7345ba00e56"
+        },
+        {
+          "src": "/brand/edited-restaurant-photos-v1/dining-960.avif",
+          "width": 960,
+          "height": 768,
+          "bytes": 70770,
+          "quality": 62,
+          "sha256": "68f8e08745ed1ac2d608ed63589d08be47db4ed7ed686e366af08645eb409b4b"
+        },
+        {
+          "src": "/brand/edited-restaurant-photos-v1/dining-960.webp",
+          "width": 960,
+          "height": 768,
+          "bytes": 91082,
+          "quality": 84,
+          "sha256": "13d0731edc76220a0a000e2c1ff6eb3a519ef19c575a138e49940c7b7f635a85"
+        },
+        {
+          "src": "/brand/edited-restaurant-photos-v1/dining-960.jpg",
+          "width": 960,
+          "height": 768,
+          "bytes": 110359,
+          "quality": 84,
+          "sha256": "fa449df81b3a4f6685addabdda4363beb8b007d18717c3709752fe42a034a880"
+        },
+        {
+          "src": "/brand/edited-restaurant-photos-v1/dining-1400.avif",
+          "width": 1400,
+          "height": 1120,
+          "bytes": 103500,
+          "quality": 62,
+          "sha256": "2b82fcd68394a5d23496e915ed4e3eeed872abbcfc49fd5c13f6ec5a01dca1ab"
+        },
+        {
+          "src": "/brand/edited-restaurant-photos-v1/dining-1400.webp",
+          "width": 1400,
+          "height": 1120,
+          "bytes": 145840,
+          "quality": 84,
+          "sha256": "0325b7cc7a0709b5453f6e151b2e9c4a92bdb9458570786b2989ef44c4ec4ce9"
+        },
+        {
+          "src": "/brand/edited-restaurant-photos-v1/dining-1400.jpg",
+          "width": 1400,
+          "height": 1120,
+          "bytes": 192878,
+          "quality": 84,
+          "sha256": "e987c00d36cba3f5babc68f40b7b7ca52624e3b6eff85d5974a492d8ba4c797e"
+        }
+      ]
+    },
+    {
+      "name": "kitchen",
+      "alias": "/brand/shah-table-v1.webp",
+      "master": "assets/imagegen/shah-kitchen-focus-v1.png",
+      "originalDimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "masterSha256": "721da0d436a69fabc8f6d72212c64a8402271384c37f368bc3799c63cdb9f8ae",
+      "outputs": [
+        {
+          "src": "/brand/edited-restaurant-photos-v1/kitchen-320.avif",
+          "width": 320,
+          "height": 213,
+          "bytes": 18144,
+          "quality": 62,
+          "sha256": "b4b4ea1fed60362d7697a35c08c5d5cb1bb0b602843d22f261ef9086b76c8387"
+        },
+        {
+          "src": "/brand/edited-restaurant-photos-v1/kitchen-320.webp",
+          "width": 320,
+          "height": 213,
+          "bytes": 17268,
+          "quality": 84,
+          "sha256": "dc184ce30a7f88933dead338c94206f3f092269e4feb970f5fb0453d2c9fe0e2"
+        },
+        {
+          "src": "/brand/edited-restaurant-photos-v1/kitchen-320.jpg",
+          "width": 320,
+          "height": 213,
+          "bytes": 18014,
+          "quality": 84,
+          "sha256": "6674fbaa50016a4cc52b05f793d550c16f451877ee757badf35f2e6548db50fd"
+        },
+        {
+          "src": "/brand/edited-restaurant-photos-v1/kitchen-640.avif",
+          "width": 640,
+          "height": 427,
+          "bytes": 43368,
+          "quality": 62,
+          "sha256": "f6baa3286568ad61c468253ba4a629d70cd2b895cf0ef1af03b1508d270a507e"
+        },
+        {
+          "src": "/brand/edited-restaurant-photos-v1/kitchen-640.webp",
+          "width": 640,
+          "height": 427,
+          "bytes": 48296,
+          "quality": 84,
+          "sha256": "05fc4c9143441012dd9a726aa30aeca259eba643b28d52bc79923fe56f6a6d7c"
+        },
+        {
+          "src": "/brand/edited-restaurant-photos-v1/kitchen-640.jpg",
+          "width": 640,
+          "height": 427,
+          "bytes": 53703,
+          "quality": 84,
+          "sha256": "5dfd4fc75216392e6536fb090802415ef2ebe4861af81748f99c627b3fa8d10f"
+        },
+        {
+          "src": "/brand/edited-restaurant-photos-v1/kitchen-960.avif",
+          "width": 960,
+          "height": 640,
+          "bytes": 70157,
+          "quality": 62,
+          "sha256": "498b86962972a532291c1c5a829d82e3180137a68df30d446cbd904b5f7a5ca6"
+        },
+        {
+          "src": "/brand/edited-restaurant-photos-v1/kitchen-960.webp",
+          "width": 960,
+          "height": 640,
+          "bytes": 85148,
+          "quality": 84,
+          "sha256": "4a27e78765bb56afeab2108ab46679abb03ecd42cc476391cf4046048c54b0dd"
+        },
+        {
+          "src": "/brand/edited-restaurant-photos-v1/kitchen-960.jpg",
+          "width": 960,
+          "height": 640,
+          "bytes": 99984,
+          "quality": 84,
+          "sha256": "0f3ee6f169c25f87131a6f7ccc709f8a9be0de6e312ed64b7f871fff7dd10906"
+        },
+        {
+          "src": "/brand/edited-restaurant-photos-v1/kitchen-1400.avif",
+          "width": 1400,
+          "height": 933,
+          "bytes": 104644,
+          "quality": 62,
+          "sha256": "c15d6d764d8e80719e6b153963d0d31e4df3a272782b0e17482c3e5959476f96"
+        },
+        {
+          "src": "/brand/edited-restaurant-photos-v1/kitchen-1400.webp",
+          "width": 1400,
+          "height": 933,
+          "bytes": 137188,
+          "quality": 84,
+          "sha256": "7bf95eb45f22928ccd76937a37fb3969117c86f8e09144e0d910a79229fc5192"
+        },
+        {
+          "src": "/brand/edited-restaurant-photos-v1/kitchen-1400.jpg",
+          "width": 1400,
+          "height": 933,
+          "bytes": 177380,
+          "quality": 84,
+          "sha256": "c2bfdfb3028f7687d00bc678e88d2b6d840efe9b6aa2b2e1336bc6e3b9b462bd"
+        }
+      ]
+    }
+  ]
+}

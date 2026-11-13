@@ -1,6 +1,10 @@
 # Phone preview on the local network
 
-13 November followup: the same http://192.168.0.122:3618/ address now serves padding build `-T_rvpAlEyxNegUz9zyMe`, with its exact HTML build identity checked. Current start command: `node "$env:TEMP\shah-phone-preview-20261111\launch-lan-nl-v2-detached.cjs" "$env:TEMP\shah-phone-preview-20261111\lan-config--T_rvpAlEyxNegUz9zyMe.json"`. The approved policy helper and network-security settings are unchanged. The detailed 12 November baseline checks below remain historical controls, rather than new physical-device tests.
+Current 13 November preview: http://192.168.0.122:3618/ (Dutch) and http://192.168.0.122:3618/en (English), build `s6DGqOfaobcTNZMY4qQDK`, source `b3cd7a0df1bbd2e02b6add29a73a52fd0b4b9dde1209b73a70c6f157ccaff176`,490 inputs. The same build runs at localhost:3398. Fresh PC-side LAN checks passed:56 policy,58 asset heads,17 route guards,3 fixture APIs and4 media ranges. The policy helper, subnet-only binding and firewall settings are unchanged. [Exact evidence](phone-preview-2026-11-11.json).
+
+After starting the main preview, start/verify the detached LAN listener with `node "$env:TEMP\shah-phone-preview-20261111\launch-lan-nl-v2-detached.cjs" "$env:TEMP\shah-phone-preview-20261111\lan-config-s6DGqOfaobcTNZMY4qQDK.json"`. Existing unknown listeners are never stopped. This update has mobile browser emulation checks; there is no new physical-phone test result.
+
+## Historical 12 November baseline and policy explanation
 
 Open **http://192.168.0.122:3618/** on the phone, or **http://192.168.0.122:3618/en** for English. The phone must be on the router's same local network as this PC; guest Wi-Fi isolation or VPN LAN filtering may prevent access.
 
