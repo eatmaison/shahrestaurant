@@ -4,7 +4,7 @@ Public: http://localhost:3398/en (English) or http://localhost:3398/ (Dutch). Sa
 
 Current build **A3XGcJrqHbutMgWYhQ9-y**, .next-review-shah-gold-cinema-polish-v6-20261113, frozen source 8d97670c8b413ff0c1f3f9030452cfc6757d7c7d7d7a8878a12d67b6e5ae8431, 496 inputs, 65 routes. The second dark theme uses graphite with the actual logo gold; original teal base tokens remain. UI logos are gold on teal, teal on dark gold. Both themes have optional cinematic details and motion-safe fallbacks. Reload the open preview to update cached CSS.
 
-Synthetic read-only admin: http://localhost:4068/admin, plus customers/stats/events. The LAN listener blocks private routes and submissions. No production data, migration, deployment or GitHub push is part of this local polish. Earlier commit 1bafbed was published separately. All 244 public media files remain unchanged.
+Synthetic read-only admin: http://localhost:4068/admin, plus customers/stats/events. The LAN listener blocks private routes and submissions. No production data change or migration was performed. The code was published to GitHub as a55f4a9; live deployment remains blocked by SSH host verification. [Publication status and server instructions](GITHUB-RELEASE-HANDOFF.md). All 244 public media files remain unchanged.
 
 Guarded public start/verify: node "$env:TEMP\shah-preview-20261111\start-shah-gold-cinema-polish-v6-main.cjs". Admin: node "$env:TEMP\shah-gold-cinema-20261113\start-or-verify-private-polish-v6.cjs". Run from this checkout in PowerShell; matching build and Temp fixtures are required. [Phone instructions](PHONE-PREVIEW.md). [Previous dark-gold checkpoint](DARK-GOLD-THEME.md).
 

@@ -1,6 +1,26 @@
 # GitHub release handoff - 13 November 2026
 
-## Current release: second admin round and gold light mode
+## Current release: dark gold, reciprocal logos and cinematic entry details
+
+Repository **eatmaison/shahrestaurant**, branch **main**, authenticated **eatmaison** account. Verified website revision **a55f4a9385f280a0514d930a196a8e025cc14436**, preceded by design checkpoint a876d23. Both code commits were safely fast-forwarded to GitHub and the remote revision was verified. The publication tip may additionally contain this documentation update; compare it with the final SHA supplied alongside this handoff. Unrelated uncommitted phone-agent work and local control files are excluded. No credentials, environment files, compiled builds or private runtime fixtures are included.
+
+The second dark theme now uses graphite with the original logo gold, #E0AF59. UI logos are **gold on teal**, **teal on dark gold**, including header/footer/story/closing/loading. Original teal base tokens and all 244 media assets remain unchanged; small public labels/buttons received contrast corrections. Cinematic cards, frames, rules and link details use short entrance/interaction transitions. The last follow-up removes the newly added continuous scroll timelines. [Full design, screenshots and exact verification](GOLD-CINEMA-POLISH.md).
+
+Verified local build **A3XGcJrqHbutMgWYhQ9-y**, Next 16.2.10/Webpack, 65 routes, 496 unchanged application/config/public inputs; source SHA-256 **8d97670c8b413ff0c1f3f9030452cfc6757d7c7d7d7a8878a12d67b6e5ae8431**. Build/type checking, focused lint, 52 public/header checks, 48 admin layouts, 24 public routes, 40 account/form/dialog states, four cart cases, persistence, motion/logo/hover/focus, reduced motion/data-saving, 50 final HTTP checks, LAN checks and four actual EN/NL desktop/mobile playback cases passed. Recorded accessibility scans have zero findings. Tests use read-only/synthetic data. The 24-run interleaved 4x-CPU benchmark shows lower desktop p95 frame intervals in the follow-up, while mobile results remain mixed; no universal speedup, physical-phone/Safari result, instant loading, search ranking or global performance-budget claim is made.
+
+### Live update is blocked by trusted SSH host verification
+
+The explicitly requested SSH probe to **root@67.205.141.224**, with BatchMode and StrictHostKeyChecking enabled, stopped at: **No ED25519 host key is known ... Host key verification failed.** No remote command ran, no Droplet file or process changed, no migration was applied and no protection was weakened. The live checkout, service manager, port, release/backups and exact production revision remain unverified. A read-only HTTPS check returned 200, but its CSS did not contain the new graphite-gold palette. GitHub Actions and deployment-record lookups showed no release run/deployment record. No already-authenticated provider console was available.
+
+To unlock the authorized deployment, obtain the ED25519 fingerprint through the trusted DigitalOcean console: `ssh-keygen -lf /etc/ssh/ssh_host_ed25519_key.pub`. Compare it with the connecting host before trusting a key; do not disable host checking, send passwords/private keys, or create new access merely for this update. Authentication availability still needs to be checked after host identity is established.
+
+### Safe server update prerequisites and commands
+
+From an already trusted SSH session, use the guarded Git procedure in the Droplet update section below. It refuses dirty/diverged checkouts, verifies origin and creates a backup branch. Preserve local environment/secrets and the existing application port. Keep the current release available for rollback and verify the usual provider/database backup status before making production changes. This theme round adds **no dependency or mandatory database migration**; do not run SQL to start it. Earlier optional observations/session-link migrations and retention requirements below remain separate and unapplied.
+
+After the guarded fast-forward, verify that HEAD contains a55f4a9385f280a0514d930a196a8e025cc14436 and matches the final published SHA. Build using `npm ci` then `npm run build -- --webpack` in the existing staged-release workflow. Do not overwrite a running server's active .next directory. Restart only the confirmed existing Shah service after a successful build; its process manager/name has not been inspected, so no guessed pm2/service command is supplied. Verify EN/NL pages, menu, reservations, account/admin authorization, logo/theme choices and videos without submitting real orders, payments or emails.
+
+## Previous release: second admin round and gold light mode
 
 Target: **eatmaison/shahrestaurant**, branch **main**, using the authenticated **eatmaison** account. Website commit: `5775d41ff27db32b8c3fca71cc7c6e49947ad789`; the publication tip also contains this handoff update. Compare `git rev-parse HEAD` with the final published revision supplied alongside this document.
 
