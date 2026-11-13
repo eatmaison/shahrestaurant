@@ -89,7 +89,7 @@ export function buildDailyMetrics(orders: readonly MetricOrder[], filter: RangeF
   for (const order of orders) {
     if (!(order.paid || order.accountType === "company") || !matches(order.createdAt)) continue;
     const metric = totals.get(amsterdamDateKey(order.createdAt));
-    if (metric) { metric.revenue += order.total; metric.orders += 1; }
+    if (metric) { metric.revenue = Math.round(metric.revenue * 100 + Math.round(order.total * 100)) / 100; metric.orders += 1; }
   }
   return [...totals.values()];
 }

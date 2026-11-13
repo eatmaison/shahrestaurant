@@ -18,7 +18,7 @@ interface Section {
 const CONTENT: Record<"en" | "nl", { title: string; updated: string; intro: string; sections: Section[] }> = {
   en: {
     title: "Privacy Policy",
-    updated: "Last updated: 10 September 2026",
+    updated: "Last updated: 13 November 2026",
     intro:
       "Shah Restaurant, located at Klaprozenweg 36a, 1032 KL Amsterdam, the Netherlands (\"we\", \"us\"), is responsible for the processing of personal data as described in this privacy policy. We process your data in accordance with the General Data Protection Regulation (GDPR / AVG). Contact: info@shahrestaurant.nl, +31 20 341 2995.",
     sections: [
@@ -69,9 +69,11 @@ const CONTENT: Record<"en" | "nl", { title: string; updated: string; intro: stri
       {
         title: "6. Cookies",
         body: [
-          "We only use functional cookies and local storage that are strictly necessary for the website to work: your login session, your shopping cart, and your language/theme preferences.",
+          "Required cookies and storage support your login session, shopping cart, language/theme preferences and a browser identifier used to link your own orders and reservations. Administrative activity timestamps describe observed requests, not verified people or continuous attention.",
           "For event bookings, session storage keeps a private access token so you can return to your confirmation in the same browser tab. Keep your confirmation link private.",
-          "We do not use analytics, tracking or advertising cookies. Under EU/Dutch law (Telecommunicatiewet), strictly necessary cookies do not require consent.",
+          "Optional visit analytics starts only after you choose Allow visit analytics. An earlier cookie-notice acknowledgement does not grant this permission. We record only the referring domain (not its URL path/query), restricted campaign source/medium/name values, a known public page path, observation timestamps and coarse browser/user-agent signals. We do not store IP addresses, raw user agents, keystrokes, advertising identifiers or browser fingerprints in this analytics record.",
+          "Analytics is tied to this browser identifier and, while signed in, your account. Possible automation and interaction labels are uncertain signals, not proof of a bot, a person or a particular identity. Sources are first observed after permission; missing historical information stays unknown. Observations expire after 30 days and are excluded after expiry; expired records are removed by application cleanup and the database maintenance job. Your permission preference lasts up to 180 days.",
+          "You can change or withdraw permission through Cookie preferences in the footer. Necessary only stops optional collection and requests removal of this browser's analytics records. We do not use advertising trackers or send these observations to a third-party analytics service.",
         ],
       },
       {
@@ -98,7 +100,7 @@ const CONTENT: Record<"en" | "nl", { title: string; updated: string; intro: stri
   },
   nl: {
     title: "Privacybeleid",
-    updated: "Laatst bijgewerkt: 10 september 2026",
+    updated: "Laatst bijgewerkt: 13 november 2026",
     intro:
       "Shah Restaurant, gevestigd aan Klaprozenweg 36a, 1032 KL Amsterdam, Nederland (\"wij\", \"ons\"), is verantwoordelijk voor de verwerking van persoonsgegevens zoals beschreven in dit privacybeleid. Wij verwerken uw gegevens in overeenstemming met de Algemene Verordening Gegevensbescherming (AVG). Contact: info@shahrestaurant.nl, +31 20 341 2995.",
     sections: [
@@ -149,8 +151,10 @@ const CONTENT: Record<"en" | "nl", { title: string; updated: string; intro: stri
       {
         title: "6. Cookies",
         body: [
-          "Wij gebruiken alleen functionele cookies en lokale opslag die strikt noodzakelijk zijn voor het functioneren van de website: uw inlogsessie, uw winkelwagen en uw taal-/themavoorkeuren.",
-          "Wij gebruiken geen analyse-, tracking- of advertentiecookies. Volgens de Telecommunicatiewet is voor strikt noodzakelijke cookies geen toestemming vereist.",
+          "Noodzakelijke cookies en opslag ondersteunen uw inlogsessie, winkelwagen, taal-/themavoorkeuren en een browser-ID om uw eigen bestellingen en reserveringen te koppelen. Administratieve activiteitstijden beschrijven waargenomen aanvragen, geen geverifieerde personen of voortdurende aandacht.",
+          "Optionele bezoekanalyse start alleen nadat u Bezoekanalyse toestaan kiest. Een eerdere bevestiging van de cookiemelding geeft die toestemming niet. Wij registreren alleen het verwijzende domein (zonder URL-pad/query), beperkte campagnebron/medium/naam, een bekend openbaar paginapad, waarnemingstijden en globale browser-/user-agentsignalen. In dit analyserecord bewaren wij geen IP-adressen, ruwe user agents, toetsaanslagen, advertentie-ID's of browserfingerprints.",
+          "De analyse is gekoppeld aan deze browser-ID en, tijdens inloggen, uw account. Mogelijke automatisering en interactie zijn onzekere signalen, geen bewijs van een bot, persoon of identiteit. Bronnen worden pas na toestemming waargenomen; ontbrekende historie blijft onbekend. Waarnemingen verlopen na 30 dagen en worden daarna niet meer getoond; verlopen records worden via applicatie-opruiming en databaseonderhoud verwijderd. Uw toestemmingsvoorkeur blijft maximaal 180 dagen bewaard.",
+          "Via Cookievoorkeuren in de footer kunt u toestemming wijzigen of intrekken. Alleen noodzakelijk stopt optionele registratie en vraagt verwijdering van de analyserecords van deze browser aan. Wij gebruiken geen advertentietrackers en sturen deze waarnemingen niet naar een externe analysedienst.",
         ],
       },
       {

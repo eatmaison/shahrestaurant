@@ -16,7 +16,10 @@ function compile(source, bindings = {}, filename = 'fixture.tsx') {
 const text = fs.readFileSync(path.join(root, 'app/admin/page.tsx'), 'utf8');
 const ast = ts.createSourceFile('admin.tsx', text, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
 const functions = ast.statements.filter(ts.isFunctionDeclaration);
-const chartCode = ['smoothPath', 'DailySalesChart'].map(name => functions.find(node => node.name?.text === name).getText(ast)).join('\n');
+const chartText=fs.readFileSync(path.join(root,'app/admin/DailySalesChart.tsx'),'utf8');
+const chartAst=ts.createSourceFile('chart.tsx',chartText,ts.ScriptTarget.Latest,true,ts.ScriptKind.TSX);
+const chartFunctions=chartAst.statements.filter(ts.isFunctionDeclaration);
+const chartCode = ['smoothPath', 'DailySalesChart'].map(name => chartFunctions.find(node => node.name?.text === name).getText(chartAst)).join('\n');
 const chart = compile(chartCode + '\nexports.Chart = DailySalesChart;').Chart;
 const data = Array.from({length: 316}, (_, index) => { const date = new Date('2025-12-31T00:00:00Z'); date.setUTCDate(date.getUTCDate() + index); return {date: date.toISOString().slice(0,10), revenue: index === 0 ? 25 : 0, orders: index === 0 ? 1 : 0}; });
 const props = { data, title: 'Daily progress', revenueLabel: 'Revenue', ordersLabel: 'Orders', noData: 'No data' };

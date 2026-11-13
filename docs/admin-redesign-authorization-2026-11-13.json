@@ -1,0 +1,133 @@
+{
+  "atUTC": "2026-11-13T13:21:50.491Z",
+  "build": "Q2nFHmc8z6XlftjRttVYU",
+  "realNextProxy": true,
+  "syntheticReadOnlyRoleTransport": true,
+  "liveDatabaseAccess": false,
+  "results": [
+    {
+      "route": "/admin",
+      "name": "guest",
+      "status": 404
+    },
+    {
+      "route": "/admin",
+      "name": "ordinary-account-role-claim",
+      "status": 404
+    },
+    {
+      "route": "/admin",
+      "name": "unknown-account",
+      "status": 404
+    },
+    {
+      "route": "/admin",
+      "name": "expired",
+      "status": 404
+    },
+    {
+      "route": "/admin",
+      "name": "invalid-signature",
+      "status": 404
+    },
+    {
+      "route": "/admin",
+      "name": "admin",
+      "status": 200
+    },
+    {
+      "route": "/admin/stats",
+      "name": "guest",
+      "status": 404
+    },
+    {
+      "route": "/admin/stats",
+      "name": "ordinary-account-role-claim",
+      "status": 404
+    },
+    {
+      "route": "/admin/stats",
+      "name": "unknown-account",
+      "status": 404
+    },
+    {
+      "route": "/admin/stats",
+      "name": "expired",
+      "status": 404
+    },
+    {
+      "route": "/admin/stats",
+      "name": "invalid-signature",
+      "status": 404
+    },
+    {
+      "route": "/admin/stats",
+      "name": "admin",
+      "status": 200
+    },
+    {
+      "route": "/admin/customers",
+      "name": "guest",
+      "status": 404
+    },
+    {
+      "route": "/admin/customers",
+      "name": "ordinary-account-role-claim",
+      "status": 404
+    },
+    {
+      "route": "/admin/customers",
+      "name": "unknown-account",
+      "status": 404
+    },
+    {
+      "route": "/admin/customers",
+      "name": "expired",
+      "status": 404
+    },
+    {
+      "route": "/admin/customers",
+      "name": "invalid-signature",
+      "status": 404
+    },
+    {
+      "route": "/admin/customers",
+      "name": "admin",
+      "status": 200
+    },
+    {
+      "route": "/admin/events",
+      "name": "guest",
+      "status": 404
+    },
+    {
+      "route": "/admin/events",
+      "name": "ordinary-account-role-claim",
+      "status": 404
+    },
+    {
+      "route": "/admin/events",
+      "name": "unknown-account",
+      "status": 404
+    },
+    {
+      "route": "/admin/events",
+      "name": "expired",
+      "status": 404
+    },
+    {
+      "route": "/admin/events",
+      "name": "invalid-signature",
+      "status": 404
+    },
+    {
+      "route": "/admin/events",
+      "name": "admin",
+      "status": 200
+    },
+    {
+      "name": "revoked-current-database-role",
+      "status": 404
+    }
+  ]
+}

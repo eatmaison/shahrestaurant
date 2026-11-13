@@ -1,8 +1,14 @@
 # Phone preview on the local network
 
-Current preview: http://192.168.0.122:3618/ (Dutch) and http://192.168.0.122:3618/en (English), build `0QM01vrtIDTCaYpYCCdXf`, source `c4ac07745e89450202db9e7e7475760c5101123c1eab5ff699391c3e179ffb7f`, 460 inputs. Same build at localhost:3398. Fresh PC-side LAN checks passed 56 policy, 58 asset heads, 17 route guards, three fixture APIs and four media ranges. No network-security settings changed. [Current handoff and exact commands](INTERIOR-PHOTO-VERIFICATION.md), [LAN evidence](phone-preview-2026-11-11.json).
+Current preview: http://192.168.0.122:3618/ (Dutch) and http://192.168.0.122:3618/en (English), build `Q2nFHmc8z6XlftjRttVYU`, source `b3c001864ded7ec998ea4a347f91dc433c923b138204e069a262b48667321939`, 483 inputs. Same build at localhost:3398. Fresh PC-side LAN checks passed 56 policy, 60 public asset HEADs, 17 route guards, three fixture APIs and four media ranges. The public optional-consent chunk is allowed; all submissions remain blocked. No network-security settings changed. [Current handoff and commands](ADMIN-REDESIGN.md), [LAN evidence](phone-preview-2026-11-11.json).
 
-The final bar, corrected story and approved seating photographs are included. Mobile layouts were checked in browser emulation; no fresh physical-phone result is claimed.
+Admin previews are **loopback-only** at http://localhost:4068/admin and its customers/stats/events pages, using labelled invented data. The LAN listener does not expose them. The approved photographs and bilingual intro remain included. Current mobile checks use desktop browser emulation/PC-side LAN requests; no fresh physical-phone result is claimed.
+
+Current start/verify command:
+
+```powershell
+node "$env:TEMP\shah-phone-preview-20261111\launch-lan-nl-v2-detached.cjs" "$env:TEMP\shah-phone-preview-20261111\lan-config-Q2nFHmc8z6XlftjRttVYU-consent.json"
+```
 
 ## Historical 12 November baseline and policy explanation
 

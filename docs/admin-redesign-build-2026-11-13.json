@@ -1,0 +1,21 @@
+{
+  "dist": ".next-review-shah-admin-release-20261113",
+  "startedAtUTC": "2026-11-13T13:18:30.874Z",
+  "before": {
+    "atUTC": "2026-11-13T13:18:31.300Z",
+    "sourceSha256": "b3c001864ded7ec998ea4a347f91dc433c923b138204e069a262b48667321939",
+    "inputs": 483,
+    "unchanged": true
+  },
+  "productionPublishing": false,
+  "liveDatabaseAccess": false,
+  "exitCode": 0,
+  "finishedAtUTC": "2026-11-13T13:19:28.087Z",
+  "after": {
+    "atUTC": "2026-11-13T13:19:28.507Z",
+    "sourceSha256": "b3c001864ded7ec998ea4a347f91dc433c923b138204e069a262b48667321939",
+    "inputs": 483,
+    "unchanged": true
+  },
+  "buildId": "Q2nFHmc8z6XlftjRttVYU"
+}

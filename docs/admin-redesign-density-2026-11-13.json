@@ -1,0 +1,51 @@
+{
+  "tag": "DIV",
+  "classes": "mt-6 rounded-3xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-white/5",
+  "cards": [
+    {
+      "height": 280,
+      "classes": "flex flex-col gap-3 rounded-2xl border border-slate-100 bg-slate-50/70 p-4 dark:border-white/5 dark:bg-white/5"
+    },
+    {
+      "height": 280,
+      "classes": "flex flex-col gap-3 rounded-2xl border border-slate-100 bg-slate-50/70 p-4 dark:border-white/5 dark:bg-white/5"
+    },
+    {
+      "height": 280,
+      "classes": "flex flex-col gap-3 rounded-2xl border border-slate-100 bg-slate-50/70 p-4 dark:border-white/5 dark:bg-white/5"
+    },
+    {
+      "height": 280,
+      "classes": "flex flex-col gap-3 rounded-2xl border border-slate-100 bg-slate-50/70 p-4 dark:border-white/5 dark:bg-white/5"
+    }
+  ],
+  "count": 175,
+  "dom": 14569,
+  "mobile": {
+    "width": 390,
+    "cards": [
+      {
+        "height": 363.5
+      },
+      {
+        "height": 363.5
+      },
+      {
+        "height": 363.5
+      },
+      {
+        "height": 363.5
+      }
+    ],
+    "rows": 175
+  },
+  "baselineBuild": "6zD0ge5SdqAm0X_krXcdr",
+  "sameAdminSourceAsPreviousApprovedBuild": true,
+  "adminSourceSha256": "47b499221ab64690afff3f8a9ae40fc6ceacaaa96d7b4e3d7d965c377b8c47b4",
+  "latestBuild": "Q2nFHmc8z6XlftjRttVYU",
+  "latestDesktopRowHeight": 77,
+  "latestMobileRowHeight": 162,
+  "latestRenderedRows": 25,
+  "latestCustomerPageDOMElements": 1001,
+  "scope": "Whole old combined admin versus new customers route; DOM-count difference includes moving other tools to separate routes. Dimensions are sampled synthetic rows, not guaranteed for every real name."
+}

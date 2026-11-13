@@ -1,0 +1,33 @@
+{
+  "atUTC": "2026-11-13T13:22:58.372Z",
+  "build": "Q2nFHmc8z6XlftjRttVYU",
+  "syntheticOnly": true,
+  "checks": [
+    "gallery is loaded only when selected; GET failure is not shown as an empty gallery",
+    "delete requires confirmation, keyboard stays inside dialog, Escape cancels; rejected deletion retains photo",
+    "confirmed successful deletion removes the photo only after response",
+    "upload failure preserves draft; successful response adds returned image; requests intercepted locally"
+  ],
+  "requests": [
+    {
+      "method": "GET"
+    },
+    {
+      "method": "GET"
+    },
+    {
+      "method": "DELETE"
+    },
+    {
+      "method": "DELETE"
+    },
+    {
+      "method": "POST"
+    },
+    {
+      "method": "POST"
+    }
+  ],
+  "overflow": 0,
+  "axe": []
+}

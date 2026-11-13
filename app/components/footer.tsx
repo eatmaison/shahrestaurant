@@ -153,6 +153,7 @@ export function Footer() {
                 <Link href="/privacy" className="text-xs text-slate-600 transition hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400">
                   {t.footer.privacy}
                 </Link>
+                <button type="button" onClick={() => window.dispatchEvent(new Event("shah:privacy-preferences"))} className="min-h-12 text-left text-xs text-slate-600 transition hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400">{lang === "nl" ? "Cookievoorkeuren" : "Cookie preferences"}</button>
                 <Link href="/terms" className="text-xs text-slate-600 transition hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400">
                   {t.footer.terms}
                 </Link>

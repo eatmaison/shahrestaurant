@@ -3,28 +3,23 @@ import workspace from "../components/Workspace.module.css";
 import { WorkspaceDialog } from "../components/WorkspaceDialog";
 
 import { OrderTotals } from "../components/OrderTotals";
-import { filterVisitors, paginateVisitors } from "../lib/visitorList";
+
 
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { DragEvent } from "react";
 import {
-  FaArrowsRotate,
   FaBagShopping,
   FaBoxOpen,
   FaBuilding,
   FaCalendarCheck,
-  FaChartLine,
   FaChevronDown,
   FaClock,
   FaCrown,
-  FaCopy,
   FaEnvelope,
-  FaEuroSign,
   FaFileInvoice,
   FaGripVertical,
-  FaHeart,
   FaImage,
   FaLocationDot,
   FaLock,
@@ -46,7 +41,6 @@ import {
   FaTruck,
   FaUser,
   FaUserGroup,
-  FaUsers,
   FaUtensils,
   FaXmark,
 } from "react-icons/fa6";
@@ -55,12 +49,15 @@ import { CATEGORY_ICON_CHOICES, categoryIconFor, formatOrderNumber, isDrinkCateg
 import { SOCIAL_PLATFORMS } from "../components/socialIcons";
 import dynamic from "next/dynamic";
 const RichTextEditor = dynamic(() => import("../components/RichTextEditor"), { ssr: false });
-import PartyAdmin from "./PartyAdmin";
+import { AdminOverview } from "./AdminOverview";
+import { processImageFile } from "./adminImage";
+import { downloadCsv } from "./adminFormat";
+import adminStyles from "./admin.module.css";
 import { BrandNameEditor } from "./BrandNameEditor";
 const PhoneAgentPanel = dynamic(() => import("./PhoneAgentPanel"));
-import type { AccountType, Brand, Category, Order, OrderStatus, Product, User } from "../lib/types";
+import type { Brand, Category, Order, OrderStatus, Product } from "../lib/types";
 import type { RestaurantOpenOverride } from "../lib/openingHours";
-import { amsterdamDateKey, buildDailyMetrics, makeRangeCheck, rangeFilterError, type DailyMetric, type RangeFilter } from "../lib/adminMetrics";
+import { amsterdamDateKey, makeRangeCheck, rangeFilterError, type RangeFilter } from "../lib/adminMetrics";
 
 const statusIcons: Record<OrderStatus, typeof FaClock> = {
   new: FaClock,
@@ -106,113 +103,17 @@ const normalizeCustomerAddress = (address: string, postcode: string): string =>
 const parseList = (value: string): string[] =>
   value.split(",").map((s) => s.trim()).filter(Boolean);
 
-/**
- * Reads an image file and returns a downscaled data URL (default: max 1200px JPEG).
- * Large phone photos (10MB+) would otherwise exceed the request size limit and
- * silently fail to save; this also converts formats like Apple HEIC to JPEG.
- */
-const processImageFile = (file: File, opts?: { maxDim?: number; mime?: string }): Promise<string> =>
-  new Promise((resolve, reject) => {
-    const maxDim = opts?.maxDim ?? 1200;
-    const mime = opts?.mime ?? "image/jpeg";
-    const url = URL.createObjectURL(file);
-    const img = new window.Image();
-    img.onload = () => {
-      URL.revokeObjectURL(url);
-      const scale = Math.min(1, maxDim / Math.max(img.naturalWidth, img.naturalHeight));
-      const w = Math.max(1, Math.round(img.naturalWidth * scale));
-      const h = Math.max(1, Math.round(img.naturalHeight * scale));
-      const canvas = document.createElement("canvas");
-      canvas.width = w;
-      canvas.height = h;
-      const ctx = canvas.getContext("2d");
-      if (!ctx) return reject(new Error("canvas"));
-      ctx.drawImage(img, 0, 0, w, h);
-      resolve(canvas.toDataURL(mime, 0.85));
-    };
-    img.onerror = () => {
-      URL.revokeObjectURL(url);
-      reject(new Error("decode"));
-    };
-    img.src = url;
-  });
-
 const ADMIN_INITIAL_NOW = Date.now();
-
-function smoothPath(points: Array<{ x: number; y: number }>): string {
-  if (points.length === 0) return "";
-  if (points.length === 1) return `M ${points[0].x} ${points[0].y}`;
-  return points.reduce((path, point, index) => {
-    if (index === 0) return `M ${point.x} ${point.y}`;
-    const previous = points[index - 1];
-    const midX = (previous.x + point.x) / 2;
-    return `${path} C ${midX} ${previous.y}, ${midX} ${point.y}, ${point.x} ${point.y}`;
-  }, "");
-}
-
-function DailySalesChart({ data, revenueLabel, ordersLabel, title, noData }: { data: DailyMetric[]; revenueLabel: string; ordersLabel: string; title: string; noData: string }) {
-  const width = Math.min(12_000, Math.max(760, data.length * 12));
-  const height = 250;
-  const pad = { top: 24, right: 22, bottom: 42, left: 42 };
-  const plotWidth = width - pad.left - pad.right;
-  const plotHeight = height - pad.top - pad.bottom;
-  const maxRevenue = data.reduce((max, item) => Math.max(max, item.revenue), 100);
-  const maxOrders = data.reduce((max, item) => Math.max(max, item.orders), 1);
-  const xFor = (index: number) => pad.left + (data.length <= 1 ? plotWidth / 2 : (index / (data.length - 1)) * plotWidth);
-  const yRevenue = (value: number) => pad.top + plotHeight - (value / maxRevenue) * plotHeight;
-  const yOrders = (value: number) => pad.top + plotHeight - (value / maxOrders) * plotHeight;
-  const revenuePoints = data.map((item, index) => ({ x: xFor(index), y: yRevenue(item.revenue) }));
-  const orderPoints = data.map((item, index) => ({ x: xFor(index), y: yOrders(item.orders) }));
-  const revenueColor = (value: number) => value < 100 ? "#ef4444" : value <= 300 ? "#d97706" : "#059669";
-  const dateLabel = (date: string) => new Date(`${date}T12:00:00Z`).toLocaleDateString(undefined, { timeZone: "UTC", day: "numeric", month: "short", year: "numeric" });
-
-  return (
-    <section className="mt-6 rounded-3xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-white/5" aria-label={title}>
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        <h2 className="text-lg font-black text-slate-900 dark:text-white">{title}</h2>
-        <div className="flex flex-wrap items-center gap-3 text-xs font-bold text-slate-500 dark:text-slate-400">
-          <span className="inline-flex items-center gap-1.5"><i className="h-2.5 w-2.5 rounded-full bg-emerald-600" />{revenueLabel}</span>
-          <span className="inline-flex items-center gap-1.5"><i className="h-0.5 w-4 border-t-2 border-dashed border-sky-500" />{ordersLabel}</span>
-        </div>
-      </div>
-      {data.length > 0 && <p className="mt-2 text-xs text-slate-500 dark:text-slate-400">{dateLabel(data[0].date)} – {dateLabel(data[data.length - 1].date)}</p>}
-      {data.length === 0 ? <p className="mt-8 text-center text-sm text-slate-500 dark:text-slate-400">{noData}</p> : (
-        <div tabIndex={0} role="group" aria-label={title} className="mt-4 overflow-x-auto">
-          <svg viewBox={`0 0 ${width} ${height}`} role="img" aria-label={title} style={{ minWidth: width }} className="w-full overflow-visible">
-            {[0, 0.5, 1].map((ratio) => {
-              const y = pad.top + plotHeight * ratio;
-              return <line key={ratio} x1={pad.left} x2={width - pad.right} y1={y} y2={y} stroke="currentColor" className="text-slate-200 dark:text-white/10" strokeDasharray="3 6" />;
-            })}
-            <path d={smoothPath(orderPoints)} fill="none" stroke="#0ea5e9" strokeWidth="3" strokeDasharray="7 6" strokeLinecap="round" />
-            <path d={smoothPath(revenuePoints)} fill="none" stroke="#059669" strokeWidth="4" strokeLinecap="round" />
-            {data.map((item, index) => (
-              <g key={item.date}>
-                <circle cx={revenuePoints[index].x} cy={revenuePoints[index].y} r="5" fill={revenueColor(item.revenue)} stroke="white" strokeWidth="2" className="dark:stroke-slate-900" />
-                <circle cx={orderPoints[index].x} cy={orderPoints[index].y} r="3.5" fill="#0ea5e9" stroke="white" strokeWidth="2" className="dark:stroke-slate-900" />
-                <title>{`${dateLabel(item.date)}: EUR ${item.revenue.toFixed(2)}, ${item.orders} ${ordersLabel}`}</title>
-                {(index === 0 || index === data.length - 1 || index % Math.max(1, Math.ceil(data.length / Math.max(6, Math.floor(width / 130)))) === 0) && <text x={xFor(index)} y={height - 14} textAnchor="middle" className="fill-slate-400 text-[11px]">{dateLabel(item.date)}</text>}
-              </g>
-            ))}
-            <text x="8" y={pad.top + 4} className="fill-slate-400 text-[10px]">EUR {Math.round(maxRevenue)}</text>
-            <text x="14" y={pad.top + plotHeight + 4} className="fill-slate-400 text-[10px]">EUR 0</text>
-          </svg>
-        </div>
-      )}
-    </section>
-  );
-}
 
 export default function AdminPage() {
   const { t, lang } = useLang();
-  const { currentUser, products, orders, users, addProductGroup, removeProduct, updateProductGroup, moveProduct, brands, manageBrands, updateOrderStatus, setOrderPaid, setInvoiceSent, deleteOrder, vipRequests, vipPurchases, approveVipRequest, rejectVipRequest, socialLinks, updateSocialLink, reservations, restaurantStatus, updateRestaurantOpenOverride, setReservationStatus, cancelReservation, deleteReservation, onlineVisitors, recentVisitors, setUserEmailVerified, setUserAccountType, refresh, hydrated } = useStore();
+  const { currentUser, products, orders, users, addProductGroup, removeProduct, updateProductGroup, moveProduct, brands, manageBrands, updateOrderStatus, setOrderPaid, setInvoiceSent, deleteOrder, vipRequests, vipPurchases, approveVipRequest, rejectVipRequest, socialLinks, updateSocialLink, reservations, restaurantStatus, updateRestaurantOpenOverride, setReservationStatus, cancelReservation, deleteReservation, recentVisitors, refresh, hydrated } = useStore();
   const fileRef = useRef<HTMLInputElement>(null);
   const editFileRef = useRef<HTMLInputElement>(null);
   const logoFileRef = useRef<HTMLInputElement>(null);
   /** Brand whose logo will receive the next picked file. */
   const logoBrandIdRef = useRef<string | null>(null);
   const [now, setNow] = useState(ADMIN_INITIAL_NOW);
-  const [adminRefreshing, setAdminRefreshing] = useState(false);
-  const [adminUpdatedAt, setAdminUpdatedAt] = useState(ADMIN_INITIAL_NOW);
   const [restaurantStatusSaving, setRestaurantStatusSaving] = useState<RestaurantOpenOverride | null>(null);
 
   useEffect(() => {
@@ -365,42 +266,8 @@ export default function AdminPage() {
   const [dropProductKey, setDropProductKey] = useState<string | null>(null);
   const [movingProductKey, setMovingProductKey] = useState<string | null>(null);
 
-  // Period filters: one for the statistics block, one for order management.
-  const [statsRange, setStatsRange] = useState<RangeFilter>({ preset: "all" });
   const [ordersRange, setOrdersRange] = useState<RangeFilter>({ preset: "all" });
-  const statsCheck = useMemo(() => makeRangeCheck(statsRange, now), [statsRange, now]);
   const ordersCheck = useMemo(() => makeRangeCheck(ordersRange, now), [ordersRange, now]);
-
-  const stats = useMemo(() => {
-    const inPeriod = orders.filter((o) => (o.paid || o.accountType === "company") && statsCheck(o.createdAt));
-    const revenue = inPeriod.reduce((s, o) => s + o.total, 0);
-    const avg = inPeriod.length ? revenue / inPeriod.length : 0;
-    const byCategory: Record<string, number> = {};
-    const byProduct: Record<string, { name: string; qty: number; revenue: number }> = {};
-    for (const o of inPeriod) {
-      for (const item of o.items) {
-        const product = products.find((p) => p.id === item.productId);
-        const cat = product?.category ?? "Other";
-        byCategory[cat] = (byCategory[cat] || 0) + item.price * item.qty;
-        if (!byProduct[item.productId]) byProduct[item.productId] = { name: item.name, qty: 0, revenue: 0 };
-        byProduct[item.productId].qty += item.qty;
-        byProduct[item.productId].revenue += item.price * item.qty;
-      }
-    }
-    const top = Object.values(byProduct).sort((a, b) => b.qty - a.qty).slice(0, 5);
-    const maxCat = Math.max(1, ...Object.values(byCategory));
-    return { revenue, avg, byCategory, top, maxCat, orderCount: inPeriod.length };
-  }, [orders, products, statsCheck]);
-
-  const dailyMetrics = useMemo(() => buildDailyMetrics(orders, statsRange, now), [now, orders, statsRange]);
-
-  /** All category names across restaurants (plus any legacy ones found in orders). */
-  const allCategories = useMemo(() => {
-    const set = new Set<string>();
-    for (const b of brands) for (const c of b.categories) set.add(c.name);
-    for (const c of Object.keys(stats.byCategory)) set.add(c);
-    return [...set];
-  }, [brands, stats.byCategory]);
 
   const productFilterCategories = useMemo(() => {
     const set = new Set<string>();
@@ -513,115 +380,7 @@ export default function AdminPage() {
     setDropProductKey(null);
   };
 
-  /** Total counts per category, independent of any active filters (used for the filter-tab badges). */
-  const allVisitorsCount = recentVisitors.length;
-  const registeredVisitorsCount = useMemo(() => recentVisitors.filter((v) => v.kind === "user").length, [recentVisitors]);
-  const guestVisitorsCount = useMemo(() => recentVisitors.filter((v) => v.kind === "guest").length, [recentVisitors]);
-
-  /** Number of signed-in users seen within the online window (green-dot users). */
-  const registeredOnlineCount = useMemo(
-    () => recentVisitors.filter((entry) => entry.kind === "user" && entry.isOnline).length,
-    [recentVisitors]
-  );
-
-  /** Number of guest sessions seen within the online window. */
-  const guestOnlineCount = useMemo(
-    () => recentVisitors.filter((entry) => entry.kind === "guest" && entry.isOnline).length,
-    [recentVisitors]
-  );
-
-  // Recently-online filters: registered vs guest, free-text search, online-only toggle, and sort order.
-  const [visitorFilter, setVisitorFilter] = useState<"all" | "user" | "guest">("all");
-  const [visitorSearch, setVisitorSearch] = useState("");
-  const [visitorOnlineOnly, setVisitorOnlineOnly] = useState(false);
-  const [visitorSort, setVisitorSort] = useState<"recent" | "online" | "visits" | "firstSeen">("recent");
-  const [visitorPage, setVisitorPage] = useState(1);
-  /** Session id just copied to the clipboard (briefly shows a "Copied!" confirmation). */
-  const [copiedSessionId, setCopiedSessionId] = useState<string | null>(null);
-  const [expandedVisitorOrders, setExpandedVisitorOrders] = useState<Set<string>>(() => new Set());
-  /** Timestamp of the last successful visitor-data refresh (auto or manual). */
-  const [visitorsUpdatedAt, setVisitorsUpdatedAt] = useState(ADMIN_INITIAL_NOW);
-  const [visitorsRefreshing, setVisitorsRefreshing] = useState(false);
-
-  /** Filter the full dataset before paging so every registered account is reachable. */
-  const filteredVisitors = useMemo(() => filterVisitors(recentVisitors, {
-    kind: visitorFilter, search: visitorSearch, onlineOnly: visitorOnlineOnly, sort: visitorSort,
-  }), [recentVisitors, visitorFilter, visitorOnlineOnly, visitorSearch, visitorSort]);
-  const visitorPagination = useMemo(() => paginateVisitors(filteredVisitors, visitorPage), [filteredVisitors, visitorPage]);
-  const recentlyOnline = visitorPagination.entries;
-
-  /** Whether any non-default filter/search/sort is currently applied. */
-  const visitorFiltersActive =
-    visitorFilter !== "all" || visitorOnlineOnly || visitorSearch.trim() !== "" || visitorSort !== "recent";
-
-  const clearVisitorFilters = () => {
-    setVisitorPage(1);
-    setVisitorFilter("all");
-    setVisitorSearch("");
-    setVisitorOnlineOnly(false);
-    setVisitorSort("recent");
-  };
-
-  const copySessionId = async (id: string) => {
-    try {
-      await navigator.clipboard.writeText(id);
-      setCopiedSessionId(id);
-      window.setTimeout(() => setCopiedSessionId((cur) => (cur === id ? null : cur)), 1500);
-    } catch {
-      /* clipboard unavailable in this browser/context - ignore */
-    }
-  };
-
-  const toggleVisitorOrders = (visitorKey: string) => {
-    setExpandedVisitorOrders((current) => {
-      const next = new Set(current);
-      if (next.has(visitorKey)) next.delete(visitorKey);
-      else next.add(visitorKey);
-      return next;
-    });
-  };
-
-  /** Re-fetch visitor + admin data periodically so the recently-online list stays accurate without a manual reload. */
-  useEffect(() => {
-    if (!hydrated) return;
-    const intervalId = window.setInterval(() => {
-      refresh().then(() => setVisitorsUpdatedAt(Date.now()));
-    }, 30_000);
-    return () => window.clearInterval(intervalId);
-  }, [hydrated, refresh]);
-
-  const handleVisitorsRefresh = async () => {
-    setVisitorsRefreshing(true);
-    try {
-      await refresh();
-      setVisitorsUpdatedAt(Date.now());
-    } finally {
-      setVisitorsRefreshing(false);
-    }
-  };
-
-  const handleAdminRefresh = async () => {
-    if (adminRefreshing) return;
-    setAdminRefreshing(true);
-    try {
-      await refresh();
-      setAdminUpdatedAt(Date.now());
-    } finally {
-      setAdminRefreshing(false);
-    }
-  };
-
-  const downloadCsv = (filename: string, rows: string[][]) => {
-    const csv = rows.map((row) => row.map((cell) => `"${String(cell).replace(/"/g, '""')}"`).join(",")).join("\r\n");
-    const url = URL.createObjectURL(new Blob([csv], { type: "text/csv;charset=utf-8" }));
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = filename;
-    link.click();
-    URL.revokeObjectURL(url);
-  };
-
-  const exportOrders = () => downloadCsv("orders.csv", [["Order", "Customer", "Created", "Status", "Total", "Paid"], ...orders.map((o) => [formatOrderNumber(o.orderNumber), o.customerName, new Date(o.createdAt).toISOString(), o.status, o.total.toFixed(2), o.paid ? "yes" : "no"])]);
+  const exportProducts = () => downloadCsv("products.csv", [["Name", "Brand", "Category", "Subcategory", "Price"], ...products.map((p) => [p.name, brands.find((b) => b.id === p.brand)?.name ?? p.brand, p.category, p.subcategory ?? "", p.price.toFixed(2)])]);
 
   const changeRestaurantStatus = async (override: RestaurantOpenOverride) => {
     setRestaurantStatusSaving(override);
@@ -630,15 +389,6 @@ export default function AdminPage() {
     } finally {
       setRestaurantStatusSaving(null);
     }
-  };
-
-  /** How long a guest session has been active, e.g. "2h 15m". */
-  const formatDuration = (ms: number): string => {
-    const totalMin = Math.max(0, Math.floor(ms / 60_000));
-    if (totalMin < 60) return `${totalMin}m`;
-    const h = Math.floor(totalMin / 60);
-    const m = totalMin % 60;
-    return m ? `${h}h ${m}m` : `${h}h`;
   };
 
   /** Reservation list filter: upcoming (pending/confirmed, today onwards) or all. */
@@ -660,45 +410,11 @@ export default function AdminPage() {
     return { date, reservations: calendarReservations.filter((reservation) => reservation.date === date) };
   }), [calendarMonth, calendarReservations]);
 
-  /** "just now" / "5 min ago" / "3 h ago" / "2 d ago" */
-  const relativeTime = (ts: number): string => {
-    const diffMin = Math.max(0, Math.floor((now - ts) / 60_000));
-    if (diffMin < 1) return t.admin.justNow;
-    if (diffMin < 60) return t.admin.minutesAgo.replace("{n}", String(diffMin));
-    const diffH = Math.floor(diffMin / 60);
-    if (diffH < 24) return t.admin.hoursAgo.replace("{n}", String(diffH));
-    return t.admin.daysAgo.replace("{n}", String(Math.floor(diffH / 24)));
-  };
-
-  /** Full local date/time shown as a tooltip on each visitor's last-seen badge. */
-  const absoluteTime = (ts: number): string =>
-    new Date(ts).toLocaleString(lang === "nl" ? "nl-NL" : "en-GB", { dateStyle: "medium", timeStyle: "short" });
-
-  const lastSeenSiteLabel = (site?: string): string | null => {
-    if (!site) return null;
-    return (
-      {
-        eattogo: "Eat to go",
-        themaison: "The Maison",
-        tandoor: "Shah Restaurant",
-      }[site] ?? site
-    );
-  };
-
-  /** Local drafts for the social link URL inputs (saved on blur / Enter). */
+  // Social links panel is collapsed by default to save space in the admin panel.
   const [socialDrafts, setSocialDrafts] = useState<Record<string, string>>({});
   const [socialSavedFor, setSocialSavedFor] = useState<string | null>(null);
-  // Social links panel is collapsed by default to save space in the admin panel.
+  const lastSeenSiteLabel = (site?: string): string | null => site ? ({ eattogo: "Eat to go", themaison: "The Maison", tandoor: "Shah Restaurant" }[site] ?? site) : null;
   const [socialOpen, setSocialOpen] = useState(false);
-  // Sales-by-category and top-products panels are also collapsed by default.
-  const [salesOpen, setSalesOpen] = useState(false);
-  const [topOpen, setTopOpen] = useState(false);
-  // Customer insights, recently-online and registered-users panels are collapsed by default to save vertical space.
-  const [insightsOpen, setInsightsOpen] = useState(false);
-  const [customerSortBy, setCustomerSortBy] = useState<"spend" | "orders">("spend");
-  const [recentlyOnlineOpen, setRecentlyOnlineOpen] = useState(false);
-  const [registeredUsersOpen, setRegisteredUsersOpen] = useState(false);
-
   const socialUrl = (platform: string): string =>
     socialDrafts[platform] ?? socialLinks.find((l) => l.platform === platform)?.url ?? "";
 
@@ -716,166 +432,6 @@ export default function AdminPage() {
   const toggleSocial = async (platform: (typeof SOCIAL_PLATFORMS)[number]["id"]) => {
     const stored = socialLinks.find((l) => l.platform === platform);
     await updateSocialLink(platform, socialUrl(platform).trim(), !(stored?.enabled ?? false));
-  };
-
-  /** Per-customer analytics: favourites, spend and activity, sorted by total spent. */
-  const customerStats = useMemo(() => {
-    interface Agg {
-      key: string;
-      name: string;
-      email?: string;
-      isRegistered: boolean;
-      orderCount: number;
-      totalSpent: number;
-      totalItems: number;
-      lastOrder: number;
-      productQty: Record<string, { name: string; qty: number }>;
-      categoryQty: Record<string, number>;
-    }
-    const map = new Map<string, Agg>();
-
-    for (const o of orders) {
-      const registered = o.userId ? users.find((u) => u.id === o.userId) : undefined;
-      const key = o.userId ?? `guest:${o.customerName.toLowerCase()}`;
-      let agg = map.get(key);
-      if (!agg) {
-        agg = {
-          key,
-          name: registered?.name ?? o.customerName,
-          email: registered?.email,
-          isRegistered: !!registered,
-          orderCount: 0,
-          totalSpent: 0,
-          totalItems: 0,
-          lastOrder: 0,
-          productQty: {},
-          categoryQty: {},
-        };
-        map.set(key, agg);
-      }
-      agg.orderCount += 1;
-      agg.totalSpent += o.total;
-      agg.lastOrder = Math.max(agg.lastOrder, o.createdAt);
-      for (const item of o.items) {
-        agg.totalItems += item.qty;
-        if (!agg.productQty[item.productId]) agg.productQty[item.productId] = { name: item.name, qty: 0 };
-        agg.productQty[item.productId].qty += item.qty;
-        const product = products.find((p) => p.id === item.productId);
-        const cat = product?.category ?? "Other";
-        agg.categoryQty[cat] = (agg.categoryQty[cat] || 0) + item.qty;
-      }
-    }
-
-    return Array.from(map.values())
-      .map((a) => {
-        const favProduct = Object.values(a.productQty).sort((x, y) => y.qty - x.qty)[0];
-        const favCategory = Object.entries(a.categoryQty).sort((x, y) => y[1] - x[1])[0];
-        return {
-          ...a,
-          avgOrder: a.orderCount ? a.totalSpent / a.orderCount : 0,
-          favProduct: favProduct ?? null,
-          favCategory: favCategory ? { name: favCategory[0], qty: favCategory[1] } : null,
-        };
-      })
-      .sort((a, b) => b.totalSpent - a.totalSpent);
-  }, [orders, users, products]);
-
-  const sortedCustomerStats = useMemo(
-    () =>
-      customerSortBy === "orders"
-        ? [...customerStats].sort((a, b) => b.orderCount - a.orderCount)
-        : customerStats,
-    [customerStats, customerSortBy]
-  );
-
-  /** All registered accounts, newest first, for the collapsible directory. */
-  const registeredUsers = useMemo(
-    () => [...users].sort((a, b) => b.createdAt - a.createdAt),
-    [users]
-  );
-
-  const [userSearch, setUserSearch] = useState("");
-  const [userFilter, setUserFilter] = useState<"all" | "online" | "unverified" | "vip" | "company">("all");
-  const [userSort, setUserSort] = useState<"newest" | "activity" | "orders" | "points">("newest");
-  const [copiedUserContact, setCopiedUserContact] = useState<string | null>(null);
-  const [accountTypeSavingId, setAccountTypeSavingId] = useState<string | null>(null);
-  const [accountTypeFeedback, setAccountTypeFeedback] = useState<{ userId: string; error: boolean; message: string } | null>(null);
-  const onlineUserIds = useMemo(
-    () => new Set(recentVisitors.filter((entry) => entry.kind === "user" && entry.isOnline).map((entry) => entry.id)),
-    [recentVisitors]
-  );
-  const userDirectoryCounts = useMemo(
-    () => ({
-      all: registeredUsers.length,
-      online: registeredUsers.filter((user) => onlineUserIds.has(user.id)).length,
-      unverified: registeredUsers.filter((user) => !user.emailVerified).length,
-      vip: registeredUsers.filter((user) => user.isVip).length,
-      company: registeredUsers.filter((user) => user.accountType === "company").length,
-    }),
-    [onlineUserIds, registeredUsers]
-  );
-  const filteredRegisteredUsers = useMemo(() => {
-    const q = userSearch.trim().toLowerCase();
-    const filtered = registeredUsers.filter((user) => {
-      if (userFilter === "online" && !onlineUserIds.has(user.id)) return false;
-      if (userFilter === "unverified" && user.emailVerified) return false;
-      if (userFilter === "vip" && !user.isVip) return false;
-      if (userFilter === "company" && user.accountType !== "company") return false;
-      return !q || [user.name, user.email, user.phone ?? "", user.address ?? "", user.postcode ?? ""].join(" ").toLowerCase().includes(q);
-    });
-    return filtered.sort((a, b) => {
-      if (userSort === "activity") return (b.lastSeenAt ?? 0) - (a.lastSeenAt ?? 0);
-      if (userSort === "orders") return b.orderCount - a.orderCount || b.createdAt - a.createdAt;
-      if (userSort === "points") return b.points - a.points || b.createdAt - a.createdAt;
-      return b.createdAt - a.createdAt;
-    });
-  }, [onlineUserIds, registeredUsers, userFilter, userSearch, userSort]);
-  const userFiltersActive = userFilter !== "all" || userSort !== "newest" || userSearch.trim() !== "";
-  const clearUserFilters = () => {
-    setUserFilter("all");
-    setUserSort("newest");
-    setUserSearch("");
-  };
-  const copyUserContact = async (value: string) => {
-    try {
-      await navigator.clipboard.writeText(value);
-      setCopiedUserContact(value);
-      window.setTimeout(() => setCopiedUserContact((current) => current === value ? null : current), 1500);
-    } catch {
-      // Clipboard access may be unavailable in a non-secure browser context.
-    }
-  };
-
-  const exportCustomers = () => downloadCsv("customers.csv", [["Customer", "Email", "Orders", "Total spent", "Last order"], ...customerStats.map((c) => [c.name, c.email ?? "", String(c.orderCount), c.totalSpent.toFixed(2), new Date(c.lastOrder).toISOString()])]);
-  const exportProducts = () => downloadCsv("products.csv", [["Name", "Brand", "Category", "Subcategory", "Price"], ...products.map((p) => [p.name, brands.find((b) => b.id === p.brand)?.name ?? p.brand, p.category, p.subcategory ?? "", p.price.toFixed(2)])]);
-  const exportUsers = () => downloadCsv("users.csv", [["Name", "Email", "Phone", "Account type", "Joined"], ...registeredUsers.map((u) => [u.name, u.email, u.phone ?? "", u.accountType ?? "personal", new Date(u.createdAt).toISOString()])]);
-
-  const toggleUserEmailVerification = async (userId: string, verified: boolean) => {
-    const res = await setUserEmailVerified(userId, verified);
-    if (res.ok) await refresh();
-  };
-
-  const changeUserAccountType = async (user: User, accountType: AccountType) => {
-    if (user.accountType === accountType || accountTypeSavingId) return;
-    setAccountTypeSavingId(user.id);
-    setAccountTypeFeedback(null);
-    try {
-      const result = await setUserAccountType(user.id, user.accountType, accountType);
-      if (result.ok) {
-        if (userFilter === "company" && accountType === "personal") setUserFilter("all");
-        setAccountTypeFeedback({ userId: user.id, error: false, message: lang === "nl" ? "Accounttype opgeslagen." : "Account type saved." });
-      } else {
-        if (result.error === "stale") await refresh();
-        const message = result.error === "stale"
-          ? (lang === "nl" ? "Dit profiel is intussen gewijzigd. Probeer opnieuw." : "This profile changed elsewhere. Please try again.")
-          : result.error === "companyDetailsRequired"
-            ? (lang === "nl" ? "BTW-nummer en KVK-nummer zijn vereist voor een zakelijk account." : "VAT and KVK numbers are required for a business account.")
-            : (lang === "nl" ? "Accounttype kon niet worden opgeslagen." : "Could not save the account type.");
-        setAccountTypeFeedback({ userId: user.id, error: true, message });
-      }
-    } finally {
-      setAccountTypeSavingId(null);
-    }
   };
 
   const customerOrdersForSelection = useMemo(() => {
@@ -1170,20 +726,6 @@ export default function AdminPage() {
       setManageState({ status: "error", message: t.admin.imageError });
     }
   };
-
-  const cards = [
-    { icon: FaEuroSign, label: t.admin.totalRevenue, value: `€${stats.revenue.toFixed(2)}` },
-    { icon: FaReceipt, label: t.admin.totalOrders, value: stats.orderCount },
-    { icon: FaUsers, label: t.admin.totalUsers, value: users.filter((u) => statsCheck(u.createdAt)).length },
-    { icon: FaChartLine, label: t.admin.avgOrder, value: `€${stats.avg.toFixed(2)}` },
-  ];
-  const dashboardSignals = [
-    { icon: FaUsers, label: t.admin.onlineVisitors, value: onlineVisitors, tone: "text-sky-600 dark:text-sky-300", surface: "bg-sky-500/10" },
-    { icon: FaMoneyBillWave, label: t.admin.unpaidOrders, value: orders.filter((order) => !order.paid && order.accountType !== "company").length, tone: "text-amber-700 dark:text-amber-300", surface: "bg-amber-500/10" },
-    { icon: FaCircleExclamation, label: t.admin.unverifiedAccounts, value: users.filter((user) => !user.emailVerified).length, tone: "text-rose-700 dark:text-rose-300", surface: "bg-rose-500/10" },
-    { icon: FaCrown, label: t.admin.vipRequests, value: vipRequests.filter((request) => request.status === "pending").length, tone: "text-violet-700 dark:text-violet-300", surface: "bg-violet-500/10" },
-  ];
-  const attentionCount = dashboardSignals.slice(1).reduce((total, signal) => total + signal.value, 0);
 
   /** Shared, inclusive calendar-day range for statistics and order management. */
   const renderRangeFilter = (value: RangeFilter, onChange: (f: RangeFilter) => void) => {
@@ -1586,42 +1128,8 @@ export default function AdminPage() {
   };
 
   return (
-    <div data-workspace="admin" className={`${workspace.page} mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8`}>
-      <p className={workspace.eyebrow}>SHAH / {lang === "nl" ? "Beheer" : "Workspace"}</p>
-      <div id="workspace-overview" tabIndex={-1} className={`${workspace.hero} mb-6 flex flex-wrap items-end justify-between gap-3`}>
-        <div>
-          <h1 className="text-3xl font-black tracking-tight text-slate-900 dark:text-white">{t.admin.title}</h1>
-          <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">{t.admin.subtitle}</p>
-          <div className="mt-4 flex flex-wrap items-center gap-2" aria-label="Admin tools">
-            <button type="button" onClick={() => void handleAdminRefresh()} disabled={adminRefreshing} className="inline-flex items-center gap-2 rounded-full border border-slate-200 px-3 py-2 text-xs font-bold text-slate-700 transition hover:border-emerald-400 disabled:opacity-50 dark:border-white/10 dark:text-slate-200"><FaArrowsRotate className={adminRefreshing ? "animate-spin" : ""} /> {t.admin.refreshDashboard}</button>
-            <button type="button" onClick={exportOrders} className="inline-flex items-center gap-2 rounded-full border border-slate-200 px-3 py-2 text-xs font-bold text-slate-700 transition hover:border-emerald-400 dark:border-white/10 dark:text-slate-200"><FaDownload /> {t.admin.exportOrders}</button>
-            <button type="button" onClick={exportCustomers} className="inline-flex items-center gap-2 rounded-full border border-slate-200 px-3 py-2 text-xs font-bold text-slate-700 transition hover:border-emerald-400 dark:border-white/10 dark:text-slate-200"><FaDownload /> {t.admin.exportCustomers}</button>
-            <span aria-live="polite" className="text-xs text-slate-400">{t.admin.lastDashboardUpdate}: {new Date(adminUpdatedAt).toLocaleTimeString()}</span>
-          </div>
-        </div>
-        <Link
-          href="/terminal"
-          className="inline-flex items-center gap-2 rounded-full border border-emerald-500/40 bg-emerald-500/10 px-4 py-2.5 text-sm font-bold text-emerald-700 transition hover:bg-emerald-500/20 dark:text-emerald-300"
-        >
-          <FaReceipt /> {t.terminal.title} →
-        </Link>
-      </div>
-
-      <nav className={workspace.sectionNav} aria-label={lang === "nl" ? "Beheersecties" : "Admin sections"}>
-        {[
-          { id: "workspace-overview", label: lang === "nl" ? "Overzicht" : "Overview" },
-          { id: "workspace-progress", label: t.admin.dailyProgress },
-          { id: "workspace-visitors", label: t.admin.recentlyOnline, open: () => setRecentlyOnlineOpen(true) },
-          { id: "workspace-users", label: t.admin.registeredUsers, open: () => setRegisteredUsersOpen(true) },
-          { id: "workspace-orders", label: t.fulfillment.orderManagement },
-          { id: "workspace-products", label: t.admin.manageProducts },
-          { id: "workspace-reservations", label: t.admin.reservationsTitle },
-          { id: "workspace-vip", label: t.admin.vipRequests },
-          { id: "workspace-social", label: t.admin.socialTitle, open: () => setSocialOpen(true) },
-          { id: "party-admin", label: "PARTIES / EVENTS" },
-          { id: "workspace-phone", label: lang === "nl" ? "Telefoon" : "Phone" },
-        ].map(link => <a key={link.id} href={"#" + link.id} onClick={() => { link.open?.(); requestAnimationFrame(() => { const target = document.getElementById(link.id); (target?.closest("button") ?? target)?.focus({ preventScroll: true }); }); }}>{link.label}</a>)}
-      </nav>
+    <div data-workspace="admin" className="admin-operations">
+      <nav className={adminStyles.sectionLinks} aria-label={lang === "nl" ? "Dagelijkse onderdelen" : "Daily operation sections"}>{[ ["workspace-orders", t.fulfillment.orderManagement], ["workspace-reservations", t.admin.reservationsTitle], ["workspace-products", t.admin.manageProducts], ["workspace-vip", t.admin.vipRequests], ["workspace-social", t.admin.socialTitle], ["workspace-phone", lang === "nl" ? "Telefoon" : "Phone"] ].map(([id,label]) => <a key={id} href={"#"+id} onClick={() => { if(id === "workspace-social")setSocialOpen(true); const node=document.getElementById(id); const details=node?.closest("details"); if(details)details.open=true; requestAnimationFrame(()=>node?.focus({preventScroll:true})); }}>{label}</a>)}</nav>
 
       <section className="mb-4 rounded-3xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-white/5">
         <div className="flex flex-wrap items-center justify-between gap-4">
@@ -1664,750 +1172,262 @@ export default function AdminPage() {
 
 
 
-      {/* Stat cards */}
-      <div className="mb-4">{renderRangeFilter(statsRange, setStatsRange)}</div>
-      <div data-workspace-metrics className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {cards.map((c) => {
-          const Icon = c.icon;
-          return (
-            <div data-workspace-metric key={c.label} className="rounded-3xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-white/5">
-              <span className="grid h-10 w-10 place-items-center rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
-                <Icon aria-hidden="true" />
-              </span>
-              <p className="mt-3 text-2xl font-black text-slate-900 dark:text-white">{c.value}</p>
-              <p className="text-sm text-slate-500 dark:text-slate-400">{c.label}</p>
-            </div>
-          );
-        })}
-      </div>
-
-      <section className="mt-4 border-y border-slate-200 py-4 dark:border-white/10" aria-label={t.admin.dashboardSignals}>
-        <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
-          <h2 className="text-sm font-black text-slate-900 dark:text-white">{t.admin.dashboardSignals}</h2>
-          <span className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-bold ${attentionCount > 0 ? "bg-rose-500/10 text-rose-700 dark:text-rose-300" : "bg-emerald-500/10 text-emerald-700 dark:text-emerald-300"}`}>
-            <FaCircleExclamation /> {attentionCount} {t.admin.attentionItems}
-          </span>
-        </div>
-        <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
-          {dashboardSignals.map((signal) => {
-            const Icon = signal.icon;
-            return <div key={signal.label} className="flex min-w-0 items-center gap-3 border-l-2 border-slate-200 pl-3 dark:border-white/10">
-              <span className={`grid h-9 w-9 shrink-0 place-items-center rounded-lg ${signal.surface} ${signal.tone}`}><Icon aria-hidden="true" /></span>
-              <div className="min-w-0"><p className={`text-xl font-black ${signal.tone}`}>{signal.value}</p><p className="truncate text-xs font-semibold text-slate-500 dark:text-slate-400">{signal.label}</p></div>
-            </div>;
-          })}
-        </div>
-      </section>
-
-      <div id="workspace-progress" tabIndex={-1}>
-      <DailySalesChart
-        data={dailyMetrics}
-        title={t.admin.dailyProgress}
-        revenueLabel={t.admin.dailyRevenue}
-        ordersLabel={t.admin.dailyOrders}
-        noData={t.admin.noDailyData}
-      />
-      </div>
-
-      <div className="mt-6 grid gap-6 lg:grid-cols-2">
-        {/* Sales by category (collapsible) */}
-        <div className="self-start rounded-3xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-white/5">
-          <button
-            type="button"
-            onClick={() => setSalesOpen((o) => !o)}
-            aria-expanded={salesOpen}
-            className="flex w-full items-center gap-2 text-left"
-          >
-            <h2 className="flex-1 text-lg font-black text-slate-900 dark:text-white">{t.admin.ordersByCategory}</h2>
-            <FaChevronDown className={`shrink-0 text-slate-400 transition-transform duration-300 ${salesOpen ? "rotate-180" : ""}`} />
-          </button>
-          <div className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${salesOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
-            <div className="overflow-hidden">
-              <div className="mt-4 space-y-3">
-                {allCategories.map((cat) => {
-                  const val = stats.byCategory[cat] || 0;
-                  const Icon = categoryIconFor(brands, cat);
-                  return (
-                    <div key={cat}>
-                      <div className="flex items-center justify-between text-sm">
-                        <span className="flex items-center gap-2 font-semibold text-slate-700 dark:text-slate-200">
-                          <Icon aria-hidden="true" className="text-emerald-600 dark:text-emerald-400" /> {cat}
-                        </span>
-                        <span className="font-bold text-slate-900 dark:text-white">€{val.toFixed(2)}</span>
-                      </div>
-                      <div className="mt-1.5 h-2.5 w-full overflow-hidden rounded-full bg-slate-100 dark:bg-white/10">
-                        <div className="h-full rounded-full bg-gradient-to-r from-emerald-500 to-sky-500 transition-all" style={{ width: `${(val / stats.maxCat) * 100}%` }} />
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Top products (collapsible) */}
-        <div className="self-start rounded-3xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-white/5">
-          <button
-            type="button"
-            onClick={() => setTopOpen((o) => !o)}
-            aria-expanded={topOpen}
-            className="flex w-full items-center gap-2 text-left"
-          >
-            <h2 className="flex-1 text-lg font-black text-slate-900 dark:text-white">{t.admin.topProducts}</h2>
-            <FaChevronDown className={`shrink-0 text-slate-400 transition-transform duration-300 ${topOpen ? "rotate-180" : ""}`} />
-          </button>
-          <div className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${topOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
-            <div className="overflow-hidden">
-              {stats.top.length === 0 ? (
-                <p className="mt-3 text-sm text-slate-500 dark:text-slate-400">{t.admin.noOrders}</p>
-              ) : (
-                <ol className="mt-4 space-y-2">
-                  {stats.top.map((p, i) => (
-                    <li key={p.name} className="flex items-center gap-3 rounded-2xl border border-slate-100 bg-slate-50 px-4 py-3 dark:border-white/5 dark:bg-white/5">
-                      <span className="grid h-7 w-7 place-items-center rounded-full bg-emerald-500/15 text-xs font-black text-emerald-700 dark:text-emerald-300">{i + 1}</span>
-                      <span className="flex-1 truncate text-sm font-semibold text-slate-900 dark:text-white">{p.name}</span>
-                      <span className="text-xs text-slate-500 dark:text-slate-400">×{p.qty}</span>
-                      <span className="text-sm font-bold text-slate-900 dark:text-white">€{p.revenue.toFixed(2)}</span>
-                    </li>
-                  ))}
-                </ol>
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Customer insights (collapsible) */}
-      <div className="mt-6 rounded-3xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-white/5">
-        <button
-          type="button"
-          onClick={() => setInsightsOpen((o) => !o)}
-          aria-expanded={insightsOpen}
-          className="flex w-full items-center gap-2 text-left"
-        >
-          <span className="grid h-9 w-9 place-items-center rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
-            <FaUserGroup />
-          </span>
-          <div className="flex-1">
-            <h2 className="text-lg font-black text-slate-900 dark:text-white">{t.admin.customerInsights}</h2>
-            <p className="text-xs text-slate-500 dark:text-slate-400">{t.admin.customerInsightsSub}</p>
-          </div>
-          <FaChevronDown className={`shrink-0 text-slate-400 transition-transform duration-300 ${insightsOpen ? "rotate-180" : ""}`} />
-        </button>
-
-        <div className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${insightsOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
-          <div className="overflow-hidden">
-        {customerStats.length === 0 ? (
-          <p className="mt-4 text-sm text-slate-500 dark:text-slate-400">{t.admin.noCustomers}</p>
-        ) : (
-          <>
-            <div className="mt-4 flex rounded-full border border-slate-200 p-0.5 text-xs font-bold dark:border-white/10">
-              <button
-                type="button"
-                onClick={() => setCustomerSortBy("spend")}
-                className={`flex-1 rounded-full px-3 py-1.5 transition ${customerSortBy === "spend" ? "bg-emerald-500 text-white" : "text-slate-500 dark:text-slate-400"}`}
-              >
-                {t.admin.sortBySpend}
-              </button>
-              <button
-                type="button"
-                onClick={() => setCustomerSortBy("orders")}
-                className={`flex-1 rounded-full px-3 py-1.5 transition ${customerSortBy === "orders" ? "bg-emerald-500 text-white" : "text-slate-500 dark:text-slate-400"}`}
-              >
-                {t.admin.sortByOrders}
-              </button>
-            </div>
-          <div className="mt-5 grid max-h-[34rem] gap-4 overflow-y-auto pr-1 md:grid-cols-2 xl:grid-cols-3">
-            {sortedCustomerStats.map((c, i) => {
-              const FavIcon = c.favCategory ? categoryIconFor(brands, c.favCategory.name) : categoryIconFor(brands, "");
-              return (
-                <div
-                  key={c.key}
-                  className="flex flex-col rounded-2xl border border-slate-200 bg-slate-50/60 p-4 dark:border-white/10 dark:bg-white/5"
-                >
-                  {/* Header */}
-                  <div className="flex items-center gap-3">
-                    <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-gradient-to-br from-emerald-500 to-sky-500 text-sm font-black text-white">
-                      {c.name.charAt(0).toUpperCase()}
-                    </span>
-                    <div className="min-w-0 flex-1">
-                      <p className="flex items-center gap-1.5 truncate text-sm font-black text-slate-900 dark:text-white">
-                        {i === 0 && <FaCrown className="shrink-0 text-amber-500" title="Top spender" />}
-                        {c.name}
-                      </p>
-                      <p className="truncate text-xs text-slate-500 dark:text-slate-400">
-                        {c.email ?? t.admin.guest}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Key numbers */}
-                  <div className="mt-4 grid grid-cols-3 gap-2 text-center">
-                    <div className="rounded-xl bg-white px-2 py-2.5 dark:bg-white/5">
-                      <p className="text-base font-black text-slate-900 dark:text-white">{c.orderCount}</p>
-                      <p className="text-[10px] uppercase tracking-wide text-slate-400">{t.admin.ordersLabel}</p>
-                    </div>
-                    <div className="rounded-xl bg-white px-2 py-2.5 dark:bg-white/5">
-                      <p className="text-base font-black text-slate-900 dark:text-white">€{c.totalSpent.toFixed(0)}</p>
-                      <p className="text-[10px] uppercase tracking-wide text-slate-400">{t.admin.totalSpent}</p>
-                    </div>
-                    <div className="rounded-xl bg-white px-2 py-2.5 dark:bg-white/5">
-                      <p className="text-base font-black text-slate-900 dark:text-white">€{c.avgOrder.toFixed(0)}</p>
-                      <p className="text-[10px] uppercase tracking-wide text-slate-400">{t.admin.avgSpent}</p>
-                    </div>
-                  </div>
-
-                  {/* Favourites */}
-                  <div className="mt-4 space-y-2 text-sm">
-                    <div className="flex items-center gap-2">
-                      <FaHeart className="shrink-0 text-rose-500" />
-                      <span className="text-slate-500 dark:text-slate-400">{t.admin.favoriteProduct}:</span>
-                      <span className="ml-auto truncate font-bold text-slate-900 dark:text-white">
-                        {c.favProduct ? `${c.favProduct.name} ×${c.favProduct.qty}` : "-"}
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <FavIcon className="shrink-0 text-emerald-600 dark:text-emerald-400" />
-                      <span className="text-slate-500 dark:text-slate-400">{t.admin.favoriteCategory}:</span>
-                      <span className="ml-auto truncate font-bold text-slate-900 dark:text-white">
-                        {c.favCategory ? `${c.favCategory.name} ×${c.favCategory.qty}` : "-"}
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Footer */}
-                  <div className="mt-4 flex items-center justify-between border-t border-slate-200 pt-3 text-xs text-slate-500 dark:border-white/10 dark:text-slate-400">
-                    <span>{t.admin.itemsOrdered}: <span className="font-bold text-slate-700 dark:text-slate-200">{c.totalItems}</span></span>
-                    <span>{t.admin.lastOrder}: <span className="font-bold text-slate-700 dark:text-slate-200">{new Date(c.lastOrder).toLocaleDateString(lang === "nl" ? "nl-NL" : "en-GB")}</span></span>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-          </>
-        )}
-          </div>
-        </div>
-      </div>
-
-      {/* Recently online - signed-in users and guest sessions, with filtering, search and sorting */}
-      <div className="mt-6 rounded-3xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-white/5">
+      <AdminOverview />
+<div className="mt-6 rounded-3xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-white/5">
         <div className="flex items-center gap-2">
-          <button
-            type="button"
-            onClick={() => setRecentlyOnlineOpen((o) => !o)}
-            aria-expanded={recentlyOnlineOpen}
-            className="flex flex-1 items-center gap-2 text-left"
-          >
-            <span className="grid h-9 w-9 place-items-center rounded-xl bg-sky-500/10 text-sky-600 dark:text-sky-400">
-              <FaUsers />
-            </span>
-            <div className="flex-1">
-              <h2 id="workspace-visitors" className="text-lg font-black text-slate-900 dark:text-white">{t.admin.recentlyOnline}</h2>
-              <p className="text-xs text-slate-500 dark:text-slate-400">{t.admin.recentlyOnlineSub}</p>
-            </div>
-            <FaChevronDown className={`shrink-0 text-slate-400 transition-transform duration-300 ${recentlyOnlineOpen ? "rotate-180" : ""}`} />
-          </button>
-          <div className="flex flex-wrap items-center justify-end gap-2">
-            <span
-              className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-2.5 py-1 text-xs font-bold text-emerald-700 dark:text-emerald-300"
-              title={t.admin.onlineNow}
-            >
-              <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-500" />
-              {registeredOnlineCount} {t.admin.signedInLabel}
-            </span>
-            <span
-              className="inline-flex items-center gap-1.5 rounded-full bg-sky-500/10 px-2.5 py-1 text-xs font-bold text-sky-700 dark:text-sky-300"
-              title={t.admin.onlineNow}
-            >
-              <FaUsers className="text-[10px]" /> {guestOnlineCount} {t.admin.guestsLabel}
-            </span>
-            <button
-              type="button"
-              onClick={handleVisitorsRefresh}
-              disabled={visitorsRefreshing}
-              title={t.admin.recentlyOnlineRefresh}
-              className="inline-flex items-center gap-1.5 rounded-full bg-slate-100 px-2.5 py-1 text-xs font-bold text-slate-600 transition hover:bg-slate-200 disabled:opacity-60 dark:bg-white/10 dark:text-slate-300 dark:hover:bg-white/20"
-            >
-              <FaArrowsRotate className={visitorsRefreshing ? "animate-spin" : ""} /> {t.admin.recentlyOnlineRefresh}
-            </button>
+          <span className="grid h-9 w-9 place-items-center rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
+            <FaReceipt />
+          </span>
+          <div>
+            <h2 id="workspace-orders" tabIndex={-1} className="text-lg font-black text-slate-900 dark:text-white">{t.fulfillment.orderManagement}</h2>
+            <p className="text-xs text-slate-500 dark:text-slate-400">{t.fulfillment.orderManagementSub}</p>
           </div>
         </div>
-        <div className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${recentlyOnlineOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
-          <div className="overflow-hidden">
-        <p className="mt-1.5 text-[11px] text-slate-400 dark:text-slate-500">
-          {t.admin.recentlyOnlineLastUpdated.replace("{time}", relativeTime(visitorsUpdatedAt))}
-        </p>
 
-        {/* Filter tabs, search, online-only toggle and sort order */}
-        <div className="mt-4 flex flex-wrap items-center gap-2">
-          <div className="inline-flex rounded-full bg-slate-100 p-1 text-xs font-bold dark:bg-white/5">
-            {([
-              ["all", t.admin.recentlyOnlineFilterAll, allVisitorsCount],
-              ["user", t.admin.recentlyOnlineFilterUsers, registeredVisitorsCount],
-              ["guest", t.admin.recentlyOnlineFilterGuests, guestVisitorsCount],
-            ] as const).map(([value, label, count]) => (
-              <button
-                key={value}
-                type="button"
-                onClick={() => { setVisitorFilter(value); setVisitorPage(1); }}
-                className={`rounded-full px-3 py-1.5 transition ${
-                  visitorFilter === value
-                    ? "bg-white text-slate-900 shadow dark:bg-white/20 dark:text-white"
-                    : "text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200"
-                }`}
-              >
-                {label} <span className="opacity-60">({count})</span>
-              </button>
-            ))}
-          </div>
+        <div className="mt-4">{renderRangeFilter(ordersRange, setOrdersRange)}</div>
 
-          <label className="relative min-w-[180px] flex-1">
-            <FaMagnifyingGlass className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-xs text-slate-400" />
-            <input
-              type="text"
-              value={visitorSearch}
-              onChange={(e) => { setVisitorSearch(e.target.value); setVisitorPage(1); }}
-              placeholder={t.admin.recentlyOnlineSearchPlaceholder}
-              className="w-full rounded-full border border-slate-200 bg-white py-1.5 pl-8 pr-8 text-xs font-semibold text-slate-700 outline-none focus:border-sky-400 dark:border-white/10 dark:bg-white/5 dark:text-slate-200"
-            />
-            {visitorSearch && (
-              <button
-                type="button"
-                onClick={() => { setVisitorSearch(""); setVisitorPage(1); }}
-                className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"
-              >
-                <FaXmark className="text-xs" />
-              </button>
-            )}
-          </label>
-
-          <label className="inline-flex items-center gap-1.5 rounded-full bg-slate-100 px-3 py-1.5 text-xs font-bold text-slate-600 dark:bg-white/5 dark:text-slate-300">
-            <input
-              type="checkbox"
-              checked={visitorOnlineOnly}
-              onChange={(e) => { setVisitorOnlineOnly(e.target.checked); setVisitorPage(1); }}
-              className="h-3.5 w-3.5 accent-emerald-500"
-            />
-            {t.admin.recentlyOnlineOnlineOnly}
-          </label>
-
-          <select
-            value={visitorSort}
-            onChange={(e) => { setVisitorSort(e.target.value as typeof visitorSort); setVisitorPage(1); }}
-            aria-label={t.admin.recentlyOnlineSortLabel}
-            className="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-bold text-slate-600 outline-none focus:border-sky-400 dark:border-white/10 dark:bg-white/5 dark:text-slate-300"
-          >
-            <option value="recent">{t.admin.recentlyOnlineSortRecent}</option>
-            <option value="online">{t.admin.recentlyOnlineSortOnlineFirst}</option>
-            <option value="visits">{t.admin.recentlyOnlineSortVisits}</option>
-            <option value="firstSeen">{t.admin.recentlyOnlineSortFirstSeen}</option>
-          </select>
-
-          {visitorFiltersActive && (
-            <button
-              type="button"
-              onClick={clearVisitorFilters}
-              className="inline-flex items-center gap-1 rounded-full px-3 py-1.5 text-xs font-bold text-rose-600 hover:bg-rose-50 dark:text-rose-400 dark:hover:bg-rose-500/10"
-            >
-              <FaXmark className="text-[10px]" /> {t.admin.recentlyOnlineClearFilters}
-            </button>
+        {/* Customer orders */}
+        <div className="mt-5">
+          <h3 className="flex items-center gap-2 text-sm font-black uppercase tracking-wide text-slate-500 dark:text-slate-400">
+            <FaUser className="text-emerald-600 dark:text-emerald-400" /> {t.fulfillment.customerOrders}
+            <span className="rounded-full bg-slate-100 px-2 py-0.5 text-xs font-bold text-slate-600 dark:bg-white/10 dark:text-slate-300">
+              {filteredCustomerOrders.length}
+            </span>
+          </h3>
+          {customerOrders.length === 0 ? (
+            <p className="mt-3 text-sm text-slate-500 dark:text-slate-400">{t.fulfillment.noCustomerOrders}</p>
+          ) : (
+            <>
+              <div className="relative mt-3">
+                <FaMagnifyingGlass className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-sm text-slate-400" />
+                <input
+                  type="search"
+                  value={customerSearch}
+                  onChange={(e) => setCustomerSearch(e.target.value)}
+                  placeholder={t.fulfillment.searchCustomers}
+                  aria-label={t.fulfillment.searchCustomers}
+                  className="w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 pl-10 pr-10 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/5 dark:text-white"
+                />
+                {customerSearch && <button type="button" onClick={() => setCustomerSearch("")} aria-label="Clear customer search" className="absolute right-2 top-1/2 -translate-y-1/2 p-1 text-slate-400 hover:text-emerald-600"><FaXmark /></button>}
+              </div>
+              {filteredCustomerOrders.length === 0 ? (
+                <p className="mt-3 text-sm text-slate-500 dark:text-slate-400">{t.fulfillment.noMatches}</p>
+              ) : (
+                <>
+                  <div className="mt-3 max-h-[42rem] space-y-3 overflow-y-auto pr-1">{filteredCustomerOrders.slice(0, customerOrdersLimit).map(renderOrderCard)}</div>
+                  {filteredCustomerOrders.length > customerOrdersLimit && (
+                    <button
+                      type="button"
+                      onClick={() => setCustomerOrdersLimit((n) => n + 20)}
+                      className="mt-3 w-full rounded-xl border border-slate-200 py-2 text-xs font-bold text-slate-600 transition hover:border-emerald-400 hover:text-emerald-700 dark:border-white/10 dark:text-slate-300"
+                    >
+                      {t.admin.showMore}
+                    </button>
+                  )}
+                </>
+              )}
+            </>
           )}
         </div>
 
-        <p className="mt-3 text-[11px] font-semibold text-slate-400 dark:text-slate-500">
-          {t.admin.recentlyOnlineShowingRange
-            .replace("{from}", String(visitorPagination.from))
-            .replace("{to}", String(visitorPagination.to))
-            .replace("{total}", String(visitorPagination.total))}
-        </p>
-
-        {recentlyOnline.length === 0 ? (
-          <p className="mt-4 text-sm text-slate-500 dark:text-slate-400">
-            {recentVisitors.length === 0 ? t.admin.noCustomers : t.admin.recentlyOnlineNoResults}
-          </p>
-        ) : (
-          <ul className="mt-3 max-h-[28rem] space-y-2 overflow-y-auto pr-1">
-            {recentlyOnline.map((entry) => {
-              const online = entry.isOnline;
-              const orderCount = entry.orderCount ?? 0;
-              const lastSeenSite = lastSeenSiteLabel(entry.lastSeenSite);
-              const avatarLetter = entry.kind === "guest" ? "G" : entry.name.charAt(0).toUpperCase();
-              const isNewGuest = entry.kind === "guest" && entry.firstSeenAt != null && now - entry.firstSeenAt < 60 * 60_000;
-              const badgeLabel = entry.kind === "guest"
-                ? "Guest"
-                : entry.role === "admin"
-                  ? "Admin"
-                  : entry.accountType === "company"
-                    ? "B2B"
-                    : t.admin.recentlyOnlineRegisteredBadge;
-              return (
-                <li key={`${entry.kind}-${entry.id}`} className="flex flex-col gap-3 rounded-2xl border border-slate-100 bg-slate-50/70 p-3 md:flex-row md:items-center md:gap-3 dark:border-white/5 dark:bg-white/5">
-                  <div className="flex min-w-0 flex-1 items-start gap-3">
-                    <span className={`relative grid h-11 w-11 shrink-0 place-items-center rounded-full bg-gradient-to-br ${entry.kind === "guest" ? "from-amber-500 to-orange-500" : "from-sky-500 to-indigo-500"} text-sm font-black text-white`}>
-                      {avatarLetter}
-                      <span
-                        className={`absolute -bottom-0.5 -right-0.5 h-3.5 w-3.5 rounded-full border-2 border-white dark:border-[#170d04] ${
-                          online ? "bg-emerald-500" : "bg-slate-300 dark:bg-slate-600"
-                        }`}
-                      />
-                    </span>
-                    <div className="min-w-0 flex-1">
-                      <div className="flex flex-wrap items-center gap-2">
-                        <p className="truncate text-sm font-black text-slate-900 dark:text-white">
-                          {entry.kind === "guest" ? `${t.admin.guest} - ${entry.identityStatus === "identified" ? entry.name : String(entry.sessionId ?? entry.id).slice(0, 8)}` : entry.name}
-                        </p>
-                        <span
-                          className={`inline-flex items-center rounded-full px-2.5 py-1 text-[10px] font-black uppercase tracking-wide ${
-                            entry.kind === "guest"
-                              ? "bg-amber-500/10 text-amber-700 dark:text-amber-300"
-                              : "bg-slate-100 text-slate-600 dark:bg-white/10 dark:text-slate-300"
-                          }`}
-                        >
-                          {badgeLabel}
-                        </span>
-                        {isNewGuest && (
-                          <span className="inline-flex items-center rounded-full bg-emerald-500/10 px-2.5 py-1 text-[10px] font-black uppercase tracking-wide text-emerald-700 dark:text-emerald-300">
-                            {t.admin.recentlyOnlineNewBadge}
-                          </span>
-                        )}
-                        {entry.kind === "user" && entry.role === "admin" && <FaLock className="shrink-0 text-[10px] text-slate-400" title="Admin" />}
-                        {entry.kind === "user" && entry.isVip && <FaCrown className="shrink-0 text-xs text-amber-500" title="VIP" />}
-                        {entry.kind === "user" && entry.accountType === "company" && <FaBuilding className="shrink-0 text-xs text-sky-500" title="B2B" />}
-                      </div>
-                      <p className="truncate text-xs text-slate-500 dark:text-slate-400">
-                        {entry.kind === "guest" ? entry.email ?? `Session ${String(entry.id).slice(0, 8)}` : entry.email}
-                      </p>
-                      {entry.kind === "guest" && entry.identityStatus === "identified" && (
-                        <p className="mt-0.5 text-[11px] text-slate-500 dark:text-slate-400">
-                          {t.admin.recentlyOnlineIdentitySupplied} · Session {String(entry.sessionId ?? entry.id).slice(0, 8)}
-                        </p>
-                      )}
-                      {entry.kind === "guest" && entry.identityStatus === "ambiguous" && (
-                        <p className="mt-0.5 text-[11px] font-semibold text-amber-700 dark:text-amber-300">{t.admin.recentlyOnlineIdentityAmbiguous}</p>
-                      )}
-                      {entry.kind === "user" && entry.phone && (
-                        <p className="mt-0.5 flex items-center gap-1.5 truncate text-xs font-semibold text-slate-600 dark:text-slate-300">
-                          <FaPhone className="shrink-0 text-[10px] text-slate-400" /> {entry.phone}
-                        </p>
-                      )}
-                      <div className="mt-2 flex flex-wrap items-center gap-2 text-[11px]">
-                        {entry.kind === "guest" ? (
-                          <>
-                            <span className="rounded-full bg-amber-500/10 px-2 py-0.5 font-semibold text-amber-700 dark:text-amber-300">
-                              {entry.visitCount && entry.visitCount > 1 ? `${entry.visitCount} visits` : "1 visit"}
-                            </span>
-                            {orderCount > 0 && <span className="rounded-full bg-emerald-500/10 px-2 py-0.5 font-semibold text-emerald-700 dark:text-emerald-300"><FaReceipt className="mr-1 inline text-[10px]" />{t.admin.recentlyOnlineSessionOrders.replace("{count}", String(orderCount)).replace("{paid}", String(entry.paidOrderCount ?? 0))}</span>}
-                            {!!entry.reservationCount && <span className="rounded-full bg-rose-500/10 px-2 py-0.5 font-semibold text-rose-700 dark:text-rose-300">{t.admin.recentlyOnlineGuestReservations.replace("{count}", String(entry.reservationCount))}</span>}
-                            {!!entry.matchingOrderCount && (
-                              <span className="w-full rounded-lg bg-sky-500/10 px-2 py-1 text-sky-800 dark:text-sky-300">
-                                <strong>{t.admin.recentlyOnlineMatchingOrders.replace("{count}", String(entry.matchingOrderCount)).replace("{paid}", String(entry.matchingPaidOrderCount ?? 0))}</strong>
-                                <span className="mt-0.5 block text-[10px]">{t.admin.recentlyOnlineMatchingNote}</span>
-                              </span>
-                            )}
-                            <span className="rounded-full bg-slate-100 px-2 py-0.5 text-slate-600 dark:bg-white/10 dark:text-slate-300">
-                              {entry.firstSeenAt ? `First seen ${relativeTime(entry.firstSeenAt)}` : "New session"}
-                            </span>
-                            {entry.firstSeenAt != null && (
-                              <span className="rounded-full bg-slate-100 px-2 py-0.5 text-slate-600 dark:bg-white/10 dark:text-slate-300">
-                                {t.admin.recentlyOnlineActiveFor.replace("{duration}", formatDuration((entry.activeSeconds ?? 0) * 1000))}
-                              </span>
-                            )}
-                            {entry.sessionId && (
-                              <button
-                                type="button"
-                                onClick={() => copySessionId(entry.sessionId!)}
-                                title={t.admin.recentlyOnlineCopySession}
-                                className="rounded-full bg-slate-100 px-2 py-0.5 font-semibold text-slate-600 transition hover:bg-slate-200 dark:bg-white/10 dark:text-slate-300 dark:hover:bg-white/20"
-                              >
-                                {copiedSessionId === entry.sessionId ? t.admin.recentlyOnlineCopied : t.admin.recentlyOnlineCopySession}
-                              </button>
-                            )}
-                          </>
-                        ) : (
-                          <>
-                            {orderCount > 0 && (
-                              <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-2 py-0.5 font-semibold text-emerald-700 dark:text-emerald-300">
-                                <FaReceipt className="text-[10px]" /> {orderCount} {t.admin.ordersLabel.toLowerCase()}
-                              </span>
-                            )}
-                            {entry.maisonReservationCount ? <span className="rounded-full bg-rose-500/10 px-2 py-0.5 font-semibold text-rose-700 dark:text-rose-300">{entry.maisonReservationCount} {t.admin.recentlyOnlineReservationsMaison} ({entry.maisonArrivedCount ?? 0} {t.admin.recentlyOnlineArrived})</span> : null}
-                            {entry.tandoorReservationCount ? <span className="rounded-full bg-orange-500/10 px-2 py-0.5 font-semibold text-orange-700 dark:text-orange-300">{entry.tandoorReservationCount} {t.admin.recentlyOnlineReservationsTandoor} ({entry.tandoorArrivedCount ?? 0} {t.admin.recentlyOnlineArrived})</span> : null}
-                            {lastSeenSite && (
-                              <span className="inline-flex items-center gap-1.5 rounded-full bg-sky-500/10 px-2 py-0.5 font-semibold text-sky-700 dark:text-sky-300">
-                                <FaStore className="text-[10px]" /> {lastSeenSite}
-                              </span>
-                            )}
-                          </>
-                        )}
-                      </div>
-                    </div>
-                    {orderCount > 0 && (
-                      <div className="mt-2">
-                        <button type="button" onClick={() => toggleVisitorOrders(`${entry.kind}-${entry.id}`)} className="text-xs font-bold text-emerald-700 hover:underline dark:text-emerald-300">
-                          {expandedVisitorOrders.has(`${entry.kind}-${entry.id}`) ? t.admin.recentlyOnlineHideOrders : t.admin.recentlyOnlineViewOrders}
-                        </button>
-                        {expandedVisitorOrders.has(`${entry.kind}-${entry.id}`) && (
-                          <ul className="mt-2 max-h-64 space-y-1 overflow-y-auto rounded-xl border border-slate-200 bg-white p-2 dark:border-white/10 dark:bg-white/5">
-                            {orders.filter((order) => entry.kind === "user" ? order.userId === entry.id : !order.userId && order.visitorSessionId === entry.sessionId).map((order) => (
-                              <li key={order.id} className="rounded-lg bg-slate-50 px-2 py-1.5 text-xs dark:bg-white/5">
-                                <span className="font-bold">{formatOrderNumber(order.orderNumber)}</span> · €{order.total.toFixed(2)} · {order.items.map((item) => `${item.qty}x ${item.name}`).join(", ")}
-                              </li>
-                            ))}
-                          </ul>
-                        )}
-                      </div>
-                    )}
-                  </div>
-                  <div className="flex shrink-0 items-center gap-2 md:flex-col md:items-end">
-                    <span
-                      title={entry.lastSeenAt ? absoluteTime(entry.lastSeenAt) : t.admin.recentlyOnlineNoActivity}
-                      className={`rounded-full px-2.5 py-1 text-xs font-bold ${
-                        online
-                          ? "bg-emerald-500/10 text-emerald-700 dark:text-emerald-300"
-                          : "bg-slate-100 text-slate-500 dark:bg-white/5 dark:text-slate-400"
-                      }`}
+        {/* Company orders */}
+        <div className="mt-6 border-t border-slate-200 pt-5 dark:border-white/10">
+          <h3 className="flex items-center gap-2 text-sm font-black uppercase tracking-wide text-sky-600 dark:text-sky-400">
+            <FaBuilding /> {t.fulfillment.companyOrders}
+            <span className="rounded-full bg-sky-100 px-2 py-0.5 text-xs font-bold text-sky-700 dark:bg-sky-500/20 dark:text-sky-300">
+              {filteredCompanyOrders.length}
+            </span>
+          </h3>
+          {companyOrders.length === 0 ? (
+            <p className="mt-3 text-sm text-slate-500 dark:text-slate-400">{t.fulfillment.noCompanyOrders}</p>
+          ) : (
+            <>
+              <div className="relative mt-3">
+                <FaMagnifyingGlass className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-sm text-slate-400" />
+                <input
+                  type="search"
+                  value={companySearch}
+                  onChange={(e) => setCompanySearch(e.target.value)}
+                  placeholder={t.fulfillment.searchCompanies}
+                  aria-label={t.fulfillment.searchCompanies}
+                  className="w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 pl-10 pr-10 text-sm outline-none transition focus:border-sky-500 dark:border-white/10 dark:bg-white/5 dark:text-white"
+                />
+                {companySearch && <button type="button" onClick={() => setCompanySearch("")} aria-label="Clear company search" className="absolute right-2 top-1/2 -translate-y-1/2 p-1 text-slate-400 hover:text-sky-600"><FaXmark /></button>}
+              </div>
+              {filteredCompanyOrders.length === 0 ? (
+                <p className="mt-3 text-sm text-slate-500 dark:text-slate-400">{t.fulfillment.noMatches}</p>
+              ) : (
+                <>
+                  <div className="mt-3 max-h-[42rem] space-y-3 overflow-y-auto pr-1">{filteredCompanyOrders.slice(0, companyOrdersLimit).map(renderOrderCard)}</div>
+                  {filteredCompanyOrders.length > companyOrdersLimit && (
+                    <button
+                      type="button"
+                      onClick={() => setCompanyOrdersLimit((n) => n + 20)}
+                      className="mt-3 w-full rounded-xl border border-slate-200 py-2 text-xs font-bold text-slate-600 transition hover:border-emerald-400 hover:text-emerald-700 dark:border-white/10 dark:text-slate-300"
                     >
-                      {online ? t.admin.onlineNow : entry.lastSeenAt ? relativeTime(entry.lastSeenAt) : t.admin.recentlyOnlineNoActivity}
+                      {t.admin.showMore}
+                    </button>
+                  )}
+                </>
+              )}
+            </>
+          )}
+        </div>
+      </div>
+
+<div className="mt-6 rounded-3xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-white/5">
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="grid h-9 w-9 place-items-center rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
+            <FaCalendarCheck />
+          </span>
+          <div className="flex-1">
+            <h2 id="workspace-reservations" tabIndex={-1} className="text-lg font-black text-slate-900 dark:text-white">{t.admin.reservationsTitle}</h2>
+            <p className="text-xs text-slate-500 dark:text-slate-400">{t.admin.reservationsSub}</p>
+          </div>
+          <div className="flex rounded-full border border-slate-200 p-0.5 text-xs font-bold dark:border-white/10">
+            <button
+              onClick={() => setResFilter("upcoming")}
+              className={`rounded-full px-3 py-1.5 transition ${resFilter === "upcoming" ? "bg-emerald-500 text-white" : "text-slate-500 dark:text-slate-400"}`}
+            >
+              {t.admin.resUpcoming}
+            </button>
+            <button
+              onClick={() => setResFilter("all")}
+              className={`rounded-full px-3 py-1.5 transition ${resFilter === "all" ? "bg-emerald-500 text-white" : "text-slate-500 dark:text-slate-400"}`}
+            >
+              {t.admin.resAll}
+            </button>
+          </div>
+          <div className="flex rounded-full border border-slate-200 p-0.5 text-xs font-bold dark:border-white/10">
+            <button type="button" onClick={() => setResView("list")} className={`rounded-full px-3 py-1.5 ${resView === "list" ? "bg-emerald-500 text-white" : "text-slate-500 dark:text-slate-400"}`}>List</button>
+            <button type="button" onClick={() => setResView("calendar")} className={`rounded-full px-3 py-1.5 ${resView === "calendar" ? "bg-emerald-500 text-white" : "text-slate-500 dark:text-slate-400"}`}>Calendar</button>
+          </div>
+        </div>
+
+        {resView === "calendar" ? (
+          <div className="mt-5">
+            <div className="mb-3 flex items-center justify-between gap-2">
+              <button type="button" onClick={() => setCalendarMonth((month) => { const date = new Date(`${month}-01T00:00:00`); date.setMonth(date.getMonth() - 1); return date.toISOString().slice(0, 7); })} className="rounded-full border border-slate-200 px-3 py-1 text-xs font-bold text-slate-600 dark:border-white/10 dark:text-slate-300">←</button>
+              <p className="text-sm font-black text-slate-900 dark:text-white">{new Date(`${calendarMonth}-01T00:00:00`).toLocaleDateString(lang === "nl" ? "nl-NL" : "en-GB", { month: "long", year: "numeric" })}</p>
+              <button type="button" onClick={() => setCalendarMonth((month) => { const date = new Date(`${month}-01T00:00:00`); date.setMonth(date.getMonth() + 1); return date.toISOString().slice(0, 7); })} className="rounded-full border border-slate-200 px-3 py-1 text-xs font-bold text-slate-600 dark:border-white/10 dark:text-slate-300">→</button>
+            </div>
+            <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 lg:grid-cols-7">
+              {calendarDays.map((day) => <div key={day.date} className={`min-h-24 rounded-xl border p-2 ${day.reservations.length ? "border-emerald-300 bg-emerald-50/50 dark:border-emerald-400/30 dark:bg-emerald-500/5" : "border-slate-100 bg-slate-50/50 dark:border-white/5 dark:bg-white/5"}`}><p className="text-xs font-black text-slate-500">{Number(day.date.slice(-2))}</p><div className="mt-1 space-y-1">{day.reservations.slice(0, 3).map((reservation) => <p key={reservation.id} className="truncate rounded bg-white px-1.5 py-1 text-[10px] font-bold text-slate-700 dark:bg-white/10 dark:text-slate-200">{reservation.time} · {reservation.guestName}</p>)}{day.reservations.length > 3 && <p className="text-[10px] font-bold text-emerald-600">+{day.reservations.length - 3} more</p>}</div></div>)}
+            </div>
+          </div>
+        ) : visibleReservations.length === 0 ? (
+          <p className="mt-4 text-sm text-slate-500 dark:text-slate-400">{t.admin.noReservationsAdmin}</p>
+        ) : (
+          <ul className="mt-5 grid max-h-[34rem] gap-3 overflow-y-auto pr-1 lg:grid-cols-2">
+            {visibleReservations.map((r) => {
+              const badge =
+                r.status === "confirmed"
+                  ? "border-emerald-500/40 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300"
+                  : r.status === "arrived"
+                    ? "border-sky-500/40 bg-sky-500/10 text-sky-700 dark:text-sky-300"
+                    : r.status === "no_show"
+                      ? "border-red-500/40 bg-red-500/10 text-red-700 dark:text-red-300"
+                  : r.status === "pending"
+                    ? "border-amber-400/50 bg-amber-400/10 text-amber-600 dark:text-amber-300"
+                    : "border-slate-300/60 bg-slate-400/10 text-slate-500 dark:text-slate-400";
+              const statusLabel =
+                r.status === "pending"
+                  ? t.reservations.statusPending
+                  : r.status === "confirmed"
+                    ? t.reservations.statusConfirmed
+                    : r.status === "arrived"
+                      ? t.admin.resArrivedStatus
+                      : r.status === "no_show"
+                        ? t.admin.resNoShowStatus
+                    : r.status === "declined"
+                      ? t.reservations.statusDeclined
+                      : t.reservations.statusCancelled;
+              const reservationSite = lastSeenSiteLabel(r.site) ?? r.site;
+              return (
+                <li key={r.id} className="rounded-2xl border border-slate-200 p-4 dark:border-white/10">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <p className="text-sm font-black text-slate-900 dark:text-white">
+                      RSV-{r.reservationNumber} ·{" "}
+                      {new Date(`${r.date}T00:00:00`).toLocaleDateString(lang === "nl" ? "nl-NL" : "en-GB", {
+                        weekday: "short",
+                        day: "numeric",
+                        month: "short",
+                      })}{" "}
+                      · {r.time}
+                    </p>
+                    <span className={`rounded-full border px-2.5 py-1 text-[0.65rem] font-bold uppercase tracking-wide ${badge}`}>
+                      {statusLabel}
                     </span>
-                    {entry.kind === "guest" && lastSeenSite && (
-                      <span className="inline-flex items-center gap-1.5 rounded-full bg-sky-500/10 px-2 py-0.5 text-[11px] font-semibold text-sky-700 dark:text-sky-300">
-                        <FaStore className="text-[10px]" /> {lastSeenSite}
-                      </span>
-                    )}
+                  </div>
+                  <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-500 dark:text-slate-400">
+                    <span className="inline-flex items-center gap-1.5"><FaStore className="text-emerald-500" /> {reservationSite}</span>
+                    <span className="inline-flex items-center gap-1.5"><FaUser className="text-emerald-500" /> {r.guestName}</span>
+                    <span className="inline-flex items-center gap-1.5"><FaUserGroup className="text-emerald-500" /> {r.guests}</span>
+                    <a href={`tel:${r.phone}`} className="inline-flex items-center gap-1.5 hover:text-emerald-600"><FaPhone className="text-emerald-500" /> {r.phone}</a>
+                    {r.email && <a href={`mailto:${r.email}`} className="inline-flex items-center gap-1.5 hover:text-emerald-600"><FaEnvelope className="text-emerald-500" /> {r.email}</a>}
+                  </div>
+                  <p className="mt-1.5 flex items-center gap-1.5 text-[0.7rem] text-slate-400 dark:text-slate-500">
+                    <FaClock className="text-slate-400 dark:text-slate-500" />
+                    {t.admin.bookedOn}:{" "}
+                    {new Date(r.createdAt).toLocaleDateString(lang === "nl" ? "nl-NL" : "en-GB", {
+                      day: "numeric",
+                      month: "short",
+                      year: "numeric",
+                    })}{" "}
+                    · {new Date(r.createdAt).toLocaleTimeString(lang === "nl" ? "nl-NL" : "en-GB", { hour: "2-digit", minute: "2-digit" })}
+                  </p>
+                  {(r.occasion || r.note) && (
+                    <p className="mt-2 rounded-xl bg-slate-50 px-3 py-2 text-xs leading-5 text-slate-600 dark:bg-white/5 dark:text-slate-300">
+                      {r.occasion && <span className="font-bold uppercase tracking-wide text-emerald-600 dark:text-emerald-400">{r.occasion}</span>}
+                      {r.occasion && r.note && " · "}
+                      {r.note}
+                    </p>
+                  )}
+                  {(r.status === "pending" || r.status === "confirmed" || r.status === "arrived" || r.status === "no_show") && (
+                    <div className="mt-3 flex gap-2">
+                      {r.status === "pending" && (
+                        <>
+                          <button
+                            onClick={() => setReservationStatus(r.id, "confirm")}
+                            className="flex-1 rounded-full bg-emerald-600 py-2 text-xs font-bold text-white transition hover:bg-emerald-500"
+                          >
+                            {t.admin.resConfirm}
+                          </button>
+                          <button
+                            onClick={() => setReservationStatus(r.id, "decline")}
+                            className="flex-1 rounded-full border border-slate-200 py-2 text-xs font-bold text-slate-600 transition hover:bg-slate-100 dark:border-white/10 dark:text-slate-300 dark:hover:bg-white/10"
+                          >
+                            {t.admin.resDecline}
+                          </button>
+                        </>
+                      )}
+                      {r.status === "confirmed" && (
+                        <>
+                          <button onClick={() => setReservationStatus(r.id, "arrived")} className="flex-1 rounded-full bg-sky-600 py-2 text-xs font-bold text-white transition hover:bg-sky-500">{t.admin.resArrived}</button>
+                          <button onClick={() => setReservationStatus(r.id, "no_show")} className="flex-1 rounded-full border border-red-300/60 py-2 text-xs font-bold text-red-500 transition hover:bg-red-500/10 dark:border-red-400/30">{t.admin.resNoShow}</button>
+                          <button onClick={() => cancelReservation(r.id)} className="flex-1 rounded-full border border-slate-300 py-2 text-xs font-bold text-slate-500 transition hover:bg-slate-100 dark:border-white/20">{t.admin.resCancelAdmin}</button>
+                        </>
+                      )}
+                      {r.status === "no_show" && <button onClick={() => setReservationStatus(r.id, "confirm")} className="flex-1 rounded-full border border-emerald-300 py-2 text-xs font-bold text-emerald-600 transition hover:bg-emerald-50 dark:border-emerald-400/30">{t.admin.resConfirm}</button>}
+                    </div>
+                  )}
+                  <div className="mt-3 flex justify-end border-t border-slate-100 pt-3 dark:border-white/10">
+                    <button
+                      onClick={() => {
+                        if (window.confirm(t.admin.resDeleteConfirm)) deleteReservation(r.id);
+                      }}
+                      className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-bold text-red-500 transition hover:bg-red-500/10"
+                    >
+                      <FaTrash className="text-[0.7rem]" /> {t.admin.resDelete}
+                    </button>
                   </div>
                 </li>
               );
             })}
           </ul>
         )}
-        {visitorPagination.pageCount > 1 && (
-          <nav aria-label={t.admin.recentlyOnline} className="mt-4 flex flex-wrap items-center justify-between gap-2">
-            <button type="button" disabled={visitorPagination.page === 1} onClick={() => setVisitorPage(visitorPagination.page - 1)} className="rounded-full border border-slate-200 px-4 py-2 text-xs font-bold disabled:opacity-40 dark:border-white/10">
-              {t.admin.recentlyOnlinePreviousPage}
-            </button>
-            <span aria-live="polite" className="text-xs text-slate-500 dark:text-slate-400">{t.admin.recentlyOnlinePage.replace("{page}", String(visitorPagination.page)).replace("{pages}", String(visitorPagination.pageCount))}</span>
-            <button type="button" disabled={visitorPagination.page === visitorPagination.pageCount} onClick={() => setVisitorPage(visitorPagination.page + 1)} className="rounded-full border border-slate-200 px-4 py-2 text-xs font-bold disabled:opacity-40 dark:border-white/10">
-              {t.admin.recentlyOnlineNextPage}
-            </button>
-          </nav>
-        )}
-          </div>
-        </div>
       </div>
 
-      {/* Registered users (collapsible) - full account details for everyone who signed up */}
-      <div className="mt-6 rounded-3xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-white/5">
-        <button
-          type="button"
-          onClick={() => setRegisteredUsersOpen((o) => !o)}
-          aria-expanded={registeredUsersOpen}
-          className="flex w-full items-center gap-2 text-left"
-        >
-          <span className="grid h-9 w-9 place-items-center rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400">
-            <FaUserGroup />
-          </span>
-          <div className="flex-1">
-            <h2 id="workspace-users" className="text-lg font-black text-slate-900 dark:text-white">{t.admin.registeredUsers}</h2>
-            <p className="text-xs text-slate-500 dark:text-slate-400">{t.admin.registeredUsersSub}</p>
-          </div>
-          <span className="rounded-full bg-slate-100 px-2.5 py-1 text-xs font-bold text-slate-600 dark:bg-white/10 dark:text-slate-300">
-            {registeredUsers.length}
-          </span>
-          <FaChevronDown className={`shrink-0 text-slate-400 transition-transform duration-300 ${registeredUsersOpen ? "rotate-180" : ""}`} />
-        </button>
-
-        <div className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${registeredUsersOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
-          <div className="overflow-hidden">
-            {registeredUsers.length > 0 && (
-              <div className="mt-4 flex flex-wrap items-center gap-2">
-                <label className="relative min-w-[14rem] flex-1">
-                  <FaMagnifyingGlass className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-xs text-slate-400" />
-                  <input
-                    type="search"
-                    value={userSearch}
-                    onChange={(e) => setUserSearch(e.target.value)}
-                    placeholder={t.admin.searchUsers}
-                    aria-label={t.admin.searchUsers}
-                    className="w-full rounded-xl border border-slate-200 bg-slate-50 py-2 pl-9 pr-9 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
-                  />
-                  {userSearch && <button type="button" onClick={() => setUserSearch("")} aria-label="Clear user search" className="absolute right-2 top-1/2 -translate-y-1/2 p-1 text-slate-400 hover:text-emerald-600"><FaXmark /></button>}
-                </label>
-                <button type="button" onClick={exportUsers} className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 px-3 py-2 text-xs font-bold text-slate-600 transition hover:border-emerald-400 dark:border-white/10 dark:text-slate-300"><FaDownload /> {t.admin.exportUsers}</button>
-              </div>
-            )}
-            {registeredUsers.length > 0 && (
-              <>
-                <div className="mt-3 flex flex-wrap items-center gap-2">
-                  <div className="inline-flex max-w-full overflow-x-auto rounded-full bg-slate-100 p-1 text-xs font-bold dark:bg-white/5">
-                    {([
-                      ["all", t.admin.recentlyOnlineFilterAll, userDirectoryCounts.all],
-                      ["online", t.admin.onlineNow, userDirectoryCounts.online],
-                      ["unverified", t.admin.registeredUnverified, userDirectoryCounts.unverified],
-                      ["vip", "VIP", userDirectoryCounts.vip],
-                      ["company", "B2B", userDirectoryCounts.company],
-                    ] as const).map(([value, label, count]) => (
-                      <button key={value} type="button" onClick={() => setUserFilter(value)} className={`shrink-0 rounded-full px-3 py-1.5 transition ${userFilter === value ? "bg-white text-slate-900 shadow dark:bg-white/20 dark:text-white" : "text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200"}`}>
-                        {label} <span className="opacity-60">({count})</span>
-                      </button>
-                    ))}
-                  </div>
-                  <select value={userSort} onChange={(event) => setUserSort(event.target.value as typeof userSort)} aria-label="Sort registered users" className="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-bold text-slate-600 outline-none focus:border-emerald-500 dark:border-white/10 dark:bg-white/5 dark:text-slate-300">
-                    <option value="newest">{t.admin.recentlyOnlineSortRecent}</option>
-                    <option value="activity">{t.admin.onlineNow}</option>
-                    <option value="orders">{t.admin.sortByOrders}</option>
-                    <option value="points">{t.admin.registeredPoints}</option>
-                  </select>
-                  {userFiltersActive && <button type="button" onClick={clearUserFilters} className="inline-flex items-center gap-1 rounded-full px-3 py-1.5 text-xs font-bold text-rose-600 hover:bg-rose-50 dark:text-rose-400 dark:hover:bg-rose-500/10"><FaXmark className="text-[10px]" /> {t.admin.recentlyOnlineClearFilters}</button>}
-                </div>
-                <p className="mt-3 text-[11px] font-semibold text-slate-400 dark:text-slate-500">
-                  {t.admin.recentlyOnlineShowingCount.replace("{shown}", String(filteredRegisteredUsers.length)).replace("{total}", String(registeredUsers.length))}
-                </p>
-              </>
-            )}
-            {registeredUsers.length === 0 ? (
-              <p className="mt-4 text-sm text-slate-500 dark:text-slate-400">{t.admin.registeredUsersNone}</p>
-            ) : filteredRegisteredUsers.length === 0 ? (
-              <p className="mt-4 text-sm text-slate-500 dark:text-slate-400">{t.fulfillment.noMatches}</p>
-            ) : (
-              <ul className="mt-4 max-h-[32rem] space-y-3 overflow-y-auto pr-1">
-                {filteredRegisteredUsers.map((u) => {
-                  const isCompany = u.accountType === "company";
-                  const isOnline = onlineUserIds.has(u.id);
-                  return (
-                    <li key={u.id} className="flex flex-col gap-3 rounded-2xl border border-slate-100 bg-slate-50/70 p-4 dark:border-white/5 dark:bg-white/5">
-                      <div className="flex items-start gap-3">
-                        <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-gradient-to-br from-indigo-500 to-sky-500 text-sm font-black text-white">
-                          {u.name.charAt(0).toUpperCase()}
-                        </span>
-                        <div className="min-w-0 flex-1">
-                          <div className="flex flex-wrap items-center gap-2">
-                            <p className="truncate text-sm font-black text-slate-900 dark:text-white">{u.name}</p>
-                            <span className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-black uppercase tracking-wide ${isOnline ? "bg-emerald-500/10 text-emerald-700 dark:text-emerald-300" : "bg-slate-100 text-slate-500 dark:bg-white/10 dark:text-slate-400"}`}>
-                              <span className={`h-1.5 w-1.5 rounded-full ${isOnline ? "bg-emerald-500" : "bg-slate-400"}`} /> {isOnline ? t.admin.onlineNow : relativeTime(u.lastSeenAt ?? u.createdAt)}
-                            </span>
-                            {u.role === "admin" && (
-                              <span className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-black uppercase tracking-wide text-slate-600 dark:bg-white/10 dark:text-slate-300">
-                                <FaLock className="text-[9px]" /> Admin
-                              </span>
-                            )}
-                            {u.isVip && (
-                              <span className="inline-flex items-center gap-1 rounded-full bg-amber-500/10 px-2 py-0.5 text-[10px] font-black uppercase tracking-wide text-amber-700 dark:text-amber-300">
-                                <FaCrown className="text-[9px]" /> VIP
-                              </span>
-                            )}
-                            {isCompany && (
-                              <span className="inline-flex items-center gap-1 rounded-full bg-sky-500/10 px-2 py-0.5 text-[10px] font-black uppercase tracking-wide text-sky-700 dark:text-sky-300">
-                                <FaBuilding className="text-[9px]" /> B2B
-                              </span>
-                            )}
-                            <span
-                              className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-black uppercase tracking-wide ${
-                                u.emailVerified
-                                  ? "bg-emerald-500/10 text-emerald-700 dark:text-emerald-300"
-                                  : "bg-rose-500/10 text-rose-700 dark:text-rose-300"
-                              }`}
-                            >
-                              <FaCircleCheck className="text-[9px]" /> {u.emailVerified ? t.admin.registeredVerified : t.admin.registeredUnverified}
-                            </span>
-                            <button
-                              type="button"
-                              onClick={() => toggleUserEmailVerification(u.id, !u.emailVerified)}
-                              className={`inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[10px] font-black uppercase tracking-wide transition ${
-                                u.emailVerified
-                                  ? "border-emerald-200 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 dark:border-emerald-500/30 dark:bg-emerald-500/10 dark:text-emerald-300"
-                                  : "border-amber-200 bg-amber-50 text-amber-700 hover:bg-amber-100 dark:border-amber-500/30 dark:bg-amber-500/10 dark:text-amber-300"
-                              }`}
-                            >
-                              {u.emailVerified ? <FaCircleExclamation className="text-[9px]" /> : <FaCircleCheck className="text-[9px]" />}
-                              {u.emailVerified ? t.admin.unverifyEmail : t.admin.verifyEmail}
-                            </button>
-                            {u.isVip && (
-                              <span className="inline-flex items-center gap-1 rounded-full bg-violet-500/10 px-2 py-0.5 text-[10px] font-black uppercase tracking-wide text-violet-700 dark:text-violet-300">
-                                {vipPurchases.some((p) => p.userId === u.id && p.status === "paid")
-                                  ? t.admin.vipPurchased
-                                  : vipRequests.some((r) => r.userId === u.id && r.status === "approved")
-                                    ? t.admin.vipCardApprovedSource
-                                    : t.admin.vipManualSource}
-                              </span>
-                            )}
-                          </div>
-                          <p className="mt-1 flex items-center gap-1.5 truncate text-xs text-slate-500 dark:text-slate-400">
-                            <FaEnvelope className="shrink-0 text-[10px] text-slate-400" />
-                            <a href={`mailto:${u.email}`} className="truncate hover:text-emerald-600 dark:hover:text-emerald-400">{u.email}</a>
-                            <button type="button" onClick={() => copyUserContact(u.email)} title={copiedUserContact === u.email ? t.admin.recentlyOnlineCopied : "Copy email"} aria-label="Copy email" className="shrink-0 p-1 text-slate-400 transition hover:text-emerald-600 dark:hover:text-emerald-400"><FaCopy className="text-[10px]" /></button>
-                          </p>
-                          {u.phone && (
-                            <p className="mt-0.5 flex items-center gap-1.5 truncate text-xs font-semibold text-slate-600 dark:text-slate-300">
-                              <FaPhone className="shrink-0 text-[10px] text-slate-400" />
-                              <a href={`tel:${u.phone}`} className="hover:text-emerald-600 dark:hover:text-emerald-400">{u.phone}</a>
-                              <button type="button" onClick={() => copyUserContact(u.phone!)} title={copiedUserContact === u.phone ? t.admin.recentlyOnlineCopied : "Copy phone number"} aria-label="Copy phone number" className="shrink-0 p-1 text-slate-400 transition hover:text-emerald-600 dark:hover:text-emerald-400"><FaCopy className="text-[10px]" /></button>
-                            </p>
-                          )}
-                          {(u.address || u.postcode) && (
-                            <p className="mt-0.5 flex items-center gap-1.5 truncate text-xs text-slate-600 dark:text-slate-300">
-                              <FaLocationDot className="shrink-0 text-[10px] text-slate-400" /> {[u.address, u.postcode].filter(Boolean).join(", ")}
-                            </p>
-                          )}
-                          {isCompany && (u.btw || u.kvk) && (
-                            <p className="mt-0.5 flex flex-wrap items-center gap-x-3 gap-y-0.5 text-xs text-slate-600 dark:text-slate-300">
-                              {u.btw && <span className="inline-flex items-center gap-1.5"><FaBuilding className="shrink-0 text-[10px] text-slate-400" /> BTW: {u.btw}</span>}
-                              {u.kvk && <span>KVK: {u.kvk}</span>}
-                            </p>
-                          )}
-                        </div>
-                      </div>
-                      <div className="border-t border-slate-200 pt-3 dark:border-white/10">
-                        <label htmlFor={`account-type-${u.id}`} className="block text-xs font-bold text-slate-700 dark:text-slate-200">
-                          {lang === "nl" ? "Accounttype" : "Account type"}
-                        </label>
-                        <select
-                          id={`account-type-${u.id}`}
-                          value={u.accountType}
-                          onChange={(event) => void changeUserAccountType(u, event.target.value as AccountType)}
-                          disabled={accountTypeSavingId !== null || u.role !== "user"}
-                          className="mt-1 rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs font-semibold text-slate-900 disabled:opacity-50 dark:border-white/15 dark:bg-slate-900 dark:text-white"
-                        >
-                          <option value="personal">{lang === "nl" ? "Particulier" : "Personal"}</option>
-                          <option value="company" disabled={!u.btw?.trim() || !u.kvk?.trim()}>{lang === "nl" ? "Zakelijk" : "Business"}</option>
-                        </select>
-                        {accountTypeSavingId === u.id && <span className="ml-2 text-xs text-slate-500">{lang === "nl" ? "Opslaan…" : "Saving…"}</span>}
-                        <p className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">
-                          {lang === "nl" ? "Wijzigingen gelden voor nieuwe bestellingen." : "Changes apply to new orders."}
-                        </p>
-                        {accountTypeFeedback?.userId === u.id && (
-                          <p role={accountTypeFeedback.error ? "alert" : "status"} className={`mt-1 text-xs font-semibold ${accountTypeFeedback.error ? "text-rose-600" : "text-emerald-600"}`}>
-                            {accountTypeFeedback.message}
-                          </p>
-                        )}
-                      </div>
-                      <div className="flex flex-wrap items-center gap-2 text-[11px]">
-                        <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-2 py-0.5 font-semibold text-emerald-700 dark:text-emerald-300">
-                          <FaReceipt className="text-[10px]" /> {u.orderCount} {t.admin.ordersLabel.toLowerCase()}
-                        </span>
-                        <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-500/10 px-2 py-0.5 font-semibold text-amber-700 dark:text-amber-300">
-                          <FaCrown className="text-[10px]" /> {u.points} {t.admin.registeredPoints}
-                        </span>
-                        {u.maisonReservationCount ? <span className="rounded-full bg-rose-500/10 px-2 py-0.5 font-semibold text-rose-700 dark:text-rose-300">{u.maisonReservationCount} {t.admin.recentlyOnlineReservationsMaison} ({u.maisonArrivedCount ?? 0} {t.admin.recentlyOnlineArrived})</span> : null}
-                        {u.tandoorReservationCount ? <span className="rounded-full bg-orange-500/10 px-2 py-0.5 font-semibold text-orange-700 dark:text-orange-300">{u.tandoorReservationCount} {t.admin.recentlyOnlineReservationsTandoor} ({u.tandoorArrivedCount ?? 0} {t.admin.recentlyOnlineArrived})</span> : null}
-                        <span className="inline-flex items-center gap-1.5 rounded-full bg-slate-100 px-2 py-0.5 font-semibold text-slate-600 dark:bg-white/10 dark:text-slate-300">
-                          <FaClock className="text-[10px]" /> {t.admin.registeredJoined}: {new Date(u.createdAt).toLocaleDateString(lang === "nl" ? "nl-NL" : "en-GB")}
-                        </span>
-                        {u.lastSeenAt && (
-                          <span title={absoluteTime(u.lastSeenAt)} className="inline-flex items-center gap-1.5 rounded-full bg-slate-100 px-2 py-0.5 font-semibold text-slate-600 dark:bg-white/10 dark:text-slate-300">
-                            {relativeTime(u.lastSeenAt)}
-                          </span>
-                        )}
-                      </div>
-                    </li>
-                  );
-                })}
-              </ul>
-            )}
-          </div>
-        </div>
-      </div>
 
       {/* Social media links (collapsible) */}
       <div className="mt-6 rounded-3xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-white/5">
@@ -2562,163 +1582,12 @@ export default function AdminPage() {
         </div>
       )}
 
-      <PartyAdmin processImageFile={processImageFile} />
+
 
       <div id="workspace-phone" tabIndex={-1}><PhoneAgentPanel /></div>
 
       {/* Reservations management */}
-      <div className="mt-6 rounded-3xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-white/5">
-        <div className="flex flex-wrap items-center gap-2">
-          <span className="grid h-9 w-9 place-items-center rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
-            <FaCalendarCheck />
-          </span>
-          <div className="flex-1">
-            <h2 id="workspace-reservations" tabIndex={-1} className="text-lg font-black text-slate-900 dark:text-white">{t.admin.reservationsTitle}</h2>
-            <p className="text-xs text-slate-500 dark:text-slate-400">{t.admin.reservationsSub}</p>
-          </div>
-          <div className="flex rounded-full border border-slate-200 p-0.5 text-xs font-bold dark:border-white/10">
-            <button
-              onClick={() => setResFilter("upcoming")}
-              className={`rounded-full px-3 py-1.5 transition ${resFilter === "upcoming" ? "bg-emerald-500 text-white" : "text-slate-500 dark:text-slate-400"}`}
-            >
-              {t.admin.resUpcoming}
-            </button>
-            <button
-              onClick={() => setResFilter("all")}
-              className={`rounded-full px-3 py-1.5 transition ${resFilter === "all" ? "bg-emerald-500 text-white" : "text-slate-500 dark:text-slate-400"}`}
-            >
-              {t.admin.resAll}
-            </button>
-          </div>
-          <div className="flex rounded-full border border-slate-200 p-0.5 text-xs font-bold dark:border-white/10">
-            <button type="button" onClick={() => setResView("list")} className={`rounded-full px-3 py-1.5 ${resView === "list" ? "bg-emerald-500 text-white" : "text-slate-500 dark:text-slate-400"}`}>List</button>
-            <button type="button" onClick={() => setResView("calendar")} className={`rounded-full px-3 py-1.5 ${resView === "calendar" ? "bg-emerald-500 text-white" : "text-slate-500 dark:text-slate-400"}`}>Calendar</button>
-          </div>
-        </div>
-
-        {resView === "calendar" ? (
-          <div className="mt-5">
-            <div className="mb-3 flex items-center justify-between gap-2">
-              <button type="button" onClick={() => setCalendarMonth((month) => { const date = new Date(`${month}-01T00:00:00`); date.setMonth(date.getMonth() - 1); return date.toISOString().slice(0, 7); })} className="rounded-full border border-slate-200 px-3 py-1 text-xs font-bold text-slate-600 dark:border-white/10 dark:text-slate-300">←</button>
-              <p className="text-sm font-black text-slate-900 dark:text-white">{new Date(`${calendarMonth}-01T00:00:00`).toLocaleDateString(lang === "nl" ? "nl-NL" : "en-GB", { month: "long", year: "numeric" })}</p>
-              <button type="button" onClick={() => setCalendarMonth((month) => { const date = new Date(`${month}-01T00:00:00`); date.setMonth(date.getMonth() + 1); return date.toISOString().slice(0, 7); })} className="rounded-full border border-slate-200 px-3 py-1 text-xs font-bold text-slate-600 dark:border-white/10 dark:text-slate-300">→</button>
-            </div>
-            <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 lg:grid-cols-7">
-              {calendarDays.map((day) => <div key={day.date} className={`min-h-24 rounded-xl border p-2 ${day.reservations.length ? "border-emerald-300 bg-emerald-50/50 dark:border-emerald-400/30 dark:bg-emerald-500/5" : "border-slate-100 bg-slate-50/50 dark:border-white/5 dark:bg-white/5"}`}><p className="text-xs font-black text-slate-500">{Number(day.date.slice(-2))}</p><div className="mt-1 space-y-1">{day.reservations.slice(0, 3).map((reservation) => <p key={reservation.id} className="truncate rounded bg-white px-1.5 py-1 text-[10px] font-bold text-slate-700 dark:bg-white/10 dark:text-slate-200">{reservation.time} · {reservation.guestName}</p>)}{day.reservations.length > 3 && <p className="text-[10px] font-bold text-emerald-600">+{day.reservations.length - 3} more</p>}</div></div>)}
-            </div>
-          </div>
-        ) : visibleReservations.length === 0 ? (
-          <p className="mt-4 text-sm text-slate-500 dark:text-slate-400">{t.admin.noReservationsAdmin}</p>
-        ) : (
-          <ul className="mt-5 grid max-h-[34rem] gap-3 overflow-y-auto pr-1 lg:grid-cols-2">
-            {visibleReservations.map((r) => {
-              const badge =
-                r.status === "confirmed"
-                  ? "border-emerald-500/40 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300"
-                  : r.status === "arrived"
-                    ? "border-sky-500/40 bg-sky-500/10 text-sky-700 dark:text-sky-300"
-                    : r.status === "no_show"
-                      ? "border-red-500/40 bg-red-500/10 text-red-700 dark:text-red-300"
-                  : r.status === "pending"
-                    ? "border-amber-400/50 bg-amber-400/10 text-amber-600 dark:text-amber-300"
-                    : "border-slate-300/60 bg-slate-400/10 text-slate-500 dark:text-slate-400";
-              const statusLabel =
-                r.status === "pending"
-                  ? t.reservations.statusPending
-                  : r.status === "confirmed"
-                    ? t.reservations.statusConfirmed
-                    : r.status === "arrived"
-                      ? t.admin.resArrivedStatus
-                      : r.status === "no_show"
-                        ? t.admin.resNoShowStatus
-                    : r.status === "declined"
-                      ? t.reservations.statusDeclined
-                      : t.reservations.statusCancelled;
-              const reservationSite = lastSeenSiteLabel(r.site) ?? r.site;
-              return (
-                <li key={r.id} className="rounded-2xl border border-slate-200 p-4 dark:border-white/10">
-                  <div className="flex flex-wrap items-center justify-between gap-2">
-                    <p className="text-sm font-black text-slate-900 dark:text-white">
-                      RSV-{r.reservationNumber} ·{" "}
-                      {new Date(`${r.date}T00:00:00`).toLocaleDateString(lang === "nl" ? "nl-NL" : "en-GB", {
-                        weekday: "short",
-                        day: "numeric",
-                        month: "short",
-                      })}{" "}
-                      · {r.time}
-                    </p>
-                    <span className={`rounded-full border px-2.5 py-1 text-[0.65rem] font-bold uppercase tracking-wide ${badge}`}>
-                      {statusLabel}
-                    </span>
-                  </div>
-                  <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-500 dark:text-slate-400">
-                    <span className="inline-flex items-center gap-1.5"><FaStore className="text-emerald-500" /> {reservationSite}</span>
-                    <span className="inline-flex items-center gap-1.5"><FaUser className="text-emerald-500" /> {r.guestName}</span>
-                    <span className="inline-flex items-center gap-1.5"><FaUserGroup className="text-emerald-500" /> {r.guests}</span>
-                    <a href={`tel:${r.phone}`} className="inline-flex items-center gap-1.5 hover:text-emerald-600"><FaPhone className="text-emerald-500" /> {r.phone}</a>
-                    {r.email && <a href={`mailto:${r.email}`} className="inline-flex items-center gap-1.5 hover:text-emerald-600"><FaEnvelope className="text-emerald-500" /> {r.email}</a>}
-                  </div>
-                  <p className="mt-1.5 flex items-center gap-1.5 text-[0.7rem] text-slate-400 dark:text-slate-500">
-                    <FaClock className="text-slate-400 dark:text-slate-500" />
-                    {t.admin.bookedOn}:{" "}
-                    {new Date(r.createdAt).toLocaleDateString(lang === "nl" ? "nl-NL" : "en-GB", {
-                      day: "numeric",
-                      month: "short",
-                      year: "numeric",
-                    })}{" "}
-                    · {new Date(r.createdAt).toLocaleTimeString(lang === "nl" ? "nl-NL" : "en-GB", { hour: "2-digit", minute: "2-digit" })}
-                  </p>
-                  {(r.occasion || r.note) && (
-                    <p className="mt-2 rounded-xl bg-slate-50 px-3 py-2 text-xs leading-5 text-slate-600 dark:bg-white/5 dark:text-slate-300">
-                      {r.occasion && <span className="font-bold uppercase tracking-wide text-emerald-600 dark:text-emerald-400">{r.occasion}</span>}
-                      {r.occasion && r.note && " · "}
-                      {r.note}
-                    </p>
-                  )}
-                  {(r.status === "pending" || r.status === "confirmed" || r.status === "arrived" || r.status === "no_show") && (
-                    <div className="mt-3 flex gap-2">
-                      {r.status === "pending" && (
-                        <>
-                          <button
-                            onClick={() => setReservationStatus(r.id, "confirm")}
-                            className="flex-1 rounded-full bg-emerald-600 py-2 text-xs font-bold text-white transition hover:bg-emerald-500"
-                          >
-                            {t.admin.resConfirm}
-                          </button>
-                          <button
-                            onClick={() => setReservationStatus(r.id, "decline")}
-                            className="flex-1 rounded-full border border-slate-200 py-2 text-xs font-bold text-slate-600 transition hover:bg-slate-100 dark:border-white/10 dark:text-slate-300 dark:hover:bg-white/10"
-                          >
-                            {t.admin.resDecline}
-                          </button>
-                        </>
-                      )}
-                      {r.status === "confirmed" && (
-                        <>
-                          <button onClick={() => setReservationStatus(r.id, "arrived")} className="flex-1 rounded-full bg-sky-600 py-2 text-xs font-bold text-white transition hover:bg-sky-500">{t.admin.resArrived}</button>
-                          <button onClick={() => setReservationStatus(r.id, "no_show")} className="flex-1 rounded-full border border-red-300/60 py-2 text-xs font-bold text-red-500 transition hover:bg-red-500/10 dark:border-red-400/30">{t.admin.resNoShow}</button>
-                          <button onClick={() => cancelReservation(r.id)} className="flex-1 rounded-full border border-slate-300 py-2 text-xs font-bold text-slate-500 transition hover:bg-slate-100 dark:border-white/20">{t.admin.resCancelAdmin}</button>
-                        </>
-                      )}
-                      {r.status === "no_show" && <button onClick={() => setReservationStatus(r.id, "confirm")} className="flex-1 rounded-full border border-emerald-300 py-2 text-xs font-bold text-emerald-600 transition hover:bg-emerald-50 dark:border-emerald-400/30">{t.admin.resConfirm}</button>}
-                    </div>
-                  )}
-                  <div className="mt-3 flex justify-end border-t border-slate-100 pt-3 dark:border-white/10">
-                    <button
-                      onClick={() => {
-                        if (window.confirm(t.admin.resDeleteConfirm)) deleteReservation(r.id);
-                      }}
-                      className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-bold text-red-500 transition hover:bg-red-500/10"
-                    >
-                      <FaTrash className="text-[0.7rem]" /> {t.admin.resDelete}
-                    </button>
-                  </div>
-                </li>
-              );
-            })}
-          </ul>
-        )}
-      </div>
+      
 
       {/* VIP purchase and activation audit */}
       <div className="mt-6 rounded-3xl border border-violet-200 bg-violet-50/60 p-5 dark:border-violet-400/20 dark:bg-violet-500/5">
@@ -3098,7 +1967,7 @@ export default function AdminPage() {
               <p className="rounded-2xl border border-dashed border-slate-300 bg-slate-50 p-4 text-sm leading-6 text-slate-500 dark:border-white/10 dark:bg-white/5 dark:text-slate-400">
                 {t.admin.noProductMatches}
               </p>
-            ) : filteredProductGroups.map((group, index) => {
+            ) : filteredProductGroups.map((group) => {
               const p = group.product;
               const Icon = categoryIconFor(brands, p.category);
               const groupBrands = [...new Set(group.products.map((item) => item.brand))];
@@ -3170,7 +2039,7 @@ export default function AdminPage() {
       </div>
 
       {/* Gallery photos (public /events/gallery page) */}
-      <GalleryManager />
+
 
       {/* Restaurants & categories manager */}
       {manageOpen && (
@@ -3793,107 +2662,7 @@ export default function AdminPage() {
       )}
 
       {/* Order management */}
-      <div className="mt-6 rounded-3xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-white/5">
-        <div className="flex items-center gap-2">
-          <span className="grid h-9 w-9 place-items-center rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
-            <FaReceipt />
-          </span>
-          <div>
-            <h2 id="workspace-orders" tabIndex={-1} className="text-lg font-black text-slate-900 dark:text-white">{t.fulfillment.orderManagement}</h2>
-            <p className="text-xs text-slate-500 dark:text-slate-400">{t.fulfillment.orderManagementSub}</p>
-          </div>
-        </div>
-
-        <div className="mt-4">{renderRangeFilter(ordersRange, setOrdersRange)}</div>
-
-        {/* Customer orders */}
-        <div className="mt-5">
-          <h3 className="flex items-center gap-2 text-sm font-black uppercase tracking-wide text-slate-500 dark:text-slate-400">
-            <FaUser className="text-emerald-600 dark:text-emerald-400" /> {t.fulfillment.customerOrders}
-            <span className="rounded-full bg-slate-100 px-2 py-0.5 text-xs font-bold text-slate-600 dark:bg-white/10 dark:text-slate-300">
-              {filteredCustomerOrders.length}
-            </span>
-          </h3>
-          {customerOrders.length === 0 ? (
-            <p className="mt-3 text-sm text-slate-500 dark:text-slate-400">{t.fulfillment.noCustomerOrders}</p>
-          ) : (
-            <>
-              <div className="relative mt-3">
-                <FaMagnifyingGlass className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-sm text-slate-400" />
-                <input
-                  type="search"
-                  value={customerSearch}
-                  onChange={(e) => setCustomerSearch(e.target.value)}
-                  placeholder={t.fulfillment.searchCustomers}
-                  aria-label={t.fulfillment.searchCustomers}
-                  className="w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 pl-10 pr-10 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/5 dark:text-white"
-                />
-                {customerSearch && <button type="button" onClick={() => setCustomerSearch("")} aria-label="Clear customer search" className="absolute right-2 top-1/2 -translate-y-1/2 p-1 text-slate-400 hover:text-emerald-600"><FaXmark /></button>}
-              </div>
-              {filteredCustomerOrders.length === 0 ? (
-                <p className="mt-3 text-sm text-slate-500 dark:text-slate-400">{t.fulfillment.noMatches}</p>
-              ) : (
-                <>
-                  <div className="mt-3 max-h-[42rem] space-y-3 overflow-y-auto pr-1">{filteredCustomerOrders.slice(0, customerOrdersLimit).map(renderOrderCard)}</div>
-                  {filteredCustomerOrders.length > customerOrdersLimit && (
-                    <button
-                      type="button"
-                      onClick={() => setCustomerOrdersLimit((n) => n + 20)}
-                      className="mt-3 w-full rounded-xl border border-slate-200 py-2 text-xs font-bold text-slate-600 transition hover:border-emerald-400 hover:text-emerald-700 dark:border-white/10 dark:text-slate-300"
-                    >
-                      {t.admin.showMore}
-                    </button>
-                  )}
-                </>
-              )}
-            </>
-          )}
-        </div>
-
-        {/* Company orders */}
-        <div className="mt-6 border-t border-slate-200 pt-5 dark:border-white/10">
-          <h3 className="flex items-center gap-2 text-sm font-black uppercase tracking-wide text-sky-600 dark:text-sky-400">
-            <FaBuilding /> {t.fulfillment.companyOrders}
-            <span className="rounded-full bg-sky-100 px-2 py-0.5 text-xs font-bold text-sky-700 dark:bg-sky-500/20 dark:text-sky-300">
-              {filteredCompanyOrders.length}
-            </span>
-          </h3>
-          {companyOrders.length === 0 ? (
-            <p className="mt-3 text-sm text-slate-500 dark:text-slate-400">{t.fulfillment.noCompanyOrders}</p>
-          ) : (
-            <>
-              <div className="relative mt-3">
-                <FaMagnifyingGlass className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-sm text-slate-400" />
-                <input
-                  type="search"
-                  value={companySearch}
-                  onChange={(e) => setCompanySearch(e.target.value)}
-                  placeholder={t.fulfillment.searchCompanies}
-                  aria-label={t.fulfillment.searchCompanies}
-                  className="w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 pl-10 pr-10 text-sm outline-none transition focus:border-sky-500 dark:border-white/10 dark:bg-white/5 dark:text-white"
-                />
-                {companySearch && <button type="button" onClick={() => setCompanySearch("")} aria-label="Clear company search" className="absolute right-2 top-1/2 -translate-y-1/2 p-1 text-slate-400 hover:text-sky-600"><FaXmark /></button>}
-              </div>
-              {filteredCompanyOrders.length === 0 ? (
-                <p className="mt-3 text-sm text-slate-500 dark:text-slate-400">{t.fulfillment.noMatches}</p>
-              ) : (
-                <>
-                  <div className="mt-3 max-h-[42rem] space-y-3 overflow-y-auto pr-1">{filteredCompanyOrders.slice(0, companyOrdersLimit).map(renderOrderCard)}</div>
-                  {filteredCompanyOrders.length > companyOrdersLimit && (
-                    <button
-                      type="button"
-                      onClick={() => setCompanyOrdersLimit((n) => n + 20)}
-                      className="mt-3 w-full rounded-xl border border-slate-200 py-2 text-xs font-bold text-slate-600 transition hover:border-emerald-400 hover:text-emerald-700 dark:border-white/10 dark:text-slate-300"
-                    >
-                      {t.admin.showMore}
-                    </button>
-                  )}
-                </>
-              )}
-            </>
-          )}
-        </div>
-      </div>
+      
 
       {selectedCustomer && (
         <WorkspaceDialog titleId="workspace-customer-title" onClose={() => setSelectedCustomer(null)}>
@@ -3909,227 +2678,3 @@ export default function AdminPage() {
   );
 }
 
-/* ------------------------------------------------------------------ gallery manager */
-
-/** Admin-managed photo on the public gallery page (file stored in DigitalOcean Spaces). */
-type AdminGalleryImage = {
-  id: string;
-  url: string;
-  alt: string;
-  altNl: string;
-  category: string;
-  portrait: boolean;
-  createdAt: number;
-};
-
-/** Upload, list and delete the photos shown on /events/gallery. */
-function GalleryManager() {
-  const { lang } = useLang();
-  const nl = lang === "nl";
-  const [images, setImages] = useState<AdminGalleryImage[]>([]);
-  const [draft, setDraft] = useState({ image: "", alt: "", altNl: "", category: "ambiance", portrait: false });
-  const [state, setState] = useState<SaveState>({ status: "idle" });
-  const [deletingId, setDeletingId] = useState<string | null>(null);
-  const pickRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    fetch("/api/gallery", { cache: "no-store" })
-      .then((r) => r.json())
-      .then((d) => {
-        if (d?.ok && Array.isArray(d.images)) setImages(d.images);
-      })
-      .catch(() => {});
-  }, []);
-
-  const catLabel = (key: string): string =>
-    (
-      {
-        dishes: nl ? "Gerechten" : "Dishes",
-        interior: nl ? "Interieur" : "Interior",
-        bar: nl ? "Bar & Drankjes" : "Bar & Drinks",
-        ambiance: nl ? "Sfeer" : "Ambiance",
-      } as Record<string, string>
-    )[key] ?? key;
-
-  const onPick = async (file?: File) => {
-    if (!file) return;
-    try {
-      const image = await processImageFile(file, { maxDim: 1600 });
-      setDraft((d) => ({ ...d, image }));
-      setState({ status: "idle" });
-    } catch {
-      if (pickRef.current) pickRef.current.value = "";
-      setState({ status: "error", message: nl ? "Kon de foto niet lezen." : "Could not read the photo." });
-    }
-  };
-
-  const upload = async () => {
-    if (!draft.image || state.status === "saving") return;
-    setState({ status: "saving" });
-    try {
-      const res = await fetch("/api/gallery", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(draft),
-      });
-      const data = await res.json();
-      if (!data.ok || !data.image) throw new Error(data.error || "error");
-      setImages((list) => [data.image, ...list]);
-      setDraft({ image: "", alt: "", altNl: "", category: "ambiance", portrait: false });
-      if (pickRef.current) pickRef.current.value = "";
-      setState({ status: "success", message: nl ? "Foto toegevoegd aan de galerij." : "Photo added to the gallery." });
-      setTimeout(() => setState((s) => (s.status === "success" ? { status: "idle" } : s)), 4000);
-    } catch {
-      setState({ status: "error", message: nl ? "Uploaden mislukt. Probeer het opnieuw." : "Upload failed. Please try again." });
-    }
-  };
-
-  const remove = async (id: string) => {
-    if (deletingId) return;
-    setDeletingId(id);
-    try {
-      await fetch(`/api/gallery?id=${encodeURIComponent(id)}`, { method: "DELETE" });
-      setImages((list) => list.filter((i) => i.id !== id));
-    } finally {
-      setDeletingId(null);
-    }
-  };
-
-  return (
-    <div className="mt-10 rounded-3xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-white/5">
-      <div className="flex items-center justify-between gap-3">
-        <div>
-          <h2 className="flex items-center gap-2 text-lg font-black text-slate-900 dark:text-white">
-            <FaImage className="text-emerald-600 dark:text-emerald-400" /> {nl ? "Galerij" : "Gallery"}
-          </h2>
-          <p className="mt-0.5 text-xs text-slate-500 dark:text-slate-400">
-            {nl
-              ? "Beheer de foto's op de openbare galerijpagina. Foto's worden opgeslagen in DigitalOcean Spaces."
-              : "Manage the photos on the public gallery page. Photos are stored in DigitalOcean Spaces."}
-          </p>
-        </div>
-        <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600 dark:bg-white/10 dark:text-slate-300">
-          {images.length}
-        </span>
-      </div>
-
-      {/* Upload form */}
-      <div className="mt-4 space-y-3">
-        <div className="flex items-center gap-3">
-          <button
-            onClick={() => pickRef.current?.click()}
-            className="inline-flex items-center gap-2 rounded-xl border border-dashed border-slate-300 px-4 py-2.5 text-sm font-semibold text-slate-600 transition hover:border-emerald-400 hover:text-emerald-700 dark:border-white/15 dark:text-slate-300"
-          >
-            <FaPlus /> {nl ? "Foto kiezen" : "Choose photo"}
-          </button>
-          {draft.image && (
-            <span className="relative h-12 w-12 shrink-0 overflow-hidden rounded-xl border border-slate-200 dark:border-white/10">
-              <Image src={draft.image} alt="preview" fill sizes="48px" className="object-cover" />
-              <button
-                type="button"
-                onClick={() => {
-                  setDraft((d) => ({ ...d, image: "" }));
-                  if (pickRef.current) pickRef.current.value = "";
-                }}
-                className="absolute right-0 top-0 grid h-5 w-5 place-items-center rounded-bl-lg bg-black/60 text-[10px] text-white transition hover:bg-red-600"
-                aria-label="remove"
-              >
-                <FaXmark />
-              </button>
-            </span>
-          )}
-          <input ref={pickRef} type="file" accept="image/*" className="hidden" onChange={(e) => onPick(e.target.files?.[0])} />
-        </div>
-        <div className="grid gap-3 sm:grid-cols-2">
-          <input
-            value={draft.alt}
-            onChange={(e) => setDraft({ ...draft, alt: e.target.value })}
-            placeholder={nl ? "Beschrijving (Engels)" : "Description (English)"}
-            className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
-          />
-          <input
-            value={draft.altNl}
-            onChange={(e) => setDraft({ ...draft, altNl: e.target.value })}
-            placeholder={nl ? "Beschrijving (Nederlands)" : "Description (Dutch)"}
-            className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
-          />
-        </div>
-        <div className="flex flex-wrap items-center gap-3">
-          <select 
-            value={draft.category}
-            onChange={(e) => setDraft({ ...draft, category: e.target.value })}
-            aria-label={nl ? "Categorie" : "Category"}
-            className="rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm font-semibold outline-none transition focus:border-emerald-500 dark:border-white/10 dark:bg-white/10 dark:text-white"
-          >
-            {["ambiance", "dishes", "interior", "bar"].map((c) => (
-              <option key={c} value={c}>
-                {catLabel(c)}
-              </option>
-            ))}
-          </select>
-          <label className="inline-flex cursor-pointer items-center gap-2 text-sm font-semibold text-slate-600 dark:text-slate-300">
-            <input
-              type="checkbox"
-              checked={draft.portrait}
-              onChange={(e) => setDraft({ ...draft, portrait: e.target.checked })}
-              className="h-4 w-4 accent-emerald-600"
-            />
-            {nl ? "Staande foto (portret)" : "Portrait photo (tall)"}
-          </label>
-        </div>
-
-        {state.status === "error" && (
-          <p className="flex items-start gap-2 rounded-xl bg-red-500/10 px-3.5 py-2.5 text-xs font-semibold text-red-600 dark:text-red-400">
-            <FaCircleExclamation className="mt-0.5 shrink-0" /> {state.message}
-          </p>
-        )}
-        {state.status === "success" && (
-          <p className="flex items-center gap-2 rounded-xl bg-emerald-500/10 px-3.5 py-2.5 text-xs font-semibold text-emerald-700 dark:text-emerald-400">
-            <FaCircleCheck className="shrink-0" /> {state.message}
-          </p>
-        )}
-
-        <button
-          onClick={upload}
-          disabled={!draft.image || state.status === "saving"}
-          className="rounded-full bg-emerald-600 px-6 py-2.5 text-sm font-bold text-white transition hover:bg-emerald-500 disabled:cursor-not-allowed disabled:opacity-60"
-        >
-          {state.status === "saving" ? (
-            <span className="inline-flex items-center gap-2">
-              <FaSpinner className="animate-spin" /> {nl ? "Uploaden…" : "Uploading…"}
-            </span>
-          ) : nl ? (
-            "Toevoegen aan galerij"
-          ) : (
-            "Add to gallery"
-          )}
-        </button>
-      </div>
-
-      {/* Existing photos */}
-      {images.length > 0 && (
-        <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
-          {images.map((img) => (
-            <div key={img.id} className="group relative overflow-hidden rounded-2xl border border-slate-200 dark:border-white/10">
-              <div className="relative aspect-[4/3] w-full bg-slate-100 dark:bg-black/20">
-                <Image src={img.url} alt={img.alt || "gallery"} fill sizes="200px" className="object-cover" />
-              </div>
-              <span className="absolute left-2 top-2 rounded-full bg-black/50 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white backdrop-blur">
-                {catLabel(img.category)}
-              </span>
-              <button
-                onClick={() => remove(img.id)}
-                disabled={deletingId === img.id}
-                className="absolute right-2 top-2 grid h-7 w-7 place-items-center rounded-full bg-black/50 text-xs text-white backdrop-blur transition hover:bg-red-600 disabled:opacity-60"
-                aria-label={nl ? "Verwijderen" : "Delete"}
-                title={nl ? "Verwijderen" : "Delete"}
-              >
-                {deletingId === img.id ? <FaSpinner className="animate-spin" /> : <FaTrash />}
-              </button>
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
-  );
-}

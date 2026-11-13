@@ -36,8 +36,9 @@ export async function proxy(request: NextRequest) {
   // Public /events pages describe catering and dining; only ticketed /parties stay private.
   const partyPage = pathname === "/parties" || pathname.startsWith("/parties/");
   const partyApi = pathname === "/api/parties" || pathname.startsWith("/api/parties/");
+  const adminPage = pathname === "/admin" || pathname.startsWith("/admin/");
   // Mollie must still reconcile payments that were started before the section became private.
-  if ((partyPage || partyApi) && pathname !== "/api/parties/webhook") {
+  if ((partyPage || partyApi || adminPage) && pathname !== "/api/parties/webhook") {
     const headers = { "Cache-Control": "private, no-store", "X-Robots-Tag": "noindex, nofollow" };
     if (!await hasEventAdminAccess(request.cookies.get("etg_session")?.value)) {
       return partyApi

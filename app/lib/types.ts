@@ -121,6 +121,7 @@ export interface User {
 }
 
 export interface RecentVisitor {
+  observation?: import("./visitorSignals").VisitorObservation;
   id: string;
   kind: "user" | "guest";
   name: string;

@@ -1,0 +1,24 @@
+{
+  "atUTC": "2026-11-13T13:27:10.750Z",
+  "build": "Q2nFHmc8z6XlftjRttVYU",
+  "syntheticOnly": true,
+  "checks": [
+    "accelerated polling test: simulated hidden document pauses bootstrap; visible event refreshes",
+    "failed manual refresh preserves loaded rows and recovery clears the error",
+    "navigation during delayed statistics request shows events promptly; prior request cannot replace selected scope",
+    "light theme and reduced-motion mobile layout: no overflow or automated WCAG violations"
+  ],
+  "bootstrap": [
+    "customers",
+    "customers",
+    "customers",
+    "customers",
+    "customers",
+    "stats",
+    "events",
+    "customers",
+    "customers"
+  ],
+  "axe": [],
+  "overflow": 0
+}

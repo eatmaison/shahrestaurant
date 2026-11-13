@@ -1,6 +1,8 @@
 "use client";
 
 import type { Bootstrap } from "./lib/serverStore";
+import { adminDataView, type AdminDataView } from "./lib/adminView";
+import type { VisitorTelemetryStatus } from "./lib/visitorSignals";
 import { usePathname } from "next/navigation";
 import { getLocalizedRoute, localePath, resolveSiteLocale } from "./lib/locale";
 import { fetchJSON } from "./lib/clientFetch";
@@ -213,6 +215,9 @@ interface StoreCtx {
 
   hydrated: boolean;
   catalogStatus: "loading" | "ready" | "error";
+  dataUpdatedAt: number;
+  adminView?: AdminDataView;
+  visitorTelemetryStatus: VisitorTelemetryStatus;
 }
 
 const StoreContext = createContext<StoreCtx | null>(null);
@@ -328,6 +333,9 @@ export function Providers({ children, initialLang = "nl", initialDictionaries }:
   const [socialLinks, setSocialLinks] = useState<SocialLink[]>([]);
   const [onlineVisitors, setOnlineVisitors] = useState(0);
   const [recentVisitors, setRecentVisitors] = useState<RecentVisitor[]>([]);
+  const [dataUpdatedAt, setDataUpdatedAt] = useState(0);
+  const [adminView, setAdminView] = useState<AdminDataView>();
+  const [visitorTelemetryStatus, setVisitorTelemetryStatus] = useState<VisitorTelemetryStatus>("not-configured");
   const [reservations, setReservations] = useState<Reservation[]>([]);
   const [restaurantStatus, setRestaurantStatus] = useState<RestaurantStatus>(() => getRestaurantStatus());
 
@@ -338,7 +346,10 @@ export function Providers({ children, initialLang = "nl", initialDictionaries }:
     bootstrapController.current = controller;
     setCatalogStatus("loading");
     try {
-      const { response: res, data } = await fetchJSON<Bootstrap>("/api/bootstrap", { cache: "no-store", signal: controller.signal });
+      const path = window.location.pathname;
+      const view = adminDataView(path);
+      const url = path === "/admin" || path.startsWith("/admin/") ? `/api/bootstrap?admin=${view}` : "/api/bootstrap";
+      const { response: res, data } = await fetchJSON<Bootstrap>(url, { cache: "no-store", signal: controller.signal });
       if (controller.signal.aborted) return;
       if (!res.ok || !Array.isArray(data?.products) || !Array.isArray(data?.brands)) throw new Error("Invalid catalogue response");
       setCatalogStatus("ready");
@@ -353,6 +364,9 @@ export function Providers({ children, initialLang = "nl", initialDictionaries }:
       setSocialLinks(data.socialLinks ?? []);
       setOnlineVisitors(data.onlineVisitors ?? 0);
       setRecentVisitors(data.recentVisitors ?? []);
+      setDataUpdatedAt(Date.now());
+      setAdminView(data.currentUser?.role === "admin" ? data.adminView ?? view : undefined);
+      setVisitorTelemetryStatus(data.visitorTelemetryStatus ?? "not-configured");
       setReservations(data.reservations ?? []);
       const status = data.restaurantStatus;
       setRestaurantStatus(previous => stableRestaurantStatus(previous, getRestaurantStatus(status?.override ?? "auto", status?.overrideDate)));
@@ -875,6 +889,9 @@ export function Providers({ children, initialLang = "nl", initialDictionaries }:
       refresh,
       hydrated,
       catalogStatus,
+      dataUpdatedAt,
+      adminView,
+      visitorTelemetryStatus,
     }),
     [
       products,
@@ -928,6 +945,9 @@ export function Providers({ children, initialLang = "nl", initialDictionaries }:
       refresh,
       hydrated,
       catalogStatus,
+      dataUpdatedAt,
+      adminView,
+      visitorTelemetryStatus,
     ]
   );
 

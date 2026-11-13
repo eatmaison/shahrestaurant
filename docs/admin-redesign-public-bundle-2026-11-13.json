@@ -1,0 +1,117 @@
+{
+  "atUTC": "2026-11-13T13:26:09.613Z",
+  "methodology": "Public homepage cold-route HTML script/preload/style lists; each asset gzip6. Same baseline and candidate builds as admin comparison; excludes HTML, API, media and optional consent-only dynamic imports.",
+  "before": {
+    "build": "0QM01vrtIDTCaYpYCCdXf",
+    "jsGzip": 180776,
+    "assets": [
+      {
+        "url": "/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+        "gzip": 62877
+      },
+      {
+        "url": "/_next/static/chunks/3794-c968c786880cae15.js",
+        "gzip": 60749
+      },
+      {
+        "url": "/_next/static/chunks/main-app-2f3596a243c31fc0.js",
+        "gzip": 223
+      },
+      {
+        "url": "/_next/static/chunks/8500-3953cc33eeceb44e.js",
+        "gzip": 3531
+      },
+      {
+        "url": "/_next/static/chunks/5772-1c5f02be2ece8826.js",
+        "gzip": 5552
+      },
+      {
+        "url": "/_next/static/chunks/1398-f6b66c90eacf2ebb.js",
+        "gzip": 10102
+      },
+      {
+        "url": "/_next/static/chunks/3573-093608a0c980b770.js",
+        "gzip": 25082
+      },
+      {
+        "url": "/_next/static/chunks/app/en/page-c5b83411a588c9b8.js",
+        "gzip": 135
+      },
+      {
+        "url": "/_next/static/chunks/app/layout-a66bc8f49bcf9b65.js",
+        "gzip": 8669
+      },
+      {
+        "url": "/_next/static/chunks/app/error-4e056100a4253fb4.js",
+        "gzip": 735
+      },
+      {
+        "url": "/_next/static/chunks/app/not-found-10fe67176e53b097.js",
+        "gzip": 716
+      },
+      {
+        "url": "/_next/static/chunks/webpack-095aa67f46150012.js",
+        "gzip": 2405
+      }
+    ]
+  },
+  "after": {
+    "build": "Q2nFHmc8z6XlftjRttVYU",
+    "jsGzip": 184219,
+    "assets": [
+      {
+        "url": "/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+        "gzip": 62877
+      },
+      {
+        "url": "/_next/static/chunks/3794-c968c786880cae15.js",
+        "gzip": 60749
+      },
+      {
+        "url": "/_next/static/chunks/main-app-2f3596a243c31fc0.js",
+        "gzip": 223
+      },
+      {
+        "url": "/_next/static/chunks/8500-3953cc33eeceb44e.js",
+        "gzip": 3531
+      },
+      {
+        "url": "/_next/static/chunks/5772-1c5f02be2ece8826.js",
+        "gzip": 5552
+      },
+      {
+        "url": "/_next/static/chunks/1398-b9781777ba6b309a.js",
+        "gzip": 10260
+      },
+      {
+        "url": "/_next/static/chunks/7985-d0f13e1b17e84f35.js",
+        "gzip": 3370
+      },
+      {
+        "url": "/_next/static/chunks/3573-7075230707e2cb38.js",
+        "gzip": 22204
+      },
+      {
+        "url": "/_next/static/chunks/app/en/page-153837b6df854cf0.js",
+        "gzip": 138
+      },
+      {
+        "url": "/_next/static/chunks/app/layout-c79b15a04d7c885c.js",
+        "gzip": 11143
+      },
+      {
+        "url": "/_next/static/chunks/app/error-a28aa2e01ec85d47.js",
+        "gzip": 814
+      },
+      {
+        "url": "/_next/static/chunks/app/not-found-28744a18cc567e62.js",
+        "gzip": 800
+      },
+      {
+        "url": "/_next/static/chunks/webpack-8e1f089ad2c210ce.js",
+        "gzip": 2558
+      }
+    ]
+  },
+  "changeBytes": 3443
+}

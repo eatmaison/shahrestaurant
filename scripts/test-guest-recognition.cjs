@@ -139,7 +139,7 @@ function server(role) {
   return {calls,api:modules({"./db":{ensureReady:async()=>{},sql:{query}},"./session":{getSessionUserId:async()=>current?.id??null,getOrCreateVisitorId:async()=>"server-session"}})("app/lib/serverStore.ts")};
 }
 test("real bootstrap admin branch has no combined cap and enriches identities only there",async()=>{
-  const {calls,api}=server("admin"),result=await api.bootstrap();
+  const {calls,api}=server("admin"),result=await api.bootstrap("customers");
   assert.equal(result.recentVisitors.length,381); assert.equal(result.recentVisitors.filter(v=>v.kind==="user").length,175);
   assert.equal(result.recentVisitors.find(v=>v.id==="g-0").email,"anna@example.invalid");
   const query=calls.find(call=>call.text.includes("FROM visitor_sessions")&&call.text.includes("ORDER BY"));
@@ -186,8 +186,8 @@ test("migration is not auto-registered and bootstrap remains private/no-store",(
   const ddl=fs.readFileSync(path.join(root,"app/lib/db.ts"),"utf8");
   assert.doesNotMatch(ddl,/ALTER TABLE reservations ADD COLUMN IF NOT EXISTS visitor_session_id/);
   const route=fs.readFileSync(path.join(root,"app/api/bootstrap/route.ts"),"utf8"); assert.match(route,/private, no-store/);
-  const page=fs.readFileSync(path.join(root,"app/admin/page.tsx"),"utf8");
-  assert.match(page,/setVisitorFilter\(value\); setVisitorPage\(1\)/); assert.match(page,/recentlyOnlineNoActivity/);
+  const page=fs.readFileSync(path.join(root,"app/admin/RecentVisitors.tsx"),"utf8");
+  assert.match(page,/setPage\(1\)/); assert.match(page,/No visitors/);
 });
 test("reservation creation uses server session, ignores forged form identity, and remains compatible with legacy schema",async()=>{
   for(const supports of [true,false,"metadata-unavailable"]){
@@ -222,3 +222,5 @@ test("multiple delivery addresses in one session never union separate households
   assert.equal(result.identityStatus,"identified");assert.equal(result.orderCount,2);
   assert.equal(result.matchingOrderCount,undefined);assert.equal(result.matchingPaidOrderCount,undefined);
 });
+
+test("scoped bootstrap only loads required private collections; requested scope never grants authorization",async()=>{for(const view of ["operations","stats","customers","events"]){const {calls,api}=server("admin"),result=await api.bootstrap(view);assert.equal(result.adminView,view);if(view==="events"){assert.deepEqual(plain(result.orders),[]);assert.deepEqual(plain(result.users),[]);assert.deepEqual(plain(result.reservations),[]);assert(!calls.some(c=>c.text.includes("SELECT * FROM users ORDER BY")));}if(view!=="customers")assert(!calls.some(c=>c.text.includes("FROM orders WHERE user_id IS NULL")));for(const role of [null,"user"]){const privateResult=await server(role).api.bootstrap(view);assert.deepEqual(plain(privateResult.users),[]);assert.deepEqual(plain(privateResult.recentVisitors),[]);assert.equal(privateResult.adminView,undefined);}}});

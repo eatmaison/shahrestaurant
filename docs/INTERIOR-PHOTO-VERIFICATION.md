@@ -1,5 +1,8 @@
 # Interior photography update — 13 November 2026
 
+> Historical photo-build record. The same approved photographs are now included in the newer admin release; see [current preview and verification](ADMIN-REDESIGN.md).
+
+
 Current read-only preview: http://localhost:3398/en (English), http://localhost:3398/ (Dutch); same Wi-Fi: http://192.168.0.122:3618/en and `/`.
 
 Build `0QM01vrtIDTCaYpYCCdXf`, `.next-review-shah-interior-final-20261113`. Frozen source SHA-256 `c4ac07745e89450202db9e7e7475760c5101123c1eab5ff699391c3e179ffb7f`, 460 inputs, unchanged before/after the successful build and TypeScript check. All 61 routes generated. This followup is local, without a GitHub push or public deployment.

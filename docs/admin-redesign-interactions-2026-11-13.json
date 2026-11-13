@@ -1,0 +1,31 @@
+{
+  "atUTC": "2026-11-13T13:21:42.263Z",
+  "build": "Q2nFHmc8z6XlftjRttVYU",
+  "syntheticOnly": true,
+  "checks": [
+    "all 175 accounts reached through seven 25-row pages",
+    "details action requires confirmation; Escape cancels without request",
+    "verification payload and refresh; stale account-type conflict retained and explained",
+    "guest/source filtering applied before pagination",
+    "SPA scope changes, full-history chart and 30-row daily table"
+  ],
+  "writesIntercepted": [
+    {
+      "action": "setUserEmailVerified",
+      "userId": "fixture-user-000",
+      "verified": true
+    },
+    {
+      "action": "setUserAccountType",
+      "userId": "fixture-user-000",
+      "expectedAccountType": "personal",
+      "accountType": "company"
+    }
+  ],
+  "scopes": [
+    "customers",
+    "customers",
+    "stats"
+  ],
+  "expandedAxe": []
+}

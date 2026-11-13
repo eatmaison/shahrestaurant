@@ -1,10 +1,14 @@
 # Current local preview - 13 November 2026
 
-Open http://localhost:3398/en or http://localhost:3398/. The new bar, corrected two-sided story settings and approved two-person-table seating photograph are integrated with the earlier gallery/FAQ work. Same Wi-Fi: http://192.168.0.122:3618/en or `/`.
+Public site: http://localhost:3398/en or http://localhost:3398/. Same Wi-Fi: http://192.168.0.122:3618/en or `/`. The approved photographs, bilingual intro, menu and public events are retained.
 
-Build `0QM01vrtIDTCaYpYCCdXf`, `.next-review-shah-interior-final-20261113`, frozen source `c4ac07745e89450202db9e7e7475760c5101123c1eab5ff699391c3e179ffb7f`, 460 inputs. Build, TypeScript, focused lint, browser cases, 50 HTTP checks and LAN verification passed. [Selected assets, prompts, tests, limits and start commands](INTERIOR-PHOTO-VERIFICATION.md).
+The restructured admin demo is **http://localhost:4068/admin** with separate `/admin/customers`, `/admin/stats` and `/admin/events` pages. This loopback-only preview contains labelled synthetic data; writes are blocked. Admin is never exposed through the phone listener.
 
-Start/verify: `node "$env:TEMP\shah-preview-20261111\start-shah-interior-final-main.cjs"`. Existing unrelated listeners are never stopped. The app/proxy remain loopback-only. This followup has not been pushed or deployed.
+Build `Q2nFHmc8z6XlftjRttVYU`, `.next-review-shah-admin-release-20261113`, frozen source `b3c001864ded7ec998ea4a347f91dc433c923b138204e069a262b48667321939`, 483 inputs. Build, TypeScript, scoped regressions, browser layouts/interactions, 25 real proxy-authorization cases, 50 public HTTP checks and LAN checks passed. Full repository lint still has 22 unrelated errors. [Changes, measurements, optional migration, verification limits and exact start commands](ADMIN-REDESIGN.md).
+
+Start/verify public: `node "$env:TEMP\shah-preview-20261111\start-shah-admin-release-main.cjs"`. Start/verify admin demo: `node "$env:TEMP\shah-admin-redesign-20261113\start-or-verify-private-release.cjs"`. No production deployment or production migration was performed. Unrelated listeners and phone-agent edits are preserved.
+
+The earlier interior-photo build `0QM01vrtIDTCaYpYCCdXf` is preserved as historical verification in [INTERIOR-PHOTO-VERIFICATION.md](INTERIOR-PHOTO-VERIFICATION.md).
 
 ## Historical workspace baseline - 12 November 2026
 

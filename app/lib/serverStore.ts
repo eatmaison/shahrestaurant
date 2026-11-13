@@ -1,4 +1,7 @@
 import { after } from "next/server";
+import type { AdminDataView } from "./adminView";
+import { loadVisitorObservations } from "./visitorObservationStore";
+import type { VisitorTelemetryStatus } from "./visitorSignals";
 import { buildGuestVisitors, buildRegisteredVisitors } from "./guestRecognition";
 import { reservationInsert, RESERVATION_SESSION_CAPABILITY_SQL } from "./reservationSessionLink";
 import { checkoutIdentity } from "./checkoutFingerprint";
@@ -276,6 +279,8 @@ export async function logoutUser(): Promise<void> {
 /* ------------------------------------------------------------------ bootstrap (initial load) */
 
 export interface Bootstrap {
+  adminView?: AdminDataView;
+  visitorTelemetryStatus?: VisitorTelemetryStatus;
   currentUser: User | null;
   products: Product[];
   brands: BrandConfig[];
@@ -335,7 +340,7 @@ export async function setRestaurantOpenOverride(override: RestaurantOpenOverride
   return loadRestaurantStatus();
 }
 
-export async function bootstrap(): Promise<Bootstrap> {
+export async function bootstrap(adminView: AdminDataView = "operations"): Promise<Bootstrap> {
   await ensureReady();
   const [currentUser] = await Promise.all([getCurrentUser(), backfillPaymentAttemptOrders()]);
   const isAdmin = currentUser?.role === "admin";
@@ -379,72 +384,53 @@ export async function bootstrap(): Promise<Bootstrap> {
   let reservations: Reservation[] = [];
   let onlineVisitors = 0;
   let recentVisitors: RecentVisitor[] = [];
+  let visitorTelemetryStatus: VisitorTelemetryStatus = "not-configured";
 
   if (isAdmin) {
-    const [adminOrders, userRows, vipRows] = await Promise.all([
-      loadOrders(),
-      sql.query(`SELECT * FROM users ORDER BY created_at ASC`),
-      sql.query(`SELECT * FROM vip_requests ORDER BY created_at DESC`),
-    ]);
-    orders = adminOrders;
-    users = userRows.map(rowToUser);
-    vipRequests = vipRows.map(rowToVipRequest);
-    const reservationCounts = new Map<string, { maison: number; tandoor: number; maisonArrived: number; tandoorArrived: number }>();
-    try {
-      const reservationRows = (await sql.query(`SELECT user_id, site, count(*)::int AS count, count(*) FILTER (WHERE status = 'arrived')::int AS arrived FROM reservations WHERE user_id IS NOT NULL GROUP BY user_id, site`)) as any[];
-      for (const row of reservationRows) {
-        const current = reservationCounts.get(row.user_id) ?? { maison: 0, tandoor: 0, maisonArrived: 0, tandoorArrived: 0 };
-        if (row.site === "themaison") current.maison = Number(row.count);
-        if (row.site === "themaison") current.maisonArrived = Number(row.arrived);
-        if (row.site === "tandoor" || row.site === "tandoorcompany" || row.site === "thetandoorcompany") current.tandoor = Number(row.count);
-        if (row.site === "tandoor" || row.site === "tandoorcompany" || row.site === "thetandoorcompany") current.tandoorArrived = Number(row.arrived);
-        reservationCounts.set(row.user_id, current);
+    if (adminView !== "events") {
+      const withCustomers = adminView === "operations" || adminView === "customers";
+      const [adminOrders, userRows, vipRows, adminReservationRows, paymentRows] = await Promise.all([
+        loadOrders(),
+        sql.query(`SELECT * FROM users ORDER BY created_at ASC`),
+        withCustomers ? sql.query(`SELECT * FROM vip_requests ORDER BY created_at DESC`) : Promise.resolve([]),
+        withCustomers ? sql.query(`SELECT * FROM reservations ORDER BY date ASC, time ASC`) : Promise.resolve([]),
+        withCustomers ? sql.query(`SELECT id, user_id, amount, status, created_at, updated_at FROM payments WHERE kind = 'vip' ORDER BY created_at DESC`) : Promise.resolve([]),
+      ]);
+      orders = adminOrders; users = userRows.map(rowToUser); vipRequests = vipRows.map(rowToVipRequest);
+      reservations = adminReservationRows.map(rowToReservation);
+      vipPurchases = paymentRows.map(row => ({ id: row.id, userId: row.user_id, amount: Number(row.amount), status: row.status,
+        createdAt: new Date(row.created_at).getTime(), updatedAt: new Date(row.updated_at ?? row.created_at).getTime() }));
+      const reservationCounts = new Map<string, { maison: number; tandoor: number; maisonArrived: number; tandoorArrived: number }>();
+      for (const row of adminReservationRows) {
+        if (!row.user_id) continue;
+        const count = reservationCounts.get(row.user_id) ?? { maison: 0, tandoor: 0, maisonArrived: 0, tandoorArrived: 0 };
+        if (row.site === "themaison") { count.maison++; if (row.status === "arrived") count.maisonArrived++; }
+        if (["tandoor", "tandoorcompany", "thetandoorcompany"].includes(row.site)) { count.tandoor++; if (row.status === "arrived") count.tandoorArrived++; }
+        reservationCounts.set(row.user_id, count);
       }
-    } catch {
-      /* Reservations table may not exist in a standalone database. */
+      const nowMs = Date.now();
+      // Operations only need account counts for the existing order-history dialog.
+      recentVisitors = withCustomers ? buildRegisteredVisitors(users, reservationCounts, nowMs) : [];
+      if (adminView === "customers") {
+        const [recentGuestRows, guestIdentityOrders] = await Promise.all([
+          sql.query(`SELECT id, created_at, last_seen_at, last_seen_site, visit_count, active_seconds FROM visitor_sessions
+            WHERE last_seen_site = $1 AND last_seen_at > now() - interval '24 hours' ORDER BY last_seen_at DESC, id ASC`, [SITE_ID]),
+          sql.query(`SELECT id, user_id, visitor_session_id, customer_name, customer_email, address, postcode, fulfillment, paid FROM orders WHERE user_id IS NULL`),
+        ]);
+        const guests = buildGuestVisitors(recentGuestRows as any[], guestIdentityOrders as any[], adminReservationRows as any[], nowMs);
+        onlineVisitors = guests.filter(visitor => visitor.isOnline).length;
+        recentVisitors = [...recentVisitors, ...guests].sort((a, b) => b.lastSeenAt - a.lastSeenAt || a.kind.localeCompare(b.kind) || a.id.localeCompare(b.id));
+        const enriched = await loadVisitorObservations(recentVisitors);
+        recentVisitors = enriched.visitors; visitorTelemetryStatus = enriched.status;
+      }
     }
-    vipPurchases = ((await sql.query(`SELECT id, user_id, amount, status, created_at, updated_at FROM payments WHERE kind = 'vip' ORDER BY created_at DESC`)) as any[]).map((r) => ({
-      id: r.id,
-      userId: r.user_id,
-      amount: Number(r.amount),
-      status: r.status,
-      createdAt: new Date(r.created_at).getTime(),
-      updatedAt: new Date(r.updated_at ?? r.created_at).getTime(),
-    }));
-    const adminReservationRows = (await sql.query(`SELECT * FROM reservations ORDER BY date ASC, time ASC`)) as any[];
-    reservations = adminReservationRows.map(rowToReservation);
-    const visitorRows = (await sql.query(
-      `SELECT count(*)::int AS n FROM visitor_sessions WHERE last_seen_site = $1 AND last_seen_at > now() - interval '5 minutes'`,
-      [SITE_ID]
-    )) as any[];
-    onlineVisitors = visitorRows[0]?.n ?? 0;
-
-    const [recentGuestRows, guestIdentityOrders] = await Promise.all([
-      sql.query(
-        `SELECT id, created_at, last_seen_at, last_seen_site, visit_count, active_seconds
-         FROM visitor_sessions
-         WHERE last_seen_site = $1 AND last_seen_at > now() - interval '24 hours'
-         ORDER BY last_seen_at DESC, id ASC`,
-        [SITE_ID]
-      ),
-      // Admin-only enrichment. Do not add guest emails to the public Order mapper.
-      sql.query(`SELECT id, user_id, visitor_session_id, customer_name, customer_email,
-                        address, postcode, fulfillment, paid
-                 FROM orders WHERE user_id IS NULL`),
-    ]);
-    const nowMs = Date.now();
-    const signedInVisitors = buildRegisteredVisitors(users, reservationCounts, nowMs);
-    const guestVisitors = buildGuestVisitors(recentGuestRows as any[], guestIdentityOrders as any[], adminReservationRows, nowMs);
-    // Every registered account remains available; paging happens after UI filtering.
-    recentVisitors = [...signedInVisitors, ...guestVisitors]
-      .sort((a, b) => b.lastSeenAt - a.lastSeenAt || a.kind.localeCompare(b.kind) || a.id.localeCompare(b.id));
   } else if (currentUser) {
     orders = await loadOrders(currentUser.id);
     vipRequests = ((await sql.query(`SELECT * FROM vip_requests WHERE user_id = $1 ORDER BY created_at DESC`, [currentUser.id])) as any[]).map(rowToVipRequest);
     reservations = ((await sql.query(`SELECT * FROM reservations WHERE user_id = $1 ORDER BY date DESC, time DESC`, [currentUser.id])) as any[]).map(rowToReservation);
   }
 
-  return { currentUser, products, brands, reviews, orders, users, vipRequests, vipPurchases, socialLinks, reservations, restaurantStatus, onlineVisitors, recentVisitors };
+  return { currentUser, products, brands, reviews, orders, users, vipRequests, vipPurchases, socialLinks, reservations, restaurantStatus, onlineVisitors, recentVisitors, ...(isAdmin ? { adminView, visitorTelemetryStatus } : {}) };
 }
 
 /** Load orders (optionally for a single user) with their line items. */

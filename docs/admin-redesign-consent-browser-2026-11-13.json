@@ -1,0 +1,29 @@
+{
+  "atUTC": "2026-11-13T13:21:45.563Z",
+  "build": "Q2nFHmc8z6XlftjRttVYU",
+  "checks": [
+    "legacy accepted notice does not grant analytics or send events",
+    "footer preferences reopen the banner and focus the first choice",
+    "explicit opt-in sends only allowlisted path and sanitized source fields",
+    "privacy route is excluded from observations",
+    "withdrawal stops observations and requests deletion for this browser"
+  ],
+  "events": [
+    {
+      "method": "POST",
+      "body": {
+        "path": "/en/menu",
+        "source": {
+          "source": "newsletter",
+          "campaign": "dinner_2026"
+        },
+        "interaction": false,
+        "webdriver": true
+      }
+    },
+    {
+      "method": "DELETE"
+    }
+  ],
+  "overflow": 0
+}
