@@ -1,0 +1,151 @@
+{
+  "reason": "User approved the brighter seating-area edit with two settings per small table and explicitly requested replacing and deleting the old photograph",
+  "sourcePairMeanDifference": 2.6572265625,
+  "files": [
+    {
+      "url": "/brand/shah-atmosphere-v1.webp",
+      "bytes": 173104,
+      "sha256": "2489b5c877c7e46b6bea2ca37dd5e7f52c5dccdb6fb463ba81544f0b4193156b"
+    },
+    {
+      "url": "/photos/687A0336.jpeg",
+      "bytes": 3194173,
+      "sha256": "f1fe8dba5da900050a223a0bc4f51edf13cfde300eb82de0302d18de7ef95306"
+    },
+    {
+      "url": "/brand/restaurant-photos-v1/shah-atmosphere-1200.webp",
+      "bytes": 173104,
+      "sha256": "2489b5c877c7e46b6bea2ca37dd5e7f52c5dccdb6fb463ba81544f0b4193156b"
+    },
+    {
+      "url": "/brand/restaurant-photos-v1/shah-atmosphere-160.avif",
+      "bytes": 7961,
+      "sha256": "c7c14eb5f62f43d1f721b369e714d32a79fb76432af76ceecaf19ad239c90ba2"
+    },
+    {
+      "url": "/brand/restaurant-photos-v1/shah-atmosphere-320.avif",
+      "bytes": 20913,
+      "sha256": "52d6e3b74d11b37d17fadf34960fc0be03f3933ab1d18d3bd22516df11842181"
+    },
+    {
+      "url": "/brand/restaurant-photos-v1/shah-atmosphere-640.avif",
+      "bytes": 54234,
+      "sha256": "22af8dc44ea6779d539640d790de40ae6119bcd74ae742999226bdd145a80ab4"
+    },
+    {
+      "url": "/brand/restaurant-photos-v1/shah-atmosphere-960.avif",
+      "bytes": 87981,
+      "sha256": "1fb633aae1f0dadd27bc881850544e3132503c0d3c823ba42d2d62f97d63d00b"
+    },
+    {
+      "url": "/brand/restaurant-photos-v1/shah-atmosphere-1200.avif",
+      "bytes": 132589,
+      "sha256": "e577f4062c84d1631d0b63394223afa2c1fbee1698a46b678b432a833f913a98"
+    },
+    {
+      "url": "/brand/restaurant-photos-v1/shah-atmosphere-160.webp",
+      "bytes": 11232,
+      "sha256": "c5addd0f6cbd8ff88d05d8c44bbe3bb4effee73988d19bb6d9be41d55079dafa"
+    },
+    {
+      "url": "/brand/restaurant-photos-v1/shah-atmosphere-320.webp",
+      "bytes": 31778,
+      "sha256": "486527f1b217a9f2d8c2531b6e2d6734f5359c16d695b98cf35eca614ad68d5a"
+    },
+    {
+      "url": "/brand/restaurant-photos-v1/shah-atmosphere-640.webp",
+      "bytes": 89808,
+      "sha256": "43847df86a75a94a5ce68af9f3630ce95c79c7972034fb93af4af7d0e65a361d"
+    },
+    {
+      "url": "/brand/restaurant-photos-v1/shah-atmosphere-960.webp",
+      "bytes": 138276,
+      "sha256": "d8417d3b140ae69fe12f892e37b20a71487d27387be7fe17f70486815e9ddebd"
+    },
+    {
+      "url": "/brand/jpeg-fallback-v1/shah-atmosphere-1200.jpg",
+      "bytes": 175166,
+      "sha256": "2a62ad2b4227160fce323cd28194d6c599b229364241438af9ef5fe42d2b2b6e"
+    },
+    {
+      "url": "/brand/jpeg-fallback-v1/shah-atmosphere-160.jpg",
+      "bytes": 10988,
+      "sha256": "c56f9552e9ddcf972b6bbd7925fe5b093379beb6d659df58506ce50cac3bb6e5"
+    },
+    {
+      "url": "/brand/jpeg-fallback-v1/shah-atmosphere-320.jpg",
+      "bytes": 33273,
+      "sha256": "64f3436209244a36fc0841abea0c7296fb5403a1dde55a5cc70111ecf4f87bd3"
+    },
+    {
+      "url": "/brand/jpeg-fallback-v1/shah-atmosphere-640.jpg",
+      "bytes": 100155,
+      "sha256": "6574d1cf6e67aa2c19f72af4046b3f1e460197ae0201e9dd1bf702ede821e146"
+    },
+    {
+      "url": "/brand/jpeg-fallback-v1/shah-atmosphere-960.jpg",
+      "bytes": 179940,
+      "sha256": "31076499e4e663b335c9ed19e0d77aaa40711bf0c37d433132e30db91fdba15f"
+    },
+    {
+      "url": "/brand/event-gallery-v1/shah-gallery-687a0336-1280.webp",
+      "bytes": 177064,
+      "sha256": "ad39fc043877faf848c2daa5c949cf1890a532b602adaa97d061b1b8a3db0c27"
+    },
+    {
+      "url": "/brand/event-gallery-v1/shah-gallery-687a0336-320.avif",
+      "bytes": 21330,
+      "sha256": "0c6a0899dde4a6b03e0fe9c92aadb6ea4e8cc4a2624570226be69d0b30ad6d90"
+    },
+    {
+      "url": "/brand/event-gallery-v1/shah-gallery-687a0336-640.avif",
+      "bytes": 57016,
+      "sha256": "411af6ecc54d7bc09038767d60bc8debb08c69c4bb3929214dc73ac80fd7f76e"
+    },
+    {
+      "url": "/brand/event-gallery-v1/shah-gallery-687a0336-960.avif",
+      "bytes": 103737,
+      "sha256": "21bc0e09ebe8c3c2e30fd3771ead2eab5ecdf411d9dc4c8ff1d3991985dbeb92"
+    },
+    {
+      "url": "/brand/event-gallery-v1/shah-gallery-687a0336-1280.avif",
+      "bytes": 153751,
+      "sha256": "62f4587ccbb735fa5cc282ee31c04570c702b94a9bb5a45548c38e534baa4d57"
+    },
+    {
+      "url": "/brand/event-gallery-v1/shah-gallery-687a0336-320.webp",
+      "bytes": 33192,
+      "sha256": "28fac8a11e9a6448f038b1492e26c6e61ab9eccb21cb142f24640a9f99f98cf4"
+    },
+    {
+      "url": "/brand/event-gallery-v1/shah-gallery-687a0336-640.webp",
+      "bytes": 93942,
+      "sha256": "e4949cde3751f97c41505bd975403b33b7742a7aecee7c736b5e30a197a90915"
+    },
+    {
+      "url": "/brand/event-gallery-v1/shah-gallery-687a0336-960.webp",
+      "bytes": 177664,
+      "sha256": "64121e2cf6b1d99efccd030879adf770ce7b5ce7320238dde4106a58a6af1e70"
+    },
+    {
+      "url": "/brand/jpeg-fallback-v1/shah-gallery-687a0336-1280.jpg",
+      "bytes": 185290,
+      "sha256": "2707e4fb781e5400f4bc98f3d9cd459b9c35728eb9237bc0eb2fb759c9f50298"
+    },
+    {
+      "url": "/brand/jpeg-fallback-v1/shah-gallery-687a0336-320.jpg",
+      "bytes": 34097,
+      "sha256": "eaa67c5adb24206238a977cad5482f6716fe91142288bf1938f74f57c4833165"
+    },
+    {
+      "url": "/brand/jpeg-fallback-v1/shah-gallery-687a0336-640.jpg",
+      "bytes": 104149,
+      "sha256": "8e9c05751d9c637c02fb88b2d9368fb111b7b94199c994def13cd0671f38f4f2"
+    },
+    {
+      "url": "/brand/jpeg-fallback-v1/shah-gallery-687a0336-960.jpg",
+      "bytes": 170029,
+      "sha256": "bfb2a833f4e94054d017ea1e64b49b27ec6033aefae99f573719a54c18a62444"
+    }
+  ]
+}

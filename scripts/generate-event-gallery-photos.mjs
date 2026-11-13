@@ -28,8 +28,6 @@ const SOURCES = {
   "/photos/687A0216.jpeg": "71476b22ce3191ef58734eb7d1cf4559175b2d0268a0d34d04d599f1f4f257b1",
   "/photos/687A0321.jpeg": "e6aaf9f7ab13c33a832cafb36aca1ecf3249180906c248fa35e9550b4499dd69",
   "/photos/687A0090.jpeg": "f366528546ed464ca0ddc47ab1385ba9b7275ef87a7f847ec7a67372c906019d",
-  "/photos/687A0336.jpeg": "f1fe8dba5da900050a223a0bc4f51edf13cfde300eb82de0302d18de7ef95306",
-  "/photos/687A0343.jpeg": "799a7f46f906e07471da4c5545f387fea8d88d0c69ee24d1ffaa3de5351a1bab",
 };
 const hash = bytes => crypto.createHash("sha256").update(bytes).digest("hex");
 const stripped = metadata => !metadata.exif && !metadata.xmp && !metadata.iptc && !metadata.icc && !metadata.hasProfile && !metadata.orientation;

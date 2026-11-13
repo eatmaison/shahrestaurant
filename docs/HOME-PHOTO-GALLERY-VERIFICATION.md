@@ -1,3 +1,5 @@
+Historical gallery/FAQ milestone: the current interior-photo build and preview are documented in [INTERIOR-PHOTO-VERIFICATION.md](INTERIOR-PHOTO-VERIFICATION.md).
+
 # Homepage photo, FAQ and scroll update — 13 November 2026
 
 Verified local preview: http://localhost:3398/en and http://localhost:3398/. Same-network preview: http://192.168.0.122:3618/en and `/`. Build `s6DGqOfaobcTNZMY4qQDK`, `.next-review-shah-pinned-gallery-v3-20261113`, source `b3cd7a0df1bbd2e02b6add29a73a52fd0b4b9dde1209b73a70c6f157ccaff176`, 490 inputs. This followup is local; it has not been pushed or deployed.

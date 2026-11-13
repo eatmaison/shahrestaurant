@@ -3,6 +3,184 @@
   "maximumDeliveryBytes": 200000,
   "photos": [
     {
+      "name": "atmosphere-setting-v2",
+      "alias": "/brand/shah-atmosphere-v1.webp",
+      "master": "assets/imagegen/shah-atmosphere-setting-v2.png",
+      "widths": [
+        320,
+        640,
+        960
+      ],
+      "originalDimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "masterSha256": "32ab0468274ca67a1e5c49c57de1997e85c8cdd796308ec5b0170fb742905788",
+      "outputs": [
+        {
+          "src": "/brand/edited-restaurant-photos-v1/atmosphere-setting-v2-320.avif",
+          "width": 320,
+          "height": 480,
+          "bytes": 35546,
+          "quality": 62,
+          "sha256": "8b51b6240b021c562f46b6576bf3ce1eafbabaf8f57eda432ced4c7d052f4664"
+        },
+        {
+          "src": "/brand/edited-restaurant-photos-v1/atmosphere-setting-v2-320.webp",
+          "width": 320,
+          "height": 480,
+          "bytes": 36798,
+          "quality": 84,
+          "sha256": "f93ea9b6bc280a3412c859acb94c370be3ec7f241a581b50570b11277b104c4f"
+        },
+        {
+          "src": "/brand/edited-restaurant-photos-v1/atmosphere-setting-v2-320.jpg",
+          "width": 320,
+          "height": 480,
+          "bytes": 37956,
+          "quality": 84,
+          "sha256": "aa3ab163521c93609bf27ce6c6729aa8c857105a84a18c680ea28e796e01270b"
+        },
+        {
+          "src": "/brand/edited-restaurant-photos-v1/atmosphere-setting-v2-640.avif",
+          "width": 640,
+          "height": 960,
+          "bytes": 89222,
+          "quality": 62,
+          "sha256": "6b86f03d05cd746123288d796240361167b45c4148efc505d38080c09c964f81"
+        },
+        {
+          "src": "/brand/edited-restaurant-photos-v1/atmosphere-setting-v2-640.webp",
+          "width": 640,
+          "height": 960,
+          "bytes": 105864,
+          "quality": 84,
+          "sha256": "7e384fc9fc93f88453da56e5f64372091fe356ecbaadf58d8d1d71dc962228c7"
+        },
+        {
+          "src": "/brand/edited-restaurant-photos-v1/atmosphere-setting-v2-640.jpg",
+          "width": 640,
+          "height": 960,
+          "bytes": 119269,
+          "quality": 84,
+          "sha256": "46a6be5fe4317ce4f58b79ebd9610c783b20c0950183498c7c939d4c3885dc30"
+        },
+        {
+          "src": "/brand/edited-restaurant-photos-v1/atmosphere-setting-v2-960.avif",
+          "width": 960,
+          "height": 1440,
+          "bytes": 139862,
+          "quality": 62,
+          "sha256": "fe03286f000b323f750d08d03fa762efcc88a4ff022c919449f9d0ae43703ea2"
+        },
+        {
+          "src": "/brand/edited-restaurant-photos-v1/atmosphere-setting-v2-960.webp",
+          "width": 960,
+          "height": 1440,
+          "bytes": 180782,
+          "quality": 84,
+          "sha256": "2318231df1e8edc43578ee8a46df4a48efa8d1af17395fc5552757791bd4944b"
+        },
+        {
+          "src": "/brand/edited-restaurant-photos-v1/atmosphere-setting-v2-960.jpg",
+          "width": 960,
+          "height": 1440,
+          "bytes": 197548,
+          "quality": 80,
+          "sha256": "9391f7ee1c4c6aa41ae5272f5572423530abd4ae53535cdbe435a4fd0695308c"
+        }
+      ]
+    },
+    {
+      "name": "room-setting-v3",
+      "alias": "/brand/shah-room-v1.webp",
+      "master": "assets/imagegen/shah-room-setting-v3.png",
+      "widths": [
+        320,
+        640,
+        960
+      ],
+      "originalDimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "masterSha256": "796909300d7bd33256fb83d93f5298e171e8feb907723be5867e6148435eca1b",
+      "outputs": [
+        {
+          "src": "/brand/edited-restaurant-photos-v1/room-setting-v3-320.avif",
+          "width": 320,
+          "height": 480,
+          "bytes": 33483,
+          "quality": 62,
+          "sha256": "b5aa56221af4eafb770166addf3e24d8f460af92a498d7e1e5d1b989cae4f5a9"
+        },
+        {
+          "src": "/brand/edited-restaurant-photos-v1/room-setting-v3-320.webp",
+          "width": 320,
+          "height": 480,
+          "bytes": 34974,
+          "quality": 84,
+          "sha256": "142488d4b4d52c107ba83a44cc68d24bc5e74dc2d9b6fc585b1f19eae4f40ace"
+        },
+        {
+          "src": "/brand/edited-restaurant-photos-v1/room-setting-v3-320.jpg",
+          "width": 320,
+          "height": 480,
+          "bytes": 36626,
+          "quality": 84,
+          "sha256": "98173e12283010897bc57a0aaf5a9b403c9ad434052fda3721b57ae014a5b343"
+        },
+        {
+          "src": "/brand/edited-restaurant-photos-v1/room-setting-v3-640.avif",
+          "width": 640,
+          "height": 960,
+          "bytes": 74415,
+          "quality": 62,
+          "sha256": "0f886a70483486bd3ec4f2fccfcaa480cabb3fa0598c5532a814936ca3572ba8"
+        },
+        {
+          "src": "/brand/edited-restaurant-photos-v1/room-setting-v3-640.webp",
+          "width": 640,
+          "height": 960,
+          "bytes": 91792,
+          "quality": 84,
+          "sha256": "6cd526865623e585e1ca65014e19391a7a6f9905e7da8292cf01766863626078"
+        },
+        {
+          "src": "/brand/edited-restaurant-photos-v1/room-setting-v3-640.jpg",
+          "width": 640,
+          "height": 960,
+          "bytes": 108290,
+          "quality": 84,
+          "sha256": "a4ee950fe71f2ae3fb7daa1e5042f96e8212cfa1698b85c3f7dc36c5c92c463c"
+        },
+        {
+          "src": "/brand/edited-restaurant-photos-v1/room-setting-v3-960.avif",
+          "width": 960,
+          "height": 1440,
+          "bytes": 111164,
+          "quality": 62,
+          "sha256": "b33ddb463ab4435d4cc9bb497d7e8f40149d2d0514a47f153a969461ffef5e3d"
+        },
+        {
+          "src": "/brand/edited-restaurant-photos-v1/room-setting-v3-960.webp",
+          "width": 960,
+          "height": 1440,
+          "bytes": 153810,
+          "quality": 84,
+          "sha256": "1adf07623ac72a5a35643bc85e1e0a104243d616ba3bf6ffc55734d44c709c3d"
+        },
+        {
+          "src": "/brand/edited-restaurant-photos-v1/room-setting-v3-960.jpg",
+          "width": 960,
+          "height": 1440,
+          "bytes": 196894,
+          "quality": 84,
+          "sha256": "98a9f322b4060fe0dc29b3fc3ffb62feb8fd8f2b7bdea3e60018923d543224fc"
+        }
+      ]
+    },
+    {
       "name": "dining",
       "alias": "/brand/shah-dining-v1.webp",
       "master": "assets/imagegen/shah-dining-focus-v3.png",
@@ -215,6 +393,95 @@
           "bytes": 177380,
           "quality": 84,
           "sha256": "c2bfdfb3028f7687d00bc678e88d2b6d840efe9b6aa2b2e1336bc6e3b9b462bd"
+        }
+      ]
+    },
+    {
+      "name": "bar-shine",
+      "alias": "/brand/shah-bar-v1.webp",
+      "master": "assets/imagegen/shah-bar-shine-v1.png",
+      "widths": [
+        320,
+        640,
+        960
+      ],
+      "originalDimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "masterSha256": "97f55bda22b6af108af50d256d2afb5f36d91243eb19c617715823cb5464e1e2",
+      "outputs": [
+        {
+          "src": "/brand/edited-restaurant-photos-v1/bar-shine-320.avif",
+          "width": 320,
+          "height": 480,
+          "bytes": 56311,
+          "quality": 62,
+          "sha256": "3986f5b9d819ea80a938534e568d286df4b54d5902055faa2574c863adb586b3"
+        },
+        {
+          "src": "/brand/edited-restaurant-photos-v1/bar-shine-320.webp",
+          "width": 320,
+          "height": 480,
+          "bytes": 53360,
+          "quality": 84,
+          "sha256": "1b0437204ce96699be67daa44b871676e487026726a2c6850e971d85ef6d8850"
+        },
+        {
+          "src": "/brand/edited-restaurant-photos-v1/bar-shine-320.jpg",
+          "width": 320,
+          "height": 480,
+          "bytes": 50941,
+          "quality": 84,
+          "sha256": "4b501db72c2126e00f1034f9673adf18750c8411d6ca600ec7cb3c7bd3211118"
+        },
+        {
+          "src": "/brand/edited-restaurant-photos-v1/bar-shine-640.avif",
+          "width": 640,
+          "height": 960,
+          "bytes": 152826,
+          "quality": 62,
+          "sha256": "c2ce0b7765e615852dba022572575319fa75e90aedd12c31f21b9cbb82b66a0d"
+        },
+        {
+          "src": "/brand/edited-restaurant-photos-v1/bar-shine-640.webp",
+          "width": 640,
+          "height": 960,
+          "bytes": 164238,
+          "quality": 84,
+          "sha256": "eeee7c84e8f9e12c96b29c07be702dd7bd2e6e88fa795a3a5eeb4b883990d7b8"
+        },
+        {
+          "src": "/brand/edited-restaurant-photos-v1/bar-shine-640.jpg",
+          "width": 640,
+          "height": 960,
+          "bytes": 167876,
+          "quality": 84,
+          "sha256": "f3c31258630fd04cdf9bce64b9e5c8c0fda7c4f75758a22237fc65025cc3d92f"
+        },
+        {
+          "src": "/brand/edited-restaurant-photos-v1/bar-shine-960.avif",
+          "width": 960,
+          "height": 1440,
+          "bytes": 196719,
+          "quality": 54,
+          "sha256": "4cc9867732daddf9bde529497cd418a68e2d6605e7e30115a2b330c8ad8a620b"
+        },
+        {
+          "src": "/brand/edited-restaurant-photos-v1/bar-shine-960.webp",
+          "width": 960,
+          "height": 1440,
+          "bytes": 195578,
+          "quality": 64,
+          "sha256": "202ca23fa78abce8e9e9af7e3c4150bcf202f184657a2234003668d778800219"
+        },
+        {
+          "src": "/brand/edited-restaurant-photos-v1/bar-shine-960.jpg",
+          "width": 960,
+          "height": 1440,
+          "bytes": 191018,
+          "quality": 60,
+          "sha256": "9b322a40ae21e8711860a0c201eb40940b2b1489706e2ae9298e9d442e332d2d"
         }
       ]
     }

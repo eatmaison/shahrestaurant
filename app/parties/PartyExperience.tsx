@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { FaArrowDown, FaArrowRight, FaCalendarDays, FaChampagneGlasses, FaCheck, FaCompactDisc, FaHeadphones, FaLocationDot, FaLock, FaMinus, FaPlus, FaShirt, FaTicket, FaUsers } from "react-icons/fa6";
 import { partyDate, partyMoney, type PartyEvent } from "../lib/partyTypes";
+import { BAR_PHOTO_SRC, currentBarPhoto } from "../lib/barPhoto";
 import styles from "./party.module.css";
 
 const features = [
@@ -77,7 +78,7 @@ export default function PartyExperience() {
   return <div ref={root} className={styles.page} lang="en">
     {events.length > 1 && <div className={styles.eventPicker}><label htmlFor="event-picker">Choose your night</label><select id="event-picker" value={event.slug} onChange={change => { setSelected(change.target.value); setQuantity(1); setError(""); window.history.replaceState(null,"",`?event=${encodeURIComponent(change.target.value)}`); }}>{events.map(item => <option key={item.id} value={item.slug}>{item.title} / {partyDate(item.event_date)}</option>)}</select></div>}
     <section className={styles.hero} aria-labelledby="party-title">
-      <Image src={event.image} alt="Shah Restaurant, ready for a night at the bar" fill sizes="100vw" priority unoptimized={!event.image.startsWith("/photos/")} className={styles.heroImage} />
+      <Image src={currentBarPhoto(event.image)} alt="Shah Restaurant, ready for a night at the bar" fill sizes="100vw" priority unoptimized={!event.image.startsWith("/photos/")} className={styles.heroImage} />
       <div className={styles.lighting} aria-hidden="true" />
       <div className={styles.heroInner}>
         <p className={styles.eyebrow}><span /> SHAH RESTAURANT / AFTER HOURS</p>
@@ -101,7 +102,7 @@ export default function PartyExperience() {
     </section>
 
     <section className={styles.interlude} data-reveal>
-      <Image src="/brand/shah-bar-v1.webp" alt="The bar at Shah Restaurant" fill sizes="100vw" />
+      <Image src={BAR_PHOTO_SRC} alt="The bar at Shah Restaurant" fill sizes="100vw" />
       <div><p className={styles.eyebrow}>THE FIRST ROUND IS OURS</p><h2>Good taste.<br /><em>Great company.</em></h2><p>One cocktail per guest, included in every ticket.</p></div>
     </section>
 

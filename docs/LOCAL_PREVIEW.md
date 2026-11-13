@@ -1,10 +1,10 @@
 # Current local preview - 13 November 2026
 
-Open http://localhost:3398/en (English) or http://localhost:3398/ (Dutch). The approved food-focused photographs, wider dish thumbnails, tighter menu spacing, FAQ links/payment wording and sequential pinned atmosphere gallery are included. The same read-only build is available at http://192.168.0.122:3618/ on the local network.
+Open http://localhost:3398/en or http://localhost:3398/. The new bar, corrected two-sided story settings and approved two-person-table seating photograph are integrated with the earlier gallery/FAQ work. Same Wi-Fi: http://192.168.0.122:3618/en or `/`.
 
-Build `s6DGqOfaobcTNZMY4qQDK`, `.next-review-shah-pinned-gallery-v3-20261113`, frozen source `b3cd7a0df1bbd2e02b6add29a73a52fd0b4b9dde1209b73a70c6f157ccaff176` (490 inputs). Build, TypeScript, focused lint, 50 HTTP checks and desktop/mobile browser cases passed. [Changes, evidence and limitations](HOME-PHOTO-GALLERY-VERIFICATION.md).
+Build `0QM01vrtIDTCaYpYCCdXf`, `.next-review-shah-interior-final-20261113`, frozen source `c4ac07745e89450202db9e7e7475760c5101123c1eab5ff699391c3e179ffb7f`, 460 inputs. Build, TypeScript, focused lint, browser cases, 50 HTTP checks and LAN verification passed. [Selected assets, prompts, tests, limits and start commands](INTERIOR-PHOTO-VERIFICATION.md).
 
-Start or verify the frozen preview in PowerShell: `node "$env:TEMP\shah-preview-20261111\start-shah-pinned-gallery-v3-main.cjs"`. It verifies the build/public/config/fixture and helper identity; it never stops an unknown listener. Ports3397/3398 must be free for a fresh start. The app and proxy remain loopback-only. This followup has not been pushed or deployed publicly.
+Start/verify: `node "$env:TEMP\shah-preview-20261111\start-shah-interior-final-main.cjs"`. Existing unrelated listeners are never stopped. The app/proxy remain loopback-only. This followup has not been pushed or deployed.
 
 ## Historical workspace baseline - 12 November 2026
 

@@ -1,8 +1,8 @@
 # Phone preview on the local network
 
-Current 13 November preview: http://192.168.0.122:3618/ (Dutch) and http://192.168.0.122:3618/en (English), build `s6DGqOfaobcTNZMY4qQDK`, source `b3cd7a0df1bbd2e02b6add29a73a52fd0b4b9dde1209b73a70c6f157ccaff176`,490 inputs. The same build runs at localhost:3398. Fresh PC-side LAN checks passed:56 policy,58 asset heads,17 route guards,3 fixture APIs and4 media ranges. The policy helper, subnet-only binding and firewall settings are unchanged. [Exact evidence](phone-preview-2026-11-11.json).
+Current preview: http://192.168.0.122:3618/ (Dutch) and http://192.168.0.122:3618/en (English), build `0QM01vrtIDTCaYpYCCdXf`, source `c4ac07745e89450202db9e7e7475760c5101123c1eab5ff699391c3e179ffb7f`, 460 inputs. Same build at localhost:3398. Fresh PC-side LAN checks passed 56 policy, 58 asset heads, 17 route guards, three fixture APIs and four media ranges. No network-security settings changed. [Current handoff and exact commands](INTERIOR-PHOTO-VERIFICATION.md), [LAN evidence](phone-preview-2026-11-11.json).
 
-After starting the main preview, start/verify the detached LAN listener with `node "$env:TEMP\shah-phone-preview-20261111\launch-lan-nl-v2-detached.cjs" "$env:TEMP\shah-phone-preview-20261111\lan-config-s6DGqOfaobcTNZMY4qQDK.json"`. Existing unknown listeners are never stopped. This update has mobile browser emulation checks; there is no new physical-phone test result.
+The final bar, corrected story and approved seating photographs are included. Mobile layouts were checked in browser emulation; no fresh physical-phone result is claimed.
 
 ## Historical 12 November baseline and policy explanation
 

@@ -1,0 +1,520 @@
+{
+  "build": "0QM01vrtIDTCaYpYCCdXf",
+  "cases": [
+    {
+      "lang": "en",
+      "width": 1147,
+      "height": 932,
+      "reduced": false,
+      "geometry": {
+        "pinned": "true",
+        "top": 2579.484375,
+        "stageTop": 95.8281,
+        "distance": 1771,
+        "stageHeight": 836,
+        "footerBottom": 733
+      },
+      "samples": [
+        {
+          "progress": 0,
+          "stageTop": 95.828125,
+          "counter": "01",
+          "cards": [
+            {
+              "opacity": 0,
+              "x": 1139,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 0,
+              "x": 602,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 0,
+              "x": 322,
+              "inert": true,
+              "ariaHidden": "true"
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "progress": 0.15,
+          "stageTop": 95.828125,
+          "counter": "01",
+          "cards": [
+            {
+              "opacity": 0.5526,
+              "x": 509.64,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            {
+              "opacity": 0,
+              "x": 602,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 0,
+              "x": 322,
+              "inert": true,
+              "ariaHidden": "true"
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "progress": 0.3,
+          "stageTop": 95.828125,
+          "counter": "01",
+          "cards": [
+            {
+              "opacity": 1,
+              "x": 0,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            {
+              "opacity": 0,
+              "x": 602,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 0,
+              "x": 322,
+              "inert": true,
+              "ariaHidden": "true"
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "progress": 0.48,
+          "stageTop": 95.828125,
+          "counter": "02",
+          "cards": [
+            {
+              "opacity": 1,
+              "x": 0,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            {
+              "opacity": 0.5365,
+              "x": 279.04,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            {
+              "opacity": 0,
+              "x": 322,
+              "inert": true,
+              "ariaHidden": "true"
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "progress": 0.63,
+          "stageTop": 95.828125,
+          "counter": "02",
+          "cards": [
+            {
+              "opacity": 1,
+              "x": 0,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            {
+              "opacity": 1,
+              "x": 0,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            {
+              "opacity": 0,
+              "x": 322,
+              "inert": true,
+              "ariaHidden": "true"
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "progress": 0.82,
+          "stageTop": 95.828125,
+          "counter": "03",
+          "cards": [
+            {
+              "opacity": 1,
+              "x": 0,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            {
+              "opacity": 1,
+              "x": 0,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            {
+              "opacity": 0.5716,
+              "x": 137.95,
+              "inert": false,
+              "ariaHidden": "false"
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "progress": 1,
+          "stageTop": 95.484375,
+          "counter": "03",
+          "cards": [
+            {
+              "opacity": 1,
+              "x": 0,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            {
+              "opacity": 1,
+              "x": 0,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            {
+              "opacity": 1,
+              "x": 0,
+              "inert": false,
+              "ariaHidden": "false"
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "progress": 1.12,
+          "stageTop": -116.515625,
+          "counter": "03",
+          "cards": [
+            {
+              "opacity": 1,
+              "x": 0,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            {
+              "opacity": 1,
+              "x": 0,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            {
+              "opacity": 1,
+              "x": 0,
+              "inert": false,
+              "ariaHidden": "false"
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "progress": 0.48,
+          "stageTop": 95.828125,
+          "counter": "02",
+          "cards": [
+            {
+              "opacity": 1,
+              "x": 0,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            {
+              "opacity": 0.5365,
+              "x": 279.04,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            {
+              "opacity": 0,
+              "x": 322,
+              "inert": true,
+              "ariaHidden": "true"
+            }
+          ],
+          "overflow": 0
+        }
+      ],
+      "galleryLinkUnobstructed": true,
+      "skip": {
+        "top": 292.65625,
+        "focus": true
+      },
+      "liveReducedMotionCleanup": true,
+      "errors": []
+    },
+    {
+      "lang": "nl",
+      "width": 390,
+      "height": 844,
+      "reduced": false,
+      "geometry": {
+        "pinned": "true",
+        "top": 3033.359375,
+        "stageTop": 89,
+        "distance": 1604,
+        "stageHeight": 755,
+        "footerBottom": 653.5
+      },
+      "samples": [
+        {
+          "progress": 0,
+          "stageTop": 89.359375,
+          "counter": "01",
+          "cards": [
+            {
+              "opacity": 0,
+              "x": 392,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 0,
+              "x": 392,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 0,
+              "x": 392,
+              "inert": true,
+              "ariaHidden": "true"
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "progress": 0.15,
+          "stageTop": 89,
+          "counter": "01",
+          "cards": [
+            {
+              "opacity": 0.5536,
+              "x": 174.98,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            {
+              "opacity": 0,
+              "x": 392,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 0,
+              "x": 392,
+              "inert": true,
+              "ariaHidden": "true"
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "progress": 0.3,
+          "stageTop": 89,
+          "counter": "01",
+          "cards": [
+            {
+              "opacity": 1,
+              "x": 0,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            {
+              "opacity": 0,
+              "x": 392,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 0,
+              "x": 392,
+              "inert": true,
+              "ariaHidden": "true"
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "progress": 0.48,
+          "stageTop": 89,
+          "counter": "02",
+          "cards": [
+            {
+              "opacity": 0.4652,
+              "x": 0,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 0.5348,
+              "x": 182.38,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            {
+              "opacity": 0,
+              "x": 392,
+              "inert": true,
+              "ariaHidden": "true"
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "progress": 0.63,
+          "stageTop": 89,
+          "counter": "02",
+          "cards": [
+            {
+              "opacity": 0,
+              "x": 0,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 1,
+              "x": 0,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            {
+              "opacity": 0,
+              "x": 392,
+              "inert": true,
+              "ariaHidden": "true"
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "progress": 0.82,
+          "stageTop": 89,
+          "counter": "03",
+          "cards": [
+            {
+              "opacity": 0,
+              "x": 0,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 0.4276,
+              "x": 0,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 0.5724,
+              "x": 167.62,
+              "inert": false,
+              "ariaHidden": "false"
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "progress": 1,
+          "stageTop": 89,
+          "counter": "03",
+          "cards": [
+            {
+              "opacity": 0,
+              "x": 0,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 0,
+              "x": 0,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 1,
+              "x": 0,
+              "inert": false,
+              "ariaHidden": "false"
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "progress": 1.12,
+          "stageTop": -103.640625,
+          "counter": "03",
+          "cards": [
+            {
+              "opacity": 0,
+              "x": 0,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 0,
+              "x": 0,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 1,
+              "x": 0,
+              "inert": false,
+              "ariaHidden": "false"
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "progress": 0.48,
+          "stageTop": 89,
+          "counter": "02",
+          "cards": [
+            {
+              "opacity": 0.4652,
+              "x": 0,
+              "inert": true,
+              "ariaHidden": "true"
+            },
+            {
+              "opacity": 0.5348,
+              "x": 182.38,
+              "inert": false,
+              "ariaHidden": "false"
+            },
+            {
+              "opacity": 0,
+              "x": 392,
+              "inert": true,
+              "ariaHidden": "true"
+            }
+          ],
+          "overflow": 0
+        }
+      ],
+      "galleryLinkUnobstructed": true,
+      "skip": {
+        "top": 279.359375,
+        "focus": true
+      },
+      "liveReducedMotionCleanup": true,
+      "errors": []
+    }
+  ],
+  "atUTC": "2026-11-13T11:49:17.030Z"
+}

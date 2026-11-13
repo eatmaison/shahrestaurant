@@ -1,0 +1,21 @@
+{
+  "dist": ".next-review-shah-interior-final-20261113",
+  "startedAtUTC": "2026-11-13T11:46:41.453Z",
+  "before": {
+    "atUTC": "2026-11-13T11:46:41.941Z",
+    "sourceSha256": "c4ac07745e89450202db9e7e7475760c5101123c1eab5ff699391c3e179ffb7f",
+    "inputs": 460,
+    "unchanged": true
+  },
+  "productionPublishing": false,
+  "liveDatabaseAccess": false,
+  "exitCode": 0,
+  "finishedAtUTC": "2026-11-13T11:47:45.792Z",
+  "after": {
+    "atUTC": "2026-11-13T11:47:46.232Z",
+    "sourceSha256": "c4ac07745e89450202db9e7e7475760c5101123c1eab5ff699391c3e179ffb7f",
+    "inputs": 460,
+    "unchanged": true
+  },
+  "buildId": "0QM01vrtIDTCaYpYCCdXf"
+}

@@ -24,7 +24,7 @@ const OPTIONS = {
   avif: { effort: 6, chromaSubsampling: "4:2:0", bitdepth: 8 },
   lqip: { width: 20, sigma: 0.6, quality: 30, effort: 6 }
 };
-const NAMES = ["bar", "room", "atmosphere"];
+const NAMES = ["room"];
 const hash = bytes => crypto.createHash("sha256").update(bytes).digest("hex");
 const csvCell = value => '"' + String(value ?? "").replace(/"/g, '""') + '"';
 

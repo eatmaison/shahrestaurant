@@ -4,10 +4,11 @@ import Image from "next/image";
 import { useEffect, useState, type FormEvent } from "react";
 import { FaArrowsRotate, FaArrowUpRightFromSquare, FaFloppyDisk, FaImage, FaMagnifyingGlass, FaPen, FaPlus, FaTicket, FaXmark } from "react-icons/fa6";
 import { partyDate, partyMoney, type PartyBooking, type PartyEvent } from "../lib/partyTypes";
+import { BAR_PHOTO_SRC, currentBarPhoto } from "../lib/barPhoto";
 import styles from "./partyAdmin.module.css";
 
 type EventDraft = Pick<PartyEvent,"slug" | "title" | "description" | "event_date" | "start_time" | "end_time" | "price_cents" | "capacity" | "image" | "status" | "published"> & { id?: string };
-const emptyEvent: EventDraft = { slug: "", title: "", description: "", event_date: "", start_time: "22:00", end_time: "03:00", price_cents: 1699, capacity: 100, image: "/photos/687A0343.jpeg", status: "active", published: false };
+const emptyEvent: EventDraft = { slug: "", title: "", description: "", event_date: "", start_time: "22:00", end_time: "03:00", price_cents: 1699, capacity: 100, image: BAR_PHOTO_SRC, status: "active", published: false };
 const timestamp = (value: string) => new Date(value).toLocaleString("en-GB", { timeZone: "Europe/Amsterdam", dateStyle: "medium", timeStyle: "short" });
 
 export default function PartyAdmin({ processImageFile }: { processImageFile: (file: File) => Promise<string> }) {
@@ -106,7 +107,7 @@ export default function PartyAdmin({ processImageFile }: { processImageFile: (fi
       <label className={styles.checkbox}><input type="checkbox" checked={draft.published} onChange={change => setDraft({ ...draft,published:change.target.checked })} /> Published on website</label>
       <label className={styles.wide}>Event image URL<input value={draft.image.startsWith("data:") ? "" : draft.image} placeholder={draft.image.startsWith("data:") ? "Uploaded image ready" : "https://..."} onChange={change => setDraft({ ...draft,image:change.target.value })} /></label>
       <label className={styles.upload}><FaImage /> Upload event image<input type="file" accept="image/jpeg,image/png,image/webp" onChange={change => void upload(change.target.files?.[0])} /></label>
-      <div className={styles.preview}><Image src={draft.image || "/photos/687A0343.jpeg"} alt="Event image preview" fill sizes="200px" unoptimized /></div>
+      <div className={styles.preview}><Image src={currentBarPhoto(draft.image || BAR_PHOTO_SRC)} alt="Event image preview" fill sizes="200px" unoptimized /></div>
       <button className={styles.save} type="submit"><FaFloppyDisk />{busy ? "Saving..." : "Save event"}</button>
     </fieldset><p className={styles.hint}>Amsterdam local time. An end time before the start time means the following day. Existing bookings retain their purchased details. Cancelling closes sales; refunds for previously confirmed guests must be arranged in Mollie.</p></form>}
 

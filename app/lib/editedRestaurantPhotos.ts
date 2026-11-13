@@ -3,6 +3,114 @@ import type { RestaurantPhoto } from "./restaurantPhotos";
 import type { JpegPhotoFallback } from "./restaurantPhotoJpegFallbacks";
 type EditedPhoto = RestaurantPhoto & { jpeg: JpegPhotoFallback };
 const photos: Readonly<Record<string, EditedPhoto>> = {
+  "/brand/shah-atmosphere-v1.webp": {
+    "width": 960,
+    "height": 1440,
+    "src": "/brand/edited-restaurant-photos-v1/atmosphere-setting-v2-960.webp",
+    "avifSrcSet": "/brand/edited-restaurant-photos-v1/atmosphere-setting-v2-320.avif 320w, /brand/edited-restaurant-photos-v1/atmosphere-setting-v2-640.avif 640w, /brand/edited-restaurant-photos-v1/atmosphere-setting-v2-960.avif 960w",
+    "webpSrcSet": "/brand/edited-restaurant-photos-v1/atmosphere-setting-v2-320.webp 320w, /brand/edited-restaurant-photos-v1/atmosphere-setting-v2-640.webp 640w, /brand/edited-restaurant-photos-v1/atmosphere-setting-v2-960.webp 960w",
+    "blurDataURL": "data:image/webp;base64,UklGRqIAAABXRUJQVlA4IJYAAAAwBQCdASoUAB4APxF8s1QsJ6QjKAqpgCIJZACxHwnBIPL3oyWMYx1eCDBH9WYxfKEktADr62pZk7vdwR1BZrgTg3gBSzkxcI0wHfKgAnk3rdLH6gxq4VzWLBYyiuLGgTb+9+yG1yuaQLCjYsBJYBdGA66TdmpX2RWnRj3Q72r/dtYjM/WR8cR4FZg3GxPj0Oo4hzgAAAA=",
+    "avif": [
+      {
+        "src": "/brand/edited-restaurant-photos-v1/atmosphere-setting-v2-320.avif",
+        "width": 320,
+        "height": 480,
+        "bytes": 35546
+      },
+      {
+        "src": "/brand/edited-restaurant-photos-v1/atmosphere-setting-v2-640.avif",
+        "width": 640,
+        "height": 960,
+        "bytes": 89222
+      },
+      {
+        "src": "/brand/edited-restaurant-photos-v1/atmosphere-setting-v2-960.avif",
+        "width": 960,
+        "height": 1440,
+        "bytes": 139862
+      }
+    ],
+    "webp": [
+      {
+        "src": "/brand/edited-restaurant-photos-v1/atmosphere-setting-v2-320.webp",
+        "width": 320,
+        "height": 480,
+        "bytes": 36798
+      },
+      {
+        "src": "/brand/edited-restaurant-photos-v1/atmosphere-setting-v2-640.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 105864
+      },
+      {
+        "src": "/brand/edited-restaurant-photos-v1/atmosphere-setting-v2-960.webp",
+        "width": 960,
+        "height": 1440,
+        "bytes": 180782
+      }
+    ],
+    "jpeg": {
+      "src": "/brand/edited-restaurant-photos-v1/atmosphere-setting-v2-960.jpg",
+      "srcSet": "/brand/edited-restaurant-photos-v1/atmosphere-setting-v2-320.jpg 320w, /brand/edited-restaurant-photos-v1/atmosphere-setting-v2-640.jpg 640w, /brand/edited-restaurant-photos-v1/atmosphere-setting-v2-960.jpg 960w",
+      "width": 960,
+      "height": 1440
+    }
+  },
+  "/brand/shah-room-v1.webp": {
+    "width": 960,
+    "height": 1440,
+    "src": "/brand/edited-restaurant-photos-v1/room-setting-v3-960.webp",
+    "avifSrcSet": "/brand/edited-restaurant-photos-v1/room-setting-v3-320.avif 320w, /brand/edited-restaurant-photos-v1/room-setting-v3-640.avif 640w, /brand/edited-restaurant-photos-v1/room-setting-v3-960.avif 960w",
+    "webpSrcSet": "/brand/edited-restaurant-photos-v1/room-setting-v3-320.webp 320w, /brand/edited-restaurant-photos-v1/room-setting-v3-640.webp 640w, /brand/edited-restaurant-photos-v1/room-setting-v3-960.webp 960w",
+    "blurDataURL": "data:image/webp;base64,UklGRpIAAABXRUJQVlA4IIYAAABwBACdASoUAB4APxF0sFAsJySisAgBgCIJQBdgA2UE6v+hZ982UrIeApYWgAD8XVYzp6DMR3oCwjodEW/nFKqiJDPcxILkHenVSSmHKaOr6FDLtikGVhmHnD6dUx08b5ONPJxFekzFGwUDgmAaRHfMdMIt7KHkdOS5qMH2jj/k7QIBCDsAAA==",
+    "avif": [
+      {
+        "src": "/brand/edited-restaurant-photos-v1/room-setting-v3-320.avif",
+        "width": 320,
+        "height": 480,
+        "bytes": 33483
+      },
+      {
+        "src": "/brand/edited-restaurant-photos-v1/room-setting-v3-640.avif",
+        "width": 640,
+        "height": 960,
+        "bytes": 74415
+      },
+      {
+        "src": "/brand/edited-restaurant-photos-v1/room-setting-v3-960.avif",
+        "width": 960,
+        "height": 1440,
+        "bytes": 111164
+      }
+    ],
+    "webp": [
+      {
+        "src": "/brand/edited-restaurant-photos-v1/room-setting-v3-320.webp",
+        "width": 320,
+        "height": 480,
+        "bytes": 34974
+      },
+      {
+        "src": "/brand/edited-restaurant-photos-v1/room-setting-v3-640.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 91792
+      },
+      {
+        "src": "/brand/edited-restaurant-photos-v1/room-setting-v3-960.webp",
+        "width": 960,
+        "height": 1440,
+        "bytes": 153810
+      }
+    ],
+    "jpeg": {
+      "src": "/brand/edited-restaurant-photos-v1/room-setting-v3-960.jpg",
+      "srcSet": "/brand/edited-restaurant-photos-v1/room-setting-v3-320.jpg 320w, /brand/edited-restaurant-photos-v1/room-setting-v3-640.jpg 640w, /brand/edited-restaurant-photos-v1/room-setting-v3-960.jpg 960w",
+      "width": 960,
+      "height": 1440
+    }
+  },
   "/brand/shah-dining-v1.webp": {
     "width": 1400,
     "height": 1120,
@@ -134,7 +242,61 @@ const photos: Readonly<Record<string, EditedPhoto>> = {
       "width": 1400,
       "height": 933
     }
+  },
+  "/brand/shah-bar-v1.webp": {
+    "width": 960,
+    "height": 1440,
+    "src": "/brand/edited-restaurant-photos-v1/bar-shine-960.webp",
+    "avifSrcSet": "/brand/edited-restaurant-photos-v1/bar-shine-320.avif 320w, /brand/edited-restaurant-photos-v1/bar-shine-640.avif 640w, /brand/edited-restaurant-photos-v1/bar-shine-960.avif 960w",
+    "webpSrcSet": "/brand/edited-restaurant-photos-v1/bar-shine-320.webp 320w, /brand/edited-restaurant-photos-v1/bar-shine-640.webp 640w, /brand/edited-restaurant-photos-v1/bar-shine-960.webp 960w",
+    "blurDataURL": "data:image/webp;base64,UklGRp4AAABXRUJQVlA4IJIAAACQBQCdASoUAB4APxF6s1IsJ6SisBgIAYAiCWYAnTLewpgTG5tR+2/6c8fXt+4LIHv7ricfAAD+qdL0839vKjeLZg9HiNDX3kv2l6JKei/CpwzmF56gbb4E1WP4W3WV6eP6dKJ24g4c0iSc6j0NtlA7oOIwv/WjYQYFTj01ErwfxS8sVFAyzBehIxyyEAP59gAAAA==",
+    "avif": [
+      {
+        "src": "/brand/edited-restaurant-photos-v1/bar-shine-320.avif",
+        "width": 320,
+        "height": 480,
+        "bytes": 56311
+      },
+      {
+        "src": "/brand/edited-restaurant-photos-v1/bar-shine-640.avif",
+        "width": 640,
+        "height": 960,
+        "bytes": 152826
+      },
+      {
+        "src": "/brand/edited-restaurant-photos-v1/bar-shine-960.avif",
+        "width": 960,
+        "height": 1440,
+        "bytes": 196719
+      }
+    ],
+    "webp": [
+      {
+        "src": "/brand/edited-restaurant-photos-v1/bar-shine-320.webp",
+        "width": 320,
+        "height": 480,
+        "bytes": 53360
+      },
+      {
+        "src": "/brand/edited-restaurant-photos-v1/bar-shine-640.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 164238
+      },
+      {
+        "src": "/brand/edited-restaurant-photos-v1/bar-shine-960.webp",
+        "width": 960,
+        "height": 1440,
+        "bytes": 195578
+      }
+    ],
+    "jpeg": {
+      "src": "/brand/edited-restaurant-photos-v1/bar-shine-960.jpg",
+      "srcSet": "/brand/edited-restaurant-photos-v1/bar-shine-320.jpg 320w, /brand/edited-restaurant-photos-v1/bar-shine-640.jpg 640w, /brand/edited-restaurant-photos-v1/bar-shine-960.jpg 960w",
+      "width": 960,
+      "height": 1440
+    }
   }
 };
-const aliases: Readonly<Record<string, string>> = { "/photos/687A0402.jpeg": "/brand/shah-dining-v1.webp", "/photos/687A0412.jpeg": "/brand/shah-table-v1.webp" };
+const aliases: Readonly<Record<string, string>> = { "/photos/687A0402.jpeg": "/brand/shah-dining-v1.webp", "/photos/687A0412.jpeg": "/brand/shah-table-v1.webp", "/photos/687A0343.jpeg": "/brand/shah-bar-v1.webp", "/photos/687A0210.jpeg": "/brand/shah-room-v1.webp", "/photos/687A0336.jpeg": "/brand/shah-atmosphere-v1.webp" };
 export function getEditedRestaurantPhoto(src: string): EditedPhoto | undefined { const key = Object.prototype.hasOwnProperty.call(aliases, src) ? aliases[src] : src; return Object.prototype.hasOwnProperty.call(photos, key) ? photos[key] : undefined; }

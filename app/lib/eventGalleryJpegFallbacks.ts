@@ -31,17 +31,5 @@ export const eventGalleryJpegFallbacks: Readonly<Record<string, JpegPhotoFallbac
     "width": 1280,
     "height": 853
   },
-  "/photos/687A0336.jpeg": {
-    "src": "/brand/jpeg-fallback-v1/shah-gallery-687a0336-1280.jpg",
-    "srcSet": "/brand/jpeg-fallback-v1/shah-gallery-687a0336-320.jpg 320w, /brand/jpeg-fallback-v1/shah-gallery-687a0336-640.jpg 640w, /brand/jpeg-fallback-v1/shah-gallery-687a0336-960.jpg 960w, /brand/jpeg-fallback-v1/shah-gallery-687a0336-1280.jpg 1280w",
-    "width": 1280,
-    "height": 1920
-  },
-  "/photos/687A0343.jpeg": {
-    "src": "/brand/jpeg-fallback-v1/shah-gallery-687a0343-1280.jpg",
-    "srcSet": "/brand/jpeg-fallback-v1/shah-gallery-687a0343-320.jpg 320w, /brand/jpeg-fallback-v1/shah-gallery-687a0343-640.jpg 640w, /brand/jpeg-fallback-v1/shah-gallery-687a0343-960.jpg 960w, /brand/jpeg-fallback-v1/shah-gallery-687a0343-1280.jpg 1280w",
-    "width": 1280,
-    "height": 1920
-  },
 };
 export function getEventGalleryJpegFallback(src: string): JpegPhotoFallback | undefined { return Object.prototype.hasOwnProperty.call(eventGalleryJpegFallbacks, src) ? eventGalleryJpegFallbacks[src] : undefined; }
