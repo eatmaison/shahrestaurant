@@ -1,9 +1,9 @@
 {
-  "atUTC": "2026-11-13T20:13:35.883Z",
+  "atUTC": "2026-11-13T20:42:20.110Z",
   "label": "final-interleaved",
   "localChromium": true,
-  "baselineBuild": "TnGIIful8W70dmhVNZaHd",
-  "build": "XAvWn1WCfZVojo1yazM5b",
+  "baselineBuild": "XAvWn1WCfZVojo1yazM5b",
+  "build": "A3XGcJrqHbutMgWYhQ9-y",
   "cpuThrottle": 4,
   "networkThrottle": false,
   "cases": [
@@ -13,11 +13,36 @@
       "theme": "teal",
       "run": 0,
       "motion": "on",
-      "scrollDurationMs": 3221.300000190735,
-      "rafMedianMs": 26.09999990463257,
-      "rafP95Ms": 42,
-      "rafOver50ms": 3,
-      "longTasks": [],
+      "scrollDurationMs": 3277.7000000476837,
+      "rafMedianMs": 25.09999990463257,
+      "rafP95Ms": 55.60000014305115,
+      "rafOver50ms": 10,
+      "longTasks": [
+        {
+          "start": 4205.199999809265,
+          "duration": 55
+        },
+        {
+          "start": 4260.699999809265,
+          "duration": 50
+        },
+        {
+          "start": 4361.799999952316,
+          "duration": 57
+        },
+        {
+          "start": 4420,
+          "duration": 51
+        },
+        {
+          "start": 4472.099999904633,
+          "duration": 52
+        },
+        {
+          "start": 4528.599999904633,
+          "duration": 56
+        }
+      ],
       "overflow": 0,
       "loadedPhotos": [
         {
@@ -163,14 +188,14 @@
       ],
       "resources": [
         {
-          "url": "/_next/static/css/08b343ce2a8db9ae.css",
-          "encoded": 26381,
-          "decoded": 153292
+          "url": "/_next/static/css/c6ae0f6cdc2e4120.css",
+          "encoded": 26720,
+          "decoded": 155463
         },
         {
-          "url": "/_next/static/css/7e9b47bcc1a76d3a.css",
-          "encoded": 14115,
-          "decoded": 73909
+          "url": "/_next/static/css/693ccfa84961ec48.css",
+          "encoded": 14863,
+          "decoded": 78949
         },
         {
           "url": "/_next/static/chunks/webpack-1b705029d5c61cce.js",
@@ -213,9 +238,9 @@
           "decoded": 8124
         },
         {
-          "url": "/_next/static/chunks/3573-7075230707e2cb38.js",
-          "encoded": 22204,
-          "decoded": 78366
+          "url": "/_next/static/chunks/3573-eb7d4686ecd1f4e5.js",
+          "encoded": 22234,
+          "decoded": 78460
         },
         {
           "url": "/_next/static/chunks/app/en/page-153837b6df854cf0.js",
@@ -223,9 +248,9 @@
           "decoded": 149
         },
         {
-          "url": "/_next/static/chunks/app/layout-1604e4323aa176e0.js",
+          "url": "/_next/static/chunks/app/layout-f40bdcb94ac3dbe4.js",
           "encoded": 11154,
-          "decoded": 36166
+          "decoded": 36170
         },
         {
           "url": "/_next/static/chunks/app/error-a28aa2e01ec85d47.js",
@@ -245,14 +270,34 @@
       "theme": "teal",
       "run": 1,
       "motion": "on",
-      "scrollDurationMs": 3154.7999999523163,
-      "rafMedianMs": 25.199999809265137,
-      "rafP95Ms": 41.59999990463257,
-      "rafOver50ms": 4,
+      "scrollDurationMs": 3306,
+      "rafMedianMs": 25.100000143051147,
+      "rafP95Ms": 57.799999952316284,
+      "rafOver50ms": 10,
       "longTasks": [
         {
-          "start": 5647.399999856949,
+          "start": 4233.899999856949,
+          "duration": 53
+        },
+        {
+          "start": 4290.899999856949,
+          "duration": 57
+        },
+        {
+          "start": 4399.399999856949,
+          "duration": 56
+        },
+        {
+          "start": 4456.399999856949,
+          "duration": 59
+        },
+        {
+          "start": 4516.799999952316,
           "duration": 58
+        },
+        {
+          "start": 4576.099999904633,
+          "duration": 64
         }
       ],
       "overflow": 0,
@@ -405,9 +450,9 @@
           "decoded": 155463
         },
         {
-          "url": "/_next/static/css/693ccfa84961ec48.css",
-          "encoded": 14863,
-          "decoded": 78949
+          "url": "/_next/static/css/f92b951a70591bdc.css",
+          "encoded": 14810,
+          "decoded": 79093
         },
         {
           "url": "/_next/static/chunks/webpack-1b705029d5c61cce.js",
@@ -450,9 +495,9 @@
           "decoded": 8124
         },
         {
-          "url": "/_next/static/chunks/3573-eb7d4686ecd1f4e5.js",
-          "encoded": 22234,
-          "decoded": 78460
+          "url": "/_next/static/chunks/3573-53d1d1859374b7e6.js",
+          "encoded": 22198,
+          "decoded": 78374
         },
         {
           "url": "/_next/static/chunks/app/en/page-153837b6df854cf0.js",
@@ -482,28 +527,11 @@
       "theme": "teal",
       "run": 2,
       "motion": "on",
-      "scrollDurationMs": 3128.899999856949,
-      "rafMedianMs": 24.399999856948853,
-      "rafP95Ms": 54,
-      "rafOver50ms": 8,
-      "longTasks": [
-        {
-          "start": 4538.5,
-          "duration": 58
-        },
-        {
-          "start": 4597.099999904633,
-          "duration": 56
-        },
-        {
-          "start": 4654.199999809265,
-          "duration": 62
-        },
-        {
-          "start": 4717.5,
-          "duration": 53
-        }
-      ],
+      "scrollDurationMs": 3141.5999999046326,
+      "rafMedianMs": 25.100000143051147,
+      "rafP95Ms": 39.700000047683716,
+      "rafOver50ms": 3,
+      "longTasks": [],
       "overflow": 0,
       "loadedPhotos": [
         {
@@ -649,14 +677,14 @@
       ],
       "resources": [
         {
-          "url": "/_next/static/css/08b343ce2a8db9ae.css",
-          "encoded": 26381,
-          "decoded": 153292
+          "url": "/_next/static/css/c6ae0f6cdc2e4120.css",
+          "encoded": 26720,
+          "decoded": 155463
         },
         {
-          "url": "/_next/static/css/7e9b47bcc1a76d3a.css",
-          "encoded": 14115,
-          "decoded": 73909
+          "url": "/_next/static/css/693ccfa84961ec48.css",
+          "encoded": 14863,
+          "decoded": 78949
         },
         {
           "url": "/_next/static/chunks/webpack-1b705029d5c61cce.js",
@@ -699,9 +727,9 @@
           "decoded": 8124
         },
         {
-          "url": "/_next/static/chunks/3573-7075230707e2cb38.js",
-          "encoded": 22204,
-          "decoded": 78366
+          "url": "/_next/static/chunks/3573-eb7d4686ecd1f4e5.js",
+          "encoded": 22234,
+          "decoded": 78460
         },
         {
           "url": "/_next/static/chunks/app/en/page-153837b6df854cf0.js",
@@ -709,9 +737,9 @@
           "decoded": 149
         },
         {
-          "url": "/_next/static/chunks/app/layout-1604e4323aa176e0.js",
+          "url": "/_next/static/chunks/app/layout-f40bdcb94ac3dbe4.js",
           "encoded": 11154,
-          "decoded": 36166
+          "decoded": 36170
         },
         {
           "url": "/_next/static/chunks/app/error-a28aa2e01ec85d47.js",
@@ -731,10 +759,10 @@
       "theme": "teal",
       "run": 3,
       "motion": "on",
-      "scrollDurationMs": 2999.2000000476837,
-      "rafMedianMs": 24.09999990463257,
-      "rafP95Ms": 37.299999952316284,
-      "rafOver50ms": 3,
+      "scrollDurationMs": 3212.5,
+      "rafMedianMs": 25.200000047683716,
+      "rafP95Ms": 41.299999952316284,
+      "rafOver50ms": 4,
       "longTasks": [],
       "overflow": 0,
       "loadedPhotos": [
@@ -886,9 +914,9 @@
           "decoded": 155463
         },
         {
-          "url": "/_next/static/css/693ccfa84961ec48.css",
-          "encoded": 14863,
-          "decoded": 78949
+          "url": "/_next/static/css/f92b951a70591bdc.css",
+          "encoded": 14810,
+          "decoded": 79093
         },
         {
           "url": "/_next/static/chunks/webpack-1b705029d5c61cce.js",
@@ -931,9 +959,9 @@
           "decoded": 8124
         },
         {
-          "url": "/_next/static/chunks/3573-eb7d4686ecd1f4e5.js",
-          "encoded": 22234,
-          "decoded": 78460
+          "url": "/_next/static/chunks/3573-53d1d1859374b7e6.js",
+          "encoded": 22198,
+          "decoded": 78374
         },
         {
           "url": "/_next/static/chunks/app/en/page-153837b6df854cf0.js",
@@ -963,32 +991,11 @@
       "theme": "teal",
       "run": 4,
       "motion": "on",
-      "scrollDurationMs": 3253.2000000476837,
-      "rafMedianMs": 24.700000047683716,
-      "rafP95Ms": 56.90000009536743,
-      "rafOver50ms": 7,
-      "longTasks": [
-        {
-          "start": 3963.2000000476837,
-          "duration": 62
-        },
-        {
-          "start": 4058.4000000953674,
-          "duration": 72
-        },
-        {
-          "start": 4134.600000143051,
-          "duration": 65
-        },
-        {
-          "start": 4200.299999952316,
-          "duration": 52
-        },
-        {
-          "start": 5689.100000143051,
-          "duration": 50
-        }
-      ],
+      "scrollDurationMs": 3405.199999809265,
+      "rafMedianMs": 27.700000047683716,
+      "rafP95Ms": 43.19999980926514,
+      "rafOver50ms": 4,
+      "longTasks": [],
       "overflow": 0,
       "loadedPhotos": [
         {
@@ -1134,14 +1141,14 @@
       ],
       "resources": [
         {
-          "url": "/_next/static/css/08b343ce2a8db9ae.css",
-          "encoded": 26381,
-          "decoded": 153292
+          "url": "/_next/static/css/c6ae0f6cdc2e4120.css",
+          "encoded": 26720,
+          "decoded": 155463
         },
         {
-          "url": "/_next/static/css/7e9b47bcc1a76d3a.css",
-          "encoded": 14115,
-          "decoded": 73909
+          "url": "/_next/static/css/693ccfa84961ec48.css",
+          "encoded": 14863,
+          "decoded": 78949
         },
         {
           "url": "/_next/static/chunks/webpack-1b705029d5c61cce.js",
@@ -1184,9 +1191,9 @@
           "decoded": 8124
         },
         {
-          "url": "/_next/static/chunks/3573-7075230707e2cb38.js",
-          "encoded": 22204,
-          "decoded": 78366
+          "url": "/_next/static/chunks/3573-eb7d4686ecd1f4e5.js",
+          "encoded": 22234,
+          "decoded": 78460
         },
         {
           "url": "/_next/static/chunks/app/en/page-153837b6df854cf0.js",
@@ -1194,9 +1201,9 @@
           "decoded": 149
         },
         {
-          "url": "/_next/static/chunks/app/layout-1604e4323aa176e0.js",
+          "url": "/_next/static/chunks/app/layout-f40bdcb94ac3dbe4.js",
           "encoded": 11154,
-          "decoded": 36166
+          "decoded": 36170
         },
         {
           "url": "/_next/static/chunks/app/error-a28aa2e01ec85d47.js",
@@ -1216,18 +1223,34 @@
       "theme": "teal",
       "run": 5,
       "motion": "on",
-      "scrollDurationMs": 3465.399999856949,
-      "rafMedianMs": 26,
-      "rafP95Ms": 49,
-      "rafOver50ms": 5,
+      "scrollDurationMs": 3192.5,
+      "rafMedianMs": 24,
+      "rafP95Ms": 57.5,
+      "rafOver50ms": 9,
       "longTasks": [
         {
-          "start": 5721.899999856949,
+          "start": 4235.900000095367,
+          "duration": 51
+        },
+        {
+          "start": 4287.299999952316,
+          "duration": 60
+        },
+        {
+          "start": 4348.599999904633,
+          "duration": 53
+        },
+        {
+          "start": 4405.900000095367,
+          "duration": 52
+        },
+        {
+          "start": 4461.799999952316,
           "duration": 57
         },
         {
-          "start": 5780.5,
-          "duration": 76
+          "start": 4525.599999904633,
+          "duration": 50
         }
       ],
       "overflow": 0,
@@ -1380,9 +1403,9 @@
           "decoded": 155463
         },
         {
-          "url": "/_next/static/css/693ccfa84961ec48.css",
-          "encoded": 14863,
-          "decoded": 78949
+          "url": "/_next/static/css/f92b951a70591bdc.css",
+          "encoded": 14810,
+          "decoded": 79093
         },
         {
           "url": "/_next/static/chunks/webpack-1b705029d5c61cce.js",
@@ -1425,9 +1448,9 @@
           "decoded": 8124
         },
         {
-          "url": "/_next/static/chunks/3573-eb7d4686ecd1f4e5.js",
-          "encoded": 22234,
-          "decoded": 78460
+          "url": "/_next/static/chunks/3573-53d1d1859374b7e6.js",
+          "encoded": 22198,
+          "decoded": 78374
         },
         {
           "url": "/_next/static/chunks/app/en/page-153837b6df854cf0.js",
@@ -1457,15 +1480,20 @@
       "theme": "gold",
       "run": 0,
       "motion": "on",
-      "scrollDurationMs": 3058.800000190735,
-      "rafMedianMs": 24.199999809265137,
-      "rafP95Ms": 39.200000047683716,
-      "rafOver50ms": 3,
-      "longTasks": [],
+      "scrollDurationMs": 3340.100000143051,
+      "rafMedianMs": 27.299999952316284,
+      "rafP95Ms": 42.40000009536743,
+      "rafOver50ms": 4,
+      "longTasks": [
+        {
+          "start": 5606.600000143051,
+          "duration": 52
+        }
+      ],
       "overflow": 0,
       "loadedPhotos": [
         {
-          "src": "http://localhost:3398/brand/shah-landscape-gold-v1.svg",
+          "src": "http://localhost:3398/brand/shah-landscape-teal-v1.svg",
           "complete": true,
           "naturalWidth": 2451
         },
@@ -1525,7 +1553,7 @@
           "naturalWidth": 390
         },
         {
-          "src": "http://localhost:3398/brand/shah-wordmark-gold-v1.svg",
+          "src": "http://localhost:3398/brand/shah-wordmark-teal-v1.svg",
           "complete": true,
           "naturalWidth": 1000
         },
@@ -1595,26 +1623,26 @@
           "naturalWidth": 390
         },
         {
-          "src": "http://localhost:3398/brand/shah-mark-gold-v1.svg",
+          "src": "http://localhost:3398/brand/shah-mark-teal-v1.svg",
           "complete": true,
           "naturalWidth": 847
         },
         {
-          "src": "http://localhost:3398/brand/shah-landscape-gold-v1.svg",
+          "src": "http://localhost:3398/brand/shah-landscape-teal-v1.svg",
           "complete": true,
           "naturalWidth": 2451
         }
       ],
       "resources": [
         {
-          "url": "/_next/static/css/08b343ce2a8db9ae.css",
-          "encoded": 26381,
-          "decoded": 153292
+          "url": "/_next/static/css/c6ae0f6cdc2e4120.css",
+          "encoded": 26720,
+          "decoded": 155463
         },
         {
-          "url": "/_next/static/css/7e9b47bcc1a76d3a.css",
-          "encoded": 14115,
-          "decoded": 73909
+          "url": "/_next/static/css/693ccfa84961ec48.css",
+          "encoded": 14863,
+          "decoded": 78949
         },
         {
           "url": "/_next/static/chunks/webpack-1b705029d5c61cce.js",
@@ -1657,9 +1685,9 @@
           "decoded": 8124
         },
         {
-          "url": "/_next/static/chunks/3573-7075230707e2cb38.js",
-          "encoded": 22204,
-          "decoded": 78366
+          "url": "/_next/static/chunks/3573-eb7d4686ecd1f4e5.js",
+          "encoded": 22234,
+          "decoded": 78460
         },
         {
           "url": "/_next/static/chunks/app/en/page-153837b6df854cf0.js",
@@ -1667,9 +1695,9 @@
           "decoded": 149
         },
         {
-          "url": "/_next/static/chunks/app/layout-1604e4323aa176e0.js",
+          "url": "/_next/static/chunks/app/layout-f40bdcb94ac3dbe4.js",
           "encoded": 11154,
-          "decoded": 36166
+          "decoded": 36170
         },
         {
           "url": "/_next/static/chunks/app/error-a28aa2e01ec85d47.js",
@@ -1689,24 +1717,11 @@
       "theme": "gold",
       "run": 1,
       "motion": "on",
-      "scrollDurationMs": 3511,
-      "rafMedianMs": 26.40000009536743,
-      "rafP95Ms": 51.299999952316284,
-      "rafOver50ms": 7,
-      "longTasks": [
-        {
-          "start": 3463.300000190735,
-          "duration": 50
-        },
-        {
-          "start": 3662.9000000953674,
-          "duration": 53
-        },
-        {
-          "start": 3717,
-          "duration": 50
-        }
-      ],
+      "scrollDurationMs": 3337.4000000953674,
+      "rafMedianMs": 28.299999952316284,
+      "rafP95Ms": 41.5,
+      "rafOver50ms": 3,
+      "longTasks": [],
       "overflow": 0,
       "loadedPhotos": [
         {
@@ -1857,9 +1872,9 @@
           "decoded": 155463
         },
         {
-          "url": "/_next/static/css/693ccfa84961ec48.css",
-          "encoded": 14863,
-          "decoded": 78949
+          "url": "/_next/static/css/f92b951a70591bdc.css",
+          "encoded": 14810,
+          "decoded": 79093
         },
         {
           "url": "/_next/static/chunks/webpack-1b705029d5c61cce.js",
@@ -1902,9 +1917,9 @@
           "decoded": 8124
         },
         {
-          "url": "/_next/static/chunks/3573-eb7d4686ecd1f4e5.js",
-          "encoded": 22234,
-          "decoded": 78460
+          "url": "/_next/static/chunks/3573-53d1d1859374b7e6.js",
+          "encoded": 22198,
+          "decoded": 78374
         },
         {
           "url": "/_next/static/chunks/app/en/page-153837b6df854cf0.js",
@@ -1934,20 +1949,15 @@
       "theme": "gold",
       "run": 2,
       "motion": "on",
-      "scrollDurationMs": 3139.899999856949,
-      "rafMedianMs": 24.699999809265137,
-      "rafP95Ms": 44.5,
-      "rafOver50ms": 4,
-      "longTasks": [
-        {
-          "start": 5733.5,
-          "duration": 54
-        }
-      ],
+      "scrollDurationMs": 3313.9000000953674,
+      "rafMedianMs": 26.700000047683716,
+      "rafP95Ms": 41,
+      "rafOver50ms": 3,
+      "longTasks": [],
       "overflow": 0,
       "loadedPhotos": [
         {
-          "src": "http://localhost:3398/brand/shah-landscape-gold-v1.svg",
+          "src": "http://localhost:3398/brand/shah-landscape-teal-v1.svg",
           "complete": true,
           "naturalWidth": 2451
         },
@@ -2007,7 +2017,7 @@
           "naturalWidth": 390
         },
         {
-          "src": "http://localhost:3398/brand/shah-wordmark-gold-v1.svg",
+          "src": "http://localhost:3398/brand/shah-wordmark-teal-v1.svg",
           "complete": true,
           "naturalWidth": 1000
         },
@@ -2077,265 +2087,12 @@
           "naturalWidth": 390
         },
         {
-          "src": "http://localhost:3398/brand/shah-mark-gold-v1.svg",
+          "src": "http://localhost:3398/brand/shah-mark-teal-v1.svg",
           "complete": true,
           "naturalWidth": 847
         },
         {
-          "src": "http://localhost:3398/brand/shah-landscape-gold-v1.svg",
-          "complete": true,
-          "naturalWidth": 2451
-        }
-      ],
-      "resources": [
-        {
-          "url": "/_next/static/css/08b343ce2a8db9ae.css",
-          "encoded": 26381,
-          "decoded": 153292
-        },
-        {
-          "url": "/_next/static/css/7e9b47bcc1a76d3a.css",
-          "encoded": 14115,
-          "decoded": 73909
-        },
-        {
-          "url": "/_next/static/chunks/webpack-1b705029d5c61cce.js",
-          "encoded": 2538,
-          "decoded": 5134
-        },
-        {
-          "url": "/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
-          "encoded": 62877,
-          "decoded": 199865
-        },
-        {
-          "url": "/_next/static/chunks/3794-c968c786880cae15.js",
-          "encoded": 60749,
-          "decoded": 222079
-        },
-        {
-          "url": "/_next/static/chunks/main-app-2f3596a243c31fc0.js",
-          "encoded": 516,
-          "decoded": 516
-        },
-        {
-          "url": "/_next/static/chunks/8500-3953cc33eeceb44e.js",
-          "encoded": 3531,
-          "decoded": 8698
-        },
-        {
-          "url": "/_next/static/chunks/5772-1c5f02be2ece8826.js",
-          "encoded": 5552,
-          "decoded": 14691
-        },
-        {
-          "url": "/_next/static/chunks/1398-6516e63bd5e5c6c7.js",
-          "encoded": 10463,
-          "decoded": 37602
-        },
-        {
-          "url": "/_next/static/chunks/7985-d0f13e1b17e84f35.js",
-          "encoded": 3370,
-          "decoded": 8124
-        },
-        {
-          "url": "/_next/static/chunks/3573-7075230707e2cb38.js",
-          "encoded": 22204,
-          "decoded": 78366
-        },
-        {
-          "url": "/_next/static/chunks/app/en/page-153837b6df854cf0.js",
-          "encoded": 149,
-          "decoded": 149
-        },
-        {
-          "url": "/_next/static/chunks/app/layout-1604e4323aa176e0.js",
-          "encoded": 11154,
-          "decoded": 36166
-        },
-        {
-          "url": "/_next/static/chunks/app/error-a28aa2e01ec85d47.js",
-          "encoded": 814,
-          "decoded": 1536
-        },
-        {
-          "url": "/_next/static/chunks/app/not-found-28744a18cc567e62.js",
-          "encoded": 800,
-          "decoded": 1590
-        }
-      ]
-    },
-    {
-      "variant": "after",
-      "width": 390,
-      "theme": "gold",
-      "run": 3,
-      "motion": "on",
-      "scrollDurationMs": 3511.7000000476837,
-      "rafMedianMs": 27,
-      "rafP95Ms": 56.299999952316284,
-      "rafOver50ms": 8,
-      "longTasks": [
-        {
-          "start": 3739.9000000953674,
-          "duration": 63
-        },
-        {
-          "start": 3810.7999999523163,
-          "duration": 60
-        },
-        {
-          "start": 3875.0999999046326,
-          "duration": 52
-        },
-        {
-          "start": 3929.0999999046326,
-          "duration": 53
-        },
-        {
-          "start": 3983.7000000476837,
-          "duration": 56
-        }
-      ],
-      "overflow": 0,
-      "loadedPhotos": [
-        {
-          "src": "http://127.0.0.1:4109/brand/shah-landscape-teal-v1.svg",
-          "complete": true,
-          "naturalWidth": 2451
-        },
-        {
-          "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/kitchen-640.avif",
-          "complete": true,
-          "naturalWidth": 390
-        },
-        {
-          "src": "http://127.0.0.1:4109/_next/image",
-          "complete": true,
-          "naturalWidth": 64
-        },
-        {
-          "src": "http://127.0.0.1:4109/_next/image",
-          "complete": true,
-          "naturalWidth": 64
-        },
-        {
-          "src": "http://127.0.0.1:4109/_next/image",
-          "complete": true,
-          "naturalWidth": 64
-        },
-        {
-          "src": "http://127.0.0.1:4109/_next/image",
-          "complete": true,
-          "naturalWidth": 64
-        },
-        {
-          "src": "http://127.0.0.1:4109/_next/image",
-          "complete": true,
-          "naturalWidth": 64
-        },
-        {
-          "src": "http://127.0.0.1:4109/_next/image",
-          "complete": true,
-          "naturalWidth": 64
-        },
-        {
-          "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/dining-640.avif",
-          "complete": true,
-          "naturalWidth": 390
-        },
-        {
-          "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/kitchen-320.avif",
-          "complete": true,
-          "naturalWidth": 195
-        },
-        {
-          "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/bar-shine-320.avif",
-          "complete": true,
-          "naturalWidth": 195
-        },
-        {
-          "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/room-setting-v3-640.avif",
-          "complete": true,
-          "naturalWidth": 390
-        },
-        {
-          "src": "http://127.0.0.1:4109/brand/shah-wordmark-teal-v1.svg",
-          "complete": true,
-          "naturalWidth": 1000
-        },
-        {
-          "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/dining-640.avif",
-          "complete": true,
-          "naturalWidth": 346
-        },
-        {
-          "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/kitchen-640.avif",
-          "complete": true,
-          "naturalWidth": 346
-        },
-        {
-          "src": "",
-          "complete": false,
-          "naturalWidth": 0
-        },
-        {
-          "src": "",
-          "complete": false,
-          "naturalWidth": 0
-        },
-        {
-          "src": "",
-          "complete": false,
-          "naturalWidth": 0
-        },
-        {
-          "src": "",
-          "complete": false,
-          "naturalWidth": 0
-        },
-        {
-          "src": "",
-          "complete": false,
-          "naturalWidth": 0
-        },
-        {
-          "src": "",
-          "complete": false,
-          "naturalWidth": 0
-        },
-        {
-          "src": "",
-          "complete": false,
-          "naturalWidth": 0
-        },
-        {
-          "src": "",
-          "complete": false,
-          "naturalWidth": 0
-        },
-        {
-          "src": "",
-          "complete": false,
-          "naturalWidth": 0
-        },
-        {
-          "src": "",
-          "complete": false,
-          "naturalWidth": 0
-        },
-        {
-          "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/dining-640.avif",
-          "complete": false,
-          "naturalWidth": 390
-        },
-        {
-          "src": "http://127.0.0.1:4109/brand/shah-mark-teal-v1.svg",
-          "complete": true,
-          "naturalWidth": 847
-        },
-        {
-          "src": "http://127.0.0.1:4109/brand/shah-landscape-teal-v1.svg",
+          "src": "http://localhost:3398/brand/shah-landscape-teal-v1.svg",
           "complete": true,
           "naturalWidth": 2451
         }
@@ -2419,257 +2176,21 @@
       ]
     },
     {
-      "variant": "before",
-      "width": 390,
-      "theme": "gold",
-      "run": 4,
-      "motion": "on",
-      "scrollDurationMs": 3438.600000143051,
-      "rafMedianMs": 26.700000047683716,
-      "rafP95Ms": 50.5,
-      "rafOver50ms": 6,
-      "longTasks": [
-        {
-          "start": 3570.5,
-          "duration": 51
-        },
-        {
-          "start": 3630.7999999523163,
-          "duration": 50
-        }
-      ],
-      "overflow": 0,
-      "loadedPhotos": [
-        {
-          "src": "http://localhost:3398/brand/shah-landscape-gold-v1.svg",
-          "complete": true,
-          "naturalWidth": 2451
-        },
-        {
-          "src": "http://localhost:3398/brand/edited-restaurant-photos-v1/kitchen-640.avif",
-          "complete": true,
-          "naturalWidth": 390
-        },
-        {
-          "src": "http://localhost:3398/_next/image",
-          "complete": true,
-          "naturalWidth": 64
-        },
-        {
-          "src": "http://localhost:3398/_next/image",
-          "complete": true,
-          "naturalWidth": 64
-        },
-        {
-          "src": "http://localhost:3398/_next/image",
-          "complete": true,
-          "naturalWidth": 64
-        },
-        {
-          "src": "http://localhost:3398/_next/image",
-          "complete": true,
-          "naturalWidth": 64
-        },
-        {
-          "src": "http://localhost:3398/_next/image",
-          "complete": true,
-          "naturalWidth": 64
-        },
-        {
-          "src": "http://localhost:3398/_next/image",
-          "complete": true,
-          "naturalWidth": 64
-        },
-        {
-          "src": "http://localhost:3398/brand/edited-restaurant-photos-v1/dining-640.avif",
-          "complete": true,
-          "naturalWidth": 390
-        },
-        {
-          "src": "http://localhost:3398/brand/edited-restaurant-photos-v1/kitchen-320.avif",
-          "complete": true,
-          "naturalWidth": 195
-        },
-        {
-          "src": "http://localhost:3398/brand/edited-restaurant-photos-v1/bar-shine-320.avif",
-          "complete": true,
-          "naturalWidth": 195
-        },
-        {
-          "src": "http://localhost:3398/brand/edited-restaurant-photos-v1/room-setting-v3-640.avif",
-          "complete": true,
-          "naturalWidth": 390
-        },
-        {
-          "src": "http://localhost:3398/brand/shah-wordmark-gold-v1.svg",
-          "complete": true,
-          "naturalWidth": 1000
-        },
-        {
-          "src": "http://localhost:3398/brand/edited-restaurant-photos-v1/dining-640.avif",
-          "complete": true,
-          "naturalWidth": 346
-        },
-        {
-          "src": "http://localhost:3398/brand/edited-restaurant-photos-v1/kitchen-640.avif",
-          "complete": true,
-          "naturalWidth": 346
-        },
-        {
-          "src": "",
-          "complete": false,
-          "naturalWidth": 0
-        },
-        {
-          "src": "",
-          "complete": false,
-          "naturalWidth": 0
-        },
-        {
-          "src": "",
-          "complete": false,
-          "naturalWidth": 0
-        },
-        {
-          "src": "",
-          "complete": false,
-          "naturalWidth": 0
-        },
-        {
-          "src": "",
-          "complete": false,
-          "naturalWidth": 0
-        },
-        {
-          "src": "",
-          "complete": false,
-          "naturalWidth": 0
-        },
-        {
-          "src": "",
-          "complete": false,
-          "naturalWidth": 0
-        },
-        {
-          "src": "",
-          "complete": false,
-          "naturalWidth": 0
-        },
-        {
-          "src": "",
-          "complete": false,
-          "naturalWidth": 0
-        },
-        {
-          "src": "",
-          "complete": false,
-          "naturalWidth": 0
-        },
-        {
-          "src": "http://localhost:3398/brand/edited-restaurant-photos-v1/dining-640.avif",
-          "complete": false,
-          "naturalWidth": 390
-        },
-        {
-          "src": "http://localhost:3398/brand/shah-mark-gold-v1.svg",
-          "complete": true,
-          "naturalWidth": 847
-        },
-        {
-          "src": "http://localhost:3398/brand/shah-landscape-gold-v1.svg",
-          "complete": true,
-          "naturalWidth": 2451
-        }
-      ],
-      "resources": [
-        {
-          "url": "/_next/static/css/08b343ce2a8db9ae.css",
-          "encoded": 26381,
-          "decoded": 153292
-        },
-        {
-          "url": "/_next/static/css/7e9b47bcc1a76d3a.css",
-          "encoded": 14115,
-          "decoded": 73909
-        },
-        {
-          "url": "/_next/static/chunks/webpack-1b705029d5c61cce.js",
-          "encoded": 2538,
-          "decoded": 5134
-        },
-        {
-          "url": "/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
-          "encoded": 62877,
-          "decoded": 199865
-        },
-        {
-          "url": "/_next/static/chunks/3794-c968c786880cae15.js",
-          "encoded": 60749,
-          "decoded": 222079
-        },
-        {
-          "url": "/_next/static/chunks/main-app-2f3596a243c31fc0.js",
-          "encoded": 516,
-          "decoded": 516
-        },
-        {
-          "url": "/_next/static/chunks/8500-3953cc33eeceb44e.js",
-          "encoded": 3531,
-          "decoded": 8698
-        },
-        {
-          "url": "/_next/static/chunks/5772-1c5f02be2ece8826.js",
-          "encoded": 5552,
-          "decoded": 14691
-        },
-        {
-          "url": "/_next/static/chunks/1398-6516e63bd5e5c6c7.js",
-          "encoded": 10463,
-          "decoded": 37602
-        },
-        {
-          "url": "/_next/static/chunks/7985-d0f13e1b17e84f35.js",
-          "encoded": 3370,
-          "decoded": 8124
-        },
-        {
-          "url": "/_next/static/chunks/3573-7075230707e2cb38.js",
-          "encoded": 22204,
-          "decoded": 78366
-        },
-        {
-          "url": "/_next/static/chunks/app/en/page-153837b6df854cf0.js",
-          "encoded": 149,
-          "decoded": 149
-        },
-        {
-          "url": "/_next/static/chunks/app/layout-1604e4323aa176e0.js",
-          "encoded": 11154,
-          "decoded": 36166
-        },
-        {
-          "url": "/_next/static/chunks/app/error-a28aa2e01ec85d47.js",
-          "encoded": 814,
-          "decoded": 1536
-        },
-        {
-          "url": "/_next/static/chunks/app/not-found-28744a18cc567e62.js",
-          "encoded": 800,
-          "decoded": 1590
-        }
-      ]
-    },
-    {
       "variant": "after",
       "width": 390,
       "theme": "gold",
-      "run": 5,
+      "run": 3,
       "motion": "on",
-      "scrollDurationMs": 3252.2999999523163,
-      "rafMedianMs": 26.40000009536743,
-      "rafP95Ms": 41.799999952316284,
+      "scrollDurationMs": 3139.199999809265,
+      "rafMedianMs": 25,
+      "rafP95Ms": 40.09999990463257,
       "rafOver50ms": 3,
-      "longTasks": [],
+      "longTasks": [
+        {
+          "start": 5572.300000190735,
+          "duration": 52
+        }
+      ],
       "overflow": 0,
       "loadedPhotos": [
         {
@@ -2820,6 +2341,267 @@
           "decoded": 155463
         },
         {
+          "url": "/_next/static/css/f92b951a70591bdc.css",
+          "encoded": 14810,
+          "decoded": 79093
+        },
+        {
+          "url": "/_next/static/chunks/webpack-1b705029d5c61cce.js",
+          "encoded": 2538,
+          "decoded": 5134
+        },
+        {
+          "url": "/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+          "encoded": 62877,
+          "decoded": 199865
+        },
+        {
+          "url": "/_next/static/chunks/3794-c968c786880cae15.js",
+          "encoded": 60749,
+          "decoded": 222079
+        },
+        {
+          "url": "/_next/static/chunks/main-app-2f3596a243c31fc0.js",
+          "encoded": 516,
+          "decoded": 516
+        },
+        {
+          "url": "/_next/static/chunks/8500-3953cc33eeceb44e.js",
+          "encoded": 3531,
+          "decoded": 8698
+        },
+        {
+          "url": "/_next/static/chunks/5772-1c5f02be2ece8826.js",
+          "encoded": 5552,
+          "decoded": 14691
+        },
+        {
+          "url": "/_next/static/chunks/1398-6516e63bd5e5c6c7.js",
+          "encoded": 10463,
+          "decoded": 37602
+        },
+        {
+          "url": "/_next/static/chunks/7985-d0f13e1b17e84f35.js",
+          "encoded": 3370,
+          "decoded": 8124
+        },
+        {
+          "url": "/_next/static/chunks/3573-53d1d1859374b7e6.js",
+          "encoded": 22198,
+          "decoded": 78374
+        },
+        {
+          "url": "/_next/static/chunks/app/en/page-153837b6df854cf0.js",
+          "encoded": 149,
+          "decoded": 149
+        },
+        {
+          "url": "/_next/static/chunks/app/layout-f40bdcb94ac3dbe4.js",
+          "encoded": 11154,
+          "decoded": 36170
+        },
+        {
+          "url": "/_next/static/chunks/app/error-a28aa2e01ec85d47.js",
+          "encoded": 814,
+          "decoded": 1536
+        },
+        {
+          "url": "/_next/static/chunks/app/not-found-28744a18cc567e62.js",
+          "encoded": 800,
+          "decoded": 1590
+        }
+      ]
+    },
+    {
+      "variant": "before",
+      "width": 390,
+      "theme": "gold",
+      "run": 4,
+      "motion": "on",
+      "scrollDurationMs": 3329.4000000953674,
+      "rafMedianMs": 26.100000143051147,
+      "rafP95Ms": 57.10000014305115,
+      "rafOver50ms": 10,
+      "longTasks": [
+        {
+          "start": 4074.5,
+          "duration": 58
+        },
+        {
+          "start": 4133.299999952316,
+          "duration": 73
+        },
+        {
+          "start": 4207.799999952316,
+          "duration": 55
+        },
+        {
+          "start": 4264.200000047684,
+          "duration": 53
+        },
+        {
+          "start": 4318.899999856949,
+          "duration": 53
+        },
+        {
+          "start": 4373.299999952316,
+          "duration": 60
+        },
+        {
+          "start": 4434.599999904633,
+          "duration": 52
+        }
+      ],
+      "overflow": 0,
+      "loadedPhotos": [
+        {
+          "src": "http://localhost:3398/brand/shah-landscape-teal-v1.svg",
+          "complete": true,
+          "naturalWidth": 2451
+        },
+        {
+          "src": "http://localhost:3398/brand/edited-restaurant-photos-v1/kitchen-640.avif",
+          "complete": true,
+          "naturalWidth": 390
+        },
+        {
+          "src": "http://localhost:3398/_next/image",
+          "complete": true,
+          "naturalWidth": 64
+        },
+        {
+          "src": "http://localhost:3398/_next/image",
+          "complete": true,
+          "naturalWidth": 64
+        },
+        {
+          "src": "http://localhost:3398/_next/image",
+          "complete": true,
+          "naturalWidth": 64
+        },
+        {
+          "src": "http://localhost:3398/_next/image",
+          "complete": true,
+          "naturalWidth": 64
+        },
+        {
+          "src": "http://localhost:3398/_next/image",
+          "complete": true,
+          "naturalWidth": 64
+        },
+        {
+          "src": "http://localhost:3398/_next/image",
+          "complete": true,
+          "naturalWidth": 64
+        },
+        {
+          "src": "http://localhost:3398/brand/edited-restaurant-photos-v1/dining-640.avif",
+          "complete": true,
+          "naturalWidth": 390
+        },
+        {
+          "src": "http://localhost:3398/brand/edited-restaurant-photos-v1/kitchen-320.avif",
+          "complete": true,
+          "naturalWidth": 195
+        },
+        {
+          "src": "http://localhost:3398/brand/edited-restaurant-photos-v1/bar-shine-320.avif",
+          "complete": true,
+          "naturalWidth": 195
+        },
+        {
+          "src": "http://localhost:3398/brand/edited-restaurant-photos-v1/room-setting-v3-640.avif",
+          "complete": true,
+          "naturalWidth": 390
+        },
+        {
+          "src": "http://localhost:3398/brand/shah-wordmark-teal-v1.svg",
+          "complete": true,
+          "naturalWidth": 1000
+        },
+        {
+          "src": "http://localhost:3398/brand/edited-restaurant-photos-v1/dining-640.avif",
+          "complete": true,
+          "naturalWidth": 346
+        },
+        {
+          "src": "http://localhost:3398/brand/edited-restaurant-photos-v1/kitchen-640.avif",
+          "complete": true,
+          "naturalWidth": 346
+        },
+        {
+          "src": "",
+          "complete": false,
+          "naturalWidth": 0
+        },
+        {
+          "src": "",
+          "complete": false,
+          "naturalWidth": 0
+        },
+        {
+          "src": "",
+          "complete": false,
+          "naturalWidth": 0
+        },
+        {
+          "src": "",
+          "complete": false,
+          "naturalWidth": 0
+        },
+        {
+          "src": "",
+          "complete": false,
+          "naturalWidth": 0
+        },
+        {
+          "src": "",
+          "complete": false,
+          "naturalWidth": 0
+        },
+        {
+          "src": "",
+          "complete": false,
+          "naturalWidth": 0
+        },
+        {
+          "src": "",
+          "complete": false,
+          "naturalWidth": 0
+        },
+        {
+          "src": "",
+          "complete": false,
+          "naturalWidth": 0
+        },
+        {
+          "src": "",
+          "complete": false,
+          "naturalWidth": 0
+        },
+        {
+          "src": "http://localhost:3398/brand/edited-restaurant-photos-v1/dining-640.avif",
+          "complete": false,
+          "naturalWidth": 390
+        },
+        {
+          "src": "http://localhost:3398/brand/shah-mark-teal-v1.svg",
+          "complete": true,
+          "naturalWidth": 847
+        },
+        {
+          "src": "http://localhost:3398/brand/shah-landscape-teal-v1.svg",
+          "complete": true,
+          "naturalWidth": 2451
+        }
+      ],
+      "resources": [
+        {
+          "url": "/_next/static/css/c6ae0f6cdc2e4120.css",
+          "encoded": 26720,
+          "decoded": 155463
+        },
+        {
           "url": "/_next/static/css/693ccfa84961ec48.css",
           "encoded": 14863,
           "decoded": 78949
@@ -2868,6 +2650,243 @@
           "url": "/_next/static/chunks/3573-eb7d4686ecd1f4e5.js",
           "encoded": 22234,
           "decoded": 78460
+        },
+        {
+          "url": "/_next/static/chunks/app/en/page-153837b6df854cf0.js",
+          "encoded": 149,
+          "decoded": 149
+        },
+        {
+          "url": "/_next/static/chunks/app/layout-f40bdcb94ac3dbe4.js",
+          "encoded": 11154,
+          "decoded": 36170
+        },
+        {
+          "url": "/_next/static/chunks/app/error-a28aa2e01ec85d47.js",
+          "encoded": 814,
+          "decoded": 1536
+        },
+        {
+          "url": "/_next/static/chunks/app/not-found-28744a18cc567e62.js",
+          "encoded": 800,
+          "decoded": 1590
+        }
+      ]
+    },
+    {
+      "variant": "after",
+      "width": 390,
+      "theme": "gold",
+      "run": 5,
+      "motion": "on",
+      "scrollDurationMs": 3431.399999856949,
+      "rafMedianMs": 27.799999952316284,
+      "rafP95Ms": 42.30000019073486,
+      "rafOver50ms": 3,
+      "longTasks": [
+        {
+          "start": 5766.100000143051,
+          "duration": 70
+        }
+      ],
+      "overflow": 0,
+      "loadedPhotos": [
+        {
+          "src": "http://127.0.0.1:4109/brand/shah-landscape-teal-v1.svg",
+          "complete": true,
+          "naturalWidth": 2451
+        },
+        {
+          "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/kitchen-640.avif",
+          "complete": true,
+          "naturalWidth": 390
+        },
+        {
+          "src": "http://127.0.0.1:4109/_next/image",
+          "complete": true,
+          "naturalWidth": 64
+        },
+        {
+          "src": "http://127.0.0.1:4109/_next/image",
+          "complete": true,
+          "naturalWidth": 64
+        },
+        {
+          "src": "http://127.0.0.1:4109/_next/image",
+          "complete": true,
+          "naturalWidth": 64
+        },
+        {
+          "src": "http://127.0.0.1:4109/_next/image",
+          "complete": true,
+          "naturalWidth": 64
+        },
+        {
+          "src": "http://127.0.0.1:4109/_next/image",
+          "complete": true,
+          "naturalWidth": 64
+        },
+        {
+          "src": "http://127.0.0.1:4109/_next/image",
+          "complete": true,
+          "naturalWidth": 64
+        },
+        {
+          "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/dining-640.avif",
+          "complete": true,
+          "naturalWidth": 390
+        },
+        {
+          "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/kitchen-320.avif",
+          "complete": true,
+          "naturalWidth": 195
+        },
+        {
+          "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/bar-shine-320.avif",
+          "complete": true,
+          "naturalWidth": 195
+        },
+        {
+          "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/room-setting-v3-640.avif",
+          "complete": true,
+          "naturalWidth": 390
+        },
+        {
+          "src": "http://127.0.0.1:4109/brand/shah-wordmark-teal-v1.svg",
+          "complete": true,
+          "naturalWidth": 1000
+        },
+        {
+          "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/dining-640.avif",
+          "complete": true,
+          "naturalWidth": 346
+        },
+        {
+          "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/kitchen-640.avif",
+          "complete": true,
+          "naturalWidth": 346
+        },
+        {
+          "src": "",
+          "complete": false,
+          "naturalWidth": 0
+        },
+        {
+          "src": "",
+          "complete": false,
+          "naturalWidth": 0
+        },
+        {
+          "src": "",
+          "complete": false,
+          "naturalWidth": 0
+        },
+        {
+          "src": "",
+          "complete": false,
+          "naturalWidth": 0
+        },
+        {
+          "src": "",
+          "complete": false,
+          "naturalWidth": 0
+        },
+        {
+          "src": "",
+          "complete": false,
+          "naturalWidth": 0
+        },
+        {
+          "src": "",
+          "complete": false,
+          "naturalWidth": 0
+        },
+        {
+          "src": "",
+          "complete": false,
+          "naturalWidth": 0
+        },
+        {
+          "src": "",
+          "complete": false,
+          "naturalWidth": 0
+        },
+        {
+          "src": "",
+          "complete": false,
+          "naturalWidth": 0
+        },
+        {
+          "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/dining-640.avif",
+          "complete": false,
+          "naturalWidth": 390
+        },
+        {
+          "src": "http://127.0.0.1:4109/brand/shah-mark-teal-v1.svg",
+          "complete": true,
+          "naturalWidth": 847
+        },
+        {
+          "src": "http://127.0.0.1:4109/brand/shah-landscape-teal-v1.svg",
+          "complete": true,
+          "naturalWidth": 2451
+        }
+      ],
+      "resources": [
+        {
+          "url": "/_next/static/css/c6ae0f6cdc2e4120.css",
+          "encoded": 26720,
+          "decoded": 155463
+        },
+        {
+          "url": "/_next/static/css/f92b951a70591bdc.css",
+          "encoded": 14810,
+          "decoded": 79093
+        },
+        {
+          "url": "/_next/static/chunks/webpack-1b705029d5c61cce.js",
+          "encoded": 2538,
+          "decoded": 5134
+        },
+        {
+          "url": "/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+          "encoded": 62877,
+          "decoded": 199865
+        },
+        {
+          "url": "/_next/static/chunks/3794-c968c786880cae15.js",
+          "encoded": 60749,
+          "decoded": 222079
+        },
+        {
+          "url": "/_next/static/chunks/main-app-2f3596a243c31fc0.js",
+          "encoded": 516,
+          "decoded": 516
+        },
+        {
+          "url": "/_next/static/chunks/8500-3953cc33eeceb44e.js",
+          "encoded": 3531,
+          "decoded": 8698
+        },
+        {
+          "url": "/_next/static/chunks/5772-1c5f02be2ece8826.js",
+          "encoded": 5552,
+          "decoded": 14691
+        },
+        {
+          "url": "/_next/static/chunks/1398-6516e63bd5e5c6c7.js",
+          "encoded": 10463,
+          "decoded": 37602
+        },
+        {
+          "url": "/_next/static/chunks/7985-d0f13e1b17e84f35.js",
+          "encoded": 3370,
+          "decoded": 8124
+        },
+        {
+          "url": "/_next/static/chunks/3573-53d1d1859374b7e6.js",
+          "encoded": 22198,
+          "decoded": 78374
         },
         {
           "url": "/_next/static/chunks/app/en/page-153837b6df854cf0.js",
@@ -2897,9 +2916,513 @@
       "theme": "teal",
       "run": 0,
       "motion": "on",
-      "scrollDurationMs": 3072.2000000476837,
-      "rafMedianMs": 23,
-      "rafP95Ms": 39.89999985694885,
+      "scrollDurationMs": 3299.5,
+      "rafMedianMs": 22,
+      "rafP95Ms": 53.89999985694885,
+      "rafOver50ms": 8,
+      "longTasks": [
+        {
+          "start": 3541.9000000953674,
+          "duration": 72
+        },
+        {
+          "start": 3615.9000000953674,
+          "duration": 51
+        },
+        {
+          "start": 3669.100000143051,
+          "duration": 53
+        },
+        {
+          "start": 3723.7000000476837,
+          "duration": 51
+        },
+        {
+          "start": 3776.2000000476837,
+          "duration": 52
+        },
+        {
+          "start": 3830.9000000953674,
+          "duration": 54
+        }
+      ],
+      "overflow": 0,
+      "loadedPhotos": [
+        {
+          "src": "http://localhost:3398/brand/shah-landscape-gold-v1.svg",
+          "complete": true,
+          "naturalWidth": 2451
+        },
+        {
+          "src": "http://localhost:3398/brand/edited-restaurant-photos-v1/kitchen-640.avif",
+          "complete": true,
+          "naturalWidth": 604
+        },
+        {
+          "src": "http://localhost:3398/brand/edited-restaurant-photos-v1/dining-320.avif",
+          "complete": true,
+          "naturalWidth": 180
+        },
+        {
+          "src": "http://localhost:3398/_next/image",
+          "complete": true,
+          "naturalWidth": 80
+        },
+        {
+          "src": "http://localhost:3398/_next/image",
+          "complete": true,
+          "naturalWidth": 80
+        },
+        {
+          "src": "http://localhost:3398/_next/image",
+          "complete": true,
+          "naturalWidth": 80
+        },
+        {
+          "src": "http://localhost:3398/_next/image",
+          "complete": true,
+          "naturalWidth": 80
+        },
+        {
+          "src": "http://localhost:3398/_next/image",
+          "complete": true,
+          "naturalWidth": 80
+        },
+        {
+          "src": "http://localhost:3398/_next/image",
+          "complete": true,
+          "naturalWidth": 80
+        },
+        {
+          "src": "http://localhost:3398/brand/edited-restaurant-photos-v1/dining-960.avif",
+          "complete": true,
+          "naturalWidth": 720
+        },
+        {
+          "src": "http://localhost:3398/brand/edited-restaurant-photos-v1/kitchen-640.avif",
+          "complete": true,
+          "naturalWidth": 360
+        },
+        {
+          "src": "http://localhost:3398/brand/edited-restaurant-photos-v1/bar-shine-640.avif",
+          "complete": true,
+          "naturalWidth": 360
+        },
+        {
+          "src": "http://localhost:3398/brand/edited-restaurant-photos-v1/room-setting-v3-960.avif",
+          "complete": true,
+          "naturalWidth": 648
+        },
+        {
+          "src": "http://localhost:3398/brand/shah-wordmark-gold-v1.svg",
+          "complete": true,
+          "naturalWidth": 1000
+        },
+        {
+          "src": "http://localhost:3398/brand/edited-restaurant-photos-v1/dining-640.avif",
+          "complete": true,
+          "naturalWidth": 379
+        },
+        {
+          "src": "http://localhost:3398/brand/edited-restaurant-photos-v1/kitchen-640.avif",
+          "complete": true,
+          "naturalWidth": 379
+        },
+        {
+          "src": "http://localhost:3398/brand/edited-restaurant-photos-v1/atmosphere-setting-v2-640.avif",
+          "complete": true,
+          "naturalWidth": 379
+        },
+        {
+          "src": "http://localhost:3398/brand/edited-restaurant-photos-v1/bar-shine-640.avif",
+          "complete": false,
+          "naturalWidth": 576
+        },
+        {
+          "src": "",
+          "complete": false,
+          "naturalWidth": 0
+        },
+        {
+          "src": "",
+          "complete": false,
+          "naturalWidth": 0
+        },
+        {
+          "src": "",
+          "complete": false,
+          "naturalWidth": 0
+        },
+        {
+          "src": "",
+          "complete": false,
+          "naturalWidth": 0
+        },
+        {
+          "src": "",
+          "complete": false,
+          "naturalWidth": 0
+        },
+        {
+          "src": "",
+          "complete": false,
+          "naturalWidth": 0
+        },
+        {
+          "src": "",
+          "complete": false,
+          "naturalWidth": 0
+        },
+        {
+          "src": "",
+          "complete": false,
+          "naturalWidth": 0
+        },
+        {
+          "src": "",
+          "complete": false,
+          "naturalWidth": 0
+        },
+        {
+          "src": "http://localhost:3398/brand/shah-mark-gold-v1.svg",
+          "complete": true,
+          "naturalWidth": 847
+        },
+        {
+          "src": "http://localhost:3398/brand/shah-landscape-gold-v1.svg",
+          "complete": true,
+          "naturalWidth": 2451
+        }
+      ],
+      "resources": [
+        {
+          "url": "/_next/static/css/c6ae0f6cdc2e4120.css",
+          "encoded": 26720,
+          "decoded": 155463
+        },
+        {
+          "url": "/_next/static/css/693ccfa84961ec48.css",
+          "encoded": 14863,
+          "decoded": 78949
+        },
+        {
+          "url": "/_next/static/chunks/webpack-1b705029d5c61cce.js",
+          "encoded": 2538,
+          "decoded": 5134
+        },
+        {
+          "url": "/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+          "encoded": 62877,
+          "decoded": 199865
+        },
+        {
+          "url": "/_next/static/chunks/3794-c968c786880cae15.js",
+          "encoded": 60749,
+          "decoded": 222079
+        },
+        {
+          "url": "/_next/static/chunks/main-app-2f3596a243c31fc0.js",
+          "encoded": 516,
+          "decoded": 516
+        },
+        {
+          "url": "/_next/static/chunks/8500-3953cc33eeceb44e.js",
+          "encoded": 3531,
+          "decoded": 8698
+        },
+        {
+          "url": "/_next/static/chunks/5772-1c5f02be2ece8826.js",
+          "encoded": 5552,
+          "decoded": 14691
+        },
+        {
+          "url": "/_next/static/chunks/1398-6516e63bd5e5c6c7.js",
+          "encoded": 10463,
+          "decoded": 37602
+        },
+        {
+          "url": "/_next/static/chunks/7985-d0f13e1b17e84f35.js",
+          "encoded": 3370,
+          "decoded": 8124
+        },
+        {
+          "url": "/_next/static/chunks/3573-eb7d4686ecd1f4e5.js",
+          "encoded": 22234,
+          "decoded": 78460
+        },
+        {
+          "url": "/_next/static/chunks/app/en/page-153837b6df854cf0.js",
+          "encoded": 149,
+          "decoded": 149
+        },
+        {
+          "url": "/_next/static/chunks/app/layout-f40bdcb94ac3dbe4.js",
+          "encoded": 11154,
+          "decoded": 36170
+        },
+        {
+          "url": "/_next/static/chunks/app/error-a28aa2e01ec85d47.js",
+          "encoded": 814,
+          "decoded": 1536
+        },
+        {
+          "url": "/_next/static/chunks/app/not-found-28744a18cc567e62.js",
+          "encoded": 800,
+          "decoded": 1590
+        }
+      ]
+    },
+    {
+      "variant": "after",
+      "width": 1440,
+      "theme": "teal",
+      "run": 1,
+      "motion": "on",
+      "scrollDurationMs": 3116.0999999046326,
+      "rafMedianMs": 22,
+      "rafP95Ms": 42.5,
+      "rafOver50ms": 4,
+      "longTasks": [
+        {
+          "start": 5335.200000047684,
+          "duration": 64
+        }
+      ],
+      "overflow": 0,
+      "loadedPhotos": [
+        {
+          "src": "http://127.0.0.1:4109/brand/shah-landscape-gold-v1.svg",
+          "complete": true,
+          "naturalWidth": 2451
+        },
+        {
+          "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/kitchen-640.avif",
+          "complete": true,
+          "naturalWidth": 604
+        },
+        {
+          "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/dining-320.avif",
+          "complete": true,
+          "naturalWidth": 180
+        },
+        {
+          "src": "http://127.0.0.1:4109/_next/image",
+          "complete": true,
+          "naturalWidth": 80
+        },
+        {
+          "src": "http://127.0.0.1:4109/_next/image",
+          "complete": true,
+          "naturalWidth": 80
+        },
+        {
+          "src": "http://127.0.0.1:4109/_next/image",
+          "complete": true,
+          "naturalWidth": 80
+        },
+        {
+          "src": "http://127.0.0.1:4109/_next/image",
+          "complete": true,
+          "naturalWidth": 80
+        },
+        {
+          "src": "http://127.0.0.1:4109/_next/image",
+          "complete": true,
+          "naturalWidth": 80
+        },
+        {
+          "src": "http://127.0.0.1:4109/_next/image",
+          "complete": true,
+          "naturalWidth": 80
+        },
+        {
+          "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/dining-960.avif",
+          "complete": true,
+          "naturalWidth": 720
+        },
+        {
+          "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/kitchen-640.avif",
+          "complete": true,
+          "naturalWidth": 360
+        },
+        {
+          "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/bar-shine-640.avif",
+          "complete": true,
+          "naturalWidth": 360
+        },
+        {
+          "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/room-setting-v3-960.avif",
+          "complete": true,
+          "naturalWidth": 648
+        },
+        {
+          "src": "http://127.0.0.1:4109/brand/shah-wordmark-gold-v1.svg",
+          "complete": true,
+          "naturalWidth": 1000
+        },
+        {
+          "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/dining-640.avif",
+          "complete": true,
+          "naturalWidth": 379
+        },
+        {
+          "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/kitchen-640.avif",
+          "complete": true,
+          "naturalWidth": 379
+        },
+        {
+          "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/atmosphere-setting-v2-640.avif",
+          "complete": true,
+          "naturalWidth": 379
+        },
+        {
+          "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/bar-shine-640.avif",
+          "complete": false,
+          "naturalWidth": 576
+        },
+        {
+          "src": "",
+          "complete": false,
+          "naturalWidth": 0
+        },
+        {
+          "src": "",
+          "complete": false,
+          "naturalWidth": 0
+        },
+        {
+          "src": "",
+          "complete": false,
+          "naturalWidth": 0
+        },
+        {
+          "src": "",
+          "complete": false,
+          "naturalWidth": 0
+        },
+        {
+          "src": "",
+          "complete": false,
+          "naturalWidth": 0
+        },
+        {
+          "src": "",
+          "complete": false,
+          "naturalWidth": 0
+        },
+        {
+          "src": "",
+          "complete": false,
+          "naturalWidth": 0
+        },
+        {
+          "src": "",
+          "complete": false,
+          "naturalWidth": 0
+        },
+        {
+          "src": "",
+          "complete": false,
+          "naturalWidth": 0
+        },
+        {
+          "src": "http://127.0.0.1:4109/brand/shah-mark-gold-v1.svg",
+          "complete": true,
+          "naturalWidth": 847
+        },
+        {
+          "src": "http://127.0.0.1:4109/brand/shah-landscape-gold-v1.svg",
+          "complete": true,
+          "naturalWidth": 2451
+        }
+      ],
+      "resources": [
+        {
+          "url": "/_next/static/css/c6ae0f6cdc2e4120.css",
+          "encoded": 26720,
+          "decoded": 155463
+        },
+        {
+          "url": "/_next/static/css/f92b951a70591bdc.css",
+          "encoded": 14810,
+          "decoded": 79093
+        },
+        {
+          "url": "/_next/static/chunks/webpack-1b705029d5c61cce.js",
+          "encoded": 2538,
+          "decoded": 5134
+        },
+        {
+          "url": "/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+          "encoded": 62877,
+          "decoded": 199865
+        },
+        {
+          "url": "/_next/static/chunks/3794-c968c786880cae15.js",
+          "encoded": 60749,
+          "decoded": 222079
+        },
+        {
+          "url": "/_next/static/chunks/main-app-2f3596a243c31fc0.js",
+          "encoded": 516,
+          "decoded": 516
+        },
+        {
+          "url": "/_next/static/chunks/8500-3953cc33eeceb44e.js",
+          "encoded": 3531,
+          "decoded": 8698
+        },
+        {
+          "url": "/_next/static/chunks/5772-1c5f02be2ece8826.js",
+          "encoded": 5552,
+          "decoded": 14691
+        },
+        {
+          "url": "/_next/static/chunks/1398-6516e63bd5e5c6c7.js",
+          "encoded": 10463,
+          "decoded": 37602
+        },
+        {
+          "url": "/_next/static/chunks/7985-d0f13e1b17e84f35.js",
+          "encoded": 3370,
+          "decoded": 8124
+        },
+        {
+          "url": "/_next/static/chunks/3573-53d1d1859374b7e6.js",
+          "encoded": 22198,
+          "decoded": 78374
+        },
+        {
+          "url": "/_next/static/chunks/app/en/page-153837b6df854cf0.js",
+          "encoded": 149,
+          "decoded": 149
+        },
+        {
+          "url": "/_next/static/chunks/app/layout-f40bdcb94ac3dbe4.js",
+          "encoded": 11154,
+          "decoded": 36170
+        },
+        {
+          "url": "/_next/static/chunks/app/error-a28aa2e01ec85d47.js",
+          "encoded": 814,
+          "decoded": 1536
+        },
+        {
+          "url": "/_next/static/chunks/app/not-found-28744a18cc567e62.js",
+          "encoded": 800,
+          "decoded": 1590
+        }
+      ]
+    },
+    {
+      "variant": "before",
+      "width": 1440,
+      "theme": "teal",
+      "run": 2,
+      "motion": "on",
+      "scrollDurationMs": 3178.5,
+      "rafMedianMs": 22.699999809265137,
+      "rafP95Ms": 44.299999952316284,
       "rafOver50ms": 2,
       "longTasks": [],
       "overflow": 0,
@@ -3052,268 +3575,6 @@
       ],
       "resources": [
         {
-          "url": "/_next/static/css/08b343ce2a8db9ae.css",
-          "encoded": 26381,
-          "decoded": 153292
-        },
-        {
-          "url": "/_next/static/css/7e9b47bcc1a76d3a.css",
-          "encoded": 14115,
-          "decoded": 73909
-        },
-        {
-          "url": "/_next/static/chunks/webpack-1b705029d5c61cce.js",
-          "encoded": 2538,
-          "decoded": 5134
-        },
-        {
-          "url": "/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
-          "encoded": 62877,
-          "decoded": 199865
-        },
-        {
-          "url": "/_next/static/chunks/3794-c968c786880cae15.js",
-          "encoded": 60749,
-          "decoded": 222079
-        },
-        {
-          "url": "/_next/static/chunks/main-app-2f3596a243c31fc0.js",
-          "encoded": 516,
-          "decoded": 516
-        },
-        {
-          "url": "/_next/static/chunks/8500-3953cc33eeceb44e.js",
-          "encoded": 3531,
-          "decoded": 8698
-        },
-        {
-          "url": "/_next/static/chunks/5772-1c5f02be2ece8826.js",
-          "encoded": 5552,
-          "decoded": 14691
-        },
-        {
-          "url": "/_next/static/chunks/1398-6516e63bd5e5c6c7.js",
-          "encoded": 10463,
-          "decoded": 37602
-        },
-        {
-          "url": "/_next/static/chunks/7985-d0f13e1b17e84f35.js",
-          "encoded": 3370,
-          "decoded": 8124
-        },
-        {
-          "url": "/_next/static/chunks/3573-7075230707e2cb38.js",
-          "encoded": 22204,
-          "decoded": 78366
-        },
-        {
-          "url": "/_next/static/chunks/app/en/page-153837b6df854cf0.js",
-          "encoded": 149,
-          "decoded": 149
-        },
-        {
-          "url": "/_next/static/chunks/app/layout-1604e4323aa176e0.js",
-          "encoded": 11154,
-          "decoded": 36166
-        },
-        {
-          "url": "/_next/static/chunks/app/error-a28aa2e01ec85d47.js",
-          "encoded": 814,
-          "decoded": 1536
-        },
-        {
-          "url": "/_next/static/chunks/app/not-found-28744a18cc567e62.js",
-          "encoded": 800,
-          "decoded": 1590
-        }
-      ]
-    },
-    {
-      "variant": "after",
-      "width": 1440,
-      "theme": "teal",
-      "run": 1,
-      "motion": "on",
-      "scrollDurationMs": 3343.399999856949,
-      "rafMedianMs": 23,
-      "rafP95Ms": 61,
-      "rafOver50ms": 7,
-      "longTasks": [
-        {
-          "start": 4309.799999952316,
-          "duration": 67
-        },
-        {
-          "start": 4377.700000047684,
-          "duration": 63
-        },
-        {
-          "start": 4441.5,
-          "duration": 62
-        },
-        {
-          "start": 4504.799999952316,
-          "duration": 59
-        },
-        {
-          "start": 4565.299999952316,
-          "duration": 67
-        },
-        {
-          "start": 4633.900000095367,
-          "duration": 63
-        }
-      ],
-      "overflow": 0,
-      "loadedPhotos": [
-        {
-          "src": "http://127.0.0.1:4109/brand/shah-landscape-gold-v1.svg",
-          "complete": true,
-          "naturalWidth": 2451
-        },
-        {
-          "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/kitchen-640.avif",
-          "complete": true,
-          "naturalWidth": 604
-        },
-        {
-          "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/dining-320.avif",
-          "complete": true,
-          "naturalWidth": 180
-        },
-        {
-          "src": "http://127.0.0.1:4109/_next/image",
-          "complete": true,
-          "naturalWidth": 80
-        },
-        {
-          "src": "http://127.0.0.1:4109/_next/image",
-          "complete": true,
-          "naturalWidth": 80
-        },
-        {
-          "src": "http://127.0.0.1:4109/_next/image",
-          "complete": true,
-          "naturalWidth": 80
-        },
-        {
-          "src": "http://127.0.0.1:4109/_next/image",
-          "complete": true,
-          "naturalWidth": 80
-        },
-        {
-          "src": "http://127.0.0.1:4109/_next/image",
-          "complete": true,
-          "naturalWidth": 80
-        },
-        {
-          "src": "http://127.0.0.1:4109/_next/image",
-          "complete": true,
-          "naturalWidth": 80
-        },
-        {
-          "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/dining-960.avif",
-          "complete": true,
-          "naturalWidth": 720
-        },
-        {
-          "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/kitchen-640.avif",
-          "complete": true,
-          "naturalWidth": 360
-        },
-        {
-          "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/bar-shine-640.avif",
-          "complete": true,
-          "naturalWidth": 360
-        },
-        {
-          "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/room-setting-v3-960.avif",
-          "complete": true,
-          "naturalWidth": 648
-        },
-        {
-          "src": "http://127.0.0.1:4109/brand/shah-wordmark-gold-v1.svg",
-          "complete": true,
-          "naturalWidth": 1000
-        },
-        {
-          "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/dining-640.avif",
-          "complete": true,
-          "naturalWidth": 379
-        },
-        {
-          "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/kitchen-640.avif",
-          "complete": true,
-          "naturalWidth": 379
-        },
-        {
-          "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/atmosphere-setting-v2-640.avif",
-          "complete": true,
-          "naturalWidth": 379
-        },
-        {
-          "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/bar-shine-640.avif",
-          "complete": false,
-          "naturalWidth": 576
-        },
-        {
-          "src": "",
-          "complete": false,
-          "naturalWidth": 0
-        },
-        {
-          "src": "",
-          "complete": false,
-          "naturalWidth": 0
-        },
-        {
-          "src": "",
-          "complete": false,
-          "naturalWidth": 0
-        },
-        {
-          "src": "",
-          "complete": false,
-          "naturalWidth": 0
-        },
-        {
-          "src": "",
-          "complete": false,
-          "naturalWidth": 0
-        },
-        {
-          "src": "",
-          "complete": false,
-          "naturalWidth": 0
-        },
-        {
-          "src": "",
-          "complete": false,
-          "naturalWidth": 0
-        },
-        {
-          "src": "",
-          "complete": false,
-          "naturalWidth": 0
-        },
-        {
-          "src": "",
-          "complete": false,
-          "naturalWidth": 0
-        },
-        {
-          "src": "http://127.0.0.1:4109/brand/shah-mark-gold-v1.svg",
-          "complete": true,
-          "naturalWidth": 847
-        },
-        {
-          "src": "http://127.0.0.1:4109/brand/shah-landscape-gold-v1.svg",
-          "complete": true,
-          "naturalWidth": 2451
-        }
-      ],
-      "resources": [
-        {
           "url": "/_next/static/css/c6ae0f6cdc2e4120.css",
           "encoded": 26720,
           "decoded": 155463
@@ -3391,289 +3652,31 @@
       ]
     },
     {
-      "variant": "before",
-      "width": 1440,
-      "theme": "teal",
-      "run": 2,
-      "motion": "on",
-      "scrollDurationMs": 2994,
-      "rafMedianMs": 20.799999952316284,
-      "rafP95Ms": 42.299999952316284,
-      "rafOver50ms": 3,
-      "longTasks": [
-        {
-          "start": 5349.399999856949,
-          "duration": 50
-        },
-        {
-          "start": 5400.599999904633,
-          "duration": 52
-        }
-      ],
-      "overflow": 0,
-      "loadedPhotos": [
-        {
-          "src": "http://localhost:3398/brand/shah-landscape-gold-v1.svg",
-          "complete": true,
-          "naturalWidth": 2451
-        },
-        {
-          "src": "http://localhost:3398/brand/edited-restaurant-photos-v1/kitchen-640.avif",
-          "complete": true,
-          "naturalWidth": 604
-        },
-        {
-          "src": "http://localhost:3398/brand/edited-restaurant-photos-v1/dining-320.avif",
-          "complete": true,
-          "naturalWidth": 180
-        },
-        {
-          "src": "http://localhost:3398/_next/image",
-          "complete": true,
-          "naturalWidth": 80
-        },
-        {
-          "src": "http://localhost:3398/_next/image",
-          "complete": true,
-          "naturalWidth": 80
-        },
-        {
-          "src": "http://localhost:3398/_next/image",
-          "complete": true,
-          "naturalWidth": 80
-        },
-        {
-          "src": "http://localhost:3398/_next/image",
-          "complete": true,
-          "naturalWidth": 80
-        },
-        {
-          "src": "http://localhost:3398/_next/image",
-          "complete": true,
-          "naturalWidth": 80
-        },
-        {
-          "src": "http://localhost:3398/_next/image",
-          "complete": true,
-          "naturalWidth": 80
-        },
-        {
-          "src": "http://localhost:3398/brand/edited-restaurant-photos-v1/dining-960.avif",
-          "complete": true,
-          "naturalWidth": 720
-        },
-        {
-          "src": "http://localhost:3398/brand/edited-restaurant-photos-v1/kitchen-640.avif",
-          "complete": true,
-          "naturalWidth": 360
-        },
-        {
-          "src": "http://localhost:3398/brand/edited-restaurant-photos-v1/bar-shine-640.avif",
-          "complete": true,
-          "naturalWidth": 360
-        },
-        {
-          "src": "http://localhost:3398/brand/edited-restaurant-photos-v1/room-setting-v3-960.avif",
-          "complete": true,
-          "naturalWidth": 648
-        },
-        {
-          "src": "http://localhost:3398/brand/shah-wordmark-gold-v1.svg",
-          "complete": true,
-          "naturalWidth": 1000
-        },
-        {
-          "src": "http://localhost:3398/brand/edited-restaurant-photos-v1/dining-640.avif",
-          "complete": true,
-          "naturalWidth": 379
-        },
-        {
-          "src": "http://localhost:3398/brand/edited-restaurant-photos-v1/kitchen-640.avif",
-          "complete": true,
-          "naturalWidth": 379
-        },
-        {
-          "src": "http://localhost:3398/brand/edited-restaurant-photos-v1/atmosphere-setting-v2-640.avif",
-          "complete": true,
-          "naturalWidth": 379
-        },
-        {
-          "src": "http://localhost:3398/brand/edited-restaurant-photos-v1/bar-shine-640.avif",
-          "complete": false,
-          "naturalWidth": 576
-        },
-        {
-          "src": "",
-          "complete": false,
-          "naturalWidth": 0
-        },
-        {
-          "src": "",
-          "complete": false,
-          "naturalWidth": 0
-        },
-        {
-          "src": "",
-          "complete": false,
-          "naturalWidth": 0
-        },
-        {
-          "src": "",
-          "complete": false,
-          "naturalWidth": 0
-        },
-        {
-          "src": "",
-          "complete": false,
-          "naturalWidth": 0
-        },
-        {
-          "src": "",
-          "complete": false,
-          "naturalWidth": 0
-        },
-        {
-          "src": "",
-          "complete": false,
-          "naturalWidth": 0
-        },
-        {
-          "src": "",
-          "complete": false,
-          "naturalWidth": 0
-        },
-        {
-          "src": "",
-          "complete": false,
-          "naturalWidth": 0
-        },
-        {
-          "src": "http://localhost:3398/brand/shah-mark-gold-v1.svg",
-          "complete": true,
-          "naturalWidth": 847
-        },
-        {
-          "src": "http://localhost:3398/brand/shah-landscape-gold-v1.svg",
-          "complete": true,
-          "naturalWidth": 2451
-        }
-      ],
-      "resources": [
-        {
-          "url": "/_next/static/css/08b343ce2a8db9ae.css",
-          "encoded": 26381,
-          "decoded": 153292
-        },
-        {
-          "url": "/_next/static/css/7e9b47bcc1a76d3a.css",
-          "encoded": 14115,
-          "decoded": 73909
-        },
-        {
-          "url": "/_next/static/chunks/webpack-1b705029d5c61cce.js",
-          "encoded": 2538,
-          "decoded": 5134
-        },
-        {
-          "url": "/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
-          "encoded": 62877,
-          "decoded": 199865
-        },
-        {
-          "url": "/_next/static/chunks/3794-c968c786880cae15.js",
-          "encoded": 60749,
-          "decoded": 222079
-        },
-        {
-          "url": "/_next/static/chunks/main-app-2f3596a243c31fc0.js",
-          "encoded": 516,
-          "decoded": 516
-        },
-        {
-          "url": "/_next/static/chunks/8500-3953cc33eeceb44e.js",
-          "encoded": 3531,
-          "decoded": 8698
-        },
-        {
-          "url": "/_next/static/chunks/5772-1c5f02be2ece8826.js",
-          "encoded": 5552,
-          "decoded": 14691
-        },
-        {
-          "url": "/_next/static/chunks/1398-6516e63bd5e5c6c7.js",
-          "encoded": 10463,
-          "decoded": 37602
-        },
-        {
-          "url": "/_next/static/chunks/7985-d0f13e1b17e84f35.js",
-          "encoded": 3370,
-          "decoded": 8124
-        },
-        {
-          "url": "/_next/static/chunks/3573-7075230707e2cb38.js",
-          "encoded": 22204,
-          "decoded": 78366
-        },
-        {
-          "url": "/_next/static/chunks/app/en/page-153837b6df854cf0.js",
-          "encoded": 149,
-          "decoded": 149
-        },
-        {
-          "url": "/_next/static/chunks/app/layout-1604e4323aa176e0.js",
-          "encoded": 11154,
-          "decoded": 36166
-        },
-        {
-          "url": "/_next/static/chunks/app/error-a28aa2e01ec85d47.js",
-          "encoded": 814,
-          "decoded": 1536
-        },
-        {
-          "url": "/_next/static/chunks/app/not-found-28744a18cc567e62.js",
-          "encoded": 800,
-          "decoded": 1590
-        }
-      ]
-    },
-    {
       "variant": "after",
       "width": 1440,
       "theme": "teal",
       "run": 3,
       "motion": "on",
-      "scrollDurationMs": 3327.100000143051,
-      "rafMedianMs": 23.09999990463257,
-      "rafP95Ms": 61.80000019073486,
-      "rafOver50ms": 8,
+      "scrollDurationMs": 3337.800000190735,
+      "rafMedianMs": 22.199999809265137,
+      "rafP95Ms": 56,
+      "rafOver50ms": 7,
       "longTasks": [
         {
-          "start": 4629.399999856949,
-          "duration": 55
+          "start": 3255.800000190735,
+          "duration": 83
         },
         {
-          "start": 4685.5,
-          "duration": 62
+          "start": 3344.9000000953674,
+          "duration": 52
         },
         {
-          "start": 4748.5,
-          "duration": 70
-        },
-        {
-          "start": 4822.299999952316,
-          "duration": 63
-        },
-        {
-          "start": 4889.099999904633,
+          "start": 3399.100000143051,
           "duration": 57
         },
         {
-          "start": 4952.5,
-          "duration": 63
-        },
-        {
-          "start": 5020.5,
-          "duration": 51
+          "start": 3599.5,
+          "duration": 54
         }
       ],
       "overflow": 0,
@@ -3831,9 +3834,9 @@
           "decoded": 155463
         },
         {
-          "url": "/_next/static/css/693ccfa84961ec48.css",
-          "encoded": 14863,
-          "decoded": 78949
+          "url": "/_next/static/css/f92b951a70591bdc.css",
+          "encoded": 14810,
+          "decoded": 79093
         },
         {
           "url": "/_next/static/chunks/webpack-1b705029d5c61cce.js",
@@ -3876,9 +3879,9 @@
           "decoded": 8124
         },
         {
-          "url": "/_next/static/chunks/3573-eb7d4686ecd1f4e5.js",
-          "encoded": 22234,
-          "decoded": 78460
+          "url": "/_next/static/chunks/3573-53d1d1859374b7e6.js",
+          "encoded": 22198,
+          "decoded": 78374
         },
         {
           "url": "/_next/static/chunks/app/en/page-153837b6df854cf0.js",
@@ -3908,46 +3911,34 @@
       "theme": "teal",
       "run": 4,
       "motion": "on",
-      "scrollDurationMs": 3413.5999999046326,
-      "rafMedianMs": 25.5,
-      "rafP95Ms": 59.799999952316284,
-      "rafOver50ms": 11,
+      "scrollDurationMs": 3387.2000000476837,
+      "rafMedianMs": 22.799999952316284,
+      "rafP95Ms": 63.799999952316284,
+      "rafOver50ms": 9,
       "longTasks": [
         {
-          "start": 4270.100000143051,
-          "duration": 56
+          "start": 4598.099999904633,
+          "duration": 71
         },
         {
-          "start": 4332.799999952316,
-          "duration": 64
-        },
-        {
-          "start": 4401,
-          "duration": 54
-        },
-        {
-          "start": 4459.600000143051,
-          "duration": 54
-        },
-        {
-          "start": 4515.700000047684,
-          "duration": 55
-        },
-        {
-          "start": 4571.400000095367,
-          "duration": 51
-        },
-        {
-          "start": 4624,
-          "duration": 52
-        },
-        {
-          "start": 5653,
+          "start": 4669.899999856949,
           "duration": 65
         },
         {
-          "start": 5767.299999952316,
-          "duration": 66
+          "start": 4736.5,
+          "duration": 64
+        },
+        {
+          "start": 4805,
+          "duration": 56
+        },
+        {
+          "start": 4865.199999809265,
+          "duration": 58
+        },
+        {
+          "start": 4930.599999904633,
+          "duration": 51
         }
       ],
       "overflow": 0,
@@ -4100,14 +4091,14 @@
       ],
       "resources": [
         {
-          "url": "/_next/static/css/08b343ce2a8db9ae.css",
-          "encoded": 26381,
-          "decoded": 153292
+          "url": "/_next/static/css/c6ae0f6cdc2e4120.css",
+          "encoded": 26720,
+          "decoded": 155463
         },
         {
-          "url": "/_next/static/css/7e9b47bcc1a76d3a.css",
-          "encoded": 14115,
-          "decoded": 73909
+          "url": "/_next/static/css/693ccfa84961ec48.css",
+          "encoded": 14863,
+          "decoded": 78949
         },
         {
           "url": "/_next/static/chunks/webpack-1b705029d5c61cce.js",
@@ -4150,9 +4141,9 @@
           "decoded": 8124
         },
         {
-          "url": "/_next/static/chunks/3573-7075230707e2cb38.js",
-          "encoded": 22204,
-          "decoded": 78366
+          "url": "/_next/static/chunks/3573-eb7d4686ecd1f4e5.js",
+          "encoded": 22234,
+          "decoded": 78460
         },
         {
           "url": "/_next/static/chunks/app/en/page-153837b6df854cf0.js",
@@ -4160,9 +4151,9 @@
           "decoded": 149
         },
         {
-          "url": "/_next/static/chunks/app/layout-1604e4323aa176e0.js",
+          "url": "/_next/static/chunks/app/layout-f40bdcb94ac3dbe4.js",
           "encoded": 11154,
-          "decoded": 36166
+          "decoded": 36170
         },
         {
           "url": "/_next/static/chunks/app/error-a28aa2e01ec85d47.js",
@@ -4182,16 +4173,11 @@
       "theme": "teal",
       "run": 5,
       "motion": "on",
-      "scrollDurationMs": 3314.5999999046326,
-      "rafMedianMs": 23.200000047683716,
-      "rafP95Ms": 43.799999952316284,
-      "rafOver50ms": 3,
-      "longTasks": [
-        {
-          "start": 5428.299999952316,
-          "duration": 55
-        }
-      ],
+      "scrollDurationMs": 3348.0999999046326,
+      "rafMedianMs": 26.700000047683716,
+      "rafP95Ms": 41.80000019073486,
+      "rafOver50ms": 2,
+      "longTasks": [],
       "overflow": 0,
       "loadedPhotos": [
         {
@@ -4347,9 +4333,9 @@
           "decoded": 155463
         },
         {
-          "url": "/_next/static/css/693ccfa84961ec48.css",
-          "encoded": 14863,
-          "decoded": 78949
+          "url": "/_next/static/css/f92b951a70591bdc.css",
+          "encoded": 14810,
+          "decoded": 79093
         },
         {
           "url": "/_next/static/chunks/webpack-1b705029d5c61cce.js",
@@ -4392,9 +4378,9 @@
           "decoded": 8124
         },
         {
-          "url": "/_next/static/chunks/3573-eb7d4686ecd1f4e5.js",
-          "encoded": 22234,
-          "decoded": 78460
+          "url": "/_next/static/chunks/3573-53d1d1859374b7e6.js",
+          "encoded": 22198,
+          "decoded": 78374
         },
         {
           "url": "/_next/static/chunks/app/en/page-153837b6df854cf0.js",
@@ -4424,15 +4410,40 @@
       "theme": "gold",
       "run": 0,
       "motion": "on",
-      "scrollDurationMs": 3242.5999999046326,
-      "rafMedianMs": 25.200000047683716,
-      "rafP95Ms": 42.700000047683716,
-      "rafOver50ms": 4,
-      "longTasks": [],
+      "scrollDurationMs": 3674.9000000953674,
+      "rafMedianMs": 25,
+      "rafP95Ms": 56.10000014305115,
+      "rafOver50ms": 10,
+      "longTasks": [
+        {
+          "start": 3653.399999856949,
+          "duration": 82
+        },
+        {
+          "start": 3738.2000000476837,
+          "duration": 63
+        },
+        {
+          "start": 3802.2999999523163,
+          "duration": 55
+        },
+        {
+          "start": 3859.0999999046326,
+          "duration": 55
+        },
+        {
+          "start": 3914.7999999523163,
+          "duration": 52
+        },
+        {
+          "start": 3969.7999999523163,
+          "duration": 59
+        }
+      ],
       "overflow": 0,
       "loadedPhotos": [
         {
-          "src": "http://localhost:3398/brand/shah-landscape-gold-v1.svg",
+          "src": "http://localhost:3398/brand/shah-landscape-teal-v1.svg",
           "complete": true,
           "naturalWidth": 2451
         },
@@ -4497,7 +4508,7 @@
           "naturalWidth": 648
         },
         {
-          "src": "http://localhost:3398/brand/shah-wordmark-gold-v1.svg",
+          "src": "http://localhost:3398/brand/shah-wordmark-teal-v1.svg",
           "complete": true,
           "naturalWidth": 1000
         },
@@ -4567,26 +4578,26 @@
           "naturalWidth": 0
         },
         {
-          "src": "http://localhost:3398/brand/shah-mark-gold-v1.svg",
+          "src": "http://localhost:3398/brand/shah-mark-teal-v1.svg",
           "complete": true,
           "naturalWidth": 847
         },
         {
-          "src": "http://localhost:3398/brand/shah-landscape-gold-v1.svg",
+          "src": "http://localhost:3398/brand/shah-landscape-teal-v1.svg",
           "complete": true,
           "naturalWidth": 2451
         }
       ],
       "resources": [
         {
-          "url": "/_next/static/css/08b343ce2a8db9ae.css",
-          "encoded": 26381,
-          "decoded": 153292
+          "url": "/_next/static/css/c6ae0f6cdc2e4120.css",
+          "encoded": 26720,
+          "decoded": 155463
         },
         {
-          "url": "/_next/static/css/7e9b47bcc1a76d3a.css",
-          "encoded": 14115,
-          "decoded": 73909
+          "url": "/_next/static/css/693ccfa84961ec48.css",
+          "encoded": 14863,
+          "decoded": 78949
         },
         {
           "url": "/_next/static/chunks/webpack-1b705029d5c61cce.js",
@@ -4629,9 +4640,9 @@
           "decoded": 8124
         },
         {
-          "url": "/_next/static/chunks/3573-7075230707e2cb38.js",
-          "encoded": 22204,
-          "decoded": 78366
+          "url": "/_next/static/chunks/3573-eb7d4686ecd1f4e5.js",
+          "encoded": 22234,
+          "decoded": 78460
         },
         {
           "url": "/_next/static/chunks/app/en/page-153837b6df854cf0.js",
@@ -4639,9 +4650,9 @@
           "decoded": 149
         },
         {
-          "url": "/_next/static/chunks/app/layout-1604e4323aa176e0.js",
+          "url": "/_next/static/chunks/app/layout-f40bdcb94ac3dbe4.js",
           "encoded": 11154,
-          "decoded": 36166
+          "decoded": 36170
         },
         {
           "url": "/_next/static/chunks/app/error-a28aa2e01ec85d47.js",
@@ -4661,30 +4672,14 @@
       "theme": "gold",
       "run": 1,
       "motion": "on",
-      "scrollDurationMs": 3517.4000000953674,
-      "rafMedianMs": 23.59999990463257,
-      "rafP95Ms": 65.19999980926514,
-      "rafOver50ms": 7,
+      "scrollDurationMs": 3296.9000000953674,
+      "rafMedianMs": 24.700000047683716,
+      "rafP95Ms": 44.09999990463257,
+      "rafOver50ms": 3,
       "longTasks": [
         {
-          "start": 4116.299999952316,
-          "duration": 80
-        },
-        {
-          "start": 4229.199999809265,
-          "duration": 78
-        },
-        {
-          "start": 4311.299999952316,
-          "duration": 67
-        },
-        {
-          "start": 4379.099999904633,
-          "duration": 69
-        },
-        {
-          "start": 4449.399999856949,
-          "duration": 65
+          "start": 5302.699999809265,
+          "duration": 66
         }
       ],
       "overflow": 0,
@@ -4842,9 +4837,9 @@
           "decoded": 155463
         },
         {
-          "url": "/_next/static/css/693ccfa84961ec48.css",
-          "encoded": 14863,
-          "decoded": 78949
+          "url": "/_next/static/css/f92b951a70591bdc.css",
+          "encoded": 14810,
+          "decoded": 79093
         },
         {
           "url": "/_next/static/chunks/webpack-1b705029d5c61cce.js",
@@ -4887,9 +4882,9 @@
           "decoded": 8124
         },
         {
-          "url": "/_next/static/chunks/3573-eb7d4686ecd1f4e5.js",
-          "encoded": 22234,
-          "decoded": 78460
+          "url": "/_next/static/chunks/3573-53d1d1859374b7e6.js",
+          "encoded": 22198,
+          "decoded": 78374
         },
         {
           "url": "/_next/static/chunks/app/en/page-153837b6df854cf0.js",
@@ -4919,20 +4914,15 @@
       "theme": "gold",
       "run": 2,
       "motion": "on",
-      "scrollDurationMs": 3001.4000000953674,
-      "rafMedianMs": 22.59999990463257,
-      "rafP95Ms": 39.89999985694885,
-      "rafOver50ms": 3,
-      "longTasks": [
-        {
-          "start": 5464.700000047684,
-          "duration": 55
-        }
-      ],
+      "scrollDurationMs": 3264.4000000953674,
+      "rafMedianMs": 23.5,
+      "rafP95Ms": 41,
+      "rafOver50ms": 2,
+      "longTasks": [],
       "overflow": 0,
       "loadedPhotos": [
         {
-          "src": "http://localhost:3398/brand/shah-landscape-gold-v1.svg",
+          "src": "http://localhost:3398/brand/shah-landscape-teal-v1.svg",
           "complete": true,
           "naturalWidth": 2451
         },
@@ -4997,7 +4987,7 @@
           "naturalWidth": 648
         },
         {
-          "src": "http://localhost:3398/brand/shah-wordmark-gold-v1.svg",
+          "src": "http://localhost:3398/brand/shah-wordmark-teal-v1.svg",
           "complete": true,
           "naturalWidth": 1000
         },
@@ -5067,286 +5057,12 @@
           "naturalWidth": 0
         },
         {
-          "src": "http://localhost:3398/brand/shah-mark-gold-v1.svg",
+          "src": "http://localhost:3398/brand/shah-mark-teal-v1.svg",
           "complete": true,
           "naturalWidth": 847
         },
         {
-          "src": "http://localhost:3398/brand/shah-landscape-gold-v1.svg",
-          "complete": true,
-          "naturalWidth": 2451
-        }
-      ],
-      "resources": [
-        {
-          "url": "/_next/static/css/08b343ce2a8db9ae.css",
-          "encoded": 26381,
-          "decoded": 153292
-        },
-        {
-          "url": "/_next/static/css/7e9b47bcc1a76d3a.css",
-          "encoded": 14115,
-          "decoded": 73909
-        },
-        {
-          "url": "/_next/static/chunks/webpack-1b705029d5c61cce.js",
-          "encoded": 2538,
-          "decoded": 5134
-        },
-        {
-          "url": "/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
-          "encoded": 62877,
-          "decoded": 199865
-        },
-        {
-          "url": "/_next/static/chunks/3794-c968c786880cae15.js",
-          "encoded": 60749,
-          "decoded": 222079
-        },
-        {
-          "url": "/_next/static/chunks/main-app-2f3596a243c31fc0.js",
-          "encoded": 516,
-          "decoded": 516
-        },
-        {
-          "url": "/_next/static/chunks/8500-3953cc33eeceb44e.js",
-          "encoded": 3531,
-          "decoded": 8698
-        },
-        {
-          "url": "/_next/static/chunks/5772-1c5f02be2ece8826.js",
-          "encoded": 5552,
-          "decoded": 14691
-        },
-        {
-          "url": "/_next/static/chunks/1398-6516e63bd5e5c6c7.js",
-          "encoded": 10463,
-          "decoded": 37602
-        },
-        {
-          "url": "/_next/static/chunks/7985-d0f13e1b17e84f35.js",
-          "encoded": 3370,
-          "decoded": 8124
-        },
-        {
-          "url": "/_next/static/chunks/3573-7075230707e2cb38.js",
-          "encoded": 22204,
-          "decoded": 78366
-        },
-        {
-          "url": "/_next/static/chunks/app/en/page-153837b6df854cf0.js",
-          "encoded": 149,
-          "decoded": 149
-        },
-        {
-          "url": "/_next/static/chunks/app/layout-1604e4323aa176e0.js",
-          "encoded": 11154,
-          "decoded": 36166
-        },
-        {
-          "url": "/_next/static/chunks/app/error-a28aa2e01ec85d47.js",
-          "encoded": 814,
-          "decoded": 1536
-        },
-        {
-          "url": "/_next/static/chunks/app/not-found-28744a18cc567e62.js",
-          "encoded": 800,
-          "decoded": 1590
-        }
-      ]
-    },
-    {
-      "variant": "after",
-      "width": 1440,
-      "theme": "gold",
-      "run": 3,
-      "motion": "on",
-      "scrollDurationMs": 3616,
-      "rafMedianMs": 23.800000190734863,
-      "rafP95Ms": 58.200000047683716,
-      "rafOver50ms": 13,
-      "longTasks": [
-        {
-          "start": 4232,
-          "duration": 65
-        },
-        {
-          "start": 4297.600000143051,
-          "duration": 57
-        },
-        {
-          "start": 4356,
-          "duration": 52
-        },
-        {
-          "start": 4410.800000190735,
-          "duration": 63
-        },
-        {
-          "start": 4475.300000190735,
-          "duration": 54
-        },
-        {
-          "start": 4530.300000190735,
-          "duration": 54
-        },
-        {
-          "start": 4585.400000095367,
-          "duration": 57
-        },
-        {
-          "start": 5098.400000095367,
-          "duration": 63
-        },
-        {
-          "start": 6215.800000190735,
-          "duration": 60
-        }
-      ],
-      "overflow": 0,
-      "loadedPhotos": [
-        {
-          "src": "http://127.0.0.1:4109/brand/shah-landscape-teal-v1.svg",
-          "complete": true,
-          "naturalWidth": 2451
-        },
-        {
-          "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/kitchen-640.avif",
-          "complete": true,
-          "naturalWidth": 604
-        },
-        {
-          "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/dining-320.avif",
-          "complete": true,
-          "naturalWidth": 180
-        },
-        {
-          "src": "http://127.0.0.1:4109/_next/image",
-          "complete": true,
-          "naturalWidth": 80
-        },
-        {
-          "src": "http://127.0.0.1:4109/_next/image",
-          "complete": true,
-          "naturalWidth": 80
-        },
-        {
-          "src": "http://127.0.0.1:4109/_next/image",
-          "complete": true,
-          "naturalWidth": 80
-        },
-        {
-          "src": "http://127.0.0.1:4109/_next/image",
-          "complete": true,
-          "naturalWidth": 80
-        },
-        {
-          "src": "http://127.0.0.1:4109/_next/image",
-          "complete": true,
-          "naturalWidth": 80
-        },
-        {
-          "src": "http://127.0.0.1:4109/_next/image",
-          "complete": true,
-          "naturalWidth": 80
-        },
-        {
-          "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/dining-960.avif",
-          "complete": true,
-          "naturalWidth": 720
-        },
-        {
-          "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/kitchen-640.avif",
-          "complete": true,
-          "naturalWidth": 360
-        },
-        {
-          "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/bar-shine-640.avif",
-          "complete": true,
-          "naturalWidth": 360
-        },
-        {
-          "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/room-setting-v3-960.avif",
-          "complete": true,
-          "naturalWidth": 648
-        },
-        {
-          "src": "http://127.0.0.1:4109/brand/shah-wordmark-teal-v1.svg",
-          "complete": true,
-          "naturalWidth": 1000
-        },
-        {
-          "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/dining-640.avif",
-          "complete": true,
-          "naturalWidth": 379
-        },
-        {
-          "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/kitchen-640.avif",
-          "complete": true,
-          "naturalWidth": 379
-        },
-        {
-          "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/atmosphere-setting-v2-640.avif",
-          "complete": true,
-          "naturalWidth": 379
-        },
-        {
-          "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/bar-shine-640.avif",
-          "complete": false,
-          "naturalWidth": 576
-        },
-        {
-          "src": "",
-          "complete": false,
-          "naturalWidth": 0
-        },
-        {
-          "src": "",
-          "complete": false,
-          "naturalWidth": 0
-        },
-        {
-          "src": "",
-          "complete": false,
-          "naturalWidth": 0
-        },
-        {
-          "src": "",
-          "complete": false,
-          "naturalWidth": 0
-        },
-        {
-          "src": "",
-          "complete": false,
-          "naturalWidth": 0
-        },
-        {
-          "src": "",
-          "complete": false,
-          "naturalWidth": 0
-        },
-        {
-          "src": "",
-          "complete": false,
-          "naturalWidth": 0
-        },
-        {
-          "src": "",
-          "complete": false,
-          "naturalWidth": 0
-        },
-        {
-          "src": "",
-          "complete": false,
-          "naturalWidth": 0
-        },
-        {
-          "src": "http://127.0.0.1:4109/brand/shah-mark-teal-v1.svg",
-          "complete": true,
-          "naturalWidth": 847
-        },
-        {
-          "src": "http://127.0.0.1:4109/brand/shah-landscape-teal-v1.svg",
+          "src": "http://localhost:3398/brand/shah-landscape-teal-v1.svg",
           "complete": true,
           "naturalWidth": 2451
         }
@@ -5430,289 +5146,19 @@
       ]
     },
     {
-      "variant": "before",
-      "width": 1440,
-      "theme": "gold",
-      "run": 4,
-      "motion": "on",
-      "scrollDurationMs": 3458.5,
-      "rafMedianMs": 24.700000047683716,
-      "rafP95Ms": 59.700000047683716,
-      "rafOver50ms": 10,
-      "longTasks": [
-        {
-          "start": 3299.899999856949,
-          "duration": 69
-        },
-        {
-          "start": 4482.599999904633,
-          "duration": 61
-        },
-        {
-          "start": 4547,
-          "duration": 65
-        },
-        {
-          "start": 4620.399999856949,
-          "duration": 63
-        },
-        {
-          "start": 4686.699999809265,
-          "duration": 54
-        },
-        {
-          "start": 4745.599999904633,
-          "duration": 56
-        },
-        {
-          "start": 4802.699999809265,
-          "duration": 53
-        },
-        {
-          "start": 5915.799999952316,
-          "duration": 54
-        }
-      ],
-      "overflow": 0,
-      "loadedPhotos": [
-        {
-          "src": "http://localhost:3398/brand/shah-landscape-gold-v1.svg",
-          "complete": true,
-          "naturalWidth": 2451
-        },
-        {
-          "src": "http://localhost:3398/brand/edited-restaurant-photos-v1/kitchen-640.avif",
-          "complete": true,
-          "naturalWidth": 604
-        },
-        {
-          "src": "http://localhost:3398/brand/edited-restaurant-photos-v1/dining-320.avif",
-          "complete": true,
-          "naturalWidth": 180
-        },
-        {
-          "src": "http://localhost:3398/_next/image",
-          "complete": true,
-          "naturalWidth": 80
-        },
-        {
-          "src": "http://localhost:3398/_next/image",
-          "complete": true,
-          "naturalWidth": 80
-        },
-        {
-          "src": "http://localhost:3398/_next/image",
-          "complete": true,
-          "naturalWidth": 80
-        },
-        {
-          "src": "http://localhost:3398/_next/image",
-          "complete": true,
-          "naturalWidth": 80
-        },
-        {
-          "src": "http://localhost:3398/_next/image",
-          "complete": true,
-          "naturalWidth": 80
-        },
-        {
-          "src": "http://localhost:3398/_next/image",
-          "complete": true,
-          "naturalWidth": 80
-        },
-        {
-          "src": "http://localhost:3398/brand/edited-restaurant-photos-v1/dining-960.avif",
-          "complete": true,
-          "naturalWidth": 720
-        },
-        {
-          "src": "http://localhost:3398/brand/edited-restaurant-photos-v1/kitchen-640.avif",
-          "complete": true,
-          "naturalWidth": 360
-        },
-        {
-          "src": "http://localhost:3398/brand/edited-restaurant-photos-v1/bar-shine-640.avif",
-          "complete": true,
-          "naturalWidth": 360
-        },
-        {
-          "src": "http://localhost:3398/brand/edited-restaurant-photos-v1/room-setting-v3-960.avif",
-          "complete": true,
-          "naturalWidth": 648
-        },
-        {
-          "src": "http://localhost:3398/brand/shah-wordmark-gold-v1.svg",
-          "complete": true,
-          "naturalWidth": 1000
-        },
-        {
-          "src": "http://localhost:3398/brand/edited-restaurant-photos-v1/dining-640.avif",
-          "complete": true,
-          "naturalWidth": 379
-        },
-        {
-          "src": "http://localhost:3398/brand/edited-restaurant-photos-v1/kitchen-640.avif",
-          "complete": true,
-          "naturalWidth": 379
-        },
-        {
-          "src": "http://localhost:3398/brand/edited-restaurant-photos-v1/atmosphere-setting-v2-640.avif",
-          "complete": true,
-          "naturalWidth": 379
-        },
-        {
-          "src": "http://localhost:3398/brand/edited-restaurant-photos-v1/bar-shine-640.avif",
-          "complete": false,
-          "naturalWidth": 576
-        },
-        {
-          "src": "",
-          "complete": false,
-          "naturalWidth": 0
-        },
-        {
-          "src": "",
-          "complete": false,
-          "naturalWidth": 0
-        },
-        {
-          "src": "",
-          "complete": false,
-          "naturalWidth": 0
-        },
-        {
-          "src": "",
-          "complete": false,
-          "naturalWidth": 0
-        },
-        {
-          "src": "",
-          "complete": false,
-          "naturalWidth": 0
-        },
-        {
-          "src": "",
-          "complete": false,
-          "naturalWidth": 0
-        },
-        {
-          "src": "",
-          "complete": false,
-          "naturalWidth": 0
-        },
-        {
-          "src": "",
-          "complete": false,
-          "naturalWidth": 0
-        },
-        {
-          "src": "",
-          "complete": false,
-          "naturalWidth": 0
-        },
-        {
-          "src": "http://localhost:3398/brand/shah-mark-gold-v1.svg",
-          "complete": true,
-          "naturalWidth": 847
-        },
-        {
-          "src": "http://localhost:3398/brand/shah-landscape-gold-v1.svg",
-          "complete": true,
-          "naturalWidth": 2451
-        }
-      ],
-      "resources": [
-        {
-          "url": "/_next/static/css/08b343ce2a8db9ae.css",
-          "encoded": 26381,
-          "decoded": 153292
-        },
-        {
-          "url": "/_next/static/css/7e9b47bcc1a76d3a.css",
-          "encoded": 14115,
-          "decoded": 73909
-        },
-        {
-          "url": "/_next/static/chunks/webpack-1b705029d5c61cce.js",
-          "encoded": 2538,
-          "decoded": 5134
-        },
-        {
-          "url": "/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
-          "encoded": 62877,
-          "decoded": 199865
-        },
-        {
-          "url": "/_next/static/chunks/3794-c968c786880cae15.js",
-          "encoded": 60749,
-          "decoded": 222079
-        },
-        {
-          "url": "/_next/static/chunks/main-app-2f3596a243c31fc0.js",
-          "encoded": 516,
-          "decoded": 516
-        },
-        {
-          "url": "/_next/static/chunks/8500-3953cc33eeceb44e.js",
-          "encoded": 3531,
-          "decoded": 8698
-        },
-        {
-          "url": "/_next/static/chunks/5772-1c5f02be2ece8826.js",
-          "encoded": 5552,
-          "decoded": 14691
-        },
-        {
-          "url": "/_next/static/chunks/1398-6516e63bd5e5c6c7.js",
-          "encoded": 10463,
-          "decoded": 37602
-        },
-        {
-          "url": "/_next/static/chunks/7985-d0f13e1b17e84f35.js",
-          "encoded": 3370,
-          "decoded": 8124
-        },
-        {
-          "url": "/_next/static/chunks/3573-7075230707e2cb38.js",
-          "encoded": 22204,
-          "decoded": 78366
-        },
-        {
-          "url": "/_next/static/chunks/app/en/page-153837b6df854cf0.js",
-          "encoded": 149,
-          "decoded": 149
-        },
-        {
-          "url": "/_next/static/chunks/app/layout-1604e4323aa176e0.js",
-          "encoded": 11154,
-          "decoded": 36166
-        },
-        {
-          "url": "/_next/static/chunks/app/error-a28aa2e01ec85d47.js",
-          "encoded": 814,
-          "decoded": 1536
-        },
-        {
-          "url": "/_next/static/chunks/app/not-found-28744a18cc567e62.js",
-          "encoded": 800,
-          "decoded": 1590
-        }
-      ]
-    },
-    {
       "variant": "after",
       "width": 1440,
       "theme": "gold",
-      "run": 5,
+      "run": 3,
       "motion": "on",
-      "scrollDurationMs": 3640.600000143051,
-      "rafMedianMs": 30.5,
-      "rafP95Ms": 47.59999990463257,
-      "rafOver50ms": 4,
+      "scrollDurationMs": 3388.0999999046326,
+      "rafMedianMs": 24.59999990463257,
+      "rafP95Ms": 44.5,
+      "rafOver50ms": 3,
       "longTasks": [
         {
-          "start": 5756.799999952316,
-          "duration": 53
+          "start": 5625.299999952316,
+          "duration": 64
         }
       ],
       "overflow": 0,
@@ -5870,6 +5316,268 @@
           "decoded": 155463
         },
         {
+          "url": "/_next/static/css/f92b951a70591bdc.css",
+          "encoded": 14810,
+          "decoded": 79093
+        },
+        {
+          "url": "/_next/static/chunks/webpack-1b705029d5c61cce.js",
+          "encoded": 2538,
+          "decoded": 5134
+        },
+        {
+          "url": "/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+          "encoded": 62877,
+          "decoded": 199865
+        },
+        {
+          "url": "/_next/static/chunks/3794-c968c786880cae15.js",
+          "encoded": 60749,
+          "decoded": 222079
+        },
+        {
+          "url": "/_next/static/chunks/main-app-2f3596a243c31fc0.js",
+          "encoded": 516,
+          "decoded": 516
+        },
+        {
+          "url": "/_next/static/chunks/8500-3953cc33eeceb44e.js",
+          "encoded": 3531,
+          "decoded": 8698
+        },
+        {
+          "url": "/_next/static/chunks/5772-1c5f02be2ece8826.js",
+          "encoded": 5552,
+          "decoded": 14691
+        },
+        {
+          "url": "/_next/static/chunks/1398-6516e63bd5e5c6c7.js",
+          "encoded": 10463,
+          "decoded": 37602
+        },
+        {
+          "url": "/_next/static/chunks/7985-d0f13e1b17e84f35.js",
+          "encoded": 3370,
+          "decoded": 8124
+        },
+        {
+          "url": "/_next/static/chunks/3573-53d1d1859374b7e6.js",
+          "encoded": 22198,
+          "decoded": 78374
+        },
+        {
+          "url": "/_next/static/chunks/app/en/page-153837b6df854cf0.js",
+          "encoded": 149,
+          "decoded": 149
+        },
+        {
+          "url": "/_next/static/chunks/app/layout-f40bdcb94ac3dbe4.js",
+          "encoded": 11154,
+          "decoded": 36170
+        },
+        {
+          "url": "/_next/static/chunks/app/error-a28aa2e01ec85d47.js",
+          "encoded": 814,
+          "decoded": 1536
+        },
+        {
+          "url": "/_next/static/chunks/app/not-found-28744a18cc567e62.js",
+          "encoded": 800,
+          "decoded": 1590
+        }
+      ]
+    },
+    {
+      "variant": "before",
+      "width": 1440,
+      "theme": "gold",
+      "run": 4,
+      "motion": "on",
+      "scrollDurationMs": 3688.7999999523163,
+      "rafMedianMs": 27,
+      "rafP95Ms": 56.10000014305115,
+      "rafOver50ms": 8,
+      "longTasks": [
+        {
+          "start": 3647.100000143051,
+          "duration": 61
+        },
+        {
+          "start": 3710,
+          "duration": 56
+        },
+        {
+          "start": 3767.7999999523163,
+          "duration": 57
+        },
+        {
+          "start": 3826.2000000476837,
+          "duration": 53
+        },
+        {
+          "start": 3880.9000000953674,
+          "duration": 52
+        },
+        {
+          "start": 3935.4000000953674,
+          "duration": 57
+        }
+      ],
+      "overflow": 0,
+      "loadedPhotos": [
+        {
+          "src": "http://localhost:3398/brand/shah-landscape-teal-v1.svg",
+          "complete": true,
+          "naturalWidth": 2451
+        },
+        {
+          "src": "http://localhost:3398/brand/edited-restaurant-photos-v1/kitchen-640.avif",
+          "complete": true,
+          "naturalWidth": 604
+        },
+        {
+          "src": "http://localhost:3398/brand/edited-restaurant-photos-v1/dining-320.avif",
+          "complete": true,
+          "naturalWidth": 180
+        },
+        {
+          "src": "http://localhost:3398/_next/image",
+          "complete": true,
+          "naturalWidth": 80
+        },
+        {
+          "src": "http://localhost:3398/_next/image",
+          "complete": true,
+          "naturalWidth": 80
+        },
+        {
+          "src": "http://localhost:3398/_next/image",
+          "complete": true,
+          "naturalWidth": 80
+        },
+        {
+          "src": "http://localhost:3398/_next/image",
+          "complete": true,
+          "naturalWidth": 80
+        },
+        {
+          "src": "http://localhost:3398/_next/image",
+          "complete": true,
+          "naturalWidth": 80
+        },
+        {
+          "src": "http://localhost:3398/_next/image",
+          "complete": true,
+          "naturalWidth": 80
+        },
+        {
+          "src": "http://localhost:3398/brand/edited-restaurant-photos-v1/dining-960.avif",
+          "complete": true,
+          "naturalWidth": 720
+        },
+        {
+          "src": "http://localhost:3398/brand/edited-restaurant-photos-v1/kitchen-640.avif",
+          "complete": true,
+          "naturalWidth": 360
+        },
+        {
+          "src": "http://localhost:3398/brand/edited-restaurant-photos-v1/bar-shine-640.avif",
+          "complete": true,
+          "naturalWidth": 360
+        },
+        {
+          "src": "http://localhost:3398/brand/edited-restaurant-photos-v1/room-setting-v3-960.avif",
+          "complete": true,
+          "naturalWidth": 648
+        },
+        {
+          "src": "http://localhost:3398/brand/shah-wordmark-teal-v1.svg",
+          "complete": true,
+          "naturalWidth": 1000
+        },
+        {
+          "src": "http://localhost:3398/brand/edited-restaurant-photos-v1/dining-640.avif",
+          "complete": true,
+          "naturalWidth": 379
+        },
+        {
+          "src": "http://localhost:3398/brand/edited-restaurant-photos-v1/kitchen-640.avif",
+          "complete": true,
+          "naturalWidth": 379
+        },
+        {
+          "src": "http://localhost:3398/brand/edited-restaurant-photos-v1/atmosphere-setting-v2-640.avif",
+          "complete": true,
+          "naturalWidth": 379
+        },
+        {
+          "src": "http://localhost:3398/brand/edited-restaurant-photos-v1/bar-shine-640.avif",
+          "complete": false,
+          "naturalWidth": 576
+        },
+        {
+          "src": "",
+          "complete": false,
+          "naturalWidth": 0
+        },
+        {
+          "src": "",
+          "complete": false,
+          "naturalWidth": 0
+        },
+        {
+          "src": "",
+          "complete": false,
+          "naturalWidth": 0
+        },
+        {
+          "src": "",
+          "complete": false,
+          "naturalWidth": 0
+        },
+        {
+          "src": "",
+          "complete": false,
+          "naturalWidth": 0
+        },
+        {
+          "src": "",
+          "complete": false,
+          "naturalWidth": 0
+        },
+        {
+          "src": "",
+          "complete": false,
+          "naturalWidth": 0
+        },
+        {
+          "src": "",
+          "complete": false,
+          "naturalWidth": 0
+        },
+        {
+          "src": "",
+          "complete": false,
+          "naturalWidth": 0
+        },
+        {
+          "src": "http://localhost:3398/brand/shah-mark-teal-v1.svg",
+          "complete": true,
+          "naturalWidth": 847
+        },
+        {
+          "src": "http://localhost:3398/brand/shah-landscape-teal-v1.svg",
+          "complete": true,
+          "naturalWidth": 2451
+        }
+      ],
+      "resources": [
+        {
+          "url": "/_next/static/css/c6ae0f6cdc2e4120.css",
+          "encoded": 26720,
+          "decoded": 155463
+        },
+        {
           "url": "/_next/static/css/693ccfa84961ec48.css",
           "encoded": 14863,
           "decoded": 78949
@@ -5918,6 +5626,268 @@
           "url": "/_next/static/chunks/3573-eb7d4686ecd1f4e5.js",
           "encoded": 22234,
           "decoded": 78460
+        },
+        {
+          "url": "/_next/static/chunks/app/en/page-153837b6df854cf0.js",
+          "encoded": 149,
+          "decoded": 149
+        },
+        {
+          "url": "/_next/static/chunks/app/layout-f40bdcb94ac3dbe4.js",
+          "encoded": 11154,
+          "decoded": 36170
+        },
+        {
+          "url": "/_next/static/chunks/app/error-a28aa2e01ec85d47.js",
+          "encoded": 814,
+          "decoded": 1536
+        },
+        {
+          "url": "/_next/static/chunks/app/not-found-28744a18cc567e62.js",
+          "encoded": 800,
+          "decoded": 1590
+        }
+      ]
+    },
+    {
+      "variant": "after",
+      "width": 1440,
+      "theme": "gold",
+      "run": 5,
+      "motion": "on",
+      "scrollDurationMs": 3529.600000143051,
+      "rafMedianMs": 24.5,
+      "rafP95Ms": 65.59999990463257,
+      "rafOver50ms": 8,
+      "longTasks": [
+        {
+          "start": 4349,
+          "duration": 68
+        },
+        {
+          "start": 4418.5,
+          "duration": 75
+        },
+        {
+          "start": 4495,
+          "duration": 84
+        },
+        {
+          "start": 4579.600000143051,
+          "duration": 69
+        },
+        {
+          "start": 4650.600000143051,
+          "duration": 63
+        },
+        {
+          "start": 4714.5,
+          "duration": 64
+        }
+      ],
+      "overflow": 0,
+      "loadedPhotos": [
+        {
+          "src": "http://127.0.0.1:4109/brand/shah-landscape-teal-v1.svg",
+          "complete": true,
+          "naturalWidth": 2451
+        },
+        {
+          "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/kitchen-640.avif",
+          "complete": true,
+          "naturalWidth": 604
+        },
+        {
+          "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/dining-320.avif",
+          "complete": true,
+          "naturalWidth": 180
+        },
+        {
+          "src": "http://127.0.0.1:4109/_next/image",
+          "complete": true,
+          "naturalWidth": 80
+        },
+        {
+          "src": "http://127.0.0.1:4109/_next/image",
+          "complete": true,
+          "naturalWidth": 80
+        },
+        {
+          "src": "http://127.0.0.1:4109/_next/image",
+          "complete": true,
+          "naturalWidth": 80
+        },
+        {
+          "src": "http://127.0.0.1:4109/_next/image",
+          "complete": true,
+          "naturalWidth": 80
+        },
+        {
+          "src": "http://127.0.0.1:4109/_next/image",
+          "complete": true,
+          "naturalWidth": 80
+        },
+        {
+          "src": "http://127.0.0.1:4109/_next/image",
+          "complete": true,
+          "naturalWidth": 80
+        },
+        {
+          "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/dining-960.avif",
+          "complete": true,
+          "naturalWidth": 720
+        },
+        {
+          "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/kitchen-640.avif",
+          "complete": true,
+          "naturalWidth": 360
+        },
+        {
+          "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/bar-shine-640.avif",
+          "complete": true,
+          "naturalWidth": 360
+        },
+        {
+          "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/room-setting-v3-960.avif",
+          "complete": true,
+          "naturalWidth": 648
+        },
+        {
+          "src": "http://127.0.0.1:4109/brand/shah-wordmark-teal-v1.svg",
+          "complete": true,
+          "naturalWidth": 1000
+        },
+        {
+          "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/dining-640.avif",
+          "complete": true,
+          "naturalWidth": 379
+        },
+        {
+          "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/kitchen-640.avif",
+          "complete": true,
+          "naturalWidth": 379
+        },
+        {
+          "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/atmosphere-setting-v2-640.avif",
+          "complete": true,
+          "naturalWidth": 379
+        },
+        {
+          "src": "http://127.0.0.1:4109/brand/edited-restaurant-photos-v1/bar-shine-640.avif",
+          "complete": false,
+          "naturalWidth": 576
+        },
+        {
+          "src": "",
+          "complete": false,
+          "naturalWidth": 0
+        },
+        {
+          "src": "",
+          "complete": false,
+          "naturalWidth": 0
+        },
+        {
+          "src": "",
+          "complete": false,
+          "naturalWidth": 0
+        },
+        {
+          "src": "",
+          "complete": false,
+          "naturalWidth": 0
+        },
+        {
+          "src": "",
+          "complete": false,
+          "naturalWidth": 0
+        },
+        {
+          "src": "",
+          "complete": false,
+          "naturalWidth": 0
+        },
+        {
+          "src": "",
+          "complete": false,
+          "naturalWidth": 0
+        },
+        {
+          "src": "",
+          "complete": false,
+          "naturalWidth": 0
+        },
+        {
+          "src": "",
+          "complete": false,
+          "naturalWidth": 0
+        },
+        {
+          "src": "http://127.0.0.1:4109/brand/shah-mark-teal-v1.svg",
+          "complete": true,
+          "naturalWidth": 847
+        },
+        {
+          "src": "http://127.0.0.1:4109/brand/shah-landscape-teal-v1.svg",
+          "complete": true,
+          "naturalWidth": 2451
+        }
+      ],
+      "resources": [
+        {
+          "url": "/_next/static/css/c6ae0f6cdc2e4120.css",
+          "encoded": 26720,
+          "decoded": 155463
+        },
+        {
+          "url": "/_next/static/css/f92b951a70591bdc.css",
+          "encoded": 14810,
+          "decoded": 79093
+        },
+        {
+          "url": "/_next/static/chunks/webpack-1b705029d5c61cce.js",
+          "encoded": 2538,
+          "decoded": 5134
+        },
+        {
+          "url": "/_next/static/chunks/4bd1b696-c2f6e0877b6c10aa.js",
+          "encoded": 62877,
+          "decoded": 199865
+        },
+        {
+          "url": "/_next/static/chunks/3794-c968c786880cae15.js",
+          "encoded": 60749,
+          "decoded": 222079
+        },
+        {
+          "url": "/_next/static/chunks/main-app-2f3596a243c31fc0.js",
+          "encoded": 516,
+          "decoded": 516
+        },
+        {
+          "url": "/_next/static/chunks/8500-3953cc33eeceb44e.js",
+          "encoded": 3531,
+          "decoded": 8698
+        },
+        {
+          "url": "/_next/static/chunks/5772-1c5f02be2ece8826.js",
+          "encoded": 5552,
+          "decoded": 14691
+        },
+        {
+          "url": "/_next/static/chunks/1398-6516e63bd5e5c6c7.js",
+          "encoded": 10463,
+          "decoded": 37602
+        },
+        {
+          "url": "/_next/static/chunks/7985-d0f13e1b17e84f35.js",
+          "encoded": 3370,
+          "decoded": 8124
+        },
+        {
+          "url": "/_next/static/chunks/3573-53d1d1859374b7e6.js",
+          "encoded": 22198,
+          "decoded": 78374
         },
         {
           "url": "/_next/static/chunks/app/en/page-153837b6df854cf0.js",

@@ -798,13 +798,7 @@
   .home[data-choreography="ready"][data-motion="on"] [data-reveal]:not([data-reveal-instant]) { transition:transform 1s var(--ease-out) var(--reveal-delay,0ms); }
   .home[data-choreography="ready"][data-motion="on"] [data-evening-card][data-reveal="pending"] { transform:translate3d(54px,32px,0) rotate(1deg); }
   .home[data-choreography="ready"][data-motion="on"] [data-reveal-kind="frame"][data-reveal="pending"] { transform:translate3d(0,44px,0) rotate(-1deg) scale(.96); }
-  @supports (animation-timeline:view()) {
-    .home[data-motion="on"] .eyebrow::before { animation:chapter-line linear both; animation-timeline:view(); animation-range:entry 0% cover 30%; }
-    .home[data-motion="on"] :is(.menuPhoto,.storyPhoto > div,.eveningPhoto)::before { animation:frame-arrival linear both; animation-timeline:view(); animation-range:entry 0% cover 35%; }
-  }
 }
-@keyframes chapter-line { from { transform:scaleX(.15); opacity:.35; } to { transform:scaleX(1); opacity:1; } }
-@keyframes frame-arrival { from { transform:scale(.96); opacity:.25; } to { transform:scale(1); opacity:1; } }
 @media (max-width:700px) {
   .home[data-choreography="ready"][data-motion="on"] [data-evening-card][data-reveal="pending"] { transform:translate3d(22px,24px,0); }
 }
@@ -828,3 +822,12 @@
 }
 
 :global(:root[data-shah-theme="gold"]) .home .storySection::before { background-image:url("/brand/shah-mark-teal-v1.svg"); opacity:.18; }
+
+/* Existing reveal attributes trigger these details once; no per-scroll timelines. */
+@media (min-width:701px) and (prefers-reduced-motion:no-preference) {
+  .home[data-motion="on"] .eyebrow::before { transition:transform .9s var(--ease-out); }
+  .home[data-choreography="ready"][data-motion="on"] [data-reveal="pending"] .eyebrow::before,
+  .home[data-choreography="ready"][data-motion="on"] .eyebrow[data-reveal="pending"]::before { transform:scaleX(.15); }
+  .home[data-motion="on"] :is(.menuPhoto,.storyPhoto > div,.eveningPhoto)::before { transition:transform .9s var(--ease-out),opacity .65s ease; }
+  .home[data-choreography="ready"][data-motion="on"] [data-reveal="pending"] :is(.menuPhoto,.storyPhoto > div,.eveningPhoto)::before { transform:scale(.96); opacity:.25; }
+}

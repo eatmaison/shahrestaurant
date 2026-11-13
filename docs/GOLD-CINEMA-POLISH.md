@@ -17,7 +17,7 @@ Gold text on the graphite surface has a nominal 8.82:1 contrast ratio; teal artw
 
 - The existing three-picture, right-to-left gallery now has restrained floating rotation on desktop. Native scrolling, Continue, keyboard focus and the short-viewport fallback remain available.
 - Evening cards enter with staggered lateral movement, and image frames settle into place. Text entrances use transforms with full opacity after reveal, preserving legibility during movement.
-- Desktop chapter rules and photo-frame details use native CSS view timelines where supported. Other browsers retain static details and the existing entrance choreography.
+- Desktop chapter rules and photo-frame details follow the existing one-time reveal attributes. No additional scroll-linked animation timeline is introduced.
 - Link underlines draw on hover/focus. No JavaScript animation loop, extra dependency, canvas, particle layer or media asset was added.
 - Phones retain shorter lateral entrances and the sequential gallery, with static decorative lines/frames and no added card rotation or large ambient gradients. Large new header/logo blur shadows were removed.
 - Reduced motion and data-saving retain ordinary visible content without the pinned sequence or new decorative animation.
@@ -27,7 +27,7 @@ The existing `tm.theme` choice and dark default are preserved. Saved legacy `"li
 
 ## Exact verification
 
-Build **XAvWn1WCfZVojo1yazM5b**, Next 16.2.10/Webpack, 65 routes; TypeScript/build and focused lint passed. Frozen application/config/public source **4e64b8014550ddfc066e2d10e82784d940fa32939e18943c9b73b5c0c8eefdc0**, 496 inputs, unchanged through final verification. [Build](gold-cinema-build-2026-11-13.json), [source hashes](gold-cinema-source-2026-11-13.json).
+Build **A3XGcJrqHbutMgWYhQ9-y**, Next 16.2.10/Webpack, 65 routes; TypeScript/build and focused lint passed. Frozen application/config/public source **8d97670c8b413ff0c1f3f9030452cfc6757d7c7d7d7a8878a12d67b6e5ae8431**, 496 inputs, unchanged through final verification. [Build](gold-cinema-build-2026-11-13.json), [source hashes](gold-cinema-source-2026-11-13.json).
 
 - [52 public/header checks](gold-cinema-public-browser-2026-11-13.json), including EN/NL, both themes, six header widths and original teal token/body parity on six routes.
 - [48 admin layouts](gold-cinema-admin-browser-2026-11-13.json), four workspaces × EN/NL × both themes × 1440/390/360 widths.
@@ -41,16 +41,16 @@ Visuals: [gold desktop](gold-cinema-screenshots/public-home-en-gold.png), [teal 
 
 ## Performance
 
-Loaded homepage resources remained 13 JS and 2 CSS files. JS gzip6: **184413 → 184443 B** (+30 B); CSS gzip6: **40496 → 41583 B** (+1087 B). The small JS difference is logo-selection metadata, not new animation code.
+Loaded homepage resources remained 13 JS and 2 CSS files. JS gzip6: **184443 → 184407 B** (-36 B); CSS gzip6: **41583 → 41530 B** (-53 B). Any small JS byte change comes from compiled CSS module/chunk mapping; no animation JavaScript was added.
 
-The final old/new builds were interleaved in one fresh browser instance, three runs per width/theme. Median of each run's p95 requestAnimationFrame interval (lower is better):
+This follow-up compares the initial polish checkpoint a876d23 (XAvWn1WCfZVojo1yazM5b) with entry-triggered details. Palette, logo assets and media are the same. Builds were interleaved in one browser instance, three runs per width/theme. Median of each run's p95 requestAnimationFrame interval (lower is better):
 
 | Width/theme | Before | After |
 | --- | ---: | ---: |
-| 390px / teal | 54.0 ms | 41.6 ms |
-| 390px / gold | 44.5 ms | 51.3 ms |
-| 1440px / teal | 42.3 ms | 61.0 ms |
-| 1440px / gold | 42.7 ms | 58.2 ms |
+| 390px / teal | 43.2 ms | 57.5 ms |
+| 390px / gold | 42.4 ms | 41.5 ms |
+| 1440px / teal | 53.9 ms | 42.5 ms |
+| 1440px / gold | 56.1 ms | 44.5 ms |
 
 [Raw 24-run comparison](gold-cinema-performance-final-interleaved-2026-11-13.json), [ranges, task counts and byte accounting](gold-cinema-performance-summary-2026-11-13.json). The results do not support a universal speedup claim; individual slower samples and ranges are retained.
 
@@ -67,9 +67,9 @@ Same network: http://192.168.0.122:3618/en; Dutch: http://192.168.0.122:3618/. T
 PowerShell from this checkout, retaining the matching build and task-local Temp fixtures:
 
 ```powershell
-node "$env:TEMP\shah-preview-20261111\start-shah-gold-cinema-polish-v5-main.cjs"
-node "$env:TEMP\shah-gold-cinema-20261113\start-or-verify-private-polish-v5.cjs"
-node "$env:TEMP\shah-phone-preview-20261111\launch-lan-nl-v2-detached.cjs" "$env:TEMP\shah-phone-preview-20261111\lan-config-XAvWn1WCfZVojo1yazM5b.json"
+node "$env:TEMP\shah-preview-20261111\start-shah-gold-cinema-polish-v6-main.cjs"
+node "$env:TEMP\shah-gold-cinema-20261113\start-or-verify-private-polish-v6.cjs"
+node "$env:TEMP\shah-phone-preview-20261111\launch-lan-nl-v2-detached.cjs" "$env:TEMP\shah-phone-preview-20261111\lan-config-A3XGcJrqHbutMgWYhQ9-y.json"
 ```
 
 These guarded helpers verify the exact local build or start on free ports. They do not replace unknown listeners and are not production deployment commands.

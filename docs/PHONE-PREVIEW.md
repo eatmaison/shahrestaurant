@@ -1,13 +1,13 @@
 # Phone preview on the local network
 
-Current: http://192.168.0.122:3618/ (Dutch) and http://192.168.0.122:3618/en (English), build **XAvWn1WCfZVojo1yazM5b**, source 4e64b8014550ddfc066e2d10e82784d940fa32939e18943c9b73b5c0c8eefdc0, 496 inputs. Same build at localhost:3398. Both themes are dark: established teal and refined graphite/gold, with gold/teal UI logos respectively. [Changes, test evidence and limitations](GOLD-CINEMA-POLISH.md), [current LAN verification](phone-preview-2026-11-11.json).
+Current: http://192.168.0.122:3618/ (Dutch) and http://192.168.0.122:3618/en (English), build **A3XGcJrqHbutMgWYhQ9-y**, source 8d97670c8b413ff0c1f3f9030452cfc6757d7c7d7d7a8878a12d67b6e5ae8431, 496 inputs. Same build at localhost:3398. Both themes are dark: established teal and refined graphite/gold, with gold/teal UI logos respectively. [Changes, test evidence and limitations](GOLD-CINEMA-POLISH.md), [current LAN verification](phone-preview-2026-11-11.json).
 
 Admin stays loopback-only at http://localhost:4068/admin with labelled test data. LAN private routes and all submissions remain blocked. Current playback/layout checks use desktop Chromium emulation and PC-side LAN requests, not a new physical-phone test. No network-security setting changed.
 
 Current guarded start/verify (PowerShell; matching build and local fixtures required):
 
 ```powershell
-node "$env:TEMP\shah-phone-preview-20261111\launch-lan-nl-v2-detached.cjs" "$env:TEMP\shah-phone-preview-20261111\lan-config-XAvWn1WCfZVojo1yazM5b.json"
+node "$env:TEMP\shah-phone-preview-20261111\launch-lan-nl-v2-detached.cjs" "$env:TEMP\shah-phone-preview-20261111\lan-config-A3XGcJrqHbutMgWYhQ9-y.json"
 ```
 
 ## Historical 12 November baseline and policy explanation

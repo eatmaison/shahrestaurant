@@ -1,6 +1,6 @@
 {
-  "measuredAt": "2026-11-13T20:05:04.174Z",
-  "sha256": "4e64b8014550ddfc066e2d10e82784d940fa32939e18943c9b73b5c0c8eefdc0",
+  "measuredAt": "2026-11-13T20:35:10.295Z",
+  "sha256": "8d97670c8b413ff0c1f3f9030452cfc6757d7c7d7d7a8878a12d67b6e5ae8431",
   "files": [
     {
       "file": "app/HomeExperience.tsx",
@@ -560,7 +560,7 @@
     },
     {
       "file": "app/home.module.css",
-      "sha256": "2ec6128640b45f9aa1649010c1dda7b35a1ade3cf582c1046c4c8e20b9345a0b"
+      "sha256": "c8c2e7207ac8a9827ecc144fe23553e6442f2f6d370dff3c2f57cf7ad4733ee2"
     },
     {
       "file": "app/layout.tsx",

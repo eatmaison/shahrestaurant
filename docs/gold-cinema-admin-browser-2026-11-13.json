@@ -1,6 +1,6 @@
 {
-  "atUTC": "2026-11-13T20:08:38.949Z",
-  "build": "XAvWn1WCfZVojo1yazM5b",
+  "atUTC": "2026-11-13T20:38:49.171Z",
+  "build": "A3XGcJrqHbutMgWYhQ9-y",
   "syntheticOnly": true,
   "checks": [
     {
@@ -256,7 +256,7 @@
       "overflow": 0,
       "heading": "Daily operations",
       "rows": 0,
-      "domElements": 1732,
+      "domElements": 180,
       "navLinks": [
         {
           "href": "/admin",
@@ -272,30 +272,6 @@
         },
         {
           "href": "/admin/events",
-          "height": 48
-        },
-        {
-          "href": "#workspace-orders",
-          "height": 48
-        },
-        {
-          "href": "#workspace-reservations",
-          "height": 48
-        },
-        {
-          "href": "#workspace-products",
-          "height": 48
-        },
-        {
-          "href": "#workspace-vip",
-          "height": 48
-        },
-        {
-          "href": "#workspace-social",
-          "height": 48
-        },
-        {
-          "href": "#workspace-phone",
           "height": 48
         }
       ],
@@ -852,7 +828,7 @@
       "overflow": 0,
       "heading": "Dagelijks beheer",
       "rows": 0,
-      "domElements": 180,
+      "domElements": 1732,
       "navLinks": [
         {
           "href": "/admin",
@@ -868,6 +844,30 @@
         },
         {
           "href": "/admin/events",
+          "height": 48
+        },
+        {
+          "href": "#workspace-orders",
+          "height": 48
+        },
+        {
+          "href": "#workspace-reservations",
+          "height": 48
+        },
+        {
+          "href": "#workspace-products",
+          "height": 48
+        },
+        {
+          "href": "#workspace-vip",
+          "height": 48
+        },
+        {
+          "href": "#workspace-social",
+          "height": 48
+        },
+        {
+          "href": "#workspace-phone",
           "height": 48
         }
       ],
@@ -1275,7 +1275,7 @@
       "overflow": 0,
       "heading": "Daily operations",
       "rows": 0,
-      "domElements": 180,
+      "domElements": 1732,
       "navLinks": [
         {
           "href": "/admin",
@@ -1291,6 +1291,30 @@
         },
         {
           "href": "/admin/events",
+          "height": 48
+        },
+        {
+          "href": "#workspace-orders",
+          "height": 48
+        },
+        {
+          "href": "#workspace-reservations",
+          "height": 48
+        },
+        {
+          "href": "#workspace-products",
+          "height": 48
+        },
+        {
+          "href": "#workspace-vip",
+          "height": 48
+        },
+        {
+          "href": "#workspace-social",
+          "height": 48
+        },
+        {
+          "href": "#workspace-phone",
           "height": 48
         }
       ],
