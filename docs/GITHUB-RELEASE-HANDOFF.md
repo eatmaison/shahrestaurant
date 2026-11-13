@@ -1,5 +1,21 @@
 # GitHub release handoff - 13 November 2026
 
+## Current release: second admin round and gold light mode
+
+Target: **eatmaison/shahrestaurant**, branch **main**, using the authenticated **eatmaison** account. Website commit: `5775d41ff27db32b8c3fca71cc7c6e49947ad789`; the publication tip also contains this handoff update. Compare `git rev-parse HEAD` with the final published revision supplied alongside this document.
+
+This adds the [60 additional admin improvements](ADMIN-PLUS50.md), richer gold light mode without white app surfaces, and larger EN/NL navigation labels. Dark tokens, all 244 approved public assets, menu content, prices and existing functionality are retained. Unrelated uncommitted phone-agent work and local control files are excluded. No new dependencies, mandatory database migration, automatic startup DDL or production deployment are introduced by this round.
+
+Verified build `xAq9sMM06TxZlpVjSRdv3`, Next 16.2.10/Webpack, 496 unchanged inputs, source SHA-256 `c5dfe68d113f96ab7cd28782fd427392cf2002332990b14ad4b06cb993b1cd62`. [Exact checks](admin-plus50-checks-2026-11-13.json) include build/type checking, focused lint, synthetic SQL/API regressions, 48 admin layouts with zero automated violations, 23 workflows, lifecycle/retry checks, 25 compiled authorization cases, 50 public HTTP cases, LAN access policy and four actual EN/NL video frame-advancement cases. Public gold-theme scans found no white app surfaces or automated violations. The existing dark palette was preserved; three public dark contrast groups reproduce in the prior release. Whole-local-tree lint retains 22 errors/four warnings outside this work. No fresh physical-phone/Safari/screen-reader or production-load result is claimed.
+
+The smaller initial operations DOM is a measured rendering reduction, while the additional tools increase initial admin JavaScript by roughly 5–9 KB gzip6; the public homepage increases by 166 B. No global performance budget or received-revenue claim is made. Read the [measurements and limits](ADMIN-PLUS50.md#measurements-and-limits).
+
+Use the guarded update procedure below. Keep local environment/secrets and database backups. In the existing staged-release workflow, run `npm ci` and `npm run build -- --webpack`; do not build over a running server's active `.next`. The live process manager/service name has not been inspected, so restart only the already confirmed Shah service through the existing procedure. Do not use a guessed `pm2 restart all` or apply SQL just to start the site. Verify EN/NL pages, menu, reservations, admin access and video without submitting real transactions.
+
+The earlier optional observation/session-link migrations and retention prerequisites remain unchanged and are not applied by this publication. `APP_URL` must match the actual public HTTPS origin, including for administrative account-change origin checks. No Droplet login, production file edit, service restart or production migration is performed here.
+
+## Previous admin release - 13 November 2026
+
 Target: **eatmaison/shahrestaurant**, branch **main**, authenticated **eatmaison** account. The verified website revision is `8c3edd718c95013be5ae7bdae46d73d7abdb1a64`; the publication tip also includes this documentation update. Compare the final published commit with `git rev-parse HEAD` on the server. No Droplet login, restart, production data change or migration is part of this publication.
 
 The release fast-forwards the existing GitHub revision `42c485c23b926a7c588e2bb1df9f0cbd3c06f1f6`. It includes the approved photo/gallery/FAQ followups and the restructured admin workspaces, compact customer directory, corrected statistics and optional consented visitor-source observations. Existing unrelated, uncommitted `phone-agent/` work and local control documents are excluded. Environment files, credentials, temporary synthetic admin/auth fixtures, compiled builds and dependency directories are excluded.
@@ -42,7 +58,10 @@ Use the existing confirmed deployment/restart procedure and preserve the current
 ssh root@67.205.141.224
 cd ~/shahrestaurant
 test -z "$(git status --porcelain)" || { echo 'Local changes found: stop and preserve them'; exit 1; }
-git remote get-url origin
+case "$(git remote get-url origin)" in
+  git@github.com:eatmaison/shahrestaurant.git|https://github.com/eatmaison/shahrestaurant.git) ;;
+  *) echo 'Unexpected origin: stop'; exit 1 ;;
+esac
 git fetch origin main
 git merge-base --is-ancestor HEAD origin/main || { echo 'History diverged: stop'; exit 1; }
 git branch "backup/before-shah-$(date +%Y%m%d-%H%M%S)"
