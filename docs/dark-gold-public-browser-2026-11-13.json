@@ -1,0 +1,1918 @@
+{
+  "build": "TnGIIful8W70dmhVNZaHd",
+  "draftCss": false,
+  "checks": [
+    {
+      "type": "header",
+      "theme": "teal",
+      "lang": "en",
+      "width": 1440,
+      "overflow": 0,
+      "headerHeight": 102.359375,
+      "links": [
+        {
+          "text": "Home",
+          "font": "15px",
+          "x": 465.890625,
+          "right": 530.4375
+        },
+        {
+          "text": "Reservations",
+          "font": "15px",
+          "x": 532.4375,
+          "right": 642.6875
+        },
+        {
+          "text": "Menu",
+          "font": "15px",
+          "x": 644.6875,
+          "right": 706.78125
+        },
+        {
+          "text": "Events",
+          "font": "15px",
+          "x": 708.78125,
+          "right": 790.15625
+        },
+        {
+          "text": "Events overview",
+          "font": "15px",
+          "x": 628.46875,
+          "right": 870.46875
+        },
+        {
+          "text": "About us",
+          "font": "15px",
+          "x": 628.46875,
+          "right": 870.46875
+        },
+        {
+          "text": "Gallery",
+          "font": "15px",
+          "x": 628.46875,
+          "right": 870.46875
+        },
+        {
+          "text": "Birthdays & parties",
+          "font": "15px",
+          "x": 628.46875,
+          "right": 870.46875
+        },
+        {
+          "text": "Celebrations & weddings",
+          "font": "15px",
+          "x": 628.46875,
+          "right": 870.46875
+        },
+        {
+          "text": "Company catering",
+          "font": "15px",
+          "x": 628.46875,
+          "right": 870.46875
+        },
+        {
+          "text": "Company lunches",
+          "font": "15px",
+          "x": 628.46875,
+          "right": 870.46875
+        },
+        {
+          "text": "Account",
+          "font": "15px",
+          "x": 792.15625,
+          "right": 871.3125
+        }
+      ],
+      "right": 1328
+    },
+    {
+      "type": "header",
+      "theme": "teal",
+      "lang": "en",
+      "width": 1280,
+      "overflow": 0,
+      "headerHeight": 102.359375,
+      "links": [
+        {
+          "text": "Home",
+          "font": "15px",
+          "x": 385.890625,
+          "right": 450.4375
+        },
+        {
+          "text": "Reservations",
+          "font": "15px",
+          "x": 452.4375,
+          "right": 562.6875
+        },
+        {
+          "text": "Menu",
+          "font": "15px",
+          "x": 564.6875,
+          "right": 626.78125
+        },
+        {
+          "text": "Events",
+          "font": "15px",
+          "x": 628.78125,
+          "right": 710.15625
+        },
+        {
+          "text": "Events overview",
+          "font": "15px",
+          "x": 548.46875,
+          "right": 790.46875
+        },
+        {
+          "text": "About us",
+          "font": "15px",
+          "x": 548.46875,
+          "right": 790.46875
+        },
+        {
+          "text": "Gallery",
+          "font": "15px",
+          "x": 548.46875,
+          "right": 790.46875
+        },
+        {
+          "text": "Birthdays & parties",
+          "font": "15px",
+          "x": 548.46875,
+          "right": 790.46875
+        },
+        {
+          "text": "Celebrations & weddings",
+          "font": "15px",
+          "x": 548.46875,
+          "right": 790.46875
+        },
+        {
+          "text": "Company catering",
+          "font": "15px",
+          "x": 548.46875,
+          "right": 790.46875
+        },
+        {
+          "text": "Company lunches",
+          "font": "15px",
+          "x": 548.46875,
+          "right": 790.46875
+        },
+        {
+          "text": "Account",
+          "font": "15px",
+          "x": 712.15625,
+          "right": 791.3125
+        }
+      ],
+      "right": 1248
+    },
+    {
+      "type": "header",
+      "theme": "teal",
+      "lang": "en",
+      "width": 1024,
+      "overflow": 0,
+      "headerHeight": 95.828125,
+      "links": [],
+      "right": 992
+    },
+    {
+      "type": "header",
+      "theme": "teal",
+      "lang": "en",
+      "width": 768,
+      "overflow": 0,
+      "headerHeight": 95.828125,
+      "links": [],
+      "right": 744
+    },
+    {
+      "type": "header",
+      "theme": "teal",
+      "lang": "en",
+      "width": 390,
+      "overflow": 0,
+      "headerHeight": 89,
+      "links": [],
+      "right": 374
+    },
+    {
+      "type": "mobile-menu",
+      "theme": "teal",
+      "lang": "en",
+      "width": 390,
+      "links": [
+        {
+          "text": "Home",
+          "font": "16px"
+        },
+        {
+          "text": "Reservations",
+          "font": "16px"
+        },
+        {
+          "text": "Menu",
+          "font": "16px"
+        },
+        {
+          "text": "Account",
+          "font": "16px"
+        },
+        {
+          "text": "EN",
+          "font": "16px"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "theme": "teal",
+      "lang": "en",
+      "width": 360,
+      "overflow": 0,
+      "headerHeight": 89,
+      "links": [],
+      "right": 344
+    },
+    {
+      "type": "page-theme",
+      "route": "/en",
+      "theme": "teal",
+      "lang": "en",
+      "tokens": {
+        "page": "#062b32",
+        "surface": "#0a3540",
+        "soft": "#0c3d46",
+        "ink": "#f7f2e7",
+        "muted": "#bdd1cf",
+        "line": "#2c545b",
+        "gold": "#e0af59",
+        "accent": "#e0af59",
+        "button": "#e0af59",
+        "button-ink": "#0d4952"
+      },
+      "body": {
+        "background": "rgb(6, 43, 50)",
+        "color": "rgb(247, 242, 231)"
+      },
+      "header": {
+        "background": "rgb(10, 53, 64)",
+        "color": "rgb(247, 242, 231)"
+      },
+      "footer": {
+        "background": "rgb(13, 73, 82)",
+        "color": "rgb(213, 229, 223)"
+      },
+      "dark": true,
+      "white": []
+    },
+    {
+      "type": "page-theme",
+      "route": "/en/menu",
+      "theme": "teal",
+      "lang": "en",
+      "tokens": {
+        "page": "#062b32",
+        "surface": "#0a3540",
+        "soft": "#0c3d46",
+        "ink": "#f7f2e7",
+        "muted": "#bdd1cf",
+        "line": "#2c545b",
+        "gold": "#e0af59",
+        "accent": "#e0af59",
+        "button": "#e0af59",
+        "button-ink": "#0d4952"
+      },
+      "body": {
+        "background": "rgb(6, 43, 50)",
+        "color": "rgb(247, 242, 231)"
+      },
+      "header": {
+        "background": "rgb(10, 53, 64)",
+        "color": "rgb(247, 242, 231)"
+      },
+      "footer": {
+        "background": "rgb(13, 73, 82)",
+        "color": "rgb(213, 229, 223)"
+      },
+      "dark": true,
+      "white": [
+        {
+          "tag": "SPAN",
+          "class": "relative grid h-11 w-11 shrink-0 place-items-center overflow-hidden rounded-xl bg-white ring-1 ring-slate-200 dark:ring-white/10",
+          "bg": "rgb(255, 255, 255)",
+          "text": ""
+        },
+        {
+          "tag": "SPAN",
+          "class": "relative grid h-11 w-11 shrink-0 place-items-center overflow-hidden rounded-xl bg-white ring-1 ring-slate-200 dark:ring-white/10",
+          "bg": "rgb(255, 255, 255)",
+          "text": ""
+        },
+        {
+          "tag": "SPAN",
+          "class": "relative grid h-9 w-9 shrink-0 place-items-center overflow-hidden rounded-lg bg-white ring-1 ring-slate-200 dark:ring-white/10",
+          "bg": "rgb(255, 255, 255)",
+          "text": ""
+        }
+      ]
+    },
+    {
+      "type": "page-theme",
+      "route": "/en/reservations",
+      "theme": "teal",
+      "lang": "en",
+      "tokens": {
+        "page": "#062b32",
+        "surface": "#0a3540",
+        "soft": "#0c3d46",
+        "ink": "#f7f2e7",
+        "muted": "#bdd1cf",
+        "line": "#2c545b",
+        "gold": "#e0af59",
+        "accent": "#e0af59",
+        "button": "#e0af59",
+        "button-ink": "#0d4952"
+      },
+      "body": {
+        "background": "rgb(6, 43, 50)",
+        "color": "rgb(247, 242, 231)"
+      },
+      "header": {
+        "background": "rgb(10, 53, 64)",
+        "color": "rgb(247, 242, 231)"
+      },
+      "footer": {
+        "background": "rgb(13, 73, 82)",
+        "color": "rgb(213, 229, 223)"
+      },
+      "dark": true,
+      "white": []
+    },
+    {
+      "type": "page-theme",
+      "route": "/en/events",
+      "theme": "teal",
+      "lang": "en",
+      "tokens": {
+        "page": "#062b32",
+        "surface": "#0a3540",
+        "soft": "#0c3d46",
+        "ink": "#f7f2e7",
+        "muted": "#bdd1cf",
+        "line": "#2c545b",
+        "gold": "#e0af59",
+        "accent": "#e0af59",
+        "button": "#e0af59",
+        "button-ink": "#0d4952"
+      },
+      "body": {
+        "background": "rgb(6, 43, 50)",
+        "color": "rgb(247, 242, 231)"
+      },
+      "header": {
+        "background": "rgb(10, 53, 64)",
+        "color": "rgb(247, 242, 231)"
+      },
+      "footer": {
+        "background": "rgb(13, 73, 82)",
+        "color": "rgb(213, 229, 223)"
+      },
+      "dark": true,
+      "white": []
+    },
+    {
+      "type": "page-theme",
+      "route": "/en/privacy",
+      "theme": "teal",
+      "lang": "en",
+      "tokens": {
+        "page": "#062b32",
+        "surface": "#0a3540",
+        "soft": "#0c3d46",
+        "ink": "#f7f2e7",
+        "muted": "#bdd1cf",
+        "line": "#2c545b",
+        "gold": "#e0af59",
+        "accent": "#e0af59",
+        "button": "#e0af59",
+        "button-ink": "#0d4952"
+      },
+      "body": {
+        "background": "rgb(6, 43, 50)",
+        "color": "rgb(247, 242, 231)"
+      },
+      "header": {
+        "background": "rgb(10, 53, 64)",
+        "color": "rgb(247, 242, 231)"
+      },
+      "footer": {
+        "background": "rgb(13, 73, 82)",
+        "color": "rgb(213, 229, 223)"
+      },
+      "dark": true,
+      "white": []
+    },
+    {
+      "type": "page-theme",
+      "route": "/account",
+      "theme": "teal",
+      "lang": "en",
+      "tokens": {
+        "page": "#062b32",
+        "surface": "#0a3540",
+        "soft": "#0c3d46",
+        "ink": "#f7f2e7",
+        "muted": "#bdd1cf",
+        "line": "#2c545b",
+        "gold": "#e0af59",
+        "accent": "#e0af59",
+        "button": "#e0af59",
+        "button-ink": "#0d4952"
+      },
+      "body": {
+        "background": "rgb(6, 43, 50)",
+        "color": "rgb(247, 242, 231)"
+      },
+      "header": {
+        "background": "rgb(10, 53, 64)",
+        "color": "rgb(247, 242, 231)"
+      },
+      "footer": {
+        "background": "rgb(13, 73, 82)",
+        "color": "rgb(213, 229, 223)"
+      },
+      "dark": true,
+      "white": []
+    },
+    {
+      "type": "header",
+      "theme": "teal",
+      "lang": "nl",
+      "width": 1440,
+      "overflow": 0,
+      "headerHeight": 102.359375,
+      "links": [
+        {
+          "text": "Home",
+          "font": "15px",
+          "x": 423.40625,
+          "right": 487.953125
+        },
+        {
+          "text": "Reserveren",
+          "font": "15px",
+          "x": 489.953125,
+          "right": 590.734375
+        },
+        {
+          "text": "Menukaart",
+          "font": "15px",
+          "x": 592.734375,
+          "right": 688.734375
+        },
+        {
+          "text": "Evenementen",
+          "font": "15px",
+          "x": 690.734375,
+          "right": 819.390625
+        },
+        {
+          "text": "Evenementen overzicht",
+          "font": "15px",
+          "x": 634.0625,
+          "right": 876.0625
+        },
+        {
+          "text": "Over ons",
+          "font": "15px",
+          "x": 634.0625,
+          "right": 876.0625
+        },
+        {
+          "text": "Galerij",
+          "font": "15px",
+          "x": 634.0625,
+          "right": 876.0625
+        },
+        {
+          "text": "Verjaardagen & feesten",
+          "font": "15px",
+          "x": 634.0625,
+          "right": 876.0625
+        },
+        {
+          "text": "Vieringen & bruiloften",
+          "font": "15px",
+          "x": 634.0625,
+          "right": 876.0625
+        },
+        {
+          "text": "Bedrijfscatering",
+          "font": "15px",
+          "x": 634.0625,
+          "right": 876.0625
+        },
+        {
+          "text": "Bedrijfslunches",
+          "font": "15px",
+          "x": 634.0625,
+          "right": 876.0625
+        },
+        {
+          "text": "Account",
+          "font": "15px",
+          "x": 821.390625,
+          "right": 900.546875
+        }
+      ],
+      "right": 1328
+    },
+    {
+      "type": "header",
+      "theme": "teal",
+      "lang": "nl",
+      "width": 1280,
+      "overflow": 0,
+      "headerHeight": 102.359375,
+      "links": [
+        {
+          "text": "Home",
+          "font": "15px",
+          "x": 343.40625,
+          "right": 407.953125
+        },
+        {
+          "text": "Reserveren",
+          "font": "15px",
+          "x": 409.953125,
+          "right": 510.734375
+        },
+        {
+          "text": "Menukaart",
+          "font": "15px",
+          "x": 512.734375,
+          "right": 608.734375
+        },
+        {
+          "text": "Evenementen",
+          "font": "15px",
+          "x": 610.734375,
+          "right": 739.390625
+        },
+        {
+          "text": "Evenementen overzicht",
+          "font": "15px",
+          "x": 554.0625,
+          "right": 796.0625
+        },
+        {
+          "text": "Over ons",
+          "font": "15px",
+          "x": 554.0625,
+          "right": 796.0625
+        },
+        {
+          "text": "Galerij",
+          "font": "15px",
+          "x": 554.0625,
+          "right": 796.0625
+        },
+        {
+          "text": "Verjaardagen & feesten",
+          "font": "15px",
+          "x": 554.0625,
+          "right": 796.0625
+        },
+        {
+          "text": "Vieringen & bruiloften",
+          "font": "15px",
+          "x": 554.0625,
+          "right": 796.0625
+        },
+        {
+          "text": "Bedrijfscatering",
+          "font": "15px",
+          "x": 554.0625,
+          "right": 796.0625
+        },
+        {
+          "text": "Bedrijfslunches",
+          "font": "15px",
+          "x": 554.0625,
+          "right": 796.0625
+        },
+        {
+          "text": "Account",
+          "font": "15px",
+          "x": 741.390625,
+          "right": 820.546875
+        }
+      ],
+      "right": 1248
+    },
+    {
+      "type": "header",
+      "theme": "teal",
+      "lang": "nl",
+      "width": 1024,
+      "overflow": 0,
+      "headerHeight": 95.828125,
+      "links": [],
+      "right": 992
+    },
+    {
+      "type": "header",
+      "theme": "teal",
+      "lang": "nl",
+      "width": 768,
+      "overflow": 0,
+      "headerHeight": 95.828125,
+      "links": [],
+      "right": 744
+    },
+    {
+      "type": "header",
+      "theme": "teal",
+      "lang": "nl",
+      "width": 390,
+      "overflow": 0,
+      "headerHeight": 89,
+      "links": [],
+      "right": 374
+    },
+    {
+      "type": "mobile-menu",
+      "theme": "teal",
+      "lang": "nl",
+      "width": 390,
+      "links": [
+        {
+          "text": "Home",
+          "font": "16px"
+        },
+        {
+          "text": "Reserveren",
+          "font": "16px"
+        },
+        {
+          "text": "Menukaart",
+          "font": "16px"
+        },
+        {
+          "text": "Account",
+          "font": "16px"
+        },
+        {
+          "text": "NL",
+          "font": "16px"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "theme": "teal",
+      "lang": "nl",
+      "width": 360,
+      "overflow": 0,
+      "headerHeight": 89,
+      "links": [],
+      "right": 344
+    },
+    {
+      "type": "page-theme",
+      "route": "/",
+      "theme": "teal",
+      "lang": "nl",
+      "tokens": {
+        "page": "#062b32",
+        "surface": "#0a3540",
+        "soft": "#0c3d46",
+        "ink": "#f7f2e7",
+        "muted": "#bdd1cf",
+        "line": "#2c545b",
+        "gold": "#e0af59",
+        "accent": "#e0af59",
+        "button": "#e0af59",
+        "button-ink": "#0d4952"
+      },
+      "body": {
+        "background": "rgb(6, 43, 50)",
+        "color": "rgb(247, 242, 231)"
+      },
+      "header": {
+        "background": "rgb(10, 53, 64)",
+        "color": "rgb(247, 242, 231)"
+      },
+      "footer": {
+        "background": "rgb(13, 73, 82)",
+        "color": "rgb(213, 229, 223)"
+      },
+      "dark": true,
+      "white": []
+    },
+    {
+      "type": "page-theme",
+      "route": "/menu",
+      "theme": "teal",
+      "lang": "nl",
+      "tokens": {
+        "page": "#062b32",
+        "surface": "#0a3540",
+        "soft": "#0c3d46",
+        "ink": "#f7f2e7",
+        "muted": "#bdd1cf",
+        "line": "#2c545b",
+        "gold": "#e0af59",
+        "accent": "#e0af59",
+        "button": "#e0af59",
+        "button-ink": "#0d4952"
+      },
+      "body": {
+        "background": "rgb(6, 43, 50)",
+        "color": "rgb(247, 242, 231)"
+      },
+      "header": {
+        "background": "rgb(10, 53, 64)",
+        "color": "rgb(247, 242, 231)"
+      },
+      "footer": {
+        "background": "rgb(13, 73, 82)",
+        "color": "rgb(213, 229, 223)"
+      },
+      "dark": true,
+      "white": []
+    },
+    {
+      "type": "page-theme",
+      "route": "/reservations",
+      "theme": "teal",
+      "lang": "nl",
+      "tokens": {
+        "page": "#062b32",
+        "surface": "#0a3540",
+        "soft": "#0c3d46",
+        "ink": "#f7f2e7",
+        "muted": "#bdd1cf",
+        "line": "#2c545b",
+        "gold": "#e0af59",
+        "accent": "#e0af59",
+        "button": "#e0af59",
+        "button-ink": "#0d4952"
+      },
+      "body": {
+        "background": "rgb(6, 43, 50)",
+        "color": "rgb(247, 242, 231)"
+      },
+      "header": {
+        "background": "rgb(10, 53, 64)",
+        "color": "rgb(247, 242, 231)"
+      },
+      "footer": {
+        "background": "rgb(13, 73, 82)",
+        "color": "rgb(213, 229, 223)"
+      },
+      "dark": true,
+      "white": []
+    },
+    {
+      "type": "page-theme",
+      "route": "/events",
+      "theme": "teal",
+      "lang": "nl",
+      "tokens": {
+        "page": "#062b32",
+        "surface": "#0a3540",
+        "soft": "#0c3d46",
+        "ink": "#f7f2e7",
+        "muted": "#bdd1cf",
+        "line": "#2c545b",
+        "gold": "#e0af59",
+        "accent": "#e0af59",
+        "button": "#e0af59",
+        "button-ink": "#0d4952"
+      },
+      "body": {
+        "background": "rgb(6, 43, 50)",
+        "color": "rgb(247, 242, 231)"
+      },
+      "header": {
+        "background": "rgb(10, 53, 64)",
+        "color": "rgb(247, 242, 231)"
+      },
+      "footer": {
+        "background": "rgb(13, 73, 82)",
+        "color": "rgb(213, 229, 223)"
+      },
+      "dark": true,
+      "white": []
+    },
+    {
+      "type": "page-theme",
+      "route": "/privacy",
+      "theme": "teal",
+      "lang": "nl",
+      "tokens": {
+        "page": "#062b32",
+        "surface": "#0a3540",
+        "soft": "#0c3d46",
+        "ink": "#f7f2e7",
+        "muted": "#bdd1cf",
+        "line": "#2c545b",
+        "gold": "#e0af59",
+        "accent": "#e0af59",
+        "button": "#e0af59",
+        "button-ink": "#0d4952"
+      },
+      "body": {
+        "background": "rgb(6, 43, 50)",
+        "color": "rgb(247, 242, 231)"
+      },
+      "header": {
+        "background": "rgb(10, 53, 64)",
+        "color": "rgb(247, 242, 231)"
+      },
+      "footer": {
+        "background": "rgb(13, 73, 82)",
+        "color": "rgb(213, 229, 223)"
+      },
+      "dark": true,
+      "white": []
+    },
+    {
+      "type": "page-theme",
+      "route": "/account",
+      "theme": "teal",
+      "lang": "nl",
+      "tokens": {
+        "page": "#062b32",
+        "surface": "#0a3540",
+        "soft": "#0c3d46",
+        "ink": "#f7f2e7",
+        "muted": "#bdd1cf",
+        "line": "#2c545b",
+        "gold": "#e0af59",
+        "accent": "#e0af59",
+        "button": "#e0af59",
+        "button-ink": "#0d4952"
+      },
+      "body": {
+        "background": "rgb(6, 43, 50)",
+        "color": "rgb(247, 242, 231)"
+      },
+      "header": {
+        "background": "rgb(10, 53, 64)",
+        "color": "rgb(247, 242, 231)"
+      },
+      "footer": {
+        "background": "rgb(13, 73, 82)",
+        "color": "rgb(213, 229, 223)"
+      },
+      "dark": true,
+      "white": []
+    },
+    {
+      "type": "header",
+      "theme": "gold",
+      "lang": "en",
+      "width": 1440,
+      "overflow": 0,
+      "headerHeight": 102.359375,
+      "links": [
+        {
+          "text": "Home",
+          "font": "15px",
+          "x": 465.890625,
+          "right": 530.4375
+        },
+        {
+          "text": "Reservations",
+          "font": "15px",
+          "x": 532.4375,
+          "right": 642.6875
+        },
+        {
+          "text": "Menu",
+          "font": "15px",
+          "x": 644.6875,
+          "right": 706.78125
+        },
+        {
+          "text": "Events",
+          "font": "15px",
+          "x": 708.78125,
+          "right": 790.15625
+        },
+        {
+          "text": "Events overview",
+          "font": "15px",
+          "x": 628.46875,
+          "right": 870.46875
+        },
+        {
+          "text": "About us",
+          "font": "15px",
+          "x": 628.46875,
+          "right": 870.46875
+        },
+        {
+          "text": "Gallery",
+          "font": "15px",
+          "x": 628.46875,
+          "right": 870.46875
+        },
+        {
+          "text": "Birthdays & parties",
+          "font": "15px",
+          "x": 628.46875,
+          "right": 870.46875
+        },
+        {
+          "text": "Celebrations & weddings",
+          "font": "15px",
+          "x": 628.46875,
+          "right": 870.46875
+        },
+        {
+          "text": "Company catering",
+          "font": "15px",
+          "x": 628.46875,
+          "right": 870.46875
+        },
+        {
+          "text": "Company lunches",
+          "font": "15px",
+          "x": 628.46875,
+          "right": 870.46875
+        },
+        {
+          "text": "Account",
+          "font": "15px",
+          "x": 792.15625,
+          "right": 871.3125
+        }
+      ],
+      "right": 1328
+    },
+    {
+      "type": "header",
+      "theme": "gold",
+      "lang": "en",
+      "width": 1280,
+      "overflow": 0,
+      "headerHeight": 102.359375,
+      "links": [
+        {
+          "text": "Home",
+          "font": "15px",
+          "x": 385.890625,
+          "right": 450.4375
+        },
+        {
+          "text": "Reservations",
+          "font": "15px",
+          "x": 452.4375,
+          "right": 562.6875
+        },
+        {
+          "text": "Menu",
+          "font": "15px",
+          "x": 564.6875,
+          "right": 626.78125
+        },
+        {
+          "text": "Events",
+          "font": "15px",
+          "x": 628.78125,
+          "right": 710.15625
+        },
+        {
+          "text": "Events overview",
+          "font": "15px",
+          "x": 548.46875,
+          "right": 790.46875
+        },
+        {
+          "text": "About us",
+          "font": "15px",
+          "x": 548.46875,
+          "right": 790.46875
+        },
+        {
+          "text": "Gallery",
+          "font": "15px",
+          "x": 548.46875,
+          "right": 790.46875
+        },
+        {
+          "text": "Birthdays & parties",
+          "font": "15px",
+          "x": 548.46875,
+          "right": 790.46875
+        },
+        {
+          "text": "Celebrations & weddings",
+          "font": "15px",
+          "x": 548.46875,
+          "right": 790.46875
+        },
+        {
+          "text": "Company catering",
+          "font": "15px",
+          "x": 548.46875,
+          "right": 790.46875
+        },
+        {
+          "text": "Company lunches",
+          "font": "15px",
+          "x": 548.46875,
+          "right": 790.46875
+        },
+        {
+          "text": "Account",
+          "font": "15px",
+          "x": 712.15625,
+          "right": 791.3125
+        }
+      ],
+      "right": 1248
+    },
+    {
+      "type": "header",
+      "theme": "gold",
+      "lang": "en",
+      "width": 1024,
+      "overflow": 0,
+      "headerHeight": 95.828125,
+      "links": [],
+      "right": 992
+    },
+    {
+      "type": "header",
+      "theme": "gold",
+      "lang": "en",
+      "width": 768,
+      "overflow": 0,
+      "headerHeight": 95.828125,
+      "links": [],
+      "right": 744
+    },
+    {
+      "type": "header",
+      "theme": "gold",
+      "lang": "en",
+      "width": 390,
+      "overflow": 0,
+      "headerHeight": 89,
+      "links": [],
+      "right": 374
+    },
+    {
+      "type": "mobile-menu",
+      "theme": "gold",
+      "lang": "en",
+      "width": 390,
+      "links": [
+        {
+          "text": "Home",
+          "font": "16px"
+        },
+        {
+          "text": "Reservations",
+          "font": "16px"
+        },
+        {
+          "text": "Menu",
+          "font": "16px"
+        },
+        {
+          "text": "Account",
+          "font": "16px"
+        },
+        {
+          "text": "EN",
+          "font": "16px"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "theme": "gold",
+      "lang": "en",
+      "width": 360,
+      "overflow": 0,
+      "headerHeight": 89,
+      "links": [],
+      "right": 344
+    },
+    {
+      "type": "page-theme",
+      "route": "/en",
+      "theme": "gold",
+      "lang": "en",
+      "tokens": {
+        "page": "#16130f",
+        "surface": "#231e16",
+        "soft": "#30271b",
+        "ink": "#f5ecdc",
+        "muted": "#d3c4ab",
+        "line": "#8b7149",
+        "gold": "#dfb875",
+        "accent": "#dfb875",
+        "button": "#cfa45c",
+        "button-ink": "#1d160d"
+      },
+      "body": {
+        "background": "rgb(22, 19, 15)",
+        "color": "rgb(245, 236, 220)"
+      },
+      "header": {
+        "background": "rgb(35, 30, 22)",
+        "color": "rgb(245, 236, 220)"
+      },
+      "footer": {
+        "background": "rgb(27, 23, 17)",
+        "color": "rgb(213, 229, 223)"
+      },
+      "dark": true,
+      "white": []
+    },
+    {
+      "type": "page-theme",
+      "route": "/en/menu",
+      "theme": "gold",
+      "lang": "en",
+      "tokens": {
+        "page": "#16130f",
+        "surface": "#231e16",
+        "soft": "#30271b",
+        "ink": "#f5ecdc",
+        "muted": "#d3c4ab",
+        "line": "#8b7149",
+        "gold": "#dfb875",
+        "accent": "#dfb875",
+        "button": "#cfa45c",
+        "button-ink": "#1d160d"
+      },
+      "body": {
+        "background": "rgb(22, 19, 15)",
+        "color": "rgb(245, 236, 220)"
+      },
+      "header": {
+        "background": "rgb(35, 30, 22)",
+        "color": "rgb(245, 236, 220)"
+      },
+      "footer": {
+        "background": "rgb(27, 23, 17)",
+        "color": "rgb(213, 229, 223)"
+      },
+      "dark": true,
+      "white": []
+    },
+    {
+      "type": "page-theme",
+      "route": "/en/reservations",
+      "theme": "gold",
+      "lang": "en",
+      "tokens": {
+        "page": "#16130f",
+        "surface": "#231e16",
+        "soft": "#30271b",
+        "ink": "#f5ecdc",
+        "muted": "#d3c4ab",
+        "line": "#8b7149",
+        "gold": "#dfb875",
+        "accent": "#dfb875",
+        "button": "#cfa45c",
+        "button-ink": "#1d160d"
+      },
+      "body": {
+        "background": "rgb(22, 19, 15)",
+        "color": "rgb(245, 236, 220)"
+      },
+      "header": {
+        "background": "rgb(35, 30, 22)",
+        "color": "rgb(245, 236, 220)"
+      },
+      "footer": {
+        "background": "rgb(27, 23, 17)",
+        "color": "rgb(213, 229, 223)"
+      },
+      "dark": true,
+      "white": []
+    },
+    {
+      "type": "page-theme",
+      "route": "/en/events",
+      "theme": "gold",
+      "lang": "en",
+      "tokens": {
+        "page": "#16130f",
+        "surface": "#231e16",
+        "soft": "#30271b",
+        "ink": "#f5ecdc",
+        "muted": "#d3c4ab",
+        "line": "#8b7149",
+        "gold": "#dfb875",
+        "accent": "#dfb875",
+        "button": "#cfa45c",
+        "button-ink": "#1d160d"
+      },
+      "body": {
+        "background": "rgb(22, 19, 15)",
+        "color": "rgb(245, 236, 220)"
+      },
+      "header": {
+        "background": "rgb(35, 30, 22)",
+        "color": "rgb(245, 236, 220)"
+      },
+      "footer": {
+        "background": "rgb(27, 23, 17)",
+        "color": "rgb(213, 229, 223)"
+      },
+      "dark": true,
+      "white": []
+    },
+    {
+      "type": "page-theme",
+      "route": "/en/privacy",
+      "theme": "gold",
+      "lang": "en",
+      "tokens": {
+        "page": "#16130f",
+        "surface": "#231e16",
+        "soft": "#30271b",
+        "ink": "#f5ecdc",
+        "muted": "#d3c4ab",
+        "line": "#8b7149",
+        "gold": "#dfb875",
+        "accent": "#dfb875",
+        "button": "#cfa45c",
+        "button-ink": "#1d160d"
+      },
+      "body": {
+        "background": "rgb(22, 19, 15)",
+        "color": "rgb(245, 236, 220)"
+      },
+      "header": {
+        "background": "rgb(35, 30, 22)",
+        "color": "rgb(245, 236, 220)"
+      },
+      "footer": {
+        "background": "rgb(27, 23, 17)",
+        "color": "rgb(213, 229, 223)"
+      },
+      "dark": true,
+      "white": []
+    },
+    {
+      "type": "page-theme",
+      "route": "/account",
+      "theme": "gold",
+      "lang": "en",
+      "tokens": {
+        "page": "#16130f",
+        "surface": "#231e16",
+        "soft": "#30271b",
+        "ink": "#f5ecdc",
+        "muted": "#d3c4ab",
+        "line": "#8b7149",
+        "gold": "#dfb875",
+        "accent": "#dfb875",
+        "button": "#cfa45c",
+        "button-ink": "#1d160d"
+      },
+      "body": {
+        "background": "rgb(22, 19, 15)",
+        "color": "rgb(245, 236, 220)"
+      },
+      "header": {
+        "background": "rgb(35, 30, 22)",
+        "color": "rgb(245, 236, 220)"
+      },
+      "footer": {
+        "background": "rgb(27, 23, 17)",
+        "color": "rgb(213, 229, 223)"
+      },
+      "dark": true,
+      "white": []
+    },
+    {
+      "type": "header",
+      "theme": "gold",
+      "lang": "nl",
+      "width": 1440,
+      "overflow": 0,
+      "headerHeight": 102.359375,
+      "links": [
+        {
+          "text": "Home",
+          "font": "15px",
+          "x": 423.40625,
+          "right": 487.953125
+        },
+        {
+          "text": "Reserveren",
+          "font": "15px",
+          "x": 489.953125,
+          "right": 590.734375
+        },
+        {
+          "text": "Menukaart",
+          "font": "15px",
+          "x": 592.734375,
+          "right": 688.734375
+        },
+        {
+          "text": "Evenementen",
+          "font": "15px",
+          "x": 690.734375,
+          "right": 819.390625
+        },
+        {
+          "text": "Evenementen overzicht",
+          "font": "15px",
+          "x": 634.0625,
+          "right": 876.0625
+        },
+        {
+          "text": "Over ons",
+          "font": "15px",
+          "x": 634.0625,
+          "right": 876.0625
+        },
+        {
+          "text": "Galerij",
+          "font": "15px",
+          "x": 634.0625,
+          "right": 876.0625
+        },
+        {
+          "text": "Verjaardagen & feesten",
+          "font": "15px",
+          "x": 634.0625,
+          "right": 876.0625
+        },
+        {
+          "text": "Vieringen & bruiloften",
+          "font": "15px",
+          "x": 634.0625,
+          "right": 876.0625
+        },
+        {
+          "text": "Bedrijfscatering",
+          "font": "15px",
+          "x": 634.0625,
+          "right": 876.0625
+        },
+        {
+          "text": "Bedrijfslunches",
+          "font": "15px",
+          "x": 634.0625,
+          "right": 876.0625
+        },
+        {
+          "text": "Account",
+          "font": "15px",
+          "x": 821.390625,
+          "right": 900.546875
+        }
+      ],
+      "right": 1328
+    },
+    {
+      "type": "header",
+      "theme": "gold",
+      "lang": "nl",
+      "width": 1280,
+      "overflow": 0,
+      "headerHeight": 102.359375,
+      "links": [
+        {
+          "text": "Home",
+          "font": "15px",
+          "x": 343.40625,
+          "right": 407.953125
+        },
+        {
+          "text": "Reserveren",
+          "font": "15px",
+          "x": 409.953125,
+          "right": 510.734375
+        },
+        {
+          "text": "Menukaart",
+          "font": "15px",
+          "x": 512.734375,
+          "right": 608.734375
+        },
+        {
+          "text": "Evenementen",
+          "font": "15px",
+          "x": 610.734375,
+          "right": 739.390625
+        },
+        {
+          "text": "Evenementen overzicht",
+          "font": "15px",
+          "x": 554.0625,
+          "right": 796.0625
+        },
+        {
+          "text": "Over ons",
+          "font": "15px",
+          "x": 554.0625,
+          "right": 796.0625
+        },
+        {
+          "text": "Galerij",
+          "font": "15px",
+          "x": 554.0625,
+          "right": 796.0625
+        },
+        {
+          "text": "Verjaardagen & feesten",
+          "font": "15px",
+          "x": 554.0625,
+          "right": 796.0625
+        },
+        {
+          "text": "Vieringen & bruiloften",
+          "font": "15px",
+          "x": 554.0625,
+          "right": 796.0625
+        },
+        {
+          "text": "Bedrijfscatering",
+          "font": "15px",
+          "x": 554.0625,
+          "right": 796.0625
+        },
+        {
+          "text": "Bedrijfslunches",
+          "font": "15px",
+          "x": 554.0625,
+          "right": 796.0625
+        },
+        {
+          "text": "Account",
+          "font": "15px",
+          "x": 741.390625,
+          "right": 820.546875
+        }
+      ],
+      "right": 1248
+    },
+    {
+      "type": "header",
+      "theme": "gold",
+      "lang": "nl",
+      "width": 1024,
+      "overflow": 0,
+      "headerHeight": 95.828125,
+      "links": [],
+      "right": 992
+    },
+    {
+      "type": "header",
+      "theme": "gold",
+      "lang": "nl",
+      "width": 768,
+      "overflow": 0,
+      "headerHeight": 95.828125,
+      "links": [],
+      "right": 744
+    },
+    {
+      "type": "header",
+      "theme": "gold",
+      "lang": "nl",
+      "width": 390,
+      "overflow": 0,
+      "headerHeight": 89,
+      "links": [],
+      "right": 374
+    },
+    {
+      "type": "mobile-menu",
+      "theme": "gold",
+      "lang": "nl",
+      "width": 390,
+      "links": [
+        {
+          "text": "Home",
+          "font": "16px"
+        },
+        {
+          "text": "Reserveren",
+          "font": "16px"
+        },
+        {
+          "text": "Menukaart",
+          "font": "16px"
+        },
+        {
+          "text": "Account",
+          "font": "16px"
+        },
+        {
+          "text": "NL",
+          "font": "16px"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "theme": "gold",
+      "lang": "nl",
+      "width": 360,
+      "overflow": 0,
+      "headerHeight": 89,
+      "links": [],
+      "right": 344
+    },
+    {
+      "type": "page-theme",
+      "route": "/",
+      "theme": "gold",
+      "lang": "nl",
+      "tokens": {
+        "page": "#16130f",
+        "surface": "#231e16",
+        "soft": "#30271b",
+        "ink": "#f5ecdc",
+        "muted": "#d3c4ab",
+        "line": "#8b7149",
+        "gold": "#dfb875",
+        "accent": "#dfb875",
+        "button": "#cfa45c",
+        "button-ink": "#1d160d"
+      },
+      "body": {
+        "background": "rgb(22, 19, 15)",
+        "color": "rgb(245, 236, 220)"
+      },
+      "header": {
+        "background": "rgb(35, 30, 22)",
+        "color": "rgb(245, 236, 220)"
+      },
+      "footer": {
+        "background": "rgb(27, 23, 17)",
+        "color": "rgb(213, 229, 223)"
+      },
+      "dark": true,
+      "white": []
+    },
+    {
+      "type": "page-theme",
+      "route": "/menu",
+      "theme": "gold",
+      "lang": "nl",
+      "tokens": {
+        "page": "#16130f",
+        "surface": "#231e16",
+        "soft": "#30271b",
+        "ink": "#f5ecdc",
+        "muted": "#d3c4ab",
+        "line": "#8b7149",
+        "gold": "#dfb875",
+        "accent": "#dfb875",
+        "button": "#cfa45c",
+        "button-ink": "#1d160d"
+      },
+      "body": {
+        "background": "rgb(22, 19, 15)",
+        "color": "rgb(245, 236, 220)"
+      },
+      "header": {
+        "background": "rgb(35, 30, 22)",
+        "color": "rgb(245, 236, 220)"
+      },
+      "footer": {
+        "background": "rgb(27, 23, 17)",
+        "color": "rgb(213, 229, 223)"
+      },
+      "dark": true,
+      "white": []
+    },
+    {
+      "type": "page-theme",
+      "route": "/reservations",
+      "theme": "gold",
+      "lang": "nl",
+      "tokens": {
+        "page": "#16130f",
+        "surface": "#231e16",
+        "soft": "#30271b",
+        "ink": "#f5ecdc",
+        "muted": "#d3c4ab",
+        "line": "#8b7149",
+        "gold": "#dfb875",
+        "accent": "#dfb875",
+        "button": "#cfa45c",
+        "button-ink": "#1d160d"
+      },
+      "body": {
+        "background": "rgb(22, 19, 15)",
+        "color": "rgb(245, 236, 220)"
+      },
+      "header": {
+        "background": "rgb(35, 30, 22)",
+        "color": "rgb(245, 236, 220)"
+      },
+      "footer": {
+        "background": "rgb(27, 23, 17)",
+        "color": "rgb(213, 229, 223)"
+      },
+      "dark": true,
+      "white": []
+    },
+    {
+      "type": "page-theme",
+      "route": "/events",
+      "theme": "gold",
+      "lang": "nl",
+      "tokens": {
+        "page": "#16130f",
+        "surface": "#231e16",
+        "soft": "#30271b",
+        "ink": "#f5ecdc",
+        "muted": "#d3c4ab",
+        "line": "#8b7149",
+        "gold": "#dfb875",
+        "accent": "#dfb875",
+        "button": "#cfa45c",
+        "button-ink": "#1d160d"
+      },
+      "body": {
+        "background": "rgb(22, 19, 15)",
+        "color": "rgb(245, 236, 220)"
+      },
+      "header": {
+        "background": "rgb(35, 30, 22)",
+        "color": "rgb(245, 236, 220)"
+      },
+      "footer": {
+        "background": "rgb(27, 23, 17)",
+        "color": "rgb(213, 229, 223)"
+      },
+      "dark": true,
+      "white": []
+    },
+    {
+      "type": "page-theme",
+      "route": "/privacy",
+      "theme": "gold",
+      "lang": "nl",
+      "tokens": {
+        "page": "#16130f",
+        "surface": "#231e16",
+        "soft": "#30271b",
+        "ink": "#f5ecdc",
+        "muted": "#d3c4ab",
+        "line": "#8b7149",
+        "gold": "#dfb875",
+        "accent": "#dfb875",
+        "button": "#cfa45c",
+        "button-ink": "#1d160d"
+      },
+      "body": {
+        "background": "rgb(22, 19, 15)",
+        "color": "rgb(245, 236, 220)"
+      },
+      "header": {
+        "background": "rgb(35, 30, 22)",
+        "color": "rgb(245, 236, 220)"
+      },
+      "footer": {
+        "background": "rgb(27, 23, 17)",
+        "color": "rgb(213, 229, 223)"
+      },
+      "dark": true,
+      "white": []
+    },
+    {
+      "type": "page-theme",
+      "route": "/account",
+      "theme": "gold",
+      "lang": "nl",
+      "tokens": {
+        "page": "#16130f",
+        "surface": "#231e16",
+        "soft": "#30271b",
+        "ink": "#f5ecdc",
+        "muted": "#d3c4ab",
+        "line": "#8b7149",
+        "gold": "#dfb875",
+        "accent": "#dfb875",
+        "button": "#cfa45c",
+        "button-ink": "#1d160d"
+      },
+      "body": {
+        "background": "rgb(22, 19, 15)",
+        "color": "rgb(245, 236, 220)"
+      },
+      "header": {
+        "background": "rgb(35, 30, 22)",
+        "color": "rgb(245, 236, 220)"
+      },
+      "footer": {
+        "background": "rgb(27, 23, 17)",
+        "color": "rgb(213, 229, 223)"
+      },
+      "dark": true,
+      "white": []
+    }
+  ],
+  "violations": [
+    {
+      "theme": "teal",
+      "route": "/en/menu",
+      "id": "color-contrast",
+      "nodes": [
+        {
+          "target": [
+            ".text-\\[11px\\].text-emerald-600.dark\\:text-emerald-400"
+          ],
+          "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #57949a, background color: #0a3540, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            ".tracking-wider.uppercase.text-emerald-600"
+          ],
+          "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.36 (foreground color: #57949a, background color: #062b32, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+        }
+      ]
+    },
+    {
+      "theme": "teal",
+      "route": "/en/reservations",
+      "id": "color-contrast",
+      "nodes": [
+        {
+          "target": [
+            ".hover\\:underline"
+          ],
+          "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #57949a, background color: #0a3540, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+        }
+      ]
+    },
+    {
+      "theme": "teal",
+      "route": "/en/events",
+      "id": "color-contrast",
+      "nodes": [
+        {
+          "target": [
+            ".lux-overline"
+          ],
+          "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.36 (foreground color: #57949a, background color: #062b32, font size: 8.4pt (11.2px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            ".animate-fade-up.rounded-3xl[href$=\"about\"] > .group-hover\\:gap-3\\.5.text-emerald-700.inline-flex"
+          ],
+          "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #57949a, background color: #0a3540, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            ".animate-fade-up.rounded-3xl[href$=\"gallery\"] > .group-hover\\:gap-3\\.5.text-emerald-700.inline-flex"
+          ],
+          "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #57949a, background color: #0a3540, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            ".animate-fade-up.rounded-3xl[href$=\"birthdays\"] > .group-hover\\:gap-3\\.5.text-emerald-700.inline-flex"
+          ],
+          "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #57949a, background color: #0a3540, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            ".animate-fade-up.rounded-3xl[href$=\"celebrations\"] > .group-hover\\:gap-3\\.5.text-emerald-700.inline-flex"
+          ],
+          "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #57949a, background color: #0a3540, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            ".animate-fade-up.rounded-3xl[href$=\"company-catering\"] > .group-hover\\:gap-3\\.5.text-emerald-700.inline-flex"
+          ],
+          "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #57949a, background color: #0a3540, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            ".animate-fade-up.rounded-3xl[href$=\"company-lunches\"] > .group-hover\\:gap-3\\.5.text-emerald-700.inline-flex"
+          ],
+          "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #57949a, background color: #0a3540, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            ".px-6.py-3\\.5.shadow-emerald-600\\/25"
+          ],
+          "summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.8 (foreground color: #f7f2e7, background color: #e0af59, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "whiteSurfaces": [],
+  "darkComparison": [
+    {
+      "route": "/en",
+      "headerBefore": {
+        "background": "rgba(0, 0, 0, 0)",
+        "color": "rgb(247, 242, 231)"
+      },
+      "headerAfter": {
+        "background": "rgb(10, 53, 64)",
+        "color": "rgb(247, 242, 231)"
+      },
+      "note": "Header background may differ while intro is active; token/body parity asserted."
+    },
+    {
+      "route": "/en",
+      "unchanged": true
+    },
+    {
+      "route": "/en/menu",
+      "headerBefore": {
+        "background": "rgb(10, 53, 64)",
+        "color": "rgb(247, 242, 231)"
+      },
+      "headerAfter": {
+        "background": "rgb(10, 53, 64)",
+        "color": "rgb(247, 242, 231)"
+      },
+      "note": "Header background may differ while intro is active; token/body parity asserted."
+    },
+    {
+      "route": "/en/menu",
+      "unchanged": true
+    },
+    {
+      "route": "/en/reservations",
+      "headerBefore": {
+        "background": "rgb(10, 53, 64)",
+        "color": "rgb(247, 242, 231)"
+      },
+      "headerAfter": {
+        "background": "rgb(10, 53, 64)",
+        "color": "rgb(247, 242, 231)"
+      },
+      "note": "Header background may differ while intro is active; token/body parity asserted."
+    },
+    {
+      "route": "/en/reservations",
+      "unchanged": true
+    },
+    {
+      "route": "/en/events",
+      "headerBefore": {
+        "background": "rgb(10, 53, 64)",
+        "color": "rgb(247, 242, 231)"
+      },
+      "headerAfter": {
+        "background": "rgb(10, 53, 64)",
+        "color": "rgb(247, 242, 231)"
+      },
+      "note": "Header background may differ while intro is active; token/body parity asserted."
+    },
+    {
+      "route": "/en/events",
+      "unchanged": true
+    },
+    {
+      "route": "/en/privacy",
+      "headerBefore": {
+        "background": "rgb(10, 53, 64)",
+        "color": "rgb(247, 242, 231)"
+      },
+      "headerAfter": {
+        "background": "rgb(10, 53, 64)",
+        "color": "rgb(247, 242, 231)"
+      },
+      "note": "Header background may differ while intro is active; token/body parity asserted."
+    },
+    {
+      "route": "/en/privacy",
+      "unchanged": true
+    },
+    {
+      "route": "/account",
+      "headerBefore": {
+        "background": "rgb(10, 53, 64)",
+        "color": "rgb(247, 242, 231)"
+      },
+      "headerAfter": {
+        "background": "rgb(10, 53, 64)",
+        "color": "rgb(247, 242, 231)"
+      },
+      "note": "Header background may differ while intro is active; token/body parity asserted."
+    },
+    {
+      "route": "/account",
+      "unchanged": true
+    }
+  ]
+}

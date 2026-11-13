@@ -1,14 +1,14 @@
 {
-  "checkedAt": "2026-11-13T16:02:07.912Z",
+  "checkedAt": "2026-11-13T17:52:54.120Z",
   "phoneUrl": "http://192.168.0.122:3618/",
   "englishUrl": "http://192.168.0.122:3618/en",
-  "buildId": "xAq9sMM06TxZlpVjSRdv3",
-  "sourceSha256": "c5dfe68d113f96ab7cd28782fd427392cf2002332990b14ad4b06cb993b1cd62",
+  "buildId": "TnGIIful8W70dmhVNZaHd",
+  "sourceSha256": "146f3a39a49bc2a0d6ccd8699d1a2a6c6b373a55598d59a3e6a055e0868f15f1",
   "sourceInputs": 496,
   "listener": {
     "ip": "192.168.0.122",
     "port": 3618,
-    "pid": 59596,
+    "pid": 56276,
     "scope": "Ethernet 192.168.0.0/24 peers only; no wildcard listener",
     "detached": true,
     "windowsHide": true,
@@ -33,8 +33,8 @@
     "sha256": "62f0381b8153fd31b6f662177fcc0e9e7234e23a788742d8a513f71925f54f8f"
   },
   "config": {
-    "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-phone-preview-20261111\\lan-config-xAq9sMM06TxZlpVjSRdv3.json",
-    "sha256": "9a46fdb655c3d4a8667ec0b95758f7ea6791f95d1fc7c3c4b2aa50e10218e0ac",
+    "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-phone-preview-20261111\\lan-config-TnGIIful8W70dmhVNZaHd.json",
+    "sha256": "42d94935a8fb03b017cd23c43f006232f91621ffa337923541777cea622ee9aa",
     "publicRoutes": 24,
     "nextAssets": 60,
     "publicAssets": 214,
@@ -339,7 +339,7 @@
     "Public catalog is the pinned224-product/two-brand read-only snapshot; uploaded gallery is empty.",
     "Keep approved loopback3398 running; restart refuses a different build, busy3618 port or missing interface."
   ],
-  "startCommand": "node \"C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-phone-preview-20261111/launch-lan-detached.cjs\" \"C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-phone-preview-20261111\\lan-config-xAq9sMM06TxZlpVjSRdv3.json\"",
+  "startCommand": "node \"C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-phone-preview-20261111/launch-lan-detached.cjs\" \"C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-phone-preview-20261111\\lan-config-TnGIIful8W70dmhVNZaHd.json\"",
   "approval": "Root approved starting this interface-bound public-only listener after approved main promotion; no network-security change was requested or performed.",
   "fullMediaHashes": [
     {
@@ -350,7 +350,7 @@
       "sha256": "de98d395d978de246bf42e97d21fa04cb45753e39354667d7b25c2e340e2ca6b",
       "matchesApprovedBuildSnapshot": true,
       "httpMeasuredBuildId": "KIb4T9-xcI_ECXiULLD-H",
-      "carriedToBuildId": "xAq9sMM06TxZlpVjSRdv3",
+      "carriedToBuildId": "TnGIIful8W70dmhVNZaHd",
       "carryReason": "Same approved frozen EN media; fresh Range/prefix validation."
     },
     {
@@ -361,7 +361,7 @@
       "sha256": "30f8b838d4086e64f0f24bd4385e5512bde8286ba65ca1f597ec0607afca85f3",
       "matchesApprovedBuildSnapshot": true,
       "httpMeasuredBuildId": "KIb4T9-xcI_ECXiULLD-H",
-      "carriedToBuildId": "xAq9sMM06TxZlpVjSRdv3",
+      "carriedToBuildId": "TnGIIful8W70dmhVNZaHd",
       "carryReason": "Same approved frozen EN media; fresh Range/prefix validation."
     },
     {
@@ -373,7 +373,7 @@
       "matchesApprovedBuildSnapshot": true,
       "httpMeasuredBuildId": "s_2pU6IxrWANtKLhFIf2S",
       "carryReason": "Same approved frozen EN media; fresh Range/prefix validation.",
-      "carriedToBuildId": "xAq9sMM06TxZlpVjSRdv3"
+      "carriedToBuildId": "TnGIIful8W70dmhVNZaHd"
     },
     {
       "path": "/brand/capcut-luxury-nl-v1/shah-luxury-capcut-desktop-nl-v1-web.mp4",
@@ -384,7 +384,7 @@
       "matchesApprovedBuildSnapshot": true,
       "httpMeasuredBuildId": "s_2pU6IxrWANtKLhFIf2S",
       "carryReason": "Same approved frozen EN media; fresh Range/prefix validation.",
-      "carriedToBuildId": "xAq9sMM06TxZlpVjSRdv3"
+      "carriedToBuildId": "TnGIIful8W70dmhVNZaHd"
     }
   ],
   "independentReview": {
@@ -403,7 +403,7 @@
     "reviewer": "/root/preview_high",
     "source": "Independent code/policy review and safe read-only HTTP results supplied in team messages; no separate raw file.",
     "httpMeasuredBuildId": "KIb4T9-xcI_ECXiULLD-H",
-    "carriedToBuildId": "xAq9sMM06TxZlpVjSRdv3",
+    "carriedToBuildId": "TnGIIful8W70dmhVNZaHd",
     "frozenPolicyHelperUnchanged": true,
     "nlV2PolicyReview": {
       "reviewer": "/root/preview_high",
@@ -416,7 +416,7 @@
       "activation": false
     }
   },
-  "updatedAt": "2026-11-13T16:02:07.926Z",
+  "updatedAt": "2026-11-13T17:52:54.135Z",
   "phoneUserConfirmation": {
     "recordedAt": "2026-11-11T22:55:12.019Z",
     "source": "Direct user answer relayed by parent thread; not inferred from HTTP logs",
@@ -432,7 +432,7 @@
   },
   "nextRevision": {
     "status": "ACTIVE after explicit approved-main promotion",
-    "buildId": "xAq9sMM06TxZlpVjSRdv3",
+    "buildId": "TnGIIful8W70dmhVNZaHd",
     "mainBuildVerified": true,
     "physicalPhoneRerun": "not yet reported"
   },
@@ -526,26 +526,26 @@
       "status": 405
     }
   ],
-  "previousVerifiedPhoneReport": "docs/phone-preview-control-Q2nFHmc8z6XlftjRttVYU-2026-11-11.json",
+  "previousVerifiedPhoneReport": "docs/phone-preview-control-Alq_AqLX9EjQBrCpQcotr-2026-11-11.json",
   "promotion": {
     "approvedByParent": true,
     "newMainBuildVerified": true,
     "newLanActive": true,
-    "oldListenerPid": 61052,
+    "oldListenerPid": 60628,
     "stoppedOnlyExactOwnedListener": true,
     "unknownProcessesStopped": false
   },
   "launcher": {
     "path": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-phone-preview-20261111/launch-lan-nl-v2-detached.cjs",
     "sha256": "0bcda032871fe0f4eca0c5f4743a1af83c9214daecd02812c4fe19dfc20a0e91",
-    "manifestPath": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-phone-preview-20261111\\detached-xAq9sMM06TxZlpVjSRdv3-2026-11-13T160040972Z.stop-manifest.json",
-    "stdoutLog": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-phone-preview-20261111\\detached-xAq9sMM06TxZlpVjSRdv3-2026-11-13T160040972Z.stdout.log",
-    "stderrLog": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-phone-preview-20261111\\detached-xAq9sMM06TxZlpVjSRdv3-2026-11-13T160040972Z.stderr.log",
+    "manifestPath": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-phone-preview-20261111\\detached-TnGIIful8W70dmhVNZaHd-2026-11-13T175251442Z.stop-manifest.json",
+    "stdoutLog": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-phone-preview-20261111\\detached-TnGIIful8W70dmhVNZaHd-2026-11-13T175251442Z.stdout.log",
+    "stderrLog": "C:\\Users\\DaviiC\\AppData\\Local\\Temp\\shah-phone-preview-20261111\\detached-TnGIIful8W70dmhVNZaHd-2026-11-13T175251442Z.stderr.log",
     "verifiedAfterLauncherExit": true
   },
   "publicNextAssetsHttpVerified": [
     {
-      "path": "/_next/static/chunks/1398-0cf2daee30c8be85.js",
+      "path": "/_next/static/chunks/1398-6516e63bd5e5c6c7.js",
       "status": 200,
       "method": "HEAD",
       "contentType": "application/javascript; charset=UTF-8"
@@ -593,7 +593,7 @@
       "contentType": "application/javascript; charset=UTF-8"
     },
     {
-      "path": "/_next/static/chunks/5696.ec984454c7a37d63.js",
+      "path": "/_next/static/chunks/5696.b72db62cd65a4165.js",
       "status": 200,
       "method": "HEAD",
       "contentType": "application/javascript; charset=UTF-8"
@@ -797,7 +797,7 @@
       "contentType": "application/javascript; charset=UTF-8"
     },
     {
-      "path": "/_next/static/chunks/app/layout-3087d774290a2742.js",
+      "path": "/_next/static/chunks/app/layout-1604e4323aa176e0.js",
       "status": 200,
       "method": "HEAD",
       "contentType": "application/javascript; charset=UTF-8"
@@ -857,7 +857,7 @@
       "contentType": "application/javascript; charset=UTF-8"
     },
     {
-      "path": "/_next/static/chunks/webpack-3610f654675df602.js",
+      "path": "/_next/static/chunks/webpack-1b705029d5c61cce.js",
       "status": 200,
       "method": "HEAD",
       "contentType": "application/javascript; charset=UTF-8"
@@ -869,7 +869,7 @@
       "contentType": "text/css; charset=UTF-8"
     },
     {
-      "path": "/_next/static/css/4635a6dfcd298cb3.css",
+      "path": "/_next/static/css/08b343ce2a8db9ae.css",
       "status": 200,
       "method": "HEAD",
       "contentType": "text/css; charset=UTF-8"

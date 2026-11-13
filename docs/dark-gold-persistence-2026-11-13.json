@@ -1,0 +1,130 @@
+{
+  "build": "TnGIIful8W70dmhVNZaHd",
+  "checks": [
+    {
+      "type": "default-toggle-reload-route",
+      "os": "light",
+      "saved": null,
+      "first": {
+        "dark": true,
+        "gold": false,
+        "page": "#062b32"
+      },
+      "chosen": "light",
+      "reloaded": {
+        "dark": true,
+        "gold": true,
+        "page": "#16130f"
+      }
+    },
+    {
+      "type": "default-toggle-reload-route",
+      "os": "light",
+      "saved": "dark",
+      "first": {
+        "dark": true,
+        "gold": false,
+        "page": "#062b32"
+      },
+      "chosen": "light",
+      "reloaded": {
+        "dark": true,
+        "gold": true,
+        "page": "#16130f"
+      }
+    },
+    {
+      "type": "default-toggle-reload-route",
+      "os": "light",
+      "saved": "light",
+      "first": {
+        "dark": true,
+        "gold": true,
+        "page": "#16130f"
+      },
+      "chosen": "dark",
+      "reloaded": {
+        "dark": true,
+        "gold": false,
+        "page": "#062b32"
+      }
+    },
+    {
+      "type": "default-toggle-reload-route",
+      "os": "dark",
+      "saved": null,
+      "first": {
+        "dark": true,
+        "gold": false,
+        "page": "#062b32"
+      },
+      "chosen": "light",
+      "reloaded": {
+        "dark": true,
+        "gold": true,
+        "page": "#16130f"
+      }
+    },
+    {
+      "type": "default-toggle-reload-route",
+      "os": "dark",
+      "saved": "dark",
+      "first": {
+        "dark": true,
+        "gold": false,
+        "page": "#062b32"
+      },
+      "chosen": "light",
+      "reloaded": {
+        "dark": true,
+        "gold": true,
+        "page": "#16130f"
+      }
+    },
+    {
+      "type": "default-toggle-reload-route",
+      "os": "dark",
+      "saved": "light",
+      "first": {
+        "dark": true,
+        "gold": true,
+        "page": "#16130f"
+      },
+      "chosen": "dark",
+      "reloaded": {
+        "dark": true,
+        "gold": false,
+        "page": "#062b32"
+      }
+    },
+    {
+      "type": "cross-tab-labels-language-and-clear",
+      "lang": "en",
+      "correctLabels": true,
+      "crossTab": true,
+      "languagePreservesTheme": true,
+      "removalDefaultsToTeal": true
+    },
+    {
+      "type": "cross-tab-labels-language-and-clear",
+      "lang": "nl",
+      "correctLabels": true,
+      "crossTab": true,
+      "languagePreservesTheme": true,
+      "removalDefaultsToTeal": true
+    },
+    {
+      "type": "blocked-theme-storage",
+      "default": "teal",
+      "inMemoryToggle": "gold",
+      "uncaughtError": false
+    },
+    {
+      "type": "keyboard-toggle",
+      "enter": "teal",
+      "space": "gold",
+      "rootAlwaysDark": true
+    }
+  ],
+  "errors": []
+}

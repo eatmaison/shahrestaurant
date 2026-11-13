@@ -1,0 +1,45 @@
+{
+  "atUTC": "2026-11-13T17:57:13.416Z",
+  "build": "TnGIIful8W70dmhVNZaHd",
+  "sourceSha256": "146f3a39a49bc2a0d6ccd8699d1a2a6c6b373a55598d59a3e6a055e0868f15f1",
+  "sourceInputs": 496,
+  "sourceUnchanged": true,
+  "publicAssetsUnchanged": 244,
+  "buildCheck": {
+    "exitCode": 0,
+    "routes": 65,
+    "typecheck": true
+  },
+  "focusedLint": {
+    "errors": 0,
+    "warnings": 0
+  },
+  "bootstrapCases": 8,
+  "adminLayouts": 48,
+  "publicBrowserChecks": 52,
+  "publicRoutes": 24,
+  "persistenceCases": 10,
+  "stateCases": 40,
+  "cartCases": 4,
+  "finalHttpChecks": 50,
+  "playbackCases": 4,
+  "physicalPhoneTest": false,
+  "githubPush": false,
+  "deployment": false,
+  "productionMigration": false,
+  "originalTealFindingsRetained": 3,
+  "existingPartnerLogoPlatesPerLocale": 4,
+  "evidenceFiles": [
+    "dark-gold-admin-browser-2026-11-13.json",
+    "dark-gold-all-public-2026-11-13.json",
+    "dark-gold-build-2026-11-13.json",
+    "dark-gold-cart-2026-11-13.json",
+    "dark-gold-persistence-2026-11-13.json",
+    "dark-gold-playback-2026-11-13.json",
+    "dark-gold-promoted-http-2026-11-13.json",
+    "dark-gold-public-browser-2026-11-13.json",
+    "dark-gold-public-http-2026-11-13.json",
+    "dark-gold-source-2026-11-13.json",
+    "dark-gold-states-2026-11-13.json"
+  ]
+}

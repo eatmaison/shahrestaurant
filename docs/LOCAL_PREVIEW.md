@@ -1,5 +1,15 @@
 # Current local preview - 13 November 2026
 
+Public: http://localhost:3398/en (English) or http://localhost:3398/ (Dutch). Same Wi-Fi: http://192.168.0.122:3618/en or / for Dutch. The rejected light mode is now a second dark-gold palette; original dark teal is retained. Saved legacy light choices automatically select dark gold. [Theme changes, screenshots, tests and limitations](DARK-GOLD-THEME.md).
+
+Synthetic read-only admin: http://localhost:4068/admin with separate customers, stats and events pages. No admin data or transactions are exposed on the phone listener.
+
+Current build: TnGIIful8W70dmhVNZaHd, .next-review-shah-dark-gold-final-20261113; frozen source 146f3a39a49bc2a0d6ccd8699d1a2a6c6b373a55598d59a3e6a055e0868f15f1, 496 inputs, 65 routes. All 244 public media files are byte-identical to the preceding build. Build/typecheck, focused lint, first-paint/persistence, 48 admin layouts, 24 public routes, form/dialog/cart states, 50 final HTTP checks and four actual EN/NL desktop/mobile playback cases passed. These theme changes are local only: no GitHub push, deployment or production migration.
+
+Guarded public start/verify: node "$env:TEMP\shah-preview-20261111\start-shah-dark-gold-final-main.cjs". Admin: node "$env:TEMP\shah-dark-gold-20261113\start-or-verify-private-final.cjs". Run in PowerShell from this checkout. These task-local helpers require their matching build and Temp fixtures and do not replace unknown listeners.
+
+## Previous published admin checkpoint - 13 November 2026
+
 Public site: http://localhost:3398/en or http://localhost:3398/. Same Wi-Fi: http://192.168.0.122:3618/en or `/`. The approved photographs, bilingual intro, menu and public events are retained.
 
 The restructured admin demo is **http://localhost:4068/admin** with separate `/admin/customers`, `/admin/stats` and `/admin/events` pages. This loopback-only preview contains labelled synthetic data; writes are blocked. Admin is never exposed through the phone listener.

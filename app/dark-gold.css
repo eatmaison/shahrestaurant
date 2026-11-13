@@ -1,0 +1,63 @@
+/* The legacy saved "light" preference now selects a second dark palette.
+   Keep every override scoped to this attribute: the original teal dark theme is untouched. */
+:root.dark[data-shah-theme="gold"] {
+  color-scheme: dark;
+  --shah-page: #16130f;
+  --shah-surface: #231e16;
+  --shah-soft: #30271b;
+  --shah-ink: #f5ecdc;
+  --shah-muted: #d3c4ab;
+  --shah-line: #8b7149;
+  --shah-gold: #dfb875;
+  --shah-accent: #dfb875;
+  --shah-danger: #ffbeb2;
+  --shah-button: #cfa45c;
+  --shah-button-ink: #1d160d;
+  --shah-metal: #cfa45c;
+  --shah-shadow: 0 12px 36px #00000045;
+  --shah-edge: #e2bd790f;
+  --shah-press-shadow: inset 0 2px 5px #00000045;
+  --color-slate-50: #f5ecdc;
+  --color-slate-100: #f1e7d6;
+  --color-slate-200: #d3c4ab;
+  --color-slate-300: #d3c4ab;
+  --color-slate-400: #d3c4ab;
+  --color-slate-500: #d3c4ab;
+  --color-slate-600: #d3c4ab;
+  --color-slate-700: #d3c4ab;
+  --color-slate-800: #f5ecdc;
+  --color-slate-900: #f5ecdc;
+  --color-slate-950: #f5ecdc;
+  --color-stone-50: #f5ecdc;
+  --color-stone-100: #f1e7d6;
+  --color-stone-200: #d3c4ab;
+  --color-stone-300: #d3c4ab;
+  --color-stone-400: #d3c4ab;
+  --color-stone-500: #d3c4ab;
+  --color-stone-600: #d3c4ab;
+  --color-stone-700: #d3c4ab;
+  --color-stone-800: #f5ecdc;
+  --color-stone-900: #f5ecdc;
+  --color-stone-950: #f5ecdc;
+}
+:root.dark[data-shah-theme="gold"] :is([class*="bg-slate-"],[class*="bg-stone-"],[class*="bg-neutral-"],[class*="bg-zinc-"],[class*="bg-gray-"],.bg-white,[class*="bg-white/"]) { background-color:var(--shah-surface); }
+:root.dark[data-shah-theme="gold"] :is([class*="text-slate-"],[class*="text-stone-"]) { color:var(--shah-muted); }
+:root.dark[data-shah-theme="gold"] :is([class*="text-slate-800"],[class*="text-slate-900"],[class*="text-stone-800"],[class*="text-stone-900"]) { color:var(--shah-ink); }
+:root.dark[data-shah-theme="gold"] main :is([class*="text-emerald-"],[class*="text-teal-"],[class*="text-sky-"],[class*="text-amber-"]) { color:var(--shah-accent); }
+:root.dark[data-shah-theme="gold"] main :is([class*="text-red-"],[class*="text-rose-"]) { color:var(--shah-danger); }
+:root.dark[data-shah-theme="gold"] main :is(input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="hidden"]):not([type="color"]),select,textarea) { background-color:var(--shah-surface); color:var(--shah-ink); border-color:var(--shah-line); }
+:root.dark[data-shah-theme="gold"] main :is(input,textarea)::placeholder { color:var(--shah-muted); opacity:1; }
+:root.dark[data-shah-theme="gold"] select option { background:var(--shah-surface); color:var(--shah-ink); }
+:root.dark[data-shah-theme="gold"] main :is(.btn-ember,.btn-shine),
+:root.dark[data-shah-theme="gold"] main :is(button,a):is([class*="bg-emerald-600"],[class*="bg-slate-900"]),
+:root.dark[data-shah-theme="gold"] [data-site-header] :is(.btn-ember,.btn-shine),
+:root.dark[data-shah-theme="gold"] [data-cookie-notice] button:last-child { background:var(--shah-button); border-color:var(--shah-button); color:var(--shah-button-ink); }
+:root.dark[data-shah-theme="gold"] main :is(.btn-ember,.btn-shine) [class~="bg-white/20"] { background:#ffffff1f; color:var(--shah-button-ink); }
+:root.dark[data-shah-theme="gold"] main :is(button,a)[class~="bg-emerald-500/15"] { background:var(--shah-soft); border-color:var(--shah-accent); color:var(--shah-accent); }
+:root.dark[data-shah-theme="gold"] [data-workspace] :is([class~="text-red-500"],[class~="text-rose-700"]) { color:var(--shah-danger); }
+:root.dark[data-shah-theme="gold"] [data-site-footer] { background:#1b1711; border-color:var(--shah-line); }
+:root.dark[data-shah-theme="gold"] [data-site-footer] :is([class*="text-slate-"],p,li) { color:var(--shah-muted); }
+:root.dark[data-shah-theme="gold"] [data-site-footer] :is([class*="text-emerald-"],.footer-quick-links a) { color:var(--shah-gold); }
+:root.dark[data-shah-theme="gold"] [data-cookie-notice] p { color:var(--shah-muted); }
+:root.dark[data-shah-theme="gold"] [data-cookie-notice] p a { color:var(--shah-ink); }
+:root.dark[data-shah-theme="gold"] [data-back-top] { background:var(--shah-button); border-color:var(--shah-button); color:var(--shah-button-ink); }

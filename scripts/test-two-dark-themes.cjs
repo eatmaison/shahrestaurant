@@ -1,0 +1,7 @@
+/* eslint-disable @typescript-eslint/no-require-imports -- Isolated first-paint preference regression. */
+const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),assert=require('node:assert/strict'),test=require('node:test'),ts=require('typescript');
+const source=fs.readFileSync(path.join(__dirname,'../app/layout.tsx'),'utf8'),ast=ts.createSourceFile('layout.tsx',source,ts.ScriptTarget.Latest,true,ts.ScriptKind.TSX);
+const declaration=ast.statements.filter(ts.isVariableStatement).flatMap(s=>[...s.declarationList.declarations]).find(d=>d.name.getText(ast)==='themeScript');
+assert(declaration&&ts.isNoSubstitutionTemplateLiteral(declaration.initializer));
+const script=declaration.initializer.text;
+for(const [label,stored,gold]of [['new visitor',null,false],['saved original dark','"dark"',false],['saved legacy light becomes dark gold','"light"',true],['unknown preference','"gold"',false],['malformed JSON','{',false],['stored null','null',false],['non-string value','3',false],['storage unavailable',new Error('blocked'),false]])test('First paint: '+label,()=>{const classes=new Set(),attributes=new Map(),root={classList:{add:value=>classes.add(value)},setAttribute:(k,v)=>attributes.set(k,v),removeAttribute:k=>attributes.delete(k)};vm.runInNewContext(script,{document:{documentElement:root},localStorage:{getItem:()=>{if(stored instanceof Error)throw stored;return stored;}}});assert(classes.has('dark'),'both modes must retain dark controls/styles before body paint');assert.equal(attributes.get('data-shah-theme')==='gold',gold);});

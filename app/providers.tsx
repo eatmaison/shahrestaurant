@@ -42,6 +42,7 @@ function loadDictionaries() {
 /* Theme                                                               */
 /* ------------------------------------------------------------------ */
 
+// Keep the saved "light" key compatible: it now selects the second, dark-gold palette.
 type Theme = "light" | "dark";
 
 interface ThemeCtx {
@@ -413,7 +414,7 @@ export function Providers({ children, initialLang = "nl", initialDictionaries }:
     let mounted = true;
     queueMicrotask(() => {
       if (!mounted) return;
-      const initialTheme = readThemePreference(document.documentElement.classList.contains("dark") ? "dark" : "light");
+      const initialTheme = readThemePreference(document.documentElement.dataset.shahTheme === "gold" ? "light" : "dark");
       setTheme(current => current === initialTheme ? current : initialTheme);
       const savedLang = readJSON<unknown>(LS.lang, "nl");
       setLangState(getLocalizedRoute(window.location.pathname)?.locale ?? (savedLang === "en" ? "en" : "nl"));
@@ -443,7 +444,7 @@ export function Providers({ children, initialLang = "nl", initialDictionaries }:
   useEffect(() => {
     const sync = (event: StorageEvent) => {
       if (event.key === LS.cart || event.key === LS.menuUpgrades || event.key === null) setMenuCart(readMenuCart());
-      if (event.key === LS.theme) setTheme(readThemePreference("light"));
+      if (event.key === LS.theme || event.key === null) setTheme(readThemePreference("dark"));
       if (event.key === LS.lang || event.key === null) {
         const route = getLocalizedRoute(window.location.pathname);
         if (route) { languageRequest.current++; setLangState(route.locale); }
@@ -464,7 +465,9 @@ export function Providers({ children, initialLang = "nl", initialDictionaries }:
   useEffect(() => {
     if (!hydrated) return;
     const root = document.documentElement;
-    root.classList.toggle("dark", theme === "dark");
+    root.classList.add("dark");
+    if (theme === "light") root.dataset.shahTheme = "gold";
+    else delete root.dataset.shahTheme;
     writeStoredJSON(LS.theme, theme);
   }, [theme, hydrated]);
 

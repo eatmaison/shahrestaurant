@@ -1,0 +1,384 @@
+{
+  "checkedAt": "2026-11-13T17:46:14.221Z",
+  "buildId": "TnGIIful8W70dmhVNZaHd",
+  "dist": ".next-review-shah-dark-gold-final-20261113",
+  "sourceSha256": "146f3a39a49bc2a0d6ccd8699d1a2a6c6b373a55598d59a3e6a055e0868f15f1",
+  "sourceUnchangedAfterBuild": true,
+  "sourceChanges": [],
+  "loopbackOnly": true,
+  "browserVerification": false,
+  "results": [
+    {
+      "route": "/events",
+      "locale": "nl",
+      "session": "guest",
+      "status": 200,
+      "indexable": true,
+      "selfCanonical": true,
+      "reciprocalAlternates": 3
+    },
+    {
+      "route": "/events/about",
+      "locale": "nl",
+      "session": "guest",
+      "status": 200,
+      "indexable": true,
+      "selfCanonical": true,
+      "reciprocalAlternates": 3
+    },
+    {
+      "route": "/events/birthdays",
+      "locale": "nl",
+      "session": "guest",
+      "status": 200,
+      "indexable": true,
+      "selfCanonical": true,
+      "reciprocalAlternates": 3
+    },
+    {
+      "route": "/events/celebrations",
+      "locale": "nl",
+      "session": "guest",
+      "status": 200,
+      "indexable": true,
+      "selfCanonical": true,
+      "reciprocalAlternates": 3
+    },
+    {
+      "route": "/events/company-catering",
+      "locale": "nl",
+      "session": "guest",
+      "status": 200,
+      "indexable": true,
+      "selfCanonical": true,
+      "reciprocalAlternates": 3
+    },
+    {
+      "route": "/events/company-lunches",
+      "locale": "nl",
+      "session": "guest",
+      "status": 200,
+      "indexable": true,
+      "selfCanonical": true,
+      "reciprocalAlternates": 3
+    },
+    {
+      "route": "/events/gallery",
+      "locale": "nl",
+      "session": "guest",
+      "status": 200,
+      "indexable": true,
+      "selfCanonical": true,
+      "reciprocalAlternates": 3
+    },
+    {
+      "route": "/en/events",
+      "locale": "en",
+      "session": "guest",
+      "status": 200,
+      "indexable": true,
+      "selfCanonical": true,
+      "reciprocalAlternates": 3
+    },
+    {
+      "route": "/en/events/about",
+      "locale": "en",
+      "session": "guest",
+      "status": 200,
+      "indexable": true,
+      "selfCanonical": true,
+      "reciprocalAlternates": 3
+    },
+    {
+      "route": "/en/events/birthdays",
+      "locale": "en",
+      "session": "guest",
+      "status": 200,
+      "indexable": true,
+      "selfCanonical": true,
+      "reciprocalAlternates": 3
+    },
+    {
+      "route": "/en/events/celebrations",
+      "locale": "en",
+      "session": "guest",
+      "status": 200,
+      "indexable": true,
+      "selfCanonical": true,
+      "reciprocalAlternates": 3
+    },
+    {
+      "route": "/en/events/company-catering",
+      "locale": "en",
+      "session": "guest",
+      "status": 200,
+      "indexable": true,
+      "selfCanonical": true,
+      "reciprocalAlternates": 3
+    },
+    {
+      "route": "/en/events/company-lunches",
+      "locale": "en",
+      "session": "guest",
+      "status": 200,
+      "indexable": true,
+      "selfCanonical": true,
+      "reciprocalAlternates": 3
+    },
+    {
+      "route": "/en/events/gallery",
+      "locale": "en",
+      "session": "guest",
+      "status": 200,
+      "indexable": true,
+      "selfCanonical": true,
+      "reciprocalAlternates": 3
+    },
+    {
+      "route": "/events",
+      "locale": "nl",
+      "session": "invalid",
+      "status": 200,
+      "indexable": true,
+      "selfCanonical": true,
+      "reciprocalAlternates": 3
+    },
+    {
+      "route": "/events/about",
+      "locale": "nl",
+      "session": "invalid",
+      "status": 200,
+      "indexable": true,
+      "selfCanonical": true,
+      "reciprocalAlternates": 3
+    },
+    {
+      "route": "/events/birthdays",
+      "locale": "nl",
+      "session": "invalid",
+      "status": 200,
+      "indexable": true,
+      "selfCanonical": true,
+      "reciprocalAlternates": 3
+    },
+    {
+      "route": "/events/celebrations",
+      "locale": "nl",
+      "session": "invalid",
+      "status": 200,
+      "indexable": true,
+      "selfCanonical": true,
+      "reciprocalAlternates": 3
+    },
+    {
+      "route": "/events/company-catering",
+      "locale": "nl",
+      "session": "invalid",
+      "status": 200,
+      "indexable": true,
+      "selfCanonical": true,
+      "reciprocalAlternates": 3
+    },
+    {
+      "route": "/events/company-lunches",
+      "locale": "nl",
+      "session": "invalid",
+      "status": 200,
+      "indexable": true,
+      "selfCanonical": true,
+      "reciprocalAlternates": 3
+    },
+    {
+      "route": "/events/gallery",
+      "locale": "nl",
+      "session": "invalid",
+      "status": 200,
+      "indexable": true,
+      "selfCanonical": true,
+      "reciprocalAlternates": 3
+    },
+    {
+      "route": "/en/events",
+      "locale": "en",
+      "session": "invalid",
+      "status": 200,
+      "indexable": true,
+      "selfCanonical": true,
+      "reciprocalAlternates": 3
+    },
+    {
+      "route": "/en/events/about",
+      "locale": "en",
+      "session": "invalid",
+      "status": 200,
+      "indexable": true,
+      "selfCanonical": true,
+      "reciprocalAlternates": 3
+    },
+    {
+      "route": "/en/events/birthdays",
+      "locale": "en",
+      "session": "invalid",
+      "status": 200,
+      "indexable": true,
+      "selfCanonical": true,
+      "reciprocalAlternates": 3
+    },
+    {
+      "route": "/en/events/celebrations",
+      "locale": "en",
+      "session": "invalid",
+      "status": 200,
+      "indexable": true,
+      "selfCanonical": true,
+      "reciprocalAlternates": 3
+    },
+    {
+      "route": "/en/events/company-catering",
+      "locale": "en",
+      "session": "invalid",
+      "status": 200,
+      "indexable": true,
+      "selfCanonical": true,
+      "reciprocalAlternates": 3
+    },
+    {
+      "route": "/en/events/company-lunches",
+      "locale": "en",
+      "session": "invalid",
+      "status": 200,
+      "indexable": true,
+      "selfCanonical": true,
+      "reciprocalAlternates": 3
+    },
+    {
+      "route": "/en/events/gallery",
+      "locale": "en",
+      "session": "invalid",
+      "status": 200,
+      "indexable": true,
+      "selfCanonical": true,
+      "reciprocalAlternates": 3
+    },
+    {
+      "route": "/parties",
+      "method": "GET",
+      "status": 404
+    },
+    {
+      "route": "/parties",
+      "method": "HEAD",
+      "status": 404
+    },
+    {
+      "route": "/parties/complete",
+      "method": "GET",
+      "status": 404
+    },
+    {
+      "route": "/parties/complete",
+      "method": "HEAD",
+      "status": 404
+    },
+    {
+      "route": "/parties/future/nested",
+      "method": "GET",
+      "status": 404
+    },
+    {
+      "route": "/parties/future/nested",
+      "method": "HEAD",
+      "status": 404
+    },
+    {
+      "route": "/api/parties",
+      "method": "POST",
+      "status": 403
+    },
+    {
+      "route": "/api/parties/admin",
+      "method": "POST",
+      "status": 403
+    },
+    {
+      "route": "/api/parties/booking",
+      "method": "POST",
+      "status": 403
+    },
+    {
+      "route": "/api/parties/checkout",
+      "method": "POST",
+      "status": 403
+    },
+    {
+      "route": "/PARTIES",
+      "status": 404
+    },
+    {
+      "route": "/parties%2fcomplete",
+      "status": 404
+    },
+    {
+      "route": "/events/not-a-real-page",
+      "status": 404
+    },
+    {
+      "route": "/en/events/not-a-real-page",
+      "status": 404
+    },
+    {
+      "route": "/en/parties",
+      "status": 404
+    },
+    {
+      "route": "/events/",
+      "status": 308,
+      "destination": "/events",
+      "destinationStatus": 200
+    },
+    {
+      "route": "/events/gallery/",
+      "status": 308,
+      "destination": "/events/gallery",
+      "destinationStatus": 200
+    },
+    {
+      "route": "/en/events/",
+      "status": 308,
+      "destination": "/en/events",
+      "destinationStatus": 200
+    },
+    {
+      "route": "/en/events/gallery/",
+      "status": 308,
+      "destination": "/en/events/gallery",
+      "destinationStatus": 200
+    },
+    {
+      "route": "/EVENTS",
+      "status": 308,
+      "destination": "/events",
+      "destinationStatus": 200
+    },
+    {
+      "route": "/EN/EVENTS",
+      "status": 308,
+      "destination": "/en/events",
+      "destinationStatus": 200
+    },
+    {
+      "route": "/parties/",
+      "status": 308,
+      "destination": "/parties",
+      "destinationStatus": 404
+    }
+  ],
+  "eventUrls": 14,
+  "publicUrls": 24,
+  "sitemapUrls": 24,
+  "sitemapAlternates": 72,
+  "sitemap": true,
+  "robots": true,
+  "publicHomeCardsPerLocale": 3,
+  "readOnlyPreview": "http://127.0.0.1:4109/events"
+}

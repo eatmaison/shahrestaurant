@@ -1,0 +1,40 @@
+{
+  "build": "TnGIIful8W70dmhVNZaHd",
+  "syntheticBrowserCartOnly": true,
+  "checks": [
+    {
+      "width": 390,
+      "lang": "en",
+      "cartLines": 2,
+      "wraps": 3,
+      "independentMenuDrinks": 2,
+      "overflow": 0
+    },
+    {
+      "width": 390,
+      "lang": "nl",
+      "cartLines": 2,
+      "wraps": 3,
+      "independentMenuDrinks": 2,
+      "overflow": 0
+    },
+    {
+      "width": 1440,
+      "lang": "en",
+      "cartLines": 2,
+      "wraps": 3,
+      "independentMenuDrinks": 2,
+      "overflow": 0
+    },
+    {
+      "width": 1440,
+      "lang": "nl",
+      "cartLines": 2,
+      "wraps": 3,
+      "independentMenuDrinks": 2,
+      "overflow": 0
+    }
+  ],
+  "violations": [],
+  "errors": []
+}

@@ -1,13 +1,13 @@
 # Phone preview on the local network
 
-Current preview: http://192.168.0.122:3618/ (Dutch) and http://192.168.0.122:3618/en (English), build `xAq9sMM06TxZlpVjSRdv3`, source `c5dfe68d113f96ab7cd28782fd427392cf2002332990b14ad4b06cb993b1cd62`, 496 inputs. Same build at localhost:3398, including gold light mode and larger header navigation. Fresh PC-side LAN checks passed 56 policy, 60 public asset HEADs, 17 route guards, three fixture APIs and four media ranges. The exact public optional-consent chunk is allowed; private dynamic assets and all submissions remain blocked. No network-security settings changed. [Current handoff and commands](ADMIN-PLUS50.md), [LAN evidence](phone-preview-2026-11-11.json).
+Current preview: http://192.168.0.122:3618/ (Dutch) and http://192.168.0.122:3618/en (English), build TnGIIful8W70dmhVNZaHd, source 146f3a39a49bc2a0d6ccd8699d1a2a6c6b373a55598d59a3e6a055e0868f15f1, 496 inputs. Same build at localhost:3398. Both themes are dark: original teal and new dark gold. [Theme verification](DARK-GOLD-THEME.md), [fresh LAN policy/asset/route/media checks](phone-preview-2026-11-11.json). No network-security settings changed.
 
-Admin previews are **loopback-only** at http://localhost:4068/admin and its customers/stats/events pages, using labelled invented data. The LAN listener does not expose them. The approved photographs and bilingual intro remain included. Current mobile checks use desktop browser emulation/PC-side LAN requests; no fresh physical-phone result is claimed.
+Admin remains loopback-only at http://localhost:4068/admin using labelled synthetic data. The LAN listener blocks admin/account/private routes and submissions. Four actual browser playback cases passed after promotion, including both languages at phone width over the LAN URL. These are desktop Chromium emulation/PC-side checks; no new physical-phone result is claimed.
 
-Current start/verify command:
+Current start/verify command (PowerShell, task-local fixtures required):
 
 ```powershell
-node "$env:TEMP\shah-phone-preview-20261111\launch-lan-nl-v2-detached.cjs" "$env:TEMP\shah-phone-preview-20261111\lan-config-xAq9sMM06TxZlpVjSRdv3.json"
+node "$env:TEMP\shah-phone-preview-20261111\launch-lan-nl-v2-detached.cjs" "$env:TEMP\shah-phone-preview-20261111\lan-config-TnGIIful8W70dmhVNZaHd.json"
 ```
 
 ## Historical 12 November baseline and policy explanation

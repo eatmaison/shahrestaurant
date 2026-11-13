@@ -7,7 +7,7 @@ import "./fonts.css";
 import "./design-system.css";
 import "./optimizations.css";
 import "./accessibility.css";
-import "./light-gold.css";
+import "./dark-gold.css";
 import { CinematicSections } from "./components/CinematicSections";
 import { Providers } from "./providers";
 import { Header } from "./components/header";
@@ -38,7 +38,7 @@ export const viewport: Viewport = {
   themeColor: "#0D4952",
 };
 
-const themeScript = `(function(){try{var t=JSON.parse(localStorage.getItem('tm.theme'));document.documentElement.classList.toggle('dark',t!=='light');}catch(e){}})();`;
+const themeScript = `(function(){var r=document.documentElement;r.classList.add('dark');try{var t=JSON.parse(localStorage.getItem('tm.theme'));if(t==='light')r.setAttribute('data-shah-theme','gold');else r.removeAttribute('data-shah-theme');}catch(e){}})();`;
 
 export default async function RootLayout({
   children,

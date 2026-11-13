@@ -1,0 +1,1797 @@
+{
+  "atUTC": "2026-11-13T17:43:32.178Z",
+  "build": "TnGIIful8W70dmhVNZaHd",
+  "syntheticOnly": true,
+  "checks": [
+    {
+      "route": "/admin/customers",
+      "width": 1440,
+      "theme": "teal",
+      "lang": "en",
+      "overflow": 0,
+      "heading": "Customers & visitors",
+      "rows": 25,
+      "rowHeight": 77,
+      "domElements": 1047,
+      "navLinks": [
+        {
+          "href": "/admin",
+          "height": 48
+        },
+        {
+          "href": "/admin/customers",
+          "height": 48
+        },
+        {
+          "href": "/admin/stats",
+          "height": 48
+        },
+        {
+          "href": "/admin/events",
+          "height": 48
+        },
+        {
+          "href": "#workspace-users",
+          "height": 48
+        },
+        {
+          "href": "#workspace-visitors",
+          "height": 48
+        }
+      ],
+      "skeleton": false
+    },
+    {
+      "route": "/admin/stats",
+      "width": 1440,
+      "theme": "teal",
+      "lang": "en",
+      "overflow": 0,
+      "heading": "Statistics",
+      "rows": 0,
+      "domElements": 470,
+      "navLinks": [
+        {
+          "href": "/admin",
+          "height": 48
+        },
+        {
+          "href": "/admin/customers",
+          "height": 48
+        },
+        {
+          "href": "/admin/stats",
+          "height": 48
+        },
+        {
+          "href": "/admin/events",
+          "height": 48
+        }
+      ],
+      "skeleton": false
+    },
+    {
+      "route": "/admin/events",
+      "width": 1440,
+      "theme": "teal",
+      "lang": "en",
+      "overflow": 0,
+      "heading": "Events & photos",
+      "rows": 0,
+      "domElements": 287,
+      "navLinks": [
+        {
+          "href": "/admin",
+          "height": 48
+        },
+        {
+          "href": "/admin/customers",
+          "height": 48
+        },
+        {
+          "href": "/admin/stats",
+          "height": 48
+        },
+        {
+          "href": "/admin/events",
+          "height": 48
+        }
+      ],
+      "skeleton": false
+    },
+    {
+      "route": "/admin",
+      "width": 1440,
+      "theme": "teal",
+      "lang": "en",
+      "overflow": 0,
+      "heading": "Daily operations",
+      "rows": 0,
+      "domElements": 1731,
+      "navLinks": [
+        {
+          "href": "/admin",
+          "height": 48
+        },
+        {
+          "href": "/admin/customers",
+          "height": 48
+        },
+        {
+          "href": "/admin/stats",
+          "height": 48
+        },
+        {
+          "href": "/admin/events",
+          "height": 48
+        },
+        {
+          "href": "#workspace-orders",
+          "height": 48
+        },
+        {
+          "href": "#workspace-reservations",
+          "height": 48
+        },
+        {
+          "href": "#workspace-products",
+          "height": 48
+        },
+        {
+          "href": "#workspace-vip",
+          "height": 48
+        },
+        {
+          "href": "#workspace-social",
+          "height": 48
+        },
+        {
+          "href": "#workspace-phone",
+          "height": 48
+        }
+      ],
+      "skeleton": false
+    },
+    {
+      "route": "/admin/customers",
+      "width": 390,
+      "theme": "teal",
+      "lang": "en",
+      "overflow": 0,
+      "heading": "Customers & visitors",
+      "rows": 25,
+      "rowHeight": 162,
+      "domElements": 1051,
+      "navLinks": [
+        {
+          "href": "/admin",
+          "height": 48
+        },
+        {
+          "href": "/admin/customers",
+          "height": 48
+        },
+        {
+          "href": "/admin/stats",
+          "height": 48
+        },
+        {
+          "href": "/admin/events",
+          "height": 48
+        },
+        {
+          "href": "#workspace-users",
+          "height": 48
+        },
+        {
+          "href": "#workspace-visitors",
+          "height": 48
+        }
+      ],
+      "skeleton": false
+    },
+    {
+      "route": "/admin/stats",
+      "width": 390,
+      "theme": "teal",
+      "lang": "en",
+      "overflow": 0,
+      "heading": "Statistics",
+      "rows": 0,
+      "domElements": 470,
+      "navLinks": [
+        {
+          "href": "/admin",
+          "height": 48
+        },
+        {
+          "href": "/admin/customers",
+          "height": 48
+        },
+        {
+          "href": "/admin/stats",
+          "height": 48
+        },
+        {
+          "href": "/admin/events",
+          "height": 48
+        }
+      ],
+      "skeleton": false
+    },
+    {
+      "route": "/admin/events",
+      "width": 390,
+      "theme": "teal",
+      "lang": "en",
+      "overflow": 0,
+      "heading": "Events & photos",
+      "rows": 0,
+      "domElements": 287,
+      "navLinks": [
+        {
+          "href": "/admin",
+          "height": 48
+        },
+        {
+          "href": "/admin/customers",
+          "height": 48
+        },
+        {
+          "href": "/admin/stats",
+          "height": 48
+        },
+        {
+          "href": "/admin/events",
+          "height": 48
+        }
+      ],
+      "skeleton": false
+    },
+    {
+      "route": "/admin",
+      "width": 390,
+      "theme": "teal",
+      "lang": "en",
+      "overflow": 0,
+      "heading": "Daily operations",
+      "rows": 0,
+      "domElements": 1731,
+      "navLinks": [
+        {
+          "href": "/admin",
+          "height": 48
+        },
+        {
+          "href": "/admin/customers",
+          "height": 48
+        },
+        {
+          "href": "/admin/stats",
+          "height": 48
+        },
+        {
+          "href": "/admin/events",
+          "height": 48
+        },
+        {
+          "href": "#workspace-orders",
+          "height": 48
+        },
+        {
+          "href": "#workspace-reservations",
+          "height": 48
+        },
+        {
+          "href": "#workspace-products",
+          "height": 48
+        },
+        {
+          "href": "#workspace-vip",
+          "height": 48
+        },
+        {
+          "href": "#workspace-social",
+          "height": 48
+        },
+        {
+          "href": "#workspace-phone",
+          "height": 48
+        }
+      ],
+      "skeleton": false
+    },
+    {
+      "route": "/admin/customers",
+      "width": 360,
+      "theme": "teal",
+      "lang": "en",
+      "overflow": 0,
+      "heading": "Customers & visitors",
+      "rows": 25,
+      "rowHeight": 162,
+      "domElements": 1051,
+      "navLinks": [
+        {
+          "href": "/admin",
+          "height": 48
+        },
+        {
+          "href": "/admin/customers",
+          "height": 48
+        },
+        {
+          "href": "/admin/stats",
+          "height": 48
+        },
+        {
+          "href": "/admin/events",
+          "height": 48
+        },
+        {
+          "href": "#workspace-users",
+          "height": 48
+        },
+        {
+          "href": "#workspace-visitors",
+          "height": 48
+        }
+      ],
+      "skeleton": false
+    },
+    {
+      "route": "/admin/stats",
+      "width": 360,
+      "theme": "teal",
+      "lang": "en",
+      "overflow": 0,
+      "heading": "Statistics",
+      "rows": 0,
+      "domElements": 470,
+      "navLinks": [
+        {
+          "href": "/admin",
+          "height": 48
+        },
+        {
+          "href": "/admin/customers",
+          "height": 48
+        },
+        {
+          "href": "/admin/stats",
+          "height": 48
+        },
+        {
+          "href": "/admin/events",
+          "height": 48
+        }
+      ],
+      "skeleton": false
+    },
+    {
+      "route": "/admin/events",
+      "width": 360,
+      "theme": "teal",
+      "lang": "en",
+      "overflow": 0,
+      "heading": "Events & photos",
+      "rows": 0,
+      "domElements": 287,
+      "navLinks": [
+        {
+          "href": "/admin",
+          "height": 48
+        },
+        {
+          "href": "/admin/customers",
+          "height": 48
+        },
+        {
+          "href": "/admin/stats",
+          "height": 48
+        },
+        {
+          "href": "/admin/events",
+          "height": 48
+        }
+      ],
+      "skeleton": false
+    },
+    {
+      "route": "/admin",
+      "width": 360,
+      "theme": "teal",
+      "lang": "en",
+      "overflow": 0,
+      "heading": "Daily operations",
+      "rows": 0,
+      "domElements": 1731,
+      "navLinks": [
+        {
+          "href": "/admin",
+          "height": 48
+        },
+        {
+          "href": "/admin/customers",
+          "height": 48
+        },
+        {
+          "href": "/admin/stats",
+          "height": 48
+        },
+        {
+          "href": "/admin/events",
+          "height": 48
+        },
+        {
+          "href": "#workspace-orders",
+          "height": 48
+        },
+        {
+          "href": "#workspace-reservations",
+          "height": 48
+        },
+        {
+          "href": "#workspace-products",
+          "height": 48
+        },
+        {
+          "href": "#workspace-vip",
+          "height": 48
+        },
+        {
+          "href": "#workspace-social",
+          "height": 48
+        },
+        {
+          "href": "#workspace-phone",
+          "height": 48
+        }
+      ],
+      "skeleton": false
+    },
+    {
+      "route": "/admin/customers",
+      "width": 1440,
+      "theme": "teal",
+      "lang": "nl",
+      "overflow": 0,
+      "heading": "Klanten & bezoekers",
+      "rows": 25,
+      "rowHeight": 77,
+      "domElements": 1051,
+      "navLinks": [
+        {
+          "href": "/admin",
+          "height": 48
+        },
+        {
+          "href": "/admin/customers",
+          "height": 48
+        },
+        {
+          "href": "/admin/stats",
+          "height": 48
+        },
+        {
+          "href": "/admin/events",
+          "height": 48
+        },
+        {
+          "href": "#workspace-users",
+          "height": 48
+        },
+        {
+          "href": "#workspace-visitors",
+          "height": 48
+        }
+      ],
+      "skeleton": false
+    },
+    {
+      "route": "/admin/stats",
+      "width": 1440,
+      "theme": "teal",
+      "lang": "nl",
+      "overflow": 0,
+      "heading": "Statistieken",
+      "rows": 0,
+      "domElements": 470,
+      "navLinks": [
+        {
+          "href": "/admin",
+          "height": 48
+        },
+        {
+          "href": "/admin/customers",
+          "height": 48
+        },
+        {
+          "href": "/admin/stats",
+          "height": 48
+        },
+        {
+          "href": "/admin/events",
+          "height": 48
+        }
+      ],
+      "skeleton": false
+    },
+    {
+      "route": "/admin/events",
+      "width": 1440,
+      "theme": "teal",
+      "lang": "nl",
+      "overflow": 0,
+      "heading": "Evenementen & foto's",
+      "rows": 0,
+      "domElements": 287,
+      "navLinks": [
+        {
+          "href": "/admin",
+          "height": 48
+        },
+        {
+          "href": "/admin/customers",
+          "height": 48
+        },
+        {
+          "href": "/admin/stats",
+          "height": 48
+        },
+        {
+          "href": "/admin/events",
+          "height": 48
+        }
+      ],
+      "skeleton": false
+    },
+    {
+      "route": "/admin",
+      "width": 1440,
+      "theme": "teal",
+      "lang": "nl",
+      "overflow": 0,
+      "heading": "Dagelijks beheer",
+      "rows": 0,
+      "domElements": 1731,
+      "navLinks": [
+        {
+          "href": "/admin",
+          "height": 48
+        },
+        {
+          "href": "/admin/customers",
+          "height": 48
+        },
+        {
+          "href": "/admin/stats",
+          "height": 48
+        },
+        {
+          "href": "/admin/events",
+          "height": 48
+        },
+        {
+          "href": "#workspace-orders",
+          "height": 48
+        },
+        {
+          "href": "#workspace-reservations",
+          "height": 48
+        },
+        {
+          "href": "#workspace-products",
+          "height": 48
+        },
+        {
+          "href": "#workspace-vip",
+          "height": 48
+        },
+        {
+          "href": "#workspace-social",
+          "height": 48
+        },
+        {
+          "href": "#workspace-phone",
+          "height": 48
+        }
+      ],
+      "skeleton": false
+    },
+    {
+      "route": "/admin/customers",
+      "width": 390,
+      "theme": "teal",
+      "lang": "nl",
+      "overflow": 0,
+      "heading": "Klanten & bezoekers",
+      "rows": 25,
+      "rowHeight": 162,
+      "domElements": 1051,
+      "navLinks": [
+        {
+          "href": "/admin",
+          "height": 48
+        },
+        {
+          "href": "/admin/customers",
+          "height": 48
+        },
+        {
+          "href": "/admin/stats",
+          "height": 48
+        },
+        {
+          "href": "/admin/events",
+          "height": 48
+        },
+        {
+          "href": "#workspace-users",
+          "height": 48
+        },
+        {
+          "href": "#workspace-visitors",
+          "height": 48
+        }
+      ],
+      "skeleton": false
+    },
+    {
+      "route": "/admin/stats",
+      "width": 390,
+      "theme": "teal",
+      "lang": "nl",
+      "overflow": 0,
+      "heading": "Statistieken",
+      "rows": 0,
+      "domElements": 470,
+      "navLinks": [
+        {
+          "href": "/admin",
+          "height": 48
+        },
+        {
+          "href": "/admin/customers",
+          "height": 48
+        },
+        {
+          "href": "/admin/stats",
+          "height": 48
+        },
+        {
+          "href": "/admin/events",
+          "height": 48
+        }
+      ],
+      "skeleton": false
+    },
+    {
+      "route": "/admin/events",
+      "width": 390,
+      "theme": "teal",
+      "lang": "nl",
+      "overflow": 0,
+      "heading": "Evenementen & foto's",
+      "rows": 0,
+      "domElements": 287,
+      "navLinks": [
+        {
+          "href": "/admin",
+          "height": 48
+        },
+        {
+          "href": "/admin/customers",
+          "height": 48
+        },
+        {
+          "href": "/admin/stats",
+          "height": 48
+        },
+        {
+          "href": "/admin/events",
+          "height": 48
+        }
+      ],
+      "skeleton": false
+    },
+    {
+      "route": "/admin",
+      "width": 390,
+      "theme": "teal",
+      "lang": "nl",
+      "overflow": 0,
+      "heading": "Dagelijks beheer",
+      "rows": 0,
+      "domElements": 1731,
+      "navLinks": [
+        {
+          "href": "/admin",
+          "height": 48
+        },
+        {
+          "href": "/admin/customers",
+          "height": 48
+        },
+        {
+          "href": "/admin/stats",
+          "height": 48
+        },
+        {
+          "href": "/admin/events",
+          "height": 48
+        },
+        {
+          "href": "#workspace-orders",
+          "height": 48
+        },
+        {
+          "href": "#workspace-reservations",
+          "height": 48
+        },
+        {
+          "href": "#workspace-products",
+          "height": 48
+        },
+        {
+          "href": "#workspace-vip",
+          "height": 48
+        },
+        {
+          "href": "#workspace-social",
+          "height": 48
+        },
+        {
+          "href": "#workspace-phone",
+          "height": 48
+        }
+      ],
+      "skeleton": false
+    },
+    {
+      "route": "/admin/customers",
+      "width": 360,
+      "theme": "teal",
+      "lang": "nl",
+      "overflow": 0,
+      "heading": "Klanten & bezoekers",
+      "rows": 25,
+      "rowHeight": 162,
+      "domElements": 1051,
+      "navLinks": [
+        {
+          "href": "/admin",
+          "height": 48
+        },
+        {
+          "href": "/admin/customers",
+          "height": 48
+        },
+        {
+          "href": "/admin/stats",
+          "height": 48
+        },
+        {
+          "href": "/admin/events",
+          "height": 48
+        },
+        {
+          "href": "#workspace-users",
+          "height": 48
+        },
+        {
+          "href": "#workspace-visitors",
+          "height": 48
+        }
+      ],
+      "skeleton": false
+    },
+    {
+      "route": "/admin/stats",
+      "width": 360,
+      "theme": "teal",
+      "lang": "nl",
+      "overflow": 0,
+      "heading": "Statistieken",
+      "rows": 0,
+      "domElements": 470,
+      "navLinks": [
+        {
+          "href": "/admin",
+          "height": 48
+        },
+        {
+          "href": "/admin/customers",
+          "height": 48
+        },
+        {
+          "href": "/admin/stats",
+          "height": 48
+        },
+        {
+          "href": "/admin/events",
+          "height": 48
+        }
+      ],
+      "skeleton": false
+    },
+    {
+      "route": "/admin/events",
+      "width": 360,
+      "theme": "teal",
+      "lang": "nl",
+      "overflow": 0,
+      "heading": "Evenementen & foto's",
+      "rows": 0,
+      "domElements": 287,
+      "navLinks": [
+        {
+          "href": "/admin",
+          "height": 48
+        },
+        {
+          "href": "/admin/customers",
+          "height": 48
+        },
+        {
+          "href": "/admin/stats",
+          "height": 48
+        },
+        {
+          "href": "/admin/events",
+          "height": 48
+        }
+      ],
+      "skeleton": false
+    },
+    {
+      "route": "/admin",
+      "width": 360,
+      "theme": "teal",
+      "lang": "nl",
+      "overflow": 0,
+      "heading": "Dagelijks beheer",
+      "rows": 0,
+      "domElements": 1731,
+      "navLinks": [
+        {
+          "href": "/admin",
+          "height": 48
+        },
+        {
+          "href": "/admin/customers",
+          "height": 48
+        },
+        {
+          "href": "/admin/stats",
+          "height": 48
+        },
+        {
+          "href": "/admin/events",
+          "height": 48
+        },
+        {
+          "href": "#workspace-orders",
+          "height": 48
+        },
+        {
+          "href": "#workspace-reservations",
+          "height": 48
+        },
+        {
+          "href": "#workspace-products",
+          "height": 48
+        },
+        {
+          "href": "#workspace-vip",
+          "height": 48
+        },
+        {
+          "href": "#workspace-social",
+          "height": 48
+        },
+        {
+          "href": "#workspace-phone",
+          "height": 48
+        }
+      ],
+      "skeleton": false
+    },
+    {
+      "route": "/admin/customers",
+      "width": 1440,
+      "theme": "gold",
+      "lang": "en",
+      "overflow": 0,
+      "heading": "Customers & visitors",
+      "rows": 25,
+      "rowHeight": 77,
+      "domElements": 1051,
+      "navLinks": [
+        {
+          "href": "/admin",
+          "height": 48
+        },
+        {
+          "href": "/admin/customers",
+          "height": 48
+        },
+        {
+          "href": "/admin/stats",
+          "height": 48
+        },
+        {
+          "href": "/admin/events",
+          "height": 48
+        },
+        {
+          "href": "#workspace-users",
+          "height": 48
+        },
+        {
+          "href": "#workspace-visitors",
+          "height": 48
+        }
+      ],
+      "skeleton": false
+    },
+    {
+      "route": "/admin/stats",
+      "width": 1440,
+      "theme": "gold",
+      "lang": "en",
+      "overflow": 0,
+      "heading": "Statistics",
+      "rows": 0,
+      "domElements": 470,
+      "navLinks": [
+        {
+          "href": "/admin",
+          "height": 48
+        },
+        {
+          "href": "/admin/customers",
+          "height": 48
+        },
+        {
+          "href": "/admin/stats",
+          "height": 48
+        },
+        {
+          "href": "/admin/events",
+          "height": 48
+        }
+      ],
+      "skeleton": false
+    },
+    {
+      "route": "/admin/events",
+      "width": 1440,
+      "theme": "gold",
+      "lang": "en",
+      "overflow": 0,
+      "heading": "Events & photos",
+      "rows": 0,
+      "domElements": 287,
+      "navLinks": [
+        {
+          "href": "/admin",
+          "height": 48
+        },
+        {
+          "href": "/admin/customers",
+          "height": 48
+        },
+        {
+          "href": "/admin/stats",
+          "height": 48
+        },
+        {
+          "href": "/admin/events",
+          "height": 48
+        }
+      ],
+      "skeleton": false
+    },
+    {
+      "route": "/admin",
+      "width": 1440,
+      "theme": "gold",
+      "lang": "en",
+      "overflow": 0,
+      "heading": "Daily operations",
+      "rows": 0,
+      "domElements": 1731,
+      "navLinks": [
+        {
+          "href": "/admin",
+          "height": 48
+        },
+        {
+          "href": "/admin/customers",
+          "height": 48
+        },
+        {
+          "href": "/admin/stats",
+          "height": 48
+        },
+        {
+          "href": "/admin/events",
+          "height": 48
+        },
+        {
+          "href": "#workspace-orders",
+          "height": 48
+        },
+        {
+          "href": "#workspace-reservations",
+          "height": 48
+        },
+        {
+          "href": "#workspace-products",
+          "height": 48
+        },
+        {
+          "href": "#workspace-vip",
+          "height": 48
+        },
+        {
+          "href": "#workspace-social",
+          "height": 48
+        },
+        {
+          "href": "#workspace-phone",
+          "height": 48
+        }
+      ],
+      "skeleton": false
+    },
+    {
+      "route": "/admin/customers",
+      "width": 390,
+      "theme": "gold",
+      "lang": "en",
+      "overflow": 0,
+      "heading": "Customers & visitors",
+      "rows": 25,
+      "rowHeight": 162,
+      "domElements": 1051,
+      "navLinks": [
+        {
+          "href": "/admin",
+          "height": 48
+        },
+        {
+          "href": "/admin/customers",
+          "height": 48
+        },
+        {
+          "href": "/admin/stats",
+          "height": 48
+        },
+        {
+          "href": "/admin/events",
+          "height": 48
+        },
+        {
+          "href": "#workspace-users",
+          "height": 48
+        },
+        {
+          "href": "#workspace-visitors",
+          "height": 48
+        }
+      ],
+      "skeleton": false
+    },
+    {
+      "route": "/admin/stats",
+      "width": 390,
+      "theme": "gold",
+      "lang": "en",
+      "overflow": 0,
+      "heading": "Statistics",
+      "rows": 0,
+      "domElements": 470,
+      "navLinks": [
+        {
+          "href": "/admin",
+          "height": 48
+        },
+        {
+          "href": "/admin/customers",
+          "height": 48
+        },
+        {
+          "href": "/admin/stats",
+          "height": 48
+        },
+        {
+          "href": "/admin/events",
+          "height": 48
+        }
+      ],
+      "skeleton": false
+    },
+    {
+      "route": "/admin/events",
+      "width": 390,
+      "theme": "gold",
+      "lang": "en",
+      "overflow": 0,
+      "heading": "Events & photos",
+      "rows": 0,
+      "domElements": 287,
+      "navLinks": [
+        {
+          "href": "/admin",
+          "height": 48
+        },
+        {
+          "href": "/admin/customers",
+          "height": 48
+        },
+        {
+          "href": "/admin/stats",
+          "height": 48
+        },
+        {
+          "href": "/admin/events",
+          "height": 48
+        }
+      ],
+      "skeleton": false
+    },
+    {
+      "route": "/admin",
+      "width": 390,
+      "theme": "gold",
+      "lang": "en",
+      "overflow": 0,
+      "heading": "Daily operations",
+      "rows": 0,
+      "domElements": 1731,
+      "navLinks": [
+        {
+          "href": "/admin",
+          "height": 48
+        },
+        {
+          "href": "/admin/customers",
+          "height": 48
+        },
+        {
+          "href": "/admin/stats",
+          "height": 48
+        },
+        {
+          "href": "/admin/events",
+          "height": 48
+        },
+        {
+          "href": "#workspace-orders",
+          "height": 48
+        },
+        {
+          "href": "#workspace-reservations",
+          "height": 48
+        },
+        {
+          "href": "#workspace-products",
+          "height": 48
+        },
+        {
+          "href": "#workspace-vip",
+          "height": 48
+        },
+        {
+          "href": "#workspace-social",
+          "height": 48
+        },
+        {
+          "href": "#workspace-phone",
+          "height": 48
+        }
+      ],
+      "skeleton": false
+    },
+    {
+      "route": "/admin/customers",
+      "width": 360,
+      "theme": "gold",
+      "lang": "en",
+      "overflow": 0,
+      "heading": "Customers & visitors",
+      "rows": 25,
+      "rowHeight": 162,
+      "domElements": 1051,
+      "navLinks": [
+        {
+          "href": "/admin",
+          "height": 48
+        },
+        {
+          "href": "/admin/customers",
+          "height": 48
+        },
+        {
+          "href": "/admin/stats",
+          "height": 48
+        },
+        {
+          "href": "/admin/events",
+          "height": 48
+        },
+        {
+          "href": "#workspace-users",
+          "height": 48
+        },
+        {
+          "href": "#workspace-visitors",
+          "height": 48
+        }
+      ],
+      "skeleton": false
+    },
+    {
+      "route": "/admin/stats",
+      "width": 360,
+      "theme": "gold",
+      "lang": "en",
+      "overflow": 0,
+      "heading": "Statistics",
+      "rows": 0,
+      "domElements": 470,
+      "navLinks": [
+        {
+          "href": "/admin",
+          "height": 48
+        },
+        {
+          "href": "/admin/customers",
+          "height": 48
+        },
+        {
+          "href": "/admin/stats",
+          "height": 48
+        },
+        {
+          "href": "/admin/events",
+          "height": 48
+        }
+      ],
+      "skeleton": false
+    },
+    {
+      "route": "/admin/events",
+      "width": 360,
+      "theme": "gold",
+      "lang": "en",
+      "overflow": 0,
+      "heading": "Events & photos",
+      "rows": 0,
+      "domElements": 287,
+      "navLinks": [
+        {
+          "href": "/admin",
+          "height": 48
+        },
+        {
+          "href": "/admin/customers",
+          "height": 48
+        },
+        {
+          "href": "/admin/stats",
+          "height": 48
+        },
+        {
+          "href": "/admin/events",
+          "height": 48
+        }
+      ],
+      "skeleton": false
+    },
+    {
+      "route": "/admin",
+      "width": 360,
+      "theme": "gold",
+      "lang": "en",
+      "overflow": 0,
+      "heading": "Daily operations",
+      "rows": 0,
+      "domElements": 1731,
+      "navLinks": [
+        {
+          "href": "/admin",
+          "height": 48
+        },
+        {
+          "href": "/admin/customers",
+          "height": 48
+        },
+        {
+          "href": "/admin/stats",
+          "height": 48
+        },
+        {
+          "href": "/admin/events",
+          "height": 48
+        },
+        {
+          "href": "#workspace-orders",
+          "height": 48
+        },
+        {
+          "href": "#workspace-reservations",
+          "height": 48
+        },
+        {
+          "href": "#workspace-products",
+          "height": 48
+        },
+        {
+          "href": "#workspace-vip",
+          "height": 48
+        },
+        {
+          "href": "#workspace-social",
+          "height": 48
+        },
+        {
+          "href": "#workspace-phone",
+          "height": 48
+        }
+      ],
+      "skeleton": false
+    },
+    {
+      "route": "/admin/customers",
+      "width": 1440,
+      "theme": "gold",
+      "lang": "nl",
+      "overflow": 0,
+      "heading": "Klanten & bezoekers",
+      "rows": 25,
+      "rowHeight": 77,
+      "domElements": 1051,
+      "navLinks": [
+        {
+          "href": "/admin",
+          "height": 48
+        },
+        {
+          "href": "/admin/customers",
+          "height": 48
+        },
+        {
+          "href": "/admin/stats",
+          "height": 48
+        },
+        {
+          "href": "/admin/events",
+          "height": 48
+        },
+        {
+          "href": "#workspace-users",
+          "height": 48
+        },
+        {
+          "href": "#workspace-visitors",
+          "height": 48
+        }
+      ],
+      "skeleton": false
+    },
+    {
+      "route": "/admin/stats",
+      "width": 1440,
+      "theme": "gold",
+      "lang": "nl",
+      "overflow": 0,
+      "heading": "Statistieken",
+      "rows": 0,
+      "domElements": 470,
+      "navLinks": [
+        {
+          "href": "/admin",
+          "height": 48
+        },
+        {
+          "href": "/admin/customers",
+          "height": 48
+        },
+        {
+          "href": "/admin/stats",
+          "height": 48
+        },
+        {
+          "href": "/admin/events",
+          "height": 48
+        }
+      ],
+      "skeleton": false
+    },
+    {
+      "route": "/admin/events",
+      "width": 1440,
+      "theme": "gold",
+      "lang": "nl",
+      "overflow": 0,
+      "heading": "Evenementen & foto's",
+      "rows": 0,
+      "domElements": 287,
+      "navLinks": [
+        {
+          "href": "/admin",
+          "height": 48
+        },
+        {
+          "href": "/admin/customers",
+          "height": 48
+        },
+        {
+          "href": "/admin/stats",
+          "height": 48
+        },
+        {
+          "href": "/admin/events",
+          "height": 48
+        }
+      ],
+      "skeleton": false
+    },
+    {
+      "route": "/admin",
+      "width": 1440,
+      "theme": "gold",
+      "lang": "nl",
+      "overflow": 0,
+      "heading": "Dagelijks beheer",
+      "rows": 0,
+      "domElements": 1731,
+      "navLinks": [
+        {
+          "href": "/admin",
+          "height": 48
+        },
+        {
+          "href": "/admin/customers",
+          "height": 48
+        },
+        {
+          "href": "/admin/stats",
+          "height": 48
+        },
+        {
+          "href": "/admin/events",
+          "height": 48
+        },
+        {
+          "href": "#workspace-orders",
+          "height": 48
+        },
+        {
+          "href": "#workspace-reservations",
+          "height": 48
+        },
+        {
+          "href": "#workspace-products",
+          "height": 48
+        },
+        {
+          "href": "#workspace-vip",
+          "height": 48
+        },
+        {
+          "href": "#workspace-social",
+          "height": 48
+        },
+        {
+          "href": "#workspace-phone",
+          "height": 48
+        }
+      ],
+      "skeleton": false
+    },
+    {
+      "route": "/admin/customers",
+      "width": 390,
+      "theme": "gold",
+      "lang": "nl",
+      "overflow": 0,
+      "heading": "Klanten & bezoekers",
+      "rows": 25,
+      "rowHeight": 162,
+      "domElements": 1051,
+      "navLinks": [
+        {
+          "href": "/admin",
+          "height": 48
+        },
+        {
+          "href": "/admin/customers",
+          "height": 48
+        },
+        {
+          "href": "/admin/stats",
+          "height": 48
+        },
+        {
+          "href": "/admin/events",
+          "height": 48
+        },
+        {
+          "href": "#workspace-users",
+          "height": 48
+        },
+        {
+          "href": "#workspace-visitors",
+          "height": 48
+        }
+      ],
+      "skeleton": false
+    },
+    {
+      "route": "/admin/stats",
+      "width": 390,
+      "theme": "gold",
+      "lang": "nl",
+      "overflow": 0,
+      "heading": "Statistieken",
+      "rows": 0,
+      "domElements": 470,
+      "navLinks": [
+        {
+          "href": "/admin",
+          "height": 48
+        },
+        {
+          "href": "/admin/customers",
+          "height": 48
+        },
+        {
+          "href": "/admin/stats",
+          "height": 48
+        },
+        {
+          "href": "/admin/events",
+          "height": 48
+        }
+      ],
+      "skeleton": false
+    },
+    {
+      "route": "/admin/events",
+      "width": 390,
+      "theme": "gold",
+      "lang": "nl",
+      "overflow": 0,
+      "heading": "Evenementen & foto's",
+      "rows": 0,
+      "domElements": 287,
+      "navLinks": [
+        {
+          "href": "/admin",
+          "height": 48
+        },
+        {
+          "href": "/admin/customers",
+          "height": 48
+        },
+        {
+          "href": "/admin/stats",
+          "height": 48
+        },
+        {
+          "href": "/admin/events",
+          "height": 48
+        }
+      ],
+      "skeleton": false
+    },
+    {
+      "route": "/admin",
+      "width": 390,
+      "theme": "gold",
+      "lang": "nl",
+      "overflow": 0,
+      "heading": "Dagelijks beheer",
+      "rows": 0,
+      "domElements": 1731,
+      "navLinks": [
+        {
+          "href": "/admin",
+          "height": 48
+        },
+        {
+          "href": "/admin/customers",
+          "height": 48
+        },
+        {
+          "href": "/admin/stats",
+          "height": 48
+        },
+        {
+          "href": "/admin/events",
+          "height": 48
+        },
+        {
+          "href": "#workspace-orders",
+          "height": 48
+        },
+        {
+          "href": "#workspace-reservations",
+          "height": 48
+        },
+        {
+          "href": "#workspace-products",
+          "height": 48
+        },
+        {
+          "href": "#workspace-vip",
+          "height": 48
+        },
+        {
+          "href": "#workspace-social",
+          "height": 48
+        },
+        {
+          "href": "#workspace-phone",
+          "height": 48
+        }
+      ],
+      "skeleton": false
+    },
+    {
+      "route": "/admin/customers",
+      "width": 360,
+      "theme": "gold",
+      "lang": "nl",
+      "overflow": 0,
+      "heading": "Klanten & bezoekers",
+      "rows": 25,
+      "rowHeight": 162,
+      "domElements": 1051,
+      "navLinks": [
+        {
+          "href": "/admin",
+          "height": 48
+        },
+        {
+          "href": "/admin/customers",
+          "height": 48
+        },
+        {
+          "href": "/admin/stats",
+          "height": 48
+        },
+        {
+          "href": "/admin/events",
+          "height": 48
+        },
+        {
+          "href": "#workspace-users",
+          "height": 48
+        },
+        {
+          "href": "#workspace-visitors",
+          "height": 48
+        }
+      ],
+      "skeleton": false
+    },
+    {
+      "route": "/admin/stats",
+      "width": 360,
+      "theme": "gold",
+      "lang": "nl",
+      "overflow": 0,
+      "heading": "Statistieken",
+      "rows": 0,
+      "domElements": 470,
+      "navLinks": [
+        {
+          "href": "/admin",
+          "height": 48
+        },
+        {
+          "href": "/admin/customers",
+          "height": 48
+        },
+        {
+          "href": "/admin/stats",
+          "height": 48
+        },
+        {
+          "href": "/admin/events",
+          "height": 48
+        }
+      ],
+      "skeleton": false
+    },
+    {
+      "route": "/admin/events",
+      "width": 360,
+      "theme": "gold",
+      "lang": "nl",
+      "overflow": 0,
+      "heading": "Evenementen & foto's",
+      "rows": 0,
+      "domElements": 287,
+      "navLinks": [
+        {
+          "href": "/admin",
+          "height": 48
+        },
+        {
+          "href": "/admin/customers",
+          "height": 48
+        },
+        {
+          "href": "/admin/stats",
+          "height": 48
+        },
+        {
+          "href": "/admin/events",
+          "height": 48
+        }
+      ],
+      "skeleton": false
+    },
+    {
+      "route": "/admin",
+      "width": 360,
+      "theme": "gold",
+      "lang": "nl",
+      "overflow": 0,
+      "heading": "Dagelijks beheer",
+      "rows": 0,
+      "domElements": 1731,
+      "navLinks": [
+        {
+          "href": "/admin",
+          "height": 48
+        },
+        {
+          "href": "/admin/customers",
+          "height": 48
+        },
+        {
+          "href": "/admin/stats",
+          "height": 48
+        },
+        {
+          "href": "/admin/events",
+          "height": 48
+        },
+        {
+          "href": "#workspace-orders",
+          "height": 48
+        },
+        {
+          "href": "#workspace-reservations",
+          "height": 48
+        },
+        {
+          "href": "#workspace-products",
+          "height": 48
+        },
+        {
+          "href": "#workspace-vip",
+          "height": 48
+        },
+        {
+          "href": "#workspace-social",
+          "height": 48
+        },
+        {
+          "href": "#workspace-phone",
+          "height": 48
+        }
+      ],
+      "skeleton": false
+    }
+  ],
+  "pageErrors": [],
+  "violations": []
+}
