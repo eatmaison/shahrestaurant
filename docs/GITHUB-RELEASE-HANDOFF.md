@@ -1,5 +1,17 @@
 # GitHub release handoff - 14 November 2026
 
+## Current release: personal reservations and searchable guest history
+
+Target **eatmaison/shahrestaurant**, branch **main**, authenticated **eatmaison** account. This handoff is included in the publication commit; compare the final GitHub SHA supplied with the release. No Droplet login, service restart, production data change or migration was performed.
+
+Public reservations now load only profile/email matches, including for admins. Historical order-linked guests and unattributed order contacts remain searchable with explicit identity/activity limits and links from order history. Menu defaults follow category order without overriding a manual choice; the reservation hero and its preload use the approved photograph. [Verified implementation and limitations](PERSONAL-RESERVATIONS.md). Build **amap-EWDoPlscfZd3totK**, source **a28b8411a41ccb362e135723c29946056635b80a06055cbc8d77e879baf52037**. Tests use synthetic data; a separate targeted production link diagnosis used an explicitly read-only transaction and made no changes. Raw customer audit data, secrets, local fixtures and unrelated phone-agent work are excluded.
+
+No dependency or mandatory database migration was introduced. Keep backups and environment values, with APP_URL matching the real public HTTPS origin. Existing optional observation/session-link migrations and retention requirements below remain separate and unapplied.
+
+Use the guarded update procedure below: verify origin, a clean checkout and fast-forward ancestry, create a backup branch, update from origin/main, then run npm ci and npm run build -- --webpack through the established staged-release process. Do not overwrite an active .next directory. Restart only the already confirmed Shah service after a successful build; the process manager/name has not been inspected. Check EN/NL reservations for an admin and ordinary account, all admin bookings, guest search/history, category defaults and image loading without real orders/payments.
+
+## Previous release handoff
+
 ## Current release: product workspace, category ordering and homepage follow-ups
 
 Repository **eatmaison/shahrestaurant**, branch **main**, authenticated **eatmaison** account. This handoff is included in the publication commit; use the verified final GitHub commit supplied with the release. No Droplet login, live deployment, restart or production migration was performed.

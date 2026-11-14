@@ -1,3 +1,9 @@
+# Current preview: reservations and guest recognition
+
+Build **amap-EWDoPlscfZd3totK**, source a28b8411a41ccb362e135723c29946056635b80a06055cbc8d77e879baf52037, 504 unchanged inputs, 67 routes. Public http://localhost:3398/en; same Wi-Fi http://192.168.0.122:3618/en. Synthetic personal admin example http://localhost:4068/en/reservations, guest search http://localhost:4068/admin/customers. [Implementation, tests, limits and start commands](PERSONAL-RESERVATIONS.md). All previews are read-only. [GitHub handoff](GITHUB-RELEASE-HANDOFF.md); no live deployment or migration.
+
+## Earlier preview notes
+
 # Current phone preview
 
 Build **PCqBg5KEUI1VqK_c0VZe0**, source 7b5cc49c713e85c39040888a3de995977e083df76d2e49330e6fe743d0929368, 503 frozen inputs, 67 routes. http://192.168.0.122:3618/ (NL) and /en (EN). Public pages only; private routes and submissions remain blocked. No network-security setting changed. Reload to obtain the new assets.

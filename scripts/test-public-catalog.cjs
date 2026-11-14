@@ -24,7 +24,7 @@ function modules(env = {}, neon = () => { throw new Error("No database driver ca
       if (!target) throw new Error(`Missing local module ${name}`);
       return load(target);
     };
-    const source = ts.transpileModule(fs.readFileSync(file, "utf8"), { compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2020 } }).outputText;
+    const source = ts.transpileModule(fs.readFileSync(file, "utf8"), { fileName: file, compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2020, jsx: ts.JsxEmit.ReactJSX } }).outputText;
     vm.runInNewContext(source, { module: compiledModule, exports: compiledModule.exports, require: resolve, process: { env }, URL, Buffer, AbortController, setTimeout, clearTimeout, queueMicrotask, fetch: () => { throw new Error("Network forbidden in catalogue tests"); } }, { filename: file });
     return compiledModule.exports;
   }
@@ -101,4 +101,7 @@ test("ready empty replaces snapshot; later refresh/error never revives it", () =
   assert.equal(catalogForDisplay(snapshot, [], [], "error", true).usingInitial, false);
   assert.equal(catalogForDisplay(null, [], [], "loading", false).usingInitial, false);
   assert.deepEqual(plain(initialCatalogSelection(snapshot)), { brand: "tandoor", category: "Curries" });
+  const reordered = { products: [{ id: "soup", brand: "tandoor", category: "Soups" }, { id: "starter", brand: "tandoor", category: "Tandoori Starters" }], brands: [{ id: "tandoor", categories: [{ name: "Tandoori Starters" }, { name: "Soups" }] }] };
+  assert.deepEqual(plain(initialCatalogSelection(reordered)), { brand: "tandoor", category: "Tandoori Starters" });
+  assert.deepEqual(plain(initialCatalogSelection({ ...reordered, products: reordered.products.filter(p => p.category === "Soups") })), { brand: "tandoor", category: "Soups" });
 });

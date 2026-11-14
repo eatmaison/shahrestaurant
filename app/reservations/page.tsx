@@ -26,6 +26,7 @@ import {
 } from "../components/icons/fa6";
 import { useLang, useStore } from "../providers";
 import type { Reservation, ReservationStatus } from "../lib/types";
+import { isPersonalReservation } from "../lib/reservationOwnership";
 import { OPEN_FROM_MIN, OPEN_UNTIL_MIN } from "../lib/openingHours";
 import styles from "./reservations.module.css";
 import { useCinematicPageReady } from "../lib/useCinematicPageReady";
@@ -46,7 +47,7 @@ export default function ReservationsPage() {
   const cinematicRootRef = useRef<HTMLDivElement>(null);
   useCinematicPageReady(cinematicRootRef, "reservations");
   const { t, lang } = useLang();
-  const { currentUser, reservations, reviews, createReservation, cancelReservation, addReservationReview, hydrated } = useStore();
+  const { currentUser, reservations, reviews, createReservation, cancelReservation, addReservationReview, hydrated, catalogStatus, refresh } = useStore();
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -119,8 +120,8 @@ export default function ReservationsPage() {
   };
 
   const myReservations = useMemo(
-    () => [...reservations].sort((a, b) => (b.date + b.time).localeCompare(a.date + a.time)),
-    [reservations]
+    () => reservations.filter(reservation => isPersonalReservation(reservation, currentUser)).sort((a, b) => (b.date + b.time).localeCompare(a.date + a.time)),
+    [reservations, currentUser]
   );
 
   // Map reservationId → existing review so we can show "Your review" instead of the form.
@@ -476,10 +477,14 @@ export default function ReservationsPage() {
           </div>
 
           {/* My reservations */}
-          <div className="premium-panel lux-sweep texture-linen rounded-[2rem] p-6 sm:p-7">
+          <div data-personal-reservations aria-busy={!hydrated || catalogStatus === "loading"} className="premium-panel lux-sweep texture-linen rounded-[2rem] p-6 sm:p-7">
             <h2 className="font-display text-lg font-semibold text-slate-900 dark:text-white">{t.reservations.myReservations}</h2>
             {actionError && !cancelTarget && <p role="alert" className="mt-3 text-sm text-red-600">{actionError}</p>}
-            {!currentUser ? (
+            {!hydrated || catalogStatus === "loading" ? (
+              <p role="status" className="mt-3 text-sm leading-7 text-slate-500 dark:text-slate-400">{lang === "nl" ? "Uw reserveringen laden…" : "Loading your reservations…"}</p>
+            ) : catalogStatus === "error" ? (
+              <div className="mt-3 text-sm leading-7"><p role="alert">{lang === "nl" ? "Uw reserveringen konden niet worden geladen." : "Your reservations could not be loaded."}</p><button type="button" onClick={() => void refresh()} className="min-h-12 font-semibold underline underline-offset-4">{lang === "nl" ? "Opnieuw proberen" : "Try again"}</button></div>
+            ) : !currentUser ? (
               <p className="mt-3 text-sm leading-7 text-slate-500 dark:text-slate-400">
                 {t.reservations.signInPrompt}{" "}
                 <Link href="/account" className="font-semibold text-emerald-700 underline-offset-4 hover:underline dark:text-emerald-400">

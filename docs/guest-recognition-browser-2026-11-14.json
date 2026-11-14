@@ -1,0 +1,140 @@
+{
+  "cases": [
+    {
+      "lang": "en",
+      "theme": "teal",
+      "width": 1440,
+      "historicalNamedSessions": 2,
+      "legacySearch": true,
+      "linkedAndRelatedOrders": true,
+      "noFakeOnline": true,
+      "noOverflow": true
+    },
+    {
+      "lang": "en",
+      "theme": "teal",
+      "width": 390,
+      "historicalNamedSessions": 2,
+      "legacySearch": true,
+      "linkedAndRelatedOrders": true,
+      "noFakeOnline": true,
+      "noOverflow": true
+    },
+    {
+      "lang": "en",
+      "theme": "teal",
+      "width": 360,
+      "historicalNamedSessions": 2,
+      "legacySearch": true,
+      "linkedAndRelatedOrders": true,
+      "noFakeOnline": true,
+      "noOverflow": true
+    },
+    {
+      "lang": "en",
+      "theme": "gold",
+      "width": 1440,
+      "historicalNamedSessions": 2,
+      "legacySearch": true,
+      "linkedAndRelatedOrders": true,
+      "noFakeOnline": true,
+      "noOverflow": true
+    },
+    {
+      "lang": "en",
+      "theme": "gold",
+      "width": 390,
+      "historicalNamedSessions": 2,
+      "legacySearch": true,
+      "linkedAndRelatedOrders": true,
+      "noFakeOnline": true,
+      "noOverflow": true
+    },
+    {
+      "lang": "en",
+      "theme": "gold",
+      "width": 360,
+      "historicalNamedSessions": 2,
+      "legacySearch": true,
+      "linkedAndRelatedOrders": true,
+      "noFakeOnline": true,
+      "noOverflow": true
+    },
+    {
+      "lang": "nl",
+      "theme": "teal",
+      "width": 1440,
+      "historicalNamedSessions": 2,
+      "legacySearch": true,
+      "linkedAndRelatedOrders": true,
+      "noFakeOnline": true,
+      "noOverflow": true
+    },
+    {
+      "lang": "nl",
+      "theme": "teal",
+      "width": 390,
+      "historicalNamedSessions": 2,
+      "legacySearch": true,
+      "linkedAndRelatedOrders": true,
+      "noFakeOnline": true,
+      "noOverflow": true
+    },
+    {
+      "lang": "nl",
+      "theme": "teal",
+      "width": 360,
+      "historicalNamedSessions": 2,
+      "legacySearch": true,
+      "linkedAndRelatedOrders": true,
+      "noFakeOnline": true,
+      "noOverflow": true
+    },
+    {
+      "lang": "nl",
+      "theme": "gold",
+      "width": 1440,
+      "historicalNamedSessions": 2,
+      "legacySearch": true,
+      "linkedAndRelatedOrders": true,
+      "noFakeOnline": true,
+      "noOverflow": true
+    },
+    {
+      "lang": "nl",
+      "theme": "gold",
+      "width": 390,
+      "historicalNamedSessions": 2,
+      "legacySearch": true,
+      "linkedAndRelatedOrders": true,
+      "noFakeOnline": true,
+      "noOverflow": true
+    },
+    {
+      "lang": "nl",
+      "theme": "gold",
+      "width": 360,
+      "historicalNamedSessions": 2,
+      "legacySearch": true,
+      "linkedAndRelatedOrders": true,
+      "noFakeOnline": true,
+      "noOverflow": true
+    }
+  ],
+  "violations": [],
+  "errors": [],
+  "workflows": [
+    {
+      "orderDeepLink": true,
+      "orderReferenceSearch": true,
+      "clearDeepLink": true,
+      "historyOnlyFilter": 3
+    },
+    {
+      "customerOrdersDialogLink": true,
+      "matchingVisitorRecords": 2
+    }
+  ],
+  "allDataSynthetic": true,
+  "noBusinessWrites": true
+}

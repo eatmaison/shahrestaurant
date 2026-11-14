@@ -1,0 +1,61 @@
+{
+  "cases": [
+    {
+      "lang": "en",
+      "width": 1440,
+      "firstHouse": "Tandoori Starters",
+      "firstToGo": "Pizzas",
+      "reload": true
+    },
+    {
+      "lang": "en",
+      "width": 390,
+      "firstHouse": "Tandoori Starters",
+      "firstToGo": "Pizzas",
+      "reload": true
+    },
+    {
+      "lang": "en",
+      "width": 360,
+      "firstHouse": "Tandoori Starters",
+      "firstToGo": "Pizzas",
+      "reload": true
+    },
+    {
+      "lang": "nl",
+      "width": 1440,
+      "firstHouse": "Tandoori Starters",
+      "firstToGo": "Pizzas",
+      "reload": true
+    },
+    {
+      "lang": "nl",
+      "width": 390,
+      "firstHouse": "Tandoori Starters",
+      "firstToGo": "Pizzas",
+      "reload": true
+    },
+    {
+      "lang": "nl",
+      "width": 360,
+      "firstHouse": "Tandoori Starters",
+      "firstToGo": "Pizzas",
+      "reload": true
+    }
+  ],
+  "workflows": [
+    {
+      "width": 1440,
+      "delayedBootstrap": true,
+      "manualCategoryPreserved": "Curries"
+    },
+    {
+      "width": 390,
+      "delayedBootstrap": true,
+      "manualCategoryPreserved": "Curries"
+    }
+  ],
+  "errors": [],
+  "allDataSyntheticOrReadOnly": true,
+  "noSavedMenuChange": true
+}

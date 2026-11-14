@@ -2,8 +2,9 @@ import { after } from "next/server";
 import type { AdminDataView } from "./adminView";
 import { loadVisitorObservations } from "./visitorObservationStore";
 import type { VisitorTelemetryStatus } from "./visitorSignals";
-import { buildGuestVisitors, buildRegisteredVisitors } from "./guestRecognition";
+import { buildGuestOrderHistory, buildGuestVisitors, buildRegisteredVisitors, visitorActivityAt } from "./guestRecognition";
 import { reservationInsert, RESERVATION_SESSION_CAPABILITY_SQL } from "./reservationSessionLink";
+import { PERSONAL_RESERVATION_SQL, personalReservationEmail } from "./reservationOwnership";
 import { checkoutIdentity } from "./checkoutFingerprint";
 import { buildMenuUpgradeItems } from "./menuUpgrades";
 import { CATALOG_PRODUCT_LIMIT } from "./catalogSnapshot";
@@ -346,10 +347,11 @@ export async function setRestaurantOpenOverride(override: RestaurantOpenOverride
   return loadRestaurantStatus();
 }
 
-export async function bootstrap(adminView: AdminDataView = "operations"): Promise<Bootstrap> {
+export async function bootstrap(adminView?: AdminDataView): Promise<Bootstrap> {
   await ensureReady();
   const [currentUser] = await Promise.all([getCurrentUser(), backfillPaymentAttemptOrders()]);
   const isAdmin = currentUser?.role === "admin";
+  const adminWorkspace = isAdmin && adminView !== undefined;
 
   // Track when the user was last active on the site (shown to admins). Signed-in
   // users are tracked on the users table; anonymous guests get a cookie-based id
@@ -392,7 +394,7 @@ export async function bootstrap(adminView: AdminDataView = "operations"): Promis
   let recentVisitors: RecentVisitor[] = [];
   let visitorTelemetryStatus: VisitorTelemetryStatus = "not-configured";
 
-  if (isAdmin) {
+  if (adminWorkspace) {
     if (adminView !== "events" && adminView !== "products") {
       const withCustomers = adminView === "operations" || adminView === "customers";
       const [adminOrders, userRows, vipRows, adminReservationRows, paymentRows] = await Promise.all([
@@ -420,12 +422,15 @@ export async function bootstrap(adminView: AdminDataView = "operations"): Promis
       if (adminView === "customers") {
         const [recentGuestRows, guestIdentityOrders] = await Promise.all([
           sql.query(`SELECT id, created_at, last_seen_at, last_seen_site, visit_count, active_seconds FROM visitor_sessions
-            WHERE last_seen_site = $1 AND last_seen_at > now() - interval '24 hours' ORDER BY last_seen_at DESC, id ASC`, [SITE_ID]),
-          sql.query(`SELECT id, user_id, visitor_session_id, customer_name, customer_email, address, postcode, fulfillment, paid FROM orders WHERE user_id IS NULL`),
+            WHERE (last_seen_site = $1 AND last_seen_at > now() - interval '24 hours')
+              OR EXISTS (SELECT 1 FROM orders o WHERE o.user_id IS NULL AND o.visitor_session_id = visitor_sessions.id)
+            ORDER BY last_seen_at DESC, id ASC`, [SITE_ID]),
+          sql.query(`SELECT id, order_number, created_at, user_id, visitor_session_id, customer_name, customer_email, phone, address, postcode, fulfillment, paid FROM orders WHERE user_id IS NULL`),
         ]);
         const guests = buildGuestVisitors(recentGuestRows as any[], guestIdentityOrders as any[], adminReservationRows as any[], nowMs);
+        const guestHistory = buildGuestOrderHistory(guestIdentityOrders as any[], guests);
         onlineVisitors = guests.filter(visitor => visitor.isOnline).length;
-        recentVisitors = [...recentVisitors, ...guests].sort((a, b) => b.lastSeenAt - a.lastSeenAt || a.kind.localeCompare(b.kind) || a.id.localeCompare(b.id));
+        recentVisitors = [...recentVisitors, ...guests, ...guestHistory].sort((a, b) => visitorActivityAt(b) - visitorActivityAt(a) || a.kind.localeCompare(b.kind) || a.id.localeCompare(b.id));
         const enriched = await loadVisitorObservations(recentVisitors);
         recentVisitors = enriched.visitors; visitorTelemetryStatus = enriched.status;
       }
@@ -433,10 +438,10 @@ export async function bootstrap(adminView: AdminDataView = "operations"): Promis
   } else if (currentUser) {
     orders = await loadOrders(currentUser.id);
     vipRequests = ((await sql.query(`SELECT * FROM vip_requests WHERE user_id = $1 ORDER BY created_at DESC`, [currentUser.id])) as any[]).map(rowToVipRequest);
-    reservations = ((await sql.query(`SELECT * FROM reservations WHERE user_id = $1 ORDER BY date DESC, time DESC`, [currentUser.id])) as any[]).map(rowToReservation);
+    reservations = ((await sql.query(`SELECT * FROM reservations WHERE ${PERSONAL_RESERVATION_SQL} ORDER BY date DESC, time DESC`, [currentUser.id, personalReservationEmail(currentUser)])) as any[]).map(rowToReservation);
   }
 
-  return { currentUser, products, brands, reviews, orders, users, vipRequests, vipPurchases, socialLinks, reservations, restaurantStatus, onlineVisitors, recentVisitors, ...(isAdmin ? { adminView, visitorTelemetryStatus } : {}) };
+  return { currentUser, products, brands, reviews, orders, users, vipRequests, vipPurchases, socialLinks, reservations, restaurantStatus, onlineVisitors, recentVisitors, ...(adminWorkspace ? { adminView, visitorTelemetryStatus } : {}) };
 }
 
 /** Load orders (optionally for a single user) with their line items. */
@@ -1291,8 +1296,8 @@ export async function addReservationReview(data: {
   const currentUser = await getCurrentUser();
   if (!currentUser) return { ok: false, error: "notFound" };
   const rows = (await sql.query(
-    `SELECT id, status, date, time FROM reservations WHERE id = $1 AND user_id = $2`,
-    [data.reservationId, currentUser.id]
+    `SELECT id, status, date, time FROM reservations WHERE ${PERSONAL_RESERVATION_SQL} AND id = $3`,
+    [currentUser.id, personalReservationEmail(currentUser), data.reservationId]
   )) as any[];
   const r = rows[0];
   if (!r) return { ok: false, error: "notFound" };
@@ -1422,8 +1427,8 @@ export async function cancelReservation(id: string): Promise<{ ok: boolean }> {
     await sql.query(`UPDATE reservations SET status = 'cancelled' WHERE id = $1`, [id]);
     return { ok: true };
   }
-  await sql.query(`UPDATE reservations SET status = 'cancelled' WHERE id = $1 AND user_id = $2`, [id, currentUser.id]);
-  return { ok: true };
+  const changed = await sql.query(`UPDATE reservations SET status = 'cancelled' WHERE ${PERSONAL_RESERVATION_SQL} AND id = $3 RETURNING id`, [currentUser.id, personalReservationEmail(currentUser), id]);
+  return { ok: changed.length > 0 };
 }
 
 /** Admin: permanently delete a reservation (e.g. duplicate bookings). */

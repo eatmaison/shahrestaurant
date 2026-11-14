@@ -2,7 +2,7 @@
 
 import type { Bootstrap } from "./lib/serverStore";
 import type { CategoryOrderInput } from "./lib/brandCategoryOrder";
-import { adminDataView, type AdminDataView } from "./lib/adminView";
+import { adminBootstrapView, type AdminDataView } from "./lib/adminView";
 import type { VisitorTelemetryStatus } from "./lib/visitorSignals";
 import { usePathname } from "next/navigation";
 import { getLocalizedRoute, localePath, resolveSiteLocale } from "./lib/locale";
@@ -178,7 +178,7 @@ interface StoreCtx {
   /** Leave a review for a confirmed reservation that already took place. */
   addReservationReview: (data: { reservationId: string; rating: number; text: string }) => Promise<{ ok: boolean; error?: string }>;
 
-  /** Table reservations (own bookings for guests, all bookings for admins). */
+  /** Personal bookings outside admin; full bookings only in the admin workspace. */
   reservations: Reservation[];
   /** Customer-facing restaurant status, computed in Europe/Amsterdam time. */
   restaurantStatus: RestaurantStatus;
@@ -358,10 +358,10 @@ export function Providers({ children, initialLang = "nl", initialDictionaries }:
     setCatalogStatus("loading");
     try {
       const path = window.location.pathname;
-      const view = adminDataView(path);
-      const url = path === "/admin" || path.startsWith("/admin/") ? `/api/bootstrap?admin=${view}` : "/api/bootstrap";
+      const view = adminBootstrapView(path);
+      const url = view ? `/api/bootstrap?admin=${view}` : "/api/bootstrap";
       const { response: res, data } = await fetchJSON<Bootstrap>(url, { cache: "no-store", signal: controller.signal });
-      if (controller.signal.aborted) return;
+      if (controller.signal.aborted || view !== adminBootstrapView(window.location.pathname)) return;
       if (!res.ok || !Array.isArray(data?.products) || !Array.isArray(data?.brands)) throw new Error("Invalid catalogue response");
       const nextAdmin = data.currentUser?.role === "admin" ? data.currentUser.id : undefined;
       if (adminIdentity.current && adminIdentity.current !== nextAdmin) window.dispatchEvent(new Event("shah:admin-session-reset"));
@@ -393,6 +393,21 @@ export function Providers({ children, initialLang = "nl", initialDictionaries }:
       if (bootstrapController.current === controller) bootstrapController.current = null;
     }
   }, []);
+
+  const previousBootstrapView = useRef(adminBootstrapView(pathname));
+  useEffect(() => {
+    const previous = previousBootstrapView.current;
+    const next = adminBootstrapView(pathname);
+    previousBootstrapView.current = next;
+    if (previous === undefined || next !== undefined) return;
+    // Public navigation must drop the administrative snapshot, even if a refresh fails.
+    bootstrapController.current?.abort();
+    queueMicrotask(() => {
+      setUsers([]); setOrders([]); setVipRequests([]); setVipPurchases([]);
+      setReservations([]); setRecentVisitors([]); setOnlineVisitors(0); setAdminView(undefined);
+      void refresh();
+    });
+  }, [pathname, refresh]);
 
   const refreshRestaurantStatus = useCallback(async () => {
     if (statusController.current) return;

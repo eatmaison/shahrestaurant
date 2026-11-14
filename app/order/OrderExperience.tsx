@@ -253,6 +253,18 @@ export default function OrderExperience({ searchParams, initialCatalog = null }:
   const [activeBrand, setActiveBrand] = useState<Brand>(initialSelection.brand);
   const [activeCategory, setActiveCategory] = useState<Category>(initialSelection.category);
   const [activeSubcategory, setActiveSubcategory] = useState<Category | "all">("all");
+  const categorySelectionTouched = useRef(false);
+  const liveDefaultApplied = useRef(false);
+  useEffect(() => {
+    if (catalogStatus !== "ready" || liveDefaultApplied.current) return;
+    liveDefaultApplied.current = true;
+    if (categorySelectionTouched.current) return;
+    // The live catalogue can arrive after an older server snapshot or a fallback.
+    const next = initialCatalogSelection({ products, brands: liveBrands });
+    queueMicrotask(() => {
+      setActiveBrand(next.brand); setActiveCategory(next.category); setActiveSubcategory("all");
+    });
+  }, [catalogStatus, products, liveBrands]);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [form, setForm] = useState({
     name: currentUser?.name ?? "",
@@ -382,6 +394,7 @@ export default function OrderExperience({ searchParams, initialCatalog = null }:
 
   // Switch restaurant/brand and jump to that brand's first category.
   const selectBrand = (brand: Brand) => {
+    categorySelectionTouched.current = true;
     setSearch("");
     if (brand === activeBrand) return;
     setActiveBrand(brand);
@@ -390,9 +403,15 @@ export default function OrderExperience({ searchParams, initialCatalog = null }:
   };
 
   const selectCategory = (category: Category) => {
+    categorySelectionTouched.current = true;
     setSearch("");
     setActiveCategory(category);
     setActiveSubcategory("all");
+  };
+
+  const selectSubcategory = (subcategory: Category | "all") => {
+    categorySelectionTouched.current = true;
+    setActiveSubcategory(subcategory);
   };
 
   const cartLines = useMemo(
@@ -976,7 +995,7 @@ export default function OrderExperience({ searchParams, initialCatalog = null }:
         {subcategoriesOf(activeBrand, activeCategory).length > 0 && (
           <MobileMenuScrollRow className="px-3 pb-2" showScrollButtons={false}>
             <button
-              onClick={() => setActiveSubcategory("all")}
+              onClick={() => selectSubcategory("all")}
               className={`flex shrink-0 snap-start items-center gap-1.5 rounded-full px-2.5 py-1 text-[10px] font-semibold transition ${
                 activeSubcategory === "all"
                   ? "bg-sky-600 text-white shadow-md shadow-sky-600/25"
@@ -991,7 +1010,7 @@ export default function OrderExperience({ searchParams, initialCatalog = null }:
               return (
                 <button
                   key={sub.name}
-                  onClick={() => setActiveSubcategory(sub.name)}
+                  onClick={() => selectSubcategory(sub.name)}
                   className={`flex shrink-0 snap-start items-center gap-1.5 rounded-full px-2.5 py-1 text-[10px] font-semibold transition ${
                     active
                       ? "bg-sky-600 text-white shadow-md shadow-sky-600/25"
@@ -1066,7 +1085,7 @@ export default function OrderExperience({ searchParams, initialCatalog = null }:
                           {isActive && subcategoriesOf(activeBrand, cat).length > 0 && (
                             <div className="ml-6 mt-1 space-y-1 border-l border-slate-200 pl-2 dark:border-white/10">
                               <button
-                                onClick={() => setActiveSubcategory("all")}
+                                onClick={() => selectSubcategory("all")}
                                 className={`flex w-full items-center rounded-lg px-2 py-1.5 text-left text-xs font-semibold transition ${
                                   activeSubcategory === "all"
                                     ? "bg-sky-600 text-white"
@@ -1081,7 +1100,7 @@ export default function OrderExperience({ searchParams, initialCatalog = null }:
                                 return (
                                   <button
                                     key={sub.name}
-                                    onClick={() => setActiveSubcategory(sub.name)}
+                                    onClick={() => selectSubcategory(sub.name)}
                                     className={`flex w-full items-center gap-2 rounded-lg px-2 py-1.5 text-left text-xs font-semibold transition ${
                                       subActive
                                         ? "bg-sky-600 text-white"

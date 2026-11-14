@@ -121,6 +121,15 @@ export interface User {
 }
 
 export interface RecentVisitor {
+  /** Order contacts without reliably attributable browsing activity. Never online. */
+  recordKind?: "order-history";
+  address?: string;
+  postcode?: string;
+  orderIds?: string[];
+  orderNumbers?: number[];
+  matchingOrderIds?: string[];
+  lastOrderAt?: number;
+  firstOrderAt?: number;
   observation?: import("./visitorSignals").VisitorObservation;
   id: string;
   kind: "user" | "guest";

@@ -34,7 +34,7 @@ function modules(stubs = {}) {
   return load;
 }
 const load = modules();
-const { buildGuestVisitors, buildRegisteredVisitors } = load("app/lib/guestRecognition.ts");
+const { buildGuestOrderHistory, buildGuestVisitors, buildRegisteredVisitors, visitorActivityAt } = load("app/lib/guestRecognition.ts");
 const { filterVisitors, paginateVisitors } = load("app/lib/visitorList.ts");
 const { reservationInsert, RESERVATION_SESSION_CAPABILITY_SQL } = load("app/lib/reservationSessionLink.ts");
 const session = (id="session-a") => ({ id, last_seen_at: now-1000, created_at: now-100000, last_seen_site:"tandoor", visit_count:4 });
@@ -42,6 +42,61 @@ const order = (id, extra={}) => ({ id, visitor_session_id:"session-a", user_id:n
 const reservation = (extra={}) => ({ id:"reservation-a", user_id:null, visitor_session_id:"session-a", guest_name:"Anna Example", email:"anna@example.invalid", ...extra });
 const guest = (orders=[], reservations=[]) => buildGuestVisitors([session()], orders, reservations, now)[0];
 const filters = extra => ({ kind:"all", search:"", onlineOnly:false, sort:"recent", ...extra });
+
+test("real customer bootstrap SQL retains old order-linked sessions without adding old unrelated browsers", async () => {
+  const { PGlite } = require("@electric-sql/pglite"), db = new PGlite();
+  try {
+    await db.exec(`CREATE TABLE visitor_sessions(id text,created_at timestamptz,last_seen_at timestamptz,last_seen_site text,visit_count int,active_seconds int); CREATE TABLE orders(id text,user_id text,visitor_session_id text);
+      INSERT INTO visitor_sessions VALUES ('recent',now(),now(),'tandoor',1,0),('old-customer',now()-interval '3 days',now()-interval '3 days','tandoor',1,0),('old-anonymous',now()-interval '3 days',now()-interval '3 days','tandoor',1,0),('other-site-customer',now()-interval '4 days',now()-interval '4 days','themaison',1,0),('registered-only',now()-interval '5 days',now()-interval '5 days','tandoor',1,0);
+      INSERT INTO orders VALUES ('a',NULL,'old-customer'),('b',NULL,'other-site-customer'),('c','account','registered-only');`);
+    const text=fs.readFileSync(path.join(root,"app/lib/serverStore.ts"),"utf8");
+    const match=text.match(/sql\.query\(`(SELECT id, created_at, last_seen_at, last_seen_site, visit_count, active_seconds FROM visitor_sessions[\s\S]+?)`, \[SITE_ID\]\)/);
+    assert(match); const rows=(await db.query(match[1],["tandoor"])).rows;
+    assert.deepEqual(rows.map(row=>row.id).sort(),["old-customer","other-site-customer","recent"]);
+  } finally { await db.close(); }
+});
+
+test("order-only contacts remain searchable without assigning any session, online signal or traffic source", () => {
+  const rows=[order("old-a",{visitor_session_id:null,order_number:111,created_at:now-3*86400000}),order("old-b",{visitor_session_id:null,order_number:222,created_at:now-1000})];
+  const before=JSON.stringify(rows), result=buildGuestOrderHistory(rows,[]);assert.equal(JSON.stringify(rows),before);assert.equal(result.length,1);
+  const contact=result[0];assert.equal(contact.name,"Anna Example");assert.equal(contact.recordKind,"order-history");assert.equal(contact.orderCount,2);assert.equal(contact.isOnline,false);assert.equal(contact.lastSeenAt,0);assert.equal(contact.sessionId,undefined);assert.equal(contact.visitCount,undefined);assert.equal(contact.activeSeconds,undefined);assert.equal(contact.observation,undefined);
+  for(const search of ["Anna","example street 12","1032","ETG-222","old-a"])assert.equal(filterVisitors(result,filters({search})).length,1);
+  assert.equal(filterVisitors(result,filters({kind:"history"})).length,1);assert.equal(filterVisitors(result,filters({onlineOnly:true})).length,0);
+  assert.equal(visitorActivityAt(contact),now-1000);assert.equal(contact.firstOrderAt,now-3*86400000);
+});
+
+test("history does not duplicate identified sessions, but ambiguous cookies retain separate submitted contacts", () => {
+  const a=order("a",{created_at:now-1000,order_number:111}), b=order("b",{created_at:now-2000,order_number:222,customer_name:"Someone Else",customer_email:"else@example.invalid"});
+  assert.equal(buildGuestOrderHistory([a],buildGuestVisitors([session()],[a],[],now)).length,0);
+  const ambiguous=buildGuestVisitors([session()],[a,b],[],now);assert.equal(ambiguous[0].identityStatus,"ambiguous");
+  const contacts=buildGuestOrderHistory([a,b],ambiguous);assert.equal(contacts.length,2);assert(contacts.every(row=>row.recordKind==="order-history"&&!row.isOnline&&!row.sessionId));
+  assert.equal(filterVisitors([...ambiguous,...contacts],filters({search:"Someone Else"})).length,1);
+  assert.equal(buildGuestOrderHistory([order("registered",{user_id:"account"})],[]).length,0);
+});
+
+test("history grouping preserves contacts and delivery units; pickup names alone never merge", () => {
+  for(const change of [{address:"Example Street 12 B"},{customer_email:"different@example.invalid"},{fulfillment:"pickup",customer_email:null}]){
+    const rows=[order("a",{visitor_session_id:null,customer_email:change.fulfillment?null:"anna@example.invalid",fulfillment:change.fulfillment||"delivery"}),order("b",{visitor_session_id:null,...change})];
+    assert.equal(buildGuestOrderHistory(rows,[]).length,2);
+  }
+  assert.equal(buildGuestOrderHistory([order("a",{visitor_session_id:null}),order("a",{visitor_session_id:null})],[])[0].orderCount,1);
+});
+
+test("linked order activity and references are retained; old orders do not become current activity", () => {
+  const a=order("a",{order_number:111,created_at:now-86400000}), b=order("b",{visitor_session_id:"session-b",order_number:222,created_at:now-2*86400000});
+  const result=buildGuestVisitors([{...session(),last_seen_at:now-3*86400000}],[a,b],[],now)[0];
+  assert.equal(result.isOnline,false);assert.equal(result.lastOrderAt,now-86400000);assert.deepEqual(plain(result.orderIds),["a"]);assert.deepEqual(plain(result.matchingOrderIds),["b"]);
+  assert.equal(filterVisitors([result],filters({search:"ETG-111"})).length,1);assert.equal(filterVisitors([result],filters({search:"b"})).length,1);
+  const recent=buildGuestVisitors([{...session(),last_seen_at:now-3600000}],[order("fresh",{created_at:now-1000})],[],now)[0];assert.equal(recent.isOnline,true);assert.equal(visitorActivityAt(recent),now-1000);
+  const res=guest([], [reservation({site:"tandoor",status:"arrived"}),reservation({id:"second",site:"themaison",status:"confirmed"})]);assert.equal(res.tandoorArrivedCount,1);assert.equal(res.maisonReservationCount,1);
+});
+
+test("an order-history contact can never inherit an unrelated browser observation",async()=>{
+  const contact=buildGuestOrderHistory([order("history",{visitor_session_id:null})],[])[0];
+  const sql={query:async text=>text.includes("to_regclass")?[{available:true}]:text.startsWith("SELECT visitor_id")?[{visitor_id:contact.id,source:{kind:"search",referrerHost:"google.nl"},classification:"interaction-reported",reasons:[],first_observed_at:new Date(now),last_observed_at:new Date(now),last_path:"/en"}]:[]};
+  const store=modules({"./db":{sql}})("app/lib/visitorObservationStore.ts"), result=await store.loadVisitorObservations([contact]);
+  assert.equal(result.status,"available");assert.equal(result.visitors[0].observation,undefined);assert.equal(result.visitors[0].isOnline,false);
+});
 
 test("exact session link supplies name/email and retains session ID", () => {
   const result=guest([order("o1")]);

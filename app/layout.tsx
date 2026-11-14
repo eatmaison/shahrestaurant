@@ -55,7 +55,7 @@ export default async function RootLayout({
   const initialDictionaries = getLocalizedRoute(requestHeaders.get("x-shah-path") ?? "")
     ? { [initialLang]: translations[initialLang] }
     : translations;
-  const chapterPhoto = route?.key === "menu" ? "shah-table" : route?.key === "reservations" ? "shah-dining" : null;
+  const chapterPhoto = route?.key === "menu" ? "/brand/restaurant-photos-v1/shah-table" : route?.key === "reservations" ? "/brand/edited-restaurant-photos-v1/dining" : null;
   return (
     <html lang={initialLang} suppressHydrationWarning data-cookie-notice-ack={initialAcknowledged ? "true" : undefined} data-scroll-behavior="smooth" className="dark h-full antialiased">
       <head>
@@ -65,9 +65,9 @@ export default async function RootLayout({
         </>}
         {chapterPhoto && <>
           {/* Match cinematic.css image-set densities and breakpoints exactly. */}
-          <link rel="preload" as="image" type="image/avif" href={`/brand/restaurant-photos-v1/${chapterPhoto}-1400.avif`} imageSrcSet={`/brand/restaurant-photos-v1/${chapterPhoto}-640.avif 1x, /brand/restaurant-photos-v1/${chapterPhoto}-1400.avif 2x`} media="(max-width: 600px)" fetchPriority="high" />
-          <link rel="preload" as="image" type="image/avif" href={`/brand/restaurant-photos-v1/${chapterPhoto}-1400.avif`} imageSrcSet={`/brand/restaurant-photos-v1/${chapterPhoto}-960.avif 1x, /brand/restaurant-photos-v1/${chapterPhoto}-1400.avif 2x`} media="(600px < width <= 900px)" fetchPriority="high" />
-          <link rel="preload" as="image" type="image/avif" href={`/brand/restaurant-photos-v1/${chapterPhoto}-1400.avif`} media="(width > 900px)" fetchPriority="high" />
+          <link rel="preload" as="image" type="image/avif" href={`${chapterPhoto}-1400.avif`} imageSrcSet={`${chapterPhoto}-640.avif 1x, ${chapterPhoto}-1400.avif 2x`} media="(max-width: 600px)" fetchPriority="high" />
+          <link rel="preload" as="image" type="image/avif" href={`${chapterPhoto}-1400.avif`} imageSrcSet={`${chapterPhoto}-960.avif 1x, ${chapterPhoto}-1400.avif 2x`} media="(600px < width <= 900px)" fetchPriority="high" />
+          <link rel="preload" as="image" type="image/avif" href={`${chapterPhoto}-1400.avif`} media="(width > 900px)" fetchPriority="high" />
         </>}
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <style>{COOKIE_NOTICE_ACK_HIDE_CSS}</style>

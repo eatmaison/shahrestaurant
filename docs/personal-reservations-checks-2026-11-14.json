@@ -1,0 +1,125 @@
+{
+  "atUTC": "2026-11-14T12:45:09.910Z",
+  "build": "amap-EWDoPlscfZd3totK",
+  "source": "a28b8411a41ccb362e135723c29946056635b80a06055cbc8d77e879baf52037",
+  "inputs": 504,
+  "sourceUnchanged": true,
+  "all244PublicMediaUnchanged": true,
+  "buildAndTypeScript": true,
+  "regressions": 44,
+  "focusedLintErrors": 0,
+  "existingWarning": "OrderExperience hook dependencies; reproduced against the published baseline before these changes.",
+  "personalBrowser": {
+    "layouts": 12,
+    "workflows": 3
+  },
+  "categoryDefaultBrowser": {
+    "layouts": 6,
+    "workflows": 2
+  },
+  "heroBrowser": {
+    "variants": 16,
+    "jpegFallbacks": 3
+  },
+  "guestBrowser": {
+    "layouts": 12,
+    "workflows": 2,
+    "scopedAccessibilityScans": 4,
+    "violations": 0
+  },
+  "publicHTTP": 50,
+  "promoted": [
+    {
+      "origin": "http://127.0.0.1:3398",
+      "route": "/",
+      "status": 200
+    },
+    {
+      "origin": "http://127.0.0.1:3398",
+      "route": "/en",
+      "status": 200
+    },
+    {
+      "origin": "http://127.0.0.1:3398",
+      "route": "/en/menu",
+      "status": 200
+    },
+    {
+      "origin": "http://127.0.0.1:3398",
+      "route": "/menukaart",
+      "status": 200
+    },
+    {
+      "origin": "http://127.0.0.1:3398",
+      "route": "/en/reservations",
+      "status": 200
+    },
+    {
+      "origin": "http://127.0.0.1:3398",
+      "route": "/reserveren",
+      "status": 200
+    },
+    {
+      "origin": "http://127.0.0.1:4068",
+      "route": "/admin",
+      "status": 200
+    },
+    {
+      "origin": "http://127.0.0.1:4068",
+      "route": "/admin/products",
+      "status": 200
+    },
+    {
+      "origin": "http://127.0.0.1:4068",
+      "route": "/admin/customers",
+      "status": 200
+    },
+    {
+      "origin": "http://127.0.0.1:4068",
+      "route": "/en/reservations",
+      "status": 200
+    },
+    {
+      "origin": "http://127.0.0.1:4068",
+      "route": "/reserveren",
+      "status": 200
+    },
+    {
+      "origin": "http://192.168.0.122:3618",
+      "route": "/en",
+      "status": 200
+    },
+    {
+      "origin": "http://192.168.0.122:3618",
+      "route": "/en/menu",
+      "status": 200
+    },
+    {
+      "origin": "http://192.168.0.122:3618",
+      "route": "/en/reservations",
+      "status": 200
+    }
+  ],
+  "byteMatchedLanAssets": 59,
+  "personalRules": "Profile ID OR exact normalized account email; ordinary accounts verify email. Admin email matching uses existing read authorization but never returns all bookings by default.",
+  "guestRules": "Historical order-linked sessions stay searchable. Unattributed submitted order contacts remain history only, with no invented session, traffic source or online status.",
+  "readOnlyLinkAudit": {
+    "performed": true,
+    "requestedOrdersChecked": 2,
+    "bothHaveHistoricalSessionLinks": true,
+    "unrelatedRequestedSessionHasNoOrders": true,
+    "noPersonalValuesCopiedToRepository": true,
+    "noWrites": true
+  },
+  "productionChanges": false,
+  "realOrdersPaymentsEmails": false,
+  "migrationsRun": false,
+  "deployed": false,
+  "githubPushedAtVerification": false,
+  "limits": [
+    "Chromium desktop and mobile emulation with synthetic review accounts; no new physical-phone/Safari/screen-reader or production-load result.",
+    "The public preview pins a read-only catalogue; alternate order was tested with synthetic API responses and isolated SQL persistence.",
+    "One inherited hook-dependency lint warning remains; no repository-wide clean lint or site-wide AA claim is made.",
+    "Traffic sources remain consent-dependent and are never backfilled from order contacts."
+  ]
+}

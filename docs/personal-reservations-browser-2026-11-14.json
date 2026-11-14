@@ -1,0 +1,133 @@
+{
+  "origin": "http://127.0.0.1:4359",
+  "cases": [
+    {
+      "lang": "en",
+      "theme": "teal",
+      "width": 942,
+      "cards": 3,
+      "foreignVisible": false,
+      "overflow": 0
+    },
+    {
+      "lang": "en",
+      "theme": "teal",
+      "width": 390,
+      "cards": 3,
+      "foreignVisible": false,
+      "overflow": 0
+    },
+    {
+      "lang": "en",
+      "theme": "teal",
+      "width": 360,
+      "cards": 3,
+      "foreignVisible": false,
+      "overflow": 0
+    },
+    {
+      "lang": "en",
+      "theme": "gold",
+      "width": 942,
+      "cards": 3,
+      "foreignVisible": false,
+      "overflow": 0
+    },
+    {
+      "lang": "en",
+      "theme": "gold",
+      "width": 390,
+      "cards": 3,
+      "foreignVisible": false,
+      "overflow": 0
+    },
+    {
+      "lang": "en",
+      "theme": "gold",
+      "width": 360,
+      "cards": 3,
+      "foreignVisible": false,
+      "overflow": 0
+    },
+    {
+      "lang": "nl",
+      "theme": "teal",
+      "width": 942,
+      "cards": 3,
+      "foreignVisible": false,
+      "overflow": 0
+    },
+    {
+      "lang": "nl",
+      "theme": "teal",
+      "width": 390,
+      "cards": 3,
+      "foreignVisible": false,
+      "overflow": 0
+    },
+    {
+      "lang": "nl",
+      "theme": "teal",
+      "width": 360,
+      "cards": 3,
+      "foreignVisible": false,
+      "overflow": 0
+    },
+    {
+      "lang": "nl",
+      "theme": "gold",
+      "width": 942,
+      "cards": 3,
+      "foreignVisible": false,
+      "overflow": 0
+    },
+    {
+      "lang": "nl",
+      "theme": "gold",
+      "width": 390,
+      "cards": 3,
+      "foreignVisible": false,
+      "overflow": 0
+    },
+    {
+      "lang": "nl",
+      "theme": "gold",
+      "width": 360,
+      "cards": 3,
+      "foreignVisible": false,
+      "overflow": 0
+    }
+  ],
+  "workflows": [
+    {
+      "mode": "success",
+      "clientNavigation": true,
+      "personalCalls": 1,
+      "foreignAppeared": false,
+      "finalCards": 3,
+      "retry": false,
+      "oldAdminRequestHeld": false
+    },
+    {
+      "mode": "failure",
+      "clientNavigation": true,
+      "personalCalls": 2,
+      "foreignAppeared": false,
+      "finalCards": 3,
+      "retry": true,
+      "oldAdminRequestHeld": false
+    },
+    {
+      "mode": "stale",
+      "clientNavigation": true,
+      "personalCalls": 1,
+      "foreignAppeared": false,
+      "finalCards": 3,
+      "retry": false,
+      "oldAdminRequestHeld": true
+    }
+  ],
+  "errors": [],
+  "allDataSynthetic": true,
+  "noBusinessWrites": true
+}

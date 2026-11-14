@@ -4,7 +4,8 @@ import { parseAdminDataView } from "../../lib/adminView";
 
 export async function GET(request: NextRequest) {
   try {
-    const data = await bootstrap(parseAdminDataView(request.nextUrl.searchParams.get("admin")));
+    const admin = request.nextUrl.searchParams.get("admin");
+    const data = await bootstrap(admin === null ? undefined : parseAdminDataView(admin));
     return NextResponse.json(data, { headers: { "Cache-Control": "private, no-store" } });
   } catch (err) {
     console.error("[bootstrap] Unable to load site data", err);

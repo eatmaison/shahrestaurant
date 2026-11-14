@@ -1,8 +1,9 @@
 import { adminMatches } from "./adminList";
 import type { RecentVisitor } from "./types";
+import { visitorActivityAt } from "./guestRecognition";
 
 export interface VisitorFilters {
-  kind: "all" | "user" | "guest";
+  kind: "all" | "user" | "guest" | "history";
   search: string;
   onlineOnly: boolean;
   sort: "recent" | "online" | "visits" | "firstSeen";
@@ -11,18 +12,18 @@ export interface VisitorFilters {
 export function filterVisitors(visitors: RecentVisitor[], filters: VisitorFilters): RecentVisitor[] {
   const query = filters.search.trim().toLowerCase();
   const list = visitors.filter((entry) => {
-    if (filters.kind !== "all" && entry.kind !== filters.kind) return false;
+    if (filters.kind === "history" ? entry.recordKind !== "order-history" : filters.kind !== "all" && entry.kind !== filters.kind) return false;
     if (filters.onlineOnly && !entry.isOnline) return false;
-    return adminMatches(query, [entry.name, entry.email, entry.phone, entry.sessionId, entry.id, entry.observation?.source.label,
+    return adminMatches(query, [entry.name, entry.email, entry.phone, entry.address, entry.postcode, entry.sessionId, entry.id, ...(entry.orderIds ?? []), ...(entry.matchingOrderIds ?? []), ...(entry.orderNumbers ?? []).map(number => `ETG-${number}`), entry.observation?.source.label,
       entry.observation?.source.referrerHost, entry.observation?.source.campaign, entry.observation?.source.medium,
       entry.observation?.lastPath]);
   });
-  const recent = (a: RecentVisitor, b: RecentVisitor) => b.lastSeenAt - a.lastSeenAt || a.kind.localeCompare(b.kind) || a.id.localeCompare(b.id);
-  const visits = (entry: RecentVisitor) => entry.visitCount ?? (entry.kind === "user" ? entry.orderCount ?? 0 : 1);
+  const recent = (a: RecentVisitor, b: RecentVisitor) => visitorActivityAt(b) - visitorActivityAt(a) || a.kind.localeCompare(b.kind) || a.id.localeCompare(b.id);
+  const visits = (entry: RecentVisitor) => entry.visitCount ?? entry.orderCount ?? 1;
   return list.sort((a, b) => {
     if (filters.sort === "online") return Number(b.isOnline) - Number(a.isOnline) || recent(a, b);
     if (filters.sort === "visits") return visits(b) - visits(a) || recent(a, b);
-    if (filters.sort === "firstSeen") return (a.firstSeenAt || a.lastSeenAt || Infinity) - (b.firstSeenAt || b.lastSeenAt || Infinity) || recent(a, b);
+    if (filters.sort === "firstSeen") return (a.firstSeenAt || a.firstOrderAt || a.lastSeenAt || Infinity) - (b.firstSeenAt || b.firstOrderAt || b.lastSeenAt || Infinity) || recent(a, b);
     return recent(a, b);
   });
 }

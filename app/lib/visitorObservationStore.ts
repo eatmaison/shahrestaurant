@@ -42,6 +42,7 @@ export async function loadVisitorObservations(visitors: RecentVisitor[]): Promis
       else if (!guests.has(row.visitor_id)) guests.set(row.visitor_id, row);
     }
     return { visitors: visitors.map(visitor => {
+      if (visitor.recordKind === "order-history") return visitor;
       const row = visitor.kind === "user" ? accounts.get(visitor.id) : guests.get(visitor.sessionId || visitor.id);
       return row ? { ...visitor, observation: observation(row) } : visitor;
     }), status: "available" };
