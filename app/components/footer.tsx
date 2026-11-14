@@ -53,8 +53,8 @@ export function Footer() {
   return (
     <footer ref={footerRef} data-site-footer className="relative overflow-hidden border-t border-slate-200/70 bg-white dark:border-emerald-400/15 dark:bg-[#0a0602]">
       <div className="gold-rule absolute inset-x-0 top-0" />
-      <div className={`${styles.content} relative mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-2 lg:px-8`}>
-        <div>
+      <div className={`${styles.content} relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8`}>
+        <div className={styles.brand}>
           <p className={`${styles.brandEyebrow} text-[0.6rem] font-semibold uppercase tracking-[0.3em]`}>Fine Indian Dining · Amsterdam-Noord</p>
           <div className={styles.brandRow}>
             <Link href="/" aria-label="Shah Restaurant" className="inline-block"><BrandLogo tone="adaptive" className="shah-footer-brand" alt="" /></Link>
@@ -77,12 +77,7 @@ export function Footer() {
               <FaArrowUp className="text-sm" />
             </button>
           </div>
-          <p className="mt-3 max-w-md text-sm leading-7 text-slate-600 dark:text-slate-400">{t.footer.tagline}</p>
-          <nav className="footer-quick-links" aria-label={lang === "nl" ? "Snelle links" : "Quick links"}>
-            <Link href="/order">{lang === "nl" ? "Menukaart" : "Menu"}</Link>
-            <Link href="/reservations">{t.nav.reservations}</Link>
-            <Link href="/events/gallery">{t.nav.eventsGallery}</Link>
-          </nav>
+          <p className="mt-2 max-w-md text-sm leading-6 text-slate-600 dark:text-slate-400">{t.footer.tagline}</p>
           {activeSocials.length > 0 && (
             <div className="mt-5 flex flex-wrap gap-3">
               {activeSocials.map((s) => (
@@ -103,68 +98,62 @@ export function Footer() {
         </div>
 
         <div>
-          <div className={styles.details}>
-            <div>
-              <p className="text-sm font-bold uppercase tracking-wider text-slate-900 dark:text-white">{t.footer.contact}</p>
-              <ul className="mt-3 space-y-2 text-xs text-slate-600 dark:text-slate-400">
-                <li className="flex items-center gap-2">
-                  <FaEnvelope className="text-emerald-600 dark:text-emerald-400" />
-                  <a href="mailto:info@shahrestaurant.nl" className="transition hover:text-emerald-600 dark:hover:text-emerald-400">info@shahrestaurant.nl</a>
-                </li>
-                <li className="flex items-center gap-2">
-                  <FaPhone className="text-emerald-600 dark:text-emerald-400" />
-                  <a href="tel:+31203412995" className="transition hover:text-emerald-600 dark:hover:text-emerald-400">+31 20 341 2995</a>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <p className="text-sm font-bold uppercase tracking-wider text-slate-900 dark:text-white">{t.footer.address}</p>
-              <p className="mt-3 flex items-start gap-2 text-xs text-slate-600 dark:text-slate-400">
-                <FaLocationDot className="mt-0.5 flex-shrink-0 text-emerald-600 dark:text-emerald-400" />
-                <a href="https://www.google.com/maps/dir/?api=1&destination=Klaprozenweg+36a+1032+KL+Amsterdam" target="_blank" rel="noopener noreferrer">Klaprozenweg 36a<br />1032 KL Amsterdam</a>
-              </p>
-              <p className="mt-6 text-sm font-bold uppercase tracking-wider text-slate-900 dark:text-white">{t.hours.title}</p>
-              <div className="mt-3 flex items-start gap-2 text-xs text-slate-600 dark:text-slate-400">
-                <FaClock className="mt-0.5 flex-shrink-0 text-emerald-600 dark:text-emerald-400" />
-                <span>
-                  {t.hours.tueSun}: 15:00 – 22:00
-                  <br />
-                  {t.hours.monday}: {t.hours.closed}
-                </span>
-              </div>
-            </div>
-            <div className={styles.secondaryGroups}>
-              <div>
-              <p className="text-sm font-bold uppercase tracking-wider text-slate-900 dark:text-white">{t.footer.ourRestaurants}</p>
-              <nav aria-label={t.footer.ourRestaurants} className="mt-3 flex min-w-0 flex-col gap-3 break-words">
-                <a href="https://eattogo.nl" target="_blank" rel="noopener noreferrer" className="text-xs text-slate-600 transition hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400">
-                  <span className="font-semibold">Eat to Go ↗</span>
-                  <span className="mt-1 block text-xs leading-5">{lang === "nl" ? "Wraps, burgers en pizza om mee te nemen" : "Wraps, burgers and pizza to go"}</span>
-                </a>
-                <a href="https://thetandoorcompany.nl" target="_blank" rel="noopener noreferrer" className="text-xs text-slate-600 transition hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400">
-                  <span className="font-semibold">The Tandoor Company ↗</span>
-                  <span className="mt-1 block text-xs leading-5">{lang === "nl" ? "Indiase curry's en tandoori" : "Indian curries and tandoori"}</span>
-                </a>
-              </nav>
-              </div>
-              <div className={styles.legal}>
-              <p className="text-sm font-bold uppercase tracking-wider text-slate-900 dark:text-white">{t.footer.legal}</p>
-              <div className={styles.legalLinks}>
-                <Link href="/privacy" className="text-xs text-slate-600 transition hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400">
-                  {t.footer.privacy}
-                </Link>
-                <button type="button" onClick={() => window.dispatchEvent(new Event("shah:privacy-preferences"))} className="min-h-12 text-left text-xs text-slate-600 transition hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400">{lang === "nl" ? "Cookievoorkeuren" : "Cookie preferences"}</button>
-                <Link href="/terms" className="text-xs text-slate-600 transition hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400">
-                  {t.footer.terms}
-                </Link>
-              </div>
-              </div>
-            </div>
+          <p className="text-sm font-bold uppercase tracking-wider text-slate-900 dark:text-white">{t.footer.contact}</p>
+          <ul className="mt-3 space-y-2 text-xs text-slate-600 dark:text-slate-400">
+            <li className="flex items-center gap-2">
+              <FaEnvelope className="text-emerald-600 dark:text-emerald-400" />
+              <a href="mailto:info@shahrestaurant.nl" className="transition hover:text-emerald-600 dark:hover:text-emerald-400">info@shahrestaurant.nl</a>
+            </li>
+            <li className="flex items-center gap-2">
+              <FaPhone className="text-emerald-600 dark:text-emerald-400" />
+              <a href="tel:+31203412995" className="transition hover:text-emerald-600 dark:hover:text-emerald-400">+31 20 341 2995</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <p className="text-sm font-bold uppercase tracking-wider text-slate-900 dark:text-white">{t.footer.address}</p>
+          <p className="mt-3 flex items-start gap-2 text-xs text-slate-600 dark:text-slate-400">
+            <FaLocationDot className="mt-0.5 flex-shrink-0 text-emerald-600 dark:text-emerald-400" />
+            <a href="https://www.google.com/maps/dir/?api=1&destination=Klaprozenweg+36a+1032+KL+Amsterdam" target="_blank" rel="noopener noreferrer">Klaprozenweg 36a<br />1032 KL Amsterdam</a>
+          </p>
+          <p className="mt-4 text-sm font-bold uppercase tracking-wider text-slate-900 dark:text-white">{t.hours.title}</p>
+          <div className="mt-3 flex items-start gap-2 text-xs text-slate-600 dark:text-slate-400">
+            <FaClock className="mt-0.5 flex-shrink-0 text-emerald-600 dark:text-emerald-400" />
+            <span>
+              {t.hours.tueSun}: 15:00 – 22:00
+              <br />
+              {t.hours.monday}: {t.hours.closed}
+            </span>
+          </div>
+        </div>
+        <div>
+          <p className="text-sm font-bold uppercase tracking-wider text-slate-900 dark:text-white">{t.footer.ourRestaurants}</p>
+          <nav aria-label={t.footer.ourRestaurants} className="mt-2 flex min-w-0 flex-col gap-1 break-words">
+            <a href="https://eattogo.nl" target="_blank" rel="noopener noreferrer" className="text-xs text-slate-600 transition hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400">
+              <span className="font-semibold">Eat to Go ↗</span>
+              <span className="mt-1 block text-xs leading-5">{lang === "nl" ? "Wraps, burgers en pizza om mee te nemen" : "Wraps, burgers and pizza to go"}</span>
+            </a>
+            <a href="https://thetandoorcompany.nl" target="_blank" rel="noopener noreferrer" className="text-xs text-slate-600 transition hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400">
+              <span className="font-semibold">The Tandoor Company ↗</span>
+              <span className="mt-1 block text-xs leading-5">{lang === "nl" ? "Indiase curry's en tandoori" : "Indian curries and tandoori"}</span>
+            </a>
+          </nav>
+        </div>
+        <div>
+          <p className="text-sm font-bold uppercase tracking-wider text-slate-900 dark:text-white">{t.footer.legal}</p>
+          <div className={styles.legalLinks}>
+            <Link href="/privacy" className="text-xs text-slate-600 transition hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400">
+              {t.footer.privacy}
+            </Link>
+            <button type="button" onClick={() => window.dispatchEvent(new Event("shah:privacy-preferences"))} className="min-h-12 text-left text-xs text-slate-600 transition hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400">{lang === "nl" ? "Cookievoorkeuren" : "Cookie preferences"}</button>
+            <Link href="/terms" className="text-xs text-slate-600 transition hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400">
+              {t.footer.terms}
+            </Link>
           </div>
         </div>
       </div>
 
-      <div className="border-t border-slate-200/70 py-5 text-center text-xs text-slate-500 dark:border-emerald-400/15 dark:text-slate-500">
+      <div className="border-t border-slate-200/70 px-4 py-3 text-center text-xs text-slate-500 dark:border-emerald-400/15 dark:text-slate-500">
         © {new Date().getFullYear()} SHAH RESTAURANT - Amsterdam. {t.footer.rights}
       </div>
 

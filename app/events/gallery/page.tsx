@@ -4,6 +4,8 @@ import { EventBreadcrumbs } from "../../components/EventBreadcrumbs";
 import { EventGalleryPhoto } from "../../components/EventGalleryPhoto";
 import { getEventGalleryPhoto } from "../../lib/eventGalleryPhotos";
 import { getEditedRestaurantPhoto } from "../../lib/editedRestaurantPhotos";
+import { getInteriorPhoto } from "../../lib/interiorPhotoAssets";
+import { interiorPhotography } from "../../lib/interiorPhotography";
 import { useEffect, useState } from "react";
 import { FaCamera, FaImage } from "../../components/icons/fa6";
 import { useLang } from "../../providers";
@@ -17,10 +19,10 @@ import type { GalleryImage } from "../../lib/types";
  * Real photography lives in /public/photos/. Descriptive alt text is
  * critical for SEO and accessibility.
  */
-type GalleryItem = { src: string; alt: string; category: string; portrait?: boolean };
+type GalleryItem = { src: string; alt: string; category: string; caption?: string; portrait?: boolean };
 
-function editedPhotoAspect(src: string) {
-  const photo = getEditedRestaurantPhoto(src);
+function photoAspect(src: string) {
+  const photo = getInteriorPhoto(src) ?? getEditedRestaurantPhoto(src);
   return photo ? { aspectRatio: photo.width / photo.height } : undefined;
 }
 
@@ -60,6 +62,12 @@ export default function GalleryPage() {
         portrait: g.portrait,
       };
     }),
+    ...interiorPhotography.map(photo => ({
+      src: photo.src,
+      alt: photo[lang].alt,
+      caption: photo[lang].title,
+      category: cat[photo.category],
+    })),
     { src: "/photos/687A0402.jpeg", alt: nl ? "Naan, curry, rijst en een drankje op tafel bij Shah Restaurant" : "Naan, curry, rice and a drink on the table at Shah Restaurant", category: cat.dishes },
     { src: "/photos/687A0210.jpeg", alt: nl ? "Modern restaurantinterieur met een warme sfeer" : "Modern restaurant interior with a warm atmosphere", category: cat.interior },
     { src: "/photos/687A0211.jpeg", alt: nl ? "Eetzaal van Shah Restaurant met tafels en gestoffeerde stoelen" : "Shah Restaurant dining room with tables and upholstered chairs", category: cat.interior },
@@ -103,8 +111,8 @@ export default function GalleryPage() {
           </h1>
           <p className="mt-5 text-base leading-8 text-slate-600 dark:text-slate-300">
             {nl
-              ? "Een blik binnen Shah Restaurant Amsterdam - onze eetzaal, gedekte tafels, verse tandoori gerechten en eerdere evenementen."
-              : "A look inside Shah Restaurant Amsterdam - our dining room, table settings, fresh tandoori dishes and past events."}
+              ? "Kijk binnen bij Shah Restaurant aan de Klaprozenweg in Amsterdam-Noord. Bekijk onze eetzaal, gedekte tafels, bar en Indiase gerechten."
+              : "Take a look inside Shah Restaurant on Klaprozenweg in Amsterdam-Noord. Explore the dining room, table settings, bar and Indian dishes."}
           </p>
         </div>
       </section>
@@ -119,7 +127,7 @@ export default function GalleryPage() {
               style={{ animationDelay: `${Math.min(i, 8) * 0.06}s`, animationName: i === 0 ? "none" : undefined }}
             >
               <div
-                style={editedPhotoAspect(item.src)}
+                style={photoAspect(item.src)}
                 className={`relative w-full overflow-hidden bg-gradient-to-br from-emerald-500/10 to-amber-500/10 ${
                   item.portrait ? "aspect-[3/4]" : "aspect-[4/3]"
                 }`}
@@ -128,7 +136,7 @@ export default function GalleryPage() {
                   src={item.src}
                   alt={item.alt}
                   fill
-                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                  sizes="(min-width: 1280px) 395px, (min-width: 1024px) calc((100vw - 96px) / 3), (min-width: 640px) calc((100vw - 64px) / 2), calc(100vw - 32px)"
                   loading={i === 0 ? "eager" : "lazy"}
                   fetchPriority={i === 0 ? "high" : undefined}
                   className="object-cover transition duration-700 group-hover:scale-105"
@@ -139,7 +147,7 @@ export default function GalleryPage() {
                 </span>
               </div>
               <figcaption className="px-5 py-4 text-xs leading-5 text-slate-600 dark:text-slate-400">
-                {item.alt}
+                {item.caption ?? item.alt}
               </figcaption>
             </figure>
           ))}

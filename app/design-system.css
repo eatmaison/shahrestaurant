@@ -83,9 +83,8 @@ main :is(button, a)[class*="px-"] { overflow-wrap: anywhere; }
 [data-site-footer] .shah-footer-brand { width: 220px; max-width: 100%; margin-bottom: 22px; }
 [data-site-footer] [class*="text-slate"] { color: #c6d9d7; }
 [data-site-footer] p.font-bold { color: #f5f0e5; }
-[data-site-footer] [class*="text-emerald"], [data-site-footer] .footer-quick-links a { color: #E0AF59; }
+[data-site-footer] [class*="text-emerald"] { color: #E0AF59; }
 [data-site-footer] .gold-rule { height: 1px; background: linear-gradient(90deg, #E0AF5900, #E0AF59, #E0AF5900); }
-[data-site-footer] .footer-quick-links a { border-bottom-color: #E0AF5970; }
 [data-site-footer] li { min-width: 0; }
 [data-site-footer] li svg { flex-shrink: 0; }
 [data-site-footer] a { overflow-wrap: anywhere; }

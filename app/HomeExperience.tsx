@@ -26,6 +26,7 @@ import { useHomeTilt, useRichMedia } from "./components/HomeDepth";
 import { useHomeChoreography } from "./components/HomeChoreography";
 import { usePinnedGallery } from "./components/usePinnedGallery";
 import { useHorizontalScroll } from "./components/useHorizontalScroll";
+import { homepageInterior } from "./lib/interiorPhotography";
 import styles from "./home.module.css";
 
 const SIGNATURE_IDS = ["tdc-butter-chicken", "tdc-tandoori-mixed-grill", "tdc-tandoori-lamb-chops", "tdc-biryani-lamb", "tdc-tandoori-chicken-tikka", "tdc-samosa-chaat"];
@@ -69,12 +70,8 @@ export default function HomeExperience({ copy }: { copy: HomeCopy }) {
   const currency = useMemo(() => new Intl.NumberFormat(lang === "nl" ? "nl-NL" : "en-IE", { style: "currency", currency: "EUR" }), [lang]);
   const dateFormat = useMemo(() => new Intl.DateTimeFormat(lang === "nl" ? "nl-NL" : "en-GB", { month: "long", year: "numeric", timeZone: "Europe/Amsterdam" }), [lang]);
   const sections = [{ id: "menu", label: copy.menu }, { id: "atmosphere", label: copy.atmosphere }, { id: "story", label: copy.story }, { id: "visit", label: copy.visit }];
-  const photos = [
-    { src: "/brand/shah-dining-v1.webp", title: copy.table, alt: copy.tableAlt },
-    { src: "/brand/shah-table-v1.webp", title: copy.tandoor, alt: copy.dishAlt },
-    { src: "/brand/shah-bar-v1.webp", title: copy.bar, alt: copy.barAlt },
-    { src: "/brand/shah-atmosphere-v1.webp", title: copy.room, alt: copy.interiorAlt },
-  ];
+  const { gallery, entrance, story, dining, occasions, takeaway } = homepageInterior;
+  const photos = gallery.map(photo => ({ src: photo.src, ...photo[lang] }));
   const currentPhoto = photoIndex === null ? null : photos[photoIndex];
   const ingredients = selectedProduct && ((lang === "nl" && selectedProduct.ingredientsNl?.length ? selectedProduct.ingredientsNl : selectedProduct.ingredients) || []);
   const allergens = selectedProduct && ((lang === "nl" && selectedProduct.allergensNl?.length ? selectedProduct.allergensNl : selectedProduct.allergens) || []);
@@ -131,10 +128,10 @@ export default function HomeExperience({ copy }: { copy: HomeCopy }) {
 
       <section id="menu" data-section data-scene="menu" className={`${styles.section} ${styles.menuSection}`} aria-labelledby="menu-title">
         <div className={styles.menuVisual} data-reveal="visible" data-reveal-kind="left">
-          <div className={styles.menuPhoto} data-tilt><RestaurantPhoto data-parallax src="/brand/shah-table-v1.webp" alt={copy.dishAlt} fill sizes="(min-width: 1000px) 42vw, 100vw" /><span className={styles.photoLabel}>{copy.fromMenu}<FaFireBurner aria-hidden="true" /></span></div>
+          <div className={styles.menuPhoto} data-tilt><RestaurantPhoto data-parallax src="/brand/shah-dining-v1.webp" alt={copy.tableAlt} style={{ objectPosition: "60% center" }} fill sizes="(min-width: 1000px) 42vw, 100vw" /><span className={styles.photoLabel}>{copy.fromMenu}<FaFireBurner aria-hidden="true" /></span></div>
           <div className={styles.photoCaption}><span>Shah Restaurant</span><span>{copy.kitchen}</span></div>
           <p className={styles.menuAside}>{copy.kitchenNote}</p>
-          <a href="#atmosphere" className={styles.menuInset} data-tilt><span className={styles.menuInsetPhoto}><RestaurantPhoto src="/brand/shah-dining-v1.webp" alt={copy.tableAlt} fill sizes="180px" /></span><span>{copy.table}<FaArrowRight aria-hidden="true" /></span></a>
+          <a href="#atmosphere" className={styles.menuInset} data-tilt><span className={styles.menuInsetPhoto}><RestaurantPhoto src="/brand/shah-table-v1.webp" alt={copy.dishAlt} fill sizes="(max-width: 700px) 110px, 140px" /></span><span>{copy.table}<FaArrowRight aria-hidden="true" /></span></a>
         </div>
         <div className={styles.menuContent} data-reveal="visible" data-reveal-kind="rise">
           <p className={styles.eyebrow}>01 / {copy.kitchen}</p><h2 id="menu-title">{copy.menuTitle}</h2><p className={styles.sectionDescription}>{copy.menuText}</p>
@@ -166,7 +163,7 @@ export default function HomeExperience({ copy }: { copy: HomeCopy }) {
         <div className={styles.sectionHeading} data-reveal="visible"><div><p className={styles.eyebrow}>02 / {copy.atmosphere}</p><h2 id="gallery-title">{copy.galleryTitle}</h2></div><p>{copy.galleryText}</p></div>
         <div className={styles.galleryWindow}>
         <div className={styles.galleryGrid} data-gallery-grid>
-          {photos.slice(0, 3).map((photo, index) => <figure key={photo.src} className={styles.galleryItem} data-gallery-card><button type="button" data-tilt onClick={() => setPhotoIndex(index)} aria-label={`${copy.enlarge}: ${photo.title}`} title={`${copy.enlarge}: ${photo.title}`}><RestaurantPhoto data-parallax src={photo.src} alt={photo.alt} fill sizes={index === 0 ? "(min-width: 800px) 50vw, 100vw" : "(min-width: 800px) 25vw, 50vw"} /><span className={styles.galleryPhotoNumber}>0{index + 1}</span><span className={styles.expandIcon}><FaExpand aria-hidden="true" /></span></button><figcaption><span>{photo.title}</span><span>0{index + 1}</span></figcaption></figure>)}
+          {photos.map((photo, index) => <figure key={photo.src} className={styles.galleryItem} data-gallery-card><button type="button" data-tilt onClick={() => setPhotoIndex(index)} aria-label={`${copy.enlarge}: ${photo.title}`} title={`${copy.enlarge}: ${photo.title}`}><RestaurantPhoto data-parallax src={photo.src} alt={photo.alt} fill sizes={index === 0 ? "(min-width: 800px) 50vw, 100vw" : "(min-width: 800px) 25vw, 50vw"} /><span className={styles.galleryPhotoNumber}>0{index + 1}</span><span className={styles.expandIcon}><FaExpand aria-hidden="true" /></span></button><figcaption><span>{photo.title}</span><span>0{index + 1}</span></figcaption></figure>)}
         </div>
         </div>
         <div className={styles.galleryFooter} data-gallery-footer><a href="#story" data-gallery-continue className={`${styles.textLink} ${styles.galleryContinue}`} aria-label={lang === "nl" ? "Verder naar ons verhaal" : "Continue to our story"}>{lang === "nl" ? "Verder" : "Continue"}<FaArrowDown aria-hidden="true" /></a><span className={styles.galleryProgress} role="status" aria-label={lang === "nl" ? "Galerijfoto" : "Gallery photo"}><span data-gallery-counter>01</span><span aria-hidden="true"> / 03</span></span><Link href="/events/gallery" className={styles.textLink}>{copy.fullGallery}<FaArrowRight aria-hidden="true" /></Link></div>
@@ -176,16 +173,16 @@ export default function HomeExperience({ copy }: { copy: HomeCopy }) {
       <section id="story" tabIndex={-1} data-section data-scene="story" className={styles.storySection} aria-labelledby="story-title">
         <div className={styles.storyInner}>
           <div className={styles.storyContent} data-reveal="visible" data-reveal-kind="left"><p className={styles.eyebrow}>03 / {copy.story}</p><h2 id="story-title">{t.home.storyTitle}</h2><p>{t.home.storyText}</p><blockquote>{t.home.storyQuote}</blockquote><Link href="/events/about" className={styles.textLink}>{copy.storyLink}<FaArrowRight aria-hidden="true" /></Link></div>
-          <figure className={styles.storyPhoto} data-reveal="visible" data-reveal-kind="right"><div data-tilt><RestaurantPhoto data-parallax src="/brand/shah-room-v1.webp" alt={copy.interiorAlt} fill sizes="(min-width: 900px) 45vw, 100vw" /><BrandLogo variant="wordmark" tone="adaptive" className={styles.storyPhotoMark} alt="" /></div><figcaption><span>{copy.storyAside}</span><FaFireBurner aria-hidden="true" /></figcaption></figure>
+          <figure className={styles.storyPhoto} data-reveal="visible" data-reveal-kind="right"><div data-tilt><RestaurantPhoto data-parallax src={story.src} alt={story[lang].alt} fill sizes="(min-width: 900px) 45vw, 100vw" /><BrandLogo variant="wordmark" tone="adaptive" className={styles.storyPhotoMark} alt="" /></div><figcaption><span>{story[lang].title}</span><FaFireBurner aria-hidden="true" /></figcaption></figure>
         </div>
       </section>
 
       <section className={`${styles.section} ${styles.eveningSection}`} data-scene="evening" aria-labelledby="evening-title">
         <div className={styles.sectionHeading} data-reveal="visible"><div><p className={styles.eyebrow}>{copy.tableNote}</p><h2 id="evening-title">{copy.evening}</h2></div></div>
         <div className={styles.eveningGrid}>{[
-          { href: "/reservations", title: copy.dine, text: copy.dineText, action: copy.reserve, image: photos[0], Icon: FaCalendarCheck },
-          { href: "/order", title: copy.takeaway, text: copy.takeawayText, action: copy.order, image: photos[1], Icon: FaBagShopping },
-          { href: "/events", title: copy.gather, text: copy.gatherText, action: copy.exploreEvents, image: photos[photos.length - 1], Icon: FaUsers },
+          { href: "/reservations", title: copy.dine, text: copy.dineText, action: copy.reserve, image: { src: dining.src, alt: dining[lang].alt }, Icon: FaCalendarCheck },
+          { href: "/order", title: copy.takeaway, text: copy.takeawayText, action: copy.order, image: { src: takeaway.src, alt: takeaway[lang].alt }, Icon: FaBagShopping },
+          { href: "/events", title: copy.gather, text: copy.gatherText, action: copy.exploreEvents, image: { src: occasions.src, alt: occasions[lang].alt }, Icon: FaUsers },
         ].map(({ href, title, text, action, image, Icon }, index) => <article key={href} className={styles.eveningItem} data-evening-card data-reveal="visible"><Link href={href} className={styles.eveningPhoto} data-tilt aria-label={action}><RestaurantPhoto data-parallax src={image.src} alt={image.alt} fill sizes={eveningPhotoSizes} /><span><Icon aria-hidden="true" /></span><span className={styles.eveningNumber}>0{index + 1}</span></Link><h3>{title}</h3><p>{text}</p><Link href={href} className={styles.textLink}>{action}<FaArrowRight aria-hidden="true" /></Link></article>)}</div>
       </section>
 
@@ -197,7 +194,7 @@ export default function HomeExperience({ copy }: { copy: HomeCopy }) {
       {userReviews.length > 0 && <section data-scene="reviews" className={styles.reviewsSection} aria-labelledby="reviews-title"><div className={styles.sectionHeading}><div><p className={styles.eyebrow}>{t.home.testimonialsOverline}</p><h2 id="reviews-title">{copy.guestTitle}</h2></div><p className={styles.rating}><FaStar aria-hidden="true" /><strong>{avgRating.toFixed(1)} / 5</strong><span>{siteReviews.length} {copy.guestCount}</span></p></div><div className={styles.reviewsGrid}>{userReviews.map((review) => <figure data-review-card key={review.id}><div className={styles.stars} aria-label={`${review.rating} ${copy.outOf}`}>{[1, 2, 3, 4, 5].map((star) => <FaStar key={star} aria-hidden="true" style={{ opacity: star <= Math.round(review.rating) ? 1 : 0.2 }} />)}</div><blockquote>{review.text}</blockquote><figcaption><strong>{review.userName}</strong><time dateTime={new Date(review.createdAt).toISOString()}>{dateFormat.format(new Date(review.createdAt))}</time></figcaption></figure>)}</div></section>}
 
       <section id="visit" data-section data-scene="visit" className={`${styles.section} ${styles.visit}`} aria-labelledby="visit-title">
-        <div data-reveal="visible"><p className={styles.eyebrow}>04 / {copy.visit}</p><h2 id="visit-title">{copy.visitTitle}</h2><p className={styles.sectionDescription}>{copy.visitText}</p><address><FaLocationDot aria-hidden="true" /><span>Klaprozenweg 36a<br />1032 KL Amsterdam</span></address><a href={DIRECTIONS} target="_blank" rel="noopener noreferrer" className={styles.textLink}>{copy.directions}<FaArrowRight aria-hidden="true" /></a><a href={DIRECTIONS} target="_blank" rel="noopener noreferrer" className={styles.visitPhoto} aria-label={copy.directions}><RestaurantPhoto data-parallax src="/brand/shah-bar-v1.webp" alt={copy.barAlt} fill sizes="(min-width: 701px) 40vw, 90vw" /><span><FaLocationDot aria-hidden="true" />Amsterdam-Noord<FaArrowRight aria-hidden="true" /></span></a></div>
+        <div data-reveal="visible"><p className={styles.eyebrow}>04 / {copy.visit}</p><h2 id="visit-title">{copy.visitTitle}</h2><p className={styles.sectionDescription}>{copy.visitText}</p><address><FaLocationDot aria-hidden="true" /><span>Klaprozenweg 36a<br />1032 KL Amsterdam</span></address><a href={DIRECTIONS} target="_blank" rel="noopener noreferrer" className={styles.textLink}>{copy.directions}<FaArrowRight aria-hidden="true" /></a><a href={DIRECTIONS} target="_blank" rel="noopener noreferrer" className={styles.visitPhoto} aria-label={copy.directions}><RestaurantPhoto data-parallax src="/brand/shah-bar-v1.webp" alt={copy.barAlt} style={{ objectPosition: "center 62%" }} fill sizes="(min-width: 701px) 40vw, 90vw" /><span><FaLocationDot aria-hidden="true" />Amsterdam-Noord<FaArrowRight aria-hidden="true" /></span></a></div>
         <div className={styles.visitDetails}><div className={styles.hoursHeading}><h3><FaClock aria-hidden="true" />{copy.hours}</h3>{diningOpen !== null && <span className={styles.openStatus} data-open={diningOpen}>{diningOpen ? (lang === "nl" ? "Open volgens openingstijden" : "Open during scheduled hours") : (lang === "nl" ? "Gesloten volgens openingstijden" : "Closed during scheduled hours")}</span>}</div><dl className={styles.hours}><div><dt>{t.hours.tueSun}</dt><dd>15:00–22:00</dd></div><div><dt>{t.hours.monday}</dt><dd>{t.hours.closed}</dd></div></dl><ArrivalInfo /><h3>{copy.contact}</h3><a href="tel:+31203412995" className={styles.contactLink}><FaPhone aria-hidden="true" />+31 20 341 2995</a><a href="mailto:info@shahrestaurant.nl" className={styles.contactLink}><FaEnvelope aria-hidden="true" />info@shahrestaurant.nl</a><Link href="/reservations" className={styles.primaryButton}><FaCalendarCheck aria-hidden="true" />{copy.reserve}<FaArrowRight aria-hidden="true" /></Link></div>
       </section>
 
@@ -205,7 +202,7 @@ export default function HomeExperience({ copy }: { copy: HomeCopy }) {
 
       <DrinkPartners site="shah" />
 
-      <section className={styles.closing} data-scene="closing" aria-labelledby="closing-title"><RestaurantPhoto data-parallax src="/brand/shah-dining-v1.webp" alt="" fill sizes="100vw" className={styles.closingImage} /><div className={styles.closingShade} /><div className={styles.closingContent} data-reveal="visible"><BrandLogo variant="mark" tone="adaptive" className={styles.closingMark} alt="" /><p className={styles.heroEyebrow}>Shah Restaurant</p><h2 id="closing-title">{copy.closing}</h2><p>{copy.closingText}</p><div className={styles.actions}><Link href="/reservations" className={styles.primaryButton}><FaCalendarCheck aria-hidden="true" />{copy.reserve}</Link><a href="tel:+31203412995" className={styles.heroSecondary}><FaPhone aria-hidden="true" />{copy.call}</a></div></div></section>
+      <section className={styles.closing} data-scene="closing" aria-labelledby="closing-title"><RestaurantPhoto data-parallax src={entrance.src} alt="" fill sizes="100vw" className={styles.closingImage} /><div className={styles.closingShade} /><div className={styles.closingContent} data-reveal="visible"><BrandLogo variant="mark" tone="adaptive" className={styles.closingMark} alt="" /><p className={styles.heroEyebrow}>Shah Restaurant</p><h2 id="closing-title">{copy.closing}</h2><p>{copy.closingText}</p><div className={styles.actions}><Link href="/reservations" className={styles.primaryButton}><FaCalendarCheck aria-hidden="true" />{copy.reserve}</Link><a href="tel:+31203412995" className={styles.heroSecondary}><FaPhone aria-hidden="true" />{copy.call}</a></div></div></section>
 
       <div className={styles.mobileActions}><Link href="/order"><FaUtensils aria-hidden="true" />{copy.order}</Link><Link href="/reservations"><FaCalendarCheck aria-hidden="true" />{copy.reserve}</Link></div>
 

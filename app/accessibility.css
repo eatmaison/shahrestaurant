@@ -4,7 +4,6 @@
 [data-site-header] :is(button, a[title]) { min-width: 48px; }
 [data-site-header] button[aria-pressed] { min-width: 48px; }
 [data-site-footer] a[title] { width: 48px; height: 48px; }
-[data-site-footer] .footer-quick-links a { min-width: 48px; justify-content: center; }
 .events-pages :is(a[href^="tel:"], a[href^="mailto:"]),
 body[data-cinematic-page="reservations"] main :is(a[href^="tel:"], a[href^="https://www.google.com/maps/dir/"]) { display: inline-flex; align-items: center; min-width: 48px; min-height: 48px; }
 main :is(a[href="/forgot-password"], a[href="/account"]),

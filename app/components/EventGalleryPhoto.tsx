@@ -5,6 +5,7 @@ import type { CSSProperties, ImgHTMLAttributes } from "react";
 import { getEventGalleryPhoto } from "../lib/eventGalleryPhotos";
 import { getEventGalleryJpegFallback } from "../lib/eventGalleryJpegFallbacks";
 import { getEditedRestaurantPhoto } from "../lib/editedRestaurantPhotos";
+import { getInteriorPhoto } from "../lib/interiorPhotoAssets";
 
 type Props = Omit<ImgHTMLAttributes<HTMLImageElement>, "src" | "srcSet" | "sizes" | "alt" | "width" | "height"> & {
   src: string;
@@ -24,8 +25,9 @@ export function EventGalleryPhoto({
   placeholderFit = "cover", loading = "lazy", decoding = "async", style, onLoad,
   fetchPriority, ...attributes
 }: Props) {
+  const interior = getInteriorPhoto(src);
   const edited = getEditedRestaurantPhoto(src);
-  const photo = edited ?? getEventGalleryPhoto(src);
+  const photo = interior ?? edited ?? getEventGalleryPhoto(src);
   const jpegFallback = edited?.jpeg ?? getEventGalleryJpegFallback(src);
   const eager = priority || preload || loading === "eager";
   if (!photo) {
@@ -46,7 +48,7 @@ export function EventGalleryPhoto({
     <source type="image/avif" srcSet={photo.avifSrcSet} sizes={sizes} />
     <source type="image/webp" srcSet={photo.webpSrcSet} sizes={sizes} />
     {/* Native format/width selection is bounded by the generated 1280px delivery set. */}
-    <img {...attributes} src={jpegFallback?.src ?? photo.src} srcSet={jpegFallback?.srcSet ?? photo.webpSrcSet} sizes={sizes} alt={alt}
+    <img {...attributes} src={jpegFallback?.src ?? photo.src} srcSet={interior?.jpegSrcSet ?? jpegFallback?.srcSet ?? photo.webpSrcSet} sizes={sizes} alt={alt}
       width={width ?? photo.width} height={height ?? photo.height}
       loading={eager ? "eager" : loading} decoding={decoding}
       fetchPriority={fetchPriority ?? (eager ? "high" : undefined)} style={imageStyle}
