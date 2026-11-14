@@ -245,7 +245,8 @@ const LS_AUTOPRINT = "tm.terminal.autoprint";
 
 export default function TerminalPage() {
   const { t, lang } = useLang();
-  const { currentUser, orders, updateOrderStatus, refresh, hydrated } = useStore();
+  const { currentUser, orders: allOrders, updateOrderStatus, refresh, hydrated } = useStore();
+  const orders = useMemo(() => allOrders.filter(order => order.shopLocation !== "utrecht"), [allOrders]);
 
   const [autoPrint, setAutoPrint] = useState(false);
   const [lastUpdate, setLastUpdate] = useState<Date | null>(null);

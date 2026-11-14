@@ -7,6 +7,7 @@ import { FaArrowUp, FaClock, FaEnvelope, FaLocationDot, FaPhone } from "./icons/
 import { useLang, useStore } from "../providers";
 import { SOCIAL_PLATFORMS } from "./socialIcons";
 import styles from "./footer.module.css";
+import { OtherBrands } from "./other-brands";
 
 export function Footer() {
   const { t, lang } = useLang();
@@ -126,19 +127,7 @@ export function Footer() {
             </span>
           </div>
         </div>
-        <div>
-          <p className="text-sm font-bold uppercase tracking-wider text-slate-900 dark:text-white">{t.footer.ourRestaurants}</p>
-          <nav aria-label={t.footer.ourRestaurants} className="mt-2 flex min-w-0 flex-col gap-1 break-words">
-            <a href="https://eattogo.nl" target="_blank" rel="noopener noreferrer" className="text-xs text-slate-600 transition hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400">
-              <span className="font-semibold">Eat to Go ↗</span>
-              <span className="mt-1 block text-xs leading-5">{lang === "nl" ? "Wraps, burgers en pizza om mee te nemen" : "Wraps, burgers and pizza to go"}</span>
-            </a>
-            <a href="https://thetandoorcompany.nl" target="_blank" rel="noopener noreferrer" className="text-xs text-slate-600 transition hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400">
-              <span className="font-semibold">The Tandoor Company ↗</span>
-              <span className="mt-1 block text-xs leading-5">{lang === "nl" ? "Indiase curry's en tandoori" : "Indian curries and tandoori"}</span>
-            </a>
-          </nav>
-        </div>
+        <OtherBrands current="restaurant" language={lang} />
         <div>
           <p className="text-sm font-bold uppercase tracking-wider text-slate-900 dark:text-white">{t.footer.legal}</p>
           <div className={styles.legalLinks}>
