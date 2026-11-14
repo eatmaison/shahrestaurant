@@ -779,7 +779,6 @@
 /* Gold art direction is scoped; the established teal base stays intact. */
 :global(:root[data-shah-theme="gold"]) .home :is(.storySection,.closing) { background:var(--shah-surface); --muted:var(--shah-muted); }
 :global(:root[data-shah-theme="gold"]) .home .gallerySection { background:linear-gradient(125deg, #E0AF5910, transparent 45%), var(--shah-page); }
-:global(:root[data-shah-theme="gold"]) .home .opening { background:radial-gradient(ellipse at 90% 0%, #E0AF590a, transparent 65%); }
 :global(:root[data-shah-theme="gold"]) .home .primaryButton { background:var(--shah-foil); color:var(--shah-button-ink); border-color:var(--shah-gold); }
 :global(:root[data-shah-theme="gold"]) .home .photoLabel { background:var(--shah-surface); color:var(--shah-ink); border-color:var(--shah-line); box-shadow:none; }
 :global(:root[data-shah-theme="gold"]) .home :is(.galleryPhotoNumber,.eveningNumber) { background:#0D4952ed; color:#f7f1df; }
@@ -807,7 +806,6 @@
 
 /* Phone delivery keeps the choreography but avoids large decorative paint layers. */
 @media (max-width:700px) {
-  :global(:root[data-shah-theme="gold"]) .home .opening { background:none; }
   :global(:root[data-shah-theme="gold"]) .home .gallerySection { background:var(--shah-page); }
   .home .gallerySection[data-gallery-pinned] .galleryItem { transform:translate3d(var(--gallery-x,0px),var(--gallery-y,0px),0) scale(var(--gallery-scale,1)); }
   .home[data-motion="on"] :is(.menuPhoto,.storyPhoto > div,.eveningPhoto)::before { animation:none; }
