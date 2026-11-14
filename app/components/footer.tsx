@@ -55,7 +55,7 @@ export function Footer() {
       <div className="gold-rule absolute inset-x-0 top-0" />
       <div className={`${styles.content} relative mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-2 lg:px-8`}>
         <div>
-          <p className="text-[0.6rem] font-semibold uppercase tracking-[0.3em] text-emerald-600 dark:text-emerald-400">Fine Indian Dining · Amsterdam-Noord</p>
+          <p className={`${styles.brandEyebrow} text-[0.6rem] font-semibold uppercase tracking-[0.3em]`}>Fine Indian Dining · Amsterdam-Noord</p>
           <div className={styles.brandRow}>
             <Link href="/" aria-label="Shah Restaurant" className="inline-block"><BrandLogo tone="adaptive" className="shah-footer-brand" alt="" /></Link>
             <button
@@ -149,7 +149,7 @@ export function Footer() {
               </div>
               <div className={styles.legal}>
               <p className="text-sm font-bold uppercase tracking-wider text-slate-900 dark:text-white">{t.footer.legal}</p>
-              <div className="mt-3 flex flex-col gap-2">
+              <div className={styles.legalLinks}>
                 <Link href="/privacy" className="text-xs text-slate-600 transition hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400">
                   {t.footer.privacy}
                 </Link>

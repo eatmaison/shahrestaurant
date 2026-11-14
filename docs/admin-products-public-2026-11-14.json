@@ -1,0 +1,543 @@
+{
+  "build": "Z6l6e9KRC62wZNbm4qoy9",
+  "cases": [
+    {
+      "theme": "teal",
+      "lang": "en",
+      "width": 1304,
+      "mouseWheelKeyboard": true,
+      "nativeTouch": false,
+      "partnerBackground": "rgb(13, 73, 82)",
+      "partnerPlates": [
+        {
+          "light": false,
+          "background": "rgb(7, 52, 61)"
+        },
+        {
+          "light": true,
+          "background": "rgb(251, 247, 239)"
+        },
+        {
+          "light": false,
+          "background": "rgb(7, 52, 61)"
+        },
+        {
+          "light": true,
+          "background": "rgb(251, 247, 239)"
+        },
+        {
+          "light": false,
+          "background": "rgb(7, 52, 61)"
+        },
+        {
+          "light": true,
+          "background": "rgb(251, 247, 239)"
+        },
+        {
+          "light": false,
+          "background": "rgb(7, 52, 61)"
+        },
+        {
+          "light": true,
+          "background": "rgb(251, 247, 239)"
+        }
+      ],
+      "brandEyebrowColor": "rgb(224, 175, 89)",
+      "overflow": 0,
+      "searchPadding": [
+        "2px",
+        "2px"
+      ],
+      "legalGap": "2px",
+      "legalControls": [
+        {
+          "height": 48,
+          "align": "center"
+        },
+        {
+          "height": 48,
+          "align": "center"
+        },
+        {
+          "height": 48,
+          "align": "center"
+        }
+      ],
+      "footerHeight": 498,
+      "galleryMark": "url(\"http://127.0.0.1:4129/brand/shah-mark-gold-v1.svg\")",
+      "galleryPointerEvents": "none",
+      "galleryHeight": 656.828125
+    },
+    {
+      "theme": "teal",
+      "lang": "en",
+      "width": 390,
+      "mouseWheelKeyboard": false,
+      "nativeTouch": true,
+      "partnerBackground": "rgb(13, 73, 82)",
+      "partnerPlates": [
+        {
+          "light": false,
+          "background": "rgb(7, 52, 61)"
+        },
+        {
+          "light": true,
+          "background": "rgb(251, 247, 239)"
+        },
+        {
+          "light": false,
+          "background": "rgb(7, 52, 61)"
+        },
+        {
+          "light": true,
+          "background": "rgb(251, 247, 239)"
+        },
+        {
+          "light": false,
+          "background": "rgb(7, 52, 61)"
+        },
+        {
+          "light": true,
+          "background": "rgb(251, 247, 239)"
+        },
+        {
+          "light": false,
+          "background": "rgb(7, 52, 61)"
+        },
+        {
+          "light": true,
+          "background": "rgb(251, 247, 239)"
+        }
+      ],
+      "brandEyebrowColor": "rgb(224, 175, 89)",
+      "overflow": 0,
+      "searchPadding": [
+        "2px",
+        "2px"
+      ],
+      "legalGap": "2px",
+      "legalControls": [
+        {
+          "height": 48,
+          "align": "center"
+        },
+        {
+          "height": 48,
+          "align": "center"
+        },
+        {
+          "height": 48,
+          "align": "center"
+        }
+      ],
+      "footerHeight": 890.140625,
+      "galleryMark": "url(\"http://127.0.0.1:4129/brand/shah-mark-gold-v1.svg\")",
+      "galleryPointerEvents": "none",
+      "galleryHeight": 693.953125
+    },
+    {
+      "theme": "teal",
+      "lang": "nl",
+      "width": 1304,
+      "mouseWheelKeyboard": true,
+      "nativeTouch": false,
+      "partnerBackground": "rgb(13, 73, 82)",
+      "partnerPlates": [
+        {
+          "light": false,
+          "background": "rgb(7, 52, 61)"
+        },
+        {
+          "light": true,
+          "background": "rgb(251, 247, 239)"
+        },
+        {
+          "light": false,
+          "background": "rgb(7, 52, 61)"
+        },
+        {
+          "light": true,
+          "background": "rgb(251, 247, 239)"
+        },
+        {
+          "light": false,
+          "background": "rgb(7, 52, 61)"
+        },
+        {
+          "light": true,
+          "background": "rgb(251, 247, 239)"
+        },
+        {
+          "light": false,
+          "background": "rgb(7, 52, 61)"
+        },
+        {
+          "light": true,
+          "background": "rgb(251, 247, 239)"
+        }
+      ],
+      "brandEyebrowColor": "rgb(224, 175, 89)",
+      "overflow": 0,
+      "searchPadding": [
+        "2px",
+        "2px"
+      ],
+      "legalGap": "2px",
+      "legalControls": [
+        {
+          "height": 48,
+          "align": "center"
+        },
+        {
+          "height": 48,
+          "align": "center"
+        },
+        {
+          "height": 48,
+          "align": "center"
+        }
+      ],
+      "footerHeight": 510,
+      "galleryMark": "url(\"http://127.0.0.1:4129/brand/shah-mark-gold-v1.svg\")",
+      "galleryPointerEvents": "none",
+      "galleryHeight": 656.828125
+    },
+    {
+      "theme": "teal",
+      "lang": "nl",
+      "width": 390,
+      "mouseWheelKeyboard": false,
+      "nativeTouch": true,
+      "partnerBackground": "rgb(13, 73, 82)",
+      "partnerPlates": [
+        {
+          "light": false,
+          "background": "rgb(7, 52, 61)"
+        },
+        {
+          "light": true,
+          "background": "rgb(251, 247, 239)"
+        },
+        {
+          "light": false,
+          "background": "rgb(7, 52, 61)"
+        },
+        {
+          "light": true,
+          "background": "rgb(251, 247, 239)"
+        },
+        {
+          "light": false,
+          "background": "rgb(7, 52, 61)"
+        },
+        {
+          "light": true,
+          "background": "rgb(251, 247, 239)"
+        },
+        {
+          "light": false,
+          "background": "rgb(7, 52, 61)"
+        },
+        {
+          "light": true,
+          "background": "rgb(251, 247, 239)"
+        }
+      ],
+      "brandEyebrowColor": "rgb(224, 175, 89)",
+      "overflow": 0,
+      "searchPadding": [
+        "2px",
+        "2px"
+      ],
+      "legalGap": "2px",
+      "legalControls": [
+        {
+          "height": 48,
+          "align": "center"
+        },
+        {
+          "height": 48,
+          "align": "center"
+        },
+        {
+          "height": 48,
+          "align": "center"
+        }
+      ],
+      "footerHeight": 890.140625,
+      "galleryMark": "url(\"http://127.0.0.1:4129/brand/shah-mark-gold-v1.svg\")",
+      "galleryPointerEvents": "none",
+      "galleryHeight": 662.453125
+    },
+    {
+      "theme": "gold",
+      "lang": "en",
+      "width": 1304,
+      "mouseWheelKeyboard": true,
+      "nativeTouch": false,
+      "partnerBackground": "rgb(20, 25, 26)",
+      "partnerPlates": [
+        {
+          "light": false,
+          "background": "rgb(11, 14, 15)"
+        },
+        {
+          "light": true,
+          "background": "rgb(251, 247, 239)"
+        },
+        {
+          "light": false,
+          "background": "rgb(11, 14, 15)"
+        },
+        {
+          "light": true,
+          "background": "rgb(251, 247, 239)"
+        },
+        {
+          "light": false,
+          "background": "rgb(11, 14, 15)"
+        },
+        {
+          "light": true,
+          "background": "rgb(251, 247, 239)"
+        },
+        {
+          "light": false,
+          "background": "rgb(11, 14, 15)"
+        },
+        {
+          "light": true,
+          "background": "rgb(251, 247, 239)"
+        }
+      ],
+      "brandEyebrowColor": "rgb(13, 73, 82)",
+      "overflow": 0,
+      "searchPadding": [
+        "2px",
+        "2px"
+      ],
+      "legalGap": "2px",
+      "legalControls": [
+        {
+          "height": 48,
+          "align": "center"
+        },
+        {
+          "height": 48,
+          "align": "center"
+        },
+        {
+          "height": 48,
+          "align": "center"
+        }
+      ],
+      "footerHeight": 498,
+      "galleryMark": "url(\"http://127.0.0.1:4129/brand/shah-mark-teal-v1.svg\")",
+      "galleryPointerEvents": "none",
+      "galleryHeight": 656.828125
+    },
+    {
+      "theme": "gold",
+      "lang": "en",
+      "width": 390,
+      "mouseWheelKeyboard": false,
+      "nativeTouch": true,
+      "partnerBackground": "rgb(20, 25, 26)",
+      "partnerPlates": [
+        {
+          "light": false,
+          "background": "rgb(11, 14, 15)"
+        },
+        {
+          "light": true,
+          "background": "rgb(251, 247, 239)"
+        },
+        {
+          "light": false,
+          "background": "rgb(11, 14, 15)"
+        },
+        {
+          "light": true,
+          "background": "rgb(251, 247, 239)"
+        },
+        {
+          "light": false,
+          "background": "rgb(11, 14, 15)"
+        },
+        {
+          "light": true,
+          "background": "rgb(251, 247, 239)"
+        },
+        {
+          "light": false,
+          "background": "rgb(11, 14, 15)"
+        },
+        {
+          "light": true,
+          "background": "rgb(251, 247, 239)"
+        }
+      ],
+      "brandEyebrowColor": "rgb(13, 73, 82)",
+      "overflow": 0,
+      "searchPadding": [
+        "2px",
+        "2px"
+      ],
+      "legalGap": "2px",
+      "legalControls": [
+        {
+          "height": 48,
+          "align": "center"
+        },
+        {
+          "height": 48,
+          "align": "center"
+        },
+        {
+          "height": 48,
+          "align": "center"
+        }
+      ],
+      "footerHeight": 890.140625,
+      "galleryMark": "url(\"http://127.0.0.1:4129/brand/shah-mark-teal-v1.svg\")",
+      "galleryPointerEvents": "none",
+      "galleryHeight": 693.953125
+    },
+    {
+      "theme": "gold",
+      "lang": "nl",
+      "width": 1304,
+      "mouseWheelKeyboard": true,
+      "nativeTouch": false,
+      "partnerBackground": "rgb(20, 25, 26)",
+      "partnerPlates": [
+        {
+          "light": false,
+          "background": "rgb(11, 14, 15)"
+        },
+        {
+          "light": true,
+          "background": "rgb(251, 247, 239)"
+        },
+        {
+          "light": false,
+          "background": "rgb(11, 14, 15)"
+        },
+        {
+          "light": true,
+          "background": "rgb(251, 247, 239)"
+        },
+        {
+          "light": false,
+          "background": "rgb(11, 14, 15)"
+        },
+        {
+          "light": true,
+          "background": "rgb(251, 247, 239)"
+        },
+        {
+          "light": false,
+          "background": "rgb(11, 14, 15)"
+        },
+        {
+          "light": true,
+          "background": "rgb(251, 247, 239)"
+        }
+      ],
+      "brandEyebrowColor": "rgb(13, 73, 82)",
+      "overflow": 0,
+      "searchPadding": [
+        "2px",
+        "2px"
+      ],
+      "legalGap": "2px",
+      "legalControls": [
+        {
+          "height": 48,
+          "align": "center"
+        },
+        {
+          "height": 48,
+          "align": "center"
+        },
+        {
+          "height": 48,
+          "align": "center"
+        }
+      ],
+      "footerHeight": 510,
+      "galleryMark": "url(\"http://127.0.0.1:4129/brand/shah-mark-teal-v1.svg\")",
+      "galleryPointerEvents": "none",
+      "galleryHeight": 656.828125
+    },
+    {
+      "theme": "gold",
+      "lang": "nl",
+      "width": 390,
+      "mouseWheelKeyboard": false,
+      "nativeTouch": true,
+      "partnerBackground": "rgb(20, 25, 26)",
+      "partnerPlates": [
+        {
+          "light": false,
+          "background": "rgb(11, 14, 15)"
+        },
+        {
+          "light": true,
+          "background": "rgb(251, 247, 239)"
+        },
+        {
+          "light": false,
+          "background": "rgb(11, 14, 15)"
+        },
+        {
+          "light": true,
+          "background": "rgb(251, 247, 239)"
+        },
+        {
+          "light": false,
+          "background": "rgb(11, 14, 15)"
+        },
+        {
+          "light": true,
+          "background": "rgb(251, 247, 239)"
+        },
+        {
+          "light": false,
+          "background": "rgb(11, 14, 15)"
+        },
+        {
+          "light": true,
+          "background": "rgb(251, 247, 239)"
+        }
+      ],
+      "brandEyebrowColor": "rgb(13, 73, 82)",
+      "overflow": 0,
+      "searchPadding": [
+        "2px",
+        "2px"
+      ],
+      "legalGap": "2px",
+      "legalControls": [
+        {
+          "height": 48,
+          "align": "center"
+        },
+        {
+          "height": 48,
+          "align": "center"
+        },
+        {
+          "height": 48,
+          "align": "center"
+        }
+      ],
+      "footerHeight": 890.140625,
+      "galleryMark": "url(\"http://127.0.0.1:4129/brand/shah-mark-teal-v1.svg\")",
+      "galleryPointerEvents": "none",
+      "galleryHeight": 662.453125
+    }
+  ],
+  "errors": [],
+  "ordersSubmitted": false
+}

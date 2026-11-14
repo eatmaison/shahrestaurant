@@ -1,0 +1,366 @@
+{
+  "atUTC": "2026-11-13T23:15:23.919Z",
+  "build": "PzjPHBw-VZvDS7ajsimVL",
+  "source": "98b648e76d2ee6109a054f6d0aadfd13dcc6a1b1d9e6e682be13486b43b43d81",
+  "sourceUnchanged": true,
+  "change": "8px block padding on the footer brand row. Transparent logo backgrounds and reciprocal logo mapping retained.",
+  "buildPassed": true,
+  "typecheckPassed": true,
+  "browser": {
+    "build": "PzjPHBw-VZvDS7ajsimVL",
+    "origin": "http://127.0.0.1:4119",
+    "cases": [
+      {
+        "theme": "gold",
+        "locale": "en",
+        "width": 448,
+        "paddingTop": "8px",
+        "paddingBottom": "8px",
+        "logos": [
+          {
+            "content": "none",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none",
+            "src": "/brand/shah-landscape-teal-v1.svg",
+            "loaded": true,
+            "aspect": 2.451
+          },
+          {
+            "content": "none",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none",
+            "src": "/brand/shah-landscape-teal-v1.svg",
+            "loaded": true,
+            "aspect": 2.451
+          }
+        ],
+        "overflow": false,
+        "allLogoPlates": 0
+      },
+      {
+        "theme": "gold",
+        "locale": "en",
+        "width": 360,
+        "paddingTop": "8px",
+        "paddingBottom": "8px",
+        "logos": [
+          {
+            "content": "none",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none",
+            "src": "/brand/shah-landscape-teal-v1.svg",
+            "loaded": true,
+            "aspect": 2.451
+          },
+          {
+            "content": "none",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none",
+            "src": "/brand/shah-landscape-teal-v1.svg",
+            "loaded": true,
+            "aspect": 2.451
+          }
+        ],
+        "overflow": false,
+        "allLogoPlates": 0
+      },
+      {
+        "theme": "gold",
+        "locale": "en",
+        "width": 1232,
+        "paddingTop": "8px",
+        "paddingBottom": "8px",
+        "logos": [
+          {
+            "content": "none",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none",
+            "src": "/brand/shah-landscape-teal-v1.svg",
+            "loaded": true,
+            "aspect": 2.451
+          },
+          {
+            "content": "none",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none",
+            "src": "/brand/shah-landscape-teal-v1.svg",
+            "loaded": true,
+            "aspect": 2.451
+          }
+        ],
+        "overflow": false,
+        "allLogoPlates": 0
+      },
+      {
+        "theme": "gold",
+        "locale": "nl",
+        "width": 448,
+        "paddingTop": "8px",
+        "paddingBottom": "8px",
+        "logos": [
+          {
+            "content": "none",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none",
+            "src": "/brand/shah-landscape-teal-v1.svg",
+            "loaded": true,
+            "aspect": 2.451
+          },
+          {
+            "content": "none",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none",
+            "src": "/brand/shah-landscape-teal-v1.svg",
+            "loaded": true,
+            "aspect": 2.451
+          }
+        ],
+        "overflow": false,
+        "allLogoPlates": 0
+      },
+      {
+        "theme": "gold",
+        "locale": "nl",
+        "width": 360,
+        "paddingTop": "8px",
+        "paddingBottom": "8px",
+        "logos": [
+          {
+            "content": "none",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none",
+            "src": "/brand/shah-landscape-teal-v1.svg",
+            "loaded": true,
+            "aspect": 2.451
+          },
+          {
+            "content": "none",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none",
+            "src": "/brand/shah-landscape-teal-v1.svg",
+            "loaded": true,
+            "aspect": 2.451
+          }
+        ],
+        "overflow": false,
+        "allLogoPlates": 0
+      },
+      {
+        "theme": "gold",
+        "locale": "nl",
+        "width": 1232,
+        "paddingTop": "8px",
+        "paddingBottom": "8px",
+        "logos": [
+          {
+            "content": "none",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none",
+            "src": "/brand/shah-landscape-teal-v1.svg",
+            "loaded": true,
+            "aspect": 2.451
+          },
+          {
+            "content": "none",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none",
+            "src": "/brand/shah-landscape-teal-v1.svg",
+            "loaded": true,
+            "aspect": 2.451
+          }
+        ],
+        "overflow": false,
+        "allLogoPlates": 0
+      },
+      {
+        "theme": "teal",
+        "locale": "en",
+        "width": 448,
+        "paddingTop": "8px",
+        "paddingBottom": "8px",
+        "logos": [
+          {
+            "content": "none",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none",
+            "src": "/brand/shah-landscape-gold-v1.svg",
+            "loaded": true,
+            "aspect": 2.451
+          },
+          {
+            "content": "none",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none",
+            "src": "/brand/shah-landscape-gold-v1.svg",
+            "loaded": true,
+            "aspect": 2.451
+          }
+        ],
+        "overflow": false,
+        "allLogoPlates": 0
+      },
+      {
+        "theme": "teal",
+        "locale": "en",
+        "width": 360,
+        "paddingTop": "8px",
+        "paddingBottom": "8px",
+        "logos": [
+          {
+            "content": "none",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none",
+            "src": "/brand/shah-landscape-gold-v1.svg",
+            "loaded": true,
+            "aspect": 2.451
+          },
+          {
+            "content": "none",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none",
+            "src": "/brand/shah-landscape-gold-v1.svg",
+            "loaded": true,
+            "aspect": 2.451
+          }
+        ],
+        "overflow": false,
+        "allLogoPlates": 0
+      },
+      {
+        "theme": "teal",
+        "locale": "en",
+        "width": 1232,
+        "paddingTop": "8px",
+        "paddingBottom": "8px",
+        "logos": [
+          {
+            "content": "none",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none",
+            "src": "/brand/shah-landscape-gold-v1.svg",
+            "loaded": true,
+            "aspect": 2.451
+          },
+          {
+            "content": "none",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none",
+            "src": "/brand/shah-landscape-gold-v1.svg",
+            "loaded": true,
+            "aspect": 2.451
+          }
+        ],
+        "overflow": false,
+        "allLogoPlates": 0
+      },
+      {
+        "theme": "teal",
+        "locale": "nl",
+        "width": 448,
+        "paddingTop": "8px",
+        "paddingBottom": "8px",
+        "logos": [
+          {
+            "content": "none",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none",
+            "src": "/brand/shah-landscape-gold-v1.svg",
+            "loaded": true,
+            "aspect": 2.451
+          },
+          {
+            "content": "none",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none",
+            "src": "/brand/shah-landscape-gold-v1.svg",
+            "loaded": true,
+            "aspect": 2.451
+          }
+        ],
+        "overflow": false,
+        "allLogoPlates": 0
+      },
+      {
+        "theme": "teal",
+        "locale": "nl",
+        "width": 360,
+        "paddingTop": "8px",
+        "paddingBottom": "8px",
+        "logos": [
+          {
+            "content": "none",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none",
+            "src": "/brand/shah-landscape-gold-v1.svg",
+            "loaded": true,
+            "aspect": 2.451
+          },
+          {
+            "content": "none",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none",
+            "src": "/brand/shah-landscape-gold-v1.svg",
+            "loaded": true,
+            "aspect": 2.451
+          }
+        ],
+        "overflow": false,
+        "allLogoPlates": 0
+      },
+      {
+        "theme": "teal",
+        "locale": "nl",
+        "width": 1232,
+        "paddingTop": "8px",
+        "paddingBottom": "8px",
+        "logos": [
+          {
+            "content": "none",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none",
+            "src": "/brand/shah-landscape-gold-v1.svg",
+            "loaded": true,
+            "aspect": 2.451
+          },
+          {
+            "content": "none",
+            "background": "rgba(0, 0, 0, 0)",
+            "shadow": "none",
+            "src": "/brand/shah-landscape-gold-v1.svg",
+            "loaded": true,
+            "aspect": 2.451
+          }
+        ],
+        "overflow": false,
+        "allLogoPlates": 0
+      }
+    ],
+    "pageErrors": []
+  },
+  "http": [
+    {
+      "url": "http://localhost:3398/",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:3398/en",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4068/admin",
+      "status": 200
+    },
+    {
+      "url": "http://192.168.0.122:3618/",
+      "status": 200
+    },
+    {
+      "url": "http://192.168.0.122:3618/en",
+      "status": 200
+    }
+  ],
+  "lanPublicAssets": 60,
+  "lanPrivateAdminStatus": 404,
+  "productionChanged": false,
+  "githubPushed": false
+}

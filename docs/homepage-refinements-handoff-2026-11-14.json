@@ -1,0 +1,86 @@
+{
+  "skip": {
+    "before": {
+      "filmTrack": "true",
+      "filmState": "playing",
+      "filmProgress": "0.0142",
+      "filmComplete": "false",
+      "filmBypassed": "false",
+      "intro": [
+        "pending",
+        "pending",
+        "pending",
+        "pending",
+        "pending",
+        "pending"
+      ]
+    },
+    "after": {
+      "entries": [
+        "transform",
+        "transform",
+        "opacity",
+        "transform",
+        "opacity",
+        "transform",
+        "opacity",
+        "transform",
+        "opacity",
+        "transform",
+        "opacity",
+        "transform",
+        "transform",
+        "opacity"
+      ],
+      "visible": "1",
+      "view": "content"
+    },
+    "reduced": {
+      "animations": 0,
+      "hidden": 0
+    },
+    "noBusinessWrites": true
+  },
+  "naturalEnding": {
+    "before": {
+      "filmTrack": "true",
+      "filmState": "playing",
+      "filmProgress": "0.0153",
+      "filmComplete": "false",
+      "filmBypassed": "false",
+      "intro": [
+        "pending",
+        "pending",
+        "pending",
+        "pending",
+        "pending",
+        "pending"
+      ]
+    },
+    "after": {
+      "entries": [
+        "transform",
+        "opacity",
+        "transform",
+        "opacity",
+        "transform",
+        "opacity",
+        "transform",
+        "opacity",
+        "transform",
+        "transform",
+        "transform",
+        "opacity",
+        "transform",
+        "opacity"
+      ],
+      "visible": "1",
+      "view": "content"
+    },
+    "reduced": {
+      "animations": 0,
+      "hidden": 0
+    },
+    "noBusinessWrites": true
+  }
+}

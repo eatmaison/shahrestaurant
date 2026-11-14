@@ -1,4 +1,16 @@
-# GitHub release handoff - 13 November 2026
+# GitHub release handoff - 14 November 2026
+
+## Current release: product workspace, category ordering and homepage follow-ups
+
+Repository **eatmaison/shahrestaurant**, branch **main**, authenticated **eatmaison** account. This handoff is included in the publication commit; use the verified final GitHub commit supplied with the release. No Droplet login, live deployment, restart or production migration was performed.
+
+Includes separate /admin/products, automatically persisted mouse/touch/keyboard category ordering, restricted free combo drinks, category-row scrolling, transparent logos, compact footer, theme-specific partners/gallery branding, homepage search removal, 3D welcome entrances and the compact mobile symbol with visible language control. [Implementation, evidence and limits](ADMIN-PRODUCTS.md). Build **PCqBg5KEUI1VqK_c0VZe0**, source **7b5cc49c713e85c39040888a3de995977e083df76d2e49330e6fe743d0929368**. Unrelated phone-agent work and local control files are excluded.
+
+No dependency or mandatory database migration is introduced. Category order uses the existing brands.categories JSONB field. Preserve environment values, secrets and database backups; APP_URL must match the actual public HTTPS origin. The earlier optional observation/session-link migrations and retention requirements below remain separate and unapplied.
+
+Use the guarded update procedure below: verify the correct origin, clean checkout and fast-forward ancestry; create the backup branch; update from origin/main, then run npm ci and npm run build -- --webpack through the established staged-release workflow. Do not overwrite a running server's active .next directory. Restart only the confirmed existing Shah service after a successful build; the server's process manager/name has not been inspected, so no guessed restart command is provided. Check EN/NL public pages, admin authorization and category save, menu/combo choices, header/theme switching and film handoff without real orders/payments.
+
+## Previous release handoff
 
 ## Current release: dark gold, reciprocal logos and cinematic entry details
 

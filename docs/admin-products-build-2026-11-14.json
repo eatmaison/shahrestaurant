@@ -1,0 +1,21 @@
+{
+  "dist": ".next-review-shah-admin-products-v7-20261114",
+  "startedAtUTC": "2026-11-14T00:20:03.595Z",
+  "before": {
+    "atUTC": "2026-11-14T00:20:04.056Z",
+    "sourceSha256": "8a082f5fb9017d85bd2b55546538d9dc0adca01bb231d56719b856c48674c222",
+    "inputs": 503,
+    "unchanged": true
+  },
+  "productionPublishing": false,
+  "liveDatabaseAccess": false,
+  "exitCode": 0,
+  "finishedAtUTC": "2026-11-14T00:21:06.828Z",
+  "after": {
+    "atUTC": "2026-11-14T00:21:07.254Z",
+    "sourceSha256": "8a082f5fb9017d85bd2b55546538d9dc0adca01bb231d56719b856c48674c222",
+    "inputs": 503,
+    "unchanged": true
+  },
+  "buildId": "Z6l6e9KRC62wZNbm4qoy9"
+}

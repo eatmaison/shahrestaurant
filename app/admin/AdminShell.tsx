@@ -17,6 +17,7 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
   const pending = useRef<string | null>(null), failures = useRef(0), retryAfter = useRef(0), previousPath = useRef(path), heading = useRef<HTMLHeadingElement>(null), nav = useRef<HTMLElement>(null);
   const tabs = [
     { href: "/admin", title: nl ? "Dagelijks beheer" : "Daily operations", description: nl ? "Bestellingen, reserveringen en restaurantbeheer." : "Orders, reservations and restaurant tools." },
+    { href: "/admin/products", title: nl ? "Productbeheer" : "Manage products", description: nl ? "Producten, restaurants en de volgorde van menucategorieën." : "Products, restaurants and menu category order." },
     { href: "/admin/customers", title: nl ? "Klanten & bezoekers" : "Customers & visitors", description: nl ? "Accounts, contactgegevens en waargenomen bezoekersactiviteit." : "Accounts, contact details and observed visitor activity." },
     { href: "/admin/stats", title: nl ? "Statistieken" : "Statistics", description: nl ? "Bestelwaarden, dagverloop en klantgroepen." : "Order values, daily progress and customer groups." },
     { href: "/admin/events", title: nl ? "Evenementen & foto's" : "Events & photos", description: nl ? "Evenementen, boekingen en de openbare fotogalerij." : "Events, bookings and the public photo gallery." },

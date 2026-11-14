@@ -1,0 +1,1632 @@
+{
+  "build": "PCqBg5KEUI1VqK_c0VZe0",
+  "cases": [
+    {
+      "theme": "teal",
+      "lang": "en",
+      "width": 938,
+      "mode": "on",
+      "overflow": 0,
+      "headingCount": 1,
+      "titleBounds": {
+        "left": 32,
+        "right": 906
+      },
+      "logoText": "Welcome to ShahRestaurant · Amsterdam",
+      "logoSources": [
+        {
+          "src": "/brand/shah-mark-gold-v1.svg",
+          "width": 64,
+          "height": 76,
+          "complete": true
+        }
+      ],
+      "runs": [
+        {
+          "property": "transform",
+          "transform": "none"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "none"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0.339128)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0.339128)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix3d(0.998265, 0, 0.00886318, -3.13099e-07, 0, 0.998304, 0, 0, -0.00887824, 0, 0.999961, -3.53244e-05, -0.508692, 0.791299, -1.41303, 1.00005)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix3d(0.998265, 0, 0.00886318, -3.13099e-07, 0, 0.998304, 0, 0, -0.00887824, 0, 0.999961, -3.53244e-05, -0.508692, 0.791299, -1.41303, 1.00005)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix3d(0.999997, -2.49597e-05, 0.00228022, 0, 0, 0.99994, 0.0109455, 0, -0.00228036, -0.0109455, 0.999937, 0, 0, 1.67239, -1.56786, 1)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix3d(0.999997, -2.49597e-05, 0.00228022, 0, 0, 0.99994, 0.0109455, 0, -0.00228036, -0.0109455, 0.999937, 0, 0, 1.67239, -1.56786, 1)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0.339128)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        }
+      ],
+      "activeAnimations": 1,
+      "logoOpacity": "1",
+      "logoTransform": "none",
+      "badgeBackground": "rgba(13, 73, 82, 0.91)",
+      "search": false
+    },
+    {
+      "theme": "teal",
+      "lang": "en",
+      "width": 938,
+      "mode": "reduced",
+      "overflow": 0,
+      "headingCount": 1,
+      "titleBounds": {
+        "left": 32,
+        "right": 906
+      },
+      "logoText": "Welcome to ShahRestaurant · Amsterdam",
+      "logoSources": [
+        {
+          "src": "/brand/shah-mark-gold-v1.svg",
+          "width": 64,
+          "height": 76,
+          "complete": true
+        }
+      ],
+      "runs": [],
+      "activeAnimations": 0,
+      "logoOpacity": "1",
+      "logoTransform": "none",
+      "badgeBackground": "rgba(13, 73, 82, 0.91)",
+      "search": false
+    },
+    {
+      "theme": "teal",
+      "lang": "en",
+      "width": 938,
+      "mode": "saveData",
+      "overflow": 0,
+      "headingCount": 1,
+      "titleBounds": {
+        "left": 32,
+        "right": 906
+      },
+      "logoText": "Welcome to ShahRestaurant · Amsterdam",
+      "logoSources": [
+        {
+          "src": "/brand/shah-mark-gold-v1.svg",
+          "width": 64,
+          "height": 76,
+          "complete": true
+        }
+      ],
+      "runs": [],
+      "activeAnimations": 0,
+      "logoOpacity": "1",
+      "logoTransform": "none",
+      "badgeBackground": "rgba(13, 73, 82, 0.91)",
+      "search": false
+    },
+    {
+      "theme": "teal",
+      "lang": "en",
+      "width": 390,
+      "mode": "on",
+      "overflow": 0,
+      "headingCount": 1,
+      "titleBounds": {
+        "left": 22,
+        "right": 368
+      },
+      "logoText": "Welcome to ShahRestaurant · Amsterdam",
+      "logoSources": [
+        {
+          "src": "/brand/shah-mark-gold-v1.svg",
+          "width": 50,
+          "height": 59,
+          "complete": true
+        }
+      ],
+      "runs": [
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix3d(0.999997, -2.46462e-05, 0.00226586, 0, 0, 0.999941, 0.0108766, 0, -0.00226599, -0.0108765, 0.999938, 0, 0, 1.66185, -1.55798, 1)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix3d(0.999997, -2.46462e-05, 0.00226586, 0, 0, 0.999941, 0.0108766, 0, -0.00226599, -0.0108765, 0.999938, 0, 0, 1.66185, -1.55798, 1)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0.336994)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0.336994)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix3d(0.998276, 0, 0.00880751, -3.09175e-07, 0, 0.998315, 0, 0, -0.00882237, 0, 0.999961, -3.51022e-05, -0.505491, 0.78632, -1.40414, 1.00005)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix3d(0.998276, 0, 0.00880751, -3.09175e-07, 0, 0.998315, 0, 0, -0.00882237, 0, 0.999961, -3.51022e-05, -0.505491, 0.78632, -1.40414, 1.00005)"
+        }
+      ],
+      "activeAnimations": 1,
+      "logoOpacity": "1",
+      "logoTransform": "none",
+      "badgeBackground": "rgba(13, 73, 82, 0.91)",
+      "search": false
+    },
+    {
+      "theme": "teal",
+      "lang": "en",
+      "width": 360,
+      "mode": "on",
+      "overflow": 0,
+      "headingCount": 1,
+      "titleBounds": {
+        "left": 22,
+        "right": 338
+      },
+      "logoText": "Welcome to ShahRestaurant · Amsterdam",
+      "logoSources": [
+        {
+          "src": "/brand/shah-mark-gold-v1.svg",
+          "width": 50,
+          "height": 59,
+          "complete": true
+        }
+      ],
+      "runs": [
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix3d(0.999997, -2.47036e-05, 0.00226849, 0, 0, 0.999941, 0.0108892, 0, -0.00226863, -0.0108892, 0.999938, 0, 0, 1.66378, -1.5598, 1)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix3d(0.999997, -2.47036e-05, 0.00226849, 0, 0, 0.999941, 0.0108892, 0, -0.00226863, -0.0108892, 0.999938, 0, 0, 1.66378, -1.5598, 1)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0.337383)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0.337383)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix3d(0.998274, 0, 0.00881764, -3.09888e-07, 0, 0.998313, 0, 0, -0.00883254, 0, 0.999961, -3.51427e-05, -0.506074, 0.787226, -1.40576, 1.00005)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix3d(0.998274, 0, 0.00881764, -3.09888e-07, 0, 0.998313, 0, 0, -0.00883254, 0, 0.999961, -3.51427e-05, -0.506074, 0.787226, -1.40576, 1.00005)"
+        }
+      ],
+      "activeAnimations": 1,
+      "logoOpacity": "1",
+      "logoTransform": "none",
+      "badgeBackground": "rgba(13, 73, 82, 0.91)",
+      "search": false
+    },
+    {
+      "theme": "teal",
+      "lang": "nl",
+      "width": 938,
+      "mode": "on",
+      "overflow": 0,
+      "headingCount": 1,
+      "titleBounds": {
+        "left": 32,
+        "right": 906
+      },
+      "logoText": "Welkom bij ShahRestaurant · Amsterdam",
+      "logoSources": [
+        {
+          "src": "/brand/shah-mark-gold-v1.svg",
+          "width": 64,
+          "height": 76,
+          "complete": true
+        }
+      ],
+      "runs": [
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "none"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0.338061)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0.338061)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0.338061)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix3d(0.998271, 0, 0.00883533, -3.11133e-07, 0, 0.99831, 0, 0, -0.00885029, 0, 0.999961, -3.52133e-05, -0.507091, 0.788808, -1.40859, 1.00005)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix3d(0.998271, 0, 0.00883533, -3.11133e-07, 0, 0.99831, 0, 0, -0.00885029, 0, 0.999961, -3.52133e-05, -0.507091, 0.788808, -1.40859, 1.00005)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix3d(0.999997, -2.48027e-05, 0.00227304, 0, 0, 0.99994, 0.010911, 0, -0.00227317, -0.010911, 0.999938, 0, 0, 1.66712, -1.56292, 1)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix3d(0.999997, -2.48027e-05, 0.00227304, 0, 0, 0.99994, 0.010911, 0, -0.00227317, -0.010911, 0.999938, 0, 0, 1.66712, -1.56292, 1)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "none"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        }
+      ],
+      "activeAnimations": 1,
+      "logoOpacity": "1",
+      "logoTransform": "none",
+      "badgeBackground": "rgba(13, 73, 82, 0.91)",
+      "search": false
+    },
+    {
+      "theme": "teal",
+      "lang": "nl",
+      "width": 938,
+      "mode": "reduced",
+      "overflow": 0,
+      "headingCount": 1,
+      "titleBounds": {
+        "left": 32,
+        "right": 906
+      },
+      "logoText": "Welkom bij ShahRestaurant · Amsterdam",
+      "logoSources": [
+        {
+          "src": "/brand/shah-mark-gold-v1.svg",
+          "width": 64,
+          "height": 76,
+          "complete": true
+        }
+      ],
+      "runs": [],
+      "activeAnimations": 0,
+      "logoOpacity": "1",
+      "logoTransform": "none",
+      "badgeBackground": "rgba(13, 73, 82, 0.91)",
+      "search": false
+    },
+    {
+      "theme": "teal",
+      "lang": "nl",
+      "width": 938,
+      "mode": "saveData",
+      "overflow": 0,
+      "headingCount": 1,
+      "titleBounds": {
+        "left": 32,
+        "right": 906
+      },
+      "logoText": "Welkom bij ShahRestaurant · Amsterdam",
+      "logoSources": [
+        {
+          "src": "/brand/shah-mark-gold-v1.svg",
+          "width": 64,
+          "height": 76,
+          "complete": true
+        }
+      ],
+      "runs": [],
+      "activeAnimations": 0,
+      "logoOpacity": "1",
+      "logoTransform": "none",
+      "badgeBackground": "rgba(13, 73, 82, 0.91)",
+      "search": false
+    },
+    {
+      "theme": "teal",
+      "lang": "nl",
+      "width": 390,
+      "mode": "on",
+      "overflow": 0,
+      "headingCount": 1,
+      "titleBounds": {
+        "left": 22,
+        "right": 368
+      },
+      "logoText": "Welkom bij ShahRestaurant · Amsterdam",
+      "logoSources": [
+        {
+          "src": "/brand/shah-mark-gold-v1.svg",
+          "width": 50,
+          "height": 59,
+          "complete": true
+        }
+      ],
+      "runs": [
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix3d(0.999997, -2.44357e-05, 0.00225616, 0, 0, 0.999941, 0.01083, 0, -0.0022563, -0.01083, 0.999939, 0, 0, 1.65474, -1.55132, 1)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix3d(0.999997, -2.44357e-05, 0.00225616, 0, 0, 0.999941, 0.01083, 0, -0.0022563, -0.01083, 0.999939, 0, 0, 1.65474, -1.55132, 1)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0.335551)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0.335551)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix3d(0.998284, 0, 0.00876986, -3.06535e-07, 0, 0.998322, 0, 0, -0.0087846, 0, 0.999961, -3.49519e-05, -0.503327, 0.782953, -1.39813, 1.00005)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix3d(0.998284, 0, 0.00876986, -3.06535e-07, 0, 0.998322, 0, 0, -0.0087846, 0, 0.999961, -3.49519e-05, -0.503327, 0.782953, -1.39813, 1.00005)"
+        }
+      ],
+      "activeAnimations": 1,
+      "logoOpacity": "1",
+      "logoTransform": "none",
+      "badgeBackground": "rgba(13, 73, 82, 0.91)",
+      "search": false
+    },
+    {
+      "theme": "teal",
+      "lang": "nl",
+      "width": 360,
+      "mode": "on",
+      "overflow": 0,
+      "headingCount": 1,
+      "titleBounds": {
+        "left": 22,
+        "right": 338
+      },
+      "logoText": "Welkom bij ShahRestaurant · Amsterdam",
+      "logoSources": [
+        {
+          "src": "/brand/shah-mark-gold-v1.svg",
+          "width": 50,
+          "height": 59,
+          "complete": true
+        }
+      ],
+      "runs": [
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix3d(0.999997, -2.562e-05, 0.00231018, 0, 0, 0.999939, 0.0110893, 0, -0.00231033, -0.0110893, 0.999936, 0, 0, 1.69436, -1.58846, 1)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix3d(0.999997, -2.562e-05, 0.00231018, 0, 0, 0.999939, 0.0110893, 0, -0.00231033, -0.0110893, 0.999936, 0, 0, 1.69436, -1.58846, 1)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0.343578)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0.343578)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix3d(0.998242, 0, 0.00897928, -3.21363e-07, 0, 0.998282, 0, 0, -0.00899473, 0, 0.99996, -3.57879e-05, -0.515367, 0.801682, -1.43158, 1.00005)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix3d(0.998242, 0, 0.00897928, -3.21363e-07, 0, 0.998282, 0, 0, -0.00899473, 0, 0.99996, -3.57879e-05, -0.515367, 0.801682, -1.43158, 1.00005)"
+        }
+      ],
+      "activeAnimations": 1,
+      "logoOpacity": "1",
+      "logoTransform": "none",
+      "badgeBackground": "rgba(13, 73, 82, 0.91)",
+      "search": false
+    },
+    {
+      "theme": "gold",
+      "lang": "en",
+      "width": 938,
+      "mode": "on",
+      "overflow": 0,
+      "headingCount": 1,
+      "titleBounds": {
+        "left": 32,
+        "right": 906
+      },
+      "logoText": "Welcome to ShahRestaurant · Amsterdam",
+      "logoSources": [
+        {
+          "src": "/brand/shah-mark-teal-v1.svg",
+          "width": 64,
+          "height": 76,
+          "complete": true
+        }
+      ],
+      "runs": [
+        {
+          "property": "transform",
+          "transform": "none"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "none"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 1.33115)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 1.33115)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix3d(0.992741, 0, 0.0346105, -4.79915e-06, 0, 0.993344, 0, 0, -0.0348424, 0, 0.999393, -0.000138577, -1.99673, 3.10602, -5.54647, 1.00077)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix3d(0.992741, 0, 0.0346105, -4.79915e-06, 0, 0.993344, 0, 0, -0.0348424, 0, 0.999393, -0.000138577, -1.99673, 3.10602, -5.54647, 1.00077)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix3d(0.999959, -0.000391965, 0.00902941, 0, 0, 0.999059, 0.043369, 0, -0.00903792, -0.0433672, 0.999018, 0, 0, 6.62837, -6.2141, 1)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix3d(0.999959, -0.000391965, 0.00902941, 0, 0, 0.999059, 0.043369, 0, -0.00903792, -0.0433672, 0.999018, 0, 0, 6.62837, -6.2141, 1)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 1.33115)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        }
+      ],
+      "activeAnimations": 1,
+      "logoOpacity": "1",
+      "logoTransform": "none",
+      "badgeBackground": "rgb(224, 175, 89)",
+      "search": false
+    },
+    {
+      "theme": "gold",
+      "lang": "en",
+      "width": 938,
+      "mode": "reduced",
+      "overflow": 0,
+      "headingCount": 1,
+      "titleBounds": {
+        "left": 32,
+        "right": 906
+      },
+      "logoText": "Welcome to ShahRestaurant · Amsterdam",
+      "logoSources": [
+        {
+          "src": "/brand/shah-mark-teal-v1.svg",
+          "width": 64,
+          "height": 76,
+          "complete": true
+        }
+      ],
+      "runs": [],
+      "activeAnimations": 0,
+      "logoOpacity": "1",
+      "logoTransform": "none",
+      "badgeBackground": "rgb(224, 175, 89)",
+      "search": false
+    },
+    {
+      "theme": "gold",
+      "lang": "en",
+      "width": 938,
+      "mode": "saveData",
+      "overflow": 0,
+      "headingCount": 1,
+      "titleBounds": {
+        "left": 32,
+        "right": 906
+      },
+      "logoText": "Welcome to ShahRestaurant · Amsterdam",
+      "logoSources": [
+        {
+          "src": "/brand/shah-mark-teal-v1.svg",
+          "width": 64,
+          "height": 76,
+          "complete": true
+        }
+      ],
+      "runs": [],
+      "activeAnimations": 0,
+      "logoOpacity": "1",
+      "logoTransform": "none",
+      "badgeBackground": "rgb(224, 175, 89)",
+      "search": false
+    },
+    {
+      "theme": "gold",
+      "lang": "en",
+      "width": 390,
+      "mode": "on",
+      "overflow": 0,
+      "headingCount": 1,
+      "titleBounds": {
+        "left": 22,
+        "right": 368
+      },
+      "logoText": "Welcome to ShahRestaurant · Amsterdam",
+      "logoSources": [
+        {
+          "src": "/brand/shah-mark-teal-v1.svg",
+          "width": 50,
+          "height": 59,
+          "complete": true
+        }
+      ],
+      "runs": [
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix3d(0.999969, -0.000294084, 0.00782271, 0, 0, 0.999294, 0.0375671, 0, -0.00782823, -0.0375659, 0.999263, 0, 0, 5.74117, -5.38235, 1)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix3d(0.999969, -0.000294084, 0.00782271, 0, 0, 0.999294, 0.0375671, 0, -0.00782823, -0.0375659, 0.999263, 0, 0, 5.74117, -5.38235, 1)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 1.16071)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 1.16071)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix3d(0.993737, 0, 0.0302064, -3.65217e-06, 0, 0.994196, 0, 0, -0.0303827, 0, 0.999538, -0.000120852, -1.74107, 2.70833, -4.8363, 1.00058)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix3d(0.993737, 0, 0.0302064, -3.65217e-06, 0, 0.994196, 0, 0, -0.0303827, 0, 0.999538, -0.000120852, -1.74107, 2.70833, -4.8363, 1.00058)"
+        }
+      ],
+      "activeAnimations": 1,
+      "logoOpacity": "1",
+      "logoTransform": "none",
+      "badgeBackground": "rgb(224, 175, 89)",
+      "search": false
+    },
+    {
+      "theme": "gold",
+      "lang": "en",
+      "width": 360,
+      "mode": "on",
+      "overflow": 0,
+      "headingCount": 1,
+      "titleBounds": {
+        "left": 22,
+        "right": 338
+      },
+      "logoText": "Welcome to ShahRestaurant · Amsterdam",
+      "logoSources": [
+        {
+          "src": "/brand/shah-mark-teal-v1.svg",
+          "width": 50,
+          "height": 59,
+          "complete": true
+        }
+      ],
+      "runs": [
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix3d(0.999997, -2.52258e-05, 0.00229235, 0, 0, 0.999939, 0.0110037, 0, -0.00229248, -0.0110037, 0.999937, 0, 0, 1.68128, -1.5762, 1)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix3d(0.999997, -2.52258e-05, 0.00229235, 0, 0, 0.999939, 0.0110037, 0, -0.00229248, -0.0110037, 0.999937, 0, 0, 1.68128, -1.5762, 1)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0.340926)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0.340926)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix3d(0.998256, 0, 0.00891008, -3.16424e-07, 0, 0.998295, 0, 0, -0.00892529, 0, 0.99996, -3.55117e-05, -0.511388, 0.795493, -1.42052, 1.00005)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix3d(0.998256, 0, 0.00891008, -3.16424e-07, 0, 0.998295, 0, 0, -0.00892529, 0, 0.99996, -3.55117e-05, -0.511388, 0.795493, -1.42052, 1.00005)"
+        }
+      ],
+      "activeAnimations": 1,
+      "logoOpacity": "1",
+      "logoTransform": "none",
+      "badgeBackground": "rgb(224, 175, 89)",
+      "search": false
+    },
+    {
+      "theme": "gold",
+      "lang": "nl",
+      "width": 938,
+      "mode": "on",
+      "overflow": 0,
+      "headingCount": 1,
+      "titleBounds": {
+        "left": 32,
+        "right": 906
+      },
+      "logoText": "Welkom bij ShahRestaurant · Amsterdam",
+      "logoSources": [
+        {
+          "src": "/brand/shah-mark-teal-v1.svg",
+          "width": 64,
+          "height": 76,
+          "complete": true
+        }
+      ],
+      "runs": [
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "none"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0.334226)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0.334226)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix3d(0.998291, 0, 0.00873527, -3.0412e-07, 0, 0.998329, 0, 0, -0.0087499, 0, 0.999962, -3.48138e-05, -0.501339, 0.77986, -1.39261, 1.00005)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix3d(0.998291, 0, 0.00873527, -3.0412e-07, 0, 0.998329, 0, 0, -0.0087499, 0, 0.999962, -3.48138e-05, -0.501339, 0.77986, -1.39261, 1.00005)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0.334226)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix3d(0.999997, -2.42424e-05, 0.00224722, 0, 0, 0.999942, 0.0107871, 0, -0.00224735, -0.0107871, 0.999939, 0, 0, 1.64818, -1.54517, 1)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix3d(0.999997, -2.42424e-05, 0.00224722, 0, 0, 0.999942, 0.0107871, 0, -0.00224735, -0.0107871, 0.999939, 0, 0, 1.64818, -1.54517, 1)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "none"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        }
+      ],
+      "activeAnimations": 1,
+      "logoOpacity": "1",
+      "logoTransform": "none",
+      "badgeBackground": "rgb(224, 175, 89)",
+      "search": false
+    },
+    {
+      "theme": "gold",
+      "lang": "nl",
+      "width": 938,
+      "mode": "reduced",
+      "overflow": 0,
+      "headingCount": 1,
+      "titleBounds": {
+        "left": 32,
+        "right": 906
+      },
+      "logoText": "Welkom bij ShahRestaurant · Amsterdam",
+      "logoSources": [
+        {
+          "src": "/brand/shah-mark-teal-v1.svg",
+          "width": 64,
+          "height": 76,
+          "complete": true
+        }
+      ],
+      "runs": [],
+      "activeAnimations": 0,
+      "logoOpacity": "1",
+      "logoTransform": "none",
+      "badgeBackground": "rgb(224, 175, 89)",
+      "search": false
+    },
+    {
+      "theme": "gold",
+      "lang": "nl",
+      "width": 938,
+      "mode": "saveData",
+      "overflow": 0,
+      "headingCount": 1,
+      "titleBounds": {
+        "left": 32,
+        "right": 906
+      },
+      "logoText": "Welkom bij ShahRestaurant · Amsterdam",
+      "logoSources": [
+        {
+          "src": "/brand/shah-mark-teal-v1.svg",
+          "width": 64,
+          "height": 76,
+          "complete": true
+        }
+      ],
+      "runs": [],
+      "activeAnimations": 0,
+      "logoOpacity": "1",
+      "logoTransform": "none",
+      "badgeBackground": "rgb(224, 175, 89)",
+      "search": false
+    },
+    {
+      "theme": "gold",
+      "lang": "nl",
+      "width": 390,
+      "mode": "on",
+      "overflow": 0,
+      "headingCount": 1,
+      "titleBounds": {
+        "left": 22,
+        "right": 368
+      },
+      "logoText": "Welkom bij ShahRestaurant · Amsterdam",
+      "logoSources": [
+        {
+          "src": "/brand/shah-mark-teal-v1.svg",
+          "width": 50,
+          "height": 59,
+          "complete": true
+        }
+      ],
+      "runs": [
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix3d(0.999997, -2.52441e-05, 0.00229317, 0, 0, 0.999939, 0.0110077, 0, -0.00229331, -0.0110077, 0.999937, 0, 0, 1.68189, -1.57677, 1)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix3d(0.999997, -2.52441e-05, 0.00229317, 0, 0, 0.999939, 0.0110077, 0, -0.00229331, -0.0110077, 0.999937, 0, 0, 1.68189, -1.57677, 1)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0.341052)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0.341052)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix3d(0.998255, 0, 0.00891337, -3.16658e-07, 0, 0.998295, 0, 0, -0.00892859, 0, 0.99996, -3.55248e-05, -0.511577, 0.795787, -1.42105, 1.00005)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix3d(0.998255, 0, 0.00891337, -3.16658e-07, 0, 0.998295, 0, 0, -0.00892859, 0, 0.99996, -3.55248e-05, -0.511577, 0.795787, -1.42105, 1.00005)"
+        }
+      ],
+      "activeAnimations": 1,
+      "logoOpacity": "1",
+      "logoTransform": "none",
+      "badgeBackground": "rgb(224, 175, 89)",
+      "search": false
+    },
+    {
+      "theme": "gold",
+      "lang": "nl",
+      "width": 360,
+      "mode": "on",
+      "overflow": 0,
+      "headingCount": 1,
+      "titleBounds": {
+        "left": 22,
+        "right": 338
+      },
+      "logoText": "Welkom bij ShahRestaurant · Amsterdam",
+      "logoSources": [
+        {
+          "src": "/brand/shah-mark-teal-v1.svg",
+          "width": 50,
+          "height": 59,
+          "complete": true
+        }
+      ],
+      "runs": [
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix3d(0.99997, -0.00028865, 0.00775019, 0, 0, 0.999307, 0.0372185, 0, -0.00775556, -0.0372174, 0.999277, 0, 0, 5.68788, -5.33239, 1)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix3d(0.99997, -0.00028865, 0.00775019, 0, 0, 0.999307, 0.0372185, 0, -0.00775556, -0.0372174, 0.999277, 0, 0, 5.68788, -5.33239, 1)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 1.14993)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix(1, 0, 0, 1, 0, 1.14993)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "property": "transform",
+          "transform": "matrix3d(0.9938, 0, 0.0299275, -3.58484e-06, 0, 0.99425, 0, 0, -0.0301005, 0, 0.999547, -0.00011973, -1.72489, 2.68317, -4.79137, 1.00057)"
+        },
+        {
+          "property": "opacity",
+          "transform": "matrix3d(0.9938, 0, 0.0299275, -3.58484e-06, 0, 0.99425, 0, 0, -0.0301005, 0, 0.999547, -0.00011973, -1.72489, 2.68317, -4.79137, 1.00057)"
+        }
+      ],
+      "activeAnimations": 1,
+      "logoOpacity": "1",
+      "logoTransform": "none",
+      "badgeBackground": "rgb(224, 175, 89)",
+      "search": false
+    }
+  ],
+  "errors": [],
+  "ordersSubmitted": false,
+  "orderPageSearchBothLocales": true
+}

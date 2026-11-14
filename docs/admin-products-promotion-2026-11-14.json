@@ -1,0 +1,73 @@
+{
+  "build": "Z6l6e9KRC62wZNbm4qoy9",
+  "authorization": [
+    {
+      "role": "guest",
+      "status": 404,
+      "cache": "private, no-store"
+    },
+    {
+      "role": "user",
+      "status": 404,
+      "cache": "private, no-store"
+    },
+    {
+      "role": "admin",
+      "status": 200,
+      "cache": "private, no-store"
+    },
+    {
+      "role": "expired",
+      "status": 404,
+      "cache": "private, no-store"
+    }
+  ],
+  "http": [
+    {
+      "url": "http://localhost:3398/",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:3398/en",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:3398/en/menu",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4068/admin",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4068/admin/products",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4068/admin/customers",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4068/admin/stats",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4068/admin/events",
+      "status": 200
+    },
+    {
+      "url": "http://192.168.0.122:3618/",
+      "status": 200
+    },
+    {
+      "url": "http://192.168.0.122:3618/en",
+      "status": 200
+    }
+  ],
+  "lanAssets": 60,
+  "sourceSha256": "8a082f5fb9017d85bd2b55546538d9dc0adca01bb231d56719b856c48674c222",
+  "sourceInputs": 503,
+  "sourceUnchanged": true,
+  "readOnlyAdminWriteStatus": 405,
+  "lanPrivateStatus": 404
+}

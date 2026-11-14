@@ -9,9 +9,8 @@ import { DrinkPartners } from "./components/DrinkPartners";
 import dynamic from "next/dynamic";
 import { ProductImage } from "./components/ProductImage";
 import { CatalogFeedback } from "./components/CatalogFeedback";
-import { matchesMenuSearch, normalizeMenuSearch } from "./lib/menuSearch";
-import { useDeferredValue, useMemo, useRef, useState } from "react";
-import { FaArrowDown, FaArrowLeft, FaArrowRight, FaBagShopping, FaCalendarCheck, FaChevronDown, FaClock, FaEnvelope, FaExpand, FaFireBurner, FaLocationDot, FaMagnifyingGlass, FaPhone, FaStar, FaUtensils, FaUsers, FaXmark } from "./components/icons/fa6";
+import { useMemo, useRef, useState } from "react";
+import { FaArrowDown, FaArrowLeft, FaArrowRight, FaBagShopping, FaCalendarCheck, FaChevronDown, FaClock, FaEnvelope, FaExpand, FaFireBurner, FaLocationDot, FaPhone, FaStar, FaUtensils, FaUsers } from "./components/icons/fa6";
 import { useLang, useStore } from "./providers";
 import { SITE_ID } from "./lib/data";
 import type { Product } from "./lib/types";
@@ -26,6 +25,7 @@ const RichDescription = dynamic(() => import("./components/RichDescription"), { 
 import { useHomeTilt, useRichMedia } from "./components/HomeDepth";
 import { useHomeChoreography } from "./components/HomeChoreography";
 import { usePinnedGallery } from "./components/usePinnedGallery";
+import { useHorizontalScroll } from "./components/useHorizontalScroll";
 import styles from "./home.module.css";
 
 const SIGNATURE_IDS = ["tdc-butter-chicken", "tdc-tandoori-mixed-grill", "tdc-tandoori-lamb-chops", "tdc-biryani-lamb", "tdc-tandoori-chicken-tikka", "tdc-samosa-chaat"];
@@ -45,14 +45,12 @@ export default function HomeExperience({ copy }: { copy: HomeCopy }) {
   const eveningPhotoSizes = "(min-width: 1296px) 379px, (min-width: 1051px) calc(33.333vw - 53.333px), (min-width: 701px) calc(33.333vw - 42.667px), calc(100vw - 44px)";
   const rootRef = useRef<HTMLDivElement>(null);
   const heroScrollRef = useRef<HTMLDivElement>(null);
-  const searchRef = useRef<HTMLInputElement>(null);
+  const filtersRef = useHorizontalScroll<HTMLFieldSetElement>();
   const swipeStart = useRef<{ horizontal: number; vertical: number } | null>(null);
   const richMedia = useRichMedia();
   useHomeTilt(rootRef, richMedia);
   const [category, setCategory] = useState("");
-  const [search, setSearch] = useState("");
   const [showAll, setShowAll] = useState(false);
-  const deferredSearch = useDeferredValue(search);
   const [activeSection, setActiveSection] = useState("menu");
   const [photoIndex, setPhotoIndex] = useState<number | null>(null);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
@@ -62,11 +60,7 @@ export default function HomeExperience({ copy }: { copy: HomeCopy }) {
     return { menu, featured: [...curated, ...menu.filter(product => !SIGNATURE_IDS.includes(product.id))].slice(0, 6), categories: [...new Set(menu.map(product => product.category))] };
   }, [products]);
   const selectedCategory = categories.includes(category) ? category : "";
-  const searchTerm = normalizeMenuSearch(deferredSearch);
-  const matchedDishes = useMemo(() => {
-    const candidates = selectedCategory ? menu.filter(product => product.category === selectedCategory) : searchTerm ? menu : featured;
-    return candidates.filter(product => matchesMenuSearch(product, searchTerm));
-  }, [menu, featured, selectedCategory, searchTerm]);
+  const matchedDishes = useMemo(() => selectedCategory ? menu.filter(product => product.category === selectedCategory) : featured, [menu, featured, selectedCategory]);
   const visibleDishes = showAll ? matchedDishes : matchedDishes.slice(0, 6);
   const { siteReviews, userReviews, avgRating } = useMemo(() => {
     const siteReviews = reviews.filter(review => review.site === SITE_ID && Number.isFinite(review.rating) && review.rating >= 1 && review.rating <= 5 && Number.isFinite(new Date(review.createdAt).getTime()));
@@ -89,10 +83,9 @@ export default function HomeExperience({ copy }: { copy: HomeCopy }) {
   usePinnedGallery(rootRef, richMedia);
 
   function resetMenu() {
-    setSearch("");
     setCategory("");
     setShowAll(false);
-    searchRef.current?.focus();
+    filtersRef.current?.focus();
   }
 
   function changePhoto(direction: number) {
@@ -121,6 +114,10 @@ export default function HomeExperience({ copy }: { copy: HomeCopy }) {
 
       <section id="intro" tabIndex={-1} data-scene="opening" data-opening-chapter className={`${styles.section} ${styles.intro} ${styles.opening}`} aria-labelledby="home-title">
         <div className={styles.openingHeading}>
+          <div className={styles.welcomeBrand} data-welcome-entry data-reveal="visible" data-reveal-kind="welcome">
+            <BrandLogo variant="mark" className={styles.welcomeMark} alt="" eager />
+            <div><p>{lang === "nl" ? "Welkom bij Shah" : "Welcome to Shah"}</p><span>Restaurant · Amsterdam</span></div>
+          </div>
           <p className={styles.eyebrow} data-reveal="visible" data-reveal-kind="quiet">{copy.introduction}</p>
           <h1 id="home-title"><span className={styles.titleMask} data-reveal="visible" data-reveal-kind="title"><span>{lang === "nl" ? "Indiaas restaurant" : "Indian restaurant"}</span></span>{" "}<span className={styles.titleMask} data-reveal="visible" data-reveal-kind="title" data-reveal-delay="110"><span>in Amsterdam-Noord</span></span></h1>
         </div>
@@ -141,22 +138,21 @@ export default function HomeExperience({ copy }: { copy: HomeCopy }) {
         </div>
         <div className={styles.menuContent} data-reveal="visible" data-reveal-kind="rise">
           <p className={styles.eyebrow}>01 / {copy.kitchen}</p><h2 id="menu-title">{copy.menuTitle}</h2><p className={styles.sectionDescription}>{copy.menuText}</p>
-          <div className={styles.menuSearch}><FaMagnifyingGlass aria-hidden="true" /><label className="sr-only" htmlFor="dish-search">{copy.searchMenu}</label><input ref={searchRef} id="dish-search" type="search" autoComplete="off" maxLength={120} spellCheck={false} enterKeyHint="search" value={search} placeholder={copy.searchPlaceholder} onChange={(event) => { setSearch(event.target.value); setShowAll(false); }} />{search && <button type="button" onClick={() => { setSearch(""); setShowAll(false); searchRef.current?.focus(); }} aria-label={copy.clearSearch} title={copy.clearSearch}><FaXmark aria-hidden="true" /></button>}</div>
           <CatalogFeedback />
-          <fieldset className={styles.filters}>
+          <fieldset ref={filtersRef} tabIndex={0} data-horizontal-category-scroll className={styles.filters} aria-description={lang === "nl" ? "Veeg of sleep horizontaal. Gebruik de pijltjestoetsen wanneer deze balk focus heeft." : "Swipe or drag horizontally. Use arrow keys when this bar has focus."}>
             <legend className="sr-only">{copy.category}</legend>
             {[{ value: "", label: copy.signature }, ...categories.map((value) => ({ value, label: value }))].map((option) => (
-              <label key={option.value}><input type="radio" name="home-menu-category" value={option.value} checked={selectedCategory === option.value} onChange={() => { setCategory(option.value); setShowAll(false); }} /><span>{option.value === "" && searchTerm ? copy.allCategories : option.label}</span></label>
+              <label key={option.value}><input type="radio" name="home-menu-category" value={option.value} checked={selectedCategory === option.value} onChange={() => { setCategory(option.value); setShowAll(false); }} /><span>{option.label}</span></label>
             ))}
           </fieldset>
           <div className={styles.menuMeta}><span>{copy.menuSelection}</span><span>{hydrated ? `${matchedDishes.length} ${copy.menuCount}` : copy.menuLoading}</span></div>
-          <div className={styles.menuResults} aria-busy={!hydrated || search !== deferredSearch}>
+          <div className={styles.menuResults} aria-busy={!hydrated}>
             {!hydrated ? <div className={styles.menuSkeleton} role="status" aria-label={copy.menuLoading}>{[0, 1, 2, 3].map((index) => <span key={index} />)}</div> : visibleDishes.length ? <ul data-dish-list className={styles.dishes}>
               {visibleDishes.map((product) => <li key={product.id}><button type="button" className={styles.dish} onClick={() => setSelectedProduct(product)} aria-label={`${copy.details}: ${product.name}`}>
                 <DishPhoto product={product} /><span className={styles.dishBody}><span className={styles.dishHeading}><span>{product.name}</span><span className={styles.price}>{currency.format(product.price)}</span></span>
                 <span className={styles.dishDescription}>{(lang === "nl" && product.descriptionNl) || product.description}</span>{(product.isPopular || product.isNew) && <span className={styles.dishTags}>{product.isPopular && <span><FaStar aria-hidden="true" />{copy.popular}</span>}{product.isNew && <span>{copy.newDish}</span>}</span>}</span><FaArrowRight className={styles.dishArrow} aria-hidden="true" />
               </button></li>)}
-            </ul> : searchTerm || selectedCategory ? <div className={styles.emptyState}><FaMagnifyingGlass aria-hidden="true" /><p>{copy.noMatches}</p><button type="button" className={styles.textLink} onClick={resetMenu}>{copy.resetMenu}<FaArrowRight aria-hidden="true" /></button></div> : <p className={styles.emptyState}>{copy.menuEmpty} <a href="tel:+31203412995">+31 20 341 2995</a></p>}
+            </ul> : selectedCategory ? <div className={styles.emptyState}><FaUtensils aria-hidden="true" /><p>{copy.noMatches}</p><button type="button" className={styles.textLink} onClick={resetMenu}>{copy.resetMenu}<FaArrowRight aria-hidden="true" /></button></div> : <p className={styles.emptyState}>{copy.menuEmpty} <a href="tel:+31203412995">+31 20 341 2995</a></p>}
           </div>
           <p className="sr-only" role="status">{hydrated ? `${matchedDishes.length} ${copy.menuCount}` : copy.menuLoading}</p>
           {matchedDishes.length > 6 && <button type="button" className={styles.showMore} aria-expanded={showAll} onClick={() => setShowAll(!showAll)}>{showAll ? copy.showLess : copy.showMore}<FaChevronDown aria-hidden="true" /></button>}

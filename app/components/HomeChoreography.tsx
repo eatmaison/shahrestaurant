@@ -24,6 +24,7 @@ export function useHomeChoreography(
     const activeScenes = new Set<HTMLElement>();
     const entrances = new Map<HTMLElement, number>();
     let frame = 0, disposed = false, scanQueued = false;
+    const entryFrames = new Set<number>();
     let previousView = "";
     const fine = window.matchMedia("(min-width: 900px) and (hover: hover) and (pointer: fine)");
 
@@ -32,7 +33,17 @@ export function useHomeChoreography(
         if (entrances.size >= 6 || node.matches(":focus-within")) node.dataset.revealInstant = "true";
         else entrances.set(node, window.setTimeout(() => entrances.delete(node), 1250));
       }
-      node.dataset.reveal = "visible";
+      const show = () => { if (!disposed) node.dataset.reveal = "visible"; };
+      // The opening can already be in view after a return visit or film fallback.
+      // Allow its initial 3D pose to paint before revealing, without delaying focus.
+      if (enabled && node.dataset.reveal === "pending" && node.closest("[data-opening-chapter]") && !node.matches(":focus-within")) {
+        const first = requestAnimationFrame(() => {
+          entryFrames.delete(first);
+          const second = requestAnimationFrame(() => { entryFrames.delete(second); show(); });
+          entryFrames.add(second);
+        });
+        entryFrames.add(first);
+      } else show();
       reveals.delete(node);
       observer.unobserve(node);
     };
@@ -40,7 +51,7 @@ export function useHomeChoreography(
       // Ordinary film traversal finishes its decoded frame before the first chapter opens.
       // Focus/hash navigation and the static fallback always retain immediate access.
       return !node.closest("[data-opening-chapter]") || track.dataset.filmConsumed === "true" || track.dataset.filmComplete === "true" || track.dataset.filmBypassed === "true" ||
-        track.dataset.unavailable === "true" || node.matches(":focus-within");
+        Boolean(track.dataset.filmFallback) || node.matches(":focus-within");
     };
     const observer = new IntersectionObserver(entries => {
       for (const entry of entries) {
@@ -93,7 +104,8 @@ export function useHomeChoreography(
       seen.add(node);
       node.dataset.revealKind ||= kind;
       node.style.setProperty("--reveal-delay", `${Math.min(delay, 300)}ms`);
-      if (!enabled || metrics.top < metrics.viewport * 0.92 || metrics.focused) {
+      const openingEntrance = !!node.closest("[data-opening-chapter]");
+      if (!enabled || (!openingEntrance && metrics.top < metrics.viewport * 0.92) || metrics.focused) {
         node.dataset.reveal = "visible";
       } else {
         node.dataset.reveal = "pending";
@@ -166,7 +178,7 @@ export function useHomeChoreography(
       schedule();
     };
     const film = () => {
-      if (track.dataset.filmConsumed === "true" || track.dataset.filmComplete === "true" || track.dataset.filmBypassed === "true" || track.dataset.unavailable === "true") {
+      if (track.dataset.filmConsumed === "true" || track.dataset.filmComplete === "true" || track.dataset.filmBypassed === "true" || track.dataset.filmFallback) {
         for (const node of [...reveals]) {
           const bounds = node.getBoundingClientRect();
           if (bounds.top < window.innerHeight * 0.94 && bounds.bottom > 0) reveal(node);
@@ -194,6 +206,7 @@ export function useHomeChoreography(
     fine.addEventListener("change", schedule);
     return () => {
       disposed = true; cancelAnimationFrame(frame);
+      for (const entryFrame of entryFrames) cancelAnimationFrame(entryFrame);
       for (const timer of entrances.values()) clearTimeout(timer);
       entrances.clear();
       observer.disconnect(); sceneObserver.disconnect(); mutation.disconnect();
@@ -201,6 +214,7 @@ export function useHomeChoreography(
       window.removeEventListener("hashchange", hash); root.removeEventListener("shah:film-state", film);
       document.removeEventListener("focusin", focus); document.removeEventListener("visibilitychange", visibility);
       fine.removeEventListener("change", schedule);
+      root.querySelectorAll<HTMLElement>("[data-opening-chapter] [data-reveal]").forEach(node => { node.dataset.reveal = "visible"; });
       for (const node of reveals) node.dataset.reveal = "visible";
       for (const scene of scenes) {
         scene.style.removeProperty("--scene-progress"); scene.style.removeProperty("--scene-shift");

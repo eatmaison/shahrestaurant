@@ -44,6 +44,24 @@ const body = extra => ({ customerName: "Synthetic Customer", email: "synthetic@e
 const subtotal = items => +items.reduce((sum, item) => sum + item.qty * item.price, 0).toFixed(2);
 const menuDrinks = items => items.filter(item => item.productId.startsWith("menu-drink:"));
 
+test("Prepared matcha, lassi, smoothies and bubble tea cannot be included, even with misleading soft-drink names or categories", () => {
+  for (const [category, subcategory, name] of [
+    ["Drinks", "Matcha's", "White chocola"], ["Drinks", "Indian Lassi", "Ginger lassi"],
+    ["Drinks", "Smoothies", "Spa fruit"], ["Drinks", "Bubble Tea's", "Ice tea"],
+    ["Matchas", undefined, "White chocola"], ["Lassi", undefined, "Mango"],
+    ["Smoothies", undefined, "Watermelon"], ["Bubble Teas", undefined, "Cola"],
+    ["Drinks", "Soft Drinks", "Matcha latte"], ["Drinks", "Soft Drinks", "Mango lassi"],
+    ["Drinks", "Soft Drinks", "Fruit smoothie"], ["Drinks", "Soft Drinks", "Bubble-tea mango"],
+  ]) {
+    const excluded = product("prepared", { category, subcategory, name });
+    const products = [wrap, ...drinks, excluded];
+    assert.equal(softDrinksForMenu(wrap, products).some(drink => drink.id === excluded.id), false, name);
+    assert.equal(buildMenuUpgradeItems({ wrap: [excluded.id] }, { wrap: 1 }, products).ok, false, name);
+    assert.equal(products.find(item => item.id === excluded.id).price, 9.99, "Standalone product remains unchanged");
+  }
+  assert.equal(softDrinksForMenu(wrap, [product("chocolate", { category: "Drinks", name: "White chocola" })]).length, 0);
+});
+
 function server(products = catalog, user = null) {
   const saved = [], queries = [];
   const rows = products.map(p => ({ ...p, bogo_enabled: p.bogoEnabled, is_vip: p.isVip }));
@@ -146,6 +164,19 @@ test("real store rejects excess combos, unknown food/drinks and ineligible foods
     const { post, saved } = server([...catalog, pizza, curry]);
     const response = await post(body({ menuUpgrades }));
     assert.equal(response.body.ok, false); assert.equal(response.body.error, "invalidInput"); assert.equal(saved.length, 0);
+  }
+});
+
+test("real order route rejects prepared drinks as free extras while allowing separate paid purchases", async () => {
+  for (const [subcategory, name] of [["Matcha's", "White chocola"], ["Indian Lassi", "Mango lassi"], ["Smoothies", "Fruit smoothie"], ["Bubble Tea's", "Ice tea"]]) {
+    const prepared = product("prepared-drink", { category: "Drinks", subcategory, name, price: 5.5 });
+    const included = server([...catalog, prepared]);
+    const rejected = await included.post(body({ cart: { wrap: 1 }, menuUpgrades: { wrap: [prepared.id] } }));
+    assert.equal(rejected.body.error, "invalidInput"); assert.equal(included.saved.length, 0);
+    const separate = server([...catalog, prepared]);
+    const accepted = await separate.post(body({ cart: { wrap: 1, [prepared.id]: 1 }, menuUpgrades: {} }));
+    assert.equal(accepted.body.ok, true); assert.equal(separate.saved[0].subtotal, 15.49);
+    assert.equal(separate.saved[0].items.find(item => item.productId === prepared.id).price, 5.5);
   }
 });
 

@@ -71,6 +71,10 @@
 .filters label:hover span { background: var(--shah-soft); color: var(--ink); }
 .filters input:checked + span { background: var(--ink); border-color: var(--ink); color: var(--paper); }
 .filters input:focus-visible + span { outline: 3px solid var(--gold); outline-offset: 2px; }
+.filters { cursor: grab; overscroll-behavior-x: contain; }
+.filters[data-drag-scroll="true"] { cursor: grabbing; user-select: none; scroll-snap-type: none; }
+.filters[data-drag-scroll="true"] label { cursor: grabbing; }
+.filters:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
 .menuResults { min-height: 530px; }
 .dishes { margin: 0; padding: 0; list-style: none; }
 .dish { position: relative; display: grid; grid-template-columns: 80px minmax(0, 1fr); gap: 16px; align-items: center; width: 100%; text-align: left; padding: 20px 24px 20px 0; border-bottom: 1px solid var(--line); transition: background .25s, transform .35s var(--ease-out); }
@@ -193,15 +197,6 @@
 .menuInset > span:last-child { display: grid; gap: 16px; font-size: 13px; color: var(--gold); }
 .menuInset svg { transition: transform .3s; }
 .menuInset:hover svg { transform: translateX(8px); }
-.menuSearch { display: flex; align-items: center; min-height: 52px; gap: 12px; margin-top: 28px; border-bottom: 1px solid var(--line); background: var(--shah-soft); border-radius: 4px 4px 0 0; padding-left: 16px; transition: border-color .2s, box-shadow .2s; }
-.menuSearch:focus-within { border-color: var(--gold); box-shadow: 0 2px 0 var(--gold); }
-.menuSearch > svg { width: 15px; color: var(--gold); }
-.menuSearch input { min-width: 0; width: 100%; padding: 12px 0; background: transparent; color: var(--ink); font-size: 15px; border: 0; box-shadow: none; outline: none; }
-.menuSearch input:focus-visible { outline: none; }
-.menuSearch input::-webkit-search-cancel-button { display: none; }
-.menuSearch input::placeholder { color: var(--muted); }
-.menuSearch button { flex-shrink: 0; display: grid; place-items: center; width: 44px; height: 44px; color: var(--muted); }
-.menuSearch button:hover { color: var(--gold); }
 .menuMeta { display: flex; justify-content: space-between; gap: 16px; font-size: 11px; color: var(--muted); border-bottom: 1px solid var(--line); padding: 12px 0; }
 .menuMeta > :last-child { font-variant-numeric: tabular-nums; }
 .menuResults[aria-busy="true"] .dishes { opacity: .55; }
@@ -271,8 +266,6 @@
 .photoCaption { font-variant-numeric: tabular-nums; box-shadow: 0 1px 0 var(--edge-light); }
 .menuAside { padding-left: 18px; border-left: 2px solid var(--gold); }
 .menuInsetPhoto { border: 1px solid var(--line); box-shadow: 0 3px 0 var(--line), 0 8px 18px var(--depth-shadow); }
-.menuSearch { border: 1px solid var(--line); border-radius: 5px; box-shadow: inset 0 2px 5px #191d2208, 0 1px 0 var(--edge-light); }
-.menuSearch:focus-within { box-shadow: inset 0 1px 3px #191d2205, 0 0 0 3px color-mix(in srgb, var(--gold) 14%, transparent); }
 .filters span { box-shadow: inset 0 1px 0 var(--edge-light); }
 .filters input:checked + span { box-shadow: inset 0 2px 4px #0002; }
 .menuMeta { padding-block: 15px; border-top: 1px solid var(--line); box-shadow: 0 1px 0 var(--edge-light); }
@@ -399,7 +392,6 @@
   .menuAside { font-size: 26px; margin-bottom: 0; max-width: none; }
   .menuInset { display: none; }
   .menuPhoto { box-shadow: 8px 10px 0 var(--shah-soft), 0 18px 32px #171c1512; }
-  .menuSearch input { font-size: 16px; }
   .menuResults { min-height: 550px; }
   .dishHeading { font-size: 22px; gap: 8px; }
   .price { font-size: 19px; }
@@ -544,6 +536,10 @@
 .home .lead { font-size: clamp(17px, 1.6vw, 20px); line-height: 1.9; }
 .home .opening { display: block; position: relative; padding-top: clamp(120px, 13vw, 190px); padding-bottom: 90px; border: 0; }
 .openingHeading { position: relative; max-width: 1160px; }
+.welcomeBrand { display:flex; align-items:center; gap:22px; margin-bottom:38px; width:fit-content; }
+.home .welcomeMark { width:64px; flex:0 0 64px; }
+.welcomeBrand p { font-family:var(--font-cormorant),Georgia,serif; font-size:clamp(28px,3.2vw,40px); line-height:1.1; color:var(--gold); }
+.welcomeBrand div > span { display:block; margin-top:8px; color:var(--muted); text-transform:uppercase; letter-spacing:.18em; font-size:10px; }
 .home .opening h1 { font-family: var(--font-cormorant), Georgia, serif; font-size: clamp(60px, 7.8vw, 112px); line-height: .98; letter-spacing: -.04em; margin: 30px 0 0; color: var(--ink); font-weight: 500; }
 .titleMask { display: block; overflow: clip; padding-block: .065em; }
 .titleMask > span { display: block; }
@@ -573,7 +569,6 @@
 .home .menuPhoto::after { box-shadow: inset 0 0 0 12px color-mix(in srgb,var(--paper) 6%,transparent); }
 .home .menuAside { font-size: 30px; line-height: 1.35; margin-top: 28px; }
 .home .menuContent .sectionDescription { margin-bottom: 14px; }
-.home .menuSearch { margin-top: 14px; }
 .home .menuContent > [data-catalog-feedback="ready"] { display: none; }
 .home .filters { margin-top: 24px; scrollbar-width: none; padding-bottom: 16px; }
 .home .filters::-webkit-scrollbar { display: none; }
@@ -724,6 +719,9 @@
 
 /* Native scroll supplies the timeline; the ordinary gallery remains the fallback. */
 .galleryStage { position: relative; }
+.galleryWindow { position: relative; isolation: isolate; }
+.galleryWindow::before { content: ""; position: absolute; inset: 6% 12%; z-index: -1; background: url("/brand/shah-mark-gold-v1.svg") center / contain no-repeat; opacity: .13; pointer-events: none; }
+:global(:root.dark[data-shah-theme="gold"]) .galleryWindow::before { background-image: url("/brand/shah-mark-teal-v1.svg"); opacity: .22; }
 .galleryContinue, .galleryProgress { display: none; }
 .home .gallerySection[data-gallery-pinned] {
   padding-block: 0;
@@ -822,6 +820,7 @@
 }
 
 :global(:root[data-shah-theme="gold"]) .home .storySection::before { background-image:url("/brand/shah-mark-teal-v1.svg"); opacity:.18; }
+:global(:root[data-shah-theme="gold"]) .home .storyPhotoMark { background:var(--shah-gold); }
 
 /* Existing reveal attributes trigger these details once; no per-scroll timelines. */
 @media (min-width:701px) and (prefers-reduced-motion:no-preference) {
@@ -831,3 +830,21 @@
   .home[data-motion="on"] :is(.menuPhoto,.storyPhoto > div,.eveningPhoto)::before { transition:transform .9s var(--ease-out),opacity .65s ease; }
   .home[data-choreography="ready"][data-motion="on"] [data-reveal="pending"] :is(.menuPhoto,.storyPhoto > div,.eveningPhoto)::before { transform:scale(.96); opacity:.25; }
 }
+
+/* The welcome uses the existing observer: finite entrances, no extra scroll loop. */
+@media (prefers-reduced-motion:no-preference) {
+  .home[data-choreography="ready"][data-motion="on"] .opening [data-reveal]:not([data-reveal-instant]) { transition:transform 1.15s var(--ease-out) var(--reveal-delay,0ms),opacity .65s ease var(--reveal-delay,0ms); }
+  .home[data-choreography="ready"][data-motion="on"] .opening .titleMask { overflow:visible; perspective:1000px; transition:none; }
+  .home[data-choreography="ready"][data-motion="on"] .opening .titleMask > span { transform-origin:50% 100%; transition:transform 1.25s var(--ease-out) var(--reveal-delay,0ms),opacity .7s ease var(--reveal-delay,0ms); }
+  .home[data-choreography="ready"][data-motion="on"] .opening .titleMask[data-reveal="pending"] > span { opacity:0; transform:translate3d(0,64px,-60px) rotateX(24deg) rotateY(-5deg); }
+  .home[data-choreography="ready"][data-motion="on"] .openingContent > [data-reveal="pending"] { transform:perspective(1000px) translate3d(0,44px,-30px) rotateX(10deg); transform-origin:50% 100%; }
+  .home[data-choreography="ready"][data-motion="on"] .welcomeBrand[data-reveal="pending"] { transform:perspective(800px) translate3d(-18px,28px,-50px) rotateY(-18deg) scale(.94); }
+  .home[data-choreography="ready"][data-motion="on"] .welcomeBrand[data-reveal="visible"] .welcomeMark { animation:welcome-settle 1.35s var(--ease-out) both; }
+}
+@keyframes welcome-settle { from { transform:perspective(600px) rotateY(-30deg) scale(.86); } to { transform:none; } }
+@media (max-width:700px) {
+  .welcomeBrand { gap:16px; margin-bottom:28px; }
+  .home .welcomeMark { width:50px; flex-basis:50px; }
+}
+.home[data-motion="off"] .welcomeMark { animation:none; }
+@media (prefers-reduced-motion:reduce) { .home .welcomeMark { animation:none; } }

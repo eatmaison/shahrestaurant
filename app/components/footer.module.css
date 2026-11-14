@@ -1,8 +1,12 @@
-.brandRow { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.brandRow { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 8px; }
+.brandEyebrow { color: #E0AF59; }
+:global(:root.dark[data-shah-theme="gold"] [data-site-footer]) p.brandEyebrow { color: #0D4952; }
 .backTop[data-footer-docked="true"] { position: static; flex: 0 0 48px; transform: none; }
 .details { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
 .details > *, .secondaryGroups > * { min-width: 0; }
 .legal { margin-top: 24px; }
+.legalLinks { display: flex; flex-direction: column; gap: 2px; margin-top: 12px; }
+.legalLinks :is(a, button) { display: flex; align-items: center; min-height: 48px; padding-block: 0; text-align: left; }
 
 @media (max-width: 639px) {
   .content { padding-block: 32px; row-gap: 24px; }

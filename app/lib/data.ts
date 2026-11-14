@@ -106,7 +106,10 @@ export function isMenuEligibleCategory(category: Category): boolean {
 export function isSoftDrinkProduct(product: Pick<Product, "category" | "subcategory" | "name">): boolean {
   const subcategory = product.subcategory?.trim().toLowerCase() ?? "";
   const name = product.name.trim().toLowerCase();
-  return isDrinkCategory(product.category) && (subcategory === "soft drinks" || /cola|fanta|sprite|water|spa|fernandes|ice tea|ginger/.test(name));
+  // Prepared drinks are sold separately, including legacy/miscategorized rows
+  // whose names happen to contain a soft-drink fragment (e.g. "chocola").
+  if (/matcha|lassi|smoothie|bubble[\s-]*tea/.test(`${product.category} ${subcategory} ${name}`.toLowerCase())) return false;
+  return isDrinkCategory(product.category) && (subcategory === "soft drinks" || /\b(?:cola|fanta|sprite|water|spa|fernandes|ice tea|ginger)\b/.test(name));
 }
 
 export function normalizeDrinkSubcategory(category?: Category): Category | undefined {

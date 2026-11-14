@@ -1,0 +1,226 @@
+{
+  "build": "5I8iyfolp37tsMy8FDpWc",
+  "atUTC": "2026-11-14T00:14:37.333Z",
+  "syntheticOnly": true,
+  "ordersSubmitted": false,
+  "layouts": [
+    {
+      "width": 1440,
+      "lang": "en",
+      "theme": "teal",
+      "overflow": 0,
+      "heading": "Manage products",
+      "active": "/admin/products",
+      "tabCount": 5
+    },
+    {
+      "width": 390,
+      "lang": "en",
+      "theme": "teal",
+      "overflow": 0,
+      "heading": "Manage products",
+      "active": "/admin/products",
+      "tabCount": 5
+    },
+    {
+      "width": 360,
+      "lang": "en",
+      "theme": "teal",
+      "overflow": 0,
+      "heading": "Manage products",
+      "active": "/admin/products",
+      "tabCount": 5
+    },
+    {
+      "width": 1440,
+      "lang": "nl",
+      "theme": "teal",
+      "overflow": 0,
+      "heading": "Productbeheer",
+      "active": "/admin/products",
+      "tabCount": 5
+    },
+    {
+      "width": 390,
+      "lang": "nl",
+      "theme": "teal",
+      "overflow": 0,
+      "heading": "Productbeheer",
+      "active": "/admin/products",
+      "tabCount": 5
+    },
+    {
+      "width": 360,
+      "lang": "nl",
+      "theme": "teal",
+      "overflow": 0,
+      "heading": "Productbeheer",
+      "active": "/admin/products",
+      "tabCount": 5
+    },
+    {
+      "width": 1440,
+      "lang": "en",
+      "theme": "gold",
+      "overflow": 0,
+      "heading": "Manage products",
+      "active": "/admin/products",
+      "tabCount": 5
+    },
+    {
+      "width": 390,
+      "lang": "en",
+      "theme": "gold",
+      "overflow": 0,
+      "heading": "Manage products",
+      "active": "/admin/products",
+      "tabCount": 5
+    },
+    {
+      "width": 360,
+      "lang": "en",
+      "theme": "gold",
+      "overflow": 0,
+      "heading": "Manage products",
+      "active": "/admin/products",
+      "tabCount": 5
+    },
+    {
+      "width": 1440,
+      "lang": "nl",
+      "theme": "gold",
+      "overflow": 0,
+      "heading": "Productbeheer",
+      "active": "/admin/products",
+      "tabCount": 5
+    },
+    {
+      "width": 390,
+      "lang": "nl",
+      "theme": "gold",
+      "overflow": 0,
+      "heading": "Productbeheer",
+      "active": "/admin/products",
+      "tabCount": 5
+    },
+    {
+      "width": 360,
+      "lang": "nl",
+      "theme": "gold",
+      "overflow": 0,
+      "heading": "Productbeheer",
+      "active": "/admin/products",
+      "tabCount": 5
+    }
+  ],
+  "actions": [
+    "Desktop pointer drag persists Tandoori Starters before Soups",
+    "Reload retains saved category order",
+    "Keyboard move keeps focus on the moved control",
+    "Escape cancels an in-progress drag without saving",
+    "Failed save reports error and retains category order",
+    "Conflict refreshes the current menu and reports it",
+    "Existing product editor opens and cancels on its dedicated page",
+    "Mobile touch drag saves the category before the target",
+    "Guest ordering sidebar follows the saved category order"
+  ],
+  "errors": [],
+  "violations": [],
+  "requests": [
+    {
+      "brandId": "tandoor",
+      "name": "Tandoori Starters",
+      "targetName": "Soups",
+      "placement": "before",
+      "expectedOrder": [
+        "Soups",
+        "Vegetarian Starters",
+        "Tandoori Starters",
+        "Tandoori Mains",
+        "Curries",
+        "Vegetarian Mains",
+        "Biryani",
+        "Sides",
+        "Bread",
+        "Desserts",
+        "Drinks"
+      ]
+    },
+    {
+      "brandId": "tandoor",
+      "name": "Tandoori Starters",
+      "targetName": "Soups",
+      "placement": "after",
+      "expectedOrder": [
+        "Tandoori Starters",
+        "Soups",
+        "Vegetarian Starters",
+        "Tandoori Mains",
+        "Curries",
+        "Vegetarian Mains",
+        "Biryani",
+        "Sides",
+        "Bread",
+        "Desserts",
+        "Drinks"
+      ]
+    },
+    {
+      "brandId": "tandoor",
+      "name": "Tandoori Starters",
+      "targetName": "Vegetarian Starters",
+      "placement": "after",
+      "expectedOrder": [
+        "Soups",
+        "Tandoori Starters",
+        "Vegetarian Starters",
+        "Tandoori Mains",
+        "Curries",
+        "Vegetarian Mains",
+        "Biryani",
+        "Sides",
+        "Bread",
+        "Desserts",
+        "Drinks"
+      ]
+    },
+    {
+      "brandId": "tandoor",
+      "name": "Tandoori Starters",
+      "targetName": "Vegetarian Starters",
+      "placement": "after",
+      "expectedOrder": [
+        "Soups",
+        "Tandoori Starters",
+        "Vegetarian Starters",
+        "Tandoori Mains",
+        "Curries",
+        "Vegetarian Mains",
+        "Biryani",
+        "Sides",
+        "Bread",
+        "Desserts",
+        "Drinks"
+      ]
+    },
+    {
+      "brandId": "tandoor",
+      "name": "Soups",
+      "targetName": "Tandoori Starters",
+      "placement": "before",
+      "expectedOrder": [
+        "Tandoori Starters",
+        "Soups",
+        "Vegetarian Starters",
+        "Tandoori Mains",
+        "Curries",
+        "Vegetarian Mains",
+        "Biryani",
+        "Sides",
+        "Bread",
+        "Desserts",
+        "Drinks"
+      ]
+    }
+  ]
+}

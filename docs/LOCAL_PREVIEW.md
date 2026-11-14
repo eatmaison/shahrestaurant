@@ -1,3 +1,27 @@
+# Current local preview
+
+Build **PCqBg5KEUI1VqK_c0VZe0**, source 7b5cc49c713e85c39040888a3de995977e083df76d2e49330e6fe743d0929368, 503 frozen inputs, 67 routes. Public: http://localhost:3398/en or / (NL). Synthetic read-only admin: http://localhost:4068/admin/products. Same Wi-Fi: http://192.168.0.122:3618/en. Reload to obtain the new assets.
+
+[Latest implementation, verified checks, limits and exact start commands](ADMIN-PRODUCTS.md). The local admin preview rejects writes; persistence was verified with isolated SQL/API/browser fixtures. [GitHub handoff](GITHUB-RELEASE-HANDOFF.md). No live deployment or migration.
+
+## Earlier preview notes
+
+# Current preview: footer logo spacing
+
+Added 8px above and below the footer logo row. Build **PzjPHBw-VZvDS7ajsimVL**, source 98b648e76d2ee6109a054f6d0aadfd13dcc6a1b1d9e6e682be13486b43b43d81. Public: http://localhost:3398/en (EN) or / (NL). Same Wi-Fi: http://192.168.0.122:3618/en. Synthetic read-only admin: http://localhost:4068/admin. [Twelve theme/language/width checks, final routes and LAN asset checks](footer-logo-spacing-checks-2026-11-14.json). Build and TypeScript passed; no JavaScript, media, database or dependency change. Not pushed or deployed.
+
+Matching local-fixture start/verify: `node "$env:TEMP\shah-preview-20261111\start-shah-footer-logo-space-v1-main.cjs"`. Admin: `node "$env:TEMP\shah-gold-cinema-20261113\start-or-verify-private-footer-space-v1.cjs"`. Phone: `node "$env:TEMP\shah-phone-preview-20261111\launch-lan-nl-v2-detached.cjs" "$env:TEMP\shah-phone-preview-20261111\lan-config-PzjPHBw-VZvDS7ajsimVL.json"`. Run from this checkout in PowerShell.
+
+## Previous verification
+
+# Current preview: logo backgrounds removed
+
+Header, footer and other adaptive logos now use transparent backgrounds. Build **flP9YNehjot9e1WpRrBdW**, source ddc2454a40d3edd538d81e7d6a790a7217c47175840fa7f48ed83a466f739704. Public: http://localhost:3398/en (EN) or / (NL); phone on the same Wi-Fi: http://192.168.0.122:3618/en. Synthetic read-only admin: http://localhost:4068/admin. [Eight theme/language/width checks and final HTTP verification](logo-background-checks-2026-11-13.json). Build and TypeScript passed; no JavaScript, media, dependency or database change. This follow-up has not been pushed or deployed.
+
+Start/verify using the matching local fixtures: `node "$env:TEMP\shah-preview-20261111\start-shah-logo-no-plates-v2-main.cjs"`. Admin: `node "$env:TEMP\shah-gold-cinema-20261113\start-or-verify-private-logo-v2.cjs"`. Phone: `node "$env:TEMP\shah-phone-preview-20261111\launch-lan-nl-v2-detached.cjs" "$env:TEMP\shah-phone-preview-20261111\lan-config-flP9YNehjot9e1WpRrBdW.json"`. Run from this checkout in PowerShell.
+
+## Prior design verification
+
 # Current local preview — 13 November 2026
 
 Public: http://localhost:3398/en (English) or http://localhost:3398/ (Dutch). Same Wi-Fi: http://192.168.0.122:3618/en or / for Dutch. [Latest gold/teal logos, cinematic details, verification, measurements and start commands](GOLD-CINEMA-POLISH.md).

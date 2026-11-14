@@ -2,6 +2,9 @@
 .bar { min-height: 88px; padding-block: 9px; }
 .brand { width: 154px; min-width: 0; flex-shrink: 0; display: flex; flex-direction: column; gap: 2px; align-items: stretch; }
 .brand .brandArtwork { width: 154px; }
+.brand .brandMark { display:none; }
+.languageControl { flex-shrink:0; }
+@media (min-width:640px) { .languageControl { order:-1; } }
 .brandCaption { display: block; text-align: right; color: var(--shah-ink); font-size: 8px; font-weight: 500; letter-spacing: min(.25em, 2px); text-transform: uppercase; padding-right: 2px; overflow-wrap: anywhere; }
 .header button { cursor: pointer; }
 .header .bar :global(.btn-shine) { min-height: 48px; background: #E0AF59; border: 1px solid #E0AF59; color: #0D4952; box-shadow: none; }
@@ -38,6 +41,13 @@
   .header :is(button, a[title], [data-language-link]) { min-width: 48px; min-height: 48px; }
 }
 @media (max-width: 350px) { .brand { width: 114px; } .brand .brandArtwork { width: 114px; } .bar { padding-inline: 12px; } }
+@media (max-width:639px) {
+  .bar { height:88px; min-height:88px; }
+  .brand { width:60px; height:64px; align-items:flex-start; justify-content:center; }
+  .brand .brandArtwork, .brandCaption { display:none; }
+  .brand .brandMark { display:block; width:54.2px; height:64px; }
+  .headerActions { gap:6px; }
+}
 @media (prefers-reduced-motion: reduce) { .header *, .header *::after { animation: none !important; transition: none !important; } }
 
 /* Larger navigation remains readable in the dropdown and collapsed menu. */

@@ -1,3 +1,11 @@
+# Current phone preview
+
+Build **PCqBg5KEUI1VqK_c0VZe0**, source 7b5cc49c713e85c39040888a3de995977e083df76d2e49330e6fe743d0929368, 503 frozen inputs, 67 routes. http://192.168.0.122:3618/ (NL) and /en (EN). Public pages only; private routes and submissions remain blocked. No network-security setting changed. Reload to obtain the new assets.
+
+[Latest implementation, verified checks, limits and exact start commands](ADMIN-PRODUCTS.md). The local admin preview rejects writes; persistence was verified with isolated SQL/API/browser fixtures. [GitHub handoff](GITHUB-RELEASE-HANDOFF.md). No live deployment or migration.
+
+## Earlier preview notes
+
 # Phone preview on the local network
 
 Current: http://192.168.0.122:3618/ (Dutch) and http://192.168.0.122:3618/en (English), build **A3XGcJrqHbutMgWYhQ9-y**, source 8d97670c8b413ff0c1f3f9030452cfc6757d7c7d7d7a8878a12d67b6e5ae8431, 496 inputs. Same build at localhost:3398. Both themes are dark: established teal and refined graphite/gold, with gold/teal UI logos respectively. [Changes, test evidence and limitations](GOLD-CINEMA-POLISH.md), [current LAN verification](phone-preview-2026-11-11.json).

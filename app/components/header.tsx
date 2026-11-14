@@ -167,6 +167,7 @@ export function Header() {
       <div ref={barRef} data-site-header-bar className={`${styles.bar} mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8`}>
         <Link href="/" aria-label="Shah Restaurant · Amsterdam" className={`${styles.brand} group flex items-center gap-3`} onClick={() => { setOpen(false); setEventsOpen(false); }}>
           <BrandLogo className={styles.brandArtwork} alt="" eager={!isHome || scrolled} />
+          <BrandLogo variant="mark" className={styles.brandMark} alt="" eager={!isHome || scrolled} />
           <span className={styles.brandCaption}>Restaurant · Amsterdam</span>
         </Link>
 
@@ -226,11 +227,7 @@ export function Header() {
           )}
         </nav>
 
-        <div className="flex items-center gap-2">
-          <div className="hidden sm:block">
-            <LanguageToggle />
-          </div>
-
+        <div className={`${styles.headerActions} flex items-center gap-2`}>
           <button
             type="button"
             onClick={toggleTheme}
@@ -244,6 +241,10 @@ export function Header() {
               {theme === "light" ? <FaMoon /> : <FaSun />}
             </span>
           </button>
+
+          <div className={styles.languageControl}>
+            <LanguageToggle />
+          </div>
 
           <Link
             href="/order"

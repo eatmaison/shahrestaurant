@@ -1,0 +1,21 @@
+{
+  "dist": ".next-review-shah-home-welcome-v4-20261114",
+  "startedAtUTC": "2026-11-14T01:24:17.318Z",
+  "before": {
+    "atUTC": "2026-11-14T01:24:17.763Z",
+    "sourceSha256": "7b5cc49c713e85c39040888a3de995977e083df76d2e49330e6fe743d0929368",
+    "inputs": 503,
+    "unchanged": true
+  },
+  "productionPublishing": false,
+  "liveDatabaseAccess": false,
+  "exitCode": 0,
+  "finishedAtUTC": "2026-11-14T01:25:25.030Z",
+  "after": {
+    "atUTC": "2026-11-14T01:25:25.461Z",
+    "sourceSha256": "7b5cc49c713e85c39040888a3de995977e083df76d2e49330e6fe743d0929368",
+    "inputs": 503,
+    "unchanged": true
+  },
+  "buildId": "PCqBg5KEUI1VqK_c0VZe0"
+}

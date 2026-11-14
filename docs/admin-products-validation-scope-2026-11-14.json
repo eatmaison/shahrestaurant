@@ -1,0 +1,10 @@
+{
+  "functionalBuild": "5I8iyfolp37tsMy8FDpWc",
+  "finalBuild": "Z6l6e9KRC62wZNbm4qoy9",
+  "unchangedAdminAndMenuImplementation": true,
+  "changes": [
+    "app/components/DrinkPartners.module.css",
+    "app/components/footer.module.css",
+    "app/components/footer.tsx"
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "method": "Distinct modern initial external script tags in served HTML, excluding nomodule. gzip6 of byte-checked build assets; excludes dynamic imports, HTML, APIs and media.",
+  "cases": [
+    {
+      "variant": "before",
+      "build": "PzjPHBw-VZvDS7ajsimVL",
+      "route": "/admin",
+      "scripts": 17,
+      "rawBytes": 705251,
+      "gzip6Bytes": 203869
+    },
+    {
+      "variant": "before",
+      "build": "PzjPHBw-VZvDS7ajsimVL",
+      "route": "/en",
+      "scripts": 13,
+      "rawBytes": 614528,
+      "gzip6Bytes": 184407
+    },
+    {
+      "variant": "before",
+      "build": "PzjPHBw-VZvDS7ajsimVL",
+      "route": "/en/menu",
+      "scripts": 13,
+      "rawBytes": 608320,
+      "gzip6Bytes": 177895
+    },
+    {
+      "variant": "after",
+      "build": "Z6l6e9KRC62wZNbm4qoy9",
+      "route": "/admin",
+      "scripts": 17,
+      "rawBytes": 646905,
+      "gzip6Bytes": 193472
+    },
+    {
+      "variant": "after",
+      "build": "Z6l6e9KRC62wZNbm4qoy9",
+      "route": "/admin/products",
+      "scripts": 17,
+      "rawBytes": 655932,
+      "gzip6Bytes": 194440
+    },
+    {
+      "variant": "after",
+      "build": "Z6l6e9KRC62wZNbm4qoy9",
+      "route": "/en",
+      "scripts": 13,
+      "rawBytes": 617533,
+      "gzip6Bytes": 185290
+    },
+    {
+      "variant": "after",
+      "build": "Z6l6e9KRC62wZNbm4qoy9",
+      "route": "/en/menu",
+      "scripts": 13,
+      "rawBytes": 608700,
+      "gzip6Bytes": 178068
+    }
+  ]
+}

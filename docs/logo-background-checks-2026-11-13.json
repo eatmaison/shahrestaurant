@@ -1,0 +1,243 @@
+{
+  "atUTC": "2026-11-13T22:09:54.995Z",
+  "build": "flP9YNehjot9e1WpRrBdW",
+  "source": "ddc2454a40d3edd538d81e7d6a790a7217c47175840fa7f48ed83a466f739704",
+  "sourceUnchanged": true,
+  "applicationChange": "Removed the adaptive logo gold pseudo-element background. Original logo files and reciprocal theme mapping are unchanged.",
+  "buildPassed": true,
+  "typecheckPassed": true,
+  "browserCases": [
+    {
+      "theme": "gold",
+      "locale": "en",
+      "width": 1232,
+      "logos": [
+        {
+          "content": "none",
+          "background": "rgba(0, 0, 0, 0)",
+          "shadow": "none",
+          "src": "/brand/shah-landscape-teal-v1.svg",
+          "loaded": true,
+          "aspect": 2.451
+        },
+        {
+          "content": "none",
+          "background": "rgba(0, 0, 0, 0)",
+          "shadow": "none",
+          "src": "/brand/shah-landscape-teal-v1.svg",
+          "loaded": true,
+          "aspect": 2.451
+        }
+      ],
+      "overflow": false,
+      "allLogoPlates": 0
+    },
+    {
+      "theme": "gold",
+      "locale": "en",
+      "width": 390,
+      "logos": [
+        {
+          "content": "none",
+          "background": "rgba(0, 0, 0, 0)",
+          "shadow": "none",
+          "src": "/brand/shah-landscape-teal-v1.svg",
+          "loaded": true,
+          "aspect": 2.451
+        },
+        {
+          "content": "none",
+          "background": "rgba(0, 0, 0, 0)",
+          "shadow": "none",
+          "src": "/brand/shah-landscape-teal-v1.svg",
+          "loaded": true,
+          "aspect": 2.451
+        }
+      ],
+      "overflow": false,
+      "allLogoPlates": 0
+    },
+    {
+      "theme": "gold",
+      "locale": "nl",
+      "width": 1232,
+      "logos": [
+        {
+          "content": "none",
+          "background": "rgba(0, 0, 0, 0)",
+          "shadow": "none",
+          "src": "/brand/shah-landscape-teal-v1.svg",
+          "loaded": true,
+          "aspect": 2.451
+        },
+        {
+          "content": "none",
+          "background": "rgba(0, 0, 0, 0)",
+          "shadow": "none",
+          "src": "/brand/shah-landscape-teal-v1.svg",
+          "loaded": true,
+          "aspect": 2.451
+        }
+      ],
+      "overflow": false,
+      "allLogoPlates": 0
+    },
+    {
+      "theme": "gold",
+      "locale": "nl",
+      "width": 390,
+      "logos": [
+        {
+          "content": "none",
+          "background": "rgba(0, 0, 0, 0)",
+          "shadow": "none",
+          "src": "/brand/shah-landscape-teal-v1.svg",
+          "loaded": true,
+          "aspect": 2.451
+        },
+        {
+          "content": "none",
+          "background": "rgba(0, 0, 0, 0)",
+          "shadow": "none",
+          "src": "/brand/shah-landscape-teal-v1.svg",
+          "loaded": true,
+          "aspect": 2.451
+        }
+      ],
+      "overflow": false,
+      "allLogoPlates": 0
+    },
+    {
+      "theme": "teal",
+      "locale": "en",
+      "width": 1232,
+      "logos": [
+        {
+          "content": "none",
+          "background": "rgba(0, 0, 0, 0)",
+          "shadow": "none",
+          "src": "/brand/shah-landscape-gold-v1.svg",
+          "loaded": true,
+          "aspect": 2.451
+        },
+        {
+          "content": "none",
+          "background": "rgba(0, 0, 0, 0)",
+          "shadow": "none",
+          "src": "/brand/shah-landscape-gold-v1.svg",
+          "loaded": true,
+          "aspect": 2.451
+        }
+      ],
+      "overflow": false,
+      "allLogoPlates": 0
+    },
+    {
+      "theme": "teal",
+      "locale": "en",
+      "width": 390,
+      "logos": [
+        {
+          "content": "none",
+          "background": "rgba(0, 0, 0, 0)",
+          "shadow": "none",
+          "src": "/brand/shah-landscape-gold-v1.svg",
+          "loaded": true,
+          "aspect": 2.451
+        },
+        {
+          "content": "none",
+          "background": "rgba(0, 0, 0, 0)",
+          "shadow": "none",
+          "src": "/brand/shah-landscape-gold-v1.svg",
+          "loaded": true,
+          "aspect": 2.451
+        }
+      ],
+      "overflow": false,
+      "allLogoPlates": 0
+    },
+    {
+      "theme": "teal",
+      "locale": "nl",
+      "width": 1232,
+      "logos": [
+        {
+          "content": "none",
+          "background": "rgba(0, 0, 0, 0)",
+          "shadow": "none",
+          "src": "/brand/shah-landscape-gold-v1.svg",
+          "loaded": true,
+          "aspect": 2.451
+        },
+        {
+          "content": "none",
+          "background": "rgba(0, 0, 0, 0)",
+          "shadow": "none",
+          "src": "/brand/shah-landscape-gold-v1.svg",
+          "loaded": true,
+          "aspect": 2.451
+        }
+      ],
+      "overflow": false,
+      "allLogoPlates": 0
+    },
+    {
+      "theme": "teal",
+      "locale": "nl",
+      "width": 390,
+      "logos": [
+        {
+          "content": "none",
+          "background": "rgba(0, 0, 0, 0)",
+          "shadow": "none",
+          "src": "/brand/shah-landscape-gold-v1.svg",
+          "loaded": true,
+          "aspect": 2.451
+        },
+        {
+          "content": "none",
+          "background": "rgba(0, 0, 0, 0)",
+          "shadow": "none",
+          "src": "/brand/shah-landscape-gold-v1.svg",
+          "loaded": true,
+          "aspect": 2.451
+        }
+      ],
+      "overflow": false,
+      "allLogoPlates": 0
+    }
+  ],
+  "errors": [],
+  "http": [
+    {
+      "url": "http://localhost:3398/",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:3398/en",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4068/admin",
+      "status": 200
+    },
+    {
+      "url": "http://192.168.0.122:3618/",
+      "status": 200
+    },
+    {
+      "url": "http://192.168.0.122:3618/en",
+      "status": 200
+    }
+  ],
+  "lanPrivateStatus": 404,
+  "productionChanged": false,
+  "githubPushed": false,
+  "lan": {
+    "build": "flP9YNehjot9e1WpRrBdW",
+    "verifiedPublicAssets": 60,
+    "privateAdminStatus": 404,
+    "firewallChanges": false
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "build": "5I8iyfolp37tsMy8FDpWc",
+  "cases": [
+    {
+      "width": 390,
+      "lang": "en",
+      "availableSoftDrinks": 15,
+      "excludedPreparedProduct": "Mango Lassi",
+      "legacySelectionRequiresCorrection": true,
+      "independentDrinkChoices": 2,
+      "plainWraps": 1,
+      "overflow": 0
+    },
+    {
+      "width": 390,
+      "lang": "nl",
+      "availableSoftDrinks": 15,
+      "excludedPreparedProduct": "Mango Lassi",
+      "legacySelectionRequiresCorrection": true,
+      "independentDrinkChoices": 2,
+      "plainWraps": 1,
+      "overflow": 0
+    },
+    {
+      "width": 1440,
+      "lang": "en",
+      "availableSoftDrinks": 15,
+      "excludedPreparedProduct": "Mango Lassi",
+      "legacySelectionRequiresCorrection": true,
+      "independentDrinkChoices": 2,
+      "plainWraps": 1,
+      "overflow": 0
+    },
+    {
+      "width": 1440,
+      "lang": "nl",
+      "availableSoftDrinks": 15,
+      "excludedPreparedProduct": "Mango Lassi",
+      "legacySelectionRequiresCorrection": true,
+      "independentDrinkChoices": 2,
+      "plainWraps": 1,
+      "overflow": 0
+    }
+  ],
+  "errors": [],
+  "ordersSubmitted": false
+}

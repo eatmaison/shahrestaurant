@@ -1,0 +1,116 @@
+{
+  "atUTC": "2026-11-14T01:29:21.517Z",
+  "build": "PCqBg5KEUI1VqK_c0VZe0",
+  "source": "7b5cc49c713e85c39040888a3de995977e083df76d2e49330e6fe743d0929368",
+  "inputs": 503,
+  "sourceUnchanged": true,
+  "changedSinceProductCheckpoint": [
+    "app/HomeExperience.tsx",
+    "app/components/HomeChoreography.tsx",
+    "app/components/header.module.css",
+    "app/components/header.tsx",
+    "app/home.module.css"
+  ],
+  "unchangedPublicMedia": 244,
+  "buildAndTypeScript": true,
+  "focusedLintErrors": 0,
+  "focusedLintWarnings": 0,
+  "coreRegressions": 31,
+  "initialPublicVariants": 8,
+  "welcomeVariants": 20,
+  "headerVariants": 32,
+  "filmSkipAndNaturalEnding": true,
+  "liveReducedMotionChange": true,
+  "publicHTTP": 50,
+  "promotedOrigins": [
+    {
+      "origin": "http://127.0.0.1:3398",
+      "route": "/",
+      "status": 200,
+      "build": "PCqBg5KEUI1VqK_c0VZe0"
+    },
+    {
+      "origin": "http://127.0.0.1:3398",
+      "route": "/en",
+      "status": 200,
+      "build": "PCqBg5KEUI1VqK_c0VZe0"
+    },
+    {
+      "origin": "http://127.0.0.1:3398",
+      "route": "/en/menu",
+      "status": 200,
+      "build": "PCqBg5KEUI1VqK_c0VZe0"
+    },
+    {
+      "origin": "http://127.0.0.1:3398",
+      "route": "/menukaart",
+      "status": 200,
+      "build": "PCqBg5KEUI1VqK_c0VZe0"
+    },
+    {
+      "origin": "http://127.0.0.1:4068",
+      "route": "/admin",
+      "status": 200,
+      "build": "PCqBg5KEUI1VqK_c0VZe0"
+    },
+    {
+      "origin": "http://127.0.0.1:4068",
+      "route": "/admin/products",
+      "status": 200,
+      "build": "PCqBg5KEUI1VqK_c0VZe0"
+    },
+    {
+      "origin": "http://192.168.0.122:3618",
+      "route": "/",
+      "status": 200,
+      "build": "PCqBg5KEUI1VqK_c0VZe0"
+    },
+    {
+      "origin": "http://192.168.0.122:3618",
+      "route": "/en",
+      "status": 200,
+      "build": "PCqBg5KEUI1VqK_c0VZe0"
+    },
+    {
+      "origin": "http://192.168.0.122:3618",
+      "route": "/en/menu",
+      "status": 200,
+      "build": "PCqBg5KEUI1VqK_c0VZe0"
+    },
+    {
+      "origin": "http://192.168.0.122:3618",
+      "route": "/menukaart",
+      "status": 200,
+      "build": "PCqBg5KEUI1VqK_c0VZe0"
+    },
+    {
+      "origin": "http://192.168.0.122:3618",
+      "route": "/admin/products",
+      "status": 404,
+      "method": "GET"
+    },
+    {
+      "origin": "http://192.168.0.122:3618",
+      "route": "/api/brands/categories/order",
+      "status": 405,
+      "method": "POST"
+    },
+    {
+      "origin": "http://127.0.0.1:4068",
+      "route": "/api/brands/categories/order",
+      "status": 405,
+      "method": "POST"
+    }
+  ],
+  "byteMatchedLanAssets": 59,
+  "productionDataChanges": false,
+  "migrationsRun": false,
+  "liveDeployment": false,
+  "githubPushedAtTestTime": false,
+  "limits": [
+    "Chromium desktop and phone emulation; no new physical-phone/Safari/screen-reader or production-load result.",
+    "Original exact teal logo/caption color on graphite retains its previously documented low contrast.",
+    "Unrelated historical repository-wide lint findings remain.",
+    "Synthetic admin preview is read-only; persistent category saves were tested with isolated SQL/API/browser fixtures."
+  ]
+}

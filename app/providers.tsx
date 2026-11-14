@@ -1,6 +1,7 @@
 "use client";
 
 import type { Bootstrap } from "./lib/serverStore";
+import type { CategoryOrderInput } from "./lib/brandCategoryOrder";
 import { adminDataView, type AdminDataView } from "./lib/adminView";
 import type { VisitorTelemetryStatus } from "./lib/visitorSignals";
 import { usePathname } from "next/navigation";
@@ -106,6 +107,7 @@ interface StoreCtx {
       | { action: "updateSubcategory"; brandId: string; categoryName: string; name: string; nextName: string; icon: string }
       | { action: "removeSubcategory"; brandId: string; categoryName: string; name: string }
       | { action: "setLogo"; brandId: string; logo: string }
+      | ({ action: "moveCategory" } & CategoryOrderInput)
   ) => Promise<{ ok: boolean; error?: string }>;
 
   cart: Record<string, number>;
@@ -579,9 +581,13 @@ export function Providers({ children, initialLang = "nl", initialDictionaries }:
 
   const manageBrands = useCallback<StoreCtx["manageBrands"]>(async (input) => {
     try {
-      const res = await fetch("/api/brands", { method: "POST", headers: JSON_HEADERS, body: JSON.stringify(input) });
+      const { action, ...payload } = input;
+      const res = await fetch(action === "moveCategory" ? "/api/brands/categories/order" : "/api/brands", { method: "POST", headers: JSON_HEADERS, body: JSON.stringify(action === "moveCategory" ? payload : input) });
       const data = await res.json().catch(() => null);
       if (!res.ok || !data?.ok) return { ok: false, error: data?.error ?? `HTTP ${res.status}` };
+      if (action === "moveCategory" && Array.isArray(data.categories)) {
+        setBrands(current => current.map(brand => brand.id === data.brandId ? { ...brand, categories: data.categories } : brand));
+      }
       await refresh();
       return { ok: true };
     } catch (err) {
