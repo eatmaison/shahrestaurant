@@ -1,20 +1,35 @@
-import { capcutLuxuryPosters } from "./capcutLuxuryPosters";
-import { capcutDutchPosters } from "./capcutDutchPosters";
 import type { Lang } from "./types";
 
-// Versioned, locale-specific files. The session gate intentionally remains shared.
-const media = {
-  en: {
-    desktopVideo: "/brand/capcut-luxury-v3/shah-luxury-capcut-desktop-v3.mp4",
-    mobileVideo: "/brand/capcut-luxury-v3/shah-luxury-capcut-mobile-v2.mp4",
-    posters: capcutLuxuryPosters,
-  },
-  nl: {
-    desktopVideo: "/brand/capcut-luxury-nl-v1/shah-luxury-capcut-desktop-nl-v1-web.mp4",
-    mobileVideo: "/brand/capcut-luxury-nl-v1/shah-luxury-capcut-mobile-nl-v1-web.mp4",
-    posters: capcutDutchPosters,
-  },
-} as const;
+const welcomeDirectory = "/brand/shah-welcome-v2";
+
+function welcomeVariant(lang: Lang, variant: "desktop" | "mobile", width: number, height: number) {
+  const posterBase = `${welcomeDirectory}/${lang}-${variant}`;
+  return {
+    video: `${welcomeDirectory}/shah-welcome-${lang}-${variant}-v2.mp4`,
+    poster: {
+      width,
+      height,
+      avifSrc: `${posterBase}.avif`,
+      avifSrcSet: `${posterBase}.avif ${width}w`,
+      webpSrcSet: `${posterBase}.webp ${width}w`,
+      jpegSrc: `${posterBase}.jpg`,
+      jpegSrcSet: `${posterBase}.jpg ${width}w`,
+    },
+  };
+}
+
+function welcomeMedia(lang: Lang) {
+  const desktop = welcomeVariant(lang, "desktop", 1280, 720);
+  const mobile = welcomeVariant(lang, "mobile", 540, 960);
+  return {
+    desktopVideo: desktop.video,
+    mobileVideo: mobile.video,
+    posters: { desktop: desktop.poster, mobile: mobile.poster },
+  };
+}
+
+// Both languages share the existing once-per-session playback gate.
+const media = { en: welcomeMedia("en"), nl: welcomeMedia("nl") };
 
 export function getIntroMedia(lang: Lang) {
   return lang === "nl" ? media.nl : media.en;

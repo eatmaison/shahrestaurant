@@ -204,7 +204,6 @@ export type OrderFulfillment = "delivery" | "pickup";
 
 export interface Order {
   shopLocation?: "utrecht";
-  shopLocation?: "utrecht";
   id: string;
   /** Human-readable sequential order number shown to the customer and admin. */
   orderNumber: number;

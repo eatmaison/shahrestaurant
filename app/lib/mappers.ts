@@ -94,7 +94,6 @@ export function rowToOrder(r: any, items: OrderItem[]): Order {
     id: r.id,
     orderNumber: r.order_number,
     shopLocation: r.shop_location === "utrecht" ? "utrecht" : undefined,
-    shopLocation: r.shop_location === "utrecht" ? "utrecht" : undefined,
     userId: r.user_id ?? undefined,
     visitorSessionId: r.visitor_session_id ?? undefined,
     customerName: r.customer_name,
