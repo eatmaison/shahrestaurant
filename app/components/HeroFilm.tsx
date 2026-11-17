@@ -3,13 +3,16 @@
 import { useEffect, useLayoutEffect, useRef, type RefObject } from "react";
 import { useRichMedia } from "./HomeDepth";
 import { claimIntroEntry, INTRO_ACTIVE_ATTRIBUTE, isClosingSecond, markIntroConsumed, prepareIntroPresentation } from "../lib/introSession";
-import { getIntroMedia, introVariantNeedsContain } from "../lib/introMedia";
+import { getIntroMedia, introVariantNeedsContain, WELCOME_VIDEO_FRAME_RATE } from "../lib/introMedia";
 import type { Lang } from "../lib/types";
 import styles from "./HeroFilm.module.css";
 
 type Connection = { effectiveType?: string; saveData?: boolean };
 type FilmState = "waiting" | "loading" | "decoding" | "playing" | "paused" | "blocked" | "complete" | "static" | "handoff" | "dismissed";
-const FRAME_RATE = 30;
+const START_TIMEOUT_MS = 10_000;
+const STALL_TIMEOUT_MS = 5_000;
+const START_BUFFER_SECONDS = 1.5;
+const MAX_BUFFER_WAIT_MS = 1_800;
 
 function restoreConsumedIntro(track: HTMLDivElement, reason = "session-return") {
   const focused = document.activeElement;
@@ -84,7 +87,6 @@ export function HeroFilm({ trackRef, lang }: { trackRef: RefObject<HTMLDivElemen
     stage.dataset.filmPhase = "waiting";
     delete stage.dataset.filmSource;
     delete stage.dataset.filmTransport;
-    delete stage.dataset.filmDownloaded;
     delete stage.dataset.filmFinalFrame;
     delete stage.dataset.filmFinalFrameConfirmed;
     delete track.dataset.filmNaturalEnded;
@@ -94,17 +96,16 @@ export function HeroFilm({ trackRef, lang }: { trackRef: RefObject<HTMLDivElemen
     const video = document.createElement("video");
     video.className = styles.film;
     video.muted = true; video.defaultMuted = true; video.playsInline = true;
-    video.autoplay = true; video.preload = "none"; video.tabIndex = -1;
+    video.preload = "none"; video.tabIndex = -1;
     video.disablePictureInPicture = true; video.disableRemotePlayback = true;
     video.setAttribute("aria-hidden", "true");
     video.setAttribute("webkit-playsinline", "");
     let disposed = false, failed = false, initialized = false, consumed = false, handingOff = false, resumeAfterVisibility = false;
-    let url = "", deadline = 0, idle = 0, idleFallback = 0, posterPaintFrame = 0, videoFrame = 0, finalPaintFrame = 0;
+    let deadline = 0, stallTimer = 0, idle = 0, idleFallback = 0, posterPaintFrame = 0, videoFrame = 0, finalPaintFrame = 0;
     let lastFrameTime = -1;
     let handoffFrame = 0, naturalEnded = false;
     let selectedCompact: boolean | null = null;
     const controller = new AbortController();
-    const nativeWebKit = /AppleWebKit/.test(navigator.userAgent) && !/(Chrome|Chromium|Edg|OPR|Android)/.test(navigator.userAgent);
     const progress = () => Number.isFinite(video.duration) && video.duration > 0 ? video.currentTime / video.duration : 0;
     const fitVariant = () => {
       if (selectedCompact === null || disposed || consumed) return;
@@ -137,10 +138,9 @@ export function HeroFilm({ trackRef, lang }: { trackRef: RefObject<HTMLDivElemen
       if (moveFocus) intro?.focus({ preventScroll: true });
       stage.dataset.filmPhase = "consumed";
       publish(naturalEnded ? "complete" : "dismissed", progress(), naturalEnded);
-      controller.abort(); clearTimeout(deadline); clearTimeout(idleFallback); cancelAnimationFrame(posterPaintFrame); cancelFrames();
+      controller.abort(); clearTimeout(deadline); clearTimeout(stallTimer); clearTimeout(idleFallback); cancelAnimationFrame(posterPaintFrame); cancelFrames();
       if (idle && typeof window.cancelIdleCallback === "function") window.cancelIdleCallback(idle);
       video.pause(); video.removeAttribute("src"); video.load(); video.remove();
-      if (url) { URL.revokeObjectURL(url); url = ""; }
     };
     const startHandoff = () => {
       if (disposed || consumed || handingOff || document.hidden) return;
@@ -178,7 +178,7 @@ export function HeroFilm({ trackRef, lang }: { trackRef: RefObject<HTMLDivElemen
           finalPaintFrame = 0;
           if (disposed || consumed || failed || !video.ended) return;
           stage.dataset.filmFinalFrame = String(lastFrameTime);
-          stage.dataset.filmFinalFrameConfirmed = String(lastFrameTime >= Math.max(0, video.duration - 1 / FRAME_RATE - 0.005));
+          stage.dataset.filmFinalFrameConfirmed = String(lastFrameTime >= Math.max(0, video.duration - 1 / WELCOME_VIDEO_FRAME_RATE - 0.005));
           stage.dataset.filmPhase = "complete";
           publish("complete", 1, true);
           cancelFrames();
@@ -211,7 +211,7 @@ export function HeroFilm({ trackRef, lang }: { trackRef: RefObject<HTMLDivElemen
         consume(reason);
         return;
       }
-      controller.abort(); clearTimeout(deadline);
+      controller.abort(); clearTimeout(deadline); clearTimeout(stallTimer);
       video.pause(); cancelFrames();
       failed = true;
       video.removeAttribute("src"); video.load(); video.remove();
@@ -237,6 +237,7 @@ export function HeroFilm({ trackRef, lang }: { trackRef: RefObject<HTMLDivElemen
       else if (resumeAfterVisibility) { resumeAfterVisibility = false; resume(); }
     };
     const playing = () => {
+      clearTimeout(stallTimer); stallTimer = 0;
       if (!initialized || disposed || consumed || failed) return;
       stage.dataset.filmPhase = handingOff ? "handoff" : "playing";
       if (!videoFrame) observeFrame();
@@ -244,6 +245,13 @@ export function HeroFilm({ trackRef, lang }: { trackRef: RefObject<HTMLDivElemen
     };
     const timeUpdated = () => { if (initialized && !consumed && !handingOff && !video.paused && !video.ended) { publish("playing", progress(), false); maybeHandoff(); } };
     const paused = () => { if (initialized && !consumed && !handingOff && !video.ended && !failed && !disposed) publish("paused", progress(), false); };
+    const waiting = () => {
+      if (!initialized || consumed || disposed || failed || handingOff || document.hidden || video.paused || stallTimer) return;
+      stallTimer = window.setTimeout(() => {
+        stallTimer = 0;
+        if (!video.paused && !video.ended && !document.hidden && video.readyState < HTMLMediaElement.HAVE_FUTURE_DATA) fallback("playback-stalled");
+      }, STALL_TIMEOUT_MS);
+    };
     const mediaError = () => fallback("media-error");
     window.addEventListener("scroll", scrolled, { passive: true });
     window.addEventListener("hashchange", hashChanged);
@@ -256,17 +264,36 @@ export function HeroFilm({ trackRef, lang }: { trackRef: RefObject<HTMLDivElemen
     window.addEventListener("keydown", interrupt);
     window.addEventListener("resize", fitVariant, { passive: true });
     video.addEventListener("playing", playing);
+    video.addEventListener("waiting", waiting);
     video.addEventListener("timeupdate", timeUpdated);
     video.addEventListener("pause", paused);
     video.addEventListener("ended", finish);
     video.addEventListener("error", mediaError);
 
+    function waitForStartBuffer() {
+      return new Promise<void>(resolve => {
+        const events = ["progress", "loadeddata", "canplaythrough"];
+        const finish = () => {
+          clearTimeout(timeout);
+          for (const event of events) video.removeEventListener(event, check);
+          controller.signal.removeEventListener("abort", finish);
+          resolve();
+        };
+        const check = () => {
+          if (video.buffered.length && video.buffered.start(0) <= 0.05 && video.buffered.end(0) >= START_BUFFER_SECONDS) finish();
+        };
+        const timeout = window.setTimeout(finish, MAX_BUFFER_WAIT_MS);
+        for (const event of events) video.addEventListener(event, check);
+        controller.signal.addEventListener("abort", finish, { once: true });
+        check();
+      });
+    }
+
     function firstFrame() {
       return new Promise<void>((resolve, reject) => {
-        const cleanup = () => { clearTimeout(timeout); video.removeEventListener("loadeddata", check); video.removeEventListener("canplay", check); controller.signal.removeEventListener("abort", aborted); };
+        const cleanup = () => { video.removeEventListener("loadeddata", check); video.removeEventListener("canplay", check); controller.signal.removeEventListener("abort", aborted); };
         const check = () => { if (video.readyState >= 2 && !video.seeking) { cleanup(); resolve(); } };
         const aborted = () => { cleanup(); reject(new DOMException("Aborted", "AbortError")); };
-        const timeout = window.setTimeout(() => { cleanup(); reject(new Error("Decode timeout")); }, 8000);
         video.addEventListener("loadeddata", check); video.addEventListener("canplay", check);
         controller.signal.addEventListener("abort", aborted, { once: true });
         check();
@@ -278,35 +305,31 @@ export function HeroFilm({ trackRef, lang }: { trackRef: RefObject<HTMLDivElemen
         stage.dataset.filmPhase = "loading"; publish("loading", 0, false);
         const compact = window.matchMedia("(max-width: 767px)").matches;
         selectedCompact = compact;
-        // Keep full-file buffering: the approved master exceeds a slow 4G link.
-        // The longer deadline allows that download; visitors can scroll away at any time.
-        deadline = window.setTimeout(() => fallback("download-timeout"), compact ? 180000 : 300000);
+        // Let the browser buffer the MP4 by byte range while the poster is still visible.
+        deadline = window.setTimeout(() => fallback("startup-timeout"), START_TIMEOUT_MS);
         const source = getIntroMedia(lang)[compact ? "mobileVideo" : "desktopVideo"];
         video.dataset.locale = lang;
         video.dataset.variant = compact ? "mobile" : "desktop";
         stage.dataset.filmLocale = lang;
         fitVariant();
         video.dataset.source = source;
-        video.dataset.transport = nativeWebKit ? "native-prebuffered-autoplay" : "blob-prebuffered-autoplay";
-        stage.dataset.filmSource = source; stage.dataset.filmTransport = video.dataset.transport;
-        const response = await fetch(source, { signal: controller.signal, cache: "force-cache" });
-        if (!response.ok) throw new Error("Video unavailable");
-        const blob = await response.blob();
-        if (disposed || consumed || failed || controller.signal.aborted) return;
-        if (!blob.size) throw new Error("Empty video");
-        video.dataset.downloaded = String(blob.size); stage.dataset.filmDownloaded = String(blob.size);
-        if (!nativeWebKit) url = URL.createObjectURL(blob);
+        video.dataset.transport = "progressive-autoplay";
+        stage.dataset.filmSource = source;
+        stage.dataset.filmTransport = video.dataset.transport;
         stage.dataset.filmPhase = "decoding"; publish("decoding", 0, false);
-        video.preload = "auto"; video.src = nativeWebKit ? source : url;
+        video.preload = "auto"; video.src = source;
         stage.appendChild(video); observeFrame(); video.load();
+        await waitForStartBuffer();
+        if (disposed || consumed || failed || controller.signal.aborted) return;
         const started = video.play().then(() => true, () => false);
         await firstFrame();
         if (disposed || consumed || failed || controller.signal.aborted) return;
         if (window.scrollY > 1 || window.location.hash) { consume("early-navigation"); return; }
-        initialized = true; clearTimeout(deadline);
+        initialized = true;
         delete track.dataset.unavailable;
         video.dataset.ready = "true";
         const didStart = await started;
+        clearTimeout(deadline);
         if (disposed || consumed || failed || controller.signal.aborted || window.scrollY > 1 || window.location.hash) return;
         if (document.hidden) {
           resumeAfterVisibility = true; video.pause();
@@ -344,7 +367,7 @@ export function HeroFilm({ trackRef, lang }: { trackRef: RefObject<HTMLDivElemen
       if (track.dataset.filmDismissal === "language-change" && !consumed) consume("language-change");
       else if (handingOff && !consumed) consume("handoff-preference-change");
       disposed = true; failed = true; controller.abort();
-      clearTimeout(deadline); clearTimeout(idleFallback); cancelAnimationFrame(posterPaintFrame); cancelAnimationFrame(handoffFrame); cancelFrames();
+      clearTimeout(deadline); clearTimeout(stallTimer); clearTimeout(idleFallback); cancelAnimationFrame(posterPaintFrame); cancelAnimationFrame(handoffFrame); cancelFrames();
       if (idle && typeof window.cancelIdleCallback === "function") window.cancelIdleCallback(idle);
       poster?.removeEventListener("load", posterSettled); poster?.removeEventListener("error", posterSettled);
       window.removeEventListener("scroll", scrolled); window.removeEventListener("hashchange", hashChanged); window.removeEventListener("shah:film-skip", skipped);
@@ -353,10 +376,10 @@ export function HeroFilm({ trackRef, lang }: { trackRef: RefObject<HTMLDivElemen
       window.removeEventListener("wheel", interrupt); window.removeEventListener("touchstart", interrupt);
       window.removeEventListener("pointerdown", interrupt); window.removeEventListener("keydown", interrupt);
       window.removeEventListener("resize", fitVariant);
-      video.removeEventListener("playing", playing); video.removeEventListener("timeupdate", timeUpdated); video.removeEventListener("pause", paused); video.removeEventListener("ended", finish); video.removeEventListener("error", mediaError);
+      video.removeEventListener("playing", playing);
+      video.removeEventListener("waiting", waiting); video.removeEventListener("timeupdate", timeUpdated); video.removeEventListener("pause", paused); video.removeEventListener("ended", finish); video.removeEventListener("error", mediaError);
       video.pause(); video.removeAttribute("src"); video.load(); video.remove();
       stage.setAttribute("aria-hidden", "true");
-      if (url) URL.revokeObjectURL(url);
       // A preference-effect rerun keeps this entry; a real route departure does not.
       queueMicrotask(() => { if (!track.isConnected) markIntroConsumed(); });
     };

@@ -1,11 +1,12 @@
 import type { Lang } from "./types";
 
-const welcomeDirectory = "/brand/shah-welcome-v2";
+export const WELCOME_VIDEO_FRAME_RATE = 24;
+const welcomeDirectory = "/brand/shah-welcome-v3";
 
 function welcomeVariant(lang: Lang, variant: "desktop" | "mobile", width: number, height: number) {
   const posterBase = `${welcomeDirectory}/${lang}-${variant}`;
   return {
-    video: `${welcomeDirectory}/shah-welcome-${lang}-${variant}-v2.mp4`,
+    video: `${welcomeDirectory}/shah-welcome-${lang}-${variant}-v3.mp4`,
     poster: {
       width,
       height,
