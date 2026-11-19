@@ -8,7 +8,7 @@ export type RangeFilter = {
   endDate?: string;
 };
 export type DailyMetric = { date: string; revenue: number; orders: number };
-type MetricOrder = { id?: string; createdAt: number; total: number; paid: boolean; accountType: string };
+type MetricOrder = { id?: string; createdAt: number; total: number; paid: boolean; accountType: string; paymentStatus?: string };
 
 const dateFormatter = new Intl.DateTimeFormat("en-CA", {
   timeZone: "Europe/Amsterdam", year: "numeric", month: "2-digit", day: "2-digit",
@@ -94,4 +94,37 @@ export function buildDailyMetrics(orders: readonly MetricOrder[], filter: RangeF
     if (metric) { metric.revenue = Math.round(metric.revenue * 100 + Math.round(order.total * 100)) / 100; metric.orders += 1; }
   }
   return [...totals.values()];
+}
+
+export type LifetimeRevenueMetric = { date: string; dailyRevenue: number; cumulativeRevenue: number; orders: number };
+
+/** All-time revenue based only on valid orders marked paid, grouped by Amsterdam calendar day. */
+export function buildLifetimeRevenueMetrics(orders: readonly MetricOrder[], now: number): LifetimeRevenueMetric[] {
+  const paidOrders = uniqueAdminOrders(orders).filter((order) =>
+    order.paid && !["canceled", "failed", "expired"].includes(order.paymentStatus || "") &&
+    Number.isFinite(order.createdAt) && order.createdAt > 0 && order.createdAt <= now && validOrderAmount(order.total),
+  );
+  if (!paidOrders.length) return [];
+
+  const firstDate = paidOrders.reduce((first, order) => {
+    const date = amsterdamDateKey(order.createdAt);
+    return date < first ? date : first;
+  }, amsterdamDateKey(paidOrders[0].createdAt));
+  const daily = new Map<string, { cents: number; orders: number }>();
+  for (const order of paidOrders) {
+    const date = amsterdamDateKey(order.createdAt);
+    const current = daily.get(date) || { cents: 0, orders: 0 };
+    current.cents += Math.round(order.total * 100);
+    current.orders += 1;
+    daily.set(date, current);
+  }
+
+  const result: LifetimeRevenueMetric[] = [];
+  let cumulativeCents = 0;
+  for (let date = firstDate; date <= amsterdamDateKey(now); date = shiftCalendarDate(date, 1)) {
+    const current = daily.get(date) || { cents: 0, orders: 0 };
+    cumulativeCents += current.cents;
+    result.push({ date, dailyRevenue: current.cents / 100, cumulativeRevenue: cumulativeCents / 100, orders: current.orders });
+  }
+  return result;
 }
