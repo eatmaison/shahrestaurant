@@ -10,6 +10,7 @@ const { SignJWT } = require("jose");
 const ts = require("typescript");
 const root = path.resolve(__dirname, "..");
 const migration = fs.readFileSync(path.join(root, "db/migrations/20261122_shah_stock.sql"), "utf8");
+const categoryMigration = fs.readFileSync(path.join(root, "db/migrations/20261123_shah_stock_categories.sql"), "utf8");
 const syntheticStock = [
   ["soft-drinks", "fixture-soda", "Fixture soda", 2, 10, 3],
   ["beer", "fixture-lager", "Fixture lager", 0, null, 0],
@@ -66,10 +67,11 @@ async function fixture(t, migrate = true) {
   t.after(() => db.close());
   await db.exec("CREATE TABLE users (id uuid PRIMARY KEY, role text NOT NULL)");
   await db.query("INSERT INTO users VALUES ($1, 'admin'), ($2, 'user')", [admin, customer]);
-  if (migrate) { await db.exec(migration); await insertFixture(db); }
+  if (migrate) { await db.exec(migration); await insertFixture(db); await db.exec(categoryMigration); }
   const load = loader(db);
   const route = load("app/api/admin/stock/route.ts");
-  return { db, load, route, auth: await token(admin) };
+  const categoryRoute = load("app/api/admin/stock/categories/route.ts");
+  return { db, load, route, categoryRoute, auth: await token(admin) };
 }
 
 function call(route, method, auth, payload, customHeaders = {}) {
@@ -182,9 +184,9 @@ test("the admin workspace resolves /admin/stock through its own bootstrap view",
 
 // This exercises rendered JSX handlers without a browser or any network.
 test("inline editing previews units, retains rejected values and only reorders after a successful save", async () => {
-  const { stockValues, visibleStockItems, stockUnits, stockCategories, STOCK_MAX_COUNT, STOCK_MAX_CASE_SIZE } =
+  const { stockValues, visibleStockItems, stockUnits, stockCategoryLabel, STOCK_MAX_COUNT, STOCK_MAX_CASE_SIZE } =
     loader(null)("app/lib/stock.ts");
-  const libs = { stockValues, visibleStockItems, stockUnits, stockCategories, STOCK_MAX_COUNT, STOCK_MAX_CASE_SIZE };
+  const libs = { stockValues, visibleStockItems, stockUnits, stockCategoryLabel, STOCK_MAX_COUNT, STOCK_MAX_CASE_SIZE };
   const item = (id, name, cases, caseSize, loose) => ({
     id, name, category: "beer", cases, caseSize, loose, totalUnits: stockUnits(cases, caseSize, loose), revision: 1, archived: false,
   });
@@ -208,7 +210,7 @@ test("inline editing previews units, retains rejected values and only reorders a
     },
   };
   const transport = async (_url, init) => {
-    if (!init.method) return { response: { ok: true }, data: { items: sourceItems } };
+    if (!init.method) return { response: { ok: true }, data: { items: sourceItems, categories: [{ id: "beer", name: "Beer" }] } };
     const payload = JSON.parse(init.body);
     calls.push(payload);
     if (reject) return { response: { ok: false }, data: { error: "unavailable" } };
@@ -229,6 +231,8 @@ test("inline editing previews units, retains rejected values and only reorders a
       if (name === "../../providers") return { useLang: () => ({ lang: "en" }) };
       if (name === "../../lib/clientFetch") return { fetchJSON: transport };
       if (name === "../../lib/stock") return libs;
+      if (name === "./StockPhoto") return { StockPhoto: () => null, useStockPhotos: () => ({ versions: {}, indexReady: true, update() {} }) };
+      if (name === "./StockCategories") return { __esModule: true, default: () => null };
       if (name.endsWith(".css")) return { __esModule: true, default: stylesheet };
       return require(name);
     },
@@ -271,4 +275,67 @@ test("inline editing previews units, retains rejected values and only reorders a
   tree = render();
   assert.equal(find(tree, el => typeof el.type === "function" && el.type.name === "StockEditor"), undefined);
   assert.deepEqual(countButtons(tree), order.slice().reverse());
+});
+
+test("Stock categories support custom names and safely reclassify active and archived rows", async t => {
+  const { route, categoryRoute, auth, db, load } = await fixture(t);
+  const get = async () => (await (await call(route, "GET", auth)).json());
+  const add = name => call(categoryRoute, "POST", auth, { name });
+  const remove = (id, replacement = null) => call(categoryRoute, "DELETE", auth, { id, replacement });
+  const { items, categories } = await get();
+  assert.deepEqual(categories.map(category => category.id).sort(), ["beer", "soft-drinks", "syrups"]);
+  const { stockCategoryLabel } = load("app/lib/stock.ts");
+  assert.equal(stockCategoryLabel({ id: "beer", name: "Beer" }, { beer: "Bier" }), "Bier");
+  assert.equal((await add(" ")).status, 400);
+  assert.equal((await add("x".repeat(61))).status, 400);
+  assert.equal((await add("a\u0001b")).status, 400);
+  assert.equal((await add("BEER")).status, 409);
+  const created = await add("  Wines  ");
+  assert.equal(created.status, 201);
+  const { category } = await created.json();
+  assert.equal(category.name, "Wines");
+  assert.equal(stockCategoryLabel(category, {}), "Wines");
+  assert.equal((await add("wines")).status, 409);
+  assert.equal((await remove(category.id, category.id)).status, 400);
+  assert.equal((await remove("beer", unknown)).status, 404);
+  const selected = items.find(item => item.name === "Fixture lager");
+  assert.equal((await call(route, "PATCH", auth, { id: selected.id, revision: selected.revision, action: "archive" })).status, 200);
+  assert.equal((await remove("beer")).status, 409);
+  assert.equal((await remove("beer", category.id)).status, 200);
+  const updated = (await get()).items;
+  assert.equal(updated.length, items.length);
+  for (const old of items.filter(item => item.category === "beer")) {
+    const item = updated.find(item => item.id === old.id);
+    assert.equal(item.category, category.id);
+    assert.equal(item.totalUnits, old.totalUnits);
+    assert.equal(item.revision, old.revision + (item.id === selected.id ? 2 : 1));
+    assert.equal(item.archived, item.id === selected.id);
+  }
+  assert.equal((await call(route, "POST", auth, { ...sample, category: "beer" })).status, 409);
+  assert.equal((await call(route, "POST", auth, { ...sample, category: category.id })).status, 201);
+  await db.exec(categoryMigration);
+  assert.ok(!(await get()).categories.some(option => option.id === "beer"), "rerun does not resurrect removed defaults");
+  const empty = (await (await add("Empty category")).json()).category;
+  assert.equal((await remove(empty.id)).status, 200);
+});
+
+test("overlapping active product names cancel the whole category move", async t => {
+  const { categoryRoute, route, auth } = await fixture(t);
+  const get = async () => (await (await call(route, "GET", auth)).json());
+  assert.equal((await call(route, "POST", auth, { ...sample, name: "Fixture lager" })).status, 201);
+  const before = await get();
+  const response = await call(categoryRoute, "DELETE", auth, { id: "beer", replacement: "soft-drinks" });
+  assert.equal(response.status, 409);
+  assert.deepEqual(await response.json(), { error: "category_product_duplicate" });
+  assert.deepEqual(await get(), before);
+});
+
+test("category creation and removal require current admin and same origin", async t => {
+  const { categoryRoute, auth, route } = await fixture(t);
+  for (const [method, payload] of [["POST", { name: "Denied" }], ["DELETE", { id: "beer", replacement: "syrups" }]]) {
+    assert.equal((await call(categoryRoute, method, await token(customer), payload)).status, 403);
+    assert.equal((await call(categoryRoute, method, auth, payload, { Origin: "https://elsewhere.test" })).status, 403);
+  }
+  const response = await call(route, "GET", auth);
+  assert.equal((await response.json()).categories.length, 3);
 });

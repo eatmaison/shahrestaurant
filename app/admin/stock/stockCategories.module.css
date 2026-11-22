@@ -1,0 +1,24 @@
+.manager {
+  background: var(--shah-surface);
+  border: 1px solid var(--shah-line);
+  border-radius: .65rem;
+}
+.manager > summary { padding: .75rem; cursor: pointer; font-weight: 600; }
+.body { display: grid; gap: .75rem; padding: 0 .75rem .75rem; }
+.add, .buttons { display: flex; flex-wrap: wrap; align-items: end; gap: .5rem; }
+.add label, .confirm label { display: grid; gap: .25rem; min-width: 0; }
+.add input, .confirm select {
+  padding: .5rem;
+  border: 1px solid var(--shah-line);
+  border-radius: .4rem;
+  background: var(--shah-surface);
+  color: var(--shah-ink);
+}
+.categories { display: flex; flex-wrap: wrap; gap: .4rem; margin: 0; padding: 0; list-style: none; }
+.categories li { display: flex; align-items: center; gap: .45rem; padding: .25rem .4rem; border: 1px solid var(--shah-line); border-radius: .45rem; }
+.categories li span { overflow-wrap: anywhere; }
+.confirm { display: grid; gap: .45rem; padding: .65rem; border: 1px solid var(--shah-line); border-radius: .45rem; }
+.confirm p, .error { margin: 0; }
+.error { color: var(--shah-danger, #e99191); font-weight: 600; }
+
+.manager > summary:focus-visible, .add input:focus-visible, .confirm select:focus-visible { outline: 2px solid var(--shah-gold); outline-offset: 2px; }

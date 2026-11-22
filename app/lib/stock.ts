@@ -1,7 +1,24 @@
 import { z } from "zod";
 
 export const stockCategories = ["soft-drinks", "beer", "syrups"] as const;
-export type StockCategory = typeof stockCategories[number];
+type DefaultStockCategory = typeof stockCategories[number];
+export type StockCategory = string;
+export type StockCategoryOption = { id: StockCategory; name: string };
+const stockCategoryId = z.union([z.enum(stockCategories), z.uuid()]);
+export const stockCategoryCreate = z.strictObject({
+  name: z.string().trim().min(1).max(60).refine(name => !Array.from(name).some(char => {
+    const code = char.charCodeAt(0);
+    return code < 32 || code >= 127 && code <= 159;
+  })),
+});
+export const stockCategoryRemove = z.strictObject({
+  id: stockCategoryId, replacement: stockCategoryId.nullable(),
+}).refine(input => input.id !== input.replacement, { path: ["replacement"] });
+
+export function stockCategoryLabel(category: StockCategoryOption, defaults: Record<DefaultStockCategory, string>) {
+  const key = stockCategories.find(id => id === category.id);
+  return key ? defaults[key] : category.name;
+}
 export const STOCK_MAX_COUNT = 1_000_000;
 export const STOCK_MAX_CASE_SIZE = 1_000;
 
@@ -27,7 +44,7 @@ export function compareStockItems(a: StockItem, b: StockItem) {
 
 export const stockValues = z.strictObject({
   name: z.string().trim().min(1).max(100).refine(name => !Array.from(name).some(char => char.charCodeAt(0) < 32)),
-  category: z.enum(stockCategories),
+  category: stockCategoryId,
   cases: z.number().int().min(0).max(STOCK_MAX_COUNT),
   caseSize: z.number().int().min(1).max(STOCK_MAX_CASE_SIZE).nullable(),
   loose: z.number().int().min(0).max(STOCK_MAX_COUNT),

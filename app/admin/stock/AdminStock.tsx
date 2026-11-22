@@ -4,13 +4,14 @@ import { useEffect, useRef, useState, type FormEvent } from "react";
 import { useLang } from "../../providers";
 import { fetchJSON } from "../../lib/clientFetch";
 import {
-  STOCK_MAX_CASE_SIZE, STOCK_MAX_COUNT, stockCategories, stockUnits, stockValues, visibleStockItems,
-  type StockCategory, type StockFilter, type StockItem, type StockMutation, type StockValues,
+  STOCK_MAX_CASE_SIZE, STOCK_MAX_COUNT, stockCategoryLabel, stockUnits, stockValues, visibleStockItems,
+  type StockCategory, type StockCategoryOption, type StockFilter, type StockItem, type StockMutation, type StockValues,
 } from "../../lib/stock";
 import shared from "../admin.module.css";
 import styles from "./stock.module.css";
 import photoStyles from "./stockPhoto.module.css";
 import { StockPhoto, useStockPhotos } from "./StockPhoto";
+import StockCategories from "./StockCategories";
 
 const labels = {
   en: {
@@ -29,6 +30,8 @@ const labels = {
     unavailable: "Stock could not be loaded or saved. Try again.", duplicate: "An active product with this name already exists in that category.",
     migration: "Stock is not set up in this database yet. Apply the stock migration before entering counts.",
     forbidden: "Your session does not have access to stock. Sign in as an administrator.",
+    categoryMissing: "This category no longer exists. Close the edit and refresh Stock before trying again.",
+    categoryConcurrent: "Stock changed while saving. Your entries are still here; try saving again.",
     notFound: "This product could not be found. Refresh the stock list.",
     conflict: "Another update was saved first. Your entries are still here.",
     serverCount: "Current saved count", useLatest: "Load saved values", keepDraft: "Keep my entries",
@@ -53,6 +56,8 @@ const labels = {
     unavailable: "Voorraad laden of opslaan is mislukt. Probeer het opnieuw.", duplicate: "Er bestaat al een actief product met deze naam in deze categorie.",
     migration: "Voorraad is nog niet ingesteld in deze database. Pas eerst de voorraadmigratie toe.",
     forbidden: "Je sessie heeft geen toegang tot de voorraad. Log in als beheerder.",
+    categoryMissing: "Deze categorie bestaat niet meer. Sluit de bewerking en ververs de voorraad.",
+    categoryConcurrent: "De voorraad is gewijzigd tijdens het opslaan. Je invoer is bewaard; probeer opnieuw op te slaan.",
     notFound: "Dit product is niet gevonden. Ververs de voorraad.",
     conflict: "Een andere wijziging is eerder opgeslagen. Jouw invoer is bewaard.",
     serverCount: "Huidige opgeslagen voorraad", useLatest: "Opgeslagen waarden laden", keepDraft: "Mijn invoer behouden",
@@ -66,10 +71,10 @@ const labels = {
 type Copy = typeof labels.en;
 type Draft = { name: string; category: StockCategory; cases: string; caseSize: string; loose: string };
 type Editor = { item: StockItem | null; draft: Draft; conflict?: StockItem };
-type Api = { items?: StockItem[]; item?: StockItem; error?: string };
+type Api = { items?: StockItem[]; categories?: StockCategoryOption[]; item?: StockItem; error?: string };
 
-const freshDraft = (category: StockCategory | "all"): Draft => ({
-  name: "", category: category === "all" ? "soft-drinks" : category, cases: "0", caseSize: "", loose: "0",
+const freshDraft = (category: StockCategory): Draft => ({
+  name: "", category, cases: "0", caseSize: "", loose: "0",
 });
 const fromItem = (item: StockItem): Draft => ({
   name: item.name, category: item.category, cases: String(item.cases),
@@ -89,6 +94,8 @@ function errorMessage(code: string | undefined, copy: Copy) {
     case "migration_required": return copy.migration;
     case "forbidden": return copy.forbidden;
     case "not_found": return copy.notFound;
+    case "category_not_found": return copy.categoryMissing;
+    case "category_concurrent": return copy.categoryConcurrent;
     default: return copy.unavailable;
   }
 }
@@ -106,6 +113,8 @@ export default function AdminStock() {
   const copy = lang === "nl" ? labels.nl : labels.en;
   const format = (number: number) => new Intl.NumberFormat(lang === "nl" ? "nl-NL" : "en-GB").format(number);
   const [items, setItems] = useState<StockItem[] | null>(null);
+  const [categories, setCategories] = useState<StockCategoryOption[]>([]);
+  const [categoryBusy, setCategoryBusy] = useState(false);
   const [loading, setLoading] = useState(true);
   const [busy, setBusy] = useState(false);
   const [category, setCategory] = useState<StockCategory | "all">("all");
@@ -116,14 +125,17 @@ export default function AdminStock() {
   const [failure, setFailure] = useState("");
   const [notice, setNotice] = useState("");
   const liveNotice = useRef<HTMLParagraphElement>(null);
+  const labelCategory = (option: StockCategoryOption) => stockCategoryLabel(option, copy.categories);
+  const sortedCategories = [...categories].sort((a, b) => labelCategory(a).localeCompare(labelCategory(b), lang));
 
   useEffect(() => {
     const controller = new AbortController();
     async function initialLoad() {
       try {
         const { response, data } = await fetchJSON<Api>("/api/admin/stock", { cache: "no-store", signal: controller.signal });
-        if (!response.ok || !data.items) setFailure(data.error ?? "unavailable");
-        else setItems(data.items);
+        if (controller.signal.aborted) return;
+        if (!response.ok || !data.items || !data.categories) setFailure(data.error ?? "unavailable");
+        else { setItems(data.items); setCategories(data.categories); }
       } catch { if (!controller.signal.aborted) setFailure("unavailable"); }
       finally { if (!controller.signal.aborted) setLoading(false); }
     }
@@ -131,20 +143,27 @@ export default function AdminStock() {
     return () => controller.abort();
   }, []);
 
-  async function refresh() {
+  async function refresh(success = "") {
     setLoading(true); setFailure(""); setNotice("");
     try {
       const { response, data } = await fetchJSON<Api>("/api/admin/stock", { cache: "no-store" });
-      if (!response.ok || !data.items) setFailure(data.error ?? "unavailable");
-      else setItems(data.items);
+      if (!response.ok || !data.items || !data.categories) setFailure(data.error ?? "unavailable");
+      else {
+        const available = data.categories;
+        setItems(data.items); setCategories(available);
+        setCategory(previous => available.some(option => option.id === previous) ? previous : "all");
+      }
+      setNotice(success);
     } catch { setFailure("unavailable"); }
     finally { setLoading(false); }
   }
 
   function open(item: StockItem | null) {
-    if (editor) return;
+    if (editor || categoryBusy || (!item && !categories.length)) return;
     setFailure(""); setNotice(""); setArchiveConfirm(false);
-    setEditor({ item, draft: item ? fromItem(item) : freshDraft(category) });
+    const initialCategory = categories.find(option => option.id === category) ??
+      categories.find(option => option.id === "soft-drinks") ?? sortedCategories[0];
+    setEditor({ item, draft: item ? fromItem(item) : freshDraft(initialCategory.id) });
   }
 
   function close() {
@@ -208,6 +227,7 @@ export default function AdminStock() {
   }
 
   function restore(item: StockItem) {
+    if (categoryBusy) return;
     void request("PATCH", { action: "restore", id: item.id, revision: item.revision }, copy.restored);
   }
 
@@ -219,18 +239,19 @@ export default function AdminStock() {
   const problem = failure === "conflict" ? copy.conflict : failure ? errorMessage(failure, copy) : "";
   const form = editor ? (
     <StockEditor key={editor.item?.id ?? "new"} editor={editor} copy={copy} format={format} busy={busy}
+      categories={sortedCategories} labelCategory={labelCategory}
       failure={problem} archiveConfirm={archiveConfirm} onCancel={abandonConflict} onSave={save}
       onChange={draft => setEditor(current => current ? { ...current, draft } : null)}
       onArchive={() => setArchiveConfirm(true)} onCancelArchive={() => setArchiveConfirm(false)}
       onConfirmArchive={applyArchive} onResolveConflict={resolveConflict} />
   ) : null;
 
-  return <section className={styles.stock} aria-labelledby="stock-title" aria-busy={loading || busy}>
+  return <section className={styles.stock} aria-labelledby="stock-title" aria-busy={loading || busy || categoryBusy}>
     <header className={styles.head}>
       <div><h2 id="stock-title">{copy.heading}</h2><p className={shared.muted}>{copy.intro}</p></div>
       <div className={styles.actions}>
-        <button type="button" className={shared.button} onClick={() => void refresh()} disabled={editing || loading || busy}>{copy.refresh}</button>
-        <button type="button" className={shared.button + " " + shared.primary} onClick={() => open(null)} disabled={editing || !items || busy}>{copy.add}</button>
+        <button type="button" className={shared.button} onClick={() => void refresh()} disabled={editing || loading || busy || categoryBusy}>{copy.refresh}</button>
+        <button type="button" className={shared.button + " " + shared.primary} onClick={() => open(null)} disabled={editing || !items || busy || categoryBusy || loading || categories.length === 0}>{copy.add}</button>
       </div>
     </header>
     {items && <dl className={styles.metrics}>
@@ -240,20 +261,26 @@ export default function AdminStock() {
     </dl>}
     <p ref={liveNotice} role="status" className={notice ? styles.success : styles.visuallyHidden}>{notice}</p>
     {problem && !editor && <p role="alert" className={styles.problem}>{problem}</p>}
+    {items && <StockCategories lang={lang} categories={sortedCategories} items={items} label={labelCategory}
+      disabled={editing || loading || busy} busy={categoryBusy} onBusy={setCategoryBusy}
+      onChanged={async (success, removedId) => {
+        if (removedId && category === removedId) setCategory("all");
+        await refresh(success);
+      }} />}
     {editor && !editor.item && <div className={styles.newItem}>{form}</div>}
     {!!items && <div className={styles.filters}>
       <div className={styles.actions} aria-label={copy.inStock}>
         {(["active", "zero", "archived"] as const).map(view => <button key={view} type="button"
           className={shared.button + (filter === view ? " " + styles.selected : "")} aria-pressed={filter === view}
-          disabled={editing || busy} onClick={() => { setFilter(view); setFailure(""); }}>
+          disabled={editing || busy || categoryBusy} onClick={() => { setFilter(view); setFailure(""); }}>
           {view === "active" ? copy.active : view === "zero" ? copy.zero : copy.archived}
         </button>)}
       </div>
-      <label>{copy.category}<select value={category} disabled={editing || busy} onChange={event => setCategory(event.target.value as StockCategory | "all")}>
+      <label>{copy.category}<select value={category} disabled={editing || busy || categoryBusy} onChange={event => setCategory(event.target.value as StockCategory | "all")}>
         <option value="all">{copy.allCategories}</option>
-        {stockCategories.map(value => <option key={value} value={value}>{copy.categories[value]}</option>)}
+        {sortedCategories.map(option => <option key={option.id} value={option.id}>{labelCategory(option)}</option>)}
       </select></label>
-      <label>{copy.search}<input type="search" value={query} disabled={editing || busy} onChange={event => setQuery(event.target.value)} /></label>
+      <label>{copy.search}<input type="search" value={query} disabled={editing || busy || categoryBusy} onChange={event => setQuery(event.target.value)} /></label>
     </div>}
     {loading && !items && <p role="status" className={styles.empty}>{copy.loading}</p>}
     {items && shown.length === 0 && <p className={styles.empty}>{filter === "archived" && category === "all" && !query ? copy.noArchived :
@@ -261,12 +288,13 @@ export default function AdminStock() {
     {shown.length > 0 && <ul className={styles.list}>
       {shown.map(item => {
         const isEditing = editor?.item?.id === item.id;
+        const itemCategory = categories.find(option => option.id === item.category);
         return <li key={item.id} className={styles.item}>
           <div className={styles.row}>
             <div className={styles.identity}>
               <StockPhoto id={item.id} name={item.name} version={photos.versions[item.id]} lang={lang === "nl" ? "nl" : "en"}
                 disabled={!photos.indexReady || editing || busy || loading} indexError={photos.indexError} onChange={photos.update} />
-              <div className={photoStyles.name}><strong>{item.name}</strong><span>{copy.categories[item.category]}</span></div>
+              <div className={photoStyles.name}><strong>{item.name}</strong><span>{itemCategory ? labelCategory(itemCategory) : copy.category}</span></div>
             </div>
             <span className={styles.breakdown}>{item.caseSize !== null
               ? format(item.cases) + " × " + format(item.caseSize) + " + " + format(item.loose) + " " + copy.loose.toLowerCase()
@@ -275,9 +303,9 @@ export default function AdminStock() {
               <strong>{format(item.totalUnits)}</strong> {item.totalUnits === 0 && !item.archived ? copy.zero : copy.unitsLabel}
             </span>
             {item.archived ? <button type="button" className={shared.button} aria-label={copy.restore + ": " + item.name}
-              disabled={editing || busy || loading} onClick={() => restore(item)}>{copy.restore}</button> :
+              disabled={editing || busy || categoryBusy || loading} onClick={() => restore(item)}>{copy.restore}</button> :
               <button type="button" className={shared.button} aria-label={copy.edit + ": " + item.name} aria-expanded={isEditing}
-                title={editing && !isEditing ? copy.editFirst : undefined} disabled={(editing && !isEditing) || busy || loading}
+                title={editing && !isEditing ? copy.editFirst : undefined} disabled={(editing && !isEditing) || busy || categoryBusy || loading}
                 onClick={() => isEditing ? abandonConflict() : open(item)}>{isEditing ? copy.cancel : copy.edit}</button>}
           </div>
           {isEditing && form}
@@ -287,9 +315,10 @@ export default function AdminStock() {
   </section>;
 }
 
-function StockEditor({ editor, copy, format, busy, failure, archiveConfirm, onCancel, onSave, onChange,
+function StockEditor({ editor, copy, format, busy, categories, labelCategory, failure, archiveConfirm, onCancel, onSave, onChange,
   onArchive, onCancelArchive, onConfirmArchive, onResolveConflict }: {
   editor: Editor; copy: Copy; format: (number: number) => string; busy: boolean; failure: string;
+  categories: StockCategoryOption[]; labelCategory: (category: StockCategoryOption) => string;
   archiveConfirm: boolean; onCancel: () => void; onSave: (event: FormEvent<HTMLFormElement>) => void;
   onChange: (draft: Draft) => void; onArchive: () => void; onCancelArchive: () => void;
   onConfirmArchive: () => void; onResolveConflict: (keepDraft: boolean) => void;
@@ -307,7 +336,7 @@ function StockEditor({ editor, copy, format, busy, failure, archiveConfirm, onCa
     <label>{copy.product}<input ref={productName} type="text" maxLength={100} value={draft.name}
       onChange={event => change("name", event.target.value)} /></label>
     <label>{copy.category}<select value={draft.category} onChange={event => change("category", event.target.value)}>
-      {stockCategories.map(value => <option key={value} value={value}>{copy.categories[value]}</option>)}
+      {categories.map(option => <option key={option.id} value={option.id}>{labelCategory(option)}</option>)}
     </select></label>
   </div>;
 
