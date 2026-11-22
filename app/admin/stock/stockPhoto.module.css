@@ -1,0 +1,39 @@
+.thumb {
+  inline-size: 48px;
+  block-size: 48px;
+  flex: 0 0 48px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border-radius: 9px;
+  border: 1px solid currentColor;
+  color: inherit;
+  background: transparent;
+  cursor: pointer;
+}
+.thumb:disabled { cursor: wait; opacity: .6; }
+.thumb:hover:not(:disabled), .thumb:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+.thumb img { display: block; inline-size: 42px; block-size: 42px; object-fit: contain; border-radius: 6px; }
+.name { display: grid; gap: .15rem; min-inline-size: 0; overflow-wrap: anywhere; }
+.dialog {
+  max-inline-size: min(30rem, calc(100vw - 2rem));
+  padding: 1.15rem;
+  border: 1px solid currentColor;
+  border-radius: .75rem;
+  color: var(--shah-ink);
+  background: var(--shah-surface);
+  margin: auto;
+}
+.dialog::backdrop { background: rgb(0 0 0 / .65); }
+.dialog p { margin: .4rem 0 1rem; }
+.error { font-weight: 600; }
+.actions { display: flex; flex-wrap: wrap; gap: .5rem; }
+.actions button { min-block-size: 44px; }
+.visuallyHidden {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

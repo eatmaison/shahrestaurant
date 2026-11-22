@@ -9,6 +9,8 @@ import {
 } from "../../lib/stock";
 import shared from "../admin.module.css";
 import styles from "./stock.module.css";
+import photoStyles from "./stockPhoto.module.css";
+import { StockPhoto, useStockPhotos } from "./StockPhoto";
 
 const labels = {
   en: {
@@ -100,6 +102,7 @@ function getPreview(draft: Draft) {
 
 export default function AdminStock() {
   const { lang } = useLang();
+  const photos = useStockPhotos();
   const copy = lang === "nl" ? labels.nl : labels.en;
   const format = (number: number) => new Intl.NumberFormat(lang === "nl" ? "nl-NL" : "en-GB").format(number);
   const [items, setItems] = useState<StockItem[] | null>(null);
@@ -260,7 +263,11 @@ export default function AdminStock() {
         const isEditing = editor?.item?.id === item.id;
         return <li key={item.id} className={styles.item}>
           <div className={styles.row}>
-            <div className={styles.identity}><strong>{item.name}</strong><span>{copy.categories[item.category]}</span></div>
+            <div className={styles.identity}>
+              <StockPhoto id={item.id} name={item.name} version={photos.versions[item.id]} lang={lang === "nl" ? "nl" : "en"}
+                disabled={!photos.indexReady || editing || busy || loading} indexError={photos.indexError} onChange={photos.update} />
+              <div className={photoStyles.name}><strong>{item.name}</strong><span>{copy.categories[item.category]}</span></div>
+            </div>
             <span className={styles.breakdown}>{item.caseSize !== null
               ? format(item.cases) + " × " + format(item.caseSize) + " + " + format(item.loose) + " " + copy.loose.toLowerCase()
               : format(item.loose) + " " + copy.unitsLabel}</span>

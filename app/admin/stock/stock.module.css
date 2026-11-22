@@ -15,7 +15,7 @@
 .list { list-style:none; display:grid; gap:7px; margin:0; padding:0; }
 .item,.newItem { border:1px solid var(--shah-line); background:var(--shah-surface); border-radius:9px; min-width:0; }
 .row { display:grid; grid-template-columns:minmax(150px,1.35fr) minmax(100px,1fr) minmax(110px,.75fr) auto; align-items:center; gap:12px; padding:12px 15px; }
-.identity { display:grid; gap:4px; overflow-wrap:anywhere; }
+.identity { display:flex; align-items:center; gap:10px; min-inline-size:0; overflow-wrap:anywhere; }
 .identity strong { font-size:16px; line-height:1.25; }
 .identity span,.breakdown { color:var(--shah-muted); font-size:13px; }
 .breakdown,.total,.zero,.preview output { font-variant-numeric:tabular-nums; }
