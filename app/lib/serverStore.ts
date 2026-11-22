@@ -395,7 +395,7 @@ export async function bootstrap(adminView?: AdminDataView): Promise<Bootstrap> {
   let visitorTelemetryStatus: VisitorTelemetryStatus = "not-configured";
 
   if (adminWorkspace) {
-    if (adminView !== "events" && adminView !== "products") {
+    if (adminView !== "events" && adminView !== "products" && adminView !== "stock") {
       const withCustomers = adminView === "operations" || adminView === "customers";
       const [adminOrders, userRows, vipRows, adminReservationRows, paymentRows] = await Promise.all([
         loadOrders(),
