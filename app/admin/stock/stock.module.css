@@ -12,10 +12,18 @@
 .filters input,.filters select,.fields input,.fields select { width:100%; min-width:0; height:48px; border:1px solid var(--shah-line); border-radius:7px; padding:8px 10px; background:var(--shah-surface); color:var(--shah-ink); font:inherit; font-size:16px; }
 .filters input:focus-visible,.filters select:focus-visible,.fields input:focus-visible,.fields select:focus-visible,.details summary:focus-visible { outline:2px solid var(--shah-gold); outline-offset:2px; }
 .selected { border-color:var(--shah-gold)!important; color:var(--shah-gold)!important; }
-.list { list-style:none; display:grid; gap:7px; margin:0; padding:0; }
+.list { list-style:none; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); align-items:start; gap:12px; margin:0; padding:0; }
 .item,.newItem { border:1px solid var(--shah-line); background:var(--shah-surface); border-radius:9px; min-width:0; }
-.row { display:grid; grid-template-columns:minmax(150px,1.35fr) minmax(100px,1fr) minmax(110px,.75fr) auto; align-items:center; gap:12px; padding:12px 15px; }
-.identity { display:flex; align-items:center; gap:10px; min-inline-size:0; overflow-wrap:anywhere; }
+.item { container-type:inline-size; }
+.row {
+  display:grid; grid-template-columns:96px minmax(0,1fr) max-content;
+  grid-template-areas:"photo title title" "photo count action";
+  align-items:center; gap:8px 14px; min-block-size:146px; padding:14px;
+}
+.photo { grid-area:photo; }
+.identity { grid-area:title; min-inline-size:0; overflow-wrap:anywhere; }
+.count { grid-area:count; display:grid; gap:4px; min-inline-size:0; overflow-wrap:anywhere; }
+.row > button { grid-area:action; min-inline-size:0; white-space:normal; }
 .identity strong { font-size:16px; line-height:1.25; }
 .identity span,.breakdown { color:var(--shah-muted); font-size:13px; }
 .breakdown,.total,.zero,.preview output { font-variant-numeric:tabular-nums; }
@@ -35,18 +43,34 @@
 .conflict { display:grid; gap:8px; }
 .archive { color:var(--shah-danger,#e99191)!important; }
 .visuallyHidden { position:absolute; height:1px; width:1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; }
-@media (max-width:690px) {
-  .row { grid-template-columns:minmax(0,1fr) auto; padding:11px; gap:8px 10px; }
-  .identity { grid-column:1; grid-row:1; }
-  .breakdown { grid-column:1; grid-row:2; }
-  .total,.zero { grid-column:1; grid-row:3; }
-  .row button { grid-column:2; grid-row:1 / 4; }
+@container (max-width:399px) {
+  .row {
+    grid-template-columns:96px minmax(0,1fr);
+    grid-template-areas:"photo title" "photo count" "action action";
+  }
+  .row > button { justify-self:stretch; }
   .quantities { grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+@container (max-width:239px) {
+  .row {
+    grid-template-columns:minmax(0,1fr);
+    grid-template-areas:"photo" "title" "count" "action";
+    grid-template-rows:auto minmax(3.4rem,auto) minmax(3.2rem,auto) auto;
+    align-content:start; align-items:start;
+    padding:10px; gap:8px;
+  }
+  .photo { justify-self:center; max-inline-size:100%; }
+  .row > button { padding-inline:6px; overflow-wrap:anywhere; }
+  .metaFields { grid-template-columns:minmax(0,1fr); }
+  .details summary,.fields label,.editor button { overflow-wrap:anywhere; }
+  .editor button { max-inline-size:100%; }
+}
+@media (max-width:690px) {
+  .newItem .quantities { grid-template-columns:repeat(2,minmax(0,1fr)); }
   .metrics { gap:5px; }
   .metrics > div { padding:9px; }
   .metrics dt { font-size:11px; }
 }
 @media (max-width:350px) {
-  .metaFields { grid-template-columns:1fr; }
-  .row button { padding-inline:8px; }
+  .newItem .metaFields { grid-template-columns:1fr; }
 }

@@ -1,7 +1,7 @@
 .thumb {
-  inline-size: 48px;
-  block-size: 48px;
-  flex: 0 0 48px;
+  inline-size: 96px;
+  max-inline-size: 100%;
+  aspect-ratio: 1;
   display: grid;
   place-items: center;
   padding: 0;
@@ -13,7 +13,7 @@
 }
 .thumb:disabled { cursor: wait; opacity: .6; }
 .thumb:hover:not(:disabled), .thumb:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
-.thumb img { display: block; inline-size: 42px; block-size: 42px; object-fit: contain; border-radius: 6px; }
+.thumb img { display: block; inline-size: 84px; block-size: 84px; max-inline-size: 100%; object-fit: contain; border-radius: 6px; }
 .name { display: grid; gap: .15rem; min-inline-size: 0; overflow-wrap: anywhere; }
 .dialog {
   max-inline-size: min(30rem, calc(100vw - 2rem));

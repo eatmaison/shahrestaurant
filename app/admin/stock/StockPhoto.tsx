@@ -113,7 +113,7 @@ export function StockPhoto({ id, name, version, lang, disabled, indexError, onCh
       {version && version !== brokenVersion ? (
         // This authenticated endpoint already delivers a tiny, optimized WebP.
         // eslint-disable-next-line @next/next/no-img-element
-        <img src={url + "?v=" + encodeURIComponent(version)} alt="" width="48" height="48" loading="lazy" decoding="async"
+        <img src={url + "?v=" + encodeURIComponent(version)} alt="" width="84" height="84" loading="lazy" decoding="async"
           onError={() => setBrokenVersion(version)} />
       ) : <PhotoIcon />}
     </button>

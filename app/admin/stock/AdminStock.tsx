@@ -291,17 +291,21 @@ export default function AdminStock() {
         const itemCategory = categories.find(option => option.id === item.category);
         return <li key={item.id} className={styles.item}>
           <div className={styles.row}>
-            <div className={styles.identity}>
+            <div className={styles.photo}>
               <StockPhoto id={item.id} name={item.name} version={photos.versions[item.id]} lang={lang === "nl" ? "nl" : "en"}
                 disabled={!photos.indexReady || editing || busy || loading} indexError={photos.indexError} onChange={photos.update} />
-              <div className={photoStyles.name}><strong>{item.name}</strong><span>{itemCategory ? labelCategory(itemCategory) : copy.category}</span></div>
             </div>
-            <span className={styles.breakdown}>{item.caseSize !== null
-              ? format(item.cases) + " × " + format(item.caseSize) + " + " + format(item.loose) + " " + copy.loose.toLowerCase()
-              : format(item.loose) + " " + copy.unitsLabel}</span>
-            <span className={item.totalUnits === 0 && !item.archived ? styles.zero : styles.total}>
-              <strong>{format(item.totalUnits)}</strong> {item.totalUnits === 0 && !item.archived ? copy.zero : copy.unitsLabel}
-            </span>
+            <div className={styles.identity + " " + photoStyles.name}>
+              <strong>{item.name}</strong><span>{itemCategory ? labelCategory(itemCategory) : copy.category}</span>
+            </div>
+            <div className={styles.count}>
+              <span className={styles.breakdown}>{item.caseSize !== null
+                ? format(item.cases) + " × " + format(item.caseSize) + " + " + format(item.loose) + " " + copy.loose.toLowerCase()
+                : format(item.loose) + " " + copy.unitsLabel}</span>
+              <span className={item.totalUnits === 0 && !item.archived ? styles.zero : styles.total}>
+                <strong>{format(item.totalUnits)}</strong> {item.totalUnits === 0 && !item.archived ? copy.zero : copy.unitsLabel}
+              </span>
+            </div>
             {item.archived ? <button type="button" className={shared.button} aria-label={copy.restore + ": " + item.name}
               disabled={editing || busy || categoryBusy || loading} onClick={() => restore(item)}>{copy.restore}</button> :
               <button type="button" className={shared.button} aria-label={copy.edit + ": " + item.name} aria-expanded={isEditing}
