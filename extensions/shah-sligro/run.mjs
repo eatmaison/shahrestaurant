@@ -26,13 +26,22 @@ const official = value => {
   try { return new URL(value).origin === new URL(LOGIN).origin; }
   catch { return false; }
 };
-async function readProduct(chrome, tabId, p, signal, deps) {
+async function readProduct(chrome, tabId, p, signal, deps, navigate = true) {
   if (signal.aborted) return {state:'aborted'};
-  await chrome.tabs.update(tabId,{url:p.url});
-  const until = deps.now() + 10000;
+  // tabs.update() can resolve before Chrome has replaced the old committed
+  // document. Its URL might be unavailable without the broad tabs permission.
+  const previous = navigate ? (await chrome.tabs.get(tabId)).url : undefined;
+  if (signal.aborted) return {state:'aborted'};
+  if (navigate) await chrome.tabs.update(tabId,{url:p.url});
+  const started = deps.now();
+  const until = started + 10000;
   while (!signal.aborted && deps.now() < until) {
     const tab = await chrome.tabs.get(tabId);
-    if (tab.status !== 'complete') { await deps.sleep(350, signal); continue; }
+    if (signal.aborted) return {state:'aborted'};
+    if (tab.pendingUrl && !official(tab.pendingUrl)) return {state:'blocked'};
+    const transitional = navigate && deps.now() - started < 1750 &&
+      (!tab.url || tab.url === 'about:blank' || (tab.url === previous && tab.url !== p.url));
+    if (transitional || tab.pendingUrl || tab.status !== 'complete') { await deps.sleep(350, signal); continue; }
     if (!official(tab.url)) return {state:'blocked'};
     if (new URL(tab.url).pathname === new URL(LOGIN).pathname) return {state:'logged-out'};
     if (productSku(tab.url) !== p.sku) return {state:'unavailable'};
@@ -90,7 +99,7 @@ export async function runPreview(req, chrome, emit, signal, overrides={}) {
     for (let i=0; i<req.products.length && !signal.aborted; i++) {
       if (deps.now() >= deadline) { skipRest(i, 'time-limit'); break; }
       const p = req.products[i];
-      const observation = () => readProduct(chrome,tab.id,p,signal,deps);
+      const observation = (navigate = true) => readProduct(chrome,tab.id,p,signal,deps,navigate);
       let obs = await observation();
       if (obs?.state === 'logged-out') {
         if (attemptedLogin) { skipRest(i,'login-needed'); break; }
@@ -100,7 +109,7 @@ export async function runPreview(req, chrome, emit, signal, overrides={}) {
         if (!await login(chrome,tab.id,p,signal,deps)) { skipRest(i,'login-needed'); break; }
         state = 'reading';
         report();
-        obs = await observation();
+        obs = await observation(false);
         if (obs?.state === 'logged-out') { skipRest(i,'login-needed'); break; }
       }
       if (obs?.state === 'blocked') { skipRest(i,'supplier-blocked'); break; }

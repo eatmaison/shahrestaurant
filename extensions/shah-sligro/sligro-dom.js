@@ -1,4 +1,9 @@
 (() => {
+  if (location.origin !== 'https://www.sligro.nl'
+    || !/^\/p\.[0-9]{5,12}\.html\/[a-z0-9_-]+\.html$/.test(location.pathname)) return {state:'unavailable'};
+  // A verified signed-in supplier response for an obsolete product. Unlike a
+  // verification gate, it must not stop the remainder of the inventory run.
+  if (/^402 Out of assortment \| Sligro\.nl$/i.test(document.title.trim())) return {state:'out-of-assortment'};
   // Read only scoped, rendered product labels. Do not inspect authentication DOM,
   // cookies, hidden page state, application endpoints, or customer identifiers.
   const visible = el => {

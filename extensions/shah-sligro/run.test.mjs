@@ -41,11 +41,14 @@ function setup(readings=[], completingLogin=true){
   const run = (req=request(), override={}) => runPreview(req,chrome,msg=>observed.push(msg),ctl.signal,{...options,...override});
   return {chrome,ctl,track,observed,run};
 }
-test('sender only allows exact secure Stock URL and main frame',()=>{
+test('sender allows only the canonical top-frame admin shell before the live Stock pathname guard',()=>{
   const sender={frameId:0,tab:{id:1},url:'https://shahrestaurant.nl/admin/stock'};
   assert.ok(adminSender(sender));
   assert.ok(!adminSender({...sender,frameId:2}));
-  for (const wrong of ['https://www.shahrestaurant.nl/admin/stock','http://shahrestaurant.nl/admin/stock','https://shahrestaurant.nl/admin/stock-check']) {
+  assert.ok(adminSender({...sender,url:'https://shahrestaurant.nl/admin'}));
+  assert.ok(adminSender({...sender,url:'https://shahrestaurant.nl/admin/events'}));
+  assert.ok(!adminSender({...sender,origin:'null'}));
+  for (const wrong of ['https://www.shahrestaurant.nl/admin/stock','http://shahrestaurant.nl/admin/stock','https://shahrestaurant.nl/admin-other/stock','https://shahrestaurant.nl/stock']) {
     assert.ok(!adminSender({...sender,url:wrong}));
   }
 });
@@ -146,7 +149,7 @@ test('Amsterdam calendar and yearless cross-year expiry',()=>{
 import {runInNewContext} from 'node:vm';
 import {readFileSync} from 'node:fs';
 const domReader = readFileSync(new URL('./sligro-dom.js',import.meta.url),'utf8');
-function fakePage({ linkUrl, header=true, priceVisible=false, copy='Inloggen' }) {
+function fakePage({ linkUrl, header=true, priceVisible=false, copy='Inloggen', title='' }) {
   const element = (innerText, selectors = {}, more = {}) => ({
     innerText, querySelectorAll: s => selectors[s] ?? [],
     getClientRects:()=>[{}],closest:()=>null,...more,
@@ -158,6 +161,7 @@ function fakePage({ linkUrl, header=true, priceVisible=false, copy='Inloggen' })
   const root = price ? element('',{'.cmp-productdetail__price':[price],
     '.cmp-productdetail__head .cmp-productdetail__subinfo':[element('Artikelnummer: 900001')]}) : null;
   const doc=element('',{'a[href^="/inloggen.html"], a[href^="https://www.sligro.nl/inloggen.html"]':anchors,'.cmp-productdetail-top':root?[root]:[]});
+  doc.title = title;
   return runInNewContext(domReader,{document:doc,URL,location:new URL(url),getComputedStyle:()=>({visibility:'visible',opacity:'1'})});
 }
 test('bare exact official Inloggen link in the header only triggers login when price absent',()=>{
@@ -169,4 +173,74 @@ test('bare exact official Inloggen link in the header only triggers login when p
   assert.equal(fakePage({linkUrl:loginUrl,header:false}).state,'logged-out');
   assert.equal(fakePage({linkUrl:loginUrl+'&foo=bar'}).state,'loading');
   assert.equal(fakePage({}).state,'loading');
+});
+
+test('an old committed tab without readable URL waits for the owned product', async () => {
+  const x=setup([valid]);
+  const get=x.chrome.tabs.get;
+  let observations=0;
+  x.chrome.tabs.get=async id=>{
+    observations++;
+    if (observations===1) return {status:'complete'}; // no tabs permission for about:blank
+    if (observations===2) return {status:'complete',pendingUrl:url};
+    if (observations===3) return {status:'complete',url:'about:blank'};
+    return get(id);
+  };
+  await x.run();
+  assert.equal(x.track.filter(([act])=>act==='read').length,1);
+  assert.equal(x.observed.at(-1).results.length,1);
+});
+
+test('a verified unavailable article is skipped and never blocks later prices', async () => {
+  const unavailable=fakePage({title:'402 Out of assortment | Sligro.nl'});
+  assert.equal(unavailable.state,'out-of-assortment');
+  assert.equal(fakePage({title:'Verify you are human'}).state,'loading');
+  const x=setup([unavailable,valid]);
+  await x.run(request([{...item,id:'old'},{...item,id:'new'}]));
+  assert.deepEqual(x.observed.at(-1).skipped,[{id:'old',reason:'unavailable'}]);
+  assert.deepEqual(x.observed.at(-1).results.map(row=>row.id),['new']);
+});
+
+test('DOM reader rejects even the official login form before reading any page data',()=>{
+  const page = new Proxy({}, {get(){throw new Error('login DOM must not be inspected');}});
+  assert.equal(runInNewContext(domReader, {document:page, location:new URL(LOGIN)}).state,'unavailable');
+});
+
+test('bridge checks precise current Stock route after SPA transition, and suppresses mismatched replies',()=>{
+  const browserBridge = readFileSync(new URL('./bridge.js',import.meta.url),'utf8');
+  const listener = new Map(), sent=[], forwarded=[];
+  const location=new URL('https://shahrestaurant.nl/admin/events');
+  let connects=0, disconnected=false, notify;
+  const window={
+    addEventListener:(key,handler)=>listener.set(key,handler),
+    postMessage:(msg,origin)=>forwarded.push({msg,origin}),
+  };
+  const port={
+    postMessage:msg=>sent.push(msg),
+    disconnect:()=>{disconnected=true;},
+    onMessage:{addListener:fn=>{notify=fn;}},
+    onDisconnect:{addListener:()=>{}},
+  };
+  runInNewContext(browserBridge,{ location,window,chrome:{runtime:{connect:()=>{connects++;return port;}}},setInterval:()=>1,clearInterval:()=>{} });
+  const msg={source:'shah-stock',type:REQUEST,requestId:'preview-123',products:[item]};
+  const deliver=(data,origin=location.origin,source=window)=>listener.get('message')({ data,origin,source });
+  deliver(msg);
+  location.pathname='/admin/stock-other';
+  deliver(msg);
+  assert.equal(connects,0);
+  location.pathname='/admin/stock';
+  deliver(msg,'https://other.invalid');
+  deliver(msg,location.origin,{});
+  assert.equal(connects,0);
+  deliver(msg);
+  assert.equal(connects,1);
+  assert.equal(sent[0].requestId,msg.requestId);
+  notify({type:RESULT,requestId:'wrong-id',results:[{secret:'not read'}]});
+  assert.equal(forwarded.length,0);
+  notify({type:PROGRESS,requestId:msg.requestId,state:'waiting-login'});
+  assert.equal(forwarded.length,1);
+  assert.equal(forwarded[0].msg.source,'shah-sligro-extension');
+  location.pathname='/admin/events';
+  deliver({source:'shah-stock',type:'SLIGRO_PRICE_PREVIEW_CANCEL',requestId:msg.requestId});
+  assert.equal(disconnected,true);
 });

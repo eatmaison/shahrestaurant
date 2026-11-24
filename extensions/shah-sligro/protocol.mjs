@@ -16,10 +16,14 @@ export function productSku(value) {
   } catch { return null; }
 }
 export function adminSender(sender) {
-  if (sender?.frameId !== 0 || !Number.isSafeInteger(sender.tab?.id)) return false;
+  if (sender?.frameId !== 0 || !Number.isSafeInteger(sender.tab?.id) ||
+      (sender.origin !== undefined && sender.origin !== SHAH_ORIGIN)) return false;
   try {
     const u = new URL(sender.url);
-    return u.origin === SHAH_ORIGIN && /^\/admin\/stock\/?$/.test(u.pathname);
+    // Chrome may retain the initial document URL after a same-document route
+    // transition. Allow that admin shell here; the extension's isolated bridge
+    // independently requires current location to be exactly /admin/stock.
+    return u.origin === SHAH_ORIGIN && /^\/admin(?:\/|$)/.test(u.pathname);
   } catch { return false; }
 }
 export function validateRequest(message) {

@@ -18,10 +18,10 @@
   window.addEventListener('pagehide', () => { if (run) clean(run.port); });
   window.addEventListener('message', ev => {
     const msg = ev.data;
-    if (!onStock() || ev.source !== window || ev.origin !== location.origin || msg?.source !== SOURCE
+    if (ev.source !== window || ev.origin !== location.origin || msg?.source !== SOURCE
         || typeof msg.requestId !== 'string' || !/^[\w-]{8,80}$/.test(msg.requestId)) return;
     if (msg.type === CANCEL && run?.id === msg.requestId) { clean(run.port); return; }
-    if (msg.type !== REQUEST || !Array.isArray(msg.products) || !msg.products.length || msg.products.length > 50) return;
+    if (!onStock() || msg.type !== REQUEST || !Array.isArray(msg.products) || !msg.products.length || msg.products.length > 50) return;
     if (run) clean(run.port);
     const port = chrome.runtime.connect({name: 'shah-sligro-preview-v1'});
     run = {
