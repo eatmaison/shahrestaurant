@@ -71,12 +71,12 @@ export const interiorPhotography = [
     "src": "/brand/shah-interior-photos-v1/shah-raamtafel-roze-stoelen-960.jpg",
     "category": "interior",
     "nl": {
-      "title": "Tafel met roze stoelen",
-      "alt": "Roze stoelen rond een glanzende tafel bij het raam met het Shah-logo op het glas."
+      "title": "Dineren aan het raam",
+      "alt": "Een gedekte tafel bij het raam, met gestoffeerde stoelen en het Shah-logo op het glas."
     },
     "en": {
-      "title": "Table with pink chairs",
-      "alt": "Pink chairs around a glossy table by the window, with the Shah logo on the glass."
+      "title": "Dining by the window",
+      "alt": "A set table by the window, with upholstered chairs and the Shah logo on the glass."
     }
   },
   {
