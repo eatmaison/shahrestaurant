@@ -565,7 +565,7 @@ test("Sligro apply is admin-only, atomically compares revision, URL and pack, an
 });
 
 test("Sligro preview discards mismatches and duplicates before an admin can save any prices", () => {
-  const { sligroReviewRows } = loader(null)("app/lib/stockSligro.ts");
+  const { sligroReviewBatch } = loader(null)("app/lib/stockSligro.ts");
   const id = "8b1b3e01-15b9-4bb7-b460-106ae67d4899";
   const requestId = "f3530d10-8d67-4524-b046-70b61deaa7dd";
   const product = { id, revision: "3", packUnits: 24, url: "https://www.sligro.nl/p.12345.html/fixture-bottle.html" };
@@ -573,13 +573,13 @@ test("Sligro preview discards mismatches and duplicates before an admin can save
   const result = (results, override = {}) => ({
     source: "shah-sligro-extension", type: "SLIGRO_PRICE_PREVIEW_RESULT", requestId, results, skipped: [], ...override,
   });
-  assert.equal(sligroReviewRows(result([valid]), [product], requestId).length, 1);
+  assert.equal(sligroReviewBatch(result([valid]), [product], requestId).rows.length, 1);
   for (const change of [
     { revision: "4" }, { packUnits: 6 }, { sku: "67890" },
     { offerEnd: null }, { url: product.url + "?tracking=example" }, { regularCents: 100 },
-  ]) assert.equal(sligroReviewRows(result([{ ...valid, ...change }]), [product], requestId).length, 0);
-  assert.equal(sligroReviewRows(result([valid, valid]), [product], requestId).length, 0);
-  assert.equal(sligroReviewRows(result([valid], { requestId: id }), [product], requestId), null);
+  ]) assert.equal(sligroReviewBatch(result([{ ...valid, ...change }]), [product], requestId).rows.length, 0);
+  assert.equal(sligroReviewBatch(result([valid, valid]), [product], requestId).rows.length, 0);
+  assert.equal(sligroReviewBatch(result([valid], { requestId: id }), [product], requestId), null);
 });
 
 test("Shah bridge waits for login, reviews verified prices, and never saves automatically", async () => {

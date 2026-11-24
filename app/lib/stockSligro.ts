@@ -1,7 +1,18 @@
 import { z } from "zod";
 import { normalizeStockSligroLink, stockPurchasePrice } from "./stock";
 
+// Keep each request compatible with the existing Chrome companion and save API.
 export const SLIGRO_PREVIEW_LIMIT = 50;
+
+export function sligroBatches<T>(rows: readonly T[]): T[][] {
+  const batches: T[][] = [];
+  for (let i = 0; i < rows.length; i += SLIGRO_PREVIEW_LIMIT) {
+    batches.push(rows.slice(i, i + SLIGRO_PREVIEW_LIMIT));
+  }
+  return batches;
+}
+
+const stopReasons = new Set(["login-needed", "supplier-blocked", "time-limit", "connection-lost", "adapter-unverified"]);
 export const sligroUpdateRow = z.strictObject({
   id: z.uuid(),
   revision: z.number().int().min(1).max(2_147_483_647),
@@ -37,7 +48,7 @@ export const sligroExtensionResult = z.strictObject({
 });
 
 export type SligroProduct = { id: string; url: string; packUnits: number; revision: string };
-export function sligroReviewRows(value: unknown, requested: readonly SligroProduct[], requestId: string): SligroUpdateRow[] | null {
+export function sligroReviewBatch(value: unknown, requested: readonly SligroProduct[], requestId: string): { rows: SligroUpdateRow[]; interrupted: boolean } | null {
   const result = sligroExtensionResult.safeParse(value);
   if (!result.success || result.data.requestId !== requestId) return null;
   const seen = new Set<string>();
@@ -59,5 +70,8 @@ export function sligroReviewRows(value: unknown, requested: readonly SligroProdu
     });
     if (parsed.success) rows.push(parsed.data);
   }
-  return rows.filter(row => !repeated.has(row.id));
+  return {
+    rows: rows.filter(row => !repeated.has(row.id)),
+    interrupted: result.data.skipped.some(row => expected.has(row.id) && stopReasons.has(row.reason)),
+  };
 }
