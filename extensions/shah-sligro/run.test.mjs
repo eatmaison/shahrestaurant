@@ -142,3 +142,31 @@ test('Amsterdam calendar and yearless cross-year expiry',()=>{
   assert.equal(readPromoRange('Geldig van 31 nov t/m 8 dec','2026-12-02'),null);
   assert.equal(readPromoRange('Geldig van 5 dec t/m 4 dec','2026-12-04'),null);
 });
+
+import {runInNewContext} from 'node:vm';
+import {readFileSync} from 'node:fs';
+const domReader = readFileSync(new URL('./sligro-dom.js',import.meta.url),'utf8');
+function fakePage({ linkUrl, header=true, priceVisible=false, copy='Inloggen' }) {
+  const element = (innerText, selectors = {}, more = {}) => ({
+    innerText, querySelectorAll: s => selectors[s] ?? [],
+    getClientRects:()=>[{}],closest:()=>null,...more,
+  });
+  const anchors = linkUrl ? [element(copy,{},{
+    href:linkUrl,closest: s=>s==='header, [role="banner"], .site-header, #site-header' && header ? {} : null
+  })] : [];
+  const price = priceVisible ? element('',{'.cmp-price__price, .cmp-price__old':[element('31,45')]}) : null;
+  const root = price ? element('',{'.cmp-productdetail__price':[price],
+    '.cmp-productdetail__head .cmp-productdetail__subinfo':[element('Artikelnummer: 900001')]}) : null;
+  const doc=element('',{'a[href^="/inloggen.html"], a[href^="https://www.sligro.nl/inloggen.html"]':anchors,'.cmp-productdetail-top':root?[root]:[]});
+  return runInNewContext(domReader,{document:doc,URL,location:new URL(url),getComputedStyle:()=>({visibility:'visible',opacity:'1'})});
+}
+test('bare exact official Inloggen link in the header only triggers login when price absent',()=>{
+  assert.equal(fakePage({linkUrl:LOGIN}).state,'logged-out');
+  assert.equal(fakePage({linkUrl:LOGIN,header:false}).state,'loading');
+  assert.equal(fakePage({linkUrl:LOGIN,copy:'Andere tekst'}).state,'loading');
+  assert.equal(fakePage({linkUrl:LOGIN,priceVisible:true}).state,'rendered-product');
+  assert.equal(fakePage({linkUrl:'https://example.invalid/inloggen.html'}).state,'loading');
+  assert.equal(fakePage({linkUrl:loginUrl,header:false}).state,'logged-out');
+  assert.equal(fakePage({linkUrl:loginUrl+'&foo=bar'}).state,'loading');
+  assert.equal(fakePage({}).state,'loading');
+});

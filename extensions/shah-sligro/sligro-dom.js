@@ -13,18 +13,23 @@
     const hits = nodes(scope,selector);
     return hits.length === 1 ? hits[0] : null;
   };
-  const login = nodes(document,'a[href^="/inloggen.html"], a[href^="https://www.sligro.nl/inloggen.html"]')
-    .some(link => {
-      const u = new URL(link.href);
-      return u.origin === location.origin && u.pathname === '/inloggen.html'
-        && u.searchParams.get('target') === location.pathname;
-    });
   const root = one(document,'.cmp-productdetail-top');
-  if (!root) return login ? {state:'logged-out'} : {state:'loading'};
-  const info = values(root,'.cmp-productdetail__head .cmp-productdetail__subinfo');
-  const price = one(root,'.cmp-productdetail__price');
-  if (!price || !info.length) return login ? {state:'logged-out'} : {state:'loading'};
+  const price = root && one(root,'.cmp-productdetail__price');
+  const hasPrice = price && nodes(price,'.cmp-price__price, .cmp-price__old').length > 0;
+  const login = !hasPrice && nodes(document,'a[href^="/inloggen.html"], a[href^="https://www.sligro.nl/inloggen.html"]')
+    .filter(link => {
+      if (label(link).toLowerCase() !== 'inloggen') return false;
+      const u = new URL(link.href);
+      if (u.origin !== location.origin || u.pathname !== '/inloggen.html' || u.hash) return false;
+      if (u.searchParams.get('target') === location.pathname && [...u.searchParams].length === 1) return true;
+      // The public header starts with a bare href; normal site click handling
+      // adds target dynamically. Links in an unrelated footer are not evidence.
+      return !u.search && Boolean(link.closest('header, [role="banner"], .site-header, #site-header'));
+    }).length === 1;
   if (login) return {state:'logged-out'};
+  if (!root || !price) return {state:'loading'};
+  const info = values(root,'.cmp-productdetail__head .cmp-productdetail__subinfo');
+  if (!info.length) return {state:'loading'};
   const dates = values(root,'.cmp-product-labels__notification--discount-duration > span');
   return {
     state: 'rendered-product',
