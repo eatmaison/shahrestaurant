@@ -24,7 +24,7 @@ The tests use synthetic data, a temporary in-memory PGlite database, and mocked 
 
 ## Supplier purchase prices
 
-Under **Edit count → Supplier purchase prices**, optionally enter the number of units in the supplier’s pack, the regular cost in euros and an offer price for that same pack. Use one unit for products bought individually. The pack size for pricing is separate from stock counting. Commas and decimal points are accepted. A lower offer shows the current price and saving per pack on the product row. Clear the offer field when it ends. These private prices do not change menu prices or place orders.
+Under **Edit count → Supplier purchase prices**, optionally enter the number of units in the supplier’s pack, the regular cost in euros and an offer price for that same pack. Use one unit for products bought individually. The pack size for pricing is separate from stock counting. Commas and decimal points are accepted. A lower offer shows the current price and saving per pack on the product row. Optionally enter the start and end dates: the offer applies through the end date in Europe/Amsterdam. Clear undated offers yourself. These private prices do not change menu prices or place orders.
 
 Before releasing this feature, apply `db/migrations/20261123_shah_stock_purchase_prices.sql` to the intended database. Existing stock, photos and categories are not modified; costs start unset.
 
@@ -33,3 +33,9 @@ Before releasing this feature, apply `db/migrations/20261123_shah_stock_purchase
 Paste a direct Sligro product page into the optional **Sligro product link** field in the same editor. The product link appears on that Stock row and opens Sligro in a new tab. Only direct HTTPS product pages on sligro.nl are accepted; copied tracking and fragments are discarded. Clear the field to remove it. Links do not fetch prices or buy products.
 
 Before releasing the shortcut, apply `db/migrations/20261123_shah_stock_sligro_links.sql` to the intended database. No link is populated automatically.
+
+Apply `db/migrations/20261124_shah_stock_offer_dates.sql` after the supplier price migrations and before deploying the dated-offer build. Existing prices stay as-is. To verify an automatically hidden discount, use synthetic dates first; live supplier links do not authenticate or read any Sligro data.
+
+### Browser-assisted price preview
+
+The Stock button communicates with the separately installed Shah Chrome extension. The supplier login is completed only in the official Sligro tab; Shah does not receive passwords or sessions. The extension must verify the product SKU, pack size, prices and any offer term; ambiguous items are skipped. Review the previous and new purchase prices before clicking **Save reviewed prices**. The apply route requires admin access, skips archived or changed rows, and updates only purchase price fields. The current limit is 50 linked active products per check. The plain product shortcut and manual entry still work without the extension.

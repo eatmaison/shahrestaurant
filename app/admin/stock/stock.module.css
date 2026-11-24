@@ -96,3 +96,10 @@
 .sligroField { margin-block-start:10px; }
 .sligroLink { align-content:center; min-block-size:44px; padding:6px 8px; color:var(--shah-gold); font-size:13px; text-decoration:underline; text-underline-offset:2px; }
 .sligroLink:focus-visible { outline:2px solid var(--shah-gold); outline-offset:2px; border-radius:2px; }
+
+.offerDates { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,148px),1fr)); gap:10px; margin-block-start:10px; }
+.offerDates input { min-width:0; }
+.sligroPrices { margin-block:14px; }
+.sligroReview { margin-block-start:12px; border:1px solid currentColor; border-radius:12px; padding:12px; }
+.sligroReview ul { margin-block:12px; display:grid; gap:10px; max-height:360px; overflow:auto; }
+.sligroReview li { display:flex; flex-direction:column; gap:3px; }

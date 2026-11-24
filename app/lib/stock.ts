@@ -22,13 +22,33 @@ export function stockCategoryLabel(category: StockCategoryOption, defaults: Reco
 export const STOCK_MAX_COUNT = 1_000_000;
 export const STOCK_MAX_CASE_SIZE = 1_000;
 
-const stockPurchasePrice = z.strictObject({
+const stockOfferDate = z.iso.date().refine(date => date >= "0001-01-01");
+
+export const stockPurchasePrice = z.strictObject({
   packUnits: z.number().int().min(1).max(STOCK_MAX_CASE_SIZE),
   regularCents: z.number().int().min(1).max(9_999_999),
   offerCents: z.number().int().min(0).max(9_999_999).nullable(),
-}).refine(price => price.offerCents === null || price.offerCents < price.regularCents, { path: ["offerCents"] });
+  offerStart: stockOfferDate.optional(),
+  offerEnd: stockOfferDate.optional(),
+}).refine(price => price.offerCents === null || price.offerCents < price.regularCents, { path: ["offerCents"] })
+  .refine(price => (!price.offerStart && !price.offerEnd) || price.offerCents !== null, { path: ["offerEnd"] })
+  .refine(price => !price.offerStart || !price.offerEnd || price.offerStart <= price.offerEnd, { path: ["offerEnd"] });
 
 export type StockPurchasePrice = z.infer<typeof stockPurchasePrice>;
+
+const amsterdamDate = new Intl.DateTimeFormat("en-GB", { timeZone: "Europe/Amsterdam", year: "numeric", month: "2-digit", day: "2-digit" });
+export function stockAmsterdamDate(now = new Date()): string {
+  const parts = amsterdamDate.formatToParts(now);
+  const part = (type: string) => parts.find(item => item.type === type)?.value;
+  return part("year") + "-" + part("month") + "-" + part("day");
+}
+
+export function activeStockOffer(price: StockPurchasePrice, today: string): number | null {
+  if (price.offerCents === null || price.offerCents >= price.regularCents) return null;
+  if (price.offerStart && today < price.offerStart) return null;
+  if (price.offerEnd && today > price.offerEnd) return null;
+  return price.offerCents;
+}
 
 export function parseStockEuro(value: string): number | null {
   const amount = value.trim();

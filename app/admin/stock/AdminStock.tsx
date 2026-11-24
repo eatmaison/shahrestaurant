@@ -4,7 +4,7 @@ import { useEffect, useRef, useState, type FormEvent } from "react";
 import { useLang } from "../../providers";
 import { fetchJSON } from "../../lib/clientFetch";
 import {
-  STOCK_MAX_CASE_SIZE, STOCK_MAX_COUNT, parseStockEuro, stockCategoryLabel, stockUnits, stockValues, visibleStockItems,
+  STOCK_MAX_CASE_SIZE, STOCK_MAX_COUNT, activeStockOffer, parseStockEuro, stockAmsterdamDate, stockCategoryLabel, stockUnits, stockValues, visibleStockItems,
   type StockCategory, type StockCategoryOption, type StockFilter, type StockItem, type StockMutation, type StockValues,
 } from "../../lib/stock";
 import shared from "../admin.module.css";
@@ -12,6 +12,7 @@ import styles from "./stock.module.css";
 import photoStyles from "./stockPhoto.module.css";
 import { StockPhoto, useStockPhotos } from "./StockPhoto";
 import StockCategories from "./StockCategories";
+import SligroPrices from "./SligroPrices";
 
 const labels = {
   en: {
@@ -26,9 +27,10 @@ const labels = {
     invalidSligro: "Paste the product page link from sligro.nl, not a search, account or category page.",
     purchase: "Purchase price", purchaseDetails: "Supplier purchase prices", packUnits: "Units in purchase pack",
     regularPrice: "Regular price (€)", offerPrice: "Offer price (€)", deal: "Good time to order",
+    offerStart: "Offer starts (optional)", offerEnd: "Offer ends (optional)",
     perUnit: "per unit", forPack: "per pack of", savings: "Save",
-    priceHint: "Use supplier prices for the same pack. Clear the offer when it ends.",
-    invalidPrice: "Enter a pack size and a regular price. The optional offer must be lower than the regular price.",
+    priceHint: "Use prices for the same pack. An end date hides the offer automatically after that date (Amsterdam time).",
+    invalidPrice: "Enter a pack size and a regular price. An offer must be lower than the regular price, with valid dates in order.",
     archivePrompt: "Hide this product from active stock? You can restore it from Archived.",
     noMatches: "No products match the current filters.", noActive: "No active products. Add one to start tracking it.",
     noArchived: "No archived products.", noZero: "No out-of-stock products match these filters.",
@@ -59,9 +61,10 @@ const labels = {
     invalidSligro: "Plak de productlink van sligro.nl, niet een zoek-, account- of categoriepagina.",
     purchase: "Inkoopprijs", purchaseDetails: "Inkoopprijzen leverancier", packUnits: "Stuks in inkoopverpakking",
     regularPrice: "Normale prijs (€)", offerPrice: "Actieprijs (€)", deal: "Voordelig om te bestellen",
+    offerStart: "Actie begint (optioneel)", offerEnd: "Actie eindigt (optioneel)",
     perUnit: "per stuk", forPack: "per verpakking van", savings: "Bespaar",
-    priceHint: "Gebruik leveranciersprijzen voor dezelfde verpakking. Wis de actieprijs als de actie voorbij is.",
-    invalidPrice: "Vul een verpakkingsgrootte en een normale prijs in. Een actieprijs moet lager zijn dan de normale prijs.",
+    priceHint: "Gebruik prijzen voor dezelfde verpakking. Met een einddatum verdwijnt de actie daarna automatisch (Amsterdamse tijd).",
+    invalidPrice: "Vul een verpakkingsgrootte en een normale prijs in. Een actieprijs moet lager zijn dan de normale prijs, met geldige datums in de juiste volgorde.",
     archivePrompt: "Dit product verbergen in de actieve voorraad? Je kunt het herstellen via Gearchiveerd.",
     noMatches: "Er zijn geen producten die bij deze filters passen.", noActive: "Geen actieve producten. Voeg een product toe om te beginnen.",
     noArchived: "Geen gearchiveerde producten.", noZero: "Geen producten zonder voorraad die bij deze filters passen.",
@@ -83,20 +86,21 @@ const labels = {
 };
 
 type Copy = typeof labels.en;
-type Draft = { name: string; category: StockCategory; cases: string; caseSize: string; loose: string; packUnits: string; regularPrice: string; offerPrice: string; priceEdited: boolean; sligroUrl: string; sligroEdited: boolean };
+type Draft = { name: string; category: StockCategory; cases: string; caseSize: string; loose: string; packUnits: string; regularPrice: string; offerPrice: string; offerStart: string; offerEnd: string; priceEdited: boolean; sligroUrl: string; sligroEdited: boolean };
 type Editor = { item: StockItem | null; draft: Draft; conflict?: StockItem };
 type Api = { items?: StockItem[]; categories?: StockCategoryOption[]; item?: StockItem; error?: string };
 
 const freshDraft = (category: StockCategory): Draft => ({
   name: "", category, cases: "0", caseSize: "", loose: "0",
-  packUnits: "", regularPrice: "", offerPrice: "", priceEdited: false, sligroUrl: "", sligroEdited: false,
+  packUnits: "", regularPrice: "", offerPrice: "", offerStart: "", offerEnd: "", priceEdited: false, sligroUrl: "", sligroEdited: false,
 });
 const euroDraft = (cents: number | null | undefined) => cents == null ? "" : (cents / 100).toFixed(2);
 const fromItem = (item: StockItem): Draft => ({
   name: item.name, category: item.category, cases: String(item.cases),
   caseSize: item.caseSize === null ? "" : String(item.caseSize), loose: String(item.loose),
   packUnits: String(item.purchasePrice?.packUnits ?? item.caseSize ?? 1),
-  regularPrice: euroDraft(item.purchasePrice?.regularCents), offerPrice: euroDraft(item.purchasePrice?.offerCents), priceEdited: false,
+  regularPrice: euroDraft(item.purchasePrice?.regularCents), offerPrice: euroDraft(item.purchasePrice?.offerCents),
+  offerStart: item.purchasePrice?.offerStart ?? "", offerEnd: item.purchasePrice?.offerEnd ?? "", priceEdited: false,
   sligroUrl: item.sligroUrl ?? "", sligroEdited: false,
 });
 const readInt = (value: string) => /^[0-9]+$/.test(value) ? Number(value) : NaN;
@@ -106,10 +110,12 @@ function draftValues(draft: Draft): StockValues {
     caseSize: draft.caseSize === "" ? null : readInt(draft.caseSize), loose: readInt(draft.loose),
     ...(draft.sligroEdited ? { sligroUrl: draft.sligroUrl.trim() || null } : {}),
     ...(draft.priceEdited ? {
-      purchasePrice: !draft.regularPrice.trim() && !draft.offerPrice.trim() ? null : {
+      purchasePrice: !draft.regularPrice.trim() && !draft.offerPrice.trim() && !draft.offerStart && !draft.offerEnd ? null : {
         packUnits: readInt(draft.packUnits || draft.caseSize || "1"),
         regularCents: parseStockEuro(draft.regularPrice) ?? NaN,
         offerCents: parseStockEuro(draft.offerPrice),
+        ...(draft.offerStart ? { offerStart: draft.offerStart } : {}),
+        ...(draft.offerEnd ? { offerEnd: draft.offerEnd } : {}),
       },
     } : {}),
   };
@@ -154,6 +160,7 @@ export default function AdminStock() {
   const [archiveConfirm, setArchiveConfirm] = useState(false);
   const [failure, setFailure] = useState("");
   const [notice, setNotice] = useState("");
+  const [today, setToday] = useState(stockAmsterdamDate);
   const liveNotice = useRef<HTMLParagraphElement>(null);
   const labelCategory = (option: StockCategoryOption) => stockCategoryLabel(option, copy.categories);
   const sortedCategories = [...categories].sort((a, b) => labelCategory(a).localeCompare(labelCategory(b), lang));
@@ -172,6 +179,19 @@ export default function AdminStock() {
     void initialLoad();
     return () => controller.abort();
   }, []);
+
+  const hasDatedOffers = items?.some(item => item.purchasePrice?.offerStart || item.purchasePrice?.offerEnd) ?? false;
+  useEffect(() => {
+    if (!hasDatedOffers) return;
+    const updateDate = () => setToday(stockAmsterdamDate());
+    updateDate();
+    const interval = window.setInterval(updateDate, 15_000);
+    window.addEventListener("focus", updateDate);
+    return () => {
+      window.clearInterval(interval);
+      window.removeEventListener("focus", updateDate);
+    };
+  }, [hasDatedOffers]);
 
   async function refresh(success = "") {
     setLoading(true); setFailure(""); setNotice("");
@@ -288,6 +308,14 @@ export default function AdminStock() {
         <button type="button" className={shared.button + " " + shared.primary} onClick={() => open(null)} disabled={editing || !items || busy || categoryBusy || loading || categories.length === 0}>{copy.add}</button>
       </div>
     </header>
+    {items && <SligroPrices items={items} lang={lang === "nl" ? "nl" : "en"}
+      disabled={editing || loading || busy || categoryBusy} onSaved={changed => {
+        const byId = new Map(changed.map(item => [item.id, item]));
+        setItems(current => current?.map(item => {
+          const next = byId.get(item.id);
+          return next && next.revision > item.revision ? next : item;
+        }) ?? null);
+      }}/>}
     {items && <dl className={styles.metrics}>
       <div className={shared.metric}><dt>{copy.products}</dt><dd><strong>{format(active.length)}</strong></dd></div>
       <div className={shared.metric}><dt>{copy.totalLabel}</dt><dd><strong>{format(total)}</strong></dd></div>
@@ -331,7 +359,7 @@ export default function AdminStock() {
             </div>
             <div className={styles.identity + " " + photoStyles.name}>
               <strong>{item.name}</strong><span>{itemCategory ? labelCategory(itemCategory) : copy.category}</span>
-              {item.purchasePrice && <PurchaseSummary price={item.purchasePrice} euro={euro} copy={copy} />}
+              {item.purchasePrice && <PurchaseSummary price={item.purchasePrice} today={today} euro={euro} copy={copy} />}
             </div>
             <div className={styles.count}>
               <span className={styles.breakdown}>{item.caseSize !== null
@@ -358,10 +386,10 @@ export default function AdminStock() {
   </section>;
 }
 
-function PurchaseSummary({ price, euro, copy }: {
-  price: NonNullable<StockItem["purchasePrice"]>; euro: (cents: number) => string; copy: Copy;
+function PurchaseSummary({ price, today, euro, copy }: {
+  price: NonNullable<StockItem["purchasePrice"]>; today: string; euro: (cents: number) => string; copy: Copy;
 }) {
-  const offer = price.offerCents !== null && price.offerCents < price.regularCents ? price.offerCents : null;
+  const offer = activeStockOffer(price, today);
   return <span className={styles.purchase}>
     <span>{copy.purchase}: {offer !== null && <><del>{euro(price.regularCents)}</del>{" "}</>}
       <b>{euro(offer ?? price.regularCents)}</b>{" "}{price.packUnits === 1 ? copy.perUnit : copy.forPack + " " + price.packUnits}
@@ -392,6 +420,12 @@ function StockEditor({ editor, copy, format, busy, categories, labelCategory, fa
       autoComplete="off" maxLength={field === "packUnits" ? 4 : 8}
       value={field === "packUnits" ? draft.packUnits || "" : draft[field]}
       placeholder={field === "packUnits" ? draft.caseSize || "1" : undefined}
+      onChange={event => {
+        const value = event.target.value;
+        onChange({ ...draft, [field]: value, priceEdited: true, ...(field === "offerPrice" && !value.trim() ? { offerStart: "", offerEnd: "" } : {}) });
+      }} /></label>;
+  const dateField = (field: "offerStart" | "offerEnd", label: string) =>
+    <label>{label}<input type="date" value={draft[field]} max="9999-12-31"
       onChange={event => onChange({ ...draft, [field]: event.target.value, priceEdited: true })} /></label>;
   const metadata = <div className={styles.metaFields}>
     <label>{copy.product}<input ref={productName} type="text" maxLength={100} value={draft.name}
@@ -419,6 +453,9 @@ function StockEditor({ editor, copy, format, busy, categories, labelCategory, fa
           {priceField("regularPrice", copy.regularPrice)}
           {priceField("offerPrice", copy.offerPrice)}
         </div>
+        {draft.offerPrice.trim() && <div className={styles.offerDates}>
+          {dateField("offerStart", copy.offerStart)}{dateField("offerEnd", copy.offerEnd)}
+        </div>}
         <label className={styles.sligroField}>{copy.sligroUrl}<input type="text" inputMode="url" autoComplete="off" maxLength={2048}
           spellCheck={false} value={draft.sligroUrl} onChange={event => onChange({ ...draft, sligroUrl: event.target.value, sligroEdited: true })} /></label>
       </details>

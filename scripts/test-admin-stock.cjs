@@ -13,6 +13,7 @@ const migration = fs.readFileSync(path.join(root, "db/migrations/20261122_shah_s
 const categoryMigration = fs.readFileSync(path.join(root, "db/migrations/20261123_shah_stock_categories.sql"), "utf8");
 const priceMigration = fs.readFileSync(path.join(root, "db/migrations/20261123_shah_stock_purchase_prices.sql"), "utf8");
 const sligroMigration = fs.readFileSync(path.join(root, "db/migrations/20261123_shah_stock_sligro_links.sql"), "utf8");
+const dateMigration = fs.readFileSync(path.join(root, "db/migrations/20261124_shah_stock_offer_dates.sql"), "utf8");
 const syntheticStock = [
   ["soft-drinks", "fixture-soda", "Fixture soda", 2, 10, 3],
   ["beer", "fixture-lager", "Fixture lager", 0, null, 0],
@@ -50,7 +51,7 @@ function loader(db) {
     vm.runInNewContext(compiled, {
       module: mod, exports: mod.exports,
       require: name => name.startsWith(".") ? load(path.resolve(path.dirname(file), name + ".ts")) : require(name),
-      URL, Response, TextEncoder,
+      URL, Response, TextEncoder, TextDecoder,
       process: { env: { APP_URL: origin, SESSION_SECRET: secret, NODE_ENV: "production" } },
       fetch: () => { throw new Error("External fetch is forbidden"); },
     }, { filename: file });
@@ -69,7 +70,7 @@ async function fixture(t, migrate = true) {
   t.after(() => db.close());
   await db.exec("CREATE TABLE users (id uuid PRIMARY KEY, role text NOT NULL)");
   await db.query("INSERT INTO users VALUES ($1, 'admin'), ($2, 'user')", [admin, customer]);
-  if (migrate) { await db.exec(migration); await insertFixture(db); await db.exec(categoryMigration); await db.exec(priceMigration); await db.exec(sligroMigration); }
+  if (migrate) { await db.exec(migration); await insertFixture(db); await db.exec(categoryMigration); await db.exec(priceMigration); await db.exec(sligroMigration); await db.exec(dateMigration); }
   const load = loader(db);
   const route = load("app/api/admin/stock/route.ts");
   const categoryRoute = load("app/api/admin/stock/categories/route.ts");
@@ -186,14 +187,13 @@ test("the admin workspace resolves /admin/stock through its own bootstrap view",
 
 // This exercises rendered JSX handlers without a browser or any network.
 test("inline editing previews units, retains rejected values and only reorders after a successful save", async () => {
-  const { stockValues, parseStockEuro, visibleStockItems, stockUnits, stockCategoryLabel, STOCK_MAX_COUNT, STOCK_MAX_CASE_SIZE } =
-    loader(null)("app/lib/stock.ts");
-  const libs = { stockValues, parseStockEuro, visibleStockItems, stockUnits, stockCategoryLabel, STOCK_MAX_COUNT, STOCK_MAX_CASE_SIZE };
+  const libs = { ...loader(null)("app/lib/stock.ts"), stockAmsterdamDate: () => "2026-11-24" };
+  const { stockUnits } = libs;
   const item = (id, name, cases, caseSize, loose) => ({
     id, name, category: "beer", cases, caseSize, loose, totalUnits: stockUnits(cases, caseSize, loose), revision: 1, archived: false,
   });
   const sourceItems = [
-    { ...item("a", "A bottle", 1, 12, 0), purchasePrice: { packUnits: 24, regularCents: 2700, offerCents: 2000 },
+    { ...item("a", "A bottle", 1, 12, 0), purchasePrice: { packUnits: 24, regularCents: 2700, offerCents: 2000, offerStart: "2026-11-19", offerEnd: "2026-12-07" },
       sligroUrl: "https://www.sligro.nl/p.123456.html/fixture-bottle.html" },
     item("b", "B bottle", 2, 12, 0),
   ];
@@ -202,7 +202,7 @@ test("inline editing previews units, retains rejected values and only reorders a
   const react = {
     useState(initial) {
       const i = slot++;
-      if (!(i in state)) state[i] = initial;
+      if (!(i in state)) state[i] = typeof initial === "function" ? initial() : initial;
       return [state[i], value => { state[i] = typeof value === "function" ? value(state[i]) : value; }];
     },
     useRef(initial) {
@@ -238,6 +238,7 @@ test("inline editing previews units, retains rejected values and only reorders a
       if (name === "../../lib/clientFetch") return { fetchJSON: transport };
       if (name === "../../lib/stock") return libs;
       if (name === "./StockPhoto") return { StockPhoto: () => null, useStockPhotos: () => ({ versions: {}, indexReady: true, update() {} }) };
+      if (name === "./SligroPrices") return { __esModule: true, default: () => null };
       if (name === "./StockCategories") return { __esModule: true, default: () => null };
       if (name.endsWith(".css")) return { __esModule: true, default: stylesheet };
       return require(name);
@@ -298,11 +299,22 @@ test("inline editing previews units, retains rejected values and only reorders a
   find(tree, el => el.type === "button" && el.props["aria-label"] === order[0]).props.onClick();
   form = editor(render());
   assert.equal(input(form, "Units in purchase pack").props.value, "24");
+  assert.equal(input(form, "Offer starts (optional)").props.value, "2026-11-19");
+  assert.equal(input(form, "Offer ends (optional)").props.value, "2026-12-07");
+  input(form, "Offer ends (optional)").props.onChange({ target: { value: "2026-11-23" } });
+  form = editor(render());
+  form.props.onSubmit({ preventDefault() {} }); await tick();
+  tree = render();
+  assert.deepEqual(calls[2].values.purchasePrice, { packUnits: 24, regularCents: 2700, offerCents: 2000, offerStart: "2026-11-19", offerEnd: "2026-11-23" });
+  assert.match(text(priceSummary(tree)), /€27\.00 per pack of 24/);
+  assert.doesNotMatch(text(priceSummary(tree)), /Good time to order/);
+  find(tree, el => el.type === "button" && el.props["aria-label"] === order[0]).props.onClick();
+  form = editor(render());
   input(form, "Offer price (€)").props.onChange({ target: { value: "" } });
   form = editor(render());
   form.props.onSubmit({ preventDefault() {} }); await tick();
   tree = render();
-  assert.deepEqual(calls[2].values.purchasePrice, { packUnits: 24, regularCents: 2700, offerCents: null });
+  assert.deepEqual(calls[3].values.purchasePrice, { packUnits: 24, regularCents: 2700, offerCents: null });
   assert.match(text(priceSummary(tree)), /€27\.00 per pack of 24/);
   assert.doesNotMatch(text(priceSummary(tree)), /Good time to order/);
 });
@@ -469,4 +481,171 @@ test("Sligro shortcut canonicalizes official product links, strips tracking and 
   assert.deepEqual((await read.json()).items.find(row => row.id === item.id), item);
   await assert.rejects(db.query("UPDATE shah_stock_items SET sligro_url = 'javascript:alert(1)' WHERE id = $1", [item.id]),
     error => error.code === "23514");
+});
+
+test("offer dates survive API updates and use inclusive Amsterdam civil-day boundaries", async t => {
+  const { db, load, route, auth } = await fixture(t);
+  const { activeStockOffer, stockAmsterdamDate } = load("app/lib/stock.ts");
+  const purchasePrice = { packUnits: 24, regularCents: 3200, offerCents: 3000, offerStart: "2026-11-19", offerEnd: "2026-12-07" };
+  for (const bad of [
+    { ...purchasePrice, offerStart: "2026-02-29" },
+    { ...purchasePrice, offerEnd: "2026-11-18" },
+    { ...purchasePrice, offerCents: null },
+    { ...purchasePrice, offerStart: "0000-01-01" },
+    { ...purchasePrice, offerEnd: "2026-12-07T23:59:59Z" },
+  ]) {
+    assert.equal((await call(route, "POST", auth, { ...sample, purchasePrice: bad })).status, 400);
+  }
+  const created = await call(route, "POST", auth, { ...sample, purchasePrice });
+  assert.ok(created.ok, await created.clone().text());
+  let { item } = await created.json();
+  assert.deepEqual(item.purchasePrice, purchasePrice);
+  for (const [instant, date, offer] of [
+    ["2026-11-18T22:59:59Z", "2026-11-18", null],
+    ["2026-11-18T23:00:00Z", "2026-11-19", 3000],
+    ["2026-12-07T22:59:59Z", "2026-12-07", 3000],
+    ["2026-12-07T23:00:00Z", "2026-12-08", null],
+  ]) {
+    assert.equal(stockAmsterdamDate(new Date(instant)), date);
+    assert.equal(activeStockOffer(item.purchasePrice, date), offer);
+  }
+  assert.equal(stockAmsterdamDate(new Date("2026-07-07T22:00:00Z")), "2026-07-08");
+  await db.exec(dateMigration);
+  const fetched = await call(route, "GET", auth);
+  assert.deepEqual((await fetched.json()).items.find(row => row.id === item.id).purchasePrice, purchasePrice);
+  const patch = values => call(route, "PATCH", auth, { id: item.id, revision: item.revision, action: "edit", values });
+  const counts = { ...sample, loose: 4 };
+  ({ item } = await (await patch(counts)).json());
+  assert.deepEqual(item.purchasePrice, purchasePrice);
+  await assert.rejects(db.query("UPDATE shah_stock_items SET purchase_offer_end = '2026-11-18' WHERE id = $1", [item.id]), /shah_stock_purchase_offer_dates_valid/);
+  const clear = { packUnits: 24, regularCents: 3200, offerCents: null };
+  ({ item } = await (await patch({ ...counts, purchasePrice: clear })).json());
+  assert.deepEqual(item.purchasePrice, clear);
+});
+
+test("Sligro apply is admin-only, atomically compares revision, URL and pack, and preserves counts", async t => {
+  const { db, load, route, auth } = await fixture(t);
+  const applyRoute = load("app/api/admin/stock/sligro-prices/route.ts");
+  const slug = "https://www.sligro.nl/p.123456.html/fixture-bottle.html";
+  const otherSlug = "https://www.sligro.nl/p.223456.html/fixture-lager.html";
+  const stock = { ...sample, sligroUrl: slug };
+  const firstResponse = await call(route, "POST", auth, stock);
+  const secondResponse = await call(route, "POST", auth, { ...stock, name: "Second fixture", sligroUrl: otherSlug });
+  const first = (await firstResponse.json()).item, second = (await secondResponse.json()).item;
+  const purchasePrice = { packUnits: 6, regularCents: 1595, offerCents: 1495, offerStart: "2026-11-19", offerEnd: "2026-12-07" };
+  const current = { id: first.id, revision: first.revision, sku: "123456", url: slug, purchasePrice };
+  const validSecond = { id: second.id, revision: second.revision, sku: "223456", url: otherSlug, purchasePrice };
+  const update = (rows, token = auth, headers) => call(applyRoute, "POST", token, { updates: rows }, headers);
+  assert.equal((await update([current], null)).status, 403);
+  assert.equal((await update([current], await token(customer))).status, 403);
+  assert.equal((await update([current], auth, { Origin: "https://attacker.test" })).status, 403);
+  assert.equal((await update([current, current])).status, 400);
+  assert.equal((await update([{ ...current, sku: "33333" }])).status, 400);
+  assert.equal((await update([{ ...current, purchasePrice: { ...purchasePrice, offerEnd: undefined } }])).status, 400);
+  assert.equal((await update([{ ...current, purchasePrice: { ...purchasePrice, packUnits: 24 } }])).status, 200);
+  assert.equal((await db.query("SELECT revision FROM shah_stock_items WHERE id=$1", [first.id])).rows[0].revision, first.revision);
+  const changed = await call(route, "PATCH", auth, { id: second.id, revision: second.revision, action: "edit", values: { ...sample, name: second.name, loose: 7 } });
+  assert.equal(changed.status, 200);
+  const applied = await update([current, validSecond]);
+  assert.ok(applied.ok, await applied.clone().text());
+  assert.equal(applied.headers.get("cache-control"), "private, no-store");
+  const result = await applied.json();
+  assert.deepEqual(result.skipped, [second.id]);
+  assert.equal(result.items[0].totalUnits, first.totalUnits);
+  assert.equal(result.items[0].revision, first.revision + 1);
+  assert.deepEqual(result.items[0].purchasePrice, purchasePrice);
+  const replay = await update([current]);
+  assert.deepEqual(await replay.json(), { skipped: [first.id], items: [] });
+  const wrongCurrentUrl = { ...current, revision: first.revision + 1, url: otherSlug, sku: "223456" };
+  assert.deepEqual((await (await update([wrongCurrentUrl])).json()).skipped, [first.id]);
+  const list = await call(route, "GET", auth);
+  const untouched = (await list.json()).items.find(row => row.id === second.id);
+  assert.equal(untouched.loose, 7);
+  assert.equal(untouched.purchasePrice, null);
+});
+
+test("Sligro preview discards mismatches and duplicates before an admin can save any prices", () => {
+  const { sligroReviewRows } = loader(null)("app/lib/stockSligro.ts");
+  const id = "8b1b3e01-15b9-4bb7-b460-106ae67d4899";
+  const requestId = "f3530d10-8d67-4524-b046-70b61deaa7dd";
+  const product = { id, revision: "3", packUnits: 24, url: "https://www.sligro.nl/p.12345.html/fixture-bottle.html" };
+  const valid = { ...product, sku: "12345", regularCents: 2500, offerCents: 2100, offerStart: "2026-11-19", offerEnd: "2026-12-07" };
+  const result = (results, override = {}) => ({
+    source: "shah-sligro-extension", type: "SLIGRO_PRICE_PREVIEW_RESULT", requestId, results, skipped: [], ...override,
+  });
+  assert.equal(sligroReviewRows(result([valid]), [product], requestId).length, 1);
+  for (const change of [
+    { revision: "4" }, { packUnits: 6 }, { sku: "67890" },
+    { offerEnd: null }, { url: product.url + "?tracking=example" }, { regularCents: 100 },
+  ]) assert.equal(sligroReviewRows(result([{ ...valid, ...change }]), [product], requestId).length, 0);
+  assert.equal(sligroReviewRows(result([valid, valid]), [product], requestId).length, 0);
+  assert.equal(sligroReviewRows(result([valid], { requestId: id }), [product], requestId), null);
+});
+
+test("Shah bridge waits for login, reviews verified prices, and never saves automatically", async () => {
+  const id = "8b1b3e01-15b9-4bb7-b460-106ae67d4899";
+  const requestId = "f3530d10-8d67-4524-b046-70b61deaa7dd";
+  const url = "https://www.sligro.nl/p.12345.html/fixture-bottle.html";
+  const item = { id, name: "Fixture", revision: 5, caseSize: 24, sligroUrl: url, archived: false };
+  const window = { postMessage(data) { posted.push(data); }, clearTimeout() {}, setTimeout() { return 1; },
+    addEventListener(_type, listener) { receive = listener; }, removeEventListener() {} };
+  const location = { origin: "https://shahrestaurant.nl" };
+  const posted = [], calls = [], saved = [];
+  let slot = 0, receive;
+  const state = [], react = {
+    useState(initial) { const i = slot++; if (!(i in state)) state[i] = initial; return [state[i], value => { state[i] = value; }]; },
+    useRef(initial) { const i = slot++; if (!(i in state)) state[i] = { current: initial }; return state[i]; },
+    useEffect(effect) { const i = slot++; if (!(i in state)) state[i] = effect(); },
+  };
+  const stylesheet = new Proxy({}, { get: (_value, key) => String(key) });
+  const filename = path.join(root, "app/admin/stock/SligroPrices.tsx");
+  const mod = { exports: {} };
+  const compiled = ts.transpileModule(fs.readFileSync(filename, "utf8"), {
+    compilerOptions: { module: ts.ModuleKind.CommonJS, jsx: ts.JsxEmit.ReactJSX, esModuleInterop: true },
+  }).outputText;
+  const load = loader(null);
+  vm.runInNewContext(compiled, {
+    module: mod, exports: mod.exports, window, location, crypto: { randomUUID: () => requestId },
+    require(name) {
+      if (name === "react") return react;
+      if (name === "../../lib/clientFetch") return { fetchJSON: async (path, init) => {
+        calls.push({ path, body: JSON.parse(init.body) });
+        return { response: { ok: true }, data: { items: [{ id, revision: 6 }], skipped: [] } };
+      } };
+      if (name === "../../lib/stock") return load("app/lib/stock.ts");
+      if (name === "../../lib/stockSligro") return load("app/lib/stockSligro.ts");
+      if (name.endsWith(".css")) return { __esModule: true, default: stylesheet };
+      return require(name);
+    },
+  }, { filename });
+  const render = () => { slot = 0; return mod.exports.default({ items: [item], disabled: false, lang: "en", onSaved: records => saved.push(records) }); };
+  const text = value => Array.isArray(value) ? value.map(text).join("") :
+    value?.props ? text(value.props.children) : ["number", "string"].includes(typeof value) ? String(value) : "";
+  const button = (value, label) => {
+    if (Array.isArray(value)) return value.map(part => button(part, label)).find(Boolean);
+    if (!value || typeof value !== "object" || !value.props) return;
+    return value.type === "button" && text(value) === label ? value : button(value.props.children, label);
+  };
+  button(render(), "Refresh Sligro prices").props.onClick();
+  const request = posted[0];
+  assert.equal(request.type, "SLIGRO_PRICE_PREVIEW_REQUEST");
+  assert.equal(request.products[0].url, url);
+  const deliver = (data, origin = location.origin) => receive({ data: { source: "shah-sligro-extension", requestId, ...data }, source: window, origin });
+  deliver({ type: "SLIGRO_PRICE_PREVIEW_PROGRESS", state: "waiting-login" }, "https://attacker.test");
+  assert.doesNotMatch(text(render()), /official Sligro tab/);
+  deliver({ type: "SLIGRO_PRICE_PREVIEW_PROGRESS", state: "waiting-login" });
+  assert.match(text(render()), /official Sligro tab/);
+  const hit = { ...request.products[0], sku: "12345", regularCents: 3200, offerCents: 3000, offerStart: null, offerEnd: "2026-12-07" };
+  deliver({ type: "SLIGRO_PRICE_PREVIEW_RESULT", results: [hit], skipped: [] });
+  const preview = render();
+  assert.match(text(preview), /Current: Not set → Sligro: Regular €32\.00 · Offer €30\.00/);
+  assert.match(text(preview), /2026-12-07/);
+  assert.equal(calls.length, 0);
+  button(preview, "Save reviewed prices").props.onClick();
+  await new Promise(resolve => setImmediate(resolve));
+  assert.equal(calls.length, 1);
+  assert.equal(calls[0].path, "/api/admin/stock/sligro-prices");
+  assert.equal(calls[0].body.updates[0].purchasePrice.regularCents, 3200);
+  assert.equal(saved.length, 1);
+  assert.match(text(render()), /Prices saved: 1\./);
 });
