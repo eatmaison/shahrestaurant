@@ -635,8 +635,27 @@ test("Shah bridge waits for login, reviews verified prices, and never saves auto
   assert.doesNotMatch(text(render()), /official Sligro tab/);
   deliver({ type: "SLIGRO_PRICE_PREVIEW_PROGRESS", state: "waiting-login" });
   assert.match(text(render()), /official Sligro tab/);
-  const hit = { ...request.products[0], sku: "12345", regularCents: 3200, offerCents: 3000, offerStart: null, offerEnd: "2026-12-07" };
-  deliver({ type: "SLIGRO_PRICE_PREVIEW_RESULT", results: [hit], skipped: [] });
+  // Feed the actual extension runner's result back into the real Shah JSX bridge.
+  const { validateRequest } = await import("../extensions/shah-sligro/protocol.mjs");
+  const { runPreview } = await import("../extensions/shah-sligro/run.mjs");
+  let tabUrl = "", tabRemoved = false;
+  await runPreview(validateRequest(request), {
+    tabs: {
+      async create() { return { id: 14 }; },
+      async update(_id, props) { tabUrl = props.url; },
+      async get() { return { status: "complete", url: tabUrl }; },
+      async remove() { tabRemoved = true; },
+    },
+    scripting: { async executeScript() {
+      return [{ result: {
+        state: "rendered-product", articleLabels: ["Artikelnummer: 12345"], packLabels: ["24 flesjes x 30 cl"],
+        regularPromoLabels: ["32,00"], currentPromoLabels: ["30,00"],
+        offerStart: null, hasPromoLayout: true, standaloneLabels: [], promoDateLabels: ["Geldig van 19 nov t/m 7 dec"],
+        depositLabels: ["Emballage: 2,40"], taxLabels: ["Alle prijzen zijn in EUR en exclusief BTW"],
+      } }];
+    } },
+  }, deliver, new AbortController().signal, { today: () => "2026-11-24" });
+  assert.equal(tabRemoved, true);
   const preview = render();
   assert.match(text(preview), /Current: Not set → Sligro: Regular €32\.00 · Offer €30\.00/);
   assert.match(text(preview), /2026-12-07/);

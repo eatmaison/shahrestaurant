@@ -39,3 +39,12 @@ Apply `db/migrations/20261124_shah_stock_offer_dates.sql` after the supplier pri
 ### Browser-assisted price preview
 
 The Stock button communicates with the separately installed Shah Chrome extension. The supplier login is completed only in the official Sligro tab; Shah does not receive passwords or sessions. The extension must verify the product SKU, pack size, prices and any offer term; ambiguous items are skipped. Review the previous and new purchase prices before clicking **Save reviewed prices**. The apply route requires admin access, skips archived or changed rows, and updates only purchase price fields. The current limit is 50 linked active products per check. The plain product shortcut and manual entry still work without the extension.
+
+#### Installing the Chrome companion
+
+1. On a desktop computer, get the release's extension directory `extensions/shah-sligro`; extract it to a folder if received as an archive. The folder you load must directly contain `manifest.json`.
+2. In the Chrome profile you use for Sligro, open `chrome://extensions`, enable **Developer mode**, and select **Load unpacked**. Select that folder. The extension is not a Chrome Web Store listing.
+3. Open or refresh `https://shahrestaurant.nl/admin/stock`. Add your signed-in supplier product URLs. Verify that **Units in purchase pack** matches the supplier case, which can differ from how you count stock. If no purchase price is set, the system uses the counted units per case, or one unit.
+4. Click **Refresh Sligro prices**. If asked, sign in on the official Sligro tab. Inspect each price and offer period before saving. Unavailable, ambiguous, or mismatched items preserve their existing prices. If a product link works only when signed in, use that signed-in product's exact direct link.
+
+The extension reads only the rendered Dutch product price, pack, article, deposit/tax information and offer dates from a selected product page on the official Sligro host. It has no permission for cookies or web requests and does not read the sign-in form. It does not place orders. The stock site's server receives only normalized purchase-price changes that an authorized Shah administrator explicitly saves; the client-side preview does not upload raw page data. In the event of any unsupported page layout, compare or enter the supplier price by hand.
