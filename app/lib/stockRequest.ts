@@ -16,7 +16,7 @@ export function sameOriginJson(request: NextRequest) {
     request.headers.get("content-type")?.split(";")[0].trim().toLowerCase() === "application/json";
 }
 
-export async function readStockPayload(request: NextRequest, maxBytes = 4096): Promise<unknown> {
+export async function readStockPayload(request: Request, maxBytes = 4096): Promise<unknown> {
   if (Number(request.headers.get("content-length")) > maxBytes) return undefined;
   const reader = request.body?.getReader();
   if (!reader) return undefined;

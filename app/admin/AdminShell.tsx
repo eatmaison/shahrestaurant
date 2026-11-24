@@ -18,6 +18,7 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
     { href: "/admin", title: nl ? "Dagelijks beheer" : "Daily operations" },
     { href: "/admin/products", title: nl ? "Productbeheer" : "Manage products", description: nl ? "Producten, restaurants en de volgorde van menucategorieën." : "Products, restaurants and menu category order." },
     { href: "/admin/stock", title: nl ? "Voorraad" : "Stock", description: nl ? "Houd drankvoorraad bij met volle dozen en losse stuks." : "Track drink stock by full cases and loose units." },
+    { href: "/admin/email", title: "Email", description: nl ? "Bekijk contactgegevens en stuur updates naar abonnees." : "Review customer contacts and send updates to subscribers." },
     { href: "/admin/customers", title: nl ? "Klanten & bezoekers" : "Customers & visitors", description: nl ? "Accounts, contactgegevens en waargenomen bezoekersactiviteit." : "Accounts, contact details and observed visitor activity." },
     { href: "/admin/stats", title: nl ? "Statistieken" : "Statistics", description: nl ? "Bestelwaarden, dagverloop en klantgroepen." : "Order values, daily progress and customer groups." },
     { href: "/admin/events", title: nl ? "Evenementen & foto's" : "Events & photos", description: nl ? "Evenementen, boekingen en de openbare fotogalerij." : "Events, bookings and the public photo gallery." },

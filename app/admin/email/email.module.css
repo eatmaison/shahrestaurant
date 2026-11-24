@@ -1,0 +1,22 @@
+.workspace { display: grid; gap: 1rem; padding-block: .5rem 2rem; }
+.panel { display: grid; gap: .8rem; min-width: 0; padding: clamp(.75rem, 2vw, 1.3rem); border: 1px solid var(--line, #84755a66); border-radius: .85rem; }
+.panel h2 { font-size: 1.16rem; font-weight: 650; }
+.actions { display: flex; flex-wrap: wrap; align-items: center; gap: .55rem .8rem; }
+.actions label { display: inline-flex; gap: .4rem; align-items: center; min-height: 2.5rem; }
+.search, .form input:not([type=checkbox]), .form textarea { min-height: 2.7rem; padding: .5rem .7rem; border: 1px solid var(--line, #84755a88); border-radius: .5rem; background: transparent; color: inherit; }
+.search { flex: 1 1 18rem; min-width: 0; }
+.tableWrap { overflow: auto; border: 1px solid var(--line, #84755a66); border-radius: .5rem; }
+.tableWrap table { width: 100%; border-collapse: collapse; text-align: start; }
+.tableWrap td, .tableWrap th { padding: .5rem .65rem; text-align: start; vertical-align: middle; max-width: 22rem; overflow-wrap: anywhere; }
+.tableWrap tr:not(:last-child), .tableWrap thead { border-bottom: 1px solid var(--line, #84755a55); }
+.tableWrap td:last-child { min-width: 11rem; }
+.tableWrap td button { display: block; margin-top: .25rem; }
+.tableWrap input { width: 1.05rem; height: 1.05rem; }
+.form, .history { display: grid; gap: .55rem; }
+.form label { display: block; }
+.form label input:not([type=checkbox]), .form label textarea { width: 100%; display: block; margin-block-start: .3rem; }
+.form textarea { resize: vertical; }
+.preview { white-space: pre-wrap; overflow-wrap: anywhere; padding: .7rem; border: 1px solid var(--line, #84755a66); border-radius: .5rem; }
+.notice { border-inline-start: 3px solid #b38b40; padding-inline-start: .7rem; }
+.statusLine { font-size: .9rem; }
+.history { padding-block: .7rem; border-top: 1px solid var(--line, #84755a55); justify-items: start; }
