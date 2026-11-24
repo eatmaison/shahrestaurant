@@ -12,7 +12,7 @@ function databaseError(error: unknown) {
   if (code === "23503") return json({ error: "category_not_found" }, 409);
   if (code === "40P01" || code === "40001") return json({ error: "category_concurrent" }, 409);
   if (code === "23505") return json({ error: "duplicate" }, 409);
-  if (code === "42P01") return json({ error: "migration_required" }, 503);
+  if (code === "42P01" || code === "42703") return json({ error: "migration_required" }, 503);
   return json({ error: "unavailable" }, 503);
 }
 

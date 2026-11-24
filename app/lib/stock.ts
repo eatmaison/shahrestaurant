@@ -22,6 +22,40 @@ export function stockCategoryLabel(category: StockCategoryOption, defaults: Reco
 export const STOCK_MAX_COUNT = 1_000_000;
 export const STOCK_MAX_CASE_SIZE = 1_000;
 
+const stockPurchasePrice = z.strictObject({
+  packUnits: z.number().int().min(1).max(STOCK_MAX_CASE_SIZE),
+  regularCents: z.number().int().min(1).max(9_999_999),
+  offerCents: z.number().int().min(0).max(9_999_999).nullable(),
+}).refine(price => price.offerCents === null || price.offerCents < price.regularCents, { path: ["offerCents"] });
+
+export type StockPurchasePrice = z.infer<typeof stockPurchasePrice>;
+
+export function parseStockEuro(value: string): number | null {
+  const amount = value.trim();
+  if (!amount) return null;
+  if (!/^\d{1,5}([.,]\d{1,2})?$/.test(amount)) return NaN;
+  const [euros, fraction = ""] = amount.split(/[.,]/);
+  return Number(euros) * 100 + Number(fraction.padEnd(2, "0"));
+}
+
+export const STOCK_SLIGRO_LINK_MAX_LENGTH = 512;
+
+export function normalizeStockSligroLink(value: string): string | null {
+  const directLink = value.trim().split(/[?#]/, 1)[0];
+  // Strip copied tracking and fragments; never persist them or contact the supplier.
+  const productPath = /^https:\/\/(?:www\.)?sligro\.nl(\/p\.[0-9]{1,12}\.html\/[a-z0-9][-a-z0-9_]*\.html)$/i.exec(directLink)?.[1];
+  if (!productPath || productPath !== productPath.toLowerCase()) return null;
+  const canonical = "https://www.sligro.nl" + productPath;
+  return canonical.length <= STOCK_SLIGRO_LINK_MAX_LENGTH ? canonical : null;
+}
+
+const sligroLink = z.string().max(2048).transform((value, ctx) => {
+  const canonical = normalizeStockSligroLink(value);
+  if (canonical) return canonical;
+  ctx.addIssue({ code: "custom", message: "Enter a direct Sligro product URL." });
+  return z.NEVER;
+});
+
 export interface StockItem {
   id: string;
   name: string;
@@ -32,6 +66,8 @@ export interface StockItem {
   totalUnits: number;
   revision: number;
   archived: boolean;
+  purchasePrice?: StockPurchasePrice | null;
+  sligroUrl?: string | null;
 }
 
 export function stockUnits(cases: number, caseSize: number | null, loose: number) {
@@ -48,6 +84,8 @@ export const stockValues = z.strictObject({
   cases: z.number().int().min(0).max(STOCK_MAX_COUNT),
   caseSize: z.number().int().min(1).max(STOCK_MAX_CASE_SIZE).nullable(),
   loose: z.number().int().min(0).max(STOCK_MAX_COUNT),
+  purchasePrice: stockPurchasePrice.nullable().optional(),
+  sligroUrl: sligroLink.nullable().optional(),
 }).refine(input => input.cases === 0 || input.caseSize !== null, { path: ["caseSize"] });
 
 export type StockValues = z.infer<typeof stockValues>;

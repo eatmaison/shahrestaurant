@@ -11,6 +11,8 @@ const ts = require("typescript");
 const root = path.resolve(__dirname, "..");
 const migration = fs.readFileSync(path.join(root, "db/migrations/20261122_shah_stock.sql"), "utf8");
 const categoryMigration = fs.readFileSync(path.join(root, "db/migrations/20261123_shah_stock_categories.sql"), "utf8");
+const priceMigration = fs.readFileSync(path.join(root, "db/migrations/20261123_shah_stock_purchase_prices.sql"), "utf8");
+const sligroMigration = fs.readFileSync(path.join(root, "db/migrations/20261123_shah_stock_sligro_links.sql"), "utf8");
 const syntheticStock = [
   ["soft-drinks", "fixture-soda", "Fixture soda", 2, 10, 3],
   ["beer", "fixture-lager", "Fixture lager", 0, null, 0],
@@ -67,7 +69,7 @@ async function fixture(t, migrate = true) {
   t.after(() => db.close());
   await db.exec("CREATE TABLE users (id uuid PRIMARY KEY, role text NOT NULL)");
   await db.query("INSERT INTO users VALUES ($1, 'admin'), ($2, 'user')", [admin, customer]);
-  if (migrate) { await db.exec(migration); await insertFixture(db); await db.exec(categoryMigration); }
+  if (migrate) { await db.exec(migration); await insertFixture(db); await db.exec(categoryMigration); await db.exec(priceMigration); await db.exec(sligroMigration); }
   const load = loader(db);
   const route = load("app/api/admin/stock/route.ts");
   const categoryRoute = load("app/api/admin/stock/categories/route.ts");
@@ -184,13 +186,17 @@ test("the admin workspace resolves /admin/stock through its own bootstrap view",
 
 // This exercises rendered JSX handlers without a browser or any network.
 test("inline editing previews units, retains rejected values and only reorders after a successful save", async () => {
-  const { stockValues, visibleStockItems, stockUnits, stockCategoryLabel, STOCK_MAX_COUNT, STOCK_MAX_CASE_SIZE } =
+  const { stockValues, parseStockEuro, visibleStockItems, stockUnits, stockCategoryLabel, STOCK_MAX_COUNT, STOCK_MAX_CASE_SIZE } =
     loader(null)("app/lib/stock.ts");
-  const libs = { stockValues, visibleStockItems, stockUnits, stockCategoryLabel, STOCK_MAX_COUNT, STOCK_MAX_CASE_SIZE };
+  const libs = { stockValues, parseStockEuro, visibleStockItems, stockUnits, stockCategoryLabel, STOCK_MAX_COUNT, STOCK_MAX_CASE_SIZE };
   const item = (id, name, cases, caseSize, loose) => ({
     id, name, category: "beer", cases, caseSize, loose, totalUnits: stockUnits(cases, caseSize, loose), revision: 1, archived: false,
   });
-  const sourceItems = [item("a", "A bottle", 1, 12, 0), item("b", "B bottle", 2, 12, 0)];
+  const sourceItems = [
+    { ...item("a", "A bottle", 1, 12, 0), purchasePrice: { packUnits: 24, regularCents: 2700, offerCents: 2000 },
+      sligroUrl: "https://www.sligro.nl/p.123456.html/fixture-bottle.html" },
+    item("b", "B bottle", 2, 12, 0),
+  ];
   const state = [], effects = [], calls = [];
   let slot = 0, reject = true;
   const react = {
@@ -251,11 +257,23 @@ test("inline editing previews units, retains rejected values and only reorders a
   );
   const input = (node, label) => find(find(node, el => el.type === "label" && el.props.children[0] === label), el => el.type === "input");
   const tick = () => new Promise(resolve => setImmediate(resolve));
+  const priceSummary = node => {
+    const summary = find(node, el => typeof el.type === "function" && el.type.name === "PurchaseSummary");
+    return summary.type(summary.props);
+  };
+  const text = value => Array.isArray(value) ? value.map(text).join("") :
+    value?.props ? text(value.props.children) : ["number", "string"].includes(typeof value) ? String(value) : "";
 
   render(); effects.shift()(); await tick();
   const order = ["Edit count: A bottle", "Edit count: B bottle"];
   let tree = render();
   assert.deepEqual(countButtons(tree), order);
+  assert.match(text(priceSummary(tree)), /€27\.00 €20\.00 per pack of 24/);
+  assert.match(text(priceSummary(tree)), /Good time to order · Save €7\.00/);
+  const sligroButton = find(tree, el => el.type === "a" && el.props["aria-label"] === "Open in Sligro: A bottle");
+  assert.equal(sligroButton.props.href, sourceItems[0].sligroUrl);
+  assert.equal(sligroButton.props.target, "_blank");
+  assert.match(sligroButton.props.rel, /noreferrer/);
   find(tree, el => el.type === "button" && el.props["aria-label"] === order[0]).props.onClick();
   tree = render();
   let form = editor(tree);
@@ -275,6 +293,18 @@ test("inline editing previews units, retains rejected values and only reorders a
   tree = render();
   assert.equal(find(tree, el => typeof el.type === "function" && el.type.name === "StockEditor"), undefined);
   assert.deepEqual(countButtons(tree), order.slice().reverse());
+  assert.equal(Object.hasOwn(calls[1].values, "purchasePrice"), false);
+  assert.equal(Object.hasOwn(calls[1].values, "sligroUrl"), false);
+  find(tree, el => el.type === "button" && el.props["aria-label"] === order[0]).props.onClick();
+  form = editor(render());
+  assert.equal(input(form, "Units in purchase pack").props.value, "24");
+  input(form, "Offer price (€)").props.onChange({ target: { value: "" } });
+  form = editor(render());
+  form.props.onSubmit({ preventDefault() {} }); await tick();
+  tree = render();
+  assert.deepEqual(calls[2].values.purchasePrice, { packUnits: 24, regularCents: 2700, offerCents: null });
+  assert.match(text(priceSummary(tree)), /€27\.00 per pack of 24/);
+  assert.doesNotMatch(text(priceSummary(tree)), /Good time to order/);
 });
 
 test("Stock categories support custom names and safely reclassify active and archived rows", async t => {
@@ -338,4 +368,105 @@ test("category creation and removal require current admin and same origin", asyn
   }
   const response = await call(route, "GET", auth);
   assert.equal((await response.json()).categories.length, 3);
+});
+
+test("purchase prices accept comma or point cents and reject ambiguous or invalid amounts", async t => {
+  const { load } = await fixture(t, false);
+  const { parseStockEuro } = load("app/lib/stock.ts");
+  for (const [raw, cents] of [[" 27 ", 2700], ["20,05", 2005], ["20.5", 2050], ["0", 0], ["", null]]) {
+    assert.equal(parseStockEuro(raw), cents);
+  }
+  for (const raw of ["-", "-2", "4.555", "20,05.2", "2e3", "100000", "€2"]) {
+    assert.ok(Number.isNaN(parseStockEuro(raw)), raw);
+  }
+});
+
+test("private purchase pricing persists separately from counts and clears without touching legacy values", async t => {
+  const { route, auth, db } = await fixture(t);
+  const values = { ...sample, cases: 0, caseSize: null, loose: 3 };
+  const price = { packUnits: 24, regularCents: 2700, offerCents: 2000 };
+  const payload = { ...values, purchasePrice: price };
+  for (const bad of [
+    { ...price, regularCents: 0 }, { ...price, offerCents: 2700 }, { ...price, offerCents: 2750 },
+    { ...price, packUnits: 0 }, { ...price, packUnits: 1001 }, { ...price, regularCents: 2700.5 },
+    { ...price, regularCents: null }, { ...price, offerCents: -1 }, { ...price, extra: true },
+  ]) {
+    assert.equal((await call(route, "POST", auth, { ...values, purchasePrice: bad })).status, 400);
+  }
+  assert.equal((await call(route, "POST", await token(customer), payload)).status, 403);
+  const create = await call(route, "POST", auth, payload);
+  assert.equal(create.status, 201);
+  let { item } = await create.json();
+  assert.deepEqual(item.purchasePrice, price);
+  assert.equal(item.totalUnits, 3);
+  assert.equal(item.caseSize, null);
+  const update = (data, revision = item.revision) => call(route, "PATCH", auth, {
+    action: "edit", id: item.id, revision, values: data,
+  });
+  const legacy = await update({ ...values, cases: 1, caseSize: 6 });
+  item = (await legacy.json()).item;
+  assert.deepEqual(item.purchasePrice, price);
+  assert.equal(item.totalUnits, 9);
+  assert.equal((await update({ ...values, purchasePrice: null }, 1)).status, 409);
+  const removeOffer = await update({ ...values, cases: 1, caseSize: 6, purchasePrice: { ...price, offerCents: null } });
+  item = (await removeOffer.json()).item;
+  assert.deepEqual(item.purchasePrice, { ...price, offerCents: null });
+
+  await db.exec(priceMigration);
+  const read = await call(route, "GET", auth);
+  const saved = (await read.json()).items.find(other => other.id === item.id);
+  assert.deepEqual(saved.purchasePrice, { ...price, offerCents: null });
+  assert.equal(saved.totalUnits, 9);
+
+  const clear = await update({ ...values, cases: 1, caseSize: 6, purchasePrice: null });
+  assert.deepEqual((await clear.json()).item.purchasePrice, null);
+  await assert.rejects(db.query(
+    "UPDATE shah_stock_items SET purchase_offer_cents = 1200 WHERE id = $1", [item.id],
+  ), error => error.code === "23514");
+});
+
+test("Sligro shortcut canonicalizes official product links, strips tracking and isolates changes", async t => {
+  const { route, auth, db, load } = await fixture(t);
+  const { normalizeStockSligroLink } = load("app/lib/stock.ts");
+  const canonical = "https://www.sligro.nl/p.123456.html/fixture-bottle.html";
+  const copied = "https://sligro.nl/p.123456.html/fixture-bottle.html?utm_source=fixture#details";
+  assert.equal(normalizeStockSligroLink(copied), canonical);
+  for (const denied of [
+    "http://www.sligro.nl/p.123456.html/fixture-bottle.html",
+    "https://www.sligro.nl.evil.test/p.123456.html/fixture-bottle.html",
+    "https://www.sligro.nl@evil.test/p.123456.html/fixture-bottle.html",
+    "https://someone:password@www.sligro.nl/p.123456.html/fixture-bottle.html",
+    "https://www.sligro.nl:8543/p.123456.html/fixture-bottle.html",
+    "https://www.sligro.nl/login",
+    "https://www.sligro.nl/c.123.html/fixture-bottle.html",
+    "https://www.sligro.nl/p.123456.html/../fixture-bottle.html",
+  ]) {
+    assert.equal(normalizeStockSligroLink(denied), null, denied);
+    assert.equal((await call(route, "POST", auth, { ...sample, sligroUrl: denied })).status, 400);
+  }
+  const price = { packUnits: 24, regularCents: 2700, offerCents: 2000 };
+  const saved = await call(route, "POST", auth, { ...sample, purchasePrice: price, sligroUrl: copied });
+  assert.equal(saved.status, 201);
+  let { item } = await saved.json();
+  assert.equal(item.sligroUrl, canonical);
+  assert.deepEqual(item.purchasePrice, price);
+  const update = values => call(route, "PATCH", auth, { action: "edit", id: item.id, revision: item.revision, values });
+  item = (await (await update({ ...sample, loose: 1 })).json()).item;
+  assert.equal(item.sligroUrl, canonical);
+  const otherPrice = { ...price, offerCents: null };
+  item = (await (await update({ ...sample, loose: 1, purchasePrice: otherPrice })).json()).item;
+  assert.equal(item.sligroUrl, canonical);
+  item = (await (await update({ ...sample, loose: 1, sligroUrl: null })).json()).item;
+  assert.deepEqual(item.purchasePrice, otherPrice);
+  assert.equal(item.sligroUrl, null);
+  const both = await update({ ...sample, loose: 1, sligroUrl: copied, purchasePrice: price });
+  assert.equal(both.status, 200);
+  item = (await both.json()).item;
+  assert.equal(item.sligroUrl, canonical);
+  assert.deepEqual(item.purchasePrice, price);
+  await db.exec(sligroMigration);
+  const read = await call(route, "GET", auth);
+  assert.deepEqual((await read.json()).items.find(row => row.id === item.id), item);
+  await assert.rejects(db.query("UPDATE shah_stock_items SET sligro_url = 'javascript:alert(1)' WHERE id = $1", [item.id]),
+    error => error.code === "23514");
 });
