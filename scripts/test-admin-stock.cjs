@@ -961,3 +961,52 @@ test("Taurus dashboard shows till totals, missing exports and unlinked food",()=
   assert.match(selected,/Items on 2026-11-22/);
   assert.doesNotMatch(selected,/Butter Naan/);
 });
+
+
+test("Taurus draught servings use exact millilitres, keep history and never debit a keg as a glass",async t=>{
+  const {db,load,route,auth}=await fixture(t);
+  for(const file of ["20261126_shah_taurus_stock.sql","20261127_shah_taurus_sales.sql","20261127_shah_stock_kegs.sql","20261127_shah_stock_kegs.sql"])
+    await db.exec(fs.readFileSync(path.join(root,"db/migrations",file),"utf8"));
+  const {stockAmsterdamDate,parseStockLitres,visibleStockItems}=load("app/lib/stock.ts");
+  assert.equal(parseStockLitres("19,750"),19750);
+  assert.ok(Number.isNaN(parseStockLitres("1.2345")));
+  const newItem={name:"Fixture Draught",category:"beer",cases:0,caseSize:null,loose:0,keg:{capacityMl:20000,sealed:1,openMl:100}};
+  assert.equal((await call(route,"POST",auth,{...newItem,keg:{...newItem.keg,openMl:20001}})).status,400);
+  const added=await call(route,"POST",auth,newItem);
+  assert.equal(added.status,201);
+  let item=(await added.json()).item;
+  assert.deepEqual(item.keg,newItem.keg);
+  assert.equal(visibleStockItems([item],"zero","all","").length,0);
+  const api=load("app/api/admin/stock/taurus/route.ts"), tpath="/api/admin/stock/taurus";
+  const day=stockAmsterdamDate();
+  const small={day,receipt:"777779001",line:1,name:"Tap small",qty:1};
+  const large={day,receipt:"777779001",line:2,name:"Tap large",qty:2};
+  const saleLines=[small,large].map(row=>({...row,group:"Draught",cents:400,adjustment:false}));
+  const map=(line,pourMl)=>({...line,id:item.id,rev:item.revision,...(pourMl?{pourMl}:{})});
+  const send=(mode,rows,sales=saleLines)=>api.POST(new NextRequest(origin+tpath,{method:"POST",headers:{
+    Cookie:"etg_session="+auth,"Content-Type":"application/json",Origin:origin
+  },body:JSON.stringify({mode,rows,sales:{lines:sales,footerCents:sales.length*400},...(mode==="apply"?{confirmed:true}:{})})}));
+  assert.equal((await send("preview",[map(small)])).status,400);
+  assert.equal((await send("apply",[map(small)])).status,409);
+  assert.equal((await db.query("SELECT count(*)::int n FROM shah_taurus_sale_lines")).rows[0].n,0);
+  const mapped=[map(small,250),map(large,500)];
+  const preview=await send("preview",mapped);
+  assert.equal(preview.status,200);
+  assert.deepEqual((await preview.json()).changes,[{id:item.id,name:item.name,units:1250,before:20100,after:18850,volume:true}]);
+  assert.deepEqual(await (await send("apply",mapped)).json(),{imported:2,salesImported:2});
+  assert.deepEqual(await (await send("apply",mapped)).json(),{imported:0,salesImported:0});
+  const mappingData=await (await api.GET(new NextRequest(origin+tpath,{headers:{Cookie:"etg_session="+auth}}))).json();
+  assert.equal(mappingData.mappings.find(m=>m.name==="tap small").pourMl,250);
+  assert.equal(mappingData.mappings.find(m=>m.name==="tap large").pourMl,500);
+  assert.equal(mappingData.stats.find(m=>m.name===item.name).units,3);
+  const recorded=await db.query("SELECT units,deducted_ml::int FROM shah_taurus_stock_lines ORDER BY line");
+  assert.deepEqual(recorded.rows,[{units:1,deducted_ml:250},{units:2,deducted_ml:1000}]);
+  item=(await (await call(route,"GET",auth)).json()).items.find(i=>i.id===item.id);
+  assert.deepEqual(item.keg,{capacityMl:20000,sealed:0,openMl:18850});
+  const over={...small,line:3,qty:50};
+  assert.equal((await send("apply",[map(over,500)],[{...saleLines[0],line:3,qty:50}])).status,409);
+  assert.equal((await db.query("SELECT count(*)::int n FROM shah_taurus_sale_lines")).rows[0].n,2);
+  const updated=await call(route,"PATCH",auth,{action:"edit",id:item.id,revision:item.revision,values:{...newItem,keg:{capacityMl:20000,sealed:0,openMl:18200}}});
+  assert.equal(updated.status,200);
+  assert.equal((await updated.json()).item.keg.openMl,18200);
+});

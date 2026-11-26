@@ -6,15 +6,17 @@ type StockRow = {
   case_size: number | null; loose_count: number; total_units: number;
   revision: number; archived: boolean;
   sligro_url: string | null;
+  keg?: StockItem["keg"];
   purchase_offer_start: string | null; purchase_offer_end: string | null;
   purchase_pack_units: number | null; purchase_regular_cents: number | null; purchase_offer_cents: number | null;
 };
 
-const projection = "id, name, category, cases_count, case_size, loose_count, total_units, revision, (archived_at IS NOT NULL) AS archived, purchase_pack_units, purchase_regular_cents, purchase_offer_cents, sligro_url, to_char(purchase_offer_start, 'YYYY-MM-DD') AS purchase_offer_start, to_char(purchase_offer_end, 'YYYY-MM-DD') AS purchase_offer_end";
+const projection = "id, name, category, cases_count, case_size, loose_count, total_units, revision, (archived_at IS NOT NULL) AS archived, purchase_pack_units, purchase_regular_cents, purchase_offer_cents, sligro_url, to_char(purchase_offer_start, 'YYYY-MM-DD') AS purchase_offer_start, to_char(purchase_offer_end, 'YYYY-MM-DD') AS purchase_offer_end, to_jsonb(shah_stock_items)->'keg' AS keg";
 
 const itemFrom = (row: StockRow): StockItem => ({
   id: row.id, name: row.name, category: row.category, cases: row.cases_count,
   caseSize: row.case_size, loose: row.loose_count, totalUnits: row.total_units,
+  ...(row.keg ? {keg:row.keg}: {}),
   revision: row.revision, archived: row.archived, sligroUrl: row.sligro_url,
   purchasePrice: row.purchase_pack_units !== null && row.purchase_regular_cents !== null
     ? { packUnits: row.purchase_pack_units, regularCents: row.purchase_regular_cents, offerCents: row.purchase_offer_cents,
@@ -35,8 +37,10 @@ export async function loadStock(): Promise<StockItem[]> {
 
 export async function addStock(values: StockValues): Promise<StockItem> {
   const rows = await sql.query(
-    "INSERT INTO shah_stock_items (name, category, cases_count, case_size, loose_count, purchase_pack_units, purchase_regular_cents, purchase_offer_cents, purchase_offer_start, purchase_offer_end, sligro_url) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING " + projection,
-    [...fields(values), ...priceFields(values.purchasePrice), values.sligroUrl ?? null],
+    "INSERT INTO shah_stock_items (name, category, cases_count, case_size, loose_count, purchase_pack_units, purchase_regular_cents, purchase_offer_cents, purchase_offer_start, purchase_offer_end, sligro_url" +
+      (values.keg ? ", keg" : "") + ") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11" +
+      (values.keg ? ", $12::jsonb" : "") + ") RETURNING " + projection,
+    [...fields(values), ...priceFields(values.purchasePrice), values.sligroUrl ?? null, ...(values.keg?[JSON.stringify(values.keg)]:[])],
   ) as StockRow[];
   return itemFrom(rows[0]);
 }
@@ -53,6 +57,9 @@ export async function updateStock(input: StockMutation): Promise<{ item: StockIt
   }
   if (input.action === "edit" && input.values.sligroUrl !== undefined) {
     editAssignments.push("sligro_url = $" + (editParams.push(input.values.sligroUrl) + 2));
+  }
+  if (input.action === "edit" && input.values.keg !== undefined) {
+    editAssignments.push("keg = $" + (editParams.push(input.values.keg ? JSON.stringify(input.values.keg) : null) + 2) + "::jsonb");
   }
   const statements = {
     edit: "UPDATE shah_stock_items SET name = $3, category = $4, cases_count = $5, case_size = $6, loose_count = $7, " + (editAssignments.length ? editAssignments.join(", ") + ", " : ""),

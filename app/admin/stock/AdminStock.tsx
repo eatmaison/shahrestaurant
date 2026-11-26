@@ -4,7 +4,7 @@ import { useEffect, useRef, useState, type FormEvent } from "react";
 import { useLang } from "../../providers";
 import { fetchJSON } from "../../lib/clientFetch";
 import {
-  STOCK_MAX_CASE_SIZE, STOCK_MAX_COUNT, activeStockOffer, parseStockEuro, stockAmsterdamDate, stockCategoryLabel, stockUnits, stockValues, visibleStockItems,
+  STOCK_MAX_CASE_SIZE, STOCK_MAX_COUNT, activeStockOffer, kegMl, parseStockLitres, stockKeg, stockRemaining, stockReorder, parseStockEuro, stockAmsterdamDate, stockCategoryLabel, stockUnits, stockValues, visibleStockItems,
   type StockCategory, type StockCategoryOption, type StockFilter, type StockItem, type StockMutation, type StockValues,
 } from "../../lib/stock";
 import shared from "../admin.module.css";
@@ -17,10 +17,11 @@ import TaurusStock from "./TaurusStock";
 
 const labels = {
   en: {
-    heading: "Drinks stock", intro: "Edit a product’s count directly. Lowest stock appears first.",
+    heading: "Drinks stock", intro: "Edit a product’s count directly. Empty stock first, then lowest counts within each stock type.",
     categories: { "soft-drinks": "Soft drinks", beer: "Beer", syrups: "Syrups" },
     add: "Add product", refresh: "Refresh stock", loading: "Loading stock…", zero: "Out of stock",
     active: "All stock", archived: "Archived", allCategories: "All categories", category: "Category",
+    tracking:"Track by", bottles:"Individual units / cases", draught:"Draught beer / kegs", capacity:"Litres per keg", sealed:"Sealed kegs", openLitres:"Litres left in tapped keg", kegHint:"Set the actual stock now. Use the tapped keg field to correct for foam, waste or cleaning.", volume:"Draught stock",
     search: "Find a product", product: "Product", cases: "Full cases", caseSize: "Units per case",
     loose: "Loose units", units: "Total units", save: "Save", saving: "Saving…", cancel: "Cancel",
     edit: "Edit count", details: "Product details", archive: "Archive product", restore: "Restore",
@@ -36,7 +37,7 @@ const labels = {
     noMatches: "No products match the current filters.", noActive: "No active products. Add one to start tracking it.",
     noArchived: "No archived products.", noZero: "No out-of-stock products match these filters.",
     caseHint: "Leave units per case empty for products counted individually. A case size is required if you enter full cases.",
-    invalid: "Use a product name and valid whole-number counts. If there are full cases, enter their size.",
+    invalid: "Enter a product name and valid counts. Full cases need a size; tapped litres cannot exceed the capacity of one keg.",
     unavailable: "Stock could not be loaded or saved. Try again.", duplicate: "An active product with this name already exists in that category.",
     migration: "Stock is not set up in this database yet. Apply the stock migration before entering counts.",
     forbidden: "Your session does not have access to stock. Sign in as an administrator.",
@@ -55,6 +56,7 @@ const labels = {
     categories: { "soft-drinks": "Frisdrank", beer: "Bier", syrups: "Siropen" },
     add: "Product toevoegen", refresh: "Voorraad verversen", loading: "Voorraad laden…", zero: "Niet op voorraad",
     active: "Alle voorraad", archived: "Gearchiveerd", allCategories: "Alle categorieën", category: "Categorie",
+    tracking:"Voorraad tellen per", bottles:"Losse stuks / dozen", draught:"Tapbier / fusten", capacity:"Liter per fust", sealed:"Gesloten fusten", openLitres:"Resterende liters in aangebroken fust", kegHint:"Vul de werkelijke voorraad in. Pas het aangebroken fust aan voor schuim, verspilling of reiniging.", volume:"Tapvoorraad",
     search: "Product zoeken", product: "Product", cases: "Volle dozen", caseSize: "Stuks per doos",
     loose: "Losse stuks", units: "Totaal stuks", save: "Opslaan", saving: "Opslaan…", cancel: "Annuleren",
     edit: "Aantal aanpassen", details: "Productgegevens", archive: "Product archiveren", restore: "Herstellen",
@@ -87,16 +89,19 @@ const labels = {
 };
 
 type Copy = typeof labels.en;
-type Draft = { name: string; category: StockCategory; cases: string; caseSize: string; loose: string; packUnits: string; regularPrice: string; offerPrice: string; offerStart: string; offerEnd: string; priceEdited: boolean; sligroUrl: string; sligroEdited: boolean };
+type Draft = { isKeg:boolean; kegCapacity:string; kegSealed:string; kegOpen:string; name: string; category: StockCategory; cases: string; caseSize: string; loose: string; packUnits: string; regularPrice: string; offerPrice: string; offerStart: string; offerEnd: string; priceEdited: boolean; sligroUrl: string; sligroEdited: boolean };
 type Editor = { item: StockItem | null; draft: Draft; conflict?: StockItem };
 type Api = { items?: StockItem[]; categories?: StockCategoryOption[]; item?: StockItem; error?: string };
 
 const freshDraft = (category: StockCategory): Draft => ({
+  isKeg:false,kegCapacity:"",kegSealed:"0",kegOpen:"0",
   name: "", category, cases: "0", caseSize: "", loose: "0",
   packUnits: "", regularPrice: "", offerPrice: "", offerStart: "", offerEnd: "", priceEdited: false, sligroUrl: "", sligroEdited: false,
 });
 const euroDraft = (cents: number | null | undefined) => cents == null ? "" : (cents / 100).toFixed(2);
 const fromItem = (item: StockItem): Draft => ({
+  isKeg:Boolean(item.keg), kegCapacity:item.keg?String(item.keg.capacityMl/1000):"",
+  kegSealed:String(item.keg?.sealed??0),kegOpen:String((item.keg?.openMl??0)/1000),
   name: item.name, category: item.category, cases: String(item.cases),
   caseSize: item.caseSize === null ? "" : String(item.caseSize), loose: String(item.loose),
   packUnits: String(item.purchasePrice?.packUnits ?? item.caseSize ?? 1),
@@ -107,8 +112,11 @@ const fromItem = (item: StockItem): Draft => ({
 const readInt = (value: string) => /^[0-9]+$/.test(value) ? Number(value) : NaN;
 function draftValues(draft: Draft): StockValues {
   return {
-    name: draft.name, category: draft.category, cases: readInt(draft.cases),
-    caseSize: draft.caseSize === "" ? null : readInt(draft.caseSize), loose: readInt(draft.loose),
+    name: draft.name, category: draft.category,
+    ...(draft.isKeg
+      ? {cases:0,caseSize:null,loose:0,keg:{capacityMl:parseStockLitres(draft.kegCapacity),sealed:readInt(draft.kegSealed),openMl:parseStockLitres(draft.kegOpen)}}
+      : {cases:readInt(draft.cases),caseSize:draft.caseSize===""?null:readInt(draft.caseSize),loose:readInt(draft.loose),
+        ...(draft.kegCapacity?{keg:null}:{})}),
     ...(draft.sligroEdited ? { sligroUrl: draft.sligroUrl.trim() || null } : {}),
     ...(draft.priceEdited ? {
       purchasePrice: !draft.regularPrice.trim() && !draft.offerPrice.trim() && !draft.offerStart && !draft.offerEnd ? null : {
@@ -136,7 +144,8 @@ function errorMessage(code: string | undefined, copy: Copy) {
   }
 }
 function getPreview(draft: Draft) {
-  const { cases, caseSize, loose } = draftValues(draft);
+  const { cases, caseSize, loose, keg } = draftValues(draft);
+  if(keg){ const parsed=stockKeg.safeParse(keg); return parsed.success ? kegMl(parsed.data)/1000 : null; }
   if (!Number.isInteger(cases) || cases < 0 || cases > STOCK_MAX_COUNT ||
       !Number.isInteger(loose) || loose < 0 || loose > STOCK_MAX_COUNT ||
       (caseSize === null ? cases > 0 : !Number.isInteger(caseSize) || caseSize < 1 || caseSize > STOCK_MAX_CASE_SIZE)) return null;
@@ -288,8 +297,9 @@ export default function AdminStock() {
 
   const active = (items ?? []).filter(item => !item.archived);
   const total = active.reduce((sum, item) => sum + item.totalUnits, 0);
-  const zero = active.filter(item => item.totalUnits === 0).length;
-  const low = active.filter(item=>item.totalUnits>0&&item.totalUnits<=(item.caseSize??6)).length;
+  const volume=active.reduce((sum,item)=>sum+(item.keg?kegMl(item.keg):0),0);
+  const zero = active.filter(item => stockRemaining(item) === 0).length;
+  const low = active.filter(stockReorder).length;
   const lowLabel = lang==="nl"?"Bijbestellen":"Reorder";
   const shown = items ? visibleStockItems(items, filter, category, query) : [];
   const editing = editor !== null;
@@ -323,6 +333,7 @@ export default function AdminStock() {
     {items && <dl className={styles.metrics}>
       <div className={shared.metric}><dt>{copy.products}</dt><dd><strong>{format(active.length)}</strong></dd></div>
       <div className={shared.metric}><dt>{copy.totalLabel}</dt><dd><strong>{format(total)}</strong></dd></div>
+      {active.some(item=>item.keg)&&<div className={shared.metric}><dt>{copy.volume}</dt><dd><strong>{format(volume/1000)} L</strong></dd></div>}
       <div className={shared.metric}><dt>{copy.zero}</dt><dd><strong>{format(zero)}</strong></dd></div>
       <div className={shared.metric}><dt>{lowLabel}</dt><dd><strong>{format(low)}</strong></dd></div>
     </dl>}
@@ -367,13 +378,13 @@ export default function AdminStock() {
               {item.purchasePrice && <PurchaseSummary price={item.purchasePrice} today={today} euro={euro} copy={copy} />}
             </div>
             <div className={styles.count}>
-              <span className={styles.breakdown}>{item.caseSize !== null
+              <span className={styles.breakdown}>{item.keg ? format(item.keg.sealed)+" × "+format(item.keg.capacityMl/1000)+" L + "+format(item.keg.openMl/1000)+" L" : item.caseSize !== null
                 ? format(item.cases) + " × " + format(item.caseSize) + " + " + format(item.loose) + " " + copy.loose.toLowerCase()
                 : format(item.loose) + " " + copy.unitsLabel}</span>
-              <span className={item.totalUnits === 0 && !item.archived ? styles.zero : styles.total}>
-                <strong>{format(item.totalUnits)}</strong> {item.totalUnits === 0 && !item.archived ? copy.zero : copy.unitsLabel}
+              <span className={stockRemaining(item) === 0 && !item.archived ? styles.zero : styles.total}>
+                <strong>{format(item.keg?kegMl(item.keg)/1000:item.totalUnits)}</strong> {stockRemaining(item)===0&&!item.archived?copy.zero:item.keg?"L":copy.unitsLabel}
               </span>
-              {!item.archived&&item.totalUnits>0&&item.totalUnits<=(item.caseSize??6)&&<span className={styles.reorder}>{lowLabel}</span>}
+              {!item.archived&&stockReorder(item)&&<span className={styles.reorder}>{lowLabel}</span>}
             </div>
             <div className={styles.itemActions}>
               {item.archived ? <button type="button" className={shared.button} aria-label={copy.restore + ": " + item.name}
@@ -418,8 +429,8 @@ function StockEditor({ editor, copy, format, busy, categories, labelCategory, fa
   useEffect(() => { (item ? firstCount : productName).current?.focus(); }, [item]);
   const preview = getPreview(draft);
   const change = (field: keyof Draft, value: string) => onChange({ ...draft, [field]: value });
-  const quantity = (field: "cases" | "caseSize" | "loose", text: string, ref?: React.RefObject<HTMLInputElement | null>) =>
-    <label>{text}<input ref={ref} type="text" inputMode="numeric" autoComplete="off" maxLength={field === "caseSize" ? 4 : 7}
+  const quantity = (field: "cases" | "caseSize" | "loose" | "kegCapacity" | "kegSealed" | "kegOpen", text: string, ref?: React.RefObject<HTMLInputElement | null>) =>
+    <label>{text}<input ref={ref} type="text" inputMode={field==="kegCapacity"||field==="kegOpen"?"decimal":"numeric"} autoComplete="off" maxLength={field === "caseSize" ? 4 : 7}
       value={draft[field]} onFocus={event => event.currentTarget.select()} onChange={event => change(field, event.target.value)} /></label>;
   const priceField = (field: "packUnits" | "regularPrice" | "offerPrice", text: string) =>
     <label>{text}<input type="text" inputMode={field === "packUnits" ? "numeric" : "decimal"}
@@ -445,11 +456,18 @@ function StockEditor({ editor, copy, format, busy, categories, labelCategory, fa
     onKeyDown={event => { if (event.key === "Escape" && !busy) { event.preventDefault(); onCancel(); } }}>
     <fieldset disabled={busy} className={styles.fields}>
       {!item && metadata}
+      <label>{copy.tracking}<select value={draft.isKeg?"keg":"units"}
+        onChange={event=>onChange({...draft,isKeg:event.target.value==="keg"})}>
+        <option value="units">{copy.bottles}</option><option value="keg">{copy.draught}</option>
+      </select></label>
       <div className={styles.quantities}>
-        {quantity("cases", copy.cases, firstCount)}{quantity("caseSize", copy.caseSize)}{quantity("loose", copy.loose)}
-        <div className={styles.preview}><span>{copy.units}</span><output>{preview === null ? "–" : format(preview)}</output></div>
+        {draft.isKeg?<>{quantity("kegCapacity",copy.capacity,firstCount)}{quantity("kegSealed",copy.sealed)}{quantity("kegOpen",copy.openLitres)}</>:<>
+          {quantity("cases", copy.cases, firstCount)}{quantity("caseSize", copy.caseSize)}{quantity("loose", copy.loose)}
+        </>}
+        <div className={styles.preview}><span>{draft.isKeg?copy.volume:copy.units}</span><output>{preview === null ? "–" : format(preview)+(draft.isKeg?" L":"")}</output></div>
       </div>
-      <p className={shared.muted}>{copy.caseHint}</p>
+      <p className={shared.muted}>{draft.isKeg?copy.kegHint:copy.caseHint}</p>
+      {item&&Boolean(item.keg)!==draft.isKeg&&<p role="status" className={shared.muted}>{copy===labels.nl?"De vorige telling wordt niet omgerekend. Vul de huidige voorraad handmatig in.":"The old count is not converted. Enter your current physical stock before saving."}</p>}
       {item && <details className={styles.details}><summary>{copy.details}</summary>{metadata}</details>}
       <details className={styles.details}>
         <summary>{copy.purchaseDetails}</summary>
@@ -468,7 +486,7 @@ function StockEditor({ editor, copy, format, busy, categories, labelCategory, fa
       {failure && <p role="alert" className={styles.problem}>{failure}</p>}
       {conflict && <div className={styles.conflict}>
         {conflict.archived ? <p>{copy.archivedConflict}</p> : <>
-          <p>{copy.serverCount}: <strong>{format(conflict.totalUnits)} {copy.unitsLabel}</strong></p>
+          <p>{copy.serverCount}: <strong>{format(conflict.keg?kegMl(conflict.keg)/1000:conflict.totalUnits)} {conflict.keg?"L":copy.unitsLabel}</strong></p>
           <div className={styles.actions}>
             <button type="button" className={shared.button} onClick={() => onResolveConflict(false)}>{copy.useLatest}</button>
             <button type="button" className={shared.button} onClick={() => onResolveConflict(true)}>{copy.keepDraft}</button>

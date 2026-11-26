@@ -4,14 +4,14 @@ import { sql } from "../../../../lib/db";
 import { loadStock } from "../../../../lib/stockStore";
 import { canManageStock, readStockPayload, sameOriginJson, stockDatabaseCode, stockJson as json } from "../../../../lib/stockRequest";
 import { TAURUS_END_LIMIT, stockEligible, taurusKey, taurusLine, taurusName, taurusSaleBatch } from "../../../../lib/taurusStock";
-import { stockAmsterdamDate } from "../../../../lib/stock";
+import { kegMl, stockAmsterdamDate } from "../../../../lib/stock";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 const input = z.object({
   mode: z.enum(["preview","apply"]),
-  rows: z.array(taurusLine.extend({id:z.uuid(), rev:z.number().int().positive().max(2_147_483_647)})).max(TAURUS_END_LIMIT),
+  rows: z.array(taurusLine.extend({id:z.uuid(), rev:z.number().int().positive().max(2_147_483_647),pourMl:z.number().int().min(1).max(100_000).optional()})).max(TAURUS_END_LIMIT),
   sales: taurusSaleBatch.optional(),
   confirmed: z.literal(true).optional(),
 }).strict();
@@ -19,7 +19,7 @@ type Existing = { day: string; receipt: string; line: number; id: string; qty: n
 
 function errorResponse(error: unknown) {
   const code = stockDatabaseCode(error);
-  if (code === "42P01" || code === "42883") return json({error:"migration_required"},503);
+  if (code === "42P01" || code === "42883" || code === "42703") return json({error:"migration_required"},503);
   if (code === "40001" || code === "40P01" || code === "23505") return json({error:"conflict"},409);
   return json({error:"unavailable"},503);
 }
@@ -34,7 +34,12 @@ export async function GET(req: NextRequest) {
       WHERE l.business_day >= $1::date - 29 AND l.business_day <= $1::date
       GROUP BY l.business_day,i.id,i.name ORDER BY l.business_day DESC, units DESC, i.name
     `,[stockAmsterdamDate()]);
-    const mappings = await sql.query("SELECT m.source_name AS name,m.item_id AS id FROM shah_taurus_stock_mappings m JOIN shah_stock_items i ON i.id=m.item_id WHERE i.archived_at IS NULL");
+    const mappings = await sql.query(`SELECT m.source_name AS name,m.item_id AS id,
+      (to_jsonb(m)->>'pour_ml')::integer AS "pourMl"
+      FROM shah_taurus_stock_mappings m JOIN shah_stock_items i ON i.id=m.item_id
+      WHERE i.archived_at IS NULL AND
+        ((to_jsonb(i)->>'keg' IS NULL AND to_jsonb(m)->>'pour_ml' IS NULL)
+        OR (to_jsonb(m)->>'pour_ml')::integer BETWEEN 1 AND (to_jsonb(i)->'keg'->>'capacityMl')::integer)`);
     return json({stats,mappings});
   } catch (error) { return errorResponse(error); }
 }
@@ -75,16 +80,22 @@ export async function POST(req: NextRequest) {
     const mapped = new Map<string,string>();
     for (const row of rows) {
       const key = taurusName(row.name);
-      if (!key || key.length>120 || (mapped.has(key) && mapped.get(key)!==row.id)) return json({error:"invalid"},400);
-      mapped.set(key,row.id);
+      const mapping=JSON.stringify([row.id,row.pourMl??null]);
+      if (!key || key.length>120 || (mapped.has(key) && mapped.get(key)!==mapping)) return json({error:"invalid"},400);
+      mapped.set(key,mapping);
     }
     if (mode === "apply") {
+      // Fail closed if a volume request reaches an unmigrated DB.
+      if(rows.some(row=>row.pourMl!==undefined)) {
+        await sql.query("SELECT deducted_ml FROM shah_taurus_stock_lines LIMIT 0");
+      }
+      const pending=rows.map(({pourMl,...row})=>({...row,source_name:taurusName(row.name),pour_ml:pourMl??null}));
       if(sales){
         const [out]=await sql.query("SELECT * FROM shah_taurus_apply_sales($1::jsonb,$2::jsonb)",
-          [JSON.stringify(sales.lines),JSON.stringify(rows.map(row=>({...row,source_name:taurusName(row.name)})))]);
+          [JSON.stringify(sales.lines),JSON.stringify(pending)]);
         return json({imported:out.stock_lines,salesImported:out.sale_lines});
       }
-      const out = await sql.query("SELECT shah_taurus_apply($1::jsonb) AS imported",[JSON.stringify(rows.map(row=>({...row,source_name:taurusName(row.name)}))) ]);
+      const out = await sql.query("SELECT shah_taurus_apply($1::jsonb) AS imported",[JSON.stringify(pending) ]);
       return json({imported:out[0]?.imported ?? 0});
     }
     const old = await sql.query(`
@@ -103,11 +114,14 @@ export async function POST(req: NextRequest) {
       }
       const item = stock.get(row.id);
       if (!item || item.revision !== row.rev) return json({error:"conflict"},409);
-      grouped.set(row.id, (grouped.get(row.id) ?? 0) + row.qty);
+      if(item.keg ? (!row.pourMl||row.pourMl>item.keg.capacityMl) : row.pourMl!==undefined)
+        return json({error:"pour_required"},400);
+      grouped.set(row.id, (grouped.get(row.id) ?? 0) + row.qty*(row.pourMl??1));
     }
     return json({saleSummary, duplicates:old.length, changes:Array.from(grouped, ([id, units])=>{
       const item=stock.get(id)!;
-      return {id, name:item.name, units, before:item.totalUnits, after:item.totalUnits-units};
+      const before=item.keg?kegMl(item.keg):item.totalUnits;
+      return {id, name:item.name, units, before, after:before-units, ...(item.keg?{volume:true}:{})};
     })});
   } catch (error) { return errorResponse(error); }
 }

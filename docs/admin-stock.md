@@ -48,3 +48,14 @@ The Stock button communicates with the separately installed Shah Chrome extensio
 4. Click **Refresh Sligro prices**. If asked, sign in on the official Sligro tab. Inspect each price and offer period before saving. Unavailable, ambiguous, or mismatched items preserve their existing prices. If a product link works only when signed in, use that signed-in product's exact direct link.
 
 The extension reads only the rendered Dutch product price, pack, article, deposit/tax information and offer dates from a selected product page on the official Sligro host. It has no permission for cookies or web requests and does not read the sign-in form. It does not place orders. The stock site's server receives only normalized purchase-price changes that an authorized Shah administrator explicitly saves; the client-side preview does not upload raw page data. In the event of any unsupported page layout, compare or enter the supplier price by hand.
+
+
+## Draught beer (Taurus)
+
+Before enabling draught stock, run `db/migrations/20261127_shah_stock_kegs.sql` on the Shah database **after** the original Taurus stock and sales migrations. It adds keg storage and upgrades the atomic import function without converting any stock records. Do not rerun the old function-defining stock migration after this one. The keg migration is safe to rerun.
+
+1. In **Admin → Stock**, edit the existing draught beer. Choose **Track by → Draught beer / kegs**.
+2. Enter litres per keg, the number of sealed kegs and the litres left in the tapped keg. Take the opening count from the actual stock. The old unit count is not converted.
+3. In **Import Taurus sales**, match each distinct till item to the beer and enter its millilitres per glass. If two glass sizes share one Taurus name, keep that line sales-only until the till distinguishes them.
+4. Check the litres in the import preview. After confirmation the mapping is reused and the same receipt line cannot debit the stock twice. Sales reports still measure glasses. Use **Sales only** when the imported sales are already reflected in your physical count.
+5. For waste, line cleaning or a stock count, edit the remaining tapped volume. Sealed kegs open in the calculation only after the tapped stock has been used.

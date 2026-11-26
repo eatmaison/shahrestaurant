@@ -76,7 +76,24 @@ const sligroLink = z.string().max(2048).transform((value, ctx) => {
   return z.NEVER;
 });
 
+export const stockKeg = z.strictObject({
+  capacityMl: z.number().int().min(1000).max(100_000),
+  sealed: z.number().int().min(0).max(10_000),
+  openMl: z.number().int().min(0).max(100_000),
+}).refine(keg=>keg.openMl<=keg.capacityMl,{path:["openMl"]});
+export type StockKeg = z.infer<typeof stockKeg>;
+export const kegMl = (keg: StockKeg) => keg.sealed * keg.capacityMl + keg.openMl;
+export const stockRemaining = (item: StockItem) => item.keg ? kegMl(item.keg) : item.totalUnits;
+export const stockReorder = (item: StockItem) => stockRemaining(item)>0 && stockRemaining(item)<=(item.keg?.capacityMl??item.caseSize??6);
+
+export function parseStockLitres(value: string): number {
+  if(!/^\d{1,3}(?:[.,]\d{1,3})?$/.test(value.trim()))return NaN;
+  const [litres,fraction=""]=value.trim().split(/[.,]/);
+  return Number(litres)*1000+Number(fraction.padEnd(3,"0"));
+}
+
 export interface StockItem {
+  keg?: StockKeg | null;
   id: string;
   name: string;
   category: StockCategory;
@@ -95,7 +112,8 @@ export function stockUnits(cases: number, caseSize: number | null, loose: number
 }
 
 export function compareStockItems(a: StockItem, b: StockItem) {
-  return a.totalUnits - b.totalUnits || a.name.localeCompare(b.name, "en") || a.id.localeCompare(b.id, "en");
+  return Number(stockRemaining(a)>0)-Number(stockRemaining(b)>0) ||
+    Number(Boolean(a.keg))-Number(Boolean(b.keg)) || stockRemaining(a)-stockRemaining(b) || a.name.localeCompare(b.name, "en") || a.id.localeCompare(b.id, "en");
 }
 
 export const stockValues = z.strictObject({
@@ -106,7 +124,9 @@ export const stockValues = z.strictObject({
   loose: z.number().int().min(0).max(STOCK_MAX_COUNT),
   purchasePrice: stockPurchasePrice.nullable().optional(),
   sligroUrl: sligroLink.nullable().optional(),
-}).refine(input => input.cases === 0 || input.caseSize !== null, { path: ["caseSize"] });
+  keg: stockKeg.nullable().optional(),
+}).refine(input => input.cases === 0 || input.caseSize !== null, { path: ["caseSize"] })
+  .refine(input=>!input.keg||(input.cases===0&&input.caseSize===null&&input.loose===0),{path:["keg"]});
 
 export type StockValues = z.infer<typeof stockValues>;
 
@@ -122,7 +142,7 @@ export type StockFilter = "active" | "zero" | "archived";
 export function visibleStockItems(items: StockItem[], filter: StockFilter, category: StockCategory | "all", search: string) {
   const term = search.trim().toLocaleLowerCase("en");
   return items.filter(item =>
-    (filter === "archived" ? item.archived : !item.archived && (filter !== "zero" || item.totalUnits === 0)) &&
+    (filter === "archived" ? item.archived : !item.archived && (filter !== "zero" || stockRemaining(item) === 0)) &&
     (category === "all" || item.category === category) &&
     item.name.toLocaleLowerCase("en").includes(term)
   ).sort(compareStockItems);

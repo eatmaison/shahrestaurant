@@ -7,8 +7,9 @@ import styles from "../admin.module.css";
 import own from "./taurus.module.css";
 
 type Trend = {day:string;name:string;units:number};
-type Change = {id:string;name:string;before:number;after:number;units:number};
-type Row = TaurusLine & {id:string;rev:number};
+type Change = {id:string;name:string;before:number;after:number;units:number;volume?:boolean};
+type Row = TaurusLine & {id:string;rev:number;pourMl?:number};
+type Mapping = {name:string;id:string;pourMl?:number|null};
 type Preview = {changes:Change[];duplicates:number;saleSummary:{cents:number;receipts:number;lines:number;duplicates:number}};
 const url="/api/admin/stock/taurus";
 const copies = {
@@ -37,7 +38,8 @@ export default function TaurusStock({items,lang,onSaved,disabled}:{items:StockIt
   const [salesOnly,setSalesOnly]=useState(false);
   const lines=useMemo(()=>batch?.lines.filter(stockEligible)??[],[batch]);
   const formatMoney=(cents:number)=>new Intl.NumberFormat(nl?"nl-NL":"en-NL",{style:"currency",currency:"EUR"}).format(cents/100);
-  const [saved,setSaved]=useState<Record<string,string>>({}), [map,setMap]=useState<Record<string,string>>({});
+  const [saved,setSaved]=useState<Record<string,Mapping>>({}), [map,setMap]=useState<Record<string,string>>({});
+  const [pours,setPours]=useState<Record<string,string>>({});
   const [stats,setStats]=useState<Trend[]>([]), [approved,setApproved]=useState(false);
   const [plan,setPlan]=useState<{summary:Preview;rows:Row[]}|null>(null), [msg,setMsg]=useState("");
   const [busy,setBusy]=useState(false),[refresh,setRefresh]=useState(0), [drink,setDrink]=useState("");
@@ -45,7 +47,7 @@ export default function TaurusStock({items,lang,onSaved,disabled}:{items:StockIt
     const a=new AbortController();
     fetch(url,{cache:"no-store",signal:a.signal}).then(async r=>{
       const x=await r.json();
-      if(r.ok){setStats(x.stats);setSaved(Object.fromEntries((x.mappings as {name:string;id:string}[]).map(y=>[y.name,y.id])));}
+      if(r.ok){setStats(x.stats);setSaved(Object.fromEntries((x.mappings as Mapping[]).map(y=>[y.name,y])));}
       else setMsg(x.error==="migration_required"?c.missing:c.failed);
     }).catch(()=>{if(!a.signal.aborted)setMsg(c.failed);});
     return ()=>a.abort();
@@ -61,7 +63,15 @@ export default function TaurusStock({items,lang,onSaved,disabled}:{items:StockIt
     return Array.from(g).sort((a,b)=>a[1].name.localeCompare(b[1].name));
   },[lines]);
   const soldItems=useMemo(()=>new Set(batch?.lines.filter(l=>!l.adjustment).map(l=>taurusName(l.name))),[batch]);
-  const mappedCount=salesOnly?0:groups.filter(([key])=>record.has(map[key]??saved[key])).length;
+  const matching=(key:string)=>{
+    const item=record.get(map[key]??saved[key]?.id);
+    const portion=pours[key]??(item?.id===saved[key]?.id&&saved[key]?.pourMl?String(saved[key].pourMl):"");
+    const ml=/^\d{1,6}$/.test(portion)?Number(portion):0;
+    return {item,portion,pourMl:item?.keg&&ml>=1&&ml<=item.keg.capacityMl?ml:undefined};
+  };
+  const needsSize=!salesOnly&&groups.some(([key])=>{const x=matching(key);return x.item?.keg&&!x.pourMl;});
+  const mappedCount=salesOnly?0:groups.filter(([key])=>{const x=matching(key);return x.item&&(!x.item.keg||x.pourMl);}).length;
+  const stockAmount=(value:number,volume?:boolean)=>volume?new Intl.NumberFormat(nl?"nl-NL":"en-GB",{maximumFractionDigits:3}).format(value/1000)+" L":String(value);
   const agg=(key:"day"|"name")=>{
     const m=new Map<string,number>();
     for(const x of stats)if(key!=="day"||!drink||x.name===drink)m.set(x[key],(m.get(x[key])??0)+x.units);
@@ -72,7 +82,7 @@ export default function TaurusStock({items,lang,onSaved,disabled}:{items:StockIt
     return <ul className={own.bars}>{data.map(([key,n])=><li key={key}><span>{key}</span><strong>{n}</strong><div aria-hidden="true" className={own.track}><div style={{width:`${n/max*100}%`}} /></div></li>)}</ul>;
   };
   async function choose(file?:File) {
-    setApproved(false);setPlan(null);setBatch(null);setSalesOnly(false);setMsg("");setMap({});
+    setApproved(false);setPlan(null);setBatch(null);setSalesOnly(false);setMsg("");setMap({});setPours({});
     if(!file)return;
     setBusy(true);
     try{
@@ -82,10 +92,10 @@ export default function TaurusStock({items,lang,onSaved,disabled}:{items:StockIt
     }catch{setMsg(c.bad);}finally{setBusy(false);}
   }
   async function request(mode:"preview"|"apply"){
-    if(busy||disabled||!batch)return;
+    if(busy||disabled||!batch||needsSize)return;
     const rows=mode==="apply"?plan?.rows:salesOnly?[]:lines.flatMap(l=>{
-      const key=taurusName(l.name), item=record.get(map[key]??saved[key]);
-      return item?[{day:l.day,receipt:l.receipt,line:l.line,name:l.name,qty:l.qty,id:item.id,rev:item.revision}]:[];
+      const {item,pourMl}=matching(taurusName(l.name));
+      return item?[{day:l.day,receipt:l.receipt,line:l.line,name:l.name,qty:l.qty,id:item.id,rev:item.revision,...(pourMl?{pourMl}:{})}]:[];
     });
     if(!rows)return;
     if(mode==="apply"&&!approved){setMsg(c.check);return;}
@@ -121,26 +131,32 @@ export default function TaurusStock({items,lang,onSaved,disabled}:{items:StockIt
       {!salesOnly&&<>
         <p>{nl?"Controleer de kassanaam en het gekoppelde voorraadproduct eronder. Niet-gekoppelde artikelen behouden hun kassanaam in Statistieken.":"Check the till name against the stock product shown below it. Unlinked items keep their till name in Stats."}</p>
         <div className={own.mapping}>{groups.map(([key,g])=>{
-          const item=record.get(map[key]??saved[key]);
-          return <label key={key} className={item?own.linkedCard:own.salesCard}>
+          const {item,portion,pourMl}=matching(key);
+          const linked=item&&(!item.keg||pourMl);
+          return <div key={key} className={own.mappingEntry+" "+(linked?own.linkedCard:own.salesCard)}>
             <span className={own.rowTitle}><strong>{g.name}</strong><span>×{g.qty}</span></span>
-            <span className={item?own.linkedBadge:own.salesBadge}>{item?(nl?"Gekoppeld: ":"Linked: ")+item.name:nl?"Alleen verkoopstatistiek":"Sales statistics only"}</span>
+            <span className={linked?own.linkedBadge:own.salesBadge}>{item?(nl?"Gekoppeld: ":"Linked: ")+item.name+(pourMl?" · "+pourMl+" ml":""):nl?"Alleen verkoopstatistiek":"Sales statistics only"}</span>
             <select aria-label={`${c.match}: ${g.name}`} disabled={busy||disabled}
               value={item?.id??""}
-              onChange={e=>{setMap(m=>({...m,[key]:e.target.value}));setPlan(null);setApproved(false);}}>
+              onChange={e=>{setMap(m=>({...m,[key]:e.target.value}));setPours(m=>{const next={...m};delete next[key];return next;});setPlan(null);setApproved(false);}}>
               <option value="">{c.skip}</option>
               {products.map(i=><option key={i.id} value={i.id}>{i.name} · {i.category}</option>)}
             </select>
-          </label>;
+            {item?.keg&&<label className={own.pourField}>{nl?"Milliliter per glas":"Millilitres per glass"}
+              <input aria-label={(nl?"Milliliter per glas":"Millilitres per glass")+": "+g.name} type="text" inputMode="numeric" maxLength={6} placeholder="250"
+                value={portion} aria-invalid={!pourMl} disabled={busy||disabled} onChange={e=>{setPours(m=>({...m,[key]:e.target.value}));setPlan(null);setApproved(false);}}/>
+            </label>}
+          </div>;
         })}</div>
+        {needsSize&&<p role="status">{nl?"Vul voor iedere gekoppelde tapbierregel het juiste glasvolume in voordat je verdergaat.":"Enter the correct glass size for every linked draught beer before continuing."}</p>}
       </>}
       {salesOnly&&<p>{nl?"Alle artikelen worden opgeslagen voor statistieken. De voorraad verandert niet.":"All items are recorded for statistics. Stock will not change."}</p>}
-      <button type="button" className={styles.button} disabled={busy||disabled} onClick={()=>void request("preview")}>{c.preview}</button>
+      <button type="button" className={styles.button} disabled={busy||disabled||needsSize} onClick={()=>void request("preview")}>{c.preview}</button>
     </>}
     {plan&&<div className={own.preview}>
       <p><strong>{formatMoney(plan.summary.saleSummary.cents)}</strong> · {plan.summary.saleSummary.receipts} {nl?"bonnen":"receipts"} · {plan.summary.saleSummary.duplicates} {nl?"eerder opgeslagen verkoopregels":"sales lines already recorded"}</p>
       <p>{nl?"Nieuwe verkoopregels":"New sales lines"}: <strong>{plan.summary.saleSummary.lines-plan.summary.saleSummary.duplicates}</strong> · {c.duplicates} ({nl?"voorraad":"stock"}): {plan.summary.duplicates}</p>
-      {plan.summary.changes.length===0?<p>{c.nothing}</p>:<ul>{plan.summary.changes.map(x=><li key={x.id}><strong>{x.name}</strong> · {c.qty}: {x.units} · {c.before}: {x.before} → {c.after}: {x.after}</li>)}</ul>}
+      {plan.summary.changes.length===0?<p>{c.nothing}</p>:<ul>{plan.summary.changes.map(x=><li key={x.id}><strong>{x.name}</strong> · {x.volume?(nl?"Af te boeken":"To deduct"):c.qty}: {stockAmount(x.units,x.volume)} · {c.before}: {stockAmount(x.before,x.volume)} → {c.after}: {stockAmount(x.after,x.volume)}</li>)}</ul>}
       {plan.summary.changes.some(x=>x.after<0)?<p role="alert">{c.short}</p>:<>
         <label><input type="checkbox" checked={approved} disabled={busy||disabled} onChange={e=>setApproved(e.target.checked)}/> {c.confirm}</label>
         <button type="button" className={styles.button} disabled={!approved||busy||disabled} onClick={()=>void request("apply")}>{c.apply}</button>
