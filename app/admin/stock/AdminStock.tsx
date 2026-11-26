@@ -13,6 +13,7 @@ import photoStyles from "./stockPhoto.module.css";
 import { StockPhoto, useStockPhotos } from "./StockPhoto";
 import StockCategories from "./StockCategories";
 import SligroPrices from "./SligroPrices";
+import TaurusStock from "./TaurusStock";
 
 const labels = {
   en: {
@@ -316,6 +317,7 @@ export default function AdminStock() {
           return next && next.revision > item.revision ? next : item;
         }) ?? null);
       }}/>}
+    {items && <TaurusStock items={items} lang={lang === "nl" ? "nl" : "en"} disabled={editing || loading || busy || categoryBusy} onSaved={()=>void refresh()}/>}
     {items && <dl className={styles.metrics}>
       <div className={shared.metric}><dt>{copy.products}</dt><dd><strong>{format(active.length)}</strong></dd></div>
       <div className={shared.metric}><dt>{copy.totalLabel}</dt><dd><strong>{format(total)}</strong></dd></div>

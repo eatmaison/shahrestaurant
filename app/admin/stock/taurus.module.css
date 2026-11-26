@@ -1,0 +1,13 @@
+.card { border:1px solid currentColor; border-radius:12px; padding:1rem; margin:0 0 1rem; }
+.card summary { cursor:pointer; }
+.card input[type=file] { display:block; max-width:100%; margin:.35rem 0 .6rem; }
+.stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,16rem),1fr)); gap:1.25rem; margin-top:1rem; }
+.bars { list-style:none; padding:0; }
+.bars li { display:grid; grid-template-columns:1fr auto; gap:.2rem .6rem; margin:.5rem 0; }
+.track { grid-column:1/-1; height:.35rem; background:#8883; border-radius:1rem; overflow:hidden; }
+.track div { height:100%; background:#c29b5d; }
+.mapping { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,16rem),1fr)); gap:.65rem; max-height:23rem; overflow:auto; margin:.5rem 0 1rem; }
+.mapping label { display:grid; gap:.25rem; }
+.mapping select { max-width:100%; min-height:2.2rem; }
+.preview button { display:block; margin-top:.6rem; }
+.stats select { display:block; width:100%; max-width:18rem; margin-top:.45rem; min-height:2.2rem; }

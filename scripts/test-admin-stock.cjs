@@ -51,7 +51,7 @@ function loader(db) {
     vm.runInNewContext(compiled, {
       module: mod, exports: mod.exports,
       require: name => name.startsWith(".") ? load(path.resolve(path.dirname(file), name + ".ts")) : require(name),
-      URL, Response, TextEncoder, TextDecoder,
+      URL, Response, TextEncoder, TextDecoder, Date,
       process: { env: { APP_URL: origin, SESSION_SECRET: secret, NODE_ENV: "production" } },
       fetch: () => { throw new Error("External fetch is forbidden"); },
     }, { filename: file });
@@ -238,7 +238,7 @@ test("inline editing previews units, retains rejected values and only reorders a
       if (name === "../../lib/clientFetch") return { fetchJSON: transport };
       if (name === "../../lib/stock") return libs;
       if (name === "./StockPhoto") return { StockPhoto: () => null, useStockPhotos: () => ({ versions: {}, indexReady: true, update() {} }) };
-      if (name === "./SligroPrices") return { __esModule: true, default: () => null };
+      if (name === "./SligroPrices" || name === "./TaurusStock") return { __esModule: true, default: () => null };
       if (name === "./StockCategories") return { __esModule: true, default: () => null };
       if (name.endsWith(".css")) return { __esModule: true, default: stylesheet };
       return require(name);
@@ -667,4 +667,61 @@ test("Shah bridge waits for login, reviews verified prices, and never saves auto
   assert.equal(calls[0].body.updates[0].purchasePrice.regularCents, 3200);
   assert.equal(saved.length, 1);
   assert.match(text(render()), /Prices saved: 1\./);
+});
+
+test("Taurus Excel rows preserve distinct receipt lines and exclude corrections and personal columns",async t=>{
+  const {load}=await fixture(t);
+  const {parseTaurusRows}=load("app/lib/taurusStock.ts");
+  const header=["Datum","Tijd","Bonnummer","Regel","Aantal","Omschrijving","Contactpersoon"];
+  const first=[46351,0.85,"202611250001",2,"1","Coke Zero","not allowed"];
+  const other=[new Date("2026-11-25T00:00:00Z"),0.85,"202611250001",4,"2","Peach ice tea","not allowed"];
+  const results=parseTaurusRows([header,first,first,other,[46351,0,"202611250001",777777,"1","Korting btw"],["Totaal"]]);
+  assert.equal(results.lines.length,2);
+  assert.equal(results.ignored,1);
+  assert.equal(results.lines[0].day,"2026-11-25");
+  assert.equal(results.lines[1].qty,2);
+  assert.doesNotMatch(JSON.stringify(results),/not allowed/);
+  assert.throws(()=>parseTaurusRows([header,first,[...first.slice(0,4),"3","Coke Zero"]]),/duplicate_conflict/);
+});
+
+test("Taurus import is admin-only, previews box deductions, rejects stale stock atomically and retries once", async t=>{
+  const {db,load,auth}=await fixture(t);
+  await db.exec(fs.readFileSync(path.join(root,"db/migrations/20261126_shah_taurus_stock.sql"),"utf8"));
+  const route=load("app/api/admin/stock/taurus/route.ts");
+  const stock=await db.query("SELECT id, seed_key, revision FROM shah_stock_items");
+  const soda=stock.rows.find(x=>x.seed_key==="fixture-soda");
+  const zero=stock.rows.find(x=>x.seed_key==="fixture-lager-zero");
+  const now=new Intl.DateTimeFormat("en-CA",{timeZone:"Europe/Amsterdam",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date());
+  const lines=[{day:now,receipt:"202611250001",line:2,qty:5,name:"Taurus soda",id:soda.id,rev:soda.revision},
+    {day:now,receipt:"202611250001",line:4,qty:1,name:"Taurus zero",id:zero.id,rev:zero.revision}];
+  const callT=async (mode,rows=lines,login=auth)=>route.POST(new NextRequest(origin+"/api/admin/stock/taurus",{method:"POST",headers:{Cookie:"etg_session="+login,"Content-Type":"application/json",Origin:origin},body:JSON.stringify({mode,rows})}));
+  assert.equal((await callT("preview",lines,await token(customer))).status,403);
+  assert.equal((await callT("apply",[lines[0],lines[0]])).status,400);
+  const before=await callT("preview");assert.equal(before.status,200);
+  assert.deepEqual((await before.json()).changes.map(x=>[x.before,x.after]),[[23,18],[10,9]]);
+  assert.equal((await callT("apply",[lines[0],{...lines[1],rev:99}])).status,409);
+  assert.equal((await db.query("SELECT total_units FROM shah_stock_items WHERE id=$1",[soda.id])).rows[0].total_units,23);
+  const applied=await callT("apply");assert.equal(applied.status,200);assert.equal((await applied.json()).imported,2);
+  const check=await db.query("SELECT cases_count,loose_count,total_units FROM shah_stock_items WHERE id=$1",[soda.id]);
+  assert.deepEqual(check.rows[0],{cases_count:1,loose_count:8,total_units:18});
+  assert.equal((await (await callT("apply")).json()).imported,0);
+  assert.equal((await callT("apply",[{...lines[0],qty:6}])).status,409);
+  const tstats=await route.GET(new NextRequest(origin+"/api/admin/stock/taurus",{headers:{Cookie:"etg_session="+auth}}));
+  assert.equal(tstats.status,200);
+  const data=await tstats.json();
+  assert.equal(data.stats.reduce((n,x)=>n+x.units,0),6);
+  assert.ok(data.mappings.some(x=>x.name==="taurus soda"&&x.id===soda.id));
+});
+
+test("Taurus parser reads a synthetic XLSX with the verified Easy4U cell types", async () => {
+  const {parseTaurusRows}=loader({})("app/lib/taurusStock.ts");
+  const read=require("read-excel-file/node").default;
+  const p=path.join(__dirname,"fixtures/taurus-receipt-lines-synthetic.xlsx");
+  const result=parseTaurusRows(await read(p));
+  assert.equal(result.lines.length,2);
+  assert.equal(result.lines[0].day,"2026-11-25");
+  assert.equal(result.lines[0].qty,1);
+  assert.equal(result.lines[1].qty,2);
+  assert.equal(result.ignored,1);
+  assert.doesNotMatch(JSON.stringify(result),/do not import/);
 });
