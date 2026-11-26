@@ -289,6 +289,8 @@ export default function AdminStock() {
   const active = (items ?? []).filter(item => !item.archived);
   const total = active.reduce((sum, item) => sum + item.totalUnits, 0);
   const zero = active.filter(item => item.totalUnits === 0).length;
+  const low = active.filter(item=>item.totalUnits>0&&item.totalUnits<=(item.caseSize??6)).length;
+  const lowLabel = lang==="nl"?"Bijbestellen":"Reorder";
   const shown = items ? visibleStockItems(items, filter, category, query) : [];
   const editing = editor !== null;
   const problem = failure === "conflict" ? copy.conflict : failure ? errorMessage(failure, copy) : "";
@@ -322,6 +324,7 @@ export default function AdminStock() {
       <div className={shared.metric}><dt>{copy.products}</dt><dd><strong>{format(active.length)}</strong></dd></div>
       <div className={shared.metric}><dt>{copy.totalLabel}</dt><dd><strong>{format(total)}</strong></dd></div>
       <div className={shared.metric}><dt>{copy.zero}</dt><dd><strong>{format(zero)}</strong></dd></div>
+      <div className={shared.metric}><dt>{lowLabel}</dt><dd><strong>{format(low)}</strong></dd></div>
     </dl>}
     <p ref={liveNotice} role="status" className={notice ? styles.success : styles.visuallyHidden}>{notice}</p>
     {problem && !editor && <p role="alert" className={styles.problem}>{problem}</p>}
@@ -370,6 +373,7 @@ export default function AdminStock() {
               <span className={item.totalUnits === 0 && !item.archived ? styles.zero : styles.total}>
                 <strong>{format(item.totalUnits)}</strong> {item.totalUnits === 0 && !item.archived ? copy.zero : copy.unitsLabel}
               </span>
+              {!item.archived&&item.totalUnits>0&&item.totalUnits<=(item.caseSize??6)&&<span className={styles.reorder}>{lowLabel}</span>}
             </div>
             <div className={styles.itemActions}>
               {item.archived ? <button type="button" className={shared.button} aria-label={copy.restore + ": " + item.name}

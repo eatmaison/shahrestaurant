@@ -11,3 +11,8 @@
 .mapping select { max-width:100%; min-height:2.2rem; }
 .preview button { display:block; margin-top:.6rem; }
 .stats select { display:block; width:100%; max-width:18rem; margin-top:.45rem; min-height:2.2rem; }
+.track .negative { background:#be6666; }
+.chart { max-height:23rem; overflow:auto; padding-inline:.25rem; }
+.itemTrack { height:.22rem; margin-top:.3rem; width:100%; min-width:3rem; background:#8883; border-radius:1rem; overflow:hidden; }
+.itemTrack div { height:100%; background:#c29b5d; }
+.itemTrack .negative { background:#be6666; }

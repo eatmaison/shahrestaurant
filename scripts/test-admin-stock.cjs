@@ -725,3 +725,193 @@ test("Taurus parser reads a synthetic XLSX with the verified Easy4U cell types",
   assert.equal(result.ignored,1);
   assert.doesNotMatch(JSON.stringify(result),/do not import/);
 });
+
+test("Taurus full-day parser reconciles extended amounts, duplicate lines and both discount sentinels", () => {
+  const {parseTaurusSales,stockEligible}=loader({})("app/lib/taurusStock.ts");
+  const heads=["Datum","Bonnummer","Regel","Aantal","Omschrijving","Prijs","BTW","Bedrag","Omschrijving omzetgroep","Contactpersoon"];
+  const a=[46351,"202611250001",2,"2","Fanta X",4,9,"8,00","Drinks","private"];
+  const b=[46351,"202611250001",4,"1","Dal",18,9,18,"Food","private"];
+  const c=[46351,"202611250001",777777,"1","Korting 9%",-1,9,-1,"Korting","private"];
+  const d=[46351,"202611250001",777778,"1","Korting 21%",-0.3,21,-0.3,"Korting","private"];
+  const foot=["Totaal",null,null,null,null,null,null,"24,70"];
+  const report=parseTaurusSales([heads,a,a,b,c,d,foot]);
+  assert.equal(report.footerCents,2470);
+  assert.deepEqual(Array.from(report.lines,x=>x.cents),[800,1800,-100,-30]);
+  assert.deepEqual(Array.from(report.lines.filter(stockEligible),x=>x.name),["Fanta X","Dal"]);
+  assert.doesNotMatch(JSON.stringify(report),/private|Korting 9%/);
+  assert.throws(()=>parseTaurusSales([heads,a,b,c,d]),/reconcile/);
+  assert.throws(()=>parseTaurusSales([heads,a,b,c,d,[...foot.slice(0,7),2470]]),/reconcile/);
+  assert.throws(()=>parseTaurusSales([heads,a,[...b.slice(0,7),"bad money"],foot]),/amount/);
+  assert.throws(()=>parseTaurusSales([heads,a,[46350,...b.slice(1)],c,d,foot]),/reconcile/);
+});
+
+test("Taurus sales and stock are atomic, include all items, ignore duplicates and retain late dates",async t=>{
+  const {db,load,auth}=await fixture(t);
+  const {stockAmsterdamDate}=load("app/lib/stock.ts");
+  for(const name of ["20261126_shah_taurus_stock.sql","20261127_shah_taurus_sales.sql","20261127_shah_taurus_sales.sql"])
+    await db.exec(fs.readFileSync(path.join(root,"db/migrations",name),"utf8"));
+  const route=load("app/api/admin/stock/taurus/route.ts"), stats=load("app/api/admin/stock/taurus/sales/route.ts");
+  const soda=(await db.query("SELECT id,name,revision FROM shah_stock_items WHERE seed_key='fixture-soda'")).rows[0];
+  const zero=(await db.query("SELECT id,revision FROM shah_stock_items WHERE seed_key='fixture-lager-zero'")).rows[0];
+  const today=stockAmsterdamDate(), earlier=new Date(Date.parse(today)-86400000*2).toISOString().slice(0,10);
+  const date1={day:today,receipt:"777777001"}, date2={day:earlier,receipt:"777777002"};
+  const drink={...date1,line:2,name:"Fanta X",qty:2,group:"Drinks",cents:800,adjustment:false};
+  const food={...date1,line:4,name:"Dal",qty:1,group:"Food",cents:1800,adjustment:false};
+  const disc={...date1,line:777777,name:"Adjustment",qty:1,group:"",cents:-200,adjustment:true};
+  const returnLine={...date1,line:6,name:"Fanta X",qty:-1,group:"Drinks",cents:-400,adjustment:false};
+  const all=[drink,food,disc,returnLine];
+  const toStock=({day,receipt,line,name,qty})=>({day,receipt,line,name,qty});
+  const drinkStock=toStock(drink);
+  const row={...drinkStock,id:soda.id,rev:soda.revision};
+  const payload={rows:[row],sales:{lines:all,footerCents:2000}};
+  const session=await token(customer);
+  const get=(url,login=auth)=>new NextRequest(origin+url,{headers:{Cookie:"etg_session="+login}});
+  const tpath="/api/admin/stock/taurus", spath=tpath+"/sales";
+  const request=(mode,p=payload,login=auth,from=origin)=>route.POST(new NextRequest(origin+tpath,{method:"POST",headers:{Cookie:"etg_session="+login,"Content-Type":"application/json",Origin:from},body:JSON.stringify({mode,...mode==="apply"?{confirmed:true}:{},...p})}));
+  const body=async response=>({status:response.status,body:await response.json()});
+  assert.equal((await request("preview",payload,session)).status,403);
+  assert.equal((await request("preview",payload,auth,"https://other.test")).status,403);
+  assert.equal((await stats.GET(get(spath,session))).status,403);
+  assert.equal((await request("apply",{...payload,confirmed:false})).status,400);
+  assert.equal((await request("preview",{...payload,sales:{...payload.sales,footerCents:0}})).status,400);
+
+  const preview=await body(await request("preview"));
+  assert.equal(preview.status,200);
+  assert.deepEqual(preview.body.saleSummary,{cents:2000,receipts:1,lines:4,duplicates:0});
+  assert.deepEqual(preview.body.changes.map(x=>[x.before,x.after]),[[23,21]]);
+  assert.equal((await request("apply",{...payload,rows:[{...row,rev:999}]})).status,409);
+  assert.equal((await db.query("SELECT count(*)::int AS n FROM shah_taurus_sale_lines")).rows[0].n,0);
+  assert.equal((await db.query("SELECT total_units FROM shah_stock_items WHERE id=$1",[soda.id])).rows[0].total_units,23);
+  assert.deepEqual(await body(await request("apply")),{status:200,body:{imported:1,salesImported:4}});
+  assert.deepEqual(await body(await request("apply")),{status:200,body:{imported:0,salesImported:0}});
+
+  const duplicateChanged={...payload,sales:{lines:[{...drink,cents:900},food,disc,returnLine],footerCents:2100}};
+  assert.equal((await request("preview",duplicateChanged)).status,409);
+  assert.equal((await request("apply",duplicateChanged)).status,409);
+
+  const extra={...date1,line:8,name:"Water",qty:11,group:"Drinks",cents:300,adjustment:false};
+  const shortage={...date1,line:8,name:"Water",qty:11,id:zero.id,rev:zero.revision};
+  const overlap={rows:[row,shortage],sales:{lines:[...all,extra],footerCents:2300}};
+  assert.equal((await request("apply",overlap)).status,409);
+  assert.equal((await db.query("SELECT count(*)::int AS n FROM shah_taurus_sale_lines")).rows[0].n,4);
+  assert.deepEqual(await body(await request("apply",{...overlap,rows:[row]})),{status:200,body:{imported:0,salesImported:1}});
+
+  const pastDrink={...drink,...date2}, pastFood={...food,...date2};
+  const past={rows:[],sales:{lines:[pastDrink,pastFood],footerCents:2600}};
+  assert.deepEqual(await body(await request("apply",past)),{status:200,body:{imported:0,salesImported:2}});
+  assert.equal((await db.query("SELECT total_units FROM shah_stock_items WHERE id=$1",[soda.id])).rows[0].total_units,21);
+  const saved=await (await route.GET(get(tpath))).json();
+  assert.ok(saved.mappings.some(x=>x.name==="fanta x"&&x.id===soda.id));
+
+  const result=await body(await stats.GET(get(spath+"?days=7&day="+today)));
+  assert.equal(result.status,200);
+  assert.deepEqual(result.body.daily,[
+    {day:earlier,cents:2600,receipts:1,adjustments:0},
+    {day:today,cents:2300,receipts:1,adjustments:-200},
+  ]);
+  assert.ok(result.body.products.some(x=>x.name==="Dal"&&x.cents===1800));
+  assert.ok(result.body.products.some(x=>x.name===soda.name&&x.cents===800));
+  assert.ok(result.body.products.some(x=>x.name==="Fanta X"&&x.units===-1));
+  assert.ok(!result.body.products.some(x=>x.name==="Adjustment"));
+  // Reuse the saved alias on another receipt; then edit it on a new line
+  // of an overlapping export. The first receipt remains on the first product.
+  const fresh={...drink,receipt:"777777009"};
+  const freshStock=toStock(fresh);
+  const applyFresh=await body(await request("apply",{
+    rows:[{...freshStock,id:saved.mappings.find(x=>x.name==="fanta x").id,rev:soda.revision+1}],
+    sales:{lines:[fresh],footerCents:800},
+  }));
+  assert.deepEqual(applyFresh,{status:200,body:{imported:1,salesImported:1}});
+  const newLine={...fresh,line:4};
+  const edited=await body(await request("apply",{
+    rows:[{...freshStock,id:zero.id,rev:zero.revision},{...freshStock,line:4,id:zero.id,rev:zero.revision}],
+    sales:{lines:[fresh,newLine],footerCents:1600},
+  }));
+  assert.deepEqual(edited,{status:200,body:{imported:1,salesImported:1}});
+  const appliedLines=(await db.query("SELECT line,item_id FROM shah_taurus_stock_lines WHERE receipt='777777009' ORDER BY line")).rows;
+  assert.deepEqual(appliedLines,[{line:2,item_id:soda.id},{line:4,item_id:zero.id}]);
+  assert.ok((await (await route.GET(get(tpath))).json()).mappings.some(x=>x.name==="fanta x"&&x.id===zero.id));
+});
+
+test("Taurus sales reads a genuine XLSX shape locally, including the discount footer", async () => {
+  const {parseTaurusSales}=loader({})("app/lib/taurusStock.ts");
+  const read=require("read-excel-file/node").default;
+  const parsed=parseTaurusSales(await read(path.join(__dirname,"fixtures/taurus-sales-synthetic.xlsx")));
+  assert.equal(parsed.footerCents,2470);
+  assert.equal(parsed.lines.length,4);
+  assert.equal(parsed.lines.filter(x=>x.adjustment).length,2);
+  assert.equal(parsed.lines[0].name,"Fanta X");
+  assert.doesNotMatch(JSON.stringify(parsed),/private dummy/);
+});
+
+test("Taurus Stock UI asks before changing counts and reports the confirmed result",async t=>{
+  const {db,load,auth}=await fixture(t);
+  for(const file of ["20261126_shah_taurus_stock.sql","20261127_shah_taurus_sales.sql"])
+    await db.exec(fs.readFileSync(path.join(root,"db/migrations",file),"utf8"));
+  const route=load("app/api/admin/stock/taurus/route.ts");
+  const {items}=await (await call(load("app/api/admin/stock/route.ts"),"GET",auth)).json();
+  const item=items.find(x=>x.name==="Fixture soda");
+  const source=path.join(root,"app/admin/stock/TaurusStock.tsx");
+  const file=path.join(root,"scripts/fixtures/taurus-sales-synthetic.xlsx");
+  const parsed=await require("read-excel-file/node").default(file);
+  const snapshot=load("app/lib/taurusStock.ts");
+  const state=[], calls=[], work=[];
+  let hook=0, saves=0;
+  const react={
+    useState(initial){const i=hook++;if(!(i in state))state[i]=initial;return [state[i],v=>{state[i]=typeof v==="function"?v(state[i]):v;}];},
+    useMemo(f){return f();},
+    useEffect(){},
+  };
+  const mod={exports:{}};
+  const code=ts.transpileModule(fs.readFileSync(source,"utf8"),{
+    compilerOptions:{module:ts.ModuleKind.CommonJS,jsx:ts.JsxEmit.ReactJSX,esModuleInterop:true,target:ts.ScriptTarget.ES2022},
+  }).outputText;
+  vm.runInNewContext(code,{
+    module:mod,exports:mod.exports,
+    require(name){
+      if(name==="react")return react;
+      if(name==="read-excel-file")return {__esModule:true,default:async()=>parsed};
+      if(name.endsWith(".css"))return {__esModule:true,default:new Proxy({},{get:(_o,key)=>String(key)})};
+      if(name.endsWith("/taurusStock"))return snapshot;
+      return require(name);
+    },
+    fetch:(url,init)=>{
+      const body=JSON.parse(init.body);calls.push(body);
+      const result=route.POST(new NextRequest(origin+url,{method:"POST",
+        headers:{...init.headers,Cookie:"etg_session="+auth,Origin:origin},body:init.body}));
+      work.push(result);return result;
+    },
+  },{filename:source});
+  const render=()=>{hook=0;return mod.exports.default({items:[item],lang:"en",disabled:false,onSaved:()=>saves++});};
+  const texts=x=>Array.isArray(x)?x.map(texts).join(""):x?.props?texts(x.props.children):typeof x==="string"||typeof x==="number"?String(x):"";
+  function find(x,f){
+    if(Array.isArray(x))return x.map(y=>find(y,f)).find(Boolean);
+    if(!x?.props)return;
+    return f(x)?x:find(x.props.children,f);
+  }
+  const click=(tree,label)=>find(tree,x=>x.type==="button"&&texts(x)===label);
+  const spin=async predicate=>{
+    for(let i=0;i<100;i++){if(predicate())return;await new Promise(r=>setTimeout(r,5));}
+    assert.fail("Taurus UI state did not update");
+  };
+  find(render(),x=>x.type==="input"&&x.props.type==="file").props.onChange({target:{files:[{name:"taurus-sales-synthetic.xlsx",size:2024}]},currentTarget:{}});
+  await spin(()=>Boolean(find(render(),x=>x.props["aria-label"]==="Match to Stock product: Fanta X")));
+  find(render(),x=>x.props["aria-label"]==="Match to Stock product: Fanta X").props.onChange({target:{value:item.id}});
+  click(render(),"Preview import").props.onClick();
+  await spin(()=>Boolean(click(render(),"Confirm import")));
+  assert.match(texts(render()),/Before: 23 → After: 21/);
+  assert.equal(click(render(),"Confirm import").props.disabled,true);
+  assert.equal(calls.length,1);
+  assert.deepEqual(calls[0].rows.map(x=>x.name),["Fanta X"]);
+  assert.equal(calls[0].sales.lines.length,4);
+  assert.doesNotMatch(JSON.stringify(calls[0]),/private dummy/);
+  const confirm=find(render(),x=>x.type==="label"&&texts(x).includes("This file contains only Shah sales"));
+  find(confirm,x=>x.type==="input").props.onChange({target:{checked:true}});
+  assert.equal(click(render(),"Confirm import").props.disabled,false);
+  click(render(),"Confirm import").props.onClick();
+  await spin(()=>saves===1);
+  assert.match(texts(render()),/Sales lines saved: 4 · stock lines: 1/);
+  assert.equal((await db.query("SELECT total_units FROM shah_stock_items WHERE id=$1",[item.id])).rows[0].total_units,21);
+  assert.equal((await db.query("SELECT sum(cents)::int n FROM shah_taurus_sale_lines")).rows[0].n,2470);
+  await Promise.all(work);
+});

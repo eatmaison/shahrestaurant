@@ -103,3 +103,5 @@
 .sligroReview { margin-block-start:12px; border:1px solid currentColor; border-radius:12px; padding:12px; }
 .sligroReview ul { margin-block:12px; display:grid; gap:10px; max-height:360px; overflow:auto; }
 .sligroReview li { display:flex; flex-direction:column; gap:3px; }
+
+.reorder { font-size:.75rem; font-weight:700; text-decoration:underline; text-underline-offset:.2em; }

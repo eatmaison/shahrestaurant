@@ -13,6 +13,7 @@ import { AdminExport } from "./AdminExport";
 import { DailySalesChart } from "./DailySalesChart";
 import { LifetimeRevenueChart } from "./LifetimeRevenueChart";
 import { CustomerInsights } from "./CustomerInsights";
+import TaurusSales from "./TaurusSales";
 import styles from "./admin.module.css";
 export default function AdminStats() {
   const { orders,products }=useStore();
@@ -45,6 +46,7 @@ export default function AdminStats() {
   const error=rangeFilterError(range,now);
   const percent=prior?percentageChange(summary.bookedValue,prior.bookedValue):undefined;
   return <div className={styles.stack}>
+    <TaurusSales nl={nl}/>
     <section className={styles.panel} aria-label={nl?"Periodefilter":"Period filter"}><AdminDateRange value={range} onChange={value=>{setRange(value);setDailyPage(1);}} now={now} lang={lang}/></section>
     {error?<p role="status" className={styles.notice}>{nl?"Vul een geldige periode in om totalen te berekenen. Er worden nu geen nulwaarden als resultaat getoond.":"Enter a valid period to calculate totals. No zero totals are presented as results while the period is invalid."}</p>:<>
       <div className={styles.metrics}>{[[nl?"Bestelwaarde":"Order value",money(summary.bookedValue,lang),nl?"Betaald + onbetaald zakelijk":"Paid + unpaid company orders"],[nl?"Betaalde waarde":"Paid value",money(summary.paidValue,lang),nl?"Bestellingen met betaald-status":"Orders marked paid"],[nl?"Zakelijk onbetaald":"Company unpaid",money(summary.unpaidCompanyValue,lang),nl?"Onderdeel van de bestelwaarde":"Included in order value"],[nl?"Bestellingen":"Orders",summary.count,`${nl?"Gemiddeld":"Average"} ${money(summary.average,lang)}`]].map(([label,value,note])=><div className={styles.metric} key={label}><span>{label}</span><strong>{value}</strong><small>{note}</small></div>)}</div>
