@@ -60,6 +60,8 @@ export default function TaurusStock({items,lang,onSaved,disabled}:{items:StockIt
     }
     return Array.from(g).sort((a,b)=>a[1].name.localeCompare(b[1].name));
   },[lines]);
+  const soldItems=useMemo(()=>new Set(batch?.lines.filter(l=>!l.adjustment).map(l=>taurusName(l.name))),[batch]);
+  const mappedCount=salesOnly?0:groups.filter(([key])=>record.has(map[key]??saved[key])).length;
   const agg=(key:"day"|"name")=>{
     const m=new Map<string,number>();
     for(const x of stats)if(key!=="day"||!drink||x.name===drink)m.set(x[key],(m.get(x[key])??0)+x.units);
@@ -112,21 +114,32 @@ export default function TaurusStock({items,lang,onSaved,disabled}:{items:StockIt
     {batch&&<>
       <p>{c.old}: <strong>{batch.lines[0].day}</strong> · {formatMoney(batch.footerCents)} · {batch.lines.length} {nl?"bonregels":"receipt lines"}</p>
       <label><input type="checkbox" checked={salesOnly} disabled={busy||disabled} onChange={e=>{setSalesOnly(e.target.checked);setPlan(null);setApproved(false);}}/> {nl?"Alleen verkoop, voorraad niet aanpassen":"Sales only, keep stock unchanged"}</label>
-      {!salesOnly&&<p>{nl?"Koppel afwijkende kassabenamingen aan bestaande dranken. Een bevestigde koppeling wordt gebruikt bij volgende imports.":"Match till aliases to existing drinks. Confirmed mappings are reused on later imports."}</p>}
-      {!salesOnly&&<div className={own.mapping}>{groups.map(([key,g])=><label key={key}>
-        <span>{g.name} <strong>×{g.qty}</strong></span>
-        <select aria-label={`${c.match}: ${g.name}`} disabled={busy||disabled}
-          value={record.has(map[key]??saved[key])?(map[key]??saved[key]):""}
-          onChange={e=>{setMap(m=>({...m,[key]:e.target.value}));setPlan(null);setApproved(false);}}>
-          <option value="">{c.skip}</option>
-          {products.map(i=><option key={i.id} value={i.id}>{i.name} · {i.category}</option>)}
-        </select>
-      </label>)}</div>}
+      <div className={own.legend} aria-live="polite">
+        <span className={own.linkedBadge}>{nl?"Voorraad gekoppeld":"Linked to stock"} · {mappedCount}</span>
+        <span className={own.salesBadge}>{nl?"Alleen verkoopstatistiek":"Sales statistics only"} · {soldItems.size-mappedCount}</span>
+      </div>
+      {!salesOnly&&<>
+        <p>{nl?"Controleer de kassanaam en het gekoppelde voorraadproduct eronder. Niet-gekoppelde artikelen behouden hun kassanaam in Statistieken.":"Check the till name against the stock product shown below it. Unlinked items keep their till name in Stats."}</p>
+        <div className={own.mapping}>{groups.map(([key,g])=>{
+          const item=record.get(map[key]??saved[key]);
+          return <label key={key} className={item?own.linkedCard:own.salesCard}>
+            <span className={own.rowTitle}><strong>{g.name}</strong><span>×{g.qty}</span></span>
+            <span className={item?own.linkedBadge:own.salesBadge}>{item?(nl?"Gekoppeld: ":"Linked: ")+item.name:nl?"Alleen verkoopstatistiek":"Sales statistics only"}</span>
+            <select aria-label={`${c.match}: ${g.name}`} disabled={busy||disabled}
+              value={item?.id??""}
+              onChange={e=>{setMap(m=>({...m,[key]:e.target.value}));setPlan(null);setApproved(false);}}>
+              <option value="">{c.skip}</option>
+              {products.map(i=><option key={i.id} value={i.id}>{i.name} · {i.category}</option>)}
+            </select>
+          </label>;
+        })}</div>
+      </>}
+      {salesOnly&&<p>{nl?"Alle artikelen worden opgeslagen voor statistieken. De voorraad verandert niet.":"All items are recorded for statistics. Stock will not change."}</p>}
       <button type="button" className={styles.button} disabled={busy||disabled} onClick={()=>void request("preview")}>{c.preview}</button>
     </>}
     {plan&&<div className={own.preview}>
       <p><strong>{formatMoney(plan.summary.saleSummary.cents)}</strong> · {plan.summary.saleSummary.receipts} {nl?"bonnen":"receipts"} · {plan.summary.saleSummary.duplicates} {nl?"eerder opgeslagen verkoopregels":"sales lines already recorded"}</p>
-      <p>{c.duplicates} ({nl?"voorraad":"stock"}): {plan.summary.duplicates}</p>
+      <p>{nl?"Nieuwe verkoopregels":"New sales lines"}: <strong>{plan.summary.saleSummary.lines-plan.summary.saleSummary.duplicates}</strong> · {c.duplicates} ({nl?"voorraad":"stock"}): {plan.summary.duplicates}</p>
       {plan.summary.changes.length===0?<p>{c.nothing}</p>:<ul>{plan.summary.changes.map(x=><li key={x.id}><strong>{x.name}</strong> · {c.qty}: {x.units} · {c.before}: {x.before} → {c.after}: {x.after}</li>)}</ul>}
       {plan.summary.changes.some(x=>x.after<0)?<p role="alert">{c.short}</p>:<>
         <label><input type="checkbox" checked={approved} disabled={busy||disabled} onChange={e=>setApproved(e.target.checked)}/> {c.confirm}</label>

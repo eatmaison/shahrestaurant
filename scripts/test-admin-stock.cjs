@@ -756,7 +756,7 @@ test("Taurus sales and stock are atomic, include all items, ignore duplicates an
   const today=stockAmsterdamDate(), earlier=new Date(Date.parse(today)-86400000*2).toISOString().slice(0,10);
   const date1={day:today,receipt:"777777001"}, date2={day:earlier,receipt:"777777002"};
   const drink={...date1,line:2,name:"Fanta X",qty:2,group:"Drinks",cents:800,adjustment:false};
-  const food={...date1,line:4,name:"Dal",qty:1,group:"Food",cents:1800,adjustment:false};
+  const food={...date1,line:4,name:"Butter Naan",qty:1,group:"Food",cents:1800,adjustment:false};
   const disc={...date1,line:777777,name:"Adjustment",qty:1,group:"",cents:-200,adjustment:true};
   const returnLine={...date1,line:6,name:"Fanta X",qty:-1,group:"Drinks",cents:-400,adjustment:false};
   const all=[drink,food,disc,returnLine];
@@ -809,7 +809,7 @@ test("Taurus sales and stock are atomic, include all items, ignore duplicates an
     {day:earlier,cents:2600,receipts:1,adjustments:0},
     {day:today,cents:2300,receipts:1,adjustments:-200},
   ]);
-  assert.ok(result.body.products.some(x=>x.name==="Dal"&&x.cents===1800));
+  assert.ok(result.body.products.some(x=>x.name==="Butter Naan"&&x.group==="Food"&&x.units===1&&x.cents===1800));
   assert.ok(result.body.products.some(x=>x.name===soda.name&&x.cents===800));
   assert.ok(result.body.products.some(x=>x.name==="Fanta X"&&x.units===-1));
   assert.ok(!result.body.products.some(x=>x.name==="Adjustment"));
@@ -897,6 +897,8 @@ test("Taurus Stock UI asks before changing counts and reports the confirmed resu
   find(render(),x=>x.type==="input"&&x.props.type==="file").props.onChange({target:{files:[{name:"taurus-sales-synthetic.xlsx",size:2024}]},currentTarget:{}});
   await spin(()=>Boolean(find(render(),x=>x.props["aria-label"]==="Match to Stock product: Fanta X")));
   find(render(),x=>x.props["aria-label"]==="Match to Stock product: Fanta X").props.onChange({target:{value:item.id}});
+  assert.match(texts(render()),/Linked: Fixture soda/);
+  assert.match(texts(render()),/Sales statistics only · 1/);
   click(render(),"Preview import").props.onClick();
   await spin(()=>Boolean(click(render(),"Confirm import")));
   assert.match(texts(render()),/Before: 23 → After: 21/);
@@ -914,4 +916,48 @@ test("Taurus Stock UI asks before changing counts and reports the confirmed resu
   assert.equal((await db.query("SELECT total_units FROM shah_stock_items WHERE id=$1",[item.id])).rows[0].total_units,21);
   assert.equal((await db.query("SELECT sum(cents)::int n FROM shah_taurus_sale_lines")).rows[0].n,2470);
   await Promise.all(work);
+});
+
+test("Taurus dashboard shows till totals, missing exports and unlinked food",()=>{
+  const filename=path.join(root,"app/admin/TaurusSales.tsx");
+  const code=ts.transpileModule(fs.readFileSync(filename,"utf8"),{
+    compilerOptions:{module:ts.ModuleKind.CommonJS,jsx:ts.JsxEmit.ReactJSX,esModuleInterop:true,target:ts.ScriptTarget.ES2022},
+  }).outputText;
+  const report={daily:[
+    {day:"2026-11-22",cents:2000,receipts:2,adjustments:-100},
+    {day:"2026-11-25",cents:3200,receipts:2,adjustments:0},
+  ],products:[
+    {name:"Butter Naan",group:"Food",units:2,cents:1400},
+    {name:"Fanta X",group:"Drinks",units:1,cents:500},
+  ],through:"2026-11-25"};
+  const mock={exports:{}};
+  let i=0;
+  const states=[];
+  vm.runInNewContext(code,{module:mock,exports:mock.exports,require(name){
+    if(name==="react")return {useEffect(){},useState(initial){const j=i++;if(!(j in states))states[j]=j===3?report:j===5?false:initial;return [states[j],value=>{states[j]=value;}];}};
+    if(name==="next/link")return {__esModule:true,default:({children})=>children};
+    if(name.endsWith(".css"))return {__esModule:true,default:{}};
+    return require(name);
+  }},{filename});
+  const render=()=>{i=0;return mock.exports.default({nl:false});};
+  const html=()=>require("react-dom/server").renderToStaticMarkup(render());
+  const overview=html();
+  assert.match(overview,/Daily till sales/);
+  assert.match(overview,/€52\.00/);
+  assert.match(overview,/2026-11-22 · €20\.00/);
+  assert.match(overview,/2026-11-23 · Normally closed/);
+  assert.match(overview,/2026-11-24 · Not imported/);
+  assert.match(overview,/Butter Naan/);
+  assert.match(overview,/Sales by till group/);
+  function find(x){
+    if(Array.isArray(x))return x.map(find).find(Boolean);
+    if(!x?.props)return;
+    return x.type==="button"&&x.props["aria-label"]==="2026-11-22 · €20.00"?x:find(x.props.children);
+  }
+  find(render()).props.onClick();
+  assert.equal(states[2],"2026-11-22");
+  const selected=html();
+  assert.match(selected,/aria-pressed="true"/);
+  assert.match(selected,/Items on 2026-11-22/);
+  assert.doesNotMatch(selected,/Butter Naan/);
 });

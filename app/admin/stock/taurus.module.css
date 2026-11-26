@@ -16,3 +16,25 @@
 .itemTrack { height:.22rem; margin-top:.3rem; width:100%; min-width:3rem; background:#8883; border-radius:1rem; overflow:hidden; }
 .itemTrack div { height:100%; background:#c29b5d; }
 .itemTrack .negative { background:#be6666; }
+
+.legend { display:flex; flex-wrap:wrap; gap:.5rem; margin:.75rem 0; }
+.mapping label { padding:.65rem; border:1px solid; border-inline-start-width:3px; border-radius:.55rem; align-content:start; }
+.mapping .linkedCard { border-color:#419661; background:color-mix(in srgb,#419661 12%,transparent); }
+.mapping .salesCard { border-color:#a78248; background:color-mix(in srgb,#a78248 10%,transparent); }
+.linkedBadge,.salesBadge { display:block; width:fit-content; max-width:100%; overflow-wrap:anywhere; border-radius:.35rem; padding:.22rem .45rem; font-size:.8rem; font-weight:650; }
+.linkedBadge { color:#c2f5ce; background:#173d29; }
+.salesBadge { color:#ffe3a9; background:#4c3515; }
+.rowTitle { display:flex; align-items:baseline; justify-content:space-between; gap:.5rem; overflow-wrap:anywhere; }
+.rowTitle > span { flex:none; font-variant-numeric:tabular-nums; }
+.mapping select { width:100%; }
+.columns { display:flex; gap:.3rem; overflow-x:auto; padding:.45rem .35rem .65rem; margin:.6rem 0; }
+.column { display:grid; grid-template-rows:7rem auto; gap:.2rem; flex:1 0 2.65rem; min-width:0; text-align:center; }
+.column button,.missingDay { position:relative; display:flex; align-items:end; justify-content:center; border:1px solid transparent; border-radius:.35rem; padding:.15rem; min-width:0; }
+.column button { background:color-mix(in srgb,currentColor 7%,transparent); cursor:pointer; }
+.column button:hover,.column button[aria-pressed=true] { border-color:currentColor; }
+.column button:focus-visible { outline:2px solid currentColor; outline-offset:2px; }
+.column button span { display:block; width:100%; border-radius:.18rem; background:#c29b5d; }
+.column button span.negative { background:#be6666; }
+.missingDay { border-color:color-mix(in srgb,currentColor 20%,transparent); border-style:dashed; }
+.dateTick { font-size:.68rem; white-space:nowrap; }
+.breakdown { border-block:1px solid color-mix(in srgb,currentColor 24%,transparent); margin:.75rem 0; padding:.45rem 0; }
