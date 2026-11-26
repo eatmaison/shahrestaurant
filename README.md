@@ -34,3 +34,16 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Updating Shah on the Droplet
+
+From the Shah checkout, run:
+
+    git pull --ff-only origin main
+    npm run build:server
+
+The server command installs the exact versions in package-lock.json (including
+build tools and the Taurus Excel reader), then builds the site. Use plain
+npm run build only if the installed dependencies already match the lockfile.
+Restart only the Shah process after a successful build; the command itself
+does not restart PM2 or apply database migrations.

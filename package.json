@@ -6,7 +6,9 @@
     "dev": "next dev --webpack",
     "build": "next build",
     "start": "next start --hostname 127.0.0.1",
-    "lint": "eslint"
+    "lint": "eslint",
+    "prebuild": "node scripts/check-build-deps.cjs",
+    "build:server": "npm ci --include=dev --no-audit --no-fund && npm run build"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.1089.0",
